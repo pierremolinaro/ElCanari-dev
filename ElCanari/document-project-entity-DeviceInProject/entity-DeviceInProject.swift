@@ -543,10 +543,19 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: deviceSymbolDictionary
     self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPadAssignments_property.selection, unwSelf.mSymbols_property.selection, unwSelf.mSymbols_property.selection, unwSelf.mSymbols_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+        switch (unwSelf.mPadAssignments_property.selection,
+                unwSelf.mSymbols_property.selection,
+                unwSelf.mSymbols_property.selection,
+                unwSelf.mSymbols_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3)) :
           return .single (transient_DeviceInProject_deviceSymbolDictionary (v0, v1, v2, v3))
-        case (.multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

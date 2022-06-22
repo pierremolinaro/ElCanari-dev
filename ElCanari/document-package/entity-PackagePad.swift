@@ -769,10 +769,43 @@ final class PackagePad : PackageObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.xCenter_property.selection, unwSelf.yCenter_property.selection, unwSelf.width_property.selection, unwSelf.height_property.selection, unwSelf.holeWidth_property.selection, unwSelf.holeHeight_property.selection, unwSelf.padShape_property.selection, unwSelf.padStyle_property.selection, preferences_frontSidePadColor_property.selection, preferences_displayPackageFrontSidePads_property.selection, preferences_backSidePadColor_property.selection, preferences_displayPackageBackSidePads_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
+        switch (unwSelf.xCenter_property.selection,
+                unwSelf.yCenter_property.selection,
+                unwSelf.width_property.selection,
+                unwSelf.height_property.selection,
+                unwSelf.holeWidth_property.selection,
+                unwSelf.holeHeight_property.selection,
+                unwSelf.padShape_property.selection,
+                unwSelf.padStyle_property.selection,
+                preferences_frontSidePadColor_property.selection,
+                preferences_displayPackageFrontSidePads_property.selection,
+                preferences_backSidePadColor_property.selection,
+                preferences_displayPackageBackSidePads_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7),
+              .single (let v8),
+              .single (let v9),
+              .single (let v10),
+              .single (let v11)) :
           return .single (transient_PackagePad_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -796,10 +829,22 @@ final class PackagePad : PackageObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.xCenter_property.selection, unwSelf.yCenter_property.selection, unwSelf.width_property.selection, unwSelf.height_property.selection, unwSelf.padShape_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+        switch (unwSelf.xCenter_property.selection,
+                unwSelf.yCenter_property.selection,
+                unwSelf.width_property.selection,
+                unwSelf.height_property.selection,
+                unwSelf.padShape_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4)) :
           return .single (transient_PackagePad_selectionDisplay (v0, v1, v2, v3, v4))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -816,10 +861,16 @@ final class PackagePad : PackageObject,
   //--- Atomic property: padNameForDisplay
     self.padNameForDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.padNumber_property.selection, unwSelf.zone_property.zoneName_property.selection, unwSelf.zone_property.displayZoneNameWithPadNumbers_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
+        switch (unwSelf.padNumber_property.selection,
+                unwSelf.zone_property.zoneName_property.selection,
+                unwSelf.zone_property.displayZoneNameWithPadNumbers_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2)) :
           return .single (transient_PackagePad_padNameForDisplay (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -834,10 +885,25 @@ final class PackagePad : PackageObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.xCenter_property.selection, unwSelf.yCenter_property.selection, unwSelf.width_property.selection, unwSelf.height_property.selection, unwSelf.holeWidth_property.selection, unwSelf.holeHeight_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+        switch (unwSelf.xCenter_property.selection,
+                unwSelf.yCenter_property.selection,
+                unwSelf.width_property.selection,
+                unwSelf.height_property.selection,
+                unwSelf.holeWidth_property.selection,
+                unwSelf.holeHeight_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5)) :
           return .single (transient_PackagePad_issues (v0, v1, v2, v3, v4, v5))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -871,10 +937,19 @@ final class PackagePad : PackageObject,
   //--- Atomic property: annularRing
     self.annularRing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.width_property.selection, unwSelf.height_property.selection, unwSelf.holeWidth_property.selection, unwSelf.holeHeight_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+        switch (unwSelf.width_property.selection,
+                unwSelf.height_property.selection,
+                unwSelf.holeWidth_property.selection,
+                unwSelf.holeHeight_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3)) :
           return .single (transient_PackagePad_annularRing (v0, v1, v2, v3))
-        case (.multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -890,10 +965,13 @@ final class PackagePad : PackageObject,
   //--- Atomic property: padNameWithZoneName
     self.padNameWithZoneName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.padNumber_property.selection, unwSelf.zone_property.zoneName_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.padNumber_property.selection,
+                unwSelf.zone_property.zoneName_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_PackagePad_padNameWithZoneName (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -986,10 +1064,22 @@ final class PackagePad : PackageObject,
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.xCenter_property.selection, unwSelf.yCenter_property.selection, preferences_padNumberFont_property.selection, preferences_padNumberColor_property.selection, unwSelf.padNameForDisplay_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+        switch (unwSelf.xCenter_property.selection,
+                unwSelf.yCenter_property.selection,
+                preferences_padNumberFont_property.selection,
+                preferences_padNumberColor_property.selection,
+                unwSelf.padNameForDisplay_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4)) :
           return .single (transient_PackagePad_padNumberDisplay (v0, v1, v2, v3, v4))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

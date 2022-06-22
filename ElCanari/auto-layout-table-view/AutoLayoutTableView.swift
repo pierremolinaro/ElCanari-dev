@@ -197,7 +197,10 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
       self.mTableView.selectRowIndexes (IndexSet (), byExtendingSelection: false)
     }
   //--- Ensure selection non empty ?
-    if self.mTableView.selectedRow < 0, !self.mTableView.allowsEmptySelection, let rowCount = self.mRowCountCallBack? (), rowCount > 0 {
+    let ensureNonEmpty = (currentSelectedRow >= 0) || !self.mTableView.allowsEmptySelection
+    // Swift.print ("self.mTableView.selectedRow \(self.mTableView.selectedRow), \(self.mTableView.allowsEmptySelection)")
+ //   if self.mTableView.selectedRow < 0, !self.mTableView.allowsEmptySelection, let rowCount = self.mRowCountCallBack? (), rowCount > 0 {
+    if ensureNonEmpty, self.mTableView.selectedRow < 0, let rowCount = self.mRowCountCallBack? (), rowCount > 0 {
       if currentSelectedRow >= 0 {
         if currentSelectedRow < rowCount {
           self.mTableView.selectRowIndexes (IndexSet (integer: currentSelectedRow), byExtendingSelection: false)

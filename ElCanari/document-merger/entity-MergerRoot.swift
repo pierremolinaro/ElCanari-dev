@@ -1493,10 +1493,13 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: modelNames
     self.modelNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.boardModels_property.selection, unwSelf.boardModels_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.boardModels_property.selection,
+                unwSelf.boardModels_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_MergerRoot_modelNames (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -1510,10 +1513,25 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: boardRect
     self.boardRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.automaticBoardSize_property.selection, unwSelf.boardLimitWidth_property.selection, unwSelf.boardManualWidth_property.selection, unwSelf.boardManualHeight_property.selection, unwSelf.boardInstances_property.selection, unwSelf.boardInstances_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+        switch (unwSelf.automaticBoardSize_property.selection,
+                unwSelf.boardLimitWidth_property.selection,
+                unwSelf.boardManualWidth_property.selection,
+                unwSelf.boardManualHeight_property.selection,
+                unwSelf.boardInstances_property.selection,
+                unwSelf.boardInstances_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5)) :
           return .single (transient_MergerRoot_boardRect (v0, v1, v2, v3, v4, v5))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -1531,10 +1549,13 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: boardLimitWidthErrorMessage
     self.boardLimitWidthErrorMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.boardLimitWidth_property.selection, unwSelf.boardModels_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.boardLimitWidth_property.selection,
+                unwSelf.boardModels_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_MergerRoot_boardLimitWidthErrorMessage (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -1614,10 +1635,13 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: layoutLayerWarningMessage
     self.layoutLayerWarningMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mArtwork_property.layerConfiguration_property.selection, unwSelf.boardModels_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.mArtwork_property.layerConfiguration_property.selection,
+                unwSelf.boardModels_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_MergerRoot_layoutLayerWarningMessage (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -1695,10 +1719,19 @@ final class MergerRoot : EBManagedObject,
   //--- Atomic property: boardOutlineRectDisplay
     self.boardOutlineRectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.boardRect_property.selection, unwSelf.boardLimitWidth_property.selection, preferences_mergerBoardViewDisplayBoardLimits_property.selection, preferences_mergerColorBoardLimits_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+        switch (unwSelf.boardRect_property.selection,
+                unwSelf.boardLimitWidth_property.selection,
+                preferences_mergerBoardViewDisplayBoardLimits_property.selection,
+                preferences_mergerColorBoardLimits_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3)) :
           return .single (transient_MergerRoot_boardOutlineRectDisplay (v0, v1, v2, v3))
-        case (.multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

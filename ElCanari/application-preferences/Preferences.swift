@@ -420,10 +420,16 @@ var g_Preferences : Preferences? = nil
     preferences_userLibraryArrayController.bind_model (preferences_additionnalLibraryArray_property, self.ebUndoManager)
   //--- Atomic property: mValueRevealInFinder_packages
     preferences_mValueRevealInFinder_packages_property.mReadModelFunction = {
-        switch (preferences_usesUserLibrary_property.selection, preferences_additionnalLibraryArray_property.selection, preferences_additionnalLibraryArray_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
+        switch (preferences_usesUserLibrary_property.selection,
+                preferences_additionnalLibraryArray_property.selection,
+                preferences_additionnalLibraryArray_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2)) :
           return .single (transient_Preferences_mValueRevealInFinder_packages (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -434,10 +440,16 @@ var g_Preferences : Preferences? = nil
     preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_packages_property)
   //--- Atomic property: mValueRevealInFinder_devices
     preferences_mValueRevealInFinder_devices_property.mReadModelFunction = {
-        switch (preferences_usesUserLibrary_property.selection, preferences_additionnalLibraryArray_property.selection, preferences_additionnalLibraryArray_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
+        switch (preferences_usesUserLibrary_property.selection,
+                preferences_additionnalLibraryArray_property.selection,
+                preferences_additionnalLibraryArray_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2)) :
           return .single (transient_Preferences_mValueRevealInFinder_devices (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -448,10 +460,16 @@ var g_Preferences : Preferences? = nil
     preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_devices_property)
   //--- Atomic property: mValueRevealInFinder_fonts
     preferences_mValueRevealInFinder_fonts_property.mReadModelFunction = {
-        switch (preferences_usesUserLibrary_property.selection, preferences_additionnalLibraryArray_property.selection, preferences_additionnalLibraryArray_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
+        switch (preferences_usesUserLibrary_property.selection,
+                preferences_additionnalLibraryArray_property.selection,
+                preferences_additionnalLibraryArray_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2)) :
           return .single (transient_Preferences_mValueRevealInFinder_fonts (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -462,10 +480,16 @@ var g_Preferences : Preferences? = nil
     preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_fonts_property)
   //--- Atomic property: mValueRevealInFinder_artworks
     preferences_mValueRevealInFinder_artworks_property.mReadModelFunction = {
-        switch (preferences_usesUserLibrary_property.selection, preferences_additionnalLibraryArray_property.selection, preferences_additionnalLibraryArray_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
+        switch (preferences_usesUserLibrary_property.selection,
+                preferences_additionnalLibraryArray_property.selection,
+                preferences_additionnalLibraryArray_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2)) :
           return .single (transient_Preferences_mValueRevealInFinder_artworks (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -476,10 +500,16 @@ var g_Preferences : Preferences? = nil
     preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_artworks_property)
   //--- Atomic property: mValueRevealInFinder_symbols
     preferences_mValueRevealInFinder_symbols_property.mReadModelFunction = {
-        switch (preferences_usesUserLibrary_property.selection, preferences_additionnalLibraryArray_property.selection, preferences_additionnalLibraryArray_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
+        switch (preferences_usesUserLibrary_property.selection,
+                preferences_additionnalLibraryArray_property.selection,
+                preferences_additionnalLibraryArray_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2)) :
           return .single (transient_Preferences_mValueRevealInFinder_symbols (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

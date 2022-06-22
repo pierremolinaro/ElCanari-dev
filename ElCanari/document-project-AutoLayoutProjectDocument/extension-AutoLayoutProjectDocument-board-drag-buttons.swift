@@ -24,7 +24,13 @@ extension AutoLayoutProjectDocument {
     let track = BoardTrack (nil)
     track.mConnectorP1 = p1
     track.mConnectorP2 = p2
-    return track.objectDisplay
+    let temporaryRootObject = ProjectRoot (nil)
+    track.mRoot = temporaryRootObject
+    let shape = track.objectDisplay
+    temporaryRootObject.cleanUpRelationshipsAndRemoveAllObservers ()
+    p1.cleanUpRelationshipsAndRemoveAllObservers ()
+    p2.cleanUpRelationshipsAndRemoveAllObservers ()
+    return shape
   }
 
   //····················································································································
@@ -37,8 +43,11 @@ extension AutoLayoutProjectDocument {
         let boardText = BoardText (nil)
         boardText.mLayer = self.rootObject.mBoardLayerForNewText
         boardText.mFont = font
+        let temporaryRootObject = ProjectRoot (nil)
+        boardText.mRoot = temporaryRootObject
         result = boardText.objectDisplay
         boardText.mFont = nil
+        temporaryRootObject.cleanUpRelationshipsAndRemoveAllObservers ()
       }
       self.ebUndoManager.enableUndoRegistration ()
     }else{

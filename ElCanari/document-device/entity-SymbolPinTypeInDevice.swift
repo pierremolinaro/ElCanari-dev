@@ -334,10 +334,25 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   //--- Atomic property: nameShape
     self.nameShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mXName_property.selection, unwSelf.mYName_property.selection, unwSelf.mName_property.selection, unwSelf.mNameHorizontalAlignment_property.selection, unwSelf.mPinNameIsDisplayedInSchematics_property.selection, preferences_pinNameFont_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+        switch (unwSelf.mXName_property.selection,
+                unwSelf.mYName_property.selection,
+                unwSelf.mName_property.selection,
+                unwSelf.mNameHorizontalAlignment_property.selection,
+                unwSelf.mPinNameIsDisplayedInSchematics_property.selection,
+                preferences_pinNameFont_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5)) :
           return .single (transient_SymbolPinTypeInDevice_nameShape (v0, v1, v2, v3, v4, v5))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

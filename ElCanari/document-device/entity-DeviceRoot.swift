@@ -785,10 +785,13 @@ final class DeviceRoot : EBManagedObject,
   //--- Atomic property: inconsistentPackagePadNameSetsMessage
     self.inconsistentPackagePadNameSetsMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPackages_property.selection, unwSelf.mPackages_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.mPackages_property.selection,
+                unwSelf.mPackages_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_DeviceRoot_inconsistentPackagePadNameSetsMessage (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -802,10 +805,13 @@ final class DeviceRoot : EBManagedObject,
   //--- Atomic property: inconsistentSymbolNameSetMessage
     self.inconsistentSymbolNameSetMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSymbolInstances_property.selection, unwSelf.mSymbolInstances_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.mSymbolInstances_property.selection,
+                unwSelf.mSymbolInstances_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_DeviceRoot_inconsistentSymbolNameSetMessage (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -867,10 +873,13 @@ final class DeviceRoot : EBManagedObject,
   //--- Atomic property: unconnectedPads
     self.unconnectedPads_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPadProxies_property.selection, unwSelf.mPadProxies_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.mPadProxies_property.selection,
+                unwSelf.mPadProxies_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_DeviceRoot_unconnectedPads (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -884,10 +893,19 @@ final class DeviceRoot : EBManagedObject,
   //--- Atomic property: assignedPadProxies
     self.assignedPadProxies_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPadProxies_property.selection, unwSelf.mPadProxies_property.selection, unwSelf.mPadProxies_property.selection, unwSelf.mPadProxies_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+        switch (unwSelf.mPadProxies_property.selection,
+                unwSelf.mPadProxies_property.selection,
+                unwSelf.mPadProxies_property.selection,
+                unwSelf.mPadProxies_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3)) :
           return .single (transient_DeviceRoot_assignedPadProxies (v0, v1, v2, v3))
-        case (.multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -903,10 +921,40 @@ final class DeviceRoot : EBManagedObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mTitle_property.selection, unwSelf.mPrefix_property.selection, unwSelf.inconsistentPackagePadNameSetsMessage_property.selection, unwSelf.inconsistentSymbolNameSetMessage_property.selection, unwSelf.unconnectedPins_property.selection, unwSelf.unconnectedPads_property.selection, unwSelf.mPackages_property.selection, unwSelf.mPackages_property.selection, unwSelf.mSymbolTypes_property.selection, unwSelf.mSymbolTypes_property.selection, unwSelf.mSymbolTypes_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
+        switch (unwSelf.mTitle_property.selection,
+                unwSelf.mPrefix_property.selection,
+                unwSelf.inconsistentPackagePadNameSetsMessage_property.selection,
+                unwSelf.inconsistentSymbolNameSetMessage_property.selection,
+                unwSelf.unconnectedPins_property.selection,
+                unwSelf.unconnectedPads_property.selection,
+                unwSelf.mPackages_property.selection,
+                unwSelf.mPackages_property.selection,
+                unwSelf.mSymbolTypes_property.selection,
+                unwSelf.mSymbolTypes_property.selection,
+                unwSelf.mSymbolTypes_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7),
+              .single (let v8),
+              .single (let v9),
+              .single (let v10)) :
           return .single (transient_DeviceRoot_issues (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

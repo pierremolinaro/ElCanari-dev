@@ -14,7 +14,7 @@ extension AutoLayoutPackageDocument {
 
   //····················································································································
 
-  func makeSlavePad () -> (PackageSlavePad, NSDictionary) {
+  func makeSlavePad () -> (PackageSlavePad, NSDictionary, [EBManagedObject]) {
      let additionalDictionary = NSMutableDictionary ()
      for object in self.mPackageObjectsController.selectedArray.values {
        if let masterPad = object as? PackagePad {
@@ -28,7 +28,7 @@ extension AutoLayoutPackageDocument {
          }
        }
      }
-    return (PackageSlavePad (nil), additionalDictionary)
+    return (PackageSlavePad (nil), additionalDictionary, [])
   }
 
   //····················································································································

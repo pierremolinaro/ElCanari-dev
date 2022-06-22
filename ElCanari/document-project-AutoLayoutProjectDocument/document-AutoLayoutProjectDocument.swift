@@ -7408,10 +7408,13 @@ import Cocoa
   //--- Atomic property: canRemoveNetClasses
     self.canRemoveNetClasses_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.mNetClasses_property.count_property.selection, unwSelf.netClassController.selectedArray_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.rootObject.mNetClasses_property.count_property.selection,
+                unwSelf.netClassController.selectedArray_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_AutoLayoutProjectDocument_canRemoveNetClasses (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -7469,10 +7472,22 @@ import Cocoa
   //--- Atomic property: rastnetShape
     self.rastnetShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.mRastnetDisplay_property.selection, unwSelf.rootObject.mRastnetDisplayedNetName_property.selection, unwSelf.rootObject.mRastnetDisplayedComponentName_property.selection, unwSelf.rootObject.mBoardObjects_property.selection, unwSelf.boardObjectsController.selectedArray_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+        switch (unwSelf.rootObject.mRastnetDisplay_property.selection,
+                unwSelf.rootObject.mRastnetDisplayedNetName_property.selection,
+                unwSelf.rootObject.mRastnetDisplayedComponentName_property.selection,
+                unwSelf.rootObject.mBoardObjects_property.selection,
+                unwSelf.boardObjectsController.selectedArray_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4)) :
           return .single (transient_AutoLayoutProjectDocument_rastnetShape (v0, v1, v2, v3, v4))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -7653,10 +7668,13 @@ import Cocoa
   //--- Atomic property: boardOutlineOverDisplay
     self.boardOutlineOverDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rastnetShape_property.selection, unwSelf.rootObject.boardIssues_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.rastnetShape_property.selection,
+                unwSelf.rootObject.boardIssues_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_AutoLayoutProjectDocument_boardOutlineOverDisplay (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

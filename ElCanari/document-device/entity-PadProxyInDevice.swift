@@ -188,10 +188,13 @@ final class PadProxyInDevice : EBManagedObject,
   //--- Atomic property: isConnected
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mIsNC_property.selection, unwSelf.mPinInstance_none.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.mIsNC_property.selection,
+                unwSelf.mPinInstance_none.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_PadProxyInDevice_isConnected (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

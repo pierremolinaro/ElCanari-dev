@@ -28,12 +28,12 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.5.5"
+let VERSION_CANARI = "1.5.6"
 let MAC_OS_MINIMUM_VERSION = "10.13"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Diverses améliorations de l'interface utilisateurs des documents « Package » et « Device »"
+  "Diverses corrections de l'interface utilisateur du document « Project »"
 ]
 let CHANGES : [String] = [
 ]
@@ -144,18 +144,24 @@ while fm.fileExists (atPath: DISTRIBUTION_DIR) {
 runCommand ("/bin/mkdir", [DISTRIBUTION_DIR])
 fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
 //-------------------- Importer ElCanari
-runCommand ("/bin/rm", ["-f", "archive.zip"])
-runCommand ("/bin/rm", ["-fr", "ElCanari-dev-master"])
-runCommand ("/usr/bin/curl", ["--fail", "-L", "https://github.com/pierremolinaro/ElCanari-dev/archive/master.tar.gz", "-o", "archive.tar.gz"])
-runCommand ("/usr/bin/tar", ["xvfz", "archive.tar.gz"])
-runCommand ("/bin/rm", ["archive.tar.gz"])
-fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/ElCanari-dev-master")
+let CANARI_DIR = "ElCanari-dev"
+//runCommand ("/bin/rm", ["-f", "archive.zip"])
+runCommand ("/bin/rm", ["-fr", CANARI_DIR])
+runCommand ("/usr/local/bin/git", ["clone", "https://github.com/pierremolinaro/ElCanari-dev.git"])
+//runCommand ("/usr/bin/curl", ["--fail", "-L", "https://github.com/pierremolinaro/ElCanari-dev/archive/master.tar.gz", "-o", "archive.tar.gz"])
+//runCommand ("/usr/bin/tar", ["xvfz", "archive.tar.gz"])
+//runCommand ("/bin/rm", ["archive.tar.gz"])
+fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/" + CANARI_DIR)
 //-------------------- Obtenir l'année
 let ANNEE = Calendar.current.component (.year, from: Date ())
 print ("ANNÉE : \(ANNEE)")
 do{
-  //-------------------- Obtenir le numéro de build
-  let plistFileFullPath = DISTRIBUTION_DIR + "/ElCanari-dev-master/ElCanari/application/Info-" + BUILD_KIND.string + ".plist"
+//-------------------- Obtenir le SHA du dernier commit
+    let sha = runHiddenCommand ("/usr/local/bin/git", ["rev-parse", "HEAD"])
+//  let sha = runHiddenCommand ("/usr/local/bin/git", ["log", "-n1", "--format=format:\"%H\""])
+  Swift.print ("sha \(sha)")
+//-------------------- Obtenir le numéro de build
+  let plistFileFullPath = DISTRIBUTION_DIR + "/" + CANARI_DIR + "/ElCanari/application/Info-" + BUILD_KIND.string + ".plist"
   let data : Data = try Data (contentsOf: URL (fileURLWithPath: plistFileFullPath))
   var plistDictionary : [String : Any]
   if let d = try PropertyListSerialization.propertyList (from: data, format: nil) as? [String : Any] {
@@ -164,17 +170,17 @@ do{
     print (RED + "line \(#line) : object is not a dictionary" + ENDC)
     exit (1)
   }
-  //--- Date de construction
+//--- Date de construction
   let dateConstruction = Date ()
   let dateFormatter = DateFormatter()
   dateFormatter.locale = Locale(identifier: "en_US")
   dateFormatter.setLocalizedDateFormatFromTemplate("MMMMdYYYY") // set template after setting locale
-  //--- Mettre à jour les numéros de version dans la plist
+//--- Mettre à jour les numéros de version dans la plist
   plistDictionary ["CFBundleVersion"] = VERSION_CANARI + ", " + dateFormatter.string (from: dateConstruction)// + ", build " + buildString
   plistDictionary ["CFBundleShortVersionString"] = VERSION_CANARI
   let plistNewData = try PropertyListSerialization.data (fromPropertyList: plistDictionary, format: .binary, options: 0)
   try plistNewData.write (to: URL (fileURLWithPath: plistFileFullPath), options: .atomic)
-  //-------------------- Compiler le projet Xcode
+//-------------------- Compiler le projet Xcode
   let debutCompilation = Date ()
   runCommand ("/bin/rm", ["-fr", "build"])
   runCommand ("/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
@@ -189,11 +195,11 @@ do{
   case .release:
     PRODUCT_NAME = "ElCanari"
   }
-  //-------------------- Construction package
+//-------------------- Construction package
   let packageFile = PRODUCT_NAME + "-" + VERSION_CANARI + ".pkg"
   runCommand ("/usr/bin/productbuild", ["--component-compression", "auto", "--component", "build/" + BUILD_KIND.string + "/" + PRODUCT_NAME + ".app", "/Applications", packageFile])
   runCommand ("/bin/cp", [packageFile, DISTRIBUTION_DIR])
-  //-------------------- Créer l'archive de Cocoa canari
+//-------------------- Créer l'archive de Cocoa canari
   let nomArchive = PRODUCT_NAME + "-" + VERSION_CANARI
   runCommand ("/bin/mkdir", [nomArchive])
   runCommand ("/bin/cp", [packageFile, nomArchive])
@@ -248,13 +254,13 @@ do{
     "-dv",
 //    "--digest-algorithm=sha1,sha256",
     "--verbose=4",
-    DISTRIBUTION_DIR + "/ElCanari-dev-master/build/" + BUILD_KIND.string + "/" + PRODUCT_NAME + ".app"
+    DISTRIBUTION_DIR + "/" + CANARI_DIR + "/build/" + BUILD_KIND.string + "/" + PRODUCT_NAME + ".app"
   ]
   runCommand ("/usr/bin/codesign", argumentsSignatureCode)
 //--- Supprimer les répertoires intermédiaires
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-  while fm.fileExists (atPath: DISTRIBUTION_DIR + "/ElCanari-dev-master") {
-    runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/ElCanari-dev-master"])
+  while fm.fileExists (atPath: DISTRIBUTION_DIR + "/" + CANARI_DIR) {
+    runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/" + CANARI_DIR])
   }
   //---
   let durée = Int (DureeCompilation)

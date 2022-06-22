@@ -561,10 +561,37 @@ final class PackageZone : PackageObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x_property.selection, unwSelf.y_property.selection, unwSelf.width_property.selection, unwSelf.height_property.selection, unwSelf.xName_property.selection, unwSelf.yName_property.selection, unwSelf.zoneName_property.selection, preferences_padZoneFont_property.selection, preferences_padZoneColor_property.selection, unwSelf.displayZoneName_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
+        switch (unwSelf.x_property.selection,
+                unwSelf.y_property.selection,
+                unwSelf.width_property.selection,
+                unwSelf.height_property.selection,
+                unwSelf.xName_property.selection,
+                unwSelf.yName_property.selection,
+                unwSelf.zoneName_property.selection,
+                preferences_padZoneFont_property.selection,
+                preferences_padZoneColor_property.selection,
+                unwSelf.displayZoneName_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7),
+              .single (let v8),
+              .single (let v9)) :
           return .single (transient_PackageZone_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -586,10 +613,28 @@ final class PackageZone : PackageObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x_property.selection, unwSelf.y_property.selection, unwSelf.width_property.selection, unwSelf.height_property.selection, unwSelf.xName_property.selection, unwSelf.yName_property.selection, unwSelf.zoneName_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
+        switch (unwSelf.x_property.selection,
+                unwSelf.y_property.selection,
+                unwSelf.width_property.selection,
+                unwSelf.height_property.selection,
+                unwSelf.xName_property.selection,
+                unwSelf.yName_property.selection,
+                unwSelf.zoneName_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6)) :
           return .single (transient_PackageZone_issues (v0, v1, v2, v3, v4, v5, v6))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -608,10 +653,19 @@ final class PackageZone : PackageObject,
   //--- Atomic property: rect
     self.rect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x_property.selection, unwSelf.y_property.selection, unwSelf.width_property.selection, unwSelf.height_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+        switch (unwSelf.x_property.selection,
+                unwSelf.y_property.selection,
+                unwSelf.width_property.selection,
+                unwSelf.height_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3)) :
           return .single (transient_PackageZone_rect (v0, v1, v2, v3))
-        case (.multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -627,10 +681,43 @@ final class PackageZone : PackageObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x_property.selection, unwSelf.y_property.selection, unwSelf.width_property.selection, unwSelf.height_property.selection, unwSelf.xName_property.selection, unwSelf.yName_property.selection, unwSelf.zoneName_property.selection, preferences_padZoneFont_property.selection, preferences_packageBackgroundColor_property.selection, preferences_padZoneColor_property.selection, unwSelf.knobSize_property.selection, unwSelf.displayZoneName_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
+        switch (unwSelf.x_property.selection,
+                unwSelf.y_property.selection,
+                unwSelf.width_property.selection,
+                unwSelf.height_property.selection,
+                unwSelf.xName_property.selection,
+                unwSelf.yName_property.selection,
+                unwSelf.zoneName_property.selection,
+                preferences_padZoneFont_property.selection,
+                preferences_packageBackgroundColor_property.selection,
+                preferences_padZoneColor_property.selection,
+                unwSelf.knobSize_property.selection,
+                unwSelf.displayZoneName_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7),
+              .single (let v8),
+              .single (let v9),
+              .single (let v10),
+              .single (let v11)) :
           return .single (transient_PackageZone_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

@@ -575,10 +575,19 @@ final class ArtworkRoot : EBManagedObject,
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.minPPTPTTTW_property.selection, unwSelf.minValueForOARinEBUnit_property.selection, unwSelf.minValueForBoardLimitWidth_property.selection, unwSelf.minValueForPHDinEBUnit_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+        switch (unwSelf.minPPTPTTTW_property.selection,
+                unwSelf.minValueForOARinEBUnit_property.selection,
+                unwSelf.minValueForBoardLimitWidth_property.selection,
+                unwSelf.minValueForPHDinEBUnit_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3)) :
           return .single (transient_ArtworkRoot_signatureForERCChecking (v0, v1, v2, v3))
-        case (.multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

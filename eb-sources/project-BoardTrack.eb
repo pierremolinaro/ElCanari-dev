@@ -55,17 +55,17 @@ graphic entity BoardTrack : BoardObject {
   override transient EBShape objectDisplay dependsFrom
     self.mConnectorP1.one.location,
     self.mConnectorP2.one.location,
-    super.BoardObject.displayFrontLayoutForBoard,
+    super.BoardObject.displayFrontLayoutForBoard default yes,
     prefs.frontSideLayoutColorForBoard,
-    super.BoardObject.displayBackLayoutForBoard,
+    super.BoardObject.displayBackLayoutForBoard default yes,
     prefs.backSideLayoutColorForBoard,
-    super.BoardObject.displayInner1LayoutForBoard,
+    super.BoardObject.displayInner1LayoutForBoard default yes,
     prefs.inner1LayoutColorForBoard,
-    super.BoardObject.displayInner2LayoutForBoard,
+    super.BoardObject.displayInner2LayoutForBoard default yes,
     prefs.inner2LayoutColorForBoard,
-    super.BoardObject.displayInner3LayoutForBoard,
+    super.BoardObject.displayInner3LayoutForBoard default yes,
     prefs.inner3LayoutColorForBoard,
-    super.BoardObject.displayInner4LayoutForBoard,
+    super.BoardObject.displayInner4LayoutForBoard default yes,
     prefs.inner4LayoutColorForBoard,
     self.actualTrackWidth, self.mSide
   ;

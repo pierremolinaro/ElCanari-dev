@@ -310,10 +310,73 @@ final class BoardRestrictRectangle : BoardObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX_property.selection, unwSelf.mY_property.selection, unwSelf.mWidth_property.selection, unwSelf.mHeight_property.selection, unwSelf.mIsInFrontLayer_property.selection, unwSelf.mIsInBackLayer_property.selection, unwSelf.mIsInInner1Layer_property.selection, unwSelf.mIsInInner2Layer_property.selection, unwSelf.mIsInInner3Layer_property.selection, unwSelf.mIsInInner4Layer_property.selection, unwSelf.displayFrontRestrictRectangles_property.selection, unwSelf.displayBackRestrictRectangles_property.selection, unwSelf.displayInner1RestrictRectangles_property.selection, unwSelf.displayInner2RestrictRectangles_property.selection, unwSelf.displayInner3RestrictRectangles_property.selection, unwSelf.displayInner4RestrictRectangles_property.selection, preferences_frontSideRestrictRectangleColorForBoard_property.selection, preferences_inner1SideRestrictRectangleColorForBoard_property.selection, preferences_inner2SideRestrictRectangleColorForBoard_property.selection, preferences_inner3SideRestrictRectangleColorForBoard_property.selection, preferences_inner4SideRestrictRectangleColorForBoard_property.selection, preferences_backSideRestrictRectangleColorForBoard_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21)) :
+        switch (unwSelf.mX_property.selection,
+                unwSelf.mY_property.selection,
+                unwSelf.mWidth_property.selection,
+                unwSelf.mHeight_property.selection,
+                unwSelf.mIsInFrontLayer_property.selection,
+                unwSelf.mIsInBackLayer_property.selection,
+                unwSelf.mIsInInner1Layer_property.selection,
+                unwSelf.mIsInInner2Layer_property.selection,
+                unwSelf.mIsInInner3Layer_property.selection,
+                unwSelf.mIsInInner4Layer_property.selection,
+                unwSelf.displayFrontRestrictRectangles_property.selection (default: true),
+                unwSelf.displayBackRestrictRectangles_property.selection (default: true),
+                unwSelf.displayInner1RestrictRectangles_property.selection (default: true),
+                unwSelf.displayInner2RestrictRectangles_property.selection (default: true),
+                unwSelf.displayInner3RestrictRectangles_property.selection (default: true),
+                unwSelf.displayInner4RestrictRectangles_property.selection (default: true),
+                preferences_frontSideRestrictRectangleColorForBoard_property.selection,
+                preferences_inner1SideRestrictRectangleColorForBoard_property.selection,
+                preferences_inner2SideRestrictRectangleColorForBoard_property.selection,
+                preferences_inner3SideRestrictRectangleColorForBoard_property.selection,
+                preferences_inner4SideRestrictRectangleColorForBoard_property.selection,
+                preferences_backSideRestrictRectangleColorForBoard_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7),
+              .single (let v8),
+              .single (let v9),
+              .single (let v10),
+              .single (let v11),
+              .single (let v12),
+              .single (let v13),
+              .single (let v14),
+              .single (let v15),
+              .single (let v16),
+              .single (let v17),
+              .single (let v18),
+              .single (let v19),
+              .single (let v20),
+              .single (let v21)) :
           return .single (transient_BoardRestrictRectangle_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -347,10 +410,22 @@ final class BoardRestrictRectangle : BoardObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX_property.selection, unwSelf.mY_property.selection, unwSelf.mWidth_property.selection, unwSelf.mHeight_property.selection, unwSelf.mIsInFrontLayer_property.selection, unwSelf.mIsInBackLayer_property.selection, unwSelf.mIsInInner1Layer_property.selection, unwSelf.mIsInInner2Layer_property.selection, unwSelf.mIsInInner3Layer_property.selection, unwSelf.mIsInInner4Layer_property.selection, preferences_hiliteWidthMultipliedByTen_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
-          return .single (transient_BoardRestrictRectangle_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        switch (unwSelf.mX_property.selection,
+                unwSelf.mY_property.selection,
+                unwSelf.mWidth_property.selection,
+                unwSelf.mHeight_property.selection,
+                preferences_hiliteWidthMultipliedByTen_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4)) :
+          return .single (transient_BoardRestrictRectangle_selectionDisplay (v0, v1, v2, v3, v4))
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -363,20 +438,41 @@ final class BoardRestrictRectangle : BoardObject,
     self.mY_property.addEBObserver (self.selectionDisplay_property)
     self.mWidth_property.addEBObserver (self.selectionDisplay_property)
     self.mHeight_property.addEBObserver (self.selectionDisplay_property)
-    self.mIsInFrontLayer_property.addEBObserver (self.selectionDisplay_property)
-    self.mIsInBackLayer_property.addEBObserver (self.selectionDisplay_property)
-    self.mIsInInner1Layer_property.addEBObserver (self.selectionDisplay_property)
-    self.mIsInInner2Layer_property.addEBObserver (self.selectionDisplay_property)
-    self.mIsInInner3Layer_property.addEBObserver (self.selectionDisplay_property)
-    self.mIsInInner4Layer_property.addEBObserver (self.selectionDisplay_property)
     preferences_hiliteWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX_property.selection, unwSelf.mY_property.selection, unwSelf.mWidth_property.selection, unwSelf.mHeight_property.selection, unwSelf.mIsInFrontLayer_property.selection, unwSelf.mIsInBackLayer_property.selection, unwSelf.mIsInInner1Layer_property.selection, unwSelf.mIsInInner2Layer_property.selection, unwSelf.mIsInInner3Layer_property.selection, unwSelf.mIsInInner4Layer_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
+        switch (unwSelf.mX_property.selection,
+                unwSelf.mY_property.selection,
+                unwSelf.mWidth_property.selection,
+                unwSelf.mHeight_property.selection,
+                unwSelf.mIsInFrontLayer_property.selection,
+                unwSelf.mIsInBackLayer_property.selection,
+                unwSelf.mIsInInner1Layer_property.selection,
+                unwSelf.mIsInInner2Layer_property.selection,
+                unwSelf.mIsInInner3Layer_property.selection,
+                unwSelf.mIsInInner4Layer_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7),
+              .single (let v8),
+              .single (let v9)) :
           return .single (transient_BoardRestrictRectangle_signatureForERCChecking (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -430,12 +526,6 @@ final class BoardRestrictRectangle : BoardObject,
     // self.mY_property.removeEBObserver (self.selectionDisplay_property)
     // self.mWidth_property.removeEBObserver (self.selectionDisplay_property)
     // self.mHeight_property.removeEBObserver (self.selectionDisplay_property)
-    // self.mIsInFrontLayer_property.removeEBObserver (self.selectionDisplay_property)
-    // self.mIsInBackLayer_property.removeEBObserver (self.selectionDisplay_property)
-    // self.mIsInInner1Layer_property.removeEBObserver (self.selectionDisplay_property)
-    // self.mIsInInner2Layer_property.removeEBObserver (self.selectionDisplay_property)
-    // self.mIsInInner3Layer_property.removeEBObserver (self.selectionDisplay_property)
-    // self.mIsInInner4Layer_property.removeEBObserver (self.selectionDisplay_property)
     // preferences_hiliteWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
     // self.mX_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.mY_property.removeEBObserver (self.signatureForERCChecking_property)

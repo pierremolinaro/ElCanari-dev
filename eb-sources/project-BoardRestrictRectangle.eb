@@ -22,12 +22,12 @@ graphic entity BoardRestrictRectangle : BoardObject {
     self.mIsInFrontLayer, self.mIsInBackLayer,
     self.mIsInInner1Layer, self.mIsInInner2Layer,
     self.mIsInInner3Layer, self.mIsInInner4Layer,
-    super.BoardObject.displayFrontRestrictRectangles,
-    super.BoardObject.displayBackRestrictRectangles,
-    super.BoardObject.displayInner1RestrictRectangles,
-    super.BoardObject.displayInner2RestrictRectangles,
-    super.BoardObject.displayInner3RestrictRectangles,
-    super.BoardObject.displayInner4RestrictRectangles,
+    super.BoardObject.displayFrontRestrictRectangles default yes,
+    super.BoardObject.displayBackRestrictRectangles default yes,
+    super.BoardObject.displayInner1RestrictRectangles default yes,
+    super.BoardObject.displayInner2RestrictRectangles default yes,
+    super.BoardObject.displayInner3RestrictRectangles default yes,
+    super.BoardObject.displayInner4RestrictRectangles default yes,
     prefs.frontSideRestrictRectangleColorForBoard,
     prefs.inner1SideRestrictRectangleColorForBoard,
     prefs.inner2SideRestrictRectangleColorForBoard,
@@ -38,9 +38,6 @@ graphic entity BoardRestrictRectangle : BoardObject {
 
   override transient EBShape selectionDisplay dependsFrom
     self.mX, self.mY, self.mWidth, self.mHeight,
-    self.mIsInFrontLayer, self.mIsInBackLayer,
-    self.mIsInInner1Layer, self.mIsInInner2Layer,
-    self.mIsInInner3Layer, self.mIsInInner4Layer,
     prefs.hiliteWidthMultipliedByTen
   ;
 

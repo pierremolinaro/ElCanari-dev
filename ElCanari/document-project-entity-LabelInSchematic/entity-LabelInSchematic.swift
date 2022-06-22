@@ -204,10 +204,19 @@ final class LabelInSchematic : SchematicObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPoint_property.location_property.selection, unwSelf.netName_property.selection, preferences_pinNameFont_property.selection, unwSelf.mOrientation_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+        switch (unwSelf.mPoint_property.location_property.selection,
+                unwSelf.netName_property.selection,
+                preferences_pinNameFont_property.selection,
+                unwSelf.mOrientation_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3)) :
           return .single (transient_LabelInSchematic_selectionDisplay (v0, v1, v2, v3))
-        case (.multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -239,10 +248,28 @@ final class LabelInSchematic : SchematicObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (preferences_symbolColorForSchematic_property.selection, preferences_schematicFrameColor_property.selection, preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.selection, unwSelf.mPoint_property.location_property.selection, unwSelf.netName_property.selection, preferences_pinNameFont_property.selection, unwSelf.mOrientation_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
+        switch (preferences_symbolColorForSchematic_property.selection,
+                preferences_schematicFrameColor_property.selection,
+                preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.selection,
+                unwSelf.mPoint_property.location_property.selection,
+                unwSelf.netName_property.selection,
+                preferences_pinNameFont_property.selection,
+                unwSelf.mOrientation_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6)) :
           return .single (transient_LabelInSchematic_objectDisplay (v0, v1, v2, v3, v4, v5, v6))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

@@ -303,10 +303,37 @@ final class DeviceMasterPadInProject : EBManagedObject,
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mName_property.selection, unwSelf.mCenterX_property.selection, unwSelf.mCenterY_property.selection, unwSelf.mWidth_property.selection, unwSelf.mHeight_property.selection, unwSelf.mHoleWidth_property.selection, unwSelf.mHoleHeight_property.selection, unwSelf.mShape_property.selection, unwSelf.mStyle_property.selection, unwSelf.mSlavePads_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
+        switch (unwSelf.mName_property.selection,
+                unwSelf.mCenterX_property.selection,
+                unwSelf.mCenterY_property.selection,
+                unwSelf.mWidth_property.selection,
+                unwSelf.mHeight_property.selection,
+                unwSelf.mHoleWidth_property.selection,
+                unwSelf.mHoleHeight_property.selection,
+                unwSelf.mShape_property.selection,
+                unwSelf.mStyle_property.selection,
+                unwSelf.mSlavePads_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7),
+              .single (let v8),
+              .single (let v9)) :
           return .single (transient_DeviceMasterPadInProject_descriptor (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

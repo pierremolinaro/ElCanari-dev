@@ -71,14 +71,14 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
   //····················································································································
 
   private var mDragType : NSPasteboard.PasteboardType? = nil
-  private var mDraggedObjectFactory : Optional < () -> (EBGraphicManagedObject, NSDictionary)? > = nil
+  private var mDraggedObjectFactory : Optional < () -> (EBGraphicManagedObject, NSDictionary, [EBManagedObject])? > = nil
   private var mDraggedObjectImage : Optional < () -> EBShape? > = nil
   private weak var mScaleProvider : EBGraphicViewControllerProtocol? = nil // Should de WEAK
 
   //····················································································································
 
   func register (draggedType : NSPasteboard.PasteboardType,
-                 draggedObjectFactory : Optional < () -> (EBGraphicManagedObject, NSDictionary)? >,
+                 draggedObjectFactory : Optional < () -> (EBGraphicManagedObject, NSDictionary, [EBManagedObject])? >,
                  scaleProvider : EBGraphicViewControllerProtocol) {
     self.mDragType = draggedType
     self.mDraggedObjectFactory = draggedObjectFactory
@@ -145,7 +145,7 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
       let pasteboardItem = NSPasteboardItem ()
       let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
     //--- Get dragged object
-      if let (temporaryObject, additionalDict) = self.mDraggedObjectFactory? () {
+      if let (temporaryObject, additionalDict, otherObjects) = self.mDraggedObjectFactory? () {
         var transform = AffineTransform ()
         if let scaleProvider = self.mScaleProvider, scaleProvider.boundViews().count == 1 {
           let view = scaleProvider.boundViews() [0]
@@ -156,26 +156,38 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
         }
         let displayShape = temporaryObject.objectDisplay!.transformed (by: transform)
         let rect : NSRect = displayShape.boundingBox
-        let image = buildPDFimage (frame: rect, shape: displayShape)
-      //--- Move image rect origin to mouse click location
-        let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-        var r = rect
-        r.origin.x += mouseDownLocation.x
-        r.origin.y += mouseDownLocation.y
-      //--- Associated data
-        let dict = NSMutableDictionary ()
-        temporaryObject.saveIntoDictionary (dict)
-        let dataDictionary : NSDictionary = [
-          OBJECT_DICTIONARY_KEY : [dict],
-          OBJECT_ADDITIONAL_DICTIONARY_KEY : [additionalDict],
-          X_KEY : 0,
-          Y_KEY : 0
-        ]
-        pasteboardItem.setPropertyList (dataDictionary, forType: dragType)
-      //--- Set dragged image
-        draggingItem.setDraggingFrame (r, contents: image)
-      //--- Begin
-        self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
+        if rect.isEmpty {
+          let alert = NSAlert ()
+          alert.messageText = "Internal error"
+          alert.informativeText = "Empty image (\(#line))"
+          alert.runModal ()
+        }else{
+          let image = buildPDFimage (frame: rect, shape: displayShape)
+        //--- Move image rect origin to mouse click location
+          let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+          var r = rect
+          r.origin.x += mouseDownLocation.x
+          r.origin.y += mouseDownLocation.y
+        //--- Associated data
+          let dict = NSMutableDictionary ()
+          temporaryObject.saveIntoDictionary (dict)
+          let dataDictionary : NSDictionary = [
+            OBJECT_DICTIONARY_KEY : [dict],
+            OBJECT_ADDITIONAL_DICTIONARY_KEY : [additionalDict],
+            X_KEY : 0,
+            Y_KEY : 0
+          ]
+          pasteboardItem.setPropertyList (dataDictionary, forType: dragType)
+        //--- Set dragged image
+          draggingItem.setDraggingFrame (r, contents: image)
+        //--- Begin
+          self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
+        //--- Clean up temporary objects
+          temporaryObject.cleanUpRelationshipsAndRemoveAllObservers ()
+          for object in otherObjects {
+            object.cleanUpRelationshipsAndRemoveAllObservers ()
+          }
+        }
     //--- Get dragged image
       }else if let shape = self.mDraggedObjectImage? () {
         var transform = AffineTransform ()
@@ -188,25 +200,32 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
         }
         let displayShape = shape.transformed (by: transform)
         let rect : NSRect = displayShape.boundingBox
-        let image = buildPDFimage (frame: rect, shape: displayShape)
-      //--- Move image rect origin to mouse click location
-        let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-        var r = rect
-        r.origin.x += mouseDownLocation.x
-        r.origin.y += mouseDownLocation.y
-      //--- Associated data
-        let dict = NSMutableDictionary ()
-        let dataDictionary : NSDictionary = [
-          OBJECT_DICTIONARY_KEY : [dict],
-          OBJECT_ADDITIONAL_DICTIONARY_KEY : [], // [additionalDict],
-          X_KEY : 0,
-          Y_KEY : 0
-        ]
-        pasteboardItem.setPropertyList (dataDictionary, forType: dragType)
-      //--- Set dragged image
-        draggingItem.setDraggingFrame (r, contents: image)
-      //--- Begin
-        self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
+        if rect.isEmpty {
+          let alert = NSAlert ()
+          alert.messageText = "Internal error"
+          alert.informativeText = "Empty image (\(#line))"
+          alert.runModal ()
+        }else{
+          let image = buildPDFimage (frame: rect, shape: displayShape)
+        //--- Move image rect origin to mouse click location
+          let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+          var r = rect
+          r.origin.x += mouseDownLocation.x
+          r.origin.y += mouseDownLocation.y
+        //--- Associated data
+          let dict = NSMutableDictionary ()
+          let dataDictionary : NSDictionary = [
+            OBJECT_DICTIONARY_KEY : [dict],
+            OBJECT_ADDITIONAL_DICTIONARY_KEY : [], // [additionalDict],
+            X_KEY : 0,
+            Y_KEY : 0
+          ]
+          pasteboardItem.setPropertyList (dataDictionary, forType: dragType)
+        //--- Set dragged image
+          draggingItem.setDraggingFrame (r, contents: image)
+        //--- Begin
+          self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
+        }
       }
     }
   }

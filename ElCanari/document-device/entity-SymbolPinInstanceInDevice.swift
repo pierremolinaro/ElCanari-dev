@@ -291,10 +291,13 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //--- Atomic property: pinQualifiedName
     self.pinQualifiedName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.symbolName_property.selection, unwSelf.pinName_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.symbolName_property.selection,
+                unwSelf.pinName_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_SymbolPinInstanceInDevice_pinQualifiedName (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -324,10 +327,22 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //--- Atomic property: numberShape
     self.numberShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mType_property.mXNumber_property.selection, unwSelf.mType_property.mYNumber_property.selection, unwSelf.mType_property.mNumberHorizontalAlignment_property.selection, unwSelf.mPadProxy_property.mPadName_property.selection, preferences_pinNameFont_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+        switch (unwSelf.mType_property.mXNumber_property.selection,
+                unwSelf.mType_property.mYNumber_property.selection,
+                unwSelf.mType_property.mNumberHorizontalAlignment_property.selection,
+                unwSelf.mPadProxy_property.mPadName_property.selection,
+                preferences_pinNameFont_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4)) :
           return .single (transient_SymbolPinInstanceInDevice_numberShape (v0, v1, v2, v3, v4))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

@@ -235,10 +235,31 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mFirstX_property.selection, unwSelf.mFirstY_property.selection, unwSelf.mFirstColor_property.selection, unwSelf.mSecondDx_property.selection, unwSelf.mSecondDy_property.selection, unwSelf.mSecondColor_property.selection, unwSelf.mRoot_property.mModelPointsCircleRadius_property.selection, unwSelf.mRoot_property.mPointsAreLocked_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+        switch (unwSelf.mFirstX_property.selection,
+                unwSelf.mFirstY_property.selection,
+                unwSelf.mFirstColor_property.selection,
+                unwSelf.mSecondDx_property.selection,
+                unwSelf.mSecondDy_property.selection,
+                unwSelf.mSecondColor_property.selection,
+                unwSelf.mRoot_property.mModelPointsCircleRadius_property.selection,
+                unwSelf.mRoot_property.mPointsAreLocked_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7)) :
           return .single (transient_PackageModelImageDoublePoint_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -258,10 +279,22 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mFirstX_property.selection, unwSelf.mFirstY_property.selection, unwSelf.mSecondDx_property.selection, unwSelf.mSecondDy_property.selection, unwSelf.mRoot_property.mModelPointsCircleRadius_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+        switch (unwSelf.mFirstX_property.selection,
+                unwSelf.mFirstY_property.selection,
+                unwSelf.mSecondDx_property.selection,
+                unwSelf.mSecondDy_property.selection,
+                unwSelf.mRoot_property.mModelPointsCircleRadius_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4)) :
           return .single (transient_PackageModelImageDoublePoint_selectionDisplay (v0, v1, v2, v3, v4))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

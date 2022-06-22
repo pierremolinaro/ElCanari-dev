@@ -38,7 +38,7 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
         self.mValueExplorer?.stringValue = "\(mValue)"
         self.mEBUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
         if logEvents () {
-          appendMessageString ("Property \(self.explorerIndexString) did change value to \(mValue)\n")
+          appendMessageString ("Property \(self.explorerIndexString) did change value to \(self.mValue)\n")
         }
         self.observedObjectDidChange ()
         self.clearSignatureCache ()
@@ -48,7 +48,9 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
 
   //····················································································································
 
-  override final var selection : EBSelection <T> { return .single (mValue) }
+  override final var selection : EBSelection <T> { return .single (self.mValue) }
+
+  override func selection (default inUnusedValue : T) -> EBSelection <T> { return .single (self.mValue) }
 
   //····················································································································
 

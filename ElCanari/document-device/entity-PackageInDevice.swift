@@ -436,10 +436,52 @@ final class PackageInDevice : EBGraphicManagedObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mMasterPads_property.selection, unwSelf.mRoot_property.mShowPackagePadNumbers_property.selection, unwSelf.mRoot_property.mShowPackages_property.selection, unwSelf.mRoot_property.mShowPackageFrontPads_property.selection, unwSelf.mRoot_property.mShowPackageBackPads_property.selection, unwSelf.mStrokeBezierPath_property.selection, preferences_packageColor_property.selection, preferences_packageDrawingWidthMultipliedByTen_property.selection, unwSelf.frontSidePadFilledBezierPathArray_property.selection, preferences_frontSidePadColor_property.selection, unwSelf.backSidePadFilledBezierPathArray_property.selection, preferences_backSidePadColor_property.selection, unwSelf.mName_property.selection, unwSelf.mX_property.selection, unwSelf.mY_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14)) :
+        switch (unwSelf.mMasterPads_property.selection,
+                unwSelf.mRoot_property.mShowPackagePadNumbers_property.selection,
+                unwSelf.mRoot_property.mShowPackages_property.selection,
+                unwSelf.mRoot_property.mShowPackageFrontPads_property.selection,
+                unwSelf.mRoot_property.mShowPackageBackPads_property.selection,
+                unwSelf.mStrokeBezierPath_property.selection,
+                preferences_packageColor_property.selection,
+                preferences_packageDrawingWidthMultipliedByTen_property.selection,
+                unwSelf.frontSidePadFilledBezierPathArray_property.selection,
+                preferences_frontSidePadColor_property.selection,
+                unwSelf.backSidePadFilledBezierPathArray_property.selection,
+                preferences_backSidePadColor_property.selection,
+                unwSelf.mName_property.selection,
+                unwSelf.mX_property.selection,
+                unwSelf.mY_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7),
+              .single (let v8),
+              .single (let v9),
+              .single (let v10),
+              .single (let v11),
+              .single (let v12),
+              .single (let v13),
+              .single (let v14)) :
           return .single (transient_PackageInDevice_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -466,10 +508,43 @@ final class PackageInDevice : EBGraphicManagedObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mMasterPads_property.selection, unwSelf.mRoot_property.mShowPackagePadNumbers_property.selection, unwSelf.mRoot_property.mShowPackages_property.selection, unwSelf.mRoot_property.mShowPackageFrontPads_property.selection, unwSelf.mRoot_property.mShowPackageBackPads_property.selection, unwSelf.mStrokeBezierPath_property.selection, preferences_packageDrawingWidthMultipliedByTen_property.selection, unwSelf.frontSidePadFilledBezierPathArray_property.selection, unwSelf.backSidePadFilledBezierPathArray_property.selection, unwSelf.mName_property.selection, unwSelf.mX_property.selection, unwSelf.mY_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
+        switch (unwSelf.mMasterPads_property.selection,
+                unwSelf.mRoot_property.mShowPackagePadNumbers_property.selection,
+                unwSelf.mRoot_property.mShowPackages_property.selection,
+                unwSelf.mRoot_property.mShowPackageFrontPads_property.selection,
+                unwSelf.mRoot_property.mShowPackageBackPads_property.selection,
+                unwSelf.mStrokeBezierPath_property.selection,
+                preferences_packageDrawingWidthMultipliedByTen_property.selection,
+                unwSelf.frontSidePadFilledBezierPathArray_property.selection,
+                unwSelf.backSidePadFilledBezierPathArray_property.selection,
+                unwSelf.mName_property.selection,
+                unwSelf.mX_property.selection,
+                unwSelf.mY_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7),
+              .single (let v8),
+              .single (let v9),
+              .single (let v10),
+              .single (let v11)) :
           return .single (transient_PackageInDevice_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

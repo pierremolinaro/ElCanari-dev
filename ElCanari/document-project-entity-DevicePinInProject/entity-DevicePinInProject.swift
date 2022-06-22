@@ -391,10 +391,13 @@ final class DevicePinInProject : EBManagedObject,
   //--- Atomic property: pinQualifiedName
     self.pinQualifiedName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSymbolInstanceName_property.selection, unwSelf.mPinName_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.mSymbolInstanceName_property.selection,
+                unwSelf.mPinName_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_DevicePinInProject_pinQualifiedName (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -408,10 +411,43 @@ final class DevicePinInProject : EBManagedObject,
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPinName_property.selection, unwSelf.mSymbolInstanceName_property.selection, unwSelf.mSymbolTypeName_property.selection, unwSelf.mPinX_property.selection, unwSelf.mPinY_property.selection, unwSelf.mXName_property.selection, unwSelf.mYName_property.selection, unwSelf.mNameHorizontalAlignment_property.selection, unwSelf.mPinNameIsDisplayedInSchematic_property.selection, unwSelf.mXNumber_property.selection, unwSelf.mYNumber_property.selection, unwSelf.mNumberHorizontalAlignment_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
+        switch (unwSelf.mPinName_property.selection,
+                unwSelf.mSymbolInstanceName_property.selection,
+                unwSelf.mSymbolTypeName_property.selection,
+                unwSelf.mPinX_property.selection,
+                unwSelf.mPinY_property.selection,
+                unwSelf.mXName_property.selection,
+                unwSelf.mYName_property.selection,
+                unwSelf.mNameHorizontalAlignment_property.selection,
+                unwSelf.mPinNameIsDisplayedInSchematic_property.selection,
+                unwSelf.mXNumber_property.selection,
+                unwSelf.mYNumber_property.selection,
+                unwSelf.mNumberHorizontalAlignment_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7),
+              .single (let v8),
+              .single (let v9),
+              .single (let v10),
+              .single (let v11)) :
           return .single (transient_DevicePinInProject_descriptor (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

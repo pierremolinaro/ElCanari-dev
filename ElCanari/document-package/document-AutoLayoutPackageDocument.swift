@@ -3841,10 +3841,13 @@ import Cocoa
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property.selection, unwSelf.documentFileName_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.rootObject.issues_property.selection,
+                unwSelf.documentFileName_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_AutoLayoutPackageDocument_issues (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

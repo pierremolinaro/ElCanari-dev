@@ -4835,10 +4835,13 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: boardGridStepMultipliedByDisplayFactor
     self.boardGridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mBoardGridStep_property.selection, unwSelf.mBoardGridDisplayFactor_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.mBoardGridStep_property.selection,
+                unwSelf.mBoardGridDisplayFactor_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_ProjectRoot_boardGridStepMultipliedByDisplayFactor (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -4852,10 +4855,13 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: boardLimitsGridStepMultipliedByDisplayFactor
     self.boardLimitsGridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mBoardLimitsGridStep_property.selection, unwSelf.mBoardLimitsGridDisplayFactor_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.mBoardLimitsGridStep_property.selection,
+                unwSelf.mBoardLimitsGridDisplayFactor_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -4903,10 +4909,13 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: schematicOverDisplay
     self.schematicOverDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSelectedSheet_property.connectedPoints_property.selection, unwSelf.selectedSheetIssues_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.mSelectedSheet_property.connectedPoints_property.selection,
+                unwSelf.selectedSheetIssues_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_ProjectRoot_schematicOverDisplay (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5016,10 +5025,13 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mBoardObjects_property.selection, unwSelf.mArtwork_property.signatureForERCChecking_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.mBoardObjects_property.selection,
+                unwSelf.mArtwork_property.signatureForERCChecking_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_ProjectRoot_signatureForERCChecking (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5033,10 +5045,16 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: ercStatusImage
     self.ercStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mLastERCCheckingIsSuccess_property.selection, unwSelf.mLastERCCheckingSignature_property.selection, unwSelf.signatureForERCChecking_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
+        switch (unwSelf.mLastERCCheckingIsSuccess_property.selection,
+                unwSelf.mLastERCCheckingSignature_property.selection,
+                unwSelf.signatureForERCChecking_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2)) :
           return .single (transient_ProjectRoot_ercStatusImage (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5051,10 +5069,16 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: ercStatusMessage
     self.ercStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mLastERCCheckingIsSuccess_property.selection, unwSelf.mLastERCCheckingSignature_property.selection, unwSelf.signatureForERCChecking_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
+        switch (unwSelf.mLastERCCheckingIsSuccess_property.selection,
+                unwSelf.mLastERCCheckingSignature_property.selection,
+                unwSelf.signatureForERCChecking_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2)) :
           return .single (transient_ProjectRoot_ercStatusMessage (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5197,10 +5221,13 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: trackLengthString
     self.trackLengthString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mBoardObjects_property.selection, unwSelf.mTrackLengthUnit_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.mBoardObjects_property.selection,
+                unwSelf.mTrackLengthUnit_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_ProjectRoot_trackLengthString (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5246,10 +5273,25 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: interiorBoundBox
     self.interiorBoundBox_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mBorderCurves_property.selection, unwSelf.mBoardShape_property.selection, unwSelf.mRectangularBoardWidth_property.selection, unwSelf.mRectangularBoardHeight_property.selection, unwSelf.mBoardClearance_property.selection, unwSelf.mBoardLimitsWidth_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+        switch (unwSelf.mBorderCurves_property.selection,
+                unwSelf.mBoardShape_property.selection,
+                unwSelf.mRectangularBoardWidth_property.selection,
+                unwSelf.mRectangularBoardHeight_property.selection,
+                unwSelf.mBoardClearance_property.selection,
+                unwSelf.mBoardLimitsWidth_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5)) :
           return .single (transient_ProjectRoot_interiorBoundBox (v0, v1, v2, v3, v4, v5))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5267,10 +5309,16 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: boardBoundBox
     self.boardBoundBox_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.interiorBoundBox_property.selection, unwSelf.mBoardLimitsWidth_property.selection, unwSelf.mBoardClearance_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
+        switch (unwSelf.interiorBoundBox_property.selection,
+                unwSelf.mBoardLimitsWidth_property.selection,
+                unwSelf.mBoardClearance_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2)) :
           return .single (transient_ProjectRoot_boardBoundBox (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5285,10 +5333,13 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: boardInteriorTop
     self.boardInteriorTop_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.interiorBoundBox_property.selection, unwSelf.mBoardPointsBoundingBoxUnit_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.interiorBoundBox_property.selection,
+                unwSelf.mBoardPointsBoundingBoxUnit_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_ProjectRoot_boardInteriorTop (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5302,10 +5353,13 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: boardInteriorBottom
     self.boardInteriorBottom_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.interiorBoundBox_property.selection, unwSelf.mBoardPointsBoundingBoxUnit_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.interiorBoundBox_property.selection,
+                unwSelf.mBoardPointsBoundingBoxUnit_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_ProjectRoot_boardInteriorBottom (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5319,10 +5373,13 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: boardInteriorLeft
     self.boardInteriorLeft_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.interiorBoundBox_property.selection, unwSelf.mBoardPointsBoundingBoxUnit_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.interiorBoundBox_property.selection,
+                unwSelf.mBoardPointsBoundingBoxUnit_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_ProjectRoot_boardInteriorLeft (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5336,10 +5393,13 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: boardInteriorRight
     self.boardInteriorRight_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.interiorBoundBox_property.selection, unwSelf.mBoardPointsBoundingBoxUnit_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.interiorBoundBox_property.selection,
+                unwSelf.mBoardPointsBoundingBoxUnit_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_ProjectRoot_boardInteriorRight (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5353,10 +5413,13 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: boardLimitBorderTop
     self.boardLimitBorderTop_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.boardBoundBox_property.selection, unwSelf.mBoardLimitsBoundingBoxUnit_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.boardBoundBox_property.selection,
+                unwSelf.mBoardLimitsBoundingBoxUnit_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_ProjectRoot_boardLimitBorderTop (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5370,10 +5433,13 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: boardLimitBorderBottom
     self.boardLimitBorderBottom_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.boardBoundBox_property.selection, unwSelf.mBoardLimitsBoundingBoxUnit_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.boardBoundBox_property.selection,
+                unwSelf.mBoardLimitsBoundingBoxUnit_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_ProjectRoot_boardLimitBorderBottom (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5387,10 +5453,13 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: boardLimitBorderLeft
     self.boardLimitBorderLeft_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.boardBoundBox_property.selection, unwSelf.mBoardLimitsBoundingBoxUnit_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.boardBoundBox_property.selection,
+                unwSelf.mBoardLimitsBoundingBoxUnit_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_ProjectRoot_boardLimitBorderLeft (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5404,10 +5473,13 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: boardLimitBorderRight
     self.boardLimitBorderRight_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.boardBoundBox_property.selection, unwSelf.mBoardLimitsBoundingBoxUnit_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.boardBoundBox_property.selection,
+                unwSelf.mBoardLimitsBoundingBoxUnit_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_ProjectRoot_boardLimitBorderRight (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5437,10 +5509,31 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: borderOutlineBackground
     self.borderOutlineBackground_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mBorderCurves_property.selection, unwSelf.mBoardShape_property.selection, unwSelf.mRectangularBoardWidth_property.selection, unwSelf.mRectangularBoardHeight_property.selection, unwSelf.mBoardLimitsWidth_property.selection, preferences_boardLimitsColorForBoard_property.selection, unwSelf.mBoardClearance_property.selection, preferences_boardClearanceColorForBoard_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+        switch (unwSelf.mBorderCurves_property.selection,
+                unwSelf.mBoardShape_property.selection,
+                unwSelf.mRectangularBoardWidth_property.selection,
+                unwSelf.mRectangularBoardHeight_property.selection,
+                unwSelf.mBoardLimitsWidth_property.selection,
+                preferences_boardLimitsColorForBoard_property.selection,
+                unwSelf.mBoardClearance_property.selection,
+                preferences_boardClearanceColorForBoard_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7)) :
           return .single (transient_ProjectRoot_borderOutlineBackground (v0, v1, v2, v3, v4, v5, v6, v7))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5460,10 +5553,16 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: borderViewBackground
     self.borderViewBackground_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (preferences_boardBackgroundColorForBoard_property.selection, unwSelf.borderOutlineBackground_property.selection, unwSelf.mBoardObjects_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
+        switch (preferences_boardBackgroundColorForBoard_property.selection,
+                unwSelf.borderOutlineBackground_property.selection,
+                unwSelf.mBoardObjects_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2)) :
           return .single (transient_ProjectRoot_borderViewBackground (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5526,10 +5625,16 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: sheetGeometry
     self.sheetGeometry_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSchematicSheetOrientation_property.selection, unwSelf.mSchematicCustomWidth_property.selection, unwSelf.mSchematicCustomHeight_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
+        switch (unwSelf.mSchematicSheetOrientation_property.selection,
+                unwSelf.mSchematicCustomWidth_property.selection,
+                unwSelf.mSchematicCustomHeight_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2)) :
           return .single (transient_ProjectRoot_sheetGeometry (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5544,10 +5649,34 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: schematicBackgroundDisplay
     self.schematicBackgroundDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSchematicTitle_property.selection, unwSelf.mSchematicVersion_property.selection, unwSelf.sheetGeometry_property.selection, unwSelf.mSelectedSheet_property.mSheetTitle_property.selection, unwSelf.mSheets_property.selection, unwSelf.mSelectedSheet_property.selection, unwSelf.mSchematicDate_property.selection, preferences_schematicBackColor_property.selection, preferences_schematicFrameColor_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+        switch (unwSelf.mSchematicTitle_property.selection,
+                unwSelf.mSchematicVersion_property.selection,
+                unwSelf.sheetGeometry_property.selection,
+                unwSelf.mSelectedSheet_property.mSheetTitle_property.selection,
+                unwSelf.mSheets_property.selection,
+                unwSelf.mSelectedSheet_property.selection,
+                unwSelf.mSchematicDate_property.selection,
+                preferences_schematicBackColor_property.selection,
+                preferences_schematicFrameColor_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7),
+              .single (let v8)) :
           return .single (transient_ProjectRoot_schematicBackgroundDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5616,10 +5745,19 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: unplacedPackages
     self.unplacedPackages_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mComponents_property.selection, unwSelf.mComponents_property.selection, unwSelf.mComponents_property.selection, unwSelf.mComponents_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+        switch (unwSelf.mComponents_property.selection,
+                unwSelf.mComponents_property.selection,
+                unwSelf.mComponents_property.selection,
+                unwSelf.mComponents_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3)) :
           return .single (transient_ProjectRoot_unplacedPackages (v0, v1, v2, v3))
-        case (.multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5635,10 +5773,16 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: componentsPlacedInBoard
     self.componentsPlacedInBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mComponents_property.selection, unwSelf.mComponents_property.selection, unwSelf.mComponents_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
+        switch (unwSelf.mComponents_property.selection,
+                unwSelf.mComponents_property.selection,
+                unwSelf.mComponents_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2)) :
           return .single (transient_ProjectRoot_componentsPlacedInBoard (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5653,10 +5797,13 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: placedComponentNameArray
     self.placedComponentNameArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mComponents_property.selection, unwSelf.mComponents_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.mComponents_property.selection,
+                unwSelf.mComponents_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_ProjectRoot_placedComponentNameArray (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5670,10 +5817,19 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: schematicHasErrorOrWarning
     self.schematicHasErrorOrWarning_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.unplacedSymbols_property.selection, unwSelf.netWarningCount_property.selection, unwSelf.mSheets_property.selection, unwSelf.mSheets_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+        switch (unwSelf.unplacedSymbols_property.selection,
+                unwSelf.netWarningCount_property.selection,
+                unwSelf.mSheets_property.selection,
+                unwSelf.mSheets_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3)) :
           return .single (transient_ProjectRoot_schematicHasErrorOrWarning (v0, v1, v2, v3))
-        case (.multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5689,10 +5845,19 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: schematicStatusMessage
     self.schematicStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.unplacedSymbols_property.selection, unwSelf.netWarningCount_property.selection, unwSelf.mSheets_property.selection, unwSelf.mSheets_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+        switch (unwSelf.unplacedSymbols_property.selection,
+                unwSelf.netWarningCount_property.selection,
+                unwSelf.mSheets_property.selection,
+                unwSelf.mSheets_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3)) :
           return .single (transient_ProjectRoot_schematicStatusMessage (v0, v1, v2, v3))
-        case (.multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -5708,10 +5873,19 @@ final class ProjectRoot : EBManagedObject,
   //--- Atomic property: schematicStatusImage
     self.schematicStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.unplacedSymbols_property.selection, unwSelf.netWarningCount_property.selection, unwSelf.mSheets_property.selection, unwSelf.mSheets_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+        switch (unwSelf.unplacedSymbols_property.selection,
+                unwSelf.netWarningCount_property.selection,
+                unwSelf.mSheets_property.selection,
+                unwSelf.mSheets_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3)) :
           return .single (transient_ProjectRoot_schematicStatusImage (v0, v1, v2, v3))
-        case (.multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

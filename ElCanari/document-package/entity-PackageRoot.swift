@@ -1774,10 +1774,13 @@ final class PackageRoot : EBManagedObject,
   //--- Atomic property: gridStepMultipliedByDisplayFactor
     self.gridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.gridStep_property.selection, unwSelf.gridDisplayFactor_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.gridStep_property.selection,
+                unwSelf.gridDisplayFactor_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_PackageRoot_gridStepMultipliedByDisplayFactor (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -1791,10 +1794,13 @@ final class PackageRoot : EBManagedObject,
   //--- Atomic property: secondPointX
     self.secondPointX_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mModelImageFirstPointX_property.selection, unwSelf.mModelImageSecondPointDx_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.mModelImageFirstPointX_property.selection,
+                unwSelf.mModelImageSecondPointDx_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_PackageRoot_secondPointX (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -1808,10 +1814,13 @@ final class PackageRoot : EBManagedObject,
   //--- Atomic property: secondPointY
     self.secondPointY_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mModelImageFirstPointY_property.selection, unwSelf.mModelImageSecondPointDy_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.mModelImageFirstPointY_property.selection,
+                unwSelf.mModelImageSecondPointDy_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_PackageRoot_secondPointY (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -1843,10 +1852,16 @@ final class PackageRoot : EBManagedObject,
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (preferences_showPadNumber_property.selection, unwSelf.packagePads_property.selection, unwSelf.packageSlavePads_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
+        switch (preferences_showPadNumber_property.selection,
+                unwSelf.packagePads_property.selection,
+                unwSelf.packageSlavePads_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2)) :
           return .single (transient_PackageRoot_padNumberDisplay (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -1861,10 +1876,13 @@ final class PackageRoot : EBManagedObject,
   //--- Atomic property: backgroundImagePageBackgroundDisplay
     self.backgroundImagePageBackgroundDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.packageObjects_property.selection, unwSelf.mModelImageData_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.packageObjects_property.selection,
+                unwSelf.mModelImageData_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_PackageRoot_backgroundImagePageBackgroundDisplay (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -1926,10 +1944,25 @@ final class PackageRoot : EBManagedObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.packageObjects_property.selection, unwSelf.packageZones_property.selection, unwSelf.packageZones_property.selection, unwSelf.packageZones_property.selection, unwSelf.packageZones_property.selection, preferences_padZoneFont_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+        switch (unwSelf.packageObjects_property.selection,
+                unwSelf.packageZones_property.selection,
+                unwSelf.packageZones_property.selection,
+                unwSelf.packageZones_property.selection,
+                unwSelf.packageZones_property.selection,
+                preferences_padZoneFont_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5)) :
           return .single (transient_PackageRoot_issues (v0, v1, v2, v3, v4, v5))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

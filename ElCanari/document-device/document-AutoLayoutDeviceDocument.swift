@@ -1633,10 +1633,13 @@ import Cocoa
   //--- Atomic property: assignmentInhibitionMessage
     self.assignmentInhibitionMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.inconsistentPackagePadNameSetsMessage_property.selection, unwSelf.rootObject.inconsistentSymbolNameSetMessage_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.rootObject.inconsistentPackagePadNameSetsMessage_property.selection,
+                unwSelf.rootObject.inconsistentSymbolNameSetMessage_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_AutoLayoutDeviceDocument_assignmentInhibitionMessage (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -1694,10 +1697,13 @@ import Cocoa
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property.selection, unwSelf.documentFileName_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.rootObject.issues_property.selection,
+                unwSelf.documentFileName_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_AutoLayoutDeviceDocument_issues (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

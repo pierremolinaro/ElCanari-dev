@@ -240,10 +240,19 @@ final class FontCharacter : EBManagedObject,
   //--- Atomic property: segmentArrayForDrawing
     self.segmentArrayForDrawing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.segments_property.selection, unwSelf.segments_property.selection, unwSelf.segments_property.selection, unwSelf.segments_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+        switch (unwSelf.segments_property.selection,
+                unwSelf.segments_property.selection,
+                unwSelf.segments_property.selection,
+                unwSelf.segments_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3)) :
           return .single (transient_FontCharacter_segmentArrayForDrawing (v0, v1, v2, v3))
-        case (.multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -291,10 +300,22 @@ final class FontCharacter : EBManagedObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.codePoint_property.selection, unwSelf.advance_property.selection, unwSelf.mWarnsWhenNoSegment_property.selection, unwSelf.mWarnsWhenAdvanceIsZero_property.selection, unwSelf.segments_property.count_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+        switch (unwSelf.codePoint_property.selection,
+                unwSelf.advance_property.selection,
+                unwSelf.mWarnsWhenNoSegment_property.selection,
+                unwSelf.mWarnsWhenAdvanceIsZero_property.selection,
+                unwSelf.segments_property.count_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4)) :
           return .single (transient_FontCharacter_issues (v0, v1, v2, v3, v4))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

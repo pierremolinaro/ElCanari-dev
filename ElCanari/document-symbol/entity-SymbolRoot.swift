@@ -342,10 +342,22 @@ final class SymbolRoot : EBManagedObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.symbolObjects_property.selection, unwSelf.symbolPins_property.selection, unwSelf.symbolPins_property.selection, unwSelf.symbolPins_property.selection, unwSelf.symbolPins_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+        switch (unwSelf.symbolObjects_property.selection,
+                unwSelf.symbolPins_property.selection,
+                unwSelf.symbolPins_property.selection,
+                unwSelf.symbolPins_property.selection,
+                unwSelf.symbolPins_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4)) :
           return .single (transient_SymbolRoot_issues (v0, v1, v2, v3, v4))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

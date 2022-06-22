@@ -280,10 +280,31 @@ final class SymbolBezierCurve : SymbolObject,
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x1_property.selection, unwSelf.y1_property.selection, unwSelf.x2_property.selection, unwSelf.y2_property.selection, unwSelf.cpx1_property.selection, unwSelf.cpy1_property.selection, unwSelf.cpx2_property.selection, unwSelf.cpy2_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+        switch (unwSelf.x1_property.selection,
+                unwSelf.y1_property.selection,
+                unwSelf.x2_property.selection,
+                unwSelf.y2_property.selection,
+                unwSelf.cpx1_property.selection,
+                unwSelf.cpy1_property.selection,
+                unwSelf.cpx2_property.selection,
+                unwSelf.cpy2_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7)) :
           return .single (transient_SymbolBezierCurve_strokeBezierPath (v0, v1, v2, v3, v4, v5, v6, v7))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -303,10 +324,37 @@ final class SymbolBezierCurve : SymbolObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x1_property.selection, unwSelf.y1_property.selection, unwSelf.x2_property.selection, unwSelf.y2_property.selection, unwSelf.cpx1_property.selection, unwSelf.cpy1_property.selection, unwSelf.cpx2_property.selection, unwSelf.cpy2_property.selection, preferences_symbolColor_property.selection, preferences_symbolDrawingWidthMultipliedByTen_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
+        switch (unwSelf.x1_property.selection,
+                unwSelf.y1_property.selection,
+                unwSelf.x2_property.selection,
+                unwSelf.y2_property.selection,
+                unwSelf.cpx1_property.selection,
+                unwSelf.cpy1_property.selection,
+                unwSelf.cpx2_property.selection,
+                unwSelf.cpy2_property.selection,
+                preferences_symbolColor_property.selection,
+                preferences_symbolDrawingWidthMultipliedByTen_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7),
+              .single (let v8),
+              .single (let v9)) :
           return .single (transient_SymbolBezierCurve_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -328,10 +376,31 @@ final class SymbolBezierCurve : SymbolObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x1_property.selection, unwSelf.y1_property.selection, unwSelf.x2_property.selection, unwSelf.y2_property.selection, unwSelf.cpx1_property.selection, unwSelf.cpy1_property.selection, unwSelf.cpx2_property.selection, unwSelf.cpy2_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+        switch (unwSelf.x1_property.selection,
+                unwSelf.y1_property.selection,
+                unwSelf.x2_property.selection,
+                unwSelf.y2_property.selection,
+                unwSelf.cpx1_property.selection,
+                unwSelf.cpy1_property.selection,
+                unwSelf.cpx2_property.selection,
+                unwSelf.cpy2_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7)) :
           return .single (transient_SymbolBezierCurve_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -351,10 +420,31 @@ final class SymbolBezierCurve : SymbolObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x1_property.selection, unwSelf.y1_property.selection, unwSelf.x2_property.selection, unwSelf.y2_property.selection, unwSelf.cpx1_property.selection, unwSelf.cpy1_property.selection, unwSelf.cpx2_property.selection, unwSelf.cpy2_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+        switch (unwSelf.x1_property.selection,
+                unwSelf.y1_property.selection,
+                unwSelf.x2_property.selection,
+                unwSelf.y2_property.selection,
+                unwSelf.cpx1_property.selection,
+                unwSelf.cpy1_property.selection,
+                unwSelf.cpx2_property.selection,
+                unwSelf.cpy2_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7)) :
           return .single (transient_SymbolBezierCurve_issues (v0, v1, v2, v3, v4, v5, v6, v7))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

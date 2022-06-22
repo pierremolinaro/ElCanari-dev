@@ -100,10 +100,19 @@ final class NCInSchematic : SchematicObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPoint_property.location_property.selection, unwSelf.mOrientation_property.selection, unwSelf.mPoint_property.symbolRotation_property.selection, preferences_pinNameFont_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+        switch (unwSelf.mPoint_property.location_property.selection,
+                unwSelf.mOrientation_property.selection,
+                unwSelf.mPoint_property.symbolRotation_property.selection,
+                preferences_pinNameFont_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3)) :
           return .single (transient_NCInSchematic_objectDisplay (v0, v1, v2, v3))
-        case (.multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -119,10 +128,19 @@ final class NCInSchematic : SchematicObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPoint_property.location_property.selection, unwSelf.mOrientation_property.selection, unwSelf.mPoint_property.symbolRotation_property.selection, preferences_pinNameFont_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+        switch (unwSelf.mPoint_property.location_property.selection,
+                unwSelf.mOrientation_property.selection,
+                unwSelf.mPoint_property.symbolRotation_property.selection,
+                preferences_pinNameFont_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3)) :
           return .single (transient_NCInSchematic_selectionDisplay (v0, v1, v2, v3))
-        case (.multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

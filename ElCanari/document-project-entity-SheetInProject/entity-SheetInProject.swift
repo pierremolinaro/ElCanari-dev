@@ -264,10 +264,13 @@ final class SheetInProject : EBManagedObject,
   //--- Atomic property: connectedPoints
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (preferences_connectionColorForSchematic_property.selection, unwSelf.mPoints_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (preferences_connectionColorForSchematic_property.selection,
+                unwSelf.mPoints_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_SheetInProject_connectedPoints (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -313,10 +316,16 @@ final class SheetInProject : EBManagedObject,
   //--- Atomic property: sheetDescriptor
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.sheetGeometry_property.selection, unwSelf.mRoot_property.sheetIndexes_property.selection, unwSelf.objectIdentifier.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
+        switch (unwSelf.mRoot_property.sheetGeometry_property.selection,
+                unwSelf.mRoot_property.sheetIndexes_property.selection,
+                unwSelf.objectIdentifier.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2)) :
           return .single (transient_SheetInProject_sheetDescriptor (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

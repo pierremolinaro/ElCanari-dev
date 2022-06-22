@@ -22,7 +22,7 @@ extension AutoLayoutSymbolDocument {
 //--- START OF USER ZONE 2
     inOutlet.register (
       draggedType: symbolPasteboardType,
-      draggedObjectFactory: { return (SymbolPin (nil), NSDictionary ()) },
+      draggedObjectFactory: { return (SymbolPin (nil), NSDictionary (), []) },
       scaleProvider: self.mSymbolObjectsController
     )
 

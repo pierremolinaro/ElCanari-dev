@@ -730,10 +730,13 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: trackWidthString
     self.trackWidthString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mTrackWidth_property.selection, unwSelf.mTrackWidthUnit_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.mTrackWidth_property.selection,
+                unwSelf.mTrackWidthUnit_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_NetClassInProject_trackWidthString (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -747,10 +750,13 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: viaHoleDiameter
     self.viaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mViaHoleDiameter_property.selection, unwSelf.mViaHoleDiameterUnit_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.mViaHoleDiameter_property.selection,
+                unwSelf.mViaHoleDiameterUnit_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_NetClassInProject_viaHoleDiameter (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -764,10 +770,13 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: viaPadDiameter
     self.viaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mViaPadDiameter_property.selection, unwSelf.mViaPadDiameterUnit_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.mViaPadDiameter_property.selection,
+                unwSelf.mViaPadDiameterUnit_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_NetClassInProject_viaPadDiameter (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -909,10 +918,25 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: netsDescription
     self.netsDescription_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mNets_property.selection, unwSelf.mNets_property.selection, unwSelf.mNets_property.selection, unwSelf.mNets_property.selection, unwSelf.mNets_property.selection, unwSelf.mNetClassName_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+        switch (unwSelf.mNets_property.selection,
+                unwSelf.mNets_property.selection,
+                unwSelf.mNets_property.selection,
+                unwSelf.mNets_property.selection,
+                unwSelf.mNets_property.selection,
+                unwSelf.mNetClassName_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5)) :
           return .single (transient_NetClassInProject_netsDescription (v0, v1, v2, v3, v4, v5))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

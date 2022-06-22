@@ -22,7 +22,7 @@ extension AutoLayoutProjectDocument {
 //--- START OF USER ZONE 2
     inOutlet.register (
       draggedType: kDragAndDropComment,
-      draggedObjectFactory: { return (CommentInSchematic (nil), NSDictionary ()) },
+      draggedObjectFactory: { return (CommentInSchematic (nil), NSDictionary (), []) },
       scaleProvider: self.schematicObjectsController
     )
     inOutlet.set (title: "C", font: NSFont.systemFont (ofSize: 22.0))

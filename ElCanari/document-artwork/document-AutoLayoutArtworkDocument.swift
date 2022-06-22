@@ -1016,10 +1016,22 @@ import Cocoa
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.emptyDrillFileExtension_property.selection, unwSelf.documentFileName_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+        switch (unwSelf.rootObject.fileGenerationParameterArray_property.selection,
+                unwSelf.rootObject.fileGenerationParameterArray_property.selection,
+                unwSelf.rootObject.fileGenerationParameterArray_property.selection,
+                unwSelf.rootObject.emptyDrillFileExtension_property.selection,
+                unwSelf.documentFileName_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4)) :
           return .single (transient_AutoLayoutArtworkDocument_statusMessage (v0, v1, v2, v3, v4))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -1080,10 +1092,19 @@ import Cocoa
   //--- Atomic property: segmentedControlDataIssueImage
     self.segmentedControlDataIssueImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.hasDataWarning_property.selection, unwSelf.rootObject.emptyDrillFileExtension_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+        switch (unwSelf.rootObject.fileGenerationParameterArray_property.selection,
+                unwSelf.rootObject.fileGenerationParameterArray_property.selection,
+                unwSelf.rootObject.hasDataWarning_property.selection,
+                unwSelf.rootObject.emptyDrillFileExtension_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3)) :
           return .single (transient_AutoLayoutArtworkDocument_segmentedControlDataIssueImage (v0, v1, v2, v3))
-        case (.multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -1103,10 +1124,22 @@ import Cocoa
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.fileGenerationParameterArray_property.selection, unwSelf.rootObject.emptyDrillFileExtension_property.selection, unwSelf.documentFileName_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+        switch (unwSelf.rootObject.fileGenerationParameterArray_property.selection,
+                unwSelf.rootObject.fileGenerationParameterArray_property.selection,
+                unwSelf.rootObject.fileGenerationParameterArray_property.selection,
+                unwSelf.rootObject.emptyDrillFileExtension_property.selection,
+                unwSelf.documentFileName_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4)) :
           return .single (transient_AutoLayoutArtworkDocument_statusImage (v0, v1, v2, v3, v4))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

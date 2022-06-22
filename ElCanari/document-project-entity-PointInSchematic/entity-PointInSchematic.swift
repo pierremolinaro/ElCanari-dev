@@ -605,10 +605,22 @@ final class PointInSchematic : EBManagedObject,
   //--- Atomic property: location
     self.location_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX_property.selection, unwSelf.mY_property.selection, unwSelf.mSymbolPinName_property.selection, unwSelf.mSymbol_property.symbolInfo_property.selection, unwSelf.mSymbol_property.mSymbolInstanceName_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+        switch (unwSelf.mX_property.selection,
+                unwSelf.mY_property.selection,
+                unwSelf.mSymbolPinName_property.selection,
+                unwSelf.mSymbol_property.symbolInfo_property.selection,
+                unwSelf.mSymbol_property.mSymbolInstanceName_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4)) :
           return .single (transient_PointInSchematic_location (v0, v1, v2, v3, v4))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -705,10 +717,13 @@ final class PointInSchematic : EBManagedObject,
   //--- Atomic property: symbolRotation
     self.symbolRotation_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSymbol_property.mRotation_property.selection, unwSelf.mSymbol_property.mMirror_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.mSymbol_property.mRotation_property.selection,
+                unwSelf.mSymbol_property.mMirror_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_PointInSchematic_symbolRotation (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -728,10 +743,13 @@ final class PointInSchematic : EBManagedObject,
   //--- Atomic property: symbolNameNetName
     self.symbolNameNetName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSymbolPinName_property.selection, unwSelf.netName_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.mSymbolPinName_property.selection,
+                unwSelf.netName_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_PointInSchematic_symbolNameNetName (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -745,10 +763,22 @@ final class PointInSchematic : EBManagedObject,
   //--- Atomic property: isConnected
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mNC_none.selection, unwSelf.mSymbol_none.selection, unwSelf.mWiresP1s_property.count_property.selection, unwSelf.mWiresP2s_property.count_property.selection, unwSelf.mLabels_property.count_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+        switch (unwSelf.mNC_none.selection,
+                unwSelf.mSymbol_none.selection,
+                unwSelf.mWiresP1s_property.count_property.selection,
+                unwSelf.mWiresP2s_property.count_property.selection,
+                unwSelf.mLabels_property.count_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4)) :
           return .single (transient_PointInSchematic_isConnected (v0, v1, v2, v3, v4))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -765,10 +795,13 @@ final class PointInSchematic : EBManagedObject,
   //--- Atomic property: status
     self.status_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.location_property.selection, unwSelf.isConnected_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.location_property.selection,
+                unwSelf.isConnected_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_PointInSchematic_status (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -782,10 +815,13 @@ final class PointInSchematic : EBManagedObject,
   //--- Atomic property: connectedPoints
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.location_property.selection, unwSelf.isConnected_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.location_property.selection,
+                unwSelf.isConnected_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_PointInSchematic_connectedPoints (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -799,10 +835,34 @@ final class PointInSchematic : EBManagedObject,
   //--- Atomic property: netInfoForPoint
     self.netInfoForPoint_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mLabels_property.count_property.selection, unwSelf.mSymbol_property.componentName_property.selection, unwSelf.mSymbol_property.mSymbolInstanceName_property.selection, unwSelf.mSymbolPinName_property.selection, unwSelf.mSymbol_property.pinPadAssignments_property.selection, unwSelf.mWiresP1s_property.selection, unwSelf.mWiresP2s_property.selection, unwSelf.location_property.selection, unwSelf.mSheet_property.sheetDescriptor_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+        switch (unwSelf.mLabels_property.count_property.selection,
+                unwSelf.mSymbol_property.componentName_property.selection,
+                unwSelf.mSymbol_property.mSymbolInstanceName_property.selection,
+                unwSelf.mSymbolPinName_property.selection,
+                unwSelf.mSymbol_property.pinPadAssignments_property.selection,
+                unwSelf.mWiresP1s_property.selection,
+                unwSelf.mWiresP2s_property.selection,
+                unwSelf.location_property.selection,
+                unwSelf.mSheet_property.sheetDescriptor_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7),
+              .single (let v8)) :
           return .single (transient_PointInSchematic_netInfoForPoint (v0, v1, v2, v3, v4, v5, v6, v7, v8))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

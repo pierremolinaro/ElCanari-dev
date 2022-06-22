@@ -887,10 +887,79 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //--- Atomic property: hasNoData
     self.hasNoData_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mArtwork_property.layerConfiguration_property.selection, unwSelf.drawBoardLimits_property.selection, unwSelf.drawInternalBoardLimits_property.selection, unwSelf.drawComponentNamesTopSide_property.selection, unwSelf.drawComponentNamesBottomSide_property.selection, unwSelf.drawComponentValuesTopSide_property.selection, unwSelf.drawComponentValuesBottomSide_property.selection, unwSelf.drawPackageLegendTopSide_property.selection, unwSelf.drawPackageLegendBottomSide_property.selection, unwSelf.drawPadHolesInPDF_property.selection, unwSelf.drawPadsTopSide_property.selection, unwSelf.drawPadsBottomSide_property.selection, unwSelf.drawTextsLayoutTopSide_property.selection, unwSelf.drawTextsLayoutBottomSide_property.selection, unwSelf.drawTextsLegendTopSide_property.selection, unwSelf.drawTextsLegendBottomSide_property.selection, unwSelf.drawTracksTopSide_property.selection, unwSelf.drawTracksInner1Layer_property.selection, unwSelf.drawTracksInner2Layer_property.selection, unwSelf.drawTracksInner3Layer_property.selection, unwSelf.drawTracksInner4Layer_property.selection, unwSelf.drawTracksBottomSide_property.selection, unwSelf.drawTraversingPads_property.selection, unwSelf.drawVias_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15), .single (let v16), .single (let v17), .single (let v18), .single (let v19), .single (let v20), .single (let v21), .single (let v22), .single (let v23)) :
+        switch (unwSelf.mArtwork_property.layerConfiguration_property.selection,
+                unwSelf.drawBoardLimits_property.selection,
+                unwSelf.drawInternalBoardLimits_property.selection,
+                unwSelf.drawComponentNamesTopSide_property.selection,
+                unwSelf.drawComponentNamesBottomSide_property.selection,
+                unwSelf.drawComponentValuesTopSide_property.selection,
+                unwSelf.drawComponentValuesBottomSide_property.selection,
+                unwSelf.drawPackageLegendTopSide_property.selection,
+                unwSelf.drawPackageLegendBottomSide_property.selection,
+                unwSelf.drawPadHolesInPDF_property.selection,
+                unwSelf.drawPadsTopSide_property.selection,
+                unwSelf.drawPadsBottomSide_property.selection,
+                unwSelf.drawTextsLayoutTopSide_property.selection,
+                unwSelf.drawTextsLayoutBottomSide_property.selection,
+                unwSelf.drawTextsLegendTopSide_property.selection,
+                unwSelf.drawTextsLegendBottomSide_property.selection,
+                unwSelf.drawTracksTopSide_property.selection,
+                unwSelf.drawTracksInner1Layer_property.selection,
+                unwSelf.drawTracksInner2Layer_property.selection,
+                unwSelf.drawTracksInner3Layer_property.selection,
+                unwSelf.drawTracksInner4Layer_property.selection,
+                unwSelf.drawTracksBottomSide_property.selection,
+                unwSelf.drawTraversingPads_property.selection,
+                unwSelf.drawVias_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4),
+              .single (let v5),
+              .single (let v6),
+              .single (let v7),
+              .single (let v8),
+              .single (let v9),
+              .single (let v10),
+              .single (let v11),
+              .single (let v12),
+              .single (let v13),
+              .single (let v14),
+              .single (let v15),
+              .single (let v16),
+              .single (let v17),
+              .single (let v18),
+              .single (let v19),
+              .single (let v20),
+              .single (let v21),
+              .single (let v22),
+              .single (let v23)) :
           return .single (transient_ArtworkFileGenerationParameters_hasNoData (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -926,10 +995,16 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //--- Atomic property: parameterStatusImage
     self.parameterStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.name_property.selection, unwSelf.fileExtension_property.selection, unwSelf.hasNoData_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2)) :
+        switch (unwSelf.name_property.selection,
+                unwSelf.fileExtension_property.selection,
+                unwSelf.hasNoData_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2)) :
           return .single (transient_ArtworkFileGenerationParameters_parameterStatusImage (v0, v1, v2))
-        case (.multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty

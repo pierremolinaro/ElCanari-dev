@@ -70,6 +70,8 @@ extension SheetInProject {
       point2.mY = p2.y
       wire.mP2 = point2
       self.mPoints.append (point2)
+      point1.mNet = inNewNetCreator ()
+      point1.propagateNetToAccessiblePointsThroughtWires ()
     }
   //--- Enter wire and select it
     if let wire = possibleWire {

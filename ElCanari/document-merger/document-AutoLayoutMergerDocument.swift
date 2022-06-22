@@ -4192,10 +4192,22 @@ import Cocoa
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.overlapingArrangment_property.selection, unwSelf.rootObject.boardRect_property.selection, unwSelf.rootObject.boardLimitWidth_property.selection, unwSelf.rootObject.boardInstances_property.selection, unwSelf.rootObject.boardInstances_property.selection) {
-        case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+        switch (unwSelf.rootObject.overlapingArrangment_property.selection,
+                unwSelf.rootObject.boardRect_property.selection,
+                unwSelf.rootObject.boardLimitWidth_property.selection,
+                unwSelf.rootObject.boardInstances_property.selection,
+                unwSelf.rootObject.boardInstances_property.selection) {
+        case (.single (let v0),
+              .single (let v1),
+              .single (let v2),
+              .single (let v3),
+              .single (let v4)) :
           return .single (transient_AutoLayoutMergerDocument_issues (v0, v1, v2, v3, v4))
-        case (.multiple, .multiple, .multiple, .multiple, .multiple) :
+        case (.multiple,
+              .multiple,
+              .multiple,
+              .multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -4236,10 +4248,13 @@ import Cocoa
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection, unwSelf.rootObject.boardLimitWidthErrorMessage_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.issues_property.selection,
+                unwSelf.rootObject.boardLimitWidthErrorMessage_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_AutoLayoutMergerDocument_statusMessage (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
@@ -4341,10 +4356,13 @@ import Cocoa
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection, unwSelf.rootObject.boardLimitWidthOk_property.selection) {
-        case (.single (let v0), .single (let v1)) :
+        switch (unwSelf.issues_property.selection,
+                unwSelf.rootObject.boardLimitWidthOk_property.selection) {
+        case (.single (let v0),
+              .single (let v1)) :
           return .single (transient_AutoLayoutMergerDocument_statusImage (v0, v1))
-        case (.multiple, .multiple) :
+        case (.multiple,
+              .multiple) :
           return .multiple
         default :
           return .empty
