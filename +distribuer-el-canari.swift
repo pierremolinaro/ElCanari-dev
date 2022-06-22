@@ -157,15 +157,16 @@ let ANNEE = Calendar.current.component (.year, from: Date ())
 print ("ANNÉE : \(ANNEE)")
 do{
 //-------------------- Obtenir le SHA du dernier commit
-  let sha = runHiddenCommand ("/usr/local/bin/git", ["rev-parse", "HEAD"])
+  var sha = runHiddenCommand ("/usr/local/bin/git", ["rev-parse", "--short", "HEAD"])
+  _ = sha.removeLast () // Remove trailing LF
 //  let sha = runHiddenCommand ("/usr/local/bin/git", ["log", "-n1", "--format=format:\"%H\""])
 //  Swift.print ("sha \(sha)")
 //-------------------- Écrire le SHA
   let fileRelativePath = "ElCanari/application/Application-about-ElCanari-panel.swift"
-  let str : String = try! String (contentsOf: URL (fileURLWithPath: fileRelativePath))
+  let str : String = try! String (contentsOf: URL (fileURLWithPath: fileRelativePath), encoding: .utf8)
   let components = str.components (separatedBy: "$SHA_GITHUB$")
-  let str2 = components.join (with: sha)
-  try! str2.write (to: URL (fileURLWithPath: fileRelativePath), options: .atomic)
+  let str2 = components.joined (separator: sha)
+  try! str2.write (to: URL (fileURLWithPath: fileRelativePath), atomically: true, encoding: .utf8)
 //-------------------- Obtenir le numéro de build
   let plistFileFullPath = DISTRIBUTION_DIR + "/" + CANARI_DIR + "/ElCanari/application/Info-" + BUILD_KIND.string + ".plist"
   let data : Data = try Data (contentsOf: URL (fileURLWithPath: plistFileFullPath))
