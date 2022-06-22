@@ -3760,6 +3760,9 @@
 		CFB8DEB227A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8DEB127A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift */; };
 		CFB8DEB327A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8DEB127A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift */; };
 		CFB8DEB427A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB8DEB127A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift */; };
+		CFB954F22863977000D1CC41 /* Application-about-ElCanari-panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB954F12863977000D1CC41 /* Application-about-ElCanari-panel.swift */; };
+		CFB954F32863977000D1CC41 /* Application-about-ElCanari-panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB954F12863977000D1CC41 /* Application-about-ElCanari-panel.swift */; };
+		CFB954F42863977000D1CC41 /* Application-about-ElCanari-panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB954F12863977000D1CC41 /* Application-about-ElCanari-panel.swift */; };
 		CFB9E20222D344EE00D681BF /* enum-TrackSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB9E1F622D344EE00D681BF /* enum-TrackSide.swift */; };
 		CFB9E20322D344EE00D681BF /* enum-TrackSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB9E1F622D344EE00D681BF /* enum-TrackSide.swift */; };
 		CFBAB0B420DE786C00476FB7 /* canari-conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBAB0B320DE786C00476FB7 /* canari-conversions.swift */; };
@@ -5799,6 +5802,7 @@
 		CFB8DDB927A6DE030097DF9A /* AutoLayoutDateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutDateLabel.swift; sourceTree = "<group>"; };
 		CFB8DDBD27A6E4430097DF9A /* action-Preferences-showLibraryConsistencyLogWindowAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-Preferences-showLibraryConsistencyLogWindowAction.swift"; sourceTree = "<group>"; };
 		CFB8DEB127A6F4E50097DF9A /* controller-table-view-Preferences-userLibraryArrayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-table-view-Preferences-userLibraryArrayController.swift"; sourceTree = "<group>"; };
+		CFB954F12863977000D1CC41 /* Application-about-ElCanari-panel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application-about-ElCanari-panel.swift"; sourceTree = "<group>"; };
 		CFB9E1F622D344EE00D681BF /* enum-TrackSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-TrackSide.swift"; sourceTree = "<group>"; };
 		CFBAB0B320DE786C00476FB7 /* canari-conversions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "canari-conversions.swift"; sourceTree = "<group>"; };
 		CFBC202A275E14B60076697D /* extension-MergerBoardInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-MergerBoardInstance.swift"; sourceTree = "<group>"; };
@@ -6711,6 +6715,7 @@
 		CF61725C1B3C4B5000F3CA82 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				CFB954F12863977000D1CC41 /* Application-about-ElCanari-panel.swift */,
 				CF5E89C927D409AA004DAC18 /* ApplicationDelegate-app-update.swift */,
 				CF8A118121B1C72300A8030C /* ApplicationDelegate-batch.swift */,
 				CFCAEDB523ACDE8F00E7CE17 /* ApplicationDelegate-elcanari-documentation.swift */,
@@ -9354,6 +9359,7 @@
 				CF711D03275E1A7900280069 /* tomany-ComponentInProject.swift in Sources */,
 				CF3559DB279D9F3D000BFC9B /* configurator-AutoLayoutProjectDocument-symbolDragSourceTableViewConfigurator.swift in Sources */,
 				CFB7D8F12683A732007B9D3B /* transient-AutoLayoutPackageDocument-segmentedControlSegmentIssueString.swift in Sources */,
+				CFB954F22863977000D1CC41 /* Application-about-ElCanari-panel.swift in Sources */,
 				CF42D10D275CF1A600B83712 /* action-AutoLayoutMergerDocument-moveSelectionUpAction.swift in Sources */,
 				CFCD06CA26A21C830095C56F /* AutoLayoutCanariOrientationSegmentedControl.swift in Sources */,
 				CF39CD17268CC0B4004971F9 /* configurator-AutoLayoutDeviceDocument-documentationTableView.swift in Sources */,
@@ -10862,6 +10868,7 @@
 				CF5C4D26219F04D600EAC52A /* ApplicationDelegate.swift in Sources */,
 				CF355937279D9F3B000BFC9B /* configurator-AutoLayoutProjectDocument-symbolDragSourceTableViewConfigurator.swift in Sources */,
 				CFB7D8F22683A732007B9D3B /* transient-AutoLayoutPackageDocument-segmentedControlSegmentIssueString.swift in Sources */,
+				CFB954F32863977000D1CC41 /* Application-about-ElCanari-panel.swift in Sources */,
 				CF39CD18268CC0B4004971F9 /* configurator-AutoLayoutDeviceDocument-documentationTableView.swift in Sources */,
 				CFCD06CB26A21C830095C56F /* AutoLayoutCanariOrientationSegmentedControl.swift in Sources */,
 				CFA430AE229AEC41000AA8C8 /* toone-SymbolBezierCurve.swift in Sources */,
@@ -12370,6 +12377,7 @@
 				CF711D05275E1A7900280069 /* tomany-ComponentInProject.swift in Sources */,
 				CF120FAD277B47DF0073917B /* CanariPDFWindow.swift in Sources */,
 				CF73BE1B25DAFF2A00090625 /* AutoLayoutFlexibleSpace.swift in Sources */,
+				CFB954F42863977000D1CC41 /* Application-about-ElCanari-panel.swift in Sources */,
 				CF9C62EF25CABE5C00A00D5C /* transient-PackageSegment-objectDisplay.swift in Sources */,
 				CF9C62F025CABE5C00A00D5C /* toone-PackageInDevice.swift in Sources */,
 				CF9C62F125CABE5C00A00D5C /* EBObservableMutableProperty.swift in Sources */,
