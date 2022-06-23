@@ -3,6 +3,8 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 graphic entity CommentInSchematic : SchematicObject {
+  graphic canCopyAndPaste ;
+
   property String mComment default "" ;
   property NSColor mColor default black ;
   property Double mSize default 11.0 ;

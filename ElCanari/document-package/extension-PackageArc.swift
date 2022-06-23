@@ -61,6 +61,7 @@ extension PackageArc {
   //····················································································································
 
   func operationAfterPasting_PackageArc (additionalDictionary inDictionary : NSDictionary,
+                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }

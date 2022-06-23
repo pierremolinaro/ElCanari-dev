@@ -1010,8 +1010,11 @@ final class SymbolBezierCurve : SymbolObject,
   //····················································································································
 
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                       optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_SymbolBezierCurve (additionalDictionary: inDictionary, objectArray: inObjectArray)
+    return operationAfterPasting_SymbolBezierCurve (additionalDictionary: inDictionary,
+                                                 optionalDocument: inOptionalDocument,
+                                                 objectArray: inObjectArray)
   }
 
   //····················································································································

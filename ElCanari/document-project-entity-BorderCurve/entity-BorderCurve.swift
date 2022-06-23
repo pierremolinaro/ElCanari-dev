@@ -1411,8 +1411,11 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                       optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_BorderCurve (additionalDictionary: inDictionary, objectArray: inObjectArray)
+    return operationAfterPasting_BorderCurve (additionalDictionary: inDictionary,
+                                                 optionalDocument: inOptionalDocument,
+                                                 objectArray: inObjectArray)
   }
 
   //····················································································································

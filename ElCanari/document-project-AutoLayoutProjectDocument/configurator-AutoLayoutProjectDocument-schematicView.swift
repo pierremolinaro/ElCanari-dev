@@ -22,6 +22,7 @@ extension AutoLayoutProjectDocument {
 //--- START OF USER ZONE 2
     inOutlet.mScrollView?.register (document: self)
     inOutlet.mGraphicView.ebRegister (draggedTypes: [kDragAndDropSymbol, kDragAndDropComment, kDragAndDropWire])
+    inOutlet.mGraphicView.register (pasteboardType: SCHEMATIC_PASTEBOARD_TYPE)
 
     inOutlet.mGraphicView.mGridStepInCanariUnit = SCHEMATIC_GRID_IN_CANARI_UNIT
     inOutlet.mGraphicView.set (mouseGridInCanariUnit: SCHEMATIC_GRID_IN_CANARI_UNIT)

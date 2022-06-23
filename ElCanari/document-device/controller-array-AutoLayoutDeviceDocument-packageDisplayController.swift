@@ -29,7 +29,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
   //····················································································································
 
   var selectedSet : EBReferenceSet <PackageInDevice> {
-    set (newValue) {
+    set {
     //--- Add observers to newly selected set
       for object in newValue.subtracting (self.mPrivateSelectedSet).values {
         object.selectionDisplay_property.addEBObserver (self.mObjectSelectionObserver)
@@ -233,7 +233,6 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
   //····················································································································
 
   var selectedGraphicObjectSet : EBReferenceSet <EBGraphicManagedObject> {
-  //  return self.selectedArray_property.propset // Faudrait faire mieux !
     var result = EBReferenceSet <EBGraphicManagedObject> (minimumCapacity: self.selectedArray_property.propval.count)
     for object in self.selectedArray_property.propval.values {
       result.insert (object)
@@ -639,22 +638,24 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
    func pasteFromPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?, _ inWindow : NSWindow) {
     let pb = NSPasteboard.general
     if let pasteboardType = inPasteboardType,
-       pb.availableType (from: [pasteboardType]) != nil,
-       let dataDictionary = pb.propertyList (forType: pasteboardType) as? NSDictionary,
-       let dictionaryArray = dataDictionary [OBJECT_DICTIONARY_KEY] as? [NSDictionary],
-       let additionalDictionaryArray = dataDictionary [OBJECT_ADDITIONAL_DICTIONARY_KEY] as? [NSDictionary],
-       let X = dataDictionary [X_KEY] as? Int,
-       let Y = dataDictionary [Y_KEY] as? Int {
+           pb.availableType (from: [pasteboardType]) != nil,
+           let dataDictionary = pb.propertyList (forType: pasteboardType) as? NSDictionary,
+           let dictionaryArray = dataDictionary [OBJECT_DICTIONARY_KEY] as? [NSDictionary],
+           let additionalDictionaryArray = dataDictionary [OBJECT_ADDITIONAL_DICTIONARY_KEY] as? [NSDictionary],
+           let X = dataDictionary [X_KEY] as? Int,
+           let Y = dataDictionary [Y_KEY] as? Int {
       var newObjects = [PackageInDevice] ()
       var userSet = EBReferenceSet <AnyObject> ()
-      var idx = 0
+      var idx = -1
       var errorMessage = ""
       for dictionary in dictionaryArray {
+        idx += 1
         if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? PackageInDevice {
           if errorMessage.isEmpty {
-            errorMessage = object.operationAfterPasting (additionalDictionary: additionalDictionaryArray [idx], objectArray: self.objectArray.values)
+            errorMessage = object.operationAfterPasting (additionalDictionary: additionalDictionaryArray [idx],
+                                                         optionalDocument: self.document,
+                                                         objectArray: self.objectArray.values)
           }
-          idx += 1
           if errorMessage.isEmpty {
             object.translate (xBy: X, yBy: Y, userSet: &userSet)
             newObjects.append (object)

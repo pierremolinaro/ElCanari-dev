@@ -1388,8 +1388,11 @@ final class PackageBezier : PackageObject,
   //····················································································································
 
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                       optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_PackageBezier (additionalDictionary: inDictionary, objectArray: inObjectArray)
+    return operationAfterPasting_PackageBezier (additionalDictionary: inDictionary,
+                                                 optionalDocument: inOptionalDocument,
+                                                 objectArray: inObjectArray)
   }
 
   //····················································································································

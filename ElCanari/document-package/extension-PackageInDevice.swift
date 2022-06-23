@@ -27,6 +27,7 @@ extension PackageInDevice {
   //····················································································································
 
   func operationAfterPasting_PackageInDevice (additionalDictionary inDictionary : NSDictionary,
+                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }

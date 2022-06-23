@@ -523,8 +523,11 @@ final class NCInSchematic : SchematicObject,
   //····················································································································
 
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                       optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_NCInSchematic (additionalDictionary: inDictionary, objectArray: inObjectArray)
+    return operationAfterPasting_NCInSchematic (additionalDictionary: inDictionary,
+                                                 optionalDocument: inOptionalDocument,
+                                                 objectArray: inObjectArray)
   }
 
   //····················································································································

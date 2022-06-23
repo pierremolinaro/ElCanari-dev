@@ -67,6 +67,7 @@ extension BoardRestrictRectangle {
   //····················································································································
 
   func operationAfterPasting_BoardRestrictRectangle (additionalDictionary inDictionary : NSDictionary,
+                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }

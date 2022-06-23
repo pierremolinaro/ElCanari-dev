@@ -31,6 +31,7 @@ extension BoardLine {
   //····················································································································
 
   func operationAfterPasting_BoardLine (additionalDictionary inDictionary : NSDictionary,
+                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }

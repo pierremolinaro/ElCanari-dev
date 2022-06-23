@@ -30,6 +30,7 @@ extension BoardTrack {
   //····················································································································
 
   func operationAfterPasting_BoardTrack (additionalDictionary inDictionary : NSDictionary,
+                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }

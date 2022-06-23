@@ -30,6 +30,7 @@ extension PackageOval {
   //····················································································································
 
   func operationAfterPasting_PackageOval (additionalDictionary inDictionary : NSDictionary,
+                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }

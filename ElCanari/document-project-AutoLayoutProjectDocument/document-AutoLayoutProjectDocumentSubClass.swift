@@ -77,6 +77,7 @@ let PAPER_GUTTER_HEIGHT_COCOA_UNIT : CGFloat =  13.0
     self.mSchematicsView?.mGraphicView.setMouseExitCallback { [weak self] in self?.mouseExitInSchematic () }
     self.mouseExitInSchematic ()
     self.mSchematicsView?.mGraphicView.setKeyDownCallback { [weak self] (mouseLocation, key) in self?.keyDownInSchematic (mouseLocation, key) }
+    self.boardObjectsController.set (document: self)
   }
 
   //····················································································································

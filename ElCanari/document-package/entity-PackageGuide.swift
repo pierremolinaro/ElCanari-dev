@@ -861,8 +861,11 @@ final class PackageGuide : PackageObject,
   //····················································································································
 
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                       optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_PackageGuide (additionalDictionary: inDictionary, objectArray: inObjectArray)
+    return operationAfterPasting_PackageGuide (additionalDictionary: inDictionary,
+                                                 optionalDocument: inOptionalDocument,
+                                                 objectArray: inObjectArray)
   }
 
   //····················································································································

@@ -955,8 +955,11 @@ final class BoardLine : BoardObject,
   //····················································································································
 
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                       optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_BoardLine (additionalDictionary: inDictionary, objectArray: inObjectArray)
+    return operationAfterPasting_BoardLine (additionalDictionary: inDictionary,
+                                                 optionalDocument: inOptionalDocument,
+                                                 objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -973,6 +976,14 @@ final class BoardLine : BoardObject,
 
   override func operationBeforeRemoving () {
     operationBeforeRemoving_BoardLine ()
+  }
+
+  //····················································································································
+  //  COPY AND PASTE
+  //····················································································································
+
+  override func canCopyAndPaste () -> Bool {
+    return true
   }
 
   //····················································································································

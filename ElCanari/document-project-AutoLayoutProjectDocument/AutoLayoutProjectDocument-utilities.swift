@@ -16,6 +16,10 @@ let kDragAndDropWire = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.d
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+let SCHEMATIC_PASTEBOARD_TYPE = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.pasteboard.schematic")
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 let kDragAndDropRestrictRectangle = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.restrict.rectangle")
 let kDragAndDropBoardText = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.text")
 let kDragAndDropBoardPackage = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.package")
@@ -49,6 +53,10 @@ let SCHEMATIC_HILITE_WIDTH : CGFloat = 0.5
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 let BOARD_KNOB_SIZE : CGFloat = 4.0
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+let BOARD_PASTEBOARD_TYPE = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.pasteboard.board")
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

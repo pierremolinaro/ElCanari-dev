@@ -605,8 +605,11 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   //····················································································································
 
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                       optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_SegmentForFontCharacter (additionalDictionary: inDictionary, objectArray: inObjectArray)
+    return operationAfterPasting_SegmentForFontCharacter (additionalDictionary: inDictionary,
+                                                 optionalDocument: inOptionalDocument,
+                                                 objectArray: inObjectArray)
   }
 
   //····················································································································

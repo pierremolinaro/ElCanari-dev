@@ -763,8 +763,11 @@ final class CommentInSchematic : SchematicObject,
   //····················································································································
 
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                       optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_CommentInSchematic (additionalDictionary: inDictionary, objectArray: inObjectArray)
+    return operationAfterPasting_CommentInSchematic (additionalDictionary: inDictionary,
+                                                 optionalDocument: inOptionalDocument,
+                                                 objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -781,6 +784,14 @@ final class CommentInSchematic : SchematicObject,
 
   override func operationBeforeRemoving () {
     operationBeforeRemoving_CommentInSchematic ()
+  }
+
+  //····················································································································
+  //  COPY AND PASTE
+  //····················································································································
+
+  override func canCopyAndPaste () -> Bool {
+    return true
   }
 
   //····················································································································

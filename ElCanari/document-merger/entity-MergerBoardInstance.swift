@@ -856,8 +856,11 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                       optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_MergerBoardInstance (additionalDictionary: inDictionary, objectArray: inObjectArray)
+    return operationAfterPasting_MergerBoardInstance (additionalDictionary: inDictionary,
+                                                 optionalDocument: inOptionalDocument,
+                                                 objectArray: inObjectArray)
   }
 
   //····················································································································

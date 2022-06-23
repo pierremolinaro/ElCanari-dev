@@ -31,6 +31,7 @@ extension WireInSchematic {
   //····················································································································
 
   func operationAfterPasting_WireInSchematic (additionalDictionary inDictionary : NSDictionary,
+                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }

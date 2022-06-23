@@ -721,8 +721,11 @@ final class SymbolSolidOval : SymbolObject,
   //····················································································································
 
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+                                       optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_SymbolSolidOval (additionalDictionary: inDictionary, objectArray: inObjectArray)
+    return operationAfterPasting_SymbolSolidOval (additionalDictionary: inDictionary,
+                                                 optionalDocument: inOptionalDocument,
+                                                 objectArray: inObjectArray)
   }
 
   //····················································································································

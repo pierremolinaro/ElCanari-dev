@@ -28,6 +28,7 @@ extension SymbolSolidRect {
   //····················································································································
 
   func operationAfterPasting_SymbolSolidRect (additionalDictionary inDictionary : NSDictionary,
+                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }

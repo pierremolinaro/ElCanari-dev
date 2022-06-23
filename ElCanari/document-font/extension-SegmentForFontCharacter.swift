@@ -25,6 +25,7 @@ extension SegmentForFontCharacter {
   //····················································································································
 
   func operationAfterPasting_SegmentForFontCharacter (additionalDictionary inDictionary : NSDictionary,
+                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }

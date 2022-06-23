@@ -14,6 +14,8 @@ func enum BoardLineLayer.popupTitles {
 //——————————————————————————————————————————————————————————————————————————————
 
 graphic entity BoardLine : BoardObject { 
+  graphic canCopyAndPaste ;
+
   property Int mWidth default 57_150 ; // 25 mils
   property Int mWidthUnit default 2_286 ; // mil
 

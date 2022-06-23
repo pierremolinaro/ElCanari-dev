@@ -59,8 +59,25 @@ extension BoardText {
   //····················································································································
 
   func operationAfterPasting_BoardText (additionalDictionary inDictionary : NSDictionary,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return ""
+                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
+                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+    if let fontName = inDictionary ["**FONT-NAME**"] as? String,
+       let projectDocument = inOptionalDocument as? AutoLayoutProjectDocumentSubClass {
+      var optionalFont : FontInProject? = nil
+      for font in projectDocument.rootObject.mFonts.values {
+        if font.mFontName == fontName {
+          optionalFont = font
+        }
+      }
+      if let font = optionalFont {
+        self.mFont = font
+        return "" // Ok, no error
+      }else{
+        return "Cannot paste board text: \(fontName) board font is not installed in document"
+      }
+    }else{
+      return "Cannot paste board text: internal error"
+    }
   }
 
   //····················································································································
@@ -68,6 +85,7 @@ extension BoardText {
   //····················································································································
 
   func saveIntoAdditionalDictionary_BoardText (_ ioDictionary : NSMutableDictionary) {
+    ioDictionary ["**FONT-NAME**"] = self.fontName
   }
 
   //····················································································································

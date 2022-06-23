@@ -22,6 +22,7 @@ extension PackageSegment {
   //····················································································································
 
   func operationAfterPasting_PackageSegment (additionalDictionary inDictionary : NSDictionary,
+                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }

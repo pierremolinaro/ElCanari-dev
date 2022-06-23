@@ -171,7 +171,9 @@ extension PackageSlavePad {
 
   //····················································································································
 
-  func operationAfterPasting_PackageSlavePad (additionalDictionary inDictionary : NSDictionary, objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_PackageSlavePad (additionalDictionary inDictionary : NSDictionary,
+                                              optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
+                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     if let masterPadIndex = inDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] as? Int {
       for object in inObjectArray {
         if object.objectIdentifier == masterPadIndex, let masterPad = object as? PackagePad {

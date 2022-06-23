@@ -28,6 +28,7 @@ extension PackageDimension {
   //····················································································································
 
   func operationAfterPasting_PackageDimension (additionalDictionary inDictionary : NSDictionary,
+                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }

@@ -39,8 +39,8 @@ extension AutoLayoutProjectDocument {
     inOutlet.mGraphicView.setMouseMovedOrFlagsChangedCallback { [weak self] (unalignedMouseLocation) in
       self?.mouseMovedOrFlagsChangedInBoard (unalignedMouseLocation)
     }
-
-
+  //--- Pasteboard
+    inOutlet.mGraphicView.register (pasteboardType: BOARD_PASTEBOARD_TYPE)
 //--- END OF USER ZONE 2
   }
 }

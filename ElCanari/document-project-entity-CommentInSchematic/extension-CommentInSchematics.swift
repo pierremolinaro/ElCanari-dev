@@ -27,6 +27,7 @@ extension CommentInSchematic {
   //····················································································································
 
   func operationAfterPasting_CommentInSchematic (additionalDictionary inDictionary : NSDictionary,
+                                                 optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                                  objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }

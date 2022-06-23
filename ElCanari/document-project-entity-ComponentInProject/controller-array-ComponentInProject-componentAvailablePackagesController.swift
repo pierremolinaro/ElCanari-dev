@@ -29,7 +29,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
   //····················································································································
 
   var selectedSet : EBReferenceSet <DevicePackageInProject> {
-    set (newValue) {
+    set {
       self.mPrivateSelectedSet = newValue
     }
     get {

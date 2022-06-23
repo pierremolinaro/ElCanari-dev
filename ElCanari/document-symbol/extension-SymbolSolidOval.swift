@@ -28,7 +28,8 @@ extension SymbolSolidOval {
   //····················································································································
 
   func operationAfterPasting_SymbolSolidOval (additionalDictionary inDictionary : NSDictionary,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+                                              optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
+                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }
 

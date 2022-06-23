@@ -27,6 +27,7 @@ extension NCInSchematic {
   //····················································································································
 
   func operationAfterPasting_NCInSchematic (additionalDictionary inDictionary : NSDictionary,
+                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }
