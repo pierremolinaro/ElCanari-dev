@@ -14,6 +14,7 @@ let BOARD_TEXT_ORIGIN_KNOB  = 0
 let BOARD_TEXT_ROTATION_KNOB  = 1
 
 fileprivate let BOARD_TEXT_ROTATION_KNOB_DISTANCE : CGFloat = 30.0
+fileprivate let FONT_NAME_IN_DICTIONARY = "*FONT-NAME*"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EXTENSION BoardText
@@ -61,7 +62,7 @@ extension BoardText {
   func operationAfterPasting_BoardText (additionalDictionary inDictionary : NSDictionary,
                                         optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                         objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    if let fontName = inDictionary ["**FONT-NAME**"] as? String,
+    if let fontName = inDictionary [FONT_NAME_IN_DICTIONARY] as? String,
        let projectDocument = inOptionalDocument as? AutoLayoutProjectDocumentSubClass {
       var optionalFont : FontInProject? = nil
       for font in projectDocument.rootObject.mFonts.values {
@@ -85,7 +86,7 @@ extension BoardText {
   //····················································································································
 
   func saveIntoAdditionalDictionary_BoardText (_ ioDictionary : NSMutableDictionary) {
-    ioDictionary ["**FONT-NAME**"] = self.fontName
+    ioDictionary [FONT_NAME_IN_DICTIONARY] = self.fontName
   }
 
   //····················································································································

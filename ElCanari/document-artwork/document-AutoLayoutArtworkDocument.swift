@@ -12,13 +12,13 @@ import Cocoa
   //   Array controller: mDataController
   //····················································································································
 
-  var mDataController = Controller_AutoLayoutArtworkDocument_mDataController ()
+  final var mDataController = Controller_AutoLayoutArtworkDocument_mDataController ()
 
   //····················································································································
   //   Selection controller: mDataSelection
   //····················································································································
 
-  var mDataSelection = SelectionController_AutoLayoutArtworkDocument_mDataSelection ()
+  final var mDataSelection = SelectionController_AutoLayoutArtworkDocument_mDataSelection ()
 
   //····················································································································
   //   Transient property: documentFileName

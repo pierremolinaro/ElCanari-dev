@@ -56,8 +56,8 @@ class AutoLayoutBase_NSSegmentedControl : NSSegmentedControl, EBUserClassNamePro
   //  $enabled binding
   //····················································································································
 
-  private var mEnabledBindingController : EnabledBindingController? = nil
-  var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
+  private final var mEnabledBindingController : EnabledBindingController? = nil
+  final var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
 
   //····················································································································
 

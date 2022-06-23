@@ -28,16 +28,17 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.5.6"
+let VERSION_CANARI = "1.5.7"
 let MAC_OS_MINIMUM_VERSION = "10.13"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Diverses corrections de l'interface utilisateur du document « Project »"
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
+  "Ajout copier / coller des commentaires dans le schéma d'un projet",
+  "Ajout copier / coller des rectangles de restrictions, des lignes et des textes dans la carte d'un projet"
 ]
 
 //--------------------------------------------------------------------------------------------------

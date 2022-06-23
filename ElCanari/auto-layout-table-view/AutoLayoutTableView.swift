@@ -14,14 +14,14 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
   //····················································································································
 
-  private let mScrollView = AutoLayoutScrollView ()
-  private let mTableView : InternalAutoLayoutTableView
-  private var mAddButton : AutoLayoutButton? = nil
-  private var mRemoveButton : AutoLayoutButton? = nil
-  private weak var mDelegate : AutoLayoutTableViewDelegate? = nil // SHOULD BE WEAK
-  private var mRowCountCallBack : Optional < () -> Int > = nil
+  private final let mScrollView = AutoLayoutScrollView ()
+  private final let mTableView : InternalAutoLayoutTableView
+  private final var mAddButton : AutoLayoutButton? = nil
+  private final var mRemoveButton : AutoLayoutButton? = nil
+  private final weak var mDelegate : AutoLayoutTableViewDelegate? = nil // SHOULD BE WEAK
+  private final var mRowCountCallBack : Optional < () -> Int > = nil
 
-  private var mTransmitSelectionChangeToDelegate = true
+  private final var mTransmitSelectionChangeToDelegate = true
 
   //····················································································································
 
@@ -89,7 +89,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
   //····················································································································
 
-  func noHeaderView () -> Self {
+  final func noHeaderView () -> Self {
     self.mTableView.headerView = nil
     self.mTableView.cornerView = nil
     return self
@@ -97,14 +97,14 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
   //····················································································································
 
-  func setIntercellSpacing (horizontal inX : Int, vertical inY : Int) -> Self {
+  final func setIntercellSpacing (horizontal inX : Int, vertical inY : Int) -> Self {
     self.mTableView.intercellSpacing = NSSize (width: inX, height: inY)
     return self
   }
 
   //····················································································································
 
-  func set (hasHorizontalGrid inFlag : Bool) -> Self {
+  final func set (hasHorizontalGrid inFlag : Bool) -> Self {
     if inFlag {
       self.mTableView.gridStyleMask.insert (.solidHorizontalGridLineMask)
     }else{
@@ -115,44 +115,44 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   
   //····················································································································
 
-  func set (usesAlternatingRowBackgroundColors inFlag : Bool) -> Self {
+  final func set (usesAlternatingRowBackgroundColors inFlag : Bool) -> Self {
     self.mTableView.usesAlternatingRowBackgroundColors = inFlag
     return self
   }
 
   //····················································································································
 
-  @objc func addEntryAction (_ inUnusedSender : Any?) {
+  @objc final func addEntryAction (_ inUnusedSender : Any?) {
     self.mDelegate?.addEntry ()
   }
 
   //····················································································································
 
-  @objc func removeSelectedEntriesAction (_ inUnusedSender : Any?) {
+  @objc final func removeSelectedEntriesAction (_ inUnusedSender : Any?) {
     self.mDelegate?.removeSelectedEntries ()
   }
 
   //····················································································································
 
-  var columnCount : Int {
+  final var columnCount : Int {
     return self.mTableView.tableColumns.count
   }
 
   //····················································································································
 
-  var font : NSFont? {
+  final var font : NSFont? {
     return self.mTableView.font
   }
 
   //····················································································································
 
-  var controlSize : NSControl.ControlSize {
+  final var controlSize : NSControl.ControlSize {
     return self.mTableView.controlSize
   }
 
   //····················································································································
 
-  func appendTableColumn (_ inColumn : AutoLayoutTableColumn) {
+  final func appendTableColumn (_ inColumn : AutoLayoutTableColumn) {
   //--- Add Column
     self.mTableView.addTableColumn (inColumn)
   //--- Update table view sort descriptors
@@ -163,13 +163,13 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
   //····················································································································
 
-  func scrollRowToVisible (row inRow : Int) {
+  final func scrollRowToVisible (row inRow : Int) {
     self.mTableView.scrollRowToVisible (inRow)
   }
 
   //····················································································································
 
-  func sortAndReloadData () {
+  final func sortAndReloadData () {
     // Swift.print ("AutoLayoutTableView reloads data")
   //--- Current selected row
     let currentSelectedRow = self.mTableView.selectedRow // < 0 if no selected row
@@ -219,13 +219,13 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
   //····················································································································
 
-  var selectedRow : Int { return self.mTableView.selectedRow }
+  final var selectedRow : Int { return self.mTableView.selectedRow }
 
   //····················································································································
   //   NSTableViewDataSource protocol
   //····················································································································
 
-  func numberOfRows (in tableView: NSTableView) -> Int {
+  final func numberOfRows (in tableView: NSTableView) -> Int {
     return self.mRowCountCallBack? () ?? 0
   }
 
@@ -233,7 +233,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   //   NSTableViewDelegate protocol
   //····················································································································
 
-  func tableView (_ tableView : NSTableView,
+  final func tableView (_ tableView : NSTableView,
                   viewFor inTableColumn : NSTableColumn?,
                   row inRowIndex : Int) -> NSView? {
     if let tableColumn = inTableColumn as? AutoLayoutTableColumn {
@@ -248,7 +248,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   //    tableView:sortDescriptorsDidChange: NSTableViewDataSource delegate
   //····················································································································
 
-  func tableView (_ tableView : NSTableView,
+  final func tableView (_ tableView : NSTableView,
                   sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
     self.sortAndReloadData ()
   }
@@ -257,7 +257,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   //    T A B L E V I E W    D E L E G A T E : tableViewSelectionDidChange:
   //····················································································································
 
-  func tableViewSelectionDidChange (_ notification : Notification) {
+  final func tableViewSelectionDidChange (_ notification : Notification) {
     if mTransmitSelectionChangeToDelegate {
       self.mDelegate?.tableViewSelectionDidChange (selectedRows: self.mTableView.selectedRowIndexes)
     }
@@ -266,7 +266,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
   //····················································································································
 
-  func set (draggedTypes inDraggedTypes : [NSPasteboard.PasteboardType],
+  final func set (draggedTypes inDraggedTypes : [NSPasteboard.PasteboardType],
             dragFilterCallBack inFilterCallBack : @escaping ([URL]) -> Bool,
             dragConcludeCallBack inCallBack : @escaping ([URL]) -> Void) {
     self.mTableView.set (draggedTypes: inDraggedTypes, dragFilterCallBack: inFilterCallBack, dragConcludeCallBack: inCallBack)
@@ -284,10 +284,8 @@ class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  private var mDragConcludeCallBack : Optional < ([URL]) -> Void > = nil
-  private var mDragFilterCallBack : Optional < ([URL]) -> Bool > = nil
-//  private var mWidth : CGFloat? = nil
-//  private var mHeight : CGFloat? = nil
+  private final var mDragConcludeCallBack : Optional < ([URL]) -> Void > = nil
+  private final var mDragFilterCallBack : Optional < ([URL]) -> Bool > = nil
 
   //····················································································································
   // INIT
@@ -315,37 +313,12 @@ class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
   }
 
   //····················································································································
-
-//  func set (width inWidth : Int) {
-//    self.mWidth = CGFloat (inWidth)
-//  }
-
-  //····················································································································
-
-//  func set (height inHeight : Int) {
-//    self.mHeight = CGFloat (inHeight)
-//  }
-
-  //····················································································································
-
-//  override var intrinsicContentSize : NSSize {
-//    var s = super.intrinsicContentSize
-//    if let w = self.mWidth {
-//      s.width = w
-//    }
-//    if let h = self.mHeight {
-//      s.height = h
-//    }
-//    return s
-//  }
-
-  //····················································································································
   // MARK: Drag
   //····················································································································
 
-  func set (draggedTypes inDraggedTypes : [NSPasteboard.PasteboardType],
-            dragFilterCallBack inFilterCallBack : @escaping ([URL]) -> Bool,
-            dragConcludeCallBack inConcludeCallBack : @escaping ([URL]) -> Void) {
+  final func set (draggedTypes inDraggedTypes : [NSPasteboard.PasteboardType],
+                  dragFilterCallBack inFilterCallBack : @escaping ([URL]) -> Bool,
+                  dragConcludeCallBack inConcludeCallBack : @escaping ([URL]) -> Void) {
     self.registerForDraggedTypes (inDraggedTypes)
     self.mDragConcludeCallBack = inConcludeCallBack
     self.mDragFilterCallBack = inFilterCallBack
@@ -353,7 +326,7 @@ class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  override func draggingEntered (_ inSender : NSDraggingInfo) -> NSDragOperation {
+  override final func draggingEntered (_ inSender : NSDraggingInfo) -> NSDragOperation {
     var dragOperation : NSDragOperation = []
     if let array = inSender.draggingPasteboard.readObjects (forClasses: [NSURL.self]) as? [URL],
       let ok = self.mDragFilterCallBack? (array) {
@@ -364,30 +337,30 @@ class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  override func draggingUpdated (_ inSender : NSDraggingInfo) -> NSDragOperation {
+  override final func draggingUpdated (_ inSender : NSDraggingInfo) -> NSDragOperation {
     return self.draggingEntered (inSender)
   }
 
   //····················································································································
 
-  override func draggingExited (_ inSender : NSDraggingInfo?) {
+  override final func draggingExited (_ inSender : NSDraggingInfo?) {
   }
 
   //····················································································································
 
-  override func prepareForDragOperation (_ inSender : NSDraggingInfo) -> Bool {
+  override final func prepareForDragOperation (_ inSender : NSDraggingInfo) -> Bool {
     return true
   }
 
   //····················································································································
 
-  override func performDragOperation (_ inSender : NSDraggingInfo) -> Bool {
+  override final func performDragOperation (_ inSender : NSDraggingInfo) -> Bool {
     return self.draggingEntered (inSender) == .copy
   }
 
   //····················································································································
 
-  override func concludeDragOperation (_ inSender : NSDraggingInfo?) {
+  override final func concludeDragOperation (_ inSender : NSDraggingInfo?) {
     if let array = inSender?.draggingPasteboard.readObjects (forClasses: [NSURL.self]) as? [URL] {
       self.mDragConcludeCallBack? (array)
     }
@@ -397,8 +370,8 @@ class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
   //MARK:  $enabled binding
   //····················································································································
 
-  private var mEnabledBindingController : EnabledBindingController? = nil
-  var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
+  private final var mEnabledBindingController : EnabledBindingController? = nil
+  final var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
 
   //····················································································································
 

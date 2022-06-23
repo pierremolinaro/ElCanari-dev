@@ -352,7 +352,7 @@ final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : 
     if !self.mPasteboardTypes.contains (inType) {
       self.mPasteboardTypes.insert (inType)
       for ebView in self.mEBGraphicViews {
-        ebView.ebRegister (draggedTypes: [inType])
+        ebView.register (draggedTypes: [inType])
       }
     }
   }
@@ -383,7 +383,7 @@ final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : 
 
   final func bind_ebView (_ inEBView : EBGraphicView?) {
     if let ebView = inEBView {
-      ebView.ebRegister (draggedTypes: Array (self.mPasteboardTypes))
+      ebView.register (draggedTypes: Array (self.mPasteboardTypes))
       self.mEBGraphicViews.insert (ebView)
       ebView.set (controller: self)
     }
@@ -695,7 +695,7 @@ final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : 
 
   //····················································································································
 
-  var mAfterObjectRemovingCallback : Optional < () -> Void > = nil
+  final var mAfterObjectRemovingCallback : Optional < () -> Void > = nil
 
   //····················································································································
 

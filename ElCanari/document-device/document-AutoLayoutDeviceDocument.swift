@@ -12,43 +12,43 @@ import Cocoa
   //   Array controller: packageController
   //····················································································································
 
-  var packageController = Controller_AutoLayoutDeviceDocument_packageController ()
+  final var packageController = Controller_AutoLayoutDeviceDocument_packageController ()
 
   //····················································································································
   //   Array controller: documentationController
   //····················································································································
 
-  var documentationController = Controller_AutoLayoutDeviceDocument_documentationController ()
+  final var documentationController = Controller_AutoLayoutDeviceDocument_documentationController ()
 
   //····················································································································
   //   Array controller: symbolDisplayController
   //····················································································································
 
-  var symbolDisplayController = Controller_AutoLayoutDeviceDocument_symbolDisplayController ()
+  final var symbolDisplayController = Controller_AutoLayoutDeviceDocument_symbolDisplayController ()
 
   //····················································································································
   //   Selection controller: symbolInstanceSelection
   //····················································································································
 
-  var symbolInstanceSelection = SelectionController_AutoLayoutDeviceDocument_symbolInstanceSelection ()
+  final var symbolInstanceSelection = SelectionController_AutoLayoutDeviceDocument_symbolInstanceSelection ()
 
   //····················································································································
   //   Array controller: packageDisplayController
   //····················································································································
 
-  var packageDisplayController = Controller_AutoLayoutDeviceDocument_packageDisplayController ()
+  final var packageDisplayController = Controller_AutoLayoutDeviceDocument_packageDisplayController ()
 
   //····················································································································
   //   Array controller: symbolTypeController
   //····················································································································
 
-  var symbolTypeController = Controller_AutoLayoutDeviceDocument_symbolTypeController ()
+  final var symbolTypeController = Controller_AutoLayoutDeviceDocument_symbolTypeController ()
 
   //····················································································································
   //   Selection controller: symbolTypeSelection
   //····················································································································
 
-  var symbolTypeSelection = SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection ()
+  final var symbolTypeSelection = SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection ()
 
   //····················································································································
   //   Transient property: documentFileName

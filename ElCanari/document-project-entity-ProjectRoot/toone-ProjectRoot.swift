@@ -3787,7 +3787,7 @@ final class StoredObject_ProjectRoot : ReadWriteObject_ProjectRoot, EBSignatureO
   //····················································································································
 
   #if BUILD_OBJECT_EXPLORER
-    var mValueExplorer : NSButton? {
+    final var mValueExplorer : NSButton? {
       didSet {
         if let unwrappedExplorer = self.mValueExplorer {
           switch self.selection {

@@ -30,7 +30,7 @@ extension EBGraphicView {
         self.guideFor (possibleObjectIndex: possibleObjectIndex)
         self.mMouseDownBehaviour = ShiftMouseDownBehaviour (unalignedMouseDownLocationInView, possibleObjectIndex, viewController)
       case (_, _, true) : // Option Key On
-        if let pbType = self.pasteboardType {
+        if let pbType = self.pasteboardType, self.usesOptionKeyForDuplicatingSelectedObjects {
           self.ebStartDragging (with: inEvent, dragType: pbType)
         }else{
           self.mMouseDownBehaviour = OptionMouseDownBehaviour (unalignedMouseDownLocationInView, self, viewController)

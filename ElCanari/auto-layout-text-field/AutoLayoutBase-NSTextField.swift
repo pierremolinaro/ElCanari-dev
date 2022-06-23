@@ -16,13 +16,13 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol, NSTextF
 
   //····················································································································
 
-  private var mWidth : CGFloat?
+  private final var mWidth : CGFloat?
 
   //····················································································································
   // https://www.generacodice.com/en/articolo/4221090/how-to-let-nstextfield-grow-with-the-text-in-auto-layout
   //····················································································································
 
-  private var mAutomaticallyAdjustHeight = false
+  private final var mAutomaticallyAdjustHeight = false
 
   //····················································································································
 
@@ -106,19 +106,6 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol, NSTextF
   }
 
   //····················································································································
-
-//  override var stringValue : String {
-//    get { return super.stringValue }
-//    set {
-//      Swift.print ("SetStringValue \(newValue)")
-//      super.stringValue = newValue
-////      if self.mAutomaticallyAdjustHeight {
-//        self.invalidateIntrinsicContentSize ()
-////      }
-//    }
-//  }
-
-  //····················································································································
   //  By Default, super.intrinsicContentSize.width is -1, meaning the text field is invisible
   //  So we need to define intrinsicContentSize.width explicitly
   //  super.intrinsicContentSize.height is valid (19.0 for small size, 22.0 for regular size, ...)-
@@ -143,9 +130,9 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol, NSTextF
   //MARK:    NSTextFieldDelegate delegate function
   //····················································································································
 
-  func control (_ control : NSControl,
-                didFailToFormatString string : String,
-                errorDescription error : String?) -> Bool {
+  final func control (_ control : NSControl,
+                      didFailToFormatString string : String,
+                      errorDescription error : String?) -> Bool {
     return true
   }
 
@@ -153,9 +140,9 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol, NSTextF
   //MARK:   NSControlTextEditingDelegate
   //····················································································································
 
-  func control (_ control: NSControl,
-                textView: NSTextView,
-                doCommandBy inCommandSelector: Selector) -> Bool {
+  final func control (_ control: NSControl,
+                      textView: NSTextView,
+                      doCommandBy inCommandSelector: Selector) -> Bool {
     //Swift.print ("commandSelector \(inCommandSelector)")
     if inCommandSelector == #selector (Self.insertLineBreak (_:)) {
       return true
@@ -170,8 +157,8 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol, NSTextF
   //MARK:  $enabled binding
   //····················································································································
 
-  private var mEnabledBindingController : EnabledBindingController? = nil
-  var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
+  private final var mEnabledBindingController : EnabledBindingController? = nil
+  final var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
 
   //····················································································································
 
@@ -184,8 +171,8 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol, NSTextF
   //MARK:  $hidden binding
   //····················································································································
 
-  private var mHiddenBindingController : HiddenBindingController? = nil
-  var hiddenBindingController : HiddenBindingController? { return self.mHiddenBindingController }
+  private final var mHiddenBindingController : HiddenBindingController? = nil
+  final var hiddenBindingController : HiddenBindingController? { return self.mHiddenBindingController }
 
   //····················································································································
 

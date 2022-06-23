@@ -42,7 +42,8 @@ protocol EBManagedObject_address_protocol : AnyObject {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//  EBManagedObject
+//  EBManagedObject: hérite de EBObjcBaseObject
+//  Moins volumineux avec EBSwiftBaseObject, mais plus long à l'ouverture
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManagedObject_address_protocol {

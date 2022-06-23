@@ -21,7 +21,7 @@ let DEVICE_PACKAGE_METADATA_DICTIONARY_KEY = "DevicePackages"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(AutoLayoutDeviceDocumentSubClass) class AutoLayoutDeviceDocumentSubClass : AutoLayoutDeviceDocument {
+@objc(AutoLayoutDeviceDocumentSubClass) final class AutoLayoutDeviceDocumentSubClass : AutoLayoutDeviceDocument {
 
  //····················································································································
 

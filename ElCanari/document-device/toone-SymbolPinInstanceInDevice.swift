@@ -353,7 +353,7 @@ final class StoredObject_SymbolPinInstanceInDevice : ReadWriteObject_SymbolPinIn
   //····················································································································
 
   #if BUILD_OBJECT_EXPLORER
-    var mValueExplorer : NSButton? {
+    final var mValueExplorer : NSButton? {
       didSet {
         if let unwrappedExplorer = self.mValueExplorer {
           switch self.selection {

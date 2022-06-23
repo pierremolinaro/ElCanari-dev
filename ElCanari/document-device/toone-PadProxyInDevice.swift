@@ -353,7 +353,7 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
   //····················································································································
 
   #if BUILD_OBJECT_EXPLORER
-    var mValueExplorer : NSButton? {
+    final var mValueExplorer : NSButton? {
       didSet {
         if let unwrappedExplorer = self.mValueExplorer {
           switch self.selection {

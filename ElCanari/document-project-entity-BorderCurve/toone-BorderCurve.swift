@@ -537,7 +537,7 @@ final class StoredObject_BorderCurve : ReadWriteObject_BorderCurve, EBSignatureO
   //····················································································································
 
   #if BUILD_OBJECT_EXPLORER
-    var mValueExplorer : NSButton? {
+    final var mValueExplorer : NSButton? {
       didSet {
         if let unwrappedExplorer = self.mValueExplorer {
           switch self.selection {

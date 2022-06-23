@@ -12,37 +12,37 @@ import Cocoa
   //   Array controller: mBoardModelController
   //····················································································································
 
-  var mBoardModelController = Controller_AutoLayoutMergerDocument_mBoardModelController ()
+  final var mBoardModelController = Controller_AutoLayoutMergerDocument_mBoardModelController ()
 
   //····················································································································
   //   Selection controller: mBoardModelSelection
   //····················································································································
 
-  var mBoardModelSelection = SelectionController_AutoLayoutMergerDocument_mBoardModelSelection ()
+  final var mBoardModelSelection = SelectionController_AutoLayoutMergerDocument_mBoardModelSelection ()
 
   //····················································································································
   //   Array controller: mBoardInstanceController
   //····················································································································
 
-  var mBoardInstanceController = Controller_AutoLayoutMergerDocument_mBoardInstanceController ()
+  final var mBoardInstanceController = Controller_AutoLayoutMergerDocument_mBoardInstanceController ()
 
   //····················································································································
   //   Selection controller: mBoardInstanceSelection
   //····················································································································
 
-  var mBoardInstanceSelection = SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection ()
+  final var mBoardInstanceSelection = SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection ()
 
   //····················································································································
   //   Array controller: mDataController
   //····················································································································
 
-  var mDataController = Controller_AutoLayoutMergerDocument_mDataController ()
+  final var mDataController = Controller_AutoLayoutMergerDocument_mDataController ()
 
   //····················································································································
   //   Selection controller: mDataSelection
   //····················································································································
 
-  var mDataSelection = SelectionController_AutoLayoutMergerDocument_mDataSelection ()
+  final var mDataSelection = SelectionController_AutoLayoutMergerDocument_mDataSelection ()
 
   //····················································································································
   //   Transient property: issues

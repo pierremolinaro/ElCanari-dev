@@ -737,7 +737,7 @@ final class ComponentInProject : BoardObject,
   //   Array controller: componentAvailablePackagesController
   //····················································································································
 
-  var componentAvailablePackagesController = Controller_ComponentInProject_componentAvailablePackagesController ()
+  final var componentAvailablePackagesController = Controller_ComponentInProject_componentAvailablePackagesController ()
 
   //····················································································································
   //   ToMany proxy: mPackages

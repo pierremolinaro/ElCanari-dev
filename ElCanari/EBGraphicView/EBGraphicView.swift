@@ -784,12 +784,30 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   // https://stackoverflow.com/questions/4782636/nsview-subviews-interrupting-drag-operation
   //····················································································································
 
-  final func ebRegister (draggedTypes inPasteboardTypes : [NSPasteboard.PasteboardType]) {
+  final func register (draggedTypes inPasteboardTypes : [NSPasteboard.PasteboardType]) {
     if let scrollView = self.enclosingScrollView {
       scrollView.registerForDraggedTypes (inPasteboardTypes)
     }else{
       self.registerForDraggedTypes (inPasteboardTypes)
     }
+  }
+
+  //····················································································································
+  // USES OPTION KEY FOR DUPLICATING SELECTED OBJECTS
+  //····················································································································
+
+  private var mUsesOptionKeyForDuplicatingSelectedObjects = true
+
+  //····················································································································
+
+  final var usesOptionKeyForDuplicatingSelectedObjects : Bool {
+     return self.mUsesOptionKeyForDuplicatingSelectedObjects
+  }
+
+  //····················································································································
+
+  final func setUsesOptionKeyForDuplicatingSelectedObjects (_ inFlag : Bool) {
+    self.mUsesOptionKeyForDuplicatingSelectedObjects = inFlag
   }
 
   //····················································································································

@@ -63,6 +63,7 @@ fileprivate final class LogFileOperation : EBObjcBaseObject { // SHOULD INHERIT 
     vStack.appendView (self.mTextView)
     let button = AutoLayoutButton (title: "Clear", size: .small)
       .bind_run (target: self, selector: #selector (Self.clearTextAction(_:)))
+      .expandableWidth ()
     vStack.appendView (button)
   //--- Assign main view to window
     self.mWindow.contentView = vStack

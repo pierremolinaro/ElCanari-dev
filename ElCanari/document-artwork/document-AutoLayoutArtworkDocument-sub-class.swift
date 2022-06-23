@@ -15,7 +15,7 @@ let PMArtworkComment = "PMArtworkComment"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(AutoLayoutArtworkDocumentSubClass) class AutoLayoutArtworkDocumentSubClass : AutoLayoutArtworkDocument {
+@objc(AutoLayoutArtworkDocumentSubClass) final class AutoLayoutArtworkDocumentSubClass : AutoLayoutArtworkDocument {
 
   //····················································································································
 

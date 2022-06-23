@@ -43,42 +43,6 @@ final class CanariSelectDefaultNetClassMenu : NSMenu, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  // menuItemAction
-  //····················································································································
-
-//  @objc private func menuItemAction (_ inSender : NSMenuItem) {
-//    let value = self.mValue ^ (1 << inSender.tag)
-//    _ = self.mLayersController?.updateModel (withCandidateValue: value, windowForSheet: nil)
-//  }
-
-  //····················································································································
-  //  $layers binding
-  //····················································································································
-
-//  private func updateOutlet (_ object : EBReadOnlyProperty_Int) {
-//    switch object.selection {
-//    case .empty, .multiple :
-//      for item in self.items {
-//        item.isEnabled = false
-//        item.state = .off
-//      }
-//    case .single (let value) :
-//      self.mValue = value
-//      var v = value
-//      for item in self.items {
-//        let flag = (v & 1) != 0
-//        item.state = flag ? .on : .off
-//        if value.nonzeroBitCount <= 1 {
-//          item.isEnabled = !flag
-//        }else{
-//          item.isEnabled = true
-//        }
-//        v >>= 1
-//      }
-//    }
-//  }
-
-  //····················································································································
 
   private var mController : Controller_CanariDefaultNetClassMenu? = nil
 

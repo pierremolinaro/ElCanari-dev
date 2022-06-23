@@ -12,13 +12,13 @@ import Cocoa
   //   Array controller: selectedCharacterController
   //····················································································································
 
-  var selectedCharacterController = Controller_AutoLayoutFontDocument_selectedCharacterController ()
+  final var selectedCharacterController = Controller_AutoLayoutFontDocument_selectedCharacterController ()
 
   //····················································································································
   //   Selection controller: characterSelection
   //····················································································································
 
-  var characterSelection = SelectionController_AutoLayoutFontDocument_characterSelection ()
+  final var characterSelection = SelectionController_AutoLayoutFontDocument_characterSelection ()
 
   //····················································································································
   //   Transient property: documentFileName

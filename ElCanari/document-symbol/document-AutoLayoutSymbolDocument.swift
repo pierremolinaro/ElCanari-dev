@@ -12,19 +12,19 @@ import Cocoa
   //   Array controller: mSymbolObjectsController
   //····················································································································
 
-  var mSymbolObjectsController = Controller_AutoLayoutSymbolDocument_mSymbolObjectsController ()
+  final var mSymbolObjectsController = Controller_AutoLayoutSymbolDocument_mSymbolObjectsController ()
 
   //····················································································································
   //   Selection controller: mSymbolTextSelectionController
   //····················································································································
 
-  var mSymbolTextSelectionController = SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionController ()
+  final var mSymbolTextSelectionController = SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionController ()
 
   //····················································································································
   //   Selection controller: mSymbolPinSelectionController
   //····················································································································
 
-  var mSymbolPinSelectionController = SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionController ()
+  final var mSymbolPinSelectionController = SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionController ()
 
   //····················································································································
   //   Transient property: documentFileName

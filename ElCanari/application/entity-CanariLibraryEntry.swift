@@ -182,7 +182,7 @@ final class CanariLibraryEntry : EBManagedObject,
   //    Extern delegates
   //····················································································································
 
-  var mExternDelegate0 : CanariLibraryEntryDelegate? = nil
+  final var mExternDelegate0 : CanariLibraryEntryDelegate? = nil
 
   //····················································································································
   //    populateExplorerWindow

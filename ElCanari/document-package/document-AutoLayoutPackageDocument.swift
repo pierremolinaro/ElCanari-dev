@@ -12,67 +12,67 @@ import Cocoa
   //   Array controller: mModelImageObjectsController
   //····················································································································
 
-  var mModelImageObjectsController = Controller_AutoLayoutPackageDocument_mModelImageObjectsController ()
+  final var mModelImageObjectsController = Controller_AutoLayoutPackageDocument_mModelImageObjectsController ()
 
   //····················································································································
   //   Array controller: mPackageObjectsController
   //····················································································································
 
-  var mPackageObjectsController = Controller_AutoLayoutPackageDocument_mPackageObjectsController ()
+  final var mPackageObjectsController = Controller_AutoLayoutPackageDocument_mPackageObjectsController ()
 
   //····················································································································
   //   Selection controller: mPackageSegmentSelectionController
   //····················································································································
 
-  var mPackageSegmentSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageSegmentSelectionController ()
+  final var mPackageSegmentSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageSegmentSelectionController ()
 
   //····················································································································
   //   Selection controller: mPackageBezierCurveSelectionController
   //····················································································································
 
-  var mPackageBezierCurveSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSelectionController ()
+  final var mPackageBezierCurveSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSelectionController ()
 
   //····················································································································
   //   Selection controller: mPackageOvalSelectionController
   //····················································································································
 
-  var mPackageOvalSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionController ()
+  final var mPackageOvalSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionController ()
 
   //····················································································································
   //   Selection controller: mPackageArcSelectionController
   //····················································································································
 
-  var mPackageArcSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionController ()
+  final var mPackageArcSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionController ()
 
   //····················································································································
   //   Selection controller: mPackageGuideSelectionController
   //····················································································································
 
-  var mPackageGuideSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageGuideSelectionController ()
+  final var mPackageGuideSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageGuideSelectionController ()
 
   //····················································································································
   //   Selection controller: mPackageDimensionSelectionController
   //····················································································································
 
-  var mPackageDimensionSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelectionController ()
+  final var mPackageDimensionSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelectionController ()
 
   //····················································································································
   //   Selection controller: mPackageZoneSelectionController
   //····················································································································
 
-  var mPackageZoneSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionController ()
+  final var mPackageZoneSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionController ()
 
   //····················································································································
   //   Selection controller: mPackagePadSelectionController
   //····················································································································
 
-  var mPackagePadSelectionController = SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionController ()
+  final var mPackagePadSelectionController = SelectionController_AutoLayoutPackageDocument_mPackagePadSelectionController ()
 
   //····················································································································
   //   Selection controller: mPackageSlavePadSelectionController
   //····················································································································
 
-  var mPackageSlavePadSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelectionController ()
+  final var mPackageSlavePadSelectionController = SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelectionController ()
 
   //····················································································································
   //   Transient property: addSegmentButtonImage

@@ -12,127 +12,127 @@ import Cocoa
   //   Array controller: netClassController
   //····················································································································
 
-  var netClassController = Controller_AutoLayoutProjectDocument_netClassController ()
+  final var netClassController = Controller_AutoLayoutProjectDocument_netClassController ()
 
   //····················································································································
   //   Array controller: componentController
   //····················································································································
 
-  var componentController = Controller_AutoLayoutProjectDocument_componentController ()
+  final var componentController = Controller_AutoLayoutProjectDocument_componentController ()
 
   //····················································································································
   //   Array controller: projectFontController
   //····················································································································
 
-  var projectFontController = Controller_AutoLayoutProjectDocument_projectFontController ()
+  final var projectFontController = Controller_AutoLayoutProjectDocument_projectFontController ()
 
   //····················································································································
   //   Array controller: projectDeviceController
   //····················································································································
 
-  var projectDeviceController = Controller_AutoLayoutProjectDocument_projectDeviceController ()
+  final var projectDeviceController = Controller_AutoLayoutProjectDocument_projectDeviceController ()
 
   //····················································································································
   //   Array controller: schematicObjectsController
   //····················································································································
 
-  var schematicObjectsController = Controller_AutoLayoutProjectDocument_schematicObjectsController ()
+  final var schematicObjectsController = Controller_AutoLayoutProjectDocument_schematicObjectsController ()
 
   //····················································································································
   //   Selection controller: wireInSchematicSelectionController
   //····················································································································
 
-  var wireInSchematicSelectionController = SelectionController_AutoLayoutProjectDocument_wireInSchematicSelectionController ()
+  final var wireInSchematicSelectionController = SelectionController_AutoLayoutProjectDocument_wireInSchematicSelectionController ()
 
   //····················································································································
   //   Selection controller: ncInSchematicSelectionController
   //····················································································································
 
-  var ncInSchematicSelectionController = SelectionController_AutoLayoutProjectDocument_ncInSchematicSelectionController ()
+  final var ncInSchematicSelectionController = SelectionController_AutoLayoutProjectDocument_ncInSchematicSelectionController ()
 
   //····················································································································
   //   Selection controller: schematicLabelSelectionController
   //····················································································································
 
-  var schematicLabelSelectionController = SelectionController_AutoLayoutProjectDocument_schematicLabelSelectionController ()
+  final var schematicLabelSelectionController = SelectionController_AutoLayoutProjectDocument_schematicLabelSelectionController ()
 
   //····················································································································
   //   Selection controller: commentInSchematicSelectionController
   //····················································································································
 
-  var commentInSchematicSelectionController = SelectionController_AutoLayoutProjectDocument_commentInSchematicSelectionController ()
+  final var commentInSchematicSelectionController = SelectionController_AutoLayoutProjectDocument_commentInSchematicSelectionController ()
 
   //····················································································································
   //   Selection controller: componentSymbolSelectionController
   //····················································································································
 
-  var componentSymbolSelectionController = SelectionController_AutoLayoutProjectDocument_componentSymbolSelectionController ()
+  final var componentSymbolSelectionController = SelectionController_AutoLayoutProjectDocument_componentSymbolSelectionController ()
 
   //····················································································································
   //   Array controller: boardCurveObjectsController
   //····················································································································
 
-  var boardCurveObjectsController = Controller_AutoLayoutProjectDocument_boardCurveObjectsController ()
+  final var boardCurveObjectsController = Controller_AutoLayoutProjectDocument_boardCurveObjectsController ()
 
   //····················································································································
   //   Selection controller: boardCurveSelectionController
   //····················································································································
 
-  var boardCurveSelectionController = SelectionController_AutoLayoutProjectDocument_boardCurveSelectionController ()
+  final var boardCurveSelectionController = SelectionController_AutoLayoutProjectDocument_boardCurveSelectionController ()
 
   //····················································································································
   //   Array controller: boardObjectsController
   //····················································································································
 
-  var boardObjectsController = Controller_AutoLayoutProjectDocument_boardObjectsController ()
+  final var boardObjectsController = Controller_AutoLayoutProjectDocument_boardObjectsController ()
 
   //····················································································································
   //   Selection controller: boardTrackSelectionController
   //····················································································································
 
-  var boardTrackSelectionController = SelectionController_AutoLayoutProjectDocument_boardTrackSelectionController ()
+  final var boardTrackSelectionController = SelectionController_AutoLayoutProjectDocument_boardTrackSelectionController ()
 
   //····················································································································
   //   Selection controller: boardConnectorSelectionController
   //····················································································································
 
-  var boardConnectorSelectionController = SelectionController_AutoLayoutProjectDocument_boardConnectorSelectionController ()
+  final var boardConnectorSelectionController = SelectionController_AutoLayoutProjectDocument_boardConnectorSelectionController ()
 
   //····················································································································
   //   Selection controller: boardLineSelectionController
   //····················································································································
 
-  var boardLineSelectionController = SelectionController_AutoLayoutProjectDocument_boardLineSelectionController ()
+  final var boardLineSelectionController = SelectionController_AutoLayoutProjectDocument_boardLineSelectionController ()
 
   //····················································································································
   //   Selection controller: restrictRectangleSelectionController
   //····················································································································
 
-  var restrictRectangleSelectionController = SelectionController_AutoLayoutProjectDocument_restrictRectangleSelectionController ()
+  final var restrictRectangleSelectionController = SelectionController_AutoLayoutProjectDocument_restrictRectangleSelectionController ()
 
   //····················································································································
   //   Selection controller: boardTextSelectionController
   //····················································································································
 
-  var boardTextSelectionController = SelectionController_AutoLayoutProjectDocument_boardTextSelectionController ()
+  final var boardTextSelectionController = SelectionController_AutoLayoutProjectDocument_boardTextSelectionController ()
 
   //····················································································································
   //   Selection controller: componentInBoardSelectionController
   //····················································································································
 
-  var componentInBoardSelectionController = SelectionController_AutoLayoutProjectDocument_componentInBoardSelectionController ()
+  final var componentInBoardSelectionController = SelectionController_AutoLayoutProjectDocument_componentInBoardSelectionController ()
 
   //····················································································································
   //   Array controller: mDataController
   //····················································································································
 
-  var mDataController = Controller_AutoLayoutProjectDocument_mDataController ()
+  final var mDataController = Controller_AutoLayoutProjectDocument_mDataController ()
 
   //····················································································································
   //   Selection controller: mDataSelection
   //····················································································································
 
-  var mDataSelection = SelectionController_AutoLayoutProjectDocument_mDataSelection ()
+  final var mDataSelection = SelectionController_AutoLayoutProjectDocument_mDataSelection ()
 
   //····················································································································
   //   Transient property: netCount

@@ -16,11 +16,11 @@ final class AutoLayoutBase_NSTextView : NSTextView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  var mTextDidChangeCallBack : Optional < () -> Void > = nil
+  final var mTextDidChangeCallBack : Optional < () -> Void > = nil
 
   //--- REQUIRED!!! Declaring theses properties ensures they are retained (required for ElCapitan)
-  private let mTextStorage = NSTextStorage () // Subclassing NSTextStorage requires defining string, …
-  private let mLayoutManager = EmbeddedLayoutManager ()
+  private final let mTextStorage = NSTextStorage () // Subclassing NSTextStorage requires defining string, …
+  private final let mLayoutManager = EmbeddedLayoutManager ()
 
   //····················································································································
   // https://developer.apple.com/library/archive/documentation/TextFonts/Conceptual/CocoaTextArchitecture/TextSystemArchitecture/ArchitectureOverview.html#//apple_ref/doc/uid/TP40009459-CH7-CJBJHGAG
@@ -59,7 +59,7 @@ final class AutoLayoutBase_NSTextView : NSTextView, EBUserClassNameProtocol {
   // https://stackoverflow.com/questions/11237622/using-autolayout-with-expanding-nstextviews
   //····················································································································
 
-  override var intrinsicContentSize : NSSize {
+  override final var intrinsicContentSize : NSSize {
     let textContainer = self.textContainer!
     let layoutManager = self.layoutManager!
     layoutManager.ensureLayout (for: textContainer)
@@ -68,7 +68,7 @@ final class AutoLayoutBase_NSTextView : NSTextView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  override func didChangeText () {
+  override final func didChangeText () {
     super.didChangeText ()
     self.invalidateIntrinsicContentSize ()
     self.mTextDidChangeCallBack? ()
