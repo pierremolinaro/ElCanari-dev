@@ -14,7 +14,7 @@ final class EBGenericPropertyProxy <T> : EBObservableMutableProperty <T>, EBObse
 
   var mReadModelFunction : Optional < () -> EBSelection <T> > = nil
   var mWriteModelFunction : Optional < (T) -> Void > = nil
-  var mValidateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
+//  var mValidateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
   private var mCachedValue : EBSelection <T>? = nil
 
   //····················································································································

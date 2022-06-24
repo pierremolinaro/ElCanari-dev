@@ -155,16 +155,6 @@ class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   //····················································································································
 
-//  override func prepareSavePanel (_ inSavePanel : NSSavePanel) -> Bool {
-//    Swift.print ("types : \(inSavePanel.allowedContentTypes)")
-//    let array = inSavePanel.allowedContentTypes
-//    let uti = array [0]
-//    Swift.print ("  \(uti.preferredFilenameExtension)")
-//    return true
-//  }
-
-  //····················································································································
-
   override final func data (ofType typeName : String) throws -> Data {
   //--- Update document version
     var version = self.mVersion.propval

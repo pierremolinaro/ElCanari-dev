@@ -12,10 +12,10 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
 
   //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection <T> > = nil
-  var mWriteModelFunction : Optional < (T) -> Void > = nil
-  var mValidateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
-  private var mCachedValue : EBSelection <T>? = nil
+  final var mReadModelFunction : Optional < () -> EBSelection <T> > = nil
+  final var mWriteModelFunction : Optional < (T) -> Void > = nil
+//  final var mValidateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
+  private final var mCachedValue : EBSelection <T>? = nil
 
   //····················································································································
 
@@ -79,14 +79,14 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
 
   //····················································································································
 
-  override func validateAndSetProp (_ candidateValue : T,
-                                    windowForSheet inWindow:NSWindow?) -> Bool {
-    var result = false
-    if let unwValidateAndWriteModelFunction = self.mValidateAndWriteModelFunction {
-      result = unwValidateAndWriteModelFunction (candidateValue, inWindow)
-    }
-    return result
-  }
+//  override func validateAndSetProp (_ candidateValue : T,
+//                                    windowForSheet inWindow:NSWindow?) -> Bool {
+//    var result = false
+//    if let unwValidateAndWriteModelFunction = self.mValidateAndWriteModelFunction {
+//      result = unwValidateAndWriteModelFunction (candidateValue, inWindow)
+//    }
+//    return result
+//  }
 
   //····················································································································
 

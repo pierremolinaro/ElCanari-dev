@@ -12,12 +12,12 @@ class EBGenericTransientProperty <T : Equatable> : EBObservableProperty <T>, EBO
 
   //····················································································································
 
-  private var mValueCache : EBSelection <T>? = nil
-  var mReadModelFunction : Optional<() -> EBSelection <T> > = nil
+  private final var mValueCache : EBSelection <T>? = nil
+  final var mReadModelFunction : Optional<() -> EBSelection <T> > = nil
 
   //····················································································································
 
-  var mValueExplorer : NSTextField? {
+  final var mValueExplorer : NSTextField? {
     didSet {
       if let valueCache = self.mValueCache {
         self.mValueExplorer?.stringValue = "\(valueCache)"
@@ -29,7 +29,7 @@ class EBGenericTransientProperty <T : Equatable> : EBObservableProperty <T>, EBO
 
   //····················································································································
 
-  override var selection : EBSelection <T> {
+  override final var selection : EBSelection <T> {
     if self.mValueCache == nil {
       self.mValueCache = self.mReadModelFunction? ()
       if self.mValueCache == nil {
@@ -42,7 +42,7 @@ class EBGenericTransientProperty <T : Equatable> : EBObservableProperty <T>, EBO
 
   //····················································································································
 
-  override func observedObjectDidChange () {
+  override final func observedObjectDidChange () {
     if self.mValueCache != nil {
       self.mValueCache = nil
       self.mValueExplorer?.stringValue = "nil"

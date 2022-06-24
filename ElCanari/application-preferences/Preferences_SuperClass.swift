@@ -14,13 +14,13 @@ class Preferences_SuperClass : EBObjcBaseObject {
 
   //····················································································································
 
-  var mLibraryUpdateLogWindow : CanariWindow? = nil
-  var mLibraryUpdateLogTextView : AutoLayoutStaticTextView? = nil
+  final var mLibraryUpdateLogWindow : CanariWindow? = nil
+  final var mLibraryUpdateLogTextView : AutoLayoutStaticTextView? = nil
 
   //····················································································································
 
-  var mLibraryConsistencyLogWindow : CanariWindow? = nil
-  var mLibraryConsistencyLogTextView : AutoLayoutStaticTextView? = nil
+  final var mLibraryConsistencyLogWindow : CanariWindow? = nil
+  final var mLibraryConsistencyLogTextView : AutoLayoutStaticTextView? = nil
 
   //····················································································································
 
@@ -49,7 +49,7 @@ class Preferences_SuperClass : EBObjcBaseObject {
 
   //····················································································································
 
-  private var mCheckingForLibraryUpdateWindow : CanariWindow? = nil
+  private final var mCheckingForLibraryUpdateWindow : CanariWindow? = nil
 
   //····················································································································
 

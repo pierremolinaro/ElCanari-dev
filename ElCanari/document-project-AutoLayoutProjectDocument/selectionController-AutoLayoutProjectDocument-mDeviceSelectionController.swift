@@ -149,22 +149,18 @@ final class SelectionController_AutoLayoutProjectDocument_mDeviceSelectionContro
   //--- mDeviceFileData
     self.mDeviceFileData_property.mReadModelFunction = nil 
     self.mDeviceFileData_property.mWriteModelFunction = nil 
-    self.mDeviceFileData_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mDeviceFileData (self.mDeviceFileData_property)
   //--- mDeviceName
     self.mDeviceName_property.mReadModelFunction = nil 
     self.mDeviceName_property.mWriteModelFunction = nil 
-    self.mDeviceName_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mDeviceName (self.mDeviceName_property)
   //--- mDeviceVersion
     self.mDeviceVersion_property.mReadModelFunction = nil 
     self.mDeviceVersion_property.mWriteModelFunction = nil 
-    self.mDeviceVersion_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mDeviceVersion (self.mDeviceVersion_property)
   //--- mPrefix
     self.mPrefix_property.mReadModelFunction = nil 
     self.mPrefix_property.mWriteModelFunction = nil 
-    self.mPrefix_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_mPrefix (self.mPrefix_property)
   //--- packageNames
     self.packageNames_property.mReadModelFunction = nil 

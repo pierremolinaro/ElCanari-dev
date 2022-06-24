@@ -50,7 +50,7 @@ final class AutoLayoutCanariOrientationSegmentedControl : AutoLayoutBase_NSSegme
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     let orientation = QuadrantRotation (rawValue: self.selectedSegment)!
-    _ = self.mSelectedOrientationController?.updateModel (withCandidateValue: orientation, windowForSheet: self.window)
+    self.mSelectedOrientationController?.updateModel (withCandidateValue: orientation)
     return super.sendAction (action, to: to)
   }
 

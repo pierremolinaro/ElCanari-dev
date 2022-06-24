@@ -39,15 +39,15 @@ class ReadOnlyAbstractGenericRelationshipProperty : EBObservedObject {
 
   //····················································································································
 
-  private weak var mDocument : EBAutoLayoutManagedDocument? = nil
+  private final weak var mDocument : EBAutoLayoutManagedDocument? = nil
 
   //····················································································································
 
-  var document : EBAutoLayoutManagedDocument? { return self.mDocument }
+  final var document : EBAutoLayoutManagedDocument? { return self.mDocument }
 
   //····················································································································
 
-  public func set (document inDocument : EBAutoLayoutManagedDocument) {
+  public final func set (document inDocument : EBAutoLayoutManagedDocument) {
     self.mDocument = inDocument
   }
 

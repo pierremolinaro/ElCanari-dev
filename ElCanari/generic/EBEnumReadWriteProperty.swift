@@ -16,9 +16,9 @@ class EBReadWriteEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T>,
 
   //····················································································································
 
-  func validateAndSetProp (_ candidateValue : T, windowForSheet inWindow:NSWindow?) -> Bool {
-    return false
-  } // Abstract method
+//  func validateAndSetProp (_ candidateValue : T, windowForSheet inWindow:NSWindow?) -> Bool {
+//    return false
+//  } // Abstract method
 
   //····················································································································
 

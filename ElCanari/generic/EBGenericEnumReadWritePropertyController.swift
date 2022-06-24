@@ -21,8 +21,8 @@ final class EBGenericEnumReadWritePropertyController <T : EBEnumProtocol> : EBOb
 
   //····················································································································
 
-  func updateModel (withCandidateValue inValue : T, windowForSheet inWindow : NSWindow?) -> Bool {
-    return self.mObject.validateAndSetProp (inValue, windowForSheet: inWindow)
+  final func updateModel (withCandidateValue inValue : T) {
+    return self.mObject.setProp (inValue)
   }
 
   //····················································································································

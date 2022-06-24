@@ -15,20 +15,6 @@ final class AutoLayoutGridView2 : AutoLayoutVerticalStackView {
   private var mLastView = [NSView?] (repeating: nil, count: 2) // 0 -> left, 1 -> right
 
   //····················································································································
-  //   INIT
-  //····················································································································
-
-//  override init () {
-//    super.init ()
-//  }
-
-  //····················································································································
-
-//  required init? (coder inCoder : NSCoder) {
-//    fatalError ("init(coder:) has not been implemented")
-//  }
-
-  //····················································································································
 
   final func addFirstBaseLineAligned (left inLeftView : NSView, right inRightView : NSView) -> Self {
    return self.add ([inLeftView, inRightView], alignment: .firstBaseline)
