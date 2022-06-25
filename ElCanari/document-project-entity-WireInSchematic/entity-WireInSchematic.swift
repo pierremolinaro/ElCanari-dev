@@ -187,15 +187,18 @@ final class WireInSchematic : SchematicObject,
       if let unwSelf = self {
         let s0 = unwSelf.mP1_property.wireColor_property.selection
         let s1 = preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.selection
-        let s2 = unwSelf.mP1_property.location_property.selection
-        let s3 = unwSelf.mP2_property.location_property.selection
-        switch (s0, s1, s2, s3) {
+        let s2 = preferences_schematicBackColor_property.selection
+        let s3 = unwSelf.mP1_property.location_property.selection
+        let s4 = unwSelf.mP2_property.location_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
-              .single (let v3)) :
-          return .single (transient_WireInSchematic_objectDisplay (v0, v1, v2, v3))
+              .single (let v3),
+              .single (let v4)) :
+          return .single (transient_WireInSchematic_objectDisplay (v0, v1, v2, v3, v4))
         case (.multiple,
+              .multiple,
               .multiple,
               .multiple,
               .multiple) :
@@ -209,6 +212,7 @@ final class WireInSchematic : SchematicObject,
     }
     self.mP1_property.wireColor_property.addEBObserver (self.objectDisplay_property)
     preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.objectDisplay_property)
+    preferences_schematicBackColor_property.addEBObserver (self.objectDisplay_property)
     self.mP1_property.location_property.addEBObserver (self.objectDisplay_property)
     self.mP2_property.location_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
@@ -302,6 +306,7 @@ final class WireInSchematic : SchematicObject,
     super.removeAllObservers ()
     // self.mP1_property.wireColor_property.removeEBObserver (self.objectDisplay_property)
     // preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.removeEBObserver (self.objectDisplay_property)
+    // preferences_schematicBackColor_property.removeEBObserver (self.objectDisplay_property)
     // self.mP1_property.location_property.removeEBObserver (self.objectDisplay_property)
     // self.mP2_property.location_property.removeEBObserver (self.objectDisplay_property)
     // self.mP1_property.location_property.removeEBObserver (self.selectionDisplay_property)

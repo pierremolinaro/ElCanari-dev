@@ -16,13 +16,12 @@ import Cocoa
 func transient_WireInSchematic_objectDisplay (
        _ self_mP1_wireColor : NSColor?,       
        _ prefs_symbolDrawingWidthMultipliedByTenForSchematic : Int,
+       _ prefs_schematicBackColor : NSColor,  
        _ self_mP1_location : CanariPoint?,    
        _ self_mP2_location : CanariPoint?
 ) -> EBShape {
 //--- START OF USER ZONE 2
         var shape = EBShape ()
-//        let p1 = self_mP1_location ?? CanariPoint ()
-//        let p2 = self_mP2_location ?? CanariPoint (x: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP, y: WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP)
         if let p1 = self_mP1_location, let p2 = self_mP2_location {
           let lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTenForSchematic) / 10.0
           var bp = EBBezierPath ()
@@ -30,8 +29,8 @@ func transient_WireInSchematic_objectDisplay (
           bp.line (to: p2.cocoaPoint)
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
-          bp.lineWidth = lineWidth + 2.0
-          shape.add (stroke: [bp], .white)
+          bp.lineWidth = lineWidth + 1.0
+          shape.add (stroke: [bp], prefs_schematicBackColor)
           bp.lineWidth = lineWidth
           shape.add (stroke: [bp], self_mP1_wireColor ?? .black)
         }
