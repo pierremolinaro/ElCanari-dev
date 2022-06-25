@@ -4523,7 +4523,7 @@ import Cocoa
   fileprivate final func computeImplicitView_129 () -> NSView {
     let view = AutoLayoutCheckbox (title: "Back Side Legend", size: .small)
       .expandableHeight ()
-      .bind_value (self.rootObject.displayFrontLegendForBoard_property)
+      .bind_value (self.rootObject.displayBackLegendForBoard_property)
     return view
   }
 

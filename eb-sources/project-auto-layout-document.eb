@@ -1309,7 +1309,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.backSideLegendColorForBoard (sendContinously:yes) } },
-          right: Checkbox (title: "Back Side Legend", size : .small)  { expandableHeight  () $value root.displayFrontLegendForBoard }
+          right: Checkbox (title: "Back Side Legend", size : .small)  { expandableHeight  () $value root.displayBackLegendForBoard }
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.frontSideLayoutColorForBoard (sendContinously:yes) } },
