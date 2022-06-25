@@ -248,7 +248,8 @@ final class SheetInProject : EBManagedObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPoints_property.selection) {
+        let s0 = unwSelf.mPoints_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_SheetInProject_issues (v0))
         case (.multiple) :
@@ -264,8 +265,9 @@ final class SheetInProject : EBManagedObject,
   //--- Atomic property: connectedPoints
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (preferences_connectionColorForSchematic_property.selection,
-                unwSelf.mPoints_property.selection) {
+        let s0 = preferences_connectionColorForSchematic_property.selection
+        let s1 = unwSelf.mPoints_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_SheetInProject_connectedPoints (v0, v1))
@@ -284,7 +286,8 @@ final class SheetInProject : EBManagedObject,
   //--- Atomic property: connexionWarnings
     self.connexionWarnings_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection) {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_SheetInProject_connexionWarnings (v0))
         case (.multiple) :
@@ -300,7 +303,8 @@ final class SheetInProject : EBManagedObject,
   //--- Atomic property: connexionErrors
     self.connexionErrors_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection) {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_SheetInProject_connexionErrors (v0))
         case (.multiple) :
@@ -316,9 +320,10 @@ final class SheetInProject : EBManagedObject,
   //--- Atomic property: sheetDescriptor
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.sheetGeometry_property.selection,
-                unwSelf.mRoot_property.sheetIndexes_property.selection,
-                unwSelf.objectIdentifier.selection) {
+        let s0 = unwSelf.mRoot_property.sheetGeometry_property.selection
+        let s1 = unwSelf.mRoot_property.sheetIndexes_property.selection
+        let s2 = unwSelf.objectIdentifier.selection
+        switch (s0, s1, s2) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2)) :

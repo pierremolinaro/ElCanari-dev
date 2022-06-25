@@ -737,7 +737,8 @@ import Cocoa
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property.selection) {
+        let s0 = unwSelf.rootObject.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutFontDocument_statusImage (v0))
         case (.multiple) :
@@ -757,7 +758,8 @@ import Cocoa
   //--- Atomic property: statusTitle
     self.statusTitle_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property.selection) {
+        let s0 = unwSelf.rootObject.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutFontDocument_statusTitle (v0))
         case (.multiple) :
@@ -777,7 +779,8 @@ import Cocoa
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property.selection) {
+        let s0 = unwSelf.rootObject.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutFontDocument_statusMessage (v0))
         case (.multiple) :
@@ -797,7 +800,8 @@ import Cocoa
   //--- Atomic property: metadataStatus
     self.metadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property.selection) {
+        let s0 = unwSelf.rootObject.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutFontDocument_metadataStatus (v0))
         case (.multiple) :
@@ -817,7 +821,8 @@ import Cocoa
   //--- Atomic property: canDeleteCurrentCharacter
     self.canDeleteCurrentCharacter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.definedCharacters_property.selection) {
+        let s0 = unwSelf.rootObject.definedCharacters_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutFontDocument_canDeleteCurrentCharacter (v0))
         case (.multiple) :

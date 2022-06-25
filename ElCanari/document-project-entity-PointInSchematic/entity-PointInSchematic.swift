@@ -605,11 +605,12 @@ final class PointInSchematic : EBManagedObject,
   //--- Atomic property: location
     self.location_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX_property.selection,
-                unwSelf.mY_property.selection,
-                unwSelf.mSymbolPinName_property.selection,
-                unwSelf.mSymbol_property.symbolInfo_property.selection,
-                unwSelf.mSymbol_property.mSymbolInstanceName_property.selection) {
+        let s0 = unwSelf.mX_property.selection
+        let s1 = unwSelf.mY_property.selection
+        let s2 = unwSelf.mSymbolPinName_property.selection
+        let s3 = unwSelf.mSymbol_property.symbolInfo_property.selection
+        let s4 = unwSelf.mSymbol_property.mSymbolInstanceName_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -637,7 +638,8 @@ final class PointInSchematic : EBManagedObject,
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mNet_property.mNetName_property.selection) {
+        let s0 = unwSelf.mNet_property.mNetName_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_PointInSchematic_netName (v0))
         case (.multiple) :
@@ -653,7 +655,8 @@ final class PointInSchematic : EBManagedObject,
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mNet_property.netClassName_property.selection) {
+        let s0 = unwSelf.mNet_property.netClassName_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_PointInSchematic_netClassName (v0))
         case (.multiple) :
@@ -669,7 +672,8 @@ final class PointInSchematic : EBManagedObject,
   //--- Atomic property: hasNet
     self.hasNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mNet_none.selection) {
+        let s0 = unwSelf.mNet_none.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_PointInSchematic_hasNet (v0))
         case (.multiple) :
@@ -685,7 +689,8 @@ final class PointInSchematic : EBManagedObject,
   //--- Atomic property: canMove
     self.canMove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSymbol_none.selection) {
+        let s0 = unwSelf.mSymbol_none.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_PointInSchematic_canMove (v0))
         case (.multiple) :
@@ -701,7 +706,8 @@ final class PointInSchematic : EBManagedObject,
   //--- Atomic property: wireColor
     self.wireColor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mNet_property.wireColor_property.selection) {
+        let s0 = unwSelf.mNet_property.wireColor_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_PointInSchematic_wireColor (v0))
         case (.multiple) :
@@ -717,8 +723,9 @@ final class PointInSchematic : EBManagedObject,
   //--- Atomic property: symbolRotation
     self.symbolRotation_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSymbol_property.mRotation_property.selection,
-                unwSelf.mSymbol_property.mMirror_property.selection) {
+        let s0 = unwSelf.mSymbol_property.mRotation_property.selection
+        let s1 = unwSelf.mSymbol_property.mMirror_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_PointInSchematic_symbolRotation (v0, v1))
@@ -743,8 +750,9 @@ final class PointInSchematic : EBManagedObject,
   //--- Atomic property: symbolNameNetName
     self.symbolNameNetName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSymbolPinName_property.selection,
-                unwSelf.netName_property.selection) {
+        let s0 = unwSelf.mSymbolPinName_property.selection
+        let s1 = unwSelf.netName_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_PointInSchematic_symbolNameNetName (v0, v1))
@@ -763,11 +771,12 @@ final class PointInSchematic : EBManagedObject,
   //--- Atomic property: isConnected
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mNC_none.selection,
-                unwSelf.mSymbol_none.selection,
-                unwSelf.mWiresP1s_property.count_property.selection,
-                unwSelf.mWiresP2s_property.count_property.selection,
-                unwSelf.mLabels_property.count_property.selection) {
+        let s0 = unwSelf.mNC_none.selection
+        let s1 = unwSelf.mSymbol_none.selection
+        let s2 = unwSelf.mWiresP1s_property.count_property.selection
+        let s3 = unwSelf.mWiresP2s_property.count_property.selection
+        let s4 = unwSelf.mLabels_property.count_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -795,8 +804,9 @@ final class PointInSchematic : EBManagedObject,
   //--- Atomic property: status
     self.status_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.location_property.selection,
-                unwSelf.isConnected_property.selection) {
+        let s0 = unwSelf.location_property.selection
+        let s1 = unwSelf.isConnected_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_PointInSchematic_status (v0, v1))
@@ -815,8 +825,9 @@ final class PointInSchematic : EBManagedObject,
   //--- Atomic property: connectedPoints
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.location_property.selection,
-                unwSelf.isConnected_property.selection) {
+        let s0 = unwSelf.location_property.selection
+        let s1 = unwSelf.isConnected_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_PointInSchematic_connectedPoints (v0, v1))
@@ -835,15 +846,16 @@ final class PointInSchematic : EBManagedObject,
   //--- Atomic property: netInfoForPoint
     self.netInfoForPoint_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mLabels_property.count_property.selection,
-                unwSelf.mSymbol_property.componentName_property.selection,
-                unwSelf.mSymbol_property.mSymbolInstanceName_property.selection,
-                unwSelf.mSymbolPinName_property.selection,
-                unwSelf.mSymbol_property.pinPadAssignments_property.selection,
-                unwSelf.mWiresP1s_property.selection,
-                unwSelf.mWiresP2s_property.selection,
-                unwSelf.location_property.selection,
-                unwSelf.mSheet_property.sheetDescriptor_property.selection) {
+        let s0 = unwSelf.mLabels_property.count_property.selection
+        let s1 = unwSelf.mSymbol_property.componentName_property.selection
+        let s2 = unwSelf.mSymbol_property.mSymbolInstanceName_property.selection
+        let s3 = unwSelf.mSymbolPinName_property.selection
+        let s4 = unwSelf.mSymbol_property.pinPadAssignments_property.selection
+        let s5 = unwSelf.mWiresP1s_property.selection
+        let s6 = unwSelf.mWiresP2s_property.selection
+        let s7 = unwSelf.location_property.selection
+        let s8 = unwSelf.mSheet_property.sheetDescriptor_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

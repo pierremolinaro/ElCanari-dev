@@ -1742,7 +1742,8 @@ final class PackageRoot : EBManagedObject,
   //--- Atomic property: freePadNumbering
     self.freePadNumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.padNumbering_property.selection) {
+        let s0 = unwSelf.padNumbering_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_PackageRoot_freePadNumbering (v0))
         case (.multiple) :
@@ -1758,7 +1759,8 @@ final class PackageRoot : EBManagedObject,
   //--- Atomic property: counterClockNumbering
     self.counterClockNumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.padNumbering_property.selection) {
+        let s0 = unwSelf.padNumbering_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_PackageRoot_counterClockNumbering (v0))
         case (.multiple) :
@@ -1774,8 +1776,9 @@ final class PackageRoot : EBManagedObject,
   //--- Atomic property: gridStepMultipliedByDisplayFactor
     self.gridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.gridStep_property.selection,
-                unwSelf.gridDisplayFactor_property.selection) {
+        let s0 = unwSelf.gridStep_property.selection
+        let s1 = unwSelf.gridDisplayFactor_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_PackageRoot_gridStepMultipliedByDisplayFactor (v0, v1))
@@ -1794,8 +1797,9 @@ final class PackageRoot : EBManagedObject,
   //--- Atomic property: secondPointX
     self.secondPointX_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mModelImageFirstPointX_property.selection,
-                unwSelf.mModelImageSecondPointDx_property.selection) {
+        let s0 = unwSelf.mModelImageFirstPointX_property.selection
+        let s1 = unwSelf.mModelImageSecondPointDx_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_PackageRoot_secondPointX (v0, v1))
@@ -1814,8 +1818,9 @@ final class PackageRoot : EBManagedObject,
   //--- Atomic property: secondPointY
     self.secondPointY_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mModelImageFirstPointY_property.selection,
-                unwSelf.mModelImageSecondPointDy_property.selection) {
+        let s0 = unwSelf.mModelImageFirstPointY_property.selection
+        let s1 = unwSelf.mModelImageSecondPointDy_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_PackageRoot_secondPointY (v0, v1))
@@ -1834,7 +1839,8 @@ final class PackageRoot : EBManagedObject,
   //--- Atomic property: lockImageView
     self.lockImageView_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPointsAreLocked_property.selection) {
+        let s0 = unwSelf.mPointsAreLocked_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_PackageRoot_lockImageView (v0))
         case (.multiple) :
@@ -1852,9 +1858,10 @@ final class PackageRoot : EBManagedObject,
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (preferences_showPadNumber_property.selection,
-                unwSelf.packagePads_property.selection,
-                unwSelf.packageSlavePads_property.selection) {
+        let s0 = preferences_showPadNumber_property.selection
+        let s1 = unwSelf.packagePads_property.selection
+        let s2 = unwSelf.packageSlavePads_property.selection
+        switch (s0, s1, s2) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2)) :
@@ -1876,8 +1883,9 @@ final class PackageRoot : EBManagedObject,
   //--- Atomic property: backgroundImagePageBackgroundDisplay
     self.backgroundImagePageBackgroundDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.packageObjects_property.selection,
-                unwSelf.mModelImageData_property.selection) {
+        let s0 = unwSelf.packageObjects_property.selection
+        let s1 = unwSelf.mModelImageData_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_PackageRoot_backgroundImagePageBackgroundDisplay (v0, v1))
@@ -1896,7 +1904,8 @@ final class PackageRoot : EBManagedObject,
   //--- Atomic property: modelImageSizeString
     self.modelImageSizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mModelImageData_property.selection) {
+        let s0 = unwSelf.mModelImageData_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_PackageRoot_modelImageSizeString (v0))
         case (.multiple) :
@@ -1912,7 +1921,8 @@ final class PackageRoot : EBManagedObject,
   //--- Atomic property: hasModelImage
     self.hasModelImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mModelImageData_property.selection) {
+        let s0 = unwSelf.mModelImageData_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_PackageRoot_hasModelImage (v0))
         case (.multiple) :
@@ -1928,7 +1938,8 @@ final class PackageRoot : EBManagedObject,
   //--- Atomic property: masterPadObjectIndexArray
     self.masterPadObjectIndexArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.packagePads_property.selection) {
+        let s0 = unwSelf.packagePads_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_PackageRoot_masterPadObjectIndexArray (v0))
         case (.multiple) :
@@ -1944,12 +1955,13 @@ final class PackageRoot : EBManagedObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.packageObjects_property.selection,
-                unwSelf.packageZones_property.selection,
-                unwSelf.packageZones_property.selection,
-                unwSelf.packageZones_property.selection,
-                unwSelf.packageZones_property.selection,
-                preferences_padZoneFont_property.selection) {
+        let s0 = unwSelf.packageObjects_property.selection
+        let s1 = unwSelf.packageZones_property.selection
+        let s2 = unwSelf.packageZones_property.selection
+        let s3 = unwSelf.packageZones_property.selection
+        let s4 = unwSelf.packageZones_property.selection
+        let s5 = preferences_padZoneFont_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

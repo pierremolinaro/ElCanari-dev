@@ -1234,7 +1234,8 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: deviceName
     self.deviceName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mDevice_property.mDeviceName_property.selection) {
+        let s0 = unwSelf.mDevice_property.mDeviceName_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ComponentInProject_deviceName (v0))
         case (.multiple) :
@@ -1250,7 +1251,8 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSlavePadsShouldBeRouted_property.selection) {
+        let s0 = unwSelf.mSlavePadsShouldBeRouted_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ComponentInProject_signatureForERCChecking (v0))
         case (.multiple) :
@@ -1268,7 +1270,8 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: packagePadDictionary
     self.packagePadDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSelectedPackage_property.packagePadDictionary_property.selection) {
+        let s0 = unwSelf.mSelectedPackage_property.packagePadDictionary_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ComponentInProject_packagePadDictionary (v0))
         case (.multiple) :
@@ -1284,7 +1287,8 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: selectedPackageName
     self.selectedPackageName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSelectedPackage_property.mPackageName_property.selection) {
+        let s0 = unwSelf.mSelectedPackage_property.mPackageName_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ComponentInProject_selectedPackageName (v0))
         case (.multiple) :
@@ -1300,7 +1304,8 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: availablePackages
     self.availablePackages_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mDevice_property.packageNames_property.selection) {
+        let s0 = unwSelf.mDevice_property.packageNames_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ComponentInProject_availablePackages (v0))
         case (.multiple) :
@@ -1316,7 +1321,8 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mConnectors_property.selection) {
+        let s0 = unwSelf.mConnectors_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ComponentInProject_issues (v0))
         case (.multiple) :
@@ -1332,7 +1338,8 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: componentIsPlacedInBoard
     self.componentIsPlacedInBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.isPlacedInBoard_property.selection) {
+        let s0 = unwSelf.isPlacedInBoard_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ComponentInProject_componentIsPlacedInBoard (v0))
         case (.multiple) :
@@ -1348,7 +1355,8 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: componentIsPlacedInBoardString
     self.componentIsPlacedInBoardString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.componentIsPlacedInBoard_property.selection) {
+        let s0 = unwSelf.componentIsPlacedInBoard_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ComponentInProject_componentIsPlacedInBoardString (v0))
         case (.multiple) :
@@ -1364,7 +1372,8 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSelectedPackage_property.mStrokeBezierPath_property.selection) {
+        let s0 = unwSelf.mSelectedPackage_property.mStrokeBezierPath_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ComponentInProject_strokeBezierPath (v0))
         case (.multiple) :
@@ -1392,7 +1401,8 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: pinPadAssignments
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mDevice_property.pinPadAssignments_property.selection) {
+        let s0 = unwSelf.mDevice_property.pinPadAssignments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ComponentInProject_pinPadAssignments (v0))
         case (.multiple) :
@@ -1408,7 +1418,8 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: hasSlavePads
     self.hasSlavePads_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.packagePadDictionary_property.selection) {
+        let s0 = unwSelf.packagePadDictionary_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ComponentInProject_hasSlavePads (v0))
         case (.multiple) :
@@ -1424,7 +1435,8 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: placementInSchematic
     self.placementInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSymbols_property.selection) {
+        let s0 = unwSelf.mSymbols_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ComponentInProject_placementInSchematic (v0))
         case (.multiple) :
@@ -1440,7 +1452,8 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: deviceSymbolDictionary
     self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mDevice_property.deviceSymbolDictionary_property.selection) {
+        let s0 = unwSelf.mDevice_property.deviceSymbolDictionary_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ComponentInProject_deviceSymbolDictionary (v0))
         case (.multiple) :
@@ -1456,7 +1469,8 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: componentNameFontName
     self.componentNameFontName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mNameFont_property.mFontName_property.selection) {
+        let s0 = unwSelf.mNameFont_property.mFontName_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ComponentInProject_componentNameFontName (v0))
         case (.multiple) :
@@ -1472,7 +1486,8 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: componentValueFontName
     self.componentValueFontName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mValueFont_property.mFontName_property.selection) {
+        let s0 = unwSelf.mValueFont_property.mFontName_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ComponentInProject_componentValueFontName (v0))
         case (.multiple) :
@@ -1488,11 +1503,12 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: componentPadDictionary
     self.componentPadDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX_property.selection,
-                unwSelf.mY_property.selection,
-                unwSelf.mRotation_property.selection,
-                unwSelf.mSide_property.selection,
-                unwSelf.packagePadDictionary_property.selection) {
+        let s0 = unwSelf.mX_property.selection
+        let s1 = unwSelf.mY_property.selection
+        let s2 = unwSelf.mRotation_property.selection
+        let s3 = unwSelf.mSide_property.selection
+        let s4 = unwSelf.packagePadDictionary_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -1520,7 +1536,8 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: padNetDictionary
     self.padNetDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSymbols_property.selection) {
+        let s0 = unwSelf.mSymbols_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ComponentInProject_padNetDictionary (v0))
         case (.multiple) :
@@ -1536,8 +1553,9 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: componentName
     self.componentName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mNamePrefix_property.selection,
-                unwSelf.mNameIndex_property.selection) {
+        let s0 = unwSelf.mNamePrefix_property.selection
+        let s1 = unwSelf.mNameIndex_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_ComponentInProject_componentName (v0, v1))
@@ -1556,32 +1574,33 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (preferences_frontSideLegendColorForBoard_property.selection,
-                preferences_backSideLegendColorForBoard_property.selection,
-                unwSelf.mX_property.selection,
-                unwSelf.mY_property.selection,
-                unwSelf.mRotation_property.selection,
-                unwSelf.mSide_property.selection,
-                unwSelf.strokeBezierPath_property.selection,
-                unwSelf.mDisplayLegend_property.selection,
-                unwSelf.mNameIsVisibleInBoard_property.selection,
-                unwSelf.mXName_property.selection,
-                unwSelf.mYName_property.selection,
-                unwSelf.mNameFont_property.descriptor_property.selection,
-                unwSelf.mNameFontSize_property.selection,
-                unwSelf.mNameRotation_property.selection,
-                unwSelf.componentName_property.selection,
-                unwSelf.packagePadDictionary_property.selection,
-                unwSelf.padNetDictionary_property.selection,
-                unwSelf.mValueIsVisibleInBoard_property.selection,
-                unwSelf.mXValue_property.selection,
-                unwSelf.mYValue_property.selection,
-                unwSelf.mValueFont_property.descriptor_property.selection,
-                unwSelf.mValueFontSize_property.selection,
-                unwSelf.mValueRotation_property.selection,
-                unwSelf.mComponentValue_property.selection,
-                preferences_hiliteWidthMultipliedByTen_property.selection,
-                preferences_mShowComponentRotationKnobInBoard_property.selection) {
+        let s0 = preferences_frontSideLegendColorForBoard_property.selection
+        let s1 = preferences_backSideLegendColorForBoard_property.selection
+        let s2 = unwSelf.mX_property.selection
+        let s3 = unwSelf.mY_property.selection
+        let s4 = unwSelf.mRotation_property.selection
+        let s5 = unwSelf.mSide_property.selection
+        let s6 = unwSelf.strokeBezierPath_property.selection
+        let s7 = unwSelf.mDisplayLegend_property.selection
+        let s8 = unwSelf.mNameIsVisibleInBoard_property.selection
+        let s9 = unwSelf.mXName_property.selection
+        let s10 = unwSelf.mYName_property.selection
+        let s11 = unwSelf.mNameFont_property.descriptor_property.selection
+        let s12 = unwSelf.mNameFontSize_property.selection
+        let s13 = unwSelf.mNameRotation_property.selection
+        let s14 = unwSelf.componentName_property.selection
+        let s15 = unwSelf.packagePadDictionary_property.selection
+        let s16 = unwSelf.padNetDictionary_property.selection
+        let s17 = unwSelf.mValueIsVisibleInBoard_property.selection
+        let s18 = unwSelf.mXValue_property.selection
+        let s19 = unwSelf.mYValue_property.selection
+        let s20 = unwSelf.mValueFont_property.descriptor_property.selection
+        let s21 = unwSelf.mValueFontSize_property.selection
+        let s22 = unwSelf.mValueRotation_property.selection
+        let s23 = unwSelf.mComponentValue_property.selection
+        let s24 = preferences_hiliteWidthMultipliedByTen_property.selection
+        let s25 = preferences_mShowComponentRotationKnobInBoard_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -1672,12 +1691,13 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: unplacedSymbols
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.componentName_property.selection,
-                unwSelf.mSymbols_property.selection,
-                unwSelf.mSymbols_property.selection,
-                unwSelf.mSymbols_property.selection,
-                unwSelf.mSymbols_property.selection,
-                unwSelf.mComponentValue_property.selection) {
+        let s0 = unwSelf.componentName_property.selection
+        let s1 = unwSelf.mSymbols_property.selection
+        let s2 = unwSelf.mSymbols_property.selection
+        let s3 = unwSelf.mSymbols_property.selection
+        let s4 = unwSelf.mSymbols_property.selection
+        let s5 = unwSelf.mComponentValue_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -1708,41 +1728,78 @@ final class ComponentInProject : BoardObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX_property.selection,
-                unwSelf.mY_property.selection,
-                unwSelf.mRotation_property.selection,
-                unwSelf.mSide_property.selection,
-                unwSelf.packagePadDictionary_property.selection,
-                unwSelf.padNetDictionary_property.selection,
-                unwSelf.strokeBezierPath_property.selection,
-                unwSelf.mDisplayLegend_property.selection,
-                preferences_frontSideLegendColorForBoard_property.selection,
-                preferences_backSideLegendColorForBoard_property.selection,
-                unwSelf.packageDrawingWidthMultpliedByTenForBoard_property.selection (default: 10),
-                preferences_frontSidePadColorForBoard_property.selection,
-                unwSelf.displayFrontPadsForBoard_property.selection (default: true),
-                preferences_backSidePadColorForBoard_property.selection,
-                unwSelf.displayBackPadsForBoard_property.selection (default: true),
-                unwSelf.displayFrontLegendForBoard_property.selection (default: true),
-                unwSelf.displayBackLegendForBoard_property.selection (default: true),
-                preferences_padNumberFontForBoard_property.selection,
-                preferences_padNumberColorForBoard_property.selection,
-                unwSelf.displayPadNumbersForBoard_property.selection (default: true),
-                unwSelf.mNameIsVisibleInBoard_property.selection,
-                unwSelf.mXName_property.selection,
-                unwSelf.mYName_property.selection,
-                unwSelf.mNameFont_property.descriptor_property.selection,
-                unwSelf.mNameFontSize_property.selection,
-                unwSelf.mNameRotation_property.selection,
-                unwSelf.componentName_property.selection,
-                unwSelf.mValueIsVisibleInBoard_property.selection,
-                unwSelf.mXValue_property.selection,
-                unwSelf.mYValue_property.selection,
-                unwSelf.mValueFont_property.descriptor_property.selection,
-                unwSelf.mValueFontSize_property.selection,
-                unwSelf.mValueRotation_property.selection,
-                unwSelf.mComponentValue_property.selection,
-                unwSelf.mDevice_property.pinPadAssignments_property.selection) {
+        let s0 = unwSelf.mX_property.selection
+        let s1 = unwSelf.mY_property.selection
+        let s2 = unwSelf.mRotation_property.selection
+        let s3 = unwSelf.mSide_property.selection
+        let s4 = unwSelf.packagePadDictionary_property.selection
+        let s5 = unwSelf.padNetDictionary_property.selection
+        let s6 = unwSelf.strokeBezierPath_property.selection
+        let s7 = unwSelf.mDisplayLegend_property.selection
+        let s8 = preferences_frontSideLegendColorForBoard_property.selection
+        let s9 = preferences_backSideLegendColorForBoard_property.selection
+        var s10 = unwSelf.packageDrawingWidthMultpliedByTenForBoard_property.selection
+        switch s10 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s10 = .single (10)
+        }
+        let s11 = preferences_frontSidePadColorForBoard_property.selection
+        var s12 = unwSelf.displayFrontPadsForBoard_property.selection
+        switch s12 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s12 = .single (true)
+        }
+        let s13 = preferences_backSidePadColorForBoard_property.selection
+        var s14 = unwSelf.displayBackPadsForBoard_property.selection
+        switch s14 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s14 = .single (true)
+        }
+        var s15 = unwSelf.displayFrontLegendForBoard_property.selection
+        switch s15 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s15 = .single (true)
+        }
+        var s16 = unwSelf.displayBackLegendForBoard_property.selection
+        switch s16 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s16 = .single (true)
+        }
+        let s17 = preferences_padNumberFontForBoard_property.selection
+        let s18 = preferences_padNumberColorForBoard_property.selection
+        var s19 = unwSelf.displayPadNumbersForBoard_property.selection
+        switch s19 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s19 = .single (true)
+        }
+        let s20 = unwSelf.mNameIsVisibleInBoard_property.selection
+        let s21 = unwSelf.mXName_property.selection
+        let s22 = unwSelf.mYName_property.selection
+        let s23 = unwSelf.mNameFont_property.descriptor_property.selection
+        let s24 = unwSelf.mNameFontSize_property.selection
+        let s25 = unwSelf.mNameRotation_property.selection
+        let s26 = unwSelf.componentName_property.selection
+        let s27 = unwSelf.mValueIsVisibleInBoard_property.selection
+        let s28 = unwSelf.mXValue_property.selection
+        let s29 = unwSelf.mYValue_property.selection
+        let s30 = unwSelf.mValueFont_property.descriptor_property.selection
+        let s31 = unwSelf.mValueFontSize_property.selection
+        let s32 = unwSelf.mValueRotation_property.selection
+        let s33 = unwSelf.mComponentValue_property.selection
+        let s34 = unwSelf.mDevice_property.pinPadAssignments_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26, s27, s28, s29, s30, s31, s32, s33, s34) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

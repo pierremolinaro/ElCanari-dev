@@ -374,25 +374,50 @@ final class BoardText : BoardObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX_property.selection,
-                unwSelf.mY_property.selection,
-                unwSelf.mText_property.selection,
-                unwSelf.mFontSize_property.selection,
-                unwSelf.mFont_property.descriptor_property.selection,
-                unwSelf.mHorizontalAlignment_property.selection,
-                unwSelf.mVerticalAlignment_property.selection,
-                unwSelf.mLayer_property.selection,
-                unwSelf.mRotation_property.selection,
-                unwSelf.mWeight_property.selection,
-                unwSelf.mOblique_property.selection,
-                unwSelf.displayFrontLegendForBoard_property.selection (default: true),
-                unwSelf.displayBackLegendForBoard_property.selection (default: true),
-                unwSelf.displayFrontLayoutForBoard_property.selection (default: true),
-                unwSelf.displayBackLayoutForBoard_property.selection (default: true),
-                preferences_frontSideLegendColorForBoard_property.selection,
-                preferences_frontSideLayoutColorForBoard_property.selection,
-                preferences_backSideLayoutColorForBoard_property.selection,
-                preferences_backSideLegendColorForBoard_property.selection) {
+        let s0 = unwSelf.mX_property.selection
+        let s1 = unwSelf.mY_property.selection
+        let s2 = unwSelf.mText_property.selection
+        let s3 = unwSelf.mFontSize_property.selection
+        let s4 = unwSelf.mFont_property.descriptor_property.selection
+        let s5 = unwSelf.mHorizontalAlignment_property.selection
+        let s6 = unwSelf.mVerticalAlignment_property.selection
+        let s7 = unwSelf.mLayer_property.selection
+        let s8 = unwSelf.mRotation_property.selection
+        let s9 = unwSelf.mWeight_property.selection
+        let s10 = unwSelf.mOblique_property.selection
+        var s11 = unwSelf.displayFrontLegendForBoard_property.selection
+        switch s11 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s11 = .single (true)
+        }
+        var s12 = unwSelf.displayBackLegendForBoard_property.selection
+        switch s12 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s12 = .single (true)
+        }
+        var s13 = unwSelf.displayFrontLayoutForBoard_property.selection
+        switch s13 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s13 = .single (true)
+        }
+        var s14 = unwSelf.displayBackLayoutForBoard_property.selection
+        switch s14 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s14 = .single (true)
+        }
+        let s15 = preferences_frontSideLegendColorForBoard_property.selection
+        let s16 = preferences_frontSideLayoutColorForBoard_property.selection
+        let s17 = preferences_backSideLayoutColorForBoard_property.selection
+        let s18 = preferences_backSideLegendColorForBoard_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -462,23 +487,24 @@ final class BoardText : BoardObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX_property.selection,
-                unwSelf.mY_property.selection,
-                unwSelf.mText_property.selection,
-                unwSelf.mFontSize_property.selection,
-                unwSelf.mFont_property.descriptor_property.selection,
-                unwSelf.mHorizontalAlignment_property.selection,
-                unwSelf.mVerticalAlignment_property.selection,
-                unwSelf.mLayer_property.selection,
-                unwSelf.mRotation_property.selection,
-                unwSelf.mWeight_property.selection,
-                unwSelf.mOblique_property.selection,
-                preferences_frontSideLegendColorForBoard_property.selection,
-                preferences_frontSideLayoutColorForBoard_property.selection,
-                preferences_backSideLayoutColorForBoard_property.selection,
-                preferences_backSideLegendColorForBoard_property.selection,
-                preferences_hiliteWidthMultipliedByTen_property.selection,
-                preferences_mShowTextRotationKnobInBoard_property.selection) {
+        let s0 = unwSelf.mX_property.selection
+        let s1 = unwSelf.mY_property.selection
+        let s2 = unwSelf.mText_property.selection
+        let s3 = unwSelf.mFontSize_property.selection
+        let s4 = unwSelf.mFont_property.descriptor_property.selection
+        let s5 = unwSelf.mHorizontalAlignment_property.selection
+        let s6 = unwSelf.mVerticalAlignment_property.selection
+        let s7 = unwSelf.mLayer_property.selection
+        let s8 = unwSelf.mRotation_property.selection
+        let s9 = unwSelf.mWeight_property.selection
+        let s10 = unwSelf.mOblique_property.selection
+        let s11 = preferences_frontSideLegendColorForBoard_property.selection
+        let s12 = preferences_frontSideLayoutColorForBoard_property.selection
+        let s13 = preferences_backSideLayoutColorForBoard_property.selection
+        let s14 = preferences_backSideLegendColorForBoard_property.selection
+        let s15 = preferences_hiliteWidthMultipliedByTen_property.selection
+        let s16 = preferences_mShowTextRotationKnobInBoard_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -542,7 +568,8 @@ final class BoardText : BoardObject,
   //--- Atomic property: fontName
     self.fontName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mFont_property.mFontName_property.selection) {
+        let s0 = unwSelf.mFont_property.mFontName_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardText_fontName (v0))
         case (.multiple) :
@@ -558,17 +585,18 @@ final class BoardText : BoardObject,
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mLayer_property.selection,
-                unwSelf.mX_property.selection,
-                unwSelf.mY_property.selection,
-                unwSelf.mText_property.selection,
-                unwSelf.mFontSize_property.selection,
-                unwSelf.mFont_property.descriptor_property.selection,
-                unwSelf.mHorizontalAlignment_property.selection,
-                unwSelf.mVerticalAlignment_property.selection,
-                unwSelf.mRotation_property.selection,
-                unwSelf.mWeight_property.selection,
-                unwSelf.mOblique_property.selection) {
+        let s0 = unwSelf.mLayer_property.selection
+        let s1 = unwSelf.mX_property.selection
+        let s2 = unwSelf.mY_property.selection
+        let s3 = unwSelf.mText_property.selection
+        let s4 = unwSelf.mFontSize_property.selection
+        let s5 = unwSelf.mFont_property.descriptor_property.selection
+        let s6 = unwSelf.mHorizontalAlignment_property.selection
+        let s7 = unwSelf.mVerticalAlignment_property.selection
+        let s8 = unwSelf.mRotation_property.selection
+        let s9 = unwSelf.mWeight_property.selection
+        let s10 = unwSelf.mOblique_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

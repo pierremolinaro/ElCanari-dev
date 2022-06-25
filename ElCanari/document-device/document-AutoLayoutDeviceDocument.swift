@@ -1613,7 +1613,8 @@ import Cocoa
   //--- Atomic property: hasUnconnectedPin
     self.hasUnconnectedPin_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.unconnectedPins_property.selection) {
+        let s0 = unwSelf.rootObject.unconnectedPins_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutDeviceDocument_hasUnconnectedPin (v0))
         case (.multiple) :
@@ -1633,8 +1634,9 @@ import Cocoa
   //--- Atomic property: assignmentInhibitionMessage
     self.assignmentInhibitionMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.inconsistentPackagePadNameSetsMessage_property.selection,
-                unwSelf.rootObject.inconsistentSymbolNameSetMessage_property.selection) {
+        let s0 = unwSelf.rootObject.inconsistentPackagePadNameSetsMessage_property.selection
+        let s1 = unwSelf.rootObject.inconsistentSymbolNameSetMessage_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_AutoLayoutDeviceDocument_assignmentInhibitionMessage (v0, v1))
@@ -1657,7 +1659,8 @@ import Cocoa
   //--- Atomic property: hasUnconnectedPad
     self.hasUnconnectedPad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.unconnectedPads_property.selection) {
+        let s0 = unwSelf.rootObject.unconnectedPads_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutDeviceDocument_hasUnconnectedPad (v0))
         case (.multiple) :
@@ -1677,7 +1680,8 @@ import Cocoa
   //--- Atomic property: hasAssignedPadProxies
     self.hasAssignedPadProxies_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.assignedPadProxies_property.selection) {
+        let s0 = unwSelf.rootObject.assignedPadProxies_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutDeviceDocument_hasAssignedPadProxies (v0))
         case (.multiple) :
@@ -1697,8 +1701,9 @@ import Cocoa
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property.selection,
-                unwSelf.documentFileName_property.selection) {
+        let s0 = unwSelf.rootObject.issues_property.selection
+        let s1 = unwSelf.documentFileName_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_AutoLayoutDeviceDocument_issues (v0, v1))
@@ -1721,7 +1726,8 @@ import Cocoa
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection) {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutDeviceDocument_mStatusImage (v0))
         case (.multiple) :
@@ -1741,7 +1747,8 @@ import Cocoa
   //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection) {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutDeviceDocument_mStatusMessage (v0))
         case (.multiple) :
@@ -1761,7 +1768,8 @@ import Cocoa
   //--- Atomic property: mMetadataStatus
     self.mMetadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection) {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutDeviceDocument_mMetadataStatus (v0))
         case (.multiple) :

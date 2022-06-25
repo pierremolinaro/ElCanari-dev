@@ -121,7 +121,8 @@ class PackageObject : EBGraphicManagedObject,
   //--- Atomic property: knobSize
     self.knobSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.knobSizeMultpliedByTen_property.selection) {
+        let s0 = unwSelf.mRoot_property.knobSizeMultpliedByTen_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_PackageObject_knobSize (v0))
         case (.multiple) :

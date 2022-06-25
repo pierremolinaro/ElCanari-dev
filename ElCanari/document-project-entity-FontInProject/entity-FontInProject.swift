@@ -358,7 +358,8 @@ final class FontInProject : EBManagedObject,
   //--- Atomic property: versionString
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mFontVersion_property.selection) {
+        let s0 = unwSelf.mFontVersion_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_FontInProject_versionString (v0))
         case (.multiple) :
@@ -374,7 +375,8 @@ final class FontInProject : EBManagedObject,
   //--- Atomic property: sizeString
     self.sizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mDescriptiveString_property.selection) {
+        let s0 = unwSelf.mDescriptiveString_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_FontInProject_sizeString (v0))
         case (.multiple) :
@@ -390,8 +392,9 @@ final class FontInProject : EBManagedObject,
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mNominalSize_property.selection,
-                unwSelf.mDescriptiveString_property.selection) {
+        let s0 = unwSelf.mNominalSize_property.selection
+        let s1 = unwSelf.mDescriptiveString_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_FontInProject_descriptor (v0, v1))
@@ -410,7 +413,8 @@ final class FontInProject : EBManagedObject,
   //--- Atomic property: textCount
     self.textCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mTexts_property.count_property.selection) {
+        let s0 = unwSelf.mTexts_property.count_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_FontInProject_textCount (v0))
         case (.multiple) :
@@ -426,8 +430,9 @@ final class FontInProject : EBManagedObject,
   //--- Atomic property: canRemoveFont
     self.canRemoveFont_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mComponentNames_property.count_property.selection,
-                unwSelf.mComponentValues_property.count_property.selection) {
+        let s0 = unwSelf.mComponentNames_property.count_property.selection
+        let s1 = unwSelf.mComponentValues_property.count_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_FontInProject_canRemoveFont (v0, v1))
@@ -446,7 +451,8 @@ final class FontInProject : EBManagedObject,
   //--- Atomic property: componentNamesCount
     self.componentNamesCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mComponentNames_property.count_property.selection) {
+        let s0 = unwSelf.mComponentNames_property.count_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_FontInProject_componentNamesCount (v0))
         case (.multiple) :
@@ -462,7 +468,8 @@ final class FontInProject : EBManagedObject,
   //--- Atomic property: componentValuesCount
     self.componentValuesCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mComponentValues_property.count_property.selection) {
+        let s0 = unwSelf.mComponentValues_property.count_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_FontInProject_componentValuesCount (v0))
         case (.multiple) :

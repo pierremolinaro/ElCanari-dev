@@ -172,10 +172,11 @@ final class SymbolSolidOval : SymbolObject,
   //--- Atomic property: filledBezierPath
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x_property.selection,
-                unwSelf.y_property.selection,
-                unwSelf.width_property.selection,
-                unwSelf.height_property.selection) {
+        let s0 = unwSelf.x_property.selection
+        let s1 = unwSelf.y_property.selection
+        let s2 = unwSelf.width_property.selection
+        let s3 = unwSelf.height_property.selection
+        switch (s0, s1, s2, s3) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -200,11 +201,12 @@ final class SymbolSolidOval : SymbolObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x_property.selection,
-                unwSelf.y_property.selection,
-                unwSelf.width_property.selection,
-                unwSelf.height_property.selection,
-                preferences_symbolColor_property.selection) {
+        let s0 = unwSelf.x_property.selection
+        let s1 = unwSelf.y_property.selection
+        let s2 = unwSelf.width_property.selection
+        let s3 = unwSelf.height_property.selection
+        let s4 = preferences_symbolColor_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -232,10 +234,11 @@ final class SymbolSolidOval : SymbolObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x_property.selection,
-                unwSelf.y_property.selection,
-                unwSelf.width_property.selection,
-                unwSelf.height_property.selection) {
+        let s0 = unwSelf.x_property.selection
+        let s1 = unwSelf.y_property.selection
+        let s2 = unwSelf.width_property.selection
+        let s3 = unwSelf.height_property.selection
+        switch (s0, s1, s2, s3) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -260,10 +263,11 @@ final class SymbolSolidOval : SymbolObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x_property.selection,
-                unwSelf.y_property.selection,
-                unwSelf.width_property.selection,
-                unwSelf.height_property.selection) {
+        let s0 = unwSelf.x_property.selection
+        let s1 = unwSelf.y_property.selection
+        let s2 = unwSelf.width_property.selection
+        let s3 = unwSelf.height_property.selection
+        switch (s0, s1, s2, s3) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

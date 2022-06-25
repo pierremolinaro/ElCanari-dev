@@ -415,7 +415,8 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: versionString
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mDeviceVersion_property.selection) {
+        let s0 = unwSelf.mDeviceVersion_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_DeviceInProject_versionString (v0))
         case (.multiple) :
@@ -431,7 +432,8 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: sizeString
     self.sizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mDeviceFileData_property.selection) {
+        let s0 = unwSelf.mDeviceFileData_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_DeviceInProject_sizeString (v0))
         case (.multiple) :
@@ -447,7 +449,8 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: canExport
     self.canExport_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mDeviceFileData_property.selection) {
+        let s0 = unwSelf.mDeviceFileData_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_DeviceInProject_canExport (v0))
         case (.multiple) :
@@ -463,7 +466,8 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: packageNames
     self.packageNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPackages_property.selection) {
+        let s0 = unwSelf.mPackages_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_DeviceInProject_packageNames (v0))
         case (.multiple) :
@@ -479,7 +483,8 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: deviceComponentCountString
     self.deviceComponentCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mComponents_property.count_property.selection) {
+        let s0 = unwSelf.mComponents_property.count_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_DeviceInProject_deviceComponentCountString (v0))
         case (.multiple) :
@@ -495,7 +500,8 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: canRemove
     self.canRemove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mComponents_property.count_property.selection) {
+        let s0 = unwSelf.mComponents_property.count_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_DeviceInProject_canRemove (v0))
         case (.multiple) :
@@ -511,7 +517,8 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: symbolAndTypesNames
     self.symbolAndTypesNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSymbols_property.selection) {
+        let s0 = unwSelf.mSymbols_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_DeviceInProject_symbolAndTypesNames (v0))
         case (.multiple) :
@@ -527,7 +534,8 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: pinPadAssignments
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPadAssignments_property.selection) {
+        let s0 = unwSelf.mPadAssignments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_DeviceInProject_pinPadAssignments (v0))
         case (.multiple) :
@@ -543,10 +551,11 @@ final class DeviceInProject : EBManagedObject,
   //--- Atomic property: deviceSymbolDictionary
     self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPadAssignments_property.selection,
-                unwSelf.mSymbols_property.selection,
-                unwSelf.mSymbols_property.selection,
-                unwSelf.mSymbols_property.selection) {
+        let s0 = unwSelf.mPadAssignments_property.selection
+        let s1 = unwSelf.mSymbols_property.selection
+        let s2 = unwSelf.mSymbols_property.selection
+        let s3 = unwSelf.mSymbols_property.selection
+        switch (s0, s1, s2, s3) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

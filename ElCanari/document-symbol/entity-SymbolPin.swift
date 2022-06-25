@@ -358,8 +358,9 @@ final class SymbolPin : SymbolObject,
   //--- Atomic property: filledBezierPath
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.xPin_property.selection,
-                unwSelf.yPin_property.selection) {
+        let s0 = unwSelf.xPin_property.selection
+        let s1 = unwSelf.yPin_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_SymbolPin_filledBezierPath (v0, v1))
@@ -378,18 +379,19 @@ final class SymbolPin : SymbolObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.xPin_property.selection,
-                unwSelf.yPin_property.selection,
-                unwSelf.xName_property.selection,
-                unwSelf.yName_property.selection,
-                unwSelf.xNumber_property.selection,
-                unwSelf.yNumber_property.selection,
-                unwSelf.name_property.selection,
-                unwSelf.pinNameIsDisplayedInSchematics_property.selection,
-                unwSelf.nameHorizontalAlignment_property.selection,
-                unwSelf.numberHorizontalAlignment_property.selection,
-                preferences_symbolColor_property.selection,
-                preferences_pinNameFont_property.selection) {
+        let s0 = unwSelf.xPin_property.selection
+        let s1 = unwSelf.yPin_property.selection
+        let s2 = unwSelf.xName_property.selection
+        let s3 = unwSelf.yName_property.selection
+        let s4 = unwSelf.xNumber_property.selection
+        let s5 = unwSelf.yNumber_property.selection
+        let s6 = unwSelf.name_property.selection
+        let s7 = unwSelf.pinNameIsDisplayedInSchematics_property.selection
+        let s8 = unwSelf.nameHorizontalAlignment_property.selection
+        let s9 = unwSelf.numberHorizontalAlignment_property.selection
+        let s10 = preferences_symbolColor_property.selection
+        let s11 = preferences_pinNameFont_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -438,14 +440,15 @@ final class SymbolPin : SymbolObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.xPin_property.selection,
-                unwSelf.yPin_property.selection,
-                unwSelf.xName_property.selection,
-                unwSelf.yName_property.selection,
-                unwSelf.xNumber_property.selection,
-                unwSelf.yNumber_property.selection,
-                unwSelf.nameHorizontalAlignment_property.selection,
-                unwSelf.numberHorizontalAlignment_property.selection) {
+        let s0 = unwSelf.xPin_property.selection
+        let s1 = unwSelf.yPin_property.selection
+        let s2 = unwSelf.xName_property.selection
+        let s3 = unwSelf.yName_property.selection
+        let s4 = unwSelf.xNumber_property.selection
+        let s5 = unwSelf.yNumber_property.selection
+        let s6 = unwSelf.nameHorizontalAlignment_property.selection
+        let s7 = unwSelf.numberHorizontalAlignment_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -482,13 +485,14 @@ final class SymbolPin : SymbolObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.xPin_property.selection,
-                unwSelf.yPin_property.selection,
-                unwSelf.xName_property.selection,
-                unwSelf.yName_property.selection,
-                unwSelf.xNumber_property.selection,
-                unwSelf.yNumber_property.selection,
-                unwSelf.name_property.selection) {
+        let s0 = unwSelf.xPin_property.selection
+        let s1 = unwSelf.yPin_property.selection
+        let s2 = unwSelf.xName_property.selection
+        let s3 = unwSelf.yName_property.selection
+        let s4 = unwSelf.xNumber_property.selection
+        let s5 = unwSelf.yNumber_property.selection
+        let s6 = unwSelf.name_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -522,11 +526,12 @@ final class SymbolPin : SymbolObject,
   //--- Atomic property: nameRect
     self.nameRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.xName_property.selection,
-                unwSelf.yName_property.selection,
-                unwSelf.name_property.selection,
-                unwSelf.nameHorizontalAlignment_property.selection,
-                preferences_pinNameFont_property.selection) {
+        let s0 = unwSelf.xName_property.selection
+        let s1 = unwSelf.yName_property.selection
+        let s2 = unwSelf.name_property.selection
+        let s3 = unwSelf.nameHorizontalAlignment_property.selection
+        let s4 = preferences_pinNameFont_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

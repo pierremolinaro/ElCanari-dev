@@ -235,14 +235,15 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mFirstX_property.selection,
-                unwSelf.mFirstY_property.selection,
-                unwSelf.mFirstColor_property.selection,
-                unwSelf.mSecondDx_property.selection,
-                unwSelf.mSecondDy_property.selection,
-                unwSelf.mSecondColor_property.selection,
-                unwSelf.mRoot_property.mModelPointsCircleRadius_property.selection,
-                unwSelf.mRoot_property.mPointsAreLocked_property.selection) {
+        let s0 = unwSelf.mFirstX_property.selection
+        let s1 = unwSelf.mFirstY_property.selection
+        let s2 = unwSelf.mFirstColor_property.selection
+        let s3 = unwSelf.mSecondDx_property.selection
+        let s4 = unwSelf.mSecondDy_property.selection
+        let s5 = unwSelf.mSecondColor_property.selection
+        let s6 = unwSelf.mRoot_property.mModelPointsCircleRadius_property.selection
+        let s7 = unwSelf.mRoot_property.mPointsAreLocked_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -279,11 +280,12 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mFirstX_property.selection,
-                unwSelf.mFirstY_property.selection,
-                unwSelf.mSecondDx_property.selection,
-                unwSelf.mSecondDy_property.selection,
-                unwSelf.mRoot_property.mModelPointsCircleRadius_property.selection) {
+        let s0 = unwSelf.mFirstX_property.selection
+        let s1 = unwSelf.mFirstY_property.selection
+        let s2 = unwSelf.mSecondDx_property.selection
+        let s3 = unwSelf.mSecondDy_property.selection
+        let s4 = unwSelf.mRoot_property.mModelPointsCircleRadius_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

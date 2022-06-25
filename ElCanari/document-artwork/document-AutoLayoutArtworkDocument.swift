@@ -1016,11 +1016,12 @@ import Cocoa
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.fileGenerationParameterArray_property.selection,
-                unwSelf.rootObject.fileGenerationParameterArray_property.selection,
-                unwSelf.rootObject.fileGenerationParameterArray_property.selection,
-                unwSelf.rootObject.emptyDrillFileExtension_property.selection,
-                unwSelf.documentFileName_property.selection) {
+        let s0 = unwSelf.rootObject.fileGenerationParameterArray_property.selection
+        let s1 = unwSelf.rootObject.fileGenerationParameterArray_property.selection
+        let s2 = unwSelf.rootObject.fileGenerationParameterArray_property.selection
+        let s3 = unwSelf.rootObject.emptyDrillFileExtension_property.selection
+        let s4 = unwSelf.documentFileName_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -1052,7 +1053,8 @@ import Cocoa
   //--- Atomic property: emptyDrillFileExtensionImage
     self.emptyDrillFileExtensionImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.emptyDrillFileExtension_property.selection) {
+        let s0 = unwSelf.rootObject.emptyDrillFileExtension_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutArtworkDocument_emptyDrillFileExtensionImage (v0))
         case (.multiple) :
@@ -1072,7 +1074,8 @@ import Cocoa
   //--- Atomic property: generatedFileCountString
     self.generatedFileCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mDataController.sortedArray_property.count_property.selection) {
+        let s0 = unwSelf.mDataController.sortedArray_property.count_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutArtworkDocument_generatedFileCountString (v0))
         case (.multiple) :
@@ -1092,10 +1095,11 @@ import Cocoa
   //--- Atomic property: segmentedControlDataIssueImage
     self.segmentedControlDataIssueImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.fileGenerationParameterArray_property.selection,
-                unwSelf.rootObject.fileGenerationParameterArray_property.selection,
-                unwSelf.rootObject.hasDataWarning_property.selection,
-                unwSelf.rootObject.emptyDrillFileExtension_property.selection) {
+        let s0 = unwSelf.rootObject.fileGenerationParameterArray_property.selection
+        let s1 = unwSelf.rootObject.fileGenerationParameterArray_property.selection
+        let s2 = unwSelf.rootObject.hasDataWarning_property.selection
+        let s3 = unwSelf.rootObject.emptyDrillFileExtension_property.selection
+        switch (s0, s1, s2, s3) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -1124,11 +1128,12 @@ import Cocoa
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.fileGenerationParameterArray_property.selection,
-                unwSelf.rootObject.fileGenerationParameterArray_property.selection,
-                unwSelf.rootObject.fileGenerationParameterArray_property.selection,
-                unwSelf.rootObject.emptyDrillFileExtension_property.selection,
-                unwSelf.documentFileName_property.selection) {
+        let s0 = unwSelf.rootObject.fileGenerationParameterArray_property.selection
+        let s1 = unwSelf.rootObject.fileGenerationParameterArray_property.selection
+        let s2 = unwSelf.rootObject.fileGenerationParameterArray_property.selection
+        let s3 = unwSelf.rootObject.emptyDrillFileExtension_property.selection
+        let s4 = unwSelf.documentFileName_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

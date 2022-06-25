@@ -148,12 +148,13 @@ final class SymbolText : SymbolObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x_property.selection,
-                unwSelf.y_property.selection,
-                unwSelf.text_property.selection,
-                unwSelf.horizontalAlignment_property.selection,
-                preferences_symbolColor_property.selection,
-                preferences_pinNameFont_property.selection) {
+        let s0 = unwSelf.x_property.selection
+        let s1 = unwSelf.y_property.selection
+        let s2 = unwSelf.text_property.selection
+        let s3 = unwSelf.horizontalAlignment_property.selection
+        let s4 = preferences_symbolColor_property.selection
+        let s5 = preferences_pinNameFont_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -184,11 +185,12 @@ final class SymbolText : SymbolObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x_property.selection,
-                unwSelf.y_property.selection,
-                unwSelf.text_property.selection,
-                unwSelf.horizontalAlignment_property.selection,
-                preferences_pinNameFont_property.selection) {
+        let s0 = unwSelf.x_property.selection
+        let s1 = unwSelf.y_property.selection
+        let s2 = unwSelf.text_property.selection
+        let s3 = unwSelf.horizontalAlignment_property.selection
+        let s4 = preferences_pinNameFont_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -216,9 +218,10 @@ final class SymbolText : SymbolObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x_property.selection,
-                unwSelf.y_property.selection,
-                unwSelf.text_property.selection) {
+        let s0 = unwSelf.x_property.selection
+        let s1 = unwSelf.y_property.selection
+        let s2 = unwSelf.text_property.selection
+        switch (s0, s1, s2) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2)) :

@@ -172,7 +172,8 @@ final class LabelInSchematic : SchematicObject,
   //--- Atomic property: location
     self.location_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPoint_property.location_property.selection) {
+        let s0 = unwSelf.mPoint_property.location_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_LabelInSchematic_location (v0))
         case (.multiple) :
@@ -188,7 +189,8 @@ final class LabelInSchematic : SchematicObject,
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPoint_property.netName_property.selection) {
+        let s0 = unwSelf.mPoint_property.netName_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_LabelInSchematic_netName (v0))
         case (.multiple) :
@@ -204,10 +206,11 @@ final class LabelInSchematic : SchematicObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPoint_property.location_property.selection,
-                unwSelf.netName_property.selection,
-                preferences_pinNameFont_property.selection,
-                unwSelf.mOrientation_property.selection) {
+        let s0 = unwSelf.mPoint_property.location_property.selection
+        let s1 = unwSelf.netName_property.selection
+        let s2 = preferences_pinNameFont_property.selection
+        let s3 = unwSelf.mOrientation_property.selection
+        switch (s0, s1, s2, s3) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -232,7 +235,8 @@ final class LabelInSchematic : SchematicObject,
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPoint_property.netClassName_property.selection) {
+        let s0 = unwSelf.mPoint_property.netClassName_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_LabelInSchematic_netClassName (v0))
         case (.multiple) :
@@ -248,13 +252,14 @@ final class LabelInSchematic : SchematicObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (preferences_symbolColorForSchematic_property.selection,
-                preferences_schematicFrameColor_property.selection,
-                preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.selection,
-                unwSelf.mPoint_property.location_property.selection,
-                unwSelf.netName_property.selection,
-                preferences_pinNameFont_property.selection,
-                unwSelf.mOrientation_property.selection) {
+        let s0 = preferences_symbolColorForSchematic_property.selection
+        let s1 = preferences_schematicFrameColor_property.selection
+        let s2 = preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.selection
+        let s3 = unwSelf.mPoint_property.location_property.selection
+        let s4 = unwSelf.netName_property.selection
+        let s5 = preferences_pinNameFont_property.selection
+        let s6 = unwSelf.mOrientation_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

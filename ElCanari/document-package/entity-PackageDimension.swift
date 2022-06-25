@@ -442,10 +442,11 @@ final class PackageDimension : PackageObject,
   //--- Atomic property: distanceInCanariUnit
     self.distanceInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x1_property.selection,
-                unwSelf.y1_property.selection,
-                unwSelf.x2_property.selection,
-                unwSelf.y2_property.selection) {
+        let s0 = unwSelf.x1_property.selection
+        let s1 = unwSelf.y1_property.selection
+        let s2 = unwSelf.x2_property.selection
+        let s3 = unwSelf.y2_property.selection
+        switch (s0, s1, s2, s3) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -470,18 +471,19 @@ final class PackageDimension : PackageObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x1_property.selection,
-                unwSelf.y1_property.selection,
-                unwSelf.x2_property.selection,
-                unwSelf.y2_property.selection,
-                unwSelf.xDimension_property.selection,
-                unwSelf.yDimension_property.selection,
-                unwSelf.distanceInCanariUnit_property.selection,
-                unwSelf.distanceUnit_property.selection,
-                preferences_dimensionFont_property.selection,
-                unwSelf.drawDimensionBackground_property.selection,
-                preferences_packageBackgroundColor_property.selection,
-                preferences_packageDimensionColor_property.selection) {
+        let s0 = unwSelf.x1_property.selection
+        let s1 = unwSelf.y1_property.selection
+        let s2 = unwSelf.x2_property.selection
+        let s3 = unwSelf.y2_property.selection
+        let s4 = unwSelf.xDimension_property.selection
+        let s5 = unwSelf.yDimension_property.selection
+        let s6 = unwSelf.distanceInCanariUnit_property.selection
+        let s7 = unwSelf.distanceUnit_property.selection
+        let s8 = preferences_dimensionFont_property.selection
+        let s9 = unwSelf.drawDimensionBackground_property.selection
+        let s10 = preferences_packageBackgroundColor_property.selection
+        let s11 = preferences_packageDimensionColor_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -530,19 +532,20 @@ final class PackageDimension : PackageObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x1_property.selection,
-                unwSelf.y1_property.selection,
-                unwSelf.x2_property.selection,
-                unwSelf.y2_property.selection,
-                preferences_packageBackgroundColor_property.selection,
-                preferences_packageDimensionColor_property.selection,
-                unwSelf.drawDimensionBackground_property.selection,
-                unwSelf.xDimension_property.selection,
-                unwSelf.yDimension_property.selection,
-                unwSelf.distanceInCanariUnit_property.selection,
-                unwSelf.distanceUnit_property.selection,
-                preferences_dimensionFont_property.selection,
-                unwSelf.knobSize_property.selection) {
+        let s0 = unwSelf.x1_property.selection
+        let s1 = unwSelf.y1_property.selection
+        let s2 = unwSelf.x2_property.selection
+        let s3 = unwSelf.y2_property.selection
+        let s4 = preferences_packageBackgroundColor_property.selection
+        let s5 = preferences_packageDimensionColor_property.selection
+        let s6 = unwSelf.drawDimensionBackground_property.selection
+        let s7 = unwSelf.xDimension_property.selection
+        let s8 = unwSelf.yDimension_property.selection
+        let s9 = unwSelf.distanceInCanariUnit_property.selection
+        let s10 = unwSelf.distanceUnit_property.selection
+        let s11 = preferences_dimensionFont_property.selection
+        let s12 = unwSelf.knobSize_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -594,10 +597,11 @@ final class PackageDimension : PackageObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x1_property.selection,
-                unwSelf.y1_property.selection,
-                unwSelf.x2_property.selection,
-                unwSelf.y2_property.selection) {
+        let s0 = unwSelf.x1_property.selection
+        let s1 = unwSelf.y1_property.selection
+        let s2 = unwSelf.x2_property.selection
+        let s3 = unwSelf.y2_property.selection
+        switch (s0, s1, s2, s3) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

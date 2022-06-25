@@ -222,13 +222,14 @@ final class CommentInSchematic : SchematicObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mComment_property.selection,
-                unwSelf.mColor_property.selection,
-                unwSelf.mSize_property.selection,
-                unwSelf.mHorizontalAlignment_property.selection,
-                unwSelf.mVerticalAlignment_property.selection,
-                unwSelf.mX_property.selection,
-                unwSelf.mY_property.selection) {
+        let s0 = unwSelf.mComment_property.selection
+        let s1 = unwSelf.mColor_property.selection
+        let s2 = unwSelf.mSize_property.selection
+        let s3 = unwSelf.mHorizontalAlignment_property.selection
+        let s4 = unwSelf.mVerticalAlignment_property.selection
+        let s5 = unwSelf.mX_property.selection
+        let s6 = unwSelf.mY_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -262,14 +263,15 @@ final class CommentInSchematic : SchematicObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mComment_property.selection,
-                unwSelf.mColor_property.selection,
-                unwSelf.mSize_property.selection,
-                unwSelf.mHorizontalAlignment_property.selection,
-                unwSelf.mVerticalAlignment_property.selection,
-                preferences_schematicBackColor_property.selection,
-                unwSelf.mX_property.selection,
-                unwSelf.mY_property.selection) {
+        let s0 = unwSelf.mComment_property.selection
+        let s1 = unwSelf.mColor_property.selection
+        let s2 = unwSelf.mSize_property.selection
+        let s3 = unwSelf.mHorizontalAlignment_property.selection
+        let s4 = unwSelf.mVerticalAlignment_property.selection
+        let s5 = preferences_schematicBackColor_property.selection
+        let s6 = unwSelf.mX_property.selection
+        let s7 = unwSelf.mY_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

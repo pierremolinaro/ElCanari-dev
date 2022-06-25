@@ -391,8 +391,9 @@ final class DevicePinInProject : EBManagedObject,
   //--- Atomic property: pinQualifiedName
     self.pinQualifiedName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSymbolInstanceName_property.selection,
-                unwSelf.mPinName_property.selection) {
+        let s0 = unwSelf.mSymbolInstanceName_property.selection
+        let s1 = unwSelf.mPinName_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_DevicePinInProject_pinQualifiedName (v0, v1))
@@ -411,18 +412,19 @@ final class DevicePinInProject : EBManagedObject,
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPinName_property.selection,
-                unwSelf.mSymbolInstanceName_property.selection,
-                unwSelf.mSymbolTypeName_property.selection,
-                unwSelf.mPinX_property.selection,
-                unwSelf.mPinY_property.selection,
-                unwSelf.mXName_property.selection,
-                unwSelf.mYName_property.selection,
-                unwSelf.mNameHorizontalAlignment_property.selection,
-                unwSelf.mPinNameIsDisplayedInSchematic_property.selection,
-                unwSelf.mXNumber_property.selection,
-                unwSelf.mYNumber_property.selection,
-                unwSelf.mNumberHorizontalAlignment_property.selection) {
+        let s0 = unwSelf.mPinName_property.selection
+        let s1 = unwSelf.mSymbolInstanceName_property.selection
+        let s2 = unwSelf.mSymbolTypeName_property.selection
+        let s3 = unwSelf.mPinX_property.selection
+        let s4 = unwSelf.mPinY_property.selection
+        let s5 = unwSelf.mXName_property.selection
+        let s6 = unwSelf.mYName_property.selection
+        let s7 = unwSelf.mNameHorizontalAlignment_property.selection
+        let s8 = unwSelf.mPinNameIsDisplayedInSchematic_property.selection
+        let s9 = unwSelf.mXNumber_property.selection
+        let s10 = unwSelf.mYNumber_property.selection
+        let s11 = unwSelf.mNumberHorizontalAlignment_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

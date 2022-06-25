@@ -511,7 +511,8 @@ final class ArtworkRoot : EBManagedObject,
   //--- Atomic property: hasInnerElements
     self.hasInnerElements_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.layerConfiguration_property.selection) {
+        let s0 = unwSelf.layerConfiguration_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ArtworkRoot_hasInnerElements (v0))
         case (.multiple) :
@@ -527,7 +528,8 @@ final class ArtworkRoot : EBManagedObject,
   //--- Atomic property: hasSixLayers
     self.hasSixLayers_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.layerConfiguration_property.selection) {
+        let s0 = unwSelf.layerConfiguration_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ArtworkRoot_hasSixLayers (v0))
         case (.multiple) :
@@ -543,7 +545,8 @@ final class ArtworkRoot : EBManagedObject,
   //--- Atomic property: hasDataWarning
     self.hasDataWarning_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.fileGenerationParameterArray_property.selection) {
+        let s0 = unwSelf.fileGenerationParameterArray_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ArtworkRoot_hasDataWarning (v0))
         case (.multiple) :
@@ -559,7 +562,8 @@ final class ArtworkRoot : EBManagedObject,
   //--- Atomic property: emptyDrillFileExtension
     self.emptyDrillFileExtension_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.drillDataFileExtension_property.selection) {
+        let s0 = unwSelf.drillDataFileExtension_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ArtworkRoot_emptyDrillFileExtension (v0))
         case (.multiple) :
@@ -575,10 +579,11 @@ final class ArtworkRoot : EBManagedObject,
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.minPPTPTTTW_property.selection,
-                unwSelf.minValueForOARinEBUnit_property.selection,
-                unwSelf.minValueForBoardLimitWidth_property.selection,
-                unwSelf.minValueForPHDinEBUnit_property.selection) {
+        let s0 = unwSelf.minPPTPTTTW_property.selection
+        let s1 = unwSelf.minValueForOARinEBUnit_property.selection
+        let s2 = unwSelf.minValueForBoardLimitWidth_property.selection
+        let s3 = unwSelf.minValueForPHDinEBUnit_property.selection
+        switch (s0, s1, s2, s3) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

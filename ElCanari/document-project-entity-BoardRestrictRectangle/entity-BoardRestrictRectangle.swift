@@ -310,28 +310,65 @@ final class BoardRestrictRectangle : BoardObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX_property.selection,
-                unwSelf.mY_property.selection,
-                unwSelf.mWidth_property.selection,
-                unwSelf.mHeight_property.selection,
-                unwSelf.mIsInFrontLayer_property.selection,
-                unwSelf.mIsInBackLayer_property.selection,
-                unwSelf.mIsInInner1Layer_property.selection,
-                unwSelf.mIsInInner2Layer_property.selection,
-                unwSelf.mIsInInner3Layer_property.selection,
-                unwSelf.mIsInInner4Layer_property.selection,
-                unwSelf.displayFrontRestrictRectangles_property.selection (default: true),
-                unwSelf.displayBackRestrictRectangles_property.selection (default: true),
-                unwSelf.displayInner1RestrictRectangles_property.selection (default: true),
-                unwSelf.displayInner2RestrictRectangles_property.selection (default: true),
-                unwSelf.displayInner3RestrictRectangles_property.selection (default: true),
-                unwSelf.displayInner4RestrictRectangles_property.selection (default: true),
-                preferences_frontSideRestrictRectangleColorForBoard_property.selection,
-                preferences_inner1SideRestrictRectangleColorForBoard_property.selection,
-                preferences_inner2SideRestrictRectangleColorForBoard_property.selection,
-                preferences_inner3SideRestrictRectangleColorForBoard_property.selection,
-                preferences_inner4SideRestrictRectangleColorForBoard_property.selection,
-                preferences_backSideRestrictRectangleColorForBoard_property.selection) {
+        let s0 = unwSelf.mX_property.selection
+        let s1 = unwSelf.mY_property.selection
+        let s2 = unwSelf.mWidth_property.selection
+        let s3 = unwSelf.mHeight_property.selection
+        let s4 = unwSelf.mIsInFrontLayer_property.selection
+        let s5 = unwSelf.mIsInBackLayer_property.selection
+        let s6 = unwSelf.mIsInInner1Layer_property.selection
+        let s7 = unwSelf.mIsInInner2Layer_property.selection
+        let s8 = unwSelf.mIsInInner3Layer_property.selection
+        let s9 = unwSelf.mIsInInner4Layer_property.selection
+        var s10 = unwSelf.displayFrontRestrictRectangles_property.selection
+        switch s10 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s10 = .single (true)
+        }
+        var s11 = unwSelf.displayBackRestrictRectangles_property.selection
+        switch s11 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s11 = .single (true)
+        }
+        var s12 = unwSelf.displayInner1RestrictRectangles_property.selection
+        switch s12 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s12 = .single (true)
+        }
+        var s13 = unwSelf.displayInner2RestrictRectangles_property.selection
+        switch s13 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s13 = .single (true)
+        }
+        var s14 = unwSelf.displayInner3RestrictRectangles_property.selection
+        switch s14 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s14 = .single (true)
+        }
+        var s15 = unwSelf.displayInner4RestrictRectangles_property.selection
+        switch s15 {
+        case .single :
+          ()
+        case .empty, .multiple :
+          s15 = .single (true)
+        }
+        let s16 = preferences_frontSideRestrictRectangleColorForBoard_property.selection
+        let s17 = preferences_inner1SideRestrictRectangleColorForBoard_property.selection
+        let s18 = preferences_inner2SideRestrictRectangleColorForBoard_property.selection
+        let s19 = preferences_inner3SideRestrictRectangleColorForBoard_property.selection
+        let s20 = preferences_inner4SideRestrictRectangleColorForBoard_property.selection
+        let s21 = preferences_backSideRestrictRectangleColorForBoard_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -410,11 +447,12 @@ final class BoardRestrictRectangle : BoardObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX_property.selection,
-                unwSelf.mY_property.selection,
-                unwSelf.mWidth_property.selection,
-                unwSelf.mHeight_property.selection,
-                preferences_hiliteWidthMultipliedByTen_property.selection) {
+        let s0 = unwSelf.mX_property.selection
+        let s1 = unwSelf.mY_property.selection
+        let s2 = unwSelf.mWidth_property.selection
+        let s3 = unwSelf.mHeight_property.selection
+        let s4 = preferences_hiliteWidthMultipliedByTen_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -442,16 +480,17 @@ final class BoardRestrictRectangle : BoardObject,
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX_property.selection,
-                unwSelf.mY_property.selection,
-                unwSelf.mWidth_property.selection,
-                unwSelf.mHeight_property.selection,
-                unwSelf.mIsInFrontLayer_property.selection,
-                unwSelf.mIsInBackLayer_property.selection,
-                unwSelf.mIsInInner1Layer_property.selection,
-                unwSelf.mIsInInner2Layer_property.selection,
-                unwSelf.mIsInInner3Layer_property.selection,
-                unwSelf.mIsInInner4Layer_property.selection) {
+        let s0 = unwSelf.mX_property.selection
+        let s1 = unwSelf.mY_property.selection
+        let s2 = unwSelf.mWidth_property.selection
+        let s3 = unwSelf.mHeight_property.selection
+        let s4 = unwSelf.mIsInFrontLayer_property.selection
+        let s5 = unwSelf.mIsInBackLayer_property.selection
+        let s6 = unwSelf.mIsInInner1Layer_property.selection
+        let s7 = unwSelf.mIsInInner2Layer_property.selection
+        let s8 = unwSelf.mIsInInner3Layer_property.selection
+        let s9 = unwSelf.mIsInInner4Layer_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

@@ -240,10 +240,11 @@ final class FontCharacter : EBManagedObject,
   //--- Atomic property: segmentArrayForDrawing
     self.segmentArrayForDrawing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.segments_property.selection,
-                unwSelf.segments_property.selection,
-                unwSelf.segments_property.selection,
-                unwSelf.segments_property.selection) {
+        let s0 = unwSelf.segments_property.selection
+        let s1 = unwSelf.segments_property.selection
+        let s2 = unwSelf.segments_property.selection
+        let s3 = unwSelf.segments_property.selection
+        switch (s0, s1, s2, s3) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -268,7 +269,8 @@ final class FontCharacter : EBManagedObject,
   //--- Atomic property: gerberCode
     self.gerberCode_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.segmentArrayForDrawing_property.selection) {
+        let s0 = unwSelf.segmentArrayForDrawing_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_FontCharacter_gerberCode (v0))
         case (.multiple) :
@@ -284,7 +286,8 @@ final class FontCharacter : EBManagedObject,
   //--- Atomic property: gerberCodeInstructionCountMessage
     self.gerberCodeInstructionCountMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.gerberCode_property.selection) {
+        let s0 = unwSelf.gerberCode_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_FontCharacter_gerberCodeInstructionCountMessage (v0))
         case (.multiple) :
@@ -300,11 +303,12 @@ final class FontCharacter : EBManagedObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.codePoint_property.selection,
-                unwSelf.advance_property.selection,
-                unwSelf.mWarnsWhenNoSegment_property.selection,
-                unwSelf.mWarnsWhenAdvanceIsZero_property.selection,
-                unwSelf.segments_property.count_property.selection) {
+        let s0 = unwSelf.codePoint_property.selection
+        let s1 = unwSelf.advance_property.selection
+        let s2 = unwSelf.mWarnsWhenNoSegment_property.selection
+        let s3 = unwSelf.mWarnsWhenAdvanceIsZero_property.selection
+        let s4 = unwSelf.segments_property.count_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

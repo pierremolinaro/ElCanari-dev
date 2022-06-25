@@ -14,8 +14,6 @@ class EBObservableProperty <T> : EBObservedObject, EBObservableObjectProtocol {
 
   var selection : EBSelection <T> { return .empty } // Abstract method
 
-  func selection (default inValue : T) -> EBSelection <T> { return .single (inValue) }
-
   //····················································································································
 }
 

@@ -339,7 +339,8 @@ final class FontRoot : EBManagedObject,
   //--- Atomic property: currentCharacterCodePointString
     self.currentCharacterCodePointString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.currentCharacterCodePoint_property.selection) {
+        let s0 = unwSelf.currentCharacterCodePoint_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_FontRoot_currentCharacterCodePointString (v0))
         case (.multiple) :
@@ -355,11 +356,12 @@ final class FontRoot : EBManagedObject,
   //--- Atomic property: sampleStringBezierPath
     self.sampleStringBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.nominalSize_property.selection,
-                unwSelf.characters_property.selection,
-                unwSelf.characters_property.selection,
-                preferences_sampleString_property.selection,
-                preferences_sampleStringSize_property.selection) {
+        let s0 = unwSelf.nominalSize_property.selection
+        let s1 = unwSelf.characters_property.selection
+        let s2 = unwSelf.characters_property.selection
+        let s3 = preferences_sampleString_property.selection
+        let s4 = preferences_sampleStringSize_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -387,7 +389,8 @@ final class FontRoot : EBManagedObject,
   //--- Atomic property: sampleStringBezierPathWidth
     self.sampleStringBezierPathWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.sampleStringBezierPath_property.selection) {
+        let s0 = unwSelf.sampleStringBezierPath_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_FontRoot_sampleStringBezierPathWidth (v0))
         case (.multiple) :
@@ -403,7 +406,8 @@ final class FontRoot : EBManagedObject,
   //--- Atomic property: sampleStringBezierPathAscent
     self.sampleStringBezierPathAscent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.sampleStringBezierPath_property.selection) {
+        let s0 = unwSelf.sampleStringBezierPath_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_FontRoot_sampleStringBezierPathAscent (v0))
         case (.multiple) :
@@ -419,7 +423,8 @@ final class FontRoot : EBManagedObject,
   //--- Atomic property: sampleStringBezierPathDescent
     self.sampleStringBezierPathDescent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.sampleStringBezierPath_property.selection) {
+        let s0 = unwSelf.sampleStringBezierPath_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_FontRoot_sampleStringBezierPathDescent (v0))
         case (.multiple) :
@@ -435,7 +440,8 @@ final class FontRoot : EBManagedObject,
   //--- Atomic property: definedCharacters
     self.definedCharacters_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.characters_property.selection) {
+        let s0 = unwSelf.characters_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_FontRoot_definedCharacters (v0))
         case (.multiple) :
@@ -451,7 +457,8 @@ final class FontRoot : EBManagedObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.characters_property.selection) {
+        let s0 = unwSelf.characters_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_FontRoot_issues (v0))
         case (.multiple) :

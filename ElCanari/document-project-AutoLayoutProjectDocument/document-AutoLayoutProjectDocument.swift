@@ -7224,7 +7224,8 @@ import Cocoa
   //--- Atomic property: netCount
     self.netCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.netsDescription_property.selection) {
+        let s0 = unwSelf.rootObject.netsDescription_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_netCount (v0))
         case (.multiple) :
@@ -7244,7 +7245,8 @@ import Cocoa
   //--- Atomic property: rastnetDisplayOneNet
     self.rastnetDisplayOneNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.mRastnetDisplay_property.selection) {
+        let s0 = unwSelf.rootObject.mRastnetDisplay_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_rastnetDisplayOneNet (v0))
         case (.multiple) :
@@ -7264,7 +7266,8 @@ import Cocoa
   //--- Atomic property: rastnetDisplayComponentNet
     self.rastnetDisplayComponentNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.mRastnetDisplay_property.selection) {
+        let s0 = unwSelf.rootObject.mRastnetDisplay_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_rastnetDisplayComponentNet (v0))
         case (.multiple) :
@@ -7288,7 +7291,8 @@ import Cocoa
   //--- Atomic property: incorrectDocumentFileDetailedErrorMessage
     self.incorrectDocumentFileDetailedErrorMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.documentFileName_property.selection) {
+        let s0 = unwSelf.documentFileName_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_incorrectDocumentFileDetailedErrorMessage (v0))
         case (.multiple) :
@@ -7308,7 +7312,8 @@ import Cocoa
   //--- Atomic property: documentFileShouldBeRenamedErrorMessage
     self.documentFileShouldBeRenamedErrorMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.documentFileName_property.selection) {
+        let s0 = unwSelf.documentFileName_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_documentFileShouldBeRenamedErrorMessage (v0))
         case (.multiple) :
@@ -7328,7 +7333,8 @@ import Cocoa
   //--- Atomic property: pinPadAssignments
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
+        let s0 = unwSelf.projectDeviceController.selectedArray_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_pinPadAssignments (v0))
         case (.multiple) :
@@ -7348,7 +7354,8 @@ import Cocoa
   //--- Atomic property: selectedDeviceSymbolNames
     self.selectedDeviceSymbolNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
+        let s0 = unwSelf.projectDeviceController.selectedArray_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_selectedDeviceSymbolNames (v0))
         case (.multiple) :
@@ -7368,7 +7375,8 @@ import Cocoa
   //--- Atomic property: selectedDevicePackageNames
     self.selectedDevicePackageNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
+        let s0 = unwSelf.projectDeviceController.selectedArray_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_selectedDevicePackageNames (v0))
         case (.multiple) :
@@ -7388,7 +7396,8 @@ import Cocoa
   //--- Atomic property: selectedDeviceNames
     self.selectedDeviceNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
+        let s0 = unwSelf.projectDeviceController.selectedArray_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_selectedDeviceNames (v0))
         case (.multiple) :
@@ -7408,8 +7417,9 @@ import Cocoa
   //--- Atomic property: canRemoveNetClasses
     self.canRemoveNetClasses_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.mNetClasses_property.count_property.selection,
-                unwSelf.netClassController.selectedArray_property.selection) {
+        let s0 = unwSelf.rootObject.mNetClasses_property.count_property.selection
+        let s1 = unwSelf.netClassController.selectedArray_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_AutoLayoutProjectDocument_canRemoveNetClasses (v0, v1))
@@ -7432,7 +7442,8 @@ import Cocoa
   //--- Atomic property: netCountString
     self.netCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.netsDescription_property.selection) {
+        let s0 = unwSelf.rootObject.netsDescription_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_netCountString (v0))
         case (.multiple) :
@@ -7452,7 +7463,8 @@ import Cocoa
   //--- Atomic property: schematicSheetOrientationIsCustom
     self.schematicSheetOrientationIsCustom_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.mSchematicSheetOrientation_property.selection) {
+        let s0 = unwSelf.rootObject.mSchematicSheetOrientation_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_schematicSheetOrientationIsCustom (v0))
         case (.multiple) :
@@ -7472,11 +7484,12 @@ import Cocoa
   //--- Atomic property: rastnetShape
     self.rastnetShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.mRastnetDisplay_property.selection,
-                unwSelf.rootObject.mRastnetDisplayedNetName_property.selection,
-                unwSelf.rootObject.mRastnetDisplayedComponentName_property.selection,
-                unwSelf.rootObject.mBoardObjects_property.selection,
-                unwSelf.boardObjectsController.selectedArray_property.selection) {
+        let s0 = unwSelf.rootObject.mRastnetDisplay_property.selection
+        let s1 = unwSelf.rootObject.mRastnetDisplayedNetName_property.selection
+        let s2 = unwSelf.rootObject.mRastnetDisplayedComponentName_property.selection
+        let s3 = unwSelf.rootObject.mBoardObjects_property.selection
+        let s4 = unwSelf.boardObjectsController.selectedArray_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -7508,7 +7521,8 @@ import Cocoa
   //--- Atomic property: documentIsUnnamed
     self.documentIsUnnamed_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.documentFileName_property.selection) {
+        let s0 = unwSelf.documentFileName_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_documentIsUnnamed (v0))
         case (.multiple) :
@@ -7528,7 +7542,8 @@ import Cocoa
   //--- Atomic property: emptyDrillFileExtension
     self.emptyDrillFileExtension_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.drillDataFileExtension_property.selection) {
+        let s0 = unwSelf.rootObject.drillDataFileExtension_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_emptyDrillFileExtension (v0))
         case (.multiple) :
@@ -7548,7 +7563,8 @@ import Cocoa
   //--- Atomic property: componentCount
     self.componentCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.mComponents_property.count_property.selection) {
+        let s0 = unwSelf.rootObject.mComponents_property.count_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_componentCount (v0))
         case (.multiple) :
@@ -7568,7 +7584,8 @@ import Cocoa
   //--- Atomic property: canChangePackage
     self.canChangePackage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.componentController.selectedArray_property.selection) {
+        let s0 = unwSelf.componentController.selectedArray_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_canChangePackage (v0))
         case (.multiple) :
@@ -7588,7 +7605,8 @@ import Cocoa
   //--- Atomic property: canRemoveSelectedFonts
     self.canRemoveSelectedFonts_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.projectFontController.selectedArray_property.selection) {
+        let s0 = unwSelf.projectFontController.selectedArray_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_canRemoveSelectedFonts (v0))
         case (.multiple) :
@@ -7608,7 +7626,8 @@ import Cocoa
   //--- Atomic property: canRemoveSelectedDevices
     self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.projectDeviceController.selectedArray_property.selection) {
+        let s0 = unwSelf.projectDeviceController.selectedArray_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_canRemoveSelectedDevices (v0))
         case (.multiple) :
@@ -7628,7 +7647,8 @@ import Cocoa
   //--- Atomic property: unplacedSymbolsCount
     self.unplacedSymbolsCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.unplacedSymbols_property.selection) {
+        let s0 = unwSelf.rootObject.unplacedSymbols_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_unplacedSymbolsCount (v0))
         case (.multiple) :
@@ -7648,7 +7668,8 @@ import Cocoa
   //--- Atomic property: unplacedSymbolsCountString
     self.unplacedSymbolsCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.unplacedSymbolsCount_property.selection) {
+        let s0 = unwSelf.unplacedSymbolsCount_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_unplacedSymbolsCountString (v0))
         case (.multiple) :
@@ -7668,8 +7689,9 @@ import Cocoa
   //--- Atomic property: boardOutlineOverDisplay
     self.boardOutlineOverDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rastnetShape_property.selection,
-                unwSelf.rootObject.boardIssues_property.selection) {
+        let s0 = unwSelf.rastnetShape_property.selection
+        let s1 = unwSelf.rootObject.boardIssues_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_AutoLayoutProjectDocument_boardOutlineOverDisplay (v0, v1))
@@ -7692,7 +7714,8 @@ import Cocoa
   //--- Atomic property: unplacedPackageCount
     self.unplacedPackageCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.unplacedPackages_property.selection) {
+        let s0 = unwSelf.rootObject.unplacedPackages_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_unplacedPackageCount (v0))
         case (.multiple) :
@@ -7712,7 +7735,8 @@ import Cocoa
   //--- Atomic property: unplacedPackagesCountString
     self.unplacedPackagesCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.unplacedPackageCount_property.selection) {
+        let s0 = unwSelf.unplacedPackageCount_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_unplacedPackagesCountString (v0))
         case (.multiple) :
@@ -7732,7 +7756,8 @@ import Cocoa
   //--- Atomic property: unplacedPackagesMessageString
     self.unplacedPackagesMessageString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.unplacedPackageCount_property.selection) {
+        let s0 = unwSelf.unplacedPackageCount_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_unplacedPackagesMessageString (v0))
         case (.multiple) :
@@ -7752,7 +7777,8 @@ import Cocoa
   //--- Atomic property: emptyDrillFileExtensionImage
     self.emptyDrillFileExtensionImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.emptyDrillFileExtension_property.selection) {
+        let s0 = unwSelf.emptyDrillFileExtension_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_emptyDrillFileExtensionImage (v0))
         case (.multiple) :
@@ -7772,7 +7798,8 @@ import Cocoa
   //--- Atomic property: generatedFileCountString
     self.generatedFileCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mDataController.sortedArray_property.count_property.selection) {
+        let s0 = unwSelf.mDataController.sortedArray_property.count_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutProjectDocument_generatedFileCountString (v0))
         case (.multiple) :

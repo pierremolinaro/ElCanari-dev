@@ -721,7 +721,8 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: isPlacedInBoard
     self.isPlacedInBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_none.selection) {
+        let s0 = unwSelf.mRoot_none.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_isPlacedInBoard (v0))
         case (.multiple) :
@@ -737,7 +738,8 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: displayFrontLegendForBoard
     self.displayFrontLegendForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.displayFrontLegendForBoard_property.selection) {
+        let s0 = unwSelf.mRoot_property.displayFrontLegendForBoard_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_displayFrontLegendForBoard (v0))
         case (.multiple) :
@@ -753,7 +755,8 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: displayBackLegendForBoard
     self.displayBackLegendForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.displayBackLegendForBoard_property.selection) {
+        let s0 = unwSelf.mRoot_property.displayBackLegendForBoard_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_displayBackLegendForBoard (v0))
         case (.multiple) :
@@ -769,7 +772,8 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: displayFrontLayoutForBoard
     self.displayFrontLayoutForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.displayFrontLayoutForBoard_property.selection) {
+        let s0 = unwSelf.mRoot_property.displayFrontLayoutForBoard_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_displayFrontLayoutForBoard (v0))
         case (.multiple) :
@@ -785,7 +789,8 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: displayBackLayoutForBoard
     self.displayBackLayoutForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.displayBackLayoutForBoard_property.selection) {
+        let s0 = unwSelf.mRoot_property.displayBackLayoutForBoard_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_displayBackLayoutForBoard (v0))
         case (.multiple) :
@@ -801,7 +806,8 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: displayInner1LayoutForBoard
     self.displayInner1LayoutForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.displayInner1LayoutForBoard_property.selection) {
+        let s0 = unwSelf.mRoot_property.displayInner1LayoutForBoard_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_displayInner1LayoutForBoard (v0))
         case (.multiple) :
@@ -817,7 +823,8 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: displayInner2LayoutForBoard
     self.displayInner2LayoutForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.displayInner2LayoutForBoard_property.selection) {
+        let s0 = unwSelf.mRoot_property.displayInner2LayoutForBoard_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_displayInner2LayoutForBoard (v0))
         case (.multiple) :
@@ -833,7 +840,8 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: displayInner3LayoutForBoard
     self.displayInner3LayoutForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.displayInner3LayoutForBoard_property.selection) {
+        let s0 = unwSelf.mRoot_property.displayInner3LayoutForBoard_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_displayInner3LayoutForBoard (v0))
         case (.multiple) :
@@ -849,7 +857,8 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: displayInner4LayoutForBoard
     self.displayInner4LayoutForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.displayInner4LayoutForBoard_property.selection) {
+        let s0 = unwSelf.mRoot_property.displayInner4LayoutForBoard_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_displayInner4LayoutForBoard (v0))
         case (.multiple) :
@@ -865,7 +874,8 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: displayFrontPadsForBoard
     self.displayFrontPadsForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.displayFrontPadsForBoard_property.selection) {
+        let s0 = unwSelf.mRoot_property.displayFrontPadsForBoard_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_displayFrontPadsForBoard (v0))
         case (.multiple) :
@@ -881,7 +891,8 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: displayBackPadsForBoard
     self.displayBackPadsForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.displayBackPadsForBoard_property.selection) {
+        let s0 = unwSelf.mRoot_property.displayBackPadsForBoard_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_displayBackPadsForBoard (v0))
         case (.multiple) :
@@ -897,7 +908,8 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: displayPadNumbersForBoard
     self.displayPadNumbersForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.displayPadNumbersForBoard_property.selection) {
+        let s0 = unwSelf.mRoot_property.displayPadNumbersForBoard_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_displayPadNumbersForBoard (v0))
         case (.multiple) :
@@ -913,7 +925,8 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: displayFrontRestrictRectangles
     self.displayFrontRestrictRectangles_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.displayFrontRestrictRectangles_property.selection) {
+        let s0 = unwSelf.mRoot_property.displayFrontRestrictRectangles_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_displayFrontRestrictRectangles (v0))
         case (.multiple) :
@@ -929,7 +942,8 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: displayBackRestrictRectangles
     self.displayBackRestrictRectangles_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.displayBackRestrictRectangles_property.selection) {
+        let s0 = unwSelf.mRoot_property.displayBackRestrictRectangles_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_displayBackRestrictRectangles (v0))
         case (.multiple) :
@@ -945,7 +959,8 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: displayInner1RestrictRectangles
     self.displayInner1RestrictRectangles_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.displayInner1RestrictRectangles_property.selection) {
+        let s0 = unwSelf.mRoot_property.displayInner1RestrictRectangles_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_displayInner1RestrictRectangles (v0))
         case (.multiple) :
@@ -961,7 +976,8 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: displayInner2RestrictRectangles
     self.displayInner2RestrictRectangles_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.displayInner2RestrictRectangles_property.selection) {
+        let s0 = unwSelf.mRoot_property.displayInner2RestrictRectangles_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_displayInner2RestrictRectangles (v0))
         case (.multiple) :
@@ -977,7 +993,8 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: displayInner3RestrictRectangles
     self.displayInner3RestrictRectangles_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.displayInner3RestrictRectangles_property.selection) {
+        let s0 = unwSelf.mRoot_property.displayInner3RestrictRectangles_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_displayInner3RestrictRectangles (v0))
         case (.multiple) :
@@ -993,7 +1010,8 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: displayInner4RestrictRectangles
     self.displayInner4RestrictRectangles_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.displayInner4RestrictRectangles_property.selection) {
+        let s0 = unwSelf.mRoot_property.displayInner4RestrictRectangles_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_displayInner4RestrictRectangles (v0))
         case (.multiple) :
@@ -1009,7 +1027,8 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: packageDrawingWidthMultpliedByTenForBoard
     self.packageDrawingWidthMultpliedByTenForBoard_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.packageDrawingWidthMultpliedByTenForBoard_property.selection) {
+        let s0 = unwSelf.mRoot_property.packageDrawingWidthMultpliedByTenForBoard_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_packageDrawingWidthMultpliedByTenForBoard (v0))
         case (.multiple) :
@@ -1025,7 +1044,8 @@ class BoardObject : EBGraphicManagedObject,
   //--- Atomic property: errorOrWarningIssueSize
     self.errorOrWarningIssueSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mRoot_property.mErrorOrWarningIssueSize_property.selection) {
+        let s0 = unwSelf.mRoot_property.mErrorOrWarningIssueSize_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardObject_errorOrWarningIssueSize (v0))
         case (.multiple) :

@@ -347,14 +347,15 @@ final class SlavePadInDevice : EBManagedObject,
   //--- Atomic property: frontSideFilledBezierPath
     self.frontSideFilledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mCenterX_property.selection,
-                unwSelf.mCenterY_property.selection,
-                unwSelf.mWidth_property.selection,
-                unwSelf.mHeight_property.selection,
-                unwSelf.mHoleWidth_property.selection,
-                unwSelf.mHoleHeight_property.selection,
-                unwSelf.mShape_property.selection,
-                unwSelf.mStyle_property.selection) {
+        let s0 = unwSelf.mCenterX_property.selection
+        let s1 = unwSelf.mCenterY_property.selection
+        let s2 = unwSelf.mWidth_property.selection
+        let s3 = unwSelf.mHeight_property.selection
+        let s4 = unwSelf.mHoleWidth_property.selection
+        let s5 = unwSelf.mHoleHeight_property.selection
+        let s6 = unwSelf.mShape_property.selection
+        let s7 = unwSelf.mStyle_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -391,14 +392,15 @@ final class SlavePadInDevice : EBManagedObject,
   //--- Atomic property: backSideFilledBezierPath
     self.backSideFilledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mCenterX_property.selection,
-                unwSelf.mCenterY_property.selection,
-                unwSelf.mWidth_property.selection,
-                unwSelf.mHeight_property.selection,
-                unwSelf.mHoleWidth_property.selection,
-                unwSelf.mHoleHeight_property.selection,
-                unwSelf.mShape_property.selection,
-                unwSelf.mStyle_property.selection) {
+        let s0 = unwSelf.mCenterX_property.selection
+        let s1 = unwSelf.mCenterY_property.selection
+        let s2 = unwSelf.mWidth_property.selection
+        let s3 = unwSelf.mHeight_property.selection
+        let s4 = unwSelf.mHoleWidth_property.selection
+        let s5 = unwSelf.mHoleHeight_property.selection
+        let s6 = unwSelf.mShape_property.selection
+        let s7 = unwSelf.mStyle_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -435,11 +437,12 @@ final class SlavePadInDevice : EBManagedObject,
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mCenterX_property.selection,
-                unwSelf.mCenterY_property.selection,
-                preferences_padNumberFont_property.selection,
-                preferences_padNumberColor_property.selection,
-                unwSelf.mMasterPad_property.mName_property.selection) {
+        let s0 = unwSelf.mCenterX_property.selection
+        let s1 = unwSelf.mCenterY_property.selection
+        let s2 = preferences_padNumberFont_property.selection
+        let s3 = preferences_padNumberColor_property.selection
+        let s4 = unwSelf.mMasterPad_property.mName_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

@@ -42,20 +42,6 @@ class EBGenericTransientProperty <T : Equatable> : EBObservableProperty <T>, EBO
 
   //····················································································································
 
-  override final func selection (default inValue : T) -> EBSelection <T> {
-    if self.mValueCache == nil {
-      self.mValueCache = self.mReadModelFunction? ()
-      if self.mValueCache == nil {
-        self.mValueCache = .empty
-        return .single (inValue)
-      }
-      self.mValueExplorer?.stringValue = "\(self.mValueCache!)"
-    }
-    return self.mValueCache!
-  }
-
-  //····················································································································
-
   override final func observedObjectDidChange () {
     if self.mValueCache != nil {
       self.mValueCache = nil

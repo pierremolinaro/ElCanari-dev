@@ -260,11 +260,12 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //--- Atomic property: instanceRect
     self.instanceRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x_property.selection,
-                unwSelf.y_property.selection,
-                unwSelf.myModel_property.modelWidth_property.selection,
-                unwSelf.myModel_property.modelHeight_property.selection,
-                unwSelf.instanceRotation_property.selection) {
+        let s0 = unwSelf.x_property.selection
+        let s1 = unwSelf.y_property.selection
+        let s2 = unwSelf.myModel_property.modelWidth_property.selection
+        let s3 = unwSelf.myModel_property.modelHeight_property.selection
+        let s4 = unwSelf.instanceRotation_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -292,7 +293,8 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //--- Atomic property: modelName
     self.modelName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.myModel_property.name_property.selection) {
+        let s0 = unwSelf.myModel_property.name_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_MergerBoardInstance_modelName (v0))
         case (.multiple) :
@@ -308,7 +310,8 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //--- Atomic property: boardLimitWidth
     self.boardLimitWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.myModel_property.modelLimitWidth_property.selection) {
+        let s0 = unwSelf.myModel_property.modelLimitWidth_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_MergerBoardInstance_boardLimitWidth (v0))
         case (.multiple) :
@@ -324,7 +327,8 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.instanceRect_property.selection) {
+        let s0 = unwSelf.instanceRect_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_MergerBoardInstance_selectionDisplay (v0))
         case (.multiple) :
@@ -340,12 +344,13 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x_property.selection,
-                unwSelf.y_property.selection,
-                unwSelf.myModel_property.modelWidth_property.selection,
-                unwSelf.myModel_property.modelHeight_property.selection,
-                unwSelf.instanceRotation_property.selection,
-                unwSelf.myModel_property.imageForInstances_property.selection) {
+        let s0 = unwSelf.x_property.selection
+        let s1 = unwSelf.y_property.selection
+        let s2 = unwSelf.myModel_property.modelWidth_property.selection
+        let s3 = unwSelf.myModel_property.modelHeight_property.selection
+        let s4 = unwSelf.instanceRotation_property.selection
+        let s5 = unwSelf.myModel_property.imageForInstances_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

@@ -331,10 +331,11 @@ final class PackageSegment : PackageObject,
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x1_property.selection,
-                unwSelf.y1_property.selection,
-                unwSelf.x2_property.selection,
-                unwSelf.y2_property.selection) {
+        let s0 = unwSelf.x1_property.selection
+        let s1 = unwSelf.y1_property.selection
+        let s2 = unwSelf.x2_property.selection
+        let s3 = unwSelf.y2_property.selection
+        switch (s0, s1, s2, s3) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -359,9 +360,10 @@ final class PackageSegment : PackageObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.strokeBezierPath_property.selection,
-                preferences_packageColor_property.selection,
-                preferences_packageDrawingWidthMultipliedByTen_property.selection) {
+        let s0 = unwSelf.strokeBezierPath_property.selection
+        let s1 = preferences_packageColor_property.selection
+        let s2 = preferences_packageDrawingWidthMultipliedByTen_property.selection
+        switch (s0, s1, s2) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2)) :
@@ -383,11 +385,12 @@ final class PackageSegment : PackageObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x1_property.selection,
-                unwSelf.y1_property.selection,
-                unwSelf.x2_property.selection,
-                unwSelf.y2_property.selection,
-                unwSelf.knobSize_property.selection) {
+        let s0 = unwSelf.x1_property.selection
+        let s1 = unwSelf.y1_property.selection
+        let s2 = unwSelf.x2_property.selection
+        let s3 = unwSelf.y2_property.selection
+        let s4 = unwSelf.knobSize_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -415,10 +418,11 @@ final class PackageSegment : PackageObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x1_property.selection,
-                unwSelf.y1_property.selection,
-                unwSelf.x2_property.selection,
-                unwSelf.y2_property.selection) {
+        let s0 = unwSelf.x1_property.selection
+        let s1 = unwSelf.y1_property.selection
+        let s2 = unwSelf.x2_property.selection
+        let s3 = unwSelf.y2_property.selection
+        switch (s0, s1, s2, s3) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -443,10 +447,11 @@ final class PackageSegment : PackageObject,
   //--- Atomic property: lengthInCanariUnit
     self.lengthInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x1_property.selection,
-                unwSelf.y1_property.selection,
-                unwSelf.x2_property.selection,
-                unwSelf.y2_property.selection) {
+        let s0 = unwSelf.x1_property.selection
+        let s1 = unwSelf.y1_property.selection
+        let s2 = unwSelf.x2_property.selection
+        let s3 = unwSelf.y2_property.selection
+        switch (s0, s1, s2, s3) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

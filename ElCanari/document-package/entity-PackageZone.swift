@@ -561,16 +561,17 @@ final class PackageZone : PackageObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x_property.selection,
-                unwSelf.y_property.selection,
-                unwSelf.width_property.selection,
-                unwSelf.height_property.selection,
-                unwSelf.xName_property.selection,
-                unwSelf.yName_property.selection,
-                unwSelf.zoneName_property.selection,
-                preferences_padZoneFont_property.selection,
-                preferences_padZoneColor_property.selection,
-                unwSelf.displayZoneName_property.selection) {
+        let s0 = unwSelf.x_property.selection
+        let s1 = unwSelf.y_property.selection
+        let s2 = unwSelf.width_property.selection
+        let s3 = unwSelf.height_property.selection
+        let s4 = unwSelf.xName_property.selection
+        let s5 = unwSelf.yName_property.selection
+        let s6 = unwSelf.zoneName_property.selection
+        let s7 = preferences_padZoneFont_property.selection
+        let s8 = preferences_padZoneColor_property.selection
+        let s9 = unwSelf.displayZoneName_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -613,13 +614,14 @@ final class PackageZone : PackageObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x_property.selection,
-                unwSelf.y_property.selection,
-                unwSelf.width_property.selection,
-                unwSelf.height_property.selection,
-                unwSelf.xName_property.selection,
-                unwSelf.yName_property.selection,
-                unwSelf.zoneName_property.selection) {
+        let s0 = unwSelf.x_property.selection
+        let s1 = unwSelf.y_property.selection
+        let s2 = unwSelf.width_property.selection
+        let s3 = unwSelf.height_property.selection
+        let s4 = unwSelf.xName_property.selection
+        let s5 = unwSelf.yName_property.selection
+        let s6 = unwSelf.zoneName_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -653,10 +655,11 @@ final class PackageZone : PackageObject,
   //--- Atomic property: rect
     self.rect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x_property.selection,
-                unwSelf.y_property.selection,
-                unwSelf.width_property.selection,
-                unwSelf.height_property.selection) {
+        let s0 = unwSelf.x_property.selection
+        let s1 = unwSelf.y_property.selection
+        let s2 = unwSelf.width_property.selection
+        let s3 = unwSelf.height_property.selection
+        switch (s0, s1, s2, s3) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -681,18 +684,19 @@ final class PackageZone : PackageObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.x_property.selection,
-                unwSelf.y_property.selection,
-                unwSelf.width_property.selection,
-                unwSelf.height_property.selection,
-                unwSelf.xName_property.selection,
-                unwSelf.yName_property.selection,
-                unwSelf.zoneName_property.selection,
-                preferences_padZoneFont_property.selection,
-                preferences_packageBackgroundColor_property.selection,
-                preferences_padZoneColor_property.selection,
-                unwSelf.knobSize_property.selection,
-                unwSelf.displayZoneName_property.selection) {
+        let s0 = unwSelf.x_property.selection
+        let s1 = unwSelf.y_property.selection
+        let s2 = unwSelf.width_property.selection
+        let s3 = unwSelf.height_property.selection
+        let s4 = unwSelf.xName_property.selection
+        let s5 = unwSelf.yName_property.selection
+        let s6 = unwSelf.zoneName_property.selection
+        let s7 = preferences_padZoneFont_property.selection
+        let s8 = preferences_packageBackgroundColor_property.selection
+        let s9 = preferences_padZoneColor_property.selection
+        let s10 = unwSelf.knobSize_property.selection
+        let s11 = unwSelf.displayZoneName_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -741,7 +745,8 @@ final class PackageZone : PackageObject,
   //--- Atomic property: forbiddenPadArray
     self.forbiddenPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.forbiddenPadNumbers_property.selection) {
+        let s0 = unwSelf.forbiddenPadNumbers_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_PackageZone_forbiddenPadArray (v0))
         case (.multiple) :
@@ -757,7 +762,8 @@ final class PackageZone : PackageObject,
   //--- Atomic property: emptyForbiddenPadArray
     self.emptyForbiddenPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.forbiddenPadNumbers_property.count_property.selection) {
+        let s0 = unwSelf.forbiddenPadNumbers_property.count_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_PackageZone_emptyForbiddenPadArray (v0))
         case (.multiple) :

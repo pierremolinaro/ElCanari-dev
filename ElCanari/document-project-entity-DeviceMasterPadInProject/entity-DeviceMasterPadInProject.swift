@@ -303,16 +303,17 @@ final class DeviceMasterPadInProject : EBManagedObject,
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mName_property.selection,
-                unwSelf.mCenterX_property.selection,
-                unwSelf.mCenterY_property.selection,
-                unwSelf.mWidth_property.selection,
-                unwSelf.mHeight_property.selection,
-                unwSelf.mHoleWidth_property.selection,
-                unwSelf.mHoleHeight_property.selection,
-                unwSelf.mShape_property.selection,
-                unwSelf.mStyle_property.selection,
-                unwSelf.mSlavePads_property.selection) {
+        let s0 = unwSelf.mName_property.selection
+        let s1 = unwSelf.mCenterX_property.selection
+        let s2 = unwSelf.mCenterY_property.selection
+        let s3 = unwSelf.mWidth_property.selection
+        let s4 = unwSelf.mHeight_property.selection
+        let s5 = unwSelf.mHoleWidth_property.selection
+        let s6 = unwSelf.mHoleHeight_property.selection
+        let s7 = unwSelf.mShape_property.selection
+        let s8 = unwSelf.mStyle_property.selection
+        let s9 = unwSelf.mSlavePads_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

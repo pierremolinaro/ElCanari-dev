@@ -415,14 +415,15 @@ final class PackageArc : PackageObject,
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.xCenter_property.selection,
-                unwSelf.yCenter_property.selection,
-                unwSelf.radius_property.selection,
-                unwSelf.startAngle_property.selection,
-                unwSelf.arcAngle_property.selection,
-                unwSelf.pathIsClosed_property.selection,
-                unwSelf.startTangent_property.selection,
-                unwSelf.endTangent_property.selection) {
+        let s0 = unwSelf.xCenter_property.selection
+        let s1 = unwSelf.yCenter_property.selection
+        let s2 = unwSelf.radius_property.selection
+        let s3 = unwSelf.startAngle_property.selection
+        let s4 = unwSelf.arcAngle_property.selection
+        let s5 = unwSelf.pathIsClosed_property.selection
+        let s6 = unwSelf.startTangent_property.selection
+        let s7 = unwSelf.endTangent_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -459,9 +460,10 @@ final class PackageArc : PackageObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.strokeBezierPath_property.selection,
-                preferences_packageColor_property.selection,
-                preferences_packageDrawingWidthMultipliedByTen_property.selection) {
+        let s0 = unwSelf.strokeBezierPath_property.selection
+        let s1 = preferences_packageColor_property.selection
+        let s2 = preferences_packageDrawingWidthMultipliedByTen_property.selection
+        switch (s0, s1, s2) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2)) :
@@ -483,15 +485,16 @@ final class PackageArc : PackageObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.xCenter_property.selection,
-                unwSelf.yCenter_property.selection,
-                unwSelf.radius_property.selection,
-                unwSelf.startAngle_property.selection,
-                unwSelf.arcAngle_property.selection,
-                unwSelf.startTangent_property.selection,
-                unwSelf.endTangent_property.selection,
-                unwSelf.pathIsClosed_property.selection,
-                unwSelf.knobSize_property.selection) {
+        let s0 = unwSelf.xCenter_property.selection
+        let s1 = unwSelf.yCenter_property.selection
+        let s2 = unwSelf.radius_property.selection
+        let s3 = unwSelf.startAngle_property.selection
+        let s4 = unwSelf.arcAngle_property.selection
+        let s5 = unwSelf.startTangent_property.selection
+        let s6 = unwSelf.endTangent_property.selection
+        let s7 = unwSelf.pathIsClosed_property.selection
+        let s8 = unwSelf.knobSize_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -531,12 +534,13 @@ final class PackageArc : PackageObject,
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.xCenter_property.selection,
-                unwSelf.yCenter_property.selection,
-                unwSelf.radius_property.selection,
-                unwSelf.startAngle_property.selection,
-                unwSelf.arcAngle_property.selection,
-                unwSelf.pathIsClosed_property.selection) {
+        let s0 = unwSelf.xCenter_property.selection
+        let s1 = unwSelf.yCenter_property.selection
+        let s2 = unwSelf.radius_property.selection
+        let s3 = unwSelf.startAngle_property.selection
+        let s4 = unwSelf.arcAngle_property.selection
+        let s5 = unwSelf.pathIsClosed_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

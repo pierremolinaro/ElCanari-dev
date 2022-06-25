@@ -4192,11 +4192,12 @@ import Cocoa
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.overlapingArrangment_property.selection,
-                unwSelf.rootObject.boardRect_property.selection,
-                unwSelf.rootObject.boardLimitWidth_property.selection,
-                unwSelf.rootObject.boardInstances_property.selection,
-                unwSelf.rootObject.boardInstances_property.selection) {
+        let s0 = unwSelf.rootObject.overlapingArrangment_property.selection
+        let s1 = unwSelf.rootObject.boardRect_property.selection
+        let s2 = unwSelf.rootObject.boardLimitWidth_property.selection
+        let s3 = unwSelf.rootObject.boardInstances_property.selection
+        let s4 = unwSelf.rootObject.boardInstances_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -4228,7 +4229,8 @@ import Cocoa
   //--- Atomic property: boardLimitWidthStatusImage
     self.boardLimitWidthStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.boardLimitWidthOk_property.selection) {
+        let s0 = unwSelf.rootObject.boardLimitWidthOk_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutMergerDocument_boardLimitWidthStatusImage (v0))
         case (.multiple) :
@@ -4248,8 +4250,9 @@ import Cocoa
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection,
-                unwSelf.rootObject.boardLimitWidthErrorMessage_property.selection) {
+        let s0 = unwSelf.issues_property.selection
+        let s1 = unwSelf.rootObject.boardLimitWidthErrorMessage_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_AutoLayoutMergerDocument_statusMessage (v0, v1))
@@ -4272,7 +4275,8 @@ import Cocoa
   //--- Atomic property: boardDispositionStatusTitle
     self.boardDispositionStatusTitle_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection) {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutMergerDocument_boardDispositionStatusTitle (v0))
         case (.multiple) :
@@ -4296,7 +4300,8 @@ import Cocoa
   //--- Atomic property: incorrectDocumentFileDetailedErrorMessage
     self.incorrectDocumentFileDetailedErrorMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.documentFileName_property.selection) {
+        let s0 = unwSelf.documentFileName_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutMergerDocument_incorrectDocumentFileDetailedErrorMessage (v0))
         case (.multiple) :
@@ -4316,7 +4321,8 @@ import Cocoa
   //--- Atomic property: documentFileShouldBeRenamedErrorMessage
     self.documentFileShouldBeRenamedErrorMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.documentFileName_property.selection) {
+        let s0 = unwSelf.documentFileName_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutMergerDocument_documentFileShouldBeRenamedErrorMessage (v0))
         case (.multiple) :
@@ -4336,7 +4342,8 @@ import Cocoa
   //--- Atomic property: emptyDrillFileExtension
     self.emptyDrillFileExtension_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.drillDataFileExtension_property.selection) {
+        let s0 = unwSelf.rootObject.drillDataFileExtension_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutMergerDocument_emptyDrillFileExtension (v0))
         case (.multiple) :
@@ -4356,8 +4363,9 @@ import Cocoa
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection,
-                unwSelf.rootObject.boardLimitWidthOk_property.selection) {
+        let s0 = unwSelf.issues_property.selection
+        let s1 = unwSelf.rootObject.boardLimitWidthOk_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_AutoLayoutMergerDocument_statusImage (v0, v1))
@@ -4380,7 +4388,8 @@ import Cocoa
   //--- Atomic property: documentIsUnnamed
     self.documentIsUnnamed_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.documentFileName_property.selection) {
+        let s0 = unwSelf.documentFileName_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutMergerDocument_documentIsUnnamed (v0))
         case (.multiple) :
@@ -4400,7 +4409,8 @@ import Cocoa
   //--- Atomic property: emptyDrillFileExtensionImage
     self.emptyDrillFileExtensionImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.emptyDrillFileExtension_property.selection) {
+        let s0 = unwSelf.emptyDrillFileExtension_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutMergerDocument_emptyDrillFileExtensionImage (v0))
         case (.multiple) :
@@ -4420,7 +4430,8 @@ import Cocoa
   //--- Atomic property: generatedFileCountString
     self.generatedFileCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mDataController.sortedArray_property.count_property.selection) {
+        let s0 = unwSelf.mDataController.sortedArray_property.count_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutMergerDocument_generatedFileCountString (v0))
         case (.multiple) :

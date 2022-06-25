@@ -330,14 +330,15 @@ final class BoardLine : BoardObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX1_property.selection,
-                unwSelf.mY1_property.selection,
-                unwSelf.mX2_property.selection,
-                unwSelf.mY2_property.selection,
-                unwSelf.mWidth_property.selection,
-                unwSelf.mLayer_property.selection,
-                preferences_frontSideLegendColorForBoard_property.selection,
-                preferences_backSideLegendColorForBoard_property.selection) {
+        let s0 = unwSelf.mX1_property.selection
+        let s1 = unwSelf.mY1_property.selection
+        let s2 = unwSelf.mX2_property.selection
+        let s3 = unwSelf.mY2_property.selection
+        let s4 = unwSelf.mWidth_property.selection
+        let s5 = unwSelf.mLayer_property.selection
+        let s6 = preferences_frontSideLegendColorForBoard_property.selection
+        let s7 = preferences_backSideLegendColorForBoard_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -374,13 +375,14 @@ final class BoardLine : BoardObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mX1_property.selection,
-                unwSelf.mY1_property.selection,
-                unwSelf.mX2_property.selection,
-                unwSelf.mY2_property.selection,
-                unwSelf.mWidth_property.selection,
-                unwSelf.mLayer_property.selection,
-                preferences_hiliteWidthMultipliedByTen_property.selection) {
+        let s0 = unwSelf.mX1_property.selection
+        let s1 = unwSelf.mY1_property.selection
+        let s2 = unwSelf.mX2_property.selection
+        let s3 = unwSelf.mY2_property.selection
+        let s4 = unwSelf.mWidth_property.selection
+        let s5 = unwSelf.mLayer_property.selection
+        let s6 = preferences_hiliteWidthMultipliedByTen_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

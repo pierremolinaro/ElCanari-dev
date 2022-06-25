@@ -50,8 +50,6 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
 
   override final var selection : EBSelection <T> { return .single (self.mValue) }
 
-  override func selection (default inUnusedValue : T) -> EBSelection <T> { return .single (self.mValue) }
-
   //····················································································································
 
   final var propval : T { return self.mValue }

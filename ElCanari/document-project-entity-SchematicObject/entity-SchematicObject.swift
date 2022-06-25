@@ -169,7 +169,8 @@ class SchematicObject : EBGraphicManagedObject,
   //--- Atomic property: sheetDescriptor
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSheet_property.sheetDescriptor_property.selection) {
+        let s0 = unwSelf.mSheet_property.sheetDescriptor_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_SchematicObject_sheetDescriptor (v0))
         case (.multiple) :
@@ -185,7 +186,8 @@ class SchematicObject : EBGraphicManagedObject,
   //--- Atomic property: isPlacedInSchematic
     self.isPlacedInSchematic_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mSheet_none.selection) {
+        let s0 = unwSelf.mSheet_none.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_SchematicObject_isPlacedInSchematic (v0))
         case (.multiple) :

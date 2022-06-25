@@ -1990,7 +1990,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: layerConfigurationString
     self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.layerConfiguration_property.selection) {
+        let s0 = unwSelf.layerConfiguration_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_layerConfigurationString (v0))
         case (.multiple) :
@@ -2006,11 +2007,12 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: frontLegendLinesSegments
     self.frontLegendLinesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.frontLegendLines_property.selection,
-                unwSelf.frontLegendLines_property.selection,
-                unwSelf.frontLegendLines_property.selection,
-                unwSelf.frontLegendLines_property.selection,
-                unwSelf.frontLegendLines_property.selection) {
+        let s0 = unwSelf.frontLegendLines_property.selection
+        let s1 = unwSelf.frontLegendLines_property.selection
+        let s2 = unwSelf.frontLegendLines_property.selection
+        let s3 = unwSelf.frontLegendLines_property.selection
+        let s4 = unwSelf.frontLegendLines_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -2038,11 +2040,12 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: backLegendLinesSegments
     self.backLegendLinesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.backLegendLines_property.selection,
-                unwSelf.backLegendLines_property.selection,
-                unwSelf.backLegendLines_property.selection,
-                unwSelf.backLegendLines_property.selection,
-                unwSelf.backLegendLines_property.selection) {
+        let s0 = unwSelf.backLegendLines_property.selection
+        let s1 = unwSelf.backLegendLines_property.selection
+        let s2 = unwSelf.backLegendLines_property.selection
+        let s3 = unwSelf.backLegendLines_property.selection
+        let s4 = unwSelf.backLegendLines_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -2070,7 +2073,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: backLegendLinesBezierPaths
     self.backLegendLinesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.backLegendLinesSegments_property.selection) {
+        let s0 = unwSelf.backLegendLinesSegments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_backLegendLinesBezierPaths (v0))
         case (.multiple) :
@@ -2086,11 +2090,12 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: frontLegendTextsSegments
     self.frontLegendTextsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.frontLegendTexts_property.selection,
-                unwSelf.frontLegendTexts_property.selection,
-                unwSelf.frontLegendTexts_property.selection,
-                unwSelf.frontLegendTexts_property.selection,
-                unwSelf.frontLegendTexts_property.selection) {
+        let s0 = unwSelf.frontLegendTexts_property.selection
+        let s1 = unwSelf.frontLegendTexts_property.selection
+        let s2 = unwSelf.frontLegendTexts_property.selection
+        let s3 = unwSelf.frontLegendTexts_property.selection
+        let s4 = unwSelf.frontLegendTexts_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -2118,7 +2123,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: frontLegendTextsBezierPaths
     self.frontLegendTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.frontLegendTextsSegments_property.selection) {
+        let s0 = unwSelf.frontLegendTextsSegments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_frontLegendTextsBezierPaths (v0))
         case (.multiple) :
@@ -2134,11 +2140,12 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: frontLayoutTextsSegments
     self.frontLayoutTextsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.frontLayoutTexts_property.selection,
-                unwSelf.frontLayoutTexts_property.selection,
-                unwSelf.frontLayoutTexts_property.selection,
-                unwSelf.frontLayoutTexts_property.selection,
-                unwSelf.frontLayoutTexts_property.selection) {
+        let s0 = unwSelf.frontLayoutTexts_property.selection
+        let s1 = unwSelf.frontLayoutTexts_property.selection
+        let s2 = unwSelf.frontLayoutTexts_property.selection
+        let s3 = unwSelf.frontLayoutTexts_property.selection
+        let s4 = unwSelf.frontLayoutTexts_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -2166,7 +2173,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: frontLayoutTextsBezierPaths
     self.frontLayoutTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.frontLayoutTextsSegments_property.selection) {
+        let s0 = unwSelf.frontLayoutTextsSegments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_frontLayoutTextsBezierPaths (v0))
         case (.multiple) :
@@ -2182,11 +2190,12 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: backLegendTextsSegments
     self.backLegendTextsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.backLegendTexts_property.selection,
-                unwSelf.backLegendTexts_property.selection,
-                unwSelf.backLegendTexts_property.selection,
-                unwSelf.backLegendTexts_property.selection,
-                unwSelf.backLegendTexts_property.selection) {
+        let s0 = unwSelf.backLegendTexts_property.selection
+        let s1 = unwSelf.backLegendTexts_property.selection
+        let s2 = unwSelf.backLegendTexts_property.selection
+        let s3 = unwSelf.backLegendTexts_property.selection
+        let s4 = unwSelf.backLegendTexts_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -2214,7 +2223,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: backLegendTextsBezierPaths
     self.backLegendTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.backLegendTextsSegments_property.selection) {
+        let s0 = unwSelf.backLegendTextsSegments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_backLegendTextsBezierPaths (v0))
         case (.multiple) :
@@ -2230,11 +2240,12 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: backLayoutTextsSegments
     self.backLayoutTextsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.backLayoutTexts_property.selection,
-                unwSelf.backLayoutTexts_property.selection,
-                unwSelf.backLayoutTexts_property.selection,
-                unwSelf.backLayoutTexts_property.selection,
-                unwSelf.backLayoutTexts_property.selection) {
+        let s0 = unwSelf.backLayoutTexts_property.selection
+        let s1 = unwSelf.backLayoutTexts_property.selection
+        let s2 = unwSelf.backLayoutTexts_property.selection
+        let s3 = unwSelf.backLayoutTexts_property.selection
+        let s4 = unwSelf.backLayoutTexts_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -2262,7 +2273,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: backLayoutTextsBezierPaths
     self.backLayoutTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.backLayoutTextsSegments_property.selection) {
+        let s0 = unwSelf.backLayoutTextsSegments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_backLayoutTextsBezierPaths (v0))
         case (.multiple) :
@@ -2278,11 +2290,12 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: internalBoardsLimitsSegments
     self.internalBoardsLimitsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.internalBoardsLimits_property.selection,
-                unwSelf.internalBoardsLimits_property.selection,
-                unwSelf.internalBoardsLimits_property.selection,
-                unwSelf.internalBoardsLimits_property.selection,
-                unwSelf.internalBoardsLimits_property.selection) {
+        let s0 = unwSelf.internalBoardsLimits_property.selection
+        let s1 = unwSelf.internalBoardsLimits_property.selection
+        let s2 = unwSelf.internalBoardsLimits_property.selection
+        let s3 = unwSelf.internalBoardsLimits_property.selection
+        let s4 = unwSelf.internalBoardsLimits_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -2310,7 +2323,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: internalBoardsLimitsBezierPaths
     self.internalBoardsLimitsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.internalBoardsLimitsSegments_property.selection) {
+        let s0 = unwSelf.internalBoardsLimitsSegments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_internalBoardsLimitsBezierPaths (v0))
         case (.multiple) :
@@ -2326,11 +2340,12 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: drillSegments
     self.drillSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.drills_property.selection,
-                unwSelf.drills_property.selection,
-                unwSelf.drills_property.selection,
-                unwSelf.drills_property.selection,
-                unwSelf.drills_property.selection) {
+        let s0 = unwSelf.drills_property.selection
+        let s1 = unwSelf.drills_property.selection
+        let s2 = unwSelf.drills_property.selection
+        let s3 = unwSelf.drills_property.selection
+        let s4 = unwSelf.drills_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -2358,7 +2373,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: holesBezierPaths
     self.holesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.drillSegments_property.selection) {
+        let s0 = unwSelf.drillSegments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_holesBezierPaths (v0))
         case (.multiple) :
@@ -2374,9 +2390,10 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: viaShapes
     self.viaShapes_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.vias_property.selection,
-                unwSelf.vias_property.selection,
-                unwSelf.vias_property.selection) {
+        let s0 = unwSelf.vias_property.selection
+        let s1 = unwSelf.vias_property.selection
+        let s2 = unwSelf.vias_property.selection
+        switch (s0, s1, s2) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2)) :
@@ -2398,7 +2415,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: viasBezierPaths
     self.viasBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.viaShapes_property.selection) {
+        let s0 = unwSelf.viaShapes_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_viasBezierPaths (v0))
         case (.multiple) :
@@ -2414,12 +2432,13 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: frontPadArray
     self.frontPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.frontPads_property.selection,
-                unwSelf.frontPads_property.selection,
-                unwSelf.frontPads_property.selection,
-                unwSelf.frontPads_property.selection,
-                unwSelf.frontPads_property.selection,
-                unwSelf.frontPads_property.selection) {
+        let s0 = unwSelf.frontPads_property.selection
+        let s1 = unwSelf.frontPads_property.selection
+        let s2 = unwSelf.frontPads_property.selection
+        let s3 = unwSelf.frontPads_property.selection
+        let s4 = unwSelf.frontPads_property.selection
+        let s5 = unwSelf.frontPads_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -2450,7 +2469,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: frontPadsBezierPaths
     self.frontPadsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.frontPadArray_property.selection) {
+        let s0 = unwSelf.frontPadArray_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_frontPadsBezierPaths (v0))
         case (.multiple) :
@@ -2466,12 +2486,13 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: backPadArray
     self.backPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.backPads_property.selection,
-                unwSelf.backPads_property.selection,
-                unwSelf.backPads_property.selection,
-                unwSelf.backPads_property.selection,
-                unwSelf.backPads_property.selection,
-                unwSelf.backPads_property.selection) {
+        let s0 = unwSelf.backPads_property.selection
+        let s1 = unwSelf.backPads_property.selection
+        let s2 = unwSelf.backPads_property.selection
+        let s3 = unwSelf.backPads_property.selection
+        let s4 = unwSelf.backPads_property.selection
+        let s5 = unwSelf.backPads_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -2502,7 +2523,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: backPadsBezierPaths
     self.backPadsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.backPadArray_property.selection) {
+        let s0 = unwSelf.backPadArray_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_backPadsBezierPaths (v0))
         case (.multiple) :
@@ -2518,12 +2540,13 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: traversingPadArray
     self.traversingPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.traversingPads_property.selection,
-                unwSelf.traversingPads_property.selection,
-                unwSelf.traversingPads_property.selection,
-                unwSelf.traversingPads_property.selection,
-                unwSelf.traversingPads_property.selection,
-                unwSelf.traversingPads_property.selection) {
+        let s0 = unwSelf.traversingPads_property.selection
+        let s1 = unwSelf.traversingPads_property.selection
+        let s2 = unwSelf.traversingPads_property.selection
+        let s3 = unwSelf.traversingPads_property.selection
+        let s4 = unwSelf.traversingPads_property.selection
+        let s5 = unwSelf.traversingPads_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -2554,7 +2577,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: traversingPadsBezierPaths
     self.traversingPadsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.traversingPadArray_property.selection) {
+        let s0 = unwSelf.traversingPadArray_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_traversingPadsBezierPaths (v0))
         case (.multiple) :
@@ -2570,9 +2594,10 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: boardLimitsBezierPaths
     self.boardLimitsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.modelWidth_property.selection,
-                unwSelf.modelHeight_property.selection,
-                unwSelf.modelLimitWidth_property.selection) {
+        let s0 = unwSelf.modelWidth_property.selection
+        let s1 = unwSelf.modelHeight_property.selection
+        let s2 = unwSelf.modelLimitWidth_property.selection
+        switch (s0, s1, s2) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2)) :
@@ -2594,11 +2619,12 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: backComponentNameSegments
     self.backComponentNameSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.backComponentNames_property.selection,
-                unwSelf.backComponentNames_property.selection,
-                unwSelf.backComponentNames_property.selection,
-                unwSelf.backComponentNames_property.selection,
-                unwSelf.backComponentNames_property.selection) {
+        let s0 = unwSelf.backComponentNames_property.selection
+        let s1 = unwSelf.backComponentNames_property.selection
+        let s2 = unwSelf.backComponentNames_property.selection
+        let s3 = unwSelf.backComponentNames_property.selection
+        let s4 = unwSelf.backComponentNames_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -2626,7 +2652,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: backComponentNamesBezierPaths
     self.backComponentNamesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.backComponentNameSegments_property.selection) {
+        let s0 = unwSelf.backComponentNameSegments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_backComponentNamesBezierPaths (v0))
         case (.multiple) :
@@ -2642,11 +2669,12 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: frontComponentNameSegments
     self.frontComponentNameSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.frontComponentNames_property.selection,
-                unwSelf.frontComponentNames_property.selection,
-                unwSelf.frontComponentNames_property.selection,
-                unwSelf.frontComponentNames_property.selection,
-                unwSelf.frontComponentNames_property.selection) {
+        let s0 = unwSelf.frontComponentNames_property.selection
+        let s1 = unwSelf.frontComponentNames_property.selection
+        let s2 = unwSelf.frontComponentNames_property.selection
+        let s3 = unwSelf.frontComponentNames_property.selection
+        let s4 = unwSelf.frontComponentNames_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -2674,7 +2702,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: frontComponentNamesBezierPaths
     self.frontComponentNamesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.frontComponentNameSegments_property.selection) {
+        let s0 = unwSelf.frontComponentNameSegments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_frontComponentNamesBezierPaths (v0))
         case (.multiple) :
@@ -2690,11 +2719,12 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: frontComponentValueSegments
     self.frontComponentValueSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.frontComponentValues_property.selection,
-                unwSelf.frontComponentValues_property.selection,
-                unwSelf.frontComponentValues_property.selection,
-                unwSelf.frontComponentValues_property.selection,
-                unwSelf.frontComponentValues_property.selection) {
+        let s0 = unwSelf.frontComponentValues_property.selection
+        let s1 = unwSelf.frontComponentValues_property.selection
+        let s2 = unwSelf.frontComponentValues_property.selection
+        let s3 = unwSelf.frontComponentValues_property.selection
+        let s4 = unwSelf.frontComponentValues_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -2722,7 +2752,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: frontComponentValuesBezierPaths
     self.frontComponentValuesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.frontComponentValueSegments_property.selection) {
+        let s0 = unwSelf.frontComponentValueSegments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_frontComponentValuesBezierPaths (v0))
         case (.multiple) :
@@ -2738,11 +2769,12 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: backComponentValueSegments
     self.backComponentValueSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.backComponentValues_property.selection,
-                unwSelf.backComponentValues_property.selection,
-                unwSelf.backComponentValues_property.selection,
-                unwSelf.backComponentValues_property.selection,
-                unwSelf.backComponentValues_property.selection) {
+        let s0 = unwSelf.backComponentValues_property.selection
+        let s1 = unwSelf.backComponentValues_property.selection
+        let s2 = unwSelf.backComponentValues_property.selection
+        let s3 = unwSelf.backComponentValues_property.selection
+        let s4 = unwSelf.backComponentValues_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -2770,7 +2802,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: backComponentValuesBezierPaths
     self.backComponentValuesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.backComponentValueSegments_property.selection) {
+        let s0 = unwSelf.backComponentValueSegments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_backComponentValuesBezierPaths (v0))
         case (.multiple) :
@@ -2786,11 +2819,12 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: backTrackSegments
     self.backTrackSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.backTracks_property.selection,
-                unwSelf.backTracks_property.selection,
-                unwSelf.backTracks_property.selection,
-                unwSelf.backTracks_property.selection,
-                unwSelf.backTracks_property.selection) {
+        let s0 = unwSelf.backTracks_property.selection
+        let s1 = unwSelf.backTracks_property.selection
+        let s2 = unwSelf.backTracks_property.selection
+        let s3 = unwSelf.backTracks_property.selection
+        let s4 = unwSelf.backTracks_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -2818,7 +2852,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: backTracksBezierPaths
     self.backTracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.backTrackSegments_property.selection) {
+        let s0 = unwSelf.backTrackSegments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_backTracksBezierPaths (v0))
         case (.multiple) :
@@ -2834,11 +2869,12 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: frontTrackSegments
     self.frontTrackSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.frontTracks_property.selection,
-                unwSelf.frontTracks_property.selection,
-                unwSelf.frontTracks_property.selection,
-                unwSelf.frontTracks_property.selection,
-                unwSelf.frontTracks_property.selection) {
+        let s0 = unwSelf.frontTracks_property.selection
+        let s1 = unwSelf.frontTracks_property.selection
+        let s2 = unwSelf.frontTracks_property.selection
+        let s3 = unwSelf.frontTracks_property.selection
+        let s4 = unwSelf.frontTracks_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -2866,7 +2902,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: frontTracksBezierPaths
     self.frontTracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.frontTrackSegments_property.selection) {
+        let s0 = unwSelf.frontTrackSegments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_frontTracksBezierPaths (v0))
         case (.multiple) :
@@ -2882,11 +2919,12 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: inner1TracksSegments
     self.inner1TracksSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.inner1Tracks_property.selection,
-                unwSelf.inner1Tracks_property.selection,
-                unwSelf.inner1Tracks_property.selection,
-                unwSelf.inner1Tracks_property.selection,
-                unwSelf.inner1Tracks_property.selection) {
+        let s0 = unwSelf.inner1Tracks_property.selection
+        let s1 = unwSelf.inner1Tracks_property.selection
+        let s2 = unwSelf.inner1Tracks_property.selection
+        let s3 = unwSelf.inner1Tracks_property.selection
+        let s4 = unwSelf.inner1Tracks_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -2914,7 +2952,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: inner1TracksBezierPaths
     self.inner1TracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.inner1TracksSegments_property.selection) {
+        let s0 = unwSelf.inner1TracksSegments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_inner1TracksBezierPaths (v0))
         case (.multiple) :
@@ -2930,11 +2969,12 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: inner2TracksSegments
     self.inner2TracksSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.inner2Tracks_property.selection,
-                unwSelf.inner2Tracks_property.selection,
-                unwSelf.inner2Tracks_property.selection,
-                unwSelf.inner2Tracks_property.selection,
-                unwSelf.inner2Tracks_property.selection) {
+        let s0 = unwSelf.inner2Tracks_property.selection
+        let s1 = unwSelf.inner2Tracks_property.selection
+        let s2 = unwSelf.inner2Tracks_property.selection
+        let s3 = unwSelf.inner2Tracks_property.selection
+        let s4 = unwSelf.inner2Tracks_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -2962,7 +3002,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: inner2TracksBezierPaths
     self.inner2TracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.inner2TracksSegments_property.selection) {
+        let s0 = unwSelf.inner2TracksSegments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_inner2TracksBezierPaths (v0))
         case (.multiple) :
@@ -2978,11 +3019,12 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: inner3TracksSegments
     self.inner3TracksSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.inner3Tracks_property.selection,
-                unwSelf.inner3Tracks_property.selection,
-                unwSelf.inner3Tracks_property.selection,
-                unwSelf.inner3Tracks_property.selection,
-                unwSelf.inner3Tracks_property.selection) {
+        let s0 = unwSelf.inner3Tracks_property.selection
+        let s1 = unwSelf.inner3Tracks_property.selection
+        let s2 = unwSelf.inner3Tracks_property.selection
+        let s3 = unwSelf.inner3Tracks_property.selection
+        let s4 = unwSelf.inner3Tracks_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -3010,7 +3052,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: inner3TracksBezierPaths
     self.inner3TracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.inner3TracksSegments_property.selection) {
+        let s0 = unwSelf.inner3TracksSegments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_inner3TracksBezierPaths (v0))
         case (.multiple) :
@@ -3026,11 +3069,12 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: inner4TracksSegments
     self.inner4TracksSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.inner4Tracks_property.selection,
-                unwSelf.inner4Tracks_property.selection,
-                unwSelf.inner4Tracks_property.selection,
-                unwSelf.inner4Tracks_property.selection,
-                unwSelf.inner4Tracks_property.selection) {
+        let s0 = unwSelf.inner4Tracks_property.selection
+        let s1 = unwSelf.inner4Tracks_property.selection
+        let s2 = unwSelf.inner4Tracks_property.selection
+        let s3 = unwSelf.inner4Tracks_property.selection
+        let s4 = unwSelf.inner4Tracks_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -3058,7 +3102,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: inner4TracksBezierPaths
     self.inner4TracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.inner4TracksSegments_property.selection) {
+        let s0 = unwSelf.inner4TracksSegments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_inner4TracksBezierPaths (v0))
         case (.multiple) :
@@ -3074,11 +3119,12 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: frontPackagesSegments
     self.frontPackagesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.frontPackages_property.selection,
-                unwSelf.frontPackages_property.selection,
-                unwSelf.frontPackages_property.selection,
-                unwSelf.frontPackages_property.selection,
-                unwSelf.frontPackages_property.selection) {
+        let s0 = unwSelf.frontPackages_property.selection
+        let s1 = unwSelf.frontPackages_property.selection
+        let s2 = unwSelf.frontPackages_property.selection
+        let s3 = unwSelf.frontPackages_property.selection
+        let s4 = unwSelf.frontPackages_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -3106,7 +3152,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: frontPackagesBezierPaths
     self.frontPackagesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.frontPackagesSegments_property.selection) {
+        let s0 = unwSelf.frontPackagesSegments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_frontPackagesBezierPaths (v0))
         case (.multiple) :
@@ -3122,11 +3169,12 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: backPackagesSegments
     self.backPackagesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.backPackages_property.selection,
-                unwSelf.backPackages_property.selection,
-                unwSelf.backPackages_property.selection,
-                unwSelf.backPackages_property.selection,
-                unwSelf.backPackages_property.selection) {
+        let s0 = unwSelf.backPackages_property.selection
+        let s1 = unwSelf.backPackages_property.selection
+        let s2 = unwSelf.backPackages_property.selection
+        let s3 = unwSelf.backPackages_property.selection
+        let s4 = unwSelf.backPackages_property.selection
+        switch (s0, s1, s2, s3, s4) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -3154,7 +3202,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: backPackagesBezierPaths
     self.backPackagesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.backPackagesSegments_property.selection) {
+        let s0 = unwSelf.backPackagesSegments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_backPackagesBezierPaths (v0))
         case (.multiple) :
@@ -3170,7 +3219,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: instanceCount
     self.instanceCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.myInstances_property.count_property.selection) {
+        let s0 = unwSelf.myInstances_property.count_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_instanceCount (v0))
         case (.multiple) :
@@ -3186,7 +3236,8 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: frontLegendLinesBezierPaths
     self.frontLegendLinesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.frontLegendLinesSegments_property.selection) {
+        let s0 = unwSelf.frontLegendLinesSegments_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_BoardModel_frontLegendLinesBezierPaths (v0))
         case (.multiple) :
@@ -3202,82 +3253,83 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: imageForModel
     self.imageForModel_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (preferences_mergerColorBackground_property.selection,
-                unwSelf.modelWidth_property.selection,
-                unwSelf.modelHeight_property.selection,
-                unwSelf.boardLimitsBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayModelBoardLimits_property.selection,
-                preferences_mergerColorInternalBoardsLimits_property.selection,
-                unwSelf.internalBoardsLimitsBezierPaths_property.selection,
-                unwSelf.frontTracksBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayFrontTracks_property.selection,
-                preferences_mergerColorFrontTracks_property.selection,
-                unwSelf.inner1TracksBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayInner1Tracks_property.selection,
-                preferences_mergerColorInner1Tracks_property.selection,
-                unwSelf.inner2TracksBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayInner2Tracks_property.selection,
-                preferences_mergerColorInner2Tracks_property.selection,
-                unwSelf.inner3TracksBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayInner3Tracks_property.selection,
-                preferences_mergerColorInner3Tracks_property.selection,
-                unwSelf.inner4TracksBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayInner4Tracks_property.selection,
-                preferences_mergerColorInner4Tracks_property.selection,
-                unwSelf.backTracksBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayBackTracks_property.selection,
-                preferences_mergerColorBackTracks_property.selection,
-                unwSelf.frontPadsBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayFrontPads_property.selection,
-                preferences_mergerColorFrontPads_property.selection,
-                unwSelf.backPadsBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayBackPads_property.selection,
-                preferences_mergerColorBackPads_property.selection,
-                unwSelf.traversingPadsBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayTraversingPads_property.selection,
-                preferences_mergerColorTraversingPads_property.selection,
-                unwSelf.viasBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayVias_property.selection,
-                preferences_mergerColorVias_property.selection,
-                unwSelf.holesBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayHoles_property.selection,
-                preferences_mergerColorHoles_property.selection,
-                unwSelf.frontLegendLinesBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayFrontLegendLines_property.selection,
-                preferences_mergerColorFrontLegendLines_property.selection,
-                unwSelf.backLegendLinesBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayBackLegendLines_property.selection,
-                preferences_mergerColorBackLegendLines_property.selection,
-                unwSelf.frontLegendTextsBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayFrontLegendTexts_property.selection,
-                preferences_mergerColorFrontLegendTexts_property.selection,
-                unwSelf.frontLayoutTextsBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayFrontLayoutTexts_property.selection,
-                preferences_mergerColorFrontLayoutTexts_property.selection,
-                unwSelf.backLegendTextsBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayBackLegendTexts_property.selection,
-                preferences_mergerColorBackLegendTexts_property.selection,
-                unwSelf.backLayoutTextsBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayBackLayoutTexts_property.selection,
-                preferences_mergerColorBackLayoutTexts_property.selection,
-                unwSelf.backComponentNamesBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayBackComponentNames_property.selection,
-                preferences_mergerColorBackComponentNames_property.selection,
-                unwSelf.frontComponentNamesBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayFrontComponentNames_property.selection,
-                preferences_mergerColorFrontComponentNames_property.selection,
-                unwSelf.frontComponentValuesBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayFrontComponentValues_property.selection,
-                preferences_mergerColorFrontComponentValues_property.selection,
-                unwSelf.backComponentValuesBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayBackComponentValues_property.selection,
-                preferences_mergerColorBackComponentValues_property.selection,
-                unwSelf.frontPackagesBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayFrontPackages_property.selection,
-                preferences_mergerColorFrontPackages_property.selection,
-                unwSelf.backPackagesBezierPaths_property.selection,
-                preferences_mergerModelViewDisplayBackPackages_property.selection,
-                preferences_mergerColorBackPackages_property.selection) {
+        let s0 = preferences_mergerColorBackground_property.selection
+        let s1 = unwSelf.modelWidth_property.selection
+        let s2 = unwSelf.modelHeight_property.selection
+        let s3 = unwSelf.boardLimitsBezierPaths_property.selection
+        let s4 = preferences_mergerModelViewDisplayModelBoardLimits_property.selection
+        let s5 = preferences_mergerColorInternalBoardsLimits_property.selection
+        let s6 = unwSelf.internalBoardsLimitsBezierPaths_property.selection
+        let s7 = unwSelf.frontTracksBezierPaths_property.selection
+        let s8 = preferences_mergerModelViewDisplayFrontTracks_property.selection
+        let s9 = preferences_mergerColorFrontTracks_property.selection
+        let s10 = unwSelf.inner1TracksBezierPaths_property.selection
+        let s11 = preferences_mergerModelViewDisplayInner1Tracks_property.selection
+        let s12 = preferences_mergerColorInner1Tracks_property.selection
+        let s13 = unwSelf.inner2TracksBezierPaths_property.selection
+        let s14 = preferences_mergerModelViewDisplayInner2Tracks_property.selection
+        let s15 = preferences_mergerColorInner2Tracks_property.selection
+        let s16 = unwSelf.inner3TracksBezierPaths_property.selection
+        let s17 = preferences_mergerModelViewDisplayInner3Tracks_property.selection
+        let s18 = preferences_mergerColorInner3Tracks_property.selection
+        let s19 = unwSelf.inner4TracksBezierPaths_property.selection
+        let s20 = preferences_mergerModelViewDisplayInner4Tracks_property.selection
+        let s21 = preferences_mergerColorInner4Tracks_property.selection
+        let s22 = unwSelf.backTracksBezierPaths_property.selection
+        let s23 = preferences_mergerModelViewDisplayBackTracks_property.selection
+        let s24 = preferences_mergerColorBackTracks_property.selection
+        let s25 = unwSelf.frontPadsBezierPaths_property.selection
+        let s26 = preferences_mergerModelViewDisplayFrontPads_property.selection
+        let s27 = preferences_mergerColorFrontPads_property.selection
+        let s28 = unwSelf.backPadsBezierPaths_property.selection
+        let s29 = preferences_mergerModelViewDisplayBackPads_property.selection
+        let s30 = preferences_mergerColorBackPads_property.selection
+        let s31 = unwSelf.traversingPadsBezierPaths_property.selection
+        let s32 = preferences_mergerModelViewDisplayTraversingPads_property.selection
+        let s33 = preferences_mergerColorTraversingPads_property.selection
+        let s34 = unwSelf.viasBezierPaths_property.selection
+        let s35 = preferences_mergerModelViewDisplayVias_property.selection
+        let s36 = preferences_mergerColorVias_property.selection
+        let s37 = unwSelf.holesBezierPaths_property.selection
+        let s38 = preferences_mergerModelViewDisplayHoles_property.selection
+        let s39 = preferences_mergerColorHoles_property.selection
+        let s40 = unwSelf.frontLegendLinesBezierPaths_property.selection
+        let s41 = preferences_mergerModelViewDisplayFrontLegendLines_property.selection
+        let s42 = preferences_mergerColorFrontLegendLines_property.selection
+        let s43 = unwSelf.backLegendLinesBezierPaths_property.selection
+        let s44 = preferences_mergerModelViewDisplayBackLegendLines_property.selection
+        let s45 = preferences_mergerColorBackLegendLines_property.selection
+        let s46 = unwSelf.frontLegendTextsBezierPaths_property.selection
+        let s47 = preferences_mergerModelViewDisplayFrontLegendTexts_property.selection
+        let s48 = preferences_mergerColorFrontLegendTexts_property.selection
+        let s49 = unwSelf.frontLayoutTextsBezierPaths_property.selection
+        let s50 = preferences_mergerModelViewDisplayFrontLayoutTexts_property.selection
+        let s51 = preferences_mergerColorFrontLayoutTexts_property.selection
+        let s52 = unwSelf.backLegendTextsBezierPaths_property.selection
+        let s53 = preferences_mergerModelViewDisplayBackLegendTexts_property.selection
+        let s54 = preferences_mergerColorBackLegendTexts_property.selection
+        let s55 = unwSelf.backLayoutTextsBezierPaths_property.selection
+        let s56 = preferences_mergerModelViewDisplayBackLayoutTexts_property.selection
+        let s57 = preferences_mergerColorBackLayoutTexts_property.selection
+        let s58 = unwSelf.backComponentNamesBezierPaths_property.selection
+        let s59 = preferences_mergerModelViewDisplayBackComponentNames_property.selection
+        let s60 = preferences_mergerColorBackComponentNames_property.selection
+        let s61 = unwSelf.frontComponentNamesBezierPaths_property.selection
+        let s62 = preferences_mergerModelViewDisplayFrontComponentNames_property.selection
+        let s63 = preferences_mergerColorFrontComponentNames_property.selection
+        let s64 = unwSelf.frontComponentValuesBezierPaths_property.selection
+        let s65 = preferences_mergerModelViewDisplayFrontComponentValues_property.selection
+        let s66 = preferences_mergerColorFrontComponentValues_property.selection
+        let s67 = unwSelf.backComponentValuesBezierPaths_property.selection
+        let s68 = preferences_mergerModelViewDisplayBackComponentValues_property.selection
+        let s69 = preferences_mergerColorBackComponentValues_property.selection
+        let s70 = unwSelf.frontPackagesBezierPaths_property.selection
+        let s71 = preferences_mergerModelViewDisplayFrontPackages_property.selection
+        let s72 = preferences_mergerColorFrontPackages_property.selection
+        let s73 = unwSelf.backPackagesBezierPaths_property.selection
+        let s74 = preferences_mergerModelViewDisplayBackPackages_property.selection
+        let s75 = preferences_mergerColorBackPackages_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26, s27, s28, s29, s30, s31, s32, s33, s34, s35, s36, s37, s38, s39, s40, s41, s42, s43, s44, s45, s46, s47, s48, s49, s50, s51, s52, s53, s54, s55, s56, s57, s58, s59, s60, s61, s62, s63, s64, s65, s66, s67, s68, s69, s70, s71, s72, s73, s74, s75) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -3518,82 +3570,83 @@ final class BoardModel : EBManagedObject,
   //--- Atomic property: imageForInstances
     self.imageForInstances_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (preferences_mergerColorBackground_property.selection,
-                unwSelf.modelWidth_property.selection,
-                unwSelf.modelHeight_property.selection,
-                unwSelf.frontTracksBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayFrontTracks_property.selection,
-                preferences_mergerColorFrontTracks_property.selection,
-                unwSelf.inner1TracksBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayInner1Tracks_property.selection,
-                preferences_mergerColorInner1Tracks_property.selection,
-                unwSelf.inner2TracksBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayInner2Tracks_property.selection,
-                preferences_mergerColorInner2Tracks_property.selection,
-                unwSelf.inner3TracksBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayInner3Tracks_property.selection,
-                preferences_mergerColorInner3Tracks_property.selection,
-                unwSelf.inner4TracksBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayInner4Tracks_property.selection,
-                preferences_mergerColorInner4Tracks_property.selection,
-                unwSelf.backTracksBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayBackTracks_property.selection,
-                preferences_mergerColorBackTracks_property.selection,
-                unwSelf.internalBoardsLimitsBezierPaths_property.selection,
-                unwSelf.boardLimitsBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayModelBoardsLimits_property.selection,
-                preferences_mergerColorInternalBoardsLimits_property.selection,
-                unwSelf.frontPadsBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayFrontPads_property.selection,
-                preferences_mergerColorFrontPads_property.selection,
-                unwSelf.traversingPadsBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayTraversingPads_property.selection,
-                preferences_mergerColorTraversingPads_property.selection,
-                unwSelf.backPadsBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayBackPads_property.selection,
-                preferences_mergerColorBackPads_property.selection,
-                unwSelf.viasBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayVias_property.selection,
-                preferences_mergerColorVias_property.selection,
-                unwSelf.holesBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayHoles_property.selection,
-                preferences_mergerColorHoles_property.selection,
-                unwSelf.frontLegendLinesBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayFrontLegendLines_property.selection,
-                preferences_mergerColorFrontLegendLines_property.selection,
-                unwSelf.backLegendLinesBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayBackLegendLines_property.selection,
-                preferences_mergerColorBackLegendLines_property.selection,
-                unwSelf.frontLegendTextsBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayFrontLegendTexts_property.selection,
-                preferences_mergerColorFrontLegendTexts_property.selection,
-                unwSelf.frontLayoutTextsBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayFrontLayoutTexts_property.selection,
-                preferences_mergerColorFrontLayoutTexts_property.selection,
-                unwSelf.backLegendTextsBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayBackLegendTexts_property.selection,
-                preferences_mergerColorBackLegendTexts_property.selection,
-                unwSelf.backLayoutTextsBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayBackLayoutTexts_property.selection,
-                preferences_mergerColorBackLayoutTexts_property.selection,
-                unwSelf.backComponentNamesBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayBackComponentNames_property.selection,
-                preferences_mergerColorBackComponentNames_property.selection,
-                unwSelf.frontComponentNamesBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayFrontComponentNames_property.selection,
-                preferences_mergerColorFrontComponentNames_property.selection,
-                unwSelf.frontComponentValuesBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayFrontComponentValues_property.selection,
-                preferences_mergerColorFrontComponentValues_property.selection,
-                unwSelf.backComponentValuesBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayBackComponentValues_property.selection,
-                preferences_mergerColorBackComponentValues_property.selection,
-                unwSelf.frontPackagesBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayFrontPackages_property.selection,
-                preferences_mergerColorFrontPackages_property.selection,
-                unwSelf.backPackagesBezierPaths_property.selection,
-                preferences_mergerBoardViewDisplayBackPackages_property.selection,
-                preferences_mergerColorBackPackages_property.selection) {
+        let s0 = preferences_mergerColorBackground_property.selection
+        let s1 = unwSelf.modelWidth_property.selection
+        let s2 = unwSelf.modelHeight_property.selection
+        let s3 = unwSelf.frontTracksBezierPaths_property.selection
+        let s4 = preferences_mergerBoardViewDisplayFrontTracks_property.selection
+        let s5 = preferences_mergerColorFrontTracks_property.selection
+        let s6 = unwSelf.inner1TracksBezierPaths_property.selection
+        let s7 = preferences_mergerBoardViewDisplayInner1Tracks_property.selection
+        let s8 = preferences_mergerColorInner1Tracks_property.selection
+        let s9 = unwSelf.inner2TracksBezierPaths_property.selection
+        let s10 = preferences_mergerBoardViewDisplayInner2Tracks_property.selection
+        let s11 = preferences_mergerColorInner2Tracks_property.selection
+        let s12 = unwSelf.inner3TracksBezierPaths_property.selection
+        let s13 = preferences_mergerBoardViewDisplayInner3Tracks_property.selection
+        let s14 = preferences_mergerColorInner3Tracks_property.selection
+        let s15 = unwSelf.inner4TracksBezierPaths_property.selection
+        let s16 = preferences_mergerBoardViewDisplayInner4Tracks_property.selection
+        let s17 = preferences_mergerColorInner4Tracks_property.selection
+        let s18 = unwSelf.backTracksBezierPaths_property.selection
+        let s19 = preferences_mergerBoardViewDisplayBackTracks_property.selection
+        let s20 = preferences_mergerColorBackTracks_property.selection
+        let s21 = unwSelf.internalBoardsLimitsBezierPaths_property.selection
+        let s22 = unwSelf.boardLimitsBezierPaths_property.selection
+        let s23 = preferences_mergerBoardViewDisplayModelBoardsLimits_property.selection
+        let s24 = preferences_mergerColorInternalBoardsLimits_property.selection
+        let s25 = unwSelf.frontPadsBezierPaths_property.selection
+        let s26 = preferences_mergerBoardViewDisplayFrontPads_property.selection
+        let s27 = preferences_mergerColorFrontPads_property.selection
+        let s28 = unwSelf.traversingPadsBezierPaths_property.selection
+        let s29 = preferences_mergerBoardViewDisplayTraversingPads_property.selection
+        let s30 = preferences_mergerColorTraversingPads_property.selection
+        let s31 = unwSelf.backPadsBezierPaths_property.selection
+        let s32 = preferences_mergerBoardViewDisplayBackPads_property.selection
+        let s33 = preferences_mergerColorBackPads_property.selection
+        let s34 = unwSelf.viasBezierPaths_property.selection
+        let s35 = preferences_mergerBoardViewDisplayVias_property.selection
+        let s36 = preferences_mergerColorVias_property.selection
+        let s37 = unwSelf.holesBezierPaths_property.selection
+        let s38 = preferences_mergerBoardViewDisplayHoles_property.selection
+        let s39 = preferences_mergerColorHoles_property.selection
+        let s40 = unwSelf.frontLegendLinesBezierPaths_property.selection
+        let s41 = preferences_mergerBoardViewDisplayFrontLegendLines_property.selection
+        let s42 = preferences_mergerColorFrontLegendLines_property.selection
+        let s43 = unwSelf.backLegendLinesBezierPaths_property.selection
+        let s44 = preferences_mergerBoardViewDisplayBackLegendLines_property.selection
+        let s45 = preferences_mergerColorBackLegendLines_property.selection
+        let s46 = unwSelf.frontLegendTextsBezierPaths_property.selection
+        let s47 = preferences_mergerBoardViewDisplayFrontLegendTexts_property.selection
+        let s48 = preferences_mergerColorFrontLegendTexts_property.selection
+        let s49 = unwSelf.frontLayoutTextsBezierPaths_property.selection
+        let s50 = preferences_mergerBoardViewDisplayFrontLayoutTexts_property.selection
+        let s51 = preferences_mergerColorFrontLayoutTexts_property.selection
+        let s52 = unwSelf.backLegendTextsBezierPaths_property.selection
+        let s53 = preferences_mergerBoardViewDisplayBackLegendTexts_property.selection
+        let s54 = preferences_mergerColorBackLegendTexts_property.selection
+        let s55 = unwSelf.backLayoutTextsBezierPaths_property.selection
+        let s56 = preferences_mergerBoardViewDisplayBackLayoutTexts_property.selection
+        let s57 = preferences_mergerColorBackLayoutTexts_property.selection
+        let s58 = unwSelf.backComponentNamesBezierPaths_property.selection
+        let s59 = preferences_mergerBoardViewDisplayBackComponentNames_property.selection
+        let s60 = preferences_mergerColorBackComponentNames_property.selection
+        let s61 = unwSelf.frontComponentNamesBezierPaths_property.selection
+        let s62 = preferences_mergerBoardViewDisplayFrontComponentNames_property.selection
+        let s63 = preferences_mergerColorFrontComponentNames_property.selection
+        let s64 = unwSelf.frontComponentValuesBezierPaths_property.selection
+        let s65 = preferences_mergerBoardViewDisplayFrontComponentValues_property.selection
+        let s66 = preferences_mergerColorFrontComponentValues_property.selection
+        let s67 = unwSelf.backComponentValuesBezierPaths_property.selection
+        let s68 = preferences_mergerBoardViewDisplayBackComponentValues_property.selection
+        let s69 = preferences_mergerColorBackComponentValues_property.selection
+        let s70 = unwSelf.frontPackagesBezierPaths_property.selection
+        let s71 = preferences_mergerBoardViewDisplayFrontPackages_property.selection
+        let s72 = preferences_mergerColorFrontPackages_property.selection
+        let s73 = unwSelf.backPackagesBezierPaths_property.selection
+        let s74 = preferences_mergerBoardViewDisplayBackPackages_property.selection
+        let s75 = preferences_mergerColorBackPackages_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23, s24, s25, s26, s27, s28, s29, s30, s31, s32, s33, s34, s35, s36, s37, s38, s39, s40, s41, s42, s43, s44, s45, s46, s47, s48, s49, s50, s51, s52, s53, s54, s55, s56, s57, s58, s59, s60, s61, s62, s63, s64, s65, s66, s67, s68, s69, s70, s71, s72, s73, s74, s75) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

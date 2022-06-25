@@ -151,7 +151,8 @@ final class CanariLibraryEntry : EBManagedObject,
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPath_property.selection) {
+        let s0 = unwSelf.mPath_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_CanariLibraryEntry_mStatusImage (v0))
         case (.multiple) :

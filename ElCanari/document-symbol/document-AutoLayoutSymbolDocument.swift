@@ -1228,7 +1228,8 @@ import Cocoa
     }
   //--- Atomic property: addSegmentButtonImage
     self.addSegmentButtonImage_property.mReadModelFunction = {
-        switch (preferences_symbolColor_property.selection) {
+        let s0 = preferences_symbolColor_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_addSegmentButtonImage (v0))
         case (.multiple) :
@@ -1244,7 +1245,8 @@ import Cocoa
     }
   //--- Atomic property: addBezierButtonImage
     self.addBezierButtonImage_property.mReadModelFunction = {
-        switch (preferences_symbolColor_property.selection) {
+        let s0 = preferences_symbolColor_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_addBezierButtonImage (v0))
         case (.multiple) :
@@ -1260,7 +1262,8 @@ import Cocoa
     }
   //--- Atomic property: addOvalButtonImage
     self.addOvalButtonImage_property.mReadModelFunction = {
-        switch (preferences_symbolColor_property.selection) {
+        let s0 = preferences_symbolColor_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_addOvalButtonImage (v0))
         case (.multiple) :
@@ -1276,7 +1279,8 @@ import Cocoa
     }
   //--- Atomic property: addSolidOvalButtonImage
     self.addSolidOvalButtonImage_property.mReadModelFunction = {
-        switch (preferences_symbolColor_property.selection) {
+        let s0 = preferences_symbolColor_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_addSolidOvalButtonImage (v0))
         case (.multiple) :
@@ -1292,7 +1296,8 @@ import Cocoa
     }
   //--- Atomic property: addSolidRectButtonImage
     self.addSolidRectButtonImage_property.mReadModelFunction = {
-        switch (preferences_symbolColor_property.selection) {
+        let s0 = preferences_symbolColor_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_addSolidRectButtonImage (v0))
         case (.multiple) :
@@ -1308,7 +1313,8 @@ import Cocoa
     }
   //--- Atomic property: addTextButtonImage
     self.addTextButtonImage_property.mReadModelFunction = {
-        switch (preferences_symbolColor_property.selection) {
+        let s0 = preferences_symbolColor_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_addTextButtonImage (v0))
         case (.multiple) :
@@ -1324,7 +1330,8 @@ import Cocoa
     }
   //--- Atomic property: addPinButtonImage
     self.addPinButtonImage_property.mReadModelFunction = {
-        switch (preferences_symbolColor_property.selection) {
+        let s0 = preferences_symbolColor_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_addPinButtonImage (v0))
         case (.multiple) :
@@ -1341,8 +1348,9 @@ import Cocoa
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property.selection,
-                unwSelf.documentFileName_property.selection) {
+        let s0 = unwSelf.rootObject.issues_property.selection
+        let s1 = unwSelf.documentFileName_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_AutoLayoutSymbolDocument_issues (v0, v1))
@@ -1365,7 +1373,8 @@ import Cocoa
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection) {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_statusImage (v0))
         case (.multiple) :
@@ -1385,7 +1394,8 @@ import Cocoa
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection) {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_statusMessage (v0))
         case (.multiple) :
@@ -1405,7 +1415,8 @@ import Cocoa
   //--- Atomic property: metadataStatus
     self.metadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection) {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_metadataStatus (v0))
         case (.multiple) :
@@ -1425,7 +1436,8 @@ import Cocoa
   //--- Atomic property: noIssue
     self.noIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection) {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_noIssue (v0))
         case (.multiple) :
@@ -1445,7 +1457,8 @@ import Cocoa
   //--- Atomic property: segmentedControlSegmentIssueImage
     self.segmentedControlSegmentIssueImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection) {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_segmentedControlSegmentIssueImage (v0))
         case (.multiple) :
@@ -1465,7 +1478,8 @@ import Cocoa
   //--- Atomic property: segmentedControlSegmentIssueString
     self.segmentedControlSegmentIssueString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection) {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutSymbolDocument_segmentedControlSegmentIssueString (v0))
         case (.multiple) :

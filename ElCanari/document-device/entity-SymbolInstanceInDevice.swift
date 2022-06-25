@@ -271,8 +271,9 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //--- Atomic property: symbolQualifiedName
     self.symbolQualifiedName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mInstanceName_property.selection,
-                unwSelf.mType_property.mTypeName_property.selection) {
+        let s0 = unwSelf.mInstanceName_property.selection
+        let s1 = unwSelf.mType_property.mTypeName_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_SymbolInstanceInDevice_symbolQualifiedName (v0, v1))
@@ -291,7 +292,8 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //--- Atomic property: symbolTypeName
     self.symbolTypeName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mType_property.mTypeName_property.selection) {
+        let s0 = unwSelf.mType_property.mTypeName_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_SymbolInstanceInDevice_symbolTypeName (v0))
         case (.multiple) :
@@ -307,8 +309,9 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //--- Atomic property: pinSymbolQualifiedNames
     self.pinSymbolQualifiedNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mInstanceName_property.selection,
-                unwSelf.mPinInstances_property.selection) {
+        let s0 = unwSelf.mInstanceName_property.selection
+        let s1 = unwSelf.mPinInstances_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_SymbolInstanceInDevice_pinSymbolQualifiedNames (v0, v1))
@@ -327,14 +330,15 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mType_property.mStrokeBezierPath_property.selection,
-                unwSelf.mType_property.mFilledBezierPath_property.selection,
-                unwSelf.mType_property.pinNameShape_property.selection,
-                unwSelf.mPinInstances_property.selection,
-                unwSelf.symbolQualifiedName_property.selection,
-                preferences_symbolDrawingWidthMultipliedByTen_property.selection,
-                unwSelf.mX_property.selection,
-                unwSelf.mY_property.selection) {
+        let s0 = unwSelf.mType_property.mStrokeBezierPath_property.selection
+        let s1 = unwSelf.mType_property.mFilledBezierPath_property.selection
+        let s2 = unwSelf.mType_property.pinNameShape_property.selection
+        let s3 = unwSelf.mPinInstances_property.selection
+        let s4 = unwSelf.symbolQualifiedName_property.selection
+        let s5 = preferences_symbolDrawingWidthMultipliedByTen_property.selection
+        let s6 = unwSelf.mX_property.selection
+        let s7 = unwSelf.mY_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -371,9 +375,10 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //--- Atomic property: unconnectedPins
     self.unconnectedPins_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPinInstances_property.selection,
-                unwSelf.mPinInstances_property.selection,
-                unwSelf.mInstanceName_property.selection) {
+        let s0 = unwSelf.mPinInstances_property.selection
+        let s1 = unwSelf.mPinInstances_property.selection
+        let s2 = unwSelf.mInstanceName_property.selection
+        switch (s0, s1, s2) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2)) :
@@ -395,15 +400,16 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mType_property.mStrokeBezierPath_property.selection,
-                unwSelf.mType_property.mFilledBezierPath_property.selection,
-                unwSelf.mType_property.pinNameShape_property.selection,
-                unwSelf.mPinInstances_property.selection,
-                unwSelf.symbolQualifiedName_property.selection,
-                unwSelf.mX_property.selection,
-                unwSelf.mY_property.selection,
-                preferences_symbolDrawingWidthMultipliedByTen_property.selection,
-                preferences_symbolColor_property.selection) {
+        let s0 = unwSelf.mType_property.mStrokeBezierPath_property.selection
+        let s1 = unwSelf.mType_property.mFilledBezierPath_property.selection
+        let s2 = unwSelf.mType_property.pinNameShape_property.selection
+        let s3 = unwSelf.mPinInstances_property.selection
+        let s4 = unwSelf.symbolQualifiedName_property.selection
+        let s5 = unwSelf.mX_property.selection
+        let s6 = unwSelf.mY_property.selection
+        let s7 = preferences_symbolDrawingWidthMultipliedByTen_property.selection
+        let s8 = preferences_symbolColor_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),

@@ -730,8 +730,9 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: trackWidthString
     self.trackWidthString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mTrackWidth_property.selection,
-                unwSelf.mTrackWidthUnit_property.selection) {
+        let s0 = unwSelf.mTrackWidth_property.selection
+        let s1 = unwSelf.mTrackWidthUnit_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_NetClassInProject_trackWidthString (v0, v1))
@@ -750,8 +751,9 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: viaHoleDiameter
     self.viaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mViaHoleDiameter_property.selection,
-                unwSelf.mViaHoleDiameterUnit_property.selection) {
+        let s0 = unwSelf.mViaHoleDiameter_property.selection
+        let s1 = unwSelf.mViaHoleDiameterUnit_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_NetClassInProject_viaHoleDiameter (v0, v1))
@@ -770,8 +772,9 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: viaPadDiameter
     self.viaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mViaPadDiameter_property.selection,
-                unwSelf.mViaPadDiameterUnit_property.selection) {
+        let s0 = unwSelf.mViaPadDiameter_property.selection
+        let s1 = unwSelf.mViaPadDiameterUnit_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_NetClassInProject_viaPadDiameter (v0, v1))
@@ -790,7 +793,8 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: allowTracksOnFrontSideString
     self.allowTracksOnFrontSideString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mAllowTracksOnFrontSide_property.selection) {
+        let s0 = unwSelf.mAllowTracksOnFrontSide_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_NetClassInProject_allowTracksOnFrontSideString (v0))
         case (.multiple) :
@@ -806,7 +810,8 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: allowTracksOnBackSideString
     self.allowTracksOnBackSideString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mAllowTracksOnBackSide_property.selection) {
+        let s0 = unwSelf.mAllowTracksOnBackSide_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_NetClassInProject_allowTracksOnBackSideString (v0))
         case (.multiple) :
@@ -822,7 +827,8 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: allowTracksOnInner1LayerString
     self.allowTracksOnInner1LayerString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mAllowTracksOnInner1Layer_property.selection) {
+        let s0 = unwSelf.mAllowTracksOnInner1Layer_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_NetClassInProject_allowTracksOnInner1LayerString (v0))
         case (.multiple) :
@@ -838,7 +844,8 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: allowTracksOnInner2LayerString
     self.allowTracksOnInner2LayerString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mAllowTracksOnInner2Layer_property.selection) {
+        let s0 = unwSelf.mAllowTracksOnInner2Layer_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_NetClassInProject_allowTracksOnInner2LayerString (v0))
         case (.multiple) :
@@ -854,7 +861,8 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: allowTracksOnInner3LayerString
     self.allowTracksOnInner3LayerString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mAllowTracksOnInner3Layer_property.selection) {
+        let s0 = unwSelf.mAllowTracksOnInner3Layer_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_NetClassInProject_allowTracksOnInner3LayerString (v0))
         case (.multiple) :
@@ -870,7 +878,8 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: allowTracksOnInner4LayerString
     self.allowTracksOnInner4LayerString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mAllowTracksOnInner4Layer_property.selection) {
+        let s0 = unwSelf.mAllowTracksOnInner4Layer_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_NetClassInProject_allowTracksOnInner4LayerString (v0))
         case (.multiple) :
@@ -886,7 +895,8 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: canRemove
     self.canRemove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mNets_property.count_property.selection) {
+        let s0 = unwSelf.mNets_property.count_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_NetClassInProject_canRemove (v0))
         case (.multiple) :
@@ -902,7 +912,8 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: netUsage
     self.netUsage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mNets_property.count_property.selection) {
+        let s0 = unwSelf.mNets_property.count_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_NetClassInProject_netUsage (v0))
         case (.multiple) :
@@ -918,12 +929,13 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: netsDescription
     self.netsDescription_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mNets_property.selection,
-                unwSelf.mNets_property.selection,
-                unwSelf.mNets_property.selection,
-                unwSelf.mNets_property.selection,
-                unwSelf.mNets_property.selection,
-                unwSelf.mNetClassName_property.selection) {
+        let s0 = unwSelf.mNets_property.selection
+        let s1 = unwSelf.mNets_property.selection
+        let s2 = unwSelf.mNets_property.selection
+        let s3 = unwSelf.mNets_property.selection
+        let s4 = unwSelf.mNets_property.selection
+        let s5 = unwSelf.mNetClassName_property.selection
+        switch (s0, s1, s2, s3, s4, s5) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -954,7 +966,8 @@ final class NetClassInProject : EBManagedObject,
   //--- Atomic property: netWarningCount
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.netsDescription_property.selection) {
+        let s0 = unwSelf.netsDescription_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_NetClassInProject_netWarningCount (v0))
         case (.multiple) :

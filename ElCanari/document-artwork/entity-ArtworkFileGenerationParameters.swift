@@ -887,30 +887,31 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //--- Atomic property: hasNoData
     self.hasNoData_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mArtwork_property.layerConfiguration_property.selection,
-                unwSelf.drawBoardLimits_property.selection,
-                unwSelf.drawInternalBoardLimits_property.selection,
-                unwSelf.drawComponentNamesTopSide_property.selection,
-                unwSelf.drawComponentNamesBottomSide_property.selection,
-                unwSelf.drawComponentValuesTopSide_property.selection,
-                unwSelf.drawComponentValuesBottomSide_property.selection,
-                unwSelf.drawPackageLegendTopSide_property.selection,
-                unwSelf.drawPackageLegendBottomSide_property.selection,
-                unwSelf.drawPadHolesInPDF_property.selection,
-                unwSelf.drawPadsTopSide_property.selection,
-                unwSelf.drawPadsBottomSide_property.selection,
-                unwSelf.drawTextsLayoutTopSide_property.selection,
-                unwSelf.drawTextsLayoutBottomSide_property.selection,
-                unwSelf.drawTextsLegendTopSide_property.selection,
-                unwSelf.drawTextsLegendBottomSide_property.selection,
-                unwSelf.drawTracksTopSide_property.selection,
-                unwSelf.drawTracksInner1Layer_property.selection,
-                unwSelf.drawTracksInner2Layer_property.selection,
-                unwSelf.drawTracksInner3Layer_property.selection,
-                unwSelf.drawTracksInner4Layer_property.selection,
-                unwSelf.drawTracksBottomSide_property.selection,
-                unwSelf.drawTraversingPads_property.selection,
-                unwSelf.drawVias_property.selection) {
+        let s0 = unwSelf.mArtwork_property.layerConfiguration_property.selection
+        let s1 = unwSelf.drawBoardLimits_property.selection
+        let s2 = unwSelf.drawInternalBoardLimits_property.selection
+        let s3 = unwSelf.drawComponentNamesTopSide_property.selection
+        let s4 = unwSelf.drawComponentNamesBottomSide_property.selection
+        let s5 = unwSelf.drawComponentValuesTopSide_property.selection
+        let s6 = unwSelf.drawComponentValuesBottomSide_property.selection
+        let s7 = unwSelf.drawPackageLegendTopSide_property.selection
+        let s8 = unwSelf.drawPackageLegendBottomSide_property.selection
+        let s9 = unwSelf.drawPadHolesInPDF_property.selection
+        let s10 = unwSelf.drawPadsTopSide_property.selection
+        let s11 = unwSelf.drawPadsBottomSide_property.selection
+        let s12 = unwSelf.drawTextsLayoutTopSide_property.selection
+        let s13 = unwSelf.drawTextsLayoutBottomSide_property.selection
+        let s14 = unwSelf.drawTextsLegendTopSide_property.selection
+        let s15 = unwSelf.drawTextsLegendBottomSide_property.selection
+        let s16 = unwSelf.drawTracksTopSide_property.selection
+        let s17 = unwSelf.drawTracksInner1Layer_property.selection
+        let s18 = unwSelf.drawTracksInner2Layer_property.selection
+        let s19 = unwSelf.drawTracksInner3Layer_property.selection
+        let s20 = unwSelf.drawTracksInner4Layer_property.selection
+        let s21 = unwSelf.drawTracksBottomSide_property.selection
+        let s22 = unwSelf.drawTraversingPads_property.selection
+        let s23 = unwSelf.drawVias_property.selection
+        switch (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2),
@@ -995,9 +996,10 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //--- Atomic property: parameterStatusImage
     self.parameterStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.name_property.selection,
-                unwSelf.fileExtension_property.selection,
-                unwSelf.hasNoData_property.selection) {
+        let s0 = unwSelf.name_property.selection
+        let s1 = unwSelf.fileExtension_property.selection
+        let s2 = unwSelf.hasNoData_property.selection
+        switch (s0, s1, s2) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2)) :
@@ -1019,7 +1021,8 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //--- Atomic property: emptyFileExtensionImage
     self.emptyFileExtensionImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.fileExtension_property.selection) {
+        let s0 = unwSelf.fileExtension_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_ArtworkFileGenerationParameters_emptyFileExtensionImage (v0))
         case (.multiple) :

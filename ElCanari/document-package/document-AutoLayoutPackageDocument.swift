@@ -3692,7 +3692,8 @@ import Cocoa
     }
   //--- Atomic property: addSegmentButtonImage
     self.addSegmentButtonImage_property.mReadModelFunction = {
-        switch (preferences_packageColor_property.selection) {
+        let s0 = preferences_packageColor_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_addSegmentButtonImage (v0))
         case (.multiple) :
@@ -3708,7 +3709,8 @@ import Cocoa
     }
   //--- Atomic property: addBezierButtonImage
     self.addBezierButtonImage_property.mReadModelFunction = {
-        switch (preferences_packageColor_property.selection) {
+        let s0 = preferences_packageColor_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_addBezierButtonImage (v0))
         case (.multiple) :
@@ -3724,7 +3726,8 @@ import Cocoa
     }
   //--- Atomic property: addOvalButtonImage
     self.addOvalButtonImage_property.mReadModelFunction = {
-        switch (preferences_packageColor_property.selection) {
+        let s0 = preferences_packageColor_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_addOvalButtonImage (v0))
         case (.multiple) :
@@ -3740,7 +3743,8 @@ import Cocoa
     }
   //--- Atomic property: addArcButtonImage
     self.addArcButtonImage_property.mReadModelFunction = {
-        switch (preferences_packageColor_property.selection) {
+        let s0 = preferences_packageColor_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_addArcButtonImage (v0))
         case (.multiple) :
@@ -3756,7 +3760,8 @@ import Cocoa
     }
   //--- Atomic property: addMasterPadButtonImage
     self.addMasterPadButtonImage_property.mReadModelFunction = {
-        switch (preferences_frontSidePadColor_property.selection) {
+        let s0 = preferences_frontSidePadColor_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_addMasterPadButtonImage (v0))
         case (.multiple) :
@@ -3772,7 +3777,8 @@ import Cocoa
     }
   //--- Atomic property: addSlavePadButtonImage
     self.addSlavePadButtonImage_property.mReadModelFunction = {
-        switch (preferences_frontSidePadColor_property.selection) {
+        let s0 = preferences_frontSidePadColor_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_addSlavePadButtonImage (v0))
         case (.multiple) :
@@ -3788,7 +3794,8 @@ import Cocoa
     }
   //--- Atomic property: addGuideButtonImage
     self.addGuideButtonImage_property.mReadModelFunction = {
-        switch (preferences_packageGuideColor_property.selection) {
+        let s0 = preferences_packageGuideColor_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_addGuideButtonImage (v0))
         case (.multiple) :
@@ -3804,7 +3811,8 @@ import Cocoa
     }
   //--- Atomic property: addDimensionButtonImage
     self.addDimensionButtonImage_property.mReadModelFunction = {
-        switch (preferences_packageDimensionColor_property.selection) {
+        let s0 = preferences_packageDimensionColor_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_addDimensionButtonImage (v0))
         case (.multiple) :
@@ -3820,7 +3828,8 @@ import Cocoa
     }
   //--- Atomic property: addZoneButtonImage
     self.addZoneButtonImage_property.mReadModelFunction = {
-        switch (preferences_padZoneColor_property.selection) {
+        let s0 = preferences_padZoneColor_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_addZoneButtonImage (v0))
         case (.multiple) :
@@ -3841,8 +3850,9 @@ import Cocoa
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.rootObject.issues_property.selection,
-                unwSelf.documentFileName_property.selection) {
+        let s0 = unwSelf.rootObject.issues_property.selection
+        let s1 = unwSelf.documentFileName_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_AutoLayoutPackageDocument_issues (v0, v1))
@@ -3865,7 +3875,8 @@ import Cocoa
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection) {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_statusMessage (v0))
         case (.multiple) :
@@ -3885,7 +3896,8 @@ import Cocoa
   //--- Atomic property: metadataStatus
     self.metadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection) {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_metadataStatus (v0))
         case (.multiple) :
@@ -3905,7 +3917,8 @@ import Cocoa
   //--- Atomic property: noIssue
     self.noIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection) {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_noIssue (v0))
         case (.multiple) :
@@ -3925,7 +3938,8 @@ import Cocoa
   //--- Atomic property: segmentedControlSegmentIssueImage
     self.segmentedControlSegmentIssueImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection) {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_segmentedControlSegmentIssueImage (v0))
         case (.multiple) :
@@ -3945,7 +3959,8 @@ import Cocoa
   //--- Atomic property: segmentedControlSegmentIssueString
     self.segmentedControlSegmentIssueString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection) {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_segmentedControlSegmentIssueString (v0))
         case (.multiple) :
@@ -3965,7 +3980,8 @@ import Cocoa
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.issues_property.selection) {
+        let s0 = unwSelf.issues_property.selection
+        switch (s0) {
         case (.single (let v0)) :
           return .single (transient_AutoLayoutPackageDocument_statusImage (v0))
         case (.multiple) :

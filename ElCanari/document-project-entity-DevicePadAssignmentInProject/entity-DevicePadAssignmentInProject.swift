@@ -130,9 +130,10 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //--- Atomic property: pinPadAssignment
     self.pinPadAssignment_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPadName_property.selection,
-                unwSelf.mPin_property.mSymbolInstanceName_property.selection,
-                unwSelf.mPin_property.mPinName_property.selection) {
+        let s0 = unwSelf.mPadName_property.selection
+        let s1 = unwSelf.mPin_property.mSymbolInstanceName_property.selection
+        let s2 = unwSelf.mPin_property.mPinName_property.selection
+        switch (s0, s1, s2) {
         case (.single (let v0),
               .single (let v1),
               .single (let v2)) :
@@ -154,8 +155,9 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        switch (unwSelf.mPadName_property.selection,
-                unwSelf.mPin_property.descriptor_property.selection) {
+        let s0 = unwSelf.mPadName_property.selection
+        let s1 = unwSelf.mPin_property.descriptor_property.selection
+        switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
           return .single (transient_DevicePadAssignmentInProject_descriptor (v0, v1))
