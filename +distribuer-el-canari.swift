@@ -33,6 +33,10 @@ let MAC_OS_MINIMUM_VERSION = "10.13"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
+  "Document « Project », page « Board Contents » : rétablissement de la prise compte de certains réglages d'affichage",
+  "Document « Project », page « Board Contents », inspecteur « Board Track » : rétablissement de la prise compte des réglages de coordonnées et d'angle",
+  "Document « Project », page « Board Contents », : rétablissement  de l'impression de la carte",
+  "Document « Project », page « Schematics », : rétablissement  de l'impression du schéma"
 ]
 let CHANGES : [String] = [
 ]

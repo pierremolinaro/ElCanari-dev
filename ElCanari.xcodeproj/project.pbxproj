@@ -634,6 +634,9 @@
 		CF3438BF21DE9A4500D7090B /* enum-SlavePadStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3438BD21DE9A4500D7090B /* enum-SlavePadStyle.swift */; };
 		CF34A0AF2200D09100DEA8EF /* CanariLibraryEntry-show-upload-window.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34A0AE2200D09100DEA8EF /* CanariLibraryEntry-show-upload-window.swift */; };
 		CF34A0B02200D09100DEA8EF /* CanariLibraryEntry-show-upload-window.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34A0AE2200D09100DEA8EF /* CanariLibraryEntry-show-upload-window.swift */; };
+		CF3557D528670CB60094E836 /* extension-AutoLayoutProjectDocumentSubClass-print.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3557D428670CB60094E836 /* extension-AutoLayoutProjectDocumentSubClass-print.swift */; };
+		CF3557D628670CB60094E836 /* extension-AutoLayoutProjectDocumentSubClass-print.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3557D428670CB60094E836 /* extension-AutoLayoutProjectDocumentSubClass-print.swift */; };
+		CF3557D728670CB60094E836 /* extension-AutoLayoutProjectDocumentSubClass-print.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3557D428670CB60094E836 /* extension-AutoLayoutProjectDocumentSubClass-print.swift */; };
 		CF3558C9279D612F000BFC9B /* action-AutoLayoutProjectDocument-mergeSubnetIntoAnExistingNetForSelectedWireAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558C8279D612F000BFC9B /* action-AutoLayoutProjectDocument-mergeSubnetIntoAnExistingNetForSelectedWireAction.swift */; };
 		CF3558CB279D628E000BFC9B /* action-AutoLayoutProjectDocument-insulateSubnetFromCurrentNetForSelectedWireAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558CA279D628E000BFC9B /* action-AutoLayoutProjectDocument-insulateSubnetFromCurrentNetForSelectedWireAction.swift */; };
 		CF3558D0279D64B6000BFC9B /* controller-popup-net-class-from-selected-labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3558CE279D64B5000BFC9B /* controller-popup-net-class-from-selected-labels.swift */; };
@@ -4938,6 +4941,7 @@
 		CF3304F227735DB200275263 /* extension-AutoLayoutProjectDocument-add-drag-track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-AutoLayoutProjectDocument-add-drag-track.swift"; sourceTree = "<group>"; };
 		CF3438BD21DE9A4500D7090B /* enum-SlavePadStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-SlavePadStyle.swift"; sourceTree = "<group>"; };
 		CF34A0AE2200D09100DEA8EF /* CanariLibraryEntry-show-upload-window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CanariLibraryEntry-show-upload-window.swift"; sourceTree = "<group>"; };
+		CF3557D428670CB60094E836 /* extension-AutoLayoutProjectDocumentSubClass-print.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-AutoLayoutProjectDocumentSubClass-print.swift"; sourceTree = "<group>"; };
 		CF3558C8279D612F000BFC9B /* action-AutoLayoutProjectDocument-mergeSubnetIntoAnExistingNetForSelectedWireAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-mergeSubnetIntoAnExistingNetForSelectedWireAction.swift"; sourceTree = "<group>"; };
 		CF3558CA279D628E000BFC9B /* action-AutoLayoutProjectDocument-insulateSubnetFromCurrentNetForSelectedWireAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-insulateSubnetFromCurrentNetForSelectedWireAction.swift"; sourceTree = "<group>"; };
 		CF3558CE279D64B5000BFC9B /* controller-popup-net-class-from-selected-labels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-popup-net-class-from-selected-labels.swift"; sourceTree = "<group>"; };
@@ -7117,6 +7121,7 @@
 				CF12F03E277A57860066D4B0 /* extension-AutoLayoutProjectDocumentSubClass-generate-dsn.swift */,
 				CF12F042277A5AFB0066D4B0 /* extension-AutoLayoutProjectDocumentSubClass-importSESFromBasicTabAction.swift */,
 				CF12F03A277A55650066D4B0 /* extension-AutoLayoutProjectDocumentSubClass-launchFreeRouterWithRouterDocument.swift */,
+				CF3557D428670CB60094E836 /* extension-AutoLayoutProjectDocumentSubClass-print.swift */,
 				CF17028528158D6700819B0F /* menu-select-default-net-class.swift */,
 				CF47F96A2775E111008A6D2C /* menu-select-restrict-rectangle-layers.swift */,
 				CF56026E279324C600479AB6 /* selectionController-AutoLayoutProjectDocument-boardConnectorSelectionController.swift */,
@@ -9125,6 +9130,7 @@
 				CFDDD4E521BB1529007D2F14 /* EBGraphicView.swift in Sources */,
 				CF5123F4222A894300FA4364 /* transient-PackageOval-strokeBezierPath.swift in Sources */,
 				CF001F6D21F8AB610091518E /* class-LibraryOperationElement.swift in Sources */,
+				CF3557D528670CB60094E836 /* extension-AutoLayoutProjectDocumentSubClass-print.swift in Sources */,
 				CF42D12A275CF1A600B83712 /* controller-array-AutoLayoutMergerDocument-mBoardInstanceController.swift in Sources */,
 				CFE09E3526A0CBBD00ECF202 /* enum-EBControlSize.swift in Sources */,
 				CFDDD4E121BB1529007D2F14 /* EBGraphicView-magnify-and-zoom.swift in Sources */,
@@ -10634,6 +10640,7 @@
 				CF5123F5222A894300FA4364 /* transient-PackageOval-strokeBezierPath.swift in Sources */,
 				CFBC2040275E14EF0076697D /* toone-BoardConnector.swift in Sources */,
 				CF001F6E21F8AB610091518E /* class-LibraryOperationElement.swift in Sources */,
+				CF3557D628670CB60094E836 /* extension-AutoLayoutProjectDocumentSubClass-print.swift in Sources */,
 				CFEB7AFE233A249E0060A97A /* transient-BoardText-selectionDisplay.swift in Sources */,
 				CFEB7CC2233A28860060A97A /* transient-ProjectRoot-connexionErrorString.swift in Sources */,
 				CF4EA9F626F671C500F01746 /* transient-NetClassInProject-allowTracksOnInner1LayerString.swift in Sources */,
@@ -12143,6 +12150,7 @@
 				CF2852B5275423FE000BD372 /* AutoLayoutCanariSampleFontStringView.swift in Sources */,
 				CF22F1BB275A73ED009C6FAC /* transient-BoardModel-backComponentNameSegments.swift in Sources */,
 				CF54A053277104F400D978D9 /* AutoLayoutCanariBoardRectangleView.swift in Sources */,
+				CF3557D728670CB60094E836 /* extension-AutoLayoutProjectDocumentSubClass-print.swift in Sources */,
 				CF9C622625CABE5C00A00D5C /* func-getSystemProxy.swift in Sources */,
 				CF22F257275A73EE009C6FAC /* tomany-BoardModelPad.swift in Sources */,
 				CF9C622A25CABE5C00A00D5C /* transient-NetInProject-netClassTrackWidth.swift in Sources */,
