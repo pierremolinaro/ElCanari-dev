@@ -1645,28 +1645,28 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addSeparator ()
       addFirstBaseLineAligned (
-        left: hStack { StaticLabel (title: "P1", bold: no, size: .small) space StaticLabel (title: "X", bold: no, size: .small) },
+        left: StaticLabels (left: "P1", right: "X", bold: no, size: .small),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardTrackSelectionController.computedP1X, #boardTrackSelectionController.mP1XUnit
           $enabled #boardTrackSelectionController.p1CanMove
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Y", bold: no, size: .small),
+        left: StaticLabel (title: "Y", bold: no, size: .small) { set (alignment: .right) },
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardTrackSelectionController.computedP1Y, #boardTrackSelectionController.mP1YUnit
           $enabled #boardTrackSelectionController.p1CanMove
         }
       )
       addFirstBaseLineAligned (
-        left: hStack { StaticLabel (title: "P2", bold: no, size: .small) space StaticLabel (title: "X", bold: no, size: .small) },
+        left: StaticLabels (left: "P2", right: "X", bold: no, size: .small),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardTrackSelectionController.computedP2X, #boardTrackSelectionController.mP2XUnit
           $enabled #boardTrackSelectionController.p2CanMove
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Y", bold: no, size: .small),
+        left: StaticLabel (title: "Y", bold: no, size: .small) { set (alignment: .right) },
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #boardTrackSelectionController.computedP2Y, #boardTrackSelectionController.mP2YUnit
           $enabled #boardTrackSelectionController.p2CanMove

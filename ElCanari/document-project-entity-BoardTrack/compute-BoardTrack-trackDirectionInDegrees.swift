@@ -17,11 +17,11 @@ extension BoardTrack {
 
   //····················································································································
 
-  func compute_trackDirectionInDegrees_property (_ inCandidateValue : Int, _ inWindow : NSWindow?) -> Bool {
+  func compute_trackDirectionInDegrees_property (_ inValue : Int) {
 //--- START OF USER ZONE 2
     let p1CanMove = self.p1CanMove ?? false
     let p2CanMove = self.p2CanMove ?? false
-    let angleInRadian = Double (inCandidateValue) * .pi / 180_000.0
+    let angleInRadian = Double (inValue) * .pi / 180_000.0
     if p1CanMove && p2CanMove { // Rotation around center
       let p1 = self.mConnectorP1!.location!
       let p2 = self.mConnectorP2!.location!
@@ -54,7 +54,6 @@ extension BoardTrack {
       self.mConnectorP2?.mX = newP2x
       self.mConnectorP2?.mY = newP2y
     }
-    return true
 //--- END OF USER ZONE 2
   }
 

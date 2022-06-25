@@ -17,10 +17,9 @@ extension BoardTrack {
 
   //····················································································································
 
-  func compute_computedP2Y_property (_ inCandidateValue : Int, _ inWindow : NSWindow?) -> Bool {
+  func compute_computedP2Y_property (_ inValue : Int) {
 //--- START OF USER ZONE 2
-        self.mConnectorP2?.mY = inCandidateValue
-        return true
+        self.mConnectorP2?.mY = inValue
 //--- END OF USER ZONE 2
   }
 

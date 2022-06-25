@@ -101,9 +101,6 @@ graphic entity BoardTrack : BoardObject {
 
   override transient UInt32 signatureForERCChecking dependsFrom self.mSide, self.actualTrackWidth ;
 
-  computed Int trackDirectionInDegrees
-    dependsFrom self.mConnectorP1.one.location, self.mConnectorP2.one.location ;
-
   transient Bool p1ConnectedToSomePad dependsFrom self.mConnectorP1.one.isConnectedToSomePad ;
 
   transient Bool p2ConnectedToSomePad dependsFrom self.mConnectorP2.one.isConnectedToSomePad ;
@@ -118,6 +115,11 @@ graphic entity BoardTrack : BoardObject {
 
   transient Bool trackCanRotate dependsFrom
     self.p1CanMove, self.p2CanMove
+  ;
+
+  computed Int trackDirectionInDegrees dependsFrom
+    self.mConnectorP1.one.location,
+    self.mConnectorP2.one.location
   ;
   
   computed Int computedP1X dependsFrom self.mConnectorP1.one.location ;

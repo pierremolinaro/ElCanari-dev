@@ -130,12 +130,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
 
   //····················································································································
-  //   Selection observable property: trackDirectionInDegrees
-  //····················································································································
-
-  final let trackDirectionInDegrees_property = EBPropertyProxy_Int ()
-
-  //····················································································································
   //   Selection observable property: p1ConnectedToSomePad
   //····················································································································
 
@@ -146,6 +140,12 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   let p2ConnectedToSomePad_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+  //   Selection observable property: trackDirectionInDegrees
+  //····················································································································
+
+  final let trackDirectionInDegrees_property = EBPropertyProxy_Int ()
 
   //····················································································································
   //   Selection observable property: computedP1X
@@ -239,9 +239,9 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
     self.bind_property_trackLengthInCanariUnit ()
     self.bind_property_trackSide ()
     self.bind_property_signatureForERCChecking ()
-    self.bind_property_trackDirectionInDegrees ()
     self.bind_property_p1ConnectedToSomePad ()
     self.bind_property_p2ConnectedToSomePad ()
+    self.bind_property_trackDirectionInDegrees ()
     self.bind_property_computedP1X ()
     self.bind_property_computedP1Y ()
     self.bind_property_computedP2X ()
@@ -338,16 +338,16 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //--- signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
-  //--- trackDirectionInDegrees
-    self.trackDirectionInDegrees_property.mReadModelFunction = nil 
-    self.trackDirectionInDegrees_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_trackDirectionInDegrees (self.trackDirectionInDegrees_property)
   //--- p1ConnectedToSomePad
     self.p1ConnectedToSomePad_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_p1ConnectedToSomePad (self.p1ConnectedToSomePad_property)
   //--- p2ConnectedToSomePad
     self.p2ConnectedToSomePad_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_p2ConnectedToSomePad (self.p2ConnectedToSomePad_property)
+  //--- trackDirectionInDegrees
+    self.trackDirectionInDegrees_property.mReadModelFunction = nil 
+    self.trackDirectionInDegrees_property.mWriteModelFunction = nil 
+    self.selectedArray_property.removeEBObserverOf_trackDirectionInDegrees (self.trackDirectionInDegrees_property)
   //--- computedP1X
     self.computedP1X_property.mReadModelFunction = nil 
     self.computedP1X_property.mWriteModelFunction = nil 
@@ -1601,57 +1601,6 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   }
   //····················································································································
 
-  private final func bind_property_trackDirectionInDegrees () {
-    self.selectedArray_property.addEBObserverOf_trackDirectionInDegrees (self.trackDirectionInDegrees_property)
-    self.trackDirectionInDegrees_property.mReadModelFunction = { [weak self] in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.trackDirectionInDegrees_property.selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.trackDirectionInDegrees_property.mWriteModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.selectedArray_property {
-        switch model.selection {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.trackDirectionInDegrees_property.setProp (inValue)
-          }
-        }
-      }
-    }
-  }
-  //····················································································································
-
   private final func bind_property_p1ConnectedToSomePad () {
     self.selectedArray_property.addEBObserverOf_p1ConnectedToSomePad (self.p1ConnectedToSomePad_property)
     self.p1ConnectedToSomePad_property.mReadModelFunction = { [weak self] in
@@ -1725,6 +1674,57 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
         }
       }else{
         return .empty
+      }
+    }
+  }
+  //····················································································································
+
+  private final func bind_property_trackDirectionInDegrees () {
+    self.selectedArray_property.addEBObserverOf_trackDirectionInDegrees (self.trackDirectionInDegrees_property)
+    self.trackDirectionInDegrees_property.mReadModelFunction = { [weak self] in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.trackDirectionInDegrees_property.selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.trackDirectionInDegrees_property.mWriteModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.selectedArray_property {
+        switch model.selection {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.trackDirectionInDegrees_property.setProp (inValue)
+          }
+        }
       }
     }
   }

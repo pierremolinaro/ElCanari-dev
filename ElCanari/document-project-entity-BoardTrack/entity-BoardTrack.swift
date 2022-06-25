@@ -641,23 +641,6 @@ final class BoardTrack : BoardObject,
   }
 
   //····················································································································
-  //   Transient property: trackDirectionInDegrees
-  //····················································································································
-
-  final let trackDirectionInDegrees_property = EBComputedProperty_Int ()
-
-  //····················································································································
-
-  final var trackDirectionInDegrees : Int? {
-    switch self.trackDirectionInDegrees_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: p1ConnectedToSomePad
   //····················································································································
 
@@ -684,6 +667,23 @@ final class BoardTrack : BoardObject,
 
   final var p2ConnectedToSomePad : Bool? {
     switch self.p2ConnectedToSomePad_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: trackDirectionInDegrees
+  //····················································································································
+
+  final let trackDirectionInDegrees_property = EBComputedProperty_Int ()
+
+  //····················································································································
+
+  final var trackDirectionInDegrees : Int? {
+    switch self.trackDirectionInDegrees_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1040,28 +1040,6 @@ final class BoardTrack : BoardObject,
     }
     self.mSide_property.addEBObserver (self.signatureForERCChecking_property)
     self.actualTrackWidth_property.addEBObserver (self.signatureForERCChecking_property)
-  //--- Computed property: trackDirectionInDegrees
-    self.trackDirectionInDegrees_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.mConnectorP1_property.location_property.selection
-        let s1 = unwSelf.mConnectorP2_property.location_property.selection
-        switch (s0, s1) {
-        case (.single (let v0),
-              .single (let v1)) :
-          return .single (computed_BoardTrack_trackDirectionInDegrees (v0, v1))
-        case (.multiple,
-              .multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.trackDirectionInDegrees_property.mStoreFunction = { [weak self] in self?.compute_trackDirectionInDegrees_property ($0, $1) ?? false }
-    self.mConnectorP1_property.location_property.addEBObserver (self.trackDirectionInDegrees_property)
-    self.mConnectorP2_property.location_property.addEBObserver (self.trackDirectionInDegrees_property)
   //--- Atomic property: p1ConnectedToSomePad
     self.p1ConnectedToSomePad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1096,6 +1074,28 @@ final class BoardTrack : BoardObject,
       }
     }
     self.mConnectorP2_property.isConnectedToSomePad_property.addEBObserver (self.p2ConnectedToSomePad_property)
+  //--- Computed property: trackDirectionInDegrees
+    self.trackDirectionInDegrees_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.mConnectorP1_property.location_property.selection
+        let s1 = unwSelf.mConnectorP2_property.location_property.selection
+        switch (s0, s1) {
+        case (.single (let v0),
+              .single (let v1)) :
+          return .single (computed_BoardTrack_trackDirectionInDegrees (v0, v1))
+        case (.multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.trackDirectionInDegrees_property.mStoreFunction = { [weak self] in self?.compute_trackDirectionInDegrees_property ($0) }
+    self.mConnectorP1_property.location_property.addEBObserver (self.trackDirectionInDegrees_property)
+    self.mConnectorP2_property.location_property.addEBObserver (self.trackDirectionInDegrees_property)
   //--- Computed property: computedP1X
     self.computedP1X_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1112,7 +1112,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.computedP1X_property.mStoreFunction = { [weak self] in self?.compute_computedP1X_property ($0, $1) ?? false }
+    self.computedP1X_property.mStoreFunction = { [weak self] in self?.compute_computedP1X_property ($0) }
     self.mConnectorP1_property.location_property.addEBObserver (self.computedP1X_property)
   //--- Computed property: computedP1Y
     self.computedP1Y_property.mReadModelFunction = { [weak self] in
@@ -1130,7 +1130,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.computedP1Y_property.mStoreFunction = { [weak self] in self?.compute_computedP1Y_property ($0, $1) ?? false }
+    self.computedP1Y_property.mStoreFunction = { [weak self] in self?.compute_computedP1Y_property ($0) }
     self.mConnectorP1_property.location_property.addEBObserver (self.computedP1Y_property)
   //--- Computed property: computedP2X
     self.computedP2X_property.mReadModelFunction = { [weak self] in
@@ -1148,7 +1148,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.computedP2X_property.mStoreFunction = { [weak self] in self?.compute_computedP2X_property ($0, $1) ?? false }
+    self.computedP2X_property.mStoreFunction = { [weak self] in self?.compute_computedP2X_property ($0) }
     self.mConnectorP2_property.location_property.addEBObserver (self.computedP2X_property)
   //--- Computed property: computedP2Y
     self.computedP2Y_property.mReadModelFunction = { [weak self] in
@@ -1166,7 +1166,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.computedP2Y_property.mStoreFunction = { [weak self] in self?.compute_computedP2Y_property ($0, $1) ?? false }
+    self.computedP2Y_property.mStoreFunction = { [weak self] in self?.compute_computedP2Y_property ($0) }
     self.mConnectorP2_property.location_property.addEBObserver (self.computedP2Y_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
@@ -1427,10 +1427,10 @@ final class BoardTrack : BoardObject,
     // self.mSide_property.removeEBObserver (self.trackSide_property)
     // self.mSide_property.removeEBObserver (self.signatureForERCChecking_property)
     // self.actualTrackWidth_property.removeEBObserver (self.signatureForERCChecking_property)
-    // self.mConnectorP1_property.location_property.removeEBObserver (self.trackDirectionInDegrees_property)
-    // self.mConnectorP2_property.location_property.removeEBObserver (self.trackDirectionInDegrees_property)
     // self.mConnectorP1_property.isConnectedToSomePad_property.removeEBObserver (self.p1ConnectedToSomePad_property)
     // self.mConnectorP2_property.isConnectedToSomePad_property.removeEBObserver (self.p2ConnectedToSomePad_property)
+    // self.mConnectorP1_property.location_property.removeEBObserver (self.trackDirectionInDegrees_property)
+    // self.mConnectorP2_property.location_property.removeEBObserver (self.trackDirectionInDegrees_property)
     // self.mConnectorP1_property.location_property.removeEBObserver (self.computedP1X_property)
     // self.mConnectorP1_property.location_property.removeEBObserver (self.computedP1Y_property)
     // self.mConnectorP2_property.location_property.removeEBObserver (self.computedP2X_property)
