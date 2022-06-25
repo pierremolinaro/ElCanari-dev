@@ -17,7 +17,7 @@ func transient_BoardObject_packageDrawingWidthMultpliedByTenForBoard (
        _ self_mRoot_packageDrawingWidthMultpliedByTenForBoard : Int?
 ) -> Int {
 //--- START OF USER ZONE 2
-        return self_mRoot_packageDrawingWidthMultpliedByTenForBoard ?? 0
+        return self_mRoot_packageDrawingWidthMultpliedByTenForBoard ?? 10
 //--- END OF USER ZONE 2
 }
 

@@ -17,7 +17,7 @@ func transient_BoardObject_displayFrontLegendForBoard (
        _ self_mRoot_displayFrontLegendForBoard : Bool?
 ) -> Bool {
 //--- START OF USER ZONE 2
-        return self_mRoot_displayFrontLegendForBoard ?? false
+        return self_mRoot_displayFrontLegendForBoard ?? true
 //--- END OF USER ZONE 2
 }
 

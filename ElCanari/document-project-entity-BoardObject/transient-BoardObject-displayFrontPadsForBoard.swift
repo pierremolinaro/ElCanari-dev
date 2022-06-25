@@ -17,7 +17,7 @@ func transient_BoardObject_displayFrontPadsForBoard (
        _ self_mRoot_displayFrontPadsForBoard : Bool?
 ) -> Bool {
 //--- START OF USER ZONE 2
-        return self_mRoot_displayFrontPadsForBoard ?? false
+        return self_mRoot_displayFrontPadsForBoard ?? true
 //--- END OF USER ZONE 2
 }
 

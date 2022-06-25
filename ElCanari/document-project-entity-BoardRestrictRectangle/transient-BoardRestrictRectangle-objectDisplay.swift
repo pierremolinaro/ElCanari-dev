@@ -60,11 +60,15 @@ func transient_BoardRestrictRectangle_objectDisplay (
           }
           return bp
         }
+        let cocoaRect = CanariRect (left: self_mX, bottom: self_mY, width: self_mWidth, height: self_mHeight).cocoaRect
         var shape = EBShape ()
-        let display = (self_mIsInFrontLayer && self_BoardObject_displayFrontRestrictRectangles) || (self_mIsInBackLayer && self_BoardObject_displayBackRestrictRectangles)
+        let display = (self_mIsInFrontLayer && self_BoardObject_displayFrontRestrictRectangles)
+          || (self_mIsInBackLayer && self_BoardObject_displayBackRestrictRectangles)
+          || (self_mIsInInner1Layer && self_BoardObject_displayInner1RestrictRectangles)
+          || (self_mIsInInner2Layer && self_BoardObject_displayInner2RestrictRectangles)
+          || (self_mIsInInner3Layer && self_BoardObject_displayInner3RestrictRectangles)
+          || (self_mIsInInner4Layer && self_BoardObject_displayInner4RestrictRectangles)
         if display {
-//          let count = (front ? 1 : 0) + (back ? 1 : 0) + (inner1 ? 1 : 0) + (inner2 ? 1 : 0) + (inner3 ? 1 : 0) + (inner4 ? 1 : 0)
-          let cocoaRect = CanariRect (left: self_mX, bottom: self_mY, width: self_mWidth, height: self_mHeight).cocoaRect
           let rectBP = EBBezierPath (rect: cocoaRect)
         //--- Transparent background (for selection)
           shape.add (filled: [rectBP], nil)
@@ -98,28 +102,28 @@ func transient_BoardRestrictRectangle_objectDisplay (
             let bp = buildLines (cocoaRect, 5.0)
             shape.add (stroke: [bp], prefs_inner4SideRestrictRectangleColorForBoard, clip: .inside (rectBP))
           }
-        //--- Append rect frame
-          do{
-            var bp = EBBezierPath (rect: cocoaRect.insetBy (dx: 0.25, dy: 0.25))
-            bp.lineWidth = 0.5
-            bp.lineJoinStyle = .round
-            bp.lineCapStyle = .round
-            let frameColor : NSColor
-            if self_mIsInFrontLayer {
-              frameColor = prefs_frontSideRestrictRectangleColorForBoard
-            }else if self_mIsInInner1Layer {
-              frameColor = prefs_inner1SideRestrictRectangleColorForBoard
-            }else if self_mIsInInner2Layer {
-              frameColor = prefs_inner2SideRestrictRectangleColorForBoard
-            }else if self_mIsInInner3Layer {
-              frameColor = prefs_inner3SideRestrictRectangleColorForBoard
-            }else if self_mIsInInner4Layer {
-              frameColor = prefs_inner4SideRestrictRectangleColorForBoard
-            }else{
-              frameColor = prefs_backSideRestrictRectangleColorForBoard
-            }
-            shape.add (stroke: [bp], frameColor)
+        }
+      //--- Append rect frame
+        do{
+          var bp = EBBezierPath (rect: cocoaRect.insetBy (dx: 0.25, dy: 0.25))
+          bp.lineWidth = 0.5
+          bp.lineJoinStyle = .round
+          bp.lineCapStyle = .round
+          let frameColor : NSColor
+          if self_mIsInFrontLayer {
+            frameColor = prefs_frontSideRestrictRectangleColorForBoard
+          }else if self_mIsInInner1Layer {
+            frameColor = prefs_inner1SideRestrictRectangleColorForBoard
+          }else if self_mIsInInner2Layer {
+            frameColor = prefs_inner2SideRestrictRectangleColorForBoard
+          }else if self_mIsInInner3Layer {
+            frameColor = prefs_inner3SideRestrictRectangleColorForBoard
+          }else if self_mIsInInner4Layer {
+            frameColor = prefs_inner4SideRestrictRectangleColorForBoard
+          }else{
+            frameColor = prefs_backSideRestrictRectangleColorForBoard
           }
+          shape.add (stroke: [bp], frameColor)
         }
       //---
         return shape

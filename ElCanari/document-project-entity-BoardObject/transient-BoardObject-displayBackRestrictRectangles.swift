@@ -17,7 +17,7 @@ func transient_BoardObject_displayBackRestrictRectangles (
        _ self_mRoot_displayBackRestrictRectangles : Bool?
 ) -> Bool {
 //--- START OF USER ZONE 2
-        return self_mRoot_displayBackRestrictRectangles ?? false
+        return self_mRoot_displayBackRestrictRectangles ?? true
 //--- END OF USER ZONE 2
 }
 

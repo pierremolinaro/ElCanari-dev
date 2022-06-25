@@ -17,7 +17,7 @@ func transient_BoardObject_displayFrontLayoutForBoard (
        _ self_mRoot_displayFrontLayoutForBoard : Bool?
 ) -> Bool {
 //--- START OF USER ZONE 2
-        return self_mRoot_displayFrontLayoutForBoard ?? false
+        return self_mRoot_displayFrontLayoutForBoard ?? true
 //--- END OF USER ZONE 2
 }
 

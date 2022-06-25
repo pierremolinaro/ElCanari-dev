@@ -17,7 +17,7 @@ func transient_BoardObject_displayInner1LayoutForBoard (
        _ self_mRoot_displayInner1LayoutForBoard : Bool?
 ) -> Bool {
 //--- START OF USER ZONE 2
-        return self_mRoot_displayInner1LayoutForBoard ?? false
+        return self_mRoot_displayInner1LayoutForBoard ?? true
 //--- END OF USER ZONE 2
 }
 
