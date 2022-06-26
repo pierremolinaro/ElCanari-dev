@@ -17,8 +17,10 @@ extension AutoLayoutProjectDocument {
   func performAddBoardTrackDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     let side = self.rootObject.mBoardSideForNewTrack
   //---
-    let p1 = inDraggingLocationInDestinationView.canariPoint
-    let p2 = CanariPoint (x: p1.x + TRACK_INITIAL_SIZE_CANARI_UNIT, y: p1.y + TRACK_INITIAL_SIZE_CANARI_UNIT)
+ //   let boardGridStep = self.rootObject.mBoardGridStep
+    let p1 = inDraggingLocationInDestinationView.canariPoint // .point (alignedOnGrid: boardGridStep)
+    let p2 = CanariPoint (x: p1.x + TRACK_INITIAL_SIZE_IN_CANARI_UNIT, y: p1.y + TRACK_INITIAL_SIZE_IN_CANARI_UNIT)
+ //     .point (alignedOnGrid: boardGridStep)
     let connectorsAt1 = self.rootObject.connectors (at: p1, trackSide: side)
     let connectorsAt2 = self.rootObject.connectors (at: p2, trackSide: side)
   //--- Build connector 1
@@ -56,6 +58,11 @@ extension AutoLayoutProjectDocument {
     track.mSide = side
     track.mConnectorP1 = connector1
     track.mConnectorP2 = connector2
+    let boardGridStepUnit = self.rootObject.mBoardGridStepUnit
+    track.mP1XUnit = boardGridStepUnit
+    track.mP1YUnit = boardGridStepUnit
+    track.mP2XUnit = boardGridStepUnit
+    track.mP2YUnit = boardGridStepUnit
     self.rootObject.mBoardObjects.append (track)
     self.boardObjectsController.setSelection ([track])
   }

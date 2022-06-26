@@ -19,8 +19,8 @@ extension AutoLayoutProjectDocument {
     p1.mX = 0
     p1.mY = 0
     let p2 = BoardConnector (nil)
-    p2.mX = TRACK_INITIAL_SIZE_CANARI_UNIT
-    p2.mY = TRACK_INITIAL_SIZE_CANARI_UNIT
+    p2.mX = TRACK_INITIAL_SIZE_IN_CANARI_UNIT
+    p2.mY = TRACK_INITIAL_SIZE_IN_CANARI_UNIT
     let track = BoardTrack (nil)
     track.mConnectorP1 = p1
     track.mConnectorP2 = p2

@@ -28,7 +28,7 @@ let kDragAndDropBoardTrack = NSPasteboard.PasteboardType (rawValue: "name.pcmoli
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let TRACK_INITIAL_SIZE_CANARI_UNIT = 500 * 2_286 // 500 mils
+let TRACK_INITIAL_SIZE_IN_CANARI_UNIT = 500 * 2_286 // 500 mils
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
