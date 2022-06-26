@@ -28,21 +28,16 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.5.7"
+let VERSION_CANARI = "1.5.8"
 let MAC_OS_MINIMUM_VERSION = "10.13"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Document « Project », page « Board Contents » : rétablissement de la prise compte de certains réglages d'affichage",
-  "Document « Project », page « Board Contents », inspecteur « Board Track » : rétablissement de la prise compte des réglages de coordonnées et d'angle",
-  "Document « Project », page « Board Contents », : rétablissement  de l'impression de la carte",
-  "Document « Project », page « Schematics », : rétablissement  de l'impression du schéma"
+  "Document « Project », page « Board Contents », : rétablissement du drag and drop des rectangles de restriction",
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Ajout copier / coller des commentaires dans le schéma d'un projet",
-  "Ajout copier / coller des rectangles de restrictions, des lignes et des textes dans la carte d'un projet"
 ]
 
 //--------------------------------------------------------------------------------------------------
