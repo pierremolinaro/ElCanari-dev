@@ -95,6 +95,7 @@ fileprivate final class InternalIntValueTableColumn : AutoLayoutTableColumn {
     textField.isBordered = false
     textField.drawsBackground = false
     textField.isEnabled = true
+    textField.cell?.sendsActionOnEndEditing = true // Send an action when focus is lost
 //-- DO NOT CHANGE controlSize and font, it makes text field not editable (???)
 //    textField.controlSize = self.mTableView.controlSize
 //    textField.font = self.mTableView.font

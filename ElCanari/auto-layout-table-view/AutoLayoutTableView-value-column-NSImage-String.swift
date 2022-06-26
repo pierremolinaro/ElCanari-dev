@@ -98,6 +98,7 @@ fileprivate final class InternalImageStringValueTableColumn : AutoLayoutTableCol
     textField.drawsBackground = false
     textField.isEnabled = true
     textField.isEditable = false
+    textField.cell?.sendsActionOnEndEditing = true // Send an action when focus is lost
 //-- DO NOT CHANGE controlSize and font, it makes text field not editable (???)
 //    textField.controlSize = self.mTableView.controlSize
 //    textField.font = self.mTableView.font
