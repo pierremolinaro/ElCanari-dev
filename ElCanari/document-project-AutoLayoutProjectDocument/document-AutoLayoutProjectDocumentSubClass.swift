@@ -287,19 +287,11 @@ import Cocoa
     restrictRectangle.mIsInInner2Layer = (layers &  8) != 0
     restrictRectangle.mIsInInner3Layer = (layers & 16) != 0
     restrictRectangle.mIsInInner4Layer = (layers & 32) != 0
-//    switch self.rootObject.mBoardSideForNewRestrictRectangle {
-//    case .frontSide :
-//      restrictRectangle.mIsInFrontLayer = true
-//      restrictRectangle.mIsInBackLayer = false
-//    case .backSide :
-//      restrictRectangle.mIsInFrontLayer = false
-//      restrictRectangle.mIsInBackLayer = true
-//    case .bothSides :
-//      restrictRectangle.mIsInFrontLayer = true
-//      restrictRectangle.mIsInBackLayer = true
-//    }
     restrictRectangle.mX = p.x
     restrictRectangle.mY = p.y
+    let boardGridStep = self.rootObject.mBoardGridStep
+    restrictRectangle.mWidth = (restrictRectangle.mWidth / boardGridStep) * boardGridStep
+    restrictRectangle.mHeight = (restrictRectangle.mHeight / boardGridStep) * boardGridStep
     self.rootObject.mBoardObjects.append (restrictRectangle)
     self.boardObjectsController.setSelection ([restrictRectangle])
     self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
@@ -353,6 +345,16 @@ import Cocoa
     newLine.mY1 += p.y
     newLine.mX2 += p.x
     newLine.mY2 += p.y
+    let boardGridStep = self.rootObject.mBoardGridStep
+    let boardGridUnit = self.rootObject.mBoardGridStepUnit
+    newLine.mX1 = (newLine.mX1 / boardGridStep) * boardGridStep
+    newLine.mY1 = (newLine.mY1 / boardGridStep) * boardGridStep
+    newLine.mX2 = (newLine.mX2 / boardGridStep) * boardGridStep
+    newLine.mY2 = (newLine.mY2 / boardGridStep) * boardGridStep
+    newLine.mX1Unit = boardGridUnit
+    newLine.mY1Unit = boardGridUnit
+    newLine.mX2Unit = boardGridUnit
+    newLine.mY2Unit = boardGridUnit
     self.rootObject.mBoardObjects.append (newLine)
     self.boardObjectsController.setSelection ([newLine])
     self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)

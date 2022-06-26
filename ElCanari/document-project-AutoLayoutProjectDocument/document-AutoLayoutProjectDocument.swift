@@ -5961,6 +5961,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_239 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small)
+      .set (alignment: .right)
     return view
   }
 
@@ -5980,6 +5981,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_241 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Side", bold: false, size: .small)
+      .set (alignment: .right)
     return view
   }
 
@@ -5998,15 +6000,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_243 () -> NSView {
-    let view = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0 = AutoLayoutStaticLabel (title: "P1", bold: false, size: .small)
-      view.appendView (view_0)
-      let view_1 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_1)
-      let view_2 = AutoLayoutStaticLabel (title: "X", bold: false, size: .small)
-      view.appendView (view_2)
-    }
+    let view = AutoLayoutStaticLabels (left: "P1", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -6026,6 +6020,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_245 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small)
+      .set (alignment: .right)
     return view
   }
 
@@ -6044,15 +6039,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_247 () -> NSView {
-    let view = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0 = AutoLayoutStaticLabel (title: "P2", bold: false, size: .small)
-      view.appendView (view_0)
-      let view_1 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_1)
-      let view_2 = AutoLayoutStaticLabel (title: "X", bold: false, size: .small)
-      view.appendView (view_2)
-    }
+    let view = AutoLayoutStaticLabels (left: "P2", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -6072,6 +6059,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_249 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small)
+      .set (alignment: .right)
     return view
   }
 

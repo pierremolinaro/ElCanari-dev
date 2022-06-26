@@ -2,7 +2,7 @@
 //! Main View
 
 prefs {
-  stackView mPrefsMainView vStack set (spacing: 0) {
+  stackView mPrefsMainView vStack set (spacing: 0) set (topMargin: 12) {
     hStack {
       space
       SegmentedControlWithPages (documentView: stackView mPrefsPageView, equalWidth: no, size : .regular) {

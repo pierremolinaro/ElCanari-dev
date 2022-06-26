@@ -47,6 +47,7 @@ var g_Preferences : Preferences? = nil
   lazy var mPrefsMainView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
+      .set (topMargin: 12)
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutFlexibleSpace ()
