@@ -1605,11 +1605,6 @@ final class PackagePad : PackageObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: slaves
-/*    self.slaves_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "slaves",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [PackageSlavePad]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "slaves",

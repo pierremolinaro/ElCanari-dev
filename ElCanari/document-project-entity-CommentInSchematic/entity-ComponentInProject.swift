@@ -2617,11 +2617,6 @@ final class ComponentInProject : BoardObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mConnectors
-/*    self.mConnectors_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mConnectors",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [BoardConnector]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mConnectors",
@@ -2631,11 +2626,6 @@ final class ComponentInProject : BoardObject,
       self.mConnectors_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mSymbols
-/*    self.mSymbols_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mSymbols",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [ComponentSymbolInProject]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mSymbols",

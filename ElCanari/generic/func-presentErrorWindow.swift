@@ -28,7 +28,7 @@ fileprivate var gOrigin = NSPoint (x: 20.0, y: 20.0)
 fileprivate func presentErrorWindowInMainThread (_ file : String,
                                                  _ line : Int,
                                                  _ errorMessage : String) {
-  __NSBeep ()
+  NSSound.beep ()
   var message = "File: \(file)\n"
   message += "Line: \(line)\n"
   message += "Message: \(errorMessage)\n"

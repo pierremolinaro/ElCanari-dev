@@ -1189,11 +1189,6 @@ final class PackageZone : PackageObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: forbiddenPadNumbers
-/*    self.forbiddenPadNumbers_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "forbiddenPadNumbers",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [ForbiddenPadNumber]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "forbiddenPadNumbers",

@@ -1463,11 +1463,6 @@ final class DeviceRoot : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mDocs
-/*    self.mDocs_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mDocs",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [DeviceDocumentation]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mDocs",
@@ -1477,11 +1472,6 @@ final class DeviceRoot : EBManagedObject,
       self.mDocs_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mSymbolInstances
-/*    self.mSymbolInstances_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mSymbolInstances",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SymbolInstanceInDevice]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mSymbolInstances",
@@ -1491,11 +1481,6 @@ final class DeviceRoot : EBManagedObject,
       self.mSymbolInstances_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mPackages
-/*    self.mPackages_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mPackages",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [PackageInDevice]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mPackages",
@@ -1505,11 +1490,6 @@ final class DeviceRoot : EBManagedObject,
       self.mPackages_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mSymbolTypes
-/*    self.mSymbolTypes_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mSymbolTypes",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SymbolTypeInDevice]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mSymbolTypes",
@@ -1519,11 +1499,6 @@ final class DeviceRoot : EBManagedObject,
       self.mSymbolTypes_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mPadProxies
-/*    self.mPadProxies_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mPadProxies",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [PadProxyInDevice]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mPadProxies",

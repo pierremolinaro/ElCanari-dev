@@ -655,11 +655,6 @@ final class NetInProject : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mPoints
-/*    self.mPoints_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mPoints",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [PointInSchematic]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mPoints",
@@ -669,11 +664,6 @@ final class NetInProject : EBManagedObject,
       self.mPoints_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mTracks
-/*    self.mTracks_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mTracks",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [BoardTrack]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mTracks",

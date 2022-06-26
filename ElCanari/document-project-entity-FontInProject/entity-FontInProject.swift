@@ -735,11 +735,6 @@ final class FontInProject : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mTexts
-/*    self.mTexts_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mTexts",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [BoardText]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mTexts",
@@ -749,11 +744,6 @@ final class FontInProject : EBManagedObject,
       self.mTexts_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mComponentNames
-/*    self.mComponentNames_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mComponentNames",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [ComponentInProject]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mComponentNames",
@@ -763,11 +753,6 @@ final class FontInProject : EBManagedObject,
       self.mComponentNames_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mComponentValues
-/*    self.mComponentValues_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mComponentValues",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [ComponentInProject]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mComponentValues",

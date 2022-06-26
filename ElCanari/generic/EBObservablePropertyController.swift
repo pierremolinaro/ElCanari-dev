@@ -29,7 +29,7 @@ class EBObservablePropertyController : EBOutletEvent {
 
   //····················································································································
 
-  override func unregister () {
+  override final func unregister () {
     for weakObject in self.mPrivateObservedObjects {
       weakObject.mWeakObservedObject?.removeEBObserver (self)
     }

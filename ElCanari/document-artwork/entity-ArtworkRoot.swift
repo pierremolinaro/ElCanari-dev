@@ -936,11 +936,6 @@ final class ArtworkRoot : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: fileGenerationParameterArray
-/*    self.fileGenerationParameterArray_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "fileGenerationParameterArray",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [ArtworkFileGenerationParameters]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "fileGenerationParameterArray",

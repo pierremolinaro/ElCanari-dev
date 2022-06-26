@@ -182,7 +182,7 @@ import Cocoa
   //    VIEW mPageMasterView
   //····················································································································
 
-  lazy var mPageMasterView : AutoLayoutVerticalStackView = {
+  lazy final var mPageMasterView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     return vStackView
   } ()
@@ -191,7 +191,7 @@ import Cocoa
   //    VIEW mDocumentMainView
   //····················································································································
 
-  lazy var mDocumentMainView : AutoLayoutVerticalStackView = {
+  lazy final var mDocumentMainView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -275,7 +275,7 @@ import Cocoa
   //    VIEW mDescriptionPage
   //····················································································································
 
-  lazy var mDescriptionPage : AutoLayoutVerticalStackView = {
+  lazy final var mDescriptionPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutTextField (minWidth: 56, size: .regular)
@@ -318,7 +318,7 @@ import Cocoa
   //    VIEW mMinimaPage
   //····················································································································
 
-  lazy var mMinimaPage : AutoLayoutVerticalStackView = {
+  lazy final var mMinimaPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutFlexibleSpace ()
@@ -399,7 +399,7 @@ import Cocoa
   //    VIEW mDataPage
   //····················································································································
 
-  lazy var mDataPage : AutoLayoutVerticalStackView = {
+  lazy final var mDataPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -969,26 +969,26 @@ import Cocoa
   //    Toolbar
   //····················································································································
 
-  final func toolbarAllowedItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+/*  final func toolbarAllowedItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
     return self.toolbarDefaultItemIdentifiers (toolbar)
-  }
+  } */
 
   //····················································································································
 
-  final func toolbarDefaultItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+/*  final func toolbarDefaultItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
     return []
-  }
+  } */
 
   //····················································································································
 
-  final func toolbar (_ toolbar: NSToolbar,
+/*  final func toolbar (_ toolbar: NSToolbar,
                       itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
                       willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
     switch itemIdentifier.rawValue {
     default :
       return nil
     }
-  }
+  } */
 
   //····················································································································
   //    configureProperties

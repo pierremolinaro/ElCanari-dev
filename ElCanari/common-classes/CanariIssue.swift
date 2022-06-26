@@ -45,10 +45,10 @@ struct CanariIssue : Hashable {
         message inMessage : String,
         pathes inBezierPathes : [EBBezierPath] = [],
         representativeValue inValue : Int = 0) {
-    message = inMessage
-    pathes = inBezierPathes
-    kind = inKind
-    representativeValue = inValue
+    self.message = inMessage
+    self.pathes = inBezierPathes
+    self.kind = inKind
+    self.representativeValue = inValue
   }
 
   //····················································································································

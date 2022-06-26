@@ -10,6 +10,8 @@ import Cocoa
 
 class EBObservedObject : EBSwiftBaseObject {
 
+  //····················································································································
+
   private final var mObservers = EBWeakEventSet ()
 
   //····················································································································
@@ -73,6 +75,7 @@ class EBObservedObject : EBSwiftBaseObject {
       }
     }
   #endif
+
   //····················································································································
 
   #if BUILD_OBJECT_EXPLORER
@@ -82,7 +85,7 @@ class EBObservedObject : EBSwiftBaseObject {
         let observerCount = self.mObservers.nonNilEntryCount
         observerExplorer.addItem (withTitle: String (observerCount))
         observerExplorer.isEnabled = observerCount > 0
-        self.mObservers.apply ( {(_ observer : EBObserverProtocol) in
+        self.mObservers.apply ( { (_ observer : EBObserverProtocol) in
           let stringValue = explorerObjectIndexString (observer.objectIndex) + " - " + String (describing: type (of: observer))
           observerExplorer.addItem (withTitle: stringValue)
         })

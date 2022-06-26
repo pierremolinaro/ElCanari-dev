@@ -184,7 +184,7 @@ import Cocoa
   //    VIEW mPageMasterView
   //····················································································································
 
-  lazy var mPageMasterView : AutoLayoutVerticalStackView = {
+  lazy final var mPageMasterView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     return vStackView
   } ()
@@ -193,7 +193,7 @@ import Cocoa
   //    VIEW mDocumentMainView
   //····················································································································
 
-  lazy var mDocumentMainView : AutoLayoutVerticalStackView = {
+  lazy final var mDocumentMainView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -281,7 +281,7 @@ import Cocoa
   //    VIEW mFontPage
   //····················································································································
 
-  lazy var mFontPage : AutoLayoutVerticalStackView = {
+  lazy final var mFontPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -343,7 +343,7 @@ import Cocoa
   //    VIEW mIssuesInspectorView
   //····················································································································
 
-  lazy var mIssuesInspectorView : AutoLayoutVerticalStackView = {
+  lazy final var mIssuesInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
@@ -366,7 +366,7 @@ import Cocoa
   //    VIEW mSampleStringInspectorView
   //····················································································································
 
-  lazy var mSampleStringInspectorView : AutoLayoutVerticalStackView = {
+  lazy final var mSampleStringInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
@@ -412,7 +412,7 @@ import Cocoa
   //    VIEW mSelectedCharacterInspectorView
   //····················································································································
 
-  lazy var mSelectedCharacterInspectorView : AutoLayoutVerticalStackView = {
+  lazy final var mSelectedCharacterInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
@@ -561,7 +561,7 @@ import Cocoa
   //    VIEW mInfoPage
   //····················································································································
 
-  lazy var mInfoPage : AutoLayoutVerticalStackView = {
+  lazy final var mInfoPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -690,26 +690,26 @@ import Cocoa
   //    Toolbar
   //····················································································································
 
-  final func toolbarAllowedItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+/*  final func toolbarAllowedItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
     return self.toolbarDefaultItemIdentifiers (toolbar)
-  }
+  } */
 
   //····················································································································
 
-  final func toolbarDefaultItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+/*  final func toolbarDefaultItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
     return []
-  }
+  } */
 
   //····················································································································
 
-  final func toolbar (_ toolbar: NSToolbar,
+/*  final func toolbar (_ toolbar: NSToolbar,
                       itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
                       willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
     switch itemIdentifier.rawValue {
     default :
       return nil
     }
-  }
+  } */
 
   //····················································································································
   //    configureProperties

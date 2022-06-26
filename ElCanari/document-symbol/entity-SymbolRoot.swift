@@ -619,11 +619,6 @@ final class SymbolRoot : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: symbolObjects
-/*    self.symbolObjects_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "symbolObjects",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SymbolObject]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "symbolObjects",

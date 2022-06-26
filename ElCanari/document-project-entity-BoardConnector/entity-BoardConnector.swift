@@ -1638,11 +1638,6 @@ final class BoardConnector : BoardObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mTracksP2
-/*    self.mTracksP2_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mTracksP2",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [BoardTrack]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mTracksP2",
@@ -1652,11 +1647,6 @@ final class BoardConnector : BoardObject,
       self.mTracksP2_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mTracksP1
-/*    self.mTracksP1_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mTracksP1",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [BoardTrack]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mTracksP1",

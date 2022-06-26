@@ -2824,11 +2824,6 @@ final class PackageRoot : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mModelImageObjects
-/*    self.mModelImageObjects_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mModelImageObjects",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [PackageModelImageDoublePoint]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mModelImageObjects",
@@ -2838,11 +2833,6 @@ final class PackageRoot : EBManagedObject,
       self.mModelImageObjects_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: packageObjects
-/*    self.packageObjects_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "packageObjects",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [PackageObject]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "packageObjects",

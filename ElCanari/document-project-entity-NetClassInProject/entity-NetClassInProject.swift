@@ -1383,11 +1383,6 @@ final class NetClassInProject : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mNets
-/*    self.mNets_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mNets",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [NetInProject]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mNets",

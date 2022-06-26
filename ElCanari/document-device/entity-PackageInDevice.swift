@@ -867,11 +867,6 @@ final class PackageInDevice : EBGraphicManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mMasterPads
-/*    self.mMasterPads_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mMasterPads",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [MasterPadInDevice]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mMasterPads",

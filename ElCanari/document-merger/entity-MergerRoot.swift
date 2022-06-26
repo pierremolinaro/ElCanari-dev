@@ -2354,11 +2354,6 @@ final class MergerRoot : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: boardModels
-/*    self.boardModels_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "boardModels",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [BoardModel]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "boardModels",
@@ -2368,11 +2363,6 @@ final class MergerRoot : EBManagedObject,
       self.boardModels_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: boardInstances
-/*    self.boardInstances_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "boardInstances",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [MergerBoardInstance]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "boardInstances",

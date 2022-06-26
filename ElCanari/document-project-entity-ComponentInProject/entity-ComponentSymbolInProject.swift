@@ -1171,11 +1171,6 @@ final class ComponentSymbolInProject : SchematicObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mPoints
-/*    self.mPoints_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mPoints",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [PointInSchematic]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mPoints",

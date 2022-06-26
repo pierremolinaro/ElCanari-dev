@@ -530,11 +530,6 @@ final class FontCharacter : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: segments
-/*    self.segments_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "segments",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentForFontCharacter]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "segments",

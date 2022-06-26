@@ -857,11 +857,6 @@ final class DeviceInProject : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mPackages
-/*    self.mPackages_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mPackages",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [DevicePackageInProject]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mPackages",
@@ -871,11 +866,6 @@ final class DeviceInProject : EBManagedObject,
       self.mPackages_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mSymbols
-/*    self.mSymbols_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mSymbols",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [DeviceSymbolInstanceInProject]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mSymbols",
@@ -885,11 +875,6 @@ final class DeviceInProject : EBManagedObject,
       self.mSymbols_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mComponents
-/*    self.mComponents_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mComponents",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [ComponentInProject]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mComponents",
@@ -899,11 +884,6 @@ final class DeviceInProject : EBManagedObject,
       self.mComponents_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mPadAssignments
-/*    self.mPadAssignments_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mPadAssignments",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [DevicePadAssignmentInProject]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mPadAssignments",

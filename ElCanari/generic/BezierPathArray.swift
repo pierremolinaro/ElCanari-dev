@@ -54,23 +54,6 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
 
   //····················································································································
 
-//  public static func == (lhs: BezierPathArray, rhs: BezierPathArray) -> Bool {
-//    var equal = lhs.mPathes.count == rhs.mPathes.count
-//    if equal {
-//      var idx = 0
-//      while idx < lhs.mPathes.count {
-//        if lhs.mPathes [idx] != rhs.mPathes [idx] {
-//          equal = false
-//          idx = lhs.mPathes.count // For exiting loop
-//        }
-//        idx += 1
-//      }
-//    }
-//    return equal
-//  }
-
-  //····················································································································
-
   public static func < (lhs: BezierPathArray, rhs: BezierPathArray) -> Bool {
     var inferior = lhs.mPathes.count < rhs.mPathes.count
     if lhs.mPathes.count == rhs.mPathes.count {
@@ -82,19 +65,6 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
         }
         idx += 1
       }
-
-
-//      let leftData = NSMutableData ()
-//      let leftArchiver = NSKeyedArchiver (forWritingWith: leftData)
-//      leftArchiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
-//      leftArchiver.finishEncoding ()
-//      // let leftData  = NSKeyedArchiver.archivedData (withRootObject: lhs.mPathes)
-//      let rightData = NSMutableData ()
-//      let rightArchiver = NSKeyedArchiver (forWritingWith: rightData)
-//      rightArchiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
-//      rightArchiver.finishEncoding ()
-//      // let rightData = NSKeyedArchiver.archivedData (withRootObject: rhs.mPathes)
-//      inferior = (leftData as Data) < (rightData as Data)
     }
     return inferior
   }
@@ -102,11 +72,6 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
   //····················································································································
 
   func ebHashValue () -> UInt32 {
-//    let data = NSMutableData ()
-//    let archiver = NSKeyedArchiver (forWritingWith: data)
-//    archiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
-//    archiver.finishEncoding ()
-//    return (data as Data).ebHashValue ()
     let archiver = NSKeyedArchiver (requiringSecureCoding: true)
     archiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
     archiver.finishEncoding ()
@@ -116,15 +81,6 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
   //····················································································································
 
   func convertToNSObject () -> NSObject {
-//    let data = NSMutableData ()
-//    let archiver = NSKeyedArchiver (forWritingWith: data)
-//    var array = [NSBezierPath] ()
-//    for p in self.mPathes {
-//      array.append (p.nsBezierPath)
-//    }
-//    archiver.encode (array, forKey: NSKeyedArchiveRootObjectKey)
-//    archiver.finishEncoding ()
-//    return data
     let archiver = NSKeyedArchiver (requiringSecureCoding: true)
     var array = [NSBezierPath] ()
     for p in self.mPathes {
@@ -138,7 +94,6 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
   //····················································································································
 
   static func convertFromNSObject (object : NSObject) -> BezierPathArray {
-   // let array = NSKeyedUnarchiver.unarchiveObject (with: object as! Data) as! [NSBezierPath]
     let array = try! NSKeyedUnarchiver.unarchivedObject (ofClass: NSArray.self, from: object as! Data) as! [NSBezierPath]
     var result = BezierPathArray ()
     for bp in array {

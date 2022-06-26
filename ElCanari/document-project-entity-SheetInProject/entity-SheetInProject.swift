@@ -528,11 +528,6 @@ final class SheetInProject : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mObjects
-/*    self.mObjects_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mObjects",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SchematicObject]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mObjects",
@@ -542,11 +537,6 @@ final class SheetInProject : EBManagedObject,
       self.mObjects_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mPoints
-/*    self.mPoints_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mPoints",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [PointInSchematic]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mPoints",

@@ -8038,11 +8038,6 @@ final class ProjectRoot : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mSheets
-/*    self.mSheets_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mSheets",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SheetInProject]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mSheets",
@@ -8052,11 +8047,6 @@ final class ProjectRoot : EBManagedObject,
       self.mSheets_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mFonts
-/*    self.mFonts_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mFonts",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [FontInProject]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mFonts",
@@ -8066,11 +8056,6 @@ final class ProjectRoot : EBManagedObject,
       self.mFonts_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mDevices
-/*    self.mDevices_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mDevices",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [DeviceInProject]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mDevices",
@@ -8080,11 +8065,6 @@ final class ProjectRoot : EBManagedObject,
       self.mDevices_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mNetClasses
-/*    self.mNetClasses_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mNetClasses",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [NetClassInProject]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mNetClasses",
@@ -8094,11 +8074,6 @@ final class ProjectRoot : EBManagedObject,
       self.mNetClasses_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mBorderCurves
-/*    self.mBorderCurves_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mBorderCurves",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [BorderCurve]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mBorderCurves",
@@ -8108,11 +8083,6 @@ final class ProjectRoot : EBManagedObject,
       self.mBorderCurves_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mBoardObjects
-/*    self.mBoardObjects_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mBoardObjects",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [BoardObject]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mBoardObjects",
@@ -8122,11 +8092,6 @@ final class ProjectRoot : EBManagedObject,
       self.mBoardObjects_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mComponents
-/*    self.mComponents_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mComponents",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [ComponentInProject]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mComponents",

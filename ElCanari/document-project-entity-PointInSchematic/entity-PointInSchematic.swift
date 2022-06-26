@@ -1243,11 +1243,6 @@ final class PointInSchematic : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mLabels
-/*    self.mLabels_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mLabels",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [LabelInSchematic]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mLabels",
@@ -1257,11 +1252,6 @@ final class PointInSchematic : EBManagedObject,
       self.mLabels_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mWiresP2s
-/*    self.mWiresP2s_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mWiresP2s",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [WireInSchematic]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mWiresP2s",
@@ -1271,11 +1261,6 @@ final class PointInSchematic : EBManagedObject,
       self.mWiresP2s_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: mWiresP1s
-/*    self.mWiresP1s_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mWiresP1s",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [WireInSchematic]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mWiresP1s",

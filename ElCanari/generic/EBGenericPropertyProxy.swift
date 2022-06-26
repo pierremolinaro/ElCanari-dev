@@ -14,7 +14,6 @@ final class EBGenericPropertyProxy <T> : EBObservableMutableProperty <T>, EBObse
 
   var mReadModelFunction : Optional < () -> EBSelection <T> > = nil
   var mWriteModelFunction : Optional < (T) -> Void > = nil
-//  var mValidateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
   private var mCachedValue : EBSelection <T>? = nil
 
   //····················································································································
@@ -74,17 +73,6 @@ final class EBGenericPropertyProxy <T> : EBObservableMutableProperty <T>, EBObse
   override func setProp (_ value : T) {
     self.mWriteModelFunction? (value)
   }
-
-  //····················································································································
-
-//  override func validateAndSetProp (_ candidateValue : T,
-//                                    windowForSheet inWindow : NSWindow?) -> Bool {
-//    var result = false
-//    if let unwValidateAndWriteModelFunction = self.mValidateAndWriteModelFunction {
-//      result = unwValidateAndWriteModelFunction (candidateValue, inWindow)
-//    }
-//    return result
-//  }
 
   //····················································································································
 

@@ -22,7 +22,6 @@ class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   final var mRootObject : EBManagedObject?
-  fileprivate final var mUndoManager = EBUndoManager ()
 
   //····················································································································
   //    init
@@ -45,6 +44,10 @@ class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   //····················································································································
   //    ebUndoManager
+  //····················································································································
+
+  fileprivate final var mUndoManager = EBUndoManager ()
+
   //····················································································································
 
   final var ebUndoManager : EBUndoManager {
@@ -599,13 +602,13 @@ class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
   //   FORMAT ACTIONS
   //····················································································································
 
-  @IBAction func setBinaryFormatAction (_ inSender : Any?) {
+  @IBAction final func setBinaryFormatAction (_ inSender : Any?) {
     self.mManagedDocumentFileFormat = .binary
   }
 
   //····················································································································
 
-  @IBAction func setTextualFormatAction (_ inSender : Any?) {
+  @IBAction final func setTextualFormatAction (_ inSender : Any?) {
     self.mManagedDocumentFileFormat = .textual
   }
 
@@ -630,7 +633,7 @@ class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
 //  EBVersionShouldChangeObserver
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatureObserverProtocol {
+final class EBVersionShouldChangeObserver : EBGenericTransientProperty <Bool>, EBSignatureObserverProtocol {
 
   //····················································································································
 
@@ -724,11 +727,11 @@ func appendShowExploreDocumentWindowMenuItem (_ inMenu : NSMenu) {
 //  EBSignatureObserverEvent
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBSignatureObserverEvent : EBTransientProperty_UInt32, EBSignatureObserverProtocol {
+final class EBSignatureObserverEvent : EBGenericTransientProperty <UInt32>, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  private weak var mRootObject : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mRootObject : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 

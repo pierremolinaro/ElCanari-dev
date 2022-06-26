@@ -669,11 +669,6 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mPinInstances
-/*    self.mPinInstances_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mPinInstances",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SymbolPinInstanceInDevice]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mPinInstances",

@@ -14,7 +14,7 @@ var g_Preferences : Preferences? = nil
 
   //····················································································································
 
-  private var mWindow : CanariWindow? = nil
+  private final var mWindow : CanariWindow? = nil
 
   //····················································································································
   //    Show Preferences window
@@ -44,7 +44,7 @@ var g_Preferences : Preferences? = nil
   //    VIEW mPrefsMainView
   //····················································································································
 
-  lazy var mPrefsMainView : AutoLayoutVerticalStackView = {
+  lazy final var mPrefsMainView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
       .set (topMargin: 12)
@@ -71,7 +71,7 @@ var g_Preferences : Preferences? = nil
   //    VIEW mPrefsPageView
   //····················································································································
 
-  lazy var mPrefsPageView : AutoLayoutVerticalStackView = {
+  lazy final var mPrefsPageView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
     return vStackView
@@ -81,7 +81,7 @@ var g_Preferences : Preferences? = nil
   //    VIEW mPrefsAppUpdatePage
   //····················································································································
 
-  lazy var mPrefsAppUpdatePage : AutoLayoutVerticalStackView = {
+  lazy final var mPrefsAppUpdatePage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 12)
     let view_0 = AutoLayoutStaticLabel (title: "Application Update", bold: true, size: .regular)
@@ -136,7 +136,7 @@ var g_Preferences : Preferences? = nil
   //    VIEW mPrefsUserInterfacePage
   //····················································································································
 
-  lazy var mPrefsUserInterfacePage : AutoLayoutVerticalStackView = {
+  lazy final var mPrefsUserInterfacePage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 12)
     let view_0 = AutoLayoutStaticLabel (title: "User Interface", bold: true, size: .regular)
@@ -156,7 +156,7 @@ var g_Preferences : Preferences? = nil
   //    VIEW mPrefsLibraryPage
   //····················································································································
 
-  lazy var mPrefsLibraryPage : AutoLayoutVerticalStackView = {
+  lazy final var mPrefsLibraryPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 12)
     let view_0 = AutoLayoutStaticLabel (title: "System Library", bold: true, size: .regular)

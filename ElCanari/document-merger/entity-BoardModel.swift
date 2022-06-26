@@ -5220,11 +5220,6 @@ final class BoardModel : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: frontLegendLines
-/*    self.frontLegendLines_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "frontLegendLines",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "frontLegendLines",
@@ -5234,11 +5229,6 @@ final class BoardModel : EBManagedObject,
       self.frontLegendLines_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: backLegendLines
-/*    self.backLegendLines_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "backLegendLines",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "backLegendLines",
@@ -5248,11 +5238,6 @@ final class BoardModel : EBManagedObject,
       self.backLegendLines_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: frontLegendTexts
-/*    self.frontLegendTexts_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "frontLegendTexts",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "frontLegendTexts",
@@ -5262,11 +5247,6 @@ final class BoardModel : EBManagedObject,
       self.frontLegendTexts_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: frontLayoutTexts
-/*    self.frontLayoutTexts_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "frontLayoutTexts",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "frontLayoutTexts",
@@ -5276,11 +5256,6 @@ final class BoardModel : EBManagedObject,
       self.frontLayoutTexts_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: backLegendTexts
-/*    self.backLegendTexts_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "backLegendTexts",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "backLegendTexts",
@@ -5290,11 +5265,6 @@ final class BoardModel : EBManagedObject,
       self.backLegendTexts_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: backLayoutTexts
-/*    self.backLayoutTexts_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "backLayoutTexts",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "backLayoutTexts",
@@ -5304,11 +5274,6 @@ final class BoardModel : EBManagedObject,
       self.backLayoutTexts_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: internalBoardsLimits
-/*    self.internalBoardsLimits_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "internalBoardsLimits",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "internalBoardsLimits",
@@ -5318,11 +5283,6 @@ final class BoardModel : EBManagedObject,
       self.internalBoardsLimits_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: drills
-/*    self.drills_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "drills",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "drills",
@@ -5332,11 +5292,6 @@ final class BoardModel : EBManagedObject,
       self.drills_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: vias
-/*    self.vias_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "vias",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [BoardModelVia]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "vias",
@@ -5346,11 +5301,6 @@ final class BoardModel : EBManagedObject,
       self.vias_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: frontPads
-/*    self.frontPads_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "frontPads",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [BoardModelPad]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "frontPads",
@@ -5360,11 +5310,6 @@ final class BoardModel : EBManagedObject,
       self.frontPads_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: backPads
-/*    self.backPads_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "backPads",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [BoardModelPad]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "backPads",
@@ -5374,11 +5319,6 @@ final class BoardModel : EBManagedObject,
       self.backPads_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: traversingPads
-/*    self.traversingPads_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "traversingPads",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [BoardModelPad]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "traversingPads",
@@ -5388,11 +5328,6 @@ final class BoardModel : EBManagedObject,
       self.traversingPads_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: backComponentNames
-/*    self.backComponentNames_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "backComponentNames",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "backComponentNames",
@@ -5402,11 +5337,6 @@ final class BoardModel : EBManagedObject,
       self.backComponentNames_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: frontComponentNames
-/*    self.frontComponentNames_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "frontComponentNames",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "frontComponentNames",
@@ -5416,11 +5346,6 @@ final class BoardModel : EBManagedObject,
       self.frontComponentNames_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: frontComponentValues
-/*    self.frontComponentValues_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "frontComponentValues",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "frontComponentValues",
@@ -5430,11 +5355,6 @@ final class BoardModel : EBManagedObject,
       self.frontComponentValues_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: backComponentValues
-/*    self.backComponentValues_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "backComponentValues",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "backComponentValues",
@@ -5444,11 +5364,6 @@ final class BoardModel : EBManagedObject,
       self.backComponentValues_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: backTracks
-/*    self.backTracks_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "backTracks",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "backTracks",
@@ -5458,11 +5373,6 @@ final class BoardModel : EBManagedObject,
       self.backTracks_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: frontTracks
-/*    self.frontTracks_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "frontTracks",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "frontTracks",
@@ -5472,11 +5382,6 @@ final class BoardModel : EBManagedObject,
       self.frontTracks_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: inner1Tracks
-/*    self.inner1Tracks_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "inner1Tracks",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "inner1Tracks",
@@ -5486,11 +5391,6 @@ final class BoardModel : EBManagedObject,
       self.inner1Tracks_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: inner2Tracks
-/*    self.inner2Tracks_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "inner2Tracks",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "inner2Tracks",
@@ -5500,11 +5400,6 @@ final class BoardModel : EBManagedObject,
       self.inner2Tracks_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: inner3Tracks
-/*    self.inner3Tracks_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "inner3Tracks",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "inner3Tracks",
@@ -5514,11 +5409,6 @@ final class BoardModel : EBManagedObject,
       self.inner3Tracks_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: inner4Tracks
-/*    self.inner4Tracks_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "inner4Tracks",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "inner4Tracks",
@@ -5528,11 +5418,6 @@ final class BoardModel : EBManagedObject,
       self.inner4Tracks_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: frontPackages
-/*    self.frontPackages_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "frontPackages",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "frontPackages",
@@ -5542,11 +5427,6 @@ final class BoardModel : EBManagedObject,
       self.frontPackages_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: backPackages
-/*    self.backPackages_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "backPackages",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentEntity]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "backPackages",
@@ -5556,11 +5436,6 @@ final class BoardModel : EBManagedObject,
       self.backPackages_property.setProp (EBReferenceArray (array))
     }
   //--- To many property: myInstances
-/*    self.myInstances_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "myInstances",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [MergerBoardInstance]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "myInstances",

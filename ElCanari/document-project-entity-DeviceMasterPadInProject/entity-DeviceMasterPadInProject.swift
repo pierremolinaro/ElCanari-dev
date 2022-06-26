@@ -580,11 +580,6 @@ final class DeviceMasterPadInProject : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: mSlavePads
-/*    self.mSlavePads_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mSlavePads",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [DeviceSlavePadInProject]) */
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mSlavePads",
