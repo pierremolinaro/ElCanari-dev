@@ -20,7 +20,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           addPage (title: "Product", tooltip: "", pageView: stackView mProductPage)
           $selectedPage root.mSelectedPageIndex
         }
-        space StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
+        StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
       }
       space
       vStack {
@@ -974,7 +974,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       $unit root.mBoardPointsBoundingBoxUnit
     }
     separator
-    space StaticLabel (title: "Board Bounding Box", bold: yes, size : .small, alignment: .center)
+    StaticLabel (title: "Board Bounding Box", bold: yes, size : .small, alignment: .center)
     CanariBoardRectangleView {
       $top root.boardLimitBorderTop
       $bottom root.boardLimitBorderBottom 
