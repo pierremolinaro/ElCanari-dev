@@ -19,20 +19,20 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
           addPage (title: "Infos", tooltip: "Document Infos", pageView: stackView mInfoPage)
           $selectedPage root.selectedTab
         }
-        hStack { space StaticLabel (title: "Page", bold: no, size : .small) space }
+        StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
       }
       vStack {
         SignatureField (size : .regular) { $signature signature }
-        StaticLabel (title: "Signature", bold: no, size : .small) { set (alignment: .center)  expandableWidth () }
+        StaticLabel (title: "Signature", bold: no, size : .small, alignment: .center)
       }
       vStack {
         VersionField (size : .regular) { $version version $versionShouldChange versionShouldChange }
-        StaticLabel (title: "Version", bold: no, size : .small) { set (alignment: .center) expandableWidth () }
+        StaticLabel (title: "Version", bold: no, size : .small, alignment: .center)
       }
       space
       vStack {
         hStack { space ImageObserverView (size : .regular) { $image self.statusImage $tooltip self.statusMessage } space }
-        StaticLabel (title: "Status", bold: no, size : .small) { set (alignment: .center) }
+        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
       }
     }
     separator
@@ -103,26 +103,26 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
 //----------------------------------------------------------------------------------------------------------------------
 
   stackView mSampleStringInspectorView vStack {
-    hStack { space StaticLabel (title: "Sample String", bold: yes, size: .small) space }
+    StaticLabel (title: "Sample String", bold: yes, size: .small, alignment: .center)
     TextView { $value prefs.sampleString }
-    hStack { space StaticLabel (title: "Sample String Metrics", bold: yes, size: .small) space }
+    StaticLabel (title: "Sample String Metrics", bold: yes, size: .small, alignment: .center)
     hStack {
       space
       GridView2 {
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Size", bold: no, size: .small),
+          left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .center),
           right: DoubleField (minWidth: 64, size: .small) { $value prefs.sampleStringSize (sendContinously: yes) }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Width", bold: no, size: .small),
+          left: StaticLabel (title: "Width", bold: no, size: .small, alignment: .center),
           right: Label (bold: yes, size: .small) { $title root.sampleStringBezierPathWidth }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Ascenders", bold: no, size: .small),
+          left: StaticLabel (title: "Ascenders", bold: no, size: .small, alignment: .center),
           right: Label (bold: yes, size: .small) { $title root.sampleStringBezierPathAscent }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Descenders", bold: no, size: .small),
+          left: StaticLabel (title: "Descenders", bold: no, size: .small, alignment: .center),
           right: Label (bold: yes, size: .small) { $title root.sampleStringBezierPathDescent }
         )
       }
@@ -136,15 +136,15 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
 
   stackView mSelectedCharacterInspectorView vStack {
     hStack {
-      StaticLabel (title: "Font Nominal Size", bold: yes, size: .small)
+      StaticLabel (title: "Font Nominal Size", bold: yes, size: .small, alignment: .center)
       IntField (minWidth: 56, size: .small) { $value root.nominalSize (sendContinously:no) }
       space
     }
     separator
     hStack {
-      StaticLabel (title: "Segment Opacity", bold: yes, size: .small)
+      StaticLabel (title: "Segment Opacity", bold: yes, size: .small, alignment: .center)
       space
-      StaticLabel (title: "(for edition)", bold: no, size: .mini)
+      StaticLabel (title: "(for edition)", bold: no, size: .mini, alignment: .center)
     }
     hStack {
       DoubleSlider (width: -1, min: 0, max: 1, ticks: 11) { $value prefs.fontEditionTransparency }
@@ -152,7 +152,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
     }
     separator
     hStack {
-      StaticLabel (title: "Current Character", bold: yes, size: .small)
+      StaticLabel (title: "Current Character", bold: yes, size: .small, alignment: .center)
       Button (title: "Delete", size: .small) { $run deleteCurrentCharacterAction $enabled self.canDeleteCurrentCharacter }
       space
       Button (title: "New Character…", size: .small) { $run newCharacterAction }
@@ -163,13 +163,13 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
         $characters root.definedCharacters
       }
       Stepper { $value root .currentCharacterCodePoint (sendContinously: yes) }
-      StaticLabel (title: "Code", bold: no, size: .small)
+      StaticLabel (title: "Code", bold: no, size: .small, alignment: .center)
       Label (bold: no, size: .small) { $title root.currentCharacterCodePointString }
       space
       Button (title: "New Segment", size : .small) { $run addSegmentAction }
     }
     hStack {
-      StaticLabel (title: "Advancement", bold: no, size: .small)
+      StaticLabel (title: "Advancement", bold: no, size: .small, alignment: .center)
       space
     }
     hStack {
@@ -177,14 +177,14 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
       IntField (minWidth: 56, size: .small) { $value #characterSelection.advance (sendContinously:no) }
     }
     hStack {
-      StaticLabel (title: "Warns", bold: no, size: .small)
+      StaticLabel (title: "Warns", bold: no, size: .small, alignment: .center)
       Checkbox (title: "No Segment", size: .small) { $value #characterSelection.mWarnsWhenNoSegment }
       space
       Checkbox (title: "Zero Advancement", size: .small) { $value #characterSelection.mWarnsWhenAdvanceIsZero }
     }
     separator
     hStack {
-      StaticLabel (title: "Gerber Code", bold: yes, size: .small)
+      StaticLabel (title: "Gerber Code", bold: yes, size: .small, alignment: .center)
       space
       Label (bold: no, size: .small) { $title #characterSelection.gerberCodeInstructionCountMessage } 
     }
@@ -209,7 +209,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
 
   stackView mInfoPage vStack set (margins: 8) {
     hStack setTopAlignment () {
-      StaticLabel (title: "Description", bold: no, size : .regular)
+      StaticLabel (title: "Description", bold: no, size : .regular, alignment: .center)
       TextView { $value root.comments }
     }
     hStack {

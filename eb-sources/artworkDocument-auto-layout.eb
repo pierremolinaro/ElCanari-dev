@@ -27,20 +27,20 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
           $selectedPage root.selectedTab
           $segmentImage self.segmentedControlDataIssueImage (segmentIndex : 2)
         }
-        hStack { space StaticLabel (title: "Page", bold: no, size : .small) space }
+        StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
       }
       vStack {
         SignatureField (size : .regular) { $signature signature }
-        StaticLabel (title: "Signature", bold: no, size : .small) { set (alignment: .center)  expandableWidth () }
+        StaticLabel (title: "Signature", bold: no, size : .small, alignment: .center)
       }
       vStack {
         VersionField (size : .regular) { $version version $versionShouldChange versionShouldChange }
-        StaticLabel (title: "Version", bold: no, size : .small) { set (alignment: .center) expandableWidth () }
+        StaticLabel (title: "Version", bold: no, size : .small, alignment: .center)
       }
       space
       vStack {
         hStack { space ImageObserverView (size : .regular) { $image self.statusImage $tooltip self.statusMessage } space }
-        StaticLabel (title: "Status", bold: no, size : .small) { set (alignment: .center) }
+        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
       }
     }
     separator
@@ -73,7 +73,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
     TextField (minWidth: 56, size : .regular) { expandableWidth () set (alignment: .left) $value root.title (sendContinously: yes) }
     hStack {
       space
-      StaticLabel (title: "Layout", bold: no, size : .regular)
+      StaticLabel (title: "Layout", bold: no, size : .regular, alignment: .center)
       EnumPopUpButton (titles : enum LayerConfiguration.popupTitles, size: .regular) { $selectedIndex root.layerConfiguration }
       space
     }
@@ -94,13 +94,13 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
       space
       vStack {
         space
-        StaticLabel (title: "PP: Pad to Pad Distance", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
-        StaticLabel (title: "TP: Track to Pad Distance", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
-        StaticLabel (title: "TT: Track to Track Distance", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
-        StaticLabel (title: "TW: Track Width", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
-        StaticLabel (title: "PHD: Production Hole Diameter (tool size)", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
-        StaticLabel (title: "OAR: Outer Annular Ring", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
-        StaticLabel (title: "OAR is equal to (pad diameter - PHD) / 2", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "PP: Pad to Pad Distance", bold: no, size : .small, alignment: .center)
+        StaticLabel (title: "TP: Track to Pad Distance", bold: no, size : .small, alignment: .center)
+        StaticLabel (title: "TT: Track to Track Distance", bold: no, size : .small, alignment: .center)
+        StaticLabel (title: "TW: Track Width", bold: no, size : .small, alignment: .center)
+        StaticLabel (title: "PHD: Production Hole Diameter (tool size)", bold: no, size : .small, alignment: .center)
+        StaticLabel (title: "OAR: Outer Annular Ring", bold: no, size : .small, alignment: .center)
+        StaticLabel (title: "OAR is equal to (pad diameter - PHD) / 2", bold: no, size : .small, alignment: .center)
         space
       }
       space
@@ -113,19 +113,19 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
       GridView2 {
         set (leftMargin: 20) set (rightMargin: 20) set (topMargin: 8)
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular),
+          left: StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular, alignment: .center),
           right: CanariDimensionAndPopUp(size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Minimum Value for PHD", bold: no, size : .regular),
+          left: StaticLabel (title: "Minimum Value for PHD", bold: no, size : .regular, alignment: .center),
           right: CanariDimensionAndPopUp(size : .small) { $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Minimum Value for OAR", bold: no, size : .regular),
+          left: StaticLabel (title: "Minimum Value for OAR", bold: no, size : .regular, alignment: .center),
           right: CanariDimensionAndPopUp(size : .small) { $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Minimum Value for Board Limit Width", bold: no, size : .regular),
+          left: StaticLabel (title: "Minimum Value for Board Limit Width", bold: no, size : .regular, alignment: .center),
           right: CanariDimensionAndPopUp(size : .small) { $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit }
         )
       }
@@ -151,7 +151,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
   stackView mDataPage vStack set (spacing: 0) {
     hStack set (margins: 8) {
       hStack setFirstBaselineAlignment ()  {
-        StaticLabel (title: "Drill File Extension", bold: no, size : .small)
+        StaticLabel (title: "Drill File Extension", bold: no, size : .small, alignment: .center)
         TextField (minWidth: 56, size : .small) { $value root.drillDataFileExtension (sendContinously: yes) }
       }
       ImageObserverView (size: .small) { $image self.emptyDrillFileExtensionImage }
@@ -168,15 +168,15 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
       vStack set (topMargin: 8) {
         hStack {
           hStack setFirstBaselineAlignment () {
-            StaticLabel (title: "File Extension", bold: yes, size : .small)
+            StaticLabel (title: "File Extension", bold: yes, size : .small, alignment: .center)
             TextField (minWidth: 56, size : .small) { $value #mDataSelection.fileExtension (sendContinously: yes) }
           }
           ImageObserverView (size: .small) { $image #mDataSelection.emptyFileExtensionImage }
          space
-         StaticLabel (title: "Empty Data File", bold: yes, size : .small) { setOrangeTextColor () $hidden !#mDataSelection.hasNoData}
+         StaticLabel (title: "Empty Data File", bold: yes, size : .small, alignment: .center) { setOrangeTextColor () $hidden !#mDataSelection.hasNoData}
        }
         space
-        hStack { StaticLabel (title: "Front Side Elements", bold: yes, size : .small) space }
+        StaticLabel (title: "Front Side Elements", bold: yes, size : .small, alignment: .center)
         hStack {
           GridView2 {
             set (leftMargin: 20)
@@ -194,7 +194,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
         hStack set (leftMargin: 20) { Checkbox (title: "Front Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesTopSide } space }
         hStack set (leftMargin: 20) { Checkbox (title: "Front Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesTopSide } space }
         hStack set (leftMargin: 20) { Checkbox (title: "Front Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendTopSide } space }
-        hStack { StaticLabel (title: "Inner Elements", bold: yes, size : .small) space }
+        StaticLabel (title: "Inner Elements", bold: yes, size : .small, alignment: .left)
         hStack {
           GridView2 {
             set (leftMargin: 20)
@@ -225,7 +225,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
           }
           space
         }
-        hStack { StaticLabel (title: "Back Side Elements", bold: yes, size : .small) space }
+        StaticLabel (title: "Back Side Elements", bold: yes, size : .small, alignment: .center)
         hStack {
           GridView2 {
             set (leftMargin: 20)
@@ -243,7 +243,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
         hStack set (leftMargin: 20) { Checkbox (title: "Back Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesBottomSide } space }
         hStack set (leftMargin: 20) { Checkbox (title: "Back Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesBottomSide } space }
         hStack set (leftMargin: 20) { Checkbox (title: "Back Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendBottomSide } space }
-        hStack { StaticLabel (title: "Other Elements", bold: yes, size : .small) space }
+        StaticLabel (title: "Other Elements", bold: yes, size : .small, alignment: .center)
         hStack set (leftMargin: 20) {
           Checkbox (title: "Vias", size : .small) { $value #mDataSelection.drawVias }
           space
@@ -256,7 +256,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
           space
           CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit #mDataSelection.padHoleDiameterInPDF, #mDataSelection.measurementUnitForPadHoleInPDF $enabled #mDataSelection.drawPadHolesInPDF }
         }
-        hStack { StaticLabel (title: "Option", bold: yes, size : .small) space }
+        StaticLabel (title: "Option", bold: yes, size : .small, alignment: .center)
         hStack set (leftMargin: 20) { Checkbox (title: "Horizontal Mirror", size : .small) { $value #mDataSelection.horizontalMirror } space }
         space
       }

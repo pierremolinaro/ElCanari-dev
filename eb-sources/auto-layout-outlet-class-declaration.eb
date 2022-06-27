@@ -56,10 +56,11 @@ extern autolayout class CanariOrientationSegmentedControl (size: EBControlSize) 
   $orientation property QuadrantRotation
 }
 
-extern autolayout class StaticLabel (title : String, bold: Bool, size: EBControlSize) $enabled $hidden {
-  func set (alignment: TextAlignment)
+extern autolayout class StaticLabel (title : String,
+                                     bold: Bool,
+                                     size: EBControlSize,
+                                     alignment: TextAlignment) $enabled $hidden {
   func set (minWidth: Int)
-  func expandableWidth ()
   func expandableHeight ()
   func notExpandableWidth ()
   func setOrangeTextColor ()

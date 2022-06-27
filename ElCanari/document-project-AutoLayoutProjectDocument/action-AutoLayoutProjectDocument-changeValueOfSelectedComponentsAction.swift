@@ -34,19 +34,19 @@ extension AutoLayoutProjectDocument {
           let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
           let gridView = AutoLayoutGridView2 ()
         //---
-          layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Change Value", bold: true, size: .regular))
+          layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Change Value", bold: true, size: .regular, alignment: .center))
           layoutView.appendFlexibleSpace ()
         //---
           do{
-            let left = AutoLayoutStaticLabel (title: "Components", bold: false, size: .regular)
-            let right = AutoLayoutStaticLabel (title: componentNames.joined (separator: ", "), bold: true, size: .regular)
+            let left = AutoLayoutStaticLabel (title: "Components", bold: false, size: .regular, alignment: .center)
+            let right = AutoLayoutStaticLabel (title: componentNames.joined (separator: ", "), bold: true, size: .regular, alignment: .center)
                   .set (alignment: .left).expandableWidth ()
             _ = gridView.addFirstBaseLineAligned (left: left, right: right)
           }
         //---
           let comboBox = AutoLayoutComboBox (width: 120).expandableWidth ()
           do{
-            let left = AutoLayoutStaticLabel (title: "New Value", bold: false, size: .regular)
+            let left = AutoLayoutStaticLabel (title: "New Value", bold: false, size: .regular, alignment: .center)
             _ = gridView.addFirstBaseLineAligned (left: left, right: comboBox)
           }
         //---

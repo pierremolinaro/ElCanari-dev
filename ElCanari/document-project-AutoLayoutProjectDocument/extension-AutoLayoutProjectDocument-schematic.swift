@@ -34,7 +34,7 @@ extension AutoLayoutProjectDocument {
       let mainView = AutoLayoutHorizontalStackView ().set (margins: 12)
       mainView.appendViewSurroundedByFlexibleSpaces (AutoLayoutApplicationImage ())
       let rightColumn = AutoLayoutVerticalStackView ()
-      let title = AutoLayoutStaticLabel (title: "Schematic Internal Error", bold: true, size: .regular)
+      let title = AutoLayoutStaticLabel (title: "Schematic Internal Error", bold: true, size: .regular, alignment: .center)
         .set (alignment: .left)
         .setTextColor (.red)
         .expandableWidth ()

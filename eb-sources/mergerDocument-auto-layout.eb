@@ -15,21 +15,19 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
           addPage (title: "Product", tooltip: "Product Description", pageView: stackView mProductPage)
           $selectedPage root.selectedPageIndex
         }
-        hStack { space StaticLabel (title: "Page", bold: no, size : .small) space }
+        StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
       }
       vStack setCenterAlignment () {
         Button (title: "Display Settings", size : .regular) {
           $enabled root.selectedPageIndex <= 1
           $run showPrefsForSettingMergerDisplayAction
         }
-        StaticLabel (title: "for Model and Board Views", bold: no, size : .small) {
-          set (alignment: .center) expandableWidth ()
-        }
+        StaticLabel (title: "for Model and Board Views", bold: no, size : .small, alignment: .center)
       }
       space
       vStack {
         hStack { space ImageObserverView (size : .regular) { $image self.statusImage $tooltip self.statusMessage } space }
-        StaticLabel (title: "Status", bold: no, size : .small) { set (alignment: .center) }
+        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
       }
     }
     separator
@@ -65,7 +63,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             right: StaticLabels (left: "Model", right: "Board", bold: yes, size: .small)
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Horizontal Flip", bold: no, size: .small),
+            left: StaticLabel (title: "Horizontal Flip", bold: no, size: .small, alignment: .center),
             right: hStack {
               Checkbox (title: "", size: .small) { $value prefs.mergerModelViewHorizontalFlip }
               space
@@ -73,7 +71,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Vertical Flip", bold: no, size: .small),
+            left: StaticLabel (title: "Vertical Flip", bold: no, size: .small, alignment: .center),
             right: hStack {
               Checkbox (title: "", size: .small) { $value prefs.mergerModelViewVerticalFlip }
               space
@@ -81,7 +79,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Holes", bold: no, size: .small),
+            left: StaticLabel (title: "Holes", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayHoles }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorHoles (sendContinously: no) }
@@ -89,7 +87,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Vias", bold: no, size: .small),
+            left: StaticLabel (title: "Vias", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayVias }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorVias (sendContinously: no) }
@@ -97,7 +95,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Board Limits", bold: no, size: .small),
+            left: StaticLabel (title: "Board Limits", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               space
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBoardLimits (sendContinously: no) }
@@ -105,7 +103,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Model Board Limits", bold: no, size: .small),
+            left: StaticLabel (title: "Model Board Limits", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayModelBoardLimits }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorInternalBoardsLimits (sendContinously: no) }
@@ -113,7 +111,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Background", bold: no, size: .small),
+            left: StaticLabel (title: "Background", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               space
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackground (sendContinously: no) }
@@ -121,11 +119,11 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: hStack { StaticLabel (title: "Front", bold: yes, size: .small) space },
+            left: StaticLabel (title: "Front", bold: yes, size: .small, alignment: .center),
             right: space
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Pads", bold: no, size: .small),
+            left: StaticLabel (title: "Pads", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontPads }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontPads (sendContinously: no) }
@@ -133,7 +131,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Component Names", bold: no, size: .small),
+            left: StaticLabel (title: "Component Names", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontComponentNames }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontComponentNames (sendContinously: no) }
@@ -141,7 +139,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Component Values", bold: no, size: .small),
+            left: StaticLabel (title: "Component Values", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontComponentValues }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontComponentValues (sendContinously: no) }
@@ -149,7 +147,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Packages", bold: no, size: .small),
+            left: StaticLabel (title: "Packages", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontPackages }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontPackages (sendContinously: no) }
@@ -157,7 +155,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Legend Texts", bold: no, size: .small),
+            left: StaticLabel (title: "Legend Texts", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontLegendTexts }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontLegendTexts (sendContinously: no) }
@@ -165,7 +163,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Legend Lines", bold: no, size: .small),
+            left: StaticLabel (title: "Legend Lines", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontLegendLines }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontLegendLines (sendContinously: no) }
@@ -173,7 +171,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Layout Texts", bold: no, size: .small),
+            left: StaticLabel (title: "Layout Texts", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontLayoutTexts }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontLayoutTexts (sendContinously: no) }
@@ -181,7 +179,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Tracks", bold: no, size: .small),
+            left: StaticLabel (title: "Tracks", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontTracks }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontTracks (sendContinously: no) }
@@ -189,11 +187,11 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: hStack { StaticLabel (title: "Inner", bold: yes, size: .small) space },
+            left: StaticLabel (title: "Inner", bold: yes, size: .small, alignment: .center),
             right: space
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Traversing Pads", bold: no, size: .small),
+            left: StaticLabel (title: "Traversing Pads", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayTraversingPads }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorTraversingPads (sendContinously: no) }
@@ -201,7 +199,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Inner 1 Tracks", bold: no, size: .small),
+            left: StaticLabel (title: "Inner 1 Tracks", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayInner1Tracks }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorInner1Tracks (sendContinously: no) }
@@ -209,7 +207,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Inner 2 Tracks", bold: no, size: .small),
+            left: StaticLabel (title: "Inner 2 Tracks", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayInner2Tracks }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorInner2Tracks (sendContinously: no) }
@@ -217,7 +215,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Inner 3 Tracks", bold: no, size: .small),
+            left: StaticLabel (title: "Inner 3 Tracks", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayInner3Tracks }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorInner3Tracks (sendContinously: no) }
@@ -225,7 +223,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Inner 4 Tracks", bold: no, size: .small),
+            left: StaticLabel (title: "Inner 4 Tracks", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayInner4Tracks }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorInner4Tracks (sendContinously: no) }
@@ -233,11 +231,11 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: hStack { StaticLabel (title: "Back", bold: yes, size: .small) space },
+            left: StaticLabel (title: "Back", bold: yes, size: .small, alignment: .center),
             right: space
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Pads", bold: no, size: .small),
+            left: StaticLabel (title: "Pads", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackPads }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackPads (sendContinously: no) }
@@ -245,7 +243,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Component Names", bold: no, size: .small),
+            left: StaticLabel (title: "Component Names", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackComponentNames }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackComponentNames (sendContinously: no) }
@@ -253,7 +251,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Component Values", bold: no, size: .small),
+            left: StaticLabel (title: "Component Values", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackComponentValues }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackComponentValues (sendContinously: no) }
@@ -261,7 +259,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Packages", bold: no, size: .small),
+            left: StaticLabel (title: "Packages", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackPackages }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackPackages (sendContinously: no) }
@@ -269,7 +267,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Legend Texts", bold: no, size: .small),
+            left: StaticLabel (title: "Legend Texts", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackLegendTexts }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackLegendTexts (sendContinously: no) }
@@ -277,7 +275,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Legend Lines", bold: no, size: .small),
+            left: StaticLabel (title: "Legend Lines", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackLegendLines }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackLegendLines (sendContinously: no) }
@@ -285,7 +283,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Layout Texts", bold: no, size: .small),
+            left: StaticLabel (title: "Layout Texts", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackLayoutTexts }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackLayoutTexts (sendContinously: no) }
@@ -293,7 +291,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Tracks", bold: no, size: .small),
+            left: StaticLabel (title: "Tracks", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackTracks }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackTracks (sendContinously: no) }
@@ -328,39 +326,39 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
       }
       GridView2 {
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Artwork Name", bold: no, size : .small),
+          left: StaticLabel (title: "Artwork Name", bold: no, size : .small, alignment: .center),
           right: Label (bold: yes, size: .small) { set (alignment: .right) $title #mBoardModelSelection.artworkName  }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Layout", bold: no, size : .small),
+          left: StaticLabel (title: "Layout", bold: no, size : .small, alignment: .center),
           right: Label (bold: yes, size: .small) { set (alignment: .right) $title #mBoardModelSelection.layerConfigurationString }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Model Width", bold: no, size : .small),
+          left: StaticLabel (title: "Model Width", bold: no, size : .small, alignment: .center),
           right: CanariObservedDimensionAndPopUp (size: .small) {
             $dimensionAndUnit #mBoardModelSelection.modelWidth, #mBoardModelSelection.modelWidthUnit
           }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Model Height", bold: no, size : .small),
+          left: StaticLabel (title: "Model Height", bold: no, size : .small, alignment: .center),
           right: CanariObservedDimensionAndPopUp (size: .small) {
             $dimensionAndUnit #mBoardModelSelection.modelHeight, #mBoardModelSelection.modelHeightUnit
           }
         )        
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Limit Width", bold: no, size : .small),
+          left: StaticLabel (title: "Limit Width", bold: no, size : .small, alignment: .center),
           right: CanariObservedDimensionAndPopUp (size: .small) {
             $dimensionAndUnit #mBoardModelSelection.modelLimitWidth, #mBoardModelSelection.modelLimitWidthUnit
           }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Clearance", bold: no, size : .small),
+          left: StaticLabel (title: "Clearance", bold: no, size : .small, alignment: .center),
           right: CanariObservedDimensionAndPopUp (size: .small) {
             $dimensionAndUnit #mBoardModelSelection.modelLimitWidth, #mBoardModelSelection.modelLimitWidthUnit
           }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Board Count", bold: no, size : .small),
+          left: StaticLabel (title: "Board Count", bold: no, size : .small, alignment: .center),
           right: IntObserverField (bold: yes, size: .small) {
             set (alignment: .left)
             $observedValue #mBoardModelSelection.instanceCount
@@ -383,7 +381,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
       space
       hStack {
         space
-        StaticLabel (title: "No Model", bold: yes, size: .regular) { $hidden root.boardModels.count > 0 }
+        StaticLabel (title: "No Model", bold: yes, size: .regular, alignment: .center) { $hidden root.boardModels.count > 0 }
         space
       }
       space
@@ -410,7 +408,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             right: StaticLabels (left: "Model", right: "Board", bold: yes, size: .small)
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Horizontal Flip", bold: no, size: .small),
+            left: StaticLabel (title: "Horizontal Flip", bold: no, size: .small, alignment: .center),
             right: hStack {
               Checkbox (title: "", size: .small) { $value prefs.mergerModelViewHorizontalFlip }
               space
@@ -418,7 +416,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Vertical Flip", bold: no, size: .small),
+            left: StaticLabel (title: "Vertical Flip", bold: no, size: .small, alignment: .center),
             right: hStack {
               Checkbox (title: "", size: .small) { $value prefs.mergerModelViewVerticalFlip }
               space
@@ -426,7 +424,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Holes", bold: no, size: .small),
+            left: StaticLabel (title: "Holes", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayHoles }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorHoles (sendContinously: no) }
@@ -434,7 +432,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Vias", bold: no, size: .small),
+            left: StaticLabel (title: "Vias", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayVias }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorVias (sendContinously: no) }
@@ -442,7 +440,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Board Limits", bold: no, size: .small),
+            left: StaticLabel (title: "Board Limits", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               space
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBoardLimits (sendContinously: no) }
@@ -450,7 +448,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Model Board Limits", bold: no, size: .small),
+            left: StaticLabel (title: "Model Board Limits", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayModelBoardLimits }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorInternalBoardsLimits (sendContinously: no) }
@@ -458,7 +456,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Background", bold: no, size: .small),
+            left: StaticLabel (title: "Background", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               space
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackground (sendContinously: no) }
@@ -466,11 +464,11 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: hStack { StaticLabel (title: "Front", bold: yes, size: .small) space },
+            left: StaticLabel (title: "Front", bold: yes, size: .small, alignment: .center),
             right: space
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Pads", bold: no, size: .small),
+            left: StaticLabel (title: "Pads", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontPads }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontPads (sendContinously: no) }
@@ -478,7 +476,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Component Names", bold: no, size: .small),
+            left: StaticLabel (title: "Component Names", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontComponentNames }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontComponentNames (sendContinously: no) }
@@ -486,7 +484,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Component Values", bold: no, size: .small),
+            left: StaticLabel (title: "Component Values", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontComponentValues }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontComponentValues (sendContinously: no) }
@@ -494,7 +492,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Packages", bold: no, size: .small),
+            left: StaticLabel (title: "Packages", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontPackages }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontPackages (sendContinously: no) }
@@ -502,7 +500,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Legend Texts", bold: no, size: .small),
+            left: StaticLabel (title: "Legend Texts", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontLegendTexts }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontLegendTexts (sendContinously: no) }
@@ -510,7 +508,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Legend Lines", bold: no, size: .small),
+            left: StaticLabel (title: "Legend Lines", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontLegendLines }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontLegendLines (sendContinously: no) }
@@ -518,7 +516,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Layout Texts", bold: no, size: .small),
+            left: StaticLabel (title: "Layout Texts", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontLayoutTexts }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontLayoutTexts (sendContinously: no) }
@@ -526,7 +524,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Tracks", bold: no, size: .small),
+            left: StaticLabel (title: "Tracks", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayFrontTracks }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorFrontTracks (sendContinously: no) }
@@ -534,11 +532,11 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: hStack { StaticLabel (title: "Inner", bold: yes, size: .small) space },
+            left: StaticLabel (title: "Inner", bold: yes, size: .small, alignment: .center),
             right: space
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Traversing Pads", bold: no, size: .small),
+            left: StaticLabel (title: "Traversing Pads", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayTraversingPads }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorTraversingPads (sendContinously: no) }
@@ -546,7 +544,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Inner 1 Tracks", bold: no, size: .small),
+            left: StaticLabel (title: "Inner 1 Tracks", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayInner1Tracks }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorInner1Tracks (sendContinously: no) }
@@ -554,7 +552,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Inner 2 Tracks", bold: no, size: .small),
+            left: StaticLabel (title: "Inner 2 Tracks", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayInner2Tracks }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorInner2Tracks (sendContinously: no) }
@@ -562,7 +560,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Inner 3 Tracks", bold: no, size: .small),
+            left: StaticLabel (title: "Inner 3 Tracks", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayInner3Tracks }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorInner3Tracks (sendContinously: no) }
@@ -570,7 +568,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Inner 4 Tracks", bold: no, size: .small),
+            left: StaticLabel (title: "Inner 4 Tracks", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayInner4Tracks }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorInner4Tracks (sendContinously: no) }
@@ -578,11 +576,11 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: hStack { StaticLabel (title: "Back", bold: yes, size: .small) space },
+            left: StaticLabel (title: "Back", bold: yes, size: .small, alignment: .center),
             right: space
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Pads", bold: no, size: .small),
+            left: StaticLabel (title: "Pads", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackPads }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackPads (sendContinously: no) }
@@ -590,7 +588,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Component Names", bold: no, size: .small),
+            left: StaticLabel (title: "Component Names", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackComponentNames }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackComponentNames (sendContinously: no) }
@@ -598,7 +596,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Component Values", bold: no, size: .small),
+            left: StaticLabel (title: "Component Values", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackComponentValues }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackComponentValues (sendContinously: no) }
@@ -606,7 +604,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Packages", bold: no, size: .small),
+            left: StaticLabel (title: "Packages", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackPackages }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackPackages (sendContinously: no) }
@@ -614,7 +612,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Legend Texts", bold: no, size: .small),
+            left: StaticLabel (title: "Legend Texts", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackLegendTexts }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackLegendTexts (sendContinously: no) }
@@ -622,7 +620,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Legend Lines", bold: no, size: .small),
+            left: StaticLabel (title: "Legend Lines", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackLegendLines }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackLegendLines (sendContinously: no) }
@@ -630,7 +628,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Layout Texts", bold: no, size: .small),
+            left: StaticLabel (title: "Layout Texts", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackLayoutTexts }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackLayoutTexts (sendContinously: no) }
@@ -638,7 +636,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
             }
           )
           addCenterYAligned (
-            left: StaticLabel (title: "Tracks", bold: no, size: .small),
+            left: StaticLabel (title: "Tracks", bold: no, size: .small, alignment: .center),
             right: hStack setCenterYAlignment () {
               Checkbox (title: "", size: .small) { expandableHeight () $value prefs.mergerModelViewDisplayBackTracks }
               ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mergerColorBackTracks (sendContinously: no) }
@@ -686,7 +684,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   stackView mBoardSettingsPage vStack {
     hStack {
       vStack {
-        StaticLabel (title: "Add Model", bold: yes, size : .small) { expandableWidth () set (alignment: .left) }
+        StaticLabel (title: "Add Model", bold: yes, size : .small, alignment: .left)
         HelpButton (size : .small) { $run showBoardHelpAction }
         EnumPopUpButton (titles: enum QuadrantRotation.degreesTitles, size: .small) {
           expandableWidth ()
@@ -697,7 +695,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
         [outlet mModelDragSourceTableView configurator boardModelDragSourceTableView]
         { $models root.modelNames }
     }
-    StaticLabel (title: "Board", bold: yes, size : .small) { expandableWidth () set (alignment: .left) }
+    StaticLabel (title: "Board", bold: yes, size : .small, alignment: .left)
     hStack {
       Checkbox (title: "Automatic Size", size: .small) { $value root.automaticBoardSize }
       space
@@ -708,7 +706,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
     }
     GridView2 {
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Width", bold: no, size : .small),
+        left: StaticLabel (title: "Width", bold: no, size : .small, alignment: .center),
         right: vStack {
           CanariDimensionAndPopUp (size: .small) {
             $dimensionAndUnit root.boardManualWidth, root.boardWidthUnit
@@ -721,7 +719,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Height", bold: no, size : .small),
+        left: StaticLabel (title: "Height", bold: no, size : .small, alignment: .center),
         right: vStack {
           CanariDimensionAndPopUp (size: .small) {
             $dimensionAndUnit root.boardManualHeight, root.boardHeightUnit
@@ -734,7 +732,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Limit Width", bold: no, size : .small),
+        left: StaticLabel (title: "Limit Width", bold: no, size : .small, alignment: .center),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit root.boardLimitWidth, root.boardLimitWidthUnit
         }
@@ -746,36 +744,34 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
           $hidden root.boardLimitWidthOk
         }
       )      
-      add (single: StaticLabel (title: "Arrow Key Magnitude", bold: yes, size : .small)
-        { expandableWidth () set (alignment: .left) }
+      add (single: StaticLabel (title: "Arrow Key Magnitude", bold: yes, size : .small, alignment: .left)
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Arrow Key", bold: no, size : .small),
+        left: StaticLabel (title: "Arrow Key", bold: no, size : .small, alignment: .center),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit root.arrowMagnitude, root.arrowMagnitudeUnit
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Shift Arrow Key", bold: no, size : .small),
+        left: StaticLabel (title: "Shift Arrow Key", bold: no, size : .small, alignment: .center),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit root.shiftArrowMagnitude, root.shiftArrowMagnitudeUnit
         }
       )
-      add (single: StaticLabel (title: "Selected Element", bold: yes, size : .small)
-        { expandableWidth () set (alignment: .left) }
+      add (single: StaticLabel (title: "Selected Element", bold: yes, size : .small, alignment: .left)
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Model", bold: no, size : .small),
+        left: StaticLabel (title: "Model", bold: no, size : .small, alignment: .center),
         right: Label (bold: yes, size: .small) { $title #mBoardInstanceSelection.modelName }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Right", bold: no, size : .small),
+        left: StaticLabel (title: "Right", bold: no, size : .small, alignment: .center),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #mBoardInstanceSelection.x, root.selectedBoardXUnit
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Bottom", bold: no, size : .small),
+        left: StaticLabel (title: "Bottom", bold: no, size : .small, alignment: .center),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #mBoardInstanceSelection.y, root.selectedBoardYUnit
         }
@@ -789,9 +785,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
     }
     hStack set (margins: 0) equalWidth () {
       vStack set (margins: 0) {
-        StaticLabel (title: "Move Selection", bold: yes, size : .small) {
-          expandableWidth ()
-        }
+        StaticLabel (title: "Move Selection", bold: yes, size : .small, alignment: .center)
         hStack {
           space
           Button (title: "Up", size : .small) {
@@ -826,9 +820,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
         }
       }
       vStack set (margins: 0) {
-        StaticLabel (title: "Stack Selection", bold: yes, size : .small) {
-          expandableWidth ()
-        }
+        StaticLabel (title: "Stack Selection", bold: yes, size : .small, alignment: .center)
         hStack {
           space
           Button (title: "Up", size : .small) {
@@ -929,7 +921,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
     }
     hStack $hidden !root.mArtwork.none {
       space
-      vStack { space StaticLabel (title: "No Artwork", bold: yes, size : .regular) space }
+      vStack { space StaticLabel (title: "No Artwork", bold: yes, size : .regular, alignment: .center) space }
       space
     }
     vStack $hidden root.mArtwork.none {
@@ -965,7 +957,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   stackView mArtworkDescriptionPage vStack {
     GridView2 {
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Layer Description", bold: no, size: .regular),
+        left: StaticLabel (title: "Layer Description", bold: no, size: .regular, alignment: .center),
         right: Label (bold: yes, size: .regular) {
           set (alignment: .left)
           expandableWidth ()
@@ -973,7 +965,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Artwork Version", bold: no, size: .regular),
+        left: StaticLabel (title: "Artwork Version", bold: no, size: .regular, alignment: .center),
         right: IntObserverField (bold: yes, size: .regular) {
           set (alignment: .left)
           expandableWidth ()
@@ -981,7 +973,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
         }
       )
       addCenterYAligned (
-        left: vStack { StaticLabel (title: "Comment", bold: no, size: .regular) space},
+        left: vStack { StaticLabel (title: "Comment", bold: no, size: .regular, alignment: .center) space},
         right: TextObserverView () { expandableWidth () $observedValue root.comments }
       )
     }
@@ -992,7 +984,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   stackView mArtworkDataPage vStack set (spacing: 0) {
     hStack set (margins: 8) {
       hStack setFirstBaselineAlignment ()  {
-        StaticLabel (title: "Drill File Extension", bold: no, size : .small)
+        StaticLabel (title: "Drill File Extension", bold: no, size : .small, alignment: .center)
         TextField (minWidth: 56, size : .small) { $value root.drillDataFileExtension (sendContinously: yes) }
       }
       ImageObserverView (size: .small) { $image self.emptyDrillFileExtensionImage }
@@ -1007,15 +999,15 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
       vStack set (topMargin: 8) {
         hStack {
           hStack setFirstBaselineAlignment () {
-            StaticLabel (title: "File Extension", bold: yes, size : .small)
+            StaticLabel (title: "File Extension", bold: yes, size : .small, alignment: .center)
             TextField (minWidth: 56, size : .small) { $value #mDataSelection.fileExtension (sendContinously: yes) }
           }
           ImageObserverView (size: .small) { $image #mDataSelection.emptyFileExtensionImage }
          space
-         StaticLabel (title: "Empty Data File", bold: yes, size : .small) { setOrangeTextColor () $hidden !#mDataSelection.hasNoData}
+         StaticLabel (title: "Empty Data File", bold: yes, size : .small, alignment: .center) { setOrangeTextColor () $hidden !#mDataSelection.hasNoData}
        }
         space
-        hStack { StaticLabel (title: "Front Side Elements", bold: yes, size : .small) space }
+        StaticLabel (title: "Front Side Elements", bold: yes, size : .small, alignment: .left)
         hStack {
           GridView2 {
             set (leftMargin: 20)
@@ -1033,7 +1025,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
         hStack set (leftMargin: 20) { Checkbox (title: "Front Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesTopSide } space }
         hStack set (leftMargin: 20) { Checkbox (title: "Front Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesTopSide } space }
         hStack set (leftMargin: 20) { Checkbox (title: "Front Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendTopSide } space }
-        hStack { StaticLabel (title: "Inner Elements", bold: yes, size : .small) space }
+        StaticLabel (title: "Inner Elements", bold: yes, size : .small, alignment: .left)
         hStack {
           GridView2 {
             set (leftMargin: 20)
@@ -1064,7 +1056,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
           }
           space
         }
-        hStack { StaticLabel (title: "Back Side Elements", bold: yes, size : .small) space }
+        StaticLabel (title: "Back Side Elements", bold: yes, size : .small, alignment: .center)
         hStack {
           GridView2 {
             set (leftMargin: 20)
@@ -1082,7 +1074,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
         hStack set (leftMargin: 20) { Checkbox (title: "Back Side Component Names", size : .small) { $value #mDataSelection.drawComponentNamesBottomSide } space }
         hStack set (leftMargin: 20) { Checkbox (title: "Back Side Component Values", size : .small) { $value #mDataSelection.drawComponentValuesBottomSide } space }
         hStack set (leftMargin: 20) { Checkbox (title: "Back Side Package Legends", size : .small) { $value #mDataSelection.drawPackageLegendBottomSide } space }
-        hStack { StaticLabel (title: "Other Elements", bold: yes, size : .small) space }
+        StaticLabel (title: "Other Elements", bold: yes, size : .small, alignment: .center)
         hStack set (leftMargin: 20) {
           Checkbox (title: "Vias", size : .small) { $value #mDataSelection.drawVias }
           Checkbox (title: "Internal Board Limits", size : .small) { $value #mDataSelection.drawInternalBoardLimits }
@@ -1094,7 +1086,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
           CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit #mDataSelection.padHoleDiameterInPDF, #mDataSelection.measurementUnitForPadHoleInPDF $enabled #mDataSelection.drawPadHolesInPDF }
           space
         }
-        hStack { StaticLabel (title: "Option", bold: yes, size : .small) space }
+        StaticLabel (title: "Option", bold: yes, size : .small, alignment: .center)
         hStack set (leftMargin: 20) { Checkbox (title: "Horizontal Mirror", size : .small) { $value #mDataSelection.horizontalMirror } space }
         space
       }
@@ -1119,13 +1111,13 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
       space
       vStack {
         space
-        StaticLabel (title: "PP: Pad to Pad Distance", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
-        StaticLabel (title: "TP: Track to Pad Distance", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
-        StaticLabel (title: "TT: Track to Track Distance", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
-        StaticLabel (title: "TW: Track Width", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
-        StaticLabel (title: "PHD: Production Hole Diameter (tool size)", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
-        StaticLabel (title: "OAR: Outer Annular Ring", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
-        StaticLabel (title: "OAR is equal to (pad diameter - PHD) / 2", bold: no, size : .small) { set (alignment: .left) expandableWidth () }
+        StaticLabel (title: "PP: Pad to Pad Distance", bold: no, size : .small, alignment: .left)
+        StaticLabel (title: "TP: Track to Pad Distance", bold: no, size : .small, alignment: .left)
+        StaticLabel (title: "TT: Track to Track Distance", bold: no, size : .small, alignment: .left)
+        StaticLabel (title: "TW: Track Width", bold: no, size : .small, alignment: .left)
+        StaticLabel (title: "PHD: Production Hole Diameter (tool size)", bold: no, size : .small, alignment: .left)
+        StaticLabel (title: "OAR: Outer Annular Ring", bold: no, size : .small, alignment: .left)
+        StaticLabel (title: "OAR is equal to (pad diameter - PHD) / 2", bold: no, size : .small, alignment: .left)
         space
       }
       space
@@ -1138,19 +1130,19 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
       GridView2 {
         set (leftMargin: 20) set (rightMargin: 20) set (topMargin: 8)
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular),
+          left: StaticLabel (title: "Minimum Value for PP, TP, TT and TW", bold: no, size : .regular, alignment: .center),
           right: CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Minimum Value for PHD", bold: no, size : .regular),
+          left: StaticLabel (title: "Minimum Value for PHD", bold: no, size : .regular, alignment: .center),
           right: CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minValueForPHDinEBUnit, root.minValueForPHDdisplayUnit }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Minimum Value for OAR", bold: no, size : .regular),
+          left: StaticLabel (title: "Minimum Value for OAR", bold: no, size : .regular, alignment: .center),
           right: CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minValueForOARinEBUnit, root.minValueForOARdisplayUnit }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Minimum Value for Board Limit Width", bold: no, size : .regular),
+          left: StaticLabel (title: "Minimum Value for Board Limit Width", bold: no, size : .regular, alignment: .center),
           right: CanariObservedDimensionAndPopUp (size : .small) { $dimensionAndUnit root.minValueForBoardLimitWidth, root.minValueForBoardLimitWidthDisplayUnit }
         )
       }
@@ -1165,7 +1157,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
     hStack setFirstBaselineAlignment () {
       space
       ColorWell { $color root.mPDFBoardBackgroundColor (sendContinously : no) }
-      StaticLabel (title: "Board Background Color", bold: no, size: .regular)
+      StaticLabel (title: "Board Background Color", bold: no, size: .regular, alignment: .center)
       space
     }
     space

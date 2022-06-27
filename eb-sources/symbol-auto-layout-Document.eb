@@ -16,20 +16,20 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
           addPage (title: "Infos", tooltip: "Symbol Informations", pageView: stackView mInfosPage)
           $selectedPage root.selectedPageIndex
         }
-        hStack { space StaticLabel (title: "Page", bold: no, size: .small) space }
+        StaticLabel (title: "Page", bold: no, size: .small, alignment: .center)
       }
       vStack {
         SignatureField (size : .regular) { $signature signature }
-        StaticLabel (title: "Signature", bold: no, size: .small) { set (alignment: .center)  expandableWidth () }
+        StaticLabel (title: "Signature", bold: no, size: .small, alignment: .center)
       }
       vStack {
         VersionField (size : .regular) { $version version $versionShouldChange versionShouldChange }
-        StaticLabel (title: "Version", bold: no, size: .small) { set (alignment: .center) expandableWidth () }
+        StaticLabel (title: "Version", bold: no, size: .small, alignment: .center)
       }
       space
       vStack {
         hStack { space ImageObserverView (size: .regular) { $image self.statusImage $tooltip self.statusMessage } space }
-        StaticLabel (title: "Status", bold: no, size: .small) { set (alignment: .center) }
+        StaticLabel (title: "Status", bold: no, size: .small, alignment: .center)
       }
     }
     separator
@@ -131,14 +131,14 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
   selectionController SymbolText #mSymbolTextSelectionController : #mSymbolObjectsController.selectedArray ;
 
   stackView mSymbolTextInspectorView vStack {
-    hStack { space StaticLabel (title: "Text Inspector", bold: yes, size: .small) space }
+    StaticLabel (title: "Text Inspector", bold: yes, size: .small, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Pin Name", bold: no, size: .small),
+        left: StaticLabel (title: "Pin Name", bold: no, size: .small, alignment: .center),
         right: TextField (minWidth: 56, size: .small) { expandableWidth () $value #mSymbolTextSelectionController.text (sendContinously : yes) }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Alignment", bold: no, size: .small),
+        left: StaticLabel (title: "Alignment", bold: no, size: .small, alignment: .center),
         right: CanariHorizontalAlignmentSegmentedControl (size: .small) { expandableWidth () $alignment #mSymbolTextSelectionController.horizontalAlignment}
       )
     }
@@ -149,24 +149,10 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
   selectionController SymbolPin #mSymbolPinSelectionController : #mSymbolObjectsController.selectedArray ;
 
   stackView mSymbolPinInspectorView vStack {
-    hStack { space StaticLabel (title: "Pin Inspector", bold: yes, size: .small) space }
+    StaticLabel (title: "Pin Inspector", bold: yes, size: .small, alignment: .center)
     GridView2 {
-//      add (single:
-//        StaticLabel (title: "Value", bold: no, size: .small) {
-//          set (alignment: .left)
-//          expandableWidth ()
-//        }
-//      )
-//      add (single:
-//        TextField (minWidth: 56, size: .small) {
-//          automaticallyAdjustHeight (maxWidth: 200)
-//          $value #mSymbolPinSelectionController.name (sendContinously : yes)
-//        }
-//      )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Value", bold: no, size: .small) {
-          set (alignment: .right)
-          expandableWidth ()
+        left: StaticLabel (title: "Value", bold: no, size: .small, alignment: .right) {
           expandableHeight ()
         },
         right: TextField (minWidth: 56, size: .small) {
@@ -175,17 +161,14 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Name Alignment", bold: no, size: .small)  {
-          expandableWidth ()
-          set (alignment: .right)
-        },
+        left: StaticLabel (title: "Name Alignment", bold: no, size: .small, alignment: .right),
         right: CanariHorizontalAlignmentSegmentedControl (size: .small) {
           expandableWidth ()
           $alignment #mSymbolPinSelectionController.nameHorizontalAlignment
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Number Alignment", bold: no, size: .small) { set (alignment: .right) },
+        left: StaticLabel (title: "Number Alignment", bold: no, size: .small, alignment: .right),
         right: CanariHorizontalAlignmentSegmentedControl (size: .small) {
           expandableWidth () $alignment #mSymbolPinSelectionController.numberHorizontalAlignment
         }
@@ -202,14 +185,14 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
 //----------------------------------------------------------------------------------------------------------------------
 
   stackView mGridZoomInspectorView vStack {
-    hStack { space StaticLabel (title: "(Stored in Document Preferences)", bold: no, size: .mini) space }
+    StaticLabel (title: "(Stored in Document Preferences)", bold: no, size: .mini, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Grid Style", bold: no, size: .small),
+        left: StaticLabel (title: "Grid Style", bold: no, size: .small, alignment: .center),
         right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.gridStyle}
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Grid Display", bold: no, size: .small),
+        left: StaticLabel (title: "Grid Display", bold: no, size: .small, alignment: .center),
         right:  TaggedPopUpButton (size: .small) {
           add (title: "1 Step", withTag: 1)
           add (title: "2 Steps", withTag: 2)
@@ -221,11 +204,11 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Grid Step", bold: no, size: .small),
-        right: StaticLabel (title: "25 mils", bold: yes, size: .small) { set (alignment: .left) }
+        left: StaticLabel (title: "Grid Step", bold: no, size: .small, alignment: .center),
+        right: StaticLabel (title: "25 mils", bold: yes, size: .small, alignment: .left)
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Flip", bold: no, size: .small),
+        left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .center),
         right: Checkbox (title: "Horizontal", size: .small) { $value root.horizontalFlip }
       )
       addFirstBaseLineAligned (
@@ -237,7 +220,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
         right: CanariUnitPopUpButton (size: .small) { $unit root.xPlacardUnit }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Y", bold: no, size: .small),
+        left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .center),
         right: CanariUnitPopUpButton(size: .small) { $unit root.yPlacardUnit }
       )
     }
@@ -249,26 +232,26 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
 //----------------------------------------------------------------------------------------------------------------------
 
   stackView mDisplayInspectorView vStack {
-    hStack { space StaticLabel (title: "(Stored in Application Preferences)", bold: no, size: .mini) space }
+    StaticLabel (title: "(Stored in Application Preferences)", bold: no, size: .mini, alignment: .center)
     GridView2 {
       addCenterYAligned (
-        left: StaticLabel (title: "Symbol", bold: no, size: .small),
+        left: StaticLabel (title: "Symbol", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolColor (sendContinously:no) } space }
       )
       addCenterYAligned (
-        left: StaticLabel (title: "Background", bold: no, size: .small),
+        left: StaticLabel (title: "Background", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.symbolBackgroundColor (sendContinously:no) } space }
       )
       addCenterYAligned (
-        left: StaticLabel (title: "Cross Grid", bold: no, size: .small),
+        left: StaticLabel (title: "Cross Grid", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.crossColorOfSymbolGrid (sendContinously:no) } space }
       )
       addCenterYAligned (
-        left: StaticLabel (title: "Line Grid", bold: no, size: .small),
+        left: StaticLabel (title: "Line Grid", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.lineColorOfSymbolGrid (sendContinously:no) } space }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Line Width", bold: no, size: .small),
+        left: StaticLabel (title: "Line Width", bold: no, size: .small, alignment: .center),
         right: TaggedPopUpButton (size: .small) {
           add (title: "0.5 Point", withTag: 5)
           add (title: "1.0 Point", withTag: 10)
@@ -279,7 +262,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Pin Font", bold: no, size: .small),
+        left: StaticLabel (title: "Pin Font", bold: no, size: .small, alignment: .center),
         right: FontButton (size: .small) {$fontValue prefs.pinNameFont}
       )
     }
@@ -307,7 +290,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
       space
     }
     hStack {
-      vStack { StaticLabel (title: "Comments", bold: no, size: .regular) space }
+      vStack { StaticLabel (title: "Comments", bold: no, size: .regular, alignment: .center) space }
       TextView { $value root.comments }
     }
   }

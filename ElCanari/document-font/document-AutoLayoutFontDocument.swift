@@ -206,15 +206,7 @@ import Cocoa
           .addPage (title: "Infos", tooltip: "Document Infos", pageView: self.mInfoPage)
           .bind_selectedPage (self.rootObject.selectedTab_property)
         view_0_0.appendView (view_0_0_0)
-        let view_0_0_1 = AutoLayoutHorizontalStackView ()
-        do{
-          let view_0_0_1_0 = AutoLayoutFlexibleSpace ()
-          view_0_0_1.appendView (view_0_0_1_0)
-          let view_0_0_1_1 = AutoLayoutStaticLabel (title: "Page", bold: false, size: .small)
-          view_0_0_1.appendView (view_0_0_1_1)
-          let view_0_0_1_2 = AutoLayoutFlexibleSpace ()
-          view_0_0_1.appendView (view_0_0_1_2)
-        }
+        let view_0_0_1 = AutoLayoutStaticLabel (title: "Page", bold: false, size: .small, alignment: .center)
         view_0_0.appendView (view_0_0_1)
       }
       view_0.appendView (view_0_0)
@@ -223,9 +215,7 @@ import Cocoa
         let view_0_1_0 = AutoLayoutSignatureField (size: .regular)
           .bind_signature (self.signatureObserver_property)
         view_0_1.appendView (view_0_1_0)
-        let view_0_1_1 = AutoLayoutStaticLabel (title: "Signature", bold: false, size: .small)
-          .set (alignment: .center)
-          .expandableWidth ()
+        let view_0_1_1 = AutoLayoutStaticLabel (title: "Signature", bold: false, size: .small, alignment: .center)
         view_0_1.appendView (view_0_1_1)
       }
       view_0.appendView (view_0_1)
@@ -235,9 +225,7 @@ import Cocoa
           .bind_version (self.versionObserver_property)
           .bind_versionShouldChange (self.versionShouldChangeObserver_property)
         view_0_2.appendView (view_0_2_0)
-        let view_0_2_1 = AutoLayoutStaticLabel (title: "Version", bold: false, size: .small)
-          .set (alignment: .center)
-          .expandableWidth ()
+        let view_0_2_1 = AutoLayoutStaticLabel (title: "Version", bold: false, size: .small, alignment: .center)
         view_0_2.appendView (view_0_2_1)
       }
       view_0.appendView (view_0_2)
@@ -257,8 +245,7 @@ import Cocoa
           view_0_4_0.appendView (view_0_4_0_2)
         }
         view_0_4.appendView (view_0_4_0)
-        let view_0_4_1 = AutoLayoutStaticLabel (title: "Status", bold: false, size: .small)
-          .set (alignment: .center)
+        let view_0_4_1 = AutoLayoutStaticLabel (title: "Status", bold: false, size: .small, alignment: .center)
         view_0_4.appendView (view_0_4_1)
       }
       view_0.appendView (view_0_4)
@@ -368,28 +355,12 @@ import Cocoa
 
   lazy final var mSampleStringInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0_0 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutStaticLabel (title: "Sample String", bold: true, size: .small)
-      view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_2)
-    }
+    let view_0 = AutoLayoutStaticLabel (title: "Sample String", bold: true, size: .small, alignment: .center)
     vStackView.appendView (view_0)
     let view_1 = AutoLayoutTextView ()
       .bind_value (preferences_sampleString_property)
     vStackView.appendView (view_1)
-    let view_2 = AutoLayoutHorizontalStackView ()
-    do{
-      let view_2_0 = AutoLayoutFlexibleSpace ()
-      view_2.appendView (view_2_0)
-      let view_2_1 = AutoLayoutStaticLabel (title: "Sample String Metrics", bold: true, size: .small)
-      view_2.appendView (view_2_1)
-      let view_2_2 = AutoLayoutFlexibleSpace ()
-      view_2.appendView (view_2_2)
-    }
+    let view_2 = AutoLayoutStaticLabel (title: "Sample String Metrics", bold: true, size: .small, alignment: .center)
     vStackView.appendView (view_2)
     let view_3 = AutoLayoutHorizontalStackView ()
     do{
@@ -416,7 +387,7 @@ import Cocoa
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
-      let view_0_0 = AutoLayoutStaticLabel (title: "Font Nominal Size", bold: true, size: .small)
+      let view_0_0 = AutoLayoutStaticLabel (title: "Font Nominal Size", bold: true, size: .small, alignment: .center)
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutIntField (minWidth: 56, size: .small)
         .bind_value (self.rootObject.nominalSize_property, sendContinously:false)
@@ -429,11 +400,11 @@ import Cocoa
     vStackView.appendView (view_1)
     let view_2 = AutoLayoutHorizontalStackView ()
     do{
-      let view_2_0 = AutoLayoutStaticLabel (title: "Segment Opacity", bold: true, size: .small)
+      let view_2_0 = AutoLayoutStaticLabel (title: "Segment Opacity", bold: true, size: .small, alignment: .center)
       view_2.appendView (view_2_0)
       let view_2_1 = AutoLayoutFlexibleSpace ()
       view_2.appendView (view_2_1)
-      let view_2_2 = AutoLayoutStaticLabel (title: "(for edition)", bold: false, size: .mini)
+      let view_2_2 = AutoLayoutStaticLabel (title: "(for edition)", bold: false, size: .mini, alignment: .center)
       view_2.appendView (view_2_2)
     }
     vStackView.appendView (view_2)
@@ -451,7 +422,7 @@ import Cocoa
     vStackView.appendView (view_4)
     let view_5 = AutoLayoutHorizontalStackView ()
     do{
-      let view_5_0 = AutoLayoutStaticLabel (title: "Current Character", bold: true, size: .small)
+      let view_5_0 = AutoLayoutStaticLabel (title: "Current Character", bold: true, size: .small, alignment: .center)
       view_5.appendView (view_5_0)
       let view_5_1 = AutoLayoutButton (title: "Delete", size: .small)
         .bind_enabled (.prop (self.canDeleteCurrentCharacter_property))
@@ -479,7 +450,7 @@ import Cocoa
       let view_6_1 = AutoLayoutStepper ()
         .bind_value (self.rootObject.currentCharacterCodePoint_property, sendContinously:true)
       view_6.appendView (view_6_1)
-      let view_6_2 = AutoLayoutStaticLabel (title: "Code", bold: false, size: .small)
+      let view_6_2 = AutoLayoutStaticLabel (title: "Code", bold: false, size: .small, alignment: .center)
       view_6.appendView (view_6_2)
       let view_6_3 = AutoLayoutLabel (bold: false, size: .small)
         .bind_title (self.rootObject.currentCharacterCodePointString_property)
@@ -496,7 +467,7 @@ import Cocoa
     vStackView.appendView (view_6)
     let view_7 = AutoLayoutHorizontalStackView ()
     do{
-      let view_7_0 = AutoLayoutStaticLabel (title: "Advancement", bold: false, size: .small)
+      let view_7_0 = AutoLayoutStaticLabel (title: "Advancement", bold: false, size: .small, alignment: .center)
       view_7.appendView (view_7_0)
       let view_7_1 = AutoLayoutFlexibleSpace ()
       view_7.appendView (view_7_1)
@@ -514,7 +485,7 @@ import Cocoa
     vStackView.appendView (view_8)
     let view_9 = AutoLayoutHorizontalStackView ()
     do{
-      let view_9_0 = AutoLayoutStaticLabel (title: "Warns", bold: false, size: .small)
+      let view_9_0 = AutoLayoutStaticLabel (title: "Warns", bold: false, size: .small, alignment: .center)
       view_9.appendView (view_9_0)
       let view_9_1 = AutoLayoutCheckbox (title: "No Segment", size: .small)
         .bind_value (self.characterSelection.mWarnsWhenNoSegment_property)
@@ -530,7 +501,7 @@ import Cocoa
     vStackView.appendView (view_10)
     let view_11 = AutoLayoutHorizontalStackView ()
     do{
-      let view_11_0 = AutoLayoutStaticLabel (title: "Gerber Code", bold: true, size: .small)
+      let view_11_0 = AutoLayoutStaticLabel (title: "Gerber Code", bold: true, size: .small, alignment: .center)
       view_11.appendView (view_11_0)
       let view_11_1 = AutoLayoutFlexibleSpace ()
       view_11.appendView (view_11_1)
@@ -567,7 +538,7 @@ import Cocoa
     let view_0 = AutoLayoutHorizontalStackView ()
       .setTopAlignment ()
     do{
-      let view_0_0 = AutoLayoutStaticLabel (title: "Description", bold: false, size: .regular)
+      let view_0_0 = AutoLayoutStaticLabel (title: "Description", bold: false, size: .regular, alignment: .center)
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutTextView ()
         .bind_value (self.rootObject.comments_property)
@@ -594,7 +565,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_0 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small)
+    let view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -613,7 +584,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_2 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small)
+    let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -632,7 +603,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_4 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Ascenders", bold: false, size: .small)
+    let view = AutoLayoutStaticLabel (title: "Ascenders", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -651,7 +622,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_6 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Descenders", bold: false, size: .small)
+    let view = AutoLayoutStaticLabel (title: "Descenders", bold: false, size: .small, alignment: .center)
     return view
   }
 

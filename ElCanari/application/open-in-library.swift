@@ -18,10 +18,10 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
   private final let mOpenButton : AutoLayoutSheetDefaultOkButton
   private final let mCancelButton : AutoLayoutSheetCancelButton
   private final let mTableView = AutoLayoutTableView (size: .regular, addControlButtons: false)
-  private final let mStatusTextField = AutoLayoutStaticLabel (title: "", bold: false, size: .regular).set (alignment: .left).expandableWidth ()
-  private final let mFullPathTextField = AutoLayoutStaticLabel (title: "", bold: false, size: .regular).set (alignment: .left).expandableWidth ()
+  private final let mStatusTextField = AutoLayoutStaticLabel (title: "", bold: false, size: .regular, alignment: .left)
+  private final let mFullPathTextField = AutoLayoutStaticLabel (title: "", bold: false, size: .regular, alignment: .left)
   private final var mPartImage = AutoLayoutImageObserverView (size: .regular)
-  private final let mNoSelectedPartTextField = AutoLayoutStaticLabel (title: "", bold: true, size: .regular)
+  private final let mNoSelectedPartTextField = AutoLayoutStaticLabel (title: "", bold: true, size: .regular, alignment: .center)
   private final let mNoSelectedPartView = AutoLayoutVerticalStackView ()
   private final let mSearchField = AutoLayoutSearchField (width: 300, size: .regular)
 
@@ -59,11 +59,11 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
   //--- Grid view: status and path
     let gridView = AutoLayoutGridView2 ()
       .addFirstBaseLineAligned (
-        left: AutoLayoutStaticLabel (title: "Status:", bold: false, size: .regular).notExpandableWidth (),
+        left: AutoLayoutStaticLabel (title: "Status:", bold: false, size: .regular, alignment: .center).notExpandableWidth (),
         right: self.mStatusTextField
       )
       .addFirstBaseLineAligned (
-        left: AutoLayoutStaticLabel (title: "Path:", bold: false, size: .regular),
+        left: AutoLayoutStaticLabel (title: "Path:", bold: false, size: .regular, alignment: .center),
         right: self.mFullPathTextField
       )
     mainView.appendView (gridView)

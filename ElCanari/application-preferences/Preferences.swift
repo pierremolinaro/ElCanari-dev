@@ -84,9 +84,7 @@ var g_Preferences : Preferences? = nil
   lazy final var mPrefsAppUpdatePage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 12)
-    let view_0 = AutoLayoutStaticLabel (title: "Application Update", bold: true, size: .regular)
-      .expandableWidth ()
-      .set (alignment: .center)
+    let view_0 = AutoLayoutStaticLabel (title: "Application Update", bold: true, size: .regular, alignment: .center)
     vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
     do{
@@ -96,7 +94,7 @@ var g_Preferences : Preferences? = nil
           selector: #selector (Preferences.checkForAppUpdateAction (_:))
         )
       view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutStaticLabel (title: "Using…", bold: false, size: .regular)
+      let view_1_1 = AutoLayoutStaticLabel (title: "Using…", bold: false, size: .regular, alignment: .center)
       self.configure_usingSparkleTextFieldConfigurator (view_1_1) // Configurator
       view_1.appendView (view_1_1)
       let view_1_2 = AutoLayoutFlexibleSpace ()
@@ -117,9 +115,9 @@ var g_Preferences : Preferences? = nil
     vStackView.appendView (view_2)
     let view_3 = AutoLayoutHorizontalStackView ()
     do{
-      let view_3_0 = AutoLayoutStaticLabel (title: "Last Check Time", bold: false, size: .regular)
+      let view_3_0 = AutoLayoutStaticLabel (title: "Last Check Time", bold: false, size: .regular, alignment: .center)
       view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutStaticLabel (title: "?", bold: false, size: .regular)
+      let view_3_1 = AutoLayoutStaticLabel (title: "?", bold: false, size: .regular, alignment: .center)
       self.configure_sparkleLastCheckTimeTextFieldConfigurator (view_3_1) // Configurator
       view_3.appendView (view_3_1)
       let view_3_2 = AutoLayoutFlexibleSpace ()
@@ -139,9 +137,7 @@ var g_Preferences : Preferences? = nil
   lazy final var mPrefsUserInterfacePage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 12)
-    let view_0 = AutoLayoutStaticLabel (title: "User Interface", bold: true, size: .regular)
-      .expandableWidth ()
-      .set (alignment: .center)
+    let view_0 = AutoLayoutStaticLabel (title: "User Interface", bold: true, size: .regular, alignment: .center)
     vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
@@ -159,9 +155,7 @@ var g_Preferences : Preferences? = nil
   lazy final var mPrefsLibraryPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 12)
-    let view_0 = AutoLayoutStaticLabel (title: "System Library", bold: true, size: .regular)
-      .expandableWidth ()
-      .set (alignment: .left)
+    let view_0 = AutoLayoutStaticLabel (title: "System Library", bold: true, size: .regular, alignment: .left)
     vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
     do{
@@ -210,9 +204,7 @@ var g_Preferences : Preferences? = nil
           selector: #selector (Preferences.showSystemLibraryLogAction (_:))
         )
       view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutStaticLabel (title: "Last Check", bold: false, size: .regular)
-        .expandableWidth ()
-        .set (alignment: .left)
+      let view_3_1 = AutoLayoutStaticLabel (title: "Last Check", bold: false, size: .regular, alignment: .left)
       view_3.appendView (view_3_1)
       let view_3_2 = AutoLayoutDateLabel (bold: false, size: .regular)
         .bind_date (preferences_mLastSystemLibraryCheckTime_property)
@@ -221,9 +213,7 @@ var g_Preferences : Preferences? = nil
       view_3.appendView (view_3_3)
     }
     vStackView.appendView (view_3)
-    let view_4 = AutoLayoutStaticLabel (title: "User Libraries", bold: true, size: .regular)
-      .expandableWidth ()
-      .set (alignment: .left)
+    let view_4 = AutoLayoutStaticLabel (title: "User Libraries", bold: true, size: .regular, alignment: .left)
     vStackView.appendView (view_4)
     let view_5 = AutoLayoutTableView (size: .small, addControlButtons: false)
     preferences_userLibraryArrayController.bind_tableView (view_5)
@@ -254,9 +244,7 @@ var g_Preferences : Preferences? = nil
       view_6.appendView (view_6_3)
     }
     vStackView.appendView (view_6)
-    let view_7 = AutoLayoutStaticLabel (title: "System Library + User Libraries", bold: true, size: .regular)
-      .expandableWidth ()
-      .set (alignment: .left)
+    let view_7 = AutoLayoutStaticLabel (title: "System Library + User Libraries", bold: true, size: .regular, alignment: .left)
     vStackView.appendView (view_7)
     let view_8 = AutoLayoutHorizontalStackView ()
     do{
@@ -284,7 +272,7 @@ var g_Preferences : Preferences? = nil
   //····················································································································
 
   fileprivate final func computeImplicitView_0 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Selection Width", bold: false, size: .regular)
+    let view = AutoLayoutStaticLabel (title: "Selection Width", bold: false, size: .regular, alignment: .center)
     return view
   }
 
@@ -309,7 +297,7 @@ var g_Preferences : Preferences? = nil
   //····················································································································
 
   fileprivate final func computeImplicitView_2 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Selection Hilite Color", bold: false, size: .regular)
+    let view = AutoLayoutStaticLabel (title: "Selection Hilite Color", bold: false, size: .regular, alignment: .center)
       .notExpandableWidth ()
     return view
   }
@@ -334,7 +322,7 @@ var g_Preferences : Preferences? = nil
   //····················································································································
 
   fileprivate final func computeImplicitView_4 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "User Interface Style", bold: false, size: .regular)
+    let view = AutoLayoutStaticLabel (title: "User Interface Style", bold: false, size: .regular, alignment: .center)
     return view
   }
 

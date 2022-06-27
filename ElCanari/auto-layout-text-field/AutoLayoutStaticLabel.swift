@@ -10,7 +10,7 @@ final class AutoLayoutStaticLabel : AutoLayoutBase_NSTextField {
   // INIT
   //····················································································································
 
-  init (title inTitle : String, bold inBold : Bool, size inSize : EBControlSize) {
+  init (title inTitle : String, bold inBold : Bool, size inSize : EBControlSize, alignment inAlignment : TextAlignment) {
     super.init (optionalWidth: nil, bold: inBold, size: inSize)
 
     self.stringValue = inTitle
@@ -19,8 +19,9 @@ final class AutoLayoutStaticLabel : AutoLayoutBase_NSTextField {
     self.drawsBackground = false
 
     self.isEditable = false
-    self.alignment = .center
+    self.alignment = inAlignment.cocoaAlignment
     self.frame.size = self.intrinsicContentSize
+    _ = self.expandableWidth ()
   }
 
   //····················································································································

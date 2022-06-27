@@ -27,7 +27,7 @@ extension AutoLayoutProjectDocument {
     //---
       let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
     //---
-      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Move Selected Element to Sheet", bold: true, size: .regular))
+      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Move Selected Element to Sheet", bold: true, size: .regular, alignment: .center))
       layoutView.appendFlexibleSpace ()
     //--- Populate pop up button
       let popUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth ()

@@ -268,7 +268,7 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate {
         let hStack = AutoLayoutGridView2 ().set (margins: 20).set (bottomMargin: 0)
           .addFirstBaseLineAligned (
             left: self.mEnableAllocationDebugCheckbox,
-            right: AutoLayoutStaticLabel (title: "You should restart the application for this setting to take effect.", bold: true, size: .small)
+            right: AutoLayoutStaticLabel (title: "You should restart the application for this setting to take effect.", bold: true, size: .small, alignment: .center)
               .set (alignment: .left).expandableWidth ()
           )
           .addSeparator ()
@@ -282,17 +282,17 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate {
               .appendFlexibleSpace (),
             right: AutoLayoutHorizontalStackView ()
               .appendFlexibleSpace ()
-              .appendView (AutoLayoutStaticLabel (title: "Total Allocated", bold: true, size: .small))
+              .appendView (AutoLayoutStaticLabel (title: "Total Allocated", bold: true, size: .small, alignment: .center))
               .appendView (self.mTotalAllocatedLabel)
           )
           .addFirstBaseLineAligned (
             left: AutoLayoutHorizontalStackView ().setFirstBaselineAlignment ()
               .appendView (self.mPerformSnapShotButton)
-              .appendView (AutoLayoutStaticLabel (title: "Display", bold: true, size: .small))
+              .appendView (AutoLayoutStaticLabel (title: "Display", bold: true, size: .small, alignment: .center))
               .appendView (self.mFilterPopUpButton),
             right: AutoLayoutHorizontalStackView ()
               .appendFlexibleSpace ()
-              .appendView (AutoLayoutStaticLabel (title: "Currently Allocated", bold: true, size: .small))
+              .appendView (AutoLayoutStaticLabel (title: "Currently Allocated", bold: true, size: .small, alignment: .center))
               .appendView (self.mCurrentlyAllocatedLabel)
           )
           .add (single: self.mStatsTableView)

@@ -23,7 +23,7 @@ extension AutoLayoutProjectDocument {
     //---
       let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
     //---
-      layoutView.appendView (AutoLayoutStaticLabel (title: "Set Date and Time", bold: true, size: .regular).expandableWidth ().set (alignment: .center))
+      layoutView.appendView (AutoLayoutStaticLabel (title: "Set Date and Time", bold: true, size: .regular, alignment: .center))
       layoutView.appendFlexibleSpace ()
     //---
       let datePicker = AutoLayoutDatePicker (size: .regular)

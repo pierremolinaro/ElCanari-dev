@@ -76,30 +76,30 @@ extension AutoLayoutMergerDocumentSubClass {
       _ = mainView.appendViewSurroundedByFlexibleSpaces (AutoLayoutApplicationImage ())
         .appendFlexibleSpace ()
       let rightColumn = AutoLayoutVerticalStackView ()
-      rightColumn.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Insert an Array of Boards", bold: true, size: .regular))
+      rightColumn.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Insert an Array of Boards", bold: true, size: .regular, alignment: .center))
       rightColumn.appendFlexibleSpace ()
 
       let grid = AutoLayoutGridView2 ()
       _ = grid.addFirstBaseLineAligned (
-        left: AutoLayoutStaticLabel (title: "Model", bold: false, size: .small),
+        left: AutoLayoutStaticLabel (title: "Model", bold: false, size: .small, alignment: .center),
         right: modelPopUpButton
       )
       let hStackXCount = AutoLayoutHorizontalStackView ()
       hStackXCount.appendView (xCountTextField)
       hStackXCount.appendFlexibleSpace ()
       _ = grid.addFirstBaseLineAligned (
-        left: AutoLayoutStaticLabel (title: "X Count", bold: false, size: .small),
+        left: AutoLayoutStaticLabel (title: "X Count", bold: false, size: .small, alignment: .center),
         right: hStackXCount
       )
       let hStackYCount = AutoLayoutHorizontalStackView ()
       hStackYCount.appendView (yCountTextField)
       hStackYCount.appendFlexibleSpace ()
       _ = grid.addFirstBaseLineAligned (
-        left: AutoLayoutStaticLabel (title: "Y Count", bold: false, size: .small),
+        left: AutoLayoutStaticLabel (title: "Y Count", bold: false, size: .small, alignment: .center),
         right: hStackYCount
       )
       _ = grid.addFirstBaseLineAligned (
-        left: AutoLayoutStaticLabel (title: "Orientation", bold: false, size: .small),
+        left: AutoLayoutStaticLabel (title: "Orientation", bold: false, size: .small, alignment: .center),
         right: orientationSegmentedControl
       )
       rightColumn.appendView (grid)

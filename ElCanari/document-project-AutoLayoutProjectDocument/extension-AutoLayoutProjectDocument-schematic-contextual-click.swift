@@ -111,7 +111,7 @@ extension AutoLayoutProjectDocument {
       let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
     //---
       let currentSymbolName = inSymbolUnderMouse.componentName! + ":" + inSymbolUnderMouse.mSymbolInstanceName
-      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Exchange '\(currentSymbolName)' symbol with…", bold: true, size: .regular))
+      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Exchange '\(currentSymbolName)' symbol with…", bold: true, size: .regular, alignment: .center))
     //---
       let popUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth ()
       layoutView.appendFlexibleSpace ()

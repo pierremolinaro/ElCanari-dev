@@ -20,7 +20,7 @@ fileprivate final class RenameContext : EBSwiftBaseObject {
   var mComponentNewPrefix : String
   let mComboBox = AutoLayoutComboBox (width: 80)
   let mIndexesPopUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular)
-  let mErrorLabel = AutoLayoutStaticLabel (title: "", bold: true, size: .regular).setRedTextColor ().set (alignment: .right)
+  let mErrorLabel = AutoLayoutStaticLabel (title: "", bold: true, size: .regular, alignment: .right).setRedTextColor ()
   let mOkButton : AutoLayoutSheetDefaultOkButton
   let mDocument : AutoLayoutProjectDocument
 
@@ -157,19 +157,19 @@ extension AutoLayoutProjectDocument {
     //---
       let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
     //---
-      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Renaming Component", bold: true, size: .regular))
+      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Renaming Component", bold: true, size: .regular, alignment: .center))
       layoutView.appendFlexibleSpace ()
     //---
       let gridView = AutoLayoutGridView2 ()
       do{
-        let left = AutoLayoutStaticLabel (title: "Current Component Name", bold: false, size: .regular).set (alignment: .right)
+        let left = AutoLayoutStaticLabel (title: "Current Component Name", bold: false, size: .regular, alignment: .right)
         let currentComponentName = renameContext.mComponentCurrentPrefix + "\(renameContext.mComponentCurrentIndex)"
-        let right = AutoLayoutStaticLabel (title: currentComponentName, bold: true, size: .regular)
+        let right = AutoLayoutStaticLabel (title: currentComponentName, bold: true, size: .regular, alignment: .center)
         _ = gridView.addFirstBaseLineAligned (left: left, right: right)
       }
     //---
       do{
-        let left = AutoLayoutStaticLabel (title: "New Prefix (only letters)", bold: false, size: .regular).set (alignment: .right)
+        let left = AutoLayoutStaticLabel (title: "New Prefix (only letters)", bold: false, size: .regular, alignment: .right)
         renameContext.populatePrefixComboBox (currentPrefixSet)
         renameContext.mComboBox.mTextDidChange = { [weak renameContext] (_ inOutlet : AutoLayoutComboBox) in renameContext?.renameComponentComboBoxAction () }
         _ = gridView.addFirstBaseLineAligned (left: left, right: renameContext.mComboBox)
@@ -178,7 +178,7 @@ extension AutoLayoutProjectDocument {
       _ = gridView.add (single: renameContext.mErrorLabel)
     //---
       do{
-        let left = AutoLayoutStaticLabel (title: "New Index", bold: false, size: .regular).set (alignment: .right)
+        let left = AutoLayoutStaticLabel (title: "New Index", bold: false, size: .regular, alignment: .right)
         renameContext.populateIndexesPopupButton ()
         renameContext.mIndexesPopUpButton.target = renameContext
         renameContext.mIndexesPopUpButton.action = #selector (RenameContext.renameComponentIndexPopUpButtonAction (_:))

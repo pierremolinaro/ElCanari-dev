@@ -35,10 +35,10 @@ prefs {
 
 prefs {
   stackView mPrefsAppUpdatePage vStack set (margins: 12) {
-    StaticLabel (title: "Application Update", bold: yes, size: .regular) { expandableWidth () set (alignment: .center) }
+    StaticLabel (title: "Application Update", bold: yes, size: .regular, alignment: .center)
     hStack {
       Button (title: "Check for Application Updates…", size: .regular) { $run checkForAppUpdateAction }
-      StaticLabel (title: "Using…", bold: no, size: .regular) [configurator usingSparkleTextFieldConfigurator]
+      StaticLabel (title: "Using…", bold: no, size: .regular, alignment: .center) [configurator usingSparkleTextFieldConfigurator]
       space
     }
     hStack {
@@ -47,8 +47,8 @@ prefs {
       space
     }
     hStack {
-      StaticLabel (title: "Last Check Time", bold: no, size: .regular)
-      StaticLabel (title: "?", bold: no, size: .regular) [configurator sparkleLastCheckTimeTextFieldConfigurator]
+      StaticLabel (title: "Last Check Time", bold: no, size: .regular, alignment: .center)
+      StaticLabel (title: "?", bold: no, size: .regular, alignment: .center) [configurator sparkleLastCheckTimeTextFieldConfigurator]
       space
     }
     WebView (url: "https://pierremolinaro.github.io/ElCanari-distribution/release-notes.html") {
@@ -67,14 +67,14 @@ prefs {
   property Int hiliteWidthMultipliedByTen default 15 ; // 1,5 pt
   
   stackView mPrefsUserInterfacePage vStack set (margins: 12) {
-    StaticLabel (title: "User Interface", bold: yes, size: .regular) { expandableWidth () set (alignment: .center) }
+    StaticLabel (title: "User Interface", bold: yes, size: .regular, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Selection Width", bold: no, size: .regular),
+        left: StaticLabel (title: "Selection Width", bold: no, size: .regular, alignment: .center),
         right: hStack { ColorWell { $color prefs.selectionHiliteColor (sendContinously: yes) } space }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Selection Hilite Color", bold: no, size: .regular) { notExpandableWidth () },
+        left: StaticLabel (title: "Selection Hilite Color", bold: no, size: .regular, alignment: .center) { notExpandableWidth () },
         right: TaggedPopUpButton (size: .regular) {
           add (title: "0.5 Point", withTag:  5)
           add (title: "1.0 Point", withTag: 10)
@@ -85,7 +85,7 @@ prefs {
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "User Interface Style", bold: no, size: .regular),
+        left: StaticLabel (title: "User Interface Style", bold: no, size: .regular, alignment: .center),
         right: EnumPopUpButton (titles: enum AutoLayoutUserInterfaceStyle.popupTitles, size: .regular) {
           notExpandableWidth ()
           $selectedIndex prefs.mAutoLayoutStyle
@@ -353,7 +353,7 @@ prefs {
 
 prefs {
   stackView mPrefsLibraryPage vStack set (margins: 12) {
-    StaticLabel (title: "System Library", bold: yes, size: .regular) { expandableWidth () set (alignment: .left) }
+    StaticLabel (title: "System Library", bold: yes, size: .regular, alignment: .left)
     hStack {
       Button (title: "", size: .regular) [
         outlet mRevealInFinderSystemLibraryButton
@@ -381,14 +381,14 @@ prefs {
     }
     hStack {
       Button (title: "Show Library Update Log Window", size: .regular) { $run showSystemLibraryLogAction }
-      StaticLabel (title: "Last Check", bold: no, size: .regular) { expandableWidth () set (alignment: .left) }
+      StaticLabel (title: "Last Check", bold: no, size: .regular, alignment: .left)
       DateLabel (bold: no, size: .regular) {
         $date prefs.mLastSystemLibraryCheckTime
 //        $hidden !prefs.checkForSystemLibraryAtStartUp   
       }
       space
     }
-    StaticLabel (title: "User Libraries", bold: yes, size: .regular) { expandableWidth () set (alignment: .left) }
+    StaticLabel (title: "User Libraries", bold: yes, size: .regular, alignment: .left)
     TableView (size : .small, addControlButtons: no) { $tableValue #userLibraryArrayController }
     hStack  {
       Button (title: "+", size: .regular) { $run addLibraryEntryAction }
@@ -402,7 +402,7 @@ prefs {
       }
       space
     }
-    StaticLabel (title: "System Library + User Libraries", bold: yes, size: .regular) { expandableWidth () set (alignment: .left) }
+    StaticLabel (title: "System Library + User Libraries", bold: yes, size: .regular, alignment: .left)
     hStack {
       Button (title: "Check Library Consistency", size: .regular) { $run checkLibraryAction }
       Button (title: "Show Library Consistency Log Window", size: .regular) { $run showLibraryConsistencyLogWindowAction }

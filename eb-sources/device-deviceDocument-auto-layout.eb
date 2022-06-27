@@ -22,20 +22,20 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
           addPage (title: "Infos", tooltip: "Device Informations", pageView: stackView mInfosPage)
           $selectedPage root.mSelectedPageIndex
         }
-        hStack { space StaticLabel (title: "Page", bold: no, size : .small) space }
+        StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
       }
       vStack {
         SignatureField (size : .regular) { $signature signature }
-        StaticLabel (title: "Signature", bold: no, size : .small) { set (alignment: .center)  expandableWidth () }
+        StaticLabel (title: "Signature", bold: no, size : .small, alignment: .center)
       }
       vStack {
         VersionField (size : .regular) { $version version $versionShouldChange versionShouldChange }
-        StaticLabel (title: "Version", bold: no, size : .small) { set (alignment: .center) expandableWidth () }
+        StaticLabel (title: "Version", bold: no, size : .small, alignment: .center)
       }
       space
       vStack {
         hStack { space ImageObserverView (size : .regular) { $image self.mStatusImage $tooltip self.mStatusMessage } space }
-        StaticLabel (title: "Status", bold: no, size : .small) { set (alignment: .center) }
+        StaticLabel (title: "Status", bold: no, size : .small, alignment: .center)
       }
     }
     separator
@@ -60,7 +60,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
     hStack {
       CanariDeviceDroppableImageView (width: 240) { $imageData root.mImageData }
       vStack {
-        hStack { StaticLabel (title: "PDF Documentation", bold: no, size : .regular) space }
+        StaticLabel (title: "PDF Documentation", bold: no, size : .regular, alignment: .center)
         TableView (size : .regular, addControlButtons: no) [configurator documentationTableView] {
           $tableValue #documentationController
         }
@@ -124,25 +124,25 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
   }
   
   stackView mSymbolPageOperationView vStack set (margins: 0) {
-    StaticLabel (title: "Add Symbol From", bold: yes, size : .small) { set (alignment: .left) expandableWidth () }
+    StaticLabel (title: "Add Symbol From", bold: yes, size : .small, alignment: .center)
     Button (title: "File Library…", size : .small) { expandableWidth () $run addSymbolFromLibraryAction }
     CanariAddSymbolInstancePullDownButton [configurator addSymbolInstancePullDownButton] {
       expandableWidth ()
       $enabled root.mSymbolTypes.count > 0
       $symbolTypeNames root.symbolTypeNames
     }
-    StaticLabel (title: "Symbol Type", bold: yes, size : .small) { set (alignment: .left) expandableWidth () }
+    StaticLabel (title: "Symbol Type", bold: yes, size : .small, alignment: .left)
     Label (bold: yes, size : .small) {
       set (alignment: .center)
       expandableWidth ()
       $title #symbolInstanceSelection.symbolTypeName
     }      
-    StaticLabel (title: "Symbol Name", bold: yes, size : .small) { set (alignment: .left) expandableWidth () }
+    StaticLabel (title: "Symbol Name", bold: yes, size : .small, alignment: .left)
     TextField (minWidth: 70, size : .small) {
       expandableWidth ()
       $value #symbolInstanceSelection.mInstanceName  (sendContinously : yes)
     }
-    StaticLabel (title: "Symbol Errors", bold: yes, size : .small) { set (alignment: .left) expandableWidth () }
+    StaticLabel (title: "Symbol Errors", bold: yes, size : .small, alignment: .left)
     TextObserverView { expandableWidth () setRedTextColor () $observedValue root.inconsistentSymbolNameSetMessage }
     space
   }    
@@ -154,14 +154,14 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 
   
   stackView mSymbolGridZoomInspectorView vStack set (margins: 0) {
-    StaticLabel (title: "Display Inspector", bold: yes, size : .small) { set (alignment: .center) expandableWidth () }
+    StaticLabel (title: "Display Inspector", bold: yes, size : .small, alignment: .center)
     GridView2 {
       addCenterYAligned (
-        left: StaticLabel (title: "Background", bold: no, size: .small),
+        left: StaticLabel (title: "Background", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mSymbolBackColorForDevice (sendContinously:no) } space }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Flip", bold: no, size: .small),
+        left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .center),
         right: Checkbox (title: "Horizontal", size : .small) { $value prefs.mSymbolHorizontalFlipForDevice }
       )
       addFirstBaseLineAligned (
@@ -169,10 +169,10 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
         right: Checkbox (title: "Vertical", size : .small) { $value prefs.mSymbolVerticalFlipForDevice }
       )
       addCenterYAligned (
-        left: StaticLabel (title: "Symbol Color", bold: no, size: .small),
+        left: StaticLabel (title: "Symbol Color", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mSymbolColorForDevice (sendContinously:no) } space }
       )
-      add (single: StaticLabel (title: "Symbol Width", bold: no, size: .small) { set (alignment: .left) } )
+      add (single: StaticLabel (title: "Symbol Width", bold: no, size: .small, alignment: .left) )
       add (single: TaggedPopUpButton (size: .small) {
           expandableWidth ()
           add (title: "0.5 Point", withTag: 5)
@@ -183,9 +183,9 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
           $selectedTag prefs.symbolDrawingWidthForDeviceMultipliedByTen
         }
       )
-      add (single: StaticLabel (title: "Symbol Name Font", bold: no, size: .small) { set (alignment: .left) } )
+      add (single: StaticLabel (title: "Symbol Name Font", bold: no, size: .small, alignment: .left))
       add (single: FontButton (size: .small) { expandableWidth () $fontValue prefs.mSymbolNameFontForDevice } )
-      add (single: StaticLabel (title: "Pin Name Font", bold: no, size: .small)  { set (alignment: .left) } )
+      add (single: StaticLabel (title: "Pin Name Font", bold: no, size: .small, alignment: .left) )
       add (single: FontButton (size: .small) { expandableWidth () $fontValue prefs.mPinNameFontForDevice } )
     }
   }
@@ -222,14 +222,14 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
   }
 
   stackView mPackageGridZoomInspectorView vStack {
-    StaticLabel (title: "Display Inspector", bold: yes, size : .small) { set (alignment: .center) expandableWidth () }
+    StaticLabel (title: "Display Inspector", bold: yes, size : .small, alignment: .center)
     GridView2 {
       addCenterYAligned (
-        left: StaticLabel (title: "Background", bold: no, size: .small),
+        left: StaticLabel (title: "Background", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mPackageBackColorForDevice (sendContinously:no) } space }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Flip", bold: no, size: .small),
+        left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .center),
         right: Checkbox (title: "Horizontal", size : .small) { $value prefs.mPackageHorizontalFlipForDevice }
       )
       addFirstBaseLineAligned (
@@ -237,11 +237,11 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
         right: Checkbox (title: "Vertical", size : .small) { $value prefs.mPackageVerticalFlipForDevice }
       )
       addCenterYAligned (
-        left: StaticLabel (title: "Package", bold: no, size: .small),
+        left: StaticLabel (title: "Package", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mPackageColorForDevice (sendContinously:no) } space }
       )
       addCenterYAligned (
-        left: StaticLabel (title: "Package Width", bold: no, size: .small),
+        left: StaticLabel (title: "Package Width", bold: no, size: .small, alignment: .center),
         right: TaggedPopUpButton (size: .small) {
           add (title: "0.5 Point", withTag: 5)
           add (title: "1.0 Point", withTag: 10)
@@ -252,20 +252,20 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
         }
       )
       addCenterYAligned (
-        left: StaticLabel (title: "Front Side Pad", bold: no, size: .small),
+        left: StaticLabel (title: "Front Side Pad", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mFrontSidePadColorForDevice (sendContinously:no) } space }
       )
       addCenterYAligned (
-        left: StaticLabel (title: "Back Side Pad", bold: no, size: .small),
+        left: StaticLabel (title: "Back Side Pad", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mBottomSidePadColorForDevice (sendContinously:no) } space }
       )
       addCenterYAligned (
-        left: StaticLabel (title: "Pad Number", bold: no, size: .small),
+        left: StaticLabel (title: "Pad Number", bold: no, size: .small, alignment: .center),
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mPadNumberColorForDevice (sendContinously:no) } space }
       )
-      add (single: StaticLabel (title: "Pad Number Font", bold: no, size: .small) { set (alignment: .left) } )
+      add (single: StaticLabel (title: "Pad Number Font", bold: no, size: .small, alignment: .left))
       add (single: FontButton (size: .small) { expandableWidth () $fontValue prefs.mPadNumberFontForDevice } )
-      add (single: StaticLabel (title: "Package Name Font", bold: no, size: .small) { set (alignment: .left) } )
+      add (single: StaticLabel (title: "Package Name Font", bold: no, size: .small, alignment: .left))
       add (single: FontButton (size: .small) { expandableWidth () $fontValue prefs.mPackageNameFontForDevice } )
     }
   }
@@ -378,7 +378,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
     }
     vStack equalHeight () {
       vStack {
-        hStack { StaticLabel (title: "Embedded Symbols", bold: yes, size : .small) space }
+        StaticLabel (title: "Embedded Symbols", bold: yes, size : .small, alignment: .center)
         hStack {
           TableView (size : .small, addControlButtons: no) { $tableValue #symbolTypeController }
           vStack {
@@ -412,7 +412,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
         }
       }
       vStack {
-        hStack { StaticLabel (title: "Embedded Packages", bold: yes, size : .small) space }
+        StaticLabel (title: "Embedded Packages", bold: yes, size : .small, alignment: .center)
         hStack { 
           TableView (size : .small, addControlButtons: no) { $tableValue #packageController }
           vStack {
@@ -463,21 +463,21 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
   stackView mAssignmentsPage hStack set (margins: 8) {
     hSplit $hidden !root.packagePadNameSetsAreConsistent | !root.symbolNameAreConsistent {
       vStack set (minWidth: 100) {
-        StaticLabel (title: "Unassigned Pads", bold: yes, size : .regular) { set (alignment: .center) expandableWidth () }
+        StaticLabel (title: "Unassigned Pads", bold: yes, size : .regular, alignment: .center)
         CanariUnconnectedSymbolPadsInDeviceTableView [outlet mUnconnectedPadsInDeviceTableView] {
           expandableWidth ()
           $unconnectedPads root.unconnectedPads
         }
       }
       vStack set (minWidth: 200) {
-        StaticLabel (title: "Unassigned Pins", bold: yes, size : .regular) { set (alignment: .center) expandableWidth () }
+        StaticLabel (title: "Unassigned Pins", bold: yes, size : .regular, alignment: .center)
         CanariUnconnectedSymbolPinsInDeviceTableView [outlet mUnconnectedSymbolPinsInDeviceTableView] {
           expandableWidth ()
           $unconnectedPins root.unconnectedPins
         }
       }
       vStack {
-        StaticLabel (title: " ", bold: yes, size : .regular) { expandableWidth () }
+        StaticLabel (title: " ", bold: yes, size : .regular, alignment: .center)
         space
         Button (title: "- Bind →", size : .regular) {
           expandableWidth ()
@@ -503,7 +503,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
         space
       }
       vStack set (minWidth: 300) {
-        StaticLabel (title: "Assignments", bold: yes, size : .regular) { set (alignment: .center) expandableWidth () }
+        StaticLabel (title: "Assignments", bold: yes, size : .regular, alignment: .center)
         CanariAssignedPadProxysInDeviceTableView [outlet mAssignedPadProxyTableView] {
           expandableWidth ()
           $assignedPadProxies root.assignedPadProxies
@@ -540,19 +540,19 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 
   stackView mInfosPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
     hStack setFirstBaselineAlignment () {
-      StaticLabel (title: "Device Prefix", bold: no, size : .small) { set (minWidth: 84) }
+      StaticLabel (title: "Device Prefix", bold: no, size : .small, alignment: .center) { set (minWidth: 84) }
       TextField (minWidth: 56, size : .small) { $value root.mPrefix (sendContinously : yes) }
-      StaticLabel (title: "This field only accepts lowercase abd uppercase ASCII letters.", bold: no, size : .small)
+      StaticLabel (title: "This field only accepts lowercase abd uppercase ASCII letters.", bold: no, size : .small, alignment: .center)
       space
       Button (title: "Reset Version and Signature", size : .small) { $run resetVersionAction }
     }
     vStack equalHeight () {
       hStack {
-        vStack set (width: 84) { StaticLabel (title: "Status", bold: no, size : .small) space }
+        vStack set (width: 84) { StaticLabel (title: "Status", bold: no, size : .small, alignment: .center) space }
         TextObserverView { $observedValue self.mStatusMessage }
       }
       hStack {
-        vStack set (width: 84) { StaticLabel (title: "Comments", bold: no, size : .small) space }
+        vStack set (width: 84) { StaticLabel (title: "Comments", bold: no, size : .small, alignment: .center) space }
         TextView { $value root.mComments }
       }
     }

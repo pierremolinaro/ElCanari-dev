@@ -68,7 +68,7 @@ extension AutoLayoutPackageDocument {
       do{
         let hStack = AutoLayoutHorizontalStackView ()
         hStack.appendFlexibleSpace ()
-        let label = AutoLayoutStaticLabel (title: "Add a forbidden Pad Number to '\(selectedZone.zoneName)' Zone", bold: true, size: .regular)
+        let label = AutoLayoutStaticLabel (title: "Add a forbidden Pad Number to '\(selectedZone.zoneName)' Zone", bold: true, size: .regular, alignment: .center)
         hStack.appendView (label)
         hStack.appendFlexibleSpace ()
         mainVStack.appendView (hStack)
@@ -83,7 +83,7 @@ extension AutoLayoutPackageDocument {
       //--- Forbidden Pad Number
         do {
           let hStack = AutoLayoutHorizontalStackView ()
-          let label = AutoLayoutStaticLabel (title: "New Forbidden Pad Number:", bold: false, size: .regular)
+          let label = AutoLayoutStaticLabel (title: "New Forbidden Pad Number:", bold: false, size: .regular, alignment: .center)
           hStack.appendView (label)
           panel.initialFirstResponder = intField
           hStack.appendView (intField)

@@ -164,7 +164,7 @@ extension SheetInProject {
     let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
     let gridView = AutoLayoutGridView2 ()
   //---
-    layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Performing Connection will Merge Several Subnets.", bold: true, size: .regular))
+    layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Performing Connection will Merge Several Subnets.", bold: true, size: .regular, alignment: .center))
     layoutView.appendFlexibleSpace ()
     let popupButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth()
     for net in netArray {
@@ -172,7 +172,7 @@ extension SheetInProject {
       popupButton.lastItem?.representedObject = net
     }
     do{
-      let left = AutoLayoutStaticLabel (title: "Resulting Net", bold: false, size: .regular).set (alignment: .right)
+      let left = AutoLayoutStaticLabel (title: "Resulting Net", bold: false, size: .regular, alignment: .right)
       _ = gridView.addFirstBaseLineAligned (left: left, right: popupButton)
     }
     layoutView.appendView (gridView)

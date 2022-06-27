@@ -98,20 +98,20 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
       let okButton = AutoLayoutSheetDefaultOkButton (title: "", size: .regular, sheet: panel)
       let gridView = AutoLayoutGridView2 ()
     //---
-      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Rename Net", bold: true, size: .regular))
+      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Rename Net", bold: true, size: .regular, alignment: .center))
       layoutView.appendFlexibleSpace ()
     //---
       do{
-        let left = AutoLayoutStaticLabel (title: "Current Net Name", bold: false, size: .regular).set (alignment: .right)
-        let right = AutoLayoutStaticLabel (title: inNet.mNetName, bold: true, size: .regular).set (alignment: .left)
+        let left = AutoLayoutStaticLabel (title: "Current Net Name", bold: false, size: .regular, alignment: .right)
+        let right = AutoLayoutStaticLabel (title: inNet.mNetName, bold: true, size: .regular, alignment: .left)
         _ = gridView.addFirstBaseLineAligned (left: left, right: right)
       }
-      let newNameTextField = AutoLayoutTextField (minWidth: 200, size: .regular).expandableWidth().set (alignment: .left)
+      let newNameTextField = AutoLayoutTextField (minWidth: 200, size: .regular).set (alignment: .left)
       do{
-        let left = AutoLayoutStaticLabel (title: "New Net Name", bold: false, size: .regular).set (alignment: .right)
+        let left = AutoLayoutStaticLabel (title: "New Net Name", bold: false, size: .regular, alignment: .right)
         _ = gridView.addFirstBaseLineAligned (left: left, right: newNameTextField)
       }
-      let errorLabel = AutoLayoutStaticLabel (title: "", bold: true, size: .regular).set (alignment: .right)
+      let errorLabel = AutoLayoutStaticLabel (title: "", bold: true, size: .regular, alignment: .right)
          .setRedTextColor ().expandableWidth()
       _ = gridView.add (single: errorLabel)
       layoutView.appendView (gridView)
@@ -187,7 +187,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
       let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
       let gridView = AutoLayoutGridView2 ()
     //---
-      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Merge Subnet into an Existing Net", bold: true, size: .regular))
+      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Merge Subnet into an Existing Net", bold: true, size: .regular, alignment: .center))
       layoutView.appendFlexibleSpace ()
     //---
       let popUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth ()
@@ -206,7 +206,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
         }
       }
       do{
-        let left = AutoLayoutStaticLabel (title: "Resulting Net Name", bold: false, size: .regular).set (alignment: .right)
+        let left = AutoLayoutStaticLabel (title: "Resulting Net Name", bold: false, size: .regular, alignment: .right)
         _ = gridView.addFirstBaseLineAligned (left: left, right: popUpButton)
       }
       layoutView.appendView (gridView)
@@ -246,7 +246,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
     //---
       let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
     //---
-      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Select Net Class", bold: true, size: .regular))
+      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Select Net Class", bold: true, size: .regular, alignment: .center))
     //---
       let popUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth ()
       layoutView.appendFlexibleSpace ()

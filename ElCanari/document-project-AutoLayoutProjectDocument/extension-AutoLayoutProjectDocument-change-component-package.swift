@@ -40,13 +40,13 @@ extension AutoLayoutProjectDocument {
       let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
       let okButton = AutoLayoutSheetDefaultOkButton (title: "", size: .regular, sheet: panel)
     //---
-      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Change Package", bold: true, size: .regular))
+      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Change Package", bold: true, size: .regular, alignment: .center))
       layoutView.appendFlexibleSpace ()
       let gridView = AutoLayoutGridView2 ()
     //---
       do{
-        let left = AutoLayoutStaticLabel (title: "Components", bold: false, size: .regular).set (alignment: .right)
-        let right = AutoLayoutStaticLabel (title: componentNames.joined (separator: ", "), bold: true, size: .regular)
+        let left = AutoLayoutStaticLabel (title: "Components", bold: false, size: .regular, alignment: .right)
+        let right = AutoLayoutStaticLabel (title: componentNames.joined (separator: ", "), bold: true, size: .regular, alignment: .center)
           .expandableWidth().set (alignment: .left)
         _ = gridView.addFirstBaseLineAligned (left: left, right: right)
       }
@@ -68,7 +68,7 @@ extension AutoLayoutProjectDocument {
         }
       }
       do{
-        let left = AutoLayoutStaticLabel (title: "Package", bold: false, size: .regular).set (alignment: .right)
+        let left = AutoLayoutStaticLabel (title: "Package", bold: false, size: .regular, alignment: .right)
         _ = gridView.addFirstBaseLineAligned (left: left, right: popupButton)
       }
       layoutView.appendView (gridView)
