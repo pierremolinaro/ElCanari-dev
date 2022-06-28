@@ -78,8 +78,10 @@ final class AutoLayoutCanariHorizontalAlignmentSegmentedControl : AutoLayoutBase
   //····················································································································
 
   fileprivate func update (from inObject : EBReadWriteEnumProperty <HorizontalAlignment>) {
-    self.selectedSegment = inObject.rawValue () ?? 0
-    self.selectedSegmentDidChange (nil)
+    if let rawValue = inObject.rawValue () {
+      self.selectedSegment = rawValue
+      self.selectedSegmentDidChange (nil)
+    }
   }
 
   //····················································································································
