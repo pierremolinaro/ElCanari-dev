@@ -36,6 +36,10 @@ var g_Preferences : Preferences? = nil
       window.title = "Preferences"
       window.isReleasedWhenClosed = false
       window.contentView = AutoLayoutWindowContentView (view: self.mPrefsMainView)
+    //--- Contrôler le comportement en plein écran
+      window.collectionBehavior = [.fullScreenAuxiliary, .fullScreenNone]
+      let zoomButton = window.standardWindowButton (.zoomButton)
+      zoomButton?.isEnabled = false
     }
     window.makeKeyAndOrderFront (nil)
   }
