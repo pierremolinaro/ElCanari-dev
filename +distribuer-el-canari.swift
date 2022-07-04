@@ -205,6 +205,8 @@ do{
   case .release:
     PRODUCT_NAME = "ElCanari"
   }
+//-------------------- Copier l'application dans la racine du répertoire de distribution
+  runCommand ("/bin/cp", ["-r", "build/" + BUILD_KIND.string + "/" + PRODUCT_NAME + ".app", DISTRIBUTION_DIR])
 //-------------------- Construction package
   let packageFile = PRODUCT_NAME + "-" + VERSION_CANARI + ".pkg"
   runCommand ("/usr/bin/productbuild", ["--component-compression", "auto", "--component", "build/" + BUILD_KIND.string + "/" + PRODUCT_NAME + ".app", "/Applications", packageFile])
@@ -215,9 +217,9 @@ do{
   runCommand ("/bin/cp", [packageFile, nomArchive])
   runCommand ("/usr/bin/hdiutil", ["create", "-srcfolder", nomArchive, nomArchive + ".dmg", "-fs", "HFS+"])
   runCommand ("/bin/mv", [nomArchive + ".dmg", "../" + nomArchive + ".dmg"])
-  //-------------------- Supprimer le fichier .pkg
+//-------------------- Supprimer le fichier .pkg
   runCommand ("/bin/rm", [DISTRIBUTION_DIR + "/" + packageFile])
-  //-------------------- Calculer la clé de la somme de contrôle de l'archive DMG pour Sparkle
+//-------------------- Calculer la clé de la somme de contrôle de l'archive DMG pour Sparkle
   let signature = runHiddenCommand ("./distribution-el-canari/sign_update", ["../" + nomArchive + ".dmg"])
   // print ("cleArchive '\(signature)'")
   var edSignature = ""
@@ -242,7 +244,7 @@ do{
     print (RED + "Error line \(#line)" + ENDC)
     exit (1)
   }
-  //-------------------- Construire le fichier json
+//-------------------- Construire le fichier json
   var versionDescriptor = VersionDescriptor ()
   versionDescriptor.edSignature = edSignature
   versionDescriptor.length = dmgLength
