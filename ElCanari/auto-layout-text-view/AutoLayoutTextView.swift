@@ -90,7 +90,6 @@ final class AutoLayoutTextView : NSScrollView, EBUserClassNameProtocol {
       self.mTextView.selectedRanges = currentSelectedRangeValues
       self.mTextView.isEditable = true
       self.mTextView.invalidateIntrinsicContentSize ()
-//      self.mTextView.sizeToFit ()
     }
   }
 

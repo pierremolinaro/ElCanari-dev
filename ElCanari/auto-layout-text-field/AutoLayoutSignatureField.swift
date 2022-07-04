@@ -64,7 +64,6 @@ final class AutoLayoutSignatureField : NSTextField, EBUserClassNameProtocol {
       self.stringValue = "—"
     case .single (let v) :
       self.stringValue = String (format: "%04X:%04X", v >> 16, v & 0xFFFF)
-//      Swift.print ("Signature Display -- \(self.stringValue)")
     }
   }
 

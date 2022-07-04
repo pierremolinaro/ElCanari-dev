@@ -105,13 +105,11 @@ final class AutoLayoutTextObserverView : NSScrollView, EBUserClassNameProtocol {
     case .empty, .multiple :
       self.mTextView.string = ""
       self.mTextView.invalidateIntrinsicContentSize ()
-//      self.mTextView.needsDisplay = true
     case .single (let propertyValue) :
       let currentSelectedRangeValues = self.mTextView.selectedRanges
       self.mTextView.string = propertyValue
       self.mTextView.selectedRanges = currentSelectedRangeValues
       self.mTextView.invalidateIntrinsicContentSize ()
-//      self.mTextView.needsDisplay = true
     }
   }
 
