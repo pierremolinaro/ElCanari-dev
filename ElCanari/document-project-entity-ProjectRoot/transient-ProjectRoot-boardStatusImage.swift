@@ -14,11 +14,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ProjectRoot_boardStatusImage (
-       _ self_boardIssues : CanariIssueArray
+       _ self_boardIssues : CanariIssueArray,
+       _ self_unplacedPackages : StringTagArray
 ) -> NSImage {
 //--- START OF USER ZONE 2
         var errorCount = 0
-        var warningCount = 0
+        var warningCount = self_unplacedPackages.count
         for issue in self_boardIssues {
           switch issue.kind {
           case .error : errorCount += 1

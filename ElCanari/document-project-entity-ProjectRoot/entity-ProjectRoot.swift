@@ -792,18 +792,6 @@ protocol ProjectRoot_trackLengthString : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_boardStatusImage : AnyObject {
-  var boardStatusImage : NSImage? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol ProjectRoot_boardStatusMessage : AnyObject {
-  var boardStatusMessage : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol ProjectRoot_interiorBoundBox : AnyObject {
   var interiorBoundBox : CanariRect? { get }
 }
@@ -938,6 +926,18 @@ protocol ProjectRoot_unplacedPackages : AnyObject {
 
 protocol ProjectRoot_componentsPlacedInBoard : AnyObject {
   var componentsPlacedInBoard : StringTagArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_boardStatusImage : AnyObject {
+  var boardStatusImage : NSImage? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectRoot_boardStatusMessage : AnyObject {
+  var boardStatusMessage : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1100,8 +1100,6 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_inner4LayerTrackCountString,
          ProjectRoot_trackCountString,
          ProjectRoot_trackLengthString,
-         ProjectRoot_boardStatusImage,
-         ProjectRoot_boardStatusMessage,
          ProjectRoot_interiorBoundBox,
          ProjectRoot_boardBoundBox,
          ProjectRoot_boardInteriorTop,
@@ -1125,6 +1123,8 @@ final class ProjectRoot : EBManagedObject,
          ProjectRoot_unplacedSymbols,
          ProjectRoot_unplacedPackages,
          ProjectRoot_componentsPlacedInBoard,
+         ProjectRoot_boardStatusImage,
+         ProjectRoot_boardStatusMessage,
          ProjectRoot_placedComponentNameArray,
          ProjectRoot_schematicHasErrorOrWarning,
          ProjectRoot_schematicStatusMessage,
@@ -3840,40 +3840,6 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: boardStatusImage
-  //····················································································································
-
-  final let boardStatusImage_property = EBTransientProperty_NSImage ()
-
-  //····················································································································
-
-  final var boardStatusImage : NSImage? {
-    switch self.boardStatusImage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: boardStatusMessage
-  //····················································································································
-
-  final let boardStatusMessage_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  final var boardStatusMessage : String? {
-    switch self.boardStatusMessage_property.selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: interiorBoundBox
   //····················································································································
 
@@ -4257,6 +4223,40 @@ final class ProjectRoot : EBManagedObject,
 
   final var componentsPlacedInBoard : StringTagArray? {
     switch self.componentsPlacedInBoard_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: boardStatusImage
+  //····················································································································
+
+  final let boardStatusImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  final var boardStatusImage : NSImage? {
+    switch self.boardStatusImage_property.selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: boardStatusMessage
+  //····················································································································
+
+  final let boardStatusMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  final var boardStatusMessage : String? {
+    switch self.boardStatusMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -5263,40 +5263,6 @@ final class ProjectRoot : EBManagedObject,
     }
     self.mBoardObjects_property.addEBObserverOf_trackLengthInCanariUnit (self.trackLengthString_property)
     self.mTrackLengthUnit_property.addEBObserver (self.trackLengthString_property)
-  //--- Atomic property: boardStatusImage
-    self.boardStatusImage_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.boardIssues_property.selection
-        switch (s0) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectRoot_boardStatusImage (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.boardIssues_property.addEBObserver (self.boardStatusImage_property)
-  //--- Atomic property: boardStatusMessage
-    self.boardStatusMessage_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let s0 = unwSelf.boardIssues_property.selection
-        switch (s0) {
-        case (.single (let v0)) :
-          return .single (transient_ProjectRoot_boardStatusMessage (v0))
-        case (.multiple) :
-          return .multiple
-        default :
-          return .empty
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.boardIssues_property.addEBObserver (self.boardStatusMessage_property)
   //--- Atomic property: interiorBoundBox
     self.interiorBoundBox_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -5844,6 +5810,48 @@ final class ProjectRoot : EBManagedObject,
     self.mComponents_property.addEBObserverOf_mNamePrefix (self.componentsPlacedInBoard_property)
     self.mComponents_property.addEBObserverOf_mNameIndex (self.componentsPlacedInBoard_property)
     self.mComponents_property.addEBObserverOf_componentIsPlacedInBoard (self.componentsPlacedInBoard_property)
+  //--- Atomic property: boardStatusImage
+    self.boardStatusImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.boardIssues_property.selection
+        let s1 = unwSelf.unplacedPackages_property.selection
+        switch (s0, s1) {
+        case (.single (let v0),
+              .single (let v1)) :
+          return .single (transient_ProjectRoot_boardStatusImage (v0, v1))
+        case (.multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.boardIssues_property.addEBObserver (self.boardStatusImage_property)
+    self.unplacedPackages_property.addEBObserver (self.boardStatusImage_property)
+  //--- Atomic property: boardStatusMessage
+    self.boardStatusMessage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let s0 = unwSelf.boardIssues_property.selection
+        let s1 = unwSelf.unplacedPackages_property.selection
+        switch (s0, s1) {
+        case (.single (let v0),
+              .single (let v1)) :
+          return .single (transient_ProjectRoot_boardStatusMessage (v0, v1))
+        case (.multiple,
+              .multiple) :
+          return .multiple
+        default :
+          return .empty
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.boardIssues_property.addEBObserver (self.boardStatusMessage_property)
+    self.unplacedPackages_property.addEBObserver (self.boardStatusMessage_property)
   //--- Atomic property: placedComponentNameArray
     self.placedComponentNameArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -6067,8 +6075,6 @@ final class ProjectRoot : EBManagedObject,
     // self.mBoardObjects_property.removeEBObserverOf_trackLengthInCanariUnit (self.trackCountString_property)
     // self.mBoardObjects_property.removeEBObserverOf_trackLengthInCanariUnit (self.trackLengthString_property)
     // self.mTrackLengthUnit_property.removeEBObserver (self.trackLengthString_property)
-    // self.boardIssues_property.removeEBObserver (self.boardStatusImage_property)
-    // self.boardIssues_property.removeEBObserver (self.boardStatusMessage_property)
     // self.mBorderCurves_property.removeEBObserverOf_descriptor (self.interiorBoundBox_property)
     // self.mBoardShape_property.removeEBObserver (self.interiorBoundBox_property)
     // self.mRectangularBoardWidth_property.removeEBObserver (self.interiorBoundBox_property)
@@ -6131,6 +6137,10 @@ final class ProjectRoot : EBManagedObject,
     // self.mComponents_property.removeEBObserverOf_mNamePrefix (self.componentsPlacedInBoard_property)
     // self.mComponents_property.removeEBObserverOf_mNameIndex (self.componentsPlacedInBoard_property)
     // self.mComponents_property.removeEBObserverOf_componentIsPlacedInBoard (self.componentsPlacedInBoard_property)
+    // self.boardIssues_property.removeEBObserver (self.boardStatusImage_property)
+    // self.unplacedPackages_property.removeEBObserver (self.boardStatusImage_property)
+    // self.boardIssues_property.removeEBObserver (self.boardStatusMessage_property)
+    // self.unplacedPackages_property.removeEBObserver (self.boardStatusMessage_property)
     // self.mComponents_property.removeEBObserverOf_componentName (self.placedComponentNameArray_property)
     // self.mComponents_property.removeEBObserverOf_componentIsPlacedInBoard (self.placedComponentNameArray_property)
     // self.unplacedSymbols_property.removeEBObserver (self.schematicHasErrorOrWarning_property)
@@ -7106,22 +7116,6 @@ final class ProjectRoot : EBManagedObject,
         valueExplorer: &self.trackLengthString_property.mValueExplorer
       )
       createEntryForPropertyNamed (
-        "boardStatusImage",
-        object: self.boardStatusImage_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.boardStatusImage_property.mObserverExplorer,
-        valueExplorer: &self.boardStatusImage_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "boardStatusMessage",
-        object: self.boardStatusMessage_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.boardStatusMessage_property.mObserverExplorer,
-        valueExplorer: &self.boardStatusMessage_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
         "interiorBoundBox",
         object: self.interiorBoundBox_property,
         y: &y,
@@ -7304,6 +7298,22 @@ final class ProjectRoot : EBManagedObject,
         view: view,
         observerExplorer: &self.componentsPlacedInBoard_property.mObserverExplorer,
         valueExplorer: &self.componentsPlacedInBoard_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardStatusImage",
+        object: self.boardStatusImage_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardStatusImage_property.mObserverExplorer,
+        valueExplorer: &self.boardStatusImage_property.mValueExplorer
+      )
+      createEntryForPropertyNamed (
+        "boardStatusMessage",
+        object: self.boardStatusMessage_property,
+        y: &y,
+        view: view,
+        observerExplorer: &self.boardStatusMessage_property.mObserverExplorer,
+        valueExplorer: &self.boardStatusMessage_property.mValueExplorer
       )
       createEntryForPropertyNamed (
         "placedComponentNameArray",

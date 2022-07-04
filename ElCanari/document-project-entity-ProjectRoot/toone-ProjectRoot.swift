@@ -134,8 +134,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.inner4LayerTrackCountString_property.removeEBObserver (self.inner4LayerTrackCountString_property) // Transient property
       oldValue.trackCountString_property.removeEBObserver (self.trackCountString_property) // Transient property
       oldValue.trackLengthString_property.removeEBObserver (self.trackLengthString_property) // Transient property
-      oldValue.boardStatusImage_property.removeEBObserver (self.boardStatusImage_property) // Transient property
-      oldValue.boardStatusMessage_property.removeEBObserver (self.boardStatusMessage_property) // Transient property
       oldValue.interiorBoundBox_property.removeEBObserver (self.interiorBoundBox_property) // Transient property
       oldValue.boardBoundBox_property.removeEBObserver (self.boardBoundBox_property) // Transient property
       oldValue.boardInteriorTop_property.removeEBObserver (self.boardInteriorTop_property) // Transient property
@@ -159,6 +157,8 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.unplacedSymbols_property.removeEBObserver (self.unplacedSymbols_property) // Transient property
       oldValue.unplacedPackages_property.removeEBObserver (self.unplacedPackages_property) // Transient property
       oldValue.componentsPlacedInBoard_property.removeEBObserver (self.componentsPlacedInBoard_property) // Transient property
+      oldValue.boardStatusImage_property.removeEBObserver (self.boardStatusImage_property) // Transient property
+      oldValue.boardStatusMessage_property.removeEBObserver (self.boardStatusMessage_property) // Transient property
       oldValue.placedComponentNameArray_property.removeEBObserver (self.placedComponentNameArray_property) // Transient property
       oldValue.schematicHasErrorOrWarning_property.removeEBObserver (self.schematicHasErrorOrWarning_property) // Transient property
       oldValue.schematicStatusMessage_property.removeEBObserver (self.schematicStatusMessage_property) // Transient property
@@ -284,8 +284,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.inner4LayerTrackCountString_property.addEBObserver (self.inner4LayerTrackCountString_property) // Transient property
       newValue.trackCountString_property.addEBObserver (self.trackCountString_property) // Transient property
       newValue.trackLengthString_property.addEBObserver (self.trackLengthString_property) // Transient property
-      newValue.boardStatusImage_property.addEBObserver (self.boardStatusImage_property) // Transient property
-      newValue.boardStatusMessage_property.addEBObserver (self.boardStatusMessage_property) // Transient property
       newValue.interiorBoundBox_property.addEBObserver (self.interiorBoundBox_property) // Transient property
       newValue.boardBoundBox_property.addEBObserver (self.boardBoundBox_property) // Transient property
       newValue.boardInteriorTop_property.addEBObserver (self.boardInteriorTop_property) // Transient property
@@ -309,6 +307,8 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       newValue.unplacedSymbols_property.addEBObserver (self.unplacedSymbols_property) // Transient property
       newValue.unplacedPackages_property.addEBObserver (self.unplacedPackages_property) // Transient property
       newValue.componentsPlacedInBoard_property.addEBObserver (self.componentsPlacedInBoard_property) // Transient property
+      newValue.boardStatusImage_property.addEBObserver (self.boardStatusImage_property) // Transient property
+      newValue.boardStatusMessage_property.addEBObserver (self.boardStatusMessage_property) // Transient property
       newValue.placedComponentNameArray_property.addEBObserver (self.placedComponentNameArray_property) // Transient property
       newValue.schematicHasErrorOrWarning_property.addEBObserver (self.schematicHasErrorOrWarning_property) // Transient property
       newValue.schematicStatusMessage_property.addEBObserver (self.schematicStatusMessage_property) // Transient property
@@ -1025,18 +1025,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   final let trackLengthString_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
-  //   Observers of 'boardStatusImage' transient property
-  //····················································································································
-
-  final let boardStatusImage_property = EBGenericTransientProperty <NSImage?> ()
-
-  //····················································································································
-  //   Observers of 'boardStatusMessage' transient property
-  //····················································································································
-
-  final let boardStatusMessage_property = EBGenericTransientProperty <String?> ()
-
-  //····················································································································
   //   Observers of 'interiorBoundBox' transient property
   //····················································································································
 
@@ -1173,6 +1161,18 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
   //····················································································································
 
   final let componentsPlacedInBoard_property = EBGenericTransientProperty <StringTagArray?> ()
+
+  //····················································································································
+  //   Observers of 'boardStatusImage' transient property
+  //····················································································································
+
+  final let boardStatusImage_property = EBGenericTransientProperty <NSImage?> ()
+
+  //····················································································································
+  //   Observers of 'boardStatusMessage' transient property
+  //····················································································································
+
+  final let boardStatusMessage_property = EBGenericTransientProperty <String?> ()
 
   //····················································································································
   //   Observers of 'placedComponentNameArray' transient property
@@ -3142,36 +3142,6 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
         return .single (nil)
       }
     }
-  //--- Configure boardStatusImage transient property
-    self.boardStatusImage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.boardStatusImage_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  //--- Configure boardStatusMessage transient property
-    self.boardStatusMessage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
-        switch model.boardStatusMessage_property.selection {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
   //--- Configure interiorBoundBox transient property
     self.interiorBoundBox_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
@@ -3506,6 +3476,36 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     self.componentsPlacedInBoard_property.mReadModelFunction = { [weak self] in
       if let model = self?.mInternalValue {
         switch model.componentsPlacedInBoard_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure boardStatusImage transient property
+    self.boardStatusImage_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.boardStatusImage_property.selection {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  //--- Configure boardStatusMessage transient property
+    self.boardStatusMessage_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mInternalValue {
+        switch model.boardStatusMessage_property.selection {
         case .empty :
           return .empty
         case .multiple :

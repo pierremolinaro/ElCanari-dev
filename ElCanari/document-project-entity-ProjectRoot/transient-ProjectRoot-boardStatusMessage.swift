@@ -14,12 +14,17 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_ProjectRoot_boardStatusMessage (
-       _ self_boardIssues : CanariIssueArray
+       _ self_boardIssues : CanariIssueArray,  
+       _ self_unplacedPackages : StringTagArray
 ) -> String {
 //--- START OF USER ZONE 2
         var statusMessage = [String] ()
         var errorCount = 0
         var warningCount = 0
+        for unplacedPackage in self_unplacedPackages {
+          warningCount += 1
+          statusMessage.append ("Warning: component \(unplacedPackage.string) is not placed in board")
+        }
         for issue in self_boardIssues {
           switch issue.kind {
           case .error :

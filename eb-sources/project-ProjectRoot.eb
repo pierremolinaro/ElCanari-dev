@@ -106,8 +106,11 @@ entity ProjectRoot {
   transient String trackLengthString dependsFrom self.mBoardObjects.all.trackLengthInCanariUnit, self.mTrackLengthUnit ;
   
   transient CanariIssueArray boardIssues dependsFrom self.mBoardObjects.all.issues ;
-  transient NSImage boardStatusImage dependsFrom self.boardIssues ;
-  transient String boardStatusMessage dependsFrom self.boardIssues ;
+  transient NSImage boardStatusImage dependsFrom
+     self.boardIssues, self.unplacedPackages ;
+
+  transient String boardStatusMessage dependsFrom
+    self.boardIssues, self.unplacedPackages ;
   
   property Double mErrorOrWarningIssueSize default 6.0 ;
   
@@ -163,7 +166,8 @@ entity ProjectRoot {
     self.mBoardClearance, self.mBoardLimitsWidth
   ;
     
-  transient CanariRect boardBoundBox dependsFrom self.interiorBoundBox, self.mBoardLimitsWidth, self.mBoardClearance ;
+  transient CanariRect boardBoundBox dependsFrom
+    self.interiorBoundBox, self.mBoardLimitsWidth, self.mBoardClearance ;
     
   transient String boardInteriorTop dependsFrom self.interiorBoundBox, self.mBoardPointsBoundingBoxUnit ;
   transient String boardInteriorBottom dependsFrom self.interiorBoundBox, self.mBoardPointsBoundingBoxUnit ;
