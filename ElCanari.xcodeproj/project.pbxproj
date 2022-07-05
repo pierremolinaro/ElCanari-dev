@@ -13300,6 +13300,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_UNROLL_LOOPS = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Release.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = ElCanari;
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -13530,6 +13531,7 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-DBUILD_OBJECT_EXPLORER";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;

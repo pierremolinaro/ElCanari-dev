@@ -35,7 +35,6 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
   //····················································································································
 
   private final func configureGraphicView () {
-//    self.wantsLayer = true
     self.postsFrameChangedNotifications = true
     NotificationCenter.default.addObserver (
       self,
@@ -43,9 +42,6 @@ final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleP
       name: NSView.frameDidChangeNotification,
       object: self
     )
-//    if !self.wantsLayer {
-//      presentErrorWindow (#file, #line, "EBGraphicView requires layer")
-//    }
     self.installLiveScrollingNotification ()
     self.addEndLiveMagnificationObserver ()
     self.setNeedsDisplayAndUpdateViewBounds ()

@@ -139,13 +139,8 @@ extension AutoLayoutProjectDocumentSubClass {
       let pageWidth  : CGFloat
       let pageHeight : CGFloat
   //--- Board Bound box
-      let boardLimitExtend = self.rootObject.mBoardLimitsWidth + self.rootObject.mBoardClearance
-      let boardBoundBox : CanariRect = self.rootObject.interiorBoundBox!
-      let boardViewWidth = canariUnitToCocoa (boardBoundBox.right + boardLimitExtend)
-      let boardViewHeight = canariUnitToCocoa (boardBoundBox.top + boardLimitExtend)
-//      let boardViewWidth = boardView.frame.size.width
-//      let boardViewHeight = boardView.frame.size.height
-      if boardViewWidth > boardViewHeight {
+      let printViewFrame : NSRect = boardView.contentsBoundingBox
+      if printViewFrame.size.width > printViewFrame.size.height {
         pageWidth = PAPER_A4_MAX_SIZE_COCOA_UNIT
         pageHeight = PAPER_A4_MIN_SIZE_COCOA_UNIT
         orientation = .landscape
@@ -154,23 +149,14 @@ extension AutoLayoutProjectDocumentSubClass {
         pageHeight = PAPER_A4_MAX_SIZE_COCOA_UNIT
         orientation = .portrait
       }
-    //--- Build print view
-      let printViewFrame = NSRect (
-        x: 0.0,
-        y: 0.0,
-        width:  boardViewWidth,
-        height: boardViewHeight
-      )
-      let printView = NSView (frame: printViewFrame)
-    //--- Scaling factor
-      let printableWidth = pageWidth - PAPER_LEFT_MARGIN_COCOA_UNIT - PAPER_RIGHT_MARGIN_COCOA_UNIT - 2.0
-      let printableHeight = pageHeight - PAPER_BOTTOM_MARGIN_COCOA_UNIT - PAPER_TOP_MARGIN_COCOA_UNIT - 2.0
-      let scalingFactor = min (1.0, printableWidth / boardViewWidth, printableHeight / boardViewHeight)
     //--- Draw Board
       let data = boardView.dataWithPDF (inside: printViewFrame)
       let imageView = NSImageView (frame: printViewFrame)
       imageView.image = NSImage (data: data)
-      printView.addSubview (imageView)
+    //--- Scaling factor
+      let printableWidth = pageWidth - PAPER_LEFT_MARGIN_COCOA_UNIT - PAPER_RIGHT_MARGIN_COCOA_UNIT - 2.0
+      let printableHeight = pageHeight - PAPER_BOTTOM_MARGIN_COCOA_UNIT - PAPER_TOP_MARGIN_COCOA_UNIT - 2.0
+      let scalingFactor = min (1.0, printableWidth / printViewFrame.size.width, printableHeight / printViewFrame.size.height)
     //---
       let printInfo = NSPrintInfo.shared
 //     Swift.print ("\(printInfo.imageablePageBounds)")
@@ -186,7 +172,7 @@ extension AutoLayoutProjectDocumentSubClass {
       printInfo.topMargin = PAPER_TOP_MARGIN_COCOA_UNIT
       printInfo.rightMargin = PAPER_RIGHT_MARGIN_COCOA_UNIT
       printInfo.bottomMargin = PAPER_BOTTOM_MARGIN_COCOA_UNIT
-      let printOperation = NSPrintOperation (view: printView)
+      let printOperation = NSPrintOperation (view: imageView)
       let title = self.windowForSheet!.title.deletingPathExtension + ".board"
       printOperation.jobTitle = title
       self.mPrintOperation = printOperation // It seems that printOperation should be retained

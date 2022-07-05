@@ -72,6 +72,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       separator
       StaticLabel (title: "On Selected Components", bold: yes, size : .small, alignment: .left)
       Button (title: "Duplicate", size: .small) {
+        set (commandKeyEquivalent: "D")
         expandableWidth ()
         $run duplicateSelectedComponentsAction
         $enabled #componentController.selectedArray.count > 0

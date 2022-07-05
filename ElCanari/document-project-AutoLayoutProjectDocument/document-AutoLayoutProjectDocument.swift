@@ -866,6 +866,7 @@ import Cocoa
       let view_0_6 = AutoLayoutStaticLabel (title: "On Selected Components", bold: true, size: .small, alignment: .left)
       view_0.appendView (view_0_6)
       let view_0_7 = AutoLayoutButton (title: "Duplicate", size: .small)
+        .set (commandKeyEquivalent: "D")
         .expandableWidth ()
         .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
