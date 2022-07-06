@@ -1352,15 +1352,15 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         )
         addCenterYAligned (
           left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardLimitsColorForBoard (sendContinously:yes) } },
-          right: StaticLabel (title: "Board Limits", bold: no, size : .small, alignment: .center)
+          right: StaticLabel (title: "Board Limits", bold: no, size : .small, alignment: .left)
         )
         addCenterYAligned (
           left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardClearanceColorForBoard (sendContinously:yes) } },
-          right: StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .center)
+          right: StaticLabel (title: "Board Clearance", bold: no, size : .small, alignment: .left)
         )
         addCenterYAligned (
           left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.boardBackgroundColorForBoard (sendContinously:yes) } },
-          right: StaticLabel (title: "Background", bold: no, size : .small, alignment: .center)
+          right: StaticLabel (title: "Background", bold: no, size : .small, alignment: .left)
         )
         addFirstBaseLineAligned (
           left: hStack { space ColorWell { set (toolTip: "Stored in Preferences") $color prefs.errorBackgroundColorForBoard (sendContinously:yes) } },
@@ -1381,14 +1381,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         single: StaticLabel (title: "Board Settings", bold: yes, size: .small, alignment: .center)
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Layers", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Layers", bold: no, size: .small, alignment: .right),
         right: EnumPopUpButton (titles: enum LayerConfiguration.popupTitles, size: .small) {
           $selectedIndex root.mLayerConfiguration
           $run changeLayerConfigurationAction
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Clearance", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Clearance", bold: no, size: .small, alignment: .right),
         right: CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit root.mLayoutClearance, root.mLayoutClearanceUnit }
       )
       add (
@@ -1473,35 +1473,35 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         single: StaticLabel (title: "Tracks", bold: yes, size: .small, alignment: .left)
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Top Layer Tracks", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Top Layer Tracks", bold: no, size: .small, alignment: .right),
         right: Label (bold: yes, size : .small) { $title root.topSideTrackCountString }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Inner 1 Layer Tracks", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Inner 1 Layer Tracks", bold: no, size: .small, alignment: .right),
         right: Label (bold: yes, size : .small) { $title root.inner1LayerTrackCountString }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Inner 2 Layer Tracks", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Inner 2 Layer Tracks", bold: no, size: .small, alignment: .right),
         right: Label (bold: yes, size : .small) { $title root.inner2LayerTrackCountString }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Inner 3 Layer Tracks", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Inner 3 Layer Tracks", bold: no, size: .small, alignment: .right),
         right: Label (bold: yes, size : .small) { $title root.inner3LayerTrackCountString }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Inner 4 Layer Tracks", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Inner 4 Layer Tracks", bold: no, size: .small, alignment: .right),
         right: Label (bold: yes, size : .small) { $title root.inner4LayerTrackCountString }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Back Layer Tracks", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Back Layer Tracks", bold: no, size: .small, alignment: .right),
         right: Label (bold: yes, size : .small) { $title root.backSideTrackCountString }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Total", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Total", bold: no, size: .small, alignment: .right),
         right: Label (bold: yes, size : .small) { $title root.trackCountString }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Trace Length", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Trace Length", bold: no, size: .small, alignment: .right),
         right: hStack {
           Label (bold: yes, size : .small) { $title root.trackLengthString }
           CanariUnitPopUpButton (size : .small) { $unit root.mTrackLengthUnit }
@@ -1509,7 +1509,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Via Count", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Via Count", bold: no, size: .small, alignment: .right),
         right: Label (bold: yes, size : .small) { $title root.viaCountString }
       )
       add (
@@ -1804,12 +1804,15 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     StaticLabel (title: "Text Inspector", bold: yes, size: .small, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Text", bold: no, size: .small, alignment: .center) { expandableHeight () },
-        right: TextField (minWidth: 150, size: .small) { automaticallyAdjustHeight (maxWidth: 150) $value #boardTextSelectionController.mText (sendContinously : yes) }
+        left: StaticLabel (title: "Text", bold: no, size: .small, alignment: .right) { expandableHeight () },
+        right: TextField (minWidth: 150, size: .small) {
+          automaticallyAdjustHeight (maxWidth: 150)
+          $value #boardTextSelectionController.mText (sendContinously : yes)
+        }
       )
       addSeparator ()
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Font", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Font", bold: no, size: .small, alignment: .right),
         right: CanariBoardFontPopUpButton {
           $currentFontName #boardTextSelectionController.fontName
           $fontNames root.fontNameArray
@@ -1817,13 +1820,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
         right: DoubleField (minWidth: 64, size: .small) {
           $value #boardTextSelectionController.mFontSize (sendContinously: yes)
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Weight", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Weight", bold: no, size: .small, alignment: .right),
         right: DoubleField (minWidth: 64, size: .small) {
           $value #boardTextSelectionController.mWeight (sendContinously: yes)
         }
@@ -1834,20 +1837,20 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       ) 
       addSeparator ()
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Horizontal", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Horizontal", bold: no, size: .small, alignment: .right),
         right: CanariHorizontalAlignmentSegmentedControl (size: .small) { $alignment #boardTextSelectionController.mHorizontalAlignment }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Vertical", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Vertical", bold: no, size: .small, alignment: .right),
         right: CanariVerticalAlignmentSegmentedControl (size: .small) { $alignment #boardTextSelectionController.mVerticalAlignment }
       )
       addSeparator ()
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
         right: CanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small) { $angle #boardTextSelectionController.mRotation }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Side", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Side", bold: no, size: .small, alignment: .right),
         right: EnumPopUpButton (titles: enum BoardTextLayer.popupTitles, size: .small) { $selectedIndex #boardTextSelectionController.mLayer } 
       )
       add (single: Checkbox (title: "Show Rotation Knob", size: .small) {
