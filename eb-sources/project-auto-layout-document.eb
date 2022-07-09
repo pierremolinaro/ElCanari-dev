@@ -817,7 +817,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     GridView2 {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Orientation", bold: no, size: .small, alignment: .center),
-        right: EnumSegmentedControl (titles: enum QuadrantRotation.degreesTitles, equalWidth: yes, size: .small) {
+        right: EnumSegmentedControl (titles: enum QuadrantRotation.degreesTitles, equalWidth: no, size: .small) {
           $selectedSegment #componentSymbolSelectionController.mRotation
         }
       )

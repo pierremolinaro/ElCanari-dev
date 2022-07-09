@@ -3413,7 +3413,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_56 () -> NSView {
-    let view = AutoLayoutEnumSegmentedControl (titles: QuadrantRotation.degreesTitles (), equalWidth: true, size: .small)
+    let view = AutoLayoutEnumSegmentedControl (titles: QuadrantRotation.degreesTitles (), equalWidth: false, size: .small)
       .bind_selectedSegment (self.componentSymbolSelectionController.mRotation_property)
     return view
   }

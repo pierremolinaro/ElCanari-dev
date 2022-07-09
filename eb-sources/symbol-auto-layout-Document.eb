@@ -188,11 +188,11 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
     StaticLabel (title: "(Stored in Document Preferences)", bold: no, size: .mini, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Grid Style", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Grid Style", bold: no, size: .small, alignment: .right),
         right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.gridStyle}
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Grid Display", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Grid Display", bold: no, size: .small, alignment: .right),
         right:  TaggedPopUpButton (size: .small) {
           add (title: "1 Step", withTag: 1)
           add (title: "2 Steps", withTag: 2)
@@ -204,11 +204,11 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Grid Step", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Grid Step", bold: no, size: .small, alignment: .right),
         right: StaticLabel (title: "25 mils", bold: yes, size: .small, alignment: .left)
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Flip", bold: no, size: .small, alignment: .right),
         right: Checkbox (title: "Horizontal", size: .small) { $value root.horizontalFlip }
       )
       addFirstBaseLineAligned (
@@ -220,7 +220,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
         right: CanariUnitPopUpButton (size: .small) { $unit root.xPlacardUnit }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
         right: CanariUnitPopUpButton(size: .small) { $unit root.yPlacardUnit }
       )
     }

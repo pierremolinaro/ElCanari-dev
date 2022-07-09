@@ -54,31 +54,20 @@ fileprivate final class RenameContext : EBSwiftBaseObject {
   func renameComponentComboBoxAction () {
     let newPrefix = self.mComboBox.stringValue
     // Swift.print ("newPrefix '\(newPrefix)'")
-    if newPrefix.isEmpty {
-      self.mErrorLabel.stringValue = "Empty Prefix"
-      self.mComponentNewPrefix = ""
-      self.updateValidationButton ()
-    }else{
-    // Check all characters are letters
-      var allLetters = true
-      for character : UnicodeScalar in newPrefix.unicodeArray {
-        if (character >= "A") && (character <= "Z") {
-        }else if (character >= "a") && (character <= "z") {
-        }else{
-          allLetters = false
-        }
-      }
-    //---
-      if allLetters {
+    if let lastCharacter = newPrefix.last {
+      if !lastCharacter.isWholeNumber {
         self.mErrorLabel.stringValue = ""
         self.mComponentNewPrefix = newPrefix
         self.populateIndexesPopupButton ()
       }else{
-        self.mErrorLabel.stringValue = "Prefix should contain only ASCII letters"
+        self.mErrorLabel.stringValue = "Prefix last character should not be a digit"
         self.mComponentNewPrefix = ""
       }
-      self.updateValidationButton ()
+    }else{
+      self.mErrorLabel.stringValue = "Empty Prefix"
+      self.mComponentNewPrefix = ""
     }
+    self.updateValidationButton ()
   }
 
   //····················································································································
@@ -157,7 +146,7 @@ extension AutoLayoutProjectDocument {
     //---
       let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
     //---
-      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Renaming Component", bold: true, size: .regular, alignment: .center))
+      layoutView.appendView (AutoLayoutStaticLabel (title: "Renaming Component", bold: true, size: .regular, alignment: .center))
       layoutView.appendFlexibleSpace ()
     //---
       let gridView = AutoLayoutGridView2 ()

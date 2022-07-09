@@ -325,6 +325,7 @@ class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
       RunLoop.current.run (until: Date ())
     }
     self.ebBuildUserInterface ()
+    self.windowForSheet?.makeKeyAndOrderFront (nil)
     flushOutletEvents ()
     if let window = self.mSplashScreenWindow {
       window.orderOut (nil)

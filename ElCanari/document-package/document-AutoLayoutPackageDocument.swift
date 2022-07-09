@@ -1199,7 +1199,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_0 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Grid Style", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Grid Style", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -1218,7 +1218,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_2 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Grid Display", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Grid Display", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -1249,7 +1249,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_4 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Grid Step", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Grid Step", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -1268,7 +1268,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_6 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -1421,7 +1421,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_21 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "∆Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "∆Y", bold: false, size: .small, alignment: .right)
       .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
     return view
   }
@@ -2210,7 +2210,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_100 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -2248,7 +2248,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_104 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -2267,7 +2267,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_106 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Distance", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Distance", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -2305,7 +2305,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_110 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "∆Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "∆Y", bold: false, size: .small, alignment: .right)
     return view
   }
 

@@ -62,11 +62,11 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         set (width: 250) 
         set (leftMargin: 20) set (rightMargin: 20) set (topMargin: 8)
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Grid Style", bold: no, size : .small, alignment: .center),
+          left: StaticLabel (title: "Grid Style", bold: no, size : .small, alignment: .right),
           right: EnumPopUpButton (titles: enum GridStyle.popupTitles, size: .small) { $selectedIndex root.mModelImagePageGridStyle}
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Grid Display", bold: no, size : .small, alignment: .center),
+          left: StaticLabel (title: "Grid Display", bold: no, size : .small, alignment: .right),
           right:
             TaggedPopUpButton (size: .small) {
               add (title: "1 Step", withTag: 1)
@@ -85,11 +85,11 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
             }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .center),
+          left: StaticLabel (title: "Grid Step", bold: no, size : .small, alignment: .right),
           right: CanariDimensionAndPopUp (size : .small) { $dimensionAndUnit root.mModelImagePageGridStep, root.mModelImagePageGridStepUnit }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Flip", bold: no, size : .small, alignment: .center),
+          left: StaticLabel (title: "Flip", bold: no, size : .small, alignment: .right),
           right: Checkbox (title: "Horizontal", size : .small) {
             expandableWidth ()
             $value root.mModelImagePageHorizontalFlip
@@ -139,7 +139,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
           right: CanariDimensionAndPopUp (size : .small) { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageSecondPointDx, root.mDimensionUnitSecondModelPointDx }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "∆Y", bold: no, size : .small, alignment: .center) { $hidden !root.hasModelImage },
+          left: StaticLabel (title: "∆Y", bold: no, size : .small, alignment: .right) { $hidden !root.hasModelImage },
           right: CanariDimensionAndPopUp (size : .small) { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageSecondPointDy, root.mDimensionUnitSecondModelPointDy }
         )
         addFirstBaseLineAligned (
@@ -582,7 +582,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .center),
+        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
         right: CanariDimensionAndPopUp (size : .small) {
           $dimensionAndUnit #mPackageDimensionSelectionController.y1, #mPackageDimensionSelectionController.y1Unit
         }
@@ -594,13 +594,13 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .center),
+        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
         right: CanariDimensionAndPopUp (size : .small) {
           $dimensionAndUnit #mPackageDimensionSelectionController.y2, #mPackageDimensionSelectionController.y2Unit
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Distance", bold: no, size : .small, alignment: .center),
+        left: StaticLabel (title: "Distance", bold: no, size : .small, alignment: .right),
         right: CanariObservedDimensionAndPopUp (size : .small) {
           $dimensionAndUnit #mPackageDimensionSelectionController.distanceInCanariUnit, #mPackageDimensionSelectionController.distanceUnit
         }
@@ -613,7 +613,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "∆Y", bold: no, size : .small, alignment: .center),
+        left: StaticLabel (title: "∆Y", bold: no, size : .small, alignment: .right),
         right: CanariDimensionAndPopUp (size : .small) {
           $dimensionAndUnit #mPackageDimensionSelectionController.yDimension, #mPackageDimensionSelectionController.yDimensionUnit
         }

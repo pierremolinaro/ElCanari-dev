@@ -51,10 +51,26 @@ extension AutoLayoutProjectDocument {
 
   func duplicate (component inComponent : ComponentInProject) -> ComponentInProject? {
     let optionalNewComponent = self.addComponent (fromPossibleDevice: inComponent.mDevice, prefix: inComponent.mNamePrefix)
-    optionalNewComponent?.mComponentValue = inComponent.mComponentValue
-    optionalNewComponent?.mNameIsVisibleInBoard = inComponent.mNameIsVisibleInBoard
-    optionalNewComponent?.mValueIsVisibleInBoard = inComponent.mValueIsVisibleInBoard
-    optionalNewComponent?.mSelectedPackage = inComponent.mSelectedPackage
+    if let newComponent = optionalNewComponent {
+      newComponent.mComponentValue = inComponent.mComponentValue
+      newComponent.mDisplayLegend = inComponent.mDisplayLegend
+      newComponent.mNameFontSize = inComponent.mNameFontSize
+      newComponent.mNameIsVisibleInBoard = inComponent.mNameIsVisibleInBoard
+      newComponent.mNameRotation = inComponent.mNameRotation
+      newComponent.mRotation = inComponent.mRotation
+      newComponent.mSide = inComponent.mSide
+      newComponent.mSlavePadsShouldBeRouted = inComponent.mSlavePadsShouldBeRouted
+      newComponent.mValueFontSize = inComponent.mValueFontSize
+      newComponent.mValueIsVisibleInBoard = inComponent.mValueIsVisibleInBoard
+      newComponent.mValueRotation = inComponent.mValueRotation
+      newComponent.mSelectedPackage = inComponent.mSelectedPackage
+      newComponent.mXName = inComponent.mXName
+      newComponent.mXUnit = inComponent.mXUnit
+      newComponent.mYUnit = inComponent.mYUnit
+      newComponent.mYName = inComponent.mYName
+      newComponent.mXValue = inComponent.mXValue
+      newComponent.mYValue = inComponent.mYValue
+    }
     return optionalNewComponent
   }
 

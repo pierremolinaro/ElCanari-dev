@@ -819,7 +819,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_11 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Grid Style", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Grid Style", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -838,7 +838,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_13 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Grid Display", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Grid Display", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -863,7 +863,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_15 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Grid Step", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Grid Step", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -881,7 +881,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_17 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -938,7 +938,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_23 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
