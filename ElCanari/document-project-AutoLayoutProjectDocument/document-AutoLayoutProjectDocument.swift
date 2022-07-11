@@ -1447,6 +1447,7 @@ import Cocoa
     let view_2 = AutoLayoutHorizontalStackView ()
     do{
       let view_2_0 = AutoLayoutButton (title: "New Sheet", size: .small)
+        .expandableHeight ()
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.newSheetAction (_:))
@@ -1454,13 +1455,27 @@ import Cocoa
       view_2.appendView (view_2_0)
       let view_2_1 = AutoLayoutFlexibleSpace ()
       view_2.appendView (view_2_1)
-      let view_2_2 = AutoLayoutButton (title: "Delete Sheet", size: .small)
+      let view_2_2 = AutoLayoutVerticalStackView ()
+      do{
+        let view_2_2_0 = AutoLayoutButton (title: "Up", size: .small)
+          .expandableWidth ()
+        self.configure_moveSheetUp (view_2_2_0) // Configurator
+        view_2_2.appendView (view_2_2_0)
+        let view_2_2_1 = AutoLayoutButton (title: "Down", size: .small)
+        self.configure_moveSheetDown (view_2_2_1) // Configurator
+        view_2_2.appendView (view_2_2_1)
+      }
+      view_2.appendView (view_2_2)
+      let view_2_3 = AutoLayoutFlexibleSpace ()
+      view_2.appendView (view_2_3)
+      let view_2_4 = AutoLayoutButton (title: "Delete Sheet", size: .small)
+        .expandableHeight ()
         .bind_enabled (.intcmp (.prop (self.rootObject.mSheets_property.count_property), .gt, .literalInt (1)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.deleteSheetAction (_:))
         )
-      view_2.appendView (view_2_2)
+      view_2.appendView (view_2_4)
     }
     vStackView.appendView (view_2)
     let view_3 = AutoLayoutStaticLabel (title: "Selected Sheet Name", bold: false, size: .small, alignment: .left)

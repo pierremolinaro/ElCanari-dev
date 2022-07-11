@@ -19,6 +19,8 @@ final class ProjectSheetController : EBOutletEvent {
   //····················································································································
 
   private var mSheetPopUpButton : AutoLayoutPopUpButton? = nil
+  private var mMoveSheetUpButton : AutoLayoutButton? = nil
+  private var mMoveSheetDownButton : AutoLayoutButton? = nil
   private var mStepper : AutoLayoutStepper? = nil
   private weak var mDocument : AutoLayoutProjectDocument? = nil
 
@@ -46,6 +48,24 @@ final class ProjectSheetController : EBOutletEvent {
     inStepper.target = self
     inStepper.action = #selector (Self.stepperAction (_:))
     self.updatePopUpButton ()
+  }
+
+ //····················································································································
+
+  func register (moveSheetUpButton inButton : AutoLayoutButton) {
+    self.mMoveSheetUpButton = inButton
+    inButton.title = UP_ARROW_STRING // "\u{21DE}"
+    inButton.target = self
+    inButton.action = #selector (Self.moveUpAction (_:))
+  }
+
+ //····················································································································
+
+  func register (moveSheetDownButton inButton : AutoLayoutButton) {
+    self.mMoveSheetDownButton = inButton
+    inButton.title = DOWN_ARROW_STRING // "\u{21DF}"
+    inButton.target = self
+    inButton.action = #selector (Self.moveDownAction (_:))
   }
 
   //····················································································································
@@ -86,6 +106,7 @@ final class ProjectSheetController : EBOutletEvent {
       if sheet === selectedSheet {
         self.mSheetPopUpButton?.selectItem (at: idx)
         self.mStepper?.doubleValue = Double (sheets.count - 1 - idx)
+        self.configureMoveButtons (withIndex: idx, sheetCount: sheets.count)
       }
       idx += 1
     }
@@ -93,12 +114,33 @@ final class ProjectSheetController : EBOutletEvent {
 
   //····················································································································
 
-  @objc private func selectionDidChangeAction (_ inSender : NSMenuItem) {
+  private func selectSheet (atIndex inIndex : Int) {
     if let rootObject = self.mDocument?.rootObject {
-      let selectedIndex = inSender.tag
       let sheets = rootObject.mSheets.values
-      rootObject.mSelectedSheet = sheets [selectedIndex]
+      rootObject.mSelectedSheet = sheets [inIndex]
+      self.configureMoveButtons (withIndex: inIndex, sheetCount: sheets.count)
     }
+  }
+
+  //····················································································································
+
+  private func configureMoveButtons (withIndex inIndex : Int, sheetCount inSheetCount : Int) {
+    self.mMoveSheetUpButton?.isEnabled = inIndex > 0
+    self.mMoveSheetUpButton?.tag = inIndex
+    self.mMoveSheetUpButton?.toolTip = (inIndex > 0)
+      ? "Move sheet to \(inIndex)/\(inSheetCount)"
+      : "Disabled, selected sheet is the first one"
+    self.mMoveSheetDownButton?.isEnabled = inIndex < (inSheetCount - 1)
+    self.mMoveSheetDownButton?.tag = inIndex
+    self.mMoveSheetDownButton?.toolTip = (inIndex < (inSheetCount - 1))
+      ? "Move sheet to \(inIndex + 2)/\(inSheetCount)"
+      : "Disabled, selected sheet is the last one"
+  }
+
+  //····················································································································
+
+  @objc private func selectionDidChangeAction (_ inSender : NSMenuItem) {
+    self.selectSheet (atIndex: inSender.tag)
   }
 
   //····················································································································
@@ -108,6 +150,36 @@ final class ProjectSheetController : EBOutletEvent {
       let idx = Int (inSender.doubleValue.rounded (.toNearestOrEven))
       let sheets = rootObject.mSheets.values
       rootObject.mSelectedSheet = sheets [sheets.count - 1 - idx]
+    }
+  }
+
+  //····················································································································
+
+  @objc private func moveUpAction (_ inSender : AutoLayoutButton) {
+    if let rootObject = self.mDocument?.rootObject {
+      let selectedIndex = inSender.tag
+      var sheets = rootObject.mSheets.values
+      let selectedSheet = sheets [selectedIndex]
+      let previousSheet = sheets [selectedIndex - 1]
+      sheets [selectedIndex] = previousSheet
+      sheets [selectedIndex - 1] = selectedSheet
+      rootObject.mSheets = EBReferenceArray (sheets)
+      self.updatePopUpButton ()
+    }
+  }
+
+  //····················································································································
+
+  @objc private func moveDownAction (_ inSender : AutoLayoutButton) {
+    if let rootObject = self.mDocument?.rootObject {
+      let selectedIndex = inSender.tag
+      var sheets = rootObject.mSheets.values
+      let selectedSheet = sheets [selectedIndex]
+      let nextSheet = sheets [selectedIndex + 1]
+      sheets [selectedIndex] = nextSheet
+      sheets [selectedIndex + 1] = selectedSheet
+      rootObject.mSheets = EBReferenceArray (sheets)
+      self.updatePopUpButton ()
     }
   }
 

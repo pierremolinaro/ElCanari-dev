@@ -613,9 +613,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       Stepper [configurator sheetStepperConfigurator]
     }
     hStack {
-      Button (title: "New Sheet", size: .small) { $run newSheetAction }
+      Button (title: "New Sheet", size: .small) { expandableHeight () $run newSheetAction }
       space
-      Button (title: "Delete Sheet", size: .small) { $run deleteSheetAction $enabled root.mSheets.count > 1 }
+      vStack {
+        Button (title: "Up", size: .small) [configurator moveSheetUp] { expandableWidth () }
+        Button (title: "Down", size: .small) [configurator moveSheetDown]
+      }
+      space
+      Button (title: "Delete Sheet", size: .small) { expandableHeight () $run deleteSheetAction $enabled root.mSheets.count > 1 }
     }
     StaticLabel (title: "Selected Sheet Name", bold: no, size: .small, alignment: .left)
     TextField (minWidth: 150, size: .small) { automaticallyAdjustHeight (maxWidth: 150) $value root.selectedSheetTitle (sendContinously : yes) }
