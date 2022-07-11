@@ -8455,6 +8455,7 @@
 		95D565EF66E7DFF9F98764DA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
@@ -13554,7 +13555,7 @@
 				CFDA57971BFA459600EEF3CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		9D4C2F636F067F89CC14862C /* Build configuration list for PBXProject "ElCanari" */ = {
 			isa = XCConfigurationList;
@@ -13563,7 +13564,7 @@
 				CFDA57961BFA459600EEF3CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		CF5C4DB1219F04D600EAC52A /* Build configuration list for PBXNativeTarget "ElCanari-Release" */ = {
 			isa = XCConfigurationList;
@@ -13572,7 +13573,7 @@
 				CF5C4DB3219F04D600EAC52A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		CF9C657F25CABE5C00A00D5C /* Build configuration list for PBXNativeTarget "ElCanari-Debug-temporary" */ = {
 			isa = XCConfigurationList;
@@ -13581,7 +13582,7 @@
 				CF9C658125CABE5C00A00D5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 

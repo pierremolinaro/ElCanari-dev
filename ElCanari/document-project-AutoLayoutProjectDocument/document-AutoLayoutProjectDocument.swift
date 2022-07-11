@@ -866,7 +866,7 @@ import Cocoa
       let view_0_6 = AutoLayoutStaticLabel (title: "On Selected Components", bold: true, size: .small, alignment: .left)
       view_0.appendView (view_0_6)
       let view_0_7 = AutoLayoutButton (title: "Duplicate", size: .small)
-        .set (commandKeyEquivalent: "D")
+        .set (commandKeyEquivalent: "d")
         .expandableWidth ()
         .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
@@ -876,6 +876,7 @@ import Cocoa
       view_0.appendView (view_0_7)
       let view_0_8 = AutoLayoutButton (title: "Rename…", size: .small)
         .expandableWidth ()
+        .set (commandKeyEquivalent: "r")
         .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .eq, .literalInt (1)))
         .bind_run (
           target: self,
@@ -893,6 +894,7 @@ import Cocoa
       view_0.appendView (view_0_9)
       let view_0_10 = AutoLayoutButton (title: "Change Package…", size: .small)
         .expandableWidth ()
+        .set (controlCommandKeyEquivalent: "c")
         .bind_enabled (.prop (self.canChangePackage_property))
         .bind_run (
           target: self,
@@ -901,6 +903,7 @@ import Cocoa
       view_0.appendView (view_0_10)
       let view_0_11 = AutoLayoutButton (title: "Change Value…", size: .small)
         .expandableWidth ()
+        .set (controlCommandKeyEquivalent: "v")
         .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
@@ -909,6 +912,7 @@ import Cocoa
       view_0.appendView (view_0_11)
       let view_0_12 = AutoLayoutButton (title: "Reveal in Board", size: .small)
         .expandableWidth ()
+        .set (controlCommandKeyEquivalent: "b")
         .bind_enabled (.intcmp (.prop (self.componentController.selectedArray_property.count_property), .eq, .literalInt (1)))
         .bind_run (
           target: self,
@@ -937,7 +941,7 @@ import Cocoa
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "Remove Embedded Devices", size: .regular)
-        .setDeleteKeyAsKeyEquivalent ()
+        .set (controlCommandKeyEquivalent: "r")
         .bind_enabled (.intcmp (.prop (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
@@ -945,6 +949,7 @@ import Cocoa
         )
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutButton (title: "Reset Device and Font Versions", size: .regular)
+        .set (controlCommandKeyEquivalent: "v")
         .bind_enabled (.boolcmp (.intcmp (.prop (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.prop (self.rootObject.mFonts_property.count_property), .gt, .literalInt (0))))
         .bind_run (
           target: self,
@@ -952,6 +957,7 @@ import Cocoa
         )
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutButton (title: "Update Devices and Fonts", size: .regular)
+        .set (controlCommandKeyEquivalent: "u")
         .bind_enabled (.boolcmp (.intcmp (.prop (self.rootObject.mDevices_property.count_property), .gt, .literalInt (0)), .or, .intcmp (.prop (self.rootObject.mFonts_property.count_property), .gt, .literalInt (0))))
         .bind_run (
           target: self,
@@ -999,6 +1005,7 @@ import Cocoa
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "Edit Selected Device", size: .regular)
+        .set (shiftCommandKeyEquivalent: "e")
         .bind_enabled (.intcmp (.prop (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
@@ -1006,6 +1013,7 @@ import Cocoa
         )
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutButton (title: "Reset Selected Device Version", size: .regular)
+        .set (shiftCommandKeyEquivalent: "r")
         .bind_enabled (.intcmp (.prop (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
@@ -1021,6 +1029,7 @@ import Cocoa
         )
       view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutButton (title: "Export Selected Device", size: .regular)
+        .set (shiftCommandKeyEquivalent: "x")
         .bind_enabled (.intcmp (.prop (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
@@ -1028,6 +1037,7 @@ import Cocoa
         )
       view_0.appendView (view_0_3)
       let view_0_4 = AutoLayoutButton (title: "Update Selected Device…", size: .regular)
+        .set (shiftCommandKeyEquivalent: "u")
         .bind_enabled (.intcmp (.prop (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
@@ -1091,12 +1101,14 @@ import Cocoa
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "Add Font…", size: .regular)
+        .set (shiftCommandKeyEquivalent: "a")
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.addFontAction (_:))
         )
       view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutButton (title: "Edit Selected Font", size: .regular)
+        .set (shiftCommandKeyEquivalent: "e")
         .bind_enabled (.intcmp (.prop (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
@@ -1104,6 +1116,7 @@ import Cocoa
         )
       view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutButton (title: "Reset Selected Font Version", size: .regular)
+        .set (shiftCommandKeyEquivalent: "r")
         .bind_enabled (.intcmp (.prop (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
@@ -1111,6 +1124,7 @@ import Cocoa
         )
       view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutButton (title: "Update Selected Fonts", size: .regular)
+        .set (shiftCommandKeyEquivalent: "u")
         .bind_enabled (.intcmp (.prop (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
@@ -3230,7 +3244,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_39 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Title", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Title", bold: false, size: .small, alignment: .right)
       .expandableHeight ()
     return view
   }
@@ -3251,7 +3265,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_41 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Version", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Version", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -3270,7 +3284,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_43 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Date", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Date", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -3304,7 +3318,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_45 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -5998,7 +6012,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_274 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6017,7 +6031,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_276 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Font", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Font", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6041,7 +6055,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_278 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6120,7 +6134,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_286 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6158,7 +6172,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_290 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Center X", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabels (left: "Center", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -6177,7 +6191,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_292 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Center Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6235,7 +6249,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_298 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6254,7 +6268,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_300 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Font", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Font", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -6278,7 +6292,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_302 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Rotation", bold: false, size: .small, alignment: .right)
     return view
   }
 

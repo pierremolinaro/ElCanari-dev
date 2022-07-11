@@ -223,34 +223,29 @@ class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
   //--- Show "Opening xxx…" splash window ?
     if inData.count > 300_000 {
       let window = CanariWindow (
-        contentRect: NSRect (x: 0.0, y: 0.0, width: 450.0, height: 100.0),
-        styleMask: [.titled],
+        contentRect: .zero,
+        styleMask: [.docModalWindow],
         backing: .buffered,
         defer: true
       )
       self.mSplashScreenWindow = window
-      let textField = AutoLayoutLabel (bold: true, size: .small)
-        .set (alignment: .center)
-        .expandableWidth ()
+      let textField = AutoLayoutLabel (bold: false, size: .small).set (alignment: .center)
       self.mSplashTextField = textField
       textField.stringValue = "Loading File…"
-      window.title = "Opening " + self.displayName + "…"
-      let vStackView = AutoLayoutVerticalStackView ()
-      vStackView.appendView (AutoLayoutFlexibleSpace ())
+      let vStackView = AutoLayoutVerticalStackView ().set (margins: 12)
+      vStackView.appendView (AutoLayoutStaticLabel (title: "Opening " + self.displayName + "…", bold: true, size: .small, alignment: .center))
       vStackView.appendView (textField)
-      let hStackView = AutoLayoutHorizontalStackView ()
+      let hStackView = AutoLayoutHorizontalStackView ().set (margins: 0)
       hStackView.appendView (AutoLayoutFlexibleSpace ())
-      hStackView.appendView (AutoLayoutSpinningProgressIndicator (size: .regular))
+      hStackView.appendView (AutoLayoutSpinningProgressIndicator (size: .small))
       hStackView.appendView (AutoLayoutFlexibleSpace ())
       vStackView.appendView (hStackView)
-      vStackView.appendView (AutoLayoutFlexibleSpace ())
       window.contentView = vStackView
       window.isReleasedWhenClosed = false
       window.center ()
       window.makeKeyAndOrderFront (nil)
       RunLoop.current.run (until: Date ())
     }
-
     self.ebUndoManager.disableUndoRegistration ()
   //--- Load file
     let startLoadFile = Date ()

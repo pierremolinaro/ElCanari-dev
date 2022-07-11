@@ -126,23 +126,29 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  private func update (from model : EBReadWriteProperty_Double) {
-    if self.currentEditor() == nil {
+  private func update (from inObject : EBReadWriteProperty_Double) {
+    let selection = inObject.selection // TOUJOURS lire la sélection
+    if self.currentEditor () == nil {
       self.mInputIsValid = true
-      switch model.selection {
+      switch selection {
       case .empty :
+//        Swift.print ("updateOutlet, empty")
         self.enable (fromValueBinding: false, self.enabledBindingController)
         self.placeholderString = "No Selection"
         self.stringValue = ""
       case .single (let v) :
+//        Swift.print ("updateOutlet, single \(v)")
         self.enable (fromValueBinding: true, self.enabledBindingController)
         self.placeholderString = nil
         self.doubleValue = CGFloat (v)
       case .multiple :
+//        Swift.print ("multiple, empty")
         self.enable (fromValueBinding: true, self.enabledBindingController)
         self.placeholderString = "Multiple Selection"
         self.stringValue = ""
       }
+//    }else{
+//      Swift.print ("Editor not nil")
     }
   }
 

@@ -68,18 +68,18 @@ final class AutoLayoutLabel : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  final func bind_title (_ model : EBReadOnlyProperty_String) -> Self {
+  final func bind_title (_ inObject : EBReadOnlyProperty_String) -> Self {
     self.mTitleController = EBObservablePropertyController (
-      observedObjects: [model],
-      callBack: { [weak self] in self?.update (from: model) }
+      observedObjects: [inObject],
+      callBack: { [weak self] in self?.update (from: inObject) }
     )
     return self
   }
 
   //····················································································································
 
-  private func update (from model : EBReadOnlyProperty_String) {
-    switch model.selection {
+  private func update (from inObject : EBReadOnlyProperty_String) {
+    switch inObject.selection {
     case .empty :
       self.placeholderString = "No Selection"
       self.stringValue = ""

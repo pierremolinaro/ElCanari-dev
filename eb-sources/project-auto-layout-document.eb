@@ -72,13 +72,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       separator
       StaticLabel (title: "On Selected Components", bold: yes, size : .small, alignment: .left)
       Button (title: "Duplicate", size: .small) {
-        set (commandKeyEquivalent: "D")
+        set (commandKeyEquivalent: "d")
         expandableWidth ()
         $run duplicateSelectedComponentsAction
         $enabled #componentController.selectedArray.count > 0
       }
       Button (title: "Rename…", size: .small) {
         expandableWidth ()
+        set (commandKeyEquivalent: "r")
         $run renameSelectedComponentsAction
         $enabled #componentController.selectedArray.count == 1
       }
@@ -90,18 +91,20 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       }
       Button (title: "Change Package…", size: .small) {
         expandableWidth ()
+        set (controlCommandKeyEquivalent: "c")
         $run changePackageOfSelectedComponentsAction
         $enabled self.canChangePackage
       }
       Button (title: "Change Value…", size: .small) {
         expandableWidth ()
+        set (controlCommandKeyEquivalent: "v")
         $run changeValueOfSelectedComponentsAction
         $enabled #componentController.selectedArray.count > 0
       }
       Button (title: "Reveal in Board", size: .small) {
         expandableWidth ()
+        set (controlCommandKeyEquivalent: "b")
         $run revealPackageOfSelectedComponentsAction
-        // $enabled (#componentController.selectedArray.count == 1) & #componentController.selectedArray.all.isPlacedInBoard
         $enabled #componentController.selectedArray.count == 1
       }
       separator
@@ -142,17 +145,17 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   stackView mLibraryPage vStack set (margins: 8) {
     hStack {
       Button (title: "Remove Embedded Devices", size: .regular) {
-        setDeleteKeyAsKeyEquivalent ()
+        set (controlCommandKeyEquivalent: "r")
         $run removeEmbeddedDevicesAction
         $enabled root.mDevices.count > 0
       }
       Button (title: "Reset Device and Font Versions", size: .regular) {
-//        expandableWidth ()
+        set (controlCommandKeyEquivalent: "v")
         $run resetDevicesAndFontsVersionAction
         $enabled (root.mDevices.count > 0) | (root.mFonts.count > 0)
       }
       Button (title: "Update Devices and Fonts", size: .regular) {
-//        expandableWidth ()
+        set (controlCommandKeyEquivalent: "u")
         $run updateDevicesAndFontsAction
         $enabled (root.mDevices.count > 0) | (root.mFonts.count > 0)
       }
@@ -174,10 +177,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   stackView mDevicesInLibraryPage vStack set (margins: 8) expandableWidth () {
      hStack {
       Button (title: "Edit Selected Device", size: .regular) {
+        set (shiftCommandKeyEquivalent: "e")
         $run editSelectedDeviceAction
         $enabled #projectDeviceController.selectedArray.count > 0
       }
       Button (title: "Reset Selected Device Version", size: .regular) {
+        set (shiftCommandKeyEquivalent: "r")
         $run resetSelectedDeviceVersionAction
         $enabled #projectDeviceController.selectedArray.count > 0
       }
@@ -187,10 +192,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         $enabled self.canRemoveSelectedDevices
       }
       Button (title: "Export Selected Device", size: .regular) {
+        set (shiftCommandKeyEquivalent: "x")
         $run exportSelectedDeviceAction
         $enabled #projectDeviceController.selectedArray.count > 0
       }
       Button (title: "Update Selected Device…", size: .regular) {
+        set (shiftCommandKeyEquivalent: "u")
         $run updateSelectedDeviceAction
         $enabled #projectDeviceController.selectedArray.count > 0
       }
@@ -231,16 +238,22 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   stackView mFontsInLibraryPage vStack set (margins: 8) {
     hStack {
-      Button (title: "Add Font…", size: .regular) { $run addFontAction }
+      Button (title: "Add Font…", size: .regular) {
+        set (shiftCommandKeyEquivalent: "a")
+        $run addFontAction
+      }
       Button (title: "Edit Selected Font", size: .regular) {
+        set (shiftCommandKeyEquivalent: "e")
         $run editFontAction
         $enabled #projectFontController.selectedArray.count > 0
       }
       Button (title: "Reset Selected Font Version", size: .regular) {
+        set (shiftCommandKeyEquivalent: "r")
         $run resetFontVersionAction
         $enabled #projectFontController.selectedArray.count > 0
       }
       Button (title: "Update Selected Fonts", size: .regular) {
+        set (shiftCommandKeyEquivalent: "u")
         $run updateFontAction
         $enabled #projectFontController.selectedArray.count > 0
       }
@@ -609,15 +622,15 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     separator
     GridView2 {
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Title", bold: no, size: .small, alignment: .center) { expandableHeight () },
+        left: StaticLabel (title: "Title", bold: no, size: .small, alignment: .right) { expandableHeight () },
         right: TextField (minWidth: 150, size: .small) { automaticallyAdjustHeight (maxWidth: 150) $value root.mSchematicTitle (sendContinously : yes) }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Version", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Version", bold: no, size: .small, alignment: .right),
         right: TextField (minWidth: 150, size: .small) { $value root.mSchematicVersion (sendContinously : yes) }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Date", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Date", bold: no, size: .small, alignment: .right),
         right: hStack {
           Button (title: "Set…", size: .small) { $run openSetDateDialogAction }
           space 
@@ -626,7 +639,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addSeparator ()     
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
         right: EnumSegmentedControl (titles: enum SchematicSheetOrientation.popupTitles, equalWidth: no, size: .small)
         [configurator sheetOrientationSegmentedControlConfigurator] { $selectedSegment root.mSchematicSheetOrientation }
       )
@@ -1879,14 +1892,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         right: Checkbox (title: "Display Name", size: .small) { $value #componentInBoardSelectionController.mNameIsVisibleInBoard }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
         right: DoubleField (minWidth: 64, size: .small) {
           $value #componentInBoardSelectionController.mNameFontSize (sendContinously : no)
           // $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Font", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Font", bold: no, size: .small, alignment: .right),
         right: CanariBoardFontPopUpButton {
           $currentFontName #componentInBoardSelectionController.componentNameFontName
           $fontNames root.fontNameArray
@@ -1894,7 +1907,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
         right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mNameRotation }
       )
       addFirstBaseLineAligned (
@@ -1914,7 +1927,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         $value prefs.mShowComponentRotationKnobInBoard
       })
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
         right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mRotation }
       )
       addFirstBaseLineAligned (
@@ -1924,13 +1937,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Center X", bold: no, size: .small, alignment: .center),
+        left: StaticLabels (left: "Center", right:"X", bold: no, size: .small),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #componentInBoardSelectionController.mX, #componentInBoardSelectionController.mXUnit
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Center Y", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Y", bold: no, size: .small, alignment: .right),
         right: CanariDimensionAndPopUp (size: .small) {
           $dimensionAndUnit #componentInBoardSelectionController.mY, #componentInBoardSelectionController.mYUnit
         }
@@ -1949,14 +1962,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         right: Checkbox (title: "Display Value", size: .small) { $value #componentInBoardSelectionController.mValueIsVisibleInBoard }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
         right: DoubleField (minWidth: 64, size: .small) {
           $value #componentInBoardSelectionController.mValueFontSize (sendContinously : no)
          // $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Font", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Font", bold: no, size: .small, alignment: .right),
         right: CanariBoardFontPopUpButton {
           $currentFontName #componentInBoardSelectionController.componentValueFontName
           $fontNames root.fontNameArray
@@ -1964,7 +1977,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .center),
+        left: StaticLabel (title: "Rotation", bold: no, size: .small, alignment: .right),
         right: CanariPreferredDirectionSegmentedControl { $angle #componentInBoardSelectionController.mValueRotation }
       )
       addFirstBaseLineAligned (

@@ -129,10 +129,11 @@ final class AutoLayoutIntField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  private func update (from model : EBReadOnlyProperty_Int) {
+  private func update (from inObject : EBReadOnlyProperty_Int) {
+    let selection = inObject.selection // TOUJOURS lire la sélection
     if self.currentEditor() == nil {
       self.mInputIsValid = true
-      switch model.selection {
+      switch selection {
       case .empty :
         self.enable (fromValueBinding: false, self.enabledBindingController)
         self.placeholderString = "No Selection"
