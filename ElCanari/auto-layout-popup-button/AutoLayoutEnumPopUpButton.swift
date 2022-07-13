@@ -42,7 +42,7 @@ final class AutoLayoutEnumPopUpButton : AutoLayoutBase_NSPopUpButton {
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     self.mSelectedIndexController?.updateModel (self.indexOfSelectedItem)
-    return super.sendAction (action, to:to)
+    return super.sendAction (action, to: to)
   }
 
   //····················································································································

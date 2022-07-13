@@ -54,7 +54,7 @@ final class ProjectSheetController : EBOutletEvent {
 
   func register (moveSheetUpButton inButton : AutoLayoutButton) {
     self.mMoveSheetUpButton = inButton
-    inButton.title = UP_ARROW_STRING // "\u{21DE}"
+    inButton.title = UP_ARROW_STRING
     inButton.target = self
     inButton.action = #selector (Self.moveUpAction (_:))
   }
@@ -63,7 +63,7 @@ final class ProjectSheetController : EBOutletEvent {
 
   func register (moveSheetDownButton inButton : AutoLayoutButton) {
     self.mMoveSheetDownButton = inButton
-    inButton.title = DOWN_ARROW_STRING // "\u{21DF}"
+    inButton.title = DOWN_ARROW_STRING
     inButton.target = self
     inButton.action = #selector (Self.moveDownAction (_:))
   }

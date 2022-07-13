@@ -7002,8 +7002,6 @@
 		CF784E41275E2914001BC885 /* project — ProjectDocument - autolayout */ = {
 			isa = PBXGroup;
 			children = (
-				CF6C1500287C929E004E3E2C /* configurator-AutoLayoutProjectDocument-moveSheetDown.swift */,
-				CF6C14FC287C915C004E3E2C /* configurator-AutoLayoutProjectDocument-moveSheetUp.swift */,
 				CFDE7C2F27663DCA00762C03 /* action-AutoLayoutProjectDocument-addComponentFromEmbeddedLibraryAction.swift */,
 				CFDE7B392766353200762C03 /* action-AutoLayoutProjectDocument-addComponentFromFileLibraryAction.swift */,
 				CF2285C52766762A00804193 /* action-AutoLayoutProjectDocument-addFontAction.swift */,
@@ -7074,6 +7072,8 @@
 				CFA0B7872779D6FF006E9309 /* configurator-AutoLayoutProjectDocument-ercIssueTableViewConfigurator.swift */,
 				CF3558E4279D9006000BFC9B /* configurator-AutoLayoutProjectDocument-labelHAlignmentSegmendControlConfigurator.swift */,
 				CF3558E5279D9006000BFC9B /* configurator-AutoLayoutProjectDocument-labelVAlignmentSegmendControlConfigurator.swift */,
+				CF6C1500287C929E004E3E2C /* configurator-AutoLayoutProjectDocument-moveSheetDown.swift */,
+				CF6C14FC287C915C004E3E2C /* configurator-AutoLayoutProjectDocument-moveSheetUp.swift */,
 				CFC9D2612790741800371ACF /* configurator-AutoLayoutProjectDocument-netDescriptionTableViewConfigurator.swift */,
 				CF48F99B2778F93400CEE944 /* configurator-AutoLayoutProjectDocument-packageDragSourceTableViewConfigurator.swift */,
 				CFB82B1C276B71CD00BAD56E /* configurator-AutoLayoutProjectDocument-pinsOfSelectedNetTableViewConfigurator.swift */,

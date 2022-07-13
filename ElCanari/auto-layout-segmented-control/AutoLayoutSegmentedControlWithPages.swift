@@ -140,12 +140,10 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
   //····················································································································
 
   private var mSegmentImageController = [Int : EBObservablePropertyController] ()
- // private var mSegmentImageIndex = 0
 
   //····················································································································
 
   final func bind_segmentImage (_ inObject : EBObservableProperty <NSImage>, segmentIndex inSegmentIndex : Int) -> Self {
-//    self.mSegmentImageIndex = inSegmentIndex
     self.mSegmentImageController [inSegmentIndex] = EBObservablePropertyController (
       observedObjects: [inObject],
       callBack: { [weak self] in self?.updateImage (from: inObject, segmentIndex: inSegmentIndex) }
