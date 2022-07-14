@@ -957,7 +957,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   stackView mArtworkDescriptionPage vStack {
     GridView2 {
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Layer Description", bold: no, size: .regular, alignment: .center),
+        left: StaticLabel (title: "Layer Description", bold: no, size: .regular, alignment: .right),
         right: Label (bold: yes, size: .regular) {
           set (alignment: .left)
           expandableWidth ()
@@ -965,7 +965,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Artwork Version", bold: no, size: .regular, alignment: .center),
+        left: StaticLabel (title: "Artwork Version", bold: no, size: .regular, alignment: .right),
         right: IntObserverField (bold: yes, size: .regular) {
           set (alignment: .left)
           expandableWidth ()
@@ -973,7 +973,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
         }
       )
       addCenterYAligned (
-        left: vStack { StaticLabel (title: "Comment", bold: no, size: .regular, alignment: .center) space},
+        left: vStack {StaticLabel (title: "Comment", bold: no, size: .regular, alignment: .right) space },
         right: TextObserverView () { expandableWidth () $observedValue root.comments }
       )
     }

@@ -12,11 +12,11 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
 
   //····················································································································
 
-  weak private final var mEBUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak private var mEBUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  final var mValueExplorer : NSTextField? {
+  var mValueExplorer : NSTextField? {
     didSet {
       self.mValueExplorer?.stringValue = "\(mValue)"
     }
@@ -32,7 +32,7 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
 
   //····················································································································
 
-  private final var mValue : T {
+  private var mValue : T {
     didSet {
       if self.mValue != oldValue {
         self.mValueExplorer?.stringValue = "\(mValue)"
@@ -48,15 +48,15 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
 
   //····················································································································
 
-  override final var selection : EBSelection <T> { return .single (self.mValue) }
+  override var selection : EBSelection <T> { return .single (self.mValue) }
 
   //····················································································································
 
-  final var propval : T { return self.mValue }
+  var propval : T { return self.mValue }
 
   //····················································································································
 
-  override final func setProp (_ value : T) { self.mValue = value }
+  override func setProp (_ value : T) { self.mValue = value }
 
   //····················································································································
 
@@ -77,12 +77,12 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
   //    SIGNATURE
   //····················································································································
 
-  final private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
-  final private var mSignatureCache : UInt32? = nil
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
+  private var mSignatureCache : UInt32? = nil
 
   //····················································································································
 
-  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+  func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = observer
     observer?.clearSignatureCache ()
@@ -91,7 +91,7 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
 
   //····················································································································
 
-  final private func clearSignatureCache () {
+  private func clearSignatureCache () {
     if self.mSignatureCache != nil {
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()

@@ -21,7 +21,7 @@ extension NSView : HiddenEBProtocol {
 
 final class MultipleBindingController_hidden : EBOutletEvent {
 
-  private weak var mOutlet : HiddenEBProtocol? = nil
+  private weak var mOutlet : HiddenEBProtocol?
 
   //····················································································································
 
@@ -117,11 +117,16 @@ enum MultipleBindingIntegerOperation {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 indirect enum EBMultipleBindingBooleanExpression {
+
+  //····················································································································
+
   case alwaysTrue
   case boolcmp (EBMultipleBindingBooleanExpression, MultipleBindingBooleanOperation, EBMultipleBindingBooleanExpression)
   case intcmp  (EBMultipleBindingIntegerExpression, MultipleBindingIntegerOperation, EBMultipleBindingIntegerExpression)
   case not  (EBMultipleBindingBooleanExpression)
   case prop (EBObservableProperty <Bool>)
+
+  //····················································································································
 
   func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
     switch self {
@@ -139,6 +144,8 @@ indirect enum EBMultipleBindingBooleanExpression {
       ioModelArray.append (model)
     }
   }
+
+  //····················································································································
 
   func compute () -> EBSelection <Bool> {
     switch self {
@@ -201,13 +208,20 @@ indirect enum EBMultipleBindingBooleanExpression {
     }
   }
 
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum EBMultipleBindingIntegerExpression {
+
+  //····················································································································
+
   case literalInt (Int)
   case prop (EBObservableProperty <Int>)
+
+  //····················································································································
 
   func addModelsTo (_ ioModelArray : inout [EBObservableObjectProtocol]) {
     switch self {
@@ -218,6 +232,8 @@ enum EBMultipleBindingIntegerExpression {
     }
   }
 
+  //····················································································································
+
   func compute () -> EBSelection <Int> {
     switch self {
     case .literalInt (let v) :
@@ -226,6 +242,9 @@ enum EBMultipleBindingIntegerExpression {
       return model.selection
     }
   }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -61,7 +61,6 @@ extension NSBezierPath : EBStoredPropertyProtocol {
   //····················································································································
 
   static func unarchiveFromData (data : Data) -> NSObject? {
-//    return NSKeyedUnarchiver.unarchiveObject (with: data) as? NSBezierPath
     return try? NSKeyedUnarchiver.unarchivedObject (ofClass: NSBezierPath.self, from: data)
   }
 
@@ -139,11 +138,6 @@ extension NSBezierPath : EBStoredPropertyProtocol {
       }else{
         ok = false
       }
-//      var lineWidth = 0.0
-//      ok = scanner.scanDouble (&lineWidth)
-//      if ok {
-//        bp.lineWidth = CGFloat (lineWidth)
-//      }
     }
     if ok {
       if let flatness = scanner.scanDouble () {
@@ -151,11 +145,6 @@ extension NSBezierPath : EBStoredPropertyProtocol {
       }else{
         ok = false
       }
-//      var flatness = 0.0
-//      ok = scanner.scanDouble (&flatness)
-//      if ok {
-//        bp.flatness = CGFloat (flatness)
-//      }
     }
     if ok {
       if let miterLimit = scanner.scanDouble () {
@@ -163,11 +152,6 @@ extension NSBezierPath : EBStoredPropertyProtocol {
       }else{
         ok = false
       }
-//      var miterLimit = 0.0
-//      ok = scanner.scanDouble (&miterLimit)
-//      if ok {
-//        bp.miterLimit = CGFloat (miterLimit)
-//      }
     }
     return bp
   }

@@ -58,12 +58,12 @@ final class EBGenericPropertyProxy <T> : EBObservableMutableProperty <T>, EBObse
   //····················································································································
 
   override var selection : EBSelection <T> {
-    if let unReadModelFunction = self.mReadModelFunction, self.mCachedValue == nil {
-      self.mCachedValue = unReadModelFunction ()
-      self.updateValueExplorer (possibleValue: self.mCachedValue)
-    }
     if self.mCachedValue == nil {
-      self.mCachedValue = .empty
+      self.mCachedValue = self.mReadModelFunction? ()
+      if self.mCachedValue == nil {
+        self.mCachedValue = .empty
+      }
+      self.updateValueExplorer (possibleValue: self.mCachedValue)
     }
     return self.mCachedValue!
   }

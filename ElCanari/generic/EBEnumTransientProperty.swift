@@ -13,7 +13,7 @@ final class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumPropert
   //····················································································································
 
   private var mValueCache : EBSelection <T>? = nil
-  var mReadModelFunction : Optional<() -> EBSelection <T> > = nil
+  var mReadModelFunction : Optional <() -> EBSelection <T> > = nil
 
   //····················································································································
 

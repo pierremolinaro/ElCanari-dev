@@ -20,13 +20,13 @@ final class AutoLayoutStepper : AutoLayoutBase_NSStepper {
     super.init ()
 
     self.minValue = 32.0
-    self.maxValue = 65535
+    self.maxValue = 65535.0
     self.increment = 1.0
     self.valueWraps = true
     self.autorepeat = true
 
     self.target = self
-    self.action = #selector (Self.action (_:))
+    self.action = #selector (Self.stepperAction (_:))
   }
 
   //····················································································································
@@ -37,7 +37,7 @@ final class AutoLayoutStepper : AutoLayoutBase_NSStepper {
 
   //····················································································································
 
-  @objc func action (_ sender : AutoLayoutStepper) {
+  @objc private func stepperAction (_ sender : AutoLayoutStepper) {
     let v = Int (self.doubleValue.rounded (.toNearestOrEven))
     self.mValueController?.updateModel (withValue: v)
   }
