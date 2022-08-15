@@ -1133,7 +1133,7 @@ import Cocoa
       view_0.appendView (view_0_3)
       let view_0_4 = AutoLayoutButton (title: "Remove Selected Font", size: .regular)
         .setDeleteKeyAsKeyEquivalent ()
-        .bind_enabled (. boolcmp (.intcmp (.prop (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)), .and, .prop (self.canRemoveSelectedFonts_property)))
+        .bind_enabled (.boolcmp (.intcmp (.prop (self.projectFontController.selectedArray_property.count_property), .gt, .literalInt (0)), .and, .prop (self.canRemoveSelectedFonts_property)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.removeFontAction (_:))
@@ -1528,7 +1528,7 @@ import Cocoa
     vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
     do{
-      let view_1_0 = AutoLayoutStaticLabel (title: "Net", bold: false, size: .small, alignment: .center)
+      let view_1_0 = AutoLayoutStaticLabel (title: "Net", bold: false, size: .small, alignment: .right)
       view_1.appendView (view_1_0)
       let view_1_1 = AutoLayoutLabel (bold: true, size: .small)
         .expandableWidth ()
@@ -1540,7 +1540,7 @@ import Cocoa
     let view_2 = AutoLayoutButton (title: "Rename Net…", size: .small)
       .expandableWidth ()
       .set (commandKeyEquivalent: "r")
-      .bind_enabled (. boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
+      .bind_enabled (.boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
       .bind_run (
         target: self,
         selector: #selector (AutoLayoutProjectDocument.renameSchematicWireNetAction (_:))
@@ -1548,7 +1548,7 @@ import Cocoa
     vStackView.appendView (view_2)
     let view_3 = AutoLayoutButton (title: "Rename Net with Automatic Name", size: .small)
       .expandableWidth ()
-      .bind_enabled (. boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
+      .bind_enabled (.boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
       .bind_run (
         target: self,
         selector: #selector (AutoLayoutProjectDocument.renameWireNetWithNewAutomaticNameAction (_:))
@@ -1556,14 +1556,12 @@ import Cocoa
     vStackView.appendView (view_3)
     let view_4 = AutoLayoutHorizontalStackView ()
     do{
-      let view_4_0 = AutoLayoutStaticLabel (title: "Net Class", bold: false, size: .small, alignment: .center)
+      let view_4_0 = AutoLayoutStaticLabel (title: "Net Class", bold: false, size: .small, alignment: .right)
       view_4.appendView (view_4_0)
       let view_4_1 = AutoLayoutPopUpButton (size: .small)
         .expandableWidth ()
       self.configure_selectedWireNetPopUpButtonConfigurator (view_4_1) // Configurator
       view_4.appendView (view_4_1)
-      let view_4_2 = AutoLayoutFlexibleSpace ()
-      view_4.appendView (view_4_2)
     }
     vStackView.appendView (view_4)
     let view_5 = AutoLayoutVerticalStackView.HorizontalSeparator ()
@@ -1571,7 +1569,7 @@ import Cocoa
     let view_6 = AutoLayoutButton (title: "Merge Subnet into Existing Net…", size: .small)
       .expandableWidth ()
       .set (commandKeyEquivalent: "m")
-      .bind_enabled (. boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
+      .bind_enabled (.boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
       .bind_run (
         target: self,
         selector: #selector (AutoLayoutProjectDocument.mergeSubnetIntoAnExistingNetForSelectedWireAction (_:))
@@ -1579,7 +1577,7 @@ import Cocoa
     vStackView.appendView (view_6)
     let view_7 = AutoLayoutButton (title: "Insulate Subnet from Current Net", size: .small)
       .expandableWidth ()
-      .bind_enabled (. boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
+      .bind_enabled (.boolcmp (.intcmp (.prop (self.wireInSchematicSelectionController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .prop (self.wireInSchematicSelectionController.hasNet_property)))
       .bind_run (
         target: self,
         selector: #selector (AutoLayoutProjectDocument.insulateSubnetFromCurrentNetForSelectedWireAction (_:))
@@ -1644,7 +1642,7 @@ import Cocoa
     vStackView.appendView (view_4)
     let view_5 = AutoLayoutHorizontalStackView ()
     do{
-      let view_5_0 = AutoLayoutStaticLabel (title: "Net Class", bold: false, size: .small, alignment: .center)
+      let view_5_0 = AutoLayoutStaticLabel (title: "Net Class", bold: false, size: .small, alignment: .right)
       view_5.appendView (view_5_0)
       let view_5_1 = AutoLayoutPopUpButton (size: .small)
         .expandableWidth ()
@@ -2385,7 +2383,7 @@ import Cocoa
         view_0_0.appendView (view_0_0_2)
         let view_0_0_3 = AutoLayoutButton (title: "Generate Files", size: .regular)
           .expandableWidth ()
-          .bind_enabled (. boolcmp (.not (.prop (self.rootObject.mArtwork_none)), .and, .not (.prop (self.documentIsUnnamed_property))))
+          .bind_enabled (.boolcmp (.not (.prop (self.rootObject.mArtwork_none)), .and, .not (.prop (self.documentIsUnnamed_property))))
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutProjectDocument.generateProductFilesAction (_:))
@@ -3395,7 +3393,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_51 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Color", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Color", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -3414,7 +3412,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_53 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .right)
     return view
   }
 

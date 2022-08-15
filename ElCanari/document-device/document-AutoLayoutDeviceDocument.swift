@@ -720,7 +720,7 @@ import Cocoa
             view_1_0_1_1.appendView (view_1_0_1_1_3)
             let view_1_0_1_1_4 = AutoLayoutButton (title: "Remove", size: .small)
               .expandableWidth ()
-              .bind_enabled (. boolcmp (.intcmp (.prop (self.symbolTypeController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .intcmp (.prop (self.symbolTypeSelection.instanceCount_property), .eq, .literalInt (0))))
+              .bind_enabled (.boolcmp (.intcmp (.prop (self.symbolTypeController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .intcmp (.prop (self.symbolTypeSelection.instanceCount_property), .eq, .literalInt (0))))
               .bind_run (
                 target: self,
                 selector: #selector (AutoLayoutDeviceDocument.removeUselessSymbolTypeAction (_:))
@@ -832,7 +832,7 @@ import Cocoa
         view_0_2.appendView (view_0_2_1)
         let view_0_2_2 = AutoLayoutButton (title: "- Bind →", size: .regular)
           .expandableWidth ()
-          .bind_enabled (. boolcmp (.prop (self.hasUnconnectedPad_property), .and, .prop (self.hasUnconnectedPin_property)))
+          .bind_enabled (.boolcmp (.prop (self.hasUnconnectedPad_property), .and, .prop (self.hasUnconnectedPin_property)))
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutDeviceDocument.performBindAction (_:))
@@ -883,7 +883,7 @@ import Cocoa
     }
     hStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (. boolcmp (.prop (self.rootObject.packagePadNameSetsAreConsistent_property), .and, .prop (self.rootObject.symbolNameAreConsistent_property)))
+      .bind_hidden (.boolcmp (.prop (self.rootObject.packagePadNameSetsAreConsistent_property), .and, .prop (self.rootObject.symbolNameAreConsistent_property)))
     do{
       let view_1_0 = AutoLayoutFlexibleSpace ()
       view_1.appendView (view_1_0)

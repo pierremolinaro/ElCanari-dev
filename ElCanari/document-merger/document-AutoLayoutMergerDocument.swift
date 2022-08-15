@@ -445,7 +445,7 @@ import Cocoa
         view_1_0.appendView (view_1_0_1)
         let view_1_0_2 = AutoLayoutButton (title: "-", size: .small)
           .set (width: 40)
-          .bind_enabled (. boolcmp (.intcmp (.prop (self.mBoardModelController.selectedArray_property.count_property), .gt, .literalInt (0)), .and, .intcmp (.prop (self.mBoardModelSelection.instanceCount_property), .eq, .literalInt (0))))
+          .bind_enabled (.boolcmp (.intcmp (.prop (self.mBoardModelController.selectedArray_property.count_property), .gt, .literalInt (0)), .and, .intcmp (.prop (self.mBoardModelSelection.instanceCount_property), .eq, .literalInt (0))))
           .bind_run (
             target: mBoardModelController,
             selector: #selector (Controller_AutoLayoutMergerDocument_mBoardModelController.remove (_:))
@@ -826,7 +826,7 @@ import Cocoa
         view_0_0.appendView (view_0_0_2)
         let view_0_0_3 = AutoLayoutButton (title: "Generate Files", size: .regular)
           .expandableWidth ()
-          .bind_enabled (. boolcmp (. boolcmp (.not (.prop (self.rootObject.mArtwork_none)), .and, .intcmp (.prop (self.rootObject.boardInstances_property.count_property), .gt, .literalInt (0))), .and, .not (.prop (self.documentIsUnnamed_property))))
+          .bind_enabled (.boolcmp (.boolcmp (.not (.prop (self.rootObject.mArtwork_none)), .and, .intcmp (.prop (self.rootObject.boardInstances_property.count_property), .gt, .literalInt (0))), .and, .not (.prop (self.documentIsUnnamed_property))))
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutMergerDocument.generateProductFilesAction (_:))

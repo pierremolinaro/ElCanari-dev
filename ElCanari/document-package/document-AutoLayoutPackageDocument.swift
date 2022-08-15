@@ -1508,7 +1508,7 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutButton (title: "Lock Points to Model Image", size: .small)
-        .bind_enabled (. boolcmp (.not (.prop (self.rootObject.mPointsAreLocked_property)), .and, .prop (self.rootObject.hasModelImage_property)))
+        .bind_enabled (.boolcmp (.not (.prop (self.rootObject.mPointsAreLocked_property)), .and, .prop (self.rootObject.hasModelImage_property)))
         .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
         .bind_run (
           target: self,
@@ -2755,7 +2755,7 @@ import Cocoa
     let view = AutoLayoutCanariPadRenumberPullDownButton ()
       .bind_currentNumber (self.mPackagePadSelectionController.padNumber_property)
       .bind_currentZoneName (self.mPackagePadSelectionController.zoneName_property)
-      .bind_enabled (.boolcmp (. boolcmp (.prop (self.mPackagePadSelectionController.noZone_property), .and, .prop (self.rootObject.freePadNumbering_property)), .or, .prop (self.mPackagePadSelectionController.zoneAllowsManualRenumbering_property)))
+      .bind_enabled (.boolcmp (.boolcmp (.prop (self.mPackagePadSelectionController.noZone_property), .and, .prop (self.rootObject.freePadNumbering_property)), .or, .prop (self.mPackagePadSelectionController.zoneAllowsManualRenumbering_property)))
     self.configure_configurePadRenumberPullDownButton (view) // Configurator
     return view
   }
