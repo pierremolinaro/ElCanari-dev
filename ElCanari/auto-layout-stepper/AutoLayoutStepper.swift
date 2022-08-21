@@ -42,7 +42,6 @@ final class AutoLayoutStepper : AutoLayoutBase_NSStepper {
     self.mValueController?.updateModel (withValue: v)
   }
 
-
   //····················································································································
   //  $value binding
   //····················································································································
@@ -60,7 +59,7 @@ final class AutoLayoutStepper : AutoLayoutBase_NSStepper {
   //····················································································································
 
   private var mValueController : EBGenericReadWritePropertyController <Int>? = nil
-  var mSendContinously = false
+  private var mSendContinously = false
 
   //····················································································································
 
