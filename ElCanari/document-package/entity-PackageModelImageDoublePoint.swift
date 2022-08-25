@@ -583,16 +583,15 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //    setUpWithTextDictionary
+  //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                         _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data,
-                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.addOperation {
-    //--- Atomic properties
+  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                   _ inObjectArray : [EBManagedObject],
+                                                   _ inData : Data,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
+    ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mFirstX"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mFirstX = value
       }
@@ -611,14 +610,22 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
       if let range = inDictionary ["mSecondColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
         self.mSecondColor = value
       }
-    //--- To one relationships
-      if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! PackageRoot
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mRoot = object }
-      }
-    //--- To many relationships
     }
   //--- End of addOperation
+  }
+
+  //····················································································································
+  //    setUpToOneRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inData : Data) {
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+      if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
+        let object = inObjectArray [objectIndex] as! PackageRoot
+        self.mRoot = object 
+      }
   }
 
   //····················································································································

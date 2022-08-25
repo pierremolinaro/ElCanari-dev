@@ -789,16 +789,15 @@ final class FontRoot : EBManagedObject,
   }
 
   //····················································································································
-  //    setUpWithTextDictionary
+  //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                         _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data,
-                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.addOperation {
-    //--- Atomic properties
+  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                   _ inObjectArray : [EBManagedObject],
+                                                   _ inData : Data,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
+    ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
         self.comments = value
       }
@@ -814,18 +813,26 @@ final class FontRoot : EBManagedObject,
       if let range = inDictionary ["currentCharacterCodePoint"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.currentCharacterCodePoint = value
       }
-    //--- To one relationships
-    //--- To many relationships
+    }
+  //--- End of addOperation
+  }
+
+  //····················································································································
+  //    setUpToManyRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inData : Data) {
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["characters"], range.length > 0 {
         var relationshipArray = EBReferenceArray <FontCharacter> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! FontCharacter)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.characters = relationshipArray }
+        self.characters = relationshipArray
       }
-    }
-  //--- End of addOperation
   }
 
   //····················································································································

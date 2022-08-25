@@ -774,16 +774,15 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //    setUpWithTextDictionary
+  //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                         _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data,
-                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.addOperation {
-    //--- Atomic properties
+  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                   _ inObjectArray : [EBManagedObject],
+                                                   _ inData : Data,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
+    ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mInstanceName = value
       }
@@ -793,22 +792,40 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mY = value
       }
-    //--- To one relationships
+    }
+  //--- End of addOperation
+  }
+
+  //····················································································································
+  //    setUpToOneRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inData : Data) {
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["mType"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! SymbolTypeInDevice
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mType = object }
+        self.mType = object 
       }
-    //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpToManyRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inData : Data) {
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["mPinInstances"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SymbolPinInstanceInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolPinInstanceInDevice)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPinInstances = relationshipArray }
+        self.mPinInstances = relationshipArray
       }
-    }
-  //--- End of addOperation
   }
 
   //····················································································································

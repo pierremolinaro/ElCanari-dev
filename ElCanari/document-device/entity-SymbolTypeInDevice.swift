@@ -718,16 +718,15 @@ final class SymbolTypeInDevice : EBManagedObject,
   }
 
   //····················································································································
-  //    setUpWithTextDictionary
+  //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                         _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data,
-                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.addOperation {
-    //--- Atomic properties
+  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                   _ inObjectArray : [EBManagedObject],
+                                                   _ inData : Data,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
+    ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mTypeName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mTypeName = value
       }
@@ -743,15 +742,25 @@ final class SymbolTypeInDevice : EBManagedObject,
       if let range = inDictionary ["mFilledBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
         self.mFilledBezierPath = value
       }
-    //--- To one relationships
-    //--- To many relationships
+    }
+  //--- End of addOperation
+  }
+
+  //····················································································································
+  //    setUpToManyRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inData : Data) {
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["mInstances"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SymbolInstanceInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolInstanceInDevice)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mInstances = relationshipArray }
+        self.mInstances = relationshipArray
       }
       if let range = inDictionary ["mPinTypes"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SymbolPinTypeInDevice> ()
@@ -759,10 +768,8 @@ final class SymbolTypeInDevice : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolPinTypeInDevice)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPinTypes = relationshipArray }
+        self.mPinTypes = relationshipArray
       }
-    }
-  //--- End of addOperation
   }
 
   //····················································································································

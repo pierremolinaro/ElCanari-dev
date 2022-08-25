@@ -1775,16 +1775,15 @@ final class PackagePad : PackageObject,
   }
 
   //····················································································································
-  //    setUpWithTextDictionary
+  //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                         _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data,
-                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.addOperation {
-    //--- Atomic properties
+  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                   _ inObjectArray : [EBManagedObject],
+                                                   _ inData : Data,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
+    ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["xCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.xCenter = value
       }
@@ -1833,22 +1832,40 @@ final class PackagePad : PackageObject,
       if let range = inDictionary ["annularRingUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.annularRingUnit = value
       }
-    //--- To one relationships
+    }
+  //--- End of addOperation
+  }
+
+  //····················································································································
+  //    setUpToOneRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inData : Data) {
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["zone"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! PackageZone
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.zone = object }
+        self.zone = object 
       }
-    //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpToManyRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inData : Data) {
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["slaves"], range.length > 0 {
         var relationshipArray = EBReferenceArray <PackageSlavePad> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageSlavePad)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.slaves = relationshipArray }
+        self.slaves = relationshipArray
       }
-    }
-  //--- End of addOperation
   }
 
   //····················································································································

@@ -357,16 +357,15 @@ final class CanariLibraryEntry : EBManagedObject,
   }
 
   //····················································································································
-  //    setUpWithTextDictionary
+  //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                         _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data,
-                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.addOperation {
-    //--- Atomic properties
+  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                   _ inObjectArray : [EBManagedObject],
+                                                   _ inData : Data,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
+    ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mPath"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mPath = value
       }
@@ -379,8 +378,6 @@ final class CanariLibraryEntry : EBManagedObject,
       if let range = inDictionary ["mUserAndPasswordTag"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mUserAndPasswordTag = value
       }
-    //--- To one relationships
-    //--- To many relationships
     }
   //--- End of addOperation
   }

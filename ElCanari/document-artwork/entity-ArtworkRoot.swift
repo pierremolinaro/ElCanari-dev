@@ -1075,16 +1075,15 @@ final class ArtworkRoot : EBManagedObject,
   }
 
   //····················································································································
-  //    setUpWithTextDictionary
+  //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                         _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data,
-                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.addOperation {
-    //--- Atomic properties
+  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                   _ inObjectArray : [EBManagedObject],
+                                                   _ inData : Data,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
+    ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["layerConfiguration"], let value = LayerConfiguration.unarchiveFromDataRange (inData, range) {
         self.layerConfiguration = value
       }
@@ -1124,18 +1123,26 @@ final class ArtworkRoot : EBManagedObject,
       if let range = inDictionary ["drillDataFileExtension"], let value = String.unarchiveFromDataRange (inData, range) {
         self.drillDataFileExtension = value
       }
-    //--- To one relationships
-    //--- To many relationships
+    }
+  //--- End of addOperation
+  }
+
+  //····················································································································
+  //    setUpToManyRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inData : Data) {
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["fileGenerationParameterArray"], range.length > 0 {
         var relationshipArray = EBReferenceArray <ArtworkFileGenerationParameters> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ArtworkFileGenerationParameters)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.fileGenerationParameterArray = relationshipArray }
+        self.fileGenerationParameterArray = relationshipArray
       }
-    }
-  //--- End of addOperation
   }
 
   //····················································································································

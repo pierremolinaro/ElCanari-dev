@@ -510,28 +510,21 @@ final class WireInSchematic : SchematicObject,
   }
 
   //····················································································································
-  //    setUpWithTextDictionary
+  //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                         _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data,
-                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.addOperation {
-    //--- Atomic properties
-    //--- To one relationships
+  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inData : Data) {
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["mP1"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! PointInSchematic
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mP1 = object }
+        self.mP1 = object 
       }
       if let range = inDictionary ["mP2"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! PointInSchematic
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mP2 = object }
+        self.mP2 = object 
       }
-    //--- To many relationships
-    }
-  //--- End of addOperation
   }
 
   //····················································································································

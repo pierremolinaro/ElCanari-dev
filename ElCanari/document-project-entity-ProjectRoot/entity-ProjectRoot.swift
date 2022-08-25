@@ -8865,16 +8865,15 @@ final class ProjectRoot : EBManagedObject,
   }
 
   //····················································································································
-  //    setUpWithTextDictionary
+  //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                         _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data,
-                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.addOperation {
-    //--- Atomic properties
+  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                   _ inObjectArray : [EBManagedObject],
+                                                   _ inData : Data,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
+    ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mArtworkName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mArtworkName = value
       }
@@ -9154,23 +9153,43 @@ final class ProjectRoot : EBManagedObject,
       if let range = inDictionary ["mRastnetDisplayedComponentName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mRastnetDisplayedComponentName = value
       }
-    //--- To one relationships
+    }
+  //--- End of addOperation
+  }
+
+  //····················································································································
+  //    setUpToOneRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inData : Data) {
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! ArtworkRoot
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mArtwork = object }
+        self.mArtwork = object 
       }
       if let range = inDictionary ["mSelectedSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! SheetInProject
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mSelectedSheet = object }
+        self.mSelectedSheet = object 
       }
-    //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpToManyRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inData : Data) {
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["mSheets"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SheetInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SheetInProject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mSheets = relationshipArray }
+        self.mSheets = relationshipArray
       }
       if let range = inDictionary ["mFonts"], range.length > 0 {
         var relationshipArray = EBReferenceArray <FontInProject> ()
@@ -9178,7 +9197,7 @@ final class ProjectRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! FontInProject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mFonts = relationshipArray }
+        self.mFonts = relationshipArray
       }
       if let range = inDictionary ["mDevices"], range.length > 0 {
         var relationshipArray = EBReferenceArray <DeviceInProject> ()
@@ -9186,7 +9205,7 @@ final class ProjectRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceInProject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mDevices = relationshipArray }
+        self.mDevices = relationshipArray
       }
       if let range = inDictionary ["mNetClasses"], range.length > 0 {
         var relationshipArray = EBReferenceArray <NetClassInProject> ()
@@ -9194,7 +9213,7 @@ final class ProjectRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! NetClassInProject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mNetClasses = relationshipArray }
+        self.mNetClasses = relationshipArray
       }
       if let range = inDictionary ["mBorderCurves"], range.length > 0 {
         var relationshipArray = EBReferenceArray <BorderCurve> ()
@@ -9202,7 +9221,7 @@ final class ProjectRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BorderCurve)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mBorderCurves = relationshipArray }
+        self.mBorderCurves = relationshipArray
       }
       if let range = inDictionary ["mBoardObjects"], range.length > 0 {
         var relationshipArray = EBReferenceArray <BoardObject> ()
@@ -9210,7 +9229,7 @@ final class ProjectRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardObject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mBoardObjects = relationshipArray }
+        self.mBoardObjects = relationshipArray
       }
       if let range = inDictionary ["mComponents"], range.length > 0 {
         var relationshipArray = EBReferenceArray <ComponentInProject> ()
@@ -9218,10 +9237,8 @@ final class ProjectRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mComponents = relationshipArray }
+        self.mComponents = relationshipArray
       }
-    }
-  //--- End of addOperation
   }
 
   //····················································································································

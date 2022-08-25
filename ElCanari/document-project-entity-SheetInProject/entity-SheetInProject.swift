@@ -664,32 +664,51 @@ final class SheetInProject : EBManagedObject,
   }
 
   //····················································································································
-  //    setUpWithTextDictionary
+  //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                         _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data,
-                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.addOperation {
-    //--- Atomic properties
+  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                   _ inObjectArray : [EBManagedObject],
+                                                   _ inData : Data,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
+    ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mSheetTitle"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mSheetTitle = value
       }
-    //--- To one relationships
+    }
+  //--- End of addOperation
+  }
+
+  //····················································································································
+  //    setUpToOneRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inData : Data) {
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! ProjectRoot
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mRoot = object }
+        self.mRoot = object 
       }
-    //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpToManyRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inData : Data) {
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["mObjects"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SchematicObject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SchematicObject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mObjects = relationshipArray }
+        self.mObjects = relationshipArray
       }
       if let range = inDictionary ["mPoints"], range.length > 0 {
         var relationshipArray = EBReferenceArray <PointInSchematic> ()
@@ -697,10 +716,8 @@ final class SheetInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPoints = relationshipArray }
+        self.mPoints = relationshipArray
       }
-    }
-  //--- End of addOperation
   }
 
   //····················································································································

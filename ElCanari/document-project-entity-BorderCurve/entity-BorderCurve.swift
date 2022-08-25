@@ -1187,16 +1187,15 @@ final class BorderCurve : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //    setUpWithTextDictionary
+  //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                         _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data,
-                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.addOperation {
-    //--- Atomic properties
+  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                   _ inObjectArray : [EBManagedObject],
+                                                   _ inData : Data,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
+    ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mX = value
       }
@@ -1218,22 +1217,30 @@ final class BorderCurve : EBGraphicManagedObject,
       if let range = inDictionary ["mShape"], let value = BorderCurveShape.unarchiveFromDataRange (inData, range) {
         self.mShape = value
       }
-    //--- To one relationships
+    }
+  //--- End of addOperation
+  }
+
+  //····················································································································
+  //    setUpToOneRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inData : Data) {
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! ProjectRoot
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mRoot = object }
+        self.mRoot = object 
       }
       if let range = inDictionary ["mNext"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! BorderCurve
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mNext = object }
+        self.mNext = object 
       }
       if let range = inDictionary ["mPrevious"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! BorderCurve
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mPrevious = object }
+        self.mPrevious = object 
       }
-    //--- To many relationships
-    }
-  //--- End of addOperation
   }
 
   //····················································································································

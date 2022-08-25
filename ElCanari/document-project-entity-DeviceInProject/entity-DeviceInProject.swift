@@ -1074,16 +1074,15 @@ final class DeviceInProject : EBManagedObject,
   }
 
   //····················································································································
-  //    setUpWithTextDictionary
+  //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                         _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data,
-                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.addOperation {
-    //--- Atomic properties
+  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                   _ inObjectArray : [EBManagedObject],
+                                                   _ inData : Data,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
+    ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mDeviceName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mDeviceName = value
       }
@@ -1096,15 +1095,25 @@ final class DeviceInProject : EBManagedObject,
       if let range = inDictionary ["mDeviceFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
         self.mDeviceFileData = value
       }
-    //--- To one relationships
-    //--- To many relationships
+    }
+  //--- End of addOperation
+  }
+
+  //····················································································································
+  //    setUpToManyRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inData : Data) {
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["mPackages"], range.length > 0 {
         var relationshipArray = EBReferenceArray <DevicePackageInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DevicePackageInProject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPackages = relationshipArray }
+        self.mPackages = relationshipArray
       }
       if let range = inDictionary ["mSymbols"], range.length > 0 {
         var relationshipArray = EBReferenceArray <DeviceSymbolInstanceInProject> ()
@@ -1112,7 +1121,7 @@ final class DeviceInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceSymbolInstanceInProject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mSymbols = relationshipArray }
+        self.mSymbols = relationshipArray
       }
       if let range = inDictionary ["mComponents"], range.length > 0 {
         var relationshipArray = EBReferenceArray <ComponentInProject> ()
@@ -1120,7 +1129,7 @@ final class DeviceInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mComponents = relationshipArray }
+        self.mComponents = relationshipArray
       }
       if let range = inDictionary ["mPadAssignments"], range.length > 0 {
         var relationshipArray = EBReferenceArray <DevicePadAssignmentInProject> ()
@@ -1128,10 +1137,8 @@ final class DeviceInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DevicePadAssignmentInProject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPadAssignments = relationshipArray }
+        self.mPadAssignments = relationshipArray
       }
-    }
-  //--- End of addOperation
   }
 
   //····················································································································

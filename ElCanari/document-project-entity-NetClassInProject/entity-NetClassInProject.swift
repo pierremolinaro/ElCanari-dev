@@ -1527,16 +1527,15 @@ final class NetClassInProject : EBManagedObject,
   }
 
   //····················································································································
-  //    setUpWithTextDictionary
+  //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                         _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data,
-                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.addOperation {
-    //--- Atomic properties
+  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                   _ inObjectArray : [EBManagedObject],
+                                                   _ inData : Data,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
+    ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mNetClassName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mNetClassName = value
       }
@@ -1579,18 +1578,26 @@ final class NetClassInProject : EBManagedObject,
       if let range = inDictionary ["mAllowTracksOnInner4Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.mAllowTracksOnInner4Layer = value
       }
-    //--- To one relationships
-    //--- To many relationships
+    }
+  //--- End of addOperation
+  }
+
+  //····················································································································
+  //    setUpToManyRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inData : Data) {
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["mNets"], range.length > 0 {
         var relationshipArray = EBReferenceArray <NetInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! NetInProject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mNets = relationshipArray }
+        self.mNets = relationshipArray
       }
-    }
-  //--- End of addOperation
   }
 
   //····················································································································

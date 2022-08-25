@@ -95,10 +95,24 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
 
   //····················································································································
 
-  func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                _ inObjectArray : [EBManagedObject],
-                                _ inData : Data,
-                                _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
+  func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+                                          _ inObjectArray : [EBManagedObject],
+                                          _ inData : Data,
+                                          _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
+  }
+
+  //····················································································································
+
+  func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                  _ inObjectArray : [EBManagedObject],
+                                                  _ inData : Data) {
+  }
+
+  //····················································································································
+
+  func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                   _ inObjectArray : [EBManagedObject],
+                                                   _ inData : Data) {
   }
 
   //····················································································································

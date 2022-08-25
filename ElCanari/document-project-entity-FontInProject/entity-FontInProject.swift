@@ -911,16 +911,15 @@ final class FontInProject : EBManagedObject,
   }
 
   //····················································································································
-  //    setUpWithTextDictionary
+  //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                         _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data,
-                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.addOperation {
-    //--- Atomic properties
+  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                   _ inObjectArray : [EBManagedObject],
+                                                   _ inData : Data,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
+    ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mNominalSize"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mNominalSize = value
       }
@@ -933,15 +932,25 @@ final class FontInProject : EBManagedObject,
       if let range = inDictionary ["mDescriptiveString"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mDescriptiveString = value
       }
-    //--- To one relationships
-    //--- To many relationships
+    }
+  //--- End of addOperation
+  }
+
+  //····················································································································
+  //    setUpToManyRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inData : Data) {
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["mTexts"], range.length > 0 {
         var relationshipArray = EBReferenceArray <BoardText> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardText)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mTexts = relationshipArray }
+        self.mTexts = relationshipArray
       }
       if let range = inDictionary ["mComponentNames"], range.length > 0 {
         var relationshipArray = EBReferenceArray <ComponentInProject> ()
@@ -949,7 +958,7 @@ final class FontInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mComponentNames = relationshipArray }
+        self.mComponentNames = relationshipArray
       }
       if let range = inDictionary ["mComponentValues"], range.length > 0 {
         var relationshipArray = EBReferenceArray <ComponentInProject> ()
@@ -957,10 +966,8 @@ final class FontInProject : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mComponentValues = relationshipArray }
+        self.mComponentValues = relationshipArray
       }
-    }
-  //--- End of addOperation
   }
 
   //····················································································································

@@ -386,24 +386,17 @@ class SchematicObject : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //    setUpWithTextDictionary
+  //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                         _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data,
-                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.addOperation {
-    //--- Atomic properties
-    //--- To one relationships
+  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inData : Data) {
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["mSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! SheetInProject
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mSheet = object }
+        self.mSheet = object 
       }
-    //--- To many relationships
-    }
-  //--- End of addOperation
   }
 
   //····················································································································

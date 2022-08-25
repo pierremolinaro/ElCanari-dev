@@ -1776,16 +1776,15 @@ final class DeviceRoot : EBManagedObject,
   }
 
   //····················································································································
-  //    setUpWithTextDictionary
+  //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                         _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data,
-                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.addOperation {
-    //--- Atomic properties
+  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                   _ inObjectArray : [EBManagedObject],
+                                                   _ inData : Data,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
+    ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mSelectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mSelectedPageIndex = value
       }
@@ -1831,15 +1830,25 @@ final class DeviceRoot : EBManagedObject,
       if let range = inDictionary ["mSymbolDisplayZoom"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mSymbolDisplayZoom = value
       }
-    //--- To one relationships
-    //--- To many relationships
+    }
+  //--- End of addOperation
+  }
+
+  //····················································································································
+  //    setUpToManyRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inData : Data) {
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["mDocs"], range.length > 0 {
         var relationshipArray = EBReferenceArray <DeviceDocumentation> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! DeviceDocumentation)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mDocs = relationshipArray }
+        self.mDocs = relationshipArray
       }
       if let range = inDictionary ["mSymbolInstances"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SymbolInstanceInDevice> ()
@@ -1847,7 +1856,7 @@ final class DeviceRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolInstanceInDevice)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mSymbolInstances = relationshipArray }
+        self.mSymbolInstances = relationshipArray
       }
       if let range = inDictionary ["mPackages"], range.length > 0 {
         var relationshipArray = EBReferenceArray <PackageInDevice> ()
@@ -1855,7 +1864,7 @@ final class DeviceRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PackageInDevice)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPackages = relationshipArray }
+        self.mPackages = relationshipArray
       }
       if let range = inDictionary ["mSymbolTypes"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SymbolTypeInDevice> ()
@@ -1863,7 +1872,7 @@ final class DeviceRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SymbolTypeInDevice)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mSymbolTypes = relationshipArray }
+        self.mSymbolTypes = relationshipArray
       }
       if let range = inDictionary ["mPadProxies"], range.length > 0 {
         var relationshipArray = EBReferenceArray <PadProxyInDevice> ()
@@ -1871,10 +1880,8 @@ final class DeviceRoot : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! PadProxyInDevice)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mPadProxies = relationshipArray }
+        self.mPadProxies = relationshipArray
       }
-    }
-  //--- End of addOperation
   }
 
   //····················································································································

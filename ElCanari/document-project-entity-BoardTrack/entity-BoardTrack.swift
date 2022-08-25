@@ -2012,16 +2012,15 @@ final class BoardTrack : BoardObject,
   }
 
   //····················································································································
-  //    setUpWithTextDictionary
+  //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                         _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data,
-                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.addOperation {
-    //--- Atomic properties
+  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                   _ inObjectArray : [EBManagedObject],
+                                                   _ inData : Data,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
+    ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mSide"], let value = TrackSide.unarchiveFromDataRange (inData, range) {
         self.mSide = value
       }
@@ -2061,22 +2060,30 @@ final class BoardTrack : BoardObject,
       if let range = inDictionary ["mDirectionLockOnKnobDragging"], let value = TrackLockDirection.unarchiveFromDataRange (inData, range) {
         self.mDirectionLockOnKnobDragging = value
       }
-    //--- To one relationships
+    }
+  //--- End of addOperation
+  }
+
+  //····················································································································
+  //    setUpToOneRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inData : Data) {
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["mConnectorP1"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! BoardConnector
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mConnectorP1 = object }
+        self.mConnectorP1 = object 
       }
       if let range = inDictionary ["mConnectorP2"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! BoardConnector
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mConnectorP2 = object }
+        self.mConnectorP2 = object 
       }
       if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! NetInProject
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mNet = object }
+        self.mNet = object 
       }
-    //--- To many relationships
-    }
-  //--- End of addOperation
   }
 
   //····················································································································

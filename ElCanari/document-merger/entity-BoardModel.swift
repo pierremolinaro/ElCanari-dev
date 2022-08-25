@@ -6328,16 +6328,15 @@ final class BoardModel : EBManagedObject,
   }
 
   //····················································································································
-  //    setUpWithTextDictionary
+  //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                         _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data,
-                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.addOperation {
-    //--- Atomic properties
+  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                   _ inObjectArray : [EBManagedObject],
+                                                   _ inData : Data,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
+    ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["name"], let value = String.unarchiveFromDataRange (inData, range) {
         self.name = value
       }
@@ -6368,15 +6367,25 @@ final class BoardModel : EBManagedObject,
       if let range = inDictionary ["artworkName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.artworkName = value
       }
-    //--- To one relationships
-    //--- To many relationships
+    }
+  //--- End of addOperation
+  }
+
+  //····················································································································
+  //    setUpToManyRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inData : Data) {
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["frontLegendLines"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.frontLegendLines = relationshipArray }
+        self.frontLegendLines = relationshipArray
       }
       if let range = inDictionary ["backLegendLines"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
@@ -6384,7 +6393,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.backLegendLines = relationshipArray }
+        self.backLegendLines = relationshipArray
       }
       if let range = inDictionary ["frontLegendTexts"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
@@ -6392,7 +6401,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.frontLegendTexts = relationshipArray }
+        self.frontLegendTexts = relationshipArray
       }
       if let range = inDictionary ["frontLayoutTexts"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
@@ -6400,7 +6409,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.frontLayoutTexts = relationshipArray }
+        self.frontLayoutTexts = relationshipArray
       }
       if let range = inDictionary ["backLegendTexts"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
@@ -6408,7 +6417,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.backLegendTexts = relationshipArray }
+        self.backLegendTexts = relationshipArray
       }
       if let range = inDictionary ["backLayoutTexts"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
@@ -6416,7 +6425,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.backLayoutTexts = relationshipArray }
+        self.backLayoutTexts = relationshipArray
       }
       if let range = inDictionary ["internalBoardsLimits"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
@@ -6424,7 +6433,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.internalBoardsLimits = relationshipArray }
+        self.internalBoardsLimits = relationshipArray
       }
       if let range = inDictionary ["drills"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
@@ -6432,7 +6441,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.drills = relationshipArray }
+        self.drills = relationshipArray
       }
       if let range = inDictionary ["vias"], range.length > 0 {
         var relationshipArray = EBReferenceArray <BoardModelVia> ()
@@ -6440,7 +6449,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardModelVia)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.vias = relationshipArray }
+        self.vias = relationshipArray
       }
       if let range = inDictionary ["frontPads"], range.length > 0 {
         var relationshipArray = EBReferenceArray <BoardModelPad> ()
@@ -6448,7 +6457,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardModelPad)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.frontPads = relationshipArray }
+        self.frontPads = relationshipArray
       }
       if let range = inDictionary ["backPads"], range.length > 0 {
         var relationshipArray = EBReferenceArray <BoardModelPad> ()
@@ -6456,7 +6465,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardModelPad)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.backPads = relationshipArray }
+        self.backPads = relationshipArray
       }
       if let range = inDictionary ["traversingPads"], range.length > 0 {
         var relationshipArray = EBReferenceArray <BoardModelPad> ()
@@ -6464,7 +6473,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! BoardModelPad)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.traversingPads = relationshipArray }
+        self.traversingPads = relationshipArray
       }
       if let range = inDictionary ["backComponentNames"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
@@ -6472,7 +6481,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.backComponentNames = relationshipArray }
+        self.backComponentNames = relationshipArray
       }
       if let range = inDictionary ["frontComponentNames"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
@@ -6480,7 +6489,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.frontComponentNames = relationshipArray }
+        self.frontComponentNames = relationshipArray
       }
       if let range = inDictionary ["frontComponentValues"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
@@ -6488,7 +6497,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.frontComponentValues = relationshipArray }
+        self.frontComponentValues = relationshipArray
       }
       if let range = inDictionary ["backComponentValues"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
@@ -6496,7 +6505,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.backComponentValues = relationshipArray }
+        self.backComponentValues = relationshipArray
       }
       if let range = inDictionary ["backTracks"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
@@ -6504,7 +6513,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.backTracks = relationshipArray }
+        self.backTracks = relationshipArray
       }
       if let range = inDictionary ["frontTracks"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
@@ -6512,7 +6521,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.frontTracks = relationshipArray }
+        self.frontTracks = relationshipArray
       }
       if let range = inDictionary ["inner1Tracks"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
@@ -6520,7 +6529,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.inner1Tracks = relationshipArray }
+        self.inner1Tracks = relationshipArray
       }
       if let range = inDictionary ["inner2Tracks"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
@@ -6528,7 +6537,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.inner2Tracks = relationshipArray }
+        self.inner2Tracks = relationshipArray
       }
       if let range = inDictionary ["inner3Tracks"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
@@ -6536,7 +6545,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.inner3Tracks = relationshipArray }
+        self.inner3Tracks = relationshipArray
       }
       if let range = inDictionary ["inner4Tracks"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
@@ -6544,7 +6553,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.inner4Tracks = relationshipArray }
+        self.inner4Tracks = relationshipArray
       }
       if let range = inDictionary ["frontPackages"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
@@ -6552,7 +6561,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.frontPackages = relationshipArray }
+        self.frontPackages = relationshipArray
       }
       if let range = inDictionary ["backPackages"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
@@ -6560,7 +6569,7 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.backPackages = relationshipArray }
+        self.backPackages = relationshipArray
       }
       if let range = inDictionary ["myInstances"], range.length > 0 {
         var relationshipArray = EBReferenceArray <MergerBoardInstance> ()
@@ -6568,10 +6577,8 @@ final class BoardModel : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! MergerBoardInstance)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.myInstances = relationshipArray }
+        self.myInstances = relationshipArray
       }
-    }
-  //--- End of addOperation
   }
 
   //····················································································································

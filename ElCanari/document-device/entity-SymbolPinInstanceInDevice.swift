@@ -605,32 +605,25 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   }
 
   //····················································································································
-  //    setUpWithTextDictionary
+  //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                         _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data,
-                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.addOperation {
-    //--- Atomic properties
-    //--- To one relationships
+  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inData : Data) {
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["mSymbolInstance"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! SymbolInstanceInDevice
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mSymbolInstance = object }
+        self.mSymbolInstance = object 
       }
       if let range = inDictionary ["mType"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! SymbolPinTypeInDevice
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mType = object }
+        self.mType = object 
       }
       if let range = inDictionary ["mPadProxy"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! PadProxyInDevice
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mPadProxy = object }
+        self.mPadProxy = object 
       }
-    //--- To many relationships
-    }
-  //--- End of addOperation
   }
 
   //····················································································································

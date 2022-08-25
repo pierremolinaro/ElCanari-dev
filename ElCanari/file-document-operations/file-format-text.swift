@@ -6,17 +6,13 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ParallelObjectSetupContext {
+struct ParallelObjectSetupContext {
   private let mOperationQueue = OperationQueue ()
-  private var mToOneSetUpOperationList = [() -> Void] ()
-  private let mMutexToOne = DispatchSemaphore (value: 1)
-  private var mToManySetUpOperationList = [() -> Void] ()
-  private let mMutexToMany = DispatchSemaphore (value: 1)
   private var mOperationQueueCount = 0
 
   //····················································································································
 
-  func addOperation (_ inOperation : @escaping () -> Void) {
+  mutating func addOperation (_ inOperation : @escaping () -> Void) {
     self.mOperationQueueCount += 1
     self.mOperationQueue.addOperation (inOperation)
   }
@@ -27,49 +23,8 @@ final class ParallelObjectSetupContext {
 
   //····················································································································
 
-  func addToOneSetupDeferredOperation (_ inDeferredOperation : @escaping () -> Void) {
-    self.mMutexToOne.wait ()
-    self.mToOneSetUpOperationList.append (inDeferredOperation)
-    self.mMutexToOne.signal ()
-  }
-
-  //····················································································································
-
-  func addToManySetupDeferredOperation (_ inDeferredOperation : @escaping () -> Void) {
-    self.mMutexToMany.wait ()
-    self.mToManySetUpOperationList.append (inDeferredOperation)
-    self.mMutexToMany.signal ()
-  }
-
-  //····················································································································
-
   fileprivate func waitUntilAllOperationsAreFinished () {
-    // print (self.mOperationQueueCount, self.mOperationQueue.operationCount)
     self.mOperationQueue.waitUntilAllOperationsAreFinished ()
-  }
-
-  //····················································································································
-
-  fileprivate var toOneSetupOperationCount : Int { return self.mToOneSetUpOperationList.count }
-
-  //····················································································································
-
-  fileprivate func performToOneSetupOperations () {
-    for toOneSetupOperation in self.mToOneSetUpOperationList {
-      toOneSetupOperation ()
-    }
-  }
-
-  //····················································································································
-
-  fileprivate var toManySetupOperationCount : Int { return self.mToManySetUpOperationList.count }
-
-  //····················································································································
-
-  fileprivate func performToManySetupOperations () {
-    for toManySetupOperation in self.mToManySetUpOperationList {
-      toManySetupOperation ()
-    }
   }
 
   //····················································································································
@@ -111,48 +66,56 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
     classDefinition.append ((className, propertyNameArray))
   }
   appendDocumentFileOperationInfo ("  Read \(classDefinition.count) classes: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
-  operationStartDate = Date ()
 //--- Read objects
+  operationStartDate = Date ()
   var objectArray = [EBManagedObject] ()
   var propertyValueArray = [[String : NSRange]] ()
   while !ioDataScanner.eof (), ioDataScanner.testAccept (byte: ASCII.at.rawValue) {
     let classIndex = ioDataScanner.parseBase62EncodedInt ()
-    let propertyNameArray = classDefinition [classIndex].1
     let className = classDefinition [classIndex].0
     let managedObject = newInstanceOfEntityNamed (inUndoManager, className)!
     objectArray.append (managedObject)
+    let propertyNameArray = classDefinition [classIndex].1
     var valueDictionary = [String : NSRange] ()
-    if propertyNameArray.count > 0 {
-      for propertyIndex in 0 ..< propertyNameArray.count {
-        let propertyRange = ioDataScanner.getLineRangeAndAdvance ()
-        valueDictionary [propertyNameArray [propertyIndex]] = propertyRange
-      }
+    for propertyName in propertyNameArray {
+      let propertyRange = ioDataScanner.getLineRangeAndAdvance ()
+      valueDictionary [propertyName] = propertyRange
     }
     propertyValueArray.append (valueDictionary)
   }
   appendDocumentFileOperationInfo ("  Read \(objectArray.count) objects: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
+
 //--- Prepare objects
   operationStartDate = Date ()
   var idx = 0
-  let parallelObjectSetupContext = ParallelObjectSetupContext ()
-//  parallelObjectSetupContext.mOperationQueue.maxConcurrentOperationCount = 10
-//  print ("\(parallelObjectSetupContext.mOperationQueue.maxConcurrentOperationCount)")
-//  print (OperationQueue.defaultMaxConcurrentOperationCount)
+  var parallelObjectSetupContext = ParallelObjectSetupContext ()
   for managedObject in objectArray {
     let valueDictionary = propertyValueArray [idx]
     idx += 1
-    managedObject.setUpWithTextDictionary (valueDictionary, objectArray, ioDataScanner.data, parallelObjectSetupContext)
+    managedObject.setUpPropertiesWithTextDictionary (valueDictionary, objectArray, ioDataScanner.data, &parallelObjectSetupContext)
   }
-  parallelObjectSetupContext.waitUntilAllOperationsAreFinished ()
   appendDocumentFileOperationInfo ("  Prepare objects: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms (\(parallelObjectSetupContext.operationQueueCount) operations)\n")
+  operationStartDate = Date ()
+  parallelObjectSetupContext.waitUntilAllOperationsAreFinished ()
+  appendDocumentFileOperationInfo ("  Done: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
 //--- Setup toOne
   operationStartDate = Date ()
-  parallelObjectSetupContext.performToOneSetupOperations ()
-  appendDocumentFileOperationInfo ("  Setup toOne: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms (\(parallelObjectSetupContext.toOneSetupOperationCount) operations)\n")
+  idx = 0
+  for managedObject in objectArray {
+    let valueDictionary = propertyValueArray [idx]
+    idx += 1
+    managedObject.setUpToOneRelationshipsWithTextDictionary (valueDictionary, objectArray, ioDataScanner.data)
+  }
+  appendDocumentFileOperationInfo ("  Setup toOne: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
 //--- Setup toMany
   operationStartDate = Date ()
-  parallelObjectSetupContext.performToManySetupOperations ()
-  appendDocumentFileOperationInfo ("  Setup toMany: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms (\(parallelObjectSetupContext.toManySetupOperationCount) operations)\n")
+  idx = 0
+  for managedObject in objectArray {
+    let valueDictionary = propertyValueArray [idx]
+    idx += 1
+    managedObject.setUpToManyRelationshipsWithTextDictionary (valueDictionary, objectArray, ioDataScanner.data)
+  }
+  appendDocumentFileOperationInfo ("  Setup toMany: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
 //--- Scanner error ?
   appendDocumentFileOperationInfo ("Total duration: \(Int (Date ().timeIntervalSince (startDate) * 1000.0)) ms\n\n")
   if !ioDataScanner.ok () {

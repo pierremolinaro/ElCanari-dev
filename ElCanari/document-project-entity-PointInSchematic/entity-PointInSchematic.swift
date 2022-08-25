@@ -1478,16 +1478,15 @@ final class PointInSchematic : EBManagedObject,
   }
 
   //····················································································································
-  //    setUpWithTextDictionary
+  //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpWithTextDictionary (_ inDictionary : [String : NSRange],
-                                         _ inObjectArray : [EBManagedObject],
-                                         _ inData : Data,
-                                         _ inParallelObjectSetupContext : ParallelObjectSetupContext) {
-    super.setUpWithTextDictionary (inDictionary, inObjectArray, inData, inParallelObjectSetupContext)
-    inParallelObjectSetupContext.addOperation {
-    //--- Atomic properties
+  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                   _ inObjectArray : [EBManagedObject],
+                                                   _ inData : Data,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
+    ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mSymbolPinName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mSymbolPinName = value
       }
@@ -1497,31 +1496,51 @@ final class PointInSchematic : EBManagedObject,
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mY = value
       }
-    //--- To one relationships
+    }
+  //--- End of addOperation
+  }
+
+  //····················································································································
+  //    setUpToOneRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inData : Data) {
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["mSymbol"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! ComponentSymbolInProject
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mSymbol = object }
+        self.mSymbol = object 
       }
       if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! NetInProject
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mNet = object }
+        self.mNet = object 
       }
       if let range = inDictionary ["mNC"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! NCInSchematic
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mNC = object }
+        self.mNC = object 
       }
       if let range = inDictionary ["mSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
         let object = inObjectArray [objectIndex] as! SheetInProject
-        inParallelObjectSetupContext.addToOneSetupDeferredOperation { self.mSheet = object }
+        self.mSheet = object 
       }
-    //--- To many relationships
+  }
+
+  //····················································································································
+  //    setUpToManyRelationshipsWithTextDictionary
+  //····················································································································
+
+  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inData : Data) {
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
       if let range = inDictionary ["mLabels"], range.length > 0 {
         var relationshipArray = EBReferenceArray <LabelInSchematic> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! LabelInSchematic)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mLabels = relationshipArray }
+        self.mLabels = relationshipArray
       }
       if let range = inDictionary ["mWiresP2s"], range.length > 0 {
         var relationshipArray = EBReferenceArray <WireInSchematic> ()
@@ -1529,7 +1548,7 @@ final class PointInSchematic : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mWiresP2s = relationshipArray }
+        self.mWiresP2s = relationshipArray
       }
       if let range = inDictionary ["mWiresP1s"], range.length > 0 {
         var relationshipArray = EBReferenceArray <WireInSchematic> ()
@@ -1537,10 +1556,8 @@ final class PointInSchematic : EBManagedObject,
         for idx in indexArray {
           relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
         }
-        inParallelObjectSetupContext.addToManySetupDeferredOperation { self.mWiresP1s = relationshipArray }
+        self.mWiresP1s = relationshipArray
       }
-    }
-  //--- End of addOperation
   }
 
   //····················································································································

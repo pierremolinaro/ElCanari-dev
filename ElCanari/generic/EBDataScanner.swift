@@ -17,7 +17,7 @@ struct EBDataScanner {
   //····················································································································
 
   init (data : Data) {
-    mData = data
+    self.mData = data
   }
 
   //····················································································································
@@ -218,40 +218,49 @@ struct EBDataScanner {
   //····················································································································
 
   mutating func parseBase62EncodedInt () -> Int {
-    var result = 0
+    var r = 0
     var loop = true
     var sign = 1
     if self.mReadOk, self.mReadIndex < self.mData.count, self.mData [self.mReadIndex] == ASCII.minus.rawValue {
       sign = -1
       self.mReadIndex += 1
     }
-    while self.mReadOk && loop {
+    while loop, self.mReadOk {
       if self.mReadIndex < self.mData.count {
         let c = self.mData [self.mReadIndex]
-        if (c >= ASCII.zero.rawValue) && (c <= ASCII.nine.rawValue) {
-          result *= 62
-          result += Int (c - ASCII.zero.rawValue)
+        if c <= ASCII.nine.rawValue {
+          if c >= ASCII.zero.rawValue {
+            r *= 62
+            r += Int (c - ASCII.zero.rawValue)
+            self.mReadIndex += 1
+          }else if c == ASCII.lineFeed.rawValue {
+            self.mReadIndex += 1
+            loop = false
+          }else{
+            self.mReadOk = false
+            loop = false
+          }
+        }else if c <= ASCII.Z.rawValue {
+          if c >= ASCII.A.rawValue {
+            r *= 62
+            r += Int (c - ASCII.A.rawValue) + 10
+            self.mReadIndex += 1
+          }else{
+            self.mReadOk = false
+            loop = false
+          }
+        }else if c >= ASCII.a.rawValue, c <= ASCII.z.rawValue {
+          r *= 62
+          r += Int (c - ASCII.a.rawValue) + 10 + 26
           self.mReadIndex += 1
-        }else if (c >= ASCII.A.rawValue) && (c <= ASCII.Z.rawValue) {
-          result *= 62
-          result += Int (c - ASCII.A.rawValue) + 10
-          self.mReadIndex += 1
-        }else if (c >= ASCII.a.rawValue) && (c <= ASCII.z.rawValue) {
-          result *= 62
-          result += Int (c - ASCII.a.rawValue) + 10 + 26
-          self.mReadIndex += 1
-        }else if c == ASCII.lineFeed.rawValue {
-          self.mReadIndex += 1
-          loop = false
         }else{
           self.mReadOk = false
-          loop = false
         }
       }else{
         self.mReadOk = false
       }
     }
-    return sign * result
+    return sign * r
   }
 
   //····················································································································
@@ -329,7 +338,7 @@ struct EBDataScanner {
   mutating func getLineRangeAndAdvance () -> NSRange {
     let start = self.mReadIndex
     var loop = true
-    while self.mReadOk, loop {
+    while loop, self.mReadOk {
       if self.mReadIndex >= self.mData.count {
         self.mReadOk = false
       }else if self.mData [self.mReadIndex] == ASCII.lineFeed.rawValue {
