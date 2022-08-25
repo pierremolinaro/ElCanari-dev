@@ -1034,7 +1034,7 @@ final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObs
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

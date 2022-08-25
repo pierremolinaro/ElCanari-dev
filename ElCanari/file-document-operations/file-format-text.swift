@@ -44,6 +44,7 @@ final class ParallelObjectSetupContext {
   //····················································································································
 
   fileprivate func waitUntilAllOperationsAreFinished () {
+    // print (self.mOperationQueueCount, self.mOperationQueue.operationCount)
     self.mOperationQueue.waitUntilAllOperationsAreFinished ()
   }
 
@@ -130,10 +131,13 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
     propertyValueArray.append (valueDictionary)
   }
   appendDocumentFileOperationInfo ("  Read \(objectArray.count) objects: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
-  operationStartDate = Date ()
 //--- Prepare objects
+  operationStartDate = Date ()
   var idx = 0
   let parallelObjectSetupContext = ParallelObjectSetupContext ()
+//  parallelObjectSetupContext.mOperationQueue.maxConcurrentOperationCount = 10
+//  print ("\(parallelObjectSetupContext.mOperationQueue.maxConcurrentOperationCount)")
+//  print (OperationQueue.defaultMaxConcurrentOperationCount)
   for managedObject in objectArray {
     let valueDictionary = propertyValueArray [idx]
     idx += 1
@@ -141,16 +145,16 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
   }
   parallelObjectSetupContext.waitUntilAllOperationsAreFinished ()
   appendDocumentFileOperationInfo ("  Prepare objects: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms (\(parallelObjectSetupContext.operationQueueCount) operations)\n")
-  operationStartDate = Date ()
 //--- Setup toOne
+  operationStartDate = Date ()
   parallelObjectSetupContext.performToOneSetupOperations ()
   appendDocumentFileOperationInfo ("  Setup toOne: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms (\(parallelObjectSetupContext.toOneSetupOperationCount) operations)\n")
-  operationStartDate = Date ()
 //--- Setup toMany
+  operationStartDate = Date ()
   parallelObjectSetupContext.performToManySetupOperations ()
   appendDocumentFileOperationInfo ("  Setup toMany: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms (\(parallelObjectSetupContext.toManySetupOperationCount) operations)\n")
-  appendDocumentFileOperationInfo ("Total duration: \(Int (Date ().timeIntervalSince (startDate) * 1000.0)) ms\n\n")
 //--- Scanner error ?
+  appendDocumentFileOperationInfo ("Total duration: \(Int (Date ().timeIntervalSince (startDate) * 1000.0)) ms\n\n")
   if !ioDataScanner.ok () {
     let dictionary = [
       "Cannot Open Document" : NSLocalizedDescriptionKey,

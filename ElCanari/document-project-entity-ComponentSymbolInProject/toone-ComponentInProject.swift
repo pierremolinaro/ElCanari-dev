@@ -1218,7 +1218,7 @@ final class StoredObject_ComponentInProject : ReadWriteObject_ComponentInProject
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

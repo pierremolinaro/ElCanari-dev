@@ -599,7 +599,7 @@ final class StoredObject_DeviceInProject : ReadWriteObject_DeviceInProject, EBSi
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

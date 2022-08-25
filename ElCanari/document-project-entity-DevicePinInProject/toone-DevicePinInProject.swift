@@ -526,7 +526,7 @@ final class StoredObject_DevicePinInProject : ReadWriteObject_DevicePinInProject
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

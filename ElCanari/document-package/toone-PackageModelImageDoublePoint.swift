@@ -388,7 +388,7 @@ final class StoredObject_PackageModelImageDoublePoint : ReadWriteObject_PackageM
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

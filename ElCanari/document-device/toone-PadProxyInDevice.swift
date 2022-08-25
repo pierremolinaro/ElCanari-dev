@@ -319,7 +319,7 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

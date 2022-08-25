@@ -734,7 +734,7 @@ final class StoredObject_PackageZone : ReadWriteObject_PackageZone, EBSignatureO
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

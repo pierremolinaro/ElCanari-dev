@@ -26,20 +26,6 @@ class EBObservedObject : EBSwiftBaseObject {
 
   //····················································································································
 
-  final func addEBObserversFrom (_ ioObserverSet : inout EBWeakEventSet) {
-    if !ioObserverSet.isEmpty {
-      ioObserverSet.apply { (_ observer : EBObserverProtocol) in
-        self.mObservers.insert (observer)
-        observer.observedObjectDidChange ()
-      }
-      #if BUILD_OBJECT_EXPLORER
-        self.updateObserverExplorer ()
-      #endif
-    }
-  }
-
-  //····················································································································
-
   final func removeEBObserver (_ inObserver : EBObserverProtocol) {
     self.mObservers.remove (inObserver)
     #if BUILD_OBJECT_EXPLORER
@@ -49,21 +35,8 @@ class EBObservedObject : EBSwiftBaseObject {
 
   //····················································································································
 
-  final func removeEBObserversFrom (_ ioObserverSet : inout EBWeakEventSet) {
-    if !ioObserverSet.isEmpty {
-      ioObserverSet.apply {(_ observer : EBObserverProtocol) in
-        self.mObservers.remove (observer)
-      }
-      #if BUILD_OBJECT_EXPLORER
-        self.updateObserverExplorer ()
-      #endif
-    }
-  }
-
-  //····················································································································
-
   func observedObjectDidChange () {
-    self.mObservers.apply ( {(_ observer : EBObserverProtocol) in observer.observedObjectDidChange () })
+    self.mObservers.apply { (_ inObserver : EBObserverProtocol) in inObserver.observedObjectDidChange () }
   }
 
   //····················································································································

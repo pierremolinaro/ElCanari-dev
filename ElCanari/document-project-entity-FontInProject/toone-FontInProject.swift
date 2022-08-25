@@ -529,7 +529,7 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

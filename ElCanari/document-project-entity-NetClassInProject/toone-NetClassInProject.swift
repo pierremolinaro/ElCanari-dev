@@ -849,7 +849,7 @@ final class StoredObject_NetClassInProject : ReadWriteObject_NetClassInProject, 
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

@@ -390,7 +390,7 @@ final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSign
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

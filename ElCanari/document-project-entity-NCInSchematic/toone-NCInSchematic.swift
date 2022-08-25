@@ -273,7 +273,7 @@ final class StoredObject_NCInSchematic : ReadWriteObject_NCInSchematic, EBSignat
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

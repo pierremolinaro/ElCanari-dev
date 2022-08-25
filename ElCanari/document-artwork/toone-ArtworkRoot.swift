@@ -642,7 +642,7 @@ final class StoredObject_ArtworkRoot : ReadWriteObject_ArtworkRoot, EBSignatureO
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

@@ -621,7 +621,7 @@ final class StoredObject_PointInSchematic : ReadWriteObject_PointInSchematic, EB
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

@@ -642,7 +642,7 @@ final class StoredObject_ComponentSymbolInProject : ReadWriteObject_ComponentSym
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

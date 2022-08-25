@@ -12,19 +12,21 @@ struct EBWeakEventSet {
 
   //····················································································································
 
-  fileprivate var mDictionary = [ObjectIdentifier : EBWeakObserverSetElement] ()
+  fileprivate var mDictionary = [Int : EBWeakObserverSetElement] ()
 
   //····················································································································
 
   mutating func insert (_ inObserver : EBObserverProtocol) {
-    let address = ObjectIdentifier (inObserver)
+  //  let address = ObjectIdentifier (inObserver)
+    let address = inObserver.objectIndex
     self.mDictionary [address] = EBWeakObserverSetElement (observer: inObserver)
   }
 
   //····················································································································
 
   mutating func remove (_ inObserver : EBObserverProtocol) {
-    let address = ObjectIdentifier (inObserver)
+  //  let address = ObjectIdentifier (inObserver)
+    let address = inObserver.objectIndex
     self.mDictionary [address] = nil
   }
 
@@ -72,7 +74,7 @@ fileprivate struct EBWeakObserverSetElement {
 
   //····················································································································
 
-  fileprivate var observer : EBObserverProtocol? { return self.mObserver }
+  var observer : EBObserverProtocol? { return self.mObserver }
 
   //····················································································································
 

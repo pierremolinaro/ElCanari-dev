@@ -503,7 +503,7 @@ final class StoredObject_BorderCurve : ReadWriteObject_BorderCurve, EBSignatureO
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

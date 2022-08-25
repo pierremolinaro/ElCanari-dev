@@ -435,7 +435,7 @@ final class StoredObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstance
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

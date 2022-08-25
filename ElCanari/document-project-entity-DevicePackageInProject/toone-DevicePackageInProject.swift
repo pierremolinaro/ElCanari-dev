@@ -297,7 +297,7 @@ final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageI
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

@@ -319,7 +319,7 @@ final class StoredObject_SymbolPinInstanceInDevice : ReadWriteObject_SymbolPinIn
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

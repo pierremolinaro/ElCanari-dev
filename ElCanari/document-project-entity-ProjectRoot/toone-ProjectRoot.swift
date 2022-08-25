@@ -3753,7 +3753,7 @@ final class StoredObject_ProjectRoot : ReadWriteObject_ProjectRoot, EBSignatureO
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

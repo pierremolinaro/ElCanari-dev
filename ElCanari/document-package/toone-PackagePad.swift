@@ -895,7 +895,7 @@ final class StoredObject_PackagePad : ReadWriteObject_PackagePad, EBSignatureObs
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

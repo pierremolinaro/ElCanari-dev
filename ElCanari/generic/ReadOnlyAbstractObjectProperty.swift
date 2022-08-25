@@ -25,7 +25,7 @@ class ReadOnlyAbstractObjectProperty <T : AnyObject> : ReadOnlyAbstractGenericRe
   //····················································································································
 
   final var mInternalValue : T? = nil {
-    didSet {
+     didSet {
       if self.mInternalValue !== oldValue {
         if (self.mInternalValue == nil) != (oldValue == nil) {
           self.none_property.observedObjectDidChange ()
@@ -46,7 +46,7 @@ class ReadOnlyAbstractObjectProperty <T : AnyObject> : ReadOnlyAbstractGenericRe
   //  none property
   //····················································································································
 
-  final var none_property = EBTransientProperty_Bool ()
+  final let none_property = EBTransientProperty_Bool ()
 
   //····················································································································
   //  init

@@ -504,7 +504,7 @@ final class StoredObject_MasterPadInDevice : ReadWriteObject_MasterPadInDevice, 
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

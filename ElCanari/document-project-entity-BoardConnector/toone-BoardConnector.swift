@@ -919,7 +919,7 @@ final class StoredObject_BoardConnector : ReadWriteObject_BoardConnector, EBSign
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

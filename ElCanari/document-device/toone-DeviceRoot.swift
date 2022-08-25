@@ -899,7 +899,7 @@ final class StoredObject_DeviceRoot : ReadWriteObject_DeviceRoot, EBSignatureObs
  //····················································································································
 
   init (usedForSignature inUsedForSignature : Bool) {
-    mUsedForSignature = inUsedForSignature
+    self.mUsedForSignature = inUsedForSignature
     super.init ()
   }
 

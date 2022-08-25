@@ -266,3 +266,4 @@ freerouting-1-4-4-pm/Freerouting-1.4.4-pm.dmg
 freerouting-1-4-4-pm/Freerouting-1.4.4-pm.pkg
 freerouting-1-4-4-pm/jdk14/
 *.xcscheme
+*.xcshareddata
