@@ -365,6 +365,7 @@ final class BoardText : BoardObject,
       }
     }
     self.mFont_property.addEBObserver (self.mFont_none)
+    gInitSemaphore.wait ()
   //--- To one property: mFont (has opposite to many relationship: mTexts)
     self.mFont_property.ebUndoManager = self.ebUndoManager
     self.mFont_property.setOppositeRelationShipFunctions (
@@ -639,11 +640,12 @@ final class BoardText : BoardObject,
     self.mRotation_property.addEBObserver (self.signatureForERCChecking_property)
     self.mWeight_property.addEBObserver (self.signatureForERCChecking_property)
     self.mOblique_property.addEBObserver (self.signatureForERCChecking_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -1039,11 +1041,10 @@ final class BoardText : BoardObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mX = value
       }
@@ -1074,7 +1075,7 @@ final class BoardText : BoardObject,
       if let range = inDictionary ["mOblique"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.mOblique = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -1083,11 +1084,11 @@ final class BoardText : BoardObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mFont"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! FontInProject
+        let object = inRawObjectArray [objectIndex].object as! FontInProject
         self.mFont = object 
       }
   }

@@ -227,6 +227,7 @@ final class SheetInProject : EBManagedObject,
       }
     }
     self.mRoot_property.addEBObserver (self.mRoot_none)
+    gInitSemaphore.wait ()
   //--- To many property: mObjects (has opposite relationship)
     self.mObjects_property.ebUndoManager = self.ebUndoManager
     self.mObjects_property.setOppositeRelationShipFunctions (
@@ -341,6 +342,7 @@ final class SheetInProject : EBManagedObject,
     }
     self.mRoot_property.sheetGeometry_property.addEBObserver (self.sheetDescriptor_property)
     self.mRoot_property.sheetIndexes_property.addEBObserver (self.sheetDescriptor_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },
@@ -352,8 +354,8 @@ final class SheetInProject : EBManagedObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -668,15 +670,14 @@ final class SheetInProject : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mSheetTitle"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mSheetTitle = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -685,11 +686,11 @@ final class SheetInProject : EBManagedObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! ProjectRoot
+        let object = inRawObjectArray [objectIndex].object as! ProjectRoot
         self.mRoot = object 
       }
   }
@@ -699,14 +700,14 @@ final class SheetInProject : EBManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mObjects"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SchematicObject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SchematicObject)
+          relationshipArray.append (inRawObjectArray [idx].object as! SchematicObject)
         }
         self.mObjects = relationshipArray
       }
@@ -714,7 +715,7 @@ final class SheetInProject : EBManagedObject,
         var relationshipArray = EBReferenceArray <PointInSchematic> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
+          relationshipArray.append (inRawObjectArray [idx].object as! PointInSchematic)
         }
         self.mPoints = relationshipArray
       }

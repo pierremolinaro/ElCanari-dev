@@ -173,6 +173,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
       }
     }
     self.mSymbolType_property.addEBObserver (self.mSymbolType_none)
+    gInitSemaphore.wait ()
   //--- To one property: mSymbolType
     self.mSymbolType_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: symbolAndTypeName
@@ -251,11 +252,12 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
     }
     self.mSymbolType_property.mStrokeBezierPath_property.addEBObserver (self.strokeBezierPath_property)
     preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.strokeBezierPath_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -451,15 +453,14 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mSymbolInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mSymbolInstanceName = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -468,11 +469,11 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mSymbolType"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! DeviceSymbolTypeInProject
+        let object = inRawObjectArray [objectIndex].object as! DeviceSymbolTypeInProject
         self.mSymbolType = object 
       }
   }

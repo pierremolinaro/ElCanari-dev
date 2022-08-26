@@ -219,6 +219,7 @@ final class CommentInSchematic : SchematicObject,
     self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mComment_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -305,11 +306,12 @@ final class CommentInSchematic : SchematicObject,
     preferences_schematicBackColor_property.addEBObserver (self.selectionDisplay_property)
     self.mX_property.addEBObserver (self.selectionDisplay_property)
     self.mY_property.addEBObserver (self.selectionDisplay_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -575,11 +577,10 @@ final class CommentInSchematic : SchematicObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
         self.mColor = value
       }
@@ -601,7 +602,7 @@ final class CommentInSchematic : SchematicObject,
       if let range = inDictionary ["mComment"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mComment = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 

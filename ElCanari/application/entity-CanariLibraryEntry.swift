@@ -148,6 +148,7 @@ final class CanariLibraryEntry : EBManagedObject,
     self.mLibraryRepositoryURL_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mUserAndPasswordTag_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -165,12 +166,13 @@ final class CanariLibraryEntry : EBManagedObject,
       }
     }
     self.mPath_property.addEBObserver (self.mStatusImage_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
     self.mExternDelegate0 = CanariLibraryEntryDelegate (object: self)
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -361,11 +363,10 @@ final class CanariLibraryEntry : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mPath"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mPath = value
       }
@@ -378,7 +379,7 @@ final class CanariLibraryEntry : EBManagedObject,
       if let range = inDictionary ["mUserAndPasswordTag"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mUserAndPasswordTag = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 

@@ -325,6 +325,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
     self.mYNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- To many property: mInstances (has opposite relationship)
     self.mInstances_property.ebUndoManager = self.ebUndoManager
     self.mInstances_property.setOppositeRelationShipFunctions (
@@ -368,6 +369,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
     self.mNameHorizontalAlignment_property.addEBObserver (self.nameShape_property)
     self.mPinNameIsDisplayedInSchematics_property.addEBObserver (self.nameShape_property)
     preferences_pinNameFont_property.addEBObserver (self.nameShape_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mType_property.setProp (me) } },
@@ -385,8 +387,8 @@ final class SymbolPinTypeInDevice : EBManagedObject,
     self.mYName_property.setSignatureObserver (observer: self)
     self.mYNumber_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -756,11 +758,10 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mPinX"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mPinX = value
       }
@@ -791,7 +792,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
       if let range = inDictionary ["mNumberHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
         self.mNumberHorizontalAlignment = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -800,14 +801,14 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mInstances"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SymbolPinInstanceInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SymbolPinInstanceInDevice)
+          relationshipArray.append (inRawObjectArray [idx].object as! SymbolPinInstanceInDevice)
         }
         self.mInstances = relationshipArray
       }

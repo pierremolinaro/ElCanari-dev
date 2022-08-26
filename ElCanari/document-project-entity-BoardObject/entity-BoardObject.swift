@@ -712,6 +712,7 @@ class BoardObject : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.addEBObserver (self.mRoot_none)
+    gInitSemaphore.wait ()
   //--- To one property: mRoot (has opposite to many relationship: mBoardObjects)
     self.mRoot_property.ebUndoManager = self.ebUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
@@ -1058,11 +1059,12 @@ class BoardObject : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.mErrorOrWarningIssueSize_property.addEBObserver (self.errorOrWarningIssueSize_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -1450,11 +1452,11 @@ class BoardObject : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! ProjectRoot
+        let object = inRawObjectArray [objectIndex].object as! ProjectRoot
         self.mRoot = object 
       }
   }

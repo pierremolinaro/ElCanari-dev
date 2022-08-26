@@ -238,6 +238,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       }
     }
     self.mPadProxy_property.addEBObserver (self.mPadProxy_none)
+    gInitSemaphore.wait ()
   //--- To one property: mSymbolInstance (has opposite to many relationship: mPinInstances)
     self.mSymbolInstance_property.ebUndoManager = self.ebUndoManager
     self.mSymbolInstance_property.setOppositeRelationShipFunctions (
@@ -361,11 +362,12 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
     self.mType_property.mNumberHorizontalAlignment_property.addEBObserver (self.numberShape_property)
     self.mPadProxy_property.mPadName_property.addEBObserver (self.numberShape_property)
     preferences_pinNameFont_property.addEBObserver (self.numberShape_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -609,19 +611,19 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mSymbolInstance"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! SymbolInstanceInDevice
+        let object = inRawObjectArray [objectIndex].object as! SymbolInstanceInDevice
         self.mSymbolInstance = object 
       }
       if let range = inDictionary ["mType"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! SymbolPinTypeInDevice
+        let object = inRawObjectArray [objectIndex].object as! SymbolPinTypeInDevice
         self.mType = object 
       }
       if let range = inDictionary ["mPadProxy"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! PadProxyInDevice
+        let object = inRawObjectArray [objectIndex].object as! PadProxyInDevice
         self.mPadProxy = object 
       }
   }

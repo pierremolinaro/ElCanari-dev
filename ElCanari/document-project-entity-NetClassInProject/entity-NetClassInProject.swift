@@ -721,6 +721,7 @@ final class NetClassInProject : EBManagedObject,
     self.mAllowTracksOnInner3Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     self.mAllowTracksOnInner4Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- To many property: mNets (has opposite relationship)
     self.mNets_property.ebUndoManager = self.ebUndoManager
     self.mNets_property.setOppositeRelationShipFunctions (
@@ -980,6 +981,7 @@ final class NetClassInProject : EBManagedObject,
       }
     }
     self.netsDescription_property.addEBObserver (self.netWarningCount_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mNets_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNetClass_property.setProp (me) } },
@@ -987,8 +989,8 @@ final class NetClassInProject : EBManagedObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -1531,11 +1533,10 @@ final class NetClassInProject : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mNetClassName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mNetClassName = value
       }
@@ -1578,7 +1579,7 @@ final class NetClassInProject : EBManagedObject,
       if let range = inDictionary ["mAllowTracksOnInner4Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.mAllowTracksOnInner4Layer = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -1587,14 +1588,14 @@ final class NetClassInProject : EBManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mNets"], range.length > 0 {
         var relationshipArray = EBReferenceArray <NetInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! NetInProject)
+          relationshipArray.append (inRawObjectArray [idx].object as! NetInProject)
         }
         self.mNets = relationshipArray
       }

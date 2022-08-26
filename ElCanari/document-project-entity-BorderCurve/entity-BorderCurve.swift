@@ -479,6 +479,7 @@ final class BorderCurve : EBGraphicManagedObject,
       }
     }
     self.mPrevious_property.addEBObserver (self.mPrevious_none)
+    gInitSemaphore.wait ()
   //--- Atomic proxy property: mNextX
     self.mNextX_property.mReadModelFunction = { [weak self] in
       if let object = self?.mNext_property {
@@ -765,11 +766,12 @@ final class BorderCurve : EBGraphicManagedObject,
     self.mCPY2_property.addEBObserver (self.selectionDisplay_property)
     self.mShape_property.addEBObserver (self.selectionDisplay_property)
     self.mRoot_property.mBoardShape_property.addEBObserver (self.selectionDisplay_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -1191,11 +1193,10 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mX = value
       }
@@ -1217,7 +1218,7 @@ final class BorderCurve : EBGraphicManagedObject,
       if let range = inDictionary ["mShape"], let value = BorderCurveShape.unarchiveFromDataRange (inData, range) {
         self.mShape = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -1226,19 +1227,19 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! ProjectRoot
+        let object = inRawObjectArray [objectIndex].object as! ProjectRoot
         self.mRoot = object 
       }
       if let range = inDictionary ["mNext"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! BorderCurve
+        let object = inRawObjectArray [objectIndex].object as! BorderCurve
         self.mNext = object 
       }
       if let range = inDictionary ["mPrevious"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! BorderCurve
+        let object = inRawObjectArray [objectIndex].object as! BorderCurve
         self.mPrevious = object 
       }
   }

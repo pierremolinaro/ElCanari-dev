@@ -327,6 +327,7 @@ final class BoardLine : BoardObject,
     self.mLayer_property = EBStoredProperty_BoardLineLayer (defaultValue: BoardLineLayer.legendFront, undoManager: ebUndoManager)
     self.mWidth_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -413,11 +414,12 @@ final class BoardLine : BoardObject,
     self.mWidth_property.addEBObserver (self.selectionDisplay_property)
     self.mLayer_property.addEBObserver (self.selectionDisplay_property)
     preferences_hiliteWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -755,11 +757,10 @@ final class BoardLine : BoardObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mWidthUnit = value
       }
@@ -793,7 +794,7 @@ final class BoardLine : BoardObject,
       if let range = inDictionary ["mWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mWidth = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 

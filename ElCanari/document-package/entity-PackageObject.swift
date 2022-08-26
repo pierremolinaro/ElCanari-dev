@@ -112,6 +112,7 @@ class PackageObject : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.addEBObserver (self.mRoot_none)
+    gInitSemaphore.wait ()
   //--- To one property: mRoot (has opposite to many relationship: packageObjects)
     self.mRoot_property.ebUndoManager = self.ebUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
@@ -135,11 +136,12 @@ class PackageObject : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.knobSizeMultpliedByTen_property.addEBObserver (self.knobSize_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -308,11 +310,11 @@ class PackageObject : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! PackageRoot
+        let object = inRawObjectArray [objectIndex].object as! PackageRoot
         self.mRoot = object 
       }
   }

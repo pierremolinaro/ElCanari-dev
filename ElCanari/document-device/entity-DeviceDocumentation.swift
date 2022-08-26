@@ -94,6 +94,7 @@ final class DeviceDocumentation : EBManagedObject,
     self.mFileName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- Atomic property: fileSize
     self.fileSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -111,13 +112,14 @@ final class DeviceDocumentation : EBManagedObject,
       }
     }
     self.mFileData_property.addEBObserver (self.fileSize_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: self)
     self.mFileName_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -273,18 +275,17 @@ final class DeviceDocumentation : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mFileName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mFileName = value
       }
       if let range = inDictionary ["mFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
         self.mFileData = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 

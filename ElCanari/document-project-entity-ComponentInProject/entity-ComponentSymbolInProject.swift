@@ -527,6 +527,7 @@ final class ComponentSymbolInProject : SchematicObject,
       }
     }
     self.mComponent_property.addEBObserver (self.mComponent_none)
+    gInitSemaphore.wait ()
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.ebUndoManager = self.ebUndoManager
     self.mPoints_property.setOppositeRelationShipFunctions (
@@ -817,6 +818,7 @@ final class ComponentSymbolInProject : SchematicObject,
       }
     }
     self.isPlacedInSchematic_property.addEBObserver (self.symbolInSchematic_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSymbol_property.setProp (me) } },
@@ -824,8 +826,8 @@ final class ComponentSymbolInProject : SchematicObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -1320,11 +1322,10 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mCenterX"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mCenterX = value
       }
@@ -1358,7 +1359,7 @@ final class ComponentSymbolInProject : SchematicObject,
       if let range = inDictionary ["mDisplayComponentValueOffsetY"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mDisplayComponentValueOffsetY = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -1367,11 +1368,11 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mComponent"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! ComponentInProject
+        let object = inRawObjectArray [objectIndex].object as! ComponentInProject
         self.mComponent = object 
       }
   }
@@ -1381,14 +1382,14 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mPoints"], range.length > 0 {
         var relationshipArray = EBReferenceArray <PointInSchematic> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
+          relationshipArray.append (inRawObjectArray [idx].object as! PointInSchematic)
         }
         self.mPoints = relationshipArray
       }

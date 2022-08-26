@@ -346,6 +346,7 @@ final class MasterPadInDevice : EBManagedObject,
     self.mStyle_property = EBStoredProperty_PadStyle (defaultValue: PadStyle.traversing, undoManager: ebUndoManager)
     self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- To many property: mSlavePads (has opposite relationship)
     self.mSlavePads_property.ebUndoManager = self.ebUndoManager
     self.mSlavePads_property.setOppositeRelationShipFunctions (
@@ -483,6 +484,7 @@ final class MasterPadInDevice : EBManagedObject,
     self.mShape_property.addEBObserver (self.backSideFilledBezierPathArray_property)
     self.mStyle_property.addEBObserver (self.backSideFilledBezierPathArray_property)
     self.mSlavePads_property.addEBObserverOf_backSideFilledBezierPath (self.backSideFilledBezierPathArray_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mSlavePads_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mMasterPad_property.setProp (me) } },
@@ -500,8 +502,8 @@ final class MasterPadInDevice : EBManagedObject,
     self.mStyle_property.setSignatureObserver (observer: self)
     self.mWidth_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -886,11 +888,10 @@ final class MasterPadInDevice : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mCenterX"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mCenterX = value
       }
@@ -918,7 +919,7 @@ final class MasterPadInDevice : EBManagedObject,
       if let range = inDictionary ["mName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mName = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -927,14 +928,14 @@ final class MasterPadInDevice : EBManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mSlavePads"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SlavePadInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SlavePadInDevice)
+          relationshipArray.append (inRawObjectArray [idx].object as! SlavePadInDevice)
         }
         self.mSlavePads = relationshipArray
       }

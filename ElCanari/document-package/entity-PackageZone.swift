@@ -556,6 +556,7 @@ final class PackageZone : PackageObject,
     self.yNameUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.zoneNumbering_property = EBStoredProperty_PadNumbering (defaultValue: PadNumbering.noNumbering, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- To many property: forbiddenPadNumbers (no option)
     self.forbiddenPadNumbers_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: objectDisplay
@@ -776,6 +777,7 @@ final class PackageZone : PackageObject,
       }
     }
     self.forbiddenPadNumbers_property.addEBObserver (self.emptyForbiddenPadArray_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.forbiddenPadNumbers_property.setSignatureObserver (observer: self)
@@ -794,8 +796,8 @@ final class PackageZone : PackageObject,
     self.zoneName_property.setSignatureObserver (observer: self)
     self.zoneNumbering_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -1347,11 +1349,10 @@ final class PackageZone : PackageObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.x = value
       }
@@ -1400,7 +1401,7 @@ final class PackageZone : PackageObject,
       if let range = inDictionary ["zoneNumbering"], let value = PadNumbering.unarchiveFromDataRange (inData, range) {
         self.zoneNumbering = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -1409,14 +1410,14 @@ final class PackageZone : PackageObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["forbiddenPadNumbers"], range.length > 0 {
         var relationshipArray = EBReferenceArray <ForbiddenPadNumber> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! ForbiddenPadNumber)
+          relationshipArray.append (inRawObjectArray [idx].object as! ForbiddenPadNumber)
         }
         self.forbiddenPadNumbers = relationshipArray
       }

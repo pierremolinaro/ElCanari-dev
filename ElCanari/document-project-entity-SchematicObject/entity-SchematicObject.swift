@@ -160,6 +160,7 @@ class SchematicObject : EBGraphicManagedObject,
       }
     }
     self.mSheet_property.addEBObserver (self.mSheet_none)
+    gInitSemaphore.wait ()
   //--- To one property: mSheet (has opposite to many relationship: mObjects)
     self.mSheet_property.ebUndoManager = self.ebUndoManager
     self.mSheet_property.setOppositeRelationShipFunctions (
@@ -200,11 +201,12 @@ class SchematicObject : EBGraphicManagedObject,
       }
     }
     self.mSheet_property.addEBObserver (self.isPlacedInSchematic_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -390,11 +392,11 @@ class SchematicObject : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! SheetInProject
+        let object = inRawObjectArray [objectIndex].object as! SheetInProject
         self.mSheet = object 
       }
   }

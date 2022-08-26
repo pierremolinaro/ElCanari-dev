@@ -502,6 +502,7 @@ final class ArtworkRoot : EBManagedObject,
     self.title_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.drillDataFileExtension_property = EBStoredProperty_String (defaultValue: "DRF", undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- To many property: fileGenerationParameterArray (has opposite relationship)
     self.fileGenerationParameterArray_property.ebUndoManager = self.ebUndoManager
     self.fileGenerationParameterArray_property.setOppositeRelationShipFunctions (
@@ -605,6 +606,7 @@ final class ArtworkRoot : EBManagedObject,
     self.minValueForOARinEBUnit_property.addEBObserver (self.signatureForERCChecking_property)
     self.minValueForBoardLimitWidth_property.addEBObserver (self.signatureForERCChecking_property)
     self.minValueForPHDinEBUnit_property.addEBObserver (self.signatureForERCChecking_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.fileGenerationParameterArray_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mArtwork_property.setProp (me) } },
@@ -621,8 +623,8 @@ final class ArtworkRoot : EBManagedObject,
     self.minValueForPHDinEBUnit_property.setSignatureObserver (observer: self)
     self.title_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -1079,11 +1081,10 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["layerConfiguration"], let value = LayerConfiguration.unarchiveFromDataRange (inData, range) {
         self.layerConfiguration = value
       }
@@ -1123,7 +1124,7 @@ final class ArtworkRoot : EBManagedObject,
       if let range = inDictionary ["drillDataFileExtension"], let value = String.unarchiveFromDataRange (inData, range) {
         self.drillDataFileExtension = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -1132,14 +1133,14 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["fileGenerationParameterArray"], range.length > 0 {
         var relationshipArray = EBReferenceArray <ArtworkFileGenerationParameters> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! ArtworkFileGenerationParameters)
+          relationshipArray.append (inRawObjectArray [idx].object as! ArtworkFileGenerationParameters)
         }
         self.fileGenerationParameterArray = relationshipArray
       }

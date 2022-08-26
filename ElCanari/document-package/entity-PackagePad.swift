@@ -758,6 +758,7 @@ final class PackagePad : PackageObject,
       }
     }
     self.zone_property.addEBObserver (self.zone_none)
+    gInitSemaphore.wait ()
   //--- To many property: slaves (has opposite relationship)
     self.slaves_property.ebUndoManager = self.ebUndoManager
     self.slaves_property.setOppositeRelationShipFunctions (
@@ -1106,6 +1107,7 @@ final class PackagePad : PackageObject,
     preferences_padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
     preferences_padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
     self.padNameForDisplay_property.addEBObserver (self.padNumberDisplay_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.slaves_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.master_property.setProp (me) } },
@@ -1130,8 +1132,8 @@ final class PackagePad : PackageObject,
     self.yCenter_property.setSignatureObserver (observer: self)
     self.yCenterUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -1779,11 +1781,10 @@ final class PackagePad : PackageObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["xCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.xCenter = value
       }
@@ -1832,7 +1833,7 @@ final class PackagePad : PackageObject,
       if let range = inDictionary ["annularRingUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.annularRingUnit = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -1841,11 +1842,11 @@ final class PackagePad : PackageObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["zone"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! PackageZone
+        let object = inRawObjectArray [objectIndex].object as! PackageZone
         self.zone = object 
       }
   }
@@ -1855,14 +1856,14 @@ final class PackagePad : PackageObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["slaves"], range.length > 0 {
         var relationshipArray = EBReferenceArray <PackageSlavePad> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! PackageSlavePad)
+          relationshipArray.append (inRawObjectArray [idx].object as! PackageSlavePad)
         }
         self.slaves = relationshipArray
       }

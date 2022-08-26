@@ -235,6 +235,7 @@ final class FontCharacter : EBManagedObject,
     self.mWarnsWhenNoSegment_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     self.mWarnsWhenAdvanceIsZero_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- To many property: segments (no option)
     self.segments_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: segmentArrayForDrawing
@@ -333,6 +334,7 @@ final class FontCharacter : EBManagedObject,
     self.mWarnsWhenNoSegment_property.addEBObserver (self.issues_property)
     self.mWarnsWhenAdvanceIsZero_property.addEBObserver (self.issues_property)
     self.segments_property.addEBObserver (self.issues_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.advance_property.setSignatureObserver (observer: self)
@@ -341,8 +343,8 @@ final class FontCharacter : EBManagedObject,
     self.mWarnsWhenNoSegment_property.setSignatureObserver (observer: self)
     self.segments_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -628,11 +630,10 @@ final class FontCharacter : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["codePoint"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.codePoint = value
       }
@@ -645,7 +646,7 @@ final class FontCharacter : EBManagedObject,
       if let range = inDictionary ["mWarnsWhenAdvanceIsZero"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.mWarnsWhenAdvanceIsZero = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -654,14 +655,14 @@ final class FontCharacter : EBManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["segments"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentForFontCharacter> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentForFontCharacter)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentForFontCharacter)
         }
         self.segments = relationshipArray
       }

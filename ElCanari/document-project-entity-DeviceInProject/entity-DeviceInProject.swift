@@ -400,6 +400,7 @@ final class DeviceInProject : EBManagedObject,
     self.mDeviceVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mDeviceFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- To many property: mPackages (no option)
     self.mPackages_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSymbols (no option)
@@ -577,6 +578,7 @@ final class DeviceInProject : EBManagedObject,
     self.mSymbols_property.addEBObserverOf_symbolAndTypeName (self.deviceSymbolDictionary_property)
     self.mSymbols_property.addEBObserverOf_filledBezierPath (self.deviceSymbolDictionary_property)
     self.mSymbols_property.addEBObserverOf_strokeBezierPath (self.deviceSymbolDictionary_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mComponents_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mDevice_property.setProp (me) } },
@@ -584,8 +586,8 @@ final class DeviceInProject : EBManagedObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -1078,11 +1080,10 @@ final class DeviceInProject : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mDeviceName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mDeviceName = value
       }
@@ -1095,7 +1096,7 @@ final class DeviceInProject : EBManagedObject,
       if let range = inDictionary ["mDeviceFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
         self.mDeviceFileData = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -1104,14 +1105,14 @@ final class DeviceInProject : EBManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mPackages"], range.length > 0 {
         var relationshipArray = EBReferenceArray <DevicePackageInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! DevicePackageInProject)
+          relationshipArray.append (inRawObjectArray [idx].object as! DevicePackageInProject)
         }
         self.mPackages = relationshipArray
       }
@@ -1119,7 +1120,7 @@ final class DeviceInProject : EBManagedObject,
         var relationshipArray = EBReferenceArray <DeviceSymbolInstanceInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! DeviceSymbolInstanceInProject)
+          relationshipArray.append (inRawObjectArray [idx].object as! DeviceSymbolInstanceInProject)
         }
         self.mSymbols = relationshipArray
       }
@@ -1127,7 +1128,7 @@ final class DeviceInProject : EBManagedObject,
         var relationshipArray = EBReferenceArray <ComponentInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
+          relationshipArray.append (inRawObjectArray [idx].object as! ComponentInProject)
         }
         self.mComponents = relationshipArray
       }
@@ -1135,7 +1136,7 @@ final class DeviceInProject : EBManagedObject,
         var relationshipArray = EBReferenceArray <DevicePadAssignmentInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! DevicePadAssignmentInProject)
+          relationshipArray.append (inRawObjectArray [idx].object as! DevicePadAssignmentInProject)
         }
         self.mPadAssignments = relationshipArray
       }

@@ -298,6 +298,7 @@ final class DeviceMasterPadInProject : EBManagedObject,
     self.mStyle_property = EBStoredProperty_PadStyle (defaultValue: PadStyle.traversing, undoManager: ebUndoManager)
     self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- To many property: mSlavePads (no option)
     self.mSlavePads_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: descriptor
@@ -353,11 +354,12 @@ final class DeviceMasterPadInProject : EBManagedObject,
     self.mShape_property.addEBObserver (self.descriptor_property)
     self.mStyle_property.addEBObserver (self.descriptor_property)
     self.mSlavePads_property.addEBObserverOf_descriptor (self.descriptor_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -703,11 +705,10 @@ final class DeviceMasterPadInProject : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mCenterX"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mCenterX = value
       }
@@ -735,7 +736,7 @@ final class DeviceMasterPadInProject : EBManagedObject,
       if let range = inDictionary ["mName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mName = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -744,14 +745,14 @@ final class DeviceMasterPadInProject : EBManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mSlavePads"], range.length > 0 {
         var relationshipArray = EBReferenceArray <DeviceSlavePadInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! DeviceSlavePadInProject)
+          relationshipArray.append (inRawObjectArray [idx].object as! DeviceSlavePadInProject)
         }
         self.mSlavePads = relationshipArray
       }

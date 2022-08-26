@@ -1933,6 +1933,7 @@ final class BoardModel : EBManagedObject,
     self.modelLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.artworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- To many property: frontLegendLines (no option)
     self.frontLegendLines_property.ebUndoManager = self.ebUndoManager
   //--- To many property: backLegendLines (no option)
@@ -3884,6 +3885,7 @@ final class BoardModel : EBManagedObject,
     self.backPackagesBezierPaths_property.addEBObserver (self.imageForInstances_property)
     preferences_mergerBoardViewDisplayBackPackages_property.addEBObserver (self.imageForInstances_property)
     preferences_mergerColorBackPackages_property.addEBObserver (self.imageForInstances_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.myInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.myModel_property.setProp (me) } },
@@ -3891,8 +3893,8 @@ final class BoardModel : EBManagedObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -6332,11 +6334,10 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["name"], let value = String.unarchiveFromDataRange (inData, range) {
         self.name = value
       }
@@ -6367,7 +6368,7 @@ final class BoardModel : EBManagedObject,
       if let range = inDictionary ["artworkName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.artworkName = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -6376,14 +6377,14 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["frontLegendLines"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
         }
         self.frontLegendLines = relationshipArray
       }
@@ -6391,7 +6392,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
         }
         self.backLegendLines = relationshipArray
       }
@@ -6399,7 +6400,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
         }
         self.frontLegendTexts = relationshipArray
       }
@@ -6407,7 +6408,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
         }
         self.frontLayoutTexts = relationshipArray
       }
@@ -6415,7 +6416,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
         }
         self.backLegendTexts = relationshipArray
       }
@@ -6423,7 +6424,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
         }
         self.backLayoutTexts = relationshipArray
       }
@@ -6431,7 +6432,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
         }
         self.internalBoardsLimits = relationshipArray
       }
@@ -6439,7 +6440,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
         }
         self.drills = relationshipArray
       }
@@ -6447,7 +6448,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <BoardModelVia> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! BoardModelVia)
+          relationshipArray.append (inRawObjectArray [idx].object as! BoardModelVia)
         }
         self.vias = relationshipArray
       }
@@ -6455,7 +6456,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <BoardModelPad> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! BoardModelPad)
+          relationshipArray.append (inRawObjectArray [idx].object as! BoardModelPad)
         }
         self.frontPads = relationshipArray
       }
@@ -6463,7 +6464,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <BoardModelPad> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! BoardModelPad)
+          relationshipArray.append (inRawObjectArray [idx].object as! BoardModelPad)
         }
         self.backPads = relationshipArray
       }
@@ -6471,7 +6472,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <BoardModelPad> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! BoardModelPad)
+          relationshipArray.append (inRawObjectArray [idx].object as! BoardModelPad)
         }
         self.traversingPads = relationshipArray
       }
@@ -6479,7 +6480,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
         }
         self.backComponentNames = relationshipArray
       }
@@ -6487,7 +6488,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
         }
         self.frontComponentNames = relationshipArray
       }
@@ -6495,7 +6496,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
         }
         self.frontComponentValues = relationshipArray
       }
@@ -6503,7 +6504,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
         }
         self.backComponentValues = relationshipArray
       }
@@ -6511,7 +6512,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
         }
         self.backTracks = relationshipArray
       }
@@ -6519,7 +6520,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
         }
         self.frontTracks = relationshipArray
       }
@@ -6527,7 +6528,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
         }
         self.inner1Tracks = relationshipArray
       }
@@ -6535,7 +6536,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
         }
         self.inner2Tracks = relationshipArray
       }
@@ -6543,7 +6544,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
         }
         self.inner3Tracks = relationshipArray
       }
@@ -6551,7 +6552,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
         }
         self.inner4Tracks = relationshipArray
       }
@@ -6559,7 +6560,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
         }
         self.frontPackages = relationshipArray
       }
@@ -6567,7 +6568,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <SegmentEntity> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SegmentEntity)
+          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
         }
         self.backPackages = relationshipArray
       }
@@ -6575,7 +6576,7 @@ final class BoardModel : EBManagedObject,
         var relationshipArray = EBReferenceArray <MergerBoardInstance> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! MergerBoardInstance)
+          relationshipArray.append (inRawObjectArray [idx].object as! MergerBoardInstance)
         }
         self.myInstances = relationshipArray
       }

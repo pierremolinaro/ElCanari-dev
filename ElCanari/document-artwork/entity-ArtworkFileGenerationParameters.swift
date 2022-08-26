@@ -878,6 +878,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       }
     }
     self.mArtwork_property.addEBObserver (self.mArtwork_none)
+    gInitSemaphore.wait ()
   //--- To one property: mArtwork (has opposite to many relationship: fileGenerationParameterArray)
     self.mArtwork_property.ebUndoManager = self.ebUndoManager
     self.mArtwork_property.setOppositeRelationShipFunctions (
@@ -1035,6 +1036,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       }
     }
     self.fileExtension_property.addEBObserver (self.emptyFileExtensionImage_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.drawBoardLimits_property.setSignatureObserver (observer: self)
@@ -1066,8 +1068,8 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.name_property.setSignatureObserver (observer: self)
     self.padHoleDiameterInPDF_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -1787,11 +1789,10 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["drawBoardLimits"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.drawBoardLimits = value
       }
@@ -1876,7 +1877,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       if let range = inDictionary ["padHoleDiameterInPDF"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.padHoleDiameterInPDF = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -1885,11 +1886,11 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! ArtworkRoot
+        let object = inRawObjectArray [objectIndex].object as! ArtworkRoot
         self.mArtwork = object 
       }
   }

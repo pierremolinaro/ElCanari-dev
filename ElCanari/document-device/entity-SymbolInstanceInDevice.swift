@@ -256,6 +256,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
       }
     }
     self.mType_property.addEBObserver (self.mType_none)
+    gInitSemaphore.wait ()
   //--- To many property: mPinInstances (has opposite relationship)
     self.mPinInstances_property.ebUndoManager = self.ebUndoManager
     self.mPinInstances_property.setOppositeRelationShipFunctions (
@@ -446,6 +447,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mY_property.addEBObserver (self.objectDisplay_property)
     preferences_symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
     preferences_symbolColor_property.addEBObserver (self.objectDisplay_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mPinInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSymbolInstance_property.setProp (me) } },
@@ -455,8 +457,8 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mInstanceName_property.setSignatureObserver (observer: self)
     self.mPinInstances_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -778,11 +780,10 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mInstanceName = value
       }
@@ -792,7 +793,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mY = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -801,11 +802,11 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mType"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! SymbolTypeInDevice
+        let object = inRawObjectArray [objectIndex].object as! SymbolTypeInDevice
         self.mType = object 
       }
   }
@@ -815,14 +816,14 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mPinInstances"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SymbolPinInstanceInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SymbolPinInstanceInDevice)
+          relationshipArray.append (inRawObjectArray [idx].object as! SymbolPinInstanceInDevice)
         }
         self.mPinInstances = relationshipArray
       }

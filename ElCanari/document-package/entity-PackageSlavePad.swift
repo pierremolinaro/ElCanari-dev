@@ -620,6 +620,7 @@ final class PackageSlavePad : PackageObject,
       }
     }
     self.master_property.addEBObserver (self.master_none)
+    gInitSemaphore.wait ()
   //--- To one property: master (has opposite to many relationship: slaves)
     self.master_property.ebUndoManager = self.ebUndoManager
     self.master_property.setOppositeRelationShipFunctions (
@@ -887,6 +888,7 @@ final class PackageSlavePad : PackageObject,
     preferences_padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
     preferences_padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
     self.padNameForDisplay_property.addEBObserver (self.padNumberDisplay_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.annularRingUnit_property.setSignatureObserver (observer: self)
@@ -905,8 +907,8 @@ final class PackageSlavePad : PackageObject,
     self.yCenter_property.setSignatureObserver (observer: self)
     self.yCenterUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -1435,11 +1437,10 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["xCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.xCenter = value
       }
@@ -1485,7 +1486,7 @@ final class PackageSlavePad : PackageObject,
       if let range = inDictionary ["annularRingUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.annularRingUnit = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -1494,11 +1495,11 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["master"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! PackagePad
+        let object = inRawObjectArray [objectIndex].object as! PackagePad
         self.master = object 
       }
   }

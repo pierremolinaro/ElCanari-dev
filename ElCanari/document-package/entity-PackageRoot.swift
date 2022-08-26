@@ -1635,6 +1635,7 @@ final class PackageRoot : EBManagedObject,
       }
     }
     self.mModelImageDoublePoint_property.addEBObserver (self.mModelImageDoublePoint_none)
+    gInitSemaphore.wait ()
   //--- To many property: mModelImageObjects (has opposite relationship)
     self.mModelImageObjects_property.ebUndoManager = self.ebUndoManager
     self.mModelImageObjects_property.setOppositeRelationShipFunctions (
@@ -1989,6 +1990,7 @@ final class PackageRoot : EBManagedObject,
     self.packageZones_property.addEBObserverOf_xName (self.issues_property)
     self.packageZones_property.addEBObserverOf_yName (self.issues_property)
     preferences_padZoneFont_property.addEBObserver (self.issues_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mModelImageObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
@@ -2009,8 +2011,8 @@ final class PackageRoot : EBManagedObject,
     self.xPlacardUnit_property.setSignatureObserver (observer: self)
     self.yPlacardUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -3167,11 +3169,10 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.selectedPageIndex = value
       }
@@ -3295,7 +3296,7 @@ final class PackageRoot : EBManagedObject,
       if let range = inDictionary ["mModelImageData"], let value = Data.unarchiveFromDataRange (inData, range) {
         self.mModelImageData = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -3304,11 +3305,11 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mModelImageDoublePoint"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! PackageModelImageDoublePoint
+        let object = inRawObjectArray [objectIndex].object as! PackageModelImageDoublePoint
         self.mModelImageDoublePoint = object 
       }
   }
@@ -3318,14 +3319,14 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mModelImageObjects"], range.length > 0 {
         var relationshipArray = EBReferenceArray <PackageModelImageDoublePoint> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! PackageModelImageDoublePoint)
+          relationshipArray.append (inRawObjectArray [idx].object as! PackageModelImageDoublePoint)
         }
         self.mModelImageObjects = relationshipArray
       }
@@ -3333,7 +3334,7 @@ final class PackageRoot : EBManagedObject,
         var relationshipArray = EBReferenceArray <PackageObject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! PackageObject)
+          relationshipArray.append (inRawObjectArray [idx].object as! PackageObject)
         }
         self.packageObjects = relationshipArray
       }

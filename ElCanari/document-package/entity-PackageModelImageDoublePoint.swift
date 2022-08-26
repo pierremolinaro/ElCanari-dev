@@ -226,6 +226,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.addEBObserver (self.mRoot_none)
+    gInitSemaphore.wait ()
   //--- To one property: mRoot (has opposite to many relationship: mModelImageObjects)
     self.mRoot_property.ebUndoManager = self.ebUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
@@ -310,11 +311,12 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
     self.mSecondDx_property.addEBObserver (self.selectionDisplay_property)
     self.mSecondDy_property.addEBObserver (self.selectionDisplay_property)
     self.mRoot_property.mModelPointsCircleRadius_property.addEBObserver (self.selectionDisplay_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -587,11 +589,10 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mFirstX"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mFirstX = value
       }
@@ -610,7 +611,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
       if let range = inDictionary ["mSecondColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
         self.mSecondColor = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -619,11 +620,11 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! PackageRoot
+        let object = inRawObjectArray [objectIndex].object as! PackageRoot
         self.mRoot = object 
       }
   }

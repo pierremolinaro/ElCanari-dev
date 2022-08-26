@@ -337,6 +337,7 @@ final class SymbolRoot : EBManagedObject,
     self.yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- To many property: symbolObjects (no option)
     self.symbolObjects_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: issues
@@ -372,6 +373,7 @@ final class SymbolRoot : EBManagedObject,
     self.symbolPins_property.addEBObserverOf_nameRect (self.issues_property)
     self.symbolPins_property.addEBObserverOf_xPin (self.issues_property)
     self.symbolPins_property.addEBObserverOf_yPin (self.issues_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.symbolPins_property.setDataProvider (self.symbolObjects_property)
   //--- Register properties for handling signature
@@ -380,8 +382,8 @@ final class SymbolRoot : EBManagedObject,
     self.xPlacardUnit_property.setSignatureObserver (observer: self)
     self.yPlacardUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -748,11 +750,10 @@ final class SymbolRoot : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["selectedInspector"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.selectedInspector = value
       }
@@ -783,7 +784,7 @@ final class SymbolRoot : EBManagedObject,
       if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.selectedPageIndex = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -792,14 +793,14 @@ final class SymbolRoot : EBManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["symbolObjects"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SymbolObject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SymbolObject)
+          relationshipArray.append (inRawObjectArray [idx].object as! SymbolObject)
         }
         self.symbolObjects = relationshipArray
       }

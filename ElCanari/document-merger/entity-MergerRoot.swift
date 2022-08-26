@@ -1262,6 +1262,7 @@ final class MergerRoot : EBManagedObject,
       }
     }
     self.mArtwork_property.addEBObserver (self.mArtwork_none)
+    gInitSemaphore.wait ()
   //--- To many property: boardModels (no option)
     self.boardModels_property.ebUndoManager = self.ebUndoManager
   //--- To many property: boardInstances (has opposite relationship)
@@ -1757,6 +1758,7 @@ final class MergerRoot : EBManagedObject,
     self.boardLimitWidth_property.addEBObserver (self.boardOutlineRectDisplay_property)
     preferences_mergerBoardViewDisplayBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
     preferences_mergerColorBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.boardInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.myRoot_property.setProp (me) } },
@@ -1764,8 +1766,8 @@ final class MergerRoot : EBManagedObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -2594,11 +2596,10 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.selectedPageIndex = value
       }
@@ -2662,7 +2663,7 @@ final class MergerRoot : EBManagedObject,
       if let range = inDictionary ["mArtworkVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mArtworkVersion = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -2671,11 +2672,11 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! ArtworkRoot
+        let object = inRawObjectArray [objectIndex].object as! ArtworkRoot
         self.mArtwork = object 
       }
   }
@@ -2685,14 +2686,14 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["boardModels"], range.length > 0 {
         var relationshipArray = EBReferenceArray <BoardModel> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! BoardModel)
+          relationshipArray.append (inRawObjectArray [idx].object as! BoardModel)
         }
         self.boardModels = relationshipArray
       }
@@ -2700,7 +2701,7 @@ final class MergerRoot : EBManagedObject,
         var relationshipArray = EBReferenceArray <MergerBoardInstance> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! MergerBoardInstance)
+          relationshipArray.append (inRawObjectArray [idx].object as! MergerBoardInstance)
         }
         self.boardInstances = relationshipArray
       }

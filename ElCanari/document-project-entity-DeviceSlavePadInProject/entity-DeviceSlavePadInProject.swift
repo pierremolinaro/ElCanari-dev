@@ -256,6 +256,7 @@ final class DeviceSlavePadInProject : EBManagedObject,
     self.mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo, undoManager: ebUndoManager)
     self.mStyle_property = EBStoredProperty_SlavePadStyle (defaultValue: SlavePadStyle.traversing, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -301,11 +302,12 @@ final class DeviceSlavePadInProject : EBManagedObject,
     self.mHoleHeight_property.addEBObserver (self.descriptor_property)
     self.mShape_property.addEBObserver (self.descriptor_property)
     self.mStyle_property.addEBObserver (self.descriptor_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -574,11 +576,10 @@ final class DeviceSlavePadInProject : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mCenterX"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mCenterX = value
       }
@@ -603,7 +604,7 @@ final class DeviceSlavePadInProject : EBManagedObject,
       if let range = inDictionary ["mStyle"], let value = SlavePadStyle.unarchiveFromDataRange (inData, range) {
         self.mStyle = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 

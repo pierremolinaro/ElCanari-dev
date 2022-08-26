@@ -179,6 +179,7 @@ final class PadProxyInDevice : EBManagedObject,
       }
     }
     self.mPinInstance_property.addEBObserver (self.mPinInstance_none)
+    gInitSemaphore.wait ()
   //--- To one property: mPinInstance (has opposite to one relationship: mPadProxy)
     self.mPinInstance_property.ebUndoManager = self.ebUndoManager
     self.mPinInstance_property.setOppositeRelationShipFunctions (
@@ -223,14 +224,15 @@ final class PadProxyInDevice : EBManagedObject,
       }
     }
     self.mPinInstance_property.symbolName_property.addEBObserver (self.symbolName_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mIsNC_property.setSignatureObserver (observer: self)
     self.mPadName_property.setSignatureObserver (observer: self)
     self.mPinInstanceName_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -446,11 +448,10 @@ final class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mPinInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mPinInstanceName = value
       }
@@ -460,7 +461,7 @@ final class PadProxyInDevice : EBManagedObject,
       if let range = inDictionary ["mIsNC"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.mIsNC = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -469,11 +470,11 @@ final class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mPinInstance"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! SymbolPinInstanceInDevice
+        let object = inRawObjectArray [objectIndex].object as! SymbolPinInstanceInDevice
         self.mPinInstance = object 
       }
   }

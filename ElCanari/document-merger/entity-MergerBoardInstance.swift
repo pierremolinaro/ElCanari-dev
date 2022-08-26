@@ -251,6 +251,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       }
     }
     self.myRoot_property.addEBObserver (self.myRoot_none)
+    gInitSemaphore.wait ()
   //--- To one property: myModel (has opposite to many relationship: myInstances)
     self.myModel_property.ebUndoManager = self.ebUndoManager
     self.myModel_property.setOppositeRelationShipFunctions (
@@ -384,11 +385,12 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.remove (me) } }
     )
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -659,11 +661,10 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.x = value
       }
@@ -673,7 +674,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       if let range = inDictionary ["instanceRotation"], let value = QuadrantRotation.unarchiveFromDataRange (inData, range) {
         self.instanceRotation = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -682,15 +683,15 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["myModel"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! BoardModel
+        let object = inRawObjectArray [objectIndex].object as! BoardModel
         self.myModel = object 
       }
       if let range = inDictionary ["myRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! MergerRoot
+        let object = inRawObjectArray [objectIndex].object as! MergerRoot
         self.myRoot = object 
       }
   }

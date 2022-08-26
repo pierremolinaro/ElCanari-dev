@@ -1198,6 +1198,7 @@ final class ComponentInProject : BoardObject,
       }
     }
     self.mValueFont_property.addEBObserver (self.mValueFont_none)
+    gInitSemaphore.wait ()
   //--- To many property: mConnectors (has opposite relationship)
     self.mConnectors_property.ebUndoManager = self.ebUndoManager
     self.mConnectors_property.setOppositeRelationShipFunctions (
@@ -1914,6 +1915,7 @@ final class ComponentInProject : BoardObject,
     self.mValueRotation_property.addEBObserver (self.objectDisplay_property)
     self.mComponentValue_property.addEBObserver (self.objectDisplay_property)
     self.mDevice_property.pinPadAssignments_property.addEBObserver (self.objectDisplay_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mConnectors_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
@@ -1925,8 +1927,8 @@ final class ComponentInProject : BoardObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -2905,11 +2907,10 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mSlavePadsShouldBeRouted"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.mSlavePadsShouldBeRouted = value
       }
@@ -2973,7 +2974,7 @@ final class ComponentInProject : BoardObject,
       if let range = inDictionary ["mYUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mYUnit = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -2982,23 +2983,23 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mDevice"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! DeviceInProject
+        let object = inRawObjectArray [objectIndex].object as! DeviceInProject
         self.mDevice = object 
       }
       if let range = inDictionary ["mSelectedPackage"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! DevicePackageInProject
+        let object = inRawObjectArray [objectIndex].object as! DevicePackageInProject
         self.mSelectedPackage = object 
       }
       if let range = inDictionary ["mNameFont"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! FontInProject
+        let object = inRawObjectArray [objectIndex].object as! FontInProject
         self.mNameFont = object 
       }
       if let range = inDictionary ["mValueFont"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! FontInProject
+        let object = inRawObjectArray [objectIndex].object as! FontInProject
         self.mValueFont = object 
       }
   }
@@ -3008,14 +3009,14 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mConnectors"], range.length > 0 {
         var relationshipArray = EBReferenceArray <BoardConnector> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! BoardConnector)
+          relationshipArray.append (inRawObjectArray [idx].object as! BoardConnector)
         }
         self.mConnectors = relationshipArray
       }
@@ -3023,7 +3024,7 @@ final class ComponentInProject : BoardObject,
         var relationshipArray = EBReferenceArray <ComponentSymbolInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! ComponentSymbolInProject)
+          relationshipArray.append (inRawObjectArray [idx].object as! ComponentSymbolInProject)
         }
         self.mSymbols = relationshipArray
       }

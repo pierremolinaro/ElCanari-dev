@@ -566,6 +566,7 @@ final class PointInSchematic : EBManagedObject,
       }
     }
     self.mSheet_property.addEBObserver (self.mSheet_none)
+    gInitSemaphore.wait ()
   //--- To many property: mLabels (has opposite relationship)
     self.mLabels_property.ebUndoManager = self.ebUndoManager
     self.mLabels_property.setOppositeRelationShipFunctions (
@@ -892,6 +893,7 @@ final class PointInSchematic : EBManagedObject,
     self.mWiresP2s_property.addEBObserver (self.netInfoForPoint_property)
     self.location_property.addEBObserver (self.netInfoForPoint_property)
     self.mSheet_property.sheetDescriptor_property.addEBObserver (self.netInfoForPoint_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mLabels_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
@@ -907,8 +909,8 @@ final class PointInSchematic : EBManagedObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -1482,11 +1484,10 @@ final class PointInSchematic : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mSymbolPinName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mSymbolPinName = value
       }
@@ -1496,7 +1497,7 @@ final class PointInSchematic : EBManagedObject,
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mY = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -1505,23 +1506,23 @@ final class PointInSchematic : EBManagedObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mSymbol"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! ComponentSymbolInProject
+        let object = inRawObjectArray [objectIndex].object as! ComponentSymbolInProject
         self.mSymbol = object 
       }
       if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! NetInProject
+        let object = inRawObjectArray [objectIndex].object as! NetInProject
         self.mNet = object 
       }
       if let range = inDictionary ["mNC"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! NCInSchematic
+        let object = inRawObjectArray [objectIndex].object as! NCInSchematic
         self.mNC = object 
       }
       if let range = inDictionary ["mSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! SheetInProject
+        let object = inRawObjectArray [objectIndex].object as! SheetInProject
         self.mSheet = object 
       }
   }
@@ -1531,14 +1532,14 @@ final class PointInSchematic : EBManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mLabels"], range.length > 0 {
         var relationshipArray = EBReferenceArray <LabelInSchematic> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! LabelInSchematic)
+          relationshipArray.append (inRawObjectArray [idx].object as! LabelInSchematic)
         }
         self.mLabels = relationshipArray
       }
@@ -1546,7 +1547,7 @@ final class PointInSchematic : EBManagedObject,
         var relationshipArray = EBReferenceArray <WireInSchematic> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
+          relationshipArray.append (inRawObjectArray [idx].object as! WireInSchematic)
         }
         self.mWiresP2s = relationshipArray
       }
@@ -1554,7 +1555,7 @@ final class PointInSchematic : EBManagedObject,
         var relationshipArray = EBReferenceArray <WireInSchematic> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! WireInSchematic)
+          relationshipArray.append (inRawObjectArray [idx].object as! WireInSchematic)
         }
         self.mWiresP1s = relationshipArray
       }

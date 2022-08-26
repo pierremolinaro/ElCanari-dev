@@ -169,6 +169,7 @@ final class SymbolSolidOval : SymbolObject,
     self.height_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: ebUndoManager)
     self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- Atomic property: filledBezierPath
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -289,6 +290,7 @@ final class SymbolSolidOval : SymbolObject,
     self.y_property.addEBObserver (self.issues_property)
     self.width_property.addEBObserver (self.issues_property)
     self.height_property.addEBObserver (self.issues_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.height_property.setSignatureObserver (observer: self)
@@ -296,8 +298,8 @@ final class SymbolSolidOval : SymbolObject,
     self.x_property.setSignatureObserver (observer: self)
     self.y_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -531,11 +533,10 @@ final class SymbolSolidOval : SymbolObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.y = value
       }
@@ -548,7 +549,7 @@ final class SymbolSolidOval : SymbolObject,
       if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.x = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 

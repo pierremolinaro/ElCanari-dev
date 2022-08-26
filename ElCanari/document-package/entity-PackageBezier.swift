@@ -493,6 +493,7 @@ final class PackageBezier : PackageObject,
     self.cpy2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -657,6 +658,7 @@ final class PackageBezier : PackageObject,
     self.cpy1_property.addEBObserver (self.issues_property)
     self.cpx2_property.addEBObserver (self.issues_property)
     self.cpy2_property.addEBObserver (self.issues_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.cpx1_property.setSignatureObserver (observer: self)
@@ -676,8 +678,8 @@ final class PackageBezier : PackageObject,
     self.y2_property.setSignatureObserver (observer: self)
     self.y2Unit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -1150,11 +1152,10 @@ final class PackageBezier : PackageObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["y1"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.y1 = value
       }
@@ -1203,7 +1204,7 @@ final class PackageBezier : PackageObject,
       if let range = inDictionary ["x1"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.x1 = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 

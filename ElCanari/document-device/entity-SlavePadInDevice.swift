@@ -338,6 +338,7 @@ final class SlavePadInDevice : EBManagedObject,
       }
     }
     self.mMasterPad_property.addEBObserver (self.mMasterPad_none)
+    gInitSemaphore.wait ()
   //--- To one property: mMasterPad (has opposite to many relationship: mSlavePads)
     self.mMasterPad_property.ebUndoManager = self.ebUndoManager
     self.mMasterPad_property.setOppositeRelationShipFunctions (
@@ -467,6 +468,7 @@ final class SlavePadInDevice : EBManagedObject,
     preferences_padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
     preferences_padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
     self.mMasterPad_property.mName_property.addEBObserver (self.padNumberDisplay_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mCenterX_property.setSignatureObserver (observer: self)
@@ -478,8 +480,8 @@ final class SlavePadInDevice : EBManagedObject,
     self.mStyle_property.setSignatureObserver (observer: self)
     self.mWidth_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -812,11 +814,10 @@ final class SlavePadInDevice : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mCenterX"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mCenterX = value
       }
@@ -841,7 +842,7 @@ final class SlavePadInDevice : EBManagedObject,
       if let range = inDictionary ["mStyle"], let value = SlavePadStyle.unarchiveFromDataRange (inData, range) {
         self.mStyle = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -850,11 +851,11 @@ final class SlavePadInDevice : EBManagedObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mMasterPad"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! MasterPadInDevice
+        let object = inRawObjectArray [objectIndex].object as! MasterPadInDevice
         self.mMasterPad = object 
       }
   }

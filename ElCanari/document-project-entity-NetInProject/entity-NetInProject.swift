@@ -302,6 +302,7 @@ final class NetInProject : EBManagedObject,
       }
     }
     self.mNetClass_property.addEBObserver (self.mNetClass_none)
+    gInitSemaphore.wait ()
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.ebUndoManager = self.ebUndoManager
     self.mPoints_property.setOppositeRelationShipFunctions (
@@ -439,6 +440,7 @@ final class NetInProject : EBManagedObject,
       }
     }
     self.mTracks_property.addEBObserver (self.trackCount_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },
@@ -450,8 +452,8 @@ final class NetInProject : EBManagedObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -800,18 +802,17 @@ final class NetInProject : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mNetName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mNetName = value
       }
       if let range = inDictionary ["mWarnsExactlyOneLabel"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.mWarnsExactlyOneLabel = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -820,11 +821,11 @@ final class NetInProject : EBManagedObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mNetClass"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! NetClassInProject
+        let object = inRawObjectArray [objectIndex].object as! NetClassInProject
         self.mNetClass = object 
       }
   }
@@ -834,14 +835,14 @@ final class NetInProject : EBManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mPoints"], range.length > 0 {
         var relationshipArray = EBReferenceArray <PointInSchematic> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! PointInSchematic)
+          relationshipArray.append (inRawObjectArray [idx].object as! PointInSchematic)
         }
         self.mPoints = relationshipArray
       }
@@ -849,7 +850,7 @@ final class NetInProject : EBManagedObject,
         var relationshipArray = EBReferenceArray <BoardTrack> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! BoardTrack)
+          relationshipArray.append (inRawObjectArray [idx].object as! BoardTrack)
         }
         self.mTracks = relationshipArray
       }

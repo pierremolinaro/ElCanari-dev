@@ -109,6 +109,7 @@ final class DevicePackageInProject : EBManagedObject,
     self.mPackageName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: packagePadDictionary
@@ -128,11 +129,12 @@ final class DevicePackageInProject : EBManagedObject,
       }
     }
     self.mMasterPads_property.addEBObserverOf_descriptor (self.packagePadDictionary_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -343,18 +345,17 @@ final class DevicePackageInProject : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mPackageName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mPackageName = value
       }
       if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
         self.mStrokeBezierPath = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -363,14 +364,14 @@ final class DevicePackageInProject : EBManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mMasterPads"], range.length > 0 {
         var relationshipArray = EBReferenceArray <DeviceMasterPadInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! DeviceMasterPadInProject)
+          relationshipArray.append (inRawObjectArray [idx].object as! DeviceMasterPadInProject)
         }
         self.mMasterPads = relationshipArray
       }

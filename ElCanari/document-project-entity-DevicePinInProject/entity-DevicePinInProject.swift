@@ -388,6 +388,7 @@ final class DevicePinInProject : EBManagedObject,
     self.mYNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- Atomic property: pinQualifiedName
     self.pinQualifiedName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -470,11 +471,12 @@ final class DevicePinInProject : EBManagedObject,
     self.mXNumber_property.addEBObserver (self.descriptor_property)
     self.mYNumber_property.addEBObserver (self.descriptor_property)
     self.mNumberHorizontalAlignment_property.addEBObserver (self.descriptor_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -829,11 +831,10 @@ final class DevicePinInProject : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mPinName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mPinName = value
       }
@@ -870,7 +871,7 @@ final class DevicePinInProject : EBManagedObject,
       if let range = inDictionary ["mNumberHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
         self.mNumberHorizontalAlignment = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 

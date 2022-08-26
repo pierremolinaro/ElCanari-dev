@@ -439,6 +439,7 @@ final class PackageDimension : PackageObject,
     self.drawDimensionBackground_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- Atomic property: distanceInCanariUnit
     self.distanceInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -623,6 +624,7 @@ final class PackageDimension : PackageObject,
     self.y1_property.addEBObserver (self.issues_property)
     self.x2_property.addEBObserver (self.issues_property)
     self.y2_property.addEBObserver (self.issues_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.distanceUnit_property.setSignatureObserver (observer: self)
@@ -640,8 +642,8 @@ final class PackageDimension : PackageObject,
     self.yDimension_property.setSignatureObserver (observer: self)
     self.yDimensionUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -1081,11 +1083,10 @@ final class PackageDimension : PackageObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["y1"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.y1 = value
       }
@@ -1128,7 +1129,7 @@ final class PackageDimension : PackageObject,
       if let range = inDictionary ["x1"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.x1 = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 

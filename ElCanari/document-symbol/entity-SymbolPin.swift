@@ -355,6 +355,7 @@ final class SymbolPin : SymbolObject,
     self.pinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     self.xPin_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- Atomic property: filledBezierPath
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -556,6 +557,7 @@ final class SymbolPin : SymbolObject,
     self.name_property.addEBObserver (self.nameRect_property)
     self.nameHorizontalAlignment_property.addEBObserver (self.nameRect_property)
     preferences_pinNameFont_property.addEBObserver (self.nameRect_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.name_property.setSignatureObserver (observer: self)
@@ -569,8 +571,8 @@ final class SymbolPin : SymbolObject,
     self.yNumber_property.setSignatureObserver (observer: self)
     self.yPin_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -943,11 +945,10 @@ final class SymbolPin : SymbolObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["yPin"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.yPin = value
       }
@@ -978,7 +979,7 @@ final class SymbolPin : SymbolObject,
       if let range = inDictionary ["xPin"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.xPin = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 

@@ -853,6 +853,7 @@ final class BoardTrack : BoardObject,
       }
     }
     self.mNet_property.addEBObserver (self.mNet_none)
+    gInitSemaphore.wait ()
   //--- To one property: mConnectorP1 (has opposite to many relationship: mTracksP1)
     self.mConnectorP1_property.ebUndoManager = self.ebUndoManager
     self.mConnectorP1_property.setOppositeRelationShipFunctions (
@@ -1405,11 +1406,12 @@ final class BoardTrack : BoardObject,
     preferences_backSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     self.mSide_property.addEBObserver (self.selectionDisplay_property)
     self.actualTrackWidth_property.addEBObserver (self.selectionDisplay_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -2016,11 +2018,10 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mSide"], let value = TrackSide.unarchiveFromDataRange (inData, range) {
         self.mSide = value
       }
@@ -2060,7 +2061,7 @@ final class BoardTrack : BoardObject,
       if let range = inDictionary ["mDirectionLockOnKnobDragging"], let value = TrackLockDirection.unarchiveFromDataRange (inData, range) {
         self.mDirectionLockOnKnobDragging = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -2069,19 +2070,19 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mConnectorP1"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! BoardConnector
+        let object = inRawObjectArray [objectIndex].object as! BoardConnector
         self.mConnectorP1 = object 
       }
       if let range = inDictionary ["mConnectorP2"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! BoardConnector
+        let object = inRawObjectArray [objectIndex].object as! BoardConnector
         self.mConnectorP2 = object 
       }
       if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! NetInProject
+        let object = inRawObjectArray [objectIndex].object as! NetInProject
         self.mNet = object 
       }
   }

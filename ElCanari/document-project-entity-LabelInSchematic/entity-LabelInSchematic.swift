@@ -163,6 +163,7 @@ final class LabelInSchematic : SchematicObject,
       }
     }
     self.mPoint_property.addEBObserver (self.mPoint_none)
+    gInitSemaphore.wait ()
   //--- To one property: mPoint (has opposite to many relationship: mLabels)
     self.mPoint_property.ebUndoManager = self.ebUndoManager
     self.mPoint_property.setOppositeRelationShipFunctions (
@@ -290,11 +291,12 @@ final class LabelInSchematic : SchematicObject,
     self.netName_property.addEBObserver (self.objectDisplay_property)
     preferences_pinNameFont_property.addEBObserver (self.objectDisplay_property)
     self.mOrientation_property.addEBObserver (self.objectDisplay_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -502,15 +504,14 @@ final class LabelInSchematic : SchematicObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mOrientation"], let value = QuadrantRotation.unarchiveFromDataRange (inData, range) {
         self.mOrientation = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -519,11 +520,11 @@ final class LabelInSchematic : SchematicObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mPoint"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! PointInSchematic
+        let object = inRawObjectArray [objectIndex].object as! PointInSchematic
         self.mPoint = object 
       }
   }

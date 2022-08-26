@@ -6,29 +6,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct ParallelObjectSetupContext {
-  private let mOperationQueue = OperationQueue ()
-  private var mOperationQueueCount = 0
-
-  //····················································································································
-
-  mutating func addOperation (_ inOperation : @escaping () -> Void) {
-    self.mOperationQueueCount += 1
-    self.mOperationQueue.addOperation (inOperation)
-  }
-
-  //····················································································································
-
-  fileprivate var operationQueueCount : Int { return self.mOperationQueueCount }
-
-  //····················································································································
-
-  fileprivate func waitUntilAllOperationsAreFinished () {
-    self.mOperationQueue.waitUntilAllOperationsAreFinished ()
-  }
-
-  //····················································································································
-
+struct RawObject {
+  let index : Int
+  let object : EBManagedObject
+  let propertyDictionary : [String : NSRange]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -68,52 +49,50 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
   appendDocumentFileOperationInfo ("  Read \(classDefinition.count) classes: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
 //--- Read objects
   operationStartDate = Date ()
-  var objectArray = [EBManagedObject] ()
-  var propertyValueArray = [[String : NSRange]] ()
+  let op = OperationQueue ()
+  let mutex = DispatchSemaphore (value: 1)
+  var rawObjectArray = [RawObject] ()
+  var idx = 0
+  let data = ioDataScanner.data
   while !ioDataScanner.eof (), ioDataScanner.testAccept (byte: ASCII.at.rawValue) {
+    let index = idx
+    idx += 1
     let classIndex = ioDataScanner.parseBase62EncodedInt ()
-    let className = classDefinition [classIndex].0
-    let managedObject = newInstanceOfEntityNamed (inUndoManager, className)!
-    objectArray.append (managedObject)
     let propertyNameArray = classDefinition [classIndex].1
-    var valueDictionary = [String : NSRange] ()
+    var propertyValueDictionary = [String : NSRange] ()
+    propertyValueDictionary.reserveCapacity (propertyNameArray.count)
     for propertyName in propertyNameArray {
       let propertyRange = ioDataScanner.getLineRangeAndAdvance ()
-      valueDictionary [propertyName] = propertyRange
+      propertyValueDictionary [propertyName] = propertyRange
     }
-    propertyValueArray.append (valueDictionary)
+    let className = classDefinition [classIndex].0
+    op.addOperation {
+      let managedObject = newInstanceOfEntityNamed (inUndoManager, className)!
+      managedObject.setUpPropertiesWithTextDictionary (propertyValueDictionary, data)
+      let rawObject = RawObject (index: index, object: managedObject, propertyDictionary: propertyValueDictionary)
+      mutex.wait ()
+      rawObjectArray.append (rawObject)
+      mutex.signal ()
+    }
   }
-  appendDocumentFileOperationInfo ("  Read \(objectArray.count) objects: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
-
-//--- Prepare objects
-  operationStartDate = Date ()
-  var idx = 0
-  var parallelObjectSetupContext = ParallelObjectSetupContext ()
-  for managedObject in objectArray {
-    let valueDictionary = propertyValueArray [idx]
-    idx += 1
-    managedObject.setUpPropertiesWithTextDictionary (valueDictionary, objectArray, ioDataScanner.data, &parallelObjectSetupContext)
-  }
-  appendDocumentFileOperationInfo ("  Prepare objects: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms (\(parallelObjectSetupContext.operationQueueCount) operations)\n")
-  operationStartDate = Date ()
-  parallelObjectSetupContext.waitUntilAllOperationsAreFinished ()
-  appendDocumentFileOperationInfo ("  Done: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
+  let pendingOperationCount = op.operationCount
+  op.waitUntilAllOperationsAreFinished ()
+  rawObjectArray.sort { $0.index < $1.index }
+  appendDocumentFileOperationInfo ("  Read \(rawObjectArray.count) objects, pending ops \(pendingOperationCount): \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
 //--- Setup toOne
   operationStartDate = Date ()
-  idx = 0
-  for managedObject in objectArray {
-    let valueDictionary = propertyValueArray [idx]
-    idx += 1
-    managedObject.setUpToOneRelationshipsWithTextDictionary (valueDictionary, objectArray, ioDataScanner.data)
+  for rawObject in rawObjectArray {
+    let valueDictionary = rawObject.propertyDictionary
+    let managedObject = rawObject.object
+    managedObject.setUpToOneRelationshipsWithTextDictionary (valueDictionary, rawObjectArray, ioDataScanner.data)
   }
   appendDocumentFileOperationInfo ("  Setup toOne: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
 //--- Setup toMany
   operationStartDate = Date ()
-  idx = 0
-  for managedObject in objectArray {
-    let valueDictionary = propertyValueArray [idx]
-    idx += 1
-    managedObject.setUpToManyRelationshipsWithTextDictionary (valueDictionary, objectArray, ioDataScanner.data)
+  for rawObject in rawObjectArray {
+    let valueDictionary = rawObject.propertyDictionary
+    let managedObject = rawObject.object
+    managedObject.setUpToManyRelationshipsWithTextDictionary (valueDictionary, rawObjectArray, ioDataScanner.data)
   }
   appendDocumentFileOperationInfo ("  Setup toMany: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
 //--- Scanner error ?
@@ -126,8 +105,8 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
     throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
   }
 //--- Analyze read data
-  if ioDataScanner.ok () && (objectArray.count > 0) {
-    let rootObject = objectArray [0]
+  if ioDataScanner.ok (), rawObjectArray.count > 0 {
+    let rootObject = rawObjectArray [0].object
     return EBDocumentData (
       documentMetadataStatus: metadataStatus,
       documentMetadataDictionary: metadataDictionary,

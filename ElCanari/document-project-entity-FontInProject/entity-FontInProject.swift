@@ -337,6 +337,7 @@ final class FontInProject : EBManagedObject,
     self.mFontVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mDescriptiveString_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- To many property: mTexts (has opposite relationship)
     self.mTexts_property.ebUndoManager = self.ebUndoManager
     self.mTexts_property.setOppositeRelationShipFunctions (
@@ -482,6 +483,7 @@ final class FontInProject : EBManagedObject,
       }
     }
     self.mComponentValues_property.addEBObserver (self.componentValuesCount_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mTexts_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mFont_property.setProp (me) } },
@@ -497,8 +499,8 @@ final class FontInProject : EBManagedObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -915,11 +917,10 @@ final class FontInProject : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mNominalSize"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mNominalSize = value
       }
@@ -932,7 +933,7 @@ final class FontInProject : EBManagedObject,
       if let range = inDictionary ["mDescriptiveString"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mDescriptiveString = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -941,14 +942,14 @@ final class FontInProject : EBManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mTexts"], range.length > 0 {
         var relationshipArray = EBReferenceArray <BoardText> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! BoardText)
+          relationshipArray.append (inRawObjectArray [idx].object as! BoardText)
         }
         self.mTexts = relationshipArray
       }
@@ -956,7 +957,7 @@ final class FontInProject : EBManagedObject,
         var relationshipArray = EBReferenceArray <ComponentInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
+          relationshipArray.append (inRawObjectArray [idx].object as! ComponentInProject)
         }
         self.mComponentNames = relationshipArray
       }
@@ -964,7 +965,7 @@ final class FontInProject : EBManagedObject,
         var relationshipArray = EBReferenceArray <ComponentInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
+          relationshipArray.append (inRawObjectArray [idx].object as! ComponentInProject)
         }
         self.mComponentValues = relationshipArray
       }

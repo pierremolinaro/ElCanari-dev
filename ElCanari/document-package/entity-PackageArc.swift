@@ -412,6 +412,7 @@ final class PackageArc : PackageObject,
     self.endTangentUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.xCenter_property = EBStoredProperty_Int (defaultValue: 342900, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -568,6 +569,7 @@ final class PackageArc : PackageObject,
     self.startAngle_property.addEBObserver (self.issues_property)
     self.arcAngle_property.addEBObserver (self.issues_property)
     self.pathIsClosed_property.addEBObserver (self.issues_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.arcAngle_property.setSignatureObserver (observer: self)
@@ -584,8 +586,8 @@ final class PackageArc : PackageObject,
     self.yCenter_property.setSignatureObserver (observer: self)
     self.yCenterUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -999,11 +1001,10 @@ final class PackageArc : PackageObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["yCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.yCenter = value
       }
@@ -1043,7 +1044,7 @@ final class PackageArc : PackageObject,
       if let range = inDictionary ["xCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.xCenter = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 

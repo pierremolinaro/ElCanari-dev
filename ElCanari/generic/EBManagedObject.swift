@@ -46,6 +46,10 @@ protocol EBManagedObject_address_protocol : AnyObject {
 //  Moins volumineux avec EBSwiftBaseObject, mais plus long à l'ouverture
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+var gInitSemaphore = DispatchSemaphore (value: 1) // Sémaphore d'exclusion mutuelle utilisé lors de l'init
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManagedObject_address_protocol {
 
   //····················································································································
@@ -74,8 +78,8 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
   //  init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mEBUndoManager = ebUndoManager
+  required init (_ inUndoManager : EBUndoManager?) {
+    self.mEBUndoManager = inUndoManager
     super.init ()
   }
 
@@ -96,22 +100,20 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
   //····················································································································
 
   func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                          _ inObjectArray : [EBManagedObject],
-                                          _ inData : Data,
-                                          _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
+                                          _ inData : Data) {
   }
 
   //····················································································································
 
   func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                  _ inObjectArray : [EBManagedObject],
+                                                  _ inRawObjectArray : [RawObject],
                                                   _ inData : Data) {
   }
 
   //····················································································································
 
   func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
+                                                   _ inRawObjectArray : [RawObject],
                                                    _ inData : Data) {
   }
 

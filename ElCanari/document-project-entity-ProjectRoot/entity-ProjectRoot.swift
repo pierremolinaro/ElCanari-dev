@@ -4447,6 +4447,7 @@ final class ProjectRoot : EBManagedObject,
       }
     }
     self.mSelectedSheet_property.addEBObserver (self.mSelectedSheet_none)
+    gInitSemaphore.wait ()
   //--- To many property: mSheets (has opposite relationship)
     self.mSheets_property.ebUndoManager = self.ebUndoManager
     self.mSheets_property.setOppositeRelationShipFunctions (
@@ -5960,6 +5961,7 @@ final class ProjectRoot : EBManagedObject,
     self.netWarningCount_property.addEBObserver (self.schematicStatusImage_property)
     self.mSheets_property.addEBObserverOf_connexionWarnings (self.schematicStatusImage_property)
     self.mSheets_property.addEBObserverOf_connexionErrors (self.schematicStatusImage_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mSheets_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
@@ -5975,8 +5977,8 @@ final class ProjectRoot : EBManagedObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -8869,11 +8871,10 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mArtworkName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mArtworkName = value
       }
@@ -9153,7 +9154,7 @@ final class ProjectRoot : EBManagedObject,
       if let range = inDictionary ["mRastnetDisplayedComponentName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mRastnetDisplayedComponentName = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -9162,15 +9163,15 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! ArtworkRoot
+        let object = inRawObjectArray [objectIndex].object as! ArtworkRoot
         self.mArtwork = object 
       }
       if let range = inDictionary ["mSelectedSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! SheetInProject
+        let object = inRawObjectArray [objectIndex].object as! SheetInProject
         self.mSelectedSheet = object 
       }
   }
@@ -9180,14 +9181,14 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mSheets"], range.length > 0 {
         var relationshipArray = EBReferenceArray <SheetInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SheetInProject)
+          relationshipArray.append (inRawObjectArray [idx].object as! SheetInProject)
         }
         self.mSheets = relationshipArray
       }
@@ -9195,7 +9196,7 @@ final class ProjectRoot : EBManagedObject,
         var relationshipArray = EBReferenceArray <FontInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! FontInProject)
+          relationshipArray.append (inRawObjectArray [idx].object as! FontInProject)
         }
         self.mFonts = relationshipArray
       }
@@ -9203,7 +9204,7 @@ final class ProjectRoot : EBManagedObject,
         var relationshipArray = EBReferenceArray <DeviceInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! DeviceInProject)
+          relationshipArray.append (inRawObjectArray [idx].object as! DeviceInProject)
         }
         self.mDevices = relationshipArray
       }
@@ -9211,7 +9212,7 @@ final class ProjectRoot : EBManagedObject,
         var relationshipArray = EBReferenceArray <NetClassInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! NetClassInProject)
+          relationshipArray.append (inRawObjectArray [idx].object as! NetClassInProject)
         }
         self.mNetClasses = relationshipArray
       }
@@ -9219,7 +9220,7 @@ final class ProjectRoot : EBManagedObject,
         var relationshipArray = EBReferenceArray <BorderCurve> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! BorderCurve)
+          relationshipArray.append (inRawObjectArray [idx].object as! BorderCurve)
         }
         self.mBorderCurves = relationshipArray
       }
@@ -9227,7 +9228,7 @@ final class ProjectRoot : EBManagedObject,
         var relationshipArray = EBReferenceArray <BoardObject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! BoardObject)
+          relationshipArray.append (inRawObjectArray [idx].object as! BoardObject)
         }
         self.mBoardObjects = relationshipArray
       }
@@ -9235,7 +9236,7 @@ final class ProjectRoot : EBManagedObject,
         var relationshipArray = EBReferenceArray <ComponentInProject> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! ComponentInProject)
+          relationshipArray.append (inRawObjectArray [idx].object as! ComponentInProject)
         }
         self.mComponents = relationshipArray
       }

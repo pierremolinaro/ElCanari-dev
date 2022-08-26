@@ -710,6 +710,7 @@ final class BoardConnector : BoardObject,
       }
     }
     self.mComponent_property.addEBObserver (self.mComponent_none)
+    gInitSemaphore.wait ()
   //--- To many property: mTracksP2 (has opposite relationship)
     self.mTracksP2_property.ebUndoManager = self.ebUndoManager
     self.mTracksP2_property.setOppositeRelationShipFunctions (
@@ -1165,6 +1166,7 @@ final class BoardConnector : BoardObject,
     self.location_property.addEBObserver (self.signatureForERCChecking_property)
     self.isVia_property.addEBObserver (self.signatureForERCChecking_property)
     self.actualPadDiameter_property.addEBObserver (self.signatureForERCChecking_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mTracksP2_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mConnectorP2_property.setProp (me) } },
@@ -1176,8 +1178,8 @@ final class BoardConnector : BoardObject,
     )
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -1833,11 +1835,10 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mComponentPadName"], let value = String.unarchiveFromDataRange (inData, range) {
         self.mComponentPadName = value
       }
@@ -1874,7 +1875,7 @@ final class BoardConnector : BoardObject,
       if let range = inDictionary ["mUsesCustomPadDiameter"], let value = Bool.unarchiveFromDataRange (inData, range) {
         self.mUsesCustomPadDiameter = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -1883,11 +1884,11 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mComponent"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! ComponentInProject
+        let object = inRawObjectArray [objectIndex].object as! ComponentInProject
         self.mComponent = object 
       }
   }
@@ -1897,14 +1898,14 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mTracksP2"], range.length > 0 {
         var relationshipArray = EBReferenceArray <BoardTrack> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! BoardTrack)
+          relationshipArray.append (inRawObjectArray [idx].object as! BoardTrack)
         }
         self.mTracksP2 = relationshipArray
       }
@@ -1912,7 +1913,7 @@ final class BoardConnector : BoardObject,
         var relationshipArray = EBReferenceArray <BoardTrack> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! BoardTrack)
+          relationshipArray.append (inRawObjectArray [idx].object as! BoardTrack)
         }
         self.mTracksP1 = relationshipArray
       }

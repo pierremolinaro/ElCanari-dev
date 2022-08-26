@@ -307,6 +307,7 @@ final class BoardRestrictRectangle : BoardObject,
     self.mIsInInner4Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -530,11 +531,12 @@ final class BoardRestrictRectangle : BoardObject,
     self.mIsInInner2Layer_property.addEBObserver (self.signatureForERCChecking_property)
     self.mIsInInner3Layer_property.addEBObserver (self.signatureForERCChecking_property)
     self.mIsInInner4Layer_property.addEBObserver (self.signatureForERCChecking_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -884,11 +886,10 @@ final class BoardRestrictRectangle : BoardObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mY = value
       }
@@ -919,7 +920,7 @@ final class BoardRestrictRectangle : BoardObject,
       if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mX = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 

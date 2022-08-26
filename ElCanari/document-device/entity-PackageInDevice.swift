@@ -361,6 +361,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.addEBObserver (self.mRoot_none)
+    gInitSemaphore.wait ()
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mRoot (has opposite to many relationship: mPackages)
@@ -588,6 +589,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       }
     }
     self.mMasterPads_property.addEBObserverOf_mName (self.padNameSet_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: self)
@@ -596,8 +598,8 @@ final class PackageInDevice : EBGraphicManagedObject,
     self.mStrokeBezierPath_property.setSignatureObserver (observer: self)
     self.mVersion_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -991,11 +993,10 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
         self.mFileData = value
       }
@@ -1014,7 +1015,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mY = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -1023,11 +1024,11 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                           _ inObjectArray : [EBManagedObject],
+                                                           _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
-    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inObjectArray [objectIndex] as! DeviceRoot
+        let object = inRawObjectArray [objectIndex].object as! DeviceRoot
         self.mRoot = object 
       }
   }
@@ -1037,14 +1038,14 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mMasterPads"], range.length > 0 {
         var relationshipArray = EBReferenceArray <MasterPadInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! MasterPadInDevice)
+          relationshipArray.append (inRawObjectArray [idx].object as! MasterPadInDevice)
         }
         self.mMasterPads = relationshipArray
       }

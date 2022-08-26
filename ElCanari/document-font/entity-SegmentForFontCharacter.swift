@@ -138,6 +138,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
     self.x2_property = EBStoredProperty_Int (defaultValue: 9, undoManager: ebUndoManager)
     self.y2_property = EBStoredProperty_Int (defaultValue: 8, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -196,6 +197,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
     self.y1_property.addEBObserver (self.objectDisplay_property)
     self.x2_property.addEBObserver (self.objectDisplay_property)
     self.y2_property.addEBObserver (self.objectDisplay_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.x1_property.setSignatureObserver (observer: self)
@@ -203,8 +205,8 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
     self.y1_property.setSignatureObserver (observer: self)
     self.y2_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -413,11 +415,10 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["x1"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.x1 = value
       }
@@ -430,7 +431,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
       if let range = inDictionary ["y2"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.y2 = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 

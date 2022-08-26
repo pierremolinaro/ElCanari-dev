@@ -736,6 +736,7 @@ final class DeviceRoot : EBManagedObject,
     self.mShowPackageBackPads_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     self.mSymbolDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- To many property: mDocs (no option)
     self.mDocs_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSymbolInstances (no option)
@@ -984,6 +985,7 @@ final class DeviceRoot : EBManagedObject,
     self.mSymbolTypes_property.addEBObserverOf_mVersion (self.issues_property)
     self.mSymbolTypes_property.addEBObserverOf_mTypeName (self.issues_property)
     self.mSymbolTypes_property.addEBObserverOf_instanceCount (self.issues_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mPackages_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
@@ -1000,8 +1002,8 @@ final class DeviceRoot : EBManagedObject,
     self.mSymbolTypes_property.setSignatureObserver (observer: self)
     self.mTitle_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -1780,11 +1782,10 @@ final class DeviceRoot : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["mSelectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mSelectedPageIndex = value
       }
@@ -1830,7 +1831,7 @@ final class DeviceRoot : EBManagedObject,
       if let range = inDictionary ["mSymbolDisplayZoom"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.mSymbolDisplayZoom = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -1839,14 +1840,14 @@ final class DeviceRoot : EBManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["mDocs"], range.length > 0 {
         var relationshipArray = EBReferenceArray <DeviceDocumentation> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! DeviceDocumentation)
+          relationshipArray.append (inRawObjectArray [idx].object as! DeviceDocumentation)
         }
         self.mDocs = relationshipArray
       }
@@ -1854,7 +1855,7 @@ final class DeviceRoot : EBManagedObject,
         var relationshipArray = EBReferenceArray <SymbolInstanceInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SymbolInstanceInDevice)
+          relationshipArray.append (inRawObjectArray [idx].object as! SymbolInstanceInDevice)
         }
         self.mSymbolInstances = relationshipArray
       }
@@ -1862,7 +1863,7 @@ final class DeviceRoot : EBManagedObject,
         var relationshipArray = EBReferenceArray <PackageInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! PackageInDevice)
+          relationshipArray.append (inRawObjectArray [idx].object as! PackageInDevice)
         }
         self.mPackages = relationshipArray
       }
@@ -1870,7 +1871,7 @@ final class DeviceRoot : EBManagedObject,
         var relationshipArray = EBReferenceArray <SymbolTypeInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! SymbolTypeInDevice)
+          relationshipArray.append (inRawObjectArray [idx].object as! SymbolTypeInDevice)
         }
         self.mSymbolTypes = relationshipArray
       }
@@ -1878,7 +1879,7 @@ final class DeviceRoot : EBManagedObject,
         var relationshipArray = EBReferenceArray <PadProxyInDevice> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! PadProxyInDevice)
+          relationshipArray.append (inRawObjectArray [idx].object as! PadProxyInDevice)
         }
         self.mPadProxies = relationshipArray
       }

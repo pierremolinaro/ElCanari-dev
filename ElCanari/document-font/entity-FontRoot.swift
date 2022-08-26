@@ -334,6 +334,7 @@ final class FontRoot : EBManagedObject,
     self.selectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.currentCharacterCodePoint_property = EBStoredProperty_Int (defaultValue: 32, undoManager: ebUndoManager)
     super.init (ebUndoManager)
+    gInitSemaphore.wait ()
   //--- To many property: characters (no option)
     self.characters_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: currentCharacterCodePointString
@@ -471,14 +472,15 @@ final class FontRoot : EBManagedObject,
       }
     }
     self.characters_property.addEBObserverOf_issues (self.issues_property)
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.characters_property.setSignatureObserver (observer: self)
     self.comments_property.setSignatureObserver (observer: self)
     self.nominalSize_property.setSignatureObserver (observer: self)
   //--- Extern delegates
-  }
-
+   }
+  
   //····················································································································
 
   override func removeAllObservers () {
@@ -793,11 +795,10 @@ final class FontRoot : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inObjectArray : [EBManagedObject],
-                                                   _ inData : Data,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inObjectArray, inData, &ioParallelObjectSetupContext)
-    ioParallelObjectSetupContext.addOperation {
+                                                   _ inData : Data /* ,
+                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
+ //   ioParallelObjectSetupContext.addOperation {
       if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
         self.comments = value
       }
@@ -813,7 +814,7 @@ final class FontRoot : EBManagedObject,
       if let range = inDictionary ["currentCharacterCodePoint"], let value = Int.unarchiveFromDataRange (inData, range) {
         self.currentCharacterCodePoint = value
       }
-    }
+ //   }
   //--- End of addOperation
   }
 
@@ -822,14 +823,14 @@ final class FontRoot : EBManagedObject,
   //····················································································································
 
   override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                            _ inObjectArray : [EBManagedObject],
+                                                            _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
-    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inObjectArray, inData)
+    super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
       if let range = inDictionary ["characters"], range.length > 0 {
         var relationshipArray = EBReferenceArray <FontCharacter> ()
         let indexArray = inData.base62EncodedIntArray (fromRange: range)
         for idx in indexArray {
-          relationshipArray.append (inObjectArray [idx] as! FontCharacter)
+          relationshipArray.append (inRawObjectArray [idx].object as! FontCharacter)
         }
         self.characters = relationshipArray
       }
