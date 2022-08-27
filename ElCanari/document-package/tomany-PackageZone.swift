@@ -12,8 +12,7 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
 
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PackageZone>,
-                                 
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PackageZone>,                            
                                  addedSet inAddedSet : EBReferenceSet <PackageZone>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
@@ -1868,21 +1867,6 @@ class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatureObser
   weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
-  //   Opposite relationship management
-  //····················································································································
-
-  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : PackageZone) -> Void > = nil
-  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : PackageZone) -> Void > = nil
-
-  //····················································································································
-
-  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : PackageZone) -> Void,
-                                               resetter inResetter : @escaping (_ inManagedObject : PackageZone) -> Void) {
-    self.mSetOppositeRelationship = inSetter
-    self.mResetOppositeRelationship = inResetter
-  }
-
-  //····················································································································
 
   #if BUILD_OBJECT_EXPLORER
     final var mValueExplorer : NSPopUpButton? {
@@ -1937,14 +1921,12 @@ class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatureObser
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
       }
-      self.mResetOppositeRelationship? (managedObject)
    }
   //---
     for managedObject in inAddedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: self)
       }
-      self.mSetOppositeRelationship? (managedObject)
     }
   //---
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)

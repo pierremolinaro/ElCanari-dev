@@ -12,8 +12,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SymbolPin>,
-                                 
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SymbolPin>,                            
                                  addedSet inAddedSet : EBReferenceSet <SymbolPin>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
@@ -1388,21 +1387,6 @@ class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObserverP
   weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
-  //   Opposite relationship management
-  //····················································································································
-
-  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : SymbolPin) -> Void > = nil
-  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : SymbolPin) -> Void > = nil
-
-  //····················································································································
-
-  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : SymbolPin) -> Void,
-                                               resetter inResetter : @escaping (_ inManagedObject : SymbolPin) -> Void) {
-    self.mSetOppositeRelationship = inSetter
-    self.mResetOppositeRelationship = inResetter
-  }
-
-  //····················································································································
 
   #if BUILD_OBJECT_EXPLORER
     final var mValueExplorer : NSPopUpButton? {
@@ -1457,14 +1441,12 @@ class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObserverP
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
       }
-      self.mResetOppositeRelationship? (managedObject)
    }
   //---
     for managedObject in inAddedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: self)
       }
-      self.mSetOppositeRelationship? (managedObject)
     }
   //---
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)

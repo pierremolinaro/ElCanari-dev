@@ -12,8 +12,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PackageModelImageDoublePoint>,
-                                 
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PackageModelImageDoublePoint>,                            
                                  addedSet inAddedSet : EBReferenceSet <PackageModelImageDoublePoint>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects

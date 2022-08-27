@@ -12,8 +12,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ArtworkFileGenerationParameters>,
-                                 
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ArtworkFileGenerationParameters>,                            
                                  addedSet inAddedSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects

@@ -12,8 +12,7 @@ class ReadOnlyArrayOf_ComponentInProject : ReadOnlyAbstractArrayProperty <Compon
 
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ComponentInProject>,
-                                 
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <ComponentInProject>,                            
                                  addedSet inAddedSet : EBReferenceSet <ComponentInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects

@@ -8,7 +8,7 @@ enum ConnectorSide {
 
 //——————————————————————————————————————————————————————————————————————————————
 
-graphic entity BoardConnector : BoardObject {
+graphic handlingOpposite entity BoardConnector : BoardObject {
   graphic cannotBeDeleted ;
 
   toOne ComponentInProject mComponent inverse toMany mConnectors ; // nil if not connected to a pad

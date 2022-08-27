@@ -2,7 +2,7 @@
 //   Component Symbol
 //——————————————————————————————————————————————————————————————————————————————
 
-graphic entity ComponentSymbolInProject : SchematicObject {
+graphic handlingOpposite entity ComponentSymbolInProject : SchematicObject {
   toOne ComponentInProject mComponent inverse toMany mSymbols ;
   property proxy String componentValueProxy : mComponent.mComponentValue ;
 

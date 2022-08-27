@@ -12,8 +12,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
 
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardModelPad>,
-                                 
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardModelPad>,                            
                                  addedSet inAddedSet : EBReferenceSet <BoardModelPad>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
@@ -782,21 +781,6 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
   weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
-  //   Opposite relationship management
-  //····················································································································
-
-  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardModelPad) -> Void > = nil
-  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardModelPad) -> Void > = nil
-
-  //····················································································································
-
-  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardModelPad) -> Void,
-                                               resetter inResetter : @escaping (_ inManagedObject : BoardModelPad) -> Void) {
-    self.mSetOppositeRelationship = inSetter
-    self.mResetOppositeRelationship = inResetter
-  }
-
-  //····················································································································
 
   #if BUILD_OBJECT_EXPLORER
     final var mValueExplorer : NSPopUpButton? {
@@ -851,14 +835,12 @@ class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureO
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
       }
-      self.mResetOppositeRelationship? (managedObject)
    }
   //---
     for managedObject in inAddedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: self)
       }
-      self.mSetOppositeRelationship? (managedObject)
     }
   //---
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)

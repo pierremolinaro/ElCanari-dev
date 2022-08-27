@@ -11,7 +11,7 @@ func enum ComponentSide.popupTitles {
 
 //——————————————————————————————————————————————————————————————————————————————
 
-graphic entity ComponentInProject : BoardObject {
+graphic handlingOpposite entity ComponentInProject : BoardObject {
 //--- Device
   toOne DeviceInProject mDevice inverse toMany mComponents ;
 

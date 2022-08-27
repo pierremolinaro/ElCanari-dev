@@ -1,6 +1,6 @@
 //——————————————————————————————————————————————————————————————————————————————
 
-entity BoardModel {
+handlingOpposite entity BoardModel {
   property String artworkName default "" ;
   property String name default "" ;
   property Int modelWidth default 0 ;

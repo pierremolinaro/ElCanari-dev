@@ -2,7 +2,7 @@
 //   Device
 //——————————————————————————————————————————————————————————————————————————————
 
-entity DeviceInProject {
+handlingOpposite entity DeviceInProject {
   property String mDeviceName default "" ;
   property String mPrefix default "" ;
   property Int mDeviceVersion default 0 ;

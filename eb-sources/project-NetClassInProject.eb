@@ -2,7 +2,7 @@
 //   Net class
 //——————————————————————————————————————————————————————————————————————————————
 
-entity NetClassInProject {
+handlingOpposite entity NetClassInProject {
   toMany NetInProject mNets inverse toOne mNetClass ;
   property String mNetClassName default "Default" ;
   property NSColor mNetClassColor default blue ;

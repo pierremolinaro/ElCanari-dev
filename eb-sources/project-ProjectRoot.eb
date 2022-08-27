@@ -2,7 +2,7 @@
 //     P R O J E C T    R O O T
 //——————————————————————————————————————————————————————————————————————————————
 
-entity ProjectRoot {
+handlingOpposite entity ProjectRoot {
 //--- Artwork
   property String mArtworkName default "" ;
   property Int mArtworkVersion default 0 ;

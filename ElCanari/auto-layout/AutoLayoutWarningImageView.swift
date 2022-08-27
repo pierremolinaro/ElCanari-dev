@@ -45,7 +45,6 @@ final class AutoLayoutWarningImageView : NSImageView, EBUserClassNameProtocol {
   //····················································································································
 
   private var mHiddenBindingController : HiddenBindingController? = nil
-  var hiddenBindingController : HiddenBindingController? { return self.mHiddenBindingController }
 
   //····················································································································
 

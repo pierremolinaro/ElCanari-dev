@@ -72,7 +72,6 @@ class AutoLayoutBase_NSSplitView : NSSplitView, EBUserClassNameProtocol {
   //····················································································································
 
   private final var mHiddenBindingController : HiddenBindingController? = nil
-  final var hiddenBindingController : HiddenBindingController? { return self.mHiddenBindingController }
 
   //····················································································································
 

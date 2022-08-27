@@ -2,7 +2,7 @@
 //   Font
 //——————————————————————————————————————————————————————————————————————————————
 
-entity FontInProject {
+handlingOpposite entity FontInProject {
   toMany BoardText mTexts inverse toOne mFont;
   toMany ComponentInProject mComponentNames inverse toOne mNameFont ;
   toMany ComponentInProject mComponentValues inverse toOne mValueFont ;

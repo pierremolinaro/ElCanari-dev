@@ -2,7 +2,7 @@
 //   LabelInSchematic
 //——————————————————————————————————————————————————————————————————————————————
 
-graphic entity LabelInSchematic : SchematicObject {
+graphic handlingOpposite entity LabelInSchematic : SchematicObject {
   toOne PointInSchematic mPoint inverse toMany mLabels ;
 
   property QuadrantRotation mOrientation default rotation0 ;

@@ -1,6 +1,6 @@
 //——————————————————————————————————————————————————————————————————————————————
 
-abstract graphic entity PackageObject {
+abstract graphic handlingOpposite entity PackageObject {
   toOne PackageRoot mRoot inverse toMany packageObjects ;
   abstract transient CanariIssueArray issues ;
   
@@ -37,7 +37,7 @@ func enum PadNumbering.popupTitles {
 
 //----------------------------------------------------------------------------*
 
-entity PackageRoot {
+handlingOpposite entity PackageRoot {
 //--- Selected page index
   property Int selectedPageIndex default 1 ;
 
@@ -304,7 +304,7 @@ graphic entity PackageArc : PackageObject {
 
 //——————————————————————————————————————————————————————————————————————————————
 
-graphic entity PackagePad : PackageObject {
+graphic handlingOpposite entity PackagePad : PackageObject {
   graphic canCopyAndPaste ;
 
   property @signature Int xCenter default 0 ;
@@ -372,7 +372,7 @@ graphic entity PackagePad : PackageObject {
 
 //——————————————————————————————————————————————————————————————————————————————
 
-graphic entity PackageSlavePad : PackageObject {
+graphic handlingOpposite entity PackageSlavePad : PackageObject {
   graphic canCopyAndPaste ;
 
   property @signature Int xCenter default 0 ;
@@ -555,7 +555,7 @@ entity ForbiddenPadNumber {
 
 //——————————————————————————————————————————————————————————————————————————————
 
-graphic entity PackageModelImageDoublePoint {
+graphic handlingOpposite entity PackageModelImageDoublePoint {
   toOne PackageRoot mRoot inverse toMany mModelImageObjects ;
 
   property Int mFirstX default 457_200 ;

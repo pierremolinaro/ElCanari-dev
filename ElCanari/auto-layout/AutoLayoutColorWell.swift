@@ -65,7 +65,6 @@ final class AutoLayoutColorWell : NSColorWell, EBUserClassNameProtocol {
   //····················································································································
 
   private var mEnabledBindingController : EnabledBindingController? = nil
-  var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
 
   //····················································································································
 
@@ -81,9 +80,9 @@ final class AutoLayoutColorWell : NSColorWell, EBUserClassNameProtocol {
   fileprivate func updateColor (from inObject : EBReadOnlyProperty_NSColor) {
     switch inObject.selection {
     case .empty, .multiple :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.mEnabledBindingController)
     case .single (let v) :
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.mEnabledBindingController)
       self.color = v
     }
   }

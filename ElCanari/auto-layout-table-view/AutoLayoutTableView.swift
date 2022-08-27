@@ -234,8 +234,8 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   //····················································································································
 
   final func tableView (_ tableView : NSTableView,
-                  viewFor inTableColumn : NSTableColumn?,
-                  row inRowIndex : Int) -> NSView? {
+                        viewFor inTableColumn : NSTableColumn?,
+                        row inRowIndex : Int) -> NSView? {
     if let tableColumn = inTableColumn as? AutoLayoutTableColumn {
       let view = tableColumn.configureTableCellView (forRowIndex: inRowIndex)
       return view
@@ -249,7 +249,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   //····················································································································
 
   final func tableView (_ tableView : NSTableView,
-                  sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
+                        sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
     self.sortAndReloadData ()
   }
 

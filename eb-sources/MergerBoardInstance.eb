@@ -1,6 +1,6 @@
 //————————————————————————————————————————————————————————————————————————————————————————
 
-graphic entity MergerBoardInstance {
+graphic handlingOpposite entity MergerBoardInstance {
   toOne MergerRoot myRoot inverse toMany boardInstances ;
   toOne BoardModel myModel inverse toMany myInstances ;
   property Int x default 0 ;

@@ -12,8 +12,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <CommentInSchematic>,
-                                 
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <CommentInSchematic>,                            
                                  addedSet inAddedSet : EBReferenceSet <CommentInSchematic>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
@@ -983,21 +982,6 @@ class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EB
   weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
-  //   Opposite relationship management
-  //····················································································································
-
-  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : CommentInSchematic) -> Void > = nil
-  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : CommentInSchematic) -> Void > = nil
-
-  //····················································································································
-
-  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : CommentInSchematic) -> Void,
-                                               resetter inResetter : @escaping (_ inManagedObject : CommentInSchematic) -> Void) {
-    self.mSetOppositeRelationship = inSetter
-    self.mResetOppositeRelationship = inResetter
-  }
-
-  //····················································································································
 
   #if BUILD_OBJECT_EXPLORER
     final var mValueExplorer : NSPopUpButton? {
@@ -1052,14 +1036,12 @@ class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EB
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
       }
-      self.mResetOppositeRelationship? (managedObject)
    }
   //---
     for managedObject in inAddedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: self)
       }
-      self.mSetOppositeRelationship? (managedObject)
     }
   //---
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)

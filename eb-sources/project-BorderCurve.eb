@@ -11,7 +11,7 @@ func enum BorderCurveShape.popupTitles {
 
 //——————————————————————————————————————————————————————————————————————————————
 
-graphic entity BorderCurve {
+graphic handlingOpposite entity BorderCurve {
   graphic cannotBeDeleted ;
 
   property BorderCurveShape mShape default line ;

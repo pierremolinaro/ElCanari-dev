@@ -313,21 +313,6 @@ final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageI
 
   weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
- //····················································································································
-  //   Opposite relationship management
-  //····················································································································
-
-  private var mSetOppositeRelationship : Optional < (_ inManagedObject : DevicePackageInProject) -> Void > = nil
-  private var mResetOppositeRelationship : Optional < (_ inManagedObject : DevicePackageInProject) -> Void > = nil
-
-  //····················································································································
-
-  func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : DevicePackageInProject) -> Void,
-                                         resetter inResetter : @escaping (_ inManagedObject : DevicePackageInProject) -> Void) {
-    self.mSetOppositeRelationship = inSetter
-    self.mResetOppositeRelationship = inResetter
-  }
-
   //····················································································································
 
   #if BUILD_OBJECT_EXPLORER
@@ -357,14 +342,12 @@ final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageI
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: nil)
       }
-      self.mResetOppositeRelationship? (object)
     }
   //---
     if let object = self.mInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
-      self.mSetOppositeRelationship? (object)
     }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)

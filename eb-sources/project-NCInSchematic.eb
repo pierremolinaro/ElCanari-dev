@@ -2,7 +2,7 @@
 //   NCInSchematic
 //——————————————————————————————————————————————————————————————————————————————
 
-graphic entity NCInSchematic : SchematicObject {
+graphic handlingOpposite entity NCInSchematic : SchematicObject {
   toOne PointInSchematic mPoint inverse toOne mNC ;
 
   property QuadrantRotation mOrientation default rotation0 ;

@@ -2,7 +2,7 @@
 //   SchematicObject
 //——————————————————————————————————————————————————————————————————————————————
 
-abstract graphic entity SchematicObject {
+abstract graphic handlingOpposite entity SchematicObject {
   toOne SheetInProject mSheet inverse toMany mObjects ;
 
   transient Bool isPlacedInSchematic dependsFrom self.mSheet.none ;

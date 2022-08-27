@@ -271,7 +271,7 @@ autoLayoutDocument AutoLayoutArtworkDocument root ArtworkRoot stackView mDocumen
 //     A R T W O R K    R O O T
 //------------------------------------------------------------------------------
 
-entity ArtworkRoot {
+handlingOpposite entity ArtworkRoot {
   toMany @signature ArtworkFileGenerationParameters fileGenerationParameterArray inverse toOne mArtwork ;
 
   property @signature LayerConfiguration layerConfiguration default twoLayers ;
@@ -308,7 +308,7 @@ entity ArtworkRoot {
 
 //------------------------------------------------------------------------------
 
-entity ArtworkFileGenerationParameters {
+handlingOpposite entity ArtworkFileGenerationParameters {
   toOne ArtworkRoot mArtwork inverse toMany fileGenerationParameterArray ;
   
   property @signature Bool drawBoardLimits default no ;

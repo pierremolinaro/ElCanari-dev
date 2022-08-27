@@ -1,6 +1,6 @@
 //——————————————————————————————————————————————————————————————————————————————
 
-entity MergerRoot {
+handlingOpposite entity MergerRoot {
   toMany BoardModel boardModels ;
   toMany MergerBoardInstance boardInstances inverse toOne myRoot ;
 

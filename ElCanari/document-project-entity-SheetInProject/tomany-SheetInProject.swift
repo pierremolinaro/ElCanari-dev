@@ -12,8 +12,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SheetInProject>,
-                                 
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <SheetInProject>,                            
                                  addedSet inAddedSet : EBReferenceSet <SheetInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects

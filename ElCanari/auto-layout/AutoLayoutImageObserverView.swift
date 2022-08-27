@@ -62,7 +62,6 @@ final class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
   //····················································································································
 
   private var mEnabledBindingController : EnabledBindingController? = nil
-  var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
 
   //····················································································································
 
@@ -75,17 +74,14 @@ final class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
   //  image binding
   //····················································································································
 
-  fileprivate func updateImage (_ object : EBReadOnlyProperty_NSImage) {
-    switch object.selection {
-    case .empty :
+  fileprivate func updateImage (_ inObjectSelection : EBSelection <NSImage>) {
+    switch inObjectSelection {
+    case .empty, .multiple :
       self.image = nil
-      self.enable (fromValueBinding: false, self.enabledBindingController)
-    case .multiple :
-      self.image = nil
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.mEnabledBindingController)
     case .single (let propertyValue) :
       self.image = propertyValue
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.mEnabledBindingController)
     }
   }
 
@@ -95,10 +91,10 @@ final class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func bind_image (_ object : EBReadOnlyProperty_NSImage) -> Self {
+  final func bind_image (_ inObject : EBReadOnlyProperty_NSImage) -> Self {
     self.mImageController = EBObservablePropertyController (
-      observedObjects: [object],
-      callBack: { [weak self] in self?.updateImage (object) ; }
+      observedObjects: [inObject],
+      callBack: { [weak self] in self?.updateImage (inObject.selection) ; }
     )
     return self
   }
@@ -107,17 +103,14 @@ final class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
   //  tooltip binding
   //····················································································································
 
-  fileprivate func updateTooltip (_ object : EBReadOnlyProperty_String) {
-    switch object.selection {
-    case .empty :
+  fileprivate func updateTooltip (_ inObjectSelection : EBSelection <String>) {
+    switch inObjectSelection {
+    case .empty, .multiple :
       self.toolTip = nil
-      self.enable (fromValueBinding: false, self.enabledBindingController)
-    case .multiple :
-      self.toolTip = nil
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+      self.enable (fromValueBinding: false, self.mEnabledBindingController)
     case .single (let propertyValue) :
       self.toolTip = propertyValue
-      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.enable (fromValueBinding: true, self.mEnabledBindingController)
     }
   }
 
@@ -127,10 +120,10 @@ final class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func bind_tooltip (_ object : EBReadOnlyProperty_String) -> Self {
+  final func bind_tooltip (_ inObject : EBReadOnlyProperty_String) -> Self {
     self.mTooltipController = EBObservablePropertyController (
-      observedObjects: [object],
-      callBack: { [weak self] in self?.updateTooltip (object) }
+      observedObjects: [inObject],
+      callBack: { [weak self] in self?.updateTooltip (inObject.selection) }
     )
     return self
   }
@@ -140,7 +133,6 @@ final class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
   //····················································································································
 
   private var mHiddenBindingController : HiddenBindingController? = nil
-  var hiddenBindingController : HiddenBindingController? { return self.mHiddenBindingController }
 
   //····················································································································
 

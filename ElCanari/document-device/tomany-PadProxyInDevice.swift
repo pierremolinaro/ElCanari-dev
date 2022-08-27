@@ -12,8 +12,7 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PadProxyInDevice>,
-                                 
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <PadProxyInDevice>,                            
                                  addedSet inAddedSet : EBReferenceSet <PadProxyInDevice>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects

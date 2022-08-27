@@ -172,7 +172,6 @@ class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol, NSTextF
   //····················································································································
 
   private final var mHiddenBindingController : HiddenBindingController? = nil
-  final var hiddenBindingController : HiddenBindingController? { return self.mHiddenBindingController }
 
   //····················································································································
 

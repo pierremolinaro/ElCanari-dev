@@ -12,8 +12,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   //····················································································································
 
-  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardRestrictRectangle>,
-                                 
+  override func updateObservers (removedSet inRemovedSet : EBReferenceSet <BoardRestrictRectangle>,                            
                                  addedSet inAddedSet : EBReferenceSet <BoardRestrictRectangle>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
@@ -1256,21 +1255,6 @@ class StoredArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestrictRecta
   weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
-  //   Opposite relationship management
-  //····················································································································
-
-  private final var mSetOppositeRelationship : Optional < (_ inManagedObject : BoardRestrictRectangle) -> Void > = nil
-  private final var mResetOppositeRelationship : Optional < (_ inManagedObject : BoardRestrictRectangle) -> Void > = nil
-
-  //····················································································································
-
-  final func setOppositeRelationShipFunctions (setter inSetter : @escaping (_ inManagedObject : BoardRestrictRectangle) -> Void,
-                                               resetter inResetter : @escaping (_ inManagedObject : BoardRestrictRectangle) -> Void) {
-    self.mSetOppositeRelationship = inSetter
-    self.mResetOppositeRelationship = inResetter
-  }
-
-  //····················································································································
 
   #if BUILD_OBJECT_EXPLORER
     final var mValueExplorer : NSPopUpButton? {
@@ -1325,14 +1309,12 @@ class StoredArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestrictRecta
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: nil)
       }
-      self.mResetOppositeRelationship? (managedObject)
    }
   //---
     for managedObject in inAddedSet.values {
       if self.mUsedForSignature {
         managedObject.setSignatureObserver (observer: self)
       }
-      self.mSetOppositeRelationship? (managedObject)
     }
   //---
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)

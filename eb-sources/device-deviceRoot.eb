@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------*
 
-entity DeviceRoot {
+handlingOpposite entity DeviceRoot {
 //--- Selected page index
   property Int mSelectedPageIndex default 0 ;
   property Int mSelectedSymbolInspectorIndex default 0 ;
@@ -92,7 +92,7 @@ entity DeviceDocumentation {
 
 //——————————————————————————————————————————————————————————————————————————————
 
-graphic entity PackageInDevice {
+graphic handlingOpposite entity PackageInDevice {
   toOne DeviceRoot mRoot inverse toMany mPackages ;
 
   toMany @signature MasterPadInDevice mMasterPads ;
@@ -152,7 +152,7 @@ graphic entity PackageInDevice {
 
 //——————————————————————————————————————————————————————————————————————————————
 
-entity MasterPadInDevice {
+handlingOpposite entity MasterPadInDevice {
   toMany @signature SlavePadInDevice mSlavePads inverse toOne mMasterPad ;
 
   property @signature Int mCenterX default 0 ;
@@ -183,7 +183,7 @@ entity MasterPadInDevice {
 
 //——————————————————————————————————————————————————————————————————————————————
 
-entity SlavePadInDevice {
+handlingOpposite entity SlavePadInDevice {
   toOne MasterPadInDevice mMasterPad inverse toMany mSlavePads  ;
 
   property @signature Int mCenterX default 0 ;
@@ -214,7 +214,7 @@ entity SlavePadInDevice {
 
 //——————————————————————————————————————————————————————————————————————————————
 
-entity SymbolTypeInDevice {
+handlingOpposite entity SymbolTypeInDevice {
   toMany SymbolInstanceInDevice mInstances inverse toOne mType ;
   toMany @signature SymbolPinTypeInDevice mPinTypes ;
 
@@ -236,7 +236,7 @@ entity SymbolTypeInDevice {
 
 //——————————————————————————————————————————————————————————————————————————————
 
-entity SymbolPinTypeInDevice {
+handlingOpposite entity SymbolPinTypeInDevice {
   toMany SymbolPinInstanceInDevice mInstances inverse toOne mType  ;
 
   property @signature Int mPinX default 0 ;
@@ -263,7 +263,7 @@ entity SymbolPinTypeInDevice {
 
 //——————————————————————————————————————————————————————————————————————————————
 
-graphic entity SymbolInstanceInDevice {
+graphic handlingOpposite entity SymbolInstanceInDevice {
   toOne SymbolTypeInDevice mType inverse toMany mInstances ;
   toMany @signature SymbolPinInstanceInDevice mPinInstances inverse toOne mSymbolInstance ;
 
@@ -309,7 +309,7 @@ graphic entity SymbolInstanceInDevice {
 
 //——————————————————————————————————————————————————————————————————————————————
 
-entity SymbolPinInstanceInDevice {
+handlingOpposite entity SymbolPinInstanceInDevice {
   toOne SymbolInstanceInDevice mSymbolInstance inverse toMany mPinInstances ;
   toOne SymbolPinTypeInDevice mType inverse toMany mInstances ;
   toOne PadProxyInDevice mPadProxy inverse toOne mPinInstance ;
@@ -332,7 +332,7 @@ entity SymbolPinInstanceInDevice {
 
 //——————————————————————————————————————————————————————————————————————————————
 
-entity PadProxyInDevice {
+handlingOpposite entity PadProxyInDevice {
   toOne SymbolPinInstanceInDevice mPinInstance inverse toOne mPadProxy ;
   
   property @signature String mPinInstanceName default "" ; // Used for signature

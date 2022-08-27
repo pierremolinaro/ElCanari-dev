@@ -2,7 +2,7 @@
 //   PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————
 
-entity PointInSchematic {
+handlingOpposite entity PointInSchematic {
   toOne SheetInProject mSheet inverse toMany mPoints ;
   toOne ComponentSymbolInProject mSymbol inverse toMany mPoints ;
   property String mSymbolPinName default "" ; // Used only if mSymbol is not nil

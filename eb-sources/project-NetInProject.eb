@@ -2,7 +2,7 @@
 //   Net
 //——————————————————————————————————————————————————————————————————————————————
 
-entity NetInProject {
+handlingOpposite entity NetInProject {
   toOne NetClassInProject mNetClass inverse toMany mNets ;
   toMany PointInSchematic mPoints inverse toOne mNet ;
   toMany BoardTrack mTracks inverse toOne mNet ;

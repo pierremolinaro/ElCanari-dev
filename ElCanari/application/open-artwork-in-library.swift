@@ -11,8 +11,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func openArtworkPanelInLibrary (windowForSheet inWindow : NSWindow?,
-                                           validationButtonTitle inValidationButtonTitle : String,
-                                           callBack inCallBack : @escaping (_ inURL : URL, _ inName : String) -> Void) {
+                                validationButtonTitle inValidationButtonTitle : String,
+                                callBack inCallBack : @escaping (_ inURL : URL, _ inName : String) -> Void) {
   gOpenArtworkPanelInLibrary = OpenArtworkPanelInLibrary (
     windowForSheet: inWindow,
     validationButtonTitle: inValidationButtonTitle,

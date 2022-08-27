@@ -184,7 +184,6 @@ class AutoLayoutBase_NSStackView : NSStackView, EBUserClassNameProtocol {
   //····················································································································
 
   private final var mHiddenBindingController : HiddenBindingController? = nil
-  final var hiddenBindingController : HiddenBindingController? { return self.mHiddenBindingController }
 
   //····················································································································
 
