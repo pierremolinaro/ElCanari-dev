@@ -61,7 +61,12 @@ class EBObservedObject : EBSwiftBaseObject {
     final func updateObserverExplorer () {
       if let observerExplorer = self.mObserverExplorer {
         observerExplorer.removeAllItems ()
-        let observerCount = self.mObservers.nonNilEntryCount
+        var observerCount = 0
+        for (_, entry) in self.mObservers.dictionary {
+          if entry.observer != nil {
+            observerCount += 1
+          }
+        }
         observerExplorer.addItem (withTitle: String (observerCount))
         observerExplorer.isEnabled = observerCount > 0
         for (_, entry) in self.mObservers.dictionary {
