@@ -31,7 +31,7 @@ func changeAutoLayoutUserInterfaceStyle (to inStyle : AutoLayoutUserInterfaceSty
   case .shadowlessSquare :
     gCurrentStyle = AutoLayoutUserInterfaceStyleDescriptor (buttonStyle: .shadowlessSquare, segmentedControlStyle: .texturedSquare)
   }
-  for window in NSApp.windows {
+  for window in NSApplication.shared.windows {
     if let mainView = window.contentView {
       mainView.updateAutoLayoutUserInterfaceStyle ()
     }
@@ -41,7 +41,7 @@ func changeAutoLayoutUserInterfaceStyle (to inStyle : AutoLayoutUserInterfaceSty
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct AutoLayoutUserInterfaceStyleDescriptor {
+struct AutoLayoutUserInterfaceStyleDescriptor : Sendable {
   let buttonStyle : NSButton.BezelStyle
   let segmentedControlStyle : NSSegmentedControl.Style
 }

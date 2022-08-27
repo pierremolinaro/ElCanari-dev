@@ -1230,18 +1230,18 @@ final class BorderCurve : EBGraphicManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! ProjectRoot
-        self.mRoot = object 
-      }
-      if let range = inDictionary ["mNext"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! BorderCurve
-        self.mNext = object 
-      }
-      if let range = inDictionary ["mPrevious"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! BorderCurve
-        self.mPrevious = object 
-      }
+    if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! ProjectRoot
+      self.mRoot = object
+    }
+    if let range = inDictionary ["mNext"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! BorderCurve
+      self.mNext = object
+    }
+    if let range = inDictionary ["mPrevious"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! BorderCurve
+      self.mPrevious = object
+    }
   }
 
   //····················································································································

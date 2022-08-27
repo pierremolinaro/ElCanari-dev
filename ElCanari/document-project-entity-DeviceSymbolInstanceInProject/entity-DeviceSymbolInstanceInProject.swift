@@ -472,10 +472,10 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mSymbolType"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! DeviceSymbolTypeInProject
-        self.mSymbolType = object 
-      }
+    if let range = inDictionary ["mSymbolType"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! DeviceSymbolTypeInProject
+      self.mSymbolType = object
+    }
   }
 
   //····················································································································

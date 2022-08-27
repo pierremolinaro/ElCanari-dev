@@ -1509,22 +1509,22 @@ final class PointInSchematic : EBManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mSymbol"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! ComponentSymbolInProject
-        self.mSymbol = object 
-      }
-      if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! NetInProject
-        self.mNet = object 
-      }
-      if let range = inDictionary ["mNC"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! NCInSchematic
-        self.mNC = object 
-      }
-      if let range = inDictionary ["mSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! SheetInProject
-        self.mSheet = object 
-      }
+    if let range = inDictionary ["mSymbol"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! ComponentSymbolInProject
+      self.mSymbol = object
+    }
+    if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! NetInProject
+      self.mNet = object
+    }
+    if let range = inDictionary ["mNC"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! NCInSchematic
+      self.mNC = object
+    }
+    if let range = inDictionary ["mSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! SheetInProject
+      self.mSheet = object
+    }
   }
 
   //····················································································································

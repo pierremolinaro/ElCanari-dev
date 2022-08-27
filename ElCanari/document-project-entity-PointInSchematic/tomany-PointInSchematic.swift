@@ -95,8 +95,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   final func addEBObserversOf_mSymbolPinName_toElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     if !self.mObserversOf_mSymbolPinName.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mSymbolPinName.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mSymbolPinName_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mSymbolPinName.dictionary {
+          if let observer = entry.observer {
+            managedObject.mSymbolPinName_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mSymbolPinName.triggerPacking ()
+          }
         }
       }
     }
@@ -105,10 +109,14 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //····················································································································
 
   final func removeEBObserversOf_mSymbolPinName_fromElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
-    self.mObserversOf_mSymbolPinName.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mSymbolPinName_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mSymbolPinName.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mSymbolPinName_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mSymbolPinName.triggerPacking ()
       }
     }
   }
@@ -154,8 +162,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   final func addEBObserversOf_mX_toElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     if !self.mObserversOf_mX.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mX.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mX_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mX.dictionary {
+          if let observer = entry.observer {
+            managedObject.mX_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mX.triggerPacking ()
+          }
         }
       }
     }
@@ -164,10 +176,14 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //····················································································································
 
   final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
-    self.mObserversOf_mX.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mX_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mX.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mX_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mX.triggerPacking ()
       }
     }
   }
@@ -213,8 +229,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   final func addEBObserversOf_mY_toElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     if !self.mObserversOf_mY.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mY.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mY_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mY.dictionary {
+          if let observer = entry.observer {
+            managedObject.mY_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mY.triggerPacking ()
+          }
         }
       }
     }
@@ -223,10 +243,14 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
   //····················································································································
 
   final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
-    self.mObserversOf_mY.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mY_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mY.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mY_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mY.triggerPacking ()
       }
     }
   }
@@ -271,8 +295,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func addEBObserversOf_location_toElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_location.apply { (_ observer : EBObserverProtocol) in
-        managedObject.location_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_location.dictionary {
+        if let observer = entry.observer {
+          managedObject.location_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_location.triggerPacking ()
+        }
       }
     }
   }
@@ -281,8 +309,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func removeEBObserversOf_location_fromElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_location.apply { (_ observer : EBObserverProtocol) in
-        managedObject.location_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_location.dictionary {
+        if let observer = entry.observer {
+          managedObject.location_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_location.triggerPacking ()
+        }
       }
     }
   }
@@ -327,8 +359,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func addEBObserversOf_netName_toElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netName.apply { (_ observer : EBObserverProtocol) in
-        managedObject.netName_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_netName.dictionary {
+        if let observer = entry.observer {
+          managedObject.netName_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_netName.triggerPacking ()
+        }
       }
     }
   }
@@ -337,8 +373,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func removeEBObserversOf_netName_fromElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netName.apply { (_ observer : EBObserverProtocol) in
-        managedObject.netName_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_netName.dictionary {
+        if let observer = entry.observer {
+          managedObject.netName_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_netName.triggerPacking ()
+        }
       }
     }
   }
@@ -383,8 +423,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func addEBObserversOf_netClassName_toElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netClassName.apply { (_ observer : EBObserverProtocol) in
-        managedObject.netClassName_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_netClassName.dictionary {
+        if let observer = entry.observer {
+          managedObject.netClassName_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_netClassName.triggerPacking ()
+        }
       }
     }
   }
@@ -393,8 +437,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func removeEBObserversOf_netClassName_fromElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netClassName.apply { (_ observer : EBObserverProtocol) in
-        managedObject.netClassName_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_netClassName.dictionary {
+        if let observer = entry.observer {
+          managedObject.netClassName_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_netClassName.triggerPacking ()
+        }
       }
     }
   }
@@ -439,8 +487,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func addEBObserversOf_hasNet_toElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_hasNet.apply { (_ observer : EBObserverProtocol) in
-        managedObject.hasNet_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_hasNet.dictionary {
+        if let observer = entry.observer {
+          managedObject.hasNet_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_hasNet.triggerPacking ()
+        }
       }
     }
   }
@@ -449,8 +501,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func removeEBObserversOf_hasNet_fromElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_hasNet.apply { (_ observer : EBObserverProtocol) in
-        managedObject.hasNet_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_hasNet.dictionary {
+        if let observer = entry.observer {
+          managedObject.hasNet_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_hasNet.triggerPacking ()
+        }
       }
     }
   }
@@ -495,8 +551,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func addEBObserversOf_canMove_toElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_canMove.apply { (_ observer : EBObserverProtocol) in
-        managedObject.canMove_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_canMove.dictionary {
+        if let observer = entry.observer {
+          managedObject.canMove_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_canMove.triggerPacking ()
+        }
       }
     }
   }
@@ -505,8 +565,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func removeEBObserversOf_canMove_fromElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_canMove.apply { (_ observer : EBObserverProtocol) in
-        managedObject.canMove_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_canMove.dictionary {
+        if let observer = entry.observer {
+          managedObject.canMove_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_canMove.triggerPacking ()
+        }
       }
     }
   }
@@ -551,8 +615,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func addEBObserversOf_wireColor_toElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_wireColor.apply { (_ observer : EBObserverProtocol) in
-        managedObject.wireColor_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_wireColor.dictionary {
+        if let observer = entry.observer {
+          managedObject.wireColor_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_wireColor.triggerPacking ()
+        }
       }
     }
   }
@@ -561,8 +629,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func removeEBObserversOf_wireColor_fromElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_wireColor.apply { (_ observer : EBObserverProtocol) in
-        managedObject.wireColor_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_wireColor.dictionary {
+        if let observer = entry.observer {
+          managedObject.wireColor_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_wireColor.triggerPacking ()
+        }
       }
     }
   }
@@ -607,8 +679,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func addEBObserversOf_symbolRotation_toElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_symbolRotation.apply { (_ observer : EBObserverProtocol) in
-        managedObject.symbolRotation_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_symbolRotation.dictionary {
+        if let observer = entry.observer {
+          managedObject.symbolRotation_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_symbolRotation.triggerPacking ()
+        }
       }
     }
   }
@@ -617,8 +693,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func removeEBObserversOf_symbolRotation_fromElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_symbolRotation.apply { (_ observer : EBObserverProtocol) in
-        managedObject.symbolRotation_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_symbolRotation.dictionary {
+        if let observer = entry.observer {
+          managedObject.symbolRotation_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_symbolRotation.triggerPacking ()
+        }
       }
     }
   }
@@ -663,8 +743,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func addEBObserversOf_symbolNameNetName_toElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_symbolNameNetName.apply { (_ observer : EBObserverProtocol) in
-        managedObject.symbolNameNetName_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_symbolNameNetName.dictionary {
+        if let observer = entry.observer {
+          managedObject.symbolNameNetName_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_symbolNameNetName.triggerPacking ()
+        }
       }
     }
   }
@@ -673,8 +757,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func removeEBObserversOf_symbolNameNetName_fromElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_symbolNameNetName.apply { (_ observer : EBObserverProtocol) in
-        managedObject.symbolNameNetName_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_symbolNameNetName.dictionary {
+        if let observer = entry.observer {
+          managedObject.symbolNameNetName_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_symbolNameNetName.triggerPacking ()
+        }
       }
     }
   }
@@ -719,8 +807,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func addEBObserversOf_isConnected_toElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_isConnected.apply { (_ observer : EBObserverProtocol) in
-        managedObject.isConnected_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_isConnected.dictionary {
+        if let observer = entry.observer {
+          managedObject.isConnected_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_isConnected.triggerPacking ()
+        }
       }
     }
   }
@@ -729,8 +821,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func removeEBObserversOf_isConnected_fromElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_isConnected.apply { (_ observer : EBObserverProtocol) in
-        managedObject.isConnected_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_isConnected.dictionary {
+        if let observer = entry.observer {
+          managedObject.isConnected_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_isConnected.triggerPacking ()
+        }
       }
     }
   }
@@ -775,8 +871,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func addEBObserversOf_status_toElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_status.apply { (_ observer : EBObserverProtocol) in
-        managedObject.status_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_status.dictionary {
+        if let observer = entry.observer {
+          managedObject.status_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_status.triggerPacking ()
+        }
       }
     }
   }
@@ -785,8 +885,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func removeEBObserversOf_status_fromElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_status.apply { (_ observer : EBObserverProtocol) in
-        managedObject.status_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_status.dictionary {
+        if let observer = entry.observer {
+          managedObject.status_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_status.triggerPacking ()
+        }
       }
     }
   }
@@ -831,8 +935,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func addEBObserversOf_connectedPoints_toElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_connectedPoints.apply { (_ observer : EBObserverProtocol) in
-        managedObject.connectedPoints_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_connectedPoints.dictionary {
+        if let observer = entry.observer {
+          managedObject.connectedPoints_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_connectedPoints.triggerPacking ()
+        }
       }
     }
   }
@@ -841,8 +949,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func removeEBObserversOf_connectedPoints_fromElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_connectedPoints.apply { (_ observer : EBObserverProtocol) in
-        managedObject.connectedPoints_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_connectedPoints.dictionary {
+        if let observer = entry.observer {
+          managedObject.connectedPoints_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_connectedPoints.triggerPacking ()
+        }
       }
     }
   }
@@ -887,8 +999,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func addEBObserversOf_netInfoForPoint_toElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netInfoForPoint.apply { (_ observer : EBObserverProtocol) in
-        managedObject.netInfoForPoint_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_netInfoForPoint.dictionary {
+        if let observer = entry.observer {
+          managedObject.netInfoForPoint_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_netInfoForPoint.triggerPacking ()
+        }
       }
     }
   }
@@ -897,8 +1013,12 @@ class ReadOnlyArrayOf_PointInSchematic : ReadOnlyAbstractArrayProperty <PointInS
 
   final func removeEBObserversOf_netInfoForPoint_fromElementsOfSet (_ inSet : EBReferenceSet <PointInSchematic>) {
     for managedObject in inSet.values {
-      self.mObserversOf_netInfoForPoint.apply { (_ observer : EBObserverProtocol) in
-        managedObject.netInfoForPoint_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_netInfoForPoint.dictionary {
+        if let observer = entry.observer {
+          managedObject.netInfoForPoint_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_netInfoForPoint.triggerPacking ()
+        }
       }
     }
   }

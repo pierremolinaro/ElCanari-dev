@@ -93,8 +93,12 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserversOf_mX_toElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     if !self.mObserversOf_mX.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mX.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mX_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mX.dictionary {
+          if let observer = entry.observer {
+            managedObject.mX_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mX.triggerPacking ()
+          }
         }
       }
     }
@@ -103,10 +107,14 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //····················································································································
 
   final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
-    self.mObserversOf_mX.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mX_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mX.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mX_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mX.triggerPacking ()
       }
     }
   }
@@ -152,8 +160,12 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserversOf_mY_toElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     if !self.mObserversOf_mY.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mY.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mY_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mY.dictionary {
+          if let observer = entry.observer {
+            managedObject.mY_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mY.triggerPacking ()
+          }
         }
       }
     }
@@ -162,10 +174,14 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //····················································································································
 
   final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
-    self.mObserversOf_mY.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mY_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mY.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mY_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mY.triggerPacking ()
       }
     }
   }
@@ -211,8 +227,12 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserversOf_mFontSize_toElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     if !self.mObserversOf_mFontSize.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mFontSize.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mFontSize_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mFontSize.dictionary {
+          if let observer = entry.observer {
+            managedObject.mFontSize_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mFontSize.triggerPacking ()
+          }
         }
       }
     }
@@ -221,10 +241,14 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //····················································································································
 
   final func removeEBObserversOf_mFontSize_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
-    self.mObserversOf_mFontSize.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mFontSize_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mFontSize.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mFontSize_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mFontSize.triggerPacking ()
       }
     }
   }
@@ -270,8 +294,12 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserversOf_mLayer_toElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     if !self.mObserversOf_mLayer.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mLayer.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mLayer_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mLayer.dictionary {
+          if let observer = entry.observer {
+            managedObject.mLayer_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mLayer.triggerPacking ()
+          }
         }
       }
     }
@@ -280,10 +308,14 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //····················································································································
 
   final func removeEBObserversOf_mLayer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
-    self.mObserversOf_mLayer.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mLayer_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mLayer.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mLayer_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mLayer.triggerPacking ()
       }
     }
   }
@@ -329,8 +361,12 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserversOf_mText_toElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     if !self.mObserversOf_mText.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mText.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mText_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mText.dictionary {
+          if let observer = entry.observer {
+            managedObject.mText_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mText.triggerPacking ()
+          }
         }
       }
     }
@@ -339,10 +375,14 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //····················································································································
 
   final func removeEBObserversOf_mText_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
-    self.mObserversOf_mText.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mText_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mText.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mText_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mText.triggerPacking ()
       }
     }
   }
@@ -388,8 +428,12 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserversOf_mHorizontalAlignment_toElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     if !self.mObserversOf_mHorizontalAlignment.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mHorizontalAlignment.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mHorizontalAlignment_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mHorizontalAlignment.dictionary {
+          if let observer = entry.observer {
+            managedObject.mHorizontalAlignment_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mHorizontalAlignment.triggerPacking ()
+          }
         }
       }
     }
@@ -398,10 +442,14 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //····················································································································
 
   final func removeEBObserversOf_mHorizontalAlignment_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
-    self.mObserversOf_mHorizontalAlignment.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mHorizontalAlignment_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mHorizontalAlignment.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mHorizontalAlignment_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mHorizontalAlignment.triggerPacking ()
       }
     }
   }
@@ -447,8 +495,12 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserversOf_mVerticalAlignment_toElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     if !self.mObserversOf_mVerticalAlignment.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mVerticalAlignment.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mVerticalAlignment_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mVerticalAlignment.dictionary {
+          if let observer = entry.observer {
+            managedObject.mVerticalAlignment_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mVerticalAlignment.triggerPacking ()
+          }
         }
       }
     }
@@ -457,10 +509,14 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //····················································································································
 
   final func removeEBObserversOf_mVerticalAlignment_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
-    self.mObserversOf_mVerticalAlignment.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mVerticalAlignment_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mVerticalAlignment.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mVerticalAlignment_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mVerticalAlignment.triggerPacking ()
       }
     }
   }
@@ -506,8 +562,12 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserversOf_mRotation_toElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     if !self.mObserversOf_mRotation.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mRotation.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mRotation_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mRotation.dictionary {
+          if let observer = entry.observer {
+            managedObject.mRotation_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mRotation.triggerPacking ()
+          }
         }
       }
     }
@@ -516,10 +576,14 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //····················································································································
 
   final func removeEBObserversOf_mRotation_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
-    self.mObserversOf_mRotation.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mRotation_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mRotation.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mRotation_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mRotation.triggerPacking ()
       }
     }
   }
@@ -565,8 +629,12 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserversOf_mWeight_toElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     if !self.mObserversOf_mWeight.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mWeight.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mWeight_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mWeight.dictionary {
+          if let observer = entry.observer {
+            managedObject.mWeight_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mWeight.triggerPacking ()
+          }
         }
       }
     }
@@ -575,10 +643,14 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //····················································································································
 
   final func removeEBObserversOf_mWeight_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
-    self.mObserversOf_mWeight.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mWeight_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mWeight.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mWeight_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mWeight.triggerPacking ()
       }
     }
   }
@@ -624,8 +696,12 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   final func addEBObserversOf_mOblique_toElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     if !self.mObserversOf_mOblique.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mOblique.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mOblique_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mOblique.dictionary {
+          if let observer = entry.observer {
+            managedObject.mOblique_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mOblique.triggerPacking ()
+          }
         }
       }
     }
@@ -634,10 +710,14 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
   //····················································································································
 
   final func removeEBObserversOf_mOblique_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
-    self.mObserversOf_mOblique.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mOblique_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mOblique.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mOblique_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mOblique.triggerPacking ()
       }
     }
   }
@@ -682,8 +762,12 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     for managedObject in inSet.values {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBObserverProtocol) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
+        if let observer = entry.observer {
+          managedObject.objectDisplay_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_objectDisplay.triggerPacking ()
+        }
       }
     }
   }
@@ -692,8 +776,12 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     for managedObject in inSet.values {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBObserverProtocol) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
+        if let observer = entry.observer {
+          managedObject.objectDisplay_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_objectDisplay.triggerPacking ()
+        }
       }
     }
   }
@@ -738,8 +826,12 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     for managedObject in inSet.values {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBObserverProtocol) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
+        if let observer = entry.observer {
+          managedObject.selectionDisplay_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_selectionDisplay.triggerPacking ()
+        }
       }
     }
   }
@@ -748,8 +840,12 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     for managedObject in inSet.values {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBObserverProtocol) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
+        if let observer = entry.observer {
+          managedObject.selectionDisplay_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_selectionDisplay.triggerPacking ()
+        }
       }
     }
   }
@@ -794,8 +890,12 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   final func addEBObserversOf_fontName_toElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     for managedObject in inSet.values {
-      self.mObserversOf_fontName.apply { (_ observer : EBObserverProtocol) in
-        managedObject.fontName_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_fontName.dictionary {
+        if let observer = entry.observer {
+          managedObject.fontName_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_fontName.triggerPacking ()
+        }
       }
     }
   }
@@ -804,8 +904,12 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   final func removeEBObserversOf_fontName_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     for managedObject in inSet.values {
-      self.mObserversOf_fontName.apply { (_ observer : EBObserverProtocol) in
-        managedObject.fontName_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_fontName.dictionary {
+        if let observer = entry.observer {
+          managedObject.fontName_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_fontName.triggerPacking ()
+        }
       }
     }
   }
@@ -850,8 +954,12 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     for managedObject in inSet.values {
-      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBObserverProtocol) in
-        managedObject.signatureForERCChecking_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_signatureForERCChecking.dictionary {
+        if let observer = entry.observer {
+          managedObject.signatureForERCChecking_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_signatureForERCChecking.triggerPacking ()
+        }
       }
     }
   }
@@ -860,8 +968,12 @@ class ReadOnlyArrayOf_BoardText : ReadOnlyAbstractArrayProperty <BoardText> {
 
   final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : EBReferenceSet <BoardText>) {
     for managedObject in inSet.values {
-      self.mObserversOf_signatureForERCChecking.apply { (_ observer : EBObserverProtocol) in
-        managedObject.signatureForERCChecking_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_signatureForERCChecking.dictionary {
+        if let observer = entry.observer {
+          managedObject.signatureForERCChecking_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_signatureForERCChecking.triggerPacking ()
+        }
       }
     }
   }

@@ -49,7 +49,7 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
   appendDocumentFileOperationInfo ("  Read \(classDefinition.count) classes: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
 //--- Read objects
   operationStartDate = Date ()
-  let op = OperationQueue ()
+  let operationQueue = OperationQueue ()
   let mutex = DispatchSemaphore (value: 1)
   var rawObjectArray = [RawObject] ()
   var idx = 0
@@ -66,7 +66,7 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
       propertyValueDictionary [propertyName] = propertyRange
     }
     let className = classDefinition [classIndex].0
-    op.addOperation {
+    operationQueue.addOperation {
       let managedObject = newInstanceOfEntityNamed (inUndoManager, className)!
       managedObject.setUpPropertiesWithTextDictionary (propertyValueDictionary, data)
       let rawObject = RawObject (index: index, object: managedObject, propertyDictionary: propertyValueDictionary)
@@ -75,8 +75,8 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
       mutex.signal ()
     }
   }
-  let pendingOperationCount = op.operationCount
-  op.waitUntilAllOperationsAreFinished ()
+  let pendingOperationCount = operationQueue.operationCount
+  operationQueue.waitUntilAllOperationsAreFinished ()
   rawObjectArray.sort { $0.index < $1.index }
   appendDocumentFileOperationInfo ("  Read \(rawObjectArray.count) objects, pending ops \(pendingOperationCount): \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
 //--- Setup toOne

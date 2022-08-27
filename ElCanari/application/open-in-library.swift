@@ -162,7 +162,7 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
     self.configureWith (alreadyLoadedDocuments: [])
     _ = self.mOpenButton.bind_run (target: self, selector: #selector (Self.stopModalAndOpenDocumentAction (_:)))
   //--- Dialog
-    _ = NSApp.runModal (for: self.mDialog)
+    _ = NSApplication.shared.runModal (for: self.mDialog)
   }
 
   //····················································································································
@@ -176,7 +176,7 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
   //····················································································································
 
   @objc private func stopModalAndOpenDocumentAction (_ inSender : Any?) {
-    NSApp.stopModal ()
+    NSApplication.shared.stopModal ()
     self.mDialog.orderOut (nil)
     let selectedRow = self.mTableView.selectedRow
     if selectedRow >= 0 {

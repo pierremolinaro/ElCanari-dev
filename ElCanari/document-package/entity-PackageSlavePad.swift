@@ -1498,10 +1498,10 @@ final class PackageSlavePad : PackageObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["master"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! PackagePad
-        self.master = object 
-      }
+    if let range = inDictionary ["master"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! PackagePad
+      self.master = object
+    }
   }
 
   //····················································································································

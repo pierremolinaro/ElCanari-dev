@@ -854,10 +854,10 @@ final class SlavePadInDevice : EBManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mMasterPad"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! MasterPadInDevice
-        self.mMasterPad = object 
-      }
+    if let range = inDictionary ["mMasterPad"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! MasterPadInDevice
+      self.mMasterPad = object
+    }
   }
 
   //····················································································································

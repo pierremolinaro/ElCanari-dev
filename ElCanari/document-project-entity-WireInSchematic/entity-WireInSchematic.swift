@@ -519,14 +519,14 @@ final class WireInSchematic : SchematicObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mP1"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! PointInSchematic
-        self.mP1 = object 
-      }
-      if let range = inDictionary ["mP2"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! PointInSchematic
-        self.mP2 = object 
-      }
+    if let range = inDictionary ["mP1"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! PointInSchematic
+      self.mP1 = object
+    }
+    if let range = inDictionary ["mP2"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! PointInSchematic
+      self.mP2 = object
+    }
   }
 
   //····················································································································

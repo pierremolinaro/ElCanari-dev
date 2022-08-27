@@ -52,7 +52,7 @@ fileprivate final class DebugMenuVisibility : EBSwiftBaseObject {
   //····················································································································
 
   func updateDebugMenuVisibility () {
-    if let mainMenu = NSApp.mainMenu {
+    if let mainMenu = NSApplication.shared.mainMenu {
       if preferences_showDebugMenu_property.propval {
         mainMenu.addItem (mDebugMenuItem)
       }else if mainMenu.index (of: mDebugMenuItem) >= 0 {

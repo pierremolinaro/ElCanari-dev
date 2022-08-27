@@ -84,7 +84,7 @@ fileprivate final class DebugAutoLayout : EBSwiftBaseObject {
   @objc func toggleDebugAutoLayout (_ inSender : Any?) {
     self.mDebugAutoLayout.toggle ()
     self.menuItem.state = self.mDebugAutoLayout ? .on : .off
-    for window in NSApp.windows {
+    for window in NSApplication.shared.windows {
       if let mainView = window.contentView {
         self.propagateNeedsDisplay (mainView)
       }
@@ -92,12 +92,11 @@ fileprivate final class DebugAutoLayout : EBSwiftBaseObject {
   }
 
   //····················································································································
-  //····················································································································
 
   @objc func toggleShowKeyResponderChain (_ inSender : Any?) {
     self.mShowKeyResponderChain.toggle ()
     self.responderKeyChainItem.state = self.mShowKeyResponderChain ? .on : .off
-    for window in NSApp.windows {
+    for window in NSApplication.shared.windows {
       if let mainView = window.contentView {
         self.propagateNeedsDisplay (mainView)
       }

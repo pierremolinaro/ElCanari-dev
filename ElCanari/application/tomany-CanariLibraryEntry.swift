@@ -75,8 +75,12 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func addEBObserversOf_mPath_toElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
     if !self.mObserversOf_mPath.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mPath.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mPath_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mPath.dictionary {
+          if let observer = entry.observer {
+            managedObject.mPath_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mPath.triggerPacking ()
+          }
         }
       }
     }
@@ -85,10 +89,14 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   //····················································································································
 
   final func removeEBObserversOf_mPath_fromElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
-    self.mObserversOf_mPath.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mPath_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mPath.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mPath_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mPath.triggerPacking ()
       }
     }
   }
@@ -134,8 +142,12 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func addEBObserversOf_mUses_toElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
     if !self.mObserversOf_mUses.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mUses.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mUses_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mUses.dictionary {
+          if let observer = entry.observer {
+            managedObject.mUses_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mUses.triggerPacking ()
+          }
         }
       }
     }
@@ -144,10 +156,14 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   //····················································································································
 
   final func removeEBObserversOf_mUses_fromElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
-    self.mObserversOf_mUses.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mUses_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mUses.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mUses_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mUses.triggerPacking ()
       }
     }
   }
@@ -193,8 +209,12 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func addEBObserversOf_mLibraryRepositoryURL_toElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
     if !self.mObserversOf_mLibraryRepositoryURL.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mLibraryRepositoryURL.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mLibraryRepositoryURL_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mLibraryRepositoryURL.dictionary {
+          if let observer = entry.observer {
+            managedObject.mLibraryRepositoryURL_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mLibraryRepositoryURL.triggerPacking ()
+          }
         }
       }
     }
@@ -203,10 +223,14 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   //····················································································································
 
   final func removeEBObserversOf_mLibraryRepositoryURL_fromElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
-    self.mObserversOf_mLibraryRepositoryURL.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mLibraryRepositoryURL_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mLibraryRepositoryURL.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mLibraryRepositoryURL_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mLibraryRepositoryURL.triggerPacking ()
       }
     }
   }
@@ -252,8 +276,12 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   final func addEBObserversOf_mUserAndPasswordTag_toElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
     if !self.mObserversOf_mUserAndPasswordTag.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mUserAndPasswordTag.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mUserAndPasswordTag_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mUserAndPasswordTag.dictionary {
+          if let observer = entry.observer {
+            managedObject.mUserAndPasswordTag_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mUserAndPasswordTag.triggerPacking ()
+          }
         }
       }
     }
@@ -262,10 +290,14 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   //····················································································································
 
   final func removeEBObserversOf_mUserAndPasswordTag_fromElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
-    self.mObserversOf_mUserAndPasswordTag.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mUserAndPasswordTag_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mUserAndPasswordTag.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mUserAndPasswordTag_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mUserAndPasswordTag.triggerPacking ()
       }
     }
   }
@@ -310,8 +342,12 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func addEBObserversOf_mStatusImage_toElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
     for managedObject in inSet.values {
-      self.mObserversOf_mStatusImage.apply { (_ observer : EBObserverProtocol) in
-        managedObject.mStatusImage_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_mStatusImage.dictionary {
+        if let observer = entry.observer {
+          managedObject.mStatusImage_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_mStatusImage.triggerPacking ()
+        }
       }
     }
   }
@@ -320,8 +356,12 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func removeEBObserversOf_mStatusImage_fromElementsOfSet (_ inSet : EBReferenceSet <CanariLibraryEntry>) {
     for managedObject in inSet.values {
-      self.mObserversOf_mStatusImage.apply { (_ observer : EBObserverProtocol) in
-        managedObject.mStatusImage_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_mStatusImage.dictionary {
+        if let observer = entry.observer {
+          managedObject.mStatusImage_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_mStatusImage.triggerPacking ()
+        }
       }
     }
   }

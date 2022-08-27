@@ -12,12 +12,36 @@ struct EBWeakEventSet {
 
   //····················································································································
 
-  fileprivate var mDictionary = [Int : EBWeakObserverSetElement] ()
+  private var mDictionary = [Int : EBWeakObserverSetElement] ()
+  var dictionary : [Int : EBWeakObserverSetElement] { return self.mDictionary }
+  
+  //····················································································································
+
+  private var mPackingTriggered = false
+
+  //····················································································································
+
+  mutating func triggerPacking () {
+    self.mPackingTriggered = true
+  }
+
+  //····················································································································
+
+  private mutating func pack () {
+    if self.mPackingTriggered {
+      self.mPackingTriggered = false
+      for (key, entry) in self.mDictionary {
+        if entry.observer == nil {
+          self.mDictionary [key] = nil
+        }
+      }
+    }
+  }
 
   //····················································································································
 
   mutating func insert (_ inObserver : EBObserverProtocol) {
-  //  let address = ObjectIdentifier (inObserver)
+    self.pack ()
     let address = inObserver.objectIndex
     self.mDictionary [address] = EBWeakObserverSetElement (observer: inObserver)
   }
@@ -25,21 +49,9 @@ struct EBWeakEventSet {
   //····················································································································
 
   mutating func remove (_ inObserver : EBObserverProtocol) {
-  //  let address = ObjectIdentifier (inObserver)
+    self.pack ()
     let address = inObserver.objectIndex
     self.mDictionary [address] = nil
-  }
-
-  //····················································································································
-
-  mutating func apply (_ inFunction : (_ : EBObserverProtocol) -> Void) {
-    for (key, entry) in self.mDictionary {
-      if let observer = entry.observer {
-        inFunction (observer)
-      }else{
-        self.mDictionary [key] = nil
-      }
-    }
   }
 
   //····················································································································
@@ -66,7 +78,7 @@ struct EBWeakEventSet {
 //   EBWeakObserverSetElement
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate struct EBWeakObserverSetElement {
+struct EBWeakObserverSetElement {
 
   //····················································································································
 

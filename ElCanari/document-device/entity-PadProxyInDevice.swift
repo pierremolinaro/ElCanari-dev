@@ -473,10 +473,10 @@ final class PadProxyInDevice : EBManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mPinInstance"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! SymbolPinInstanceInDevice
-        self.mPinInstance = object 
-      }
+    if let range = inDictionary ["mPinInstance"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! SymbolPinInstanceInDevice
+      self.mPinInstance = object
+    }
   }
 
   //····················································································································

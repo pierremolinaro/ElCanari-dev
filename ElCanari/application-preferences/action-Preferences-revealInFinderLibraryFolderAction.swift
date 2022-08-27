@@ -16,7 +16,7 @@ extension Preferences {
         let array = preferences_userLibraryArrayController.selectedArray_property.propval
         if array.count == 1 {
           let entry = array [0]
-          if NSApp.currentEvent?.modifierFlags.contains (.option) ?? false {
+          if NSApplication.shared.currentEvent?.modifierFlags.contains (.option) ?? false {
             entry.showUploadDialog ()
           }else{
             NSWorkspace.shared.open (URL (fileURLWithPath: entry.mPath))

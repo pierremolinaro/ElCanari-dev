@@ -71,8 +71,12 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   final func addEBObserversOf_y_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
     if !self.mObserversOf_y.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_y.apply { (_ observer : EBObserverProtocol) in
-          managedObject.y_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_y.dictionary {
+          if let observer = entry.observer {
+            managedObject.y_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_y.triggerPacking ()
+          }
         }
       }
     }
@@ -81,10 +85,14 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   //····················································································································
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
-    self.mObserversOf_y.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.y_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_y.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.y_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_y.triggerPacking ()
       }
     }
   }
@@ -130,8 +138,12 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   final func addEBObserversOf_padDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
     if !self.mObserversOf_padDiameter.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_padDiameter.apply { (_ observer : EBObserverProtocol) in
-          managedObject.padDiameter_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_padDiameter.dictionary {
+          if let observer = entry.observer {
+            managedObject.padDiameter_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_padDiameter.triggerPacking ()
+          }
         }
       }
     }
@@ -140,10 +152,14 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   //····················································································································
 
   final func removeEBObserversOf_padDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
-    self.mObserversOf_padDiameter.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.padDiameter_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_padDiameter.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.padDiameter_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_padDiameter.triggerPacking ()
       }
     }
   }
@@ -189,8 +205,12 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   final func addEBObserversOf_x_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
     if !self.mObserversOf_x.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_x.apply { (_ observer : EBObserverProtocol) in
-          managedObject.x_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_x.dictionary {
+          if let observer = entry.observer {
+            managedObject.x_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_x.triggerPacking ()
+          }
         }
       }
     }
@@ -199,10 +219,14 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   //····················································································································
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
-    self.mObserversOf_x.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.x_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_x.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.x_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_x.triggerPacking ()
       }
     }
   }

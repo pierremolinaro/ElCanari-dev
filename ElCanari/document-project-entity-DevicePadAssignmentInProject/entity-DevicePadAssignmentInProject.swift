@@ -377,10 +377,10 @@ final class DevicePadAssignmentInProject : EBManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mPin"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! DevicePinInProject
-        self.mPin = object 
-      }
+    if let range = inDictionary ["mPin"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! DevicePinInProject
+      self.mPin = object
+    }
   }
 
   //····················································································································

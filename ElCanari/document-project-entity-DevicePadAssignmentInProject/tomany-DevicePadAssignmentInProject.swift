@@ -71,8 +71,12 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
   final func addEBObserversOf_mPadName_toElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
     if !self.mObserversOf_mPadName.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mPadName.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mPadName_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mPadName.dictionary {
+          if let observer = entry.observer {
+            managedObject.mPadName_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mPadName.triggerPacking ()
+          }
         }
       }
     }
@@ -81,10 +85,14 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
   //····················································································································
 
   final func removeEBObserversOf_mPadName_fromElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
-    self.mObserversOf_mPadName.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mPadName_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mPadName.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mPadName_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mPadName.triggerPacking ()
       }
     }
   }
@@ -129,8 +137,12 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   final func addEBObserversOf_pinPadAssignment_toElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_pinPadAssignment.apply { (_ observer : EBObserverProtocol) in
-        managedObject.pinPadAssignment_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_pinPadAssignment.dictionary {
+        if let observer = entry.observer {
+          managedObject.pinPadAssignment_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_pinPadAssignment.triggerPacking ()
+        }
       }
     }
   }
@@ -139,8 +151,12 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   final func removeEBObserversOf_pinPadAssignment_fromElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_pinPadAssignment.apply { (_ observer : EBObserverProtocol) in
-        managedObject.pinPadAssignment_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_pinPadAssignment.dictionary {
+        if let observer = entry.observer {
+          managedObject.pinPadAssignment_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_pinPadAssignment.triggerPacking ()
+        }
       }
     }
   }
@@ -185,8 +201,12 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   final func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_descriptor.apply { (_ observer : EBObserverProtocol) in
-        managedObject.descriptor_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_descriptor.dictionary {
+        if let observer = entry.observer {
+          managedObject.descriptor_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_descriptor.triggerPacking ()
+        }
       }
     }
   }
@@ -195,8 +215,12 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   final func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_descriptor.apply { (_ observer : EBObserverProtocol) in
-        managedObject.descriptor_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_descriptor.dictionary {
+        if let observer = entry.observer {
+          managedObject.descriptor_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_descriptor.triggerPacking ()
+        }
       }
     }
   }

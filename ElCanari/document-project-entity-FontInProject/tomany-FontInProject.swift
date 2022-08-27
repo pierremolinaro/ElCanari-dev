@@ -87,8 +87,12 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   final func addEBObserversOf_mNominalSize_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     if !self.mObserversOf_mNominalSize.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mNominalSize.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mNominalSize_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mNominalSize.dictionary {
+          if let observer = entry.observer {
+            managedObject.mNominalSize_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mNominalSize.triggerPacking ()
+          }
         }
       }
     }
@@ -97,10 +101,14 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //····················································································································
 
   final func removeEBObserversOf_mNominalSize_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
-    self.mObserversOf_mNominalSize.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mNominalSize_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mNominalSize.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mNominalSize_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mNominalSize.triggerPacking ()
       }
     }
   }
@@ -146,8 +154,12 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   final func addEBObserversOf_mFontName_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     if !self.mObserversOf_mFontName.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mFontName.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mFontName_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mFontName.dictionary {
+          if let observer = entry.observer {
+            managedObject.mFontName_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mFontName.triggerPacking ()
+          }
         }
       }
     }
@@ -156,10 +168,14 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //····················································································································
 
   final func removeEBObserversOf_mFontName_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
-    self.mObserversOf_mFontName.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mFontName_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mFontName.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mFontName_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mFontName.triggerPacking ()
       }
     }
   }
@@ -205,8 +221,12 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   final func addEBObserversOf_mFontVersion_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     if !self.mObserversOf_mFontVersion.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mFontVersion.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mFontVersion_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mFontVersion.dictionary {
+          if let observer = entry.observer {
+            managedObject.mFontVersion_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mFontVersion.triggerPacking ()
+          }
         }
       }
     }
@@ -215,10 +235,14 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //····················································································································
 
   final func removeEBObserversOf_mFontVersion_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
-    self.mObserversOf_mFontVersion.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mFontVersion_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mFontVersion.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mFontVersion_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mFontVersion.triggerPacking ()
       }
     }
   }
@@ -264,8 +288,12 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   final func addEBObserversOf_mDescriptiveString_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     if !self.mObserversOf_mDescriptiveString.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mDescriptiveString.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mDescriptiveString_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mDescriptiveString.dictionary {
+          if let observer = entry.observer {
+            managedObject.mDescriptiveString_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mDescriptiveString.triggerPacking ()
+          }
         }
       }
     }
@@ -274,10 +302,14 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //····················································································································
 
   final func removeEBObserversOf_mDescriptiveString_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
-    self.mObserversOf_mDescriptiveString.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mDescriptiveString_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mDescriptiveString.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mDescriptiveString_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mDescriptiveString.triggerPacking ()
       }
     }
   }
@@ -322,8 +354,12 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_versionString.apply { (_ observer : EBObserverProtocol) in
-        managedObject.versionString_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_versionString.dictionary {
+        if let observer = entry.observer {
+          managedObject.versionString_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_versionString.triggerPacking ()
+        }
       }
     }
   }
@@ -332,8 +368,12 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_versionString.apply { (_ observer : EBObserverProtocol) in
-        managedObject.versionString_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_versionString.dictionary {
+        if let observer = entry.observer {
+          managedObject.versionString_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_versionString.triggerPacking ()
+        }
       }
     }
   }
@@ -378,8 +418,12 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   final func addEBObserversOf_sizeString_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_sizeString.apply { (_ observer : EBObserverProtocol) in
-        managedObject.sizeString_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_sizeString.dictionary {
+        if let observer = entry.observer {
+          managedObject.sizeString_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_sizeString.triggerPacking ()
+        }
       }
     }
   }
@@ -388,8 +432,12 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   final func removeEBObserversOf_sizeString_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_sizeString.apply { (_ observer : EBObserverProtocol) in
-        managedObject.sizeString_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_sizeString.dictionary {
+        if let observer = entry.observer {
+          managedObject.sizeString_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_sizeString.triggerPacking ()
+        }
       }
     }
   }
@@ -434,8 +482,12 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   final func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_descriptor.apply { (_ observer : EBObserverProtocol) in
-        managedObject.descriptor_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_descriptor.dictionary {
+        if let observer = entry.observer {
+          managedObject.descriptor_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_descriptor.triggerPacking ()
+        }
       }
     }
   }
@@ -444,8 +496,12 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   final func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_descriptor.apply { (_ observer : EBObserverProtocol) in
-        managedObject.descriptor_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_descriptor.dictionary {
+        if let observer = entry.observer {
+          managedObject.descriptor_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_descriptor.triggerPacking ()
+        }
       }
     }
   }
@@ -490,8 +546,12 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   final func addEBObserversOf_textCount_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_textCount.apply { (_ observer : EBObserverProtocol) in
-        managedObject.textCount_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_textCount.dictionary {
+        if let observer = entry.observer {
+          managedObject.textCount_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_textCount.triggerPacking ()
+        }
       }
     }
   }
@@ -500,8 +560,12 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   final func removeEBObserversOf_textCount_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_textCount.apply { (_ observer : EBObserverProtocol) in
-        managedObject.textCount_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_textCount.dictionary {
+        if let observer = entry.observer {
+          managedObject.textCount_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_textCount.triggerPacking ()
+        }
       }
     }
   }
@@ -546,8 +610,12 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   final func addEBObserversOf_canRemoveFont_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_canRemoveFont.apply { (_ observer : EBObserverProtocol) in
-        managedObject.canRemoveFont_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_canRemoveFont.dictionary {
+        if let observer = entry.observer {
+          managedObject.canRemoveFont_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_canRemoveFont.triggerPacking ()
+        }
       }
     }
   }
@@ -556,8 +624,12 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   final func removeEBObserversOf_canRemoveFont_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_canRemoveFont.apply { (_ observer : EBObserverProtocol) in
-        managedObject.canRemoveFont_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_canRemoveFont.dictionary {
+        if let observer = entry.observer {
+          managedObject.canRemoveFont_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_canRemoveFont.triggerPacking ()
+        }
       }
     }
   }
@@ -602,8 +674,12 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   final func addEBObserversOf_componentNamesCount_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_componentNamesCount.apply { (_ observer : EBObserverProtocol) in
-        managedObject.componentNamesCount_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_componentNamesCount.dictionary {
+        if let observer = entry.observer {
+          managedObject.componentNamesCount_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_componentNamesCount.triggerPacking ()
+        }
       }
     }
   }
@@ -612,8 +688,12 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   final func removeEBObserversOf_componentNamesCount_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_componentNamesCount.apply { (_ observer : EBObserverProtocol) in
-        managedObject.componentNamesCount_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_componentNamesCount.dictionary {
+        if let observer = entry.observer {
+          managedObject.componentNamesCount_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_componentNamesCount.triggerPacking ()
+        }
       }
     }
   }
@@ -658,8 +738,12 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   final func addEBObserversOf_componentValuesCount_toElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_componentValuesCount.apply { (_ observer : EBObserverProtocol) in
-        managedObject.componentValuesCount_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_componentValuesCount.dictionary {
+        if let observer = entry.observer {
+          managedObject.componentValuesCount_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_componentValuesCount.triggerPacking ()
+        }
       }
     }
   }
@@ -668,8 +752,12 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
 
   final func removeEBObserversOf_componentValuesCount_fromElementsOfSet (_ inSet : EBReferenceSet <FontInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_componentValuesCount.apply { (_ observer : EBObserverProtocol) in
-        managedObject.componentValuesCount_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_componentValuesCount.dictionary {
+        if let observer = entry.observer {
+          managedObject.componentValuesCount_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_componentValuesCount.triggerPacking ()
+        }
       }
     }
   }

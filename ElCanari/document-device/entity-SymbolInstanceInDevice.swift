@@ -805,10 +805,10 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mType"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! SymbolTypeInDevice
-        self.mType = object 
-      }
+    if let range = inDictionary ["mType"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! SymbolTypeInDevice
+      self.mType = object
+    }
   }
 
   //····················································································································

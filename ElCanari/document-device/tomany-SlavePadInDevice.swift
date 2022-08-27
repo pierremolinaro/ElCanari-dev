@@ -87,8 +87,12 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   final func addEBObserversOf_mCenterX_toElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     if !self.mObserversOf_mCenterX.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mCenterX.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mCenterX_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mCenterX.dictionary {
+          if let observer = entry.observer {
+            managedObject.mCenterX_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mCenterX.triggerPacking ()
+          }
         }
       }
     }
@@ -97,10 +101,14 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   //····················································································································
 
   final func removeEBObserversOf_mCenterX_fromElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
-    self.mObserversOf_mCenterX.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mCenterX_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mCenterX.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mCenterX_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mCenterX.triggerPacking ()
       }
     }
   }
@@ -146,8 +154,12 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   final func addEBObserversOf_mCenterY_toElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     if !self.mObserversOf_mCenterY.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mCenterY.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mCenterY_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mCenterY.dictionary {
+          if let observer = entry.observer {
+            managedObject.mCenterY_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mCenterY.triggerPacking ()
+          }
         }
       }
     }
@@ -156,10 +168,14 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   //····················································································································
 
   final func removeEBObserversOf_mCenterY_fromElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
-    self.mObserversOf_mCenterY.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mCenterY_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mCenterY.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mCenterY_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mCenterY.triggerPacking ()
       }
     }
   }
@@ -205,8 +221,12 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   final func addEBObserversOf_mWidth_toElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     if !self.mObserversOf_mWidth.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mWidth.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mWidth_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mWidth.dictionary {
+          if let observer = entry.observer {
+            managedObject.mWidth_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mWidth.triggerPacking ()
+          }
         }
       }
     }
@@ -215,10 +235,14 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   //····················································································································
 
   final func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
-    self.mObserversOf_mWidth.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mWidth_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mWidth.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mWidth_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mWidth.triggerPacking ()
       }
     }
   }
@@ -264,8 +288,12 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   final func addEBObserversOf_mHeight_toElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     if !self.mObserversOf_mHeight.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mHeight.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mHeight_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mHeight.dictionary {
+          if let observer = entry.observer {
+            managedObject.mHeight_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mHeight.triggerPacking ()
+          }
         }
       }
     }
@@ -274,10 +302,14 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   //····················································································································
 
   final func removeEBObserversOf_mHeight_fromElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
-    self.mObserversOf_mHeight.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mHeight_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mHeight.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mHeight_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mHeight.triggerPacking ()
       }
     }
   }
@@ -323,8 +355,12 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   final func addEBObserversOf_mHoleWidth_toElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     if !self.mObserversOf_mHoleWidth.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mHoleWidth.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mHoleWidth_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mHoleWidth.dictionary {
+          if let observer = entry.observer {
+            managedObject.mHoleWidth_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mHoleWidth.triggerPacking ()
+          }
         }
       }
     }
@@ -333,10 +369,14 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   //····················································································································
 
   final func removeEBObserversOf_mHoleWidth_fromElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
-    self.mObserversOf_mHoleWidth.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mHoleWidth_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mHoleWidth.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mHoleWidth_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mHoleWidth.triggerPacking ()
       }
     }
   }
@@ -382,8 +422,12 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   final func addEBObserversOf_mHoleHeight_toElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     if !self.mObserversOf_mHoleHeight.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mHoleHeight.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mHoleHeight_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mHoleHeight.dictionary {
+          if let observer = entry.observer {
+            managedObject.mHoleHeight_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mHoleHeight.triggerPacking ()
+          }
         }
       }
     }
@@ -392,10 +436,14 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   //····················································································································
 
   final func removeEBObserversOf_mHoleHeight_fromElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
-    self.mObserversOf_mHoleHeight.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mHoleHeight_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mHoleHeight.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mHoleHeight_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mHoleHeight.triggerPacking ()
       }
     }
   }
@@ -441,8 +489,12 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   final func addEBObserversOf_mShape_toElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     if !self.mObserversOf_mShape.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mShape.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mShape_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mShape.dictionary {
+          if let observer = entry.observer {
+            managedObject.mShape_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mShape.triggerPacking ()
+          }
         }
       }
     }
@@ -451,10 +503,14 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   //····················································································································
 
   final func removeEBObserversOf_mShape_fromElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
-    self.mObserversOf_mShape.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mShape_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mShape.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mShape_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mShape.triggerPacking ()
       }
     }
   }
@@ -500,8 +556,12 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   final func addEBObserversOf_mStyle_toElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     if !self.mObserversOf_mStyle.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mStyle.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mStyle_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mStyle.dictionary {
+          if let observer = entry.observer {
+            managedObject.mStyle_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mStyle.triggerPacking ()
+          }
         }
       }
     }
@@ -510,10 +570,14 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   //····················································································································
 
   final func removeEBObserversOf_mStyle_fromElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
-    self.mObserversOf_mStyle.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mStyle_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mStyle.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mStyle_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mStyle.triggerPacking ()
       }
     }
   }
@@ -558,8 +622,12 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func addEBObserversOf_frontSideFilledBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_frontSideFilledBezierPath.apply { (_ observer : EBObserverProtocol) in
-        managedObject.frontSideFilledBezierPath_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_frontSideFilledBezierPath.dictionary {
+        if let observer = entry.observer {
+          managedObject.frontSideFilledBezierPath_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_frontSideFilledBezierPath.triggerPacking ()
+        }
       }
     }
   }
@@ -568,8 +636,12 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func removeEBObserversOf_frontSideFilledBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_frontSideFilledBezierPath.apply { (_ observer : EBObserverProtocol) in
-        managedObject.frontSideFilledBezierPath_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_frontSideFilledBezierPath.dictionary {
+        if let observer = entry.observer {
+          managedObject.frontSideFilledBezierPath_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_frontSideFilledBezierPath.triggerPacking ()
+        }
       }
     }
   }
@@ -614,8 +686,12 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func addEBObserversOf_backSideFilledBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_backSideFilledBezierPath.apply { (_ observer : EBObserverProtocol) in
-        managedObject.backSideFilledBezierPath_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_backSideFilledBezierPath.dictionary {
+        if let observer = entry.observer {
+          managedObject.backSideFilledBezierPath_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_backSideFilledBezierPath.triggerPacking ()
+        }
       }
     }
   }
@@ -624,8 +700,12 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func removeEBObserversOf_backSideFilledBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_backSideFilledBezierPath.apply { (_ observer : EBObserverProtocol) in
-        managedObject.backSideFilledBezierPath_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_backSideFilledBezierPath.dictionary {
+        if let observer = entry.observer {
+          managedObject.backSideFilledBezierPath_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_backSideFilledBezierPath.triggerPacking ()
+        }
       }
     }
   }
@@ -670,8 +750,12 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func addEBObserversOf_padNumberDisplay_toElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_padNumberDisplay.apply { (_ observer : EBObserverProtocol) in
-        managedObject.padNumberDisplay_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_padNumberDisplay.dictionary {
+        if let observer = entry.observer {
+          managedObject.padNumberDisplay_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_padNumberDisplay.triggerPacking ()
+        }
       }
     }
   }
@@ -680,8 +764,12 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
 
   final func removeEBObserversOf_padNumberDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <SlavePadInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_padNumberDisplay.apply { (_ observer : EBObserverProtocol) in
-        managedObject.padNumberDisplay_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_padNumberDisplay.dictionary {
+        if let observer = entry.observer {
+          managedObject.padNumberDisplay_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_padNumberDisplay.triggerPacking ()
+        }
       }
     }
   }

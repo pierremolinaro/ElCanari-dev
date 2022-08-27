@@ -395,10 +395,10 @@ class SchematicObject : EBGraphicManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! SheetInProject
-        self.mSheet = object 
-      }
+    if let range = inDictionary ["mSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! SheetInProject
+      self.mSheet = object
+    }
   }
 
   //····················································································································

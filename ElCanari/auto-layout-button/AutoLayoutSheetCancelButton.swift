@@ -52,7 +52,7 @@ final class AutoLayoutSheetCancelButton : NSButton, EBUserClassNameProtocol {
       if let parent = mySheet.sheetParent {
         parent.endSheet (mySheet, returnCode: .cancel)
       }else{
-        NSApp.abortModal ()
+        NSApplication.shared.abortModal ()
         self.window?.orderOut (nil)
       }
     }

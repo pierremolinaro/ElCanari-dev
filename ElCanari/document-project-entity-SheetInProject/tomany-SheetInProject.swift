@@ -77,8 +77,12 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func addEBObserversOf_mSheetTitle_toElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     if !self.mObserversOf_mSheetTitle.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mSheetTitle.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mSheetTitle_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mSheetTitle.dictionary {
+          if let observer = entry.observer {
+            managedObject.mSheetTitle_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mSheetTitle.triggerPacking ()
+          }
         }
       }
     }
@@ -87,10 +91,14 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   //····················································································································
 
   final func removeEBObserversOf_mSheetTitle_fromElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
-    self.mObserversOf_mSheetTitle.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mSheetTitle_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mSheetTitle.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mSheetTitle_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mSheetTitle.triggerPacking ()
       }
     }
   }
@@ -135,8 +143,12 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_issues.apply { (_ observer : EBObserverProtocol) in
-        managedObject.issues_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_issues.dictionary {
+        if let observer = entry.observer {
+          managedObject.issues_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_issues.triggerPacking ()
+        }
       }
     }
   }
@@ -145,8 +157,12 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_issues.apply { (_ observer : EBObserverProtocol) in
-        managedObject.issues_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_issues.dictionary {
+        if let observer = entry.observer {
+          managedObject.issues_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_issues.triggerPacking ()
+        }
       }
     }
   }
@@ -191,8 +207,12 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   final func addEBObserversOf_connectedPoints_toElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_connectedPoints.apply { (_ observer : EBObserverProtocol) in
-        managedObject.connectedPoints_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_connectedPoints.dictionary {
+        if let observer = entry.observer {
+          managedObject.connectedPoints_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_connectedPoints.triggerPacking ()
+        }
       }
     }
   }
@@ -201,8 +221,12 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   final func removeEBObserversOf_connectedPoints_fromElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_connectedPoints.apply { (_ observer : EBObserverProtocol) in
-        managedObject.connectedPoints_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_connectedPoints.dictionary {
+        if let observer = entry.observer {
+          managedObject.connectedPoints_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_connectedPoints.triggerPacking ()
+        }
       }
     }
   }
@@ -247,8 +271,12 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   final func addEBObserversOf_connexionWarnings_toElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_connexionWarnings.apply { (_ observer : EBObserverProtocol) in
-        managedObject.connexionWarnings_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_connexionWarnings.dictionary {
+        if let observer = entry.observer {
+          managedObject.connexionWarnings_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_connexionWarnings.triggerPacking ()
+        }
       }
     }
   }
@@ -257,8 +285,12 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   final func removeEBObserversOf_connexionWarnings_fromElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_connexionWarnings.apply { (_ observer : EBObserverProtocol) in
-        managedObject.connexionWarnings_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_connexionWarnings.dictionary {
+        if let observer = entry.observer {
+          managedObject.connexionWarnings_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_connexionWarnings.triggerPacking ()
+        }
       }
     }
   }
@@ -303,8 +335,12 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   final func addEBObserversOf_connexionErrors_toElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_connexionErrors.apply { (_ observer : EBObserverProtocol) in
-        managedObject.connexionErrors_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_connexionErrors.dictionary {
+        if let observer = entry.observer {
+          managedObject.connexionErrors_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_connexionErrors.triggerPacking ()
+        }
       }
     }
   }
@@ -313,8 +349,12 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   final func removeEBObserversOf_connexionErrors_fromElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_connexionErrors.apply { (_ observer : EBObserverProtocol) in
-        managedObject.connexionErrors_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_connexionErrors.dictionary {
+        if let observer = entry.observer {
+          managedObject.connexionErrors_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_connexionErrors.triggerPacking ()
+        }
       }
     }
   }
@@ -359,8 +399,12 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   final func addEBObserversOf_sheetDescriptor_toElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_sheetDescriptor.apply { (_ observer : EBObserverProtocol) in
-        managedObject.sheetDescriptor_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_sheetDescriptor.dictionary {
+        if let observer = entry.observer {
+          managedObject.sheetDescriptor_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_sheetDescriptor.triggerPacking ()
+        }
       }
     }
   }
@@ -369,8 +413,12 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
 
   final func removeEBObserversOf_sheetDescriptor_fromElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     for managedObject in inSet.values {
-      self.mObserversOf_sheetDescriptor.apply { (_ observer : EBObserverProtocol) in
-        managedObject.sheetDescriptor_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_sheetDescriptor.dictionary {
+        if let observer = entry.observer {
+          managedObject.sheetDescriptor_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_sheetDescriptor.triggerPacking ()
+        }
       }
     }
   }

@@ -74,8 +74,12 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func addEBObserversOf_pinName_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_pinName.apply { (_ observer : EBObserverProtocol) in
-        managedObject.pinName_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_pinName.dictionary {
+        if let observer = entry.observer {
+          managedObject.pinName_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_pinName.triggerPacking ()
+        }
       }
     }
   }
@@ -84,8 +88,12 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func removeEBObserversOf_pinName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_pinName.apply { (_ observer : EBObserverProtocol) in
-        managedObject.pinName_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_pinName.dictionary {
+        if let observer = entry.observer {
+          managedObject.pinName_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_pinName.triggerPacking ()
+        }
       }
     }
   }
@@ -130,8 +138,12 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func addEBObserversOf_symbolName_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_symbolName.apply { (_ observer : EBObserverProtocol) in
-        managedObject.symbolName_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_symbolName.dictionary {
+        if let observer = entry.observer {
+          managedObject.symbolName_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_symbolName.triggerPacking ()
+        }
       }
     }
   }
@@ -140,8 +152,12 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func removeEBObserversOf_symbolName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_symbolName.apply { (_ observer : EBObserverProtocol) in
-        managedObject.symbolName_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_symbolName.dictionary {
+        if let observer = entry.observer {
+          managedObject.symbolName_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_symbolName.triggerPacking ()
+        }
       }
     }
   }
@@ -186,8 +202,12 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func addEBObserversOf_pinQualifiedName_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_pinQualifiedName.apply { (_ observer : EBObserverProtocol) in
-        managedObject.pinQualifiedName_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_pinQualifiedName.dictionary {
+        if let observer = entry.observer {
+          managedObject.pinQualifiedName_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_pinQualifiedName.triggerPacking ()
+        }
       }
     }
   }
@@ -196,8 +216,12 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func removeEBObserversOf_pinQualifiedName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_pinQualifiedName.apply { (_ observer : EBObserverProtocol) in
-        managedObject.pinQualifiedName_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_pinQualifiedName.dictionary {
+        if let observer = entry.observer {
+          managedObject.pinQualifiedName_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_pinQualifiedName.triggerPacking ()
+        }
       }
     }
   }
@@ -242,8 +266,12 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func addEBObserversOf_isConnected_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_isConnected.apply { (_ observer : EBObserverProtocol) in
-        managedObject.isConnected_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_isConnected.dictionary {
+        if let observer = entry.observer {
+          managedObject.isConnected_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_isConnected.triggerPacking ()
+        }
       }
     }
   }
@@ -252,8 +280,12 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func removeEBObserversOf_isConnected_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_isConnected.apply { (_ observer : EBObserverProtocol) in
-        managedObject.isConnected_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_isConnected.dictionary {
+        if let observer = entry.observer {
+          managedObject.isConnected_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_isConnected.triggerPacking ()
+        }
       }
     }
   }
@@ -298,8 +330,12 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func addEBObserversOf_numberShape_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_numberShape.apply { (_ observer : EBObserverProtocol) in
-        managedObject.numberShape_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_numberShape.dictionary {
+        if let observer = entry.observer {
+          managedObject.numberShape_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_numberShape.triggerPacking ()
+        }
       }
     }
   }
@@ -308,8 +344,12 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   final func removeEBObserversOf_numberShape_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinInstanceInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_numberShape.apply { (_ observer : EBObserverProtocol) in
-        managedObject.numberShape_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_numberShape.dictionary {
+        if let observer = entry.observer {
+          managedObject.numberShape_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_numberShape.triggerPacking ()
+        }
       }
     }
   }

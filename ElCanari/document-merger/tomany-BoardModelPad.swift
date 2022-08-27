@@ -77,8 +77,12 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func addEBObserversOf_y_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
     if !self.mObserversOf_y.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_y.apply { (_ observer : EBObserverProtocol) in
-          managedObject.y_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_y.dictionary {
+          if let observer = entry.observer {
+            managedObject.y_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_y.triggerPacking ()
+          }
         }
       }
     }
@@ -87,10 +91,14 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   //····················································································································
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
-    self.mObserversOf_y.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.y_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_y.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.y_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_y.triggerPacking ()
       }
     }
   }
@@ -136,8 +144,12 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func addEBObserversOf_width_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
     if !self.mObserversOf_width.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_width.apply { (_ observer : EBObserverProtocol) in
-          managedObject.width_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_width.dictionary {
+          if let observer = entry.observer {
+            managedObject.width_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_width.triggerPacking ()
+          }
         }
       }
     }
@@ -146,10 +158,14 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   //····················································································································
 
   final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
-    self.mObserversOf_width.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.width_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_width.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.width_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_width.triggerPacking ()
       }
     }
   }
@@ -195,8 +211,12 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func addEBObserversOf_height_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
     if !self.mObserversOf_height.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_height.apply { (_ observer : EBObserverProtocol) in
-          managedObject.height_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_height.dictionary {
+          if let observer = entry.observer {
+            managedObject.height_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_height.triggerPacking ()
+          }
         }
       }
     }
@@ -205,10 +225,14 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   //····················································································································
 
   final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
-    self.mObserversOf_height.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.height_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_height.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.height_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_height.triggerPacking ()
       }
     }
   }
@@ -254,8 +278,12 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func addEBObserversOf_shape_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
     if !self.mObserversOf_shape.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_shape.apply { (_ observer : EBObserverProtocol) in
-          managedObject.shape_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_shape.dictionary {
+          if let observer = entry.observer {
+            managedObject.shape_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_shape.triggerPacking ()
+          }
         }
       }
     }
@@ -264,10 +292,14 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   //····················································································································
 
   final func removeEBObserversOf_shape_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
-    self.mObserversOf_shape.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.shape_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_shape.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.shape_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_shape.triggerPacking ()
       }
     }
   }
@@ -313,8 +345,12 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func addEBObserversOf_rotation_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
     if !self.mObserversOf_rotation.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_rotation.apply { (_ observer : EBObserverProtocol) in
-          managedObject.rotation_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_rotation.dictionary {
+          if let observer = entry.observer {
+            managedObject.rotation_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_rotation.triggerPacking ()
+          }
         }
       }
     }
@@ -323,10 +359,14 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   //····················································································································
 
   final func removeEBObserversOf_rotation_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
-    self.mObserversOf_rotation.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.rotation_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_rotation.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.rotation_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_rotation.triggerPacking ()
       }
     }
   }
@@ -372,8 +412,12 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func addEBObserversOf_x_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
     if !self.mObserversOf_x.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_x.apply { (_ observer : EBObserverProtocol) in
-          managedObject.x_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_x.dictionary {
+          if let observer = entry.observer {
+            managedObject.x_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_x.triggerPacking ()
+          }
         }
       }
     }
@@ -382,10 +426,14 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   //····················································································································
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
-    self.mObserversOf_x.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.x_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_x.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.x_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_x.triggerPacking ()
       }
     }
   }

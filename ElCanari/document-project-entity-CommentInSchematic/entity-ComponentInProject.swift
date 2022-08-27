@@ -2986,22 +2986,22 @@ final class ComponentInProject : BoardObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mDevice"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! DeviceInProject
-        self.mDevice = object 
-      }
-      if let range = inDictionary ["mSelectedPackage"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! DevicePackageInProject
-        self.mSelectedPackage = object 
-      }
-      if let range = inDictionary ["mNameFont"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! FontInProject
-        self.mNameFont = object 
-      }
-      if let range = inDictionary ["mValueFont"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! FontInProject
-        self.mValueFont = object 
-      }
+    if let range = inDictionary ["mDevice"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! DeviceInProject
+      self.mDevice = object
+    }
+    if let range = inDictionary ["mSelectedPackage"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! DevicePackageInProject
+      self.mSelectedPackage = object
+    }
+    if let range = inDictionary ["mNameFont"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! FontInProject
+      self.mNameFont = object
+    }
+    if let range = inDictionary ["mValueFont"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! FontInProject
+      self.mValueFont = object
+    }
   }
 
   //····················································································································

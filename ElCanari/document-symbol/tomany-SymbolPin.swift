@@ -95,8 +95,12 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   final func addEBObserversOf_yPin_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     if !self.mObserversOf_yPin.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_yPin.apply { (_ observer : EBObserverProtocol) in
-          managedObject.yPin_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_yPin.dictionary {
+          if let observer = entry.observer {
+            managedObject.yPin_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_yPin.triggerPacking ()
+          }
         }
       }
     }
@@ -105,10 +109,14 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //····················································································································
 
   final func removeEBObserversOf_yPin_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
-    self.mObserversOf_yPin.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.yPin_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_yPin.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.yPin_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_yPin.triggerPacking ()
       }
     }
   }
@@ -154,8 +162,12 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   final func addEBObserversOf_xName_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     if !self.mObserversOf_xName.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_xName.apply { (_ observer : EBObserverProtocol) in
-          managedObject.xName_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_xName.dictionary {
+          if let observer = entry.observer {
+            managedObject.xName_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_xName.triggerPacking ()
+          }
         }
       }
     }
@@ -164,10 +176,14 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //····················································································································
 
   final func removeEBObserversOf_xName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
-    self.mObserversOf_xName.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.xName_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_xName.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.xName_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_xName.triggerPacking ()
       }
     }
   }
@@ -213,8 +229,12 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   final func addEBObserversOf_yName_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     if !self.mObserversOf_yName.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_yName.apply { (_ observer : EBObserverProtocol) in
-          managedObject.yName_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_yName.dictionary {
+          if let observer = entry.observer {
+            managedObject.yName_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_yName.triggerPacking ()
+          }
         }
       }
     }
@@ -223,10 +243,14 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //····················································································································
 
   final func removeEBObserversOf_yName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
-    self.mObserversOf_yName.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.yName_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_yName.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.yName_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_yName.triggerPacking ()
       }
     }
   }
@@ -272,8 +296,12 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   final func addEBObserversOf_xNumber_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     if !self.mObserversOf_xNumber.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_xNumber.apply { (_ observer : EBObserverProtocol) in
-          managedObject.xNumber_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_xNumber.dictionary {
+          if let observer = entry.observer {
+            managedObject.xNumber_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_xNumber.triggerPacking ()
+          }
         }
       }
     }
@@ -282,10 +310,14 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //····················································································································
 
   final func removeEBObserversOf_xNumber_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
-    self.mObserversOf_xNumber.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.xNumber_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_xNumber.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.xNumber_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_xNumber.triggerPacking ()
       }
     }
   }
@@ -331,8 +363,12 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   final func addEBObserversOf_yNumber_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     if !self.mObserversOf_yNumber.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_yNumber.apply { (_ observer : EBObserverProtocol) in
-          managedObject.yNumber_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_yNumber.dictionary {
+          if let observer = entry.observer {
+            managedObject.yNumber_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_yNumber.triggerPacking ()
+          }
         }
       }
     }
@@ -341,10 +377,14 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //····················································································································
 
   final func removeEBObserversOf_yNumber_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
-    self.mObserversOf_yNumber.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.yNumber_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_yNumber.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.yNumber_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_yNumber.triggerPacking ()
       }
     }
   }
@@ -390,8 +430,12 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   final func addEBObserversOf_name_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     if !self.mObserversOf_name.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_name.apply { (_ observer : EBObserverProtocol) in
-          managedObject.name_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_name.dictionary {
+          if let observer = entry.observer {
+            managedObject.name_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_name.triggerPacking ()
+          }
         }
       }
     }
@@ -400,10 +444,14 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //····················································································································
 
   final func removeEBObserversOf_name_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
-    self.mObserversOf_name.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.name_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_name.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.name_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_name.triggerPacking ()
       }
     }
   }
@@ -449,8 +497,12 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   final func addEBObserversOf_nameHorizontalAlignment_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     if !self.mObserversOf_nameHorizontalAlignment.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_nameHorizontalAlignment.apply { (_ observer : EBObserverProtocol) in
-          managedObject.nameHorizontalAlignment_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_nameHorizontalAlignment.dictionary {
+          if let observer = entry.observer {
+            managedObject.nameHorizontalAlignment_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_nameHorizontalAlignment.triggerPacking ()
+          }
         }
       }
     }
@@ -459,10 +511,14 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //····················································································································
 
   final func removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
-    self.mObserversOf_nameHorizontalAlignment.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.nameHorizontalAlignment_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_nameHorizontalAlignment.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.nameHorizontalAlignment_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_nameHorizontalAlignment.triggerPacking ()
       }
     }
   }
@@ -508,8 +564,12 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   final func addEBObserversOf_numberHorizontalAlignment_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     if !self.mObserversOf_numberHorizontalAlignment.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_numberHorizontalAlignment.apply { (_ observer : EBObserverProtocol) in
-          managedObject.numberHorizontalAlignment_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_numberHorizontalAlignment.dictionary {
+          if let observer = entry.observer {
+            managedObject.numberHorizontalAlignment_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_numberHorizontalAlignment.triggerPacking ()
+          }
         }
       }
     }
@@ -518,10 +578,14 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //····················································································································
 
   final func removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
-    self.mObserversOf_numberHorizontalAlignment.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.numberHorizontalAlignment_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_numberHorizontalAlignment.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.numberHorizontalAlignment_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_numberHorizontalAlignment.triggerPacking ()
       }
     }
   }
@@ -567,8 +631,12 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   final func addEBObserversOf_pinNameIsDisplayedInSchematics_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     if !self.mObserversOf_pinNameIsDisplayedInSchematics.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_pinNameIsDisplayedInSchematics.apply { (_ observer : EBObserverProtocol) in
-          managedObject.pinNameIsDisplayedInSchematics_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_pinNameIsDisplayedInSchematics.dictionary {
+          if let observer = entry.observer {
+            managedObject.pinNameIsDisplayedInSchematics_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_pinNameIsDisplayedInSchematics.triggerPacking ()
+          }
         }
       }
     }
@@ -577,10 +645,14 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //····················································································································
 
   final func removeEBObserversOf_pinNameIsDisplayedInSchematics_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
-    self.mObserversOf_pinNameIsDisplayedInSchematics.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.pinNameIsDisplayedInSchematics_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_pinNameIsDisplayedInSchematics.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.pinNameIsDisplayedInSchematics_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_pinNameIsDisplayedInSchematics.triggerPacking ()
       }
     }
   }
@@ -626,8 +698,12 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   final func addEBObserversOf_xPin_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     if !self.mObserversOf_xPin.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_xPin.apply { (_ observer : EBObserverProtocol) in
-          managedObject.xPin_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_xPin.dictionary {
+          if let observer = entry.observer {
+            managedObject.xPin_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_xPin.triggerPacking ()
+          }
         }
       }
     }
@@ -636,10 +712,14 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //····················································································································
 
   final func removeEBObserversOf_xPin_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
-    self.mObserversOf_xPin.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.xPin_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_xPin.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.xPin_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_xPin.triggerPacking ()
       }
     }
   }
@@ -684,8 +764,12 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserversOf_filledBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     for managedObject in inSet.values {
-      self.mObserversOf_filledBezierPath.apply { (_ observer : EBObserverProtocol) in
-        managedObject.filledBezierPath_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_filledBezierPath.dictionary {
+        if let observer = entry.observer {
+          managedObject.filledBezierPath_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_filledBezierPath.triggerPacking ()
+        }
       }
     }
   }
@@ -694,8 +778,12 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserversOf_filledBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     for managedObject in inSet.values {
-      self.mObserversOf_filledBezierPath.apply { (_ observer : EBObserverProtocol) in
-        managedObject.filledBezierPath_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_filledBezierPath.dictionary {
+        if let observer = entry.observer {
+          managedObject.filledBezierPath_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_filledBezierPath.triggerPacking ()
+        }
       }
     }
   }
@@ -740,8 +828,12 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     for managedObject in inSet.values {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBObserverProtocol) in
-        managedObject.objectDisplay_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
+        if let observer = entry.observer {
+          managedObject.objectDisplay_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_objectDisplay.triggerPacking ()
+        }
       }
     }
   }
@@ -750,8 +842,12 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     for managedObject in inSet.values {
-      self.mObserversOf_objectDisplay.apply { (_ observer : EBObserverProtocol) in
-        managedObject.objectDisplay_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
+        if let observer = entry.observer {
+          managedObject.objectDisplay_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_objectDisplay.triggerPacking ()
+        }
       }
     }
   }
@@ -796,8 +892,12 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     for managedObject in inSet.values {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBObserverProtocol) in
-        managedObject.selectionDisplay_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
+        if let observer = entry.observer {
+          managedObject.selectionDisplay_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_selectionDisplay.triggerPacking ()
+        }
       }
     }
   }
@@ -806,8 +906,12 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     for managedObject in inSet.values {
-      self.mObserversOf_selectionDisplay.apply { (_ observer : EBObserverProtocol) in
-        managedObject.selectionDisplay_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
+        if let observer = entry.observer {
+          managedObject.selectionDisplay_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_selectionDisplay.triggerPacking ()
+        }
       }
     }
   }
@@ -852,8 +956,12 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     for managedObject in inSet.values {
-      self.mObserversOf_issues.apply { (_ observer : EBObserverProtocol) in
-        managedObject.issues_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_issues.dictionary {
+        if let observer = entry.observer {
+          managedObject.issues_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_issues.triggerPacking ()
+        }
       }
     }
   }
@@ -862,8 +970,12 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     for managedObject in inSet.values {
-      self.mObserversOf_issues.apply { (_ observer : EBObserverProtocol) in
-        managedObject.issues_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_issues.dictionary {
+        if let observer = entry.observer {
+          managedObject.issues_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_issues.triggerPacking ()
+        }
       }
     }
   }
@@ -908,8 +1020,12 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserversOf_nameRect_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     for managedObject in inSet.values {
-      self.mObserversOf_nameRect.apply { (_ observer : EBObserverProtocol) in
-        managedObject.nameRect_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_nameRect.dictionary {
+        if let observer = entry.observer {
+          managedObject.nameRect_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_nameRect.triggerPacking ()
+        }
       }
     }
   }
@@ -918,8 +1034,12 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserversOf_nameRect_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPin>) {
     for managedObject in inSet.values {
-      self.mObserversOf_nameRect.apply { (_ observer : EBObserverProtocol) in
-        managedObject.nameRect_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_nameRect.dictionary {
+        if let observer = entry.observer {
+          managedObject.nameRect_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_nameRect.triggerPacking ()
+        }
       }
     }
   }

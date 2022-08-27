@@ -686,14 +686,14 @@ final class MergerBoardInstance : EBGraphicManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["myModel"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! BoardModel
-        self.myModel = object 
-      }
-      if let range = inDictionary ["myRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! MergerRoot
-        self.myRoot = object 
-      }
+    if let range = inDictionary ["myModel"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! BoardModel
+      self.myModel = object
+    }
+    if let range = inDictionary ["myRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! MergerRoot
+      self.myRoot = object
+    }
   }
 
   //····················································································································

@@ -1889,10 +1889,10 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! ArtworkRoot
-        self.mArtwork = object 
-      }
+    if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! ArtworkRoot
+      self.mArtwork = object
+    }
   }
 
   //····················································································································

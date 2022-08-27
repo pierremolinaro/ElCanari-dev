@@ -1087,10 +1087,10 @@ final class BoardText : BoardObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mFont"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! FontInProject
-        self.mFont = object 
-      }
+    if let range = inDictionary ["mFont"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! FontInProject
+      self.mFont = object
+    }
   }
 
   //····················································································································

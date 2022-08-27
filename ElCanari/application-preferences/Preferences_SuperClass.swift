@@ -35,7 +35,7 @@ class Preferences_SuperClass : EBObjcBaseObject {
         defer: false
       )
       self.mLibraryUpdateLogWindow = window
-      window.setFrameAutosaveName ("LibraryUpdateLogWindowSettings")
+      _ = window.setFrameAutosaveName ("LibraryUpdateLogWindowSettings")
       window.title = "Library Update Log"
       window.isReleasedWhenClosed = false
       let textView = AutoLayoutStaticTextView (drawsBackground: false, horizontalScroller: true, verticalScroller: true)
@@ -65,18 +65,18 @@ class Preferences_SuperClass : EBObjcBaseObject {
         defer: false
       )
       self.mCheckingForLibraryUpdateWindow = window
-      window.setFrameAutosaveName ("CheckForLibraryUpdatesWindowSettings")
+      _ = window.setFrameAutosaveName ("CheckForLibraryUpdatesWindowSettings")
       window.title = "Checking for Library Updates…"
       window.isReleasedWhenClosed = false
 
       let contents = AutoLayoutVerticalStackView ()
-      contents.appendFlexibleSpace ()
+      _ = contents.appendFlexibleSpace ()
       let hStack = AutoLayoutHorizontalStackView ()
-      hStack.appendFlexibleSpace ()
-      hStack.appendView (AutoLayoutSpinningProgressIndicator (size: .regular))
-      hStack.appendFlexibleSpace ()
-      contents.appendView (hStack)
-      contents.appendFlexibleSpace ()
+      _ = hStack.appendFlexibleSpace ()
+      _ = hStack.appendView (AutoLayoutSpinningProgressIndicator (size: .regular))
+      _ = hStack.appendFlexibleSpace ()
+      _ = contents.appendView (hStack)
+      _ = contents.appendFlexibleSpace ()
 
       window.contentView = contents
     }

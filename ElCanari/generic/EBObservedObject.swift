@@ -36,7 +36,13 @@ class EBObservedObject : EBSwiftBaseObject {
   //····················································································································
 
   func observedObjectDidChange () {
-    self.mObservers.apply { (_ inObserver : EBObserverProtocol) in inObserver.observedObjectDidChange () }
+    for (_, entry) in self.mObservers.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+      }else{
+        self.mObservers.triggerPacking ()
+      }
+    }
   }
 
   //····················································································································
@@ -58,10 +64,14 @@ class EBObservedObject : EBSwiftBaseObject {
         let observerCount = self.mObservers.nonNilEntryCount
         observerExplorer.addItem (withTitle: String (observerCount))
         observerExplorer.isEnabled = observerCount > 0
-        self.mObservers.apply ( { (_ observer : EBObserverProtocol) in
-          let stringValue = explorerObjectIndexString (observer.objectIndex) + " - " + String (describing: type (of: observer))
-          observerExplorer.addItem (withTitle: stringValue)
-        })
+        for (_, entry) in self.mObservers.dictionary {
+          if let observer = entry.observer {
+            let stringValue = explorerObjectIndexString (observer.objectIndex) + " - " + String (describing: type (of: observer))
+            observerExplorer.addItem (withTitle: stringValue)
+          }else{
+            self.mObservers.triggerPacking ()
+          }
+        }
       }
     }
   #endif

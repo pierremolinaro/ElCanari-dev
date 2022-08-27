@@ -824,10 +824,10 @@ final class NetInProject : EBManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mNetClass"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! NetClassInProject
-        self.mNetClass = object 
-      }
+    if let range = inDictionary ["mNetClass"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! NetClassInProject
+      self.mNetClass = object
+    }
   }
 
   //····················································································································

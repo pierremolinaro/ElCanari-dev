@@ -75,8 +75,12 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
   final func addEBObserversOf_y1_toElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
     if !self.mObserversOf_y1.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_y1.apply { (_ observer : EBObserverProtocol) in
-          managedObject.y1_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_y1.dictionary {
+          if let observer = entry.observer {
+            managedObject.y1_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_y1.triggerPacking ()
+          }
         }
       }
     }
@@ -85,10 +89,14 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
   //····················································································································
 
   final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
-    self.mObserversOf_y1.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.y1_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_y1.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.y1_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_y1.triggerPacking ()
       }
     }
   }
@@ -134,8 +142,12 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
   final func addEBObserversOf_x2_toElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
     if !self.mObserversOf_x2.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_x2.apply { (_ observer : EBObserverProtocol) in
-          managedObject.x2_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_x2.dictionary {
+          if let observer = entry.observer {
+            managedObject.x2_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_x2.triggerPacking ()
+          }
         }
       }
     }
@@ -144,10 +156,14 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
   //····················································································································
 
   final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
-    self.mObserversOf_x2.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.x2_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_x2.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.x2_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_x2.triggerPacking ()
       }
     }
   }
@@ -193,8 +209,12 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
   final func addEBObserversOf_y2_toElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
     if !self.mObserversOf_y2.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_y2.apply { (_ observer : EBObserverProtocol) in
-          managedObject.y2_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_y2.dictionary {
+          if let observer = entry.observer {
+            managedObject.y2_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_y2.triggerPacking ()
+          }
         }
       }
     }
@@ -203,10 +223,14 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
   //····················································································································
 
   final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
-    self.mObserversOf_y2.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.y2_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_y2.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.y2_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_y2.triggerPacking ()
       }
     }
   }
@@ -252,8 +276,12 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
   final func addEBObserversOf_width_toElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
     if !self.mObserversOf_width.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_width.apply { (_ observer : EBObserverProtocol) in
-          managedObject.width_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_width.dictionary {
+          if let observer = entry.observer {
+            managedObject.width_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_width.triggerPacking ()
+          }
         }
       }
     }
@@ -262,10 +290,14 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
   //····················································································································
 
   final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
-    self.mObserversOf_width.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.width_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_width.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.width_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_width.triggerPacking ()
       }
     }
   }
@@ -311,8 +343,12 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
   final func addEBObserversOf_x1_toElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
     if !self.mObserversOf_x1.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_x1.apply { (_ observer : EBObserverProtocol) in
-          managedObject.x1_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_x1.dictionary {
+          if let observer = entry.observer {
+            managedObject.x1_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_x1.triggerPacking ()
+          }
         }
       }
     }
@@ -321,10 +357,14 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
   //····················································································································
 
   final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : EBReferenceSet <SegmentEntity>) {
-    self.mObserversOf_x1.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.x1_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_x1.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.x1_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_x1.triggerPacking ()
       }
     }
   }

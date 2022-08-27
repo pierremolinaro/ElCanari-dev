@@ -1371,10 +1371,10 @@ final class ComponentSymbolInProject : SchematicObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mComponent"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! ComponentInProject
-        self.mComponent = object 
-      }
+    if let range = inDictionary ["mComponent"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! ComponentInProject
+      self.mComponent = object
+    }
   }
 
   //····················································································································

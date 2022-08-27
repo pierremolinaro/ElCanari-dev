@@ -74,7 +74,7 @@ final class AutoLayoutSheetDefaultOkButton : NSButton, EBUserClassNameProtocol {
       if let parent = mySheet.sheetParent {
         parent.endSheet (mySheet, returnCode: .stop)
       }else{
-        NSApp.stopModal ()
+        NSApplication.shared.stopModal ()
         self.window?.orderOut (nil)
       }
     }

@@ -11,8 +11,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func openArtworkPanelInLibrary (windowForSheet inWindow : NSWindow?,
-                                validationButtonTitle inValidationButtonTitle : String,
-                                callBack inCallBack : @escaping (_ inURL : URL, _ inName : String) -> Void) {
+                                           validationButtonTitle inValidationButtonTitle : String,
+                                           callBack inCallBack : @escaping (_ inURL : URL, _ inName : String) -> Void) {
   gOpenArtworkPanelInLibrary = OpenArtworkPanelInLibrary (
     windowForSheet: inWindow,
     validationButtonTitle: inValidationButtonTitle,
@@ -44,20 +44,20 @@ fileprivate final class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate,
     self.mOkButton = AutoLayoutSheetDefaultOkButton (title: inValidationButtonTitle, size: .regular, sheet: panel)
  //--- No selected artwork message
     self.mNoSelectedArtworkMessage = AutoLayoutVerticalStackView ()
-    self.mNoSelectedArtworkMessage.appendFlexibleSpace ()
-    self.mNoSelectedArtworkMessage.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "No Selected Artwork", bold: true, size: .regular, alignment: .center))
-    self.mNoSelectedArtworkMessage.appendFlexibleSpace ()
+    _ = self.mNoSelectedArtworkMessage.appendFlexibleSpace ()
+    _ = self.mNoSelectedArtworkMessage.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "No Selected Artwork", bold: true, size: .regular, alignment: .center))
+    _ = self.mNoSelectedArtworkMessage.appendFlexibleSpace ()
   //--- Artwork detailled view
     self.mArtworkDetailView = AutoLayoutVerticalStackView ()
-    self.mArtworkDetailView.appendFlexibleSpace ()
+    _ = self.mArtworkDetailView.appendFlexibleSpace ()
     self.mArtworkTitle = AutoLayoutStaticLabel (title: "", bold: true, size: .regular, alignment: .center)
-    self.mArtworkDetailView.appendView (self.mArtworkTitle)
+    _ = self.mArtworkDetailView.appendView (self.mArtworkTitle)
     self.mArtworkLayout = AutoLayoutStaticLabel (title: "", bold: true, size: .regular, alignment: .left)
     let layoutView = AutoLayoutHorizontalStackView ()
-    layoutView.appendView (AutoLayoutStaticLabel (title: "Layout", bold: false, size: .regular, alignment: .center))
-    layoutView.appendView (self.mArtworkLayout)
-    self.mArtworkDetailView.appendView (layoutView)
-    self.mArtworkDetailView.appendFlexibleSpace ()
+    _ = layoutView.appendView (AutoLayoutStaticLabel (title: "Layout", bold: false, size: .regular, alignment: .center))
+    _ = layoutView.appendView (self.mArtworkLayout)
+    _ = self.mArtworkDetailView.appendView (layoutView)
+    _ = self.mArtworkDetailView.appendFlexibleSpace ()
   //--- Table View
   //--- Build part counted set
     var partCountDictionary = [String : Int] ()
@@ -101,12 +101,12 @@ fileprivate final class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate,
   //--- Main view
     let mainView = AutoLayoutVerticalStackView ().set (margins: 20)
     let twoColumns = AutoLayoutHorizontalStackView ()
-    mainView.appendView (twoColumns)
+    _ = mainView.appendView (twoColumns)
   //--- Left column
     let leftColumn = AutoLayoutVerticalStackView ()
     self.mSearchField = AutoLayoutSearchField (width: 300, size: .regular).bind_value (preferences_artworkDialogFilterString_property, sendContinously: true)
-    leftColumn.appendView (self.mSearchField)
-    twoColumns.appendView (leftColumn)
+    _ = leftColumn.appendView (self.mSearchField)
+    _ = twoColumns.appendView (leftColumn)
     self.mTableView = AutoLayoutTableView (size: .small, addControlButtons: false)
     self.mTableView.configure (
       allowsEmptySelection: false,
@@ -163,10 +163,10 @@ fileprivate final class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate,
       headerAlignment: .center,
       contentAlignment: .left
     )
-    leftColumn.appendView (self.mTableView)
+    _ = leftColumn.appendView (self.mTableView)
   //--- Right column
-    twoColumns.appendView (self.mNoSelectedArtworkMessage)
-    twoColumns.appendView (self.mArtworkDetailView)
+    _ = twoColumns.appendView (self.mNoSelectedArtworkMessage)
+    _ = twoColumns.appendView (self.mArtworkDetailView)
   //--- Grid view (status, path)
     let gridView = AutoLayoutGridView2 ()
     _ = gridView.addFirstBaseLineAligned (
@@ -177,14 +177,14 @@ fileprivate final class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate,
       left: AutoLayoutStaticLabel (title: "Path", bold: false, size: .regular, alignment: .left),
       right: self.mArtworkPath
     )
-    mainView.appendView (gridView)
+    _ = mainView.appendView (gridView)
   //--- Last line (Cancel, Ok)
     let lastLine = AutoLayoutHorizontalStackView ()
     let cancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular)
-    lastLine.appendView (cancelButton)
-    lastLine.appendFlexibleSpace ()
-    lastLine.appendView (self.mOkButton)
-    mainView.appendView (lastLine)
+    _ = lastLine.appendView (cancelButton)
+    _ = lastLine.appendFlexibleSpace ()
+    _ = lastLine.appendView (self.mOkButton)
+    _ = mainView.appendView (lastLine)
   //--- Set autolayout view to panel
     panel.contentView = AutoLayoutWindowContentView (view: mainView)
   //--- Sheet or dialog ?
@@ -197,7 +197,7 @@ fileprivate final class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate,
         DispatchQueue.main.async { gOpenArtworkPanelInLibrary = nil }
       }
     }else{ // Dialog
-      let response = NSApp.runModal (for: panel)
+      let response = NSApplication.shared.runModal (for: panel)
       if response == .stop {
         let entry = self.mFilteredTableViewSource [self.mTableView.selectedRow]
         inCallBack (URL (fileURLWithPath: entry.mFullPath), entry.mPartName)

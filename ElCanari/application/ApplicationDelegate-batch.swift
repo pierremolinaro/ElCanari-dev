@@ -82,8 +82,8 @@ extension ApplicationDelegate {
           }else{
             let alert = NSAlert ()
             alert.messageText = "Open \(retainedFiles.count) \(inTitle)\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."
-            alert.addButton (withTitle: "Ok")
-            alert.addButton (withTitle: "Cancel")
+            _ = alert.addButton (withTitle: "Ok")
+            _ = alert.addButton (withTitle: "Cancel")
             alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
               if response == .alertFirstButtonReturn {
                 let message = "Opening \(retainedFiles.count) \(inTitle)\((retainedFiles.count > 1) ? "s" : "")\n"
@@ -162,24 +162,6 @@ extension ApplicationDelegate {
                     display: true // animating,
                   ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
                     NSSound.beep ()
-//                    if let projectDocument = document as? CustomizedProjectDocument {
-//                      projectDocument.resetDevicesAndFontsVersionAction (nil)
-//                      var errorMessages = [String] ()
-//                      projectDocument.updateDevices (projectDocument.rootObject.mDevices, &errorMessages)
-//                      projectDocument.updateFonts (projectDocument.rootObject.mFonts, &errorMessages)
-//                      projectDocument.save (nil)
-//                      projectDocument.close ()
-//                      if errorMessages.count == 0 {
-//                        self.mCount += 1
-//                        let message = (self.mCount > 1)
-//                          ? "\(self.mCount) projects have been updated."
-//                          : "1 project has been updated."
-//                        self.mMaintenanceLogTextField.stringValue = message
-//                      }else{
-//                        self.mMaintenanceLogTextView.appendErrorString ("Cannot update \(fullpath)\n")
-//                        self.mMaintenanceLogTextView.appendMessageString (errorMessages.joined (separator: "\n"))
-//                      }
-//                    }
                   }
                 }
               }
@@ -225,8 +207,8 @@ extension ApplicationDelegate {
           }else{
             let alert = NSAlert ()
             alert.messageText = "Update \(retainedFiles.count) device\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."
-            alert.addButton (withTitle: "Ok")
-            alert.addButton (withTitle: "Cancel")
+            _ = alert.addButton (withTitle: "Ok")
+            _ = alert.addButton (withTitle: "Cancel")
             alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
               if response == .alertFirstButtonReturn {
                 self.mMaintenanceLogTextField.stringValue = "No updated device"
@@ -314,8 +296,8 @@ extension ApplicationDelegate {
           }else{
             let alert = NSAlert ()
             alert.messageText = "Examine \(retainedFiles.count) document\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."
-            alert.addButton (withTitle: "Ok")
-            alert.addButton (withTitle: "Cancel")
+            _ = alert.addButton (withTitle: "Ok")
+            _ = alert.addButton (withTitle: "Cancel")
             alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
               if response == .alertFirstButtonReturn {
                 self.mMaintenanceLogTextField.stringValue = "0 document has been converted to \(inFormat.string) format."

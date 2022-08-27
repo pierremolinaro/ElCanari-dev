@@ -47,12 +47,12 @@ let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
         let hStack = AutoLayoutHorizontalStackView ()
         let clearTransientEventLogButton = AutoLayoutButton (title: "Clear Transient Event Log", size: .regular)
           .bind_run (target: self, selector: #selector (Self.clearTransientEventLogWindow (_:)))
-        hStack.appendView (clearTransientEventLogButton)
-        hStack.appendFlexibleSpace ()
-        mainVStack.appendView (hStack)
+        _ = hStack.appendView (clearTransientEventLogButton)
+        _ = hStack.appendFlexibleSpace ()
+        _ = mainVStack.appendView (hStack)
         let textView = AutoLayoutTextObserverView ()
         self.mTransientEventExplorerTextView = textView
-        mainVStack.appendView (textView)
+        _ = mainVStack.appendView (textView)
      //--- Assign main view to window
         self.mTransientEventExplorerWindow?.contentView = mainVStack
       }
@@ -120,7 +120,7 @@ func appendShowTransientEventLogWindowMenuItem (_ inMenu : NSMenu) {
       keyEquivalent: ""
     )
     item.keyEquivalentModifierMask = [.command, .control]
-    item.target = NSApp
+    item.target = NSApplication.shared
     inMenu.addItem (item)
   #endif
 }
@@ -129,15 +129,16 @@ func appendShowTransientEventLogWindowMenuItem (_ inMenu : NSMenu) {
 
 func appendMessageString (_ message : String) {
   #if BUILD_OBJECT_EXPLORER
-    let theApp = NSApp as! EBApplication
+    let theApp = NSApplication.shared as! EBApplication
     theApp.mTransientEventExplorerTextView?.appendMessageString (message)
   #endif
 }
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func appendMessageString (_ message : String, color : NSColor) {
   #if BUILD_OBJECT_EXPLORER
-    let theApp = NSApp as! EBApplication
+    let theApp = NSApplication.shared as! EBApplication
     theApp.mTransientEventExplorerTextView?.appendMessageString (message, color:color)
   #endif
 }

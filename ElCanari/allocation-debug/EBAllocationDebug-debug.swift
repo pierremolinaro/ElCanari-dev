@@ -272,7 +272,7 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate {
               .set (alignment: .left).expandableWidth ()
           )
           .addSeparator ()
-        mainVStack.appendView (hStack)
+        _ = mainVStack.appendView (hStack)
       }
       do {
         let hStack = AutoLayoutGridView2 ().set (margins: 20).set (topMargin: 0)
@@ -296,7 +296,7 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate {
               .appendView (self.mCurrentlyAllocatedLabel)
           )
           .add (single: self.mStatsTableView)
-        mainVStack.appendView (hStack)
+        _ = mainVStack.appendView (hStack)
       }
     //--- Assign main view to window
       self.mAllocationStatsWindow.contentView = AutoLayoutWindowContentView (view: mainVStack)
@@ -349,7 +349,7 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate {
   //    windowDidBecomeKey: install timer and release it
   //····················································································································
 
-  func windowDidBecomeKey (_ notification: Notification) {
+  func windowDidBecomeKey (_ : Notification) {
     self.installTimer ()
   }
 

@@ -7,6 +7,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol ObjectIndexProtocol : AnyObject {
+  var objectIndex : Int { get }
   #if BUILD_OBJECT_EXPLORER
     var explorerIndexString : String { get }
   #endif
@@ -24,17 +25,13 @@ class EBObjcBaseObject : NSObject, EBUserClassNameProtocol, ObjectIndexProtocol 
 
   //····················································································································
 
-  #if BUILD_OBJECT_EXPLORER
-    final private let mObjectIndex : Int
-  #endif
+  final let objectIndex : Int
 
   //····················································································································
 
   override init () {
-    #if BUILD_OBJECT_EXPLORER
-      self.mObjectIndex = gEasyBindingsObjectIndex
-      gEasyBindingsObjectIndex += 1
-    #endif
+    self.objectIndex = gEasyBindingsObjectIndex
+    gEasyBindingsObjectIndex += 1
     super.init ()
     noteObjectAllocation (self)
   }
@@ -49,7 +46,7 @@ class EBObjcBaseObject : NSObject, EBUserClassNameProtocol, ObjectIndexProtocol 
 
   #if BUILD_OBJECT_EXPLORER
     final var explorerIndexString : String {
-      return explorerObjectIndexString (self.mObjectIndex)
+      return explorerObjectIndexString (self.objectIndex)
     }
   #endif
 

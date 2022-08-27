@@ -275,7 +275,7 @@ fileprivate final class LibraryCommitListController : EBSwiftBaseObject { // , A
     panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: AutoLayoutWindowContentView (view: mainView))
   //--- Run modal
     DispatchQueue.main.async { self.mTableView.scrollRowToVisible (row: 0) }
-    let response = NSApp.runModal (for: panel)
+    let response = NSApplication.shared.runModal (for: panel)
   //--- response
     if response == .stop {
       return self.mRevisions [self.mTableView.selectedRow].mCommitIndex

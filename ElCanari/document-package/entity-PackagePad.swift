@@ -1845,10 +1845,10 @@ final class PackagePad : PackageObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["zone"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! PackageZone
-        self.zone = object 
-      }
+    if let range = inDictionary ["zone"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! PackageZone
+      self.zone = object
+    }
   }
 
   //····················································································································

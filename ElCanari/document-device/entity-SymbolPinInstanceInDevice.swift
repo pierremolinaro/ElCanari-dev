@@ -614,18 +614,18 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mSymbolInstance"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! SymbolInstanceInDevice
-        self.mSymbolInstance = object 
-      }
-      if let range = inDictionary ["mType"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! SymbolPinTypeInDevice
-        self.mType = object 
-      }
-      if let range = inDictionary ["mPadProxy"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! PadProxyInDevice
-        self.mPadProxy = object 
-      }
+    if let range = inDictionary ["mSymbolInstance"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! SymbolInstanceInDevice
+      self.mSymbolInstance = object
+    }
+    if let range = inDictionary ["mType"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! SymbolPinTypeInDevice
+      self.mType = object
+    }
+    if let range = inDictionary ["mPadProxy"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! PadProxyInDevice
+      self.mPadProxy = object
+    }
   }
 
   //····················································································································

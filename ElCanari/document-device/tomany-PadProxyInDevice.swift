@@ -75,8 +75,12 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
   final func addEBObserversOf_mPinInstanceName_toElementsOfSet (_ inSet : EBReferenceSet <PadProxyInDevice>) {
     if !self.mObserversOf_mPinInstanceName.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mPinInstanceName.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mPinInstanceName_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mPinInstanceName.dictionary {
+          if let observer = entry.observer {
+            managedObject.mPinInstanceName_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mPinInstanceName.triggerPacking ()
+          }
         }
       }
     }
@@ -85,10 +89,14 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
   //····················································································································
 
   final func removeEBObserversOf_mPinInstanceName_fromElementsOfSet (_ inSet : EBReferenceSet <PadProxyInDevice>) {
-    self.mObserversOf_mPinInstanceName.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mPinInstanceName_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mPinInstanceName.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mPinInstanceName_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mPinInstanceName.triggerPacking ()
       }
     }
   }
@@ -134,8 +142,12 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
   final func addEBObserversOf_mPadName_toElementsOfSet (_ inSet : EBReferenceSet <PadProxyInDevice>) {
     if !self.mObserversOf_mPadName.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mPadName.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mPadName_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mPadName.dictionary {
+          if let observer = entry.observer {
+            managedObject.mPadName_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mPadName.triggerPacking ()
+          }
         }
       }
     }
@@ -144,10 +156,14 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
   //····················································································································
 
   final func removeEBObserversOf_mPadName_fromElementsOfSet (_ inSet : EBReferenceSet <PadProxyInDevice>) {
-    self.mObserversOf_mPadName.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mPadName_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mPadName.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mPadName_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mPadName.triggerPacking ()
       }
     }
   }
@@ -193,8 +209,12 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
   final func addEBObserversOf_mIsNC_toElementsOfSet (_ inSet : EBReferenceSet <PadProxyInDevice>) {
     if !self.mObserversOf_mIsNC.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_mIsNC.apply { (_ observer : EBObserverProtocol) in
-          managedObject.mIsNC_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_mIsNC.dictionary {
+          if let observer = entry.observer {
+            managedObject.mIsNC_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_mIsNC.triggerPacking ()
+          }
         }
       }
     }
@@ -203,10 +223,14 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
   //····················································································································
 
   final func removeEBObserversOf_mIsNC_fromElementsOfSet (_ inSet : EBReferenceSet <PadProxyInDevice>) {
-    self.mObserversOf_mIsNC.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.mIsNC_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_mIsNC.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.mIsNC_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_mIsNC.triggerPacking ()
       }
     }
   }
@@ -251,8 +275,12 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   final func addEBObserversOf_isConnected_toElementsOfSet (_ inSet : EBReferenceSet <PadProxyInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_isConnected.apply { (_ observer : EBObserverProtocol) in
-        managedObject.isConnected_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_isConnected.dictionary {
+        if let observer = entry.observer {
+          managedObject.isConnected_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_isConnected.triggerPacking ()
+        }
       }
     }
   }
@@ -261,8 +289,12 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   final func removeEBObserversOf_isConnected_fromElementsOfSet (_ inSet : EBReferenceSet <PadProxyInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_isConnected.apply { (_ observer : EBObserverProtocol) in
-        managedObject.isConnected_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_isConnected.dictionary {
+        if let observer = entry.observer {
+          managedObject.isConnected_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_isConnected.triggerPacking ()
+        }
       }
     }
   }
@@ -307,8 +339,12 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   final func addEBObserversOf_symbolName_toElementsOfSet (_ inSet : EBReferenceSet <PadProxyInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_symbolName.apply { (_ observer : EBObserverProtocol) in
-        managedObject.symbolName_property.addEBObserver (observer)
+      for (_, entry) in self.mObserversOf_symbolName.dictionary {
+        if let observer = entry.observer {
+          managedObject.symbolName_property.addEBObserver (observer)
+        }else{
+          self.mObserversOf_symbolName.triggerPacking ()
+        }
       }
     }
   }
@@ -317,8 +353,12 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
 
   final func removeEBObserversOf_symbolName_fromElementsOfSet (_ inSet : EBReferenceSet <PadProxyInDevice>) {
     for managedObject in inSet.values {
-      self.mObserversOf_symbolName.apply { (_ observer : EBObserverProtocol) in
-        managedObject.symbolName_property.removeEBObserver (observer)
+      for (_, entry) in self.mObserversOf_symbolName.dictionary {
+        if let observer = entry.observer {
+          managedObject.symbolName_property.removeEBObserver (observer)
+        }else{
+          self.mObserversOf_symbolName.triggerPacking ()
+        }
       }
     }
   }

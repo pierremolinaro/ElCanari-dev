@@ -67,8 +67,12 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
   final func addEBObserversOf_padNumber_toElementsOfSet (_ inSet : EBReferenceSet <ForbiddenPadNumber>) {
     if !self.mObserversOf_padNumber.isEmpty {
       for managedObject in inSet.values {
-        self.mObserversOf_padNumber.apply { (_ observer : EBObserverProtocol) in
-          managedObject.padNumber_property.addEBObserver (observer)
+        for (_, entry) in self.mObserversOf_padNumber.dictionary {
+          if let observer = entry.observer {
+            managedObject.padNumber_property.addEBObserver (observer)
+          }else{
+            self.mObserversOf_padNumber.triggerPacking ()
+          }
         }
       }
     }
@@ -77,10 +81,14 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
   //····················································································································
 
   final func removeEBObserversOf_padNumber_fromElementsOfSet (_ inSet : EBReferenceSet <ForbiddenPadNumber>) {
-    self.mObserversOf_padNumber.apply { (_ observer : EBObserverProtocol) in
-      observer.observedObjectDidChange ()
-      for managedObject in inSet.values {
-        managedObject.padNumber_property.removeEBObserver (observer)
+    for (_, entry) in self.mObserversOf_padNumber.dictionary {
+      if let observer = entry.observer {
+        observer.observedObjectDidChange ()
+        for managedObject in inSet.values {
+          managedObject.padNumber_property.removeEBObserver (observer)
+        }
+      }else{
+        self.mObserversOf_padNumber.triggerPacking ()
       }
     }
   }

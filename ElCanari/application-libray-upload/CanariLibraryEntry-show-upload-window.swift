@@ -71,14 +71,14 @@ final class LibraryUploadDialog : EBSwiftBaseObject {
       .addSeparator ()
       .addFirstBaseLineAligned (left: self.mLibraryRepositoryLoadCurrentReleaseButton, right: self.mLibraryRepositoryCurrentReleaseTextField)
       .addFirstBaseLineAligned (left: self.mLibraryRepositoryStatusButton, right: AutoLayoutHorizontalStackView.viewFollowedByFlexibleSpace (self.mLibraryRepositoryCommitButton))
-    mainView.appendView (gridView)
+    _ = mainView.appendView (gridView)
   //--- Log Text View
-    mainView.appendView (self.mLibraryRepositoryLogTextView)
+    _ = mainView.appendView (self.mLibraryRepositoryLogTextView)
   //--- Last line
     let lastLine = AutoLayoutHorizontalStackView ()
-    lastLine.appendFlexibleSpace ()
-    lastLine.appendView (self.mLibraryRepositoryCloseButton)
-    mainView.appendView (lastLine)
+    _ = lastLine.appendFlexibleSpace ()
+    _ = lastLine.appendView (self.mLibraryRepositoryCloseButton)
+    _ = mainView.appendView (lastLine)
   //--- Set autolayout view to panel
     self.mLibraryUploadWindow.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: AutoLayoutWindowContentView (view: mainView))
   //--- Super init
@@ -88,7 +88,7 @@ final class LibraryUploadDialog : EBSwiftBaseObject {
   //····················································································································
 
   func runModal () {
-    _ = NSApp.runModal (for: self.mLibraryUploadWindow)
+    _ = NSApplication.shared.runModal (for: self.mLibraryUploadWindow)
     self.mLibraryUploadWindow.orderOut (nil)
   }
 
@@ -157,8 +157,8 @@ extension CanariLibraryEntry {
     if let window = gLibraryUploadDialog?.mLibraryUploadWindow {
       let alert = NSAlert ()
       alert.messageText = "User and password:"
-      alert.addButton (withTitle: "Ok")
-      alert.addButton (withTitle: "Cancel")
+      _ = alert.addButton (withTitle: "Ok")
+      _ = alert.addButton (withTitle: "Cancel")
     //--- Textfield
       let tf = NSTextField (frame: NSRect (x: 0.0, y: 0.0, width: 400.0, height: 22.0))
       tf.isEnabled = true
@@ -185,8 +185,8 @@ extension CanariLibraryEntry {
     if let window = gLibraryUploadDialog?.mLibraryUploadWindow {
       let alert = NSAlert ()
       alert.messageText = "Repository URL:"
-      alert.addButton (withTitle: "Ok")
-      alert.addButton (withTitle: "Cancel")
+      _ = alert.addButton (withTitle: "Ok")
+      _ = alert.addButton (withTitle: "Cancel")
     //--- Textfield
       let tf = NSTextField (frame: NSRect (x: 0.0, y: 0.0, width: 400.0, height: 22.0))
       tf.isEnabled = true
@@ -234,8 +234,8 @@ extension CanariLibraryEntry {
       if needsToWriteCommitFile {
         let alert = NSAlert ()
         alert.messageText = "Commit message:"
-        alert.addButton (withTitle: "Ok")
-        alert.addButton (withTitle: "Cancel")
+        _ = alert.addButton (withTitle: "Ok")
+        _ = alert.addButton (withTitle: "Cancel")
       //--- Textfield
         let tf = NSTextField (frame: NSRect (x: 0.0, y: 0.0, width: 400.0, height: 22.0))
         tf.isEnabled = true

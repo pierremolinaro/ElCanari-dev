@@ -116,7 +116,7 @@ func flushOutletEvents () {
 
 func logEvents () -> Bool {
   #if BUILD_OBJECT_EXPLORER
-    let theApp = NSApp as! EBApplication
+    let theApp = NSApplication.shared as! EBApplication
     return theApp.logEvents ()
   #else
     return false
@@ -127,7 +127,7 @@ func logEvents () -> Bool {
 
 func appendToTransientEventLog (_ message : String) {
   #if BUILD_OBJECT_EXPLORER
-    let theApp = NSApp as! EBApplication
+    let theApp = NSApplication.shared as! EBApplication
     theApp.appendToTransientEventLog (message)
   #endif
 }

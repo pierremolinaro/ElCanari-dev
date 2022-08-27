@@ -2073,18 +2073,18 @@ final class BoardTrack : BoardObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mConnectorP1"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! BoardConnector
-        self.mConnectorP1 = object 
-      }
-      if let range = inDictionary ["mConnectorP2"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! BoardConnector
-        self.mConnectorP2 = object 
-      }
-      if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
-        let object = inRawObjectArray [objectIndex].object as! NetInProject
-        self.mNet = object 
-      }
+    if let range = inDictionary ["mConnectorP1"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! BoardConnector
+      self.mConnectorP1 = object
+    }
+    if let range = inDictionary ["mConnectorP2"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! BoardConnector
+      self.mConnectorP2 = object
+    }
+    if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [objectIndex].object as! NetInProject
+      self.mNet = object
+    }
   }
 
   //····················································································································
