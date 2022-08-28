@@ -98,7 +98,7 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
     //--- Find board model
       var optionalBoardModel : BoardModel? = nil
       for boardModel in self.rootObject.boardModels.values {
-        if boardModel.objectIdentifier == boardModelTag {
+        if boardModel.objectIndex == boardModelTag {
           optionalBoardModel = boardModel
           break
         }

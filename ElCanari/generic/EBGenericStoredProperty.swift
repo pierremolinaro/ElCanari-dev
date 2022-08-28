@@ -16,11 +16,13 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
 
   //····················································································································
 
-  var mValueExplorer : NSTextField? {
-    didSet {
-      self.mValueExplorer?.stringValue = "\(mValue)"
+  #if BUILD_OBJECT_EXPLORER
+    var mValueExplorer : NSTextField? {
+      didSet {
+        self.mValueExplorer?.stringValue = "\(mValue)"
+      }
     }
-  }
+  #endif
 
   //····················································································································
 
@@ -35,7 +37,9 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
   private var mValue : T {
     didSet {
       if self.mValue != oldValue {
-        self.mValueExplorer?.stringValue = "\(mValue)"
+        #if BUILD_OBJECT_EXPLORER
+          self.mValueExplorer?.stringValue = "\(mValue)"
+        #endif
         self.mEBUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
         if logEvents () {
           appendMessageString ("Property \(self.explorerIndexString) did change value to \(self.mValue)\n")
@@ -56,7 +60,7 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
 
   //····················································································································
 
-  override func setProp (_ value : T) { self.mValue = value }
+  override func setProp (_ inValue : T) { self.mValue = inValue }
 
   //····················································································································
 
@@ -82,10 +86,10 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
 
   //····················································································································
 
-  func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+  func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
-    self.mSignatureObserver = observer
-    observer?.clearSignatureCache ()
+    self.mSignatureObserver = inObserver
+    inObserver?.clearSignatureCache ()
     self.clearSignatureCache ()
   }
 
@@ -112,6 +116,7 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
   }
 
   //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

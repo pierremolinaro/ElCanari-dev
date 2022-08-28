@@ -169,7 +169,7 @@ final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserCla
       case .single (let v) :
         let indexSet = Set (v)
         for object in document.rootObject.packageObjects.values {
-          if indexSet.contains (object.objectIdentifier), let masterPad = object as? PackagePad {
+          if indexSet.contains (object.objectIndex), let masterPad = object as? PackagePad {
             self.mMasterPadArray.append (masterPad)
           }
         }

@@ -18,8 +18,8 @@ func transient_ProjectRoot_schematicBackgroundDisplay (
        _ self_mSchematicVersion : String,              
        _ self_sheetGeometry : SchematicSheetGeometry,  
        _ self_mSelectedSheet_mSheetTitle : String?,    
-       _ self_mSheets : [EBManagedObject_address_protocol],
-       _ self_mSelectedSheet : EBManagedObject_address_protocol?,
+       _ self_mSheets : [ObjectIndexProtocol],         
+       _ self_mSelectedSheet : ObjectIndexProtocol?,   
        _ self_mSchematicDate : Date,                   
        _ prefs_schematicBackColor : NSColor,           
        _ prefs_schematicFrameColor : NSColor
@@ -127,10 +127,10 @@ func transient_ProjectRoot_schematicBackgroundDisplay (
         shape.add (text: dateFormatter.string (from: self_mSchematicDate), p, textAttributes, .center, .center)
      //--- Sheet index
         var s = "?"
-        if let selectedSheetIndex = self_mSelectedSheet?.objectIdentifier {
+        if let selectedSheetIndex = self_mSelectedSheet?.objectIndex {
           var idx = 1
           for sheet in self_mSheets {
-            if sheet.objectIdentifier == selectedSheetIndex {
+            if sheet.objectIndex == selectedSheetIndex {
               s = "\(idx)"
             }
             idx += 1

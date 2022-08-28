@@ -1061,7 +1061,7 @@ final class PackagePad : PackageObject,
   //--- Atomic property: masterPadObjectIndex
     self.masterPadObjectIndex_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let s0 = unwSelf.objectIdentifier.selection
+        let s0 = unwSelf.objectIndex.selection
         switch (s0) {
         case (.single (let v0)) :
           return .single (transient_PackagePad_masterPadObjectIndex (v0))

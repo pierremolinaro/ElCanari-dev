@@ -1,0 +1,18 @@
+digraph G {
+  node [shape=record fontname=helvetica style=rounded] ;
+ 
+  EBObservedObject -> EBSwiftBaseObject ;
+  EBObservablePropertyT -> EBObservedObject ;
+  ReadOnlyAbstractGenericRelationshipProperty -> EBObservedObject ;
+  EBGenericTransientProperty -> EBObservablePropertyT ;
+  EBReadOnlyEnumPropertyT -> EBObservablePropertyT ;
+  EBObservableMutablePropertyT -> EBObservablePropertyT ;
+  EBGenericComputedPropertyT -> EBObservableMutablePropertyT ;
+  EBGenericPreferencePropertyT -> EBObservableMutablePropertyT ;
+  EBGenericPropertyProxyT -> EBObservableMutablePropertyT ;
+  EBGenericStoredPropertyT -> EBObservableMutablePropertyT ;
+  EBReadWriteEnumPropertyT -> EBReadOnlyEnumPropertyT ;
+  EBTransientEnumPropertyT -> EBReadOnlyEnumPropertyT ;
+  EBPropertyEnumProxyT -> EBReadWriteEnumPropertyT ;
+  EBStoredEnumProxyT -> EBReadWriteEnumPropertyT ;
+ }

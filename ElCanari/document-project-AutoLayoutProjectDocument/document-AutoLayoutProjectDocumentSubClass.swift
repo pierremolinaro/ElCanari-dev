@@ -112,7 +112,7 @@ import Cocoa
       self.mPossibleDraggedSymbol = nil
       for component in self.rootObject.mComponents.values {
         for s in component.mSymbols.values {
-           if s.objectIdentifier == symbolTag {
+           if s.objectIndex == symbolTag {
              self.mPossibleDraggedSymbol = s
            }
         }
@@ -156,7 +156,7 @@ import Cocoa
       let componentTag = inSourceTableView.tag (atIndex: idx)
       self.mPossibleDraggedComponent = nil
       for component in self.rootObject.mComponents.values {
-        if component.objectIdentifier == componentTag {
+        if component.objectIndex == componentTag {
           self.mPossibleDraggedComponent = component
         }
       }

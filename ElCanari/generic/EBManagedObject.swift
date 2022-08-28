@@ -36,9 +36,12 @@ import Cocoa
 #endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//  EBSignatureObserverProtocol
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol EBManagedObject_address_protocol : AnyObject {
-  var objectIdentifier : Int { get }
+@objc protocol EBSignatureObserverProtocol : AnyObject {
+  func clearSignatureCache ()
+  func signature () -> UInt32
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -50,11 +53,11 @@ var gInitSemaphore = DispatchSemaphore (value: 1) // Sémaphore d'exclusion mutu
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManagedObject_address_protocol {
+class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
 
   //····················································································································
 
-//  final var className : String { return String (describing: type (of: self)) }
+  // final var className : String { return String (describing: type (of: self)) } // Required when inherits from EBSwiftBaseObject
 
   //····················································································································
 
@@ -63,10 +66,6 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
   //····················································································································
 
   final var savingIndex = 0
-
-  //····················································································································
-
-  final var objectIdentifier : Int { return unsafeBitCast (self, to: Int.self) }
 
   //····················································································································
 
@@ -135,7 +134,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol, EBManaged
 
   //····················································································································
 
-  final var ebObjectIndex_selection : EBSelection <Int> { return .single (self.objectIdentifier) }
+  final var ebObjectIndex_selection : EBSelection <Int> { return .single (self.objectIndex) }
 
   //····················································································································
   //   showExplorerWindow

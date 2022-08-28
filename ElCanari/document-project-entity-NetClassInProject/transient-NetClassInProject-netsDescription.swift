@@ -115,7 +115,7 @@ fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_NetClassInProject_netsDescription (
-       _ self_mNets : [EBManagedObject_address_protocol],
+       _ self_mNets : [ObjectIndexProtocol],      
        _ self_mNets_trackCount : [NetInProject_trackCount],
        _ self_mNets_mNetName : [NetInProject_mNetName],
        _ self_mNets_netSchematicPointsInfo : [NetInProject_netSchematicPointsInfo],
@@ -140,7 +140,7 @@ func transient_NetClassInProject_netsDescription (
           }
           let (subnets, subnetsHaveWarning) = computeSubnets (warnsExactlyOneLabel, netPointInfo)
           let netInfo = NetInfo (
-            netIdentifier: self_mNets [idx].objectIdentifier, 
+            netIdentifier: self_mNets [idx].objectIndex, 
             netName: netName,
             netClassName: self_mNetClassName,
             points: netPointInfo,

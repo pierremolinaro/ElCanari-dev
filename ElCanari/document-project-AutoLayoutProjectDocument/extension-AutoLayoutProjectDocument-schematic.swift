@@ -72,7 +72,7 @@ extension AutoLayoutProjectDocument {
         if (wire.mP1 == nil) && (wire.mP2 == nil) { // Useless wire, delete
           wire.mSheet = nil
         }else if (wire.mP1 == nil) != (wire.mP2 == nil) { // Invalid wire
-          ioErrorList.append ("Invalid wire: mP1 \(wire.mP1?.objectIdentifier ?? 0), mP2 \(wire.mP2?.objectIdentifier ?? 0)")
+          ioErrorList.append ("Invalid wire: mP1 \(wire.mP1?.objectIndex ?? 0), mP2 \(wire.mP2?.objectIndex ?? 0)")
         }
       }
     }

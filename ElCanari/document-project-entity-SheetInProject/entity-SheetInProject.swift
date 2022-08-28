@@ -323,7 +323,7 @@ final class SheetInProject : EBManagedObject,
       if let unwSelf = self {
         let s0 = unwSelf.mRoot_property.sheetGeometry_property.selection
         let s1 = unwSelf.mRoot_property.sheetIndexes_property.selection
-        let s2 = unwSelf.objectIdentifier.selection
+        let s2 = unwSelf.objectIndex.selection
         switch (s0, s1, s2) {
         case (.single (let v0),
               .single (let v1),

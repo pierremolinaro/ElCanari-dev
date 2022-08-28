@@ -208,7 +208,7 @@ extension PackagePad {
     s += "\(self.padNumber)"
     if self.slaves.count > 0 {
       s += " id "
-      s += "\(self.objectIdentifier)"
+      s += "\(self.objectIndex)"
     }
     s += ";\n"
     return s
