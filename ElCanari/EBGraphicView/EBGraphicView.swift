@@ -8,7 +8,7 @@ import Cocoa
 //   EBGraphicView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBGraphicView : NSView, EBUserClassNameProtocol, EBGraphicViewScaleProvider {
+final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
 
   //····················································································································
   // MARK: -

@@ -12,7 +12,7 @@ import Cocoa
 //   AutoLayoutWarningImageView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutWarningImageView : NSImageView, EBUserClassNameProtocol {
+final class AutoLayoutWarningImageView : NSImageView {
 
   //····················································································································
 

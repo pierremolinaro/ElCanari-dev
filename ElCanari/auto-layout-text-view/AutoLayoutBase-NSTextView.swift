@@ -12,7 +12,7 @@ import Cocoa
 // https://stackoverflow.com/questions/11237622/using-autolayout-with-expanding-nstextviews
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutBase_NSTextView : NSTextView, EBUserClassNameProtocol {
+final class AutoLayoutBase_NSTextView : NSTextView {
 
   //····················································································································
 
@@ -80,7 +80,7 @@ final class AutoLayoutBase_NSTextView : NSTextView, EBUserClassNameProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class EmbeddedLayoutManager : NSLayoutManager, EBUserClassNameProtocol {
+fileprivate final class EmbeddedLayoutManager : NSLayoutManager {
 
   //····················································································································
 

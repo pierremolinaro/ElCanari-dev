@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutDroppableImageView : NSImageView, EBUserClassNameProtocol {
+final class AutoLayoutDroppableImageView : NSImageView {
 
   //····················································································································
 

@@ -5,22 +5,15 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBUserClassNameProtocol protocol
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol EBUserClassNameProtocol : AnyObject {
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Public routines
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func noteObjectAllocation (_ inObject : EBUserClassNameProtocol) {  // NOT ALWAYS IN MAIN THREAD
+func noteObjectAllocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func noteObjectDeallocation (_ inObject : EBUserClassNameProtocol) {  // NOT ALWAYS IN MAIN THREAD
+func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

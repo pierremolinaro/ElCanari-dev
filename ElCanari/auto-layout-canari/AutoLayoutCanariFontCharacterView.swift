@@ -46,7 +46,7 @@ private func knobRect (_ inX : Int, _ inY : Int) -> NSRect {
 //   AutoLayoutCanariFontCharacterView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariFontCharacterView : NSView, EBUserClassNameProtocol {
+final class AutoLayoutCanariFontCharacterView : NSView {
 
   //····················································································································
 

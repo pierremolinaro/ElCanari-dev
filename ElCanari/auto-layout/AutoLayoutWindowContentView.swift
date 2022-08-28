@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutWindowContentView : NSView, EBUserClassNameProtocol {
+final class AutoLayoutWindowContentView : NSView {
 
   //····················································································································
   // INIT
@@ -127,7 +127,7 @@ final class AutoLayoutWindowContentView : NSView, EBUserClassNameProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class HiliteView : NSView, EBUserClassNameProtocol {
+fileprivate final class HiliteView : NSView {
 
   //····················································································································
 

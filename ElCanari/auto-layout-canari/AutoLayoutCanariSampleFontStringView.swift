@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariSampleFontStringView : NSView, EBUserClassNameProtocol {
+final class AutoLayoutCanariSampleFontStringView : NSView {
 
   //····················································································································
 

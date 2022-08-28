@@ -280,7 +280,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 // InternalAutoLayoutTableView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class InternalAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
+class InternalAutoLayoutTableView : NSTableView {
 
   //····················································································································
 

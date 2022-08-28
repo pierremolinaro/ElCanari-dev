@@ -14,7 +14,7 @@ import Cocoa
 //   AutoLayoutStaticImageView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutStaticImageView : NSImageView, EBUserClassNameProtocol {
+final class AutoLayoutStaticImageView : NSImageView {
 
   //····················································································································
 

@@ -8,7 +8,7 @@ import Cocoa
 // http://nshipster.com/nsundomanager/
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBUndoManager : UndoManager, EBUserClassNameProtocol {
+final class EBUndoManager : UndoManager {
 
   //····················································································································
   //    init

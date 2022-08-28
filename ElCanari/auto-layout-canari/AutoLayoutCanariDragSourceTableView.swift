@@ -27,7 +27,7 @@ typealias StringTagArray = [StringTag]
 //   AutoLayoutCanariDragSourceTableView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariDragSourceTableView : NSScrollView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
+final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataSource, NSTableViewDelegate {
 
   private let mTableView = InternalDragSourceTableView ()
 
@@ -258,7 +258,7 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, EBUserClassNameP
 //   InternalDragSourceTableView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class InternalDragSourceTableView : NSTableView, EBUserClassNameProtocol {
+fileprivate final class InternalDragSourceTableView : NSTableView {
 
   weak var mDocument : EBAutoLayoutManagedDocument? = nil
   weak var mSource : AutoLayoutCanariDragSourceTableView? = nil

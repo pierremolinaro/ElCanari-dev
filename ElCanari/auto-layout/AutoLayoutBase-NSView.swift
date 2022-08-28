@@ -12,7 +12,7 @@ import Cocoa
 //   AutoLayoutBase_NSView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutBase_NSView : NSView, EBUserClassNameProtocol {
+class AutoLayoutBase_NSView : NSView {
 
   //····················································································································
 

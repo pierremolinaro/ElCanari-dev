@@ -21,7 +21,7 @@ fileprivate var gEasyBindingsObjectIndex = 0
 //    EBObjcBaseObject class
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBObjcBaseObject : NSObject, EBUserClassNameProtocol, ObjectIndexProtocol {
+class EBObjcBaseObject : NSObject, ObjectIndexProtocol {
 
   //····················································································································
 
@@ -58,7 +58,7 @@ class EBObjcBaseObject : NSObject, EBUserClassNameProtocol, ObjectIndexProtocol 
 //    EBSwiftBaseObject class
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBSwiftBaseObject : EBUserClassNameProtocol, ObjectIndexProtocol {
+class EBSwiftBaseObject : ObjectIndexProtocol {
 
   //····················································································································
 

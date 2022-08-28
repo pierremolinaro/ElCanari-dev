@@ -12,7 +12,7 @@ import Cocoa
 //   AutoLayoutComboBox
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutComboBox : NSComboBox, EBUserClassNameProtocol, NSComboBoxDelegate {
+final class AutoLayoutComboBox : NSComboBox, NSComboBoxDelegate {
 
   //····················································································································
 

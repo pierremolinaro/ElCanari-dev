@@ -14,7 +14,7 @@ import Cocoa
 //   AutoLayoutBase_NSSlider
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutBase_NSSlider : NSSlider, EBUserClassNameProtocol {
+class AutoLayoutBase_NSSlider : NSSlider {
 
   //····················································································································
 

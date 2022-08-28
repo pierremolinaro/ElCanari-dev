@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutScrollView : NSScrollView, EBUserClassNameProtocol {
+final class AutoLayoutScrollView : NSScrollView {
 
   //····················································································································
 

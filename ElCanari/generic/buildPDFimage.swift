@@ -36,7 +36,7 @@ func buildPDFimage (frame inFrame : NSRect,
 //   EBOffscreenView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class EBOffscreenView : NSView, EBUserClassNameProtocol {
+fileprivate final class EBOffscreenView : NSView {
 
   private var mShape = EBShape ()
   private var mBackColor : NSColor? = nil

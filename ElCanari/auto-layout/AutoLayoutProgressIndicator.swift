@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutProgressIndicator : NSProgressIndicator, EBUserClassNameProtocol {
+final class AutoLayoutProgressIndicator : NSProgressIndicator {
 
   //····················································································································
 

@@ -13,7 +13,7 @@ import WebKit
 //   AutoLayoutWebView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutWebView : WKWebView, EBUserClassNameProtocol, WKUIDelegate {
+final class AutoLayoutWebView : WKWebView, WKUIDelegate {
 
   //····················································································································
 

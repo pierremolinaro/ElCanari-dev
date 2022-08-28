@@ -10,7 +10,7 @@ import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutMenuItemDescriptor : EBUserClassNameProtocol {
+final class AutoLayoutMenuItemDescriptor {
 
   //····················································································································
 

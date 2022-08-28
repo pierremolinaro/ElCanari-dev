@@ -12,7 +12,7 @@ import Cocoa
 // Seee https://github.com/jwilling/JWSplitView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutBase_NSSplitView : NSSplitView, EBUserClassNameProtocol {
+class AutoLayoutBase_NSSplitView : NSSplitView {
 
   //····················································································································
   //   INIT

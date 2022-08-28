@@ -11,7 +11,7 @@ import Cocoa
 // Key equivalent should be "escape" ("\u{1b}" in Swift)
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutSheetCancelButton : NSButton, EBUserClassNameProtocol {
+final class AutoLayoutSheetCancelButton : NSButton {
 
   //····················································································································
 

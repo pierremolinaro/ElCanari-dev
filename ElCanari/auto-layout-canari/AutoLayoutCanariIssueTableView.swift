@@ -235,7 +235,7 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class EmbeddedAutoLayoutScrollView : NSScrollView, EBUserClassNameProtocol {
+fileprivate final class EmbeddedAutoLayoutScrollView : NSScrollView {
 
   //····················································································································
 
@@ -262,7 +262,7 @@ fileprivate final class EmbeddedAutoLayoutScrollView : NSScrollView, EBUserClass
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class EmbeddedAutoLayoutTableView : NSTableView, EBUserClassNameProtocol {
+fileprivate final class EmbeddedAutoLayoutTableView : NSTableView {
 
   //····················································································································
 

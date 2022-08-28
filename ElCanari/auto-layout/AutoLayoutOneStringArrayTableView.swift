@@ -17,7 +17,7 @@ fileprivate let COLUMN_IDENTIFIER = NSUserInterfaceItemIdentifier (rawValue: "My
 // NOTE: AutoLayoutOneStringArrayTableView is view based
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutOneStringArrayTableView : NSScrollView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
+final class AutoLayoutOneStringArrayTableView : NSScrollView, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 

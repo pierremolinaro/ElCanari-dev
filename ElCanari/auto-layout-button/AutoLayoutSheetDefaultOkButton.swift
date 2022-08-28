@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutSheetDefaultOkButton : NSButton, EBUserClassNameProtocol {
+final class AutoLayoutSheetDefaultOkButton : NSButton {
 
   //····················································································································
 

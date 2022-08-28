@@ -13,7 +13,7 @@ import Cocoa
 //   AutoLayoutImageObserverView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutImageObserverView : NSImageView, EBUserClassNameProtocol {
+final class AutoLayoutImageObserverView : NSImageView {
 
   //····················································································································
 

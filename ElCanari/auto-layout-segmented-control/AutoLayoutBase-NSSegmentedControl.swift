@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutBase_NSSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
+class AutoLayoutBase_NSSegmentedControl : NSSegmentedControl {
 
   //····················································································································
 

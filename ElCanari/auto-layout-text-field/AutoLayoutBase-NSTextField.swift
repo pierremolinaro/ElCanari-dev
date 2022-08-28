@@ -12,7 +12,7 @@ import Cocoa
 //   AutoLayoutBase_NSTextField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutBase_NSTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate, NSControlTextEditingDelegate {
+class AutoLayoutBase_NSTextField : NSTextField, NSTextFieldDelegate, NSControlTextEditingDelegate {
 
   //····················································································································
 

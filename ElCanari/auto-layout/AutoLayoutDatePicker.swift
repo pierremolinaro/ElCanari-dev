@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutDatePicker : NSDatePicker, EBUserClassNameProtocol {
+final class AutoLayoutDatePicker : NSDatePicker {
 
   //····················································································································
 

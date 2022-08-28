@@ -12,7 +12,7 @@ import Cocoa
 //   AutoLayoutSearchField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutSearchField : NSSearchField, EBUserClassNameProtocol, NSSearchFieldDelegate {
+final class AutoLayoutSearchField : NSSearchField, NSSearchFieldDelegate {
 
   //····················································································································
 

@@ -4,7 +4,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutRTFTextView : NSScrollView, EBUserClassNameProtocol {
+final class AutoLayoutRTFTextView : NSScrollView {
 
   //····················································································································
 

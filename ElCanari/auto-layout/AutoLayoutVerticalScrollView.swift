@@ -13,7 +13,7 @@ import Cocoa
 // https://github.com/mattiasjahnke/NSStackView-Scroll
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutVerticalScrollView : NSScrollView, EBUserClassNameProtocol {
+class AutoLayoutVerticalScrollView : NSScrollView {
 
   //····················································································································
   //   INIT
@@ -50,7 +50,7 @@ class AutoLayoutVerticalScrollView : NSScrollView, EBUserClassNameProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class MyFlippedClipView : NSClipView, EBUserClassNameProtocol {
+fileprivate final class MyFlippedClipView : NSClipView {
 
   //····················································································································
 

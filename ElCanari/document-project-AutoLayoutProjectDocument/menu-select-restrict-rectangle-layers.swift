@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CanariSelectRestrictRectanglesMenu : NSMenu, EBUserClassNameProtocol {
+final class CanariSelectRestrictRectanglesMenu : NSMenu {
 
 
   //····················································································································

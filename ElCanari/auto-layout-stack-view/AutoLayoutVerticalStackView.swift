@@ -213,7 +213,7 @@ class AutoLayoutVerticalStackView : AutoLayoutBase_NSStackView {
   // HorizontalSeparator internal class
   //····················································································································
 
-   final class HorizontalSeparator : NSBox, EBUserClassNameProtocol {
+   final class HorizontalSeparator : NSBox {
 
     init () {
       let s = NSSize (width: 10, height: 0) // Zero size means horizontal separator

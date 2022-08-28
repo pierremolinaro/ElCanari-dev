@@ -21,17 +21,10 @@ private let prefsEnableObjectAllocationStatsDisplayFilter = "EBAllocationDebug:a
 private let gEnableObjectAllocationDebug = UserDefaults.standard.bool (forKey: prefsEnableObjectAllocationDebugString)
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBUserClassNameProtocol protocol
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol EBUserClassNameProtocol : AnyObject {
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Public routines
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func noteObjectAllocation (_ inObject : EBUserClassNameProtocol) {  // NOT ALWAYS IN MAIN THREAD
+func noteObjectAllocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
   if gEnableObjectAllocationDebug {
     let className = String (describing: type (of: inObject))
     DispatchQueue.main.async { pmNoteObjectAllocation (className) }
@@ -40,7 +33,7 @@ func noteObjectAllocation (_ inObject : EBUserClassNameProtocol) {  // NOT ALWAY
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func noteObjectDeallocation (_ inObject : EBUserClassNameProtocol) {  // NOT ALWAYS IN MAIN THREAD
+func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
   if gEnableObjectAllocationDebug {
     let className = String (describing: type (of: inObject))
     DispatchQueue.main.async { pmNoteObjectDeallocation (className) }

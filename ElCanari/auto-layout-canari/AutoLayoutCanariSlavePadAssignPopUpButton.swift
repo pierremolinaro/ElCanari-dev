@@ -12,7 +12,7 @@ import Cocoa
 //   AutoLayoutCanariSlavePadAssignPopUpButton
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton, EBUserClassNameProtocol {
+final class AutoLayoutCanariSlavePadAssignPopUpButton : NSPopUpButton {
 
   //····················································································································
 

@@ -164,7 +164,7 @@ final class AutoLayoutCanariFontCharacterGerberCodeTableView : AutoLayoutVertica
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class PrivateTableView : NSTableView, EBUserClassNameProtocol {
+fileprivate final class PrivateTableView : NSTableView {
 
   //····················································································································
 

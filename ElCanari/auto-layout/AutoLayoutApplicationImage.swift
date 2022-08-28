@@ -13,7 +13,7 @@ import Cocoa
 //   AutoLayoutApplicationImage
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutApplicationImage : NSImageView, EBUserClassNameProtocol {
+final class AutoLayoutApplicationImage : NSImageView {
 
   //····················································································································
 

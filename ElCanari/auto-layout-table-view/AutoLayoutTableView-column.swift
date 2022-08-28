@@ -12,7 +12,7 @@ import Cocoa
 // AutoLayoutTableColumn
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutTableColumn : NSTableColumn, EBUserClassNameProtocol {
+class AutoLayoutTableColumn : NSTableColumn {
 
   //····················································································································
 

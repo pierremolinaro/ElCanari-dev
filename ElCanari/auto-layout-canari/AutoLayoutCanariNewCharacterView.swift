@@ -21,7 +21,7 @@ private let LINE_COUNT = 0x100 - 2
 //   AutoLayoutCanariCharacterView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariCharacterView : NSScrollView, EBUserClassNameProtocol {
+final class AutoLayoutCanariCharacterView : NSScrollView {
 
   private var mCharacterView : InternalNewCharacterView
 
@@ -76,7 +76,7 @@ final class AutoLayoutCanariCharacterView : NSScrollView, EBUserClassNameProtoco
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private class InternalNewCharacterView : NSView, EBUserClassNameProtocol {
+private class InternalNewCharacterView : NSView {
 
   //····················································································································
 

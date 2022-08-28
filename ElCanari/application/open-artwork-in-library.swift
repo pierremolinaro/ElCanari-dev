@@ -26,7 +26,7 @@ fileprivate var gOpenArtworkPanelInLibrary : OpenArtworkPanelInLibrary? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate, EBUserClassNameProtocol {
+fileprivate final class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate {
 
   //····················································································································
 
@@ -315,7 +315,7 @@ extension ApplicationDelegate {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class ArtworkDialogEntry : EBUserClassNameProtocol {
+fileprivate final class ArtworkDialogEntry {
 
   //····················································································································
 

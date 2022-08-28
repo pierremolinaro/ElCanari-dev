@@ -8,7 +8,7 @@ import Cocoa
 //  EBAutoLayoutManagedDocument
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBAutoLayoutManagedDocument : NSDocument, EBUserClassNameProtocol {
+class EBAutoLayoutManagedDocument : NSDocument {
 
   //····················································································································
 
