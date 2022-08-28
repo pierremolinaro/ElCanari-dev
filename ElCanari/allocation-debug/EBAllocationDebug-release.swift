@@ -25,12 +25,6 @@ func noteObjectDeallocation (_ inObject : EBUserClassNameProtocol) {  // NOT ALW
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func reuseTableViewCells () -> Bool {
-  return true
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 func appendAllocationDebugMenuItems (_ inMenu : NSMenu) {
 }
 

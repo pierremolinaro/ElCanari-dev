@@ -1,6 +1,6 @@
 //
 //  EBAllocationDebug-debug-auto-layout.swift
-//  ElCanari-Debug-temporary
+//  ElCanari-Debug
 //
 //  Created by Pierre Molinaro on 20/06/2021.
 //
@@ -9,10 +9,6 @@
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private let UPDATE_TIMER_PERIOD : Double = 0.5
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -38,11 +34,7 @@ protocol EBUserClassNameProtocol : AnyObject {
 func noteObjectAllocation (_ inObject : EBUserClassNameProtocol) {  // NOT ALWAYS IN MAIN THREAD
   if gEnableObjectAllocationDebug {
     let className = String (describing: type (of: inObject))
-    if Thread.isMainThread {
-      pmNoteObjectAllocation (className)
-    }else{
-      DispatchQueue.main.async { pmNoteObjectAllocation (className) }
-    }
+    DispatchQueue.main.async { pmNoteObjectAllocation (className) }
   }
 }
 
@@ -51,11 +43,7 @@ func noteObjectAllocation (_ inObject : EBUserClassNameProtocol) {  // NOT ALWAY
 func noteObjectDeallocation (_ inObject : EBUserClassNameProtocol) {  // NOT ALWAYS IN MAIN THREAD
   if gEnableObjectAllocationDebug {
     let className = String (describing: type (of: inObject))
-    if Thread.isMainThread {
-      pmNoteObjectDeallocation (className)
-    }else{
-      DispatchQueue.main.async { pmNoteObjectDeallocation (className) }
-    }
+    DispatchQueue.main.async { pmNoteObjectDeallocation (className) }
   }
 }
 
@@ -64,8 +52,7 @@ func noteObjectDeallocation (_ inObject : EBUserClassNameProtocol) {  // NOT ALW
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func appendAllocationDebugMenuItems (_ inMenu : NSMenu) {
-  let debugObject = EBAllocationDebug ()
-  gDebugObject = debugObject
+  gDebugObject = EBAllocationDebug ()
 //---
   let item = NSMenuItem (
     title: "Show Allocation Stats",
@@ -78,42 +65,19 @@ func appendAllocationDebugMenuItems (_ inMenu : NSMenu) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Allocation private routines
+//    pmNoteObjectAllocation
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate var gTotalAllocatedObjectCountByClass = [String : Int] ()
-fileprivate var gLiveObjectCountByClass = [String : Int] ()
-fileprivate var gSnapShotDictionary = [String : Int] ()
-
-//······················································································································
-//    pmNoteObjectAllocation
-//······················································································································
-
 fileprivate func pmNoteObjectAllocation (_ inClassName : String) {
-//---
-  let currentCount = gTotalAllocatedObjectCountByClass [inClassName] ?? 0
-  gTotalAllocatedObjectCountByClass [inClassName] = currentCount + 1
-//---
-  let liveCount = gLiveObjectCountByClass [inClassName] ?? 0
-  gLiveObjectCountByClass [inClassName] = liveCount + 1
-//---
-  gDebugObject?.installTimer ()
+  gDebugObject?.noteObjectAllocation (inClassName)
 }
 
-//······················································································································
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    pmNoteObjectDeallocation
-//······················································································································
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate func pmNoteObjectDeallocation (_ inClassName : String) {
-  if let n = gLiveObjectCountByClass [inClassName] {
-    if n > 1 {
-      gLiveObjectCountByClass [inClassName] = n - 1
-    }else{
-      gLiveObjectCountByClass [inClassName] = nil
-    }
-  }
-//---
-  gDebugObject?.installTimer ()
+  gDebugObject?.noteObjectDeallocation (inClassName)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -137,6 +101,12 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate {
 
   //····················································································································
   //   Properties
+  //····················································································································
+
+  private var mTotalAllocatedObjectCountByClass = [String : Int] ()
+  private var mLiveObjectCountByClass = [String : Int] ()
+  private var mSnapShotDictionary = [String : Int] ()
+
   //····················································································································
 
   private var mAllocationStatsDisplayFilterIndex = EBPreferencesProperty_Int (
@@ -307,36 +277,58 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate {
   }
 
   //····················································································································
+  //    pmNoteObjectAllocation
+  //····················································································································
+
+  fileprivate func noteObjectAllocation (_ inClassName : String) {
+    let currentCount = self.mTotalAllocatedObjectCountByClass [inClassName] ?? 0
+    self.mTotalAllocatedObjectCountByClass [inClassName] = currentCount + 1
+  //---
+    let liveCount = self.mLiveObjectCountByClass [inClassName] ?? 0
+    self.mLiveObjectCountByClass [inClassName] = liveCount + 1
+  //---
+    self.triggerRefreshDisplay ()
+  }
+
+  //····················································································································
+  //    pmNoteObjectDeallocation
+  //····················································································································
+
+  fileprivate func noteObjectDeallocation (_ inClassName : String) {
+    if let n = self.mLiveObjectCountByClass [inClassName] {
+      if n > 1 {
+        self.mLiveObjectCountByClass [inClassName] = n - 1
+      }else{
+        self.mLiveObjectCountByClass [inClassName] = nil
+      }
+    }
+  //---
+    self.triggerRefreshDisplay ()
+  }
+
+  //····················································································································
 
   private var mAllocationStatsDataSource = [EBAllocationItemDisplay] ()
-
-  private var mRefreshTimer : Timer? = nil
+  private var mRefreshTriggered = false
 
   //····················································································································
-  //    installTimer
+  //    triggerRefreshDisplay
   //····················································································································
 
-  func installTimer () {
-    if !Thread.isMainThread {
-      presentErrorWindow (#file, #line, "not in main thread")
-    }
-    if self.mRefreshTimer == nil {
-      let timer = Timer (
-        timeInterval: UPDATE_TIMER_PERIOD,
-        target: self,
-        selector: #selector (Self.refreshDisplay (_:)),
-        userInfo: nil,
-        repeats: false
-      )
-      RunLoop.current.add (timer, forMode: .default)
-      self.mRefreshTimer = timer
+  private func triggerRefreshDisplay () {
+    if !self.mRefreshTriggered {
+      self.mRefreshTriggered = true
+      DispatchQueue.main.async {
+        self.mRefreshTriggered = false
+        self.displayAllocation ()
+      }
     }
   }
 
   //····················································································································
 
   @objc private func allocationStatsDisplayFilterIndexDidChange (_ inSender : Any?) {
-    self.installTimer ()
+    self.triggerRefreshDisplay ()
   }
 
   //····················································································································
@@ -350,39 +342,27 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate {
   //····················································································································
 
   func windowDidBecomeKey (_ : Notification) {
-    self.installTimer ()
+    self.triggerRefreshDisplay ()
   }
 
   //····················································································································
   //    windowWillClose: invalidate timer and release timer
   //····················································································································
 
-  func windowWillClose (_ : Notification) {
-    if let timer = self.mRefreshTimer {
-      timer.invalidate ()
-      self.mRefreshTimer = nil
-    }
-  }
+//  func windowWillClose (_ : Notification) {
+//    if let timer = self.mRefreshTimer {
+//      timer.invalidate ()
+//      self.mRefreshTimer = nil
+//    }
+//  }
 
   //····················································································································
   //    performSnapShotAction:
   //····················································································································
 
   @objc private func performSnapShotAction (_ : AnyObject) {
-    gSnapShotDictionary = gLiveObjectCountByClass
-    self.installTimer ()
-  }
-
-  //····················································································································
-  //    refreshDisplay:
-  //····················································································································
-
-  @objc private func refreshDisplay (_ timer : Timer) {
-    if let timer = self.mRefreshTimer {
-      timer.invalidate ()
-      self.mRefreshTimer = nil
-    }
-    self.displayAllocation ()
+    self.mSnapShotDictionary = self.mLiveObjectCountByClass
+    self.triggerRefreshDisplay ()
   }
 
   //····················································································································
@@ -390,17 +370,14 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate {
   //····················································································································
 
   private func displayAllocation () {
-    if !Thread.isMainThread {
-      presentErrorWindow (#file, #line, "not in main thread")
-    }
   //---
     var liveObjectCount = 0
     var totalObjectCount = 0
   //---
     var array = [EBAllocationItemDisplay] ()
-    for (className, totalByClass) in gTotalAllocatedObjectCountByClass {
-      let liveByClass = gLiveObjectCountByClass [className] ?? 0
-      let snapShotByClass = gSnapShotDictionary [className] ?? 0
+    for (className, totalByClass) in self.mTotalAllocatedObjectCountByClass {
+      let liveByClass = self.mLiveObjectCountByClass [className] ?? 0
+      let snapShotByClass = self.mSnapShotDictionary [className] ?? 0
       liveObjectCount += liveByClass
       totalObjectCount += totalByClass
       var display = true
@@ -423,7 +400,7 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate {
   //---
     self.mAllocationStatsDataSource = array
     self.mStatsTableView.sortAndReloadData () // Will sort mAllocationStatsDataSource
-    flushOutletEvents ()
+//    flushOutletEvents ()
   }
 
   //····················································································································

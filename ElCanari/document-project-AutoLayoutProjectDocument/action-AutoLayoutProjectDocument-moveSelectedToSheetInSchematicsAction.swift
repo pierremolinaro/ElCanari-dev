@@ -27,12 +27,12 @@ extension AutoLayoutProjectDocument {
     //---
       let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
     //---
-      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Move Selected Element to Sheet", bold: true, size: .regular, alignment: .center))
-      layoutView.appendFlexibleSpace ()
+      _ = layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Move Selected Element to Sheet", bold: true, size: .regular, alignment: .center))
+      _ = layoutView.appendFlexibleSpace ()
     //--- Populate pop up button
       let popUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth ()
-      layoutView.appendView (popUpButton)
-      layoutView.appendFlexibleSpace ()
+      _ = layoutView.appendView (popUpButton)
+      _ = layoutView.appendFlexibleSpace ()
       var idx = 0
       for sheet in self.rootObject.mSheets.values {
         popUpButton.addItem (withTitle: "\(sheet.mSheetTitle) — \(idx + 1)/\(self.rootObject.mSheets.count)")
