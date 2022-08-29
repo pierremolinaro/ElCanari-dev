@@ -26,8 +26,8 @@ private let gEnableObjectAllocationDebug = UserDefaults.standard.bool (forKey: p
 
 func noteObjectAllocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
   if gEnableObjectAllocationDebug {
-    let className = String (describing: type (of: inObject))
-    DispatchQueue.main.async { pmNoteObjectAllocation (className) }
+    let objectType : AnyObject.Type = type (of: inObject)
+    DispatchQueue.main.async { pmNoteObjectAllocation (ofType: objectType) }
   }
 }
 
@@ -35,8 +35,8 @@ func noteObjectAllocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THRE
 
 func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
   if gEnableObjectAllocationDebug {
-    let className = String (describing: type (of: inObject))
-    DispatchQueue.main.async { pmNoteObjectDeallocation (className) }
+    let objectType : AnyObject.Type = type (of: inObject)
+    DispatchQueue.main.async { pmNoteObjectDeallocation (ofType: objectType) }
   }
 }
 
@@ -61,16 +61,16 @@ func appendAllocationDebugMenuItems (_ inMenu : NSMenu) {
 //    pmNoteObjectAllocation
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func pmNoteObjectAllocation (_ inClassName : String) {
-  gDebugObject?.noteObjectAllocation (inClassName)
+fileprivate func pmNoteObjectAllocation (ofType inType : AnyObject.Type) {
+  gDebugObject?.noteObjectAllocation (inType)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    pmNoteObjectDeallocation
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func pmNoteObjectDeallocation (_ inClassName : String) {
-  gDebugObject?.noteObjectDeallocation (inClassName)
+fileprivate func pmNoteObjectDeallocation (ofType inType : AnyObject.Type) {
+  gDebugObject?.noteObjectDeallocation (inType)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -224,7 +224,7 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate {
    //--- Configure Window
      self.mAllocationStatsWindow.title = "Allocation Stats"
      self.mAllocationStatsWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
-     self.mAllocationStatsWindow.delegate = self // Will call windowDidBecomeKey: and windowWillClose:
+//     self.mAllocationStatsWindow.delegate = self // Will call windowDidBecomeKey: and windowWillClose:
    //--- Build window contents
       let mainVStack = AutoLayoutVerticalStackView ()
       do {
@@ -273,12 +273,13 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate {
   //    pmNoteObjectAllocation
   //····················································································································
 
-  fileprivate func noteObjectAllocation (_ inClassName : String) {
-    let currentCount = self.mTotalAllocatedObjectCountByClass [inClassName] ?? 0
-    self.mTotalAllocatedObjectCountByClass [inClassName] = currentCount + 1
+  fileprivate func noteObjectAllocation (_ inType : AnyObject.Type) {
+    let className = String (describing: inType)
+    let currentCount = self.mTotalAllocatedObjectCountByClass [className] ?? 0
+    self.mTotalAllocatedObjectCountByClass [className] = currentCount + 1
   //---
-    let liveCount = self.mLiveObjectCountByClass [inClassName] ?? 0
-    self.mLiveObjectCountByClass [inClassName] = liveCount + 1
+    let liveCount = self.mLiveObjectCountByClass [className] ?? 0
+    self.mLiveObjectCountByClass [className] = liveCount + 1
   //---
     self.triggerRefreshDisplay ()
   }
@@ -287,12 +288,13 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate {
   //    pmNoteObjectDeallocation
   //····················································································································
 
-  fileprivate func noteObjectDeallocation (_ inClassName : String) {
-    if let n = self.mLiveObjectCountByClass [inClassName] {
+  fileprivate func noteObjectDeallocation (_ inType : AnyObject.Type) {
+    let className = String (describing: inType)
+    if let n = self.mLiveObjectCountByClass [className] {
       if n > 1 {
-        self.mLiveObjectCountByClass [inClassName] = n - 1
+        self.mLiveObjectCountByClass [className] = n - 1
       }else{
-        self.mLiveObjectCountByClass [inClassName] = nil
+        self.mLiveObjectCountByClass [className] = nil
       }
     }
   //---
@@ -334,19 +336,8 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate {
   //    windowDidBecomeKey: install timer and release it
   //····················································································································
 
-  func windowDidBecomeKey (_ : Notification) {
-    self.triggerRefreshDisplay ()
-  }
-
-  //····················································································································
-  //    windowWillClose: invalidate timer and release timer
-  //····················································································································
-
-//  func windowWillClose (_ : Notification) {
-//    if let timer = self.mRefreshTimer {
-//      timer.invalidate ()
-//      self.mRefreshTimer = nil
-//    }
+//  func windowDidBecomeKey (_ : Notification) {
+//    self.triggerRefreshDisplay ()
 //  }
 
   //····················································································································
@@ -393,7 +384,7 @@ final class EBAllocationDebug : NSObject, NSWindowDelegate {
   //---
     self.mAllocationStatsDataSource = array
     self.mStatsTableView.sortAndReloadData () // Will sort mAllocationStatsDataSource
-//    flushOutletEvents ()
+    flushOutletEvents ()
   }
 
   //····················································································································
