@@ -1478,31 +1478,6 @@ import Cocoa
   }
 
   //····················································································································
-  //    Toolbar
-  //····················································································································
-
-/*  final func toolbarAllowedItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-    return self.toolbarDefaultItemIdentifiers (toolbar)
-  } */
-
-  //····················································································································
-
-/*  final func toolbarDefaultItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-    return []
-  } */
-
-  //····················································································································
-
-/*  final func toolbar (_ toolbar: NSToolbar,
-                      itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
-                      willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
-    switch itemIdentifier.rawValue {
-    default :
-      return nil
-    }
-  } */
-
-  //····················································································································
   //    configureProperties
   //····················································································································
 
@@ -1511,50 +1486,26 @@ import Cocoa
     var opIdx = 0
   //--- Array controller property: packageController
     self.packageController.bind_model (self.rootObject.mPackages_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Array controller property: documentationController
     self.documentationController.bind_model (self.rootObject.mDocs_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Array controller property: symbolDisplayController
     self.symbolDisplayController.bind_model (self.rootObject.mSymbolInstances_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Selection controller property: symbolInstanceSelection
     self.symbolInstanceSelection.bind_selection (model: self.symbolDisplayController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Array controller property: packageDisplayController
     self.packageDisplayController.bind_model (self.rootObject.mPackages_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Array controller property: symbolTypeController
     self.symbolTypeController.bind_model (self.rootObject.mSymbolTypes_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Selection controller property: symbolTypeSelection
     self.symbolTypeSelection.bind_selection (model: self.symbolTypeController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
+
   //--- Atomic property: hasUnconnectedPin
     self.hasUnconnectedPin_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1572,10 +1523,7 @@ import Cocoa
       }
     }
     self.rootObject.unconnectedPins_property.addEBObserver (self.hasUnconnectedPin_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: assignmentInhibitionMessage
     self.assignmentInhibitionMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1597,10 +1545,7 @@ import Cocoa
     }
     self.rootObject.inconsistentPackagePadNameSetsMessage_property.addEBObserver (self.assignmentInhibitionMessage_property)
     self.rootObject.inconsistentSymbolNameSetMessage_property.addEBObserver (self.assignmentInhibitionMessage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: hasUnconnectedPad
     self.hasUnconnectedPad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1618,10 +1563,7 @@ import Cocoa
       }
     }
     self.rootObject.unconnectedPads_property.addEBObserver (self.hasUnconnectedPad_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: hasAssignedPadProxies
     self.hasAssignedPadProxies_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1639,10 +1581,7 @@ import Cocoa
       }
     }
     self.rootObject.assignedPadProxies_property.addEBObserver (self.hasAssignedPadProxies_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1664,10 +1603,7 @@ import Cocoa
     }
     self.rootObject.issues_property.addEBObserver (self.issues_property)
     self.documentFileName_property.addEBObserver (self.issues_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1685,10 +1621,7 @@ import Cocoa
       }
     }
     self.issues_property.addEBObserver (self.mStatusImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1706,10 +1639,7 @@ import Cocoa
       }
     }
     self.issues_property.addEBObserver (self.mStatusMessage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: mMetadataStatus
     self.mMetadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1727,14 +1657,7 @@ import Cocoa
       }
     }
     self.issues_property.addEBObserver (self.mMetadataStatus_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-    if LOG_OPERATION_DURATION {
-      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
-      Swift.print ("Configure properties \(durationMS) ms")
-    }
+
   }
 
   //····················································································································
@@ -1759,16 +1682,6 @@ import Cocoa
     self.symbolTypeController.unbind_model ()
   //--- Selection controller property: symbolTypeSelection
     self.symbolTypeSelection.unbind_selection ()
-    // self.rootObject.unconnectedPins_property.removeEBObserver (self.hasUnconnectedPin_property)
-    // self.rootObject.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (self.assignmentInhibitionMessage_property)
-    // self.rootObject.inconsistentSymbolNameSetMessage_property.removeEBObserver (self.assignmentInhibitionMessage_property)
-    // self.rootObject.unconnectedPads_property.removeEBObserver (self.hasUnconnectedPad_property)
-    // self.rootObject.assignedPadProxies_property.removeEBObserver (self.hasAssignedPadProxies_property)
-    // self.rootObject.issues_property.removeEBObserver (self.issues_property)
-    // self.documentFileName_property.removeEBObserver (self.issues_property)
-    // self.issues_property.removeEBObserver (self.mStatusImage_property)
-    // self.issues_property.removeEBObserver (self.mStatusMessage_property)
-    // self.issues_property.removeEBObserver (self.mMetadataStatus_property)
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets
   //--------------------------- Detach outlets

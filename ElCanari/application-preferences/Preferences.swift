@@ -556,21 +556,6 @@ var g_Preferences : Preferences? = nil
   //--------------------------- Array controller
   //--- Array controller property: userLibraryArrayController
     preferences_userLibraryArrayController.unbind_model ()
-    // self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_packages_property)
-    // self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_packages_property)
-    // self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_packages_property)
-    // self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_devices_property)
-    // self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_devices_property)
-    // self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_devices_property)
-    // self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_fonts_property)
-    // self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_fonts_property)
-    // self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_fonts_property)
-    // self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_artworks_property)
-    // self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_artworks_property)
-    // self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_artworks_property)
-    // self.usesUserLibrary_property.removeEBObserver (self.mValueRevealInFinder_symbols_property)
-    // self.additionnalLibraryArray_property.removeEBObserverOf_mUses (self.mValueRevealInFinder_symbols_property)
-    // self.additionnalLibraryArray_property.removeEBObserverOf_mPath (self.mValueRevealInFinder_symbols_property)
   }
 
   //····················································································································

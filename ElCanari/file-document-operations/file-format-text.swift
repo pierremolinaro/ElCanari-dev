@@ -17,9 +17,7 @@ struct RawObject {
 func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
                               documentName inDocumentName : String,
                               from ioDataScanner: inout EBDataScanner) throws -> EBDocumentData {
-  appendDocumentFileOperationInfo ("Read Text Document file: \(inDocumentName)\n")
-  var operationStartDate = Date ()
-  let startDate = operationStartDate
+  setStartOperationDateToNow ("Read Text Document file: \(inDocumentName)")
 //--- Check header ends with line feed
   ioDataScanner.acceptRequired (byte: ASCII.lineFeed.rawValue)
 //--- Read Status
@@ -46,9 +44,8 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
     }
     classDefinition.append ((className, propertyNameArray))
   }
-  appendDocumentFileOperationInfo ("  Read \(classDefinition.count) classes: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
+  appendDocumentFileOperationInfo ("read \(classDefinition.count) classes done")
 //--- Read objects
-  operationStartDate = Date ()
   let operationQueue = OperationQueue ()
   let mutex = DispatchSemaphore (value: 1)
   var rawObjectArray = [RawObject] ()
@@ -78,25 +75,22 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
   let pendingOperationCount = operationQueue.operationCount
   operationQueue.waitUntilAllOperationsAreFinished ()
   rawObjectArray.sort { $0.index < $1.index }
-  appendDocumentFileOperationInfo ("  Read \(rawObjectArray.count) objects, pending ops \(pendingOperationCount): \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
+  appendDocumentFileOperationInfo ("read \(rawObjectArray.count) objects done with \(pendingOperationCount) pending ops")
 //--- Setup toOne
-  operationStartDate = Date ()
   for rawObject in rawObjectArray {
     let valueDictionary = rawObject.propertyDictionary
     let managedObject = rawObject.object
     managedObject.setUpToOneRelationshipsWithTextDictionary (valueDictionary, rawObjectArray, ioDataScanner.data)
   }
-  appendDocumentFileOperationInfo ("  Setup toOne: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
+  appendDocumentFileOperationInfo ("setup toOne done")
 //--- Setup toMany
-  operationStartDate = Date ()
   for rawObject in rawObjectArray {
     let valueDictionary = rawObject.propertyDictionary
     let managedObject = rawObject.object
     managedObject.setUpToManyRelationshipsWithTextDictionary (valueDictionary, rawObjectArray, ioDataScanner.data)
   }
-  appendDocumentFileOperationInfo ("  Setup toMany: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
+  appendDocumentFileOperationInfo ("setup toMany done")
 //--- Scanner error ?
-  appendDocumentFileOperationInfo ("Total duration: \(Int (Date ().timeIntervalSince (startDate) * 1000.0)) ms\n\n")
   if !ioDataScanner.ok () {
     let dictionary = [
       "Cannot Open Document" : NSLocalizedDescriptionKey,

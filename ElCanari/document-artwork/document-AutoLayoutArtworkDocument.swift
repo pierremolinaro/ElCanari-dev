@@ -909,31 +909,6 @@ import Cocoa
   }
 
   //····················································································································
-  //    Toolbar
-  //····················································································································
-
-/*  final func toolbarAllowedItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-    return self.toolbarDefaultItemIdentifiers (toolbar)
-  } */
-
-  //····················································································································
-
-/*  final func toolbarDefaultItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-    return []
-  } */
-
-  //····················································································································
-
-/*  final func toolbar (_ toolbar: NSToolbar,
-                      itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
-                      willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
-    switch itemIdentifier.rawValue {
-    default :
-      return nil
-    }
-  } */
-
-  //····················································································································
   //    configureProperties
   //····················································································································
 
@@ -942,20 +917,11 @@ import Cocoa
     var opIdx = 0
   //--- Array controller property: mDataController
     self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Selection controller property: mDataSelection
     self.mDataSelection.bind_selection (model: self.mDataController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
+
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -989,10 +955,7 @@ import Cocoa
     self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_hasNoData (self.statusMessage_property)
     self.rootObject.emptyDrillFileExtension_property.addEBObserver (self.statusMessage_property)
     self.documentFileName_property.addEBObserver (self.statusMessage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: emptyDrillFileExtensionImage
     self.emptyDrillFileExtensionImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1010,10 +973,7 @@ import Cocoa
       }
     }
     self.rootObject.emptyDrillFileExtension_property.addEBObserver (self.emptyDrillFileExtensionImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: generatedFileCountString
     self.generatedFileCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1031,10 +991,7 @@ import Cocoa
       }
     }
     self.mDataController.sortedArray_property.count_property.addEBObserver (self.generatedFileCountString_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: segmentedControlDataIssueImage
     self.segmentedControlDataIssueImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1064,10 +1021,7 @@ import Cocoa
     self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.segmentedControlDataIssueImage_property)
     self.rootObject.hasDataWarning_property.addEBObserver (self.segmentedControlDataIssueImage_property)
     self.rootObject.emptyDrillFileExtension_property.addEBObserver (self.segmentedControlDataIssueImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1101,14 +1055,7 @@ import Cocoa
     self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_hasNoData (self.statusImage_property)
     self.rootObject.emptyDrillFileExtension_property.addEBObserver (self.statusImage_property)
     self.documentFileName_property.addEBObserver (self.statusImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-    if LOG_OPERATION_DURATION {
-      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
-      Swift.print ("Configure properties \(durationMS) ms")
-    }
+
   }
 
   //····················································································································
@@ -1123,22 +1070,6 @@ import Cocoa
     self.mDataController.unbind_model ()
   //--- Selection controller property: mDataSelection
     self.mDataSelection.unbind_selection ()
-    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_fileExtension (self.statusMessage_property)
-    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_name (self.statusMessage_property)
-    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_hasNoData (self.statusMessage_property)
-    // self.rootObject.emptyDrillFileExtension_property.removeEBObserver (self.statusMessage_property)
-    // self.documentFileName_property.removeEBObserver (self.statusMessage_property)
-    // self.rootObject.emptyDrillFileExtension_property.removeEBObserver (self.emptyDrillFileExtensionImage_property)
-    // self.mDataController.sortedArray_property.count_property.removeEBObserver (self.generatedFileCountString_property)
-    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_fileExtension (self.segmentedControlDataIssueImage_property)
-    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_name (self.segmentedControlDataIssueImage_property)
-    // self.rootObject.hasDataWarning_property.removeEBObserver (self.segmentedControlDataIssueImage_property)
-    // self.rootObject.emptyDrillFileExtension_property.removeEBObserver (self.segmentedControlDataIssueImage_property)
-    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_fileExtension (self.statusImage_property)
-    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_name (self.statusImage_property)
-    // self.rootObject.fileGenerationParameterArray_property.removeEBObserverOf_hasNoData (self.statusImage_property)
-    // self.rootObject.emptyDrillFileExtension_property.removeEBObserver (self.statusImage_property)
-    // self.documentFileName_property.removeEBObserver (self.statusImage_property)
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets
   //--------------------------- Detach outlets

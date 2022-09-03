@@ -1122,31 +1122,6 @@ import Cocoa
   }
 
   //····················································································································
-  //    Toolbar
-  //····················································································································
-
-/*  final func toolbarAllowedItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-    return self.toolbarDefaultItemIdentifiers (toolbar)
-  } */
-
-  //····················································································································
-
-/*  final func toolbarDefaultItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-    return []
-  } */
-
-  //····················································································································
-
-/*  final func toolbar (_ toolbar: NSToolbar,
-                      itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
-                      willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
-    switch itemIdentifier.rawValue {
-    default :
-      return nil
-    }
-  } */
-
-  //····················································································································
   //    configureProperties
   //····················································································································
 
@@ -1155,26 +1130,14 @@ import Cocoa
     var opIdx = 0
   //--- Array controller property: mSymbolObjectsController
     self.mSymbolObjectsController.bind_model (self.rootObject.symbolObjects_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Selection controller property: mSymbolTextSelectionController
     self.mSymbolTextSelectionController.bind_selection (model: self.mSymbolObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Selection controller property: mSymbolPinSelectionController
     self.mSymbolPinSelectionController.bind_selection (model: self.mSymbolObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
+
   //--- Atomic property: addSegmentButtonImage
     self.addSegmentButtonImage_property.mReadModelFunction = {
         let s0 = preferences_symbolColor_property.selection
@@ -1188,10 +1151,7 @@ import Cocoa
         }
     }
     preferences_symbolColor_property.addEBObserver (self.addSegmentButtonImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: addBezierButtonImage
     self.addBezierButtonImage_property.mReadModelFunction = {
         let s0 = preferences_symbolColor_property.selection
@@ -1205,10 +1165,7 @@ import Cocoa
         }
     }
     preferences_symbolColor_property.addEBObserver (self.addBezierButtonImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: addOvalButtonImage
     self.addOvalButtonImage_property.mReadModelFunction = {
         let s0 = preferences_symbolColor_property.selection
@@ -1222,10 +1179,7 @@ import Cocoa
         }
     }
     preferences_symbolColor_property.addEBObserver (self.addOvalButtonImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: addSolidOvalButtonImage
     self.addSolidOvalButtonImage_property.mReadModelFunction = {
         let s0 = preferences_symbolColor_property.selection
@@ -1239,10 +1193,7 @@ import Cocoa
         }
     }
     preferences_symbolColor_property.addEBObserver (self.addSolidOvalButtonImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: addSolidRectButtonImage
     self.addSolidRectButtonImage_property.mReadModelFunction = {
         let s0 = preferences_symbolColor_property.selection
@@ -1256,10 +1207,7 @@ import Cocoa
         }
     }
     preferences_symbolColor_property.addEBObserver (self.addSolidRectButtonImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: addTextButtonImage
     self.addTextButtonImage_property.mReadModelFunction = {
         let s0 = preferences_symbolColor_property.selection
@@ -1273,10 +1221,7 @@ import Cocoa
         }
     }
     preferences_symbolColor_property.addEBObserver (self.addTextButtonImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: addPinButtonImage
     self.addPinButtonImage_property.mReadModelFunction = {
         let s0 = preferences_symbolColor_property.selection
@@ -1290,10 +1235,7 @@ import Cocoa
         }
     }
     preferences_symbolColor_property.addEBObserver (self.addPinButtonImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1315,10 +1257,7 @@ import Cocoa
     }
     self.rootObject.issues_property.addEBObserver (self.issues_property)
     self.documentFileName_property.addEBObserver (self.issues_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1336,10 +1275,7 @@ import Cocoa
       }
     }
     self.issues_property.addEBObserver (self.statusImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1357,10 +1293,7 @@ import Cocoa
       }
     }
     self.issues_property.addEBObserver (self.statusMessage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: metadataStatus
     self.metadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1378,10 +1311,7 @@ import Cocoa
       }
     }
     self.issues_property.addEBObserver (self.metadataStatus_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: noIssue
     self.noIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1399,10 +1329,7 @@ import Cocoa
       }
     }
     self.issues_property.addEBObserver (self.noIssue_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: segmentedControlSegmentIssueImage
     self.segmentedControlSegmentIssueImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1420,10 +1347,7 @@ import Cocoa
       }
     }
     self.issues_property.addEBObserver (self.segmentedControlSegmentIssueImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: segmentedControlSegmentIssueString
     self.segmentedControlSegmentIssueString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1441,14 +1365,7 @@ import Cocoa
       }
     }
     self.issues_property.addEBObserver (self.segmentedControlSegmentIssueString_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-    if LOG_OPERATION_DURATION {
-      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
-      Swift.print ("Configure properties \(durationMS) ms")
-    }
+
   }
 
   //····················································································································
@@ -1465,21 +1382,6 @@ import Cocoa
     self.mSymbolTextSelectionController.unbind_selection ()
   //--- Selection controller property: mSymbolPinSelectionController
     self.mSymbolPinSelectionController.unbind_selection ()
-    // preferences_symbolColor_property.removeEBObserver (self.addSegmentButtonImage_property)
-    // preferences_symbolColor_property.removeEBObserver (self.addBezierButtonImage_property)
-    // preferences_symbolColor_property.removeEBObserver (self.addOvalButtonImage_property)
-    // preferences_symbolColor_property.removeEBObserver (self.addSolidOvalButtonImage_property)
-    // preferences_symbolColor_property.removeEBObserver (self.addSolidRectButtonImage_property)
-    // preferences_symbolColor_property.removeEBObserver (self.addTextButtonImage_property)
-    // preferences_symbolColor_property.removeEBObserver (self.addPinButtonImage_property)
-    // self.rootObject.issues_property.removeEBObserver (self.issues_property)
-    // self.documentFileName_property.removeEBObserver (self.issues_property)
-    // self.issues_property.removeEBObserver (self.statusImage_property)
-    // self.issues_property.removeEBObserver (self.statusMessage_property)
-    // self.issues_property.removeEBObserver (self.metadataStatus_property)
-    // self.issues_property.removeEBObserver (self.noIssue_property)
-    // self.issues_property.removeEBObserver (self.segmentedControlSegmentIssueImage_property)
-    // self.issues_property.removeEBObserver (self.segmentedControlSegmentIssueString_property)
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets
   //--------------------------- Detach outlets

@@ -4021,31 +4021,6 @@ import Cocoa
   }
 
   //····················································································································
-  //    Toolbar
-  //····················································································································
-
-/*  final func toolbarAllowedItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-    return self.toolbarDefaultItemIdentifiers (toolbar)
-  } */
-
-  //····················································································································
-
-/*  final func toolbarDefaultItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-    return []
-  } */
-
-  //····················································································································
-
-/*  final func toolbar (_ toolbar: NSToolbar,
-                      itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
-                      willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
-    switch itemIdentifier.rawValue {
-    default :
-      return nil
-    }
-  } */
-
-  //····················································································································
   //    configureProperties
   //····················································································································
 
@@ -4054,40 +4029,22 @@ import Cocoa
     var opIdx = 0
   //--- Array controller property: mBoardModelController
     self.mBoardModelController.bind_model (self.rootObject.boardModels_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Selection controller property: mBoardModelSelection
     self.mBoardModelSelection.bind_selection (model: self.mBoardModelController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Array controller property: mBoardInstanceController
     self.mBoardInstanceController.bind_model (self.rootObject.boardInstances_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Selection controller property: mBoardInstanceSelection
     self.mBoardInstanceSelection.bind_selection (model: self.mBoardInstanceController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Array controller property: mDataController
     self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Selection controller property: mDataSelection
     self.mDataSelection.bind_selection (model: self.mDataController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4121,10 +4078,7 @@ import Cocoa
     self.rootObject.boardLimitWidth_property.addEBObserver (self.issues_property)
     self.rootObject.boardInstances_property.addEBObserverOf_instanceRect (self.issues_property)
     self.rootObject.boardInstances_property.addEBObserverOf_boardLimitWidth (self.issues_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: boardLimitWidthStatusImage
     self.boardLimitWidthStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4142,10 +4096,7 @@ import Cocoa
       }
     }
     self.rootObject.boardLimitWidthOk_property.addEBObserver (self.boardLimitWidthStatusImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4167,10 +4118,7 @@ import Cocoa
     }
     self.issues_property.addEBObserver (self.statusMessage_property)
     self.rootObject.boardLimitWidthErrorMessage_property.addEBObserver (self.statusMessage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: boardDispositionStatusTitle
     self.boardDispositionStatusTitle_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4188,14 +4136,8 @@ import Cocoa
       }
     }
     self.issues_property.addEBObserver (self.boardDispositionStatusTitle_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
+
   //--- Atomic property: incorrectDocumentFileDetailedErrorMessage
     self.incorrectDocumentFileDetailedErrorMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4213,10 +4155,7 @@ import Cocoa
       }
     }
     self.documentFileName_property.addEBObserver (self.incorrectDocumentFileDetailedErrorMessage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: documentFileShouldBeRenamedErrorMessage
     self.documentFileShouldBeRenamedErrorMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4234,10 +4173,7 @@ import Cocoa
       }
     }
     self.documentFileName_property.addEBObserver (self.documentFileShouldBeRenamedErrorMessage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: emptyDrillFileExtension
     self.emptyDrillFileExtension_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4255,10 +4191,7 @@ import Cocoa
       }
     }
     self.rootObject.drillDataFileExtension_property.addEBObserver (self.emptyDrillFileExtension_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4280,10 +4213,7 @@ import Cocoa
     }
     self.issues_property.addEBObserver (self.statusImage_property)
     self.rootObject.boardLimitWidthOk_property.addEBObserver (self.statusImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: documentIsUnnamed
     self.documentIsUnnamed_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4301,10 +4231,7 @@ import Cocoa
       }
     }
     self.documentFileName_property.addEBObserver (self.documentIsUnnamed_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: emptyDrillFileExtensionImage
     self.emptyDrillFileExtensionImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4322,10 +4249,7 @@ import Cocoa
       }
     }
     self.emptyDrillFileExtension_property.addEBObserver (self.emptyDrillFileExtensionImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: generatedFileCountString
     self.generatedFileCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4343,14 +4267,7 @@ import Cocoa
       }
     }
     self.mDataController.sortedArray_property.count_property.addEBObserver (self.generatedFileCountString_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-    if LOG_OPERATION_DURATION {
-      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
-      Swift.print ("Configure properties \(durationMS) ms")
-    }
+
   }
 
   //····················································································································
@@ -4373,23 +4290,6 @@ import Cocoa
     self.mDataController.unbind_model ()
   //--- Selection controller property: mDataSelection
     self.mDataSelection.unbind_selection ()
-    // self.rootObject.overlapingArrangment_property.removeEBObserver (self.issues_property)
-    // self.rootObject.boardRect_property.removeEBObserver (self.issues_property)
-    // self.rootObject.boardLimitWidth_property.removeEBObserver (self.issues_property)
-    // self.rootObject.boardInstances_property.removeEBObserverOf_instanceRect (self.issues_property)
-    // self.rootObject.boardInstances_property.removeEBObserverOf_boardLimitWidth (self.issues_property)
-    // self.rootObject.boardLimitWidthOk_property.removeEBObserver (self.boardLimitWidthStatusImage_property)
-    // self.issues_property.removeEBObserver (self.statusMessage_property)
-    // self.rootObject.boardLimitWidthErrorMessage_property.removeEBObserver (self.statusMessage_property)
-    // self.issues_property.removeEBObserver (self.boardDispositionStatusTitle_property)
-    // self.documentFileName_property.removeEBObserver (self.incorrectDocumentFileDetailedErrorMessage_property)
-    // self.documentFileName_property.removeEBObserver (self.documentFileShouldBeRenamedErrorMessage_property)
-    // self.rootObject.drillDataFileExtension_property.removeEBObserver (self.emptyDrillFileExtension_property)
-    // self.issues_property.removeEBObserver (self.statusImage_property)
-    // self.rootObject.boardLimitWidthOk_property.removeEBObserver (self.statusImage_property)
-    // self.documentFileName_property.removeEBObserver (self.documentIsUnnamed_property)
-    // self.emptyDrillFileExtension_property.removeEBObserver (self.emptyDrillFileExtensionImage_property)
-    // self.mDataController.sortedArray_property.count_property.removeEBObserver (self.generatedFileCountString_property)
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets
   //--------------------------- Detach outlets

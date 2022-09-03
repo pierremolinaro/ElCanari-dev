@@ -3488,31 +3488,6 @@ import Cocoa
   }
 
   //····················································································································
-  //    Toolbar
-  //····················································································································
-
-/*  final func toolbarAllowedItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-    return self.toolbarDefaultItemIdentifiers (toolbar)
-  } */
-
-  //····················································································································
-
-/*  final func toolbarDefaultItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-    return []
-  } */
-
-  //····················································································································
-
-/*  final func toolbar (_ toolbar: NSToolbar,
-                      itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
-                      willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
-    switch itemIdentifier.rawValue {
-    default :
-      return nil
-    }
-  } */
-
-  //····················································································································
   //    configureProperties
   //····················································································································
 
@@ -3521,70 +3496,37 @@ import Cocoa
     var opIdx = 0
   //--- Array controller property: mModelImageObjectsController
     self.mModelImageObjectsController.bind_model (self.rootObject.mModelImageObjects_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Array controller property: mPackageObjectsController
     self.mPackageObjectsController.bind_model (self.rootObject.packageObjects_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Selection controller property: mPackageBezierCurveSelectionController
     self.mPackageBezierCurveSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Selection controller property: mPackageOvalSelectionController
     self.mPackageOvalSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Selection controller property: mPackageArcSelectionController
     self.mPackageArcSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Selection controller property: mPackageGuideSelectionController
     self.mPackageGuideSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Selection controller property: mPackageDimensionSelectionController
     self.mPackageDimensionSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Selection controller property: mPackageZoneSelectionController
     self.mPackageZoneSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Selection controller property: mPackagePadSelectionController
     self.mPackagePadSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Selection controller property: mPackageSlavePadSelectionController
     self.mPackageSlavePadSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: addSegmentButtonImage
     self.addSegmentButtonImage_property.mReadModelFunction = {
         let s0 = preferences_packageColor_property.selection
@@ -3598,10 +3540,7 @@ import Cocoa
         }
     }
     preferences_packageColor_property.addEBObserver (self.addSegmentButtonImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: addBezierButtonImage
     self.addBezierButtonImage_property.mReadModelFunction = {
         let s0 = preferences_packageColor_property.selection
@@ -3615,10 +3554,7 @@ import Cocoa
         }
     }
     preferences_packageColor_property.addEBObserver (self.addBezierButtonImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: addOvalButtonImage
     self.addOvalButtonImage_property.mReadModelFunction = {
         let s0 = preferences_packageColor_property.selection
@@ -3632,10 +3568,7 @@ import Cocoa
         }
     }
     preferences_packageColor_property.addEBObserver (self.addOvalButtonImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: addArcButtonImage
     self.addArcButtonImage_property.mReadModelFunction = {
         let s0 = preferences_packageColor_property.selection
@@ -3649,10 +3582,7 @@ import Cocoa
         }
     }
     preferences_packageColor_property.addEBObserver (self.addArcButtonImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: addMasterPadButtonImage
     self.addMasterPadButtonImage_property.mReadModelFunction = {
         let s0 = preferences_frontSidePadColor_property.selection
@@ -3666,10 +3596,7 @@ import Cocoa
         }
     }
     preferences_frontSidePadColor_property.addEBObserver (self.addMasterPadButtonImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: addSlavePadButtonImage
     self.addSlavePadButtonImage_property.mReadModelFunction = {
         let s0 = preferences_frontSidePadColor_property.selection
@@ -3683,10 +3610,7 @@ import Cocoa
         }
     }
     preferences_frontSidePadColor_property.addEBObserver (self.addSlavePadButtonImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: addGuideButtonImage
     self.addGuideButtonImage_property.mReadModelFunction = {
         let s0 = preferences_packageGuideColor_property.selection
@@ -3700,10 +3624,7 @@ import Cocoa
         }
     }
     preferences_packageGuideColor_property.addEBObserver (self.addGuideButtonImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: addDimensionButtonImage
     self.addDimensionButtonImage_property.mReadModelFunction = {
         let s0 = preferences_packageDimensionColor_property.selection
@@ -3717,10 +3638,7 @@ import Cocoa
         }
     }
     preferences_packageDimensionColor_property.addEBObserver (self.addDimensionButtonImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: addZoneButtonImage
     self.addZoneButtonImage_property.mReadModelFunction = {
         let s0 = preferences_padZoneColor_property.selection
@@ -3734,14 +3652,8 @@ import Cocoa
         }
     }
     preferences_padZoneColor_property.addEBObserver (self.addZoneButtonImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
+
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3763,10 +3675,7 @@ import Cocoa
     }
     self.rootObject.issues_property.addEBObserver (self.issues_property)
     self.documentFileName_property.addEBObserver (self.issues_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3784,10 +3693,7 @@ import Cocoa
       }
     }
     self.issues_property.addEBObserver (self.statusMessage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: metadataStatus
     self.metadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3805,10 +3711,7 @@ import Cocoa
       }
     }
     self.issues_property.addEBObserver (self.metadataStatus_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: noIssue
     self.noIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3826,10 +3729,7 @@ import Cocoa
       }
     }
     self.issues_property.addEBObserver (self.noIssue_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: segmentedControlSegmentIssueImage
     self.segmentedControlSegmentIssueImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3847,10 +3747,7 @@ import Cocoa
       }
     }
     self.issues_property.addEBObserver (self.segmentedControlSegmentIssueImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: segmentedControlSegmentIssueString
     self.segmentedControlSegmentIssueString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3868,10 +3765,7 @@ import Cocoa
       }
     }
     self.issues_property.addEBObserver (self.segmentedControlSegmentIssueString_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3889,14 +3783,7 @@ import Cocoa
       }
     }
     self.issues_property.addEBObserver (self.statusImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-    if LOG_OPERATION_DURATION {
-      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
-      Swift.print ("Configure properties \(durationMS) ms")
-    }
+
   }
 
   //····················································································································
@@ -3929,23 +3816,6 @@ import Cocoa
     self.mPackagePadSelectionController.unbind_selection ()
   //--- Selection controller property: mPackageSlavePadSelectionController
     self.mPackageSlavePadSelectionController.unbind_selection ()
-    // preferences_packageColor_property.removeEBObserver (self.addSegmentButtonImage_property)
-    // preferences_packageColor_property.removeEBObserver (self.addBezierButtonImage_property)
-    // preferences_packageColor_property.removeEBObserver (self.addOvalButtonImage_property)
-    // preferences_packageColor_property.removeEBObserver (self.addArcButtonImage_property)
-    // preferences_frontSidePadColor_property.removeEBObserver (self.addMasterPadButtonImage_property)
-    // preferences_frontSidePadColor_property.removeEBObserver (self.addSlavePadButtonImage_property)
-    // preferences_packageGuideColor_property.removeEBObserver (self.addGuideButtonImage_property)
-    // preferences_packageDimensionColor_property.removeEBObserver (self.addDimensionButtonImage_property)
-    // preferences_padZoneColor_property.removeEBObserver (self.addZoneButtonImage_property)
-    // self.rootObject.issues_property.removeEBObserver (self.issues_property)
-    // self.documentFileName_property.removeEBObserver (self.issues_property)
-    // self.issues_property.removeEBObserver (self.statusMessage_property)
-    // self.issues_property.removeEBObserver (self.metadataStatus_property)
-    // self.issues_property.removeEBObserver (self.noIssue_property)
-    // self.issues_property.removeEBObserver (self.segmentedControlSegmentIssueImage_property)
-    // self.issues_property.removeEBObserver (self.segmentedControlSegmentIssueString_property)
-    // self.issues_property.removeEBObserver (self.statusImage_property)
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets
   //--------------------------- Detach outlets

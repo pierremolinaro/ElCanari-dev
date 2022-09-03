@@ -658,31 +658,6 @@ import Cocoa
   }
 
   //····················································································································
-  //    Toolbar
-  //····················································································································
-
-/*  final func toolbarAllowedItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-    return self.toolbarDefaultItemIdentifiers (toolbar)
-  } */
-
-  //····················································································································
-
-/*  final func toolbarDefaultItemIdentifiers (_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-    return []
-  } */
-
-  //····················································································································
-
-/*  final func toolbar (_ toolbar: NSToolbar,
-                      itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
-                      willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
-    switch itemIdentifier.rawValue {
-    default :
-      return nil
-    }
-  } */
-
-  //····················································································································
   //    configureProperties
   //····················································································································
 
@@ -691,20 +666,11 @@ import Cocoa
     var opIdx = 0
   //--- Array controller property: selectedCharacterController
     self.selectedCharacterController.bind_model (self.rootObject.characters_property, self.ebUndoManager)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Selection controller property: characterSelection
     self.characterSelection.bind_selection (model: self.selectedCharacterController.selectedArray_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
+
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -722,10 +688,7 @@ import Cocoa
       }
     }
     self.rootObject.issues_property.addEBObserver (self.statusImage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: statusTitle
     self.statusTitle_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -743,10 +706,7 @@ import Cocoa
       }
     }
     self.rootObject.issues_property.addEBObserver (self.statusTitle_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -764,10 +724,7 @@ import Cocoa
       }
     }
     self.rootObject.issues_property.addEBObserver (self.statusMessage_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: metadataStatus
     self.metadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -785,10 +742,7 @@ import Cocoa
       }
     }
     self.rootObject.issues_property.addEBObserver (self.metadataStatus_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
+
   //--- Atomic property: canDeleteCurrentCharacter
     self.canDeleteCurrentCharacter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -806,14 +760,7 @@ import Cocoa
       }
     }
     self.rootObject.definedCharacters_property.addEBObserver (self.canDeleteCurrentCharacter_property)
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  op\(opIdx) \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-      opIdx += 1
-    }
-    if LOG_OPERATION_DURATION {
-      let durationMS = Int (Date ().timeIntervalSince (start) * 1000.0)
-      Swift.print ("Configure properties \(durationMS) ms")
-    }
+
   }
 
   //····················································································································
@@ -828,11 +775,6 @@ import Cocoa
     self.selectedCharacterController.unbind_model ()
   //--- Selection controller property: characterSelection
     self.characterSelection.unbind_selection ()
-    // self.rootObject.issues_property.removeEBObserver (self.statusImage_property)
-    // self.rootObject.issues_property.removeEBObserver (self.statusTitle_property)
-    // self.rootObject.issues_property.removeEBObserver (self.statusMessage_property)
-    // self.rootObject.issues_property.removeEBObserver (self.metadataStatus_property)
-    // self.rootObject.definedCharacters_property.removeEBObserver (self.canDeleteCurrentCharacter_property)
   //--------------------------- Remove targets / actions
   //--------------------------- Clean up outlets
   //--------------------------- Detach outlets

@@ -9,6 +9,24 @@ import Cocoa
 //   Public functions
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+func setStartOperationDateToNow (_ inMessage : String) {
+  gLogFileOperations.setStartOperationDateToNow (inMessage)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func appendDocumentFileOperationInfo (_ inMessage : String) {
+  gLogFileOperations.appendDocumentFileOperationInfo (inMessage)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func appendTotalDurationDocumentFileOperationInfo () {
+  gLogFileOperations.appendTotalDurationDocumentFileOperationInfo ()
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 func appendShowDocumentFileOperationDurationWindowMenuItem (_ inMenu : NSMenu) {
   let menuItem = NSMenuItem (
     title: "Show Document File Operation Duration Window",
@@ -18,12 +36,6 @@ func appendShowDocumentFileOperationDurationWindowMenuItem (_ inMenu : NSMenu) {
   menuItem.target = gLogFileOperations
   menuItem.keyEquivalentModifierMask = [.command, .control]
   inMenu.addItem (menuItem)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func appendDocumentFileOperationInfo (_ inMessage : String) {
-  gLogFileOperations.appendDocumentFileOperationInfo (inMessage)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -48,6 +60,8 @@ fileprivate final class LogFileOperation : EBObjcBaseObject { // SHOULD INHERIT 
   )
 
   private let mTextView = AutoLayoutTextObserverView ()
+  private var mOperationStartDate = Date ()
+  private var mStepStartDate = Date ()
 
   //····················································································································
   //  Init
@@ -87,9 +101,31 @@ fileprivate final class LogFileOperation : EBObjcBaseObject { // SHOULD INHERIT 
 
   //····················································································································
 
+  func setStartOperationDateToNow (_ inMessage : String) {
+    self.mOperationStartDate = Date ()
+    self.mStepStartDate = self.mOperationStartDate
+    if self.mWindow.isVisible {
+      self.mTextView.string += inMessage + "\n"
+      _ = RunLoop.main.run (mode: .default, before: Date ())
+    }
+  }
+
+  //····················································································································
+
   func appendDocumentFileOperationInfo (_ inMessage : String) {
     if self.mWindow.isVisible {
-      self.mTextView.string += inMessage
+      let duration = "  +\(Int (Date ().timeIntervalSince (self.mStepStartDate) * 1000.0)) ms: "
+      self.mStepStartDate = Date ()
+      self.mTextView.string += duration + inMessage + "\n"
+      _ = RunLoop.main.run (mode: .default, before: Date ())
+    }
+  }
+
+  //····················································································································
+
+  func appendTotalDurationDocumentFileOperationInfo () {
+    if self.mWindow.isVisible {
+      self.mTextView.string += "Total: \(Int (Date ().timeIntervalSince (self.mOperationStartDate) * 1000.0)) ms.\n\n"
       _ = RunLoop.main.run (mode: .default, before: Date ())
     }
   }

@@ -1175,6 +1175,10 @@
 		CF3C6B74275A21B200189435 /* action-AutoLayoutFontDocument-addSegmentAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3C6B73275A21B100189435 /* action-AutoLayoutFontDocument-addSegmentAction.swift */; };
 		CF3CF20222329F2100B6D0AC /* transient-SymbolInstanceInDevice-symbolTypeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3CF20122329F2100B6D0AC /* transient-SymbolInstanceInDevice-symbolTypeName.swift */; };
 		CF3CF20322329F2100B6D0AC /* transient-SymbolInstanceInDevice-symbolTypeName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3CF20122329F2100B6D0AC /* transient-SymbolInstanceInDevice-symbolTypeName.swift */; };
+		CF3D3DE728C35F0A0097D987 /* EBAllocationDebug-debug-with-actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D3DE428C354F30097D987 /* EBAllocationDebug-debug-with-actor.swift */; };
+		CF3D40A428C3ACDD0097D987 /* EBWeakReferenceSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D40A328C3ACDD0097D987 /* EBWeakReferenceSet.swift */; };
+		CF3D40A528C3ACDD0097D987 /* EBWeakReferenceSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D40A328C3ACDD0097D987 /* EBWeakReferenceSet.swift */; };
+		CF3D40A628C3ACDD0097D987 /* EBWeakReferenceSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D40A328C3ACDD0097D987 /* EBWeakReferenceSet.swift */; };
 		CF3D745021A8026D004F6C43 /* enum-HorizontalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D744F21A8026D004F6C43 /* enum-HorizontalAlignment.swift */; };
 		CF3D745121A8026D004F6C43 /* enum-HorizontalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D744F21A8026D004F6C43 /* enum-HorizontalAlignment.swift */; };
 		CF3D745321A802F9004F6C43 /* extension-HorizontalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D745221A802F9004F6C43 /* extension-HorizontalAlignment.swift */; };
@@ -1385,7 +1389,6 @@
 		CF4A8AF421BFF12A0058B8D7 /* EBGraphicView-guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A8AF321BFF12A0058B8D7 /* EBGraphicView-guide.swift */; };
 		CF4A8AF521BFF12A0058B8D7 /* EBGraphicView-guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A8AF321BFF12A0058B8D7 /* EBGraphicView-guide.swift */; };
 		CF4ADB9F25753F15002E7864 /* EBAllocationDebug-release.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4ADB9B25753BAC002E7864 /* EBAllocationDebug-release.swift */; };
-		CF4ADBA025753F1A002E7864 /* EBAllocationDebug-debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF71FA3D1B3EA87800FB5049 /* EBAllocationDebug-debug.swift */; };
 		CF4B39B721D3F1C5001217C6 /* transient-PackageSlavePad-annularRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B39B121D3F1C4001217C6 /* transient-PackageSlavePad-annularRing.swift */; };
 		CF4B39B821D3F1C5001217C6 /* transient-PackageSlavePad-annularRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B39B121D3F1C4001217C6 /* transient-PackageSlavePad-annularRing.swift */; };
 		CF4B39B921D3F1C5001217C6 /* transient-PackageSlavePad-padIsTraversing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B39B221D3F1C4001217C6 /* transient-PackageSlavePad-padIsTraversing.swift */; };
@@ -5023,6 +5026,8 @@
 		CF3B26A4278090530084F07C /* AutoLayoutViewWithBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutViewWithBackground.swift; sourceTree = "<group>"; };
 		CF3C6B73275A21B100189435 /* action-AutoLayoutFontDocument-addSegmentAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutFontDocument-addSegmentAction.swift"; sourceTree = "<group>"; };
 		CF3CF20122329F2100B6D0AC /* transient-SymbolInstanceInDevice-symbolTypeName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolInstanceInDevice-symbolTypeName.swift"; sourceTree = "<group>"; };
+		CF3D3DE428C354F30097D987 /* EBAllocationDebug-debug-with-actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EBAllocationDebug-debug-with-actor.swift"; sourceTree = "<group>"; };
+		CF3D40A328C3ACDD0097D987 /* EBWeakReferenceSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBWeakReferenceSet.swift; sourceTree = "<group>"; };
 		CF3D744F21A8026D004F6C43 /* enum-HorizontalAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-HorizontalAlignment.swift"; sourceTree = "<group>"; };
 		CF3D745221A802F9004F6C43 /* extension-HorizontalAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-HorizontalAlignment.swift"; sourceTree = "<group>"; };
 		CF3D9FD824A4FC0C00FFD091 /* transient-DeviceInProject-deviceComponentCountString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-DeviceInProject-deviceComponentCountString.swift"; sourceTree = "<group>"; };
@@ -6304,6 +6309,7 @@
 		CF1406D81B3C4A6F002A3B15 /* Allocation Debug */ = {
 			isa = PBXGroup;
 			children = (
+				CF3D3DE428C354F30097D987 /* EBAllocationDebug-debug-with-actor.swift */,
 				CF71FA3D1B3EA87800FB5049 /* EBAllocationDebug-debug.swift */,
 				CF4ADB9B25753BAC002E7864 /* EBAllocationDebug-release.swift */,
 			);
@@ -6781,10 +6787,10 @@
 				CF0777F123521A4D00F56EAB /* EBObservableMutableProperty.swift */,
 				CF4C8F3825262ADC0046F831 /* EBObservableObjectProtocol.swift */,
 				CF0777F723521A4E00F56EAB /* EBObservableProperty.swift */,
+				CF8BE7542351166A00F95B3A /* EBObservablePropertyController.swift */,
 				CF8BE73623510FEB00F95B3A /* EBObservedObject.swift */,
 				CF549F5227707E1400D978D9 /* EBObserverProtocol.swift */,
 				CF07780D23521A8300F56EAB /* EBPropertyProtocol.swift */,
-				CF8BE7542351166A00F95B3A /* EBObservablePropertyController.swift */,
 				CF171D8926FB999A00A1BCB2 /* EBReferenceArray.swift */,
 				CF04F00027046EC200CAFAE0 /* EBReferenceDictionary.swift */,
 				CFC1325E26FB4EBB0027AC93 /* EBReferenceSet.swift */,
@@ -6792,6 +6798,7 @@
 				CFEDE5B51B4677C500036ACF /* EBUndoManager.swift */,
 				CF0777D12352152F00F56EAB /* EBValidationResult.swift */,
 				CF8BE73723510FEB00F95B3A /* EBWeakEventSet.swift */,
+				CF3D40A328C3ACDD0097D987 /* EBWeakReferenceSet.swift */,
 				CF0777F623521A4E00F56EAB /* EnumPropertyProtocol.swift */,
 				CF0777A92352100E00F56EAB /* extension-Bool-EBPropertyProtocol.swift */,
 				CF0777F223521A4D00F56EAB /* extension-Data-Comparable.swift */,
@@ -8923,6 +8930,7 @@
 				CFDD6D5226A1B0F20050CB78 /* AutoLayoutCanariUnitPopUpButton.swift in Sources */,
 				CF99E37521AE920F002AB233 /* CanariIssue.swift in Sources */,
 				CF711E19275E1C8D00280069 /* extension-PackageInDevice.swift in Sources */,
+				CF3D40A428C3ACDD0097D987 /* EBWeakReferenceSet.swift in Sources */,
 				CFBC202F275E14D40076697D /* extension-SegmentForFontCharacter.swift in Sources */,
 				CFDD6D4C26A1B0F20050CB78 /* AutoLayoutCanariObservedDimensionField.swift in Sources */,
 				CF8BE747235112CC00F95B3A /* ReadOnlyAbstractGenericRelationshipProperty.swift in Sources */,
@@ -9385,7 +9393,6 @@
 				CFB7D8CB2683A61D007B9D3B /* action-AutoLayoutPackageDocument-loadFromDesignAction.swift in Sources */,
 				CFB7D8562683A61C007B9D3B /* document-AutoLayoutPackageDocument-build-model-points.swift in Sources */,
 				CF39CCA8268CC0B3004971F9 /* action-AutoLayoutDeviceDocument-resetSelectedPackageVersion.swift in Sources */,
-				CF4ADBA025753F1A002E7864 /* EBAllocationDebug-debug.swift in Sources */,
 				CFEB7CC3233A28860060A97A /* transient-ProjectRoot-ercStatusMessage.swift in Sources */,
 				CF4D083C21C2F18000380ACA /* transient-PackageSegment-objectDisplay.swift in Sources */,
 				CF3559D6279D9F3D000BFC9B /* action-AutoLayoutProjectDocument-detachArtworkAction.swift in Sources */,
@@ -9869,6 +9876,7 @@
 				CF14419027554E6C006C3E1F /* AutoLayoutCanariFontCharacterGerberCodeTableView.swift in Sources */,
 				CF4D54C02254B93600DBCB62 /* model-events.swift in Sources */,
 				CF711E16275E1C8D00280069 /* extension-PackagePad.swift in Sources */,
+				CF3D3DE728C35F0A0097D987 /* EBAllocationDebug-debug-with-actor.swift in Sources */,
 				CF711D6E275E1AFA00280069 /* tomany-FontInProject.swift in Sources */,
 				CFEB7AFB233A249E0060A97A /* transient-BoardText-signatureForERCChecking.swift in Sources */,
 				CF355A0B279D9F3E000BFC9B /* transient-AutoLayoutProjectDocument-canChangePackage.swift in Sources */,
@@ -10434,6 +10442,7 @@
 				CFBC2030275E14D40076697D /* extension-SegmentForFontCharacter.swift in Sources */,
 				CFDD6D5326A1B0F20050CB78 /* AutoLayoutCanariUnitPopUpButton.swift in Sources */,
 				CFD2414E222C09D5000D6B65 /* StringSet.swift in Sources */,
+				CF3D40A528C3ACDD0097D987 /* EBWeakReferenceSet.swift in Sources */,
 				CFB4C0DB2794674800C509A9 /* AutoLayoutLabel.swift in Sources */,
 				CF6E148521CD1F90008E2180 /* transient-PackageZone-rect.swift in Sources */,
 				CF355A3C279D9F8C000BFC9B /* AutoLayoutCanariVerticalAlignmentSegmentedControl.swift in Sources */,
@@ -11945,6 +11954,7 @@
 				CF9C617125CABE5C00A00D5C /* ReadOnlyAbstractGenericRelationshipProperty.swift in Sources */,
 				CF514036276BB1A1008DB542 /* transient-AutoLayoutProjectDocument-documentIsUnnamed.swift in Sources */,
 				CF9C617325CABE5C00A00D5C /* extension-NSBezierPath.swift in Sources */,
+				CF3D40A628C3ACDD0097D987 /* EBWeakReferenceSet.swift in Sources */,
 				CF9C617625CABE5C00A00D5C /* transient-BoardText-fontName.swift in Sources */,
 				CF9C617725CABE5C00A00D5C /* transient-CommentInSchematic-selectionDisplay.swift in Sources */,
 				CFB7D78726839B90007B9D3B /* selectionController-AutoLayoutSymbolDocument-mSymbolPinSelectionController.swift in Sources */,
@@ -13521,6 +13531,7 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "ElCanari-Debug";
@@ -13547,6 +13558,7 @@
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-DBUILD_OBJECT_EXPLORER";

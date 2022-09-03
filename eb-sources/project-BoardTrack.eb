@@ -7,8 +7,8 @@ enum TrackSide {
 }
 
 func enum TrackSide.popupTitles {
-  front : "Front" ;
-  back : "Back" ;
+  front  : "Front" ;
+  back   : "Back" ;
   inner1 : "Inner 1" ;
   inner2 : "Inner 2" ;
   inner3 : "Inner 3" ;

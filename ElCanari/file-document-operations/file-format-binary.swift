@@ -93,9 +93,6 @@ fileprivate func readManagedObjectsFromBinaryData (_ inUndoManager : EBUndoManag
         throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo:dictionary)
       }
     }
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  Object Creation \(Int (Date ().timeIntervalSince (creationStart) * 1000.0)) ms")
-    }
     let setupStart = Date ()
     var idx = 0
     for d in dictionaryArray {
@@ -104,9 +101,6 @@ fileprivate func readManagedObjectsFromBinaryData (_ inUndoManager : EBUndoManag
       idx += 1
     }
     resultRootObject = objectArray [0] //--- Set root object
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  Object Setup \(Int (Date ().timeIntervalSince (setupStart) * 1000.0)) ms")
-    }
   }
   return resultRootObject
 }

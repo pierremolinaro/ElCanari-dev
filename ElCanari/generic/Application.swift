@@ -6,10 +6,6 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let LOG_OPERATION_DURATION = false
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 let WINDOW_HEIGHT_METADATADICTIONARY_KEY = "WindowHeight"
 let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
 

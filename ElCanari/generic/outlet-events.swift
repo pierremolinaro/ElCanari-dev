@@ -75,7 +75,6 @@ func flushOutletEvents () {
         appendMessageString ("Flush outlet events\n", color: NSColor.blue)
       }
     #endif
-    let startFlushOutletEvent = Date ()
     while gPendingOutletEvents.count > 0 {
       let pendingOutletEvents = gPendingOutletEvents
       gPendingOutletEvents.removeAll ()
@@ -97,10 +96,6 @@ func flushOutletEvents () {
           appendMessageString (message, color: NSColor.red)
         }
       #endif
-    }
-    if LOG_OPERATION_DURATION {
-      let durationFlushMS = Int (Date ().timeIntervalSince (startFlushOutletEvent) * 1000.0)
-      Swift.print ("Flush Outlet Events \(durationFlushMS) ms")
     }
     #if BUILD_OBJECT_EXPLORER
       if logEvents () {

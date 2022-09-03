@@ -251,9 +251,6 @@ class EBAutoLayoutManagedDocument : NSDocument {
     let startLoadFile = Date ()
     let documentData = try loadEasyBindingFile (fromData: inData, documentName: self.displayName, undoManager: self.ebUndoManager)
     self.mManagedDocumentFileFormat = documentData.documentFileFormat
-    if LOG_OPERATION_DURATION {
-      Swift.print ("Load File \(Date ().timeIntervalSince (startLoadFile) * 1000.0) ms, format \(documentData.documentFileFormat.string)")
-    }
   //--- Store Status
     self.mReadMetadataStatus = documentData.documentMetadataStatus
   //--- Store metadata dictionary
@@ -327,6 +324,8 @@ class EBAutoLayoutManagedDocument : NSDocument {
       self.mSplashTextField = nil
       self.mSplashScreenWindow = nil
     }
+    appendDocumentFileOperationInfo ("User Interface Built.")
+    appendTotalDurationDocumentFileOperationInfo ()
   }
 
   //····················································································································
@@ -482,18 +481,16 @@ class EBAutoLayoutManagedDocument : NSDocument {
   //····················································································································
 
   override final func removeWindowController (_ inWindowController : NSWindowController) {
+    setStartOperationDateToNow ("Closing \(self.lastComponentOfFileName)")
   //--- Remove user interface
     self.mSignatureObserver.removeEBObserver (self.mVersionShouldChangeObserver)
     #if BUILD_OBJECT_EXPLORER
       self.clearObjectExplorer ()
     #endif
     self.removeUserInterface ()
+    appendDocumentFileOperationInfo ("remove interface done")
   //--- Remove all entities
-    let start = Date ()
     let allEntities = self.reachableObjectsFromRootObject ()
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  Reachable objects \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-    }
     #if BUILD_OBJECT_EXPLORER
       for entity in allEntities {
         entity.clearObjectExplorer ()
@@ -502,17 +499,19 @@ class EBAutoLayoutManagedDocument : NSDocument {
     for entity in allEntities {
       entity.removeAllObservers ()
     }
+    appendDocumentFileOperationInfo ("remove entity observers done")
     for entity in allEntities {
       entity.cleanUpToManyRelationships ()
     }
+    appendDocumentFileOperationInfo ("clean up to many relationship done")
     for entity in allEntities {
       entity.cleanUpToOneRelationships ()
     }
-    if LOG_OPERATION_DURATION {
-      Swift.print ("  Clean objects \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")
-    }
+    appendDocumentFileOperationInfo ("clean up to one relationship done")
   //---
     super.removeWindowController (inWindowController)
+    appendDocumentFileOperationInfo ("removeWindowController done")
+    appendTotalDurationDocumentFileOperationInfo ()
   }
 
   //····················································································································

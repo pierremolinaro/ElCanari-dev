@@ -27,7 +27,9 @@ private let gEnableObjectAllocationDebug = UserDefaults.standard.bool (forKey: p
 func noteObjectAllocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
   if gEnableObjectAllocationDebug {
     let objectType : AnyObject.Type = type (of: inObject)
-    DispatchQueue.main.async { gDebugObject?.noteObjectAllocation (ofType: objectType) }
+    Task {
+      await PendingAllocationBufferActor.shared.noteObjectAllocation (ofType: objectType)
+    }
   }
 }
 
@@ -38,8 +40,110 @@ func noteObjectAllocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THRE
 func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
   if gEnableObjectAllocationDebug {
     let objectType : AnyObject.Type = type (of: inObject)
-    DispatchQueue.main.async { gDebugObject?.noteObjectDeallocation (ofType: objectType) }
+    Task {
+      await PendingAllocationBufferActor.shared.noteObjectDeallocation (ofType: objectType)
+    }
   }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@globalActor actor PendingAllocationBufferActor { // : GlobalActor {
+  static var shared = PendingAllocationBufferActor ()
+//  typealias ActorType = PendingAllocationBufferActor
+
+  private var mPendingAllocatedObjectClasses = [AnyObject.Type] ()
+  private var mPendingDeallocatedObjectClasses = [AnyObject.Type] ()
+  private var mTransmitEventTriggered = false ;
+
+  //····················································································································
+
+  func noteObjectAllocation (ofType inType : AnyObject.Type) {
+    self.mPendingAllocatedObjectClasses.append (inType)
+    self.triggerTransmit ()
+  }
+
+  //····················································································································
+
+  func noteObjectDeallocation (ofType inType : AnyObject.Type) {
+    self.mPendingDeallocatedObjectClasses.append (inType)
+    self.triggerTransmit ()
+  }
+
+  //····················································································································
+
+  private func triggerTransmit () {
+    if (!self.mTransmitEventTriggered) {
+      self.mTransmitEventTriggered = true
+      Task {
+        try? await Task.sleep (nanoseconds: 100_000_000)
+        let (pendingAllocations, pendingDeallocations) = await PendingAllocationBufferActor.shared.getPendingAllocation ()
+        await AllocationDebugActor.shared.transmitPendingAllocations (pendingAllocations, pendingDeallocations)
+      }
+    }
+  }
+
+  //····················································································································
+
+  func getPendingAllocation () -> ([AnyObject.Type], [AnyObject.Type]) {
+    self.mTransmitEventTriggered = false
+    let result = (self.mPendingAllocatedObjectClasses, self.mPendingDeallocatedObjectClasses)
+    self.mPendingAllocatedObjectClasses.removeAll (keepingCapacity: true)
+    self.mPendingDeallocatedObjectClasses.removeAll (keepingCapacity: true)
+    return result
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@globalActor actor AllocationDebugActor { // : GlobalActor {
+  static var shared = AllocationDebugActor ()
+//  typealias ActorType = AllocationDebugActor
+
+  private var mTotalAllocatedObjectCountByClass = [String : Int] ()
+  private var mLiveObjectCountByClass = [String : Int] ()
+  private var mRefreshTriggered = false
+
+  //····················································································································
+
+  func transmitPendingAllocations (_ inAllocations : [AnyObject.Type], _ inDeallocations : [AnyObject.Type]) {
+    for t in inAllocations {
+      let className = String (describing: t)
+      let currentCount = self.mTotalAllocatedObjectCountByClass [className] ?? 0
+      self.mTotalAllocatedObjectCountByClass [className] = currentCount + 1
+      let liveCount = self.mLiveObjectCountByClass [className] ?? 0
+      self.mLiveObjectCountByClass [className] = liveCount + 1
+    }
+    for t in inDeallocations {
+      let className = String (describing: t)
+      if let n = self.mLiveObjectCountByClass [className] {
+        if n > 1 {
+          self.mLiveObjectCountByClass [className] = n - 1
+        }else{
+          self.mLiveObjectCountByClass [className] = nil
+        }
+      }
+    }
+  //---
+    if !self.mRefreshTriggered {
+      self.mRefreshTriggered = true
+      Task {
+        try? await Task.sleep (nanoseconds: 250_000_000) // 250 ms
+        let totalAllocatedObjectCountByClass = self.mTotalAllocatedObjectCountByClass
+        let liveObjectCountByClass = self.mLiveObjectCountByClass
+        DispatchQueue.main.sync {
+          gDebugObject?.display (totalAllocatedObjectCountByClass, liveObjectCountByClass)
+        }
+        self.mRefreshTriggered = false
+      }
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -210,6 +314,7 @@ final class EBAllocationDebug : NSObject {
    //--- Configure Window
      self.mAllocationStatsWindow.title = "Allocation Stats"
      self.mAllocationStatsWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
+//     self.mAllocationStatsWindow.delegate = self // Will call windowDidBecomeKey: and windowWillClose:
    //--- Build window contents
       let mainVStack = AutoLayoutVerticalStackView ()
       do {
@@ -326,6 +431,16 @@ final class EBAllocationDebug : NSObject {
   @objc private func performSnapShotAction (_ : AnyObject) {
     self.mSnapShotDictionary = self.mLiveObjectCountByClass
     self.triggerRefreshDisplay ()
+  }
+
+  //····················································································································
+  //    display
+  //····················································································································
+
+  func display (_ inTotalAllocatedObjectCountByClass : [String : Int], _ inLiveObjectCountByClass : [String : Int]) {
+    self.mTotalAllocatedObjectCountByClass = inTotalAllocatedObjectCountByClass
+    self.mLiveObjectCountByClass = inLiveObjectCountByClass
+    self.displayAllocation ()
   }
 
   //····················································································································

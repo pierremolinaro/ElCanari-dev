@@ -14,7 +14,7 @@ private let parallelDownloadCount = 4
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CanariLibraryUpdateController : EBSwiftBaseObject { // , AutoLayoutTableViewDelegate {
+final class CanariLibraryUpdateController : EBSwiftBaseObject {
 
   private var mCurrentActionArray : [LibraryOperationElement]
   private var mCurrentParallelActionCount = 0
@@ -136,29 +136,6 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject { // , AutoLayoutT
   func cancel () {
     self.mErrorCode = -1
   }
-
-  //····················································································································
-  //  AutoLayoutTableViewDelegate methods
-  //····················································································································
-
-//  func tableViewSelectionDidChange (selectedRows inSelectedRows: IndexSet) {
-//  }
-//
-//  func indexesOfSelectedObjects() -> IndexSet {
-//    return IndexSet ()
-//  }
-//
-//  func addEntry () {
-//  }
-//
-//  func removeSelectedEntries () {
-//  }
-//
-//  func beginSorting() {
-//  }
-//
-//  func endSorting() {
-//  }
 
   //····················································································································
   //   launchElementDownload
