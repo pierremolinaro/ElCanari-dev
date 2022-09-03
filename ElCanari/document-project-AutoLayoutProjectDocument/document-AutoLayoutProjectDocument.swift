@@ -7340,16 +7340,6 @@ import Cocoa
     super.removeUserInterface ()
   //--------------------------- Unbind regular bindings
   //--------------------------- Unbind array controllers
-  //--- Array controller property: netClassController
-    self.netClassController.unbind_model ()
-  //--- Array controller property: componentController
-    self.componentController.unbind_model ()
-  //--- Array controller property: projectFontController
-    self.projectFontController.unbind_model ()
-  //--- Array controller property: projectDeviceController
-    self.projectDeviceController.unbind_model ()
-  //--- Array controller property: schematicObjectsController
-    self.schematicObjectsController.unbind_model ()
   //--- Selection controller property: wireInSchematicSelectionController
     self.wireInSchematicSelectionController.unbind_selection ()
   //--- Selection controller property: ncInSchematicSelectionController
@@ -7360,12 +7350,8 @@ import Cocoa
     self.commentInSchematicSelectionController.unbind_selection ()
   //--- Selection controller property: componentSymbolSelectionController
     self.componentSymbolSelectionController.unbind_selection ()
-  //--- Array controller property: boardCurveObjectsController
-    self.boardCurveObjectsController.unbind_model ()
   //--- Selection controller property: boardCurveSelectionController
     self.boardCurveSelectionController.unbind_selection ()
-  //--- Array controller property: boardObjectsController
-    self.boardObjectsController.unbind_model ()
   //--- Selection controller property: boardTrackSelectionController
     self.boardTrackSelectionController.unbind_selection ()
   //--- Selection controller property: boardConnectorSelectionController
@@ -7378,8 +7364,6 @@ import Cocoa
     self.boardTextSelectionController.unbind_selection ()
   //--- Selection controller property: componentInBoardSelectionController
     self.componentInBoardSelectionController.unbind_selection ()
-  //--- Array controller property: mDataController
-    self.mDataController.unbind_model ()
   //--- Selection controller property: mDataSelection
     self.mDataSelection.unbind_selection ()
   //--------------------------- Remove targets / actions

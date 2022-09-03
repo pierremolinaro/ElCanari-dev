@@ -796,7 +796,7 @@ final class PreferencesArrayOf_BoardModelVia : StoredArrayOf_BoardModelVia {
     self.addEBObserverOf_y (self.mObserverForWritingPreferences)
     self.addEBObserverOf_padDiameter (self.mObserverForWritingPreferences)
     self.addEBObserverOf_x (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

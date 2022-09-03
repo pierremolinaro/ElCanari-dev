@@ -2565,7 +2565,7 @@ final class PreferencesArrayOf_BoardConnector : StoredArrayOf_BoardConnector {
     self.addEBObserverOf_mCustomPadDiameter (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mCustomPadDiameterUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mUsesCustomPadDiameter (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

@@ -998,7 +998,7 @@ final class PreferencesArrayOf_SegmentForFontCharacter : StoredArrayOf_SegmentFo
     self.addEBObserverOf_y1 (self.mObserverForWritingPreferences)
     self.addEBObserverOf_x2 (self.mObserverForWritingPreferences)
     self.addEBObserverOf_y2 (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

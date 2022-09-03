@@ -1567,7 +1567,7 @@ final class PreferencesArrayOf_BoardText : StoredArrayOf_BoardText {
     self.addEBObserverOf_mRotation (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mWeight (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mOblique (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

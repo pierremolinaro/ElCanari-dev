@@ -1374,8 +1374,6 @@ import Cocoa
     super.removeUserInterface ()
   //--------------------------- Unbind regular bindings
   //--------------------------- Unbind array controllers
-  //--- Array controller property: mSymbolObjectsController
-    self.mSymbolObjectsController.unbind_model ()
   //--- Selection controller property: mSymbolTextSelectionController
     self.mSymbolTextSelectionController.unbind_selection ()
   //--- Selection controller property: mSymbolPinSelectionController

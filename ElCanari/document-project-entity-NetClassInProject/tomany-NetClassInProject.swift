@@ -2441,7 +2441,7 @@ final class PreferencesArrayOf_NetClassInProject : StoredArrayOf_NetClassInProje
     self.addEBObserverOf_mAllowTracksOnInner2Layer (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mAllowTracksOnInner3Layer (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mAllowTracksOnInner4Layer (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

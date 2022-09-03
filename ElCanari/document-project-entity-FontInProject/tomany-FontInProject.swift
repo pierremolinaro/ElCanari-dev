@@ -1345,7 +1345,7 @@ final class PreferencesArrayOf_FontInProject : StoredArrayOf_FontInProject {
     self.addEBObserverOf_mFontName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mFontVersion (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mDescriptiveString (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

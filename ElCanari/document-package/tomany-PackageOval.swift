@@ -1410,7 +1410,7 @@ final class PreferencesArrayOf_PackageOval : StoredArrayOf_PackageOval {
     self.addEBObserverOf_widthUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_heightUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_x (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

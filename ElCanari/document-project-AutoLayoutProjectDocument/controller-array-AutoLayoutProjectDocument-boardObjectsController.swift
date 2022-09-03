@@ -261,7 +261,7 @@ final class Controller_AutoLayoutProjectDocument_boardObjectsController : ReadOn
 
   private func startObservingSelectionShape () {
     self.mModel?.addEBObserverOf_selectionDisplay (self.mObjectSelectionObserver)
-    self.mObjectSelectionObserver.mEventCallBack = { self.computeSelectionShape () }
+    self.mObjectSelectionObserver.mEventCallBack = { [weak self] in self?.computeSelectionShape () }
   }
 
   //····················································································································

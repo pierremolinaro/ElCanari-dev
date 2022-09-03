@@ -1431,7 +1431,7 @@ final class PreferencesArrayOf_MasterPadInDevice : StoredArrayOf_MasterPadInDevi
     self.addEBObserverOf_mShape (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mStyle (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mName (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

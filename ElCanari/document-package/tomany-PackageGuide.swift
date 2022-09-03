@@ -1344,7 +1344,7 @@ final class PreferencesArrayOf_PackageGuide : StoredArrayOf_PackageGuide {
     self.addEBObserverOf_x2Unit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_y2Unit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_x1 (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

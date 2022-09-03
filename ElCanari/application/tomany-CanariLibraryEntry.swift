@@ -932,7 +932,7 @@ final class PreferencesArrayOf_CanariLibraryEntry : StoredArrayOf_CanariLibraryE
     self.addEBObserverOf_mUses (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mLibraryRepositoryURL (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mUserAndPasswordTag (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

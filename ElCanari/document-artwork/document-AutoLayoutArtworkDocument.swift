@@ -1064,8 +1064,6 @@ import Cocoa
     super.removeUserInterface ()
   //--------------------------- Unbind regular bindings
   //--------------------------- Unbind array controllers
-  //--- Array controller property: mDataController
-    self.mDataController.unbind_model ()
   //--- Selection controller property: mDataSelection
     self.mDataSelection.unbind_selection ()
   //--------------------------- Remove targets / actions

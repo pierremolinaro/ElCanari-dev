@@ -3526,7 +3526,7 @@ final class PreferencesArrayOf_ComponentInProject : StoredArrayOf_ComponentInPro
     self.addEBObserverOf_mNameIndex (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mXUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mYUnit (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

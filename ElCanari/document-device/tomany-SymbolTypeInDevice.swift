@@ -1217,7 +1217,7 @@ final class PreferencesArrayOf_SymbolTypeInDevice : StoredArrayOf_SymbolTypeInDe
     self.addEBObserverOf_mFileData (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mStrokeBezierPath (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mFilledBezierPath (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

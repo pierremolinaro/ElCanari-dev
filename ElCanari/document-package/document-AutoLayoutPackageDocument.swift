@@ -3792,10 +3792,6 @@ import Cocoa
     super.removeUserInterface ()
   //--------------------------- Unbind regular bindings
   //--------------------------- Unbind array controllers
-  //--- Array controller property: mModelImageObjectsController
-    self.mModelImageObjectsController.unbind_model ()
-  //--- Array controller property: mPackageObjectsController
-    self.mPackageObjectsController.unbind_model ()
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.unbind_selection ()
   //--- Selection controller property: mPackageBezierCurveSelectionController

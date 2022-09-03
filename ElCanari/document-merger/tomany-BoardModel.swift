@@ -4801,7 +4801,7 @@ final class PreferencesArrayOf_BoardModel : StoredArrayOf_BoardModel {
     self.addEBObserverOf_modelLimitWidth (self.mObserverForWritingPreferences)
     self.addEBObserverOf_modelLimitWidthUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_artworkName (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

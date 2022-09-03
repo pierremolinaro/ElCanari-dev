@@ -792,7 +792,7 @@ final class PreferencesArrayOf_DeviceDocumentation : StoredArrayOf_DeviceDocumen
     }
     self.addEBObserverOf_mFileName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mFileData (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

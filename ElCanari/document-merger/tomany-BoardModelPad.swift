@@ -1006,7 +1006,7 @@ final class PreferencesArrayOf_BoardModelPad : StoredArrayOf_BoardModelPad {
     self.addEBObserverOf_shape (self.mObserverForWritingPreferences)
     self.addEBObserverOf_rotation (self.mObserverForWritingPreferences)
     self.addEBObserverOf_x (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

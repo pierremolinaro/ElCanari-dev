@@ -1143,7 +1143,7 @@ final class PreferencesArrayOf_MergerBoardInstance : StoredArrayOf_MergerBoardIn
     self.addEBObserverOf_x (self.mObserverForWritingPreferences)
     self.addEBObserverOf_y (self.mObserverForWritingPreferences)
     self.addEBObserverOf_instanceRotation (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

@@ -554,8 +554,6 @@ var g_Preferences : Preferences? = nil
 
   @objc func applicationWillTerminateAction (_ : NSNotification) {
   //--------------------------- Array controller
-  //--- Array controller property: userLibraryArrayController
-    preferences_userLibraryArrayController.unbind_model ()
   }
 
   //····················································································································

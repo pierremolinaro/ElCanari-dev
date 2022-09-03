@@ -2102,7 +2102,7 @@ final class PreferencesArrayOf_PackageZone : StoredArrayOf_PackageZone {
     self.addEBObserverOf_xNameUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_yNameUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_zoneNumbering (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

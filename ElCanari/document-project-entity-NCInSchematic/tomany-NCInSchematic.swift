@@ -805,7 +805,7 @@ final class PreferencesArrayOf_NCInSchematic : StoredArrayOf_NCInSchematic {
       self.setProp (objectArray)
     }
     self.addEBObserverOf_mOrientation (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

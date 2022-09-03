@@ -1212,7 +1212,7 @@ final class PreferencesArrayOf_DeviceSlavePadInProject : StoredArrayOf_DeviceSla
     self.addEBObserverOf_mHoleHeight (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mShape (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mStyle (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

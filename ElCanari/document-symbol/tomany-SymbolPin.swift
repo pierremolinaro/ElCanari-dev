@@ -1616,7 +1616,7 @@ final class PreferencesArrayOf_SymbolPin : StoredArrayOf_SymbolPin {
     self.addEBObserverOf_numberHorizontalAlignment (self.mObserverForWritingPreferences)
     self.addEBObserverOf_pinNameIsDisplayedInSchematics (self.mObserverForWritingPreferences)
     self.addEBObserverOf_xPin (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

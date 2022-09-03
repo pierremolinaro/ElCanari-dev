@@ -2899,7 +2899,7 @@ final class PreferencesArrayOf_BoardTrack : StoredArrayOf_BoardTrack {
     self.addEBObserverOf_mManualLockP1 (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mManualLockP2 (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mDirectionLockOnKnobDragging (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

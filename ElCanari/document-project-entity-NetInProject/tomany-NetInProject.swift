@@ -1205,7 +1205,7 @@ final class PreferencesArrayOf_NetInProject : StoredArrayOf_NetInProject {
     }
     self.addEBObserverOf_mNetName (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mWarnsExactlyOneLabel (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

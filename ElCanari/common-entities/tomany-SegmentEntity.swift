@@ -936,7 +936,7 @@ final class PreferencesArrayOf_SegmentEntity : StoredArrayOf_SegmentEntity {
     self.addEBObserverOf_y2 (self.mObserverForWritingPreferences)
     self.addEBObserverOf_width (self.mObserverForWritingPreferences)
     self.addEBObserverOf_x1 (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

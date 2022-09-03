@@ -1484,7 +1484,7 @@ final class PreferencesArrayOf_BoardRestrictRectangle : StoredArrayOf_BoardRestr
     self.addEBObserverOf_mIsInInner3Layer (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mIsInInner4Layer (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mX (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

@@ -2581,7 +2581,7 @@ final class PreferencesArrayOf_PackagePad : StoredArrayOf_PackagePad {
     self.addEBObserverOf_holeWidthUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_holeHeightUnit (self.mObserverForWritingPreferences)
     self.addEBObserverOf_annularRingUnit (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

@@ -1003,7 +1003,7 @@ final class PreferencesArrayOf_SheetInProject : StoredArrayOf_SheetInProject {
       self.setProp (objectArray)
     }
     self.addEBObserverOf_mSheetTitle (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

@@ -656,7 +656,7 @@ final class PreferencesArrayOf_ForbiddenPadNumber : StoredArrayOf_ForbiddenPadNu
       self.setProp (objectArray)
     }
     self.addEBObserverOf_padNumber (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································

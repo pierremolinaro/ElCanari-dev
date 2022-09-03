@@ -1155,7 +1155,7 @@ final class PreferencesArrayOf_PackageModelImageDoublePoint : StoredArrayOf_Pack
     self.addEBObserverOf_mSecondDx (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mSecondDy (self.mObserverForWritingPreferences)
     self.addEBObserverOf_mSecondColor (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { self.writeInPreferences () }
+    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 
   //····················································································································
