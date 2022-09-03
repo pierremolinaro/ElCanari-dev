@@ -391,7 +391,7 @@ final class TransientArrayOf_PadProxyInDevice : ReadOnlyArrayOf_PadProxyInDevice
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_PadProxyInDevice? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_PadProxyInDevice? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -504,7 +504,7 @@ final class TransientArrayOfSuperOf_PadProxyInDevice <SUPER : EBManagedObject> :
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -613,7 +613,7 @@ final class ProxyArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_PadProxyInDevice? = nil
+  private weak var mModel : ReadWriteArrayOf_PadProxyInDevice? = nil // SHOULD BE WEAK
 
   //····················································································································
 

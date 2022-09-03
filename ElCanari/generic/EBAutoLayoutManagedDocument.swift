@@ -242,13 +242,15 @@ class EBAutoLayoutManagedDocument : NSDocument {
       vStackView.appendView (hStackView)
       window.contentView = vStackView
       window.isReleasedWhenClosed = false
-      window.center ()
       window.makeKeyAndOrderFront (nil)
+      window.center ()
+//      if let screen = window.screen {
+//        window.setFrameOrigin (NSPoint (x:100, y: 100))
+//      }
       RunLoop.current.run (until: Date ())
     }
     self.ebUndoManager.disableUndoRegistration ()
   //--- Load file
-    let startLoadFile = Date ()
     let documentData = try loadEasyBindingFile (fromData: inData, documentName: self.displayName, undoManager: self.ebUndoManager)
     self.mManagedDocumentFileFormat = documentData.documentFileFormat
   //--- Store Status
@@ -496,9 +498,6 @@ class EBAutoLayoutManagedDocument : NSDocument {
         entity.clearObjectExplorer ()
       }
     #endif
-    for entity in allEntities {
-      entity.removeAllObservers ()
-    }
     appendDocumentFileOperationInfo ("remove entity observers done")
     for entity in allEntities {
       entity.cleanUpToManyRelationships ()

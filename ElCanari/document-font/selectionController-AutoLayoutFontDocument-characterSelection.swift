@@ -66,7 +66,7 @@ final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSw
   //   BIND SELECTION
   //····················································································································
 
-  private var mModel : ReadOnlyArrayOf_FontCharacter? = nil
+  private weak var mModel : ReadOnlyArrayOf_FontCharacter? = nil // SHOULD BE WEAK
 
   //····················································································································
 

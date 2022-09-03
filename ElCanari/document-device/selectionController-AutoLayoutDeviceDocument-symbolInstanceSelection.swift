@@ -76,7 +76,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolInstanceSelection
   //   BIND SELECTION
   //····················································································································
 
-  private var mModel : ReadOnlyArrayOf_SymbolInstanceInDevice? = nil
+  private weak var mModel : ReadOnlyArrayOf_SymbolInstanceInDevice? = nil // SHOULD BE WEAK
 
   //····················································································································
 

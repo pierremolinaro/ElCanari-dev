@@ -1420,7 +1420,7 @@ final class TransientArrayOf_PackageBezier : ReadOnlyArrayOf_PackageBezier {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_PackageBezier? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_PackageBezier? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -1533,7 +1533,7 @@ final class TransientArrayOfSuperOf_PackageBezier <SUPER : EBManagedObject> : Re
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -1642,7 +1642,7 @@ final class ProxyArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_PackageBezier? = nil
+  private weak var mModel : ReadWriteArrayOf_PackageBezier? = nil // SHOULD BE WEAK
 
   //····················································································································
 

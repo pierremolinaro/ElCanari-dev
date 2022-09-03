@@ -1552,7 +1552,7 @@ final class TransientArrayOf_PackageZone : ReadOnlyArrayOf_PackageZone {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_PackageZone? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_PackageZone? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -1665,7 +1665,7 @@ final class TransientArrayOfSuperOf_PackageZone <SUPER : EBManagedObject> : Read
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -1774,7 +1774,7 @@ final class ProxyArrayOf_PackageZone : ReadWriteArrayOf_PackageZone {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_PackageZone? = nil
+  private weak var mModel : ReadWriteArrayOf_PackageZone? = nil // SHOULD BE WEAK
 
   //····················································································································
 

@@ -366,7 +366,7 @@ final class TransientObject_DevicePinInProject : ReadOnlyObject_DevicePinInProje
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_DevicePinInProject? = nil
+  private weak var mDataProvider : ReadOnlyObject_DevicePinInProject? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -450,7 +450,7 @@ final class ProxyObject_DevicePinInProject : ReadWriteObject_DevicePinInProject 
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_DevicePinInProject? = nil
+  private weak var mModel : ReadWriteObject_DevicePinInProject? = nil // SHOULD BE WEAK
 
   //····················································································································
 

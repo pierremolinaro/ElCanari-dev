@@ -11,10 +11,17 @@ import Cocoa
 final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : ReadOnlyAbstractGenericRelationshipProperty, EBGraphicViewControllerProtocol, HiddenEBProtocol {
 
   //····················································································································
+  //    Undo manager
+  //····················································································································
+
+  private weak var mUndoManager : EBUndoManager? = nil // SHOULD BE WEAK
+  var ebUndoManager : EBUndoManager? { return self.mUndoManager }
+
+  //····················································································································
   // Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_PackageObject? = nil
+  private weak var mModel : ReadWriteArrayOf_PackageObject? = nil // SHOULD BE WEAK
 
   //····················································································································
 
@@ -80,7 +87,7 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
 
   override init () {
     super.init ()
-  //--- Selection observers
+   //--- Selection observers
     self.canBringForward_property.mReadModelFunction = { [weak self] in
       if let me = self {
         return .single (me.canBringForward)
@@ -197,13 +204,6 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
        return EBReferenceArray ()
      }
    }
-
-  //····················································································································
-  //    Undo manager
-  //····················································································································
-
-  private var mUndoManager : EBUndoManager? = nil
-  var ebUndoManager : EBUndoManager? { return self.mUndoManager }
 
   //····················································································································
   //   SELECTION

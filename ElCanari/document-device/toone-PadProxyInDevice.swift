@@ -159,7 +159,7 @@ final class TransientObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_PadProxyInDevice? = nil
+  private weak var mDataProvider : ReadOnlyObject_PadProxyInDevice? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -243,7 +243,7 @@ final class ProxyObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_PadProxyInDevice? = nil
+  private weak var mModel : ReadWriteObject_PadProxyInDevice? = nil // SHOULD BE WEAK
 
   //····················································································································
 

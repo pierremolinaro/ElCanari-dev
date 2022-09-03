@@ -589,7 +589,7 @@ final class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardIn
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_MergerBoardInstance? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_MergerBoardInstance? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -702,7 +702,7 @@ final class TransientArrayOfSuperOf_MergerBoardInstance <SUPER : EBManagedObject
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -811,7 +811,7 @@ final class ProxyArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInsta
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_MergerBoardInstance? = nil
+  private weak var mModel : ReadWriteArrayOf_MergerBoardInstance? = nil // SHOULD BE WEAK
 
   //····················································································································
 

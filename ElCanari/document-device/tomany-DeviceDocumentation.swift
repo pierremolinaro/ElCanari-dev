@@ -256,7 +256,7 @@ final class TransientArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumen
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_DeviceDocumentation? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_DeviceDocumentation? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -369,7 +369,7 @@ final class TransientArrayOfSuperOf_DeviceDocumentation <SUPER : EBManagedObject
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -478,7 +478,7 @@ final class ProxyArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentat
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_DeviceDocumentation? = nil
+  private weak var mModel : ReadWriteArrayOf_DeviceDocumentation? = nil // SHOULD BE WEAK
 
   //····················································································································
 

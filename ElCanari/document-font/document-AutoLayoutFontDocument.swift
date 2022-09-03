@@ -662,8 +662,6 @@ import Cocoa
   //····················································································································
 
   final private func configureProperties () {
-    let start = Date ()
-    var opIdx = 0
   //--- Array controller property: selectedCharacterController
     self.selectedCharacterController.bind_model (self.rootObject.characters_property, self.ebUndoManager)
 

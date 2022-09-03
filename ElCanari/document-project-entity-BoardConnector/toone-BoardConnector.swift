@@ -759,7 +759,7 @@ final class TransientObject_BoardConnector : ReadOnlyObject_BoardConnector {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_BoardConnector? = nil
+  private weak var mDataProvider : ReadOnlyObject_BoardConnector? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -843,7 +843,7 @@ final class ProxyObject_BoardConnector : ReadWriteObject_BoardConnector {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_BoardConnector? = nil
+  private weak var mModel : ReadWriteObject_BoardConnector? = nil // SHOULD BE WEAK
 
   //····················································································································
 

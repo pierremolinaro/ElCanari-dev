@@ -913,8 +913,6 @@ import Cocoa
   //····················································································································
 
   final private func configureProperties () {
-    let start = Date ()
-    var opIdx = 0
   //--- Array controller property: mDataController
     self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property, self.ebUndoManager)
 

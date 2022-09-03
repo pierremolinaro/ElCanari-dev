@@ -26,7 +26,7 @@ struct EBWeakReferenceSet <T : ObjectIndexProtocol> {
 
   mutating func insert (_ inObject : T) {
     let address = inObject.objectIndex
-    _ = self.mDictionary.updateValue (EBWeakReferenceSetElement (inObject), forKey: address)
+    self.mDictionary [address] = EBWeakReferenceSetElement (inObject)
   }
 
   //····················································································································
@@ -57,6 +57,7 @@ struct EBWeakReferenceSet <T : ObjectIndexProtocol> {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate struct EBWeakReferenceSetElement <T : ObjectIndexProtocol> {
+
   private weak var mElement : T?
 
   init (_ inElement : T) {

@@ -1072,7 +1072,7 @@ final class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_SymbolPin? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_SymbolPin? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -1185,7 +1185,7 @@ final class TransientArrayOfSuperOf_SymbolPin <SUPER : EBManagedObject> : ReadOn
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -1294,7 +1294,7 @@ final class ProxyArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_SymbolPin? = nil
+  private weak var mModel : ReadWriteArrayOf_SymbolPin? = nil // SHOULD BE WEAK
 
   //····················································································································
 

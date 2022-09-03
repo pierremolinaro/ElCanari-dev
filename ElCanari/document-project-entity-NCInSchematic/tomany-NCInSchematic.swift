@@ -253,7 +253,7 @@ final class TransientArrayOf_NCInSchematic : ReadOnlyArrayOf_NCInSchematic {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_NCInSchematic? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_NCInSchematic? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -366,7 +366,7 @@ final class TransientArrayOfSuperOf_NCInSchematic <SUPER : EBManagedObject> : Re
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -475,7 +475,7 @@ final class ProxyArrayOf_NCInSchematic : ReadWriteArrayOf_NCInSchematic {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_NCInSchematic? = nil
+  private weak var mModel : ReadWriteArrayOf_NCInSchematic? = nil // SHOULD BE WEAK
 
   //····················································································································
 

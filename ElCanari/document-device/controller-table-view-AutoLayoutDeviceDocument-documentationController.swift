@@ -21,7 +21,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjc
   //    Undo manager
   //····················································································································
 
-  private var mUndoManager : EBUndoManager? = nil
+  private weak var mUndoManager : EBUndoManager? = nil // SHOULD BE WEAK
   var ebUndoManager : EBUndoManager? { return self.mUndoManager }
 
   //····················································································································
@@ -38,7 +38,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjc
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_DeviceDocumentation? = nil
+  private weak var mModel : ReadWriteArrayOf_DeviceDocumentation? = nil // SHOULD BE WEAK
 
   //····················································································································
 

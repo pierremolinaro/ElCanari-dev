@@ -131,7 +131,7 @@ func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN TH
     if !self.mRefreshTriggered {
       self.mRefreshTriggered = true
       Task {
-        try? await Task.sleep (nanoseconds: 250_000_000) // 250 ms
+   //     try? await Task.sleep (nanoseconds: 250_000_000) // 250 ms
         let totalAllocatedObjectCountByClass = self.mTotalAllocatedObjectCountByClass
         let liveObjectCountByClass = self.mLiveObjectCountByClass
         DispatchQueue.main.sync {

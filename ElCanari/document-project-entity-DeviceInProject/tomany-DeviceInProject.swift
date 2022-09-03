@@ -922,7 +922,7 @@ final class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_DeviceInProject? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_DeviceInProject? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -1035,7 +1035,7 @@ final class TransientArrayOfSuperOf_DeviceInProject <SUPER : EBManagedObject> : 
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -1144,7 +1144,7 @@ final class ProxyArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_DeviceInProject? = nil
+  private weak var mModel : ReadWriteArrayOf_DeviceInProject? = nil // SHOULD BE WEAK
 
   //····················································································································
 

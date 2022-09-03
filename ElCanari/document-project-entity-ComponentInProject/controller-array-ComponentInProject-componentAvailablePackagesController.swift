@@ -11,10 +11,17 @@ import Cocoa
 final class Controller_ComponentInProject_componentAvailablePackagesController : ReadOnlyAbstractGenericRelationshipProperty, HiddenEBProtocol {
 
   //····················································································································
+  //    Undo manager
+  //····················································································································
+
+  private weak var mUndoManager : EBUndoManager? = nil // SHOULD BE WEAK
+  var ebUndoManager : EBUndoManager? { return self.mUndoManager }
+
+  //····················································································································
   // Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_DevicePackageInProject? = nil
+  private weak var mModel : ReadWriteArrayOf_DevicePackageInProject? = nil // SHOULD BE WEAK
 
   //····················································································································
 
@@ -61,13 +68,6 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
 
   var selectedArray : EBReferenceArray <DevicePackageInProject> { return self.selectedArray_property.propval }
 
-  //····················································································································
-  //   Init
-  //····················································································································
-
-  override init () {
-    super.init ()
-  }
 
   //····················································································································
 
@@ -115,13 +115,6 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
        return EBReferenceArray ()
      }
    }
-
-  //····················································································································
-  //    Undo manager
-  //····················································································································
-
-  private var mUndoManager : EBUndoManager? = nil
-  var ebUndoManager : EBUndoManager? { return self.mUndoManager }
 
   //····················································································································
   //   SELECTION

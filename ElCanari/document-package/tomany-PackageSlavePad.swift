@@ -1681,7 +1681,7 @@ final class TransientArrayOf_PackageSlavePad : ReadOnlyArrayOf_PackageSlavePad {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_PackageSlavePad? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_PackageSlavePad? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -1794,7 +1794,7 @@ final class TransientArrayOfSuperOf_PackageSlavePad <SUPER : EBManagedObject> : 
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -1903,7 +1903,7 @@ final class ProxyArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_PackageSlavePad? = nil
+  private weak var mModel : ReadWriteArrayOf_PackageSlavePad? = nil // SHOULD BE WEAK
 
   //····················································································································
 

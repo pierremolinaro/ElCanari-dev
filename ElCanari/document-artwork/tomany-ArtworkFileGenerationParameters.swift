@@ -2182,7 +2182,7 @@ final class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_A
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_ArtworkFileGenerationParameters? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_ArtworkFileGenerationParameters? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -2295,7 +2295,7 @@ final class TransientArrayOfSuperOf_ArtworkFileGenerationParameters <SUPER : EBM
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -2404,7 +2404,7 @@ final class ProxyArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Artw
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_ArtworkFileGenerationParameters? = nil
+  private weak var mModel : ReadWriteArrayOf_ArtworkFileGenerationParameters? = nil // SHOULD BE WEAK
 
   //····················································································································
 

@@ -1061,7 +1061,7 @@ final class TransientArrayOf_BorderCurve : ReadOnlyArrayOf_BorderCurve {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_BorderCurve? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_BorderCurve? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -1174,7 +1174,7 @@ final class TransientArrayOfSuperOf_BorderCurve <SUPER : EBManagedObject> : Read
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -1283,7 +1283,7 @@ final class ProxyArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_BorderCurve? = nil
+  private weak var mModel : ReadWriteArrayOf_BorderCurve? = nil // SHOULD BE WEAK
 
   //····················································································································
 

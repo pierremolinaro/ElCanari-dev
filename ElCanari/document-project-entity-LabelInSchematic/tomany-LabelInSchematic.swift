@@ -451,7 +451,7 @@ final class TransientArrayOf_LabelInSchematic : ReadOnlyArrayOf_LabelInSchematic
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_LabelInSchematic? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_LabelInSchematic? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -564,7 +564,7 @@ final class TransientArrayOfSuperOf_LabelInSchematic <SUPER : EBManagedObject> :
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -673,7 +673,7 @@ final class ProxyArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_LabelInSchematic? = nil
+  private weak var mModel : ReadWriteArrayOf_LabelInSchematic? = nil // SHOULD BE WEAK
 
   //····················································································································
 

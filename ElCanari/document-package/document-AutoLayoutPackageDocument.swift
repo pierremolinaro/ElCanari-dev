@@ -3492,8 +3492,6 @@ import Cocoa
   //····················································································································
 
   final private func configureProperties () {
-    let start = Date ()
-    var opIdx = 0
   //--- Array controller property: mModelImageObjectsController
     self.mModelImageObjectsController.bind_model (self.rootObject.mModelImageObjects_property, self.ebUndoManager)
 

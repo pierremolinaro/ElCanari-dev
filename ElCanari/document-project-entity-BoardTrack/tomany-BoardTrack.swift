@@ -2335,7 +2335,7 @@ final class TransientArrayOf_BoardTrack : ReadOnlyArrayOf_BoardTrack {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_BoardTrack? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_BoardTrack? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -2448,7 +2448,7 @@ final class TransientArrayOfSuperOf_BoardTrack <SUPER : EBManagedObject> : ReadO
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -2557,7 +2557,7 @@ final class ProxyArrayOf_BoardTrack : ReadWriteArrayOf_BoardTrack {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_BoardTrack? = nil
+  private weak var mModel : ReadWriteArrayOf_BoardTrack? = nil // SHOULD BE WEAK
 
   //····················································································································
 

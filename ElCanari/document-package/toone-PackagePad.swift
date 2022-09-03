@@ -735,7 +735,7 @@ final class TransientObject_PackagePad : ReadOnlyObject_PackagePad {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_PackagePad? = nil
+  private weak var mDataProvider : ReadOnlyObject_PackagePad? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -819,7 +819,7 @@ final class ProxyObject_PackagePad : ReadWriteObject_PackagePad {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_PackagePad? = nil
+  private weak var mModel : ReadWriteObject_PackagePad? = nil // SHOULD BE WEAK
 
   //····················································································································
 

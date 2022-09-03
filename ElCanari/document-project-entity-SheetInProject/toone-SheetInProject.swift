@@ -230,7 +230,7 @@ final class TransientObject_SheetInProject : ReadOnlyObject_SheetInProject {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_SheetInProject? = nil
+  private weak var mDataProvider : ReadOnlyObject_SheetInProject? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -314,7 +314,7 @@ final class ProxyObject_SheetInProject : ReadWriteObject_SheetInProject {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_SheetInProject? = nil
+  private weak var mModel : ReadWriteObject_SheetInProject? = nil // SHOULD BE WEAK
 
   //····················································································································
 

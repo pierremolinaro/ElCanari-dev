@@ -482,7 +482,7 @@ final class TransientObject_ArtworkRoot : ReadOnlyObject_ArtworkRoot {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_ArtworkRoot? = nil
+  private weak var mDataProvider : ReadOnlyObject_ArtworkRoot? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -566,7 +566,7 @@ final class ProxyObject_ArtworkRoot : ReadWriteObject_ArtworkRoot {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_ArtworkRoot? = nil
+  private weak var mModel : ReadWriteObject_ArtworkRoot? = nil // SHOULD BE WEAK
 
   //····················································································································
 

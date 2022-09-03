@@ -1876,7 +1876,7 @@ final class TransientArrayOf_NetClassInProject : ReadOnlyArrayOf_NetClassInProje
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_NetClassInProject? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_NetClassInProject? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -1989,7 +1989,7 @@ final class TransientArrayOfSuperOf_NetClassInProject <SUPER : EBManagedObject> 
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -2098,7 +2098,7 @@ final class ProxyArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject 
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_NetClassInProject? = nil
+  private weak var mModel : ReadWriteArrayOf_NetClassInProject? = nil // SHOULD BE WEAK
 
   //····················································································································
 

@@ -4025,8 +4025,6 @@ import Cocoa
   //····················································································································
 
   final private func configureProperties () {
-    let start = Date ()
-    var opIdx = 0
   //--- Array controller property: mBoardModelController
     self.mBoardModelController.bind_model (self.rootObject.boardModels_property, self.ebUndoManager)
 

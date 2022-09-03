@@ -113,7 +113,7 @@ final class TransientObject_DeviceSymbolTypeInProject : ReadOnlyObject_DeviceSym
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_DeviceSymbolTypeInProject? = nil
+  private weak var mDataProvider : ReadOnlyObject_DeviceSymbolTypeInProject? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -197,7 +197,7 @@ final class ProxyObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbol
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_DeviceSymbolTypeInProject? = nil
+  private weak var mModel : ReadWriteObject_DeviceSymbolTypeInProject? = nil // SHOULD BE WEAK
 
   //····················································································································
 

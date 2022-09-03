@@ -121,7 +121,7 @@ final class TransientArrayOf_ForbiddenPadNumber : ReadOnlyArrayOf_ForbiddenPadNu
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_ForbiddenPadNumber? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_ForbiddenPadNumber? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -234,7 +234,7 @@ final class TransientArrayOfSuperOf_ForbiddenPadNumber <SUPER : EBManagedObject>
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -343,7 +343,7 @@ final class ProxyArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumbe
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_ForbiddenPadNumber? = nil
+  private weak var mModel : ReadWriteArrayOf_ForbiddenPadNumber? = nil // SHOULD BE WEAK
 
   //····················································································································
 

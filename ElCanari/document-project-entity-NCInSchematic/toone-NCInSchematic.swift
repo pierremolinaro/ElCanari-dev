@@ -113,7 +113,7 @@ final class TransientObject_NCInSchematic : ReadOnlyObject_NCInSchematic {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_NCInSchematic? = nil
+  private weak var mDataProvider : ReadOnlyObject_NCInSchematic? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -197,7 +197,7 @@ final class ProxyObject_NCInSchematic : ReadWriteObject_NCInSchematic {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_NCInSchematic? = nil
+  private weak var mModel : ReadWriteObject_NCInSchematic? = nil // SHOULD BE WEAK
 
   //····················································································································
 

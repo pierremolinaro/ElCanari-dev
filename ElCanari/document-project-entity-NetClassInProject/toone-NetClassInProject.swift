@@ -689,7 +689,7 @@ final class TransientObject_NetClassInProject : ReadOnlyObject_NetClassInProject
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_NetClassInProject? = nil
+  private weak var mDataProvider : ReadOnlyObject_NetClassInProject? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -773,7 +773,7 @@ final class ProxyObject_NetClassInProject : ReadWriteObject_NetClassInProject {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_NetClassInProject? = nil
+  private weak var mModel : ReadWriteObject_NetClassInProject? = nil // SHOULD BE WEAK
 
   //····················································································································
 

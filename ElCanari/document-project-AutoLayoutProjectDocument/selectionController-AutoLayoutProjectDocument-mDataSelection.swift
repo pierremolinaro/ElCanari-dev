@@ -204,7 +204,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //   BIND SELECTION
   //····················································································································
 
-  private var mModel : ReadOnlyArrayOf_ArtworkFileGenerationParameters? = nil
+  private weak var mModel : ReadOnlyArrayOf_ArtworkFileGenerationParameters? = nil // SHOULD BE WEAK
 
   //····················································································································
 

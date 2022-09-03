@@ -21,7 +21,7 @@ final class Controller_AutoLayoutProjectDocument_netClassController : EBObjcBase
   //    Undo manager
   //····················································································································
 
-  private var mUndoManager : EBUndoManager? = nil
+  private weak var mUndoManager : EBUndoManager? = nil // SHOULD BE WEAK
   var ebUndoManager : EBUndoManager? { return self.mUndoManager }
 
   //····················································································································
@@ -38,7 +38,7 @@ final class Controller_AutoLayoutProjectDocument_netClassController : EBObjcBase
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_NetClassInProject? = nil
+  private weak var mModel : ReadWriteArrayOf_NetClassInProject? = nil // SHOULD BE WEAK
 
   //····················································································································
 

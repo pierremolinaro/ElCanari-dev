@@ -492,7 +492,7 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
   //   BIND SELECTION
   //····················································································································
 
-  private var mModel : ReadOnlyArrayOf_BoardModel? = nil
+  private weak var mModel : ReadOnlyArrayOf_BoardModel? = nil // SHOULD BE WEAK
 
   //····················································································································
 

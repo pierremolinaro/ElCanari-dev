@@ -574,7 +574,7 @@ final class TransientObject_PackageZone : ReadOnlyObject_PackageZone {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_PackageZone? = nil
+  private weak var mDataProvider : ReadOnlyObject_PackageZone? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -658,7 +658,7 @@ final class ProxyObject_PackageZone : ReadWriteObject_PackageZone {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_PackageZone? = nil
+  private weak var mModel : ReadWriteObject_PackageZone? = nil // SHOULD BE WEAK
 
   //····················································································································
 

@@ -6756,8 +6756,6 @@ import Cocoa
   //····················································································································
 
   final private func configureProperties () {
-    let start = Date ()
-    var opIdx = 0
   //--- Array controller property: netClassController
     self.netClassController.bind_model (self.rootObject.mNetClasses_property, self.ebUndoManager)
 

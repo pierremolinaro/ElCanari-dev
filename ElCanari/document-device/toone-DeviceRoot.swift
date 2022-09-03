@@ -739,7 +739,7 @@ final class TransientObject_DeviceRoot : ReadOnlyObject_DeviceRoot {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_DeviceRoot? = nil
+  private weak var mDataProvider : ReadOnlyObject_DeviceRoot? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -823,7 +823,7 @@ final class ProxyObject_DeviceRoot : ReadWriteObject_DeviceRoot {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_DeviceRoot? = nil
+  private weak var mModel : ReadWriteObject_DeviceRoot? = nil // SHOULD BE WEAK
 
   //····················································································································
 

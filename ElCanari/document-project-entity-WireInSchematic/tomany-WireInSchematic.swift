@@ -382,7 +382,7 @@ final class TransientArrayOf_WireInSchematic : ReadOnlyArrayOf_WireInSchematic {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_WireInSchematic? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_WireInSchematic? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -495,7 +495,7 @@ final class TransientArrayOfSuperOf_WireInSchematic <SUPER : EBManagedObject> : 
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -604,7 +604,7 @@ final class ProxyArrayOf_WireInSchematic : ReadWriteArrayOf_WireInSchematic {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_WireInSchematic? = nil
+  private weak var mModel : ReadWriteArrayOf_WireInSchematic? = nil // SHOULD BE WEAK
 
   //····················································································································
 

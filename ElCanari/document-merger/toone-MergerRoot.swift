@@ -874,7 +874,7 @@ final class TransientObject_MergerRoot : ReadOnlyObject_MergerRoot {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_MergerRoot? = nil
+  private weak var mDataProvider : ReadOnlyObject_MergerRoot? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -958,7 +958,7 @@ final class ProxyObject_MergerRoot : ReadWriteObject_MergerRoot {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_MergerRoot? = nil
+  private weak var mModel : ReadWriteObject_MergerRoot? = nil // SHOULD BE WEAK
 
   //····················································································································
 

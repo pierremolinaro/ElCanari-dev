@@ -21,7 +21,7 @@ final class Controller_AutoLayoutMergerDocument_mBoardModelController : EBObjcBa
   //    Undo manager
   //····················································································································
 
-  private var mUndoManager : EBUndoManager? = nil
+  private weak var mUndoManager : EBUndoManager? = nil // SHOULD BE WEAK
   var ebUndoManager : EBUndoManager? { return self.mUndoManager }
 
   //····················································································································
@@ -38,7 +38,7 @@ final class Controller_AutoLayoutMergerDocument_mBoardModelController : EBObjcBa
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_BoardModel? = nil
+  private weak var mModel : ReadWriteArrayOf_BoardModel? = nil // SHOULD BE WEAK
 
   //····················································································································
 

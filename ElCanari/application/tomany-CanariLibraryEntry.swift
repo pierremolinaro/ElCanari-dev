@@ -394,7 +394,7 @@ final class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryE
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_CanariLibraryEntry? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_CanariLibraryEntry? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -507,7 +507,7 @@ final class TransientArrayOfSuperOf_CanariLibraryEntry <SUPER : EBManagedObject>
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -616,7 +616,7 @@ final class ProxyArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntr
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_CanariLibraryEntry? = nil
+  private weak var mModel : ReadWriteArrayOf_CanariLibraryEntry? = nil // SHOULD BE WEAK
 
   //····················································································································
 

@@ -21,7 +21,7 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : EBObjcB
   //    Undo manager
   //····················································································································
 
-  private var mUndoManager : EBUndoManager? = nil
+  private weak var mUndoManager : EBUndoManager? = nil // SHOULD BE WEAK
   var ebUndoManager : EBUndoManager? { return self.mUndoManager }
 
   //····················································································································
@@ -38,7 +38,7 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : EBObjcB
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_FontInProject? = nil
+  private weak var mModel : ReadWriteArrayOf_FontInProject? = nil // SHOULD BE WEAK
 
   //····················································································································
 

@@ -79,7 +79,6 @@ private func raiseInvalidDataFormatError (dataFormat : UInt8) throws {
 fileprivate func readManagedObjectsFromBinaryData (_ inUndoManager : EBUndoManager?, inData : Data) throws -> EBManagedObject? {
   var resultRootObject : EBManagedObject? = nil
   if let dictionaryArray = try PropertyListSerialization.propertyList (from: inData as Data, options: [], format: nil) as? [NSDictionary] {
-    let creationStart = Date ()
     var objectArray = [EBManagedObject] ()
     for d in dictionaryArray {
       let className = d.object (forKey: ENTITY_KEY) as! String
@@ -93,7 +92,6 @@ fileprivate func readManagedObjectsFromBinaryData (_ inUndoManager : EBUndoManag
         throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo:dictionary)
       }
     }
-    let setupStart = Date ()
     var idx = 0
     for d in dictionaryArray {
       let object = objectArray [idx]

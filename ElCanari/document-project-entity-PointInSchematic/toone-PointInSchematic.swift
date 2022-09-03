@@ -461,7 +461,7 @@ final class TransientObject_PointInSchematic : ReadOnlyObject_PointInSchematic {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_PointInSchematic? = nil
+  private weak var mDataProvider : ReadOnlyObject_PointInSchematic? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -545,7 +545,7 @@ final class ProxyObject_PointInSchematic : ReadWriteObject_PointInSchematic {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_PointInSchematic? = nil
+  private weak var mModel : ReadWriteObject_PointInSchematic? = nil // SHOULD BE WEAK
 
   //····················································································································
 

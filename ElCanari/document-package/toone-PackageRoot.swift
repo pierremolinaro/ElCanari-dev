@@ -1383,7 +1383,7 @@ final class TransientObject_PackageRoot : ReadOnlyObject_PackageRoot {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_PackageRoot? = nil
+  private weak var mDataProvider : ReadOnlyObject_PackageRoot? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -1467,7 +1467,7 @@ final class ProxyObject_PackageRoot : ReadWriteObject_PackageRoot {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_PackageRoot? = nil
+  private weak var mModel : ReadWriteObject_PackageRoot? = nil // SHOULD BE WEAK
 
   //····················································································································
 

@@ -344,7 +344,7 @@ final class TransientObject_MasterPadInDevice : ReadOnlyObject_MasterPadInDevice
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_MasterPadInDevice? = nil
+  private weak var mDataProvider : ReadOnlyObject_MasterPadInDevice? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -428,7 +428,7 @@ final class ProxyObject_MasterPadInDevice : ReadWriteObject_MasterPadInDevice {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_MasterPadInDevice? = nil
+  private weak var mModel : ReadWriteObject_MasterPadInDevice? = nil // SHOULD BE WEAK
 
   //····················································································································
 

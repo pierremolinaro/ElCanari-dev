@@ -159,7 +159,7 @@ final class TransientObject_SymbolPinInstanceInDevice : ReadOnlyObject_SymbolPin
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_SymbolPinInstanceInDevice? = nil
+  private weak var mDataProvider : ReadOnlyObject_SymbolPinInstanceInDevice? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -243,7 +243,7 @@ final class ProxyObject_SymbolPinInstanceInDevice : ReadWriteObject_SymbolPinIns
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_SymbolPinInstanceInDevice? = nil
+  private weak var mModel : ReadWriteObject_SymbolPinInstanceInDevice? = nil // SHOULD BE WEAK
 
   //····················································································································
 

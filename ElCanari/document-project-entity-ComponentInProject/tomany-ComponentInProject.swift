@@ -2954,7 +2954,7 @@ final class TransientArrayOf_ComponentInProject : ReadOnlyArrayOf_ComponentInPro
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_ComponentInProject? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_ComponentInProject? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -3067,7 +3067,7 @@ final class TransientArrayOfSuperOf_ComponentInProject <SUPER : EBManagedObject>
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -3176,7 +3176,7 @@ final class ProxyArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProjec
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_ComponentInProject? = nil
+  private weak var mModel : ReadWriteArrayOf_ComponentInProject? = nil // SHOULD BE WEAK
 
   //····················································································································
 

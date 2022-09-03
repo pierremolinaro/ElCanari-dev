@@ -21,7 +21,7 @@ final class Controller_AutoLayoutProjectDocument_mDataController : EBObjcBaseObj
   //    Undo manager
   //····················································································································
 
-  private var mUndoManager : EBUndoManager? = nil
+  private weak var mUndoManager : EBUndoManager? = nil // SHOULD BE WEAK
   var ebUndoManager : EBUndoManager? { return self.mUndoManager }
 
   //····················································································································
@@ -38,7 +38,7 @@ final class Controller_AutoLayoutProjectDocument_mDataController : EBObjcBaseObj
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_ArtworkFileGenerationParameters? = nil
+  private weak var mModel : ReadWriteArrayOf_ArtworkFileGenerationParameters? = nil // SHOULD BE WEAK
 
   //····················································································································
 

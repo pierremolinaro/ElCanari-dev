@@ -592,7 +592,7 @@ final class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_FontCharacter? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_FontCharacter? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -705,7 +705,7 @@ final class TransientArrayOfSuperOf_FontCharacter <SUPER : EBManagedObject> : Re
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -814,7 +814,7 @@ final class ProxyArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_FontCharacter? = nil
+  private weak var mModel : ReadWriteArrayOf_FontCharacter? = nil // SHOULD BE WEAK
 
   //····················································································································
 

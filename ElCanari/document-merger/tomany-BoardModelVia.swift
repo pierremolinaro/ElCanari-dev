@@ -259,7 +259,7 @@ final class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_BoardModelVia? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_BoardModelVia? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -372,7 +372,7 @@ final class TransientArrayOfSuperOf_BoardModelVia <SUPER : EBManagedObject> : Re
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -481,7 +481,7 @@ final class ProxyArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_BoardModelVia? = nil
+  private weak var mModel : ReadWriteArrayOf_BoardModelVia? = nil // SHOULD BE WEAK
 
   //····················································································································
 

@@ -343,7 +343,7 @@ final class TransientObject_BorderCurve : ReadOnlyObject_BorderCurve {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_BorderCurve? = nil
+  private weak var mDataProvider : ReadOnlyObject_BorderCurve? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -427,7 +427,7 @@ final class ProxyObject_BorderCurve : ReadWriteObject_BorderCurve {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_BorderCurve? = nil
+  private weak var mModel : ReadWriteObject_BorderCurve? = nil // SHOULD BE WEAK
 
   //····················································································································
 

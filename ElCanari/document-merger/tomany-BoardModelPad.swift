@@ -466,7 +466,7 @@ final class TransientArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_BoardModelPad? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_BoardModelPad? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -579,7 +579,7 @@ final class TransientArrayOfSuperOf_BoardModelPad <SUPER : EBManagedObject> : Re
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -688,7 +688,7 @@ final class ProxyArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_BoardModelPad? = nil
+  private weak var mModel : ReadWriteArrayOf_BoardModelPad? = nil // SHOULD BE WEAK
 
   //····················································································································
 

@@ -1058,7 +1058,7 @@ final class TransientObject_ComponentInProject : ReadOnlyObject_ComponentInProje
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_ComponentInProject? = nil
+  private weak var mDataProvider : ReadOnlyObject_ComponentInProject? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -1142,7 +1142,7 @@ final class ProxyObject_ComponentInProject : ReadWriteObject_ComponentInProject 
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_ComponentInProject? = nil
+  private weak var mModel : ReadWriteObject_ComponentInProject? = nil // SHOULD BE WEAK
 
   //····················································································································
 

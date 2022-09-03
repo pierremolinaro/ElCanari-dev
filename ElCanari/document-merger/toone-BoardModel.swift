@@ -2093,7 +2093,7 @@ final class TransientObject_BoardModel : ReadOnlyObject_BoardModel {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_BoardModel? = nil
+  private weak var mDataProvider : ReadOnlyObject_BoardModel? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -2177,7 +2177,7 @@ final class ProxyObject_BoardModel : ReadWriteObject_BoardModel {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_BoardModel? = nil
+  private weak var mModel : ReadWriteObject_BoardModel? = nil // SHOULD BE WEAK
 
   //····················································································································
 

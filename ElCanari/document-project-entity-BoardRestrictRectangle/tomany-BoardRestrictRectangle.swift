@@ -940,7 +940,7 @@ final class TransientArrayOf_BoardRestrictRectangle : ReadOnlyArrayOf_BoardRestr
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_BoardRestrictRectangle? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_BoardRestrictRectangle? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -1053,7 +1053,7 @@ final class TransientArrayOfSuperOf_BoardRestrictRectangle <SUPER : EBManagedObj
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -1162,7 +1162,7 @@ final class ProxyArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestrict
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_BoardRestrictRectangle? = nil
+  private weak var mModel : ReadWriteArrayOf_BoardRestrictRectangle? = nil // SHOULD BE WEAK
 
   //····················································································································
 

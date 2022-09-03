@@ -21,7 +21,7 @@ final class Controller_Preferences_userLibraryArrayController : EBObjcBaseObject
   //    Undo manager
   //····················································································································
 
-  private var mUndoManager : EBUndoManager? = nil
+  private weak var mUndoManager : EBUndoManager? = nil // SHOULD BE WEAK
   var ebUndoManager : EBUndoManager? { return self.mUndoManager }
 
   //····················································································································
@@ -38,7 +38,7 @@ final class Controller_Preferences_userLibraryArrayController : EBObjcBaseObject
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_CanariLibraryEntry? = nil
+  private weak var mModel : ReadWriteArrayOf_CanariLibraryEntry? = nil // SHOULD BE WEAK
 
   //····················································································································
 

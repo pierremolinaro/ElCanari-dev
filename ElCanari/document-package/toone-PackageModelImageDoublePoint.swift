@@ -228,7 +228,7 @@ final class TransientObject_PackageModelImageDoublePoint : ReadOnlyObject_Packag
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_PackageModelImageDoublePoint? = nil
+  private weak var mDataProvider : ReadOnlyObject_PackageModelImageDoublePoint? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -312,7 +312,7 @@ final class ProxyObject_PackageModelImageDoublePoint : ReadWriteObject_PackageMo
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_PackageModelImageDoublePoint? = nil
+  private weak var mModel : ReadWriteObject_PackageModelImageDoublePoint? = nil // SHOULD BE WEAK
 
   //····················································································································
 

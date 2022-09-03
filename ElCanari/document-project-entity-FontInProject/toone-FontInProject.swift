@@ -369,7 +369,7 @@ final class TransientObject_FontInProject : ReadOnlyObject_FontInProject {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_FontInProject? = nil
+  private weak var mDataProvider : ReadOnlyObject_FontInProject? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -453,7 +453,7 @@ final class ProxyObject_FontInProject : ReadWriteObject_FontInProject {
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_FontInProject? = nil
+  private weak var mModel : ReadWriteObject_FontInProject? = nil // SHOULD BE WEAK
 
   //····················································································································
 

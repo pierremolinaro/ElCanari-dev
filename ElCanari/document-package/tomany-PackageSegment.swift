@@ -1003,7 +1003,7 @@ final class TransientArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_PackageSegment? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_PackageSegment? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -1116,7 +1116,7 @@ final class TransientArrayOfSuperOf_PackageSegment <SUPER : EBManagedObject> : R
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -1225,7 +1225,7 @@ final class ProxyArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_PackageSegment? = nil
+  private weak var mModel : ReadWriteArrayOf_PackageSegment? = nil // SHOULD BE WEAK
 
   //····················································································································
 

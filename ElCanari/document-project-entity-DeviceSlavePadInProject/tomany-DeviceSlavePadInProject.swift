@@ -670,7 +670,7 @@ final class TransientArrayOf_DeviceSlavePadInProject : ReadOnlyArrayOf_DeviceSla
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_DeviceSlavePadInProject? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_DeviceSlavePadInProject? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -783,7 +783,7 @@ final class TransientArrayOfSuperOf_DeviceSlavePadInProject <SUPER : EBManagedOb
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -892,7 +892,7 @@ final class ProxyArrayOf_DeviceSlavePadInProject : ReadWriteArrayOf_DeviceSlaveP
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_DeviceSlavePadInProject? = nil
+  private weak var mModel : ReadWriteArrayOf_DeviceSlavePadInProject? = nil // SHOULD BE WEAK
 
   //····················································································································
 

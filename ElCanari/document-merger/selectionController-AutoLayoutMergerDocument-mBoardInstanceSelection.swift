@@ -70,7 +70,7 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection
   //   BIND SELECTION
   //····················································································································
 
-  private var mModel : ReadOnlyArrayOf_MergerBoardInstance? = nil
+  private weak var mModel : ReadOnlyArrayOf_MergerBoardInstance? = nil // SHOULD BE WEAK
 
   //····················································································································
 

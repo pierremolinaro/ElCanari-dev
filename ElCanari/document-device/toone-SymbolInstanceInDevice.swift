@@ -275,7 +275,7 @@ final class TransientObject_SymbolInstanceInDevice : ReadOnlyObject_SymbolInstan
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyObject_SymbolInstanceInDevice? = nil
+  private weak var mDataProvider : ReadOnlyObject_SymbolInstanceInDevice? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
 
   //····················································································································
@@ -359,7 +359,7 @@ final class ProxyObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstanceI
 
   //····················································································································
 
-  private var mModel : ReadWriteObject_SymbolInstanceInDevice? = nil
+  private weak var mModel : ReadWriteObject_SymbolInstanceInDevice? = nil // SHOULD BE WEAK
 
   //····················································································································
 

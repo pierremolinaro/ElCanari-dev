@@ -1126,8 +1126,6 @@ import Cocoa
   //····················································································································
 
   final private func configureProperties () {
-    let start = Date ()
-    var opIdx = 0
   //--- Array controller property: mSymbolObjectsController
     self.mSymbolObjectsController.bind_model (self.rootObject.symbolObjects_property, self.ebUndoManager)
 

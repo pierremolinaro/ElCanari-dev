@@ -802,7 +802,7 @@ final class TransientArrayOf_PackageGuide : ReadOnlyArrayOf_PackageGuide {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_PackageGuide? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_PackageGuide? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -915,7 +915,7 @@ final class TransientArrayOfSuperOf_PackageGuide <SUPER : EBManagedObject> : Rea
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -1024,7 +1024,7 @@ final class ProxyArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_PackageGuide? = nil
+  private weak var mModel : ReadWriteArrayOf_PackageGuide? = nil // SHOULD BE WEAK
 
   //····················································································································
 

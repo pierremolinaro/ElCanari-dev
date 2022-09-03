@@ -397,7 +397,7 @@ final class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_SegmentEntity? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_SegmentEntity? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -510,7 +510,7 @@ final class TransientArrayOfSuperOf_SegmentEntity <SUPER : EBManagedObject> : Re
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -619,7 +619,7 @@ final class ProxyArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_SegmentEntity? = nil
+  private weak var mModel : ReadWriteArrayOf_SegmentEntity? = nil // SHOULD BE WEAK
 
   //····················································································································
 

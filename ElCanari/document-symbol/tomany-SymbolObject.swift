@@ -250,7 +250,7 @@ final class TransientArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_SymbolObject? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_SymbolObject? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -363,7 +363,7 @@ final class TransientArrayOfSuperOf_SymbolObject <SUPER : EBManagedObject> : Rea
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -472,7 +472,7 @@ final class ProxyArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_SymbolObject? = nil
+  private weak var mModel : ReadWriteArrayOf_SymbolObject? = nil // SHOULD BE WEAK
 
   //····················································································································
 

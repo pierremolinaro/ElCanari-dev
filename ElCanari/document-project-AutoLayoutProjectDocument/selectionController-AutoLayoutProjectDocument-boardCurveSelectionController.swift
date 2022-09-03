@@ -116,7 +116,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //   BIND SELECTION
   //····················································································································
 
-  private var mModel : ReadOnlyArrayOf_BorderCurve? = nil
+  private weak var mModel : ReadOnlyArrayOf_BorderCurve? = nil // SHOULD BE WEAK
 
   //····················································································································
 

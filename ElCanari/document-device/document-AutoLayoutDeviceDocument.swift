@@ -1482,8 +1482,6 @@ import Cocoa
   //····················································································································
 
   final private func configureProperties () {
-    let start = Date ()
-    var opIdx = 0
   //--- Array controller property: packageController
     self.packageController.bind_model (self.rootObject.mPackages_property, self.ebUndoManager)
 

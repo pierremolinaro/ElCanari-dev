@@ -868,7 +868,7 @@ final class TransientArrayOf_PackageOval : ReadOnlyArrayOf_PackageOval {
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyArrayOf_PackageOval? = nil
+  private weak var mDataProvider : ReadOnlyArrayOf_PackageOval? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
 
@@ -981,7 +981,7 @@ final class TransientArrayOfSuperOf_PackageOval <SUPER : EBManagedObject> : Read
   //   Data provider
   //····················································································································
 
-  private var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil
+  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
   private var mTransientKind : PropertyKind = .empty
   private var mModelArrayShouldBeComputed = true
   private var mModelEvent = EBModelEvent ()
@@ -1090,7 +1090,7 @@ final class ProxyArrayOf_PackageOval : ReadWriteArrayOf_PackageOval {
 
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_PackageOval? = nil
+  private weak var mModel : ReadWriteArrayOf_PackageOval? = nil // SHOULD BE WEAK
 
   //····················································································································
 
