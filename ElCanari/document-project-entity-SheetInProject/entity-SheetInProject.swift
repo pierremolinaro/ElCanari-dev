@@ -472,7 +472,6 @@ final class SheetInProject : EBManagedObject,
   override func cleanUpToManyRelationships () {
     self.mObjects.removeAll ()
     self.mPoints.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
   }
 
@@ -482,7 +481,6 @@ final class SheetInProject : EBManagedObject,
 
   override func cleanUpToOneRelationships () {
     self.mRoot = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

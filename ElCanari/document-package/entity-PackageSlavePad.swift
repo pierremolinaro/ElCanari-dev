@@ -1187,21 +1187,11 @@ final class PackageSlavePad : PackageObject,
   #endif
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-  override func cleanUpToManyRelationships () {
-  //---
-    super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
   override func cleanUpToOneRelationships () {
     self.master = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

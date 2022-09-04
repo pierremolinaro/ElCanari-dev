@@ -2637,7 +2637,6 @@ final class PackageRoot : EBManagedObject,
   override func cleanUpToManyRelationships () {
     self.mModelImageObjects.removeAll ()
     self.packageObjects.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
   }
 
@@ -2647,7 +2646,6 @@ final class PackageRoot : EBManagedObject,
 
   override func cleanUpToOneRelationships () {
     self.mModelImageDoublePoint = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

@@ -515,22 +515,12 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   #endif
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-  override func cleanUpToManyRelationships () {
-  //---
-    super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
   override func cleanUpToOneRelationships () {
     self.myModel = nil
     self.myRoot = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

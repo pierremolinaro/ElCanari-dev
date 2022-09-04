@@ -597,7 +597,6 @@ final class NetInProject : EBManagedObject,
   override func cleanUpToManyRelationships () {
     self.mPoints.removeAll ()
     self.mTracks.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
   }
 
@@ -607,7 +606,6 @@ final class NetInProject : EBManagedObject,
 
   override func cleanUpToOneRelationships () {
     self.mNetClass = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

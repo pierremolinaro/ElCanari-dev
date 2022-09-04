@@ -440,21 +440,11 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   #endif
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-  override func cleanUpToManyRelationships () {
-  //---
-    super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
   override func cleanUpToOneRelationships () {
     self.mRoot = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

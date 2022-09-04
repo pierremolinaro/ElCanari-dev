@@ -1334,17 +1334,7 @@ final class DeviceRoot : EBManagedObject,
     self.mPackages.removeAll ()
     self.mSymbolTypes.removeAll ()
     self.mPadProxies.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-  override func cleanUpToOneRelationships () {
-  //---
-    super.cleanUpToOneRelationships ()
   }
 
   //····················································································································

@@ -296,21 +296,11 @@ class SchematicObject : EBGraphicManagedObject,
   #endif
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-  override func cleanUpToManyRelationships () {
-  //---
-    super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
   override func cleanUpToOneRelationships () {
     self.mSheet = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

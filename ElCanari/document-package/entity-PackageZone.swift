@@ -1067,17 +1067,7 @@ final class PackageZone : PackageObject,
 
   override func cleanUpToManyRelationships () {
     self.forbiddenPadNumbers.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-  override func cleanUpToOneRelationships () {
-  //---
-    super.cleanUpToOneRelationships ()
   }
 
   //····················································································································

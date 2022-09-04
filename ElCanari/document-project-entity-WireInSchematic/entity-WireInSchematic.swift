@@ -393,22 +393,12 @@ final class WireInSchematic : SchematicObject,
   #endif
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-  override func cleanUpToManyRelationships () {
-  //---
-    super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
   override func cleanUpToOneRelationships () {
     self.mP1 = nil
     self.mP2 = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

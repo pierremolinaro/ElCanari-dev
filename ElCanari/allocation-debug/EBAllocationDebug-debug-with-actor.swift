@@ -75,9 +75,9 @@ func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN TH
   private func triggerTransmit () {
     if (!self.mTransmitEventTriggered) {
       self.mTransmitEventTriggered = true
-      Task {
+      Task.detached {
         try? await Task.sleep (nanoseconds: 100_000_000)
-        let (pendingAllocations, pendingDeallocations) = await PendingAllocationBufferActor.shared.getPendingAllocation ()
+        let (pendingAllocations, pendingDeallocations) = await self.getPendingAllocation ()
         await AllocationDebugActor.shared.transmitPendingAllocations (pendingAllocations, pendingDeallocations)
       }
     }
@@ -130,16 +130,23 @@ func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN TH
   //---
     if !self.mRefreshTriggered {
       self.mRefreshTriggered = true
-      Task {
-   //     try? await Task.sleep (nanoseconds: 250_000_000) // 250 ms
-        let totalAllocatedObjectCountByClass = self.mTotalAllocatedObjectCountByClass
-        let liveObjectCountByClass = self.mLiveObjectCountByClass
+      Task.detached {
+        try? await Task.sleep (nanoseconds: 250_000_000) // 250 ms
+//        let totalAllocatedObjectCountByClass = self.mTotalAllocatedObjectCountByClass
+//        let liveObjectCountByClass = self.mLiveObjectCountByClass
+        let (totalAllocatedObjectCountByClass, liveObjectCountByClass) = await self.getAllocations ()
         DispatchQueue.main.sync {
           gDebugObject?.display (totalAllocatedObjectCountByClass, liveObjectCountByClass)
         }
-        self.mRefreshTriggered = false
       }
     }
+  }
+
+  //····················································································································
+
+  private func getAllocations () -> ([String : Int], [String : Int]) {
+    self.mRefreshTriggered = false
+    return (self.mTotalAllocatedObjectCountByClass, self.mLiveObjectCountByClass)
   }
 
   //····················································································································

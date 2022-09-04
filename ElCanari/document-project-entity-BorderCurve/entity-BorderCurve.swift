@@ -964,15 +964,6 @@ final class BorderCurve : EBGraphicManagedObject,
   #endif
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-  override func cleanUpToManyRelationships () {
-  //---
-    super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
@@ -980,7 +971,6 @@ final class BorderCurve : EBGraphicManagedObject,
     self.mRoot = nil
     self.mNext = nil
     self.mPrevious = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

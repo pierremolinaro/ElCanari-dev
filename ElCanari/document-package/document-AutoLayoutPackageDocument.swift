@@ -3788,33 +3788,10 @@ import Cocoa
   //   removeUserInterface
   //····················································································································
 
-  override func removeUserInterface () {
+/*  override func removeUserInterface () { //a
     super.removeUserInterface ()
-  //--------------------------- Unbind regular bindings
-  //--------------------------- Unbind array controllers
-  //--- Selection controller property: mPackageSegmentSelectionController
-    self.mPackageSegmentSelectionController.unbind_selection ()
-  //--- Selection controller property: mPackageBezierCurveSelectionController
-    self.mPackageBezierCurveSelectionController.unbind_selection ()
-  //--- Selection controller property: mPackageOvalSelectionController
-    self.mPackageOvalSelectionController.unbind_selection ()
-  //--- Selection controller property: mPackageArcSelectionController
-    self.mPackageArcSelectionController.unbind_selection ()
-  //--- Selection controller property: mPackageGuideSelectionController
-    self.mPackageGuideSelectionController.unbind_selection ()
-  //--- Selection controller property: mPackageDimensionSelectionController
-    self.mPackageDimensionSelectionController.unbind_selection ()
-  //--- Selection controller property: mPackageZoneSelectionController
-    self.mPackageZoneSelectionController.unbind_selection ()
-  //--- Selection controller property: mPackagePadSelectionController
-    self.mPackagePadSelectionController.unbind_selection ()
-  //--- Selection controller property: mPackageSlavePadSelectionController
-    self.mPackageSlavePadSelectionController.unbind_selection ()
-  //--------------------------- Remove targets / actions
-  //--------------------------- Clean up outlets
-  //--------------------------- Detach outlets
   }
-
+*/
   //····················································································································
 
 }

@@ -7336,41 +7336,10 @@ import Cocoa
   //   removeUserInterface
   //····················································································································
 
-  override func removeUserInterface () {
+/*  override func removeUserInterface () { //a
     super.removeUserInterface ()
-  //--------------------------- Unbind regular bindings
-  //--------------------------- Unbind array controllers
-  //--- Selection controller property: wireInSchematicSelectionController
-    self.wireInSchematicSelectionController.unbind_selection ()
-  //--- Selection controller property: ncInSchematicSelectionController
-    self.ncInSchematicSelectionController.unbind_selection ()
-  //--- Selection controller property: schematicLabelSelectionController
-    self.schematicLabelSelectionController.unbind_selection ()
-  //--- Selection controller property: commentInSchematicSelectionController
-    self.commentInSchematicSelectionController.unbind_selection ()
-  //--- Selection controller property: componentSymbolSelectionController
-    self.componentSymbolSelectionController.unbind_selection ()
-  //--- Selection controller property: boardCurveSelectionController
-    self.boardCurveSelectionController.unbind_selection ()
-  //--- Selection controller property: boardTrackSelectionController
-    self.boardTrackSelectionController.unbind_selection ()
-  //--- Selection controller property: boardConnectorSelectionController
-    self.boardConnectorSelectionController.unbind_selection ()
-  //--- Selection controller property: boardLineSelectionController
-    self.boardLineSelectionController.unbind_selection ()
-  //--- Selection controller property: restrictRectangleSelectionController
-    self.restrictRectangleSelectionController.unbind_selection ()
-  //--- Selection controller property: boardTextSelectionController
-    self.boardTextSelectionController.unbind_selection ()
-  //--- Selection controller property: componentInBoardSelectionController
-    self.componentInBoardSelectionController.unbind_selection ()
-  //--- Selection controller property: mDataSelection
-    self.mDataSelection.unbind_selection ()
-  //--------------------------- Remove targets / actions
-  //--------------------------- Clean up outlets
-  //--------------------------- Detach outlets
   }
-
+*/
   //····················································································································
 
 }

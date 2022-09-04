@@ -109,10 +109,13 @@ extension ApplicationDelegate {
     do{
       let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "name.pcmolinaro.elcanari.project")
       if let newDocument = possibleNewDocument as? NSDocument {
+        setStartOperationDateToNow ("New Document")
         dc.addDocument (newDocument)
+        appendDocumentFileOperationInfo ("addDocument done")
         newDocument.makeWindowControllers ()
+        appendDocumentFileOperationInfo ("makeWindowControllers done")
         newDocument.showWindows ()
-        // Swift.print ("Default type : \(dc.displayName (forType: "name.pcmolinaro.elcanari.project"))")
+        appendDocumentFileOperationInfo ("showWindows done")
       }
     }catch let error {
       dc.presentError (error)

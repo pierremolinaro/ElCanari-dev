@@ -1744,15 +1744,6 @@ final class BoardTrack : BoardObject,
   #endif
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-  override func cleanUpToManyRelationships () {
-  //---
-    super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
@@ -1760,7 +1751,6 @@ final class BoardTrack : BoardObject,
     self.mConnectorP1 = nil
     self.mConnectorP2 = nil
     self.mNet = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

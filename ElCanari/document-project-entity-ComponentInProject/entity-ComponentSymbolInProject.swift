@@ -1063,7 +1063,6 @@ final class ComponentSymbolInProject : SchematicObject,
 
   override func cleanUpToManyRelationships () {
     self.mPoints.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
   }
 
@@ -1073,7 +1072,6 @@ final class ComponentSymbolInProject : SchematicObject,
 
   override func cleanUpToOneRelationships () {
     self.mComponent = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

@@ -2197,7 +2197,6 @@ final class MergerRoot : EBManagedObject,
   override func cleanUpToManyRelationships () {
     self.boardModels.removeAll ()
     self.boardInstances.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
   }
 
@@ -2207,7 +2206,6 @@ final class MergerRoot : EBManagedObject,
 
   override func cleanUpToOneRelationships () {
     self.mArtwork = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

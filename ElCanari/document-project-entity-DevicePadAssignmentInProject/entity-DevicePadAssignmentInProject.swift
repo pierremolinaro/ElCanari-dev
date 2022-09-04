@@ -248,21 +248,11 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   #endif
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-  override func cleanUpToManyRelationships () {
-  //---
-    super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
   override func cleanUpToOneRelationships () {
     self.mPin = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

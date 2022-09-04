@@ -512,17 +512,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   override func cleanUpToManyRelationships () {
     self.mInstances.removeAll ()
     self.mPinTypes.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-  override func cleanUpToOneRelationships () {
-  //---
-    super.cleanUpToOneRelationships ()
   }
 
   //····················································································································

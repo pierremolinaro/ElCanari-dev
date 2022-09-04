@@ -1294,17 +1294,7 @@ final class NetClassInProject : EBManagedObject,
 
   override func cleanUpToManyRelationships () {
     self.mNets.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-  override func cleanUpToOneRelationships () {
-  //---
-    super.cleanUpToOneRelationships ()
   }
 
   //····················································································································

@@ -777,7 +777,6 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   override func cleanUpToManyRelationships () {
     self.mMasterPads.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
   }
 
@@ -787,7 +786,6 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   override func cleanUpToOneRelationships () {
     self.mRoot = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

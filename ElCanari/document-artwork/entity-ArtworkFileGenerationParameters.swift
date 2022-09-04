@@ -1443,21 +1443,11 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   #endif
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-  override func cleanUpToManyRelationships () {
-  //---
-    super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
   override func cleanUpToOneRelationships () {
     self.mArtwork = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

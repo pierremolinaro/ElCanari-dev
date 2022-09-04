@@ -57,7 +57,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjc
     self.mUndoManager = inUndoManager
     self.sortedArray_property.setDataProvider (
       inModel,
-      sortCallback: { (left, right) in self.isOrderedBefore (left, right) },
+      sortCallback: { [weak self] (left, right) in self?.isOrderedBefore (left, right) ?? true },
       addSortObserversCallback: { (observer) in
         inModel.addEBObserverOf_fileSize (observer)
         inModel.addEBObserverOf_mFileName (observer)

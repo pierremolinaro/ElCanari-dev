@@ -2425,7 +2425,6 @@ final class ComponentInProject : BoardObject,
   override func cleanUpToManyRelationships () {
     self.mConnectors.removeAll ()
     self.mSymbols.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
   }
 
@@ -2438,7 +2437,6 @@ final class ComponentInProject : BoardObject,
     self.mSelectedPackage = nil
     self.mNameFont = nil
     self.mValueFont = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

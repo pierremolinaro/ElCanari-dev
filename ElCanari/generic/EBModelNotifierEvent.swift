@@ -14,7 +14,7 @@ final class EBModelNotifierEvent : EBSwiftBaseObject, EBObserverProtocol {
   //   Properties
   //····················································································································
 
-  private let mClient : ReadOnlyAbstractGenericRelationshipProperty
+  private weak var mClient : ReadOnlyAbstractGenericRelationshipProperty? // SHOULD BE WEAK
   private let mRemoveSortObserversCallback : (EBModelNotifierEvent) -> Void
 
   //····················································································································
@@ -40,7 +40,7 @@ final class EBModelNotifierEvent : EBSwiftBaseObject, EBObserverProtocol {
 
   func observedObjectDidChange () {
 //    super.observedObjectDidChange ()
-    self.mClient.notifyModelDidChange ()
+    self.mClient?.notifyModelDidChange ()
   }
 
   //····················································································································

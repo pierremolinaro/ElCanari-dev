@@ -342,21 +342,11 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   #endif
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-  override func cleanUpToManyRelationships () {
-  //---
-    super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
   override func cleanUpToOneRelationships () {
     self.mSymbolType = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

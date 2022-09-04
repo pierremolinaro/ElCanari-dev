@@ -68,10 +68,10 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
   //   removeUserInterface
   //····················································································································
 
-  override func removeUserInterface () {
-    self.removeImagePointsObservers ()
+/*  override func removeUserInterface () {
+  //  self.removeImagePointsObservers ()
     super.removeUserInterface ()
-  }
+  } */
 
   //····················································································································
   //    Drag and drop destination
@@ -201,24 +201,24 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
 
   //····················································································································
 
-  fileprivate func removeImagePointsObservers () {
-    if let observer = self.mModelImageFirstPointXObserver {
-      self.rootObject.mModelImageFirstPointX_property.removeEBObserver (observer)
-      self.mModelImageFirstPointXObserver = nil
-    }
-    if let observer = self.mModelImageFirstPointYObserver {
-      self.rootObject.mModelImageFirstPointY_property.removeEBObserver (observer)
-      self.mModelImageFirstPointYObserver = nil
-    }
-    if let observer = self.mModelImagePointsDxObserver {
-      self.rootObject.mModelImageSecondPointDx_property.removeEBObserver (observer)
-      self.mModelImagePointsDxObserver = nil
-    }
-    if let observer = self.mModelImagePointsDyObserver {
-      self.rootObject.mModelImageSecondPointDy_property.removeEBObserver (observer)
-      self.mModelImagePointsDyObserver = nil
-    }
-  }
+//  fileprivate func removeImagePointsObservers () {
+//    if let observer = self.mModelImageFirstPointXObserver {
+//      self.rootObject.mModelImageFirstPointX_property.removeEBObserver (observer)
+//      self.mModelImageFirstPointXObserver = nil
+//    }
+//    if let observer = self.mModelImageFirstPointYObserver {
+//      self.rootObject.mModelImageFirstPointY_property.removeEBObserver (observer)
+//      self.mModelImageFirstPointYObserver = nil
+//    }
+//    if let observer = self.mModelImagePointsDxObserver {
+//      self.rootObject.mModelImageSecondPointDx_property.removeEBObserver (observer)
+//      self.mModelImagePointsDxObserver = nil
+//    }
+//    if let observer = self.mModelImagePointsDyObserver {
+//      self.rootObject.mModelImageSecondPointDy_property.removeEBObserver (observer)
+//      self.mModelImagePointsDyObserver = nil
+//    }
+//  }
 
   //····················································································································
 

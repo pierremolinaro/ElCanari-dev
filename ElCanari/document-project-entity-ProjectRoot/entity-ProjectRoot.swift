@@ -7602,7 +7602,6 @@ final class ProjectRoot : EBManagedObject,
     self.mBorderCurves.removeAll ()
     self.mBoardObjects.removeAll ()
     self.mComponents.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
   }
 
@@ -7613,7 +7612,6 @@ final class ProjectRoot : EBManagedObject,
   override func cleanUpToOneRelationships () {
     self.mArtwork = nil
     self.mSelectedSheet = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

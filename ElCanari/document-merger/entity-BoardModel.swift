@@ -4714,17 +4714,7 @@ final class BoardModel : EBManagedObject,
     self.frontPackages.removeAll ()
     self.backPackages.removeAll ()
     self.myInstances.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-  override func cleanUpToOneRelationships () {
-  //---
-    super.cleanUpToOneRelationships ()
   }
 
   //····················································································································

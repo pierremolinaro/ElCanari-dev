@@ -1145,7 +1145,6 @@ final class PointInSchematic : EBManagedObject,
     self.mLabels.removeAll ()
     self.mWiresP2s.removeAll ()
     self.mWiresP1s.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
   }
 
@@ -1158,7 +1157,6 @@ final class PointInSchematic : EBManagedObject,
     self.mNet = nil
     self.mNC = nil
     self.mSheet = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

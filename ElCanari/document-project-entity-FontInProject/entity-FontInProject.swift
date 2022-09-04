@@ -666,17 +666,7 @@ final class FontInProject : EBManagedObject,
     self.mTexts.removeAll ()
     self.mComponentNames.removeAll ()
     self.mComponentValues.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-  override func cleanUpToOneRelationships () {
-  //---
-    super.cleanUpToOneRelationships ()
   }
 
   //····················································································································

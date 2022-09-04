@@ -672,17 +672,7 @@ final class MasterPadInDevice : EBManagedObject,
 
   override func cleanUpToManyRelationships () {
     self.mSlavePads.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-  override func cleanUpToOneRelationships () {
-  //---
-    super.cleanUpToOneRelationships ()
   }
 
   //····················································································································

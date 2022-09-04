@@ -1513,7 +1513,6 @@ final class BoardConnector : BoardObject,
   override func cleanUpToManyRelationships () {
     self.mTracksP2.removeAll ()
     self.mTracksP1.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
   }
 
@@ -1523,7 +1522,6 @@ final class BoardConnector : BoardObject,
 
   override func cleanUpToOneRelationships () {
     self.mComponent = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

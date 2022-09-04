@@ -595,7 +595,6 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   override func cleanUpToManyRelationships () {
     self.mPinInstances.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
   }
 
@@ -605,7 +604,6 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   override func cleanUpToOneRelationships () {
     self.mType = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

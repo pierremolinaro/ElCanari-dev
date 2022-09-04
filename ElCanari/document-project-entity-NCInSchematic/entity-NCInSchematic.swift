@@ -230,21 +230,11 @@ final class NCInSchematic : SchematicObject,
   #endif
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-  override func cleanUpToManyRelationships () {
-  //---
-    super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
   override func cleanUpToOneRelationships () {
     self.mPoint = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

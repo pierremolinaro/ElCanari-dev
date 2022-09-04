@@ -779,17 +779,7 @@ final class DeviceInProject : EBManagedObject,
     self.mSymbols.removeAll ()
     self.mComponents.removeAll ()
     self.mPadAssignments.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-  override func cleanUpToOneRelationships () {
-  //---
-    super.cleanUpToOneRelationships ()
   }
 
   //····················································································································

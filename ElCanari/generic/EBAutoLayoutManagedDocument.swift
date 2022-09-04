@@ -473,12 +473,9 @@ class EBAutoLayoutManagedDocument : NSDocument {
   //   removeUserInterface
   //····················································································································
 
-  func removeUserInterface () {
-    self.mSignatureObserver.removeEBObserver (self.mVersionShouldChangeObserver)
-    #if BUILD_OBJECT_EXPLORER
-      self.clearObjectExplorer ()
-    #endif
-  }
+/*  func removeUserInterface () {
+//    self.mSignatureObserver.removeEBObserver (self.mVersionShouldChangeObserver)
+  } */
 
   //····················································································································
 
@@ -489,7 +486,7 @@ class EBAutoLayoutManagedDocument : NSDocument {
     #if BUILD_OBJECT_EXPLORER
       self.clearObjectExplorer ()
     #endif
-    self.removeUserInterface ()
+//    self.removeUserInterface ()
     appendDocumentFileOperationInfo ("remove interface done")
   //--- Remove all entities
     let allEntities = self.reachableObjectsFromRootObject ()

@@ -765,17 +765,10 @@ import Cocoa
   //   removeUserInterface
   //····················································································································
 
-  override func removeUserInterface () {
+/*  override func removeUserInterface () { //a
     super.removeUserInterface ()
-  //--------------------------- Unbind regular bindings
-  //--------------------------- Unbind array controllers
-  //--- Selection controller property: characterSelection
-    self.characterSelection.unbind_selection ()
-  //--------------------------- Remove targets / actions
-  //--------------------------- Clean up outlets
-  //--------------------------- Detach outlets
   }
-
+*/
   //····················································································································
 
 }

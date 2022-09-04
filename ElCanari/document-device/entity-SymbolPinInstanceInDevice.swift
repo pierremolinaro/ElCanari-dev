@@ -469,15 +469,6 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   #endif
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-  override func cleanUpToManyRelationships () {
-  //---
-    super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
@@ -485,7 +476,6 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
     self.mSymbolInstance = nil
     self.mType = nil
     self.mPadProxy = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

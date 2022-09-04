@@ -1469,7 +1469,6 @@ final class PackagePad : PackageObject,
 
   override func cleanUpToManyRelationships () {
     self.slaves.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
   }
 
@@ -1479,7 +1478,6 @@ final class PackagePad : PackageObject,
 
   override func cleanUpToOneRelationships () {
     self.zone = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 

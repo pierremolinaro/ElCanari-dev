@@ -135,13 +135,13 @@ let PMFontComment = "PMFontComment"
 
   //····················································································································
 
-  override func removeUserInterface () {
+/*  override func removeUserInterface () {
     if let currentCharacterCodePointObserver = self.mCurrentCharacterCodePointObserver {
       self.rootObject.currentCharacterCodePointString_property.removeEBObserver (currentCharacterCodePointObserver)
       self.mCurrentCharacterCodePointObserver = nil
     }
     super.removeUserInterface ()
-  }
+  } */
 
   //····················································································································
 

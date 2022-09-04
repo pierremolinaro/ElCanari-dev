@@ -853,17 +853,7 @@ final class ArtworkRoot : EBManagedObject,
 
   override func cleanUpToManyRelationships () {
     self.fileGenerationParameterArray.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-  override func cleanUpToOneRelationships () {
-  //---
-    super.cleanUpToOneRelationships ()
   }
 
   //····················································································································

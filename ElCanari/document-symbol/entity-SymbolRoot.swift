@@ -547,17 +547,7 @@ final class SymbolRoot : EBManagedObject,
 
   override func cleanUpToManyRelationships () {
     self.symbolObjects.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-  override func cleanUpToOneRelationships () {
-  //---
-    super.cleanUpToOneRelationships ()
   }
 
   //····················································································································

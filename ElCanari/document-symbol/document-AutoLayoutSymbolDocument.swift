@@ -1370,19 +1370,10 @@ import Cocoa
   //   removeUserInterface
   //····················································································································
 
-  override func removeUserInterface () {
+/*  override func removeUserInterface () { //a
     super.removeUserInterface ()
-  //--------------------------- Unbind regular bindings
-  //--------------------------- Unbind array controllers
-  //--- Selection controller property: mSymbolTextSelectionController
-    self.mSymbolTextSelectionController.unbind_selection ()
-  //--- Selection controller property: mSymbolPinSelectionController
-    self.mSymbolPinSelectionController.unbind_selection ()
-  //--------------------------- Remove targets / actions
-  //--------------------------- Clean up outlets
-  //--------------------------- Detach outlets
   }
-
+*/
   //····················································································································
 
 }

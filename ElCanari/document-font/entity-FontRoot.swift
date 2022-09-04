@@ -637,17 +637,7 @@ final class FontRoot : EBManagedObject,
 
   override func cleanUpToManyRelationships () {
     self.characters.removeAll ()
-  //---
     super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-  override func cleanUpToOneRelationships () {
-  //---
-    super.cleanUpToOneRelationships ()
   }
 
   //····················································································································

@@ -635,21 +635,11 @@ final class SlavePadInDevice : EBManagedObject,
   #endif
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-  override func cleanUpToManyRelationships () {
-  //---
-    super.cleanUpToManyRelationships ()
-  }
-
-  //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
   override func cleanUpToOneRelationships () {
     self.mMasterPad = nil
-  //---
     super.cleanUpToOneRelationships ()
   }
 
