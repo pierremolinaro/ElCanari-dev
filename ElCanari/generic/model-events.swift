@@ -34,7 +34,7 @@ final class EBModelEvent : EBSwiftBaseObject, EBObserverProtocol {
         }
       }
       if logEvents () {
-        let str = "  " +  self.explorerIndexString + String (describing: type (of: self)) + "\n"
+        let str = "  #\(self.objectIndex)" + String (describing: type (of: self)) + "\n"
         if !self.mEventIsPosted {
           appendMessageString (str)
         }else{ // Event already posted
@@ -77,7 +77,7 @@ func flushModelEvents () {
       }
       for event in pendingModelEvents {
         if logEvents () {
-          let message = "  " +  event.explorerIndexString + String (describing: type (of: event)) + "\n"
+          let message = "  #\(event.objectIndex)" + String (describing: type (of: event)) + "\n"
           appendMessageString (message, color: NSColor.blue)
         }
         gCurrentModelEvent = event // For prevent event to be retriggerred during event handling

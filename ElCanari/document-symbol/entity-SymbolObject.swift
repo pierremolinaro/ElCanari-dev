@@ -66,54 +66,6 @@ class SymbolObject : EBGraphicManagedObject,
   //····················································································································
 
 
-  //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-      super.populateExplorerWindow (&y, view:view)
-      createEntryForTitle ("Properties", y: &y, view: view)
-      createEntryForPropertyNamed (
-        "selectionDisplay",
-        object: self.selectionDisplay_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-        valueExplorer: &self.selectionDisplay_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "objectDisplay",
-        object: self.objectDisplay_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-        valueExplorer: &self.objectDisplay_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "issues",
-        object: self.issues_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.issues_property.mObserverExplorer,
-        valueExplorer: &self.issues_property.mValueExplorer
-      )
-      createEntryForTitle ("Transients", y: &y, view: view)
-      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-    }
-  #endif
-
-  //····················································································································
-  //    clearObjectExplorer
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    override func clearObjectExplorer () {
-    //---
-      super.clearObjectExplorer ()
-    }
-  #endif
 
   //····················································································································
   //    saveIntoDictionary

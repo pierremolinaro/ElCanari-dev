@@ -47,11 +47,11 @@ final class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumPropert
       self.mValueCache = nil
       self.mValueExplorer?.stringValue = "nil"
       if logEvents () {
-        appendMessageString ("Transient \(self.explorerIndexString) propagation\n")
+        appendMessageString ("Transient #\(self.objectIndex) propagation\n")
       }
       super.observedObjectDidChange ()
     }else if logEvents () {
-      appendMessageString ("Transient \(self.explorerIndexString) nil\n")
+      appendMessageString ("Transient #\(self.objectIndex) nil\n")
     }
   }
 

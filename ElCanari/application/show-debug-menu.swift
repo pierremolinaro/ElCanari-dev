@@ -44,7 +44,6 @@ fileprivate final class DebugMenuVisibility : EBSwiftBaseObject {
     )
     appendAllocationDebugMenuItems (menu)
     appendShowTransientEventLogWindowMenuItem (menu)
-    appendShowExploreDocumentWindowMenuItem (menu)
     appendShowDocumentFileOperationDurationWindowMenuItem (menu)
     appendDebugAutoLayoutMenuItem (menu)
   }

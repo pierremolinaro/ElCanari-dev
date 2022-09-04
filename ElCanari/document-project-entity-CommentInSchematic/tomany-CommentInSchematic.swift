@@ -982,23 +982,6 @@ class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EB
   weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    final var mValueExplorer : NSPopUpButton? {
-      didSet {
-        if let unwrappedExplorer = self.mValueExplorer {
-          switch self.selection {
-          case .empty, .multiple :
-            break ;
-          case .single (let v) :
-            updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
-          }
-        }
-      }
-    }
-  #endif
-
-  //····················································································································
   // Model will change
   //····················································································································
 
@@ -1014,12 +997,6 @@ class StoredArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSchematic, EB
   //····················································································································
 
   override func notifyModelDidChange () {
-  //--- Update explorer
-    #if BUILD_OBJECT_EXPLORER
-      if let valueExplorer = self.mValueExplorer {
-        updateManagedObjectToManyRelationshipDisplay (objectArray: self.mInternalArrayValue.values, popUpButton: valueExplorer)
-      }
-    #endif
   //--- Notify observers
     self.observedObjectDidChange ()
   //---

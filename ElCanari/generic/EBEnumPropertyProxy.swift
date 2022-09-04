@@ -47,11 +47,11 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
     if self.mCachedValue != nil {
       self.mCachedValue = nil
       if logEvents () {
-        appendMessageString ("Proxy \(self.explorerIndexString) propagation\n")
+        appendMessageString ("Proxy #\(self.objectIndex) propagation\n")
       }
       super.observedObjectDidChange ()
     }else if logEvents () {
-      appendMessageString ("Proxy \(self.explorerIndexString) nil\n")
+      appendMessageString ("Proxy #\(self.objectIndex) nil\n")
     }
   }
 

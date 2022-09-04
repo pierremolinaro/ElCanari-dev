@@ -38,7 +38,6 @@ let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
         )
         self.mTransientEventExplorerWindow?.title = "Transient Event Log"
         self.mTransientEventExplorerWindow?.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
-    //    self.mTransientEventExplorerWindow.delegate = self // Will call windowDidBecomeKey: and windowWillClose:
         let mainVStack = AutoLayoutVerticalStackView ()
         let hStack = AutoLayoutHorizontalStackView ()
         let clearTransientEventLogButton = AutoLayoutButton (title: "Clear Transient Event Log", size: .regular)
@@ -92,13 +91,6 @@ let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
   override func sendEvent (_ event: NSEvent) {
     super.sendEvent (event)
     flushModelEvents ()
-    #if BUILD_OBJECT_EXPLORER
-      for doc in NSDocumentController.shared.documents {
-        if let document = doc as? EBAutoLayoutManagedDocument {
-          document.updateReachableEntitiesPopUpButton ()
-        }
-      }
-    #endif
     flushOutletEvents ()
   }
 

@@ -56,41 +56,6 @@ final class ForbiddenPadNumber : EBManagedObject,
   //····················································································································
 
 
-  //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-      super.populateExplorerWindow (&y, view:view)
-      createEntryForPropertyNamed (
-        "padNumber",
-        object: self.padNumber_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.padNumber_property.mObserverExplorer,
-        valueExplorer: &self.padNumber_property.mValueExplorer
-      )
-      createEntryForTitle ("Properties", y: &y, view: view)
-      createEntryForTitle ("Transients", y: &y, view: view)
-      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-    }
-  #endif
-
-  //····················································································································
-  //    clearObjectExplorer
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    override func clearObjectExplorer () {
-  //--- Atomic property: padNumber
-    self.padNumber_property.mObserverExplorer = nil
-    self.padNumber_property.mValueExplorer = nil
-    //---
-      super.clearObjectExplorer ()
-    }
-  #endif
 
   //····················································································································
   //    saveIntoDictionary

@@ -109,63 +109,6 @@ final class BoardModelVia : EBManagedObject,
   //····················································································································
 
 
-  //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-      super.populateExplorerWindow (&y, view:view)
-      createEntryForPropertyNamed (
-        "y",
-        object: self.y_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.y_property.mObserverExplorer,
-        valueExplorer: &self.y_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "padDiameter",
-        object: self.padDiameter_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.padDiameter_property.mObserverExplorer,
-        valueExplorer: &self.padDiameter_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "x",
-        object: self.x_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.x_property.mObserverExplorer,
-        valueExplorer: &self.x_property.mValueExplorer
-      )
-      createEntryForTitle ("Properties", y: &y, view: view)
-      createEntryForTitle ("Transients", y: &y, view: view)
-      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-    }
-  #endif
-
-  //····················································································································
-  //    clearObjectExplorer
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    override func clearObjectExplorer () {
-  //--- Atomic property: y
-    self.y_property.mObserverExplorer = nil
-    self.y_property.mValueExplorer = nil
-  //--- Atomic property: padDiameter
-    self.padDiameter_property.mObserverExplorer = nil
-    self.padDiameter_property.mValueExplorer = nil
-  //--- Atomic property: x
-    self.x_property.mObserverExplorer = nil
-    self.x_property.mValueExplorer = nil
-    //---
-      super.clearObjectExplorer ()
-    }
-  #endif
 
   //····················································································································
   //    saveIntoDictionary

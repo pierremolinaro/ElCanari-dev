@@ -336,140 +336,6 @@ class EBAutoLayoutManagedDocument : NSDocument {
   }
 
   //····················································································································
-  //   showObjectExplorerWindow:
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    @IBAction func showObjectExplorerWindow (_ : AnyObject) {
-      if mDocumentExplorerWindow == nil {
-        self.createAndPopulateObjectExplorerWindow ()
-      }
-      self.mDocumentExplorerWindow?.makeKeyAndOrderFront (nil)
-    }
-  #endif
-
-  //····················································································································
-  //   createAndPopulateObjectExplorerWindow
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    final func createAndPopulateObjectExplorerWindow () {
-    //-------------------------------------------------- Create Window
-      let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
-      self.mDocumentExplorerWindow = NSWindow (
-        contentRect: r,
-        styleMask: [.titled, .closable],
-        backing: .buffered,
-        defer: true,
-        screen: nil
-      )
-    //-------------------------------------------------- Adding properties
-      let view = NSView (frame: r)
-      var y : CGFloat = 0.0
-      self.populateExplorerWindow (&y, view: view)
-    //-------------------------------------------------- Finish Window construction
-    //--- Resize View
-      let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
-      view.frame = viewFrame
-    //--- Set content size
-      self.mDocumentExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
-    //--- Set close button as 'remove window' button
-      let closeButton = self.mDocumentExplorerWindow?.standardWindowButton (.closeButton)
-      closeButton?.target = self
-      closeButton?.action = #selector(Self.deleteDocumentWindowAction(_:))
-    //--- Set window title
-      self.mDocumentExplorerWindow?.title = "Document " + className
-    //--- Add Scroll view
-      let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
-      let sw = NSScrollView (frame: frame)
-      sw.hasVerticalScroller = true
-      sw.documentView = view
-      self.mDocumentExplorerWindow?.contentView = sw
-    }
-  #endif
-
-  //····················································································································
-  //   deleteDocumentWindowAction
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    @objc func deleteDocumentWindowAction (_ : Any) {
-      self.clearObjectExplorer ()
-    }
-  #endif
-
-  //····················································································································
-  //   clearObjectExplorer
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    final func clearObjectExplorer () {
-      let closeButton = mDocumentExplorerWindow?.standardWindowButton (.closeButton)
-      closeButton?.target = nil
-      self.mDocumentExplorerWindow?.orderOut (nil)
-      self.mDocumentExplorerWindow = nil
-      self.mAccessibleObjectsExplorerPopUpButton = nil
-      self.mRootObjectExplorerButton = nil
-    }
-  #endif
-
-  //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    final var mDocumentExplorerWindow : NSWindow? = nil
-  #endif
-
-  #if BUILD_OBJECT_EXPLORER
-    final var mAccessibleObjectsExplorerPopUpButton : NSPopUpButton? = nil
-  #endif
-
-  #if BUILD_OBJECT_EXPLORER
-    final var mRootObjectExplorerButton : NSButton? = nil {
-      didSet {
-        if let valueExplorer = self.mRootObjectExplorerButton {
-          updateManagedObjectToOneRelationshipDisplay (object: self.mRootObject, button: valueExplorer)
-        }
-      }
-    }
-  #endif
-
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-      if let rootObject = self.mRootObject {
-        createEntryForToOneRelationshipNamed (
-          "Root",
-          object: rootObject,
-          y: &y,
-          view: view,
-          valueExplorer: &self.mRootObjectExplorerButton
-        )
-        createEntryForToManyRelationshipNamed (
-          "Entities",
-          object: rootObject,
-          y: &y,
-          view: view,
-          valueExplorer: &self.mAccessibleObjectsExplorerPopUpButton
-        )
-      }
-    }
-  #endif
-
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    final func updateReachableEntitiesPopUpButton () {
-      if let accessibleObjectsExplorerPopUpButton = self.mAccessibleObjectsExplorerPopUpButton {
-        let selectedObjects = reachableObjectsFromRootObject ()
-        updateManagedObjectToManyRelationshipDisplay (objectArray: selectedObjects, popUpButton: accessibleObjectsExplorerPopUpButton)
-      }
-    }
-  #endif
-
-  //····················································································································
   //   removeUserInterface
   //····················································································································
 
@@ -483,18 +349,10 @@ class EBAutoLayoutManagedDocument : NSDocument {
     setStartOperationDateToNow ("Closing \(self.lastComponentOfFileName)")
   //--- Remove user interface
     self.mSignatureObserver.removeEBObserver (self.mVersionShouldChangeObserver)
-    #if BUILD_OBJECT_EXPLORER
-      self.clearObjectExplorer ()
-    #endif
 //    self.removeUserInterface ()
     appendDocumentFileOperationInfo ("remove interface done")
   //--- Remove all entities
     let allEntities = self.reachableObjectsFromRootObject ()
-    #if BUILD_OBJECT_EXPLORER
-      for entity in allEntities {
-        entity.clearObjectExplorer ()
-      }
-    #endif
     appendDocumentFileOperationInfo ("remove entity observers done")
     for entity in allEntities {
       entity.cleanUpToManyRelationships ()
@@ -698,20 +556,6 @@ final class EBVersionShouldChangeObserver : EBGenericTransientProperty <Bool>, E
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func appendShowExploreDocumentWindowMenuItem (_ inMenu : NSMenu) {
-  #if BUILD_OBJECT_EXPLORER
-    let menuItem = NSMenuItem (
-      title: "Explore document",
-      action: #selector (EBAutoLayoutManagedDocument.showObjectExplorerWindow (_:)),
-      keyEquivalent: ""
-    )
-    menuItem.keyEquivalentModifierMask = [.command, .control]
-    inMenu.addItem (menuItem)
-  #endif
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

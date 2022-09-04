@@ -56,7 +56,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
         self.mValueExplorer?.stringValue = "\(mValue)"
         self.mEBUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
         if logEvents () {
-          appendMessageString ("Property \(self.explorerIndexString) did change value to \(self.mValue)\n")
+          appendMessageString ("Property #\(self.objectIndex) did change value to \(self.mValue)\n")
         }
         self.observedObjectDidChange ()
         self.clearSignatureCache ()

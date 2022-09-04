@@ -109,63 +109,6 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
   //····················································································································
 
 
-  //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-      super.populateExplorerWindow (&y, view:view)
-      createEntryForPropertyNamed (
-        "mSymbolTypeName",
-        object: self.mSymbolTypeName_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.mSymbolTypeName_property.mObserverExplorer,
-        valueExplorer: &self.mSymbolTypeName_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "mStrokeBezierPath",
-        object: self.mStrokeBezierPath_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.mStrokeBezierPath_property.mObserverExplorer,
-        valueExplorer: &self.mStrokeBezierPath_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "mFilledBezierPath",
-        object: self.mFilledBezierPath_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.mFilledBezierPath_property.mObserverExplorer,
-        valueExplorer: &self.mFilledBezierPath_property.mValueExplorer
-      )
-      createEntryForTitle ("Properties", y: &y, view: view)
-      createEntryForTitle ("Transients", y: &y, view: view)
-      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-    }
-  #endif
-
-  //····················································································································
-  //    clearObjectExplorer
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    override func clearObjectExplorer () {
-  //--- Atomic property: mSymbolTypeName
-    self.mSymbolTypeName_property.mObserverExplorer = nil
-    self.mSymbolTypeName_property.mValueExplorer = nil
-  //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.mObserverExplorer = nil
-    self.mStrokeBezierPath_property.mValueExplorer = nil
-  //--- Atomic property: mFilledBezierPath
-    self.mFilledBezierPath_property.mObserverExplorer = nil
-    self.mFilledBezierPath_property.mValueExplorer = nil
-    //---
-      super.clearObjectExplorer ()
-    }
-  #endif
 
   //····················································································································
   //    saveIntoDictionary

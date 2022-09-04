@@ -125,60 +125,6 @@ final class DeviceDocumentation : EBManagedObject,
   //····················································································································
 
 
-  //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-      super.populateExplorerWindow (&y, view:view)
-      createEntryForPropertyNamed (
-        "mFileName",
-        object: self.mFileName_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.mFileName_property.mObserverExplorer,
-        valueExplorer: &self.mFileName_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "mFileData",
-        object: self.mFileData_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.mFileData_property.mObserverExplorer,
-        valueExplorer: &self.mFileData_property.mValueExplorer
-      )
-      createEntryForTitle ("Properties", y: &y, view: view)
-      createEntryForPropertyNamed (
-        "fileSize",
-        object: self.fileSize_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.fileSize_property.mObserverExplorer,
-        valueExplorer: &self.fileSize_property.mValueExplorer
-      )
-      createEntryForTitle ("Transients", y: &y, view: view)
-      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-    }
-  #endif
-
-  //····················································································································
-  //    clearObjectExplorer
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    override func clearObjectExplorer () {
-  //--- Atomic property: mFileName
-    self.mFileName_property.mObserverExplorer = nil
-    self.mFileName_property.mValueExplorer = nil
-  //--- Atomic property: mFileData
-    self.mFileData_property.mObserverExplorer = nil
-    self.mFileData_property.mValueExplorer = nil
-    //---
-      super.clearObjectExplorer ()
-    }
-  #endif
 
   //····················································································································
   //    saveIntoDictionary

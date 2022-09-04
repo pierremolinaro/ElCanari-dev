@@ -167,67 +167,6 @@ final class NCInSchematic : SchematicObject,
   //····················································································································
 
 
-  //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-      super.populateExplorerWindow (&y, view:view)
-      createEntryForPropertyNamed (
-        "mOrientation",
-        object: self.mOrientation_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.mOrientation_property.mObserverExplorer,
-        valueExplorer: &self.mOrientation_property.mValueExplorer
-      )
-      createEntryForTitle ("Properties", y: &y, view: view)
-      createEntryForPropertyNamed (
-        "objectDisplay",
-        object: self.objectDisplay_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.objectDisplay_property.mObserverExplorer,
-        valueExplorer: &self.objectDisplay_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "selectionDisplay",
-        object: self.selectionDisplay_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.selectionDisplay_property.mObserverExplorer,
-        valueExplorer: &self.selectionDisplay_property.mValueExplorer
-      )
-      createEntryForTitle ("Transients", y: &y, view: view)
-      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-      createEntryForToOneRelationshipNamed (
-        "mPoint",
-        object: self.mPoint_property,
-        y: &y,
-        view: view,
-        valueExplorer:&self.mPoint_property.mValueExplorer
-      )
-      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-    }
-  #endif
-
-  //····················································································································
-  //    clearObjectExplorer
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    override func clearObjectExplorer () {
-  //--- Atomic property: mOrientation
-    self.mOrientation_property.mObserverExplorer = nil
-    self.mOrientation_property.mValueExplorer = nil
-    //--- To one property: mPoint
-      self.mPoint_property.mObserverExplorer = nil
-      self.mPoint_property.mValueExplorer = nil
-    //---
-      super.clearObjectExplorer ()
-    }
-  #endif
 
   //····················································································································
   //    cleanUpToOneRelationships

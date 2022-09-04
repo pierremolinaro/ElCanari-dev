@@ -312,23 +312,6 @@ import Cocoa
   }
 
   //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    //--- Array controller property: mSymbolObjectsController
-      self.mSymbolObjectsController.addExplorer (name: "mSymbolObjectsController", y:&y, view:view)
-    //--- Selection controller property: mSymbolTextSelectionController
-      self.mSymbolTextSelectionController.addExplorer (name: "mSymbolTextSelectionController", y:&y, view:view)
-    //--- Selection controller property: mSymbolPinSelectionController
-      self.mSymbolPinSelectionController.addExplorer (name: "mSymbolPinSelectionController", y:&y, view:view)
-   //---
-      super.populateExplorerWindow (&y, view:view)
-    }
-  #endif
-
-  //····················································································································
   //    rootEntityClassName
   //····················································································································
 

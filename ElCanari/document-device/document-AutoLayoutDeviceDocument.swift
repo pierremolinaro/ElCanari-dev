@@ -234,31 +234,6 @@ import Cocoa
   }
 
   //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    //--- Array controller property: packageController
-      self.packageController.addExplorer (name: "packageController", y:&y, view:view)
-    //--- Array controller property: documentationController
-      self.documentationController.addExplorer (name: "documentationController", y:&y, view:view)
-    //--- Array controller property: symbolDisplayController
-      self.symbolDisplayController.addExplorer (name: "symbolDisplayController", y:&y, view:view)
-    //--- Selection controller property: symbolInstanceSelection
-      self.symbolInstanceSelection.addExplorer (name: "symbolInstanceSelection", y:&y, view:view)
-    //--- Array controller property: packageDisplayController
-      self.packageDisplayController.addExplorer (name: "packageDisplayController", y:&y, view:view)
-    //--- Array controller property: symbolTypeController
-      self.symbolTypeController.addExplorer (name: "symbolTypeController", y:&y, view:view)
-    //--- Selection controller property: symbolTypeSelection
-      self.symbolTypeSelection.addExplorer (name: "symbolTypeSelection", y:&y, view:view)
-   //---
-      super.populateExplorerWindow (&y, view:view)
-    }
-  #endif
-
-  //····················································································································
   //    rootEntityClassName
   //····················································································································
 

@@ -5,37 +5,6 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#if BUILD_OBJECT_EXPLORER
-  func string (_ inManagedObject : EBManagedObject?) -> String {
-    if let object = inManagedObject {
-      return object.explorerIndexString
-    }else{
-      return "nil"
-    }
-  }
-#endif
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#if BUILD_OBJECT_EXPLORER
-  func string (_ inManagedObjects : [EBManagedObject]) -> String {
-    var s = "["
-    var first = true
-    for object in inManagedObjects {
-      if first {
-        first = false
-      }else{
-        s += ", "
-      }
-      s += string (object)
-    }
-    s += "]"
-    return s
-  }
-#endif
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //  EBSignatureObserverProtocol
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -66,12 +35,6 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   //····················································································································
 
   final var savingIndex = 0
-
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    final var mExplorerWindow : NSWindow? = nil
-  #endif
 
   //····················································································································
   //  init
@@ -137,19 +100,6 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   final var ebObjectIndex_selection : EBSelection <Int> { return .single (self.objectIndex) }
 
   //····················································································································
-  //   showExplorerWindow
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    final func showExplorerWindow () {
-      if self.mExplorerWindow == nil {
-        self.createAndPopulateObjectExplorerWindow ()
-      }
-      self.mExplorerWindow?.makeKeyAndOrderFront (nil)
-    }
-  #endif
-
-  //····················································································································
   //  reachableObjects
   //····················································································································
 
@@ -196,9 +146,6 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   //····················································································································
 
   final func cleanUpRelationshipsAndRemoveAllObservers () {
-    #if BUILD_OBJECT_EXPLORER
-      self.clearObjectExplorer ()
-    #endif
     self.cleanUpToManyRelationships ()
     self.cleanUpToOneRelationships ()
   }
@@ -216,114 +163,6 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
 
   func cleanUpToOneRelationships () {
   }
-
-  //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    private final var mSignatureObserverExplorer : NSPopUpButton? = nil
-    private final var mSignatureValueExplorer : NSTextField? = nil {
-      didSet {
-        if let s = self.mSignature {
-          self.mSignatureValueExplorer?.stringValue = String (format: "%04X:%04X", s >> 16, s & 0xFFFF)
-        }else{
-          self.mSignatureValueExplorer?.stringValue = "nil"
-        }
-      }
-    }
-  #endif
-
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-      createEntryForPropertyNamed (
-        "Signature",
-        object: self,
-        y: &y,
-        view: view,
-        observerExplorer: &self.mSignatureObserverExplorer,
-        valueExplorer: &self.mSignatureValueExplorer
-      )
-    }
-  #endif
-
-  //····················································································································
-  //   createAndPopulateObjectExplorerWindow
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    func createAndPopulateObjectExplorerWindow () {
-    //-------------------------------------------------- Create Window
-      let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
-      self.mExplorerWindow = NSWindow (
-        contentRect: r,
-        styleMask: [.titled, .closable],
-        backing: .buffered,
-        defer: true,
-        screen: nil
-      )
-    //-------------------------------------------------- Adding properties
-      let view = NSView (frame: r)
-      var y : CGFloat = 0.0
-      populateExplorerWindow (&y, view: view)
-    //-------------------------------------------------- Finish Window construction
-    //--- Resize View
-      let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
-      view.frame = viewFrame
-    //--- Set content size
-      self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
-    //--- Set close button as 'remove window' button
-      let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
-      closeButton?.target = self
-      closeButton?.action = #selector (EBManagedObject.deleteWindowAction(_:))
-    //--- Set window title
-      let windowTitle = self.explorerIndexString + " " + className
-      self.mExplorerWindow!.title = windowTitle
-    //--- Add Scroll view
-      let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
-      let sw = NSScrollView (frame: frame)
-      sw.hasVerticalScroller = true
-      sw.documentView = view
-      self.mExplorerWindow?.contentView = sw
-    }
-  #endif
-
-  //····················································································································
-  //   showObjectWindowFromExplorerButton
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    @objc func showObjectWindowFromExplorerButton (_ : Any) {
-      self.showExplorerWindow ()
-    }
-  #endif
-
-  //····················································································································
-  //   deleteWindowAction
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    @objc func deleteWindowAction (_ : Any) {
-      self.clearObjectExplorer ()
-    }
-  #endif
-
-  //····················································································································
-  //   clearObjectExplorer
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    func clearObjectExplorer () {
-      if let explorerWindow = self.mExplorerWindow {
-        let closeButton = explorerWindow.standardWindowButton (.closeButton)
-        closeButton?.target = nil
-        explorerWindow.orderOut (nil)
-        self.mExplorerWindow = nil
-      }
-    }
-  #endif
 
   //····················································································································
   //   appendPropertyNamesTo
@@ -422,9 +261,6 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   final func clearSignatureCache () {
     if self.mSignature != nil {
       self.mSignature = nil
-      #if BUILD_OBJECT_EXPLORER
-        self.mSignatureValueExplorer?.stringValue = "nil"
-      #endif
       self.mSignatureObserver?.clearSignatureCache ()
     }
   }
@@ -442,9 +278,6 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
       return s
     }else{
       let s = self.computeSignature ()
-      #if BUILD_OBJECT_EXPLORER
-        self.mSignatureValueExplorer?.stringValue = String (format: "%04X:%04X", s >> 16, s & 0xFFFF)
-      #endif
       self.mSignature = s
       return s
     }
@@ -459,53 +292,5 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   //····················································································································
 
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   updateManagedObjectToOneRelationshipDisplay
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#if BUILD_OBJECT_EXPLORER
-  func updateManagedObjectToOneRelationshipDisplay (object : EBManagedObject?, button : NSButton?) {
-    if let unwrappedObject = object {
-      let stringValue = unwrappedObject.explorerIndexString + " " + unwrappedObject.className
-      button?.isEnabled = true
-      button?.title = stringValue
-      button?.toolTip = stringValue
-      button?.target = object
-      button?.action = #selector (EBManagedObject.showObjectWindowFromExplorerButton(_:))
-    }else{
-      button?.isEnabled = false
-      button?.title = "nil"
-      button?.toolTip = "nil"
-      button?.target = nil
-      button?.action = nil
-    }
-  }
-#endif
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   updateManagedObjectToManyRelationshipDisplay
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#if BUILD_OBJECT_EXPLORER
-  func updateManagedObjectToManyRelationshipDisplay (objectArray : [EBManagedObject], popUpButton : NSPopUpButton?) {
-    var title = "No Object" ;
-    if objectArray.count == 1 {
-      title = "1 Object" ;
-    }else if objectArray.count > 1 {
-      title = "\(objectArray.count) objects"
-    }
-    popUpButton?.removeAllItems ()
-    popUpButton?.addItem (withTitle: title)
-    popUpButton?.isEnabled = objectArray.count > 0
-    for object in objectArray {
-      let stringValue = object.explorerIndexString + " " + object.className
-      popUpButton?.addItem (withTitle: stringValue)
-      let item = popUpButton?.lastItem
-      item?.target = object
-      item?.action = #selector(EBManagedObject.showObjectWindowFromExplorerButton(_:))
-    }
-  }
-#endif
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

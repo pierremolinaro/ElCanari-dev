@@ -132,8 +132,6 @@ func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN TH
       self.mRefreshTriggered = true
       Task.detached {
         try? await Task.sleep (nanoseconds: 250_000_000) // 250 ms
-//        let totalAllocatedObjectCountByClass = self.mTotalAllocatedObjectCountByClass
-//        let liveObjectCountByClass = self.mLiveObjectCountByClass
         let (totalAllocatedObjectCountByClass, liveObjectCountByClass) = await self.getAllocations ()
         DispatchQueue.main.sync {
           gDebugObject?.display (totalAllocatedObjectCountByClass, liveObjectCountByClass)
@@ -321,7 +319,6 @@ final class EBAllocationDebug : NSObject {
    //--- Configure Window
      self.mAllocationStatsWindow.title = "Allocation Stats"
      self.mAllocationStatsWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
-//     self.mAllocationStatsWindow.delegate = self // Will call windowDidBecomeKey: and windowWillClose:
    //--- Build window contents
       let mainVStack = AutoLayoutVerticalStackView ()
       do {

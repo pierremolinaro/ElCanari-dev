@@ -185,67 +185,6 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //····················································································································
 
 
-  //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-      super.populateExplorerWindow (&y, view:view)
-      createEntryForPropertyNamed (
-        "mPadName",
-        object: self.mPadName_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.mPadName_property.mObserverExplorer,
-        valueExplorer: &self.mPadName_property.mValueExplorer
-      )
-      createEntryForTitle ("Properties", y: &y, view: view)
-      createEntryForPropertyNamed (
-        "pinPadAssignment",
-        object: self.pinPadAssignment_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.pinPadAssignment_property.mObserverExplorer,
-        valueExplorer: &self.pinPadAssignment_property.mValueExplorer
-      )
-      createEntryForPropertyNamed (
-        "descriptor",
-        object: self.descriptor_property,
-        y: &y,
-        view: view,
-        observerExplorer: &self.descriptor_property.mObserverExplorer,
-        valueExplorer: &self.descriptor_property.mValueExplorer
-      )
-      createEntryForTitle ("Transients", y: &y, view: view)
-      createEntryForTitle ("ToMany Relationships", y: &y, view: view)
-      createEntryForToOneRelationshipNamed (
-        "mPin",
-        object: self.mPin_property,
-        y: &y,
-        view: view,
-        valueExplorer:&self.mPin_property.mValueExplorer
-      )
-      createEntryForTitle ("ToOne Relationships", y: &y, view: view)
-    }
-  #endif
-
-  //····················································································································
-  //    clearObjectExplorer
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    override func clearObjectExplorer () {
-  //--- Atomic property: mPadName
-    self.mPadName_property.mObserverExplorer = nil
-    self.mPadName_property.mValueExplorer = nil
-    //--- To one property: mPin
-      self.mPin_property.mObserverExplorer = nil
-      self.mPin_property.mValueExplorer = nil
-    //---
-      super.clearObjectExplorer ()
-    }
-  #endif
 
   //····················································································································
   //    cleanUpToOneRelationships

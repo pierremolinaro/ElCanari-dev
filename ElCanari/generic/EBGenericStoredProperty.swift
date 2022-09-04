@@ -16,16 +16,6 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
 
   //····················································································································
 
-  #if BUILD_OBJECT_EXPLORER
-    var mValueExplorer : NSTextField? {
-      didSet {
-        self.mValueExplorer?.stringValue = "\(mValue)"
-      }
-    }
-  #endif
-
-  //····················································································································
-
   init (defaultValue inValue : T, undoManager inEBUndoManager : EBUndoManager?) {
     self.mValue = inValue
     self.mEBUndoManager = inEBUndoManager
@@ -37,12 +27,9 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
   private var mValue : T {
     didSet {
       if self.mValue != oldValue {
-        #if BUILD_OBJECT_EXPLORER
-          self.mValueExplorer?.stringValue = "\(mValue)"
-        #endif
         self.mEBUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
         if logEvents () {
-          appendMessageString ("Property \(self.explorerIndexString) did change value to \(self.mValue)\n")
+          appendMessageString ("Property #\(self.objectIndex) did change value to \(self.mValue)\n")
         }
         self.observedObjectDidChange ()
         self.clearSignatureCache ()

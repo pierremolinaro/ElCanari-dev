@@ -8,9 +8,6 @@ import Cocoa
 
 protocol ObjectIndexProtocol : AnyObject {
   var objectIndex : Int { get }
-  #if BUILD_OBJECT_EXPLORER
-    var explorerIndexString : String { get }
-  #endif
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -44,14 +41,6 @@ class EBObjcBaseObject : NSObject, ObjectIndexProtocol {
 
   //····················································································································
 
-  #if BUILD_OBJECT_EXPLORER
-    final var explorerIndexString : String {
-      return explorerObjectIndexString (self.objectIndex)
-    }
-  #endif
-
-  //····················································································································
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -80,38 +69,28 @@ class EBSwiftBaseObject : ObjectIndexProtocol {
 
   //····················································································································
 
-  final var explorerIndexString : String {
-    #if BUILD_OBJECT_EXPLORER
-      return explorerObjectIndexString (self.objectIndex)
-    #else
-      return ""
-    #endif
-  }
-
-  //····················································································································
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private let explorerLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L",
-                               "M", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-
-func explorerObjectIndexString (_ idx : Int) -> String {
-  var result = String (idx % 10)
-  var n = idx / 10
-  result += "\(n % 10)"
-  n /= 10
-  result += explorerLetters [n % explorerLetters.count]
-  n /= explorerLetters.count
-  result += explorerLetters [n % explorerLetters.count]
-  n /= explorerLetters.count
-  result += explorerLetters [n % explorerLetters.count]
-  n /= explorerLetters.count
-  if n > 0 {
-    result += "\(n)"
-  }
-  return result
-}
+//private let explorerLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L",
+//                               "M", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+//
+//func explorerObjectIndexString (_ idx : Int) -> String {
+//  var result = String (idx % 10)
+//  var n = idx / 10
+//  result += "\(n % 10)"
+//  n /= 10
+//  result += explorerLetters [n % explorerLetters.count]
+//  n /= explorerLetters.count
+//  result += explorerLetters [n % explorerLetters.count]
+//  n /= explorerLetters.count
+//  result += explorerLetters [n % explorerLetters.count]
+//  n /= explorerLetters.count
+//  if n > 0 {
+//    result += "\(n)"
+//  }
+//  return result
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

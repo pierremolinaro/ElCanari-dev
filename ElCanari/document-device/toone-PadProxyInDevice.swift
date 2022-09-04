@@ -351,23 +351,6 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
   }
 
   //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    final var mValueExplorer : NSButton? {
-      didSet {
-        if let unwrappedExplorer = self.mValueExplorer {
-          switch self.selection {
-          case .empty, .multiple :
-            break ;
-          case .single (let v) :
-            updateManagedObjectToOneRelationshipDisplay (object: v, button: unwrappedExplorer)
-          }
-        }
-      }
-    }
-  #endif
-  
-  //····················································································································
   // Model will change
   //····················································································································
 
@@ -397,12 +380,6 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
   //····················································································································
 
   override func notifyModelDidChange () {
-  //--- Update explorer
-    #if BUILD_OBJECT_EXPLORER
-      if let valueExplorer = self.mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: self.mInternalValue, button: valueExplorer)
-      }
-    #endif
   //--- Notify observers
     self.observedObjectDidChange ()
     self.clearSignatureCache ()

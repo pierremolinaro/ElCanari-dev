@@ -30,7 +30,7 @@ class EBOutletEvent : EBSwiftBaseObject, EBObserverProtocol {
       if gPendingOutletEvents.count == 0 {
         appendMessageString ("Post events\n")
       }
-      let str = "  " +  self.explorerIndexString + String (describing: type (of: self)) + "\n"
+      let str = "  #\(self.objectIndex)" + String (describing: type (of: self)) + "\n"
       if !self.mEventIsPosted {
         appendMessageString (str)
       }else{ // Event already posted
@@ -84,7 +84,7 @@ func flushOutletEvents () {
       for event in pendingOutletEvents {
         #if BUILD_OBJECT_EXPLORER
           if logEvents () {
-            let message = "  " +  event.explorerIndexString + String (describing: type (of: event)) + "\n"
+            let message = "  #\(event.objectIndex)" + String (describing: type (of: event)) + "\n"
             appendMessageString (message, color: NSColor.blue)
           }
         #endif

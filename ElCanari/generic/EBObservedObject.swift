@@ -18,9 +18,6 @@ class EBObservedObject : EBSwiftBaseObject {
 
   final func addEBObserver (_ inObserver : EBObserverProtocol) {
     self.mObservers.insert (inObserver)
-    #if BUILD_OBJECT_EXPLORER
-      self.updateObserverExplorer ()
-    #endif
     inObserver.observedObjectDidChange ()
   }
 
@@ -28,9 +25,6 @@ class EBObservedObject : EBSwiftBaseObject {
 
   final func removeEBObserver (_ inObserver : EBObserverProtocol) {
     self.mObservers.remove (inObserver)
-    #if BUILD_OBJECT_EXPLORER
-      self.updateObserverExplorer ()
-    #endif
   }
 
   //····················································································································
@@ -44,42 +38,6 @@ class EBObservedObject : EBSwiftBaseObject {
       }
     }
   }
-
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    final var mObserverExplorer : NSPopUpButton? {
-      didSet {
-        self.updateObserverExplorer ()
-      }
-    }
-  #endif
-
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    final func updateObserverExplorer () {
-      if let observerExplorer = self.mObserverExplorer {
-        observerExplorer.removeAllItems ()
-        var observerCount = 0
-        for (_, entry) in self.mObservers.dictionary {
-          if entry.observer != nil {
-            observerCount += 1
-          }
-        }
-        observerExplorer.addItem (withTitle: String (observerCount))
-        observerExplorer.isEnabled = observerCount > 0
-        for (_, entry) in self.mObservers.dictionary {
-          if let observer = entry.observer {
-            let stringValue = explorerObjectIndexString (observer.objectIndex) + " - " + String (describing: type (of: observer))
-            observerExplorer.addItem (withTitle: stringValue)
-          }else{
-            self.mObservers.triggerPacking ()
-          }
-        }
-      }
-    }
-  #endif
 
   //····················································································································
 

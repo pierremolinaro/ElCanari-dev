@@ -150,21 +150,6 @@ import Cocoa
   }
 
   //····················································································································
-  //    populateExplorerWindow
-  //····················································································································
-
-  #if BUILD_OBJECT_EXPLORER
-    override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    //--- Array controller property: mDataController
-      self.mDataController.addExplorer (name: "mDataController", y:&y, view:view)
-    //--- Selection controller property: mDataSelection
-      self.mDataSelection.addExplorer (name: "mDataSelection", y:&y, view:view)
-   //---
-      super.populateExplorerWindow (&y, view:view)
-    }
-  #endif
-
-  //····················································································································
   //    rootEntityClassName
   //····················································································································
 
