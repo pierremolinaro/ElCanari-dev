@@ -28,19 +28,15 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.5.9"
-let MAC_OS_MINIMUM_VERSION = "10.13"
+let VERSION_CANARI = "1.6.0"
+let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Document « Project », page « Board Contents », « text in board » : la conservation de l'alignement horizontal est rétablie",
-  "Document « Project », page « Board Contents », « text in board » : la conservation de l'alignement vertical est rétablie",
-  "Fenêtre des préférences : comportement lors du passage en plein écran"
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Document « Project », page « Board Contents » : un warning apparaît pour chaque composant non placé"
 ]
 
 //--------------------------------------------------------------------------------------------------

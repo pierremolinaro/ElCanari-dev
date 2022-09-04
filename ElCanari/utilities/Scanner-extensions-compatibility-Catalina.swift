@@ -14,26 +14,26 @@ extension Scanner {
 
   //····················································································································
 
-   func scanDouble () -> Double? {
-     var value : Double = 0.0
-     let ok = self.scanDouble (&value)
-     if ok {
-       return value
-     }else{
-       return nil
-     }
-  }
+//   func scanDouble () -> Double? {
+//     var value : Double = 0.0
+//     let ok = self.scanDouble (&value)
+//     if ok {
+//       return value
+//     }else{
+//       return nil
+//     }
+//  }
 
   //····················································································································
 
-   func scanString (_ inString : String) -> String? {
-     let ok = self.scanString (inString, into: nil)
-     if ok {
-       return inString
-     }else{
-       return nil
-     }
-  }
+//   func scanString (_ inString : String) -> String? {
+//     let ok = self.scanString (inString, into: nil)
+//     if ok {
+//       return inString
+//     }else{
+//       return nil
+//     }
+//  }
 
   //····················································································································
 
