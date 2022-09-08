@@ -467,7 +467,7 @@ final class PackageSlavePad : PackageObject,
   //   To one property: master
   //····················································································································
 
-  final let master_property = StoredObject_PackagePad (usedForSignature: false)
+  final let master_property = StoredObject_PackagePad (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -919,10 +919,10 @@ final class PackageSlavePad : PackageObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.master = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -1169,13 +1169,13 @@ final class PackageSlavePad : PackageObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: master
     if let object = self.master {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

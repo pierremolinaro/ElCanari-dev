@@ -1086,7 +1086,7 @@ final class MergerRoot : EBManagedObject,
   //   To one property: mArtwork
   //····················································································································
 
-  final let mArtwork_property = StoredObject_ArtworkRoot (usedForSignature: false)
+  final let mArtwork_property = StoredObject_ArtworkRoot (usedForSignature: false, strongRef: true)
 
   //····················································································································
 
@@ -1778,20 +1778,20 @@ final class MergerRoot : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+/*  override func cleanUpToManyRelationships () {
     self.boardModels.removeAll ()
     self.boardInstances.removeAll ()
     super.cleanUpToManyRelationships ()
-  }
+  } */
 
   //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mArtwork = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -2222,7 +2222,7 @@ final class MergerRoot : EBManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: boardModels
     for managedObject in self.boardModels.values {
@@ -2236,7 +2236,7 @@ final class MergerRoot : EBManagedObject,
     if let object = self.mArtwork {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

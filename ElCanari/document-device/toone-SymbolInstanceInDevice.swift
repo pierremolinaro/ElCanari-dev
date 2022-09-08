@@ -27,7 +27,7 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
       oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.mInstanceName_property.addEBObserver (self.mInstanceName_property) // Stored property
       newValue.mX_property.addEBObserver (self.mX_property) // Stored property
       newValue.mY_property.addEBObserver (self.mY_property) // Stored property
@@ -126,7 +126,7 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
     super.init ()
   //--- Configure mInstanceName simple stored property
     self.mInstanceName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mInstanceName_property.selection {
         case .empty :
           return .empty
@@ -141,7 +141,7 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
     }
   //--- Configure mX simple stored property
     self.mX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mX_property.selection {
         case .empty :
           return .empty
@@ -156,7 +156,7 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
     }
   //--- Configure mY simple stored property
     self.mY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mY_property.selection {
         case .empty :
           return .empty
@@ -171,7 +171,7 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
     }
   //--- Configure symbolQualifiedName transient property
     self.symbolQualifiedName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.symbolQualifiedName_property.selection {
         case .empty :
           return .empty
@@ -186,7 +186,7 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
     }
   //--- Configure symbolTypeName transient property
     self.symbolTypeName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.symbolTypeName_property.selection {
         case .empty :
           return .empty
@@ -201,7 +201,7 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
     }
   //--- Configure pinSymbolQualifiedNames transient property
     self.pinSymbolQualifiedNames_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.pinSymbolQualifiedNames_property.selection {
         case .empty :
           return .empty
@@ -216,7 +216,7 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
     }
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.selectionDisplay_property.selection {
         case .empty :
           return .empty
@@ -231,7 +231,7 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
     }
   //--- Configure unconnectedPins transient property
     self.unconnectedPins_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.unconnectedPins_property.selection {
         case .empty :
           return .empty
@@ -246,7 +246,7 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
     }
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.objectDisplay_property.selection {
         case .empty :
           return .empty
@@ -308,7 +308,7 @@ final class TransientObject_SymbolInstanceInDevice : ReadOnlyObject_SymbolInstan
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -319,8 +319,8 @@ final class TransientObject_SymbolInstanceInDevice : ReadOnlyObject_SymbolInstan
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -331,7 +331,7 @@ final class TransientObject_SymbolInstanceInDevice : ReadOnlyObject_SymbolInstan
 
   //····················································································································
 
-  override var propval : SymbolInstanceInDevice? { return self.mInternalValue }
+  override var propval : SymbolInstanceInDevice? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -387,7 +387,7 @@ final class ProxyObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstanceI
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -434,8 +434,9 @@ final class StoredObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstance
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -472,7 +473,7 @@ final class StoredObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstance
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : SymbolInstanceInDevice?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -481,7 +482,7 @@ final class StoredObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstance
       self.mResetOppositeRelationship? (object)
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -506,7 +507,7 @@ final class StoredObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstance
   //····················································································································
 
   override var selection : EBSelection < SymbolInstanceInDevice? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -515,11 +516,23 @@ final class StoredObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstance
 
   //····················································································································
 
-  override func setProp (_ inValue : SymbolInstanceInDevice?) { self.mInternalValue = inValue }
+  override var propval : SymbolInstanceInDevice? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : SymbolInstanceInDevice? = nil
 
   //····················································································································
 
-  override var propval : SymbolInstanceInDevice? { return self.mInternalValue }
+  override func setProp (_ inValue : SymbolInstanceInDevice?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -557,7 +570,7 @@ final class StoredObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstance
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

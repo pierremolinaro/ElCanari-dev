@@ -511,12 +511,12 @@ final class FontInProject : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+/*  override func cleanUpToManyRelationships () {
     self.mTexts.removeAll ()
     self.mComponentNames.removeAll ()
     self.mComponentValues.removeAll ()
     super.cleanUpToManyRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -798,7 +798,7 @@ final class FontInProject : EBManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mTexts
     for managedObject in self.mTexts.values {
@@ -812,7 +812,7 @@ final class FontInProject : EBManagedObject,
     for managedObject in self.mComponentValues.values {
       objects.append (managedObject)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

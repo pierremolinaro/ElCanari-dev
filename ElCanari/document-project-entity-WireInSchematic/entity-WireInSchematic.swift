@@ -49,7 +49,7 @@ final class WireInSchematic : SchematicObject,
   //   To one property: mP1
   //····················································································································
 
-  final let mP1_property = StoredObject_PointInSchematic (usedForSignature: false)
+  final let mP1_property = StoredObject_PointInSchematic (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -75,7 +75,7 @@ final class WireInSchematic : SchematicObject,
   //   To one property: mP2
   //····················································································································
 
-  final let mP2_property = StoredObject_PointInSchematic (usedForSignature: false)
+  final let mP2_property = StoredObject_PointInSchematic (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -312,11 +312,11 @@ final class WireInSchematic : SchematicObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mP1 = nil
     self.mP2 = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -420,7 +420,7 @@ final class WireInSchematic : SchematicObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: mP1
     if let object = self.mP1 {
@@ -430,7 +430,7 @@ final class WireInSchematic : SchematicObject,
     if let object = self.mP2 {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

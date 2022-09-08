@@ -11,7 +11,7 @@ enum ConnectorSide {
 graphic handlingOpposite entity BoardConnector : BoardObject {
   graphic cannotBeDeleted ;
 
-  toOne ComponentInProject mComponent inverse toMany mConnectors ; // nil if not connected to a pad
+  toOne @weak ComponentInProject mComponent inverse toMany mConnectors ; // nil if not connected to a pad
   property String mComponentPadName default "" ; // Empty string if not connected to a pad
   property Int mPadIndex default 0 ; // 0 -> master pad, > 0 : slave pad
 

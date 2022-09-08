@@ -1,7 +1,7 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 abstract graphic handlingOpposite entity PackageObject {
-  toOne PackageRoot mRoot inverse toMany packageObjects ;
+  toOne @weak PackageRoot mRoot inverse toMany packageObjects ;
   abstract transient CanariIssueArray issues ;
   
   transient Double knobSize dependsFrom self.mRoot.one.knobSizeMultpliedByTen ;
@@ -392,7 +392,7 @@ graphic handlingOpposite entity PackageSlavePad : PackageObject {
   property @signature Int holeHeightUnit default 2_286 ;
   property @signature Int annularRingUnit default 2_286 ;
 
-  toOne PackagePad master inverse toMany slaves ;
+  toOne @weak PackagePad master inverse toMany slaves ;
 
   override transient EBShape objectDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeWidth, self.holeHeight,
@@ -556,7 +556,7 @@ entity ForbiddenPadNumber {
 //——————————————————————————————————————————————————————————————————————————————
 
 graphic handlingOpposite entity PackageModelImageDoublePoint {
-  toOne PackageRoot mRoot inverse toMany mModelImageObjects ;
+  toOne @weak PackageRoot mRoot inverse toMany mModelImageObjects ;
 
   property Int mFirstX default 457_200 ;
   property Int mFirstY default 457_200 ;

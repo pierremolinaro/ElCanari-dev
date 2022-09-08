@@ -23,7 +23,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
       oldValue.symbolName_property.removeEBObserver (self.symbolName_property) // Transient property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.mPinInstanceName_property.addEBObserver (self.mPinInstanceName_property) // Stored property
       newValue.mPadName_property.addEBObserver (self.mPadName_property) // Stored property
       newValue.mIsNC_property.addEBObserver (self.mIsNC_property) // Stored property
@@ -70,7 +70,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
     super.init ()
   //--- Configure mPinInstanceName simple stored property
     self.mPinInstanceName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mPinInstanceName_property.selection {
         case .empty :
           return .empty
@@ -85,7 +85,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
     }
   //--- Configure mPadName simple stored property
     self.mPadName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mPadName_property.selection {
         case .empty :
           return .empty
@@ -100,7 +100,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
     }
   //--- Configure mIsNC simple stored property
     self.mIsNC_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mIsNC_property.selection {
         case .empty :
           return .empty
@@ -115,7 +115,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
     }
   //--- Configure isConnected transient property
     self.isConnected_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.isConnected_property.selection {
         case .empty :
           return .empty
@@ -130,7 +130,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
     }
   //--- Configure symbolName transient property
     self.symbolName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.symbolName_property.selection {
         case .empty :
           return .empty
@@ -192,7 +192,7 @@ final class TransientObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice {
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -203,8 +203,8 @@ final class TransientObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice {
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -215,7 +215,7 @@ final class TransientObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice {
 
   //····················································································································
 
-  override var propval : PadProxyInDevice? { return self.mInternalValue }
+  override var propval : PadProxyInDevice? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -271,7 +271,7 @@ final class ProxyObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice {
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -318,8 +318,9 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -356,7 +357,7 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : PadProxyInDevice?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -365,7 +366,7 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
       self.mResetOppositeRelationship? (object)
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -390,7 +391,7 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
   //····················································································································
 
   override var selection : EBSelection < PadProxyInDevice? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -399,11 +400,23 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
 
   //····················································································································
 
-  override func setProp (_ inValue : PadProxyInDevice?) { self.mInternalValue = inValue }
+  override var propval : PadProxyInDevice? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : PadProxyInDevice? = nil
 
   //····················································································································
 
-  override var propval : PadProxyInDevice? { return self.mInternalValue }
+  override func setProp (_ inValue : PadProxyInDevice?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -441,7 +454,7 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

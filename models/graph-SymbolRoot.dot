@@ -1,0 +1,10 @@
+digraph G {
+  rankdir=LR ;
+  node [shape=record fontname=helvetica style=rounded] ;
+  SymbolRoot[label="<SymbolRoot>SymbolRoot|String comments|Int gridDisplay|GridStyle gridStyle|Bool horizontalFlip|Int selectedInspector|Int selectedPageIndex|<symbolObjects>[SymbolObject] symbolObjects|<symbolPins>[SymbolPin] symbolPins|Bool verticalFlip|Int xPlacardUnit|Int yPlacardUnit|Int zoom"] ;
+  SymbolPin[label="<SymbolPin>SymbolPin|String name|HorizontalAlignment nameHorizontalAlignment|HorizontalAlignment numberHorizontalAlignment|Bool pinNameIsDisplayedInSchematics|Int xName|Int xNumber|Int xPin|Int yName|Int yNumber|Int yPin"] ;
+  SymbolObject[label="<SymbolObject>SymbolObject"] ;
+  SymbolRoot:symbolObjects -> SymbolObject [dir=both arrowtail=none arrowhead=veevee] ;
+  SymbolRoot:symbolPins -> SymbolPin [dir=both arrowtail=none arrowhead=veevee] ;
+  SymbolPin -> SymbolObject [dir=both arrowtail=dot arrowhead=normal] ;
+}

@@ -33,7 +33,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       oldValue.netInfoForPoint_property.removeEBObserver (self.netInfoForPoint_property) // Transient property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.mSymbolPinName_property.addEBObserver (self.mSymbolPinName_property) // Stored property
       newValue.mX_property.addEBObserver (self.mX_property) // Stored property
       newValue.mY_property.addEBObserver (self.mY_property) // Stored property
@@ -222,7 +222,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     super.init ()
   //--- Configure mSymbolPinName simple stored property
     self.mSymbolPinName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSymbolPinName_property.selection {
         case .empty :
           return .empty
@@ -237,7 +237,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     }
   //--- Configure mX simple stored property
     self.mX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mX_property.selection {
         case .empty :
           return .empty
@@ -252,7 +252,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     }
   //--- Configure mY simple stored property
     self.mY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mY_property.selection {
         case .empty :
           return .empty
@@ -267,7 +267,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     }
   //--- Configure location transient property
     self.location_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.location_property.selection {
         case .empty :
           return .empty
@@ -282,7 +282,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     }
   //--- Configure netName transient property
     self.netName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.netName_property.selection {
         case .empty :
           return .empty
@@ -297,7 +297,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     }
   //--- Configure netClassName transient property
     self.netClassName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.netClassName_property.selection {
         case .empty :
           return .empty
@@ -312,7 +312,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     }
   //--- Configure hasNet transient property
     self.hasNet_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.hasNet_property.selection {
         case .empty :
           return .empty
@@ -327,7 +327,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     }
   //--- Configure canMove transient property
     self.canMove_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.canMove_property.selection {
         case .empty :
           return .empty
@@ -342,7 +342,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     }
   //--- Configure wireColor transient property
     self.wireColor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.wireColor_property.selection {
         case .empty :
           return .empty
@@ -357,7 +357,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     }
   //--- Configure symbolRotation transient property
     self.symbolRotation_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.symbolRotation_property.selection {
         case .empty :
           return .empty
@@ -372,7 +372,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     }
   //--- Configure symbolNameNetName transient property
     self.symbolNameNetName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.symbolNameNetName_property.selection {
         case .empty :
           return .empty
@@ -387,7 +387,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     }
   //--- Configure isConnected transient property
     self.isConnected_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.isConnected_property.selection {
         case .empty :
           return .empty
@@ -402,7 +402,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     }
   //--- Configure status transient property
     self.status_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.status_property.selection {
         case .empty :
           return .empty
@@ -417,7 +417,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     }
   //--- Configure connectedPoints transient property
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.connectedPoints_property.selection {
         case .empty :
           return .empty
@@ -432,7 +432,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     }
   //--- Configure netInfoForPoint transient property
     self.netInfoForPoint_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.netInfoForPoint_property.selection {
         case .empty :
           return .empty
@@ -494,7 +494,7 @@ final class TransientObject_PointInSchematic : ReadOnlyObject_PointInSchematic {
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -505,8 +505,8 @@ final class TransientObject_PointInSchematic : ReadOnlyObject_PointInSchematic {
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -517,7 +517,7 @@ final class TransientObject_PointInSchematic : ReadOnlyObject_PointInSchematic {
 
   //····················································································································
 
-  override var propval : PointInSchematic? { return self.mInternalValue }
+  override var propval : PointInSchematic? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -573,7 +573,7 @@ final class ProxyObject_PointInSchematic : ReadWriteObject_PointInSchematic {
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -620,8 +620,9 @@ final class StoredObject_PointInSchematic : ReadWriteObject_PointInSchematic, EB
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -658,7 +659,7 @@ final class StoredObject_PointInSchematic : ReadWriteObject_PointInSchematic, EB
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : PointInSchematic?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -667,7 +668,7 @@ final class StoredObject_PointInSchematic : ReadWriteObject_PointInSchematic, EB
       self.mResetOppositeRelationship? (object)
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -692,7 +693,7 @@ final class StoredObject_PointInSchematic : ReadWriteObject_PointInSchematic, EB
   //····················································································································
 
   override var selection : EBSelection < PointInSchematic? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -701,11 +702,23 @@ final class StoredObject_PointInSchematic : ReadWriteObject_PointInSchematic, EB
 
   //····················································································································
 
-  override func setProp (_ inValue : PointInSchematic?) { self.mInternalValue = inValue }
+  override var propval : PointInSchematic? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : PointInSchematic? = nil
 
   //····················································································································
 
-  override var propval : PointInSchematic? { return self.mInternalValue }
+  override func setProp (_ inValue : PointInSchematic?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -743,7 +756,7 @@ final class StoredObject_PointInSchematic : ReadWriteObject_PointInSchematic, EB
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

@@ -52,7 +52,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       oldValue.boardOutlineRectDisplay_property.removeEBObserver (self.boardOutlineRectDisplay_property) // Transient property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.selectedPageIndex_property.addEBObserver (self.selectedPageIndex_property) // Stored property
       newValue.zoom_property.addEBObserver (self.zoom_property) // Stored property
       newValue.showDisplaySettingView_property.addEBObserver (self.showDisplaySettingView_property) // Stored property
@@ -350,7 +350,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     super.init ()
   //--- Configure selectedPageIndex simple stored property
     self.selectedPageIndex_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.selectedPageIndex_property.selection {
         case .empty :
           return .empty
@@ -365,7 +365,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure zoom simple stored property
     self.zoom_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.zoom_property.selection {
         case .empty :
           return .empty
@@ -380,7 +380,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure showDisplaySettingView simple stored property
     self.showDisplaySettingView_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.showDisplaySettingView_property.selection {
         case .empty :
           return .empty
@@ -395,7 +395,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure modelInsertionRotation simple stored property
     self.modelInsertionRotation_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.modelInsertionRotation_property.selection {
         case .empty :
           return .empty
@@ -410,7 +410,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure automaticBoardSize simple stored property
     self.automaticBoardSize_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.automaticBoardSize_property.selection {
         case .empty :
           return .empty
@@ -425,7 +425,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure boardManualWidth simple stored property
     self.boardManualWidth_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardManualWidth_property.selection {
         case .empty :
           return .empty
@@ -440,7 +440,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure boardManualHeight simple stored property
     self.boardManualHeight_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardManualHeight_property.selection {
         case .empty :
           return .empty
@@ -455,7 +455,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure boardWidthUnit simple stored property
     self.boardWidthUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardWidthUnit_property.selection {
         case .empty :
           return .empty
@@ -470,7 +470,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure boardHeightUnit simple stored property
     self.boardHeightUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardHeightUnit_property.selection {
         case .empty :
           return .empty
@@ -485,7 +485,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure overlapingArrangment simple stored property
     self.overlapingArrangment_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.overlapingArrangment_property.selection {
         case .empty :
           return .empty
@@ -500,7 +500,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure selectedBoardXUnit simple stored property
     self.selectedBoardXUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.selectedBoardXUnit_property.selection {
         case .empty :
           return .empty
@@ -515,7 +515,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure selectedBoardYUnit simple stored property
     self.selectedBoardYUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.selectedBoardYUnit_property.selection {
         case .empty :
           return .empty
@@ -530,7 +530,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure boardLimitWidth simple stored property
     self.boardLimitWidth_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardLimitWidth_property.selection {
         case .empty :
           return .empty
@@ -545,7 +545,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure boardLimitWidthUnit simple stored property
     self.boardLimitWidthUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardLimitWidthUnit_property.selection {
         case .empty :
           return .empty
@@ -560,7 +560,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure arrowMagnitude simple stored property
     self.arrowMagnitude_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.arrowMagnitude_property.selection {
         case .empty :
           return .empty
@@ -575,7 +575,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure arrowMagnitudeUnit simple stored property
     self.arrowMagnitudeUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.arrowMagnitudeUnit_property.selection {
         case .empty :
           return .empty
@@ -590,7 +590,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure shiftArrowMagnitude simple stored property
     self.shiftArrowMagnitude_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.shiftArrowMagnitude_property.selection {
         case .empty :
           return .empty
@@ -605,7 +605,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure shiftArrowMagnitudeUnit simple stored property
     self.shiftArrowMagnitudeUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.shiftArrowMagnitudeUnit_property.selection {
         case .empty :
           return .empty
@@ -620,7 +620,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure mPDFBoardBackgroundColor simple stored property
     self.mPDFBoardBackgroundColor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mPDFBoardBackgroundColor_property.selection {
         case .empty :
           return .empty
@@ -635,7 +635,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure mArtworkName simple stored property
     self.mArtworkName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mArtworkName_property.selection {
         case .empty :
           return .empty
@@ -650,7 +650,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure mArtworkVersion simple stored property
     self.mArtworkVersion_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mArtworkVersion_property.selection {
         case .empty :
           return .empty
@@ -665,7 +665,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure modelNames transient property
     self.modelNames_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.modelNames_property.selection {
         case .empty :
           return .empty
@@ -680,7 +680,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure boardRect transient property
     self.boardRect_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardRect_property.selection {
         case .empty :
           return .empty
@@ -695,7 +695,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure boardLimitWidthErrorMessage transient property
     self.boardLimitWidthErrorMessage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardLimitWidthErrorMessage_property.selection {
         case .empty :
           return .empty
@@ -710,7 +710,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure boardLimitWidthOk transient property
     self.boardLimitWidthOk_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardLimitWidthOk_property.selection {
         case .empty :
           return .empty
@@ -725,7 +725,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure boardWidth transient property
     self.boardWidth_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardWidth_property.selection {
         case .empty :
           return .empty
@@ -740,7 +740,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure boardHeight transient property
     self.boardHeight_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardHeight_property.selection {
         case .empty :
           return .empty
@@ -755,7 +755,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure comments transient property
     self.comments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.comments_property.selection {
         case .empty :
           return .empty
@@ -770,7 +770,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure layoutLayerWarningMessage transient property
     self.layoutLayerWarningMessage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.layoutLayerWarningMessage_property.selection {
         case .empty :
           return .empty
@@ -785,7 +785,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure layerConfigurationString transient property
     self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.layerConfigurationString_property.selection {
         case .empty :
           return .empty
@@ -800,7 +800,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure emptyDrillFileExtension transient property
     self.emptyDrillFileExtension_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.emptyDrillFileExtension_property.selection {
         case .empty :
           return .empty
@@ -815,7 +815,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure hasInnerElements transient property
     self.hasInnerElements_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.hasInnerElements_property.selection {
         case .empty :
           return .empty
@@ -830,7 +830,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure hasSixLayers transient property
     self.hasSixLayers_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.hasSixLayers_property.selection {
         case .empty :
           return .empty
@@ -845,7 +845,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     }
   //--- Configure boardOutlineRectDisplay transient property
     self.boardOutlineRectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardOutlineRectDisplay_property.selection {
         case .empty :
           return .empty
@@ -907,7 +907,7 @@ final class TransientObject_MergerRoot : ReadOnlyObject_MergerRoot {
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -918,8 +918,8 @@ final class TransientObject_MergerRoot : ReadOnlyObject_MergerRoot {
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -930,7 +930,7 @@ final class TransientObject_MergerRoot : ReadOnlyObject_MergerRoot {
 
   //····················································································································
 
-  override var propval : MergerRoot? { return self.mInternalValue }
+  override var propval : MergerRoot? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -986,7 +986,7 @@ final class ProxyObject_MergerRoot : ReadWriteObject_MergerRoot {
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -1033,8 +1033,9 @@ final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObs
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -1071,7 +1072,7 @@ final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObs
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : MergerRoot?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -1080,7 +1081,7 @@ final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObs
       self.mResetOppositeRelationship? (object)
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -1105,7 +1106,7 @@ final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObs
   //····················································································································
 
   override var selection : EBSelection < MergerRoot? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -1114,11 +1115,23 @@ final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObs
 
   //····················································································································
 
-  override func setProp (_ inValue : MergerRoot?) { self.mInternalValue = inValue }
+  override var propval : MergerRoot? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : MergerRoot? = nil
 
   //····················································································································
 
-  override var propval : MergerRoot? { return self.mInternalValue }
+  override func setProp (_ inValue : MergerRoot?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -1156,7 +1169,7 @@ final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObs
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

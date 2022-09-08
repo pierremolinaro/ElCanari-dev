@@ -106,7 +106,7 @@ final class PadProxyInDevice : EBManagedObject,
   //   To one property: mPinInstance
   //····················································································································
 
-  final let mPinInstance_property = StoredObject_SymbolPinInstanceInDevice (usedForSignature: false)
+  final let mPinInstance_property = StoredObject_SymbolPinInstanceInDevice (usedForSignature: false, strongRef: true)
 
   //····················································································································
 
@@ -243,10 +243,10 @@ final class PadProxyInDevice : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mPinInstance = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -377,13 +377,13 @@ final class PadProxyInDevice : EBManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: mPinInstance
     if let object = self.mPinInstance {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

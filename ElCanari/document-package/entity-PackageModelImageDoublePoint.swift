@@ -184,7 +184,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-  final let mRoot_property = StoredObject_PackageRoot (usedForSignature: false)
+  final let mRoot_property = StoredObject_PackageRoot (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -327,10 +327,10 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mRoot = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -487,13 +487,13 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: mRoot
     if let object = self.mRoot {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

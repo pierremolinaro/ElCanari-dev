@@ -763,7 +763,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //   To one property: mArtwork
   //····················································································································
 
-  final let mArtwork_property = StoredObject_ArtworkRoot (usedForSignature: false)
+  final let mArtwork_property = StoredObject_ArtworkRoot (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -1080,10 +1080,10 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mArtwork = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -1460,13 +1460,13 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: mArtwork
     if let object = self.mArtwork {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

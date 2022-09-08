@@ -24,7 +24,7 @@ extension AutoLayoutProjectDocument {
     //--- Add to device list
       self.rootObject.mDevices.append (newDevice)
     //--- Free imported root object
-      deviceRoot.removeRecursivelyAllRelationsShips ()
+//      deviceRoot.removeRecursivelyAllRelationsShips ()
     }
     return device
   }
@@ -47,7 +47,7 @@ extension AutoLayoutProjectDocument {
               ioMessages.append ("Cannot update '\(deviceInProject.mDeviceName)'; new device is incompatible: \(errorMessage)\n")
             }
           }
-          deviceRoot.removeRecursivelyAllRelationsShips ()
+//          deviceRoot.removeRecursivelyAllRelationsShips ()
          }else{
           ioMessages.append ("Cannot read \(pathes [0]) file.")
         }
@@ -247,11 +247,11 @@ extension AutoLayoutProjectDocument {
     inCurrentDeviceInProject.mDeviceFileData = inData
     inCurrentDeviceInProject.mPrefix = inCandidateDeviceRoot.mPrefix
   //--- Remove current packages
-    let currentPackages = inCurrentDeviceInProject.mPackages
+//    let currentPackages = inCurrentDeviceInProject.mPackages
     inCurrentDeviceInProject.mPackages = EBReferenceArray ()
-    for p in currentPackages.values {
-      p.removeRecursivelyAllRelationsShips ()
-    }
+//    for p in currentPackages.values {
+//      p.removeRecursivelyAllRelationsShips ()
+//    }
   //--- Build package dictionary
     var packageDictionary = [String : DevicePackageInProject] ()
   //--- Append packages
@@ -296,11 +296,11 @@ extension AutoLayoutProjectDocument {
       }
     }
   //--- Remove current symbols
-    let currentSymbols = inCurrentDeviceInProject.mSymbols
+//    let currentSymbols = inCurrentDeviceInProject.mSymbols
     inCurrentDeviceInProject.mSymbols = EBReferenceArray ()
-    for s in currentSymbols.values {
-      s.removeRecursivelyAllRelationsShips ()
-    }
+//    for s in currentSymbols.values {
+//      s.removeRecursivelyAllRelationsShips ()
+//    }
   //--- Append symbols
     var devicePinDictionary = [PinQualifiedNameStruct : DevicePinInProject] ()
     for symbolTypeInDevice in inCandidateDeviceRoot.mSymbolTypes.values {

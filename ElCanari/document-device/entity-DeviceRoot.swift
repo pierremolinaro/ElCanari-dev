@@ -1014,14 +1014,14 @@ final class DeviceRoot : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+/*  override func cleanUpToManyRelationships () {
     self.mDocs.removeAll ()
     self.mSymbolInstances.removeAll ()
     self.mPackages.removeAll ()
     self.mSymbolTypes.removeAll ()
     self.mPadProxies.removeAll ()
     super.cleanUpToManyRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -1523,7 +1523,7 @@ final class DeviceRoot : EBManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mDocs
     for managedObject in self.mDocs.values {
@@ -1545,7 +1545,7 @@ final class DeviceRoot : EBManagedObject,
     for managedObject in self.mPadProxies.values {
       objects.append (managedObject)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

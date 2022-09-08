@@ -18,7 +18,7 @@ func transient_DeviceSymbolInstanceInProject_symbolAndTypeName (
        _ self_mSymbolType_mSymbolTypeName : String?
 ) -> SymbolInProjectIdentifier {
 //--- START OF USER ZONE 2
-  return SymbolInProjectIdentifier (symbolInstanceName: self_mSymbolInstanceName, symbolTypeName: self_mSymbolType_mSymbolTypeName!)
+  return SymbolInProjectIdentifier (symbolInstanceName: self_mSymbolInstanceName, symbolTypeName: self_mSymbolType_mSymbolTypeName ?? "<<nil>>")
 //--- END OF USER ZONE 2
 }
 

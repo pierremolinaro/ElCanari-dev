@@ -1,0 +1,26 @@
+digraph G {
+  rankdir=LR ;
+  node [shape=record fontname=helvetica style=rounded] ;
+  DeviceRoot ;
+  SymbolTypeInDevice ;
+  SymbolPinTypeInDevice ;
+  SymbolPinInstanceInDevice ;
+  SymbolInstanceInDevice ;
+  PadProxyInDevice ;
+  PackageInDevice ;
+  MasterPadInDevice ;
+  SlavePadInDevice ;
+  DeviceDocumentation ;
+  DeviceRoot -> DeviceDocumentation [dir=both arrowtail=none arrowhead=veevee] ;
+  DeviceRoot -> PackageInDevice [dir=both arrowtail=none arrowhead=veevee] ;
+  DeviceRoot -> PadProxyInDevice [dir=both arrowtail=none arrowhead=veevee] ;
+  DeviceRoot -> SymbolInstanceInDevice [dir=both arrowtail=none arrowhead=veevee] ;
+  DeviceRoot -> SymbolTypeInDevice [dir=both arrowtail=none arrowhead=veevee] ;
+  SymbolTypeInDevice -> SymbolInstanceInDevice [dir=both arrowtail=none arrowhead=veevee] ;
+  SymbolTypeInDevice -> SymbolPinTypeInDevice [dir=both arrowtail=none arrowhead=veevee] ;
+  SymbolPinTypeInDevice -> SymbolPinInstanceInDevice [dir=both arrowtail=none arrowhead=veevee] ;
+  SymbolInstanceInDevice -> SymbolPinInstanceInDevice [dir=both arrowtail=none arrowhead=veevee] ;
+  PadProxyInDevice -> SymbolPinInstanceInDevice [dir=both arrowtail=none arrowhead=onormal] ;
+  PackageInDevice -> MasterPadInDevice [dir=both arrowtail=none arrowhead=veevee] ;
+  MasterPadInDevice -> SlavePadInDevice [dir=both arrowtail=none arrowhead=veevee] ;
+}

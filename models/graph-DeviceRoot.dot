@@ -11,16 +11,16 @@ digraph G {
   MasterPadInDevice[label="<MasterPadInDevice>MasterPadInDevice|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleHeight|Int mHoleWidth|String mName|PadShape mShape|<mSlavePads>[SlavePadInDevice] mSlavePads|PadStyle mStyle|Int mWidth"] ;
   SlavePadInDevice[label="<SlavePadInDevice>SlavePadInDevice|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleHeight|Int mHoleWidth|<mMasterPad>MasterPadInDevice? mMasterPad|PadShape mShape|SlavePadStyle mStyle|Int mWidth"] ;
   DeviceDocumentation[label="<DeviceDocumentation>DeviceDocumentation|Data mFileData|String mFileName"] ;
-  DeviceRoot:mDocs -> DeviceDocumentation:DeviceDocumentation [dir=both arrowtail=none arrowhead=vee] ;
-  DeviceRoot:mPackages -> PackageInDevice:mRoot [dir=both arrowtail=onormal arrowhead=vee] ;
-  DeviceRoot:mPadProxies -> PadProxyInDevice:PadProxyInDevice [dir=both arrowtail=none arrowhead=vee] ;
-  DeviceRoot:mSymbolInstances -> SymbolInstanceInDevice:SymbolInstanceInDevice [dir=both arrowtail=none arrowhead=vee] ;
-  DeviceRoot:mSymbolTypes -> SymbolTypeInDevice:SymbolTypeInDevice [dir=both arrowtail=none arrowhead=vee] ;
-  SymbolTypeInDevice:mInstances -> SymbolInstanceInDevice:mType [dir=both arrowtail=onormal arrowhead=vee] ;
-  SymbolTypeInDevice:mPinTypes -> SymbolPinTypeInDevice:SymbolPinTypeInDevice [dir=both arrowtail=none arrowhead=vee] ;
-  SymbolPinTypeInDevice:mInstances -> SymbolPinInstanceInDevice:mType [dir=both arrowtail=onormal arrowhead=vee] ;
-  SymbolInstanceInDevice:mPinInstances -> SymbolPinInstanceInDevice:mSymbolInstance [dir=both arrowtail=onormal arrowhead=vee] ;
+  DeviceRoot:mDocs -> DeviceDocumentation [dir=both arrowtail=none arrowhead=veevee] ;
+  DeviceRoot:mPackages -> PackageInDevice:mRoot [dir=both arrowtail=onormal arrowhead=veevee] ;
+  DeviceRoot:mPadProxies -> PadProxyInDevice [dir=both arrowtail=none arrowhead=veevee] ;
+  DeviceRoot:mSymbolInstances -> SymbolInstanceInDevice [dir=both arrowtail=none arrowhead=veevee] ;
+  DeviceRoot:mSymbolTypes -> SymbolTypeInDevice [dir=both arrowtail=none arrowhead=veevee] ;
+  SymbolTypeInDevice:mInstances -> SymbolInstanceInDevice:mType [dir=both arrowtail=onormal arrowhead=veevee] ;
+  SymbolTypeInDevice:mPinTypes -> SymbolPinTypeInDevice [dir=both arrowtail=none arrowhead=veevee] ;
+  SymbolPinTypeInDevice:mInstances -> SymbolPinInstanceInDevice:mType [dir=both arrowtail=onormal arrowhead=veevee] ;
+  SymbolInstanceInDevice:mPinInstances -> SymbolPinInstanceInDevice:mSymbolInstance [dir=both arrowtail=onormal arrowhead=veevee] ;
   PadProxyInDevice:mPinInstance -> SymbolPinInstanceInDevice:mPadProxy [dir=both arrowtail=onormal arrowhead=onormal] ;
-  PackageInDevice:mMasterPads -> MasterPadInDevice:MasterPadInDevice [dir=both arrowtail=none arrowhead=vee] ;
-  MasterPadInDevice:mSlavePads -> SlavePadInDevice:mMasterPad [dir=both arrowtail=onormal arrowhead=vee] ;
+  PackageInDevice:mMasterPads -> MasterPadInDevice [dir=both arrowtail=none arrowhead=veevee] ;
+  MasterPadInDevice:mSlavePads -> SlavePadInDevice:mMasterPad [dir=both arrowtail=onormal arrowhead=veevee] ;
 }

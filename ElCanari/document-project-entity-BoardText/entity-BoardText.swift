@@ -302,7 +302,7 @@ final class BoardText : BoardObject,
   //   To one property: mFont
   //····················································································································
 
-  final let mFont_property = StoredObject_FontInProject (usedForSignature: false)
+  final let mFont_property = StoredObject_FontInProject (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -656,10 +656,10 @@ final class BoardText : BoardObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mFont = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -856,13 +856,13 @@ final class BoardText : BoardObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: mFont
     if let object = self.mFont {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

@@ -13,7 +13,7 @@ func enum ComponentSide.popupTitles {
 
 graphic handlingOpposite entity ComponentInProject : BoardObject {
 //--- Device
-  toOne DeviceInProject mDevice inverse toMany mComponents ;
+  toOne @weak DeviceInProject mDevice inverse toMany mComponents ;
 
   transient String deviceName dependsFrom self.mDevice.one.mDeviceName ;
 
@@ -132,7 +132,7 @@ graphic handlingOpposite entity ComponentInProject : BoardObject {
   property ComponentSide mSide default front ;
 
 //--- Component name display
-  toOne FontInProject mNameFont inverse toMany mComponentNames ;
+  toOne @weak FontInProject mNameFont inverse toMany mComponentNames ;
   property Double mNameFontSize default 4.0 ;
   property Int mXName default 0 ;
   property Int mYName default 685_800 ; // 300 mils
@@ -143,7 +143,7 @@ graphic handlingOpposite entity ComponentInProject : BoardObject {
 
 //--- Component value display
   property String mComponentValue default "" ;
-  toOne FontInProject mValueFont inverse toMany mComponentValues ;
+  toOne @weak FontInProject mValueFont inverse toMany mComponentValues ;
   property Double mValueFontSize default 4.0 ;
   property Int mXValue default 0 ;
   property Int mYValue default -685_800 ; // 300 mils

@@ -492,7 +492,7 @@ final class BoardConnector : BoardObject,
   //   To one property: mComponent
   //····················································································································
 
-  final let mComponent_property = StoredObject_ComponentInProject (usedForSignature: false)
+  final let mComponent_property = StoredObject_ComponentInProject (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -1190,20 +1190,20 @@ final class BoardConnector : BoardObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+/*  override func cleanUpToManyRelationships () {
     self.mTracksP2.removeAll ()
     self.mTracksP1.removeAll ()
     super.cleanUpToManyRelationships ()
-  }
+  } */
 
   //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mComponent = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -1540,7 +1540,7 @@ final class BoardConnector : BoardObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mTracksP2
     for managedObject in self.mTracksP2.values {
@@ -1554,7 +1554,7 @@ final class BoardConnector : BoardObject,
     if let object = self.mComponent {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

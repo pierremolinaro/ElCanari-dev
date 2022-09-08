@@ -3905,7 +3905,7 @@ final class BoardModel : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+/*  override func cleanUpToManyRelationships () {
     self.frontLegendLines.removeAll ()
     self.backLegendLines.removeAll ()
     self.frontLegendTexts.removeAll ()
@@ -3932,7 +3932,7 @@ final class BoardModel : EBManagedObject,
     self.backPackages.removeAll ()
     self.myInstances.removeAll ()
     super.cleanUpToManyRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -5484,7 +5484,7 @@ final class BoardModel : EBManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: frontLegendLines
     for managedObject in self.frontLegendLines.values {
@@ -5586,7 +5586,7 @@ final class BoardModel : EBManagedObject,
     for managedObject in self.myInstances.values {
       objects.append (managedObject)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

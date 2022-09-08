@@ -3,7 +3,7 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 abstract graphic handlingOpposite entity BoardObject {
-  toOne ProjectRoot mRoot inverse toMany mBoardObjects ;
+  toOne @weak ProjectRoot mRoot inverse toMany mBoardObjects ;
 
   transient Bool isPlacedInBoard dependsFrom self.mRoot.none ;
      

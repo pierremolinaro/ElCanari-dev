@@ -47,7 +47,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
       oldValue.padNumberDisplay_property.removeEBObserver (self.padNumberDisplay_property) // Transient property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.xCenter_property.addEBObserver (self.xCenter_property) // Stored property
       newValue.yCenter_property.addEBObserver (self.yCenter_property) // Stored property
       newValue.width_property.addEBObserver (self.width_property) // Stored property
@@ -286,7 +286,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     super.init ()
   //--- Configure xCenter simple stored property
     self.xCenter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.xCenter_property.selection {
         case .empty :
           return .empty
@@ -301,7 +301,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure yCenter simple stored property
     self.yCenter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.yCenter_property.selection {
         case .empty :
           return .empty
@@ -316,7 +316,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure width simple stored property
     self.width_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.width_property.selection {
         case .empty :
           return .empty
@@ -331,7 +331,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure height simple stored property
     self.height_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.height_property.selection {
         case .empty :
           return .empty
@@ -346,7 +346,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure holeWidth simple stored property
     self.holeWidth_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.holeWidth_property.selection {
         case .empty :
           return .empty
@@ -361,7 +361,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure holeHeight simple stored property
     self.holeHeight_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.holeHeight_property.selection {
         case .empty :
           return .empty
@@ -376,7 +376,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure padShape simple stored property
     self.padShape_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.padShape_property.selection {
         case .empty :
           return .empty
@@ -391,7 +391,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure padStyle simple stored property
     self.padStyle_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.padStyle_property.selection {
         case .empty :
           return .empty
@@ -406,7 +406,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure padNumber simple stored property
     self.padNumber_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.padNumber_property.selection {
         case .empty :
           return .empty
@@ -421,7 +421,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure xCenterUnit simple stored property
     self.xCenterUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.xCenterUnit_property.selection {
         case .empty :
           return .empty
@@ -436,7 +436,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure yCenterUnit simple stored property
     self.yCenterUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.yCenterUnit_property.selection {
         case .empty :
           return .empty
@@ -451,7 +451,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure widthUnit simple stored property
     self.widthUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.widthUnit_property.selection {
         case .empty :
           return .empty
@@ -466,7 +466,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure heightUnit simple stored property
     self.heightUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.heightUnit_property.selection {
         case .empty :
           return .empty
@@ -481,7 +481,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure holeWidthUnit simple stored property
     self.holeWidthUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.holeWidthUnit_property.selection {
         case .empty :
           return .empty
@@ -496,7 +496,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure holeHeightUnit simple stored property
     self.holeHeightUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.holeHeightUnit_property.selection {
         case .empty :
           return .empty
@@ -511,7 +511,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure annularRingUnit simple stored property
     self.annularRingUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.annularRingUnit_property.selection {
         case .empty :
           return .empty
@@ -526,7 +526,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.objectDisplay_property.selection {
         case .empty :
           return .empty
@@ -541,7 +541,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.selectionDisplay_property.selection {
         case .empty :
           return .empty
@@ -556,7 +556,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure padNameForDisplay transient property
     self.padNameForDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.padNameForDisplay_property.selection {
         case .empty :
           return .empty
@@ -571,7 +571,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure issues transient property
     self.issues_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.issues_property.selection {
         case .empty :
           return .empty
@@ -586,7 +586,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure padIsTraversing transient property
     self.padIsTraversing_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.padIsTraversing_property.selection {
         case .empty :
           return .empty
@@ -601,7 +601,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure annularRing transient property
     self.annularRing_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.annularRing_property.selection {
         case .empty :
           return .empty
@@ -616,7 +616,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure padNameWithZoneName transient property
     self.padNameWithZoneName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.padNameWithZoneName_property.selection {
         case .empty :
           return .empty
@@ -631,7 +631,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure zoneName transient property
     self.zoneName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.zoneName_property.selection {
         case .empty :
           return .empty
@@ -646,7 +646,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure noZone transient property
     self.noZone_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.noZone_property.selection {
         case .empty :
           return .empty
@@ -661,7 +661,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure zoneAllowsManualRenumbering transient property
     self.zoneAllowsManualRenumbering_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.zoneAllowsManualRenumbering_property.selection {
         case .empty :
           return .empty
@@ -676,7 +676,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure slavePadCount transient property
     self.slavePadCount_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.slavePadCount_property.selection {
         case .empty :
           return .empty
@@ -691,7 +691,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure masterPadObjectIndex transient property
     self.masterPadObjectIndex_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.masterPadObjectIndex_property.selection {
         case .empty :
           return .empty
@@ -706,7 +706,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     }
   //--- Configure padNumberDisplay transient property
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.padNumberDisplay_property.selection {
         case .empty :
           return .empty
@@ -768,7 +768,7 @@ final class TransientObject_PackagePad : ReadOnlyObject_PackagePad {
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -779,8 +779,8 @@ final class TransientObject_PackagePad : ReadOnlyObject_PackagePad {
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -791,7 +791,7 @@ final class TransientObject_PackagePad : ReadOnlyObject_PackagePad {
 
   //····················································································································
 
-  override var propval : PackagePad? { return self.mInternalValue }
+  override var propval : PackagePad? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -847,7 +847,7 @@ final class ProxyObject_PackagePad : ReadWriteObject_PackagePad {
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -894,8 +894,9 @@ final class StoredObject_PackagePad : ReadWriteObject_PackagePad, EBSignatureObs
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -932,7 +933,7 @@ final class StoredObject_PackagePad : ReadWriteObject_PackagePad, EBSignatureObs
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : PackagePad?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -941,7 +942,7 @@ final class StoredObject_PackagePad : ReadWriteObject_PackagePad, EBSignatureObs
       self.mResetOppositeRelationship? (object)
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -966,7 +967,7 @@ final class StoredObject_PackagePad : ReadWriteObject_PackagePad, EBSignatureObs
   //····················································································································
 
   override var selection : EBSelection < PackagePad? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -975,11 +976,23 @@ final class StoredObject_PackagePad : ReadWriteObject_PackagePad, EBSignatureObs
 
   //····················································································································
 
-  override func setProp (_ inValue : PackagePad?) { self.mInternalValue = inValue }
+  override var propval : PackagePad? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : PackagePad? = nil
 
   //····················································································································
 
-  override var propval : PackagePad? { return self.mInternalValue }
+  override func setProp (_ inValue : PackagePad?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -1017,7 +1030,7 @@ final class StoredObject_PackagePad : ReadWriteObject_PackagePad, EBSignatureObs
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

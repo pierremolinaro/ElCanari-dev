@@ -93,7 +93,7 @@ entity DeviceDocumentation {
 //——————————————————————————————————————————————————————————————————————————————
 
 graphic handlingOpposite entity PackageInDevice {
-  toOne DeviceRoot mRoot inverse toMany mPackages ;
+  toOne @weak DeviceRoot mRoot inverse toMany mPackages ;
 
   toMany @signature MasterPadInDevice mMasterPads ;
 
@@ -184,7 +184,7 @@ handlingOpposite entity MasterPadInDevice {
 //——————————————————————————————————————————————————————————————————————————————
 
 handlingOpposite entity SlavePadInDevice {
-  toOne MasterPadInDevice mMasterPad inverse toMany mSlavePads  ;
+  toOne @weak MasterPadInDevice mMasterPad inverse toMany mSlavePads  ;
 
   property @signature Int mCenterX default 0 ;
   property @signature Int mCenterY default 0 ;
@@ -264,7 +264,7 @@ handlingOpposite entity SymbolPinTypeInDevice {
 //——————————————————————————————————————————————————————————————————————————————
 
 graphic handlingOpposite entity SymbolInstanceInDevice {
-  toOne SymbolTypeInDevice mType inverse toMany mInstances ;
+  toOne @weak SymbolTypeInDevice mType inverse toMany mInstances ;
   toMany @signature SymbolPinInstanceInDevice mPinInstances inverse toOne mSymbolInstance ;
 
   property @signature String mInstanceName default "" ;
@@ -310,9 +310,9 @@ graphic handlingOpposite entity SymbolInstanceInDevice {
 //——————————————————————————————————————————————————————————————————————————————
 
 handlingOpposite entity SymbolPinInstanceInDevice {
-  toOne SymbolInstanceInDevice mSymbolInstance inverse toMany mPinInstances ;
-  toOne SymbolPinTypeInDevice mType inverse toMany mInstances ;
-  toOne PadProxyInDevice mPadProxy inverse toOne mPinInstance ;
+  toOne @weak SymbolInstanceInDevice mSymbolInstance inverse toMany mPinInstances ;
+  toOne @weak SymbolPinTypeInDevice mType inverse toMany mInstances ;
+  toOne @weak PadProxyInDevice mPadProxy inverse toOne mPinInstance ;
 
   transient EBShape numberShape dependsFrom
      self.mType.one.mXNumber, self.mType.one.mYNumber,

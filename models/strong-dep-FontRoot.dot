@@ -1,0 +1,7 @@
+digraph G {
+  "FontRoot" [shape=rectangle] ;
+  "FontRoot" -> "FontCharacter" ;
+  "FontCharacter" [shape=rectangle] ;
+  "FontCharacter" -> "SegmentForFontCharacter" ;
+  "SegmentForFontCharacter" [shape=rectangle] ;
+}

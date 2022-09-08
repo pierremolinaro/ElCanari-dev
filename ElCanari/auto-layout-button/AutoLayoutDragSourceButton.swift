@@ -145,7 +145,7 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
       let pasteboardItem = NSPasteboardItem ()
       let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
     //--- Get dragged object
-      if let (temporaryObject, additionalDict, otherObjects) = self.mDraggedObjectFactory? () {
+      if let (temporaryObject, additionalDict, _) = self.mDraggedObjectFactory? () {
         var transform = AffineTransform ()
         if let scaleProvider = self.mScaleProvider, scaleProvider.boundViews().count == 1 {
           let view = scaleProvider.boundViews() [0]
@@ -183,10 +183,10 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
         //--- Begin
           self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
         //--- Clean up temporary objects
-          temporaryObject.cleanUpRelationshipsAndRemoveAllObservers ()
-          for object in otherObjects {
-            object.cleanUpRelationshipsAndRemoveAllObservers ()
-          }
+//          temporaryObject.cleanUpRelationshipsAndRemoveAllObservers ()
+//          for object in otherObjects {
+//            object.cleanUpRelationshipsAndRemoveAllObservers ()
+//          }
         }
     //--- Get dragged image
       }else if let shape = self.mDraggedObjectImage? () {

@@ -3,8 +3,8 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 graphic handlingOpposite entity WireInSchematic : SchematicObject {
-  toOne PointInSchematic mP1 inverse toMany mWiresP1s ;
-  toOne PointInSchematic mP2 inverse toMany mWiresP2s ;  
+  toOne @weak PointInSchematic mP1 inverse toMany mWiresP1s ;
+  toOne @weak PointInSchematic mP2 inverse toMany mWiresP2s ;  
 
   override transient EBShape objectDisplay dependsFrom
     self.mP1.one.wireColor,

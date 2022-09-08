@@ -3366,7 +3366,7 @@ final class ProjectRoot : EBManagedObject,
   //   To one property: mArtwork
   //····················································································································
 
-  final let mArtwork_property = StoredObject_ArtworkRoot (usedForSignature: false)
+  final let mArtwork_property = StoredObject_ArtworkRoot (usedForSignature: false, strongRef: true)
 
   //····················································································································
 
@@ -3477,7 +3477,7 @@ final class ProjectRoot : EBManagedObject,
   //   To one property: mSelectedSheet
   //····················································································································
 
-  final let mSelectedSheet_property = StoredObject_SheetInProject (usedForSignature: false)
+  final let mSelectedSheet_property = StoredObject_SheetInProject (usedForSignature: false, strongRef: true)
 
   //····················································································································
 
@@ -5989,7 +5989,7 @@ final class ProjectRoot : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+/*  override func cleanUpToManyRelationships () {
     self.mSheets.removeAll ()
     self.mFonts.removeAll ()
     self.mDevices.removeAll ()
@@ -5998,17 +5998,17 @@ final class ProjectRoot : EBManagedObject,
     self.mBoardObjects.removeAll ()
     self.mComponents.removeAll ()
     super.cleanUpToManyRelationships ()
-  }
+  } */
 
   //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mArtwork = nil
     self.mSelectedSheet = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -7458,7 +7458,7 @@ final class ProjectRoot : EBManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mSheets
     for managedObject in self.mSheets.values {
@@ -7496,7 +7496,7 @@ final class ProjectRoot : EBManagedObject,
     if let object = self.mSelectedSheet {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

@@ -43,7 +43,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
       oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.mSelectedPageIndex_property.addEBObserver (self.mSelectedPageIndex_property) // Stored property
       newValue.mSelectedSymbolInspectorIndex_property.addEBObserver (self.mSelectedSymbolInspectorIndex_property) // Stored property
       newValue.mSelectedPackageInspectorIndex_property.addEBObserver (self.mSelectedPackageInspectorIndex_property) // Stored property
@@ -350,7 +350,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     super.init ()
   //--- Configure mSelectedPageIndex simple stored property
     self.mSelectedPageIndex_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSelectedPageIndex_property.selection {
         case .empty :
           return .empty
@@ -365,7 +365,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure mSelectedSymbolInspectorIndex simple stored property
     self.mSelectedSymbolInspectorIndex_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSelectedSymbolInspectorIndex_property.selection {
         case .empty :
           return .empty
@@ -380,7 +380,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure mSelectedPackageInspectorIndex simple stored property
     self.mSelectedPackageInspectorIndex_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSelectedPackageInspectorIndex_property.selection {
         case .empty :
           return .empty
@@ -395,7 +395,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure mTitle simple stored property
     self.mTitle_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mTitle_property.selection {
         case .empty :
           return .empty
@@ -410,7 +410,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure mImageData simple stored property
     self.mImageData_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mImageData_property.selection {
         case .empty :
           return .empty
@@ -425,7 +425,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure mPrefix simple stored property
     self.mPrefix_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mPrefix_property.selection {
         case .empty :
           return .empty
@@ -440,7 +440,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure mComments simple stored property
     self.mComments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mComments_property.selection {
         case .empty :
           return .empty
@@ -455,7 +455,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure mPackageDisplayZoom simple stored property
     self.mPackageDisplayZoom_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mPackageDisplayZoom_property.selection {
         case .empty :
           return .empty
@@ -470,7 +470,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure mPackageDisplayHorizontalFlip simple stored property
     self.mPackageDisplayHorizontalFlip_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mPackageDisplayHorizontalFlip_property.selection {
         case .empty :
           return .empty
@@ -485,7 +485,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure mPackageDisplayVerticalFlip simple stored property
     self.mPackageDisplayVerticalFlip_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mPackageDisplayVerticalFlip_property.selection {
         case .empty :
           return .empty
@@ -500,7 +500,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure mShowPackages simple stored property
     self.mShowPackages_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mShowPackages_property.selection {
         case .empty :
           return .empty
@@ -515,7 +515,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure mShowPackagePadNumbers simple stored property
     self.mShowPackagePadNumbers_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mShowPackagePadNumbers_property.selection {
         case .empty :
           return .empty
@@ -530,7 +530,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure mShowPackageFrontPads simple stored property
     self.mShowPackageFrontPads_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mShowPackageFrontPads_property.selection {
         case .empty :
           return .empty
@@ -545,7 +545,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure mShowPackageBackPads simple stored property
     self.mShowPackageBackPads_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mShowPackageBackPads_property.selection {
         case .empty :
           return .empty
@@ -560,7 +560,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure mSymbolDisplayZoom simple stored property
     self.mSymbolDisplayZoom_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSymbolDisplayZoom_property.selection {
         case .empty :
           return .empty
@@ -575,7 +575,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure imageIsValid transient property
     self.imageIsValid_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.imageIsValid_property.selection {
         case .empty :
           return .empty
@@ -590,7 +590,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure unconnectedPins transient property
     self.unconnectedPins_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.unconnectedPins_property.selection {
         case .empty :
           return .empty
@@ -605,7 +605,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure inconsistentPackagePadNameSetsMessage transient property
     self.inconsistentPackagePadNameSetsMessage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.inconsistentPackagePadNameSetsMessage_property.selection {
         case .empty :
           return .empty
@@ -620,7 +620,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure inconsistentSymbolNameSetMessage transient property
     self.inconsistentSymbolNameSetMessage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.inconsistentSymbolNameSetMessage_property.selection {
         case .empty :
           return .empty
@@ -635,7 +635,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure packagePadNameSetsAreConsistent transient property
     self.packagePadNameSetsAreConsistent_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.packagePadNameSetsAreConsistent_property.selection {
         case .empty :
           return .empty
@@ -650,7 +650,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure symbolNameAreConsistent transient property
     self.symbolNameAreConsistent_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.symbolNameAreConsistent_property.selection {
         case .empty :
           return .empty
@@ -665,7 +665,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure symbolTypeNames transient property
     self.symbolTypeNames_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.symbolTypeNames_property.selection {
         case .empty :
           return .empty
@@ -680,7 +680,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure unconnectedPads transient property
     self.unconnectedPads_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.unconnectedPads_property.selection {
         case .empty :
           return .empty
@@ -695,7 +695,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure assignedPadProxies transient property
     self.assignedPadProxies_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.assignedPadProxies_property.selection {
         case .empty :
           return .empty
@@ -710,7 +710,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
     }
   //--- Configure issues transient property
     self.issues_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.issues_property.selection {
         case .empty :
           return .empty
@@ -772,7 +772,7 @@ final class TransientObject_DeviceRoot : ReadOnlyObject_DeviceRoot {
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -783,8 +783,8 @@ final class TransientObject_DeviceRoot : ReadOnlyObject_DeviceRoot {
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -795,7 +795,7 @@ final class TransientObject_DeviceRoot : ReadOnlyObject_DeviceRoot {
 
   //····················································································································
 
-  override var propval : DeviceRoot? { return self.mInternalValue }
+  override var propval : DeviceRoot? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -851,7 +851,7 @@ final class ProxyObject_DeviceRoot : ReadWriteObject_DeviceRoot {
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -898,8 +898,9 @@ final class StoredObject_DeviceRoot : ReadWriteObject_DeviceRoot, EBSignatureObs
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -936,7 +937,7 @@ final class StoredObject_DeviceRoot : ReadWriteObject_DeviceRoot, EBSignatureObs
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : DeviceRoot?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -945,7 +946,7 @@ final class StoredObject_DeviceRoot : ReadWriteObject_DeviceRoot, EBSignatureObs
       self.mResetOppositeRelationship? (object)
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -970,7 +971,7 @@ final class StoredObject_DeviceRoot : ReadWriteObject_DeviceRoot, EBSignatureObs
   //····················································································································
 
   override var selection : EBSelection < DeviceRoot? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -979,11 +980,23 @@ final class StoredObject_DeviceRoot : ReadWriteObject_DeviceRoot, EBSignatureObs
 
   //····················································································································
 
-  override func setProp (_ inValue : DeviceRoot?) { self.mInternalValue = inValue }
+  override var propval : DeviceRoot? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : DeviceRoot? = nil
 
   //····················································································································
 
-  override var propval : DeviceRoot? { return self.mInternalValue }
+  override func setProp (_ inValue : DeviceRoot?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -1021,7 +1034,7 @@ final class StoredObject_DeviceRoot : ReadWriteObject_DeviceRoot, EBSignatureObs
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

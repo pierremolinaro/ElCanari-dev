@@ -3,7 +3,7 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 graphic handlingOpposite entity NCInSchematic : SchematicObject {
-  toOne PointInSchematic mPoint inverse toOne mNC ;
+  toOne @weak PointInSchematic mPoint inverse toOne mNC ;
 
   property QuadrantRotation mOrientation default rotation0 ;
 

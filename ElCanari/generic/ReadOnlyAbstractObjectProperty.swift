@@ -24,10 +24,10 @@ class ReadOnlyAbstractObjectProperty <T : AnyObject> : ReadOnlyAbstractGenericRe
   //  Internal value
   //····················································································································
 
-  final var mInternalValue : T? = nil {
+  final weak var mWeakInternalValue : T? = nil {
      didSet {
-      if self.mInternalValue !== oldValue {
-        if (self.mInternalValue == nil) != (oldValue == nil) {
+      if self.mWeakInternalValue !== oldValue {
+        if (self.mWeakInternalValue == nil) != (oldValue == nil) {
           self.none_property.observedObjectDidChange ()
         }
         self.observedObjectDidChange ()

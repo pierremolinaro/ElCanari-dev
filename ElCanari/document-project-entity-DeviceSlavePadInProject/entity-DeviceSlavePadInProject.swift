@@ -459,9 +459,9 @@ final class DeviceSlavePadInProject : EBManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

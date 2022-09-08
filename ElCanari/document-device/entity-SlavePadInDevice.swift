@@ -243,7 +243,7 @@ final class SlavePadInDevice : EBManagedObject,
   //   To one property: mMasterPad
   //····················································································································
 
-  final let mMasterPad_property = StoredObject_MasterPadInDevice (usedForSignature: false)
+  final let mMasterPad_property = StoredObject_MasterPadInDevice (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -492,10 +492,10 @@ final class SlavePadInDevice : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mMasterPad = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -672,13 +672,13 @@ final class SlavePadInDevice : EBManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: mMasterPad
     if let object = self.mMasterPad {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

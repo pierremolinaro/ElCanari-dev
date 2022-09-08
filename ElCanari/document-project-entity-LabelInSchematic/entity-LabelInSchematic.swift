@@ -75,7 +75,7 @@ final class LabelInSchematic : SchematicObject,
   //   To one property: mPoint
   //····················································································································
 
-  final let mPoint_property = StoredObject_PointInSchematic (usedForSignature: false)
+  final let mPoint_property = StoredObject_PointInSchematic (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -307,10 +307,10 @@ final class LabelInSchematic : SchematicObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mPoint = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -417,13 +417,13 @@ final class LabelInSchematic : SchematicObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: mPoint
     if let object = self.mPoint {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

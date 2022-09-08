@@ -47,7 +47,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
       oldValue.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.mComponentPadName_property.addEBObserver (self.mComponentPadName_property) // Stored property
       newValue.mPadIndex_property.addEBObserver (self.mPadIndex_property) // Stored property
       newValue.mX_property.addEBObserver (self.mX_property) // Stored property
@@ -310,7 +310,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     super.init ()
   //--- Configure mComponentPadName simple stored property
     self.mComponentPadName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mComponentPadName_property.selection {
         case .empty :
           return .empty
@@ -325,7 +325,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure mPadIndex simple stored property
     self.mPadIndex_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mPadIndex_property.selection {
         case .empty :
           return .empty
@@ -340,7 +340,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure mX simple stored property
     self.mX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mX_property.selection {
         case .empty :
           return .empty
@@ -355,7 +355,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure mY simple stored property
     self.mY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mY_property.selection {
         case .empty :
           return .empty
@@ -370,7 +370,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure mDefaultHoleDiameterUnit simple stored property
     self.mDefaultHoleDiameterUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mDefaultHoleDiameterUnit_property.selection {
         case .empty :
           return .empty
@@ -385,7 +385,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure mCustomHoleDiameter simple stored property
     self.mCustomHoleDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mCustomHoleDiameter_property.selection {
         case .empty :
           return .empty
@@ -400,7 +400,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure mCustomHoleDiameterUnit simple stored property
     self.mCustomHoleDiameterUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mCustomHoleDiameterUnit_property.selection {
         case .empty :
           return .empty
@@ -415,7 +415,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure mUsesCustomHoleDiameter simple stored property
     self.mUsesCustomHoleDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mUsesCustomHoleDiameter_property.selection {
         case .empty :
           return .empty
@@ -430,7 +430,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure mDefaultPadDiameterUnit simple stored property
     self.mDefaultPadDiameterUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mDefaultPadDiameterUnit_property.selection {
         case .empty :
           return .empty
@@ -445,7 +445,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure mCustomPadDiameter simple stored property
     self.mCustomPadDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mCustomPadDiameter_property.selection {
         case .empty :
           return .empty
@@ -460,7 +460,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure mCustomPadDiameterUnit simple stored property
     self.mCustomPadDiameterUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mCustomPadDiameterUnit_property.selection {
         case .empty :
           return .empty
@@ -475,7 +475,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure mUsesCustomPadDiameter simple stored property
     self.mUsesCustomPadDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mUsesCustomPadDiameter_property.selection {
         case .empty :
           return .empty
@@ -490,7 +490,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure isConnectedToSomePad transient property
     self.isConnectedToSomePad_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.isConnectedToSomePad_property.selection {
         case .empty :
           return .empty
@@ -505,7 +505,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure location transient property
     self.location_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.location_property.selection {
         case .empty :
           return .empty
@@ -520,7 +520,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure netNameFromComponentPad transient property
     self.netNameFromComponentPad_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.netNameFromComponentPad_property.selection {
         case .empty :
           return .empty
@@ -535,7 +535,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure netNameAndPadLocation transient property
     self.netNameAndPadLocation_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.netNameAndPadLocation_property.selection {
         case .empty :
           return .empty
@@ -550,7 +550,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure side transient property
     self.side_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.side_property.selection {
         case .empty :
           return .empty
@@ -565,7 +565,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure isVia transient property
     self.isVia_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.isVia_property.selection {
         case .empty :
           return .empty
@@ -580,7 +580,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure issues transient property
     self.issues_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.issues_property.selection {
         case .empty :
           return .empty
@@ -595,7 +595,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure viaDefaultHoleDiameter transient property
     self.viaDefaultHoleDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.viaDefaultHoleDiameter_property.selection {
         case .empty :
           return .empty
@@ -610,7 +610,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure viaDefaultPadDiameter transient property
     self.viaDefaultPadDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.viaDefaultPadDiameter_property.selection {
         case .empty :
           return .empty
@@ -625,7 +625,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure netNameFromTracks transient property
     self.netNameFromTracks_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.netNameFromTracks_property.selection {
         case .empty :
           return .empty
@@ -640,7 +640,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure netClassName transient property
     self.netClassName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.netClassName_property.selection {
         case .empty :
           return .empty
@@ -655,7 +655,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure connectedToComponent transient property
     self.connectedToComponent_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.connectedToComponent_property.selection {
         case .empty :
           return .empty
@@ -670,7 +670,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure actualHoleDiameter transient property
     self.actualHoleDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.actualHoleDiameter_property.selection {
         case .empty :
           return .empty
@@ -685,7 +685,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure actualPadDiameter transient property
     self.actualPadDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.actualPadDiameter_property.selection {
         case .empty :
           return .empty
@@ -700,7 +700,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.objectDisplay_property.selection {
         case .empty :
           return .empty
@@ -715,7 +715,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.selectionDisplay_property.selection {
         case .empty :
           return .empty
@@ -730,7 +730,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
     }
   //--- Configure signatureForERCChecking transient property
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.signatureForERCChecking_property.selection {
         case .empty :
           return .empty
@@ -792,7 +792,7 @@ final class TransientObject_BoardConnector : ReadOnlyObject_BoardConnector {
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -803,8 +803,8 @@ final class TransientObject_BoardConnector : ReadOnlyObject_BoardConnector {
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -815,7 +815,7 @@ final class TransientObject_BoardConnector : ReadOnlyObject_BoardConnector {
 
   //····················································································································
 
-  override var propval : BoardConnector? { return self.mInternalValue }
+  override var propval : BoardConnector? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -871,7 +871,7 @@ final class ProxyObject_BoardConnector : ReadWriteObject_BoardConnector {
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -918,8 +918,9 @@ final class StoredObject_BoardConnector : ReadWriteObject_BoardConnector, EBSign
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -956,7 +957,7 @@ final class StoredObject_BoardConnector : ReadWriteObject_BoardConnector, EBSign
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : BoardConnector?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -965,7 +966,7 @@ final class StoredObject_BoardConnector : ReadWriteObject_BoardConnector, EBSign
       self.mResetOppositeRelationship? (object)
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -990,7 +991,7 @@ final class StoredObject_BoardConnector : ReadWriteObject_BoardConnector, EBSign
   //····················································································································
 
   override var selection : EBSelection < BoardConnector? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -999,11 +1000,23 @@ final class StoredObject_BoardConnector : ReadWriteObject_BoardConnector, EBSign
 
   //····················································································································
 
-  override func setProp (_ inValue : BoardConnector?) { self.mInternalValue = inValue }
+  override var propval : BoardConnector? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : BoardConnector? = nil
 
   //····················································································································
 
-  override var propval : BoardConnector? { return self.mInternalValue }
+  override func setProp (_ inValue : BoardConnector?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -1041,7 +1054,7 @@ final class StoredObject_BoardConnector : ReadWriteObject_BoardConnector, EBSign
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

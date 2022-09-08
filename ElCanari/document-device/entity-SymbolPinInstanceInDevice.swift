@@ -49,7 +49,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //   To one property: mSymbolInstance
   //····················································································································
 
-  final let mSymbolInstance_property = StoredObject_SymbolInstanceInDevice (usedForSignature: false)
+  final let mSymbolInstance_property = StoredObject_SymbolInstanceInDevice (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -75,7 +75,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //   To one property: mType
   //····················································································································
 
-  final let mType_property = StoredObject_SymbolPinTypeInDevice (usedForSignature: false)
+  final let mType_property = StoredObject_SymbolPinTypeInDevice (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -101,7 +101,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //   To one property: mPadProxy
   //····················································································································
 
-  final let mPadProxy_property = StoredObject_PadProxyInDevice (usedForSignature: false)
+  final let mPadProxy_property = StoredObject_PadProxyInDevice (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -378,12 +378,12 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mSymbolInstance = nil
     self.mType = nil
     self.mPadProxy = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -511,7 +511,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: mSymbolInstance
     if let object = self.mSymbolInstance {
@@ -525,7 +525,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
     if let object = self.mPadProxy {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

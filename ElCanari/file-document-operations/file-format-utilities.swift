@@ -13,7 +13,7 @@ func collectAndPrepareObjectsForSaveOperation (fromRoot inRootObject : EBManaged
   while let objectToExplore = objectsToExploreArray.last {
     objectsToExploreArray.removeLast ()
     var accessible = [EBManagedObject] ()
-    objectToExplore.accessibleObjects (objects: &accessible)
+    objectToExplore.accessibleObjectsForSaveOperation (objects: &accessible)
     for managedObject in accessible {
       if !reachableObjectSet.contains (managedObject) {
         reachableObjectSet.insert (managedObject)
@@ -40,7 +40,7 @@ func collectAndPrepareObjectsForDeletion (fromRoot inRootObject : EBManagedObjec
   while let objectToExplore = objectsToExploreArray.last {
     objectsToExploreArray.removeLast ()
     var accessible = [EBManagedObject] ()
-    objectToExplore.accessibleObjects (objects: &accessible)
+    objectToExplore.accessibleObjectsForSaveOperation (objects: &accessible)
     for managedObject in accessible {
       if !reachableObjectSet.contains (managedObject) {
         reachableObjectSet.insert (managedObject)
@@ -50,9 +50,9 @@ func collectAndPrepareObjectsForDeletion (fromRoot inRootObject : EBManagedObjec
     }
   }
 //--- Remove relationships of all objects
-  for object in reachableObjectArray {
-    object.cleanUpRelationshipsAndRemoveAllObservers ()
-  }
+//  for object in reachableObjectArray {
+//    object.cleanUpRelationshipsAndRemoveAllObservers ()
+//  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

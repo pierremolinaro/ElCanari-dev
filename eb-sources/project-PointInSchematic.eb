@@ -3,11 +3,11 @@
 //——————————————————————————————————————————————————————————————————————————————
 
 handlingOpposite entity PointInSchematic {
-  toOne SheetInProject mSheet inverse toMany mPoints ;
-  toOne ComponentSymbolInProject mSymbol inverse toMany mPoints ;
+  toOne @weak SheetInProject mSheet inverse toMany mPoints ;
+  toOne @weak ComponentSymbolInProject mSymbol inverse toMany mPoints ;
   property String mSymbolPinName default "" ; // Used only if mSymbol is not nil
 
-  toOne NetInProject mNet inverse toMany mPoints ;
+  toOne @weak NetInProject mNet inverse toMany mPoints ;
 
   toOne NCInSchematic mNC inverse toOne mPoint ;
 

@@ -32,7 +32,7 @@ final class OpenPackageInLibrary : OpenInLibrary {
           }
         }
       }
-      inRootObject?.removeRecursivelyAllRelationsShips ()
+//      inRootObject?.removeRecursivelyAllRelationsShips ()
       let box = partShape.boundingBox
       return box.isEmpty ? nil : buildPDFimage (frame: box, shape: partShape, backgroundColor: preferences_packageBackgroundColor)
     }

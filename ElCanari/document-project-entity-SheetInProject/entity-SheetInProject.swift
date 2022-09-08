@@ -105,7 +105,7 @@ final class SheetInProject : EBManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-  final let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false)
+  final let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -366,20 +366,20 @@ final class SheetInProject : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+/*  override func cleanUpToManyRelationships () {
     self.mObjects.removeAll ()
     self.mPoints.removeAll ()
     super.cleanUpToManyRelationships ()
-  }
+  } */
 
   //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mRoot = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -606,7 +606,7 @@ final class SheetInProject : EBManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mObjects
     for managedObject in self.mObjects.values {
@@ -620,7 +620,7 @@ final class SheetInProject : EBManagedObject,
     if let object = self.mRoot {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

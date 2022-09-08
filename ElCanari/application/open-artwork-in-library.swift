@@ -339,7 +339,7 @@ fileprivate final class ArtworkDialogEntry {
   //····················································································································
 
   deinit {
-    self.mArtworkRoot?.removeRecursivelyAllRelationsShips ()
+//    self.mArtworkRoot?.removeRecursivelyAllRelationsShips ()
     noteObjectDeallocation (self)
   }
 

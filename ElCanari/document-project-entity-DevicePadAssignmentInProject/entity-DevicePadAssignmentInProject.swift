@@ -54,7 +54,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //   To one property: mPin
   //····················································································································
 
-  final let mPin_property = StoredObject_DevicePinInProject (usedForSignature: false)
+  final let mPin_property = StoredObject_DevicePinInProject (usedForSignature: false, strongRef: true)
 
   //····················································································································
 
@@ -190,10 +190,10 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mPin = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -304,13 +304,13 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: mPin
     if let object = self.mPin {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

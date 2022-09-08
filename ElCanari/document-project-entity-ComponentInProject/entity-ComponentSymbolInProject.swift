@@ -395,7 +395,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //   To one property: mComponent
   //····················································································································
 
-  final let mComponent_property = StoredObject_ComponentInProject (usedForSignature: false)
+  final let mComponent_property = StoredObject_ComponentInProject (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -838,19 +838,19 @@ final class ComponentSymbolInProject : SchematicObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+/*  override func cleanUpToManyRelationships () {
     self.mPoints.removeAll ()
     super.cleanUpToManyRelationships ()
-  }
+  } */
 
   //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mComponent = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -1122,7 +1122,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mPoints
     for managedObject in self.mPoints.values {
@@ -1132,7 +1132,7 @@ final class ComponentSymbolInProject : SchematicObject,
     if let object = self.mComponent {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

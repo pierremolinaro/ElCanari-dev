@@ -24,7 +24,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
       oldValue.sheetDescriptor_property.removeEBObserver (self.sheetDescriptor_property) // Transient property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.mSheetTitle_property.addEBObserver (self.mSheetTitle_property) // Stored property
       newValue.issues_property.addEBObserver (self.issues_property) // Transient property
       newValue.connectedPoints_property.addEBObserver (self.connectedPoints_property) // Transient property
@@ -126,7 +126,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     super.init ()
   //--- Configure mSheetTitle simple stored property
     self.mSheetTitle_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSheetTitle_property.selection {
         case .empty :
           return .empty
@@ -141,7 +141,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     }
   //--- Configure issues transient property
     self.issues_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.issues_property.selection {
         case .empty :
           return .empty
@@ -156,7 +156,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     }
   //--- Configure connectedPoints transient property
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.connectedPoints_property.selection {
         case .empty :
           return .empty
@@ -171,7 +171,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     }
   //--- Configure connexionWarnings transient property
     self.connexionWarnings_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.connexionWarnings_property.selection {
         case .empty :
           return .empty
@@ -186,7 +186,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     }
   //--- Configure connexionErrors transient property
     self.connexionErrors_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.connexionErrors_property.selection {
         case .empty :
           return .empty
@@ -201,7 +201,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     }
   //--- Configure sheetDescriptor transient property
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.sheetDescriptor_property.selection {
         case .empty :
           return .empty
@@ -263,7 +263,7 @@ final class TransientObject_SheetInProject : ReadOnlyObject_SheetInProject {
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -274,8 +274,8 @@ final class TransientObject_SheetInProject : ReadOnlyObject_SheetInProject {
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -286,7 +286,7 @@ final class TransientObject_SheetInProject : ReadOnlyObject_SheetInProject {
 
   //····················································································································
 
-  override var propval : SheetInProject? { return self.mInternalValue }
+  override var propval : SheetInProject? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -342,7 +342,7 @@ final class ProxyObject_SheetInProject : ReadWriteObject_SheetInProject {
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -389,8 +389,9 @@ final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSign
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -427,7 +428,7 @@ final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSign
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : SheetInProject?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -436,7 +437,7 @@ final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSign
       self.mResetOppositeRelationship? (object)
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -461,7 +462,7 @@ final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSign
   //····················································································································
 
   override var selection : EBSelection < SheetInProject? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -470,11 +471,23 @@ final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSign
 
   //····················································································································
 
-  override func setProp (_ inValue : SheetInProject?) { self.mInternalValue = inValue }
+  override var propval : SheetInProject? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : SheetInProject? = nil
 
   //····················································································································
 
-  override var propval : SheetInProject? { return self.mInternalValue }
+  override func setProp (_ inValue : SheetInProject?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -512,7 +525,7 @@ final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSign
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

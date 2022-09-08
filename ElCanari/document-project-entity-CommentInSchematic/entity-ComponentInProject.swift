@@ -767,7 +767,7 @@ final class ComponentInProject : BoardObject,
   //   To one property: mDevice
   //····················································································································
 
-  final let mDevice_property = StoredObject_DeviceInProject (usedForSignature: false)
+  final let mDevice_property = StoredObject_DeviceInProject (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -810,7 +810,7 @@ final class ComponentInProject : BoardObject,
   //   To one property: mSelectedPackage
   //····················································································································
 
-  final let mSelectedPackage_property = StoredObject_DevicePackageInProject (usedForSignature: false)
+  final let mSelectedPackage_property = StoredObject_DevicePackageInProject (usedForSignature: false, strongRef: true)
 
   //····················································································································
 
@@ -938,7 +938,7 @@ final class ComponentInProject : BoardObject,
   //   To one property: mNameFont
   //····················································································································
 
-  final let mNameFont_property = StoredObject_FontInProject (usedForSignature: false)
+  final let mNameFont_property = StoredObject_FontInProject (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -964,7 +964,7 @@ final class ComponentInProject : BoardObject,
   //   To one property: mValueFont
   //····················································································································
 
-  final let mValueFont_property = StoredObject_FontInProject (usedForSignature: false)
+  final let mValueFont_property = StoredObject_FontInProject (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -1939,23 +1939,23 @@ final class ComponentInProject : BoardObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+/*  override func cleanUpToManyRelationships () {
     self.mConnectors.removeAll ()
     self.mSymbols.removeAll ()
     super.cleanUpToManyRelationships ()
-  }
+  } */
 
   //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mDevice = nil
     self.mSelectedPackage = nil
     self.mNameFont = nil
     self.mValueFont = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -2446,7 +2446,7 @@ final class ComponentInProject : BoardObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mConnectors
     for managedObject in self.mConnectors.values {
@@ -2472,7 +2472,7 @@ final class ComponentInProject : BoardObject,
     if let object = self.mValueFont {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

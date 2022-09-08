@@ -30,7 +30,7 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
       oldValue.backSideFilledBezierPathArray_property.removeEBObserver (self.backSideFilledBezierPathArray_property) // Transient property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.mCenterX_property.addEBObserver (self.mCenterX_property) // Stored property
       newValue.mCenterY_property.addEBObserver (self.mCenterY_property) // Stored property
       newValue.mWidth_property.addEBObserver (self.mWidth_property) // Stored property
@@ -150,7 +150,7 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
     super.init ()
   //--- Configure mCenterX simple stored property
     self.mCenterX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mCenterX_property.selection {
         case .empty :
           return .empty
@@ -165,7 +165,7 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
     }
   //--- Configure mCenterY simple stored property
     self.mCenterY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mCenterY_property.selection {
         case .empty :
           return .empty
@@ -180,7 +180,7 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
     }
   //--- Configure mWidth simple stored property
     self.mWidth_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mWidth_property.selection {
         case .empty :
           return .empty
@@ -195,7 +195,7 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
     }
   //--- Configure mHeight simple stored property
     self.mHeight_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mHeight_property.selection {
         case .empty :
           return .empty
@@ -210,7 +210,7 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
     }
   //--- Configure mHoleWidth simple stored property
     self.mHoleWidth_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mHoleWidth_property.selection {
         case .empty :
           return .empty
@@ -225,7 +225,7 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
     }
   //--- Configure mHoleHeight simple stored property
     self.mHoleHeight_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mHoleHeight_property.selection {
         case .empty :
           return .empty
@@ -240,7 +240,7 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
     }
   //--- Configure mShape simple stored property
     self.mShape_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mShape_property.selection {
         case .empty :
           return .empty
@@ -255,7 +255,7 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
     }
   //--- Configure mStyle simple stored property
     self.mStyle_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mStyle_property.selection {
         case .empty :
           return .empty
@@ -270,7 +270,7 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
     }
   //--- Configure mName simple stored property
     self.mName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mName_property.selection {
         case .empty :
           return .empty
@@ -285,7 +285,7 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
     }
   //--- Configure padNumberDisplay transient property
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.padNumberDisplay_property.selection {
         case .empty :
           return .empty
@@ -300,7 +300,7 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
     }
   //--- Configure frontSideFilledBezierPathArray transient property
     self.frontSideFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.frontSideFilledBezierPathArray_property.selection {
         case .empty :
           return .empty
@@ -315,7 +315,7 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
     }
   //--- Configure backSideFilledBezierPathArray transient property
     self.backSideFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.backSideFilledBezierPathArray_property.selection {
         case .empty :
           return .empty
@@ -377,7 +377,7 @@ final class TransientObject_MasterPadInDevice : ReadOnlyObject_MasterPadInDevice
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -388,8 +388,8 @@ final class TransientObject_MasterPadInDevice : ReadOnlyObject_MasterPadInDevice
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -400,7 +400,7 @@ final class TransientObject_MasterPadInDevice : ReadOnlyObject_MasterPadInDevice
 
   //····················································································································
 
-  override var propval : MasterPadInDevice? { return self.mInternalValue }
+  override var propval : MasterPadInDevice? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -456,7 +456,7 @@ final class ProxyObject_MasterPadInDevice : ReadWriteObject_MasterPadInDevice {
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -503,8 +503,9 @@ final class StoredObject_MasterPadInDevice : ReadWriteObject_MasterPadInDevice, 
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -541,7 +542,7 @@ final class StoredObject_MasterPadInDevice : ReadWriteObject_MasterPadInDevice, 
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : MasterPadInDevice?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -550,7 +551,7 @@ final class StoredObject_MasterPadInDevice : ReadWriteObject_MasterPadInDevice, 
       self.mResetOppositeRelationship? (object)
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -575,7 +576,7 @@ final class StoredObject_MasterPadInDevice : ReadWriteObject_MasterPadInDevice, 
   //····················································································································
 
   override var selection : EBSelection < MasterPadInDevice? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -584,11 +585,23 @@ final class StoredObject_MasterPadInDevice : ReadWriteObject_MasterPadInDevice, 
 
   //····················································································································
 
-  override func setProp (_ inValue : MasterPadInDevice?) { self.mInternalValue = inValue }
+  override var propval : MasterPadInDevice? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : MasterPadInDevice? = nil
 
   //····················································································································
 
-  override var propval : MasterPadInDevice? { return self.mInternalValue }
+  override func setProp (_ inValue : MasterPadInDevice?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -626,7 +639,7 @@ final class StoredObject_MasterPadInDevice : ReadWriteObject_MasterPadInDevice, 
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

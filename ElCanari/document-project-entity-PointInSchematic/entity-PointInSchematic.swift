@@ -221,7 +221,7 @@ final class PointInSchematic : EBManagedObject,
   //   To one property: mSymbol
   //····················································································································
 
-  final let mSymbol_property = StoredObject_ComponentSymbolInProject (usedForSignature: false)
+  final let mSymbol_property = StoredObject_ComponentSymbolInProject (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -247,7 +247,7 @@ final class PointInSchematic : EBManagedObject,
   //   To one property: mNet
   //····················································································································
 
-  final let mNet_property = StoredObject_NetInProject (usedForSignature: false)
+  final let mNet_property = StoredObject_NetInProject (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -273,7 +273,7 @@ final class PointInSchematic : EBManagedObject,
   //   To one property: mNC
   //····················································································································
 
-  final let mNC_property = StoredObject_NCInSchematic (usedForSignature: false)
+  final let mNC_property = StoredObject_NCInSchematic (usedForSignature: false, strongRef: true)
 
   //····················································································································
 
@@ -418,7 +418,7 @@ final class PointInSchematic : EBManagedObject,
   //   To one property: mSheet
   //····················································································································
 
-  final let mSheet_property = StoredObject_SheetInProject (usedForSignature: false)
+  final let mSheet_property = StoredObject_SheetInProject (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -921,24 +921,24 @@ final class PointInSchematic : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+/*  override func cleanUpToManyRelationships () {
     self.mLabels.removeAll ()
     self.mWiresP2s.removeAll ()
     self.mWiresP1s.removeAll ()
     super.cleanUpToManyRelationships ()
-  }
+  } */
 
   //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mSymbol = nil
     self.mNet = nil
     self.mNC = nil
     self.mSheet = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -1304,7 +1304,7 @@ final class PointInSchematic : EBManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mLabels
     for managedObject in self.mLabels.values {
@@ -1334,7 +1334,7 @@ final class PointInSchematic : EBManagedObject,
     if let object = self.mSheet {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

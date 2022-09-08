@@ -45,7 +45,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       oldValue.netWarningCount_property.removeEBObserver (self.netWarningCount_property) // Transient property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.mNetClassName_property.addEBObserver (self.mNetClassName_property) // Stored property
       newValue.mNetClassColor_property.addEBObserver (self.mNetClassColor_property) // Stored property
       newValue.mTrackWidth_property.addEBObserver (self.mTrackWidth_property) // Stored property
@@ -270,7 +270,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     super.init ()
   //--- Configure mNetClassName simple stored property
     self.mNetClassName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mNetClassName_property.selection {
         case .empty :
           return .empty
@@ -285,7 +285,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure mNetClassColor simple stored property
     self.mNetClassColor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mNetClassColor_property.selection {
         case .empty :
           return .empty
@@ -300,7 +300,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure mTrackWidth simple stored property
     self.mTrackWidth_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mTrackWidth_property.selection {
         case .empty :
           return .empty
@@ -315,7 +315,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure mTrackWidthUnit simple stored property
     self.mTrackWidthUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mTrackWidthUnit_property.selection {
         case .empty :
           return .empty
@@ -330,7 +330,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure mViaHoleDiameter simple stored property
     self.mViaHoleDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mViaHoleDiameter_property.selection {
         case .empty :
           return .empty
@@ -345,7 +345,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure mViaHoleDiameterUnit simple stored property
     self.mViaHoleDiameterUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mViaHoleDiameterUnit_property.selection {
         case .empty :
           return .empty
@@ -360,7 +360,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure mViaPadDiameter simple stored property
     self.mViaPadDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mViaPadDiameter_property.selection {
         case .empty :
           return .empty
@@ -375,7 +375,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure mViaPadDiameterUnit simple stored property
     self.mViaPadDiameterUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mViaPadDiameterUnit_property.selection {
         case .empty :
           return .empty
@@ -390,7 +390,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure mAllowTracksOnFrontSide simple stored property
     self.mAllowTracksOnFrontSide_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mAllowTracksOnFrontSide_property.selection {
         case .empty :
           return .empty
@@ -405,7 +405,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure mAllowTracksOnBackSide simple stored property
     self.mAllowTracksOnBackSide_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mAllowTracksOnBackSide_property.selection {
         case .empty :
           return .empty
@@ -420,7 +420,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure mAllowTracksOnInner1Layer simple stored property
     self.mAllowTracksOnInner1Layer_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mAllowTracksOnInner1Layer_property.selection {
         case .empty :
           return .empty
@@ -435,7 +435,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure mAllowTracksOnInner2Layer simple stored property
     self.mAllowTracksOnInner2Layer_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mAllowTracksOnInner2Layer_property.selection {
         case .empty :
           return .empty
@@ -450,7 +450,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure mAllowTracksOnInner3Layer simple stored property
     self.mAllowTracksOnInner3Layer_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mAllowTracksOnInner3Layer_property.selection {
         case .empty :
           return .empty
@@ -465,7 +465,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure mAllowTracksOnInner4Layer simple stored property
     self.mAllowTracksOnInner4Layer_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mAllowTracksOnInner4Layer_property.selection {
         case .empty :
           return .empty
@@ -480,7 +480,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure trackWidthString transient property
     self.trackWidthString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.trackWidthString_property.selection {
         case .empty :
           return .empty
@@ -495,7 +495,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure viaHoleDiameter transient property
     self.viaHoleDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.viaHoleDiameter_property.selection {
         case .empty :
           return .empty
@@ -510,7 +510,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure viaPadDiameter transient property
     self.viaPadDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.viaPadDiameter_property.selection {
         case .empty :
           return .empty
@@ -525,7 +525,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure allowTracksOnFrontSideString transient property
     self.allowTracksOnFrontSideString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.allowTracksOnFrontSideString_property.selection {
         case .empty :
           return .empty
@@ -540,7 +540,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure allowTracksOnBackSideString transient property
     self.allowTracksOnBackSideString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.allowTracksOnBackSideString_property.selection {
         case .empty :
           return .empty
@@ -555,7 +555,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure allowTracksOnInner1LayerString transient property
     self.allowTracksOnInner1LayerString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.allowTracksOnInner1LayerString_property.selection {
         case .empty :
           return .empty
@@ -570,7 +570,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure allowTracksOnInner2LayerString transient property
     self.allowTracksOnInner2LayerString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.allowTracksOnInner2LayerString_property.selection {
         case .empty :
           return .empty
@@ -585,7 +585,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure allowTracksOnInner3LayerString transient property
     self.allowTracksOnInner3LayerString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.allowTracksOnInner3LayerString_property.selection {
         case .empty :
           return .empty
@@ -600,7 +600,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure allowTracksOnInner4LayerString transient property
     self.allowTracksOnInner4LayerString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.allowTracksOnInner4LayerString_property.selection {
         case .empty :
           return .empty
@@ -615,7 +615,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure canRemove transient property
     self.canRemove_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.canRemove_property.selection {
         case .empty :
           return .empty
@@ -630,7 +630,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure netUsage transient property
     self.netUsage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.netUsage_property.selection {
         case .empty :
           return .empty
@@ -645,7 +645,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure netsDescription transient property
     self.netsDescription_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.netsDescription_property.selection {
         case .empty :
           return .empty
@@ -660,7 +660,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     }
   //--- Configure netWarningCount transient property
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.netWarningCount_property.selection {
         case .empty :
           return .empty
@@ -722,7 +722,7 @@ final class TransientObject_NetClassInProject : ReadOnlyObject_NetClassInProject
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -733,8 +733,8 @@ final class TransientObject_NetClassInProject : ReadOnlyObject_NetClassInProject
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -745,7 +745,7 @@ final class TransientObject_NetClassInProject : ReadOnlyObject_NetClassInProject
 
   //····················································································································
 
-  override var propval : NetClassInProject? { return self.mInternalValue }
+  override var propval : NetClassInProject? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -801,7 +801,7 @@ final class ProxyObject_NetClassInProject : ReadWriteObject_NetClassInProject {
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -848,8 +848,9 @@ final class StoredObject_NetClassInProject : ReadWriteObject_NetClassInProject, 
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -886,7 +887,7 @@ final class StoredObject_NetClassInProject : ReadWriteObject_NetClassInProject, 
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : NetClassInProject?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -895,7 +896,7 @@ final class StoredObject_NetClassInProject : ReadWriteObject_NetClassInProject, 
       self.mResetOppositeRelationship? (object)
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -920,7 +921,7 @@ final class StoredObject_NetClassInProject : ReadWriteObject_NetClassInProject, 
   //····················································································································
 
   override var selection : EBSelection < NetClassInProject? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -929,11 +930,23 @@ final class StoredObject_NetClassInProject : ReadWriteObject_NetClassInProject, 
 
   //····················································································································
 
-  override func setProp (_ inValue : NetClassInProject?) { self.mInternalValue = inValue }
+  override var propval : NetClassInProject? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : NetClassInProject? = nil
 
   //····················································································································
 
-  override var propval : NetClassInProject? { return self.mInternalValue }
+  override func setProp (_ inValue : NetClassInProject?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -971,7 +984,7 @@ final class StoredObject_NetClassInProject : ReadWriteObject_NetClassInProject, 
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

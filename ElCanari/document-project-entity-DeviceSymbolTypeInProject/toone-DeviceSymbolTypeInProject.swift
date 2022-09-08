@@ -21,7 +21,7 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
       oldValue.mFilledBezierPath_property.removeEBObserver (self.mFilledBezierPath_property) // Stored property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.mSymbolTypeName_property.addEBObserver (self.mSymbolTypeName_property) // Stored property
       newValue.mStrokeBezierPath_property.addEBObserver (self.mStrokeBezierPath_property) // Stored property
       newValue.mFilledBezierPath_property.addEBObserver (self.mFilledBezierPath_property) // Stored property
@@ -54,7 +54,7 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
     super.init ()
   //--- Configure mSymbolTypeName simple stored property
     self.mSymbolTypeName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSymbolTypeName_property.selection {
         case .empty :
           return .empty
@@ -69,7 +69,7 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
     }
   //--- Configure mStrokeBezierPath simple stored property
     self.mStrokeBezierPath_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mStrokeBezierPath_property.selection {
         case .empty :
           return .empty
@@ -84,7 +84,7 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
     }
   //--- Configure mFilledBezierPath simple stored property
     self.mFilledBezierPath_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mFilledBezierPath_property.selection {
         case .empty :
           return .empty
@@ -146,7 +146,7 @@ final class TransientObject_DeviceSymbolTypeInProject : ReadOnlyObject_DeviceSym
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -157,8 +157,8 @@ final class TransientObject_DeviceSymbolTypeInProject : ReadOnlyObject_DeviceSym
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -169,7 +169,7 @@ final class TransientObject_DeviceSymbolTypeInProject : ReadOnlyObject_DeviceSym
 
   //····················································································································
 
-  override var propval : DeviceSymbolTypeInProject? { return self.mInternalValue }
+  override var propval : DeviceSymbolTypeInProject? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -225,7 +225,7 @@ final class ProxyObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbol
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -272,8 +272,9 @@ final class StoredObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbo
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -295,7 +296,7 @@ final class StoredObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbo
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : DeviceSymbolTypeInProject?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -303,7 +304,7 @@ final class StoredObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbo
       }
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -327,7 +328,7 @@ final class StoredObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbo
   //····················································································································
 
   override var selection : EBSelection < DeviceSymbolTypeInProject? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -336,11 +337,23 @@ final class StoredObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbo
 
   //····················································································································
 
-  override func setProp (_ inValue : DeviceSymbolTypeInProject?) { self.mInternalValue = inValue }
+  override var propval : DeviceSymbolTypeInProject? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : DeviceSymbolTypeInProject? = nil
 
   //····················································································································
 
-  override var propval : DeviceSymbolTypeInProject? { return self.mInternalValue }
+  override func setProp (_ inValue : DeviceSymbolTypeInProject?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -378,7 +391,7 @@ final class StoredObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbo
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

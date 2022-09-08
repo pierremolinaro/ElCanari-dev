@@ -21,7 +21,7 @@ class ReadOnlyObject_NCInSchematic : ReadOnlyAbstractObjectProperty <NCInSchemat
       oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.mOrientation_property.addEBObserver (self.mOrientation_property) // Stored property
       newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
       newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
@@ -54,7 +54,7 @@ class ReadOnlyObject_NCInSchematic : ReadOnlyAbstractObjectProperty <NCInSchemat
     super.init ()
   //--- Configure mOrientation simple stored property
     self.mOrientation_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mOrientation_property.selection {
         case .empty :
           return .empty
@@ -69,7 +69,7 @@ class ReadOnlyObject_NCInSchematic : ReadOnlyAbstractObjectProperty <NCInSchemat
     }
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.objectDisplay_property.selection {
         case .empty :
           return .empty
@@ -84,7 +84,7 @@ class ReadOnlyObject_NCInSchematic : ReadOnlyAbstractObjectProperty <NCInSchemat
     }
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.selectionDisplay_property.selection {
         case .empty :
           return .empty
@@ -146,7 +146,7 @@ final class TransientObject_NCInSchematic : ReadOnlyObject_NCInSchematic {
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -157,8 +157,8 @@ final class TransientObject_NCInSchematic : ReadOnlyObject_NCInSchematic {
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -169,7 +169,7 @@ final class TransientObject_NCInSchematic : ReadOnlyObject_NCInSchematic {
 
   //····················································································································
 
-  override var propval : NCInSchematic? { return self.mInternalValue }
+  override var propval : NCInSchematic? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -225,7 +225,7 @@ final class ProxyObject_NCInSchematic : ReadWriteObject_NCInSchematic {
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -272,8 +272,9 @@ final class StoredObject_NCInSchematic : ReadWriteObject_NCInSchematic, EBSignat
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -310,7 +311,7 @@ final class StoredObject_NCInSchematic : ReadWriteObject_NCInSchematic, EBSignat
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : NCInSchematic?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -319,7 +320,7 @@ final class StoredObject_NCInSchematic : ReadWriteObject_NCInSchematic, EBSignat
       self.mResetOppositeRelationship? (object)
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -344,7 +345,7 @@ final class StoredObject_NCInSchematic : ReadWriteObject_NCInSchematic, EBSignat
   //····················································································································
 
   override var selection : EBSelection < NCInSchematic? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -353,11 +354,23 @@ final class StoredObject_NCInSchematic : ReadWriteObject_NCInSchematic, EBSignat
 
   //····················································································································
 
-  override func setProp (_ inValue : NCInSchematic?) { self.mInternalValue = inValue }
+  override var propval : NCInSchematic? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : NCInSchematic? = nil
 
   //····················································································································
 
-  override var propval : NCInSchematic? { return self.mInternalValue }
+  override func setProp (_ inValue : NCInSchematic?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -395,7 +408,7 @@ final class StoredObject_NCInSchematic : ReadWriteObject_NCInSchematic, EBSignat
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

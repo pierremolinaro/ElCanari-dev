@@ -1,0 +1,19 @@
+digraph G {
+  "MergerRoot" [shape=rectangle] ;
+  "MergerRoot" -> "MergerBoardInstance" ;
+  "MergerRoot" -> "BoardModel" ;
+  "MergerRoot" -> "ArtworkFileGenerationParameters" ;
+  "MergerRoot" -> "ArtworkRoot" ;
+  "MergerBoardInstance" [shape=rectangle] ;
+  "BoardModel" [shape=rectangle] ;
+  "BoardModel" -> "MergerBoardInstance" ;
+  "BoardModel" -> "SegmentEntity" ;
+  "BoardModel" -> "BoardModelPad" ;
+  "BoardModel" -> "BoardModelVia" ;
+  "ArtworkFileGenerationParameters" [shape=rectangle] ;
+  "ArtworkRoot" [shape=rectangle] ;
+  "ArtworkRoot" -> "ArtworkFileGenerationParameters" ;
+  "SegmentEntity" [shape=rectangle] ;
+  "BoardModelPad" [shape=rectangle] ;
+  "BoardModelVia" [shape=rectangle] ;
+}

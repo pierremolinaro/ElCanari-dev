@@ -1,0 +1,24 @@
+digraph G {
+  "DeviceRoot" [shape=rectangle] ;
+  "DeviceRoot" -> "DeviceDocumentation" ;
+  "DeviceRoot" -> "PackageInDevice" ;
+  "DeviceRoot" -> "PadProxyInDevice" ;
+  "DeviceRoot" -> "SymbolInstanceInDevice" ;
+  "DeviceRoot" -> "SymbolTypeInDevice" ;
+  "DeviceDocumentation" [shape=rectangle] ;
+  "PackageInDevice" [shape=rectangle] ;
+  "PackageInDevice" -> "MasterPadInDevice" ;
+  "PadProxyInDevice" [shape=rectangle] ;
+  "PadProxyInDevice" -> "SymbolPinInstanceInDevice" ;
+  "SymbolInstanceInDevice" [shape=rectangle] ;
+  "SymbolInstanceInDevice" -> "SymbolPinInstanceInDevice" ;
+  "SymbolTypeInDevice" [shape=rectangle] ;
+  "SymbolTypeInDevice" -> "SymbolInstanceInDevice" ;
+  "SymbolTypeInDevice" -> "SymbolPinTypeInDevice" ;
+  "SymbolPinTypeInDevice" [shape=rectangle] ;
+  "SymbolPinTypeInDevice" -> "SymbolPinInstanceInDevice" ;
+  "SymbolPinInstanceInDevice" [shape=rectangle] ;
+  "MasterPadInDevice" [shape=rectangle] ;
+  "MasterPadInDevice" -> "SlavePadInDevice" ;
+  "SlavePadInDevice" [shape=rectangle] ;
+}

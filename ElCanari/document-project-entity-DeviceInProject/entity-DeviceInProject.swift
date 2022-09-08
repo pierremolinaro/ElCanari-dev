@@ -598,13 +598,13 @@ final class DeviceInProject : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+/*  override func cleanUpToManyRelationships () {
     self.mPackages.removeAll ()
     self.mSymbols.removeAll ()
     self.mComponents.removeAll ()
     self.mPadAssignments.removeAll ()
     super.cleanUpToManyRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -941,7 +941,7 @@ final class DeviceInProject : EBManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mPackages
     for managedObject in self.mPackages.values {
@@ -959,7 +959,7 @@ final class DeviceInProject : EBManagedObject,
     for managedObject in self.mPadAssignments.values {
       objects.append (managedObject)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

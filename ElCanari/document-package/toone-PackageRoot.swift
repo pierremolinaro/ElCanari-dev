@@ -71,7 +71,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
       oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.selectedPageIndex_property.addEBObserver (self.selectedPageIndex_property) // Stored property
       newValue.selectedInspector_property.addEBObserver (self.selectedInspector_property) // Stored property
       newValue.comments_property.addEBObserver (self.comments_property) // Stored property
@@ -574,7 +574,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     super.init ()
   //--- Configure selectedPageIndex simple stored property
     self.selectedPageIndex_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.selectedPageIndex_property.selection {
         case .empty :
           return .empty
@@ -589,7 +589,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure selectedInspector simple stored property
     self.selectedInspector_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.selectedInspector_property.selection {
         case .empty :
           return .empty
@@ -604,7 +604,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure comments simple stored property
     self.comments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.comments_property.selection {
         case .empty :
           return .empty
@@ -619,7 +619,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure program simple stored property
     self.program_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.program_property.selection {
         case .empty :
           return .empty
@@ -634,7 +634,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure horizontalFlip simple stored property
     self.horizontalFlip_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.horizontalFlip_property.selection {
         case .empty :
           return .empty
@@ -649,7 +649,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure verticalFlip simple stored property
     self.verticalFlip_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.verticalFlip_property.selection {
         case .empty :
           return .empty
@@ -664,7 +664,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure gridStyle simple stored property
     self.gridStyle_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.gridStyle_property.selection {
         case .empty :
           return .empty
@@ -679,7 +679,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure gridStep simple stored property
     self.gridStep_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.gridStep_property.selection {
         case .empty :
           return .empty
@@ -694,7 +694,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure gridStepUnit simple stored property
     self.gridStepUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.gridStepUnit_property.selection {
         case .empty :
           return .empty
@@ -709,7 +709,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure gridDisplayFactor simple stored property
     self.gridDisplayFactor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.gridDisplayFactor_property.selection {
         case .empty :
           return .empty
@@ -724,7 +724,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure zoom simple stored property
     self.zoom_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.zoom_property.selection {
         case .empty :
           return .empty
@@ -739,7 +739,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mModelImageOpacity simple stored property
     self.mModelImageOpacity_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mModelImageOpacity_property.selection {
         case .empty :
           return .empty
@@ -754,7 +754,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mModelImagePageHorizontalFlip simple stored property
     self.mModelImagePageHorizontalFlip_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mModelImagePageHorizontalFlip_property.selection {
         case .empty :
           return .empty
@@ -769,7 +769,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mModelImagePageVerticalFlip simple stored property
     self.mModelImagePageVerticalFlip_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mModelImagePageVerticalFlip_property.selection {
         case .empty :
           return .empty
@@ -784,7 +784,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mModelImagePageGridStyle simple stored property
     self.mModelImagePageGridStyle_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mModelImagePageGridStyle_property.selection {
         case .empty :
           return .empty
@@ -799,7 +799,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mModelImagePageGridStep simple stored property
     self.mModelImagePageGridStep_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mModelImagePageGridStep_property.selection {
         case .empty :
           return .empty
@@ -814,7 +814,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mModelImagePageGridStepUnit simple stored property
     self.mModelImagePageGridStepUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mModelImagePageGridStepUnit_property.selection {
         case .empty :
           return .empty
@@ -829,7 +829,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mModelImagePageGridDisplayFactor simple stored property
     self.mModelImagePageGridDisplayFactor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mModelImagePageGridDisplayFactor_property.selection {
         case .empty :
           return .empty
@@ -844,7 +844,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mModelImagePageZoom simple stored property
     self.mModelImagePageZoom_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mModelImagePageZoom_property.selection {
         case .empty :
           return .empty
@@ -859,7 +859,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mModelImagePageXPlacardUnit simple stored property
     self.mModelImagePageXPlacardUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mModelImagePageXPlacardUnit_property.selection {
         case .empty :
           return .empty
@@ -874,7 +874,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mModelImagePageYPlacardUnit simple stored property
     self.mModelImagePageYPlacardUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mModelImagePageYPlacardUnit_property.selection {
         case .empty :
           return .empty
@@ -889,7 +889,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mModelImageSecondPointXUnit simple stored property
     self.mModelImageSecondPointXUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mModelImageSecondPointXUnit_property.selection {
         case .empty :
           return .empty
@@ -904,7 +904,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mModelImageSecondPointYUnit simple stored property
     self.mModelImageSecondPointYUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mModelImageSecondPointYUnit_property.selection {
         case .empty :
           return .empty
@@ -919,7 +919,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mModelImageFirstPointXOnLock simple stored property
     self.mModelImageFirstPointXOnLock_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mModelImageFirstPointXOnLock_property.selection {
         case .empty :
           return .empty
@@ -934,7 +934,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mModelImageFirstPointYOnLock simple stored property
     self.mModelImageFirstPointYOnLock_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mModelImageFirstPointYOnLock_property.selection {
         case .empty :
           return .empty
@@ -949,7 +949,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mModelImagePointsDxOnLock simple stored property
     self.mModelImagePointsDxOnLock_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mModelImagePointsDxOnLock_property.selection {
         case .empty :
           return .empty
@@ -964,7 +964,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mModelImagePointsDyOnLock simple stored property
     self.mModelImagePointsDyOnLock_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mModelImagePointsDyOnLock_property.selection {
         case .empty :
           return .empty
@@ -979,7 +979,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mModelImageScale simple stored property
     self.mModelImageScale_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mModelImageScale_property.selection {
         case .empty :
           return .empty
@@ -994,7 +994,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mModelImageRotationInRadians simple stored property
     self.mModelImageRotationInRadians_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mModelImageRotationInRadians_property.selection {
         case .empty :
           return .empty
@@ -1009,7 +1009,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mDimensionUnitFirstModelPointX simple stored property
     self.mDimensionUnitFirstModelPointX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mDimensionUnitFirstModelPointX_property.selection {
         case .empty :
           return .empty
@@ -1024,7 +1024,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mDimensionUnitFirstModelPointY simple stored property
     self.mDimensionUnitFirstModelPointY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mDimensionUnitFirstModelPointY_property.selection {
         case .empty :
           return .empty
@@ -1039,7 +1039,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mDimensionUnitSecondModelPointDx simple stored property
     self.mDimensionUnitSecondModelPointDx_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mDimensionUnitSecondModelPointDx_property.selection {
         case .empty :
           return .empty
@@ -1054,7 +1054,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mDimensionUnitSecondModelPointDy simple stored property
     self.mDimensionUnitSecondModelPointDy_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mDimensionUnitSecondModelPointDy_property.selection {
         case .empty :
           return .empty
@@ -1069,7 +1069,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mModelPointsCircleRadius simple stored property
     self.mModelPointsCircleRadius_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mModelPointsCircleRadius_property.selection {
         case .empty :
           return .empty
@@ -1084,7 +1084,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mPointsAreLocked simple stored property
     self.mPointsAreLocked_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mPointsAreLocked_property.selection {
         case .empty :
           return .empty
@@ -1099,7 +1099,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure knobSizeMultpliedByTen simple stored property
     self.knobSizeMultpliedByTen_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.knobSizeMultpliedByTen_property.selection {
         case .empty :
           return .empty
@@ -1114,7 +1114,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure padNumbering simple stored property
     self.padNumbering_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.padNumbering_property.selection {
         case .empty :
           return .empty
@@ -1129,7 +1129,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure counterClockNumberingStartAngle simple stored property
     self.counterClockNumberingStartAngle_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.counterClockNumberingStartAngle_property.selection {
         case .empty :
           return .empty
@@ -1144,7 +1144,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure xPlacardUnit simple stored property
     self.xPlacardUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.xPlacardUnit_property.selection {
         case .empty :
           return .empty
@@ -1159,7 +1159,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure yPlacardUnit simple stored property
     self.yPlacardUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.yPlacardUnit_property.selection {
         case .empty :
           return .empty
@@ -1174,7 +1174,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure mModelImageData simple stored property
     self.mModelImageData_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mModelImageData_property.selection {
         case .empty :
           return .empty
@@ -1189,7 +1189,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure freePadNumbering transient property
     self.freePadNumbering_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.freePadNumbering_property.selection {
         case .empty :
           return .empty
@@ -1204,7 +1204,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure counterClockNumbering transient property
     self.counterClockNumbering_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.counterClockNumbering_property.selection {
         case .empty :
           return .empty
@@ -1219,7 +1219,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure gridStepMultipliedByDisplayFactor transient property
     self.gridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.gridStepMultipliedByDisplayFactor_property.selection {
         case .empty :
           return .empty
@@ -1234,7 +1234,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure secondPointX transient property
     self.secondPointX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.secondPointX_property.selection {
         case .empty :
           return .empty
@@ -1249,7 +1249,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure secondPointY transient property
     self.secondPointY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.secondPointY_property.selection {
         case .empty :
           return .empty
@@ -1264,7 +1264,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure lockImageView transient property
     self.lockImageView_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.lockImageView_property.selection {
         case .empty :
           return .empty
@@ -1279,7 +1279,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure padNumberDisplay transient property
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.padNumberDisplay_property.selection {
         case .empty :
           return .empty
@@ -1294,7 +1294,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure backgroundImagePageBackgroundDisplay transient property
     self.backgroundImagePageBackgroundDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.backgroundImagePageBackgroundDisplay_property.selection {
         case .empty :
           return .empty
@@ -1309,7 +1309,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure modelImageSizeString transient property
     self.modelImageSizeString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.modelImageSizeString_property.selection {
         case .empty :
           return .empty
@@ -1324,7 +1324,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure hasModelImage transient property
     self.hasModelImage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.hasModelImage_property.selection {
         case .empty :
           return .empty
@@ -1339,7 +1339,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure masterPadObjectIndexArray transient property
     self.masterPadObjectIndexArray_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.masterPadObjectIndexArray_property.selection {
         case .empty :
           return .empty
@@ -1354,7 +1354,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     }
   //--- Configure issues transient property
     self.issues_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.issues_property.selection {
         case .empty :
           return .empty
@@ -1416,7 +1416,7 @@ final class TransientObject_PackageRoot : ReadOnlyObject_PackageRoot {
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -1427,8 +1427,8 @@ final class TransientObject_PackageRoot : ReadOnlyObject_PackageRoot {
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -1439,7 +1439,7 @@ final class TransientObject_PackageRoot : ReadOnlyObject_PackageRoot {
 
   //····················································································································
 
-  override var propval : PackageRoot? { return self.mInternalValue }
+  override var propval : PackageRoot? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -1495,7 +1495,7 @@ final class ProxyObject_PackageRoot : ReadWriteObject_PackageRoot {
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -1542,8 +1542,9 @@ final class StoredObject_PackageRoot : ReadWriteObject_PackageRoot, EBSignatureO
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -1580,7 +1581,7 @@ final class StoredObject_PackageRoot : ReadWriteObject_PackageRoot, EBSignatureO
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : PackageRoot?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -1589,7 +1590,7 @@ final class StoredObject_PackageRoot : ReadWriteObject_PackageRoot, EBSignatureO
       self.mResetOppositeRelationship? (object)
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -1614,7 +1615,7 @@ final class StoredObject_PackageRoot : ReadWriteObject_PackageRoot, EBSignatureO
   //····················································································································
 
   override var selection : EBSelection < PackageRoot? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -1623,11 +1624,23 @@ final class StoredObject_PackageRoot : ReadWriteObject_PackageRoot, EBSignatureO
 
   //····················································································································
 
-  override func setProp (_ inValue : PackageRoot?) { self.mInternalValue = inValue }
+  override var propval : PackageRoot? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : PackageRoot? = nil
 
   //····················································································································
 
-  override var propval : PackageRoot? { return self.mInternalValue }
+  override func setProp (_ inValue : PackageRoot?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -1665,7 +1678,7 @@ final class StoredObject_PackageRoot : ReadWriteObject_PackageRoot, EBSignatureO
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

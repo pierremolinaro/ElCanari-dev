@@ -1456,7 +1456,7 @@ final class PackageRoot : EBManagedObject,
   //   To one property: mModelImageDoublePoint
   //····················································································································
 
-  final let mModelImageDoublePoint_property = StoredObject_PackageModelImageDoublePoint (usedForSignature: false)
+  final let mModelImageDoublePoint_property = StoredObject_PackageModelImageDoublePoint (usedForSignature: false, strongRef: true)
 
   //····················································································································
 
@@ -2023,20 +2023,20 @@ final class PackageRoot : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+/*  override func cleanUpToManyRelationships () {
     self.mModelImageObjects.removeAll ()
     self.packageObjects.removeAll ()
     super.cleanUpToManyRelationships ()
-  }
+  } */
 
   //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mModelImageDoublePoint = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -2670,7 +2670,7 @@ final class PackageRoot : EBManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mModelImageObjects
     for managedObject in self.mModelImageObjects.values {
@@ -2696,7 +2696,7 @@ final class PackageRoot : EBManagedObject,
     if let object = self.mModelImageDoublePoint {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

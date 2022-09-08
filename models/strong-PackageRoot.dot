@@ -1,0 +1,23 @@
+digraph G {
+  rankdir=LR ;
+  node [shape=record fontname=helvetica style=rounded] ;
+  PackageRoot ;
+  PackageZone ;
+  ForbiddenPadNumber ;
+  PackageSlavePad ;
+  PackagePad ;
+  PackageObject ;
+  PackageModelImageDoublePoint ;
+  PackageRoot -> PackageModelImageDoublePoint [dir=both arrowtail=none arrowhead=onormal] ;
+  PackageRoot -> PackageModelImageDoublePoint [dir=both arrowtail=none arrowhead=veevee] ;
+  PackageRoot -> PackageObject [dir=both arrowtail=none arrowhead=veevee] ;
+  PackageRoot -> PackagePad [dir=both arrowtail=none arrowhead=veevee] ;
+  PackageRoot -> PackageSlavePad [dir=both arrowtail=none arrowhead=veevee] ;
+  PackageRoot -> PackageZone [dir=both arrowtail=none arrowhead=veevee] ;
+  PackageObject -> PackageZone [arrowtail=dot arrowhead=normal] ;
+  PackageZone -> ForbiddenPadNumber [dir=both arrowtail=none arrowhead=veevee] ;
+  PackageObject -> PackageSlavePad [arrowtail=dot arrowhead=normal] ;
+  PackageObject -> PackagePad [arrowtail=dot arrowhead=normal] ;
+  PackagePad -> PackageSlavePad [dir=both arrowtail=none arrowhead=veevee] ;
+  PackagePad -> PackageZone [dir=both arrowtail=none arrowhead=onormal] ;
+}

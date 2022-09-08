@@ -380,11 +380,11 @@ final class SymbolTypeInDevice : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+/*  override func cleanUpToManyRelationships () {
     self.mInstances.removeAll ()
     self.mPinTypes.removeAll ()
     super.cleanUpToManyRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -621,7 +621,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mInstances
     for managedObject in self.mInstances.values {
@@ -631,7 +631,7 @@ final class SymbolTypeInDevice : EBManagedObject,
     for managedObject in self.mPinTypes.values {
       objects.append (managedObject)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

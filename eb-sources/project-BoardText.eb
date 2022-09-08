@@ -5,7 +5,7 @@
 graphic handlingOpposite entity BoardText : BoardObject {
   graphic canCopyAndPaste ;
 
-  toOne FontInProject mFont inverse toMany mTexts ;
+  toOne @weak FontInProject mFont inverse toMany mTexts ;
 
   property Int mX default 0 ;
   property Int mY default 0 ;

@@ -1,0 +1,8 @@
+digraph G {
+  "SymbolRoot" [shape=rectangle] ;
+  "SymbolRoot" -> "SymbolObject" ;
+  "SymbolRoot" -> "SymbolPin" ;
+  "SymbolObject" [shape=rectangle] ;
+  "SymbolObject" -> "SymbolPin" ;
+  "SymbolPin" [shape=rectangle] ;
+}

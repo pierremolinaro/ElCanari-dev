@@ -100,39 +100,39 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   final var ebObjectIndex_selection : EBSelection <Int> { return .single (self.objectIndex) }
 
   //····················································································································
-  //  reachableObjects
+  //  removeRecursivelyAllRelationsShips
   //····················································································································
 
-  func removeRecursivelyAllRelationsShips () {
-  //--- Find all reachable entities
-    var reachableObjectSet = EBReferenceSet <EBManagedObject> ()
-    reachableObjectSet.insert (self)
-    var objectsToExploreArray = [EBManagedObject] ()
-    objectsToExploreArray.append (self)
-    while let objectToExplore = objectsToExploreArray.last {
-      objectsToExploreArray.removeLast ()
-      var accessible = [EBManagedObject] ()
-      objectToExplore.accessibleObjects (objects: &accessible)
-      for managedObject in accessible {
-        if !reachableObjectSet.contains (managedObject) {
-          reachableObjectSet.insert (managedObject)
-          objectsToExploreArray.append (managedObject)
-        }
-      }
-    }
-  //--- Remove relationships
-    for object in reachableObjectSet.values {
-      object.cleanUpToOneRelationships ()
-      object.cleanUpToManyRelationships ()
-    }
-  }
+//  final func removeRecursivelyAllRelationsShips () {
+//  //--- Find all reachable entities
+//    var reachableObjectSet = EBReferenceSet <EBManagedObject> ()
+//    reachableObjectSet.insert (self)
+//    var objectsToExploreArray = [EBManagedObject] ()
+//    objectsToExploreArray.append (self)
+//    while let objectToExplore = objectsToExploreArray.last {
+//      objectsToExploreArray.removeLast ()
+//      var accessible = [EBManagedObject] ()
+//      objectToExplore.accessibleObjects (objects: &accessible)
+//      for managedObject in accessible {
+//        if !reachableObjectSet.contains (managedObject) {
+//          reachableObjectSet.insert (managedObject)
+//          objectsToExploreArray.append (managedObject)
+//        }
+//      }
+//    }
+//  //--- Remove relationships
+//    for object in reachableObjectSet.values {
+//      object.cleanUpToOneRelationships ()
+//      object.cleanUpToManyRelationships ()
+//    }
+//  }
 
   //····················································································································
   //   accessibleObjects
   //····················································································································
 
-  func accessibleObjects (objects : inout [EBManagedObject]) {
-  }
+//  func accessibleObjects (objects : inout [EBManagedObject]) {
+//  }
 
   //····················································································································
   //   accessibleObjectsForSaveOperation
@@ -145,24 +145,24 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   //   cleanUpRelationshipsAndRemoveAllObservers
   //····················································································································
 
-  final func cleanUpRelationshipsAndRemoveAllObservers () {
-    self.cleanUpToManyRelationships ()
-    self.cleanUpToOneRelationships ()
-  }
+//  final func cleanUpRelationshipsAndRemoveAllObservers () {
+//    self.cleanUpToManyRelationships ()
+//    self.cleanUpToOneRelationships ()
+//  }
 
   //····················································································································
   //   cleanUpToManyRelationships
   //····················································································································
 
-  func cleanUpToManyRelationships () {
-  }
+//  func cleanUpToManyRelationships () {
+//  }
 
   //····················································································································
   //   cleanUpToOneRelationships
   //····················································································································
 
-  func cleanUpToOneRelationships () {
-  }
+//  func cleanUpToOneRelationships () {
+//  }
 
   //····················································································································
   //   appendPropertyNamesTo

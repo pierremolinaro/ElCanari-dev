@@ -149,7 +149,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   To one property: mType
   //····················································································································
 
-  final let mType_property = StoredObject_SymbolTypeInDevice (usedForSignature: false)
+  final let mType_property = StoredObject_SymbolTypeInDevice (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -469,19 +469,19 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+/*  override func cleanUpToManyRelationships () {
     self.mPinInstances.removeAll ()
     super.cleanUpToManyRelationships ()
-  }
+  } */
 
   //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mType = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -673,7 +673,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mPinInstances
     for managedObject in self.mPinInstances.values {
@@ -683,7 +683,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     if let object = self.mType {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

@@ -195,25 +195,25 @@ class EBAutoLayoutManagedDocument : NSDocument {
   //  Reachable objects from root object
   //····················································································································
 
-  private final func reachableObjectsFromRootObject () -> [EBManagedObject] {
-    let rootObject = self.mRootObject!
-    var reachableObjectArray = [rootObject]
-    var reachableObjectSet = EBReferenceSet (rootObject)
-    var objectsToExploreArray = [rootObject]
-    while let objectToExplore = objectsToExploreArray.last {
-      objectsToExploreArray.removeLast ()
-      var accessible = [EBManagedObject] ()
-      objectToExplore.accessibleObjects (objects: &accessible)
-      for managedObject in accessible {
-        if !reachableObjectSet.contains (managedObject) {
-          reachableObjectSet.insert (managedObject)
-          reachableObjectArray.append (managedObject)
-          objectsToExploreArray.append (managedObject)
-        }
-      }
-    }
-    return reachableObjectArray
-  }
+//  private final func reachableObjectsFromRootObject () -> [EBManagedObject] {
+//    let rootObject = self.mRootObject!
+//    var reachableObjectArray = [rootObject]
+//    var reachableObjectSet = EBReferenceSet (rootObject)
+//    var objectsToExploreArray = [rootObject]
+//    while let objectToExplore = objectsToExploreArray.last {
+//      objectsToExploreArray.removeLast ()
+//      var accessible = [EBManagedObject] ()
+//      objectToExplore.accessibleObjectsForSaveOperation (objects: &accessible)
+//      for managedObject in accessible {
+//        if !reachableObjectSet.contains (managedObject) {
+//          reachableObjectSet.insert (managedObject)
+//          reachableObjectArray.append (managedObject)
+//          objectsToExploreArray.append (managedObject)
+//        }
+//      }
+//    }
+//    return reachableObjectArray
+//  }
 
   //····················································································································
   //    READ DOCUMENT FROM FILE
@@ -260,9 +260,9 @@ class EBAutoLayoutManagedDocument : NSDocument {
   //--- Read version from file
     self.mVersion.setProp (self.readVersionFromMetadataDictionary (documentData.documentMetadataDictionary))
   //--- Remove current root object graph
-    for object in self.reachableObjectsFromRootObject () {
-      object.cleanUpRelationshipsAndRemoveAllObservers ()
-    }
+//    for object in self.reachableObjectsFromRootObject () {
+//      object.cleanUpRelationshipsAndRemoveAllObservers ()
+//    }
   //--- Store root object
     self.mRootObject = documentData.documentRootObject
   //---
@@ -345,28 +345,28 @@ class EBAutoLayoutManagedDocument : NSDocument {
 
   //····················································································································
 
-  override final func removeWindowController (_ inWindowController : NSWindowController) {
-    setStartOperationDateToNow ("Closing \(self.lastComponentOfFileName)")
-  //--- Remove user interface
-    self.mSignatureObserver.removeEBObserver (self.mVersionShouldChangeObserver)
-//    self.removeUserInterface ()
-    appendDocumentFileOperationInfo ("remove interface done")
-  //--- Remove all entities
-    let allEntities = self.reachableObjectsFromRootObject ()
-    appendDocumentFileOperationInfo ("remove entity observers done")
-    for entity in allEntities {
-      entity.cleanUpToManyRelationships ()
-    }
-    appendDocumentFileOperationInfo ("clean up to many relationship done")
-    for entity in allEntities {
-      entity.cleanUpToOneRelationships ()
-    }
-    appendDocumentFileOperationInfo ("clean up to one relationship done")
-  //---
-    super.removeWindowController (inWindowController)
-    appendDocumentFileOperationInfo ("removeWindowController done")
-    appendTotalDurationDocumentFileOperationInfo ()
-  }
+//  override final func removeWindowController (_ inWindowController : NSWindowController) {
+//    setStartOperationDateToNow ("Closing \(self.lastComponentOfFileName)")
+//  //--- Remove user interface
+//    self.mSignatureObserver.removeEBObserver (self.mVersionShouldChangeObserver)
+////    self.removeUserInterface ()
+//    appendDocumentFileOperationInfo ("remove interface done")
+//  //--- Remove all entities
+////    let allEntities = self.reachableObjectsFromRootObject ()
+////    appendDocumentFileOperationInfo ("remove entity observers done")
+////    for entity in allEntities {
+////      entity.cleanUpToManyRelationships ()
+////    }
+////    appendDocumentFileOperationInfo ("clean up to many relationship done")
+////    for entity in allEntities {
+//////      entity.cleanUpToOneRelationships ()
+////    }
+////    appendDocumentFileOperationInfo ("clean up to one relationship done")
+//  //---
+//    super.removeWindowController (inWindowController)
+//    appendDocumentFileOperationInfo ("removeWindowController done")
+//    appendTotalDurationDocumentFileOperationInfo ()
+//  }
 
   //····················································································································
   //    Signature observer

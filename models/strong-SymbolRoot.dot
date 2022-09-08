@@ -1,0 +1,10 @@
+digraph G {
+  rankdir=LR ;
+  node [shape=record fontname=helvetica style=rounded] ;
+  SymbolRoot ;
+  SymbolPin ;
+  SymbolObject ;
+  SymbolRoot -> SymbolObject [dir=both arrowtail=none arrowhead=veevee] ;
+  SymbolRoot -> SymbolPin [dir=both arrowtail=none arrowhead=veevee] ;
+  SymbolObject -> SymbolPin [arrowtail=dot arrowhead=normal] ;
+}

@@ -26,7 +26,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
       oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.mFirstX_property.addEBObserver (self.mFirstX_property) // Stored property
       newValue.mFirstY_property.addEBObserver (self.mFirstY_property) // Stored property
       newValue.mFirstColor_property.addEBObserver (self.mFirstColor_property) // Stored property
@@ -94,7 +94,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
     super.init ()
   //--- Configure mFirstX simple stored property
     self.mFirstX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mFirstX_property.selection {
         case .empty :
           return .empty
@@ -109,7 +109,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
     }
   //--- Configure mFirstY simple stored property
     self.mFirstY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mFirstY_property.selection {
         case .empty :
           return .empty
@@ -124,7 +124,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
     }
   //--- Configure mFirstColor simple stored property
     self.mFirstColor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mFirstColor_property.selection {
         case .empty :
           return .empty
@@ -139,7 +139,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
     }
   //--- Configure mSecondDx simple stored property
     self.mSecondDx_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSecondDx_property.selection {
         case .empty :
           return .empty
@@ -154,7 +154,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
     }
   //--- Configure mSecondDy simple stored property
     self.mSecondDy_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSecondDy_property.selection {
         case .empty :
           return .empty
@@ -169,7 +169,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
     }
   //--- Configure mSecondColor simple stored property
     self.mSecondColor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSecondColor_property.selection {
         case .empty :
           return .empty
@@ -184,7 +184,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
     }
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.objectDisplay_property.selection {
         case .empty :
           return .empty
@@ -199,7 +199,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
     }
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.selectionDisplay_property.selection {
         case .empty :
           return .empty
@@ -261,7 +261,7 @@ final class TransientObject_PackageModelImageDoublePoint : ReadOnlyObject_Packag
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -272,8 +272,8 @@ final class TransientObject_PackageModelImageDoublePoint : ReadOnlyObject_Packag
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -284,7 +284,7 @@ final class TransientObject_PackageModelImageDoublePoint : ReadOnlyObject_Packag
 
   //····················································································································
 
-  override var propval : PackageModelImageDoublePoint? { return self.mInternalValue }
+  override var propval : PackageModelImageDoublePoint? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -340,7 +340,7 @@ final class ProxyObject_PackageModelImageDoublePoint : ReadWriteObject_PackageMo
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -387,8 +387,9 @@ final class StoredObject_PackageModelImageDoublePoint : ReadWriteObject_PackageM
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -425,7 +426,7 @@ final class StoredObject_PackageModelImageDoublePoint : ReadWriteObject_PackageM
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : PackageModelImageDoublePoint?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -434,7 +435,7 @@ final class StoredObject_PackageModelImageDoublePoint : ReadWriteObject_PackageM
       self.mResetOppositeRelationship? (object)
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -459,7 +460,7 @@ final class StoredObject_PackageModelImageDoublePoint : ReadWriteObject_PackageM
   //····················································································································
 
   override var selection : EBSelection < PackageModelImageDoublePoint? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -468,11 +469,23 @@ final class StoredObject_PackageModelImageDoublePoint : ReadWriteObject_PackageM
 
   //····················································································································
 
-  override func setProp (_ inValue : PackageModelImageDoublePoint?) { self.mInternalValue = inValue }
+  override var propval : PackageModelImageDoublePoint? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : PackageModelImageDoublePoint? = nil
 
   //····················································································································
 
-  override var propval : PackageModelImageDoublePoint? { return self.mInternalValue }
+  override func setProp (_ inValue : PackageModelImageDoublePoint?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -510,7 +523,7 @@ final class StoredObject_PackageModelImageDoublePoint : ReadWriteObject_PackageM
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

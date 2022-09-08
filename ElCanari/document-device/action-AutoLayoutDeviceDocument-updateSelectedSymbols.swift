@@ -39,7 +39,7 @@ extension AutoLayoutDeviceDocument {
             )
             strokeBezierPathes.lineCapStyle = .round
             strokeBezierPathes.lineJoinStyle = .round
-            symbolRoot.removeRecursivelyAllRelationsShips ()
+//            symbolRoot.removeRecursivelyAllRelationsShips ()
           //--- Check if symbol pin name set is the same
             var currentPinNameSet = Set <String> ()
             for pinType in symbolType.mPinTypes_property.propval.values {

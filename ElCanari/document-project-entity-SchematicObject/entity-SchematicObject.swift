@@ -56,7 +56,7 @@ class SchematicObject : EBGraphicManagedObject,
   //   To one property: mSheet
   //····················································································································
 
-  final let mSheet_property = StoredObject_SheetInProject (usedForSignature: false)
+  final let mSheet_property = StoredObject_SheetInProject (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -217,10 +217,10 @@ class SchematicObject : EBGraphicManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mSheet = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -304,13 +304,13 @@ class SchematicObject : EBGraphicManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: mSheet
     if let object = self.mSheet {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

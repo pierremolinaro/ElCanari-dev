@@ -81,7 +81,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
       oldValue.imageForInstances_property.removeEBObserver (self.imageForInstances_property) // Transient property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.name_property.addEBObserver (self.name_property) // Stored property
       newValue.modelWidth_property.addEBObserver (self.modelWidth_property) // Stored property
       newValue.modelWidthUnit_property.addEBObserver (self.modelWidthUnit_property) // Stored property
@@ -1134,7 +1134,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     super.init ()
   //--- Configure name simple stored property
     self.name_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.name_property.selection {
         case .empty :
           return .empty
@@ -1149,7 +1149,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure modelWidth simple stored property
     self.modelWidth_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.modelWidth_property.selection {
         case .empty :
           return .empty
@@ -1164,7 +1164,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure modelWidthUnit simple stored property
     self.modelWidthUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.modelWidthUnit_property.selection {
         case .empty :
           return .empty
@@ -1179,7 +1179,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure modelHeight simple stored property
     self.modelHeight_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.modelHeight_property.selection {
         case .empty :
           return .empty
@@ -1194,7 +1194,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure modelHeightUnit simple stored property
     self.modelHeightUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.modelHeightUnit_property.selection {
         case .empty :
           return .empty
@@ -1209,7 +1209,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure zoom simple stored property
     self.zoom_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.zoom_property.selection {
         case .empty :
           return .empty
@@ -1224,7 +1224,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure layerConfiguration simple stored property
     self.layerConfiguration_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.layerConfiguration_property.selection {
         case .empty :
           return .empty
@@ -1239,7 +1239,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure modelLimitWidth simple stored property
     self.modelLimitWidth_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.modelLimitWidth_property.selection {
         case .empty :
           return .empty
@@ -1254,7 +1254,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure modelLimitWidthUnit simple stored property
     self.modelLimitWidthUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.modelLimitWidthUnit_property.selection {
         case .empty :
           return .empty
@@ -1269,7 +1269,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure artworkName simple stored property
     self.artworkName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.artworkName_property.selection {
         case .empty :
           return .empty
@@ -1284,7 +1284,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure layerConfigurationString transient property
     self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.layerConfigurationString_property.selection {
         case .empty :
           return .empty
@@ -1299,7 +1299,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure frontLegendLinesSegments transient property
     self.frontLegendLinesSegments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.frontLegendLinesSegments_property.selection {
         case .empty :
           return .empty
@@ -1314,7 +1314,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure backLegendLinesSegments transient property
     self.backLegendLinesSegments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.backLegendLinesSegments_property.selection {
         case .empty :
           return .empty
@@ -1329,7 +1329,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure backLegendLinesBezierPaths transient property
     self.backLegendLinesBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.backLegendLinesBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1344,7 +1344,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure frontLegendTextsSegments transient property
     self.frontLegendTextsSegments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.frontLegendTextsSegments_property.selection {
         case .empty :
           return .empty
@@ -1359,7 +1359,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure frontLegendTextsBezierPaths transient property
     self.frontLegendTextsBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.frontLegendTextsBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1374,7 +1374,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure frontLayoutTextsSegments transient property
     self.frontLayoutTextsSegments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.frontLayoutTextsSegments_property.selection {
         case .empty :
           return .empty
@@ -1389,7 +1389,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure frontLayoutTextsBezierPaths transient property
     self.frontLayoutTextsBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.frontLayoutTextsBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1404,7 +1404,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure backLegendTextsSegments transient property
     self.backLegendTextsSegments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.backLegendTextsSegments_property.selection {
         case .empty :
           return .empty
@@ -1419,7 +1419,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure backLegendTextsBezierPaths transient property
     self.backLegendTextsBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.backLegendTextsBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1434,7 +1434,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure backLayoutTextsSegments transient property
     self.backLayoutTextsSegments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.backLayoutTextsSegments_property.selection {
         case .empty :
           return .empty
@@ -1449,7 +1449,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure backLayoutTextsBezierPaths transient property
     self.backLayoutTextsBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.backLayoutTextsBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1464,7 +1464,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure internalBoardsLimitsSegments transient property
     self.internalBoardsLimitsSegments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.internalBoardsLimitsSegments_property.selection {
         case .empty :
           return .empty
@@ -1479,7 +1479,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure internalBoardsLimitsBezierPaths transient property
     self.internalBoardsLimitsBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.internalBoardsLimitsBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1494,7 +1494,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure drillSegments transient property
     self.drillSegments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.drillSegments_property.selection {
         case .empty :
           return .empty
@@ -1509,7 +1509,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure holesBezierPaths transient property
     self.holesBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.holesBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1524,7 +1524,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure viaShapes transient property
     self.viaShapes_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.viaShapes_property.selection {
         case .empty :
           return .empty
@@ -1539,7 +1539,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure viasBezierPaths transient property
     self.viasBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.viasBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1554,7 +1554,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure frontPadArray transient property
     self.frontPadArray_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.frontPadArray_property.selection {
         case .empty :
           return .empty
@@ -1569,7 +1569,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure frontPadsBezierPaths transient property
     self.frontPadsBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.frontPadsBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1584,7 +1584,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure backPadArray transient property
     self.backPadArray_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.backPadArray_property.selection {
         case .empty :
           return .empty
@@ -1599,7 +1599,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure backPadsBezierPaths transient property
     self.backPadsBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.backPadsBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1614,7 +1614,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure traversingPadArray transient property
     self.traversingPadArray_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.traversingPadArray_property.selection {
         case .empty :
           return .empty
@@ -1629,7 +1629,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure traversingPadsBezierPaths transient property
     self.traversingPadsBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.traversingPadsBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1644,7 +1644,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure boardLimitsBezierPaths transient property
     self.boardLimitsBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardLimitsBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1659,7 +1659,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure backComponentNameSegments transient property
     self.backComponentNameSegments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.backComponentNameSegments_property.selection {
         case .empty :
           return .empty
@@ -1674,7 +1674,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure backComponentNamesBezierPaths transient property
     self.backComponentNamesBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.backComponentNamesBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1689,7 +1689,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure frontComponentNameSegments transient property
     self.frontComponentNameSegments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.frontComponentNameSegments_property.selection {
         case .empty :
           return .empty
@@ -1704,7 +1704,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure frontComponentNamesBezierPaths transient property
     self.frontComponentNamesBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.frontComponentNamesBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1719,7 +1719,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure frontComponentValueSegments transient property
     self.frontComponentValueSegments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.frontComponentValueSegments_property.selection {
         case .empty :
           return .empty
@@ -1734,7 +1734,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure frontComponentValuesBezierPaths transient property
     self.frontComponentValuesBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.frontComponentValuesBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1749,7 +1749,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure backComponentValueSegments transient property
     self.backComponentValueSegments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.backComponentValueSegments_property.selection {
         case .empty :
           return .empty
@@ -1764,7 +1764,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure backComponentValuesBezierPaths transient property
     self.backComponentValuesBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.backComponentValuesBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1779,7 +1779,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure backTrackSegments transient property
     self.backTrackSegments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.backTrackSegments_property.selection {
         case .empty :
           return .empty
@@ -1794,7 +1794,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure backTracksBezierPaths transient property
     self.backTracksBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.backTracksBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1809,7 +1809,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure frontTrackSegments transient property
     self.frontTrackSegments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.frontTrackSegments_property.selection {
         case .empty :
           return .empty
@@ -1824,7 +1824,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure frontTracksBezierPaths transient property
     self.frontTracksBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.frontTracksBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1839,7 +1839,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure inner1TracksSegments transient property
     self.inner1TracksSegments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.inner1TracksSegments_property.selection {
         case .empty :
           return .empty
@@ -1854,7 +1854,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure inner1TracksBezierPaths transient property
     self.inner1TracksBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.inner1TracksBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1869,7 +1869,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure inner2TracksSegments transient property
     self.inner2TracksSegments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.inner2TracksSegments_property.selection {
         case .empty :
           return .empty
@@ -1884,7 +1884,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure inner2TracksBezierPaths transient property
     self.inner2TracksBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.inner2TracksBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1899,7 +1899,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure inner3TracksSegments transient property
     self.inner3TracksSegments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.inner3TracksSegments_property.selection {
         case .empty :
           return .empty
@@ -1914,7 +1914,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure inner3TracksBezierPaths transient property
     self.inner3TracksBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.inner3TracksBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1929,7 +1929,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure inner4TracksSegments transient property
     self.inner4TracksSegments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.inner4TracksSegments_property.selection {
         case .empty :
           return .empty
@@ -1944,7 +1944,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure inner4TracksBezierPaths transient property
     self.inner4TracksBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.inner4TracksBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1959,7 +1959,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure frontPackagesSegments transient property
     self.frontPackagesSegments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.frontPackagesSegments_property.selection {
         case .empty :
           return .empty
@@ -1974,7 +1974,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure frontPackagesBezierPaths transient property
     self.frontPackagesBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.frontPackagesBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -1989,7 +1989,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure backPackagesSegments transient property
     self.backPackagesSegments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.backPackagesSegments_property.selection {
         case .empty :
           return .empty
@@ -2004,7 +2004,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure backPackagesBezierPaths transient property
     self.backPackagesBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.backPackagesBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -2019,7 +2019,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure instanceCount transient property
     self.instanceCount_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.instanceCount_property.selection {
         case .empty :
           return .empty
@@ -2034,7 +2034,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure frontLegendLinesBezierPaths transient property
     self.frontLegendLinesBezierPaths_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.frontLegendLinesBezierPaths_property.selection {
         case .empty :
           return .empty
@@ -2049,7 +2049,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure imageForModel transient property
     self.imageForModel_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.imageForModel_property.selection {
         case .empty :
           return .empty
@@ -2064,7 +2064,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     }
   //--- Configure imageForInstances transient property
     self.imageForInstances_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.imageForInstances_property.selection {
         case .empty :
           return .empty
@@ -2126,7 +2126,7 @@ final class TransientObject_BoardModel : ReadOnlyObject_BoardModel {
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -2137,8 +2137,8 @@ final class TransientObject_BoardModel : ReadOnlyObject_BoardModel {
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -2149,7 +2149,7 @@ final class TransientObject_BoardModel : ReadOnlyObject_BoardModel {
 
   //····················································································································
 
-  override var propval : BoardModel? { return self.mInternalValue }
+  override var propval : BoardModel? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -2205,7 +2205,7 @@ final class ProxyObject_BoardModel : ReadWriteObject_BoardModel {
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -2252,8 +2252,9 @@ final class StoredObject_BoardModel : ReadWriteObject_BoardModel, EBSignatureObs
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -2290,7 +2291,7 @@ final class StoredObject_BoardModel : ReadWriteObject_BoardModel, EBSignatureObs
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : BoardModel?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -2299,7 +2300,7 @@ final class StoredObject_BoardModel : ReadWriteObject_BoardModel, EBSignatureObs
       self.mResetOppositeRelationship? (object)
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -2324,7 +2325,7 @@ final class StoredObject_BoardModel : ReadWriteObject_BoardModel, EBSignatureObs
   //····················································································································
 
   override var selection : EBSelection < BoardModel? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -2333,11 +2334,23 @@ final class StoredObject_BoardModel : ReadWriteObject_BoardModel, EBSignatureObs
 
   //····················································································································
 
-  override func setProp (_ inValue : BoardModel?) { self.mInternalValue = inValue }
+  override var propval : BoardModel? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : BoardModel? = nil
 
   //····················································································································
 
-  override var propval : BoardModel? { return self.mInternalValue }
+  override func setProp (_ inValue : BoardModel?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -2375,7 +2388,7 @@ final class StoredObject_BoardModel : ReadWriteObject_BoardModel, EBSignatureObs
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

@@ -29,7 +29,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
       oldValue.componentValuesCount_property.removeEBObserver (self.componentValuesCount_property) // Transient property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.mNominalSize_property.addEBObserver (self.mNominalSize_property) // Stored property
       newValue.mFontName_property.addEBObserver (self.mFontName_property) // Stored property
       newValue.mFontVersion_property.addEBObserver (self.mFontVersion_property) // Stored property
@@ -190,7 +190,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     super.init ()
   //--- Configure mNominalSize simple stored property
     self.mNominalSize_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mNominalSize_property.selection {
         case .empty :
           return .empty
@@ -205,7 +205,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     }
   //--- Configure mFontName simple stored property
     self.mFontName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mFontName_property.selection {
         case .empty :
           return .empty
@@ -220,7 +220,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     }
   //--- Configure mFontVersion simple stored property
     self.mFontVersion_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mFontVersion_property.selection {
         case .empty :
           return .empty
@@ -235,7 +235,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     }
   //--- Configure mDescriptiveString simple stored property
     self.mDescriptiveString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mDescriptiveString_property.selection {
         case .empty :
           return .empty
@@ -250,7 +250,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     }
   //--- Configure versionString transient property
     self.versionString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.versionString_property.selection {
         case .empty :
           return .empty
@@ -265,7 +265,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     }
   //--- Configure sizeString transient property
     self.sizeString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.sizeString_property.selection {
         case .empty :
           return .empty
@@ -280,7 +280,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     }
   //--- Configure descriptor transient property
     self.descriptor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.descriptor_property.selection {
         case .empty :
           return .empty
@@ -295,7 +295,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     }
   //--- Configure textCount transient property
     self.textCount_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.textCount_property.selection {
         case .empty :
           return .empty
@@ -310,7 +310,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     }
   //--- Configure canRemoveFont transient property
     self.canRemoveFont_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.canRemoveFont_property.selection {
         case .empty :
           return .empty
@@ -325,7 +325,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     }
   //--- Configure componentNamesCount transient property
     self.componentNamesCount_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.componentNamesCount_property.selection {
         case .empty :
           return .empty
@@ -340,7 +340,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     }
   //--- Configure componentValuesCount transient property
     self.componentValuesCount_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.componentValuesCount_property.selection {
         case .empty :
           return .empty
@@ -402,7 +402,7 @@ final class TransientObject_FontInProject : ReadOnlyObject_FontInProject {
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -413,8 +413,8 @@ final class TransientObject_FontInProject : ReadOnlyObject_FontInProject {
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -425,7 +425,7 @@ final class TransientObject_FontInProject : ReadOnlyObject_FontInProject {
 
   //····················································································································
 
-  override var propval : FontInProject? { return self.mInternalValue }
+  override var propval : FontInProject? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -481,7 +481,7 @@ final class ProxyObject_FontInProject : ReadWriteObject_FontInProject {
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -528,8 +528,9 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -566,7 +567,7 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : FontInProject?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -575,7 +576,7 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
       self.mResetOppositeRelationship? (object)
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -600,7 +601,7 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
   //····················································································································
 
   override var selection : EBSelection < FontInProject? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -609,11 +610,23 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
 
   //····················································································································
 
-  override func setProp (_ inValue : FontInProject?) { self.mInternalValue = inValue }
+  override var propval : FontInProject? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : FontInProject? = nil
 
   //····················································································································
 
-  override var propval : FontInProject? { return self.mInternalValue }
+  override func setProp (_ inValue : FontInProject?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -651,7 +664,7 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

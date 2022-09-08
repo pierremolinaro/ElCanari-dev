@@ -31,7 +31,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
       oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.mX_property.addEBObserver (self.mX_property) // Stored property
       newValue.mY_property.addEBObserver (self.mY_property) // Stored property
       newValue.mCPX1_property.addEBObserver (self.mCPX1_property) // Stored property
@@ -134,7 +134,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
     super.init ()
   //--- Configure mX simple stored property
     self.mX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mX_property.selection {
         case .empty :
           return .empty
@@ -149,7 +149,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
     }
   //--- Configure mY simple stored property
     self.mY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mY_property.selection {
         case .empty :
           return .empty
@@ -164,7 +164,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
     }
   //--- Configure mCPX1 simple stored property
     self.mCPX1_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mCPX1_property.selection {
         case .empty :
           return .empty
@@ -179,7 +179,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
     }
   //--- Configure mCPY1 simple stored property
     self.mCPY1_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mCPY1_property.selection {
         case .empty :
           return .empty
@@ -194,7 +194,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
     }
   //--- Configure mCPX2 simple stored property
     self.mCPX2_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mCPX2_property.selection {
         case .empty :
           return .empty
@@ -209,7 +209,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
     }
   //--- Configure mCPY2 simple stored property
     self.mCPY2_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mCPY2_property.selection {
         case .empty :
           return .empty
@@ -224,7 +224,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
     }
   //--- Configure mShape simple stored property
     self.mShape_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mShape_property.selection {
         case .empty :
           return .empty
@@ -239,7 +239,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
     }
   //--- Configure p2Xstring transient property
     self.p2Xstring_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.p2Xstring_property.selection {
         case .empty :
           return .empty
@@ -254,7 +254,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
     }
   //--- Configure p2Ystring transient property
     self.p2Ystring_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.p2Ystring_property.selection {
         case .empty :
           return .empty
@@ -269,7 +269,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
     }
   //--- Configure descriptor transient property
     self.descriptor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.descriptor_property.selection {
         case .empty :
           return .empty
@@ -284,7 +284,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
     }
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.objectDisplay_property.selection {
         case .empty :
           return .empty
@@ -299,7 +299,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
     }
   //--- Configure isLine transient property
     self.isLine_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.isLine_property.selection {
         case .empty :
           return .empty
@@ -314,7 +314,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
     }
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.selectionDisplay_property.selection {
         case .empty :
           return .empty
@@ -376,7 +376,7 @@ final class TransientObject_BorderCurve : ReadOnlyObject_BorderCurve {
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -387,8 +387,8 @@ final class TransientObject_BorderCurve : ReadOnlyObject_BorderCurve {
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -399,7 +399,7 @@ final class TransientObject_BorderCurve : ReadOnlyObject_BorderCurve {
 
   //····················································································································
 
-  override var propval : BorderCurve? { return self.mInternalValue }
+  override var propval : BorderCurve? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -455,7 +455,7 @@ final class ProxyObject_BorderCurve : ReadWriteObject_BorderCurve {
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -502,8 +502,9 @@ final class StoredObject_BorderCurve : ReadWriteObject_BorderCurve, EBSignatureO
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -540,7 +541,7 @@ final class StoredObject_BorderCurve : ReadWriteObject_BorderCurve, EBSignatureO
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : BorderCurve?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -549,7 +550,7 @@ final class StoredObject_BorderCurve : ReadWriteObject_BorderCurve, EBSignatureO
       self.mResetOppositeRelationship? (object)
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -574,7 +575,7 @@ final class StoredObject_BorderCurve : ReadWriteObject_BorderCurve, EBSignatureO
   //····················································································································
 
   override var selection : EBSelection < BorderCurve? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -583,11 +584,23 @@ final class StoredObject_BorderCurve : ReadWriteObject_BorderCurve, EBSignatureO
 
   //····················································································································
 
-  override func setProp (_ inValue : BorderCurve?) { self.mInternalValue = inValue }
+  override var propval : BorderCurve? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : BorderCurve? = nil
 
   //····················································································································
 
-  override var propval : BorderCurve? { return self.mInternalValue }
+  override func setProp (_ inValue : BorderCurve?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -625,7 +638,7 @@ final class StoredObject_BorderCurve : ReadWriteObject_BorderCurve, EBSignatureO
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

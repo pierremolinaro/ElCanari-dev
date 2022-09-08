@@ -36,7 +36,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
       oldValue.symbolInSchematic_property.removeEBObserver (self.symbolInSchematic_property) // Transient property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.mCenterX_property.addEBObserver (self.mCenterX_property) // Stored property
       newValue.mCenterY_property.addEBObserver (self.mCenterY_property) // Stored property
       newValue.mRotation_property.addEBObserver (self.mRotation_property) // Stored property
@@ -198,7 +198,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     super.init ()
   //--- Configure mCenterX simple stored property
     self.mCenterX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mCenterX_property.selection {
         case .empty :
           return .empty
@@ -213,7 +213,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     }
   //--- Configure mCenterY simple stored property
     self.mCenterY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mCenterY_property.selection {
         case .empty :
           return .empty
@@ -228,7 +228,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     }
   //--- Configure mRotation simple stored property
     self.mRotation_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mRotation_property.selection {
         case .empty :
           return .empty
@@ -243,7 +243,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     }
   //--- Configure mMirror simple stored property
     self.mMirror_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mMirror_property.selection {
         case .empty :
           return .empty
@@ -258,7 +258,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     }
   //--- Configure mSymbolInstanceName simple stored property
     self.mSymbolInstanceName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSymbolInstanceName_property.selection {
         case .empty :
           return .empty
@@ -273,7 +273,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     }
   //--- Configure mSymbolTypeName simple stored property
     self.mSymbolTypeName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSymbolTypeName_property.selection {
         case .empty :
           return .empty
@@ -288,7 +288,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     }
   //--- Configure mDisplayComponentNameOffsetX simple stored property
     self.mDisplayComponentNameOffsetX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mDisplayComponentNameOffsetX_property.selection {
         case .empty :
           return .empty
@@ -303,7 +303,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     }
   //--- Configure mDisplayComponentNameOffsetY simple stored property
     self.mDisplayComponentNameOffsetY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mDisplayComponentNameOffsetY_property.selection {
         case .empty :
           return .empty
@@ -318,7 +318,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     }
   //--- Configure mDisplayComponentValue simple stored property
     self.mDisplayComponentValue_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mDisplayComponentValue_property.selection {
         case .empty :
           return .empty
@@ -333,7 +333,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     }
   //--- Configure mDisplayComponentValueOffsetX simple stored property
     self.mDisplayComponentValueOffsetX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mDisplayComponentValueOffsetX_property.selection {
         case .empty :
           return .empty
@@ -348,7 +348,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     }
   //--- Configure mDisplayComponentValueOffsetY simple stored property
     self.mDisplayComponentValueOffsetY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mDisplayComponentValueOffsetY_property.selection {
         case .empty :
           return .empty
@@ -363,7 +363,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     }
   //--- Configure componentName transient property
     self.componentName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.componentName_property.selection {
         case .empty :
           return .empty
@@ -378,7 +378,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     }
   //--- Configure deviceName transient property
     self.deviceName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.deviceName_property.selection {
         case .empty :
           return .empty
@@ -393,7 +393,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     }
   //--- Configure symbolInfo transient property
     self.symbolInfo_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.symbolInfo_property.selection {
         case .empty :
           return .empty
@@ -408,7 +408,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     }
   //--- Configure pinPadAssignments transient property
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.pinPadAssignments_property.selection {
         case .empty :
           return .empty
@@ -423,7 +423,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     }
   //--- Configure objectDisplay transient property
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.objectDisplay_property.selection {
         case .empty :
           return .empty
@@ -438,7 +438,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     }
   //--- Configure selectionDisplay transient property
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.selectionDisplay_property.selection {
         case .empty :
           return .empty
@@ -453,7 +453,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     }
   //--- Configure symbolInSchematic transient property
     self.symbolInSchematic_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.symbolInSchematic_property.selection {
         case .empty :
           return .empty
@@ -515,7 +515,7 @@ final class TransientObject_ComponentSymbolInProject : ReadOnlyObject_ComponentS
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -526,8 +526,8 @@ final class TransientObject_ComponentSymbolInProject : ReadOnlyObject_ComponentS
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -538,7 +538,7 @@ final class TransientObject_ComponentSymbolInProject : ReadOnlyObject_ComponentS
 
   //····················································································································
 
-  override var propval : ComponentSymbolInProject? { return self.mInternalValue }
+  override var propval : ComponentSymbolInProject? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -594,7 +594,7 @@ final class ProxyObject_ComponentSymbolInProject : ReadWriteObject_ComponentSymb
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -641,8 +641,9 @@ final class StoredObject_ComponentSymbolInProject : ReadWriteObject_ComponentSym
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -679,7 +680,7 @@ final class StoredObject_ComponentSymbolInProject : ReadWriteObject_ComponentSym
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : ComponentSymbolInProject?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -688,7 +689,7 @@ final class StoredObject_ComponentSymbolInProject : ReadWriteObject_ComponentSym
       self.mResetOppositeRelationship? (object)
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -713,7 +714,7 @@ final class StoredObject_ComponentSymbolInProject : ReadWriteObject_ComponentSym
   //····················································································································
 
   override var selection : EBSelection < ComponentSymbolInProject? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -722,11 +723,23 @@ final class StoredObject_ComponentSymbolInProject : ReadWriteObject_ComponentSym
 
   //····················································································································
 
-  override func setProp (_ inValue : ComponentSymbolInProject?) { self.mInternalValue = inValue }
+  override var propval : ComponentSymbolInProject? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : ComponentSymbolInProject? = nil
 
   //····················································································································
 
-  override var propval : ComponentSymbolInProject? { return self.mInternalValue }
+  override func setProp (_ inValue : ComponentSymbolInProject?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -764,7 +777,7 @@ final class StoredObject_ComponentSymbolInProject : ReadWriteObject_ComponentSym
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

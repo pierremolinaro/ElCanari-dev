@@ -300,7 +300,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-  final let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false)
+  final let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -326,7 +326,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //   To one property: mNext
   //····················································································································
 
-  final let mNext_property = StoredObject_BorderCurve (usedForSignature: false)
+  final let mNext_property = StoredObject_BorderCurve (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -352,7 +352,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //   To one property: mPrevious
   //····················································································································
 
-  final let mPrevious_property = StoredObject_BorderCurve (usedForSignature: false)
+  final let mPrevious_property = StoredObject_BorderCurve (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -782,12 +782,12 @@ final class BorderCurve : EBGraphicManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mRoot = nil
     self.mNext = nil
     self.mPrevious = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -1002,7 +1002,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: mRoot
     if let object = self.mRoot {
@@ -1016,7 +1016,7 @@ final class BorderCurve : EBGraphicManagedObject,
     if let object = self.mPrevious {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

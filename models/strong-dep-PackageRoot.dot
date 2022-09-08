@@ -1,0 +1,20 @@
+digraph G {
+  "PackageRoot" [shape=rectangle] ;
+  "PackageRoot" -> "PackageModelImageDoublePoint" ;
+  "PackageRoot" -> "PackageObject" ;
+  "PackageRoot" -> "PackagePad" ;
+  "PackageRoot" -> "PackageSlavePad" ;
+  "PackageRoot" -> "PackageZone" ;
+  "PackageModelImageDoublePoint" [shape=rectangle] ;
+  "PackageObject" [shape=rectangle] ;
+  "PackageObject" -> "PackagePad" ;
+  "PackageObject" -> "PackageSlavePad" ;
+  "PackageObject" -> "PackageZone" ;
+  "PackagePad" [shape=rectangle] ;
+  "PackagePad" -> "PackageSlavePad" ;
+  "PackagePad" -> "PackageZone" ;
+  "PackageSlavePad" [shape=rectangle] ;
+  "PackageZone" [shape=rectangle] ;
+  "PackageZone" -> "ForbiddenPadNumber" ;
+  "ForbiddenPadNumber" [shape=rectangle] ;
+}

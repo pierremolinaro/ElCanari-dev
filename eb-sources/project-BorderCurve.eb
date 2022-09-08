@@ -15,9 +15,9 @@ graphic handlingOpposite entity BorderCurve {
   graphic cannotBeDeleted ;
 
   property BorderCurveShape mShape default line ;
-  toOne ProjectRoot mRoot inverse toMany mBorderCurves ;
-  toOne BorderCurve mNext inverse toOne mPrevious ;
-  toOne BorderCurve mPrevious inverse toOne mNext ;
+  toOne @weak ProjectRoot mRoot inverse toMany mBorderCurves ;
+  toOne @weak BorderCurve mNext inverse toOne mPrevious ;
+  toOne @weak BorderCurve mPrevious inverse toOne mNext ;
 
   property Int mX default 0 ;
   property Int mY default 0 ;

@@ -127,7 +127,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //   To one property: myModel
   //····················································································································
 
-  final let myModel_property = StoredObject_BoardModel (usedForSignature: false)
+  final let myModel_property = StoredObject_BoardModel (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -204,7 +204,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //   To one property: myRoot
   //····················································································································
 
-  final let myRoot_property = StoredObject_MergerRoot (usedForSignature: false)
+  final let myRoot_property = StoredObject_MergerRoot (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -401,11 +401,11 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.myModel = nil
     self.myRoot = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -552,7 +552,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: myModel
     if let object = self.myModel {
@@ -562,7 +562,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
     if let object = self.myRoot {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

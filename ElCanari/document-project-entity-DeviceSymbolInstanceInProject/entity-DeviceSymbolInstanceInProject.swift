@@ -68,7 +68,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //   To one property: mSymbolType
   //····················································································································
 
-  final let mSymbolType_property = StoredObject_DeviceSymbolTypeInProject (usedForSignature: false)
+  final let mSymbolType_property = StoredObject_DeviceSymbolTypeInProject (usedForSignature: false, strongRef: true)
 
   //····················································································································
 
@@ -268,10 +268,10 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mSymbolType = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -382,13 +382,13 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: mSymbolType
     if let object = self.mSymbolType {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

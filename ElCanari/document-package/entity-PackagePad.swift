@@ -536,7 +536,7 @@ final class PackagePad : PackageObject,
   //   To one property: zone
   //····················································································································
 
-  final let zone_property = StoredObject_PackageZone (usedForSignature: false)
+  final let zone_property = StoredObject_PackageZone (usedForSignature: false, strongRef: true)
 
   //····················································································································
 
@@ -1144,19 +1144,19 @@ final class PackagePad : PackageObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+/*  override func cleanUpToManyRelationships () {
     self.slaves.removeAll ()
     super.cleanUpToManyRelationships ()
-  }
+  } */
 
   //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.zone = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -1482,7 +1482,7 @@ final class PackagePad : PackageObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: slaves
     for managedObject in self.slaves.values {
@@ -1492,7 +1492,7 @@ final class PackagePad : PackageObject,
     if let object = self.zone {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

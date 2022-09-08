@@ -72,6 +72,7 @@ fileprivate final class LogFileOperation : EBObjcBaseObject { // SHOULD INHERIT 
   //--- Configure Window
     self.mWindow.title = "Document Operation Duration"
     self.mWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
+    self.mWindow.setFrameAutosaveName ("Document.Operation.Window.Frame")
   //--- Build window contents
     let vStack = AutoLayoutVerticalStackView ().set (margins: 8)
     vStack.appendView (self.mTextView)

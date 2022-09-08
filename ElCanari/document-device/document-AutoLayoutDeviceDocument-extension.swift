@@ -28,7 +28,7 @@ extension AutoLayoutDeviceDocument {
         filledBezierPathes: filledBezierPathes,
         symbolPins: &symbolPinTypes
       )
-      symbolRoot.removeRecursivelyAllRelationsShips ()
+//      symbolRoot.removeRecursivelyAllRelationsShips ()
 
       let symbolType = SymbolTypeInDevice (self.ebUndoManager)
       symbolType.mVersion = version
@@ -128,7 +128,7 @@ extension AutoLayoutDeviceDocument {
               ioOkMessages.append ("Symbol \(symbolType.mTypeName) has been updated to version \(version).")
             }
           }
-          symbolRoot.removeRecursivelyAllRelationsShips ()
+//          symbolRoot.removeRecursivelyAllRelationsShips ()
         }else{
           ioErrorMessages.append ("Invalid file at path \(pathes [0])")
         }
@@ -156,7 +156,7 @@ extension AutoLayoutDeviceDocument {
         strokeBezierPathes: &strokeBezierPathes,
         masterPads: &masterPads
       )
-      packageRoot.removeRecursivelyAllRelationsShips ()
+//      packageRoot.removeRecursivelyAllRelationsShips ()
 
       var masterPadsLocations = [CanariPoint] ()
       for masterPad in masterPads.values {
@@ -217,15 +217,15 @@ extension AutoLayoutDeviceDocument {
             package.mFileData = data
             package.mStrokeBezierPath = strokeBezierPathes.nsBezierPath
           //--- Set relationship
-            let oldMasterPads = package.mMasterPads_property.propval
+//            let oldMasterPads = package.mMasterPads_property.propval
             package.mMasterPads_property.setProp (masterPads)
-            for oldMasterPad in oldMasterPads.values {
-              oldMasterPad.removeRecursivelyAllRelationsShips ()
-            }
+//            for oldMasterPad in oldMasterPads.values {
+//              oldMasterPad.removeRecursivelyAllRelationsShips ()
+//            }
           //---
             ioOkMessages.append ("Package \(package.mName) has been updated to version \(version).")
           }
-          packageRoot.removeRecursivelyAllRelationsShips ()
+//          packageRoot.removeRecursivelyAllRelationsShips ()
         }else{
           ioErrorMessages.append ("Invalid file at path \(pathes [0])")
         }
@@ -259,7 +259,7 @@ extension AutoLayoutDeviceDocument {
   //--- Remove pad proxies without corresponding pad
     for padName in currentProxyPadNameSet.subtracting (currentPackagePadNameSet) {
       let padProxy = padProxyDictionary [padName]!
-      padProxy.cleanUpRelationshipsAndRemoveAllObservers ()
+ //     padProxy.cleanUpRelationshipsAndRemoveAllObservers ()
       self.rootObject.mPadProxies_property.remove (padProxy)
     }
   //--- Add missing pad proxies

@@ -36,7 +36,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       oldValue.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.layerConfiguration_property.addEBObserver (self.layerConfiguration_property) // Stored property
       newValue.selectedTab_property.addEBObserver (self.selectedTab_property) // Stored property
       newValue.comments_property.addEBObserver (self.comments_property) // Stored property
@@ -198,7 +198,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     super.init ()
   //--- Configure layerConfiguration simple stored property
     self.layerConfiguration_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.layerConfiguration_property.selection {
         case .empty :
           return .empty
@@ -213,7 +213,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     }
   //--- Configure selectedTab simple stored property
     self.selectedTab_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.selectedTab_property.selection {
         case .empty :
           return .empty
@@ -228,7 +228,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     }
   //--- Configure comments simple stored property
     self.comments_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.comments_property.selection {
         case .empty :
           return .empty
@@ -243,7 +243,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     }
   //--- Configure minPPTPTTTWdisplayUnit simple stored property
     self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.minPPTPTTTWdisplayUnit_property.selection {
         case .empty :
           return .empty
@@ -258,7 +258,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     }
   //--- Configure minPPTPTTTW simple stored property
     self.minPPTPTTTW_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.minPPTPTTTW_property.selection {
         case .empty :
           return .empty
@@ -273,7 +273,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     }
   //--- Configure minValueForOARdisplayUnit simple stored property
     self.minValueForOARdisplayUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.minValueForOARdisplayUnit_property.selection {
         case .empty :
           return .empty
@@ -288,7 +288,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     }
   //--- Configure minValueForOARinEBUnit simple stored property
     self.minValueForOARinEBUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.minValueForOARinEBUnit_property.selection {
         case .empty :
           return .empty
@@ -303,7 +303,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     }
   //--- Configure minValueForPHDdisplayUnit simple stored property
     self.minValueForPHDdisplayUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.minValueForPHDdisplayUnit_property.selection {
         case .empty :
           return .empty
@@ -318,7 +318,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     }
   //--- Configure minValueForPHDinEBUnit simple stored property
     self.minValueForPHDinEBUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.minValueForPHDinEBUnit_property.selection {
         case .empty :
           return .empty
@@ -333,7 +333,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     }
   //--- Configure minValueForBoardLimitWidthDisplayUnit simple stored property
     self.minValueForBoardLimitWidthDisplayUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.minValueForBoardLimitWidthDisplayUnit_property.selection {
         case .empty :
           return .empty
@@ -348,7 +348,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     }
   //--- Configure minValueForBoardLimitWidth simple stored property
     self.minValueForBoardLimitWidth_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.minValueForBoardLimitWidth_property.selection {
         case .empty :
           return .empty
@@ -363,7 +363,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     }
   //--- Configure title simple stored property
     self.title_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.title_property.selection {
         case .empty :
           return .empty
@@ -378,7 +378,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     }
   //--- Configure drillDataFileExtension simple stored property
     self.drillDataFileExtension_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.drillDataFileExtension_property.selection {
         case .empty :
           return .empty
@@ -393,7 +393,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     }
   //--- Configure hasInnerElements transient property
     self.hasInnerElements_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.hasInnerElements_property.selection {
         case .empty :
           return .empty
@@ -408,7 +408,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     }
   //--- Configure hasSixLayers transient property
     self.hasSixLayers_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.hasSixLayers_property.selection {
         case .empty :
           return .empty
@@ -423,7 +423,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     }
   //--- Configure hasDataWarning transient property
     self.hasDataWarning_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.hasDataWarning_property.selection {
         case .empty :
           return .empty
@@ -438,7 +438,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     }
   //--- Configure emptyDrillFileExtension transient property
     self.emptyDrillFileExtension_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.emptyDrillFileExtension_property.selection {
         case .empty :
           return .empty
@@ -453,7 +453,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     }
   //--- Configure signatureForERCChecking transient property
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.signatureForERCChecking_property.selection {
         case .empty :
           return .empty
@@ -515,7 +515,7 @@ final class TransientObject_ArtworkRoot : ReadOnlyObject_ArtworkRoot {
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -526,8 +526,8 @@ final class TransientObject_ArtworkRoot : ReadOnlyObject_ArtworkRoot {
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -538,7 +538,7 @@ final class TransientObject_ArtworkRoot : ReadOnlyObject_ArtworkRoot {
 
   //····················································································································
 
-  override var propval : ArtworkRoot? { return self.mInternalValue }
+  override var propval : ArtworkRoot? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -594,7 +594,7 @@ final class ProxyObject_ArtworkRoot : ReadWriteObject_ArtworkRoot {
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -641,8 +641,9 @@ final class StoredObject_ArtworkRoot : ReadWriteObject_ArtworkRoot, EBSignatureO
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -679,7 +680,7 @@ final class StoredObject_ArtworkRoot : ReadWriteObject_ArtworkRoot, EBSignatureO
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : ArtworkRoot?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -688,7 +689,7 @@ final class StoredObject_ArtworkRoot : ReadWriteObject_ArtworkRoot, EBSignatureO
       self.mResetOppositeRelationship? (object)
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -713,7 +714,7 @@ final class StoredObject_ArtworkRoot : ReadWriteObject_ArtworkRoot, EBSignatureO
   //····················································································································
 
   override var selection : EBSelection < ArtworkRoot? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -722,11 +723,23 @@ final class StoredObject_ArtworkRoot : ReadWriteObject_ArtworkRoot, EBSignatureO
 
   //····················································································································
 
-  override func setProp (_ inValue : ArtworkRoot?) { self.mInternalValue = inValue }
+  override var propval : ArtworkRoot? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : ArtworkRoot? = nil
 
   //····················································································································
 
-  override var propval : ArtworkRoot? { return self.mInternalValue }
+  override func setProp (_ inValue : ArtworkRoot?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -764,7 +777,7 @@ final class StoredObject_ArtworkRoot : ReadWriteObject_ArtworkRoot, EBSignatureO
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

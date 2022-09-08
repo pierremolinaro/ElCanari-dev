@@ -464,7 +464,7 @@ final class BoardTrack : BoardObject,
   //   To one property: mConnectorP1
   //····················································································································
 
-  final let mConnectorP1_property = StoredObject_BoardConnector (usedForSignature: false)
+  final let mConnectorP1_property = StoredObject_BoardConnector (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -490,7 +490,7 @@ final class BoardTrack : BoardObject,
   //   To one property: mConnectorP2
   //····················································································································
 
-  final let mConnectorP2_property = StoredObject_BoardConnector (usedForSignature: false)
+  final let mConnectorP2_property = StoredObject_BoardConnector (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -516,7 +516,7 @@ final class BoardTrack : BoardObject,
   //   To one property: mNet
   //····················································································································
 
-  final let mNet_property = StoredObject_NetInProject (usedForSignature: false)
+  final let mNet_property = StoredObject_NetInProject (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -1422,12 +1422,12 @@ final class BoardTrack : BoardObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mConnectorP1 = nil
     self.mConnectorP2 = nil
     self.mNet = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -1694,7 +1694,7 @@ final class BoardTrack : BoardObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To one property: mConnectorP1
     if let object = self.mConnectorP1 {
@@ -1708,7 +1708,7 @@ final class BoardTrack : BoardObject,
     if let object = self.mNet {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

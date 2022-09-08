@@ -31,9 +31,9 @@ func enum TrackLockDirection.popupTitles {
 //——————————————————————————————————————————————————————————————————————————————
 
 graphic handlingOpposite entity BoardTrack : BoardObject {
-  toOne BoardConnector mConnectorP1 inverse toMany mTracksP1 ;
-  toOne BoardConnector mConnectorP2 inverse toMany mTracksP2 ;
-  toOne NetInProject mNet inverse toMany mTracks ;
+  toOne @weak BoardConnector mConnectorP1 inverse toMany mTracksP1 ;
+  toOne @weak BoardConnector mConnectorP2 inverse toMany mTracksP2 ;
+  toOne @weak NetInProject mNet inverse toMany mTracks ;
 
   property TrackSide mSide default front ;
 

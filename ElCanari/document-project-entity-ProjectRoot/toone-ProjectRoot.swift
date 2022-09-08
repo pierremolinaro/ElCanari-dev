@@ -165,7 +165,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
       oldValue.schematicStatusImage_property.removeEBObserver (self.schematicStatusImage_property) // Transient property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.mArtworkName_property.addEBObserver (self.mArtworkName_property) // Stored property
       newValue.mArtworkVersion_property.addEBObserver (self.mArtworkVersion_property) // Stored property
       newValue.mPDFBoardBackgroundColor_property.addEBObserver (self.mPDFBoardBackgroundColor_property) // Stored property
@@ -1374,7 +1374,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     super.init ()
   //--- Configure mArtworkName simple stored property
     self.mArtworkName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mArtworkName_property.selection {
         case .empty :
           return .empty
@@ -1389,7 +1389,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mArtworkVersion simple stored property
     self.mArtworkVersion_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mArtworkVersion_property.selection {
         case .empty :
           return .empty
@@ -1404,7 +1404,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mPDFBoardBackgroundColor simple stored property
     self.mPDFBoardBackgroundColor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mPDFBoardBackgroundColor_property.selection {
         case .empty :
           return .empty
@@ -1419,7 +1419,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mCheckClearanceBetweenPadsOfSameNet simple stored property
     self.mCheckClearanceBetweenPadsOfSameNet_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mCheckClearanceBetweenPadsOfSameNet_property.selection {
         case .empty :
           return .empty
@@ -1434,7 +1434,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mLastERCCheckingIsSuccess simple stored property
     self.mLastERCCheckingIsSuccess_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mLastERCCheckingIsSuccess_property.selection {
         case .empty :
           return .empty
@@ -1449,7 +1449,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mLastERCCheckingSignature simple stored property
     self.mLastERCCheckingSignature_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mLastERCCheckingSignature_property.selection {
         case .empty :
           return .empty
@@ -1464,7 +1464,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mLayerConfiguration simple stored property
     self.mLayerConfiguration_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mLayerConfiguration_property.selection {
         case .empty :
           return .empty
@@ -1479,7 +1479,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardSideForNewTrack simple stored property
     self.mBoardSideForNewTrack_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardSideForNewTrack_property.selection {
         case .empty :
           return .empty
@@ -1494,7 +1494,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mDirectionForNewTrack simple stored property
     self.mDirectionForNewTrack_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mDirectionForNewTrack_property.selection {
         case .empty :
           return .empty
@@ -1509,7 +1509,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardLayerForNewText simple stored property
     self.mBoardLayerForNewText_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardLayerForNewText_property.selection {
         case .empty :
           return .empty
@@ -1524,7 +1524,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardLayerForNewLine simple stored property
     self.mBoardLayerForNewLine_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardLayerForNewLine_property.selection {
         case .empty :
           return .empty
@@ -1539,7 +1539,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardSideForNewRestrictRectangle simple stored property
     self.mBoardSideForNewRestrictRectangle_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardSideForNewRestrictRectangle_property.selection {
         case .empty :
           return .empty
@@ -1554,7 +1554,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mNewRestrictRectangleLayers simple stored property
     self.mNewRestrictRectangleLayers_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mNewRestrictRectangleLayers_property.selection {
         case .empty :
           return .empty
@@ -1569,7 +1569,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mAutoRouterPreferredDirections simple stored property
     self.mAutoRouterPreferredDirections_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mAutoRouterPreferredDirections_property.selection {
         case .empty :
           return .empty
@@ -1584,7 +1584,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mAutorouterSnapAngle simple stored property
     self.mAutorouterSnapAngle_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mAutorouterSnapAngle_property.selection {
         case .empty :
           return .empty
@@ -1599,7 +1599,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mRouteDirection simple stored property
     self.mRouteDirection_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mRouteDirection_property.selection {
         case .empty :
           return .empty
@@ -1614,7 +1614,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mRouteOrigin simple stored property
     self.mRouteOrigin_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mRouteOrigin_property.selection {
         case .empty :
           return .empty
@@ -1629,7 +1629,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mAutorouterInterfaceMode simple stored property
     self.mAutorouterInterfaceMode_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mAutorouterInterfaceMode_property.selection {
         case .empty :
           return .empty
@@ -1644,7 +1644,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mExportExistingTracksAndVias simple stored property
     self.mExportExistingTracksAndVias_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mExportExistingTracksAndVias_property.selection {
         case .empty :
           return .empty
@@ -1659,7 +1659,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mExportExistingTracksAndVias2 simple stored property
     self.mExportExistingTracksAndVias2_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mExportExistingTracksAndVias2_property.selection {
         case .empty :
           return .empty
@@ -1674,7 +1674,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mTrackLengthUnit simple stored property
     self.mTrackLengthUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mTrackLengthUnit_property.selection {
         case .empty :
           return .empty
@@ -1689,7 +1689,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mLayoutClearance simple stored property
     self.mLayoutClearance_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mLayoutClearance_property.selection {
         case .empty :
           return .empty
@@ -1704,7 +1704,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mLayoutClearanceUnit simple stored property
     self.mLayoutClearanceUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mLayoutClearanceUnit_property.selection {
         case .empty :
           return .empty
@@ -1719,7 +1719,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardSelectedInspector simple stored property
     self.mBoardSelectedInspector_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardSelectedInspector_property.selection {
         case .empty :
           return .empty
@@ -1734,7 +1734,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardHorizontalFlip simple stored property
     self.mBoardHorizontalFlip_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardHorizontalFlip_property.selection {
         case .empty :
           return .empty
@@ -1749,7 +1749,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardVerticalFlip simple stored property
     self.mBoardVerticalFlip_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardVerticalFlip_property.selection {
         case .empty :
           return .empty
@@ -1764,7 +1764,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardGridStyle simple stored property
     self.mBoardGridStyle_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardGridStyle_property.selection {
         case .empty :
           return .empty
@@ -1779,7 +1779,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardGridDisplayFactor simple stored property
     self.mBoardGridDisplayFactor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardGridDisplayFactor_property.selection {
         case .empty :
           return .empty
@@ -1794,7 +1794,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardZoom simple stored property
     self.mBoardZoom_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardZoom_property.selection {
         case .empty :
           return .empty
@@ -1809,7 +1809,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardGridStep simple stored property
     self.mBoardGridStep_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardGridStep_property.selection {
         case .empty :
           return .empty
@@ -1824,7 +1824,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardGridStepUnit simple stored property
     self.mBoardGridStepUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardGridStepUnit_property.selection {
         case .empty :
           return .empty
@@ -1839,7 +1839,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mErrorOrWarningIssueSize simple stored property
     self.mErrorOrWarningIssueSize_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mErrorOrWarningIssueSize_property.selection {
         case .empty :
           return .empty
@@ -1854,7 +1854,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mControlKeyHiliteDiameter simple stored property
     self.mControlKeyHiliteDiameter_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mControlKeyHiliteDiameter_property.selection {
         case .empty :
           return .empty
@@ -1869,7 +1869,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mDSNFileProposedName simple stored property
     self.mDSNFileProposedName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mDSNFileProposedName_property.selection {
         case .empty :
           return .empty
@@ -1884,7 +1884,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardLimitsWidth simple stored property
     self.mBoardLimitsWidth_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardLimitsWidth_property.selection {
         case .empty :
           return .empty
@@ -1899,7 +1899,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardLimitsWidthUnit simple stored property
     self.mBoardLimitsWidthUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardLimitsWidthUnit_property.selection {
         case .empty :
           return .empty
@@ -1914,7 +1914,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardClearance simple stored property
     self.mBoardClearance_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardClearance_property.selection {
         case .empty :
           return .empty
@@ -1929,7 +1929,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardClearanceUnit simple stored property
     self.mBoardClearanceUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardClearanceUnit_property.selection {
         case .empty :
           return .empty
@@ -1944,7 +1944,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardLimitsSelectedInspector simple stored property
     self.mBoardLimitsSelectedInspector_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardLimitsSelectedInspector_property.selection {
         case .empty :
           return .empty
@@ -1959,7 +1959,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardLimitsHorizontalFlip simple stored property
     self.mBoardLimitsHorizontalFlip_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardLimitsHorizontalFlip_property.selection {
         case .empty :
           return .empty
@@ -1974,7 +1974,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardLimitsVerticalFlip simple stored property
     self.mBoardLimitsVerticalFlip_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardLimitsVerticalFlip_property.selection {
         case .empty :
           return .empty
@@ -1989,7 +1989,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardLimitsGridStyle simple stored property
     self.mBoardLimitsGridStyle_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardLimitsGridStyle_property.selection {
         case .empty :
           return .empty
@@ -2004,7 +2004,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardLimitsGridDisplayFactor simple stored property
     self.mBoardLimitsGridDisplayFactor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardLimitsGridDisplayFactor_property.selection {
         case .empty :
           return .empty
@@ -2019,7 +2019,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardLimitsZoom simple stored property
     self.mBoardLimitsZoom_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardLimitsZoom_property.selection {
         case .empty :
           return .empty
@@ -2034,7 +2034,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardLimitsGridStep simple stored property
     self.mBoardLimitsGridStep_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardLimitsGridStep_property.selection {
         case .empty :
           return .empty
@@ -2049,7 +2049,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardLimitsGridStepUnit simple stored property
     self.mBoardLimitsGridStepUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardLimitsGridStepUnit_property.selection {
         case .empty :
           return .empty
@@ -2064,7 +2064,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardLimitsBoundingBoxUnit simple stored property
     self.mBoardLimitsBoundingBoxUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardLimitsBoundingBoxUnit_property.selection {
         case .empty :
           return .empty
@@ -2079,7 +2079,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardPointsBoundingBoxUnit simple stored property
     self.mBoardPointsBoundingBoxUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardPointsBoundingBoxUnit_property.selection {
         case .empty :
           return .empty
@@ -2094,7 +2094,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardSelectedCurveDisplayUnit simple stored property
     self.mBoardSelectedCurveDisplayUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardSelectedCurveDisplayUnit_property.selection {
         case .empty :
           return .empty
@@ -2109,7 +2109,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardLimitControlPointsDisplayUnit simple stored property
     self.mBoardLimitControlPointsDisplayUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardLimitControlPointsDisplayUnit_property.selection {
         case .empty :
           return .empty
@@ -2124,7 +2124,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mBoardShape simple stored property
     self.mBoardShape_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mBoardShape_property.selection {
         case .empty :
           return .empty
@@ -2139,7 +2139,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mRectangularBoardWidth simple stored property
     self.mRectangularBoardWidth_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mRectangularBoardWidth_property.selection {
         case .empty :
           return .empty
@@ -2154,7 +2154,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mRectangularBoardWidthUnit simple stored property
     self.mRectangularBoardWidthUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mRectangularBoardWidthUnit_property.selection {
         case .empty :
           return .empty
@@ -2169,7 +2169,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mRectangularBoardHeight simple stored property
     self.mRectangularBoardHeight_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mRectangularBoardHeight_property.selection {
         case .empty :
           return .empty
@@ -2184,7 +2184,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mRectangularBoardHeightUnit simple stored property
     self.mRectangularBoardHeightUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mRectangularBoardHeightUnit_property.selection {
         case .empty :
           return .empty
@@ -2199,7 +2199,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mDefaultNetClassName simple stored property
     self.mDefaultNetClassName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mDefaultNetClassName_property.selection {
         case .empty :
           return .empty
@@ -2214,7 +2214,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mSelectedPageIndex simple stored property
     self.mSelectedPageIndex_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSelectedPageIndex_property.selection {
         case .empty :
           return .empty
@@ -2229,7 +2229,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mSelectedSchematicInspector simple stored property
     self.mSelectedSchematicInspector_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSelectedSchematicInspector_property.selection {
         case .empty :
           return .empty
@@ -2244,7 +2244,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mSchematicTitle simple stored property
     self.mSchematicTitle_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSchematicTitle_property.selection {
         case .empty :
           return .empty
@@ -2259,7 +2259,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mSchematicVersion simple stored property
     self.mSchematicVersion_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSchematicVersion_property.selection {
         case .empty :
           return .empty
@@ -2274,7 +2274,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mSchematicDate simple stored property
     self.mSchematicDate_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSchematicDate_property.selection {
         case .empty :
           return .empty
@@ -2289,7 +2289,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mSchematicHorizontalFlip simple stored property
     self.mSchematicHorizontalFlip_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSchematicHorizontalFlip_property.selection {
         case .empty :
           return .empty
@@ -2304,7 +2304,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mSchematicVerticalFlip simple stored property
     self.mSchematicVerticalFlip_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSchematicVerticalFlip_property.selection {
         case .empty :
           return .empty
@@ -2319,7 +2319,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mSchematicZoom simple stored property
     self.mSchematicZoom_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSchematicZoom_property.selection {
         case .empty :
           return .empty
@@ -2334,7 +2334,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mSchematicGridStyle simple stored property
     self.mSchematicGridStyle_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSchematicGridStyle_property.selection {
         case .empty :
           return .empty
@@ -2349,7 +2349,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mSchematicGridDisplayFactor simple stored property
     self.mSchematicGridDisplayFactor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSchematicGridDisplayFactor_property.selection {
         case .empty :
           return .empty
@@ -2364,7 +2364,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mSchematicCustomWidth simple stored property
     self.mSchematicCustomWidth_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSchematicCustomWidth_property.selection {
         case .empty :
           return .empty
@@ -2379,7 +2379,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mSchematicCustomWidthUnit simple stored property
     self.mSchematicCustomWidthUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSchematicCustomWidthUnit_property.selection {
         case .empty :
           return .empty
@@ -2394,7 +2394,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mSchematicCustomHeight simple stored property
     self.mSchematicCustomHeight_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSchematicCustomHeight_property.selection {
         case .empty :
           return .empty
@@ -2409,7 +2409,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mSchematicCustomHeightUnit simple stored property
     self.mSchematicCustomHeightUnit_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSchematicCustomHeightUnit_property.selection {
         case .empty :
           return .empty
@@ -2424,7 +2424,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure drawErrorBackgroundForBoard simple stored property
     self.drawErrorBackgroundForBoard_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.drawErrorBackgroundForBoard_property.selection {
         case .empty :
           return .empty
@@ -2439,7 +2439,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure displayFrontRestrictRectangles simple stored property
     self.displayFrontRestrictRectangles_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.displayFrontRestrictRectangles_property.selection {
         case .empty :
           return .empty
@@ -2454,7 +2454,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure displayBackRestrictRectangles simple stored property
     self.displayBackRestrictRectangles_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.displayBackRestrictRectangles_property.selection {
         case .empty :
           return .empty
@@ -2469,7 +2469,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure displayInner1RestrictRectangles simple stored property
     self.displayInner1RestrictRectangles_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.displayInner1RestrictRectangles_property.selection {
         case .empty :
           return .empty
@@ -2484,7 +2484,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure displayInner2RestrictRectangles simple stored property
     self.displayInner2RestrictRectangles_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.displayInner2RestrictRectangles_property.selection {
         case .empty :
           return .empty
@@ -2499,7 +2499,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure displayInner3RestrictRectangles simple stored property
     self.displayInner3RestrictRectangles_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.displayInner3RestrictRectangles_property.selection {
         case .empty :
           return .empty
@@ -2514,7 +2514,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure displayInner4RestrictRectangles simple stored property
     self.displayInner4RestrictRectangles_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.displayInner4RestrictRectangles_property.selection {
         case .empty :
           return .empty
@@ -2529,7 +2529,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure displayFrontLegendForBoard simple stored property
     self.displayFrontLegendForBoard_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.displayFrontLegendForBoard_property.selection {
         case .empty :
           return .empty
@@ -2544,7 +2544,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure displayFrontLayoutForBoard simple stored property
     self.displayFrontLayoutForBoard_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.displayFrontLayoutForBoard_property.selection {
         case .empty :
           return .empty
@@ -2559,7 +2559,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure displayBackLayoutForBoard simple stored property
     self.displayBackLayoutForBoard_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.displayBackLayoutForBoard_property.selection {
         case .empty :
           return .empty
@@ -2574,7 +2574,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure displayInner1LayoutForBoard simple stored property
     self.displayInner1LayoutForBoard_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.displayInner1LayoutForBoard_property.selection {
         case .empty :
           return .empty
@@ -2589,7 +2589,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure displayInner2LayoutForBoard simple stored property
     self.displayInner2LayoutForBoard_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.displayInner2LayoutForBoard_property.selection {
         case .empty :
           return .empty
@@ -2604,7 +2604,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure displayInner3LayoutForBoard simple stored property
     self.displayInner3LayoutForBoard_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.displayInner3LayoutForBoard_property.selection {
         case .empty :
           return .empty
@@ -2619,7 +2619,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure displayInner4LayoutForBoard simple stored property
     self.displayInner4LayoutForBoard_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.displayInner4LayoutForBoard_property.selection {
         case .empty :
           return .empty
@@ -2634,7 +2634,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure displayBackLegendForBoard simple stored property
     self.displayBackLegendForBoard_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.displayBackLegendForBoard_property.selection {
         case .empty :
           return .empty
@@ -2649,7 +2649,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure displayFrontPadsForBoard simple stored property
     self.displayFrontPadsForBoard_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.displayFrontPadsForBoard_property.selection {
         case .empty :
           return .empty
@@ -2664,7 +2664,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure displayBackPadsForBoard simple stored property
     self.displayBackPadsForBoard_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.displayBackPadsForBoard_property.selection {
         case .empty :
           return .empty
@@ -2679,7 +2679,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure displayPadNumbersForBoard simple stored property
     self.displayPadNumbersForBoard_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.displayPadNumbersForBoard_property.selection {
         case .empty :
           return .empty
@@ -2694,7 +2694,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure packageDrawingWidthMultpliedByTenForBoard simple stored property
     self.packageDrawingWidthMultpliedByTenForBoard_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.packageDrawingWidthMultpliedByTenForBoard_property.selection {
         case .empty :
           return .empty
@@ -2709,7 +2709,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mSchematicSheetOrientation simple stored property
     self.mSchematicSheetOrientation_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSchematicSheetOrientation_property.selection {
         case .empty :
           return .empty
@@ -2724,7 +2724,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mRastnetDisplay simple stored property
     self.mRastnetDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mRastnetDisplay_property.selection {
         case .empty :
           return .empty
@@ -2739,7 +2739,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mRastnetDisplayedNetName simple stored property
     self.mRastnetDisplayedNetName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mRastnetDisplayedNetName_property.selection {
         case .empty :
           return .empty
@@ -2754,7 +2754,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure mRastnetDisplayedComponentName simple stored property
     self.mRastnetDisplayedComponentName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mRastnetDisplayedComponentName_property.selection {
         case .empty :
           return .empty
@@ -2769,7 +2769,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure hasInnerElements transient property
     self.hasInnerElements_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.hasInnerElements_property.selection {
         case .empty :
           return .empty
@@ -2784,7 +2784,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure layerConfigurationString transient property
     self.layerConfigurationString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.layerConfigurationString_property.selection {
         case .empty :
           return .empty
@@ -2799,7 +2799,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure boardGridStepMultipliedByDisplayFactor transient property
     self.boardGridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardGridStepMultipliedByDisplayFactor_property.selection {
         case .empty :
           return .empty
@@ -2814,7 +2814,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure boardLimitsGridStepMultipliedByDisplayFactor transient property
     self.boardLimitsGridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardLimitsGridStepMultipliedByDisplayFactor_property.selection {
         case .empty :
           return .empty
@@ -2829,7 +2829,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure boardShapeIsRectangular transient property
     self.boardShapeIsRectangular_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardShapeIsRectangular_property.selection {
         case .empty :
           return .empty
@@ -2844,7 +2844,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure selectedSheetIssues transient property
     self.selectedSheetIssues_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.selectedSheetIssues_property.selection {
         case .empty :
           return .empty
@@ -2859,7 +2859,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure schematicOverDisplay transient property
     self.schematicOverDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.schematicOverDisplay_property.selection {
         case .empty :
           return .empty
@@ -2874,7 +2874,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure connexionWarningString transient property
     self.connexionWarningString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.connexionWarningString_property.selection {
         case .empty :
           return .empty
@@ -2889,7 +2889,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure connexionErrorString transient property
     self.connexionErrorString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.connexionErrorString_property.selection {
         case .empty :
           return .empty
@@ -2904,7 +2904,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure sheetIndexes transient property
     self.sheetIndexes_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.sheetIndexes_property.selection {
         case .empty :
           return .empty
@@ -2919,7 +2919,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure netsDescription transient property
     self.netsDescription_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.netsDescription_property.selection {
         case .empty :
           return .empty
@@ -2934,7 +2934,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure boardIssues transient property
     self.boardIssues_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardIssues_property.selection {
         case .empty :
           return .empty
@@ -2949,7 +2949,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure hasSixLayers transient property
     self.hasSixLayers_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.hasSixLayers_property.selection {
         case .empty :
           return .empty
@@ -2964,7 +2964,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure signatureForERCChecking transient property
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.signatureForERCChecking_property.selection {
         case .empty :
           return .empty
@@ -2979,7 +2979,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure ercStatusImage transient property
     self.ercStatusImage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.ercStatusImage_property.selection {
         case .empty :
           return .empty
@@ -2994,7 +2994,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure ercStatusMessage transient property
     self.ercStatusMessage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.ercStatusMessage_property.selection {
         case .empty :
           return .empty
@@ -3009,7 +3009,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure viaCountString transient property
     self.viaCountString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.viaCountString_property.selection {
         case .empty :
           return .empty
@@ -3024,7 +3024,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure topSideTrackCountString transient property
     self.topSideTrackCountString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.topSideTrackCountString_property.selection {
         case .empty :
           return .empty
@@ -3039,7 +3039,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure backSideTrackCountString transient property
     self.backSideTrackCountString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.backSideTrackCountString_property.selection {
         case .empty :
           return .empty
@@ -3054,7 +3054,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure inner1LayerTrackCountString transient property
     self.inner1LayerTrackCountString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.inner1LayerTrackCountString_property.selection {
         case .empty :
           return .empty
@@ -3069,7 +3069,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure inner2LayerTrackCountString transient property
     self.inner2LayerTrackCountString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.inner2LayerTrackCountString_property.selection {
         case .empty :
           return .empty
@@ -3084,7 +3084,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure inner3LayerTrackCountString transient property
     self.inner3LayerTrackCountString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.inner3LayerTrackCountString_property.selection {
         case .empty :
           return .empty
@@ -3099,7 +3099,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure inner4LayerTrackCountString transient property
     self.inner4LayerTrackCountString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.inner4LayerTrackCountString_property.selection {
         case .empty :
           return .empty
@@ -3114,7 +3114,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure trackCountString transient property
     self.trackCountString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.trackCountString_property.selection {
         case .empty :
           return .empty
@@ -3129,7 +3129,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure trackLengthString transient property
     self.trackLengthString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.trackLengthString_property.selection {
         case .empty :
           return .empty
@@ -3144,7 +3144,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure interiorBoundBox transient property
     self.interiorBoundBox_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.interiorBoundBox_property.selection {
         case .empty :
           return .empty
@@ -3159,7 +3159,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure boardBoundBox transient property
     self.boardBoundBox_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardBoundBox_property.selection {
         case .empty :
           return .empty
@@ -3174,7 +3174,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure boardInteriorTop transient property
     self.boardInteriorTop_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardInteriorTop_property.selection {
         case .empty :
           return .empty
@@ -3189,7 +3189,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure boardInteriorBottom transient property
     self.boardInteriorBottom_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardInteriorBottom_property.selection {
         case .empty :
           return .empty
@@ -3204,7 +3204,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure boardInteriorLeft transient property
     self.boardInteriorLeft_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardInteriorLeft_property.selection {
         case .empty :
           return .empty
@@ -3219,7 +3219,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure boardInteriorRight transient property
     self.boardInteriorRight_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardInteriorRight_property.selection {
         case .empty :
           return .empty
@@ -3234,7 +3234,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure boardLimitBorderTop transient property
     self.boardLimitBorderTop_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardLimitBorderTop_property.selection {
         case .empty :
           return .empty
@@ -3249,7 +3249,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure boardLimitBorderBottom transient property
     self.boardLimitBorderBottom_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardLimitBorderBottom_property.selection {
         case .empty :
           return .empty
@@ -3264,7 +3264,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure boardLimitBorderLeft transient property
     self.boardLimitBorderLeft_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardLimitBorderLeft_property.selection {
         case .empty :
           return .empty
@@ -3279,7 +3279,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure boardLimitBorderRight transient property
     self.boardLimitBorderRight_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardLimitBorderRight_property.selection {
         case .empty :
           return .empty
@@ -3294,7 +3294,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure borderElementCountString transient property
     self.borderElementCountString_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.borderElementCountString_property.selection {
         case .empty :
           return .empty
@@ -3309,7 +3309,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure borderOutlineBackground transient property
     self.borderOutlineBackground_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.borderOutlineBackground_property.selection {
         case .empty :
           return .empty
@@ -3324,7 +3324,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure borderViewBackground transient property
     self.borderViewBackground_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.borderViewBackground_property.selection {
         case .empty :
           return .empty
@@ -3339,7 +3339,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure fontNameArray transient property
     self.fontNameArray_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.fontNameArray_property.selection {
         case .empty :
           return .empty
@@ -3354,7 +3354,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure deviceNames transient property
     self.deviceNames_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.deviceNames_property.selection {
         case .empty :
           return .empty
@@ -3369,7 +3369,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure allClassNames transient property
     self.allClassNames_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.allClassNames_property.selection {
         case .empty :
           return .empty
@@ -3384,7 +3384,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure sheetGeometry transient property
     self.sheetGeometry_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.sheetGeometry_property.selection {
         case .empty :
           return .empty
@@ -3399,7 +3399,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure schematicBackgroundDisplay transient property
     self.schematicBackgroundDisplay_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.schematicBackgroundDisplay_property.selection {
         case .empty :
           return .empty
@@ -3414,7 +3414,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure netWarningCount transient property
     self.netWarningCount_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.netWarningCount_property.selection {
         case .empty :
           return .empty
@@ -3429,7 +3429,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure netNamesArray transient property
     self.netNamesArray_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.netNamesArray_property.selection {
         case .empty :
           return .empty
@@ -3444,7 +3444,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure unplacedSymbols transient property
     self.unplacedSymbols_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.unplacedSymbols_property.selection {
         case .empty :
           return .empty
@@ -3459,7 +3459,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure unplacedPackages transient property
     self.unplacedPackages_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.unplacedPackages_property.selection {
         case .empty :
           return .empty
@@ -3474,7 +3474,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure componentsPlacedInBoard transient property
     self.componentsPlacedInBoard_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.componentsPlacedInBoard_property.selection {
         case .empty :
           return .empty
@@ -3489,7 +3489,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure boardStatusImage transient property
     self.boardStatusImage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardStatusImage_property.selection {
         case .empty :
           return .empty
@@ -3504,7 +3504,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure boardStatusMessage transient property
     self.boardStatusMessage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.boardStatusMessage_property.selection {
         case .empty :
           return .empty
@@ -3519,7 +3519,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure placedComponentNameArray transient property
     self.placedComponentNameArray_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.placedComponentNameArray_property.selection {
         case .empty :
           return .empty
@@ -3534,7 +3534,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure schematicHasErrorOrWarning transient property
     self.schematicHasErrorOrWarning_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.schematicHasErrorOrWarning_property.selection {
         case .empty :
           return .empty
@@ -3549,7 +3549,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure schematicStatusMessage transient property
     self.schematicStatusMessage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.schematicStatusMessage_property.selection {
         case .empty :
           return .empty
@@ -3564,7 +3564,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
     }
   //--- Configure schematicStatusImage transient property
     self.schematicStatusImage_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.schematicStatusImage_property.selection {
         case .empty :
           return .empty
@@ -3626,7 +3626,7 @@ final class TransientObject_ProjectRoot : ReadOnlyObject_ProjectRoot {
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -3637,8 +3637,8 @@ final class TransientObject_ProjectRoot : ReadOnlyObject_ProjectRoot {
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -3649,7 +3649,7 @@ final class TransientObject_ProjectRoot : ReadOnlyObject_ProjectRoot {
 
   //····················································································································
 
-  override var propval : ProjectRoot? { return self.mInternalValue }
+  override var propval : ProjectRoot? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -3705,7 +3705,7 @@ final class ProxyObject_ProjectRoot : ReadWriteObject_ProjectRoot {
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -3752,8 +3752,9 @@ final class StoredObject_ProjectRoot : ReadWriteObject_ProjectRoot, EBSignatureO
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -3790,7 +3791,7 @@ final class StoredObject_ProjectRoot : ReadWriteObject_ProjectRoot, EBSignatureO
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : ProjectRoot?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -3799,7 +3800,7 @@ final class StoredObject_ProjectRoot : ReadWriteObject_ProjectRoot, EBSignatureO
       self.mResetOppositeRelationship? (object)
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -3824,7 +3825,7 @@ final class StoredObject_ProjectRoot : ReadWriteObject_ProjectRoot, EBSignatureO
   //····················································································································
 
   override var selection : EBSelection < ProjectRoot? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -3833,11 +3834,23 @@ final class StoredObject_ProjectRoot : ReadWriteObject_ProjectRoot, EBSignatureO
 
   //····················································································································
 
-  override func setProp (_ inValue : ProjectRoot?) { self.mInternalValue = inValue }
+  override var propval : ProjectRoot? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : ProjectRoot? = nil
 
   //····················································································································
 
-  override var propval : ProjectRoot? { return self.mInternalValue }
+  override func setProp (_ inValue : ProjectRoot?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -3875,7 +3888,7 @@ final class StoredObject_ProjectRoot : ReadWriteObject_ProjectRoot, EBSignatureO
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

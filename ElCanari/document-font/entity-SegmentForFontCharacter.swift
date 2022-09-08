@@ -318,9 +318,9 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

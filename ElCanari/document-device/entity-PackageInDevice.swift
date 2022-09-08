@@ -234,7 +234,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-  final let mRoot_property = StoredObject_DeviceRoot (usedForSignature: false)
+  final let mRoot_property = StoredObject_DeviceRoot (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -610,19 +610,19 @@ final class PackageInDevice : EBGraphicManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+/*  override func cleanUpToManyRelationships () {
     self.mMasterPads.removeAll ()
     super.cleanUpToManyRelationships ()
-  }
+  } */
 
   //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mRoot = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -844,7 +844,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mMasterPads
     for managedObject in self.mMasterPads.values {
@@ -854,7 +854,7 @@ final class PackageInDevice : EBGraphicManagedObject,
     if let object = self.mRoot {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

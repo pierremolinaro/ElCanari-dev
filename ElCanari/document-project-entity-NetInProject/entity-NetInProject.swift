@@ -145,7 +145,7 @@ final class NetInProject : EBManagedObject,
   //   To one property: mNetClass
   //····················································································································
 
-  final let mNetClass_property = StoredObject_NetClassInProject (usedForSignature: false)
+  final let mNetClass_property = StoredObject_NetClassInProject (usedForSignature: false, strongRef: false)
 
   //····················································································································
 
@@ -464,20 +464,20 @@ final class NetInProject : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+/*  override func cleanUpToManyRelationships () {
     self.mPoints.removeAll ()
     self.mTracks.removeAll ()
     super.cleanUpToManyRelationships ()
-  }
+  } */
 
   //····················································································································
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+/*  override func cleanUpToOneRelationships () {
     self.mNetClass = nil
     super.cleanUpToOneRelationships ()
-  }
+  } */
 
   //····················································································································
   //    saveIntoDictionary
@@ -714,7 +714,7 @@ final class NetInProject : EBManagedObject,
   //   accessibleObjects
   //····················································································································
 
-  override func accessibleObjects (objects : inout [EBManagedObject]) {
+/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mPoints
     for managedObject in self.mPoints.values {
@@ -728,7 +728,7 @@ final class NetInProject : EBManagedObject,
     if let object = self.mNetClass {
       objects.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

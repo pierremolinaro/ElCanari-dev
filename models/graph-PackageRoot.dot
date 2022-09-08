@@ -1,0 +1,23 @@
+digraph G {
+  rankdir=LR ;
+  node [shape=record fontname=helvetica style=rounded] ;
+  PackageRoot[label="<PackageRoot>PackageRoot|String comments|Int counterClockNumberingStartAngle|Int gridDisplayFactor|Int gridStep|Int gridStepUnit|GridStyle gridStyle|Bool horizontalFlip|Int knobSizeMultpliedByTen|Int mDimensionUnitFirstModelPointX|Int mDimensionUnitFirstModelPointY|Int mDimensionUnitSecondModelPointDx|Int mDimensionUnitSecondModelPointDy|Data mModelImageData|<mModelImageDoublePoint>PackageModelImageDoublePoint? mModelImageDoublePoint|Int mModelImageFirstPointX|Int mModelImageFirstPointXOnLock|Int mModelImageFirstPointY|Int mModelImageFirstPointYOnLock|<mModelImageObjects>[PackageModelImageDoublePoint] mModelImageObjects|Double mModelImageOpacity|Int mModelImagePageGridDisplayFactor|Int mModelImagePageGridStep|Int mModelImagePageGridStepUnit|GridStyle mModelImagePageGridStyle|Bool mModelImagePageHorizontalFlip|Bool mModelImagePageVerticalFlip|Int mModelImagePageXPlacardUnit|Int mModelImagePageYPlacardUnit|Int mModelImagePageZoom|Int mModelImagePointsDxOnLock|Int mModelImagePointsDyOnLock|Double mModelImageRotationInRadians|Double mModelImageScale|Int mModelImageSecondPointDx|Int mModelImageSecondPointDy|Int mModelImageSecondPointXUnit|Int mModelImageSecondPointYUnit|Int mModelPointsCircleRadius|Bool mPointsAreLocked|<packageObjects>[PackageObject] packageObjects|<packagePads>[PackagePad] packagePads|<packageSlavePads>[PackageSlavePad] packageSlavePads|<packageZones>[PackageZone] packageZones|PadNumbering padNumbering|String program|Int selectedInspector|Int selectedPageIndex|Bool verticalFlip|Int xPlacardUnit|Int yPlacardUnit|Int zoom"] ;
+  PackageZone[label="<PackageZone>PackageZone|Bool displayZoneName|Bool displayZoneNameWithPadNumbers|<forbiddenPadNumbers>[ForbiddenPadNumber] forbiddenPadNumbers|Int height|Int heightUnit|<mRoot>PackageRoot? mRoot|Int width|Int widthUnit|Int x|Int xName|Int xNameUnit|Int xUnit|Int y|Int yName|Int yNameUnit|Int yUnit|String zoneName|PadNumbering zoneNumbering"] ;
+  ForbiddenPadNumber[label="<ForbiddenPadNumber>ForbiddenPadNumber|Int padNumber"] ;
+  PackageSlavePad[label="<PackageSlavePad>PackageSlavePad|Int annularRingUnit|Int height|Int heightUnit|Int holeHeight|Int holeHeightUnit|Int holeWidth|Int holeWidthUnit|<mRoot>PackageRoot? mRoot|<master>PackagePad? master|PadShape padShape|SlavePadStyle padStyle|Int width|Int widthUnit|Int xCenter|Int xCenterUnit|Int yCenter|Int yCenterUnit"] ;
+  PackagePad[label="<PackagePad>PackagePad|Int annularRingUnit|Int height|Int heightUnit|Int holeHeight|Int holeHeightUnit|Int holeWidth|Int holeWidthUnit|<mRoot>PackageRoot? mRoot|Int padNumber|PadShape padShape|PadStyle padStyle|<slaves>[PackageSlavePad] slaves|Int width|Int widthUnit|Int xCenter|Int xCenterUnit|Int yCenter|Int yCenterUnit|<zone>PackageZone? zone"] ;
+  PackageObject[label="<PackageObject>PackageObject|<mRoot>PackageRoot? mRoot"] ;
+  PackageModelImageDoublePoint[label="<PackageModelImageDoublePoint>PackageModelImageDoublePoint|NSColor mFirstColor|Int mFirstX|Int mFirstY|<mRoot>PackageRoot? mRoot|NSColor mSecondColor|Int mSecondDx|Int mSecondDy"] ;
+  PackageRoot:mModelImageDoublePoint -> PackageModelImageDoublePoint:PackageModelImageDoublePoint [dir=both arrowtail=none arrowhead=onormal] ;
+  PackageRoot:mModelImageObjects -> PackageModelImageDoublePoint:mRoot [dir=both arrowtail=onormal arrowhead=veevee] ;
+  PackageRoot:packageObjects -> PackageObject:mRoot [dir=both arrowtail=onormal arrowhead=veevee] ;
+  PackageRoot:packagePads -> PackagePad [dir=both arrowtail=none arrowhead=veevee] ;
+  PackageRoot:packageSlavePads -> PackageSlavePad [dir=both arrowtail=none arrowhead=veevee] ;
+  PackageRoot:packageZones -> PackageZone [dir=both arrowtail=none arrowhead=veevee] ;
+  PackageZone -> PackageObject [dir=both arrowtail=dot arrowhead=normal] ;
+  PackageZone:forbiddenPadNumbers -> ForbiddenPadNumber [dir=both arrowtail=none arrowhead=veevee] ;
+  PackageSlavePad -> PackageObject [dir=both arrowtail=dot arrowhead=normal] ;
+  PackagePad -> PackageObject [dir=both arrowtail=dot arrowhead=normal] ;
+  PackagePad:slaves -> PackageSlavePad:master [dir=both arrowtail=onormal arrowhead=veevee] ;
+  PackagePad:zone -> PackageZone:PackageZone [dir=both arrowtail=none arrowhead=onormal] ;
+}

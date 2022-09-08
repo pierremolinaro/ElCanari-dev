@@ -32,7 +32,7 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
       oldValue.descriptor_property.removeEBObserver (self.descriptor_property) // Transient property
     }
   //--- Add observers to added objects
-    if let newValue = self.mInternalValue {
+    if let newValue = self.mWeakInternalValue {
       newValue.mPinName_property.addEBObserver (self.mPinName_property) // Stored property
       newValue.mSymbolInstanceName_property.addEBObserver (self.mSymbolInstanceName_property) // Stored property
       newValue.mSymbolTypeName_property.addEBObserver (self.mSymbolTypeName_property) // Stored property
@@ -142,7 +142,7 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
     super.init ()
   //--- Configure mPinName simple stored property
     self.mPinName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mPinName_property.selection {
         case .empty :
           return .empty
@@ -157,7 +157,7 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
     }
   //--- Configure mSymbolInstanceName simple stored property
     self.mSymbolInstanceName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSymbolInstanceName_property.selection {
         case .empty :
           return .empty
@@ -172,7 +172,7 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
     }
   //--- Configure mSymbolTypeName simple stored property
     self.mSymbolTypeName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mSymbolTypeName_property.selection {
         case .empty :
           return .empty
@@ -187,7 +187,7 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
     }
   //--- Configure mPinX simple stored property
     self.mPinX_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mPinX_property.selection {
         case .empty :
           return .empty
@@ -202,7 +202,7 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
     }
   //--- Configure mPinY simple stored property
     self.mPinY_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mPinY_property.selection {
         case .empty :
           return .empty
@@ -217,7 +217,7 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
     }
   //--- Configure mXName simple stored property
     self.mXName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mXName_property.selection {
         case .empty :
           return .empty
@@ -232,7 +232,7 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
     }
   //--- Configure mYName simple stored property
     self.mYName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mYName_property.selection {
         case .empty :
           return .empty
@@ -247,7 +247,7 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
     }
   //--- Configure mNameHorizontalAlignment simple stored property
     self.mNameHorizontalAlignment_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mNameHorizontalAlignment_property.selection {
         case .empty :
           return .empty
@@ -262,7 +262,7 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
     }
   //--- Configure mPinNameIsDisplayedInSchematic simple stored property
     self.mPinNameIsDisplayedInSchematic_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mPinNameIsDisplayedInSchematic_property.selection {
         case .empty :
           return .empty
@@ -277,7 +277,7 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
     }
   //--- Configure mXNumber simple stored property
     self.mXNumber_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mXNumber_property.selection {
         case .empty :
           return .empty
@@ -292,7 +292,7 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
     }
   //--- Configure mYNumber simple stored property
     self.mYNumber_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mYNumber_property.selection {
         case .empty :
           return .empty
@@ -307,7 +307,7 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
     }
   //--- Configure mNumberHorizontalAlignment simple stored property
     self.mNumberHorizontalAlignment_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.mNumberHorizontalAlignment_property.selection {
         case .empty :
           return .empty
@@ -322,7 +322,7 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
     }
   //--- Configure pinQualifiedName transient property
     self.pinQualifiedName_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.pinQualifiedName_property.selection {
         case .empty :
           return .empty
@@ -337,7 +337,7 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
     }
   //--- Configure descriptor transient property
     self.descriptor_property.mReadModelFunction = { [weak self] in
-      if let model = self?.mInternalValue {
+      if let model = self?.mWeakInternalValue {
         switch model.descriptor_property.selection {
         case .empty :
           return .empty
@@ -399,7 +399,7 @@ final class TransientObject_DevicePinInProject : ReadOnlyObject_DevicePinInProje
       newObject = nil
       self.mTransientKind = .empty
     }
-    self.mInternalValue = newObject
+    self.mWeakInternalValue = newObject
     super.notifyModelDidChange ()
   }
 
@@ -410,8 +410,8 @@ final class TransientObject_DevicePinInProject : ReadOnlyObject_DevicePinInProje
     case .empty :
       return .empty
     case .single :
-      if let internalValue = self.mInternalValue {
-        return .single (internalValue)
+      if let v = self.mWeakInternalValue {
+        return .single (v)
       }else{
         return .empty
       }
@@ -422,7 +422,7 @@ final class TransientObject_DevicePinInProject : ReadOnlyObject_DevicePinInProje
 
   //····················································································································
 
-  override var propval : DevicePinInProject? { return self.mInternalValue }
+  override var propval : DevicePinInProject? { return self.mWeakInternalValue }
 
   //····················································································································
 
@@ -478,7 +478,7 @@ final class ProxyObject_DevicePinInProject : ReadWriteObject_DevicePinInProject 
     }else{
       newModel = nil
     }
-    self.mInternalValue = newModel
+    self.mWeakInternalValue = newModel
     super.notifyModelDidChange ()
   }
 
@@ -525,8 +525,9 @@ final class StoredObject_DevicePinInProject : ReadWriteObject_DevicePinInProject
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
+    self.mStrongReference = inStrongReference
     super.init ()
   }
 
@@ -548,7 +549,7 @@ final class StoredObject_DevicePinInProject : ReadWriteObject_DevicePinInProject
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : DevicePinInProject?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalValue = inOldValue }
+    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {
@@ -556,7 +557,7 @@ final class StoredObject_DevicePinInProject : ReadWriteObject_DevicePinInProject
       }
     }
   //---
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       if self.mUsedForSignature {
         object.setSignatureObserver (observer: self)
       }
@@ -580,7 +581,7 @@ final class StoredObject_DevicePinInProject : ReadWriteObject_DevicePinInProject
   //····················································································································
 
   override var selection : EBSelection < DevicePinInProject? > {
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       return .single (object)
     }else{
       return .empty
@@ -589,11 +590,23 @@ final class StoredObject_DevicePinInProject : ReadWriteObject_DevicePinInProject
 
   //····················································································································
 
-  override func setProp (_ inValue : DevicePinInProject?) { self.mInternalValue = inValue }
+  override var propval : DevicePinInProject? { return self.mWeakInternalValue }
+
+  //····················································································································
+  //   setProp
+  //····················································································································
+
+  private let mStrongReference : Bool
+  private final var mStrongInternalValue : DevicePinInProject? = nil
 
   //····················································································································
 
-  override var propval : DevicePinInProject? { return self.mInternalValue }
+  override func setProp (_ inValue : DevicePinInProject?) {
+    self.mWeakInternalValue = inValue
+    if self.mStrongReference {
+      self.mStrongInternalValue = inValue
+    }
+  }
 
   //····················································································································
   //   signature
@@ -631,7 +644,7 @@ final class StoredObject_DevicePinInProject : ReadWriteObject_DevicePinInProject
 
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    if let object = self.mInternalValue {
+    if let object = self.mWeakInternalValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc
