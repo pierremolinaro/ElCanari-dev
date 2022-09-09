@@ -21,7 +21,7 @@ extension AutoLayoutMergerDocument {
     )
     panel.hasShadow = true
     let mainView = AutoLayoutHorizontalStackView ().set (margins: 12)
-    mainView.appendViewSurroundedByFlexibleSpaces (AutoLayoutApplicationImage ())
+    _ = mainView.appendViewSurroundedByFlexibleSpaces (AutoLayoutApplicationImage ())
     let rightColumn = AutoLayoutVerticalStackView ()
     let text = AutoLayoutStaticTextView (drawsBackground: false, horizontalScroller: false, verticalScroller: false)
     text.string =
@@ -32,10 +32,10 @@ extension AutoLayoutMergerDocument {
 
         The contextual click enables to insert an array of models.
       """
-    rightColumn.appendViewPreceededByFlexibleSpace (text)
+    _ = rightColumn.appendViewPreceededByFlexibleSpace (text)
     let okButton = AutoLayoutSheetDefaultOkButton (title: "Ok", size: .regular, sheet: panel)
-    rightColumn.appendViewPreceededByFlexibleSpace (okButton)
-    mainView.appendViewPreceededByFlexibleSpace (rightColumn)
+    _ = rightColumn.appendViewPreceededByFlexibleSpace (okButton)
+    _ = mainView.appendViewPreceededByFlexibleSpace (rightColumn)
     panel.contentView = AutoLayoutWindowContentView (view: mainView)
     self.windowForSheet?.beginSheet (panel, completionHandler: nil)
 //--- END OF USER ZONE 2

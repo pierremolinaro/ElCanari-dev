@@ -1,6 +1,6 @@
 digraph G {
   node [shape=record fontname=helvetica style=rounded] ;
- 
+
   EBObservedObject -> EBSwiftBaseObject ;
   EBObservablePropertyT -> EBObservedObject ;
   ReadOnlyAbstractGenericRelationshipProperty -> EBObservedObject ;

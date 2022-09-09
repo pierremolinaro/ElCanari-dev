@@ -21,16 +21,16 @@ extension AutoLayoutPackageDocument {
       sheet.setContentSize (NSSize (width: 600.0, height: 500.0))
     //---
       let vStack = AutoLayoutVerticalStackView ().set (margins: 20)
-      vStack.appendView (AutoLayoutFlexibleSpace ())
+      _ = vStack.appendView (AutoLayoutFlexibleSpace ())
     //--- Text
       let textView = AutoLayoutRTFTextView (editable: false)
       if let url = Bundle.main.url (forResource: "package-program-guide", withExtension: "rtf") {
         _ = textView.populateWithContententsOf (url: url)
       }
-      vStack.appendView (textView)
+      _ = vStack.appendView (textView)
     //--- Ok button
       let okButton = AutoLayoutSheetDefaultOkButton (title: "Ok", size: .regular, sheet: sheet)
-      vStack.appendView (okButton)
+      _ = vStack.appendView (okButton)
     //---
       sheet.contentView = AutoLayoutWindowContentView (view: vStack)
 //      if let cell = okButton.cell as? NSButtonCell {

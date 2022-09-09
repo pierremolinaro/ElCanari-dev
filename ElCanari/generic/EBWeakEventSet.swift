@@ -8,13 +8,69 @@ import Cocoa
 //   EBWeakEventSet
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+//actor EBWeakEventSetActor {
+//
+//  //····················································································································
+//
+//  private var mDictionary = [Int : EBWeakObserverSetElement] ()
+//  var dictionary : [Int : EBWeakObserverSetElement] { return self.mDictionary }
+//
+//  //····················································································································
+//
+//  private var mPackingTriggered = false
+//
+//  //····················································································································
+//
+//  func triggerPacking () {
+//    self.mPackingTriggered = true
+//  }
+//
+//  //····················································································································
+//
+//  func pack () {
+//    if self.mPackingTriggered {
+//      self.mPackingTriggered = false
+//      for (key, entry) in self.mDictionary {
+//        if entry.observer == nil {
+//          self.mDictionary [key] = nil
+//        }
+//      }
+//    }
+//  }
+//
+//  //····················································································································
+//
+//  func insert (_ inObserver : EBObserverProtocol) {
+//    self.pack ()
+//    let address = inObserver.objectIndex
+//    self.mDictionary [address] = EBWeakObserverSetElement (observer: inObserver)
+//  }
+//
+//  //····················································································································
+//
+//  func remove (_ inObserver : EBObserverProtocol) {
+//    self.pack ()
+//    let address = inObserver.objectIndex
+//    self.mDictionary [address] = nil
+//  }
+//
+//  //····················································································································
+//
+//  var isEmpty : Bool { return self.mDictionary.isEmpty }
+//
+//  //····················································································································
+//
+//}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 struct EBWeakEventSet {
 
   //····················································································································
 
   private var mDictionary = [Int : EBWeakObserverSetElement] ()
   var dictionary : [Int : EBWeakObserverSetElement] { return self.mDictionary }
-  
+
   //····················································································································
 
   private var mPackingTriggered = false
