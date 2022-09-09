@@ -9,26 +9,20 @@ import Cocoa
 //   Public functions
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func setStartOperationDateToNow (_ inMessage : String) {
-  DispatchQueue.main.async {
-    gLogFileOperations.setStartOperationDateToNow (inMessage)
-  }
+@MainActor func setStartOperationDateToNow (_ inMessage : String) {
+  gLogFileOperations.setStartOperationDateToNow (inMessage)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func appendDocumentFileOperationInfo (_ inMessage : String) {
-  DispatchQueue.main.async {
-    gLogFileOperations.appendDocumentFileOperationInfo (inMessage)
-  }
+@MainActor func appendDocumentFileOperationInfo (_ inMessage : String) {
+  gLogFileOperations.appendDocumentFileOperationInfo (inMessage)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func appendTotalDurationDocumentFileOperationInfo () {
-  DispatchQueue.main.async {
-    gLogFileOperations.appendTotalDurationDocumentFileOperationInfo ()
-  }
+@MainActor func appendTotalDurationDocumentFileOperationInfo () {
+  gLogFileOperations.appendTotalDurationDocumentFileOperationInfo ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

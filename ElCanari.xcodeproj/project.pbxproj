@@ -3126,6 +3126,7 @@
 		CFA0B8782779FA6F006E9309 /* AutoLayoutTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0B8772779FA6F006E9309 /* AutoLayoutTabView.swift */; };
 		CFA0B8792779FA6F006E9309 /* AutoLayoutTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0B8772779FA6F006E9309 /* AutoLayoutTabView.swift */; };
 		CFA0B87A2779FA6F006E9309 /* AutoLayoutTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0B8772779FA6F006E9309 /* AutoLayoutTabView.swift */; };
+		CFA0B96B28CBAF070037462C /* EBAllocationDebug-debug-with-actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3D3DE428C354F30097D987 /* EBAllocationDebug-debug-with-actor.swift */; };
 		CFA0DF5221C040EA00F94710 /* transient-AutoLayoutSymbolDocument-noIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0DF5121C040EA00F94710 /* transient-AutoLayoutSymbolDocument-noIssue.swift */; };
 		CFA0DF5321C040EA00F94710 /* transient-AutoLayoutSymbolDocument-noIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0DF5121C040EA00F94710 /* transient-AutoLayoutSymbolDocument-noIssue.swift */; };
 		CFA0E4EF21BBE87300E4D471 /* EBGraphicView-dragging-source.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0E4EE21BBE87300E4D471 /* EBGraphicView-dragging-source.swift */; };
@@ -3548,7 +3549,6 @@
 		CFB7D78826839B90007B9D3B /* configurator-AutoLayoutSymbolDocument-symbolGraphicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB7D73626839B90007B9D3B /* configurator-AutoLayoutSymbolDocument-symbolGraphicView.swift */; };
 		CFB7D78926839B90007B9D3B /* configurator-AutoLayoutSymbolDocument-symbolGraphicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB7D73626839B90007B9D3B /* configurator-AutoLayoutSymbolDocument-symbolGraphicView.swift */; };
 		CFB7D78A26839B90007B9D3B /* configurator-AutoLayoutSymbolDocument-symbolGraphicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB7D73626839B90007B9D3B /* configurator-AutoLayoutSymbolDocument-symbolGraphicView.swift */; };
-		CFB7D78B2683A1B4007B9D3B /* EBAllocationDebug-debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF71FA3D1B3EA87800FB5049 /* EBAllocationDebug-debug.swift */; };
 		CFB7D8442683A61C007B9D3B /* selectionController-AutoLayoutPackageDocument-mPackageSegmentSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB7D80C2683A615007B9D3B /* selectionController-AutoLayoutPackageDocument-mPackageSegmentSelectionController.swift */; };
 		CFB7D8452683A61C007B9D3B /* selectionController-AutoLayoutPackageDocument-mPackageSegmentSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB7D80C2683A615007B9D3B /* selectionController-AutoLayoutPackageDocument-mPackageSegmentSelectionController.swift */; };
 		CFB7D8462683A61C007B9D3B /* selectionController-AutoLayoutPackageDocument-mPackageSegmentSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB7D80C2683A615007B9D3B /* selectionController-AutoLayoutPackageDocument-mPackageSegmentSelectionController.swift */; };
@@ -5380,7 +5380,6 @@
 		CF712011275E1F8600280069 /* extension-TrackSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-TrackSide.swift"; sourceTree = "<group>"; };
 		CF712019275E204500280069 /* toone-FontInProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "toone-FontInProject.swift"; sourceTree = "<group>"; };
 		CF71201D275E208C00280069 /* toone-DeviceInProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "toone-DeviceInProject.swift"; sourceTree = "<group>"; };
-		CF71FA3D1B3EA87800FB5049 /* EBAllocationDebug-debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "EBAllocationDebug-debug.swift"; sourceTree = "<group>"; };
 		CF72E5AB276A38180019E180 /* AutoLayoutWarningImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutWarningImageView.swift; sourceTree = "<group>"; };
 		CF72E5AF276A38660019E180 /* transient-AutoLayoutProjectDocument-netCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-AutoLayoutProjectDocument-netCount.swift"; sourceTree = "<group>"; };
 		CF72E5B0276A38660019E180 /* action-AutoLayoutProjectDocument-renameNetAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-renameNetAction.swift"; sourceTree = "<group>"; };
@@ -6306,7 +6305,6 @@
 			isa = PBXGroup;
 			children = (
 				CF3D3DE428C354F30097D987 /* EBAllocationDebug-debug-with-actor.swift */,
-				CF71FA3D1B3EA87800FB5049 /* EBAllocationDebug-debug.swift */,
 				CF4ADB9B25753BAC002E7864 /* EBAllocationDebug-release.swift */,
 			);
 			name = "Allocation Debug";
@@ -12480,7 +12478,6 @@
 				CFB7D8EB2683A61D007B9D3B /* configurator-AutoLayoutPackageDocument-packagePageSegmentedControl.swift in Sources */,
 				CFB7D85B2683A61C007B9D3B /* selectionController-AutoLayoutPackageDocument-mPackageOvalSelectionController.swift in Sources */,
 				CF9C633925CABE5C00A00D5C /* transient-FontInProject-canRemoveFont.swift in Sources */,
-				CFB7D78B2683A1B4007B9D3B /* EBAllocationDebug-debug.swift in Sources */,
 				CF9C633A25CABE5C00A00D5C /* EBObservableProperty.swift in Sources */,
 				CF9C633D25CABE5C00A00D5C /* ApplicationDelegate-new-document.swift in Sources */,
 				CFB7D8D62683A61D007B9D3B /* action-AutoLayoutPackageDocument-setDimensionTextOriginAtMidXAction.swift in Sources */,
@@ -12893,6 +12890,7 @@
 				CF9C648C25CABE5C00A00D5C /* transient-DevicePadAssignmentInProject-pinPadAssignment.swift in Sources */,
 				CF711CA5275E1A2E00280069 /* tomany-BoardObject.swift in Sources */,
 				CF071E7A275B7B4F00FF2772 /* AutoLayoutVerticalScrollView.swift in Sources */,
+				CFA0B96B28CBAF070037462C /* EBAllocationDebug-debug-with-actor.swift in Sources */,
 				CF3304F327735DB200275263 /* extension-AutoLayoutProjectDocument-add-drag-track.swift in Sources */,
 				CFB7D86D2683A61C007B9D3B /* document-AutoLayoutPackageDocument.swift in Sources */,
 				CFB4C0C72794674800C509A9 /* AutoLayoutDoubleField.swift in Sources */,
