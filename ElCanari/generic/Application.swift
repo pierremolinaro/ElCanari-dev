@@ -100,7 +100,7 @@ let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func appendShowTransientEventLogWindowMenuItem (_ inMenu : NSMenu) {
+@MainActor func appendShowTransientEventLogWindowMenuItem (_ inMenu : NSMenu) {
   #if BUILD_OBJECT_EXPLORER
     let item = NSMenuItem (
       title: "Show Transient Event Log Window",
@@ -115,7 +115,7 @@ func appendShowTransientEventLogWindowMenuItem (_ inMenu : NSMenu) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func appendMessageString (_ message : String) {
+@MainActor func appendMessageString (_ message : String) {
   #if BUILD_OBJECT_EXPLORER
     let theApp = NSApplication.shared as! EBApplication
     theApp.mTransientEventExplorerTextView?.appendMessageString (message)
@@ -124,7 +124,7 @@ func appendMessageString (_ message : String) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func appendMessageString (_ message : String, color : NSColor) {
+@MainActor func appendMessageString (_ message : String, color : NSColor) {
   #if BUILD_OBJECT_EXPLORER
     let theApp = NSApplication.shared as! EBApplication
     theApp.mTransientEventExplorerTextView?.appendMessageString (message, color:color)

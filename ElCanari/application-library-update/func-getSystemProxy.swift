@@ -13,7 +13,7 @@ import SystemConfiguration
 // https://stackoverflow.com/questions/13276195/mac-osx-how-can-i-grab-proxy-configuration-using-cocoa-or-even-pure-c-function
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func getSystemProxy (_ inLogTextView : AutoLayoutStaticTextView) -> [String] {
+@MainActor func getSystemProxy (_ inLogTextView : AutoLayoutStaticTextView) -> [String] {
   var proxyOption = [String] ()
   if let proxies : NSDictionary = SCDynamicStoreCopyProxies (nil) {
 //    inLogTextView.appendMessageString("  SCDynamicStoreCopyProxies returns \(proxies)\n")

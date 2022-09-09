@@ -81,7 +81,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func presentAlertWithLocalizedMessage (_ inLocalizedMessage : String, window : NSWindow) {
+@MainActor private func presentAlertWithLocalizedMessage (_ inLocalizedMessage : String, window : NSWindow) {
   let alert = NSAlert ()
   alert.messageText = inLocalizedMessage
   alert.beginSheetModal (for: window) { (NSModalResponse) in }

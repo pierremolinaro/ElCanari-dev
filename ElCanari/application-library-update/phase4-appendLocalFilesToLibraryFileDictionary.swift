@@ -14,8 +14,8 @@ let REPOSITORY_DESCRIPTION_PLIST_FILE_NAME = "repository-description.plist"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func phase4_appendLocalFilesToLibraryFileDictionary (_ inLogTextView : AutoLayoutStaticTextView,
-                                                     _ ioPossibleAlert : inout NSAlert?) -> Set <String> {
+@MainActor func phase4_appendLocalFilesToLibraryFileDictionary (_ inLogTextView : AutoLayoutStaticTextView,
+                                                                _ ioPossibleAlert : inout NSAlert?) -> Set <String> {
   var libraryFileDictionary = Set <String> ()
   inLogTextView.appendMessageString ("Phase 4: enumerate local system library\n", color: NSColor.purple)
   do{

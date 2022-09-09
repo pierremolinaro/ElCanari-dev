@@ -12,13 +12,13 @@ import Cocoa
 //   Public function
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func autoLayoutCurrentStyle () -> AutoLayoutUserInterfaceStyleDescriptor {
+@MainActor func autoLayoutCurrentStyle () -> AutoLayoutUserInterfaceStyleDescriptor {
   return gCurrentStyle
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func changeAutoLayoutUserInterfaceStyle (to inStyle : AutoLayoutUserInterfaceStyle) {
+@MainActor func changeAutoLayoutUserInterfaceStyle (to inStyle : AutoLayoutUserInterfaceStyle) {
   switch inStyle {
   case .roundedBezel :
     gCurrentStyle = AutoLayoutUserInterfaceStyleDescriptor (buttonStyle: .rounded, segmentedControlStyle: .rounded)
@@ -48,7 +48,7 @@ struct AutoLayoutUserInterfaceStyleDescriptor : Sendable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate var gCurrentStyle = AutoLayoutUserInterfaceStyleDescriptor (buttonStyle: .rounded, segmentedControlStyle: .rounded)
+@MainActor fileprivate var gCurrentStyle = AutoLayoutUserInterfaceStyleDescriptor (buttonStyle: .rounded, segmentedControlStyle: .rounded)
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -97,9 +97,9 @@ let CURL = "/usr/bin/curl"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func getRemoteCurrentCommit (_ inLogTextView : AutoLayoutStaticTextView,
-                             _ ioPossibleAlert : inout NSAlert?,
-                             _ inProxy : [String]) -> Int? {
+@MainActor func getRemoteCurrentCommit (_ inLogTextView : AutoLayoutStaticTextView,
+                                        _ ioPossibleAlert : inout NSAlert?,
+                                        _ inProxy : [String]) -> Int? {
   if let data = getRemoteFileData ("lastCommit.txt", &ioPossibleAlert, inLogTextView, inProxy) {
     if let s = String (data: data, encoding: .ascii), let commit = Int (s) {
       return commit

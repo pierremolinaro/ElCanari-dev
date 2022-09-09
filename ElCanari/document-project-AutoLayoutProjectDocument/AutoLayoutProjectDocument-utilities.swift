@@ -378,7 +378,7 @@ extension Dictionary where Key == String, Value == MasterPadDescriptor {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct MasterPadDescriptor : Hashable {
+@MainActor struct MasterPadDescriptor : Hashable {
 
   //····················································································································
 
@@ -487,7 +487,7 @@ struct MasterPadDescriptor : Hashable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct SlavePadDescriptor : Hashable {
+@MainActor struct SlavePadDescriptor : Hashable {
 
   //····················································································································
 

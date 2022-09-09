@@ -50,7 +50,7 @@ func temporaryDownloadDirectory () -> String {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func userLibraryPath () -> String {
+@MainActor func userLibraryPath () -> String {
   let a = NSSearchPathForDirectoriesInDomains (FileManager.SearchPathDirectory.applicationSupportDirectory,
                                                FileManager.SearchPathDomainMask.userDomainMask,
                                                true) ;

@@ -8,7 +8,7 @@ import Cocoa
 //    EBOutletEvent class
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-var gPendingOutletEvents = [EBOutletEvent] ()
+@MainActor var gPendingOutletEvents = [EBOutletEvent] ()
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -109,7 +109,7 @@ class EBOutletEvent : EBSwiftBaseObject, EBObserverProtocol {
 //    A P P E N D    T O    T R A N S I E N T    E V E N T    L O G
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func logEvents () -> Bool {
+@MainActor func logEvents () -> Bool {
   #if BUILD_OBJECT_EXPLORER
     let theApp = NSApplication.shared as! EBApplication
     return theApp.logEvents ()
@@ -120,7 +120,7 @@ func logEvents () -> Bool {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func appendToTransientEventLog (_ message : String) {
+@MainActor func appendToTransientEventLog (_ message : String) {
   #if BUILD_OBJECT_EXPLORER
     let theApp = NSApplication.shared as! EBApplication
     theApp.appendToTransientEventLog (message)

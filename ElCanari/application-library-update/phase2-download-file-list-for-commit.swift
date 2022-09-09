@@ -8,11 +8,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func phase2_readOrDownloadLibraryFileDictionary (_ possibleStoredCurrentCommit : Int?,
-                                                 _ remoteCurrentCommit : Int,
-                                                 _ inLogTextView : AutoLayoutStaticTextView,
-                                                 _ inProxy : [String],
-                                                 _ ioPossibleAlert : inout NSAlert?) -> [String : LibraryContentsDescriptor] {
+@MainActor func phase2_readOrDownloadLibraryFileDictionary (_ possibleStoredCurrentCommit : Int?,
+                                                            _ remoteCurrentCommit : Int,
+                                                            _ inLogTextView : AutoLayoutStaticTextView,
+                                                            _ inProxy : [String],
+                                                            _ ioPossibleAlert : inout NSAlert?) -> [String : LibraryContentsDescriptor] {
   var libraryFileDictionary = [String : LibraryContentsDescriptor] ()
   inLogTextView.appendMessageString ("Phase 2: get repository commit file\n", color: NSColor.purple)
 //--- Use local description file ?

@@ -8,11 +8,11 @@ import Cocoa
 //   checkOutletConnection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func checkOutletConnection (_ inOutlet : NSObject?,
-                            _ inOutletName : String,
-                            _ inOutletType : NSObject.Type,
-                            _ inFile : String,
-                            _ inLine : Int) {
+@MainActor func checkOutletConnection (_ inOutlet : NSObject?,
+                                       _ inOutletName : String,
+                                       _ inOutletType : NSObject.Type,
+                                       _ inFile : String,
+                                       _ inLine : Int) {
   if let outlet : NSObject = inOutlet {
     if !(outlet.isKind (of: inOutletType.self)) {
       presentErrorWindow (inFile, inLine, "the '\(inOutletName)' outlet is not an instance of '\(inOutletType.self)'")

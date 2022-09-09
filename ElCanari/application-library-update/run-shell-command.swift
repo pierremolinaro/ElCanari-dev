@@ -10,10 +10,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func getRemoteFileData (_ inRelativeFilePath : String,
-                        _ ioPossibleAlert : inout NSAlert?,
-                        _ inLogTextView : AutoLayoutStaticTextView,
-                        _ inProxy : [String]) -> Data? {
+@MainActor func getRemoteFileData (_ inRelativeFilePath : String,
+                                   _ ioPossibleAlert : inout NSAlert?,
+                                   _ inLogTextView : AutoLayoutStaticTextView,
+                                   _ inProxy : [String]) -> Data? {
   let arguments = [
     "-s", // Silent mode, do not show download progress
     "-k", // Turn off curl's verification of certificate

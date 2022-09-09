@@ -8,9 +8,9 @@ import Cocoa
 //   presentErrorWindow
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func presentErrorWindow (_ file : String,
-                         _ line : Int,
-                         _ errorMessage : String) {
+@MainActor func presentErrorWindow (_ file : String,
+                                    _ line : Int,
+                                    _ errorMessage : String) {
   if Thread.isMainThread {
     presentErrorWindowInMainThread (file, line, errorMessage)
   }else{
@@ -20,14 +20,14 @@ func presentErrorWindow (_ file : String,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate var gErrorWindows : [NSWindow] = []
-fileprivate var gOrigin = NSPoint (x: 20.0, y: 20.0)
+@MainActor fileprivate var gErrorWindows : [NSWindow] = []
+@MainActor fileprivate var gOrigin = NSPoint (x: 20.0, y: 20.0)
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func presentErrorWindowInMainThread (_ file : String,
-                                                 _ line : Int,
-                                                 _ errorMessage : String) {
+@MainActor fileprivate func presentErrorWindowInMainThread (_ file : String,
+                                                            _ line : Int,
+                                                            _ errorMessage : String) {
   NSSound.beep ()
   var message = "File: \(file)\n"
   message += "Line: \(line)\n"

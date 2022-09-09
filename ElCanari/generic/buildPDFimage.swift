@@ -8,9 +8,9 @@ import Cocoa
 //   Build PDF image data
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func buildPDFimageData (frame inFrame : NSRect,
-                        shape inShape : EBShape,
-                        backgroundColor inBackColor : NSColor? = nil) -> Data {
+@MainActor func buildPDFimageData (frame inFrame : NSRect,
+                                   shape inShape : EBShape,
+                                   backgroundColor inBackColor : NSColor? = nil) -> Data {
   let origin = inFrame.origin
   var tr = AffineTransform ()
   tr.translate (x: -origin.x, y: -origin.y)
@@ -25,9 +25,9 @@ func buildPDFimageData (frame inFrame : NSRect,
 //   Build PDF image
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func buildPDFimage (frame inFrame : NSRect,
-                    shape inShape : EBShape,
-                    backgroundColor inBackColor : NSColor? = nil) -> NSImage {
+@MainActor func buildPDFimage (frame inFrame : NSRect,
+                               shape inShape : EBShape,
+                               backgroundColor inBackColor : NSColor? = nil) -> NSImage {
   let image = NSImage (data: buildPDFimageData (frame: inFrame, shape: inShape, backgroundColor: inBackColor))
   return image ?? NSImage ()
 }

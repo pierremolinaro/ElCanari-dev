@@ -10,13 +10,13 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private var gCanariLibraryUpdateController : CanariLibraryUpdateController? = nil
+@MainActor private var gCanariLibraryUpdateController : CanariLibraryUpdateController? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func phase7_performLibraryOperations (_ inLibraryOperations : [LibraryOperationElement],
-                                      _ inNewLocalDescriptionDictionary : [String : CanariLibraryFileDescriptor],
-                                      _ inLogTextView : AutoLayoutStaticTextView) {
+@MainActor func phase7_performLibraryOperations (_ inLibraryOperations : [LibraryOperationElement],
+                                                 _ inNewLocalDescriptionDictionary : [String : CanariLibraryFileDescriptor],
+                                                 _ inLogTextView : AutoLayoutStaticTextView) {
   inLogTextView.appendMessageString ("Phase 7: Display Update Dialog and perform operation\n", color: NSColor.purple)
 //--- Perform library update in main thread
   DispatchQueue.main.async {
@@ -31,14 +31,6 @@ func phase7_performLibraryOperations (_ inLibraryOperations : [LibraryOperationE
     for action in inLibraryOperations {
       progressMaxValue += action.maxIndicatorValue
     }
-  //--- Enable buttons
-//    g_Preferences?.mUpDateButtonInLibraryUpdateWindow?.isEnabled = true
-//    g_Preferences?.mCancelButtonInLibraryUpdateWindow?.isEnabled = true
-  //--- Configure progress indicator in library update window
-//    g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.minValue = 0.0
-//    g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.maxValue = progressMaxValue
-//    g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.doubleValue = 0.0
-//    g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.isIndeterminate = false
   //--- Configure table view in library update window
     gCanariLibraryUpdateController = CanariLibraryUpdateController (
       inLibraryOperations,
@@ -47,30 +39,8 @@ func phase7_performLibraryOperations (_ inLibraryOperations : [LibraryOperationE
       progressMaxValue,
       inInformativeText
     )
-//    gCanariLibraryUpdateController?.bind ()
-  //--- Show library update window
-//    g_Preferences?.mLibraryUpdateWindow?.makeKeyAndOrderFront (nil)
   }
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//func startLibraryUpdate () {
-//  g_Preferences?.mUpDateButtonInLibraryUpdateWindow?.isEnabled = false
-////--- Launch parallel downloads
-//  for _ in 1...parallelDownloadCount {
-//    gCanariLibraryUpdateController?.launchElementDownload ()
-//  }
-//}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//func cancelLibraryUpdate () {
-//  g_Preferences?.mCancelButtonInLibraryUpdateWindow?.window?.orderOut (nil)
-////--- Cancel current downloadings
-//  gCanariLibraryUpdateController?.cancel ()
-//  startLibraryUpdate ()
-//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   C O M M I T    U P D A T E S   I N   F I L E    S Y S T E M

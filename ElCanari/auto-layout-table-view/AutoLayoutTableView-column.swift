@@ -12,7 +12,7 @@ import Cocoa
 // AutoLayoutTableColumn
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AutoLayoutTableColumn : NSTableColumn {
+@MainActor class AutoLayoutTableColumn : NSTableColumn {
 
   //····················································································································
 
