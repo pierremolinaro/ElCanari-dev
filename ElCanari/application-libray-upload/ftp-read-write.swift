@@ -10,7 +10,9 @@ import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func readRemoteFile (_ inRemotePath : String, url : String, userPwd : String) -> ShellCommandStatus {
+@MainActor func readRemoteFile (_ inRemotePath : String,
+                                url : String,
+                                userPwd : String) -> ShellCommandStatus {
   let arguments = [
     "-s", // Silent mode, do not show download progress
     "-k", // Turn off curl's verification of certificate
@@ -18,12 +20,14 @@ func readRemoteFile (_ inRemotePath : String, url : String, userPwd : String) ->
     url + "/" + inRemotePath,
     "-u", userPwd
   ]
-  return runShellCommandAndGetDataOutput (CURL, arguments)
+  return runShellCommandAndGetDataOutput (CURL, arguments, logTextView: nil)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func writeRemoteFile (_ inRemotePath : String, url : String, userPwd : String, _ inLocalFullPath : String) -> ShellCommandStatus {
+@MainActor func writeRemoteFile (_ inRemotePath : String,
+                                 url : String,
+                                 userPwd : String, _ inLocalFullPath : String) -> ShellCommandStatus {
   let arguments = [
     "-s", // Silent mode, do not show download progress
     "-k", // Turn off curl's verification of certificate
@@ -33,12 +37,14 @@ func writeRemoteFile (_ inRemotePath : String, url : String, userPwd : String, _
     url + "/" + inRemotePath,
     "-u", userPwd
   ]
-  return runShellCommandAndGetDataOutput (CURL, arguments)
+  return runShellCommandAndGetDataOutput (CURL, arguments, logTextView: nil)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func writeRemoteData (_ inRemotePath : String, url : String, userPwd : String, _ inData : Data) -> ShellCommandStatus {
+@MainActor func writeRemoteData (_ inRemotePath : String,
+                                 url : String, userPwd : String,
+                                 _ inData : Data) -> ShellCommandStatus {
   let tempFilePath = NSTemporaryDirectory () + ProcessInfo ().globallyUniqueString
   try! inData.write (to: URL (fileURLWithPath: tempFilePath))
   return writeRemoteFile (inRemotePath, url: url, userPwd: userPwd, tempFilePath)

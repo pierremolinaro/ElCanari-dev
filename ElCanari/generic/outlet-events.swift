@@ -30,7 +30,7 @@ class EBOutletEvent : EBSwiftBaseObject, EBObserverProtocol {
       if gPendingOutletEvents.count == 0 {
         appendMessageString ("Post events\n")
       }
-      let str = "  #\(self.objectIndex)" + String (describing: type (of: self)) + "\n"
+      let str = "  #\(self.objectIndex) " + String (describing: type (of: self)) + "\n"
       if !self.mEventIsPosted {
         appendMessageString (str)
       }else{ // Event already posted

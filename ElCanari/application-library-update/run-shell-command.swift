@@ -20,7 +20,7 @@ import Cocoa
     "-L", // Follow
     "https://www.pcmolinaro.name/CanariLibrary/" + inRelativeFilePath
   ] + inProxy
-  let responseCode = runShellCommandAndGetDataOutput (CURL, arguments, inLogTextView)
+  let responseCode = runShellCommandAndGetDataOutput (CURL, arguments, logTextView: inLogTextView)
   switch responseCode {
   case .error (let errorCode) :
     ioPossibleAlert = NSAlert ()
@@ -47,9 +47,9 @@ enum ShellCommandStatus {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func runShellCommandAndGetDataOutput (_ command : String,
-                                      _ arguments : [String],
-                                      _ inLogTextView : AutoLayoutStaticTextView? = nil) -> ShellCommandStatus {
+@MainActor func runShellCommandAndGetDataOutput (_ command : String,
+                                                 _ arguments : [String],
+                                                 logTextView inLogTextView : AutoLayoutStaticTextView?) -> ShellCommandStatus {
   var commandString = command
   for s in arguments {
     if s.contains ("'") {
