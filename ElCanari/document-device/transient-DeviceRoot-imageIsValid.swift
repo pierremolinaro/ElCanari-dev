@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceRoot_imageIsValid (
+@MainActor func transient_DeviceRoot_imageIsValid (
        _ self_mImageData : Data
 ) -> Bool {
 //--- START OF USER ZONE 2

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardModel_inner3TracksBezierPaths (
+@MainActor func transient_BoardModel_inner3TracksBezierPaths (
        _ self_inner3TracksSegments : MergerSegmentArray
 ) -> BezierPathArray {
 //--- START OF USER ZONE 2

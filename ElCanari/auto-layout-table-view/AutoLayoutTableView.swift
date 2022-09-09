@@ -50,19 +50,19 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     self.mScrollView.borderType = .bezelBorder
     self.mScrollView.documentView = self.mTableView
   //---
-    self.appendView (self.mScrollView)
+    _ = self.appendView (self.mScrollView)
     if inAddControlButtons {
       let hStack = AutoLayoutHorizontalStackView ()
       let addButton = AutoLayoutButton (title: "+", size: inSize)
         .bind_run (target: self, selector: #selector (Self.addEntryAction (_:)))
       self.mAddButton = addButton
-      hStack.appendView (addButton)
+      _ = hStack.appendView (addButton)
       let removeButton = AutoLayoutButton (title: "-", size: inSize)
         .bind_run (target: self, selector: #selector (Self.removeSelectedEntriesAction (_:)))
       self.mRemoveButton = removeButton
-      hStack.appendView (removeButton)
-      hStack.appendFlexibleSpace ()
-      self.appendView (hStack)
+      _ = hStack.appendView (removeButton)
+      _ = hStack.appendFlexibleSpace ()
+      _ = self.appendView (hStack)
     }
   }
 

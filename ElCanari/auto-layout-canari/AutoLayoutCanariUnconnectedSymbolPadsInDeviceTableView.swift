@@ -40,7 +40,7 @@ final class AutoLayoutCanariUnconnectedSymbolPadsInDeviceTableView : AutoLayoutV
       headerAlignment: .center,
       contentAlignment: .center
     )
-    self.appendView (self.mTableView)
+    _ = self.appendView (self.mTableView)
   }
 
   //····················································································································

@@ -10,24 +10,30 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func setStartOperationDateToNow (_ inMessage : String) {
-  gLogFileOperations.setStartOperationDateToNow (inMessage)
+  DispatchQueue.main.async {
+    gLogFileOperations.setStartOperationDateToNow (inMessage)
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func appendDocumentFileOperationInfo (_ inMessage : String) {
-  gLogFileOperations.appendDocumentFileOperationInfo (inMessage)
+  DispatchQueue.main.async {
+    gLogFileOperations.appendDocumentFileOperationInfo (inMessage)
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func appendTotalDurationDocumentFileOperationInfo () {
-  gLogFileOperations.appendTotalDurationDocumentFileOperationInfo ()
+  DispatchQueue.main.async {
+    gLogFileOperations.appendTotalDurationDocumentFileOperationInfo ()
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func appendShowDocumentFileOperationDurationWindowMenuItem (_ inMenu : NSMenu) {
+@MainActor func appendShowDocumentFileOperationDurationWindowMenuItem (_ inMenu : NSMenu) {
   let menuItem = NSMenuItem (
     title: "Show Document File Operation Duration Window",
     action: #selector (LogFileOperation.makeKeyAndOrderFront (_:)),
@@ -42,11 +48,11 @@ func appendShowDocumentFileOperationDurationWindowMenuItem (_ inMenu : NSMenu) {
 //   Private entities
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate var gLogFileOperations = LogFileOperation ()
+@MainActor fileprivate var gLogFileOperations = LogFileOperation ()
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class LogFileOperation : EBObjcBaseObject { // SHOULD INHERIT FROM NSObject
+@MainActor fileprivate final class LogFileOperation : EBObjcBaseObject { // SHOULD INHERIT FROM NSObject
 
   //····················································································································
   //  Properties
@@ -72,14 +78,14 @@ fileprivate final class LogFileOperation : EBObjcBaseObject { // SHOULD INHERIT 
   //--- Configure Window
     self.mWindow.title = "Document Operation Duration"
     self.mWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
-    self.mWindow.setFrameAutosaveName ("Document.Operation.Window.Frame")
+    _ = self.mWindow.setFrameAutosaveName ("Document.Operation.Window.Frame")
   //--- Build window contents
     let vStack = AutoLayoutVerticalStackView ().set (margins: 8)
-    vStack.appendView (self.mTextView)
+    _ = vStack.appendView (self.mTextView)
     let button = AutoLayoutButton (title: "Clear", size: .small)
       .bind_run (target: self, selector: #selector (Self.clearTextAction(_:)))
       .expandableWidth ()
-    vStack.appendView (button)
+    _ = vStack.appendView (button)
   //--- Assign main view to window
     self.mWindow.contentView = vStack
   }

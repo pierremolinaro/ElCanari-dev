@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardObject_isPlacedInBoard (
+@MainActor func transient_BoardObject_isPlacedInBoard (
        _ self_mRoot_none : Bool
 ) -> Bool {
 //--- START OF USER ZONE 2

@@ -14,7 +14,7 @@ let IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH = CGFloat (2.0)
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageModelImageDoublePoint_objectDisplay (
+@MainActor func transient_PackageModelImageDoublePoint_objectDisplay (
        _ self_mFirstX : Int,                               
        _ self_mFirstY : Int,                               
        _ self_mFirstColor : NSColor,                       

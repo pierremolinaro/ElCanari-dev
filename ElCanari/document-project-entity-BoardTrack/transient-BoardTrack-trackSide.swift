@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardTrack_trackSide (
+@MainActor func transient_BoardTrack_trackSide (
        _ self_mSide : TrackSide
 ) -> TrackSide {
 //--- START OF USER ZONE 2

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NetClassInProject_viaPadDiameter (
+@MainActor func transient_NetClassInProject_viaPadDiameter (
        _ self_mViaPadDiameter : Int,             
        _ self_mViaPadDiameterUnit : Int
 ) -> String {

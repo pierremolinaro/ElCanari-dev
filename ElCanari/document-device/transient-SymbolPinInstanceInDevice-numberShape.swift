@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolPinInstanceInDevice_numberShape (
+@MainActor func transient_SymbolPinInstanceInDevice_numberShape (
        _ self_mType_mXNumber : Int?,                  
        _ self_mType_mYNumber : Int?,                  
        _ self_mType_mNumberHorizontalAlignment : HorizontalAlignment?,

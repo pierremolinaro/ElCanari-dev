@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerRoot_layoutLayerWarningMessage (
+@MainActor func transient_MergerRoot_layoutLayerWarningMessage (
        _ self_mArtwork_layerConfiguration : LayerConfiguration?,
        _ self_boardModels_layerConfiguration : [BoardModel_layerConfiguration]
 ) -> String {

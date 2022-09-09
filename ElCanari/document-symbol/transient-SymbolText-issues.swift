@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolText_issues (
+@MainActor func transient_SymbolText_issues (
        _ self_x : Int,            
        _ self_y : Int,            
        _ self_text : String

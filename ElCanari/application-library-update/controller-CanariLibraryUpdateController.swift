@@ -62,10 +62,10 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
   //--- Informative text
     self.mInformativeText = AutoLayoutLabel (bold: false, size: .regular).set (alignment: .left).expandableWidth ()
     self.mInformativeText.stringValue = inInformativeText
-    mainView.appendView (self.mInformativeText)
+    _ = mainView.appendView (self.mInformativeText)
   //--- Table view
     self.mTableView = AutoLayoutTableView (size: .small, addControlButtons: false).expandableWidth ()
-    mainView.appendView (self.mTableView)
+    _ = mainView.appendView (self.mTableView)
   //--- Last line
     let lastLine = AutoLayoutHorizontalStackView () //.expandableWidth ()
     self.mProgressIndicator = AutoLayoutProgressIndicator ()
@@ -73,13 +73,13 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
     self.mProgressIndicator.maxValue = inProgressMaxValue
     self.mProgressIndicator.doubleValue = 0.0
     self.mProgressIndicator.isIndeterminate = false
-    lastLine.appendView (self.mProgressIndicator)
-    lastLine.appendFlexibleSpace ()
+    _ = lastLine.appendView (self.mProgressIndicator)
+    _ = lastLine.appendFlexibleSpace ()
     self.mCancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular)
-    lastLine.appendView (self.mCancelButton)
+    _ = lastLine.appendView (self.mCancelButton)
     self.mUpDateButton = AutoLayoutButton (title: "Update All", size: .regular)
-    lastLine.appendView (self.mUpDateButton)
-    mainView.appendView (lastLine)
+    _ = lastLine.appendView (self.mUpDateButton)
+    _ = mainView.appendView (lastLine)
   //--- Set autolayout view to panel
     self.mLibraryUpdatePanel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: AutoLayoutWindowContentView (view: mainView))
   //--- Super init

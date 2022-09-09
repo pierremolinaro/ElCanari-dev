@@ -14,7 +14,8 @@ let FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY = "-characters-"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func customStore_FontCharacter_characters (_ inCharacters : [FontCharacter], intoDictionary : NSMutableDictionary) {
+@MainActor func customStore_FontCharacter_characters (_ inCharacters : [FontCharacter],
+                                                      intoDictionary : NSMutableDictionary) {
   var s = ""
   for char in inCharacters {
     s += "|"
@@ -42,7 +43,8 @@ func customStore_FontCharacter_characters (_ inCharacters : [FontCharacter], int
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func customRead_FontCharacter_characters (from inDictionary : NSDictionary, with inUndoManager : EBUndoManager?) -> [FontCharacter] {
+@MainActor func customRead_FontCharacter_characters (from inDictionary : NSDictionary,
+                                                     with inUndoManager : EBUndoManager?) -> [FontCharacter] {
 //  let start = Date ()
   var result = [FontCharacter] ()
   if let s = inDictionary [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String {

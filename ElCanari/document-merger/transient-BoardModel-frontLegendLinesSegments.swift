@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardModel_frontLegendLinesSegments (
+@MainActor func transient_BoardModel_frontLegendLinesSegments (
        _ self_frontLegendLines_x1 : [SegmentEntity_x1],
        _ self_frontLegendLines_y1 : [SegmentEntity_y1],
        _ self_frontLegendLines_x2 : [SegmentEntity_x2],

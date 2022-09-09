@@ -114,7 +114,7 @@ fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NetClassInProject_netsDescription (
+@MainActor func transient_NetClassInProject_netsDescription (
        _ self_mNets : [ObjectIndexProtocol],      
        _ self_mNets_trackCount : [NetInProject_trackCount],
        _ self_mNets_mNetName : [NetInProject_mNetName],

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardObject_displayPadNumbersForBoard (
+@MainActor func transient_BoardObject_displayPadNumbersForBoard (
        _ self_mRoot_displayPadNumbersForBoard : Bool?
 ) -> Bool {
 //--- START OF USER ZONE 2

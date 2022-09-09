@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageSlavePad_padNameForDisplay (
+@MainActor func transient_PackageSlavePad_padNameForDisplay (
        _ self_master_padNameForDisplay : String?
 ) -> String {
 //--- START OF USER ZONE 2

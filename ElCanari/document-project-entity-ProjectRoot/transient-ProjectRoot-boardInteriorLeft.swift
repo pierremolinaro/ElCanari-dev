@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_boardInteriorLeft (
+@MainActor func transient_ProjectRoot_boardInteriorLeft (
        _ self_interiorBoundBox : CanariRect,  
        _ self_mBoardPointsBoundingBoxUnit : Int
 ) -> String {

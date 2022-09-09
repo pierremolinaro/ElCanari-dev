@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackagePad_zoneAllowsManualRenumbering (
+@MainActor func transient_PackagePad_zoneAllowsManualRenumbering (
        _ self_zone_zoneNumbering : PadNumbering?
 ) -> Bool {
 //--- START OF USER ZONE 2

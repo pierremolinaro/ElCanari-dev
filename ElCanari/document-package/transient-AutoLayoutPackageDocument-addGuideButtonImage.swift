@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutPackageDocument_addGuideButtonImage (
+@MainActor func transient_AutoLayoutPackageDocument_addGuideButtonImage (
        _ prefs_packageGuideColor : NSColor
 ) -> NSImage {
 //--- START OF USER ZONE 2

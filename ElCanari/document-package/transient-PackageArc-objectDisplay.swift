@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageArc_objectDisplay (
+@MainActor func transient_PackageArc_objectDisplay (
        _ self_strokeBezierPath : EBBezierPath,
        _ prefs_packageColor : NSColor,   
        _ prefs_packageDrawingWidthMultipliedByTen : Int

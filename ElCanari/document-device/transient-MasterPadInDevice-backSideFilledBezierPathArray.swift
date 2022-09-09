@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MasterPadInDevice_backSideFilledBezierPathArray (
+@MainActor func transient_MasterPadInDevice_backSideFilledBezierPathArray (
        _ self_mCenterX : Int,                                   
        _ self_mCenterY : Int,                                   
        _ self_mWidth : Int,                                     

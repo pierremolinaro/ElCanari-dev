@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutDeviceDocument_mStatusImage (
+@MainActor func transient_AutoLayoutDeviceDocument_mStatusImage (
        _ self_issues : CanariIssueArray
 ) -> NSImage {
 //--- START OF USER ZONE 2

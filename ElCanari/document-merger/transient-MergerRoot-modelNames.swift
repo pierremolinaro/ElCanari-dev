@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerRoot_modelNames (
+@MainActor func transient_MergerRoot_modelNames (
        _ self_boardModels_name : [BoardModel_name],
        _ self_boardModels : [ObjectIndexProtocol]
 ) -> StringTagArray {

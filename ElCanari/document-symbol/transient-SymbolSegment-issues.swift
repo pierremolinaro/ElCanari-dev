@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolSegment_issues (
+@MainActor func transient_SymbolSegment_issues (
        _ self_x1 : Int,              
        _ self_y1 : Int,              
        _ self_x2 : Int,              

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutMergerDocument_statusMessage (
+@MainActor func transient_AutoLayoutMergerDocument_statusMessage (
        _ self_issues : CanariIssueArray,               
        _ root_boardLimitWidthErrorMessage : String
 ) -> String {

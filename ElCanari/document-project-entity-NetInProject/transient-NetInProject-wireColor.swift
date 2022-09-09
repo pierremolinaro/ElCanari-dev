@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NetInProject_wireColor (
+@MainActor func transient_NetInProject_wireColor (
        _ self_mNetClass_mNetClassColor : NSColor?
 ) -> NSColor {
 //--- START OF USER ZONE 2

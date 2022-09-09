@@ -89,8 +89,8 @@ fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
 //  newInstanceOfEntityNamed
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func newInstanceOfEntityNamed (_ ebUndoManager : EBUndoManager?,
-                               _ inEntityTypeName : String) -> EBManagedObject? {
+@MainActor func newInstanceOfEntityNamed (_ ebUndoManager : EBUndoManager?,
+                                          _ inEntityTypeName : String) -> EBManagedObject? {
   if let T = kEntityDictionary [inEntityTypeName] {
     return T.init (ebUndoManager)
   }else{
@@ -102,8 +102,8 @@ func newInstanceOfEntityNamed (_ ebUndoManager : EBUndoManager?,
 //   makeManagedObjectFromDictionary
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func makeManagedObjectFromDictionary (_ inUndoManager : EBUndoManager?,
-                                      _ inDictionary : NSDictionary) -> EBManagedObject? {
+@MainActor func makeManagedObjectFromDictionary (_ inUndoManager : EBUndoManager?,
+                                                 _ inDictionary : NSDictionary) -> EBManagedObject? {
   let entityName = inDictionary.value (forKey: ENTITY_KEY) as! String
   if let object = newInstanceOfEntityNamed (inUndoManager, entityName) {
     object.setUpAtomicPropertiesWithDictionary (inDictionary)

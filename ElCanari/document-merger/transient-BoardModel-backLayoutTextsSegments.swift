@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardModel_backLayoutTextsSegments (
+@MainActor func transient_BoardModel_backLayoutTextsSegments (
        _ self_backLayoutTexts_x1 : [SegmentEntity_x1],
        _ self_backLayoutTexts_y1 : [SegmentEntity_y1],
        _ self_backLayoutTexts_x2 : [SegmentEntity_x2],

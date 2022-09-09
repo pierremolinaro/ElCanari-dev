@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentSymbolInProject_selectionDisplay (
+@MainActor func transient_ComponentSymbolInProject_selectionDisplay (
        _ prefs_pinNameFont : NSFont,                      
        _ prefs_schematicBackColor : NSColor,              
        _ self_mDisplayComponentNameOffsetX : Int,         

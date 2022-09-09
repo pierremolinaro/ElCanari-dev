@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ArtworkFileGenerationParameters_hasNoData (
+@MainActor func transient_ArtworkFileGenerationParameters_hasNoData (
        _ self_mArtwork_layerConfiguration : LayerConfiguration?,
        _ self_drawBoardLimits : Bool,                     
        _ self_drawInternalBoardLimits : Bool,             

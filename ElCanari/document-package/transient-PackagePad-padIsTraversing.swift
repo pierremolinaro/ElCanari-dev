@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackagePad_padIsTraversing (
+@MainActor func transient_PackagePad_padIsTraversing (
        _ self_padStyle : PadStyle
 ) -> Bool {
 //--- START OF USER ZONE 2

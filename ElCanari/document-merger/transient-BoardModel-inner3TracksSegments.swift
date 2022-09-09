@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardModel_inner3TracksSegments (
+@MainActor func transient_BoardModel_inner3TracksSegments (
        _ self_inner3Tracks_x1 : [SegmentEntity_x1],
        _ self_inner3Tracks_y1 : [SegmentEntity_y1],
        _ self_inner3Tracks_x2 : [SegmentEntity_x2],

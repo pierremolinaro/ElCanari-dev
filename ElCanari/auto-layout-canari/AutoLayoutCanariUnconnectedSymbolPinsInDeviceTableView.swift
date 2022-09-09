@@ -52,7 +52,7 @@ final class AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView : AutoLayoutV
       headerAlignment: .center,
       contentAlignment: .left
     )
-    self.appendView (self.mTableView)
+    _ = self.appendView (self.mTableView)
   }
 
   //····················································································································

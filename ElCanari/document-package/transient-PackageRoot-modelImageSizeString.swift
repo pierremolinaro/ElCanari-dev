@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageRoot_modelImageSizeString (
+@MainActor func transient_PackageRoot_modelImageSizeString (
        _ self_mModelImageData : Data
 ) -> String {
 //--- START OF USER ZONE 2

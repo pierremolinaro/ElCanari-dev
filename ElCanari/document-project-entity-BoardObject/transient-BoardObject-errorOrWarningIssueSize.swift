@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardObject_errorOrWarningIssueSize (
+@MainActor func transient_BoardObject_errorOrWarningIssueSize (
        _ self_mRoot_mErrorOrWarningIssueSize : Double?
 ) -> Double {
 //--- START OF USER ZONE 2

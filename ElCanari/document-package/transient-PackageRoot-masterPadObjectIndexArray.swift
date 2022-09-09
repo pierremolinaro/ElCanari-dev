@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageRoot_masterPadObjectIndexArray (
+@MainActor func transient_PackageRoot_masterPadObjectIndexArray (
        _ self_packagePads_masterPadObjectIndex : [PackagePad_masterPadObjectIndex]
 ) -> IntArray {
 //--- START OF USER ZONE 2

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentInProject_hasSlavePads (
+@MainActor func transient_ComponentInProject_hasSlavePads (
        _ self_packagePadDictionary : PackageMasterPadDictionary
 ) -> Bool {
 //--- START OF USER ZONE 2

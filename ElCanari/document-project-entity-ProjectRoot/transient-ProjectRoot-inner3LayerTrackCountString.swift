@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_inner3LayerTrackCountString (
+@MainActor func transient_ProjectRoot_inner3LayerTrackCountString (
        _ self_mBoardObjects_trackSide : [BoardObject_trackSide]
 ) -> String {
 //--- START OF USER ZONE 2

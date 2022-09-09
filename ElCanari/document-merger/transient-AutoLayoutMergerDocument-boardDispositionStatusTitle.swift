@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutMergerDocument_boardDispositionStatusTitle (
+@MainActor func transient_AutoLayoutMergerDocument_boardDispositionStatusTitle (
        _ self_issues : CanariIssueArray
 ) -> String {
 //--- START OF USER ZONE 2

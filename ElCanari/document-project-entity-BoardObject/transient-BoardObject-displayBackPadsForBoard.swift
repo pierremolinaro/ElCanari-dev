@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardObject_displayBackPadsForBoard (
+@MainActor func transient_BoardObject_displayBackPadsForBoard (
        _ self_mRoot_displayBackPadsForBoard : Bool?
 ) -> Bool {
 //--- START OF USER ZONE 2

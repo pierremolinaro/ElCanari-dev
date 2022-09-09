@@ -9,7 +9,7 @@ let CURL = "/usr/bin/curl"
 //   LIBRARY UPDATE ENTRY POINT
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func startLibraryUpdateOperation (showProgressWindow inShowWindow : Bool, _ inLogTextView : AutoLayoutStaticTextView) {
+@MainActor func startLibraryUpdateOperation (showProgressWindow inShowWindow : Bool, _ inLogTextView : AutoLayoutStaticTextView) {
   inLogTextView.appendMessageString ("Start library update operation\n", color: NSColor.blue)
 //--- Disable update buttons
   g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = false
@@ -90,7 +90,7 @@ func startLibraryUpdateOperation (showProgressWindow inShowWindow : Bool, _ inLo
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func enableItemsAfterCompletion () {
+@MainActor func enableItemsAfterCompletion () {
   g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = true
   gApplicationDelegate?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = true
 }

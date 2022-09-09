@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutDeviceDocument_hasUnconnectedPad (
+@MainActor func transient_AutoLayoutDeviceDocument_hasUnconnectedPad (
        _ root_unconnectedPads : StringArray
 ) -> Bool {
 //--- START OF USER ZONE 2

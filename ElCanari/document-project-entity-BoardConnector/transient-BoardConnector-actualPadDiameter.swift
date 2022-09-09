@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardConnector_actualPadDiameter (
+@MainActor func transient_BoardConnector_actualPadDiameter (
        _ self_viaDefaultPadDiameter : Int,       
        _ self_mUsesCustomPadDiameter : Bool,     
        _ self_mCustomPadDiameter : Int

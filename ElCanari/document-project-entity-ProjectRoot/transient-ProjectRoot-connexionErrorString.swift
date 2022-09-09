@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_connexionErrorString (
+@MainActor func transient_ProjectRoot_connexionErrorString (
        _ self_mSheets_connexionErrors : [SheetInProject_connexionErrors]
 ) -> String {
 //--- START OF USER ZONE 2

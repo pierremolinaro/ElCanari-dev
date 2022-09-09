@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutPackageDocument_addZoneButtonImage (
+@MainActor func transient_AutoLayoutPackageDocument_addZoneButtonImage (
        _ prefs_padZoneColor : NSColor
 ) -> NSImage {
 //--- START OF USER ZONE 2

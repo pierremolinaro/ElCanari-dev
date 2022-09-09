@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NetClassInProject_allowTracksOnInner2LayerString (
+@MainActor func transient_NetClassInProject_allowTracksOnInner2LayerString (
        _ self_mAllowTracksOnInner2Layer : Bool
 ) -> String {
 //--- START OF USER ZONE 2

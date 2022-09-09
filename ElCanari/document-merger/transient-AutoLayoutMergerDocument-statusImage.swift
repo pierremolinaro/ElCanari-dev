@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutMergerDocument_statusImage (
+@MainActor func transient_AutoLayoutMergerDocument_statusImage (
        _ self_issues : CanariIssueArray,             
        _ root_boardLimitWidthOk : Bool
 ) -> NSImage {

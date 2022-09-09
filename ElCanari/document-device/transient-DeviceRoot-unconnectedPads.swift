@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceRoot_unconnectedPads (
+@MainActor func transient_DeviceRoot_unconnectedPads (
        _ self_mPadProxies_mPadName : [PadProxyInDevice_mPadName],
        _ self_mPadProxies_isConnected : [PadProxyInDevice_isConnected]
 ) -> StringArray {

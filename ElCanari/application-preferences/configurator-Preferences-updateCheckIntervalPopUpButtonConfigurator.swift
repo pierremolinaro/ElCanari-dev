@@ -18,7 +18,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Preferences {
-  final func configure_updateCheckIntervalPopUpButtonConfigurator (_ inOutlet : AutoLayoutPopUpButton) {
+  @MainActor final func configure_updateCheckIntervalPopUpButtonConfigurator (_ inOutlet : AutoLayoutPopUpButton) {
 //--- START OF USER ZONE 2
         inOutlet.addItem (withTitle: "Daily")
         inOutlet.lastItem?.tag = 24 * 3600

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentInProject_componentName (
+@MainActor func transient_ComponentInProject_componentName (
        _ self_mNamePrefix : String,              
        _ self_mNameIndex : Int
 ) -> String {

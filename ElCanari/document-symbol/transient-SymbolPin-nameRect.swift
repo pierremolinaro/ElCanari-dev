@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolPin_nameRect (
+@MainActor func transient_SymbolPin_nameRect (
        _ self_xName : Int,         
        _ self_yName : Int,         
        _ self_name : String,       

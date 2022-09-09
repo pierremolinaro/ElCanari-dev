@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SheetInProject_sheetDescriptor (
+@MainActor func transient_SheetInProject_sheetDescriptor (
        _ self_mRoot_sheetGeometry : SchematicSheetGeometry?,
        _ self_mRoot_sheetIndexes : IntArray?,  
        _ self_address : Int

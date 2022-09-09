@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceInProject_canRemove (
+@MainActor func transient_DeviceInProject_canRemove (
        _ self_mComponents_count : Int
 ) -> Bool {
 //--- START OF USER ZONE 2

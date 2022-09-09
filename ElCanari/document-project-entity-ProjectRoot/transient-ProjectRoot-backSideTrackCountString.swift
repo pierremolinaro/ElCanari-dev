@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_backSideTrackCountString (
+@MainActor func transient_ProjectRoot_backSideTrackCountString (
        _ self_mBoardObjects_trackSide : [BoardObject_trackSide]
 ) -> String {
 //--- START OF USER ZONE 2

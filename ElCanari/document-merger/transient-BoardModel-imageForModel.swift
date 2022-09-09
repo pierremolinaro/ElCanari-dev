@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardModel_imageForModel (
+@MainActor func transient_BoardModel_imageForModel (
        _ prefs_mergerColorBackground : NSColor,
        _ self_modelWidth : Int,          
        _ self_modelHeight : Int,         

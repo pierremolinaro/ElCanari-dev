@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_LabelInSchematic_selectionDisplay (
+@MainActor func transient_LabelInSchematic_selectionDisplay (
        _ self_mPoint_location : CanariPoint?,     
        _ self_netName : String,                   
        _ prefs_pinNameFont : NSFont,              

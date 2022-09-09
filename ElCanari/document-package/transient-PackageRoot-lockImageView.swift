@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageRoot_lockImageView (
+@MainActor func transient_PackageRoot_lockImageView (
        _ self_mPointsAreLocked : Bool
 ) -> NSImage {
 //--- START OF USER ZONE 2

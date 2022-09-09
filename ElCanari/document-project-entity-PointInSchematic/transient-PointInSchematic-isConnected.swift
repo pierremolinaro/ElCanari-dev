@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematic_isConnected (
+@MainActor func transient_PointInSchematic_isConnected (
        _ self_mNC_none : Bool,               
        _ self_mSymbol_none : Bool,           
        _ self_mWiresP1s_count : Int,         

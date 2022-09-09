@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_netNamesArray (
+@MainActor func transient_ProjectRoot_netNamesArray (
        _ self_mNetClasses_netsDescription : [NetClassInProject_netsDescription]
 ) -> StringArray {
 //--- START OF USER ZONE 2

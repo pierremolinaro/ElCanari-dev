@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardTrack_signatureForERCChecking (
+@MainActor func transient_BoardTrack_signatureForERCChecking (
        _ self_mSide : TrackSide,                   
        _ self_actualTrackWidth : Int
 ) -> UInt32 {

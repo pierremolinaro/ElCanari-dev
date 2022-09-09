@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentInProject_selectionDisplay (
+@MainActor func transient_ComponentInProject_selectionDisplay (
        _ prefs_frontSideLegendColorForBoard : NSColor,
        _ prefs_backSideLegendColorForBoard : NSColor,
        _ self_mX : Int,                             

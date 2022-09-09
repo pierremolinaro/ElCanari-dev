@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_interiorBoundBox (
+@MainActor func transient_ProjectRoot_interiorBoundBox (
        _ self_mBorderCurves_descriptor : [BorderCurve_descriptor],
        _ self_mBoardShape : BoardShape,      
        _ self_mRectangularBoardWidth : Int,  

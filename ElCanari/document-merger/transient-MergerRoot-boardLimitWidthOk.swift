@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerRoot_boardLimitWidthOk (
+@MainActor func transient_MergerRoot_boardLimitWidthOk (
        _ self_boardLimitWidthErrorMessage : String
 ) -> Bool {
 //--- START OF USER ZONE 2

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageRoot_hasModelImage (
+@MainActor func transient_PackageRoot_hasModelImage (
        _ self_mModelImageData : Data
 ) -> Bool {
 //--- START OF USER ZONE 2

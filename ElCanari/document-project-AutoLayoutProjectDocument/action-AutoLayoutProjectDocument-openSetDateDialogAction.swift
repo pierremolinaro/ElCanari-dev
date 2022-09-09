@@ -23,22 +23,22 @@ extension AutoLayoutProjectDocument {
     //---
       let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
     //---
-      layoutView.appendView (AutoLayoutStaticLabel (title: "Set Date and Time", bold: true, size: .regular, alignment: .center))
-      layoutView.appendFlexibleSpace ()
+      _ = layoutView.appendView (AutoLayoutStaticLabel (title: "Set Date and Time", bold: true, size: .regular, alignment: .center))
+      _ = layoutView.appendFlexibleSpace ()
     //---
       let datePicker = AutoLayoutDatePicker (size: .regular)
       datePicker.datePickerStyle = .clockAndCalendar
       datePicker.datePickerElements = [.yearMonthDay, .hourMinute]
       datePicker.dateValue = self.rootObject.mSchematicDate
-      layoutView.appendView (datePicker)
-      layoutView.appendFlexibleSpace ()
+      _ = layoutView.appendView (datePicker)
+      _ = layoutView.appendFlexibleSpace ()
       do{
         let hStack = AutoLayoutHorizontalStackView ()
-        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
-        hStack.appendFlexibleSpace ()
+        _ = hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
+        _ = hStack.appendFlexibleSpace ()
         let okButton = AutoLayoutSheetDefaultOkButton (title: "Ok", size: .regular, sheet: panel)
-        hStack.appendView (okButton)
-        layoutView.appendView (hStack)
+        _ = hStack.appendView (okButton)
+        _ = layoutView.appendView (hStack)
       }
       panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
       window.beginSheet (panel) { (_ inResponse : NSApplication.ModalResponse) in

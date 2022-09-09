@@ -6,9 +6,9 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func loadEasyBindingBinaryFile (_ inUndoManager : EBUndoManager?,
-                                documentName inDocumentName : String,
-                                from ioDataScanner: inout EBDataScanner) throws -> EBDocumentData {
+@MainActor func loadEasyBindingBinaryFile (_ inUndoManager : EBUndoManager?,
+                                           documentName inDocumentName : String,
+                                           from ioDataScanner: inout EBDataScanner) throws -> EBDocumentData {
   appendDocumentFileOperationInfo ("Read Binary Document file: \(inDocumentName)\n")
   var operationStartDate = Date ()
   let startDate = operationStartDate
@@ -76,7 +76,7 @@ private func raiseInvalidDataFormatError (dataFormat : UInt8) throws {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func readManagedObjectsFromBinaryData (_ inUndoManager : EBUndoManager?, inData : Data) throws -> EBManagedObject? {
+@MainActor fileprivate func readManagedObjectsFromBinaryData (_ inUndoManager : EBUndoManager?, inData : Data) throws -> EBManagedObject? {
   var resultRootObject : EBManagedObject? = nil
   if let dictionaryArray = try PropertyListSerialization.propertyList (from: inData as Data, options: [], format: nil) as? [NSDictionary] {
     var objectArray = [EBManagedObject] ()
@@ -98,14 +98,14 @@ fileprivate func readManagedObjectsFromBinaryData (_ inUndoManager : EBUndoManag
       object.setUpWithDictionary (d, managedObjectArray: &objectArray)
       idx += 1
     }
-    resultRootObject = objectArray [0] //--- Set root object
+    resultRootObject = objectArray [0] // Set root object
   }
   return resultRootObject
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func dataForBinarySaveOperation (from inDocumentData : EBDocumentData) throws -> Data {
+@MainActor func dataForBinarySaveOperation (from inDocumentData : EBDocumentData) throws -> Data {
   // let start = Date ()
   var fileBinaryData = Data ()
 //--- Append signature

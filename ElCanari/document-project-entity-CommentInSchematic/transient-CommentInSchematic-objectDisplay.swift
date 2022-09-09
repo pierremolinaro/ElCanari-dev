@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_CommentInSchematic_objectDisplay (
+@MainActor func transient_CommentInSchematic_objectDisplay (
        _ self_mComment : String,                 
        _ self_mColor : NSColor,                  
        _ self_mSize : Double,                    

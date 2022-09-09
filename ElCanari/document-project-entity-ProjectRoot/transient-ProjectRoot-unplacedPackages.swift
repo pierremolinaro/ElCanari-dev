@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_unplacedPackages (
+@MainActor func transient_ProjectRoot_unplacedPackages (
        _ self_mComponents : [ObjectIndexProtocol],
        _ self_mComponents_componentName : [ComponentInProject_componentName],
        _ self_mComponents_mComponentValue : [ComponentInProject_mComponentValue],

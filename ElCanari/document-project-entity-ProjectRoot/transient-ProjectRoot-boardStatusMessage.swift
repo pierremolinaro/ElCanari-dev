@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_boardStatusMessage (
+@MainActor func transient_ProjectRoot_boardStatusMessage (
        _ self_boardIssues : CanariIssueArray,  
        _ self_unplacedPackages : StringTagArray
 ) -> String {

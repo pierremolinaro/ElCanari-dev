@@ -381,13 +381,13 @@ struct CanariUnitToDSNUnitConverter {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func indexForPackage (_ inDevice : DeviceInProject,
-                                  _ inRouteSlavePads : Bool,
-                                  _ inSelectedPackage : DevicePackageInProject,
-                                  _ ioPackageDictionary : inout [PackageDictionaryKeyForDSNExport : Int],
-                                  _ ioPackageArrayForRouting : inout [PackageTypeForDSNExport],
-                                  _ ioPadTypeArrayForRouting : inout [PadTypeForDSNExport],
-                                  _ inConverter : CanariUnitToDSNUnitConverter) -> Int {
+@MainActor fileprivate func indexForPackage (_ inDevice : DeviceInProject,
+                                             _ inRouteSlavePads : Bool,
+                                             _ inSelectedPackage : DevicePackageInProject,
+                                             _ ioPackageDictionary : inout [PackageDictionaryKeyForDSNExport : Int],
+                                             _ ioPackageArrayForRouting : inout [PackageTypeForDSNExport],
+                                             _ ioPadTypeArrayForRouting : inout [PadTypeForDSNExport],
+                                             _ inConverter : CanariUnitToDSNUnitConverter) -> Int {
   let key = PackageDictionaryKeyForDSNExport (device: inDevice, routeSlavePads: inRouteSlavePads, package: inSelectedPackage)
   if let idx = ioPackageDictionary [key] {
     return idx

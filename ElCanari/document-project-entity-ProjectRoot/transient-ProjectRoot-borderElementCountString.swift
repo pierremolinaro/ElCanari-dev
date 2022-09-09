@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_borderElementCountString (
+@MainActor func transient_ProjectRoot_borderElementCountString (
        _ self_mBorderCurves_count : Int
 ) -> String {
 //--- START OF USER ZONE 2

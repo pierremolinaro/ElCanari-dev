@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageSlavePad_selectionDisplay (
+@MainActor func transient_PackageSlavePad_selectionDisplay (
        _ self_xCenter : Int,                     
        _ self_yCenter : Int,                     
        _ self_width : Int,                       

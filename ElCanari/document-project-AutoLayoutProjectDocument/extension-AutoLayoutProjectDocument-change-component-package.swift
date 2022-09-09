@@ -41,7 +41,7 @@ extension AutoLayoutProjectDocument {
       let okButton = AutoLayoutSheetDefaultOkButton (title: "", size: .regular, sheet: panel)
     //---
       layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Change Package", bold: true, size: .regular, alignment: .center))
-      layoutView.appendFlexibleSpace ()
+      _ = layoutView.appendFlexibleSpace ()
       let gridView = AutoLayoutGridView2 ()
     //---
       do{
@@ -71,15 +71,15 @@ extension AutoLayoutProjectDocument {
         let left = AutoLayoutStaticLabel (title: "Package", bold: false, size: .regular, alignment: .right)
         _ = gridView.addFirstBaseLineAligned (left: left, right: popupButton)
       }
-      layoutView.appendView (gridView)
-      layoutView.appendFlexibleSpace ()
+      _ = layoutView.appendView (gridView)
+      _ = layoutView.appendFlexibleSpace ()
     //---
       do{
         let hStack = AutoLayoutHorizontalStackView ()
-        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
-        hStack.appendFlexibleSpace ()
-        hStack.appendView (okButton)
-        layoutView.appendView (hStack)
+        _ = hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
+        _ = hStack.appendFlexibleSpace ()
+        _ = hStack.appendView (okButton)
+        _ = layoutView.appendView (hStack)
       }
     //---
       panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))

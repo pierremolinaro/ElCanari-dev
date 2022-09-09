@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutDeviceDocument_assignmentInhibitionMessage (
+@MainActor func transient_AutoLayoutDeviceDocument_assignmentInhibitionMessage (
        _ root_inconsistentPackagePadNameSetsMessage : String,        
        _ root_inconsistentSymbolNameSetMessage : String
 ) -> String {

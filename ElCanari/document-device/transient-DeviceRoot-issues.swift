@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceRoot_issues (
+@MainActor func transient_DeviceRoot_issues (
        _ self_mTitle : String,    
        _ self_mPrefix : String,   
        _ self_inconsistentPackagePadNameSetsMessage : String,

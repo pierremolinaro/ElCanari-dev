@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematic_canMove (
+@MainActor func transient_PointInSchematic_canMove (
        _ self_mSymbol_none : Bool
 ) -> Bool {
 //--- START OF USER ZONE 2

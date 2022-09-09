@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolSolidOval_objectDisplay (
+@MainActor func transient_SymbolSolidOval_objectDisplay (
        _ self_x : Int,                        
        _ self_y : Int,                        
        _ self_width : Int,                    

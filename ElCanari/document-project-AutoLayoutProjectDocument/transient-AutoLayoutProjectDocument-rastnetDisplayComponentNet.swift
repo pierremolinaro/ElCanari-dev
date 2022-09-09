@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutProjectDocument_rastnetDisplayComponentNet (
+@MainActor func transient_AutoLayoutProjectDocument_rastnetDisplayComponentNet (
        _ root_mRastnetDisplay : RastnetDisplay
 ) -> Bool {
 //--- START OF USER ZONE 2

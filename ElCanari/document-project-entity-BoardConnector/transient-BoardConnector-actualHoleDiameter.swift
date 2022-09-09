@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardConnector_actualHoleDiameter (
+@MainActor func transient_BoardConnector_actualHoleDiameter (
        _ self_viaDefaultHoleDiameter : Int,       
        _ self_mUsesCustomHoleDiameter : Bool,     
        _ self_mCustomHoleDiameter : Int

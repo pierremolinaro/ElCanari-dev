@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutMergerDocument_generatedFileCountString (
+@MainActor func transient_AutoLayoutMergerDocument_generatedFileCountString (
        _ self_mDataController_sortedArray_count : Int
 ) -> String {
 //--- START OF USER ZONE 2

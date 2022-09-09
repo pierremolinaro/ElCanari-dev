@@ -40,7 +40,7 @@ enum DocumentFormat {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-var gApplicationDelegate : ApplicationDelegate? = nil
+@MainActor var gApplicationDelegate : ApplicationDelegate? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -48,7 +48,7 @@ let SU_LAST_CHECK_TIME = "SULastCheckTime"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc (ApplicationDelegate) final class ApplicationDelegate : NSObject, NSApplicationDelegate, NSMenuItemValidation {
+@MainActor @objc (ApplicationDelegate) final class ApplicationDelegate : NSObject, NSApplicationDelegate, NSMenuItemValidation {
 
   //····················································································································
   //  init
@@ -164,26 +164,28 @@ let SU_LAST_CHECK_TIME = "SULastCheckTime"
   //  DO NOT OPEN A NEW DOCUMENT ON LAUNCH
   //····················································································································
 
-  func applicationShouldOpenUntitledFile (_ application : NSApplication) -> Bool {
+  nonisolated func applicationShouldOpenUntitledFile (_ application : NSApplication) -> Bool {
     // NSLog (@"%s", __PRETTY_FUNCTION__) ;
     return false
   }
 
   //····················································································································
 
-  func applicationDidFinishLaunching (_ notification : Notification) {
-    self.mOpenSymbolInLibraryMenuItem?.target = self.mOpenSymbolInLibrary
-    self.mOpenSymbolInLibraryMenuItem?.action = #selector (OpenSymbolInLibrary.openSymbolInLibrary (_:))
-    self.mOpenPackageInLibraryMenuItem?.target = self.mOpenPackageInLibrary
-    self.mOpenPackageInLibraryMenuItem?.action = #selector (OpenPackageInLibrary.openPackageInLibrary (_:))
-    self.mOpenDeviceInLibraryMenuItem?.target = self.mOpenDeviceInLibrary
-    self.mOpenDeviceInLibraryMenuItem?.action = #selector (OpenDeviceInLibrary.openDeviceInLibrary (_:))
-    self.mOpenFontInLibraryMenuItem?.target = self.mOpenFontInLibrary
-    self.mOpenFontInLibraryMenuItem?.action = #selector (OpenFontInLibrary.openFontInLibrary (_:))
-  //---
-    self.checkForLibraryUpdateAtLaunch ()
-    instanciateDebugMenuVisibilityObjectOnDidFinishLaunchingNotification ()
-    self.addAutoLayoutUserInterfaceStyleObserver ()
+  nonisolated func applicationDidFinishLaunching (_ notification : Notification) {
+    DispatchQueue.main.async {
+      self.mOpenSymbolInLibraryMenuItem?.target = self.mOpenSymbolInLibrary
+      self.mOpenSymbolInLibraryMenuItem?.action = #selector (OpenSymbolInLibrary.openSymbolInLibrary (_:))
+      self.mOpenPackageInLibraryMenuItem?.target = self.mOpenPackageInLibrary
+      self.mOpenPackageInLibraryMenuItem?.action = #selector (OpenPackageInLibrary.openPackageInLibrary (_:))
+      self.mOpenDeviceInLibraryMenuItem?.target = self.mOpenDeviceInLibrary
+      self.mOpenDeviceInLibraryMenuItem?.action = #selector (OpenDeviceInLibrary.openDeviceInLibrary (_:))
+      self.mOpenFontInLibraryMenuItem?.target = self.mOpenFontInLibrary
+      self.mOpenFontInLibraryMenuItem?.action = #selector (OpenFontInLibrary.openFontInLibrary (_:))
+    //---
+      self.checkForLibraryUpdateAtLaunch ()
+      instanciateDebugMenuVisibilityObjectOnDidFinishLaunchingNotification ()
+      self.addAutoLayoutUserInterfaceStyleObserver ()
+    }
   }
 
   //····················································································································
@@ -200,7 +202,7 @@ let SU_LAST_CHECK_TIME = "SULastCheckTime"
   // Menu Events
   //····················································································································
 
-  func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
+  nonisolated func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
     let validate : Bool
     let action = inMenuItem.action
     if action == #selector (Self.setBinaryFormatAction (_:)) {

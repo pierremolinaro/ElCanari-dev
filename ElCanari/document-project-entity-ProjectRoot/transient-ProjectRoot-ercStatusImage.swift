@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_ercStatusImage (
+@MainActor func transient_ProjectRoot_ercStatusImage (
        _ self_mLastERCCheckingIsSuccess : Bool,
        _ self_mLastERCCheckingSignature : UInt32,
        _ self_signatureForERCChecking : UInt32

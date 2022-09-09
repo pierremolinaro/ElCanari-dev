@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardObject_displayInner4LayoutForBoard (
+@MainActor func transient_BoardObject_displayInner4LayoutForBoard (
        _ self_mRoot_displayInner4LayoutForBoard : Bool?
 ) -> Bool {
 //--- START OF USER ZONE 2

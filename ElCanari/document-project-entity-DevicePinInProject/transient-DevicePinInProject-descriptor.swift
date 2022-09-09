@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DevicePinInProject_descriptor (
+@MainActor func transient_DevicePinInProject_descriptor (
        _ self_mPinName : String,              
        _ self_mSymbolInstanceName : String,   
        _ self_mSymbolTypeName : String,       

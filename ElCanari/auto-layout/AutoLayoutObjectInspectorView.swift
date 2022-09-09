@@ -22,13 +22,13 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
 
   override init () {
   //--- Define default View
-    self.mDefaultInspectorView.appendView (self.mDefaultLabel)
-    self.mDefaultInspectorView.appendView (AutoLayoutFlexibleSpace ())
+    _ = self.mDefaultInspectorView.appendView (self.mDefaultLabel)
+    _ = self.mDefaultInspectorView.appendView (AutoLayoutFlexibleSpace ())
   //---
     super.init ()
   //--- By Default, no selected object
-    self.mDefaultLabel.stringValue = "No Selected Object"
-    self.appendView (self.mDefaultLabel)
+    _ = self.mDefaultLabel.stringValue = "No Selected Object"
+    _ = self.appendView (self.mDefaultLabel)
   //---
     self.mObserver.mEventCallBack = { [weak self] in self?.selectionDidChange () }
   }
@@ -88,24 +88,24 @@ final class AutoLayoutObjectInspectorView : AutoLayoutVerticalStackView {
       }
       if selectedObjectsInspectorViewSet.count > 1 {
         self.mDefaultLabel.stringValue = "Multiple Selection"
-        self.appendView (self.mDefaultLabel)
+        _ = self.appendView (self.mDefaultLabel)
       }else if let view = selectedObjectsInspectorViewSet.first {
         if someSelectedObjectsHasNoInspector {
           self.mDefaultLabel.stringValue = "No Inspector"
-          self.appendView (self.mDefaultLabel)
+          _ = self.appendView (self.mDefaultLabel)
         }else{
-          self.appendView (view)
+          _ = self.appendView (view)
         }
       }else if someSelectedObjectsHasNoInspector {
         self.mDefaultLabel.stringValue = "No Inspector"
-        self.appendView (self.mDefaultLabel)
+        _ = self.appendView (self.mDefaultLabel)
       }else{
         self.mDefaultLabel.stringValue = "No Selected Object"
-        self.appendView (self.mDefaultLabel)
+        _ = self.appendView (self.mDefaultLabel)
       }
     }else{
       self.mDefaultLabel.stringValue = "No Controller"
-      self.appendView (self.mDefaultLabel)
+      _ = self.appendView (self.mDefaultLabel)
     }
   }
 

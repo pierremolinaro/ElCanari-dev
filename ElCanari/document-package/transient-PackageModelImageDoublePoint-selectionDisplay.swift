@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageModelImageDoublePoint_selectionDisplay (
+@MainActor func transient_PackageModelImageDoublePoint_selectionDisplay (
        _ self_mFirstX : Int,                                  
        _ self_mFirstY : Int,                                  
        _ self_mSecondDx : Int,                                

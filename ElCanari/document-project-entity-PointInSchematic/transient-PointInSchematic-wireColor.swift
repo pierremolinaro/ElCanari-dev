@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematic_wireColor (
+@MainActor func transient_PointInSchematic_wireColor (
        _ self_mNet_wireColor : NSColor?
 ) -> NSColor {
 //--- START OF USER ZONE 2

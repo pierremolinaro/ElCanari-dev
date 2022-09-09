@@ -90,10 +90,10 @@ final class CanariLibraryEntryDelegate : EBSwiftBaseObject, EBObserverProtocol {
   
   //····················································································································
 
-  deinit {
-    self.mObject?.mPath_property.removeEBObserver (self)
-    self.removeFileSystemMonitoring ()
-  }
+//  deinit {
+//    self.mObject?.mPath_property.removeEBObserver (self)
+//    self.removeFileSystemMonitoring ()
+//  }
   
   //····················································································································
 

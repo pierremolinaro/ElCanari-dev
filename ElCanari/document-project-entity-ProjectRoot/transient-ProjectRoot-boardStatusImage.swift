@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_boardStatusImage (
+@MainActor func transient_ProjectRoot_boardStatusImage (
        _ self_boardIssues : CanariIssueArray,
        _ self_unplacedPackages : StringTagArray
 ) -> NSImage {

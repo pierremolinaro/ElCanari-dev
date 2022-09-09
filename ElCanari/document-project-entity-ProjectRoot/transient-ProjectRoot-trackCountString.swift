@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_trackCountString (
+@MainActor func transient_ProjectRoot_trackCountString (
        _ self_mBoardObjects_trackLengthInCanariUnit : [BoardObject_trackLengthInCanariUnit]
 ) -> String {
 //--- START OF USER ZONE 2

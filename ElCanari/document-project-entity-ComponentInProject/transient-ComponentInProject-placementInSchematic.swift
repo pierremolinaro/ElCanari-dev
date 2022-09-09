@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentInProject_placementInSchematic (
+@MainActor func transient_ComponentInProject_placementInSchematic (
        _ self_mSymbols_symbolInSchematic : [ComponentSymbolInProject_symbolInSchematic]
 ) -> String {
 //--- START OF USER ZONE 2

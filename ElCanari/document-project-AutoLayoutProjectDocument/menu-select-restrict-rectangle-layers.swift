@@ -10,8 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CanariSelectRestrictRectanglesMenu : NSMenu {
-
+@MainActor final class CanariSelectRestrictRectanglesMenu : NSMenu {
 
   //····················································································································
 

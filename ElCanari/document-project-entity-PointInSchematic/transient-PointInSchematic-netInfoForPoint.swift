@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematic_netInfoForPoint (
+@MainActor func transient_PointInSchematic_netInfoForPoint (
        _ self_mLabels_count : Int,               
        _ self_mSymbol_componentName : String?,   
        _ self_mSymbol_mSymbolInstanceName : String?,

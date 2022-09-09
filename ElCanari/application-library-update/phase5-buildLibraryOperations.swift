@@ -10,11 +10,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func phase5_buildLibraryOperations (_ inRepositoryFileDictionary : [String : LibraryContentsDescriptor],
-                                    _ inLocalFileSet : Set <String>,
-                                    _ inLibraryFileDictionary : [String : CanariLibraryFileDescriptor],
-                                    _ inLogTextView : AutoLayoutStaticTextView,
-                                    _ inProxy : [String])
+@MainActor func phase5_buildLibraryOperations (_ inRepositoryFileDictionary : [String : LibraryContentsDescriptor],
+                                               _ inLocalFileSet : Set <String>,
+                                               _ inLibraryFileDictionary : [String : CanariLibraryFileDescriptor],
+                                               _ inLogTextView : AutoLayoutStaticTextView,
+                                               _ inProxy : [String])
         -> ([LibraryOperationElement], [String : CanariLibraryFileDescriptor] ) {
   inLogTextView.appendMessageString ("Phase 5: build operation list\n", color: NSColor.purple)
   inLogTextView.appendMessageString ("  Repository File Dictionary has \(inRepositoryFileDictionary.count) entries\n")

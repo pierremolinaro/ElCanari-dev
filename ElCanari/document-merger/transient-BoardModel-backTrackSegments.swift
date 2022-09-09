@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardModel_backTrackSegments (
+@MainActor func transient_BoardModel_backTrackSegments (
        _ self_backTracks_x1 : [SegmentEntity_x1],
        _ self_backTracks_y1 : [SegmentEntity_y1],
        _ self_backTracks_x2 : [SegmentEntity_x2],

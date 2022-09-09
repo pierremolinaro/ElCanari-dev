@@ -67,44 +67,44 @@ extension AutoLayoutPackageDocument {
     //--- Title
       do{
         let hStack = AutoLayoutHorizontalStackView ()
-        hStack.appendFlexibleSpace ()
+        _ = hStack.appendFlexibleSpace ()
         let label = AutoLayoutStaticLabel (title: "Add a forbidden Pad Number to '\(selectedZone.zoneName)' Zone", bold: true, size: .regular, alignment: .center)
-        hStack.appendView (label)
-        hStack.appendFlexibleSpace ()
-        mainVStack.appendView (hStack)
+        _ = hStack.appendView (label)
+        _ = hStack.appendFlexibleSpace ()
+        _ = mainVStack.appendView (hStack)
       }
     //--- Horizontal Stack, app image -- contents
       do{
         let hStack = AutoLayoutHorizontalStackView ()
-        hStack.appendView (AutoLayoutApplicationImage ())
+        _ = hStack.appendView (AutoLayoutApplicationImage ())
         let contentsVStack = AutoLayoutVerticalStackView () ;
-        hStack.appendView (contentsVStack)
-        mainVStack.appendView (hStack)
+        _ = hStack.appendView (contentsVStack)
+        _ = mainVStack.appendView (hStack)
       //--- Forbidden Pad Number
         do {
           let hStack = AutoLayoutHorizontalStackView ()
           let label = AutoLayoutStaticLabel (title: "New Forbidden Pad Number:", bold: false, size: .regular, alignment: .center)
-          hStack.appendView (label)
+          _ = hStack.appendView (label)
           panel.initialFirstResponder = intField
-          hStack.appendView (intField)
-          contentsVStack.appendView (hStack)
+          _ = hStack.appendView (intField)
+          _ = contentsVStack.appendView (hStack)
         }
       //--- Error message
         do{
           let errorMessage = AutoLayoutLabel (bold: false, size: .regular)
             .bind_title (errorMessage_property)
             .setRedTextColor ()
-          contentsVStack.appendView (errorMessage)
+          _ = contentsVStack.appendView (errorMessage)
         }
-        contentsVStack.appendFlexibleSpace()
+        _ = contentsVStack.appendFlexibleSpace()
       //--- Buttons
         do {
           let hStack = AutoLayoutHorizontalStackView ()
-          hStack.appendFlexibleSpace()
+          _ = hStack.appendFlexibleSpace()
           let cancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular)
-          hStack.appendView (cancelButton)
-          hStack.appendView (okButton)
-          contentsVStack.appendView (hStack)
+          _ = hStack.appendView (cancelButton)
+          _ = hStack.appendView (okButton)
+          _ = contentsVStack.appendView (hStack)
         }
       }
       panel.setContentSize (mainVStack.fittingSize)

@@ -20,20 +20,20 @@ let DEBUG_STROKE_COLOR                    = NSColor.systemOrange
 //   Public functions
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func appendDebugAutoLayoutMenuItem (_ inMenu : NSMenu) {
+@MainActor func appendDebugAutoLayoutMenuItem (_ inMenu : NSMenu) {
   inMenu.addItem (gDebugAutoLayout.menuItem)
   inMenu.addItem (gDebugAutoLayout.responderKeyChainItem)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func debugAutoLayout () -> Bool {
+@MainActor func debugAutoLayout () -> Bool {
   return gDebugAutoLayout.mDebugAutoLayout
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func showKeyResponderChain () -> Bool {
+@MainActor func showKeyResponderChain () -> Bool {
   return gDebugAutoLayout.mShowKeyResponderChain
 }
 
@@ -41,7 +41,7 @@ func showKeyResponderChain () -> Bool {
 //   Private entities
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate var gDebugAutoLayout = DebugAutoLayout ()
+@MainActor fileprivate var gDebugAutoLayout = DebugAutoLayout ()
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

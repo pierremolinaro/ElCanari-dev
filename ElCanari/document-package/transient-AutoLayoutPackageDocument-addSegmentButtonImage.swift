@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutPackageDocument_addSegmentButtonImage (
+@MainActor func transient_AutoLayoutPackageDocument_addSegmentButtonImage (
        _ prefs_packageColor : NSColor
 ) -> NSImage {
 //--- START OF USER ZONE 2

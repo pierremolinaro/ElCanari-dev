@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DevicePackageInProject_packagePadDictionary (
+@MainActor func transient_DevicePackageInProject_packagePadDictionary (
        _ self_mMasterPads_descriptor : [DeviceMasterPadInProject_descriptor]
 ) -> PackageMasterPadDictionary {
 //--- START OF USER ZONE 2

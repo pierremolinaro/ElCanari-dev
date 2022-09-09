@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardConnector_issues (
+@MainActor func transient_BoardConnector_issues (
        _ self_location : CanariPoint, 
        _ self_mComponent_none : Bool, 
        _ self_mComponentPadName : String,

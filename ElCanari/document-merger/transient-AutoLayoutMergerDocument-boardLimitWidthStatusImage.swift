@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutMergerDocument_boardLimitWidthStatusImage (
+@MainActor func transient_AutoLayoutMergerDocument_boardLimitWidthStatusImage (
        _ root_boardLimitWidthOk : Bool
 ) -> NSImage {
 //--- START OF USER ZONE 2

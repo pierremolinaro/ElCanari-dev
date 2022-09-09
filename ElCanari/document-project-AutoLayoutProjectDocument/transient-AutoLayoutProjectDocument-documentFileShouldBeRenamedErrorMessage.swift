@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutProjectDocument_documentFileShouldBeRenamedErrorMessage (
+@MainActor func transient_AutoLayoutProjectDocument_documentFileShouldBeRenamedErrorMessage (
        _ self_documentFileName : String
 ) -> String {
 //--- START OF USER ZONE 2

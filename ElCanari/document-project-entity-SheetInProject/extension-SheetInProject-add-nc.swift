@@ -15,7 +15,7 @@ extension SheetInProject {
   //····················································································································
 
   func addLabelToPin (toPoint inPoint : PointInSchematic,
-                      newNetCreator inNewNetCreator : () -> NetInProject) -> LabelInSchematic? {
+                      newNetCreator inNewNetCreator : @MainActor () -> NetInProject) -> LabelInSchematic? {
     let isConnected = inPoint.isConnected ?? true
     if !isConnected {
       let label = LabelInSchematic (self.ebUndoManager)

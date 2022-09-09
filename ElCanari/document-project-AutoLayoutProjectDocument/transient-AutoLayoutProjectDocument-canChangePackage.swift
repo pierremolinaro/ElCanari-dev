@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutProjectDocument_canChangePackage (
+@MainActor func transient_AutoLayoutProjectDocument_canChangePackage (
        _ self_componentController_selectedArray_all_availablePackages : [ComponentInProject_availablePackages]
 ) -> Bool {
 //--- START OF USER ZONE 2

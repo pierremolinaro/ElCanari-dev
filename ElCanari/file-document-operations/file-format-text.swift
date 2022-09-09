@@ -14,9 +14,9 @@ struct RawObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
-                              documentName inDocumentName : String,
-                              from ioDataScanner: inout EBDataScanner) throws -> EBDocumentData {
+@MainActor func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
+                                         documentName inDocumentName : String,
+                                         from ioDataScanner: inout EBDataScanner) throws -> EBDocumentData {
   setStartOperationDateToNow ("Read Text Document file: \(inDocumentName)")
 //--- Check header ends with line feed
   ioDataScanner.acceptRequired (byte: ASCII.lineFeed.rawValue)
@@ -118,7 +118,7 @@ func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func dataForTextualSaveOperation (from inDocumentData : EBDocumentData) throws -> Data {
+@MainActor func dataForTextualSaveOperation (from inDocumentData : EBDocumentData) throws -> Data {
 //--- First line: PM-TEXT-FORMAT
   var fileStringData = Data ()
   fileStringData.append (ascii: .P)

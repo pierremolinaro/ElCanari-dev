@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_FontRoot_currentCharacterCodePointString (
+@MainActor func transient_FontRoot_currentCharacterCodePointString (
        _ self_currentCharacterCodePoint : Int
 ) -> String {
 //--- START OF USER ZONE 2

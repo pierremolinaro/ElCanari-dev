@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardTrack_p1CanMove (
+@MainActor func transient_BoardTrack_p1CanMove (
        _ self_mManualLockP1 : Bool,  
        _ self_p1ConnectedToSomePad : Bool
 ) -> Bool {

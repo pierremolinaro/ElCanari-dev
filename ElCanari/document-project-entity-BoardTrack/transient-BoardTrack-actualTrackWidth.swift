@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardTrack_actualTrackWidth (
+@MainActor func transient_BoardTrack_actualTrackWidth (
        _ self_mNet_netClassTrackWidth : Int?,
        _ self_mUsesCustomTrackWidth : Bool, 
        _ self_mCustomTrackWidth : Int

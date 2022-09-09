@@ -43,7 +43,7 @@ extension ProjectRoot {
   // Create a new net with automatic name
   //····················································································································
 
-  func createNetWithAutomaticName () -> NetInProject {
+  @MainActor func createNetWithAutomaticName () -> NetInProject {
   //--- Find a new net name
     let newNetName = self.findUniqueNetName ()
   //--- Find net class

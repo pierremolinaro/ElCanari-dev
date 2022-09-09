@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageSlavePad_issues (
+@MainActor func transient_PackageSlavePad_issues (
        _ self_xCenter : Int,           
        _ self_yCenter : Int,           
        _ self_width : Int,             

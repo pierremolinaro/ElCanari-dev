@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolPinInstanceInDevice_pinName (
+@MainActor func transient_SymbolPinInstanceInDevice_pinName (
        _ self_mType_mName : String?
 ) -> String {
 //--- START OF USER ZONE 2

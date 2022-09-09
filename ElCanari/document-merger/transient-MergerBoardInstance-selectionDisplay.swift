@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerBoardInstance_selectionDisplay (
+@MainActor func transient_MergerBoardInstance_selectionDisplay (
        _ self_instanceRect : CanariRect
 ) -> EBShape {
 //--- START OF USER ZONE 2

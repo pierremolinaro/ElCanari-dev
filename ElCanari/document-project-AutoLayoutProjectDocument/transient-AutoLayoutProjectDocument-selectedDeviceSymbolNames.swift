@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutProjectDocument_selectedDeviceSymbolNames (
+@MainActor func transient_AutoLayoutProjectDocument_selectedDeviceSymbolNames (
        _ self_projectDeviceController_selectedArray_all_symbolAndTypesNames : [DeviceInProject_symbolAndTypesNames]
 ) -> TwoStringArray {
 //--- START OF USER ZONE 2

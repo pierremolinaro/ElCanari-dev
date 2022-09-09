@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SheetInProject_connexionWarnings (
+@MainActor func transient_SheetInProject_connexionWarnings (
        _ self_issues : CanariIssueArray
 ) -> Int {
 //--- START OF USER ZONE 2

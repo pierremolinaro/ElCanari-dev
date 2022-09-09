@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutFontDocument_canDeleteCurrentCharacter (
+@MainActor func transient_AutoLayoutFontDocument_canDeleteCurrentCharacter (
        _ root_definedCharacters : DefinedCharactersInDevice
 ) -> Bool {
 //--- START OF USER ZONE 2

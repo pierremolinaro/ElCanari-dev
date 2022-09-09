@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_FontRoot_sampleStringBezierPath (
+@MainActor func transient_FontRoot_sampleStringBezierPath (
        _ self_nominalSize : Int,                
        _ self_characters_segmentArrayForDrawing : [FontCharacter_segmentArrayForDrawing],
        _ self_characters_advance : [FontCharacter_advance],

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardModel_layerConfigurationString (
+@MainActor func transient_BoardModel_layerConfigurationString (
        _ self_layerConfiguration : LayerConfiguration
 ) -> String {
 //--- START OF USER ZONE 2

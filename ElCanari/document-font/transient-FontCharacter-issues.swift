@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_FontCharacter_issues (
+@MainActor func transient_FontCharacter_issues (
        _ self_codePoint : Int,       
        _ self_advance : Int,         
        _ self_mWarnsWhenNoSegment : Bool,

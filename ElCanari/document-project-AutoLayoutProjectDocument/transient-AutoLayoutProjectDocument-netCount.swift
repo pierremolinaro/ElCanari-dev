@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutProjectDocument_netCount (
+@MainActor func transient_AutoLayoutProjectDocument_netCount (
        _ root_netsDescription : NetInfoArray
 ) -> Int {
 //--- START OF USER ZONE 2

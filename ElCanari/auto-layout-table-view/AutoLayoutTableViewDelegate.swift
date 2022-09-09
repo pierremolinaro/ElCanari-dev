@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol AutoLayoutTableViewDelegate : AnyObject {
+@MainActor protocol AutoLayoutTableViewDelegate : AnyObject {
 
   func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet)
   func indexesOfSelectedObjects () -> IndexSet

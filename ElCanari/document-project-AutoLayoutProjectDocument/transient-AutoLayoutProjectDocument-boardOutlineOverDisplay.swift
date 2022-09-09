@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutProjectDocument_boardOutlineOverDisplay (
+@MainActor func transient_AutoLayoutProjectDocument_boardOutlineOverDisplay (
        _ self_rastnetShape : EBShape,                             
        _ root_boardIssues : CanariIssueArray
 ) -> EBShape {

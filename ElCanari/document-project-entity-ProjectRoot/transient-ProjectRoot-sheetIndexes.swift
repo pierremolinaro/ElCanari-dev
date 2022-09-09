@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_sheetIndexes (
+@MainActor func transient_ProjectRoot_sheetIndexes (
        _ self_mSheets : [ObjectIndexProtocol]
 ) -> IntArray {
 //--- START OF USER ZONE 2

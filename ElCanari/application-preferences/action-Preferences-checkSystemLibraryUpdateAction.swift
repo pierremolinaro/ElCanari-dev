@@ -11,7 +11,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Preferences {
-  @objc func checkSystemLibraryUpdateAction (_ sender : NSObject?) {
+  @MainActor @objc func checkSystemLibraryUpdateAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     if let logTextView = g_Preferences?.mLibraryUpdateLogTextView {
 //      g_Preferences?.mCheckingForLibraryUpdateProgressIndicator?.startAnimation (nil)

@@ -11,7 +11,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Preferences {
-  @objc func checkForAppUpdateAction (_ sender : NSObject?) {
+  @MainActor @objc func checkForAppUpdateAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
         gApplicationDelegate?.checkForUpdatesAction (sender)
 //--- END OF USER ZONE 2

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NetInProject_netSchematicPointsInfo (
+@MainActor func transient_NetInProject_netSchematicPointsInfo (
        _ self_mPoints_netInfoForPoint : [PointInSchematic_netInfoForPoint]
 ) -> NetInfoPointArray {
 //--- START OF USER ZONE 2

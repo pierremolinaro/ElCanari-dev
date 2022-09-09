@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardConnector_viaDefaultHoleDiameter (
+@MainActor func transient_BoardConnector_viaDefaultHoleDiameter (
        _ self_mTracksP1_netClassViaHoleDiameter : [BoardTrack_netClassViaHoleDiameter],
        _ self_mTracksP2_netClassViaHoleDiameter : [BoardTrack_netClassViaHoleDiameter]
 ) -> Int {

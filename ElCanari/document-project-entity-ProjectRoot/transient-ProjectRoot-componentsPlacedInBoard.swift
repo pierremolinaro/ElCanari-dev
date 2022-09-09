@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_componentsPlacedInBoard (
+@MainActor func transient_ProjectRoot_componentsPlacedInBoard (
        _ self_mComponents_mNamePrefix : [ComponentInProject_mNamePrefix],
        _ self_mComponents_mNameIndex : [ComponentInProject_mNameIndex],
        _ self_mComponents_componentIsPlacedInBoard : [ComponentInProject_componentIsPlacedInBoard]

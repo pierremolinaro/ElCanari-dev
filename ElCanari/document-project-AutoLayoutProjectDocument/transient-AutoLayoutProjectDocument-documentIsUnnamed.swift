@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutProjectDocument_documentIsUnnamed (
+@MainActor func transient_AutoLayoutProjectDocument_documentIsUnnamed (
        _ self_documentFileName : String
 ) -> Bool {
 //--- START OF USER ZONE 2

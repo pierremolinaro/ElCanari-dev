@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardObject_packageDrawingWidthMultpliedByTenForBoard (
+@MainActor func transient_BoardObject_packageDrawingWidthMultpliedByTenForBoard (
        _ self_mRoot_packageDrawingWidthMultpliedByTenForBoard : Int?
 ) -> Int {
 //--- START OF USER ZONE 2

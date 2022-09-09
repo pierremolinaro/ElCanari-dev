@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutDeviceDocument_issues (
+@MainActor func transient_AutoLayoutDeviceDocument_issues (
        _ root_issues : CanariIssueArray,        
        _ self_documentFileName : String
 ) -> CanariIssueArray {

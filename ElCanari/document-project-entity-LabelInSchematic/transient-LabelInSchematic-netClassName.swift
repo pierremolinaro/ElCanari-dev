@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_LabelInSchematic_netClassName (
+@MainActor func transient_LabelInSchematic_netClassName (
        _ self_mPoint_netClassName : String?
 ) -> String {
 //--- START OF USER ZONE 2

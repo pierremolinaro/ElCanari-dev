@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_FontRoot_sampleStringBezierPathDescent (
+@MainActor func transient_FontRoot_sampleStringBezierPathDescent (
        _ self_sampleStringBezierPath : NSBezierPath
 ) -> String {
 //--- START OF USER ZONE 2

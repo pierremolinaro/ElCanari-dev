@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageInDevice_documentSize (
+@MainActor func transient_PackageInDevice_documentSize (
        _ self_mFileData : Data
 ) -> Int {
 //--- START OF USER ZONE 2

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageInDevice_selectionDisplay (
+@MainActor func transient_PackageInDevice_selectionDisplay (
        _ self_mMasterPads_padNumberDisplay : [MasterPadInDevice_padNumberDisplay],
        _ self_mRoot_mShowPackagePadNumbers : Bool?,
        _ self_mRoot_mShowPackages : Bool?,       

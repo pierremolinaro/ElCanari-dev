@@ -87,11 +87,11 @@ fileprivate final class InternalImageIntValueTableColumn : AutoLayoutTableColumn
     let hStack = AutoLayoutHorizontalStackView ()
 
     let imageView = AutoLayoutStaticImageView (image: value.1)
-    hStack.appendView (imageView)
+    _ = hStack.appendView (imageView)
 
     let textField = NSTextField (frame: .zero)
     textField.translatesAutoresizingMaskIntoConstraints = false
-    hStack.appendView (textField)
+    _ = hStack.appendView (textField)
 
     textField.isBezeled = false
     textField.isBordered = false
@@ -108,7 +108,7 @@ fileprivate final class InternalImageIntValueTableColumn : AutoLayoutTableColumn
       textField.integerValue = v
     }
 
-    hStack.appendFlexibleSpace ()
+    _ = hStack.appendFlexibleSpace ()
     return hStack
   }
 

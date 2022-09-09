@@ -14,7 +14,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_FontCharacter_segmentArrayForDrawing (
+@MainActor func transient_FontCharacter_segmentArrayForDrawing (
        _ self_segments_x1 : [SegmentForFontCharacter_x1],
        _ self_segments_y1 : [SegmentForFontCharacter_y1],
        _ self_segments_x2 : [SegmentForFontCharacter_x2],

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_netWarningCount (
+@MainActor func transient_ProjectRoot_netWarningCount (
        _ self_mNetClasses_netWarningCount : [NetClassInProject_netWarningCount]
 ) -> Int {
 //--- START OF USER ZONE 2

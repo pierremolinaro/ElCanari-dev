@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ArtworkFileGenerationParameters_emptyFileExtensionImage (
+@MainActor func transient_ArtworkFileGenerationParameters_emptyFileExtensionImage (
        _ self_fileExtension : String
 ) -> NSImage {
 //--- START OF USER ZONE 2

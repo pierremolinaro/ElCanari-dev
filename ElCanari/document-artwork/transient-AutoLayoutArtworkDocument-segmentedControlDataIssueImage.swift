@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutArtworkDocument_segmentedControlDataIssueImage (
+@MainActor func transient_AutoLayoutArtworkDocument_segmentedControlDataIssueImage (
        _ root_fileGenerationParameterArray_fileExtension : [ArtworkFileGenerationParameters_fileExtension],
        _ root_fileGenerationParameterArray_name : [ArtworkFileGenerationParameters_name],
        _ root_hasDataWarning : Bool,                                     

@@ -321,11 +321,11 @@ import Cocoa
           .addPage (title: "Board", tooltip: "Board Description", pageView: self.mBoardPage)
           .addPage (title: "Product", tooltip: "Product Description", pageView: self.mProductPage)
           .bind_selectedPage (self.rootObject.selectedPageIndex_property)
-        view_0_0.appendView (view_0_0_0)
+        _ = view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutStaticLabel (title: "Page", bold: false, size: .small, alignment: .center)
-        view_0_0.appendView (view_0_0_1)
+        _ = view_0_0.appendView (view_0_0_1)
       }
-      view_0.appendView (view_0_0)
+      _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutVerticalStackView ()
         .setCenterAlignment ()
       do{
@@ -335,37 +335,37 @@ import Cocoa
             target: self,
             selector: #selector (AutoLayoutMergerDocument.showPrefsForSettingMergerDisplayAction (_:))
           )
-        view_0_1.appendView (view_0_1_0)
+        _ = view_0_1.appendView (view_0_1_0)
         let view_0_1_1 = AutoLayoutStaticLabel (title: "for Model and Board Views", bold: false, size: .small, alignment: .center)
-        view_0_1.appendView (view_0_1_1)
+        _ = view_0_1.appendView (view_0_1_1)
       }
-      view_0.appendView (view_0_1)
+      _ = view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_2)
+      _ = view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutVerticalStackView ()
       do{
         let view_0_3_0 = AutoLayoutHorizontalStackView ()
         do{
           let view_0_3_0_0 = AutoLayoutFlexibleSpace ()
-          view_0_3_0.appendView (view_0_3_0_0)
+          _ = view_0_3_0.appendView (view_0_3_0_0)
           let view_0_3_0_1 = AutoLayoutImageObserverView (size: .regular)
             .bind_image (self.statusImage_property)
             .bind_tooltip (self.statusMessage_property)
-          view_0_3_0.appendView (view_0_3_0_1)
+          _ = view_0_3_0.appendView (view_0_3_0_1)
           let view_0_3_0_2 = AutoLayoutFlexibleSpace ()
-          view_0_3_0.appendView (view_0_3_0_2)
+          _ = view_0_3_0.appendView (view_0_3_0_2)
         }
-        view_0_3.appendView (view_0_3_0)
+        _ = view_0_3.appendView (view_0_3_0)
         let view_0_3_1 = AutoLayoutStaticLabel (title: "Status", bold: false, size: .small, alignment: .center)
-        view_0_3.appendView (view_0_3_1)
+        _ = view_0_3.appendView (view_0_3_1)
       }
-      view_0.appendView (view_0_3)
+      _ = view_0.appendView (view_0_3)
     }
-    vStackView.appendView (view_0)
+    _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    vStackView.appendView (view_1)
+    _ = vStackView.appendView (view_1)
     let view_2 = mPageMasterView
-    vStackView.appendView (view_2)
+    _ = vStackView.appendView (view_2)
     return vStackView
   } ()
 
@@ -381,23 +381,23 @@ import Cocoa
       .bind_hidden (.not (.prop (self.rootObject.showDisplaySettingView_property)))
     do{
       let view_0_0 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_64 ())
-      view_0.appendView (view_0_0)
+      _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_1)
+      _ = view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutHorizontalStackView ()
       do{
         let view_0_2_0 = AutoLayoutFlexibleSpace ()
-        view_0_2.appendView (view_0_2_0)
+        _ = view_0_2.appendView (view_0_2_0)
         let view_0_2_1 = AutoLayoutButton (title: "Done", size: .regular)
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutMergerDocument.dismissDisplaySettingView (_:))
           )
-        view_0_2.appendView (view_0_2_1)
+        _ = view_0_2.appendView (view_0_2_1)
       }
-      view_0.appendView (view_0_2)
+      _ = view_0.appendView (view_0_2)
     }
-    hStackView.appendView (view_0)
+    _ = hStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView ()
       .set (margins: 8)
       .set (width: 250)
@@ -411,7 +411,7 @@ import Cocoa
             target: self,
             selector: #selector (AutoLayoutMergerDocument.addBoardModelAction (_:))
           )
-        view_1_0.appendView (view_1_0_0)
+        _ = view_1_0.appendView (view_1_0_0)
         let view_1_0_1 = AutoLayoutButton (title: "Update…", size: .small)
           .expandableWidth ()
           .bind_enabled (.intcmp (.prop (self.mBoardModelController.selectedArray_property.count_property), .gt, .literalInt (0)))
@@ -419,7 +419,7 @@ import Cocoa
             target: self,
             selector: #selector (AutoLayoutMergerDocument.updateBoardModelAction (_:))
           )
-        view_1_0.appendView (view_1_0_1)
+        _ = view_1_0.appendView (view_1_0_1)
         let view_1_0_2 = AutoLayoutButton (title: "-", size: .small)
           .set (width: 40)
           .bind_enabled (.boolcmp (.intcmp (.prop (self.mBoardModelController.selectedArray_property.count_property), .gt, .literalInt (0)), .and, .intcmp (.prop (self.mBoardModelSelection.instanceCount_property), .eq, .literalInt (0))))
@@ -427,13 +427,13 @@ import Cocoa
             target: mBoardModelController,
             selector: #selector (Controller_AutoLayoutMergerDocument_mBoardModelController.remove (_:))
           )
-        view_1_0.appendView (view_1_0_2)
+        _ = view_1_0.appendView (view_1_0_2)
       }
-      view_1.appendView (view_1_0)
+      _ = view_1.appendView (view_1_0)
       let view_1_1 = AutoLayoutTableView (size: .regular, addControlButtons: false)
         .noHeaderView ()
       self.mBoardModelController.bind_tableView (view_1_1)
-      view_1.appendView (view_1_1)
+      _ = view_1.appendView (view_1_1)
       let view_1_2 = AutoLayoutGridView2 ()
         .addFirstBaseLineAligned (left: self.computeImplicitView_65 (), right: self.computeImplicitView_66 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_67 (), right: self.computeImplicitView_68 ())
@@ -442,13 +442,13 @@ import Cocoa
         .addFirstBaseLineAligned (left: self.computeImplicitView_73 (), right: self.computeImplicitView_74 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_75 (), right: self.computeImplicitView_76 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_77 (), right: self.computeImplicitView_78 ())
-      view_1.appendView (view_1_2)
+      _ = view_1.appendView (view_1_2)
       let view_1_3 = AutoLayoutFlexibleSpace ()
-      view_1.appendView (view_1_3)
+      _ = view_1.appendView (view_1_3)
     }
-    hStackView.appendView (view_1)
+    _ = hStackView.appendView (view_1)
     let view_2 = AutoLayoutHorizontalStackView.VerticalSeparator ()
-    hStackView.appendView (view_2)
+    _ = hStackView.appendView (view_2)
     let view_3 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
       .bind_zoom (self.mBoardModelSelection.zoom_property)
       .bind_horizontalFlip (preferences_mergerModelViewHorizontalFlip_property)
@@ -457,26 +457,26 @@ import Cocoa
       .bind_xPlacardUnit (self.mBoardModelSelection.modelWidthUnit_property)
       .bind_yPlacardUnit (self.mBoardModelSelection.modelHeightUnit_property)
       .bind_hidden (.intcmp (.prop (self.rootObject.boardModels_property.count_property), .eq, .literalInt (0)))
-    hStackView.appendView (view_3)
+    _ = hStackView.appendView (view_3)
     let view_4 = AutoLayoutVerticalStackView ()
     do{
       let view_4_0 = AutoLayoutFlexibleSpace ()
-      view_4.appendView (view_4_0)
+      _ = view_4.appendView (view_4_0)
       let view_4_1 = AutoLayoutHorizontalStackView ()
       do{
         let view_4_1_0 = AutoLayoutFlexibleSpace ()
-        view_4_1.appendView (view_4_1_0)
+        _ = view_4_1.appendView (view_4_1_0)
         let view_4_1_1 = AutoLayoutStaticLabel (title: "No Model", bold: true, size: .regular, alignment: .center)
           .bind_hidden (.intcmp (.prop (self.rootObject.boardModels_property.count_property), .gt, .literalInt (0)))
-        view_4_1.appendView (view_4_1_1)
+        _ = view_4_1.appendView (view_4_1_1)
         let view_4_1_2 = AutoLayoutFlexibleSpace ()
-        view_4_1.appendView (view_4_1_2)
+        _ = view_4_1.appendView (view_4_1_2)
       }
-      view_4.appendView (view_4_1)
+      _ = view_4.appendView (view_4_1)
       let view_4_2 = AutoLayoutFlexibleSpace ()
-      view_4.appendView (view_4_2)
+      _ = view_4.appendView (view_4_2)
     }
-    hStackView.appendView (view_4)
+    _ = hStackView.appendView (view_4)
     return hStackView
   } ()
 
@@ -501,23 +501,23 @@ import Cocoa
       .bind_hidden (.not (.prop (self.rootObject.showDisplaySettingView_property)))
     do{
       let view_0_0 = AutoLayoutVerticalScrollView (content: self.computeImplicitView_143 ())
-      view_0.appendView (view_0_0)
+      _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_1)
+      _ = view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutHorizontalStackView ()
       do{
         let view_0_2_0 = AutoLayoutFlexibleSpace ()
-        view_0_2.appendView (view_0_2_0)
+        _ = view_0_2.appendView (view_0_2_0)
         let view_0_2_1 = AutoLayoutButton (title: "Done", size: .regular)
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutMergerDocument.dismissDisplaySettingView (_:))
           )
-        view_0_2.appendView (view_0_2_1)
+        _ = view_0_2.appendView (view_0_2_1)
       }
-      view_0.appendView (view_0_2)
+      _ = view_0.appendView (view_0_2)
     }
-    hStackView.appendView (view_0)
+    _ = hStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView ()
       .set (margins: 8)
       .set (width: 250)
@@ -532,13 +532,13 @@ import Cocoa
         .bind_segmentTitle (self.boardDispositionStatusTitle_property, segmentIndex:1)
       self.mBoardInspectorSegmentedControl = view_1_0 // Outlet
       self.configure_boardPageSegmentedControl (view_1_0) // Configurator
-      view_1.appendView (view_1_0)
+      _ = view_1.appendView (view_1_0)
       let view_1_1 = mBoardBaseInspectorView
-      view_1.appendView (view_1_1)
+      _ = view_1.appendView (view_1_1)
     }
-    hStackView.appendView (view_1)
+    _ = hStackView.appendView (view_1)
     let view_2 = AutoLayoutHorizontalStackView.VerticalSeparator ()
-    hStackView.appendView (view_2)
+    _ = hStackView.appendView (view_2)
     let view_3 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
       .bind_zoom (self.rootObject.zoom_property)
       .bind_horizontalFlip (preferences_mergerBoardViewHorizontalFlip_property)
@@ -551,7 +551,7 @@ import Cocoa
       .bind_graphic_controller (self.mBoardInstanceController)
     self.mComposedBoardGraphicView = view_3 // Outlet
     self.configure_boardGraphicView (view_3) // Configurator
-    hStackView.appendView (view_3)
+    _ = hStackView.appendView (view_3)
     return hStackView
   } ()
 
@@ -566,41 +566,41 @@ import Cocoa
       let view_0_0 = AutoLayoutVerticalStackView ()
       do{
         let view_0_0_0 = AutoLayoutStaticLabel (title: "Add Model", bold: true, size: .small, alignment: .left)
-        view_0_0.appendView (view_0_0_0)
+        _ = view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutHelpButton (size: .small)
           .bind_run (
             target: self,
             selector: #selector (AutoLayoutMergerDocument.showBoardHelpAction (_:))
           )
-        view_0_0.appendView (view_0_0_1)
+        _ = view_0_0.appendView (view_0_0_1)
         let view_0_0_2 = AutoLayoutEnumPopUpButton (titles: QuadrantRotation.degreesTitles (), size: .small)
           .expandableWidth ()
           .bind_selectedIndex (self.rootObject.modelInsertionRotation_property)
-        view_0_0.appendView (view_0_0_2)
+        _ = view_0_0.appendView (view_0_0_2)
       }
-      view_0.appendView (view_0_0)
+      _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutCanariDragSourceTableView ()
         .bind_models (self.rootObject.modelNames_property)
       self.mModelDragSourceTableView = view_0_1 // Outlet
       self.configure_boardModelDragSourceTableView (view_0_1) // Configurator
-      view_0.appendView (view_0_1)
+      _ = view_0.appendView (view_0_1)
     }
-    vStackView.appendView (view_0)
+    _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutStaticLabel (title: "Board", bold: true, size: .small, alignment: .left)
-    vStackView.appendView (view_1)
+    _ = vStackView.appendView (view_1)
     let view_2 = AutoLayoutHorizontalStackView ()
     do{
       let view_2_0 = AutoLayoutCheckbox (title: "Automatic Size", size: .small)
         .bind_value (self.rootObject.automaticBoardSize_property)
-      view_2.appendView (view_2_0)
+      _ = view_2.appendView (view_2_0)
       let view_2_1 = AutoLayoutFlexibleSpace ()
-      view_2.appendView (view_2_1)
+      _ = view_2.appendView (view_2_1)
       let view_2_2 = AutoLayoutCheckbox (title: "Limits Overlap", size: .small)
         .bind_value (self.rootObject.overlapingArrangment_property)
         .bind_enabled (.intcmp (.prop (self.rootObject.boardInstances_property.count_property), .gt, .literalInt (0)))
-      view_2.appendView (view_2_2)
+      _ = view_2.appendView (view_2_2)
     }
-    vStackView.appendView (view_2)
+    _ = vStackView.appendView (view_2)
     let view_3 = AutoLayoutGridView2 ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_144 (), right: self.computeImplicitView_145 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_146 (), right: self.computeImplicitView_147 ())
@@ -614,7 +614,7 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_159 (), right: self.computeImplicitView_160 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_161 (), right: self.computeImplicitView_162 ())
       .add (single: self.computeImplicitView_163 ())
-    vStackView.appendView (view_3)
+    _ = vStackView.appendView (view_3)
     let view_4 = AutoLayoutHorizontalStackView ()
       .set (margins: 0)
       .equalWidth ()
@@ -623,11 +623,11 @@ import Cocoa
         .set (margins: 0)
       do{
         let view_4_0_0 = AutoLayoutStaticLabel (title: "Move Selection", bold: true, size: .small, alignment: .center)
-        view_4_0.appendView (view_4_0_0)
+        _ = view_4_0.appendView (view_4_0_0)
         let view_4_0_1 = AutoLayoutHorizontalStackView ()
         do{
           let view_4_0_1_0 = AutoLayoutFlexibleSpace ()
-          view_4_0_1.appendView (view_4_0_1_0)
+          _ = view_4_0_1.appendView (view_4_0_1_0)
           let view_4_0_1_1 = AutoLayoutButton (title: "Up", size: .small)
             .setTitleAsUpArrow ()
             .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
@@ -635,15 +635,15 @@ import Cocoa
               target: self,
               selector: #selector (AutoLayoutMergerDocument.moveSelectionUpAction (_:))
             )
-          view_4_0_1.appendView (view_4_0_1_1)
+          _ = view_4_0_1.appendView (view_4_0_1_1)
           let view_4_0_1_2 = AutoLayoutFlexibleSpace ()
-          view_4_0_1.appendView (view_4_0_1_2)
+          _ = view_4_0_1.appendView (view_4_0_1_2)
         }
-        view_4_0.appendView (view_4_0_1)
+        _ = view_4_0.appendView (view_4_0_1)
         let view_4_0_2 = AutoLayoutHorizontalStackView ()
         do{
           let view_4_0_2_0 = AutoLayoutFlexibleSpace ()
-          view_4_0_2.appendView (view_4_0_2_0)
+          _ = view_4_0_2.appendView (view_4_0_2_0)
           let view_4_0_2_1 = AutoLayoutButton (title: "Left", size: .small)
             .setTitleAsLeftArrow ()
             .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
@@ -651,7 +651,7 @@ import Cocoa
               target: self,
               selector: #selector (AutoLayoutMergerDocument.moveSelectionLeftAction (_:))
             )
-          view_4_0_2.appendView (view_4_0_2_1)
+          _ = view_4_0_2.appendView (view_4_0_2_1)
           let view_4_0_2_2 = AutoLayoutButton (title: "Right", size: .small)
             .setTitleAsRightArrow ()
             .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
@@ -659,15 +659,15 @@ import Cocoa
               target: self,
               selector: #selector (AutoLayoutMergerDocument.moveSelectionRightAction (_:))
             )
-          view_4_0_2.appendView (view_4_0_2_2)
+          _ = view_4_0_2.appendView (view_4_0_2_2)
           let view_4_0_2_3 = AutoLayoutFlexibleSpace ()
-          view_4_0_2.appendView (view_4_0_2_3)
+          _ = view_4_0_2.appendView (view_4_0_2_3)
         }
-        view_4_0.appendView (view_4_0_2)
+        _ = view_4_0.appendView (view_4_0_2)
         let view_4_0_3 = AutoLayoutHorizontalStackView ()
         do{
           let view_4_0_3_0 = AutoLayoutFlexibleSpace ()
-          view_4_0_3.appendView (view_4_0_3_0)
+          _ = view_4_0_3.appendView (view_4_0_3_0)
           let view_4_0_3_1 = AutoLayoutButton (title: "Down", size: .small)
             .setTitleAsDownArrow ()
             .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
@@ -675,22 +675,22 @@ import Cocoa
               target: self,
               selector: #selector (AutoLayoutMergerDocument.moveSelectionDownAction (_:))
             )
-          view_4_0_3.appendView (view_4_0_3_1)
+          _ = view_4_0_3.appendView (view_4_0_3_1)
           let view_4_0_3_2 = AutoLayoutFlexibleSpace ()
-          view_4_0_3.appendView (view_4_0_3_2)
+          _ = view_4_0_3.appendView (view_4_0_3_2)
         }
-        view_4_0.appendView (view_4_0_3)
+        _ = view_4_0.appendView (view_4_0_3)
       }
-      view_4.appendView (view_4_0)
+      _ = view_4.appendView (view_4_0)
       let view_4_1 = AutoLayoutVerticalStackView ()
         .set (margins: 0)
       do{
         let view_4_1_0 = AutoLayoutStaticLabel (title: "Stack Selection", bold: true, size: .small, alignment: .center)
-        view_4_1.appendView (view_4_1_0)
+        _ = view_4_1.appendView (view_4_1_0)
         let view_4_1_1 = AutoLayoutHorizontalStackView ()
         do{
           let view_4_1_1_0 = AutoLayoutFlexibleSpace ()
-          view_4_1_1.appendView (view_4_1_1_0)
+          _ = view_4_1_1.appendView (view_4_1_1_0)
           let view_4_1_1_1 = AutoLayoutButton (title: "Up", size: .small)
             .setTitleAsUpArrow ()
             .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
@@ -698,15 +698,15 @@ import Cocoa
               target: self,
               selector: #selector (AutoLayoutMergerDocument.stackSelectionUpAction (_:))
             )
-          view_4_1_1.appendView (view_4_1_1_1)
+          _ = view_4_1_1.appendView (view_4_1_1_1)
           let view_4_1_1_2 = AutoLayoutFlexibleSpace ()
-          view_4_1_1.appendView (view_4_1_1_2)
+          _ = view_4_1_1.appendView (view_4_1_1_2)
         }
-        view_4_1.appendView (view_4_1_1)
+        _ = view_4_1.appendView (view_4_1_1)
         let view_4_1_2 = AutoLayoutHorizontalStackView ()
         do{
           let view_4_1_2_0 = AutoLayoutFlexibleSpace ()
-          view_4_1_2.appendView (view_4_1_2_0)
+          _ = view_4_1_2.appendView (view_4_1_2_0)
           let view_4_1_2_1 = AutoLayoutButton (title: "Left", size: .small)
             .setTitleAsLeftArrow ()
             .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
@@ -714,7 +714,7 @@ import Cocoa
               target: self,
               selector: #selector (AutoLayoutMergerDocument.stackSelectionLeftAction (_:))
             )
-          view_4_1_2.appendView (view_4_1_2_1)
+          _ = view_4_1_2.appendView (view_4_1_2_1)
           let view_4_1_2_2 = AutoLayoutButton (title: "Right", size: .small)
             .setTitleAsRightArrow ()
             .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
@@ -722,15 +722,15 @@ import Cocoa
               target: self,
               selector: #selector (AutoLayoutMergerDocument.stackSelectionRightAction (_:))
             )
-          view_4_1_2.appendView (view_4_1_2_2)
+          _ = view_4_1_2.appendView (view_4_1_2_2)
           let view_4_1_2_3 = AutoLayoutFlexibleSpace ()
-          view_4_1_2.appendView (view_4_1_2_3)
+          _ = view_4_1_2.appendView (view_4_1_2_3)
         }
-        view_4_1.appendView (view_4_1_2)
+        _ = view_4_1.appendView (view_4_1_2)
         let view_4_1_3 = AutoLayoutHorizontalStackView ()
         do{
           let view_4_1_3_0 = AutoLayoutFlexibleSpace ()
-          view_4_1_3.appendView (view_4_1_3_0)
+          _ = view_4_1_3.appendView (view_4_1_3_0)
           let view_4_1_3_1 = AutoLayoutButton (title: "Down", size: .small)
             .setTitleAsDownArrow ()
             .bind_enabled (.intcmp (.prop (self.mBoardInstanceController.selectedArray_property.count_property), .gt, .literalInt (0)))
@@ -738,17 +738,17 @@ import Cocoa
               target: self,
               selector: #selector (AutoLayoutMergerDocument.stackSelectionDownAction (_:))
             )
-          view_4_1_3.appendView (view_4_1_3_1)
+          _ = view_4_1_3.appendView (view_4_1_3_1)
           let view_4_1_3_2 = AutoLayoutFlexibleSpace ()
-          view_4_1_3.appendView (view_4_1_3_2)
+          _ = view_4_1_3.appendView (view_4_1_3_2)
         }
-        view_4_1.appendView (view_4_1_3)
+        _ = view_4_1.appendView (view_4_1_3)
       }
-      view_4.appendView (view_4_1)
+      _ = view_4.appendView (view_4_1)
     }
-    vStackView.appendView (view_4)
+    _ = vStackView.appendView (view_4)
     let view_5 = AutoLayoutFlexibleSpace ()
-    vStackView.appendView (view_5)
+    _ = vStackView.appendView (view_5)
     return vStackView
   } ()
 
@@ -761,11 +761,11 @@ import Cocoa
     let view_0 = AutoLayoutLabel (bold: true, size: .small)
       .expandableWidth ()
       .bind_title (self.statusMessage_property)
-    vStackView.appendView (view_0)
+    _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutCanariIssueTableView (hasHideIssueButton: true)
       .bind_issues (self.issues_property)
     self.mBoardIssueTableView = view_1 // Outlet
-    vStackView.appendView (view_1)
+    _ = vStackView.appendView (view_1)
     return vStackView
   } ()
 
@@ -787,7 +787,7 @@ import Cocoa
             target: self,
             selector: #selector (AutoLayoutMergerDocument.importArtworkAction (_:))
           )
-        view_0_0.appendView (view_0_0_0)
+        _ = view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutButton (title: "Detach Artwork", size: .regular)
           .expandableWidth ()
           .bind_hidden (.prop (self.rootObject.mArtwork_none))
@@ -795,12 +795,12 @@ import Cocoa
             target: self,
             selector: #selector (AutoLayoutMergerDocument.detachArtworkAction (_:))
           )
-        view_0_0.appendView (view_0_0_1)
+        _ = view_0_0.appendView (view_0_0_1)
         let view_0_0_2 = AutoLayoutLabel (bold: true, size: .regular)
           .expandableWidth ()
           .set (alignment: .center)
           .bind_title (self.rootObject.mArtworkName_property)
-        view_0_0.appendView (view_0_0_2)
+        _ = view_0_0.appendView (view_0_0_2)
         let view_0_0_3 = AutoLayoutButton (title: "Generate Files", size: .regular)
           .expandableWidth ()
           .bind_enabled (.boolcmp (.boolcmp (.not (.prop (self.rootObject.mArtwork_none)), .and, .intcmp (.prop (self.rootObject.boardInstances_property.count_property), .gt, .literalInt (0))), .and, .not (.prop (self.documentIsUnnamed_property))))
@@ -808,55 +808,55 @@ import Cocoa
             target: self,
             selector: #selector (AutoLayoutMergerDocument.generateProductFilesAction (_:))
           )
-        view_0_0.appendView (view_0_0_3)
+        _ = view_0_0.appendView (view_0_0_3)
       }
-      view_0.appendView (view_0_0)
+      _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutVerticalStackView ()
       do{
         let view_0_1_0 = AutoLayoutLabel (bold: true, size: .regular)
           .set (alignment: .left)
           .expandableWidth ()
           .bind_title (self.documentFileShouldBeRenamedErrorMessage_property)
-        view_0_1.appendView (view_0_1_0)
+        _ = view_0_1.appendView (view_0_1_0)
         let view_0_1_1 = AutoLayoutTextObserverView ()
           .expandableWidth ()
           .setNoBackground ()
           .setNoVerticalScroller ()
           .setNoHorizontalScroller ()
           .bind_observedValue (self.incorrectDocumentFileDetailedErrorMessage_property)
-        view_0_1.appendView (view_0_1_1)
+        _ = view_0_1.appendView (view_0_1_1)
         let view_0_1_2 = AutoLayoutFlexibleSpace ()
-        view_0_1.appendView (view_0_1_2)
+        _ = view_0_1.appendView (view_0_1_2)
       }
-      view_0.appendView (view_0_1)
+      _ = view_0.appendView (view_0_1)
     }
-    vStackView.appendView (view_0)
+    _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
       .bind_hidden (.not (.prop (self.rootObject.mArtwork_none)))
     do{
       let view_1_0 = AutoLayoutFlexibleSpace ()
-      view_1.appendView (view_1_0)
+      _ = view_1.appendView (view_1_0)
       let view_1_1 = AutoLayoutVerticalStackView ()
       do{
         let view_1_1_0 = AutoLayoutFlexibleSpace ()
-        view_1_1.appendView (view_1_1_0)
+        _ = view_1_1.appendView (view_1_1_0)
         let view_1_1_1 = AutoLayoutStaticLabel (title: "No Artwork", bold: true, size: .regular, alignment: .center)
-        view_1_1.appendView (view_1_1_1)
+        _ = view_1_1.appendView (view_1_1_1)
         let view_1_1_2 = AutoLayoutFlexibleSpace ()
-        view_1_1.appendView (view_1_1_2)
+        _ = view_1_1.appendView (view_1_1_2)
       }
-      view_1.appendView (view_1_1)
+      _ = view_1.appendView (view_1_1)
       let view_1_2 = AutoLayoutFlexibleSpace ()
-      view_1.appendView (view_1_2)
+      _ = view_1.appendView (view_1_2)
     }
-    vStackView.appendView (view_1)
+    _ = vStackView.appendView (view_1)
     let view_2 = AutoLayoutVerticalStackView ()
       .bind_hidden (.prop (self.rootObject.mArtwork_none))
     do{
       let view_2_0 = AutoLayoutHorizontalStackView ()
       do{
         let view_2_0_0 = AutoLayoutFlexibleSpace ()
-        view_2_0.appendView (view_2_0_0)
+        _ = view_2_0.appendView (view_2_0_0)
         let view_2_0_1 = AutoLayoutSegmentedControlWithPages (documentView: self.mProductMasterView, equalWidth: true, size: .regular)
           .addPage (title: "Artwork Description", tooltip: "", pageView: self.mArtworkDescriptionPage)
           .addPage (title: "Artwork Minima", tooltip: "", pageView: self.mArtworkMinimaPage)
@@ -864,15 +864,15 @@ import Cocoa
           .addPage (title: "PDF Settings", tooltip: "", pageView: self.mPDFSettingsPage)
           .addPage (title: "Generation Log", tooltip: "", pageView: self.mGenerationLogPage)
         self.mProductPageSegmentedControl = view_2_0_1 // Outlet
-        view_2_0.appendView (view_2_0_1)
+        _ = view_2_0.appendView (view_2_0_1)
         let view_2_0_2 = AutoLayoutFlexibleSpace ()
-        view_2_0.appendView (view_2_0_2)
+        _ = view_2_0.appendView (view_2_0_2)
       }
-      view_2.appendView (view_2_0)
+      _ = view_2.appendView (view_2_0)
       let view_2_1 = mProductMasterView
-      view_2.appendView (view_2_1)
+      _ = view_2.appendView (view_2_1)
     }
-    vStackView.appendView (view_2)
+    _ = vStackView.appendView (view_2)
     return vStackView
   } ()
 
@@ -895,7 +895,7 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_164 (), right: self.computeImplicitView_165 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_166 (), right: self.computeImplicitView_167 ())
       .addCenterYAligned (left: self.computeImplicitView_168 (), right: self.computeImplicitView_169 ())
-    vStackView.appendView (view_0)
+    _ = vStackView.appendView (view_0)
     return vStackView
   } ()
 
@@ -913,19 +913,19 @@ import Cocoa
         .setFirstBaselineAlignment ()
       do{
         let view_0_0_0 = AutoLayoutStaticLabel (title: "Drill File Extension", bold: false, size: .small, alignment: .center)
-        view_0_0.appendView (view_0_0_0)
+        _ = view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutTextField (minWidth: 56, size: .small)
           .bind_value (self.rootObject.drillDataFileExtension_property, sendContinously:true)
-        view_0_0.appendView (view_0_0_1)
+        _ = view_0_0.appendView (view_0_0_1)
       }
-      view_0.appendView (view_0_0)
+      _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutImageObserverView (size: .small)
         .bind_image (self.emptyDrillFileExtensionImage_property)
-      view_0.appendView (view_0_1)
+      _ = view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_2)
+      _ = view_0.appendView (view_0_2)
     }
-    vStackView.appendView (view_0)
+    _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
       .set (leftMargin: 8)
       .set (rightMargin: 8)
@@ -935,14 +935,14 @@ import Cocoa
       do{
         let view_1_0_0 = AutoLayoutLabel (bold: true, size: .small)
           .bind_title (self.generatedFileCountString_property)
-        view_1_0.appendView (view_1_0_0)
+        _ = view_1_0.appendView (view_1_0_0)
         let view_1_0_1 = AutoLayoutTableView (size: .small, addControlButtons: true)
         self.mDataController.bind_tableView (view_1_0_1)
-        view_1_0.appendView (view_1_0_1)
+        _ = view_1_0.appendView (view_1_0_1)
       }
-      view_1.appendView (view_1_0)
+      _ = view_1.appendView (view_1_0)
       let view_1_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
-      view_1.appendView (view_1_1)
+      _ = view_1.appendView (view_1_1)
       let view_1_2 = AutoLayoutVerticalStackView ()
         .set (topMargin: 8)
       do{
@@ -952,70 +952,70 @@ import Cocoa
             .setFirstBaselineAlignment ()
           do{
             let view_1_2_0_0_0 = AutoLayoutStaticLabel (title: "File Extension", bold: true, size: .small, alignment: .center)
-            view_1_2_0_0.appendView (view_1_2_0_0_0)
+            _ = view_1_2_0_0.appendView (view_1_2_0_0_0)
             let view_1_2_0_0_1 = AutoLayoutTextField (minWidth: 56, size: .small)
               .bind_value (self.mDataSelection.fileExtension_property, sendContinously:true)
-            view_1_2_0_0.appendView (view_1_2_0_0_1)
+            _ = view_1_2_0_0.appendView (view_1_2_0_0_1)
           }
-          view_1_2_0.appendView (view_1_2_0_0)
+          _ = view_1_2_0.appendView (view_1_2_0_0)
           let view_1_2_0_1 = AutoLayoutImageObserverView (size: .small)
             .bind_image (self.mDataSelection.emptyFileExtensionImage_property)
-          view_1_2_0.appendView (view_1_2_0_1)
+          _ = view_1_2_0.appendView (view_1_2_0_1)
           let view_1_2_0_2 = AutoLayoutFlexibleSpace ()
-          view_1_2_0.appendView (view_1_2_0_2)
+          _ = view_1_2_0.appendView (view_1_2_0_2)
           let view_1_2_0_3 = AutoLayoutStaticLabel (title: "Empty Data File", bold: true, size: .small, alignment: .center)
             .setOrangeTextColor ()
             .bind_hidden (.not (.prop (self.mDataSelection.hasNoData_property)))
-          view_1_2_0.appendView (view_1_2_0_3)
+          _ = view_1_2_0.appendView (view_1_2_0_3)
         }
-        view_1_2.appendView (view_1_2_0)
+        _ = view_1_2.appendView (view_1_2_0)
         let view_1_2_1 = AutoLayoutFlexibleSpace ()
-        view_1_2.appendView (view_1_2_1)
+        _ = view_1_2.appendView (view_1_2_1)
         let view_1_2_2 = AutoLayoutStaticLabel (title: "Front Side Elements", bold: true, size: .small, alignment: .left)
-        view_1_2.appendView (view_1_2_2)
+        _ = view_1_2.appendView (view_1_2_2)
         let view_1_2_3 = AutoLayoutHorizontalStackView ()
         do{
           let view_1_2_3_0 = AutoLayoutGridView2 ()
             .set (leftMargin: 20)
             .addFirstBaseLineAligned (left: self.computeImplicitView_170 (), right: self.computeImplicitView_171 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_172 (), right: self.computeImplicitView_173 ())
-          view_1_2_3.appendView (view_1_2_3_0)
+          _ = view_1_2_3.appendView (view_1_2_3_0)
           let view_1_2_3_1 = AutoLayoutFlexibleSpace ()
-          view_1_2_3.appendView (view_1_2_3_1)
+          _ = view_1_2_3.appendView (view_1_2_3_1)
         }
-        view_1_2.appendView (view_1_2_3)
+        _ = view_1_2.appendView (view_1_2_3)
         let view_1_2_4 = AutoLayoutHorizontalStackView ()
           .set (leftMargin: 20)
         do{
           let view_1_2_4_0 = AutoLayoutCheckbox (title: "Front Side Component Names", size: .small)
             .bind_value (self.mDataSelection.drawComponentNamesTopSide_property)
-          view_1_2_4.appendView (view_1_2_4_0)
+          _ = view_1_2_4.appendView (view_1_2_4_0)
           let view_1_2_4_1 = AutoLayoutFlexibleSpace ()
-          view_1_2_4.appendView (view_1_2_4_1)
+          _ = view_1_2_4.appendView (view_1_2_4_1)
         }
-        view_1_2.appendView (view_1_2_4)
+        _ = view_1_2.appendView (view_1_2_4)
         let view_1_2_5 = AutoLayoutHorizontalStackView ()
           .set (leftMargin: 20)
         do{
           let view_1_2_5_0 = AutoLayoutCheckbox (title: "Front Side Component Values", size: .small)
             .bind_value (self.mDataSelection.drawComponentValuesTopSide_property)
-          view_1_2_5.appendView (view_1_2_5_0)
+          _ = view_1_2_5.appendView (view_1_2_5_0)
           let view_1_2_5_1 = AutoLayoutFlexibleSpace ()
-          view_1_2_5.appendView (view_1_2_5_1)
+          _ = view_1_2_5.appendView (view_1_2_5_1)
         }
-        view_1_2.appendView (view_1_2_5)
+        _ = view_1_2.appendView (view_1_2_5)
         let view_1_2_6 = AutoLayoutHorizontalStackView ()
           .set (leftMargin: 20)
         do{
           let view_1_2_6_0 = AutoLayoutCheckbox (title: "Front Side Package Legends", size: .small)
             .bind_value (self.mDataSelection.drawPackageLegendTopSide_property)
-          view_1_2_6.appendView (view_1_2_6_0)
+          _ = view_1_2_6.appendView (view_1_2_6_0)
           let view_1_2_6_1 = AutoLayoutFlexibleSpace ()
-          view_1_2_6.appendView (view_1_2_6_1)
+          _ = view_1_2_6.appendView (view_1_2_6_1)
         }
-        view_1_2.appendView (view_1_2_6)
+        _ = view_1_2.appendView (view_1_2_6)
         let view_1_2_7 = AutoLayoutStaticLabel (title: "Inner Elements", bold: true, size: .small, alignment: .left)
-        view_1_2.appendView (view_1_2_7)
+        _ = view_1_2.appendView (view_1_2_7)
         let view_1_2_8 = AutoLayoutHorizontalStackView ()
         do{
           let view_1_2_8_0 = AutoLayoutGridView2 ()
@@ -1026,105 +1026,105 @@ import Cocoa
             .addFirstBaseLineAligned (left: self.computeImplicitView_180 (), right: self.computeImplicitView_181 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_182 (), right: self.computeImplicitView_183 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_184 (), right: self.computeImplicitView_185 ())
-          view_1_2_8.appendView (view_1_2_8_0)
+          _ = view_1_2_8.appendView (view_1_2_8_0)
           let view_1_2_8_1 = AutoLayoutFlexibleSpace ()
-          view_1_2_8.appendView (view_1_2_8_1)
+          _ = view_1_2_8.appendView (view_1_2_8_1)
         }
-        view_1_2.appendView (view_1_2_8)
+        _ = view_1_2.appendView (view_1_2_8)
         let view_1_2_9 = AutoLayoutStaticLabel (title: "Back Side Elements", bold: true, size: .small, alignment: .center)
-        view_1_2.appendView (view_1_2_9)
+        _ = view_1_2.appendView (view_1_2_9)
         let view_1_2_10 = AutoLayoutHorizontalStackView ()
         do{
           let view_1_2_10_0 = AutoLayoutGridView2 ()
             .set (leftMargin: 20)
             .addFirstBaseLineAligned (left: self.computeImplicitView_186 (), right: self.computeImplicitView_187 ())
             .addFirstBaseLineAligned (left: self.computeImplicitView_188 (), right: self.computeImplicitView_189 ())
-          view_1_2_10.appendView (view_1_2_10_0)
+          _ = view_1_2_10.appendView (view_1_2_10_0)
           let view_1_2_10_1 = AutoLayoutFlexibleSpace ()
-          view_1_2_10.appendView (view_1_2_10_1)
+          _ = view_1_2_10.appendView (view_1_2_10_1)
         }
-        view_1_2.appendView (view_1_2_10)
+        _ = view_1_2.appendView (view_1_2_10)
         let view_1_2_11 = AutoLayoutHorizontalStackView ()
           .set (leftMargin: 20)
         do{
           let view_1_2_11_0 = AutoLayoutCheckbox (title: "Back Side Component Names", size: .small)
             .bind_value (self.mDataSelection.drawComponentNamesBottomSide_property)
-          view_1_2_11.appendView (view_1_2_11_0)
+          _ = view_1_2_11.appendView (view_1_2_11_0)
           let view_1_2_11_1 = AutoLayoutFlexibleSpace ()
-          view_1_2_11.appendView (view_1_2_11_1)
+          _ = view_1_2_11.appendView (view_1_2_11_1)
         }
-        view_1_2.appendView (view_1_2_11)
+        _ = view_1_2.appendView (view_1_2_11)
         let view_1_2_12 = AutoLayoutHorizontalStackView ()
           .set (leftMargin: 20)
         do{
           let view_1_2_12_0 = AutoLayoutCheckbox (title: "Back Side Component Values", size: .small)
             .bind_value (self.mDataSelection.drawComponentValuesBottomSide_property)
-          view_1_2_12.appendView (view_1_2_12_0)
+          _ = view_1_2_12.appendView (view_1_2_12_0)
           let view_1_2_12_1 = AutoLayoutFlexibleSpace ()
-          view_1_2_12.appendView (view_1_2_12_1)
+          _ = view_1_2_12.appendView (view_1_2_12_1)
         }
-        view_1_2.appendView (view_1_2_12)
+        _ = view_1_2.appendView (view_1_2_12)
         let view_1_2_13 = AutoLayoutHorizontalStackView ()
           .set (leftMargin: 20)
         do{
           let view_1_2_13_0 = AutoLayoutCheckbox (title: "Back Side Package Legends", size: .small)
             .bind_value (self.mDataSelection.drawPackageLegendBottomSide_property)
-          view_1_2_13.appendView (view_1_2_13_0)
+          _ = view_1_2_13.appendView (view_1_2_13_0)
           let view_1_2_13_1 = AutoLayoutFlexibleSpace ()
-          view_1_2_13.appendView (view_1_2_13_1)
+          _ = view_1_2_13.appendView (view_1_2_13_1)
         }
-        view_1_2.appendView (view_1_2_13)
+        _ = view_1_2.appendView (view_1_2_13)
         let view_1_2_14 = AutoLayoutStaticLabel (title: "Other Elements", bold: true, size: .small, alignment: .center)
-        view_1_2.appendView (view_1_2_14)
+        _ = view_1_2.appendView (view_1_2_14)
         let view_1_2_15 = AutoLayoutHorizontalStackView ()
           .set (leftMargin: 20)
         do{
           let view_1_2_15_0 = AutoLayoutCheckbox (title: "Vias", size: .small)
             .bind_value (self.mDataSelection.drawVias_property)
-          view_1_2_15.appendView (view_1_2_15_0)
+          _ = view_1_2_15.appendView (view_1_2_15_0)
           let view_1_2_15_1 = AutoLayoutCheckbox (title: "Internal Board Limits", size: .small)
             .bind_value (self.mDataSelection.drawInternalBoardLimits_property)
-          view_1_2_15.appendView (view_1_2_15_1)
+          _ = view_1_2_15.appendView (view_1_2_15_1)
           let view_1_2_15_2 = AutoLayoutCheckbox (title: "Board Limits", size: .small)
             .bind_value (self.mDataSelection.drawBoardLimits_property)
-          view_1_2_15.appendView (view_1_2_15_2)
+          _ = view_1_2_15.appendView (view_1_2_15_2)
           let view_1_2_15_3 = AutoLayoutFlexibleSpace ()
-          view_1_2_15.appendView (view_1_2_15_3)
+          _ = view_1_2_15.appendView (view_1_2_15_3)
         }
-        view_1_2.appendView (view_1_2_15)
+        _ = view_1_2.appendView (view_1_2_15)
         let view_1_2_16 = AutoLayoutHorizontalStackView ()
           .set (leftMargin: 20)
           .setFirstBaselineAlignment ()
         do{
           let view_1_2_16_0 = AutoLayoutCheckbox (title: "Pad Holes in PDF file, with diameter", size: .small)
             .bind_value (self.mDataSelection.drawPadHolesInPDF_property)
-          view_1_2_16.appendView (view_1_2_16_0)
+          _ = view_1_2_16.appendView (view_1_2_16_0)
           let view_1_2_16_1 = AutoLayoutCanariDimensionAndPopUp (size: .small)
             .bind_dimensionAndUnit (self.mDataSelection.padHoleDiameterInPDF_property, self.mDataSelection.measurementUnitForPadHoleInPDF_property)
             .bind_enabled (.prop (self.mDataSelection.drawPadHolesInPDF_property))
-          view_1_2_16.appendView (view_1_2_16_1)
+          _ = view_1_2_16.appendView (view_1_2_16_1)
           let view_1_2_16_2 = AutoLayoutFlexibleSpace ()
-          view_1_2_16.appendView (view_1_2_16_2)
+          _ = view_1_2_16.appendView (view_1_2_16_2)
         }
-        view_1_2.appendView (view_1_2_16)
+        _ = view_1_2.appendView (view_1_2_16)
         let view_1_2_17 = AutoLayoutStaticLabel (title: "Option", bold: true, size: .small, alignment: .center)
-        view_1_2.appendView (view_1_2_17)
+        _ = view_1_2.appendView (view_1_2_17)
         let view_1_2_18 = AutoLayoutHorizontalStackView ()
           .set (leftMargin: 20)
         do{
           let view_1_2_18_0 = AutoLayoutCheckbox (title: "Horizontal Mirror", size: .small)
             .bind_value (self.mDataSelection.horizontalMirror_property)
-          view_1_2_18.appendView (view_1_2_18_0)
+          _ = view_1_2_18.appendView (view_1_2_18_0)
           let view_1_2_18_1 = AutoLayoutFlexibleSpace ()
-          view_1_2_18.appendView (view_1_2_18_1)
+          _ = view_1_2_18.appendView (view_1_2_18_1)
         }
-        view_1_2.appendView (view_1_2_18)
+        _ = view_1_2.appendView (view_1_2_18)
         let view_1_2_19 = AutoLayoutFlexibleSpace ()
-        view_1_2.appendView (view_1_2_19)
+        _ = view_1_2.appendView (view_1_2_19)
       }
-      view_1.appendView (view_1_2)
+      _ = view_1.appendView (view_1_2)
     }
-    vStackView.appendView (view_1)
+    _ = vStackView.appendView (view_1)
     return vStackView
   } ()
 
@@ -1135,47 +1135,47 @@ import Cocoa
   lazy final var mArtworkMinimaPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutFlexibleSpace ()
-    vStackView.appendView (view_0)
+    _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
     do{
       let view_1_0 = AutoLayoutFlexibleSpace ()
-      view_1.appendView (view_1_0)
+      _ = view_1.appendView (view_1_0)
       let view_1_1 = AutoLayoutVerticalStackView ()
       do{
         let view_1_1_0 = AutoLayoutFlexibleSpace ()
-        view_1_1.appendView (view_1_1_0)
+        _ = view_1_1.appendView (view_1_1_0)
         let view_1_1_1 = AutoLayoutStaticLabel (title: "PP: Pad to Pad Distance", bold: false, size: .small, alignment: .left)
-        view_1_1.appendView (view_1_1_1)
+        _ = view_1_1.appendView (view_1_1_1)
         let view_1_1_2 = AutoLayoutStaticLabel (title: "TP: Track to Pad Distance", bold: false, size: .small, alignment: .left)
-        view_1_1.appendView (view_1_1_2)
+        _ = view_1_1.appendView (view_1_1_2)
         let view_1_1_3 = AutoLayoutStaticLabel (title: "TT: Track to Track Distance", bold: false, size: .small, alignment: .left)
-        view_1_1.appendView (view_1_1_3)
+        _ = view_1_1.appendView (view_1_1_3)
         let view_1_1_4 = AutoLayoutStaticLabel (title: "TW: Track Width", bold: false, size: .small, alignment: .left)
-        view_1_1.appendView (view_1_1_4)
+        _ = view_1_1.appendView (view_1_1_4)
         let view_1_1_5 = AutoLayoutStaticLabel (title: "PHD: Production Hole Diameter (tool size)", bold: false, size: .small, alignment: .left)
-        view_1_1.appendView (view_1_1_5)
+        _ = view_1_1.appendView (view_1_1_5)
         let view_1_1_6 = AutoLayoutStaticLabel (title: "OAR: Outer Annular Ring", bold: false, size: .small, alignment: .left)
-        view_1_1.appendView (view_1_1_6)
+        _ = view_1_1.appendView (view_1_1_6)
         let view_1_1_7 = AutoLayoutStaticLabel (title: "OAR is equal to (pad diameter - PHD) / 2", bold: false, size: .small, alignment: .left)
-        view_1_1.appendView (view_1_1_7)
+        _ = view_1_1.appendView (view_1_1_7)
         let view_1_1_8 = AutoLayoutFlexibleSpace ()
-        view_1_1.appendView (view_1_1_8)
+        _ = view_1_1.appendView (view_1_1_8)
       }
-      view_1.appendView (view_1_1)
+      _ = view_1.appendView (view_1_1)
       let view_1_2 = AutoLayoutFlexibleSpace ()
-      view_1.appendView (view_1_2)
+      _ = view_1.appendView (view_1_2)
       let view_1_3 = AutoLayoutStaticImageView (name: "artwork")
-      view_1.appendView (view_1_3)
+      _ = view_1.appendView (view_1_3)
       let view_1_4 = AutoLayoutFlexibleSpace ()
-      view_1.appendView (view_1_4)
+      _ = view_1.appendView (view_1_4)
     }
-    vStackView.appendView (view_1)
+    _ = vStackView.appendView (view_1)
     let view_2 = AutoLayoutFlexibleSpace ()
-    vStackView.appendView (view_2)
+    _ = vStackView.appendView (view_2)
     let view_3 = AutoLayoutHorizontalStackView ()
     do{
       let view_3_0 = AutoLayoutFlexibleSpace ()
-      view_3.appendView (view_3_0)
+      _ = view_3.appendView (view_3_0)
       let view_3_1 = AutoLayoutGridView2 ()
         .set (leftMargin: 20)
         .set (rightMargin: 20)
@@ -1184,13 +1184,13 @@ import Cocoa
         .addFirstBaseLineAligned (left: self.computeImplicitView_192 (), right: self.computeImplicitView_193 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_194 (), right: self.computeImplicitView_195 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_196 (), right: self.computeImplicitView_197 ())
-      view_3.appendView (view_3_1)
+      _ = view_3.appendView (view_3_1)
       let view_3_2 = AutoLayoutFlexibleSpace ()
-      view_3.appendView (view_3_2)
+      _ = view_3.appendView (view_3_2)
     }
-    vStackView.appendView (view_3)
+    _ = vStackView.appendView (view_3)
     let view_4 = AutoLayoutFlexibleSpace ()
-    vStackView.appendView (view_4)
+    _ = vStackView.appendView (view_4)
     return vStackView
   } ()
 
@@ -1205,18 +1205,18 @@ import Cocoa
       .setFirstBaselineAlignment ()
     do{
       let view_0_0 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_0)
+      _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutColorWell ()
         .bind_color (self.rootObject.mPDFBoardBackgroundColor_property, sendContinously:false)
-      view_0.appendView (view_0_1)
+      _ = view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutStaticLabel (title: "Board Background Color", bold: false, size: .regular, alignment: .center)
-      view_0.appendView (view_0_2)
+      _ = view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_3)
+      _ = view_0.appendView (view_0_3)
     }
-    vStackView.appendView (view_0)
+    _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutFlexibleSpace ()
-    vStackView.appendView (view_1)
+    _ = vStackView.appendView (view_1)
     return vStackView
   } ()
 
@@ -1228,7 +1228,7 @@ import Cocoa
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutTextObserverView ()
     self.mLogTextView = view_0 // Outlet
-    vStackView.appendView (view_0)
+    _ = vStackView.appendView (view_0)
     return vStackView
   } ()
 
@@ -1268,12 +1268,12 @@ import Cocoa
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .bind_value (preferences_mergerModelViewHorizontalFlip_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .bind_value (preferences_mergerBoardViewHorizontalFlip_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -1296,12 +1296,12 @@ import Cocoa
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .bind_value (preferences_mergerModelViewVerticalFlip_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .bind_value (preferences_mergerBoardViewVerticalFlip_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -1326,15 +1326,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayHoles_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorHoles_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayHoles_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -1359,15 +1359,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayVias_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorVias_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayVias_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -1390,15 +1390,15 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorBoardLimits_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBoardLimits_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -1423,15 +1423,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayModelBoardLimits_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorInternalBoardsLimits_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayModelBoardsLimits_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -1454,13 +1454,13 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorBackground_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -1503,15 +1503,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontPads_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorFrontPads_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontPads_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -1536,15 +1536,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontComponentNames_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorFrontComponentNames_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontComponentNames_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -1569,15 +1569,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontComponentValues_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorFrontComponentValues_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontComponentValues_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -1602,15 +1602,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontPackages_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorFrontPackages_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontPackages_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -1635,15 +1635,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontLegendTexts_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorFrontLegendTexts_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontLegendTexts_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -1668,15 +1668,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontLegendLines_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorFrontLegendLines_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontLegendLines_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -1701,15 +1701,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontLayoutTexts_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorFrontLayoutTexts_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontLayoutTexts_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -1734,15 +1734,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontTracks_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorFrontTracks_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontTracks_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -1785,15 +1785,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayTraversingPads_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorTraversingPads_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayTraversingPads_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -1818,15 +1818,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayInner1Tracks_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorInner1Tracks_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayInner1Tracks_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -1851,15 +1851,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayInner2Tracks_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorInner2Tracks_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayInner2Tracks_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -1884,15 +1884,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayInner3Tracks_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorInner3Tracks_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayInner3Tracks_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -1917,15 +1917,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayInner4Tracks_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorInner4Tracks_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayInner4Tracks_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -1968,15 +1968,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackPads_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorBackPads_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackPads_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2001,15 +2001,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackComponentNames_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorBackComponentNames_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackComponentNames_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2034,15 +2034,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackComponentValues_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorBackComponentValues_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackComponentValues_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2067,15 +2067,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackPackages_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorBackPackages_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackPackages_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2100,15 +2100,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackLegendTexts_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorBackLegendTexts_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackLegendTexts_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2133,15 +2133,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackLegendLines_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorBackLegendLines_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackLegendLines_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2166,15 +2166,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackLayoutTexts_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorBackLayoutTexts_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackLayoutTexts_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2199,15 +2199,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackTracks_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorBackTracks_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackTracks_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2426,12 +2426,12 @@ import Cocoa
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .bind_value (preferences_mergerModelViewHorizontalFlip_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .bind_value (preferences_mergerBoardViewHorizontalFlip_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2454,12 +2454,12 @@ import Cocoa
     do{
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .bind_value (preferences_mergerModelViewVerticalFlip_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .bind_value (preferences_mergerBoardViewVerticalFlip_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2484,15 +2484,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayHoles_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorHoles_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayHoles_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2517,15 +2517,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayVias_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorVias_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayVias_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2548,15 +2548,15 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorBoardLimits_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBoardLimits_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2581,15 +2581,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayModelBoardLimits_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorInternalBoardsLimits_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayModelBoardsLimits_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2612,13 +2612,13 @@ import Cocoa
       .setCenterYAlignment ()
     do{
       let view_0 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorBackground_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2661,15 +2661,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontPads_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorFrontPads_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontPads_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2694,15 +2694,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontComponentNames_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorFrontComponentNames_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontComponentNames_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2727,15 +2727,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontComponentValues_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorFrontComponentValues_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontComponentValues_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2760,15 +2760,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontPackages_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorFrontPackages_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontPackages_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2793,15 +2793,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontLegendTexts_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorFrontLegendTexts_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontLegendTexts_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2826,15 +2826,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontLegendLines_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorFrontLegendLines_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontLegendLines_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2859,15 +2859,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontLayoutTexts_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorFrontLayoutTexts_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontLayoutTexts_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2892,15 +2892,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayFrontTracks_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorFrontTracks_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayFrontTracks_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2943,15 +2943,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayTraversingPads_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorTraversingPads_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayTraversingPads_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -2976,15 +2976,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayInner1Tracks_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorInner1Tracks_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayInner1Tracks_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -3009,15 +3009,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayInner2Tracks_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorInner2Tracks_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayInner2Tracks_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -3042,15 +3042,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayInner3Tracks_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorInner3Tracks_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayInner3Tracks_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -3075,15 +3075,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayInner4Tracks_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorInner4Tracks_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayInner4Tracks_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -3126,15 +3126,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackPads_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorBackPads_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackPads_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -3159,15 +3159,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackComponentNames_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorBackComponentNames_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackComponentNames_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -3192,15 +3192,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackComponentValues_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorBackComponentValues_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackComponentValues_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -3225,15 +3225,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackPackages_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorBackPackages_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackPackages_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -3258,15 +3258,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackLegendTexts_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorBackLegendTexts_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackLegendTexts_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -3291,15 +3291,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackLegendLines_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorBackLegendLines_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackLegendLines_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -3324,15 +3324,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackLayoutTexts_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorBackLayoutTexts_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackLayoutTexts_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -3357,15 +3357,15 @@ import Cocoa
       let view_0 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerModelViewDisplayBackTracks_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_mergerColorBackTracks_property, sendContinously:false)
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
       let view_2 = AutoLayoutCheckbox (title: "", size: .small)
         .expandableHeight ()
         .bind_value (preferences_mergerBoardViewDisplayBackTracks_property)
-      view.appendView (view_2)
+      _ = view.appendView (view_2)
     }
     return view
   }
@@ -3431,11 +3431,11 @@ import Cocoa
       let view_0 = AutoLayoutCanariDimensionAndPopUp (size: .small)
         .bind_dimensionAndUnit (self.rootObject.boardManualWidth_property, self.rootObject.boardWidthUnit_property)
         .bind_hidden (.prop (self.rootObject.automaticBoardSize_property))
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
         .bind_dimensionAndUnit (self.rootObject.boardWidth_property, self.rootObject.boardWidthUnit_property)
         .bind_hidden (.not (.prop (self.rootObject.automaticBoardSize_property)))
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
     }
     return view
   }
@@ -3459,11 +3459,11 @@ import Cocoa
       let view_0 = AutoLayoutCanariDimensionAndPopUp (size: .small)
         .bind_dimensionAndUnit (self.rootObject.boardManualHeight_property, self.rootObject.boardHeightUnit_property)
         .bind_hidden (.prop (self.rootObject.automaticBoardSize_property))
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
         .bind_dimensionAndUnit (self.rootObject.boardHeight_property, self.rootObject.boardHeightUnit_property)
         .bind_hidden (.not (.prop (self.rootObject.automaticBoardSize_property)))
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
     }
     return view
   }
@@ -3673,9 +3673,9 @@ import Cocoa
     let view = AutoLayoutVerticalStackView ()
     do{
       let view_0 = AutoLayoutStaticLabel (title: "Comment", bold: false, size: .regular, alignment: .right)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
     }
     return view
   }

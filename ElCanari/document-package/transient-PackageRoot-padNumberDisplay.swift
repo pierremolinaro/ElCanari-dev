@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageRoot_padNumberDisplay (
+@MainActor func transient_PackageRoot_padNumberDisplay (
        _ prefs_showPadNumber : Bool,         
        _ self_packagePads_padNumberDisplay : [PackagePad_padNumberDisplay],
        _ self_packageSlavePads_padNumberDisplay : [PackageSlavePad_padNumberDisplay]

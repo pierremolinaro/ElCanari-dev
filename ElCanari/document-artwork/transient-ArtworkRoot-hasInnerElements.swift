@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ArtworkRoot_hasInnerElements (
+@MainActor func transient_ArtworkRoot_hasInnerElements (
        _ self_layerConfiguration : LayerConfiguration
 ) -> Bool {
 //--- START OF USER ZONE 2

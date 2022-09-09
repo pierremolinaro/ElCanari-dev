@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageObject_knobSize (
+@MainActor func transient_PackageObject_knobSize (
        _ self_mRoot_knobSizeMultpliedByTen : Int?
 ) -> Double {
 //--- START OF USER ZONE 2

@@ -113,7 +113,7 @@ extension SheetInProject {
 
   func connect (points inPoints : [PointInSchematic],
                 window inWindow : NSWindow,
-                newNetCreator inNewNetCreator : () -> NetInProject,
+                newNetCreator inNewNetCreator : @MainActor () -> NetInProject,
                 updateSchematicPointsAndNets inUpdateSchematicPointsAndNetsCallBack : @escaping () -> Void) {
     let (points, netArray) = self.tryToConnectWithoutDialog (
        points: inPoints,
@@ -164,8 +164,8 @@ extension SheetInProject {
     let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
     let gridView = AutoLayoutGridView2 ()
   //---
-    layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Performing Connection will Merge Several Subnets.", bold: true, size: .regular, alignment: .center))
-    layoutView.appendFlexibleSpace ()
+    _ = layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Performing Connection will Merge Several Subnets.", bold: true, size: .regular, alignment: .center))
+    _ = layoutView.appendFlexibleSpace ()
     let popupButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth()
     for net in netArray {
       popupButton.addItem (withTitle: net.mNetName)
@@ -175,16 +175,16 @@ extension SheetInProject {
       let left = AutoLayoutStaticLabel (title: "Resulting Net", bold: false, size: .regular, alignment: .right)
       _ = gridView.addFirstBaseLineAligned (left: left, right: popupButton)
     }
-    layoutView.appendView (gridView)
-    layoutView.appendFlexibleSpace ()
+    _ = layoutView.appendView (gridView)
+    _ = layoutView.appendFlexibleSpace ()
   //---
     do{
       let hStack = AutoLayoutHorizontalStackView ()
-      hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
-      hStack.appendFlexibleSpace ()
+      _ = hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
+      _ = hStack.appendFlexibleSpace ()
       let okButton = AutoLayoutSheetDefaultOkButton (title: "Merge and Connect", size: .regular, sheet: panel)
-      hStack.appendView (okButton)
-      layoutView.appendView (hStack)
+      _ = hStack.appendView (okButton)
+      _ = layoutView.appendView (hStack)
     }
   //---
     panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))

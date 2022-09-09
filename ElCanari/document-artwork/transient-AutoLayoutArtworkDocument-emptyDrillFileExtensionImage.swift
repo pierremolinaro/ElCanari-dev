@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutArtworkDocument_emptyDrillFileExtensionImage (
+@MainActor func transient_AutoLayoutArtworkDocument_emptyDrillFileExtensionImage (
        _ root_emptyDrillFileExtension : Bool
 ) -> NSImage {
 //--- START OF USER ZONE 2

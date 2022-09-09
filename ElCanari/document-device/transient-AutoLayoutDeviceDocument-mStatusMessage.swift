@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutDeviceDocument_mStatusMessage (
+@MainActor func transient_AutoLayoutDeviceDocument_mStatusMessage (
        _ self_issues : CanariIssueArray
 ) -> String {
 //--- START OF USER ZONE 2

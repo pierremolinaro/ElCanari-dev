@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutProjectDocument_canRemoveSelectedDevices (
+@MainActor func transient_AutoLayoutProjectDocument_canRemoveSelectedDevices (
        _ self_projectDeviceController_selectedArray_all_canRemove : [DeviceInProject_canRemove]
 ) -> Bool {
 //--- START OF USER ZONE 2

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutPackageDocument_addSlavePadButtonImage (
+@MainActor func transient_AutoLayoutPackageDocument_addSlavePadButtonImage (
        _ prefs_frontSidePadColor : NSColor
 ) -> NSImage {
 //--- START OF USER ZONE 2

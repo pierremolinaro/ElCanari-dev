@@ -72,7 +72,7 @@ final class AutoLayoutCanariFontCharacterGerberCodeTableView : AutoLayoutVertica
     self.mScrollView.borderType = .bezelBorder
     self.mScrollView.documentView = self.mTableView
   //---
-    self.appendView (self.mScrollView)
+    _ = self.appendView (self.mScrollView)
   }
 
   //····················································································································

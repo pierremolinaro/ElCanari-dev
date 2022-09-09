@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageDimension_distanceInCanariUnit (
+@MainActor func transient_PackageDimension_distanceInCanariUnit (
        _ self_x1 : Int,                               
        _ self_y1 : Int,                               
        _ self_x2 : Int,                               

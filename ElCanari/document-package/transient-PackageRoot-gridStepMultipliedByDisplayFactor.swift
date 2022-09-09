@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageRoot_gridStepMultipliedByDisplayFactor (
+@MainActor func transient_PackageRoot_gridStepMultipliedByDisplayFactor (
        _ self_gridStep : Int,                                 
        _ self_gridDisplayFactor : Int
 ) -> Int {

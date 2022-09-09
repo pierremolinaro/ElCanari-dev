@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardConnector_side (
+@MainActor func transient_BoardConnector_side (
        _ self_mComponent_componentPadDictionary : ComponentPadDescriptorDictionary?,
        _ self_mComponentPadName : String,
        _ self_mPadIndex : Int,      

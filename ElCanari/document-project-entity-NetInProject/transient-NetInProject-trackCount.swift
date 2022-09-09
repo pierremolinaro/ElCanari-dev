@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NetInProject_trackCount (
+@MainActor func transient_NetInProject_trackCount (
        _ self_mTracks_count : Int
 ) -> Int {
 //--- START OF USER ZONE 2

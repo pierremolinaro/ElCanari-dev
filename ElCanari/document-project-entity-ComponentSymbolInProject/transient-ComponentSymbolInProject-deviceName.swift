@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentSymbolInProject_deviceName (
+@MainActor func transient_ComponentSymbolInProject_deviceName (
        _ self_mComponent_deviceName : String?
 ) -> String {
 //--- START OF USER ZONE 2

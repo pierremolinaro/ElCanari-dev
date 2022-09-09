@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutPackageDocument_addDimensionButtonImage (
+@MainActor func transient_AutoLayoutPackageDocument_addDimensionButtonImage (
        _ prefs_packageDimensionColor : NSColor
 ) -> NSImage {
 //--- START OF USER ZONE 2

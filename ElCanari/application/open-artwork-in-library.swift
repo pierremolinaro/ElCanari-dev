@@ -10,9 +10,9 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func openArtworkPanelInLibrary (windowForSheet inWindow : NSWindow?,
-                                validationButtonTitle inValidationButtonTitle : String,
-                                callBack inCallBack : @escaping (_ inURL : URL, _ inName : String) -> Void) {
+@MainActor func openArtworkPanelInLibrary (windowForSheet inWindow : NSWindow?,
+                                           validationButtonTitle inValidationButtonTitle : String,
+                                           callBack inCallBack : @escaping (_ inURL : URL, _ inName : String) -> Void) {
   gOpenArtworkPanelInLibrary = OpenArtworkPanelInLibrary (
     windowForSheet: inWindow,
     validationButtonTitle: inValidationButtonTitle,
@@ -22,11 +22,11 @@ func openArtworkPanelInLibrary (windowForSheet inWindow : NSWindow?,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate var gOpenArtworkPanelInLibrary : OpenArtworkPanelInLibrary? = nil
+@MainActor fileprivate var gOpenArtworkPanelInLibrary : OpenArtworkPanelInLibrary? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate {
+@MainActor fileprivate final class OpenArtworkPanelInLibrary : AutoLayoutTableViewDelegate {
 
   //····················································································································
 
@@ -315,7 +315,7 @@ extension ApplicationDelegate {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class ArtworkDialogEntry {
+@MainActor fileprivate final class ArtworkDialogEntry {
 
   //····················································································································
 

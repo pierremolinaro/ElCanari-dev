@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolInstanceInDevice_selectionDisplay (
+@MainActor func transient_SymbolInstanceInDevice_selectionDisplay (
        _ self_mType_mStrokeBezierPath : NSBezierPath?,  
        _ self_mType_mFilledBezierPath : NSBezierPath?,  
        _ self_mType_pinNameShape : EBShape?,            

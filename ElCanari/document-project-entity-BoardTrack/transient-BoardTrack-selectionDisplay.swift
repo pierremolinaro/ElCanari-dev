@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardTrack_selectionDisplay (
+@MainActor func transient_BoardTrack_selectionDisplay (
        _ self_mConnectorP1_location : CanariPoint?,
        _ self_p1CanMove : Bool,             
        _ self_mConnectorP2_location : CanariPoint?,

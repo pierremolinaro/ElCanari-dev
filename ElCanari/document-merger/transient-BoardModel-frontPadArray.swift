@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardModel_frontPadArray (
+@MainActor func transient_BoardModel_frontPadArray (
        _ self_frontPads_x : [BoardModelPad_x],
        _ self_frontPads_y : [BoardModelPad_y],
        _ self_frontPads_width : [BoardModelPad_width],

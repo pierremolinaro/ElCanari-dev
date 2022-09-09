@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutDeviceDocument_hasAssignedPadProxies (
+@MainActor func transient_AutoLayoutDeviceDocument_hasAssignedPadProxies (
        _ root_assignedPadProxies : AssignedPadProxiesInDevice
 ) -> Bool {
 //--- START OF USER ZONE 2

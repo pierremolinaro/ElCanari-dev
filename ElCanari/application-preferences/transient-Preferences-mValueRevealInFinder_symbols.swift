@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_Preferences_mValueRevealInFinder_symbols (
+@MainActor func transient_Preferences_mValueRevealInFinder_symbols (
        _ self_usesUserLibrary : Bool,                    
        _ self_additionnalLibraryArray_mUses : [CanariLibraryEntry_mUses],
        _ self_additionnalLibraryArray_mPath : [CanariLibraryEntry_mPath]

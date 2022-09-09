@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardTrack_netClassName (
+@MainActor func transient_BoardTrack_netClassName (
        _ self_mNet_netClassName : String?
 ) -> String {
 //--- START OF USER ZONE 2

@@ -49,22 +49,22 @@ extension AutoLayoutProjectDocumentSubClass {
     panel.hasShadow = true
     let mainView = AutoLayoutHorizontalStackView ().set (margins: 12)
     let leftColumn = AutoLayoutVerticalStackView ()
-    leftColumn.appendFlexibleSpace ()
-    leftColumn.appendView (AutoLayoutApplicationImage ())
-    leftColumn.appendFlexibleSpace ()
-    mainView.appendView (leftColumn)
+    _ = leftColumn.appendFlexibleSpace ()
+    _ = leftColumn.appendView (AutoLayoutApplicationImage ())
+    _ = leftColumn.appendFlexibleSpace ()
+    _ = mainView.appendView (leftColumn)
     let rightColumn = AutoLayoutVerticalStackView ()
     let title = AutoLayoutStaticLabel (title: "Importing SES File…", bold: true, size: .regular, alignment: .center)
       .set (alignment: .left)
       .expandableWidth ()
-    rightColumn.appendView (title)
+    _ = rightColumn.appendView (title)
     let importSESTextField = AutoLayoutStaticLabel (title: "", bold: false, size: .regular, alignment: .center)
       .set (minWidth: 250)
       .set (alignment: .left)
-    rightColumn.appendView (importSESTextField)
+    _ = rightColumn.appendView (importSESTextField)
     let importSESProgressIndicator = AutoLayoutProgressIndicator ().expandableWidth ()
-    rightColumn.appendView (importSESProgressIndicator)
-    mainView.appendView (rightColumn)
+    _ = rightColumn.appendView (importSESProgressIndicator)
+    _ = mainView.appendView (rightColumn)
     panel.contentView = AutoLayoutWindowContentView (view: mainView)
   //--- Display sheet
     importSESTextField.stringValue = "Extracting Tracks…"
@@ -415,7 +415,7 @@ fileprivate struct PointAndNet : Hashable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func buildPointSetFromRoutedTracks (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
+@MainActor fileprivate func buildPointSetFromRoutedTracks (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
                                                 _ inRoutedViaArray : [(BoardConnector, NetInProject)],
                                                 _ inSide : TrackSide) -> Set <PointAndNet> {
   var pointSet = Set <PointAndNet> ()
@@ -434,7 +434,7 @@ fileprivate func buildPointSetFromRoutedTracks (_ inRoutedTracksArray : [RoutedT
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func handleTeesAndCrossesFromRoutedTracksOnSide (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
+@MainActor fileprivate func handleTeesAndCrossesFromRoutedTracksOnSide (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
                                                              _ inRoutedViaArray : [(BoardConnector, NetInProject)],
                                                              _ inSide : TrackSide) -> [RoutedTrackForSESImporting] {
   var trackArray = inRoutedTracksArray
@@ -463,18 +463,13 @@ fileprivate func handleTeesAndCrossesFromRoutedTracksOnSide (_ inRoutedTracksArr
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func handleTeesAndCrossesFromRoutedTracks (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
+@MainActor fileprivate func handleTeesAndCrossesFromRoutedTracks (_ inRoutedTracksArray : [RoutedTrackForSESImporting],
                                                        _ inRoutedViaArray : [(BoardConnector, NetInProject)]) -> [RoutedTrackForSESImporting] { // Array of PMClassForConnectorInBoardEntity
   var trackArray = inRoutedTracksArray
   for layer in TrackSide.allCases {
     trackArray = handleTeesAndCrossesFromRoutedTracksOnSide (trackArray, inRoutedViaArray, layer)
   }
   return trackArray
-//--- Handle Tees in component side
-//  let trackArray1 = handleTeesAndCrossesFromRoutedTracksOnSide (inRoutedTracksArray, inRoutedViaArray, .front)
-////--- Handle Tees in solder side
-//  let trackArray2 = handleTeesAndCrossesFromRoutedTracksOnSide (trackArray1, inRoutedViaArray, .back)
-//  return trackArray2
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

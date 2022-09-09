@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutProjectDocument_canRemoveNetClasses (
+@MainActor func transient_AutoLayoutProjectDocument_canRemoveNetClasses (
        _ root_mNetClasses_count : Int,                        
        _ self_netClassController_selectedArray_all_canRemove : [NetClassInProject_canRemove]
 ) -> Bool {

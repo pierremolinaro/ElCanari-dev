@@ -38,16 +38,16 @@ extension AutoLayoutProjectDocument {
         .set (alignment: .left)
         .setTextColor (.red)
         .expandableWidth ()
-      rightColumn.appendView (title)
+      _ = rightColumn.appendView (title)
       let text = AutoLayoutTextObserverView ().expandableWidth ()
-      rightColumn.appendView (text)
+      _ = rightColumn.appendView (text)
       let okButton = AutoLayoutSheetDefaultOkButton (
         title: "Perform Undo to restore consistent state",
         size: .regular,
         sheet: panel
       )
       rightColumn.appendViewPreceededByFlexibleSpace (okButton)
-      mainView.appendView (rightColumn)
+      _ = mainView.appendView (rightColumn)
       panel.contentView = AutoLayoutWindowContentView (view: mainView)
       let message = errorList.joined (separator: "\n")
       text.string = message

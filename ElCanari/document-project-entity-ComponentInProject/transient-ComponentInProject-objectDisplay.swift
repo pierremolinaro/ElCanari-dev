@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentInProject_objectDisplay (
+@MainActor func transient_ComponentInProject_objectDisplay (
        _ self_mX : Int,                          
        _ self_mY : Int,                          
        _ self_mRotation : Int,                   

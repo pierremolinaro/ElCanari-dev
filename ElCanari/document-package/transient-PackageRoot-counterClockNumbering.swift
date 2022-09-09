@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageRoot_counterClockNumbering (
+@MainActor func transient_PackageRoot_counterClockNumbering (
        _ self_padNumbering : PadNumbering
 ) -> Bool {
 //--- START OF USER ZONE 2

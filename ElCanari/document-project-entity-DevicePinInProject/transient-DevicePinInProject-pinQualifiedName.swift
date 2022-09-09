@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DevicePinInProject_pinQualifiedName (
+@MainActor func transient_DevicePinInProject_pinQualifiedName (
        _ self_mSymbolInstanceName : String,         
        _ self_mPinName : String
 ) -> PinQualifiedNameStruct {

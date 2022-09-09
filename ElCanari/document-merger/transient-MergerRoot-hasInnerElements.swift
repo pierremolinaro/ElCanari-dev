@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerRoot_hasInnerElements (
+@MainActor func transient_MergerRoot_hasInnerElements (
        _ self_mArtwork_hasInnerElements : Bool?
 ) -> Bool {
 //--- START OF USER ZONE 2

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_WireInSchematic_selectionDisplay (
+@MainActor func transient_WireInSchematic_selectionDisplay (
        _ self_mP1_location : CanariPoint?,       
        _ self_mP1_canMove : Bool?,               
        _ self_mP2_location : CanariPoint?,       

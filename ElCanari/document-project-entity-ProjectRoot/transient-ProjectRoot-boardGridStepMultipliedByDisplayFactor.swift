@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_boardGridStepMultipliedByDisplayFactor (
+@MainActor func transient_ProjectRoot_boardGridStepMultipliedByDisplayFactor (
        _ self_mBoardGridStep : Int,                                
        _ self_mBoardGridDisplayFactor : Int
 ) -> Int {

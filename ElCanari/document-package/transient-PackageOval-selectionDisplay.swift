@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageOval_selectionDisplay (
+@MainActor func transient_PackageOval_selectionDisplay (
        _ self_x : Int,                       
        _ self_y : Int,                       
        _ self_width : Int,                   

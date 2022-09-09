@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackagePad_padNumberDisplay (
+@MainActor func transient_PackagePad_padNumberDisplay (
        _ self_xCenter : Int,                
        _ self_yCenter : Int,                
        _ prefs_padNumberFont : NSFont,      

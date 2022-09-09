@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentSymbolInProject_objectDisplay (
+@MainActor func transient_ComponentSymbolInProject_objectDisplay (
        _ prefs_pinNameFont : NSFont,                   
        _ prefs_componentNameColorForSchematic : NSColor,
        _ prefs_componentNameFontForSchematic : NSFont, 

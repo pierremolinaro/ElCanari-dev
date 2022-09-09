@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_signatureForERCChecking (
+@MainActor func transient_ProjectRoot_signatureForERCChecking (
        _ self_mBoardObjects_signatureForERCChecking : [BoardObject_signatureForERCChecking],
        _ self_mArtwork_signatureForERCChecking : UInt32?
 ) -> UInt32 {

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageRoot_issues (
+@MainActor func transient_PackageRoot_issues (
        _ self_packageObjects_issues : [PackageObject_issues],
        _ self_packageZones_rect : [PackageZone_rect],
        _ self_packageZones_zoneName : [PackageZone_zoneName],

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardModel_instanceCount (
+@MainActor func transient_BoardModel_instanceCount (
        _ self_myInstances_count : Int
 ) -> Int {
 //--- START OF USER ZONE 2

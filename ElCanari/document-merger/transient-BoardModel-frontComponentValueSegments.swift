@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardModel_frontComponentValueSegments (
+@MainActor func transient_BoardModel_frontComponentValueSegments (
        _ self_frontComponentValues_x1 : [SegmentEntity_x1],
        _ self_frontComponentValues_y1 : [SegmentEntity_y1],
        _ self_frontComponentValues_x2 : [SegmentEntity_x2],

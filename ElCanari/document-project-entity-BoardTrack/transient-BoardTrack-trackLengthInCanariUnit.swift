@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardTrack_trackLengthInCanariUnit (
+@MainActor func transient_BoardTrack_trackLengthInCanariUnit (
        _ self_mConnectorP1_location : CanariPoint?,
        _ self_mConnectorP2_location : CanariPoint?
 ) -> Double {

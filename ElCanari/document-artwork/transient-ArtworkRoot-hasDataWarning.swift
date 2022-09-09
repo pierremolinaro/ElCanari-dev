@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ArtworkRoot_hasDataWarning (
+@MainActor func transient_ArtworkRoot_hasDataWarning (
        _ self_fileGenerationParameterArray_hasNoData : [ArtworkFileGenerationParameters_hasNoData]
 ) -> Bool {
 //--- START OF USER ZONE 2

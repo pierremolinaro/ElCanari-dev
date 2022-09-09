@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolTypeInDevice_pinNameShape (
+@MainActor func transient_SymbolTypeInDevice_pinNameShape (
        _ self_mPinTypes_nameShape : [SymbolPinTypeInDevice_nameShape]
 ) -> EBShape {
 //--- START OF USER ZONE 2

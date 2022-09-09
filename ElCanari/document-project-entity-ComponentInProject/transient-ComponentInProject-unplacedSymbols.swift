@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentInProject_unplacedSymbols (
+@MainActor func transient_ComponentInProject_unplacedSymbols (
        _ self_componentName : String,              
        _ self_mSymbols : [ObjectIndexProtocol],    
        _ self_mSymbols_symbolInSchematic : [ComponentSymbolInProject_symbolInSchematic],

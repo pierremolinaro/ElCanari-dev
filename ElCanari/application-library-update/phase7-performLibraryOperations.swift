@@ -76,9 +76,9 @@ func phase7_performLibraryOperations (_ inLibraryOperations : [LibraryOperationE
 //   C O M M I T    U P D A T E S   I N   F I L E    S Y S T E M
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func commitAllActions (_ inActionArray : [LibraryOperationElement],
-                       _ inNewRepositoryFileDictionary : [String : CanariLibraryFileDescriptor],
-                       _ inLogTextView : AutoLayoutStaticTextView) {
+@MainActor func commitAllActions (_ inActionArray : [LibraryOperationElement],
+                                  _ inNewRepositoryFileDictionary : [String : CanariLibraryFileDescriptor],
+                                  _ inLogTextView : AutoLayoutStaticTextView) {
 //--- Update UI
 //  gCanariLibraryUpdateController?.unbind ()
 //  gCanariLibraryUpdateController?.orderOutLibraryUpdatePanel ()
@@ -138,7 +138,7 @@ func commitAllActions (_ inActionArray : [LibraryOperationElement],
 //    deleteOrphanDirectories
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func deleteOrphanDirectories (_ inLogTextView : AutoLayoutStaticTextView) throws {
+@MainActor private func deleteOrphanDirectories (_ inLogTextView : AutoLayoutStaticTextView) throws {
   let fm = FileManager ()
   let currentLibraryContents = try fm.subpathsOfDirectory (atPath: systemLibraryPath ())
   var directoryArray = [String] ()

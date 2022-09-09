@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ArtworkFileGenerationParameters_parameterStatusImage (
+@MainActor func transient_ArtworkFileGenerationParameters_parameterStatusImage (
        _ self_name : String,                                         
        _ self_fileExtension : String,                                
        _ self_hasNoData : Bool

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SchematicObject_sheetDescriptor (
+@MainActor func transient_SchematicObject_sheetDescriptor (
        _ self_mSheet_sheetDescriptor : SchematicSheetDescriptor?
 ) -> SchematicSheetDescriptor {
 //--- START OF USER ZONE 2

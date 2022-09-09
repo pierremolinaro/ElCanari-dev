@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_CommentInSchematic_selectionDisplay (
+@MainActor func transient_CommentInSchematic_selectionDisplay (
        _ self_mComment : String,                    
        _ self_mColor : NSColor,                     
        _ self_mSize : Double,                       

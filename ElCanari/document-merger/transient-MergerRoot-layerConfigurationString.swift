@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerRoot_layerConfigurationString (
+@MainActor func transient_MergerRoot_layerConfigurationString (
        _ self_mArtwork_layerConfiguration : LayerConfiguration?
 ) -> String {
 //--- START OF USER ZONE 2

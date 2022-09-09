@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentInProject_componentPadDictionary (
+@MainActor func transient_ComponentInProject_componentPadDictionary (
        _ self_mX : Int,                                   
        _ self_mY : Int,                                   
        _ self_mRotation : Int,                            

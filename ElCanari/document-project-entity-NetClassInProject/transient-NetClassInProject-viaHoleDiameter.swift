@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NetClassInProject_viaHoleDiameter (
+@MainActor func transient_NetClassInProject_viaHoleDiameter (
        _ self_mViaHoleDiameter : Int,             
        _ self_mViaHoleDiameterUnit : Int
 ) -> String {

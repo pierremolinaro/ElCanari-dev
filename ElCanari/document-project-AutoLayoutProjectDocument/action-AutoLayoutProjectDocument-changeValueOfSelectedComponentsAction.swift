@@ -35,7 +35,7 @@ extension AutoLayoutProjectDocument {
           let gridView = AutoLayoutGridView2 ()
         //---
           layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Change Value", bold: true, size: .regular, alignment: .center))
-          layoutView.appendFlexibleSpace ()
+          _ = layoutView.appendFlexibleSpace ()
         //---
           do{
             let left = AutoLayoutStaticLabel (title: "Components", bold: false, size: .regular, alignment: .center)
@@ -50,15 +50,15 @@ extension AutoLayoutProjectDocument {
             _ = gridView.addFirstBaseLineAligned (left: left, right: comboBox)
           }
         //---
-          layoutView.appendView (gridView)
-          layoutView.appendFlexibleSpace ()
+          _ = layoutView.appendView (gridView)
+          _ = layoutView.appendFlexibleSpace ()
           let okButton = AutoLayoutSheetDefaultOkButton (title: "Change Value", size: .regular, sheet: panel)
           do{
             let hStack = AutoLayoutHorizontalStackView ()
-            hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
-            hStack.appendFlexibleSpace ()
-            hStack.appendView (okButton)
-            layoutView.appendView (hStack)
+            _ = hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
+            _ = hStack.appendFlexibleSpace ()
+            _ = hStack.appendView (okButton)
+            _ = layoutView.appendView (hStack)
           }
         //---
            comboBox.addItems (withObjectValues: componentValues)

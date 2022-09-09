@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NetClassInProject_allowTracksOnBackSideString (
+@MainActor func transient_NetClassInProject_allowTracksOnBackSideString (
        _ self_mAllowTracksOnBackSide : Bool
 ) -> String {
 //--- START OF USER ZONE 2

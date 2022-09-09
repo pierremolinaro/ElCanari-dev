@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutSymbolDocument_segmentedControlSegmentIssueString (
+@MainActor func transient_AutoLayoutSymbolDocument_segmentedControlSegmentIssueString (
        _ self_issues : CanariIssueArray
 ) -> String {
 //--- START OF USER ZONE 2

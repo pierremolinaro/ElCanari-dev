@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_boardLimitBorderLeft (
+@MainActor func transient_ProjectRoot_boardLimitBorderLeft (
        _ self_boardBoundBox : CanariRect,        
        _ self_mBoardLimitsBoundingBoxUnit : Int
 ) -> String {

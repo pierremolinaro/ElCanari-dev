@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SchematicObject_isPlacedInSchematic (
+@MainActor func transient_SchematicObject_isPlacedInSchematic (
        _ self_mSheet_none : Bool
 ) -> Bool {
 //--- START OF USER ZONE 2

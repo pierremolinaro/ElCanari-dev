@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackagePad_noZone (
+@MainActor func transient_PackagePad_noZone (
        _ self_zone_none : Bool
 ) -> Bool {
 //--- START OF USER ZONE 2

@@ -42,14 +42,14 @@ class AutoLayoutBase_NSStackView : NSStackView {
 
   //····················································································································
 
-  @discardableResult final func appendView (_ inView : NSView) -> Self {
+  final func appendView (_ inView : NSView) -> Self {
     self.addView (inView, in: .leading)
     return self
   }
 
   //····················································································································
 
-  @discardableResult final func appendFlexibleSpace () -> Self {
+  final func appendFlexibleSpace () -> Self {
     self.addView (AutoLayoutFlexibleSpace (), in: .leading)
     return self
   }
@@ -139,14 +139,14 @@ class AutoLayoutBase_NSStackView : NSStackView {
   //····················································································································
 
   final func flexibleSpace () -> Self {
-    self.appendView (AutoLayoutFlexibleSpace ())
+    _ = self.appendView (AutoLayoutFlexibleSpace ())
     return self
   }
 
   //····················································································································
 
   final func add (item inView : NSView) -> Self {
-    self.appendView (inView)
+    _ = self.appendView (inView)
     return self
   }
 

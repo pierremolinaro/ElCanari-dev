@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutSymbolDocument_issues (
+@MainActor func transient_AutoLayoutSymbolDocument_issues (
        _ root_issues : CanariIssueArray,        
        _ self_documentFileName : String
 ) -> CanariIssueArray {

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematic_symbolNameNetName (
+@MainActor func transient_PointInSchematic_symbolNameNetName (
        _ self_mSymbolPinName : String,             
        _ self_netName : String
 ) -> TwoStrings {

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematic_connectedPoints (
+@MainActor func transient_PointInSchematic_connectedPoints (
        _ self_location : CanariPoint,            
        _ self_isConnected : Bool
 ) -> CanariPointArray {

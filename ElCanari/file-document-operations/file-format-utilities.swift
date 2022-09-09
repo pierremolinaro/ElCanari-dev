@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func collectAndPrepareObjectsForSaveOperation (fromRoot inRootObject : EBManagedObject) -> [EBManagedObject] {
+@MainActor func collectAndPrepareObjectsForSaveOperation (fromRoot inRootObject : EBManagedObject) -> [EBManagedObject] {
   var reachableObjectArray = [inRootObject]
   var reachableObjectSet = EBReferenceSet (inRootObject)
   var objectsToExploreArray = [inRootObject]
@@ -33,7 +33,7 @@ func collectAndPrepareObjectsForSaveOperation (fromRoot inRootObject : EBManaged
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func collectAndPrepareObjectsForDeletion (fromRoot inRootObject : EBManagedObject) {
+@MainActor func collectAndPrepareObjectsForDeletion (fromRoot inRootObject : EBManagedObject) { // §
   var reachableObjectArray = [inRootObject]
   var reachableObjectSet = EBReferenceSet (inRootObject)
   var objectsToExploreArray = [inRootObject]
@@ -49,10 +49,6 @@ func collectAndPrepareObjectsForDeletion (fromRoot inRootObject : EBManagedObjec
       }
     }
   }
-//--- Remove relationships of all objects
-//  for object in reachableObjectArray {
-//    object.cleanUpRelationshipsAndRemoveAllObservers ()
-//  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

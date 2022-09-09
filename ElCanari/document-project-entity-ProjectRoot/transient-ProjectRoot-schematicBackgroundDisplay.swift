@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_schematicBackgroundDisplay (
+@MainActor func transient_ProjectRoot_schematicBackgroundDisplay (
        _ self_mSchematicTitle : String,                
        _ self_mSchematicVersion : String,              
        _ self_sheetGeometry : SchematicSheetGeometry,  

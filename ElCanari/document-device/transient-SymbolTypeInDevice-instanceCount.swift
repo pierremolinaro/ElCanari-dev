@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolTypeInDevice_instanceCount (
+@MainActor func transient_SymbolTypeInDevice_instanceCount (
        _ self_mInstances_count : Int
 ) -> Int {
 //--- START OF USER ZONE 2

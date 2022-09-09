@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BorderCurve_objectDisplay (
+@MainActor func transient_BorderCurve_objectDisplay (
        _ self_mX : Int,                   
        _ self_mY : Int,                   
        _ self_mNext_mX : Int?,            

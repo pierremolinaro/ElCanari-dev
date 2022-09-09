@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class CanariSelectDefaultNetClassMenu : NSMenu {
+@MainActor final class CanariSelectDefaultNetClassMenu : NSMenu {
 
   //····················································································································
 

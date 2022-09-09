@@ -114,9 +114,9 @@ extension AutoLayoutProjectDocument {
       layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Exchange '\(currentSymbolName)' symbol with…", bold: true, size: .regular, alignment: .center))
     //---
       let popUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth ()
-      layoutView.appendFlexibleSpace ()
-      layoutView.appendView (popUpButton)
-      layoutView.appendFlexibleSpace ()
+      _ = layoutView.appendFlexibleSpace ()
+      _ = layoutView.appendView (popUpButton)
+      _ = layoutView.appendFlexibleSpace ()
     //---
       popUpButton.removeAllItems ()
       for symbol in candidateSymbols {
@@ -129,11 +129,11 @@ extension AutoLayoutProjectDocument {
     //---
       do{
         let hStack = AutoLayoutHorizontalStackView ()
-        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
-        hStack.appendFlexibleSpace ()
+        _ = hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
+        _ = hStack.appendFlexibleSpace ()
         let okButton = AutoLayoutSheetDefaultOkButton (title: "Exchange", size: .regular, sheet: panel)
-        hStack.appendView (okButton)
-        layoutView.appendView (hStack)
+        _ = hStack.appendView (okButton)
+        _ = layoutView.appendView (hStack)
       }
     //---
       panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))

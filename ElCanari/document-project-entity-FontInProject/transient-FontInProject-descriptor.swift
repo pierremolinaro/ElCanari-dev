@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_FontInProject_descriptor (
+@MainActor func transient_FontInProject_descriptor (
        _ self_mNominalSize : Int,        
        _ self_mDescriptiveString : String
 ) -> BoardFontDescriptor {

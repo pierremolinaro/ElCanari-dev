@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceSymbolInstanceInProject_strokeBezierPath (
+@MainActor func transient_DeviceSymbolInstanceInProject_strokeBezierPath (
        _ self_mSymbolType_mStrokeBezierPath : NSBezierPath?,   
        _ prefs_symbolDrawingWidthMultipliedByTenForSchematic : Int
 ) -> NSBezierPath {

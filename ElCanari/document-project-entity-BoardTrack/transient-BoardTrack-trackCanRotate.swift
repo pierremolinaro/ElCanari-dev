@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardTrack_trackCanRotate (
+@MainActor func transient_BoardTrack_trackCanRotate (
        _ self_p1CanMove : Bool,           
        _ self_p2CanMove : Bool
 ) -> Bool {

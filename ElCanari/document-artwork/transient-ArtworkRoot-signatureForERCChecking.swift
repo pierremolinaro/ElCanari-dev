@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ArtworkRoot_signatureForERCChecking (
+@MainActor func transient_ArtworkRoot_signatureForERCChecking (
        _ self_minPPTPTTTW : Int,                    
        _ self_minValueForOARinEBUnit : Int,         
        _ self_minValueForBoardLimitWidth : Int,     

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageZone_rect (
+@MainActor func transient_PackageZone_rect (
        _ self_x : Int,           
        _ self_y : Int,           
        _ self_width : Int,       

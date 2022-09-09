@@ -56,7 +56,7 @@ class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
 
   final func appendVerticalSeparator () {
     let separator = Self.VerticalSeparator ()
-    self.appendView (separator)
+    _ = self.appendView (separator)
   }
 
   //····················································································································
@@ -65,8 +65,8 @@ class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
 
   @discardableResult final func appendViewPreceededByFlexibleSpace (_ inView : NSView) -> Self {
     let hStack = AutoLayoutVerticalStackView ()
-    hStack.appendFlexibleSpace ()
-    hStack.appendView (inView)
+    _ = hStack.appendFlexibleSpace ()
+    _ = hStack.appendView (inView)
     self.addView (hStack, in: .leading)
     return self
   }
@@ -75,8 +75,8 @@ class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
 
   @discardableResult final func appendViewFollowedByFlexibleSpace (_ inView : NSView) -> Self {
     let hStack = AutoLayoutVerticalStackView ()
-    hStack.appendView (inView)
-    hStack.appendFlexibleSpace ()
+    _ = hStack.appendView (inView)
+    _ = hStack.appendFlexibleSpace ()
     self.addView (hStack, in: .leading)
     return self
   }
@@ -85,9 +85,9 @@ class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
 
   @discardableResult final func appendViewSurroundedByFlexibleSpaces (_ inView : NSView) -> Self {
     let hStack = AutoLayoutVerticalStackView ()
-    hStack.appendFlexibleSpace ()
-    hStack.appendView (inView)
-    hStack.appendFlexibleSpace ()
+    _ = hStack.appendFlexibleSpace ()
+    _ = hStack.appendView (inView)
+    _ = hStack.appendFlexibleSpace ()
     self.addView (hStack, in: .leading)
     return self
   }
@@ -96,8 +96,8 @@ class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
 
   class final func viewFollowedByFlexibleSpace (_ inView : NSView) -> AutoLayoutHorizontalStackView {
     let hStack = AutoLayoutHorizontalStackView ()
-    hStack.appendView (inView)
-    hStack.appendFlexibleSpace ()
+    _ = hStack.appendView (inView)
+    _ = hStack.appendFlexibleSpace ()
     return hStack
   }
 

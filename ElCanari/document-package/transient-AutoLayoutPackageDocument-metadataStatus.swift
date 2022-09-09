@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutPackageDocument_metadataStatus (
+@MainActor func transient_AutoLayoutPackageDocument_metadataStatus (
        _ self_issues : CanariIssueArray
 ) -> MetadataStatus {
 //--- START OF USER ZONE 2

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SlavePadInDevice_backSideFilledBezierPath (
+@MainActor func transient_SlavePadInDevice_backSideFilledBezierPath (
        _ self_mCenterX : Int,                             
        _ self_mCenterY : Int,                             
        _ self_mWidth : Int,                               

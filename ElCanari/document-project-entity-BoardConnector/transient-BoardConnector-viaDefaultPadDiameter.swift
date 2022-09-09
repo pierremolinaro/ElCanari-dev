@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardConnector_viaDefaultPadDiameter (
+@MainActor func transient_BoardConnector_viaDefaultPadDiameter (
        _ self_mTracksP1_netClassViaPadDiameter : [BoardTrack_netClassViaPadDiameter],
        _ self_mTracksP2_netClassViaPadDiameter : [BoardTrack_netClassViaPadDiameter]
 ) -> Int {

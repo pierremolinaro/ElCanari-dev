@@ -47,7 +47,7 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
       let button = AutoLayoutButton (title: "Hide Issue", size: .small).expandableWidth ()
       button.target = self
       button.action = #selector (Self.hideIssueAction (_:))
-      self.appendView (button)
+      _ = self.appendView (button)
       self.mHideIssueButton = button
     }
 
@@ -78,7 +78,7 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
     self.mScrollView.documentView = self.mTableView
     self.mScrollView.hasHorizontalScroller = false
     self.mScrollView.hasVerticalScroller = true
-    self.appendView (self.mScrollView)
+    _ = self.appendView (self.mScrollView)
   }
 
   //····················································································································

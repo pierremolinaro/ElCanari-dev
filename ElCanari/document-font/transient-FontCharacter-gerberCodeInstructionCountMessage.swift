@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_FontCharacter_gerberCodeInstructionCountMessage (
+@MainActor func transient_FontCharacter_gerberCodeInstructionCountMessage (
        _ self_gerberCode : CharacterGerberCode
 ) -> String {
 //--- START OF USER ZONE 2

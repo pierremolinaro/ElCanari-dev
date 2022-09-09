@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NetClassInProject_trackWidthString (
+@MainActor func transient_NetClassInProject_trackWidthString (
        _ self_mTrackWidth : Int,                   
        _ self_mTrackWidthUnit : Int
 ) -> String {

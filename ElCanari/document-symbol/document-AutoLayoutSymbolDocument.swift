@@ -350,56 +350,56 @@ import Cocoa
           .addPage (title: "Symbol", tooltip: "Symbol Editor", pageView: self.mSymbolPage)
           .addPage (title: "Infos", tooltip: "Symbol Informations", pageView: self.mInfosPage)
           .bind_selectedPage (self.rootObject.selectedPageIndex_property)
-        view_0_0.appendView (view_0_0_0)
+        _ = view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutStaticLabel (title: "Page", bold: false, size: .small, alignment: .center)
-        view_0_0.appendView (view_0_0_1)
+        _ = view_0_0.appendView (view_0_0_1)
       }
-      view_0.appendView (view_0_0)
+      _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutVerticalStackView ()
       do{
         let view_0_1_0 = AutoLayoutSignatureField (size: .regular)
           .bind_signature (self.signatureObserver_property)
-        view_0_1.appendView (view_0_1_0)
+        _ = view_0_1.appendView (view_0_1_0)
         let view_0_1_1 = AutoLayoutStaticLabel (title: "Signature", bold: false, size: .small, alignment: .center)
-        view_0_1.appendView (view_0_1_1)
+        _ = view_0_1.appendView (view_0_1_1)
       }
-      view_0.appendView (view_0_1)
+      _ = view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutVerticalStackView ()
       do{
         let view_0_2_0 = AutoLayoutVersionField (size: .regular)
           .bind_version (self.versionObserver_property)
           .bind_versionShouldChange (self.versionShouldChangeObserver_property)
-        view_0_2.appendView (view_0_2_0)
+        _ = view_0_2.appendView (view_0_2_0)
         let view_0_2_1 = AutoLayoutStaticLabel (title: "Version", bold: false, size: .small, alignment: .center)
-        view_0_2.appendView (view_0_2_1)
+        _ = view_0_2.appendView (view_0_2_1)
       }
-      view_0.appendView (view_0_2)
+      _ = view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_3)
+      _ = view_0.appendView (view_0_3)
       let view_0_4 = AutoLayoutVerticalStackView ()
       do{
         let view_0_4_0 = AutoLayoutHorizontalStackView ()
         do{
           let view_0_4_0_0 = AutoLayoutFlexibleSpace ()
-          view_0_4_0.appendView (view_0_4_0_0)
+          _ = view_0_4_0.appendView (view_0_4_0_0)
           let view_0_4_0_1 = AutoLayoutImageObserverView (size: .regular)
             .bind_image (self.statusImage_property)
             .bind_tooltip (self.statusMessage_property)
-          view_0_4_0.appendView (view_0_4_0_1)
+          _ = view_0_4_0.appendView (view_0_4_0_1)
           let view_0_4_0_2 = AutoLayoutFlexibleSpace ()
-          view_0_4_0.appendView (view_0_4_0_2)
+          _ = view_0_4_0.appendView (view_0_4_0_2)
         }
-        view_0_4.appendView (view_0_4_0)
+        _ = view_0_4.appendView (view_0_4_0)
         let view_0_4_1 = AutoLayoutStaticLabel (title: "Status", bold: false, size: .small, alignment: .center)
-        view_0_4.appendView (view_0_4_1)
+        _ = view_0_4.appendView (view_0_4_1)
       }
-      view_0.appendView (view_0_4)
+      _ = view_0.appendView (view_0_4)
     }
-    vStackView.appendView (view_0)
+    _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-    vStackView.appendView (view_1)
+    _ = vStackView.appendView (view_1)
     let view_2 = mPageMasterView
-    vStackView.appendView (view_2)
+    _ = vStackView.appendView (view_2)
     return vStackView
   } ()
 
@@ -432,49 +432,49 @@ import Cocoa
           let view_0_0_0_0 = AutoLayoutDragSourceButton (tooltip: "Add Segment")
             .bind_image (self.addSegmentButtonImage_property)
           self.configure_addSymbolSegment (view_0_0_0_0) // Configurator
-          view_0_0_0.appendView (view_0_0_0_0)
+          _ = view_0_0_0.appendView (view_0_0_0_0)
           let view_0_0_0_1 = AutoLayoutFlexibleSpace ()
-          view_0_0_0.appendView (view_0_0_0_1)
+          _ = view_0_0_0.appendView (view_0_0_0_1)
           let view_0_0_0_2 = AutoLayoutDragSourceButton (tooltip: "Add Bezier")
             .bind_image (self.addBezierButtonImage_property)
           self.configure_addSymbolBezier (view_0_0_0_2) // Configurator
-          view_0_0_0.appendView (view_0_0_0_2)
+          _ = view_0_0_0.appendView (view_0_0_0_2)
           let view_0_0_0_3 = AutoLayoutFlexibleSpace ()
-          view_0_0_0.appendView (view_0_0_0_3)
+          _ = view_0_0_0.appendView (view_0_0_0_3)
           let view_0_0_0_4 = AutoLayoutDragSourceButton (tooltip: "Add Solid Oval")
             .bind_image (self.addSolidOvalButtonImage_property)
           self.configure_addSymbolSolidOval (view_0_0_0_4) // Configurator
-          view_0_0_0.appendView (view_0_0_0_4)
+          _ = view_0_0_0.appendView (view_0_0_0_4)
           let view_0_0_0_5 = AutoLayoutFlexibleSpace ()
-          view_0_0_0.appendView (view_0_0_0_5)
+          _ = view_0_0_0.appendView (view_0_0_0_5)
           let view_0_0_0_6 = AutoLayoutDragSourceButton (tooltip: "Add Oval")
             .bind_image (self.addOvalButtonImage_property)
           self.configure_addSymbolOval (view_0_0_0_6) // Configurator
-          view_0_0_0.appendView (view_0_0_0_6)
+          _ = view_0_0_0.appendView (view_0_0_0_6)
           let view_0_0_0_7 = AutoLayoutFlexibleSpace ()
-          view_0_0_0.appendView (view_0_0_0_7)
+          _ = view_0_0_0.appendView (view_0_0_0_7)
           let view_0_0_0_8 = AutoLayoutDragSourceButton (tooltip: "Add Solid Rect")
             .bind_image (self.addSolidRectButtonImage_property)
           self.configure_addSymbolSolidRect (view_0_0_0_8) // Configurator
-          view_0_0_0.appendView (view_0_0_0_8)
+          _ = view_0_0_0.appendView (view_0_0_0_8)
           let view_0_0_0_9 = AutoLayoutFlexibleSpace ()
-          view_0_0_0.appendView (view_0_0_0_9)
+          _ = view_0_0_0.appendView (view_0_0_0_9)
           let view_0_0_0_10 = AutoLayoutDragSourceButton (tooltip: "Add Text")
             .bind_image (self.addTextButtonImage_property)
           self.configure_addSymbolText (view_0_0_0_10) // Configurator
-          view_0_0_0.appendView (view_0_0_0_10)
+          _ = view_0_0_0.appendView (view_0_0_0_10)
           let view_0_0_0_11 = AutoLayoutFlexibleSpace ()
-          view_0_0_0.appendView (view_0_0_0_11)
+          _ = view_0_0_0.appendView (view_0_0_0_11)
           let view_0_0_0_12 = AutoLayoutDragSourceButton (tooltip: "Add Pin")
             .bind_image (self.addPinButtonImage_property)
           self.configure_addSymbolPin (view_0_0_0_12) // Configurator
-          view_0_0_0.appendView (view_0_0_0_12)
+          _ = view_0_0_0.appendView (view_0_0_0_12)
         }
-        view_0_0.appendView (view_0_0_0)
+        _ = view_0_0.appendView (view_0_0_0)
       }
-      view_0.appendView (view_0_0)
+      _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
-      view_0.appendView (view_0_1)
+      _ = view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutVerticalStackView ()
         .set (leftMargin: 20)
         .set (rightMargin: 20)
@@ -490,9 +490,9 @@ import Cocoa
           .bind_segmentTitle (self.segmentedControlSegmentIssueString_property, segmentIndex:3)
         self.mSymbolInspectorSegmentedControl = view_0_2_0 // Outlet
         self.configure_symbolPageSegmentedControl (view_0_2_0) // Configurator
-        view_0_2.appendView (view_0_2_0)
+        _ = view_0_2.appendView (view_0_2_0)
       }
-      view_0.appendView (view_0_2)
+      _ = view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutVerticalStackView ()
         .set (leftMargin: 20)
         .set (rightMargin: 20)
@@ -500,13 +500,13 @@ import Cocoa
         .set (spacing: 12)
       do{
         let view_0_3_0 = self.mSymbolPageInspectorMasterView
-        view_0_3.appendView (view_0_3_0)
+        _ = view_0_3.appendView (view_0_3_0)
       }
-      view_0.appendView (view_0_3)
+      _ = view_0.appendView (view_0_3)
     }
-    hStackView.appendView (view_0)
+    _ = hStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
-    hStackView.appendView (view_1)
+    _ = hStackView.appendView (view_1)
     let view_2 = AutoLayoutGraphicView (minZoom: 10, maxZoom: 4000)
       .bind_horizontalFlip (self.rootObject.horizontalFlip_property)
       .bind_verticalFlip (self.rootObject.verticalFlip_property)
@@ -521,7 +521,7 @@ import Cocoa
       .bind_graphic_controller (self.mSymbolObjectsController)
     self.mSymbolGraphicView = view_2 // Outlet
     self.configure_symbolGraphicView (view_2) // Configurator
-    hStackView.appendView (view_2)
+    _ = hStackView.appendView (view_2)
     return hStackView
   } ()
 
@@ -535,9 +535,9 @@ import Cocoa
       .addObjectInspector (forEntity: SymbolText.self, inspectorView: self.mSymbolTextInspectorView)
       .addObjectInspector (forEntity: SymbolPin.self, inspectorView: self.mSymbolPinInspectorView)
       .bind_graphic_controller (self.mSymbolObjectsController)
-    vStackView.appendView (view_0)
+    _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutFlexibleSpace ()
-    vStackView.appendView (view_1)
+    _ = vStackView.appendView (view_1)
     return vStackView
   } ()
 
@@ -548,11 +548,11 @@ import Cocoa
   lazy final var mSymbolTextInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Text Inspector", bold: true, size: .small, alignment: .center)
-    vStackView.appendView (view_0)
+    _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_0 (), right: self.computeImplicitView_1 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_2 (), right: self.computeImplicitView_3 ())
-    vStackView.appendView (view_1)
+    _ = vStackView.appendView (view_1)
     return vStackView
   } ()
 
@@ -563,13 +563,13 @@ import Cocoa
   lazy final var mSymbolPinInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Pin Inspector", bold: true, size: .small, alignment: .center)
-    vStackView.appendView (view_0)
+    _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_4 (), right: self.computeImplicitView_5 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_6 (), right: self.computeImplicitView_7 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_8 (), right: self.computeImplicitView_9 ())
       .add (single: self.computeImplicitView_10 ())
-    vStackView.appendView (view_1)
+    _ = vStackView.appendView (view_1)
     return vStackView
   } ()
 
@@ -580,7 +580,7 @@ import Cocoa
   lazy final var mGridZoomInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "(Stored in Document Preferences)", bold: false, size: .mini, alignment: .center)
-    vStackView.appendView (view_0)
+    _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_11 (), right: self.computeImplicitView_12 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_13 (), right: self.computeImplicitView_14 ())
@@ -589,9 +589,9 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_19 (), right: self.computeImplicitView_20 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_21 (), right: self.computeImplicitView_22 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_23 (), right: self.computeImplicitView_24 ())
-    vStackView.appendView (view_1)
+    _ = vStackView.appendView (view_1)
     let view_2 = AutoLayoutFlexibleSpace ()
-    vStackView.appendView (view_2)
+    _ = vStackView.appendView (view_2)
     return vStackView
   } ()
 
@@ -602,7 +602,7 @@ import Cocoa
   lazy final var mDisplayInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "(Stored in Application Preferences)", bold: false, size: .mini, alignment: .center)
-    vStackView.appendView (view_0)
+    _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
       .addCenterYAligned (left: self.computeImplicitView_25 (), right: self.computeImplicitView_26 ())
       .addCenterYAligned (left: self.computeImplicitView_27 (), right: self.computeImplicitView_28 ())
@@ -610,9 +610,9 @@ import Cocoa
       .addCenterYAligned (left: self.computeImplicitView_31 (), right: self.computeImplicitView_32 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_33 (), right: self.computeImplicitView_34 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_35 (), right: self.computeImplicitView_36 ())
-    vStackView.appendView (view_1)
+    _ = vStackView.appendView (view_1)
     let view_2 = AutoLayoutFlexibleSpace ()
-    vStackView.appendView (view_2)
+    _ = vStackView.appendView (view_2)
     return vStackView
   } ()
 
@@ -625,18 +625,18 @@ import Cocoa
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_0)
+      _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutLabel (bold: false, size: .small)
         .bind_title (self.statusMessage_property)
-      view_0.appendView (view_0_1)
+      _ = view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_2)
+      _ = view_0.appendView (view_0_2)
     }
-    vStackView.appendView (view_0)
+    _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutCanariIssueTableView (hasHideIssueButton: true)
       .bind_issues (self.issues_property)
     self.mSymbolIssueTableView = view_1 // Outlet
-    vStackView.appendView (view_1)
+    _ = vStackView.appendView (view_1)
     return vStackView
   } ()
 
@@ -657,26 +657,26 @@ import Cocoa
           target: self,
           selector: #selector (AutoLayoutSymbolDocument.resetVersionAction (_:))
         )
-      view_0.appendView (view_0_0)
+      _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutFlexibleSpace ()
-      view_0.appendView (view_0_1)
+      _ = view_0.appendView (view_0_1)
     }
-    vStackView.appendView (view_0)
+    _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
     do{
       let view_1_0 = AutoLayoutVerticalStackView ()
       do{
         let view_1_0_0 = AutoLayoutStaticLabel (title: "Comments", bold: false, size: .regular, alignment: .center)
-        view_1_0.appendView (view_1_0_0)
+        _ = view_1_0.appendView (view_1_0_0)
         let view_1_0_1 = AutoLayoutFlexibleSpace ()
-        view_1_0.appendView (view_1_0_1)
+        _ = view_1_0.appendView (view_1_0_1)
       }
-      view_1.appendView (view_1_0)
+      _ = view_1.appendView (view_1_0)
       let view_1_1 = AutoLayoutTextView ()
         .bind_value (self.rootObject.comments_property)
-      view_1.appendView (view_1_1)
+      _ = view_1.appendView (view_1_1)
     }
-    vStackView.appendView (view_1)
+    _ = vStackView.appendView (view_1)
     return vStackView
   } ()
 
@@ -790,9 +790,9 @@ import Cocoa
     do{
       let view_0 = AutoLayoutCheckbox (title: "Pin is visible in schematics", size: .small)
         .bind_value (self.mSymbolPinSelectionController.pinNameIsDisplayedInSchematics_property)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
     }
     return view
   }
@@ -954,9 +954,9 @@ import Cocoa
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_symbolColor_property, sendContinously:false)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
     }
     return view
   }
@@ -980,9 +980,9 @@ import Cocoa
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_symbolBackgroundColor_property, sendContinously:false)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
     }
     return view
   }
@@ -1006,9 +1006,9 @@ import Cocoa
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_crossColorOfSymbolGrid_property, sendContinously:false)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
     }
     return view
   }
@@ -1032,9 +1032,9 @@ import Cocoa
       let view_0 = AutoLayoutColorWell ()
         .set (toolTip: "Stored in Preferences")
         .bind_color (preferences_lineColorOfSymbolGrid_property, sendContinously:false)
-      view.appendView (view_0)
+      _ = view.appendView (view_0)
       let view_1 = AutoLayoutFlexibleSpace ()
-      view.appendView (view_1)
+      _ = view.appendView (view_1)
     }
     return view
   }

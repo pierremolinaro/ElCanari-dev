@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceRoot_inconsistentPackagePadNameSetsMessage (
+@MainActor func transient_DeviceRoot_inconsistentPackagePadNameSetsMessage (
        _ self_mPackages_padNameSet : [PackageInDevice_padNameSet],
        _ self_mPackages_mName : [PackageInDevice_mName]
 ) -> String {

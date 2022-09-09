@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_FontInProject_componentValuesCount (
+@MainActor func transient_FontInProject_componentValuesCount (
        _ self_mComponentValues_count : Int
 ) -> Int {
 //--- START OF USER ZONE 2

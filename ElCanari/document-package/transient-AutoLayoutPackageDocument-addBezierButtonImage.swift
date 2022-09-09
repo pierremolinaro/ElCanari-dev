@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutPackageDocument_addBezierButtonImage (
+@MainActor func transient_AutoLayoutPackageDocument_addBezierButtonImage (
        _ prefs_packageColor : NSColor
 ) -> NSImage {
 //--- START OF USER ZONE 2

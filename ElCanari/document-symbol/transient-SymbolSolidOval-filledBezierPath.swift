@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolSolidOval_filledBezierPath (
+@MainActor func transient_SymbolSolidOval_filledBezierPath (
        _ self_x : Int,                           
        _ self_y : Int,                           
        _ self_width : Int,                       

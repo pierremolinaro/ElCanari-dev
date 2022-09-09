@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolPinInstanceInDevice_isConnected (
+@MainActor func transient_SymbolPinInstanceInDevice_isConnected (
        _ self_mPadProxy_none : Bool
 ) -> Bool {
 //--- START OF USER ZONE 2

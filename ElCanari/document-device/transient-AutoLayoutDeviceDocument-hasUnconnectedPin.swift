@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutDeviceDocument_hasUnconnectedPin (
+@MainActor func transient_AutoLayoutDeviceDocument_hasUnconnectedPin (
        _ root_unconnectedPins : UnconnectedSymbolPinsInDevice
 ) -> Bool {
 //--- START OF USER ZONE 2

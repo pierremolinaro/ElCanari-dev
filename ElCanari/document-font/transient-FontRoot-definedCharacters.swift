@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_FontRoot_definedCharacters (
+@MainActor func transient_FontRoot_definedCharacters (
        _ self_characters_codePoint : [FontCharacter_codePoint]
 ) -> DefinedCharactersInDevice {
 //--- START OF USER ZONE 2

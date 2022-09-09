@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardModel_frontLegendLinesBezierPaths (
+@MainActor func transient_BoardModel_frontLegendLinesBezierPaths (
        _ self_frontLegendLinesSegments : MergerSegmentArray
 ) -> BezierPathArray {
 //--- START OF USER ZONE 2

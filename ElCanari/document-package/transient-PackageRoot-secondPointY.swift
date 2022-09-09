@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageRoot_secondPointY (
+@MainActor func transient_PackageRoot_secondPointY (
        _ self_mModelImageFirstPointY : Int,
        _ self_mModelImageSecondPointDy : Int
 ) -> Int {

@@ -25,8 +25,8 @@ final class AutoLayoutCanariAngleFieldAndSlider : AutoLayoutHorizontalStackView 
     self.mAngleTextField = AutoLayoutCanariAngleField (minWidth: inWidth, size: inSize)
     self.mAngleSlider = AutoLayoutAngleCircularSlider (size: inSize)
     super.init ()
-    self.appendView (self.mAngleTextField)
-    self.appendView (self.mAngleSlider)
+    _ = self.appendView (self.mAngleTextField)
+    _ = self.appendView (self.mAngleSlider)
   }
 
   //····················································································································

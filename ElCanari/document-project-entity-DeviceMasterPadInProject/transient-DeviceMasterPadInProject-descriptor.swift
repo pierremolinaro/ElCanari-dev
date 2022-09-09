@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceMasterPadInProject_descriptor (
+@MainActor func transient_DeviceMasterPadInProject_descriptor (
        _ self_mName : String,                       
        _ self_mCenterX : Int,                       
        _ self_mCenterY : Int,                       

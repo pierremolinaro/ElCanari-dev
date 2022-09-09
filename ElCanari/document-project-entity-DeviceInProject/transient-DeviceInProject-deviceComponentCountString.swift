@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceInProject_deviceComponentCountString (
+@MainActor func transient_DeviceInProject_deviceComponentCountString (
        _ self_mComponents_count : Int
 ) -> String {
 //--- START OF USER ZONE 2

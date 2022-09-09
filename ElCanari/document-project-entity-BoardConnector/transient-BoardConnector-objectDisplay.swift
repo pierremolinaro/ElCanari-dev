@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardConnector_objectDisplay (
+@MainActor func transient_BoardConnector_objectDisplay (
        _ self_isVia : Bool,                  
        _ self_location : CanariPoint,        
        _ self_actualHoleDiameter : Int,      

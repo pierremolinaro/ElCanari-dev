@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackagePad_annularRing (
+@MainActor func transient_PackagePad_annularRing (
        _ self_width : Int,             
        _ self_height : Int,            
        _ self_holeWidth : Int,         

@@ -101,7 +101,7 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
     for view in allSubViews {
       self.mDocumentView.removeView (view) // Do not use view.removeFromSuperview ()
     }
-    self.mDocumentView.appendView (newPage)
+    _ = self.mDocumentView.appendView (newPage)
     self.mSelectedTabIndexController?.updateModel (withValue: self.selectedSegment)
     self.mSelectedSegmentController?.updateModel (self)
   }

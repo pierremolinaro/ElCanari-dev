@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BorderCurve_isLine (
+@MainActor func transient_BorderCurve_isLine (
        _ self_mShape : BorderCurveShape
 ) -> Bool {
 //--- START OF USER ZONE 2

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SheetInProject_connectedPoints (
+@MainActor func transient_SheetInProject_connectedPoints (
        _ prefs_connectionColorForSchematic : NSColor,
        _ self_mPoints_connectedPoints : [PointInSchematic_connectedPoints]
 ) -> EBShape {

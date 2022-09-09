@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardObject_displayFrontRestrictRectangles (
+@MainActor func transient_BoardObject_displayFrontRestrictRectangles (
        _ self_mRoot_displayFrontRestrictRectangles : Bool?
 ) -> Bool {
 //--- START OF USER ZONE 2

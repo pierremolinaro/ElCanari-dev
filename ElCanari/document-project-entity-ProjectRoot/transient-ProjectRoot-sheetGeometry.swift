@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_sheetGeometry (
+@MainActor func transient_ProjectRoot_sheetGeometry (
        _ self_mSchematicSheetOrientation : SchematicSheetOrientation,
        _ self_mSchematicCustomWidth : Int,
        _ self_mSchematicCustomHeight : Int

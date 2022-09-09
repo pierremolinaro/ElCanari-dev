@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PadProxyInDevice_isConnected (
+@MainActor func transient_PadProxyInDevice_isConnected (
        _ self_mIsNC : Bool,                  
        _ self_mPinInstance_none : Bool
 ) -> Bool {

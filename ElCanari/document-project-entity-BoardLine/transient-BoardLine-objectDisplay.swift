@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardLine_objectDisplay (
+@MainActor func transient_BoardLine_objectDisplay (
        _ self_mX1 : Int,                
        _ self_mY1 : Int,                
        _ self_mX2 : Int,                

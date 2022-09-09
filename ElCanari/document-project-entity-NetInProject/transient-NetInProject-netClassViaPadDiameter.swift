@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NetInProject_netClassViaPadDiameter (
+@MainActor func transient_NetInProject_netClassViaPadDiameter (
        _ self_mNetClass_mViaPadDiameter : Int?
 ) -> Int {
 //--- START OF USER ZONE 2

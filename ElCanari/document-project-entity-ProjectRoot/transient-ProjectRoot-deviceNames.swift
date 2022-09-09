@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_deviceNames (
+@MainActor func transient_ProjectRoot_deviceNames (
        _ self_mDevices_mDeviceName : [DeviceInProject_mDeviceName]
 ) -> StringArray {
 //--- START OF USER ZONE 2

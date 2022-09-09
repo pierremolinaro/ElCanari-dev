@@ -46,7 +46,7 @@ typealias EBDocumentRootObjectDictionary = [String : Any]
 //     loadEasyBindingFile fromURL
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func loadEasyBindingFile (fromURL inURL: URL) throws -> EBDocumentData {
+@MainActor func loadEasyBindingFile (fromURL inURL: URL) throws -> EBDocumentData {
   let data = try Data (contentsOf: inURL)
   return try loadEasyBindingFile (fromData: data, documentName: inURL.lastPathComponent, undoManager: nil)
 }
@@ -55,9 +55,9 @@ func loadEasyBindingFile (fromURL inURL: URL) throws -> EBDocumentData {
 //     loadEasyBindingFile
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func loadEasyBindingFile (fromData inData: Data,
-                          documentName inDocumentName : String,
-                          undoManager inUndoManager : EBUndoManager?) throws -> EBDocumentData {
+@MainActor func loadEasyBindingFile (fromData inData: Data,
+                                      documentName inDocumentName : String,
+                                      undoManager inUndoManager : EBUndoManager?) throws -> EBDocumentData {
 //---- Define input data scanner
   var dataScanner = EBDataScanner (data: inData)
 //--- Check Signature
@@ -78,7 +78,7 @@ func loadEasyBindingFile (fromData inData: Data,
 //     dataForSaveOperation
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func dataForSaveOperation (from inDocumentData : EBDocumentData) throws -> Data {
+@MainActor func dataForSaveOperation (from inDocumentData : EBDocumentData) throws -> Data {
   switch inDocumentData.documentFileFormat {
   case .textual :
     return try dataForTextualSaveOperation (from: inDocumentData)
@@ -91,7 +91,7 @@ func dataForSaveOperation (from inDocumentData : EBDocumentData) throws -> Data 
 //   save
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func save (documentData inDocumentData : EBDocumentData, toURL inURL : URL) throws {
+@MainActor func save (documentData inDocumentData : EBDocumentData, toURL inURL : URL) throws {
   let data = try dataForSaveOperation (from: inDocumentData)
   try data.write(to: inURL)
 }

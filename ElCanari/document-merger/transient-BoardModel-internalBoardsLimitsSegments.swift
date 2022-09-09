@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardModel_internalBoardsLimitsSegments (
+@MainActor func transient_BoardModel_internalBoardsLimitsSegments (
        _ self_internalBoardsLimits_x1 : [SegmentEntity_x1],
        _ self_internalBoardsLimits_y1 : [SegmentEntity_y1],
        _ self_internalBoardsLimits_x2 : [SegmentEntity_x2],

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolRoot_issues (
+@MainActor func transient_SymbolRoot_issues (
        _ self_symbolObjects_issues : [SymbolObject_issues],
        _ self_symbolPins_name : [SymbolPin_name],
        _ self_symbolPins_nameRect : [SymbolPin_nameRect],

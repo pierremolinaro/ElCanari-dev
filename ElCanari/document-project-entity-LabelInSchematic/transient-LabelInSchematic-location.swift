@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_LabelInSchematic_location (
+@MainActor func transient_LabelInSchematic_location (
        _ self_mPoint_location : CanariPoint?
 ) -> CanariPoint {
 //--- START OF USER ZONE 2

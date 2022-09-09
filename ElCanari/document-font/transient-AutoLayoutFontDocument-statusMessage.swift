@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutFontDocument_statusMessage (
+@MainActor func transient_AutoLayoutFontDocument_statusMessage (
        _ root_issues : CanariIssueArray
 ) -> String {
 //--- START OF USER ZONE 2

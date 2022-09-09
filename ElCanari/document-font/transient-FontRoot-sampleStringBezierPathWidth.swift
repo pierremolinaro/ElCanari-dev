@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_FontRoot_sampleStringBezierPathWidth (
+@MainActor func transient_FontRoot_sampleStringBezierPathWidth (
        _ self_sampleStringBezierPath : NSBezierPath
 ) -> String {
 //--- START OF USER ZONE 2

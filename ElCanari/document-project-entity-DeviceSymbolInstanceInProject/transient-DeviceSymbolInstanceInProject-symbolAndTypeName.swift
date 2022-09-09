@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceSymbolInstanceInProject_symbolAndTypeName (
+@MainActor func transient_DeviceSymbolInstanceInProject_symbolAndTypeName (
        _ self_mSymbolInstanceName : String,                     
        _ self_mSymbolType_mSymbolTypeName : String?
 ) -> SymbolInProjectIdentifier {

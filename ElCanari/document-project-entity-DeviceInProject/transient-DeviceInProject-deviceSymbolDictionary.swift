@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceInProject_deviceSymbolDictionary (
+@MainActor func transient_DeviceInProject_deviceSymbolDictionary (
        _ self_mPadAssignments_descriptor : [DevicePadAssignmentInProject_descriptor],
        _ self_mSymbols_symbolAndTypeName : [DeviceSymbolInstanceInProject_symbolAndTypeName],
        _ self_mSymbols_filledBezierPath : [DeviceSymbolInstanceInProject_filledBezierPath],

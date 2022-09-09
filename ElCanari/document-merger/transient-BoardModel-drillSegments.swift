@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardModel_drillSegments (
+@MainActor func transient_BoardModel_drillSegments (
        _ self_drills_x1 : [SegmentEntity_x1],
        _ self_drills_y1 : [SegmentEntity_y1],
        _ self_drills_x2 : [SegmentEntity_x2],

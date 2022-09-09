@@ -20,7 +20,7 @@ func partNameIsValid (_ inPartName : String) -> Bool {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func existingLibraryPathArray () -> [String] {
+@MainActor func existingLibraryPathArray () -> [String] {
   let fm = FileManager ()
   var result = [String] ()
 //--- User library
@@ -145,7 +145,7 @@ func createLibraryAtPath (_ inPath : String) throws {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func symbolFilePathInLibraries (_ inSymbolNameWithoutExtension : String) -> [String] {
+@MainActor func symbolFilePathInLibraries (_ inSymbolNameWithoutExtension : String) -> [String] {
   var pathes = [String] ()
   let fm = FileManager ()
   for libraryDir in existingLibraryPathArray () {
@@ -165,7 +165,7 @@ func symbolFilePathInLibraries (_ inSymbolNameWithoutExtension : String) -> [Str
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func packageFilePathInLibraries (_ inPackageNameWithoutExtension : String) -> [String] {
+@MainActor func packageFilePathInLibraries (_ inPackageNameWithoutExtension : String) -> [String] {
   var pathes = [String] ()
   let fm = FileManager ()
   for libraryDir in existingLibraryPathArray () {
@@ -185,7 +185,7 @@ func packageFilePathInLibraries (_ inPackageNameWithoutExtension : String) -> [S
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func deviceFilePathInLibraries (_ inDeviceNameWithoutExtension : String) -> [String] {
+@MainActor func deviceFilePathInLibraries (_ inDeviceNameWithoutExtension : String) -> [String] {
   var pathes = [String] ()
   let fm = FileManager ()
   for libraryDir in existingLibraryPathArray () {
@@ -205,7 +205,7 @@ func deviceFilePathInLibraries (_ inDeviceNameWithoutExtension : String) -> [Str
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func fontFilePathInLibraries (_ inFontNameWithoutExtension : String) -> [String] {
+@MainActor func fontFilePathInLibraries (_ inFontNameWithoutExtension : String) -> [String] {
   var pathes = [String] ()
   let fm = FileManager ()
   for libraryDir in existingLibraryPathArray () {

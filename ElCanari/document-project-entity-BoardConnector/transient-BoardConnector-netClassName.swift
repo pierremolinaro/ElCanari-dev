@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardConnector_netClassName (
+@MainActor func transient_BoardConnector_netClassName (
        _ self_mTracksP1_netClassName : [BoardTrack_netClassName],
        _ self_mTracksP2_netClassName : [BoardTrack_netClassName]
 ) -> String {

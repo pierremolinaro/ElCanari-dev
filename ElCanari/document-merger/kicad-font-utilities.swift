@@ -61,24 +61,24 @@ enum KicadStringJustification {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func drawKicadString (str inString : String,
-                      transform inAffineTransform: NSAffineTransform,
-                      mirror inMirror : Bool,
-                      justification inJustification : KicadStringJustification,
-                      fontSize inFontSize : CGFloat,
-                      thickness inThickness : CGFloat,
-                      font inKicadFont : [UInt32 : BoardFontCharacter],
-                      leftMM inModelLeftMM  : CGFloat,
-                      bottomMM inModelBottomMM : CGFloat,
-                      boardRect inBoardRect : NSRect,
-                      _ inUndoManager : EBUndoManager) -> [SegmentEntity] {
+@MainActor func drawKicadString (str inString : String,
+                                 transform inAffineTransform: NSAffineTransform,
+                                 mirror inMirror : Bool,
+                                 justification inJustification : KicadStringJustification,
+                                 fontSize inFontSize : CGFloat,
+                                 thickness inThickness : CGFloat,
+                                 font inKicadFont : [UInt32 : BoardFontCharacter],
+                                 leftMM inModelLeftMM  : CGFloat,
+                                 bottomMM inModelBottomMM : CGFloat,
+                                 boardRect inBoardRect : NSRect,
+                                 _ inUndoManager : EBUndoManager) -> [SegmentEntity] {
   let mirror : CGFloat = inMirror ? -1.0 : 1.0
   let fontFactor = inFontSize * KICAD_STROKE_FONT_SCALE
 //--- Compute string metrics
   var totalHeight : CGFloat = 0.0
   var widthArray = [CGFloat] ()
   var heightArray = [CGFloat] ()
-  let components = inString.components (separatedBy: "\n") // Ou "\\n" ?
+  let components = inString.components (separatedBy: "\n")
   for str in components {
     let (stringWidth, stringHeight) = stringMetrics (str: str, fontSize: inFontSize, font: inKicadFont)
     totalHeight += stringHeight

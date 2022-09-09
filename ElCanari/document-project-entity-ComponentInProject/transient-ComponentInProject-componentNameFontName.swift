@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentInProject_componentNameFontName (
+@MainActor func transient_ComponentInProject_componentNameFontName (
        _ self_mNameFont_mFontName : String?
 ) -> String {
 //--- START OF USER ZONE 2

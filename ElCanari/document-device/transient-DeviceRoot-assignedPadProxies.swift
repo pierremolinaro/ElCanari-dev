@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceRoot_assignedPadProxies (
+@MainActor func transient_DeviceRoot_assignedPadProxies (
        _ self_mPadProxies_mPadName : [PadProxyInDevice_mPadName],
        _ self_mPadProxies_symbolName : [PadProxyInDevice_symbolName],
        _ self_mPadProxies_mPinInstanceName : [PadProxyInDevice_mPinInstanceName],

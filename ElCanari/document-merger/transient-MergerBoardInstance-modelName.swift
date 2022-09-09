@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerBoardInstance_modelName (
+@MainActor func transient_MergerBoardInstance_modelName (
        _ self_myModel_name : String?
 ) -> String {
 //--- START OF USER ZONE 2

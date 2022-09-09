@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_viaCountString (
+@MainActor func transient_ProjectRoot_viaCountString (
        _ self_mBoardObjects_isVia : [BoardObject_isVia]
 ) -> String {
 //--- START OF USER ZONE 2

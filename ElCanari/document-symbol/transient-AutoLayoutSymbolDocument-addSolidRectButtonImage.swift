@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutSymbolDocument_addSolidRectButtonImage (
+@MainActor func transient_AutoLayoutSymbolDocument_addSolidRectButtonImage (
        _ prefs_symbolColor : NSColor
 ) -> NSImage {
 //--- START OF USER ZONE 2

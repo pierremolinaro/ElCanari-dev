@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentInProject_strokeBezierPath (
+@MainActor func transient_ComponentInProject_strokeBezierPath (
        _ self_mSelectedPackage_mStrokeBezierPath : NSBezierPath?
 ) -> EBBezierPath {
 //--- START OF USER ZONE 2

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_FontInProject_sizeString (
+@MainActor func transient_FontInProject_sizeString (
        _ self_mDescriptiveString : String
 ) -> String {
 //--- START OF USER ZONE 2

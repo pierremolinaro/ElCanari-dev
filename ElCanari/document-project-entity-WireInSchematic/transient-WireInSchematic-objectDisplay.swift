@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_WireInSchematic_objectDisplay (
+@MainActor func transient_WireInSchematic_objectDisplay (
        _ self_mP1_wireColor : NSColor?,       
        _ prefs_symbolDrawingWidthMultipliedByTenForSchematic : Int,
        _ prefs_schematicBackColor : NSColor,  

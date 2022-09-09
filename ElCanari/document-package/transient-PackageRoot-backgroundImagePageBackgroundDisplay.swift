@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageRoot_backgroundImagePageBackgroundDisplay (
+@MainActor func transient_PackageRoot_backgroundImagePageBackgroundDisplay (
        _ self_packageObjects_objectDisplay : [PackageObject_objectDisplay],
        _ self_mModelImageData : Data
 ) -> EBShape {

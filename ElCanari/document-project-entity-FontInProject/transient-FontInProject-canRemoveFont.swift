@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_FontInProject_canRemoveFont (
+@MainActor func transient_FontInProject_canRemoveFont (
        _ self_mComponentNames_count : Int,  
        _ self_mComponentValues_count : Int
 ) -> Bool {

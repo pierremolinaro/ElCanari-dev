@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_schematicStatusImage (
+@MainActor func transient_ProjectRoot_schematicStatusImage (
        _ self_unplacedSymbols : StringTagArray,  
        _ self_netWarningCount : Int,             
        _ self_mSheets_connexionWarnings : [SheetInProject_connexionWarnings],

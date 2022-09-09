@@ -233,13 +233,13 @@ class EBAutoLayoutManagedDocument : NSDocument {
       self.mSplashTextField = textField
       textField.stringValue = "Loading File…"
       let vStackView = AutoLayoutVerticalStackView ().set (margins: 12)
-      vStackView.appendView (AutoLayoutStaticLabel (title: "Opening " + self.displayName + "…", bold: true, size: .small, alignment: .center))
-      vStackView.appendView (textField)
+      _ = vStackView.appendView (AutoLayoutStaticLabel (title: "Opening " + self.displayName + "…", bold: true, size: .small, alignment: .center))
+      _ = vStackView.appendView (textField)
       let hStackView = AutoLayoutHorizontalStackView ().set (margins: 0)
-      hStackView.appendView (AutoLayoutFlexibleSpace ())
-      hStackView.appendView (AutoLayoutSpinningProgressIndicator (size: .small))
-      hStackView.appendView (AutoLayoutFlexibleSpace ())
-      vStackView.appendView (hStackView)
+      _ = hStackView.appendView (AutoLayoutFlexibleSpace ())
+      _ = hStackView.appendView (AutoLayoutSpinningProgressIndicator (size: .small))
+      _ = hStackView.appendView (AutoLayoutFlexibleSpace ())
+      _ = vStackView.appendView (hStackView)
       window.contentView = vStackView
       window.isReleasedWhenClosed = false
       window.makeKeyAndOrderFront (nil)

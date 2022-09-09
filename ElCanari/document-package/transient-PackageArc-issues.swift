@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageArc_issues (
+@MainActor func transient_PackageArc_issues (
        _ self_xCenter : Int,      
        _ self_yCenter : Int,      
        _ self_radius : Int,       

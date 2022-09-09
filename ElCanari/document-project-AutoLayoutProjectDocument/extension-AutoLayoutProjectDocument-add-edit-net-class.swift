@@ -29,8 +29,8 @@ extension AutoLayoutProjectDocument {
       let gridView = AutoLayoutGridView2 ()
     //---
       let panelTitle = inCreation ? "Create Net" : "Edit Net"
-      layoutView.appendView (AutoLayoutStaticLabel (title: panelTitle, bold: true, size: .regular, alignment: .center))
-      layoutView.appendFlexibleSpace ()
+      _ = layoutView.appendView (AutoLayoutStaticLabel (title: panelTitle, bold: true, size: .regular, alignment: .center))
+      _ = layoutView.appendFlexibleSpace ()
     //---
       let netClassNameTextField = AutoLayoutTextField (minWidth: 100, size: .regular).expandableWidth ()
       netClassNameTextField.stringValue = inNetClass.mNetClassName
@@ -98,16 +98,16 @@ extension AutoLayoutProjectDocument {
         _ = gridView.addFirstBaseLineAligned (left: left, right: padDiameterFields)
       }
     //---
-      layoutView.appendView (gridView)
-      layoutView.appendFlexibleSpace ()
+      _ = layoutView.appendView (gridView)
+      _ = layoutView.appendFlexibleSpace ()
       let okButtonTitle = inCreation ? "Add New Net" : "Commit Changes"
       let okButton = AutoLayoutSheetDefaultOkButton (title: okButtonTitle, size: .regular, sheet: panel)
       do{
         let hStack = AutoLayoutHorizontalStackView ()
-        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
-        hStack.appendFlexibleSpace ()
-        hStack.appendView (okButton)
-        layoutView.appendView (hStack)
+        _ = hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
+        _ = hStack.appendFlexibleSpace ()
+        _ = hStack.appendView (okButton)
+        _ = layoutView.appendView (hStack)
       }
     //---
       if inCreation {

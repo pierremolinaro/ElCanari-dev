@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackagePad_objectDisplay (
+@MainActor func transient_PackagePad_objectDisplay (
        _ self_xCenter : Int,             
        _ self_yCenter : Int,             
        _ self_width : Int,               

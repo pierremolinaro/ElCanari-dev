@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageInDevice_frontSidePadFilledBezierPathArray (
+@MainActor func transient_PackageInDevice_frontSidePadFilledBezierPathArray (
        _ self_mMasterPads_frontSideFilledBezierPathArray : [MasterPadInDevice_frontSideFilledBezierPathArray]
 ) -> BezierPathArray {
 //--- START OF USER ZONE 2

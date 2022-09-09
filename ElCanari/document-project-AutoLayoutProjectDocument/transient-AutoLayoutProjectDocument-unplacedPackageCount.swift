@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutProjectDocument_unplacedPackageCount (
+@MainActor func transient_AutoLayoutProjectDocument_unplacedPackageCount (
        _ root_unplacedPackages : StringTagArray
 ) -> Int {
 //--- START OF USER ZONE 2

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_WireInSchematic_netName (
+@MainActor func transient_WireInSchematic_netName (
        _ self_mP1_netName : String?
 ) -> String {
 //--- START OF USER ZONE 2

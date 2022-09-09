@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NCInSchematic_selectionDisplay (
+@MainActor func transient_NCInSchematic_selectionDisplay (
        _ self_mPoint_location : CanariPoint?,  
        _ self_mOrientation : QuadrantRotation, 
        _ self_mPoint_symbolRotation : QuadrantRotation?,

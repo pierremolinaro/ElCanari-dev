@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_hasSixLayers (
+@MainActor func transient_ProjectRoot_hasSixLayers (
        _ self_artworkLayerConfiguration : LayerConfiguration
 ) -> Bool {
 //--- START OF USER ZONE 2

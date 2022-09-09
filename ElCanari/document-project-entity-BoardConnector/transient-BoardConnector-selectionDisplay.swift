@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardConnector_selectionDisplay (
+@MainActor func transient_BoardConnector_selectionDisplay (
        _ self_isVia : Bool,                     
        _ self_location : CanariPoint
 ) -> EBShape {

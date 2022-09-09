@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackagePad_displayedPadName (
+@MainActor func transient_PackagePad_displayedPadName (
        _ self_padNumber : Int,              
        _ self_zone_zoneName : String?,      
        _ self_zone_displayZoneName : Bool?

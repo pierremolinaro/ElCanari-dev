@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutProjectDocument_componentCount (
+@MainActor func transient_AutoLayoutProjectDocument_componentCount (
        _ root_mComponents_count : Int
 ) -> String {
 //--- START OF USER ZONE 2

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutMergerDocument_emptyDrillFileExtension (
+@MainActor func transient_AutoLayoutMergerDocument_emptyDrillFileExtension (
        _ root_drillDataFileExtension : String
 ) -> Bool {
 //--- START OF USER ZONE 2

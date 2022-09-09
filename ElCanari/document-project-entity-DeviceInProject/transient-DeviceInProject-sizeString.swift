@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceInProject_sizeString (
+@MainActor func transient_DeviceInProject_sizeString (
        _ self_mDeviceFileData : Data
 ) -> String {
 //--- START OF USER ZONE 2

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardConnector_connectedToComponent (
+@MainActor func transient_BoardConnector_connectedToComponent (
        _ self_mComponent_none : Bool
 ) -> Bool {
 //--- START OF USER ZONE 2

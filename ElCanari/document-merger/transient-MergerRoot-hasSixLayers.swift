@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerRoot_hasSixLayers (
+@MainActor func transient_MergerRoot_hasSixLayers (
        _ self_mArtwork_hasSixLayers : Bool?
 ) -> Bool {
 //--- START OF USER ZONE 2

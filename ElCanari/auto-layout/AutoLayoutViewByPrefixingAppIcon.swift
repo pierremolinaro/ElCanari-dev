@@ -17,11 +17,11 @@ final class AutoLayoutViewByPrefixingAppIcon : AutoLayoutHorizontalStackView {
   init (prefixedView inView : NSView) {
     super.init ()
     let vStack = AutoLayoutVerticalStackView ().set (margins: 20)
-    vStack.appendFlexibleSpace ()
-    vStack.appendView (AutoLayoutApplicationImage ())
-    vStack.appendFlexibleSpace ()
-    self.appendView (vStack)
-    self.appendView (inView)
+    _ = vStack.appendFlexibleSpace ()
+    _ = vStack.appendView (AutoLayoutApplicationImage ())
+    _ = vStack.appendFlexibleSpace ()
+    _ = self.appendView (vStack)
+    _ = self.appendView (inView)
   }
 
   //····················································································································

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerRoot_boardHeight (
+@MainActor func transient_MergerRoot_boardHeight (
        _ self_boardRect : CanariRect
 ) -> Int {
 //--- START OF USER ZONE 2

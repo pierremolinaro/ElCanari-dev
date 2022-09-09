@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerRoot_boardRect (
+@MainActor func transient_MergerRoot_boardRect (
        _ self_automaticBoardSize : Bool,
        _ self_boardLimitWidth : Int, 
        _ self_boardManualWidth : Int,

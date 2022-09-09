@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardTrack_netClassTrackWidth (
+@MainActor func transient_BoardTrack_netClassTrackWidth (
        _ self_mNet_netClassTrackWidth : Int?
 ) -> Int {
 //--- START OF USER ZONE 2

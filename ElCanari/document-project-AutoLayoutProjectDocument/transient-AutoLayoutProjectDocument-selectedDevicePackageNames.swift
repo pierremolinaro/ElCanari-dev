@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutProjectDocument_selectedDevicePackageNames (
+@MainActor func transient_AutoLayoutProjectDocument_selectedDevicePackageNames (
        _ self_projectDeviceController_selectedArray_all_packageNames : [DeviceInProject_packageNames]
 ) -> StringArray {
 //--- START OF USER ZONE 2

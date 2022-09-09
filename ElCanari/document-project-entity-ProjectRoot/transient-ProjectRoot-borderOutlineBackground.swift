@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_borderOutlineBackground (
+@MainActor func transient_ProjectRoot_borderOutlineBackground (
        _ self_mBorderCurves_descriptor : [BorderCurve_descriptor],
        _ self_mBoardShape : BoardShape,             
        _ self_mRectangularBoardWidth : Int,         

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematic_hasNet (
+@MainActor func transient_PointInSchematic_hasNet (
        _ self_mNet_none : Bool
 ) -> Bool {
 //--- START OF USER ZONE 2

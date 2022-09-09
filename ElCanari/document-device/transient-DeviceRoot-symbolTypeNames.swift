@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceRoot_symbolTypeNames (
+@MainActor func transient_DeviceRoot_symbolTypeNames (
        _ self_mSymbolTypes_mTypeName : [SymbolTypeInDevice_mTypeName]
 ) -> StringArray {
 //--- START OF USER ZONE 2

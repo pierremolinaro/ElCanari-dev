@@ -64,7 +64,7 @@ final class EBModelEvent : EBSwiftBaseObject, EBObserverProtocol {
 //    flushModelEvents
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func flushModelEvents () {
+@MainActor func flushModelEvents () {
   if gPendingModelEvents.count > 0 {
     if logEvents () {
       appendMessageString ("Flush model events\n", color: NSColor.blue)

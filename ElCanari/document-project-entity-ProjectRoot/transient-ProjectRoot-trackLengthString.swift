@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_trackLengthString (
+@MainActor func transient_ProjectRoot_trackLengthString (
        _ self_mBoardObjects_trackLengthInCanariUnit : [BoardObject_trackLengthInCanariUnit],
        _ self_mTrackLengthUnit : Int
 ) -> String {

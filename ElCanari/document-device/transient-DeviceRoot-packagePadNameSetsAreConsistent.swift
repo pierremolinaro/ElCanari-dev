@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceRoot_packagePadNameSetsAreConsistent (
+@MainActor func transient_DeviceRoot_packagePadNameSetsAreConsistent (
        _ self_mPackages_padNameSet : [PackageInDevice_padNameSet]
 ) -> Bool {
 //--- START OF USER ZONE 2

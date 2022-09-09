@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NetInProject_netClassViaHoleDiameter (
+@MainActor func transient_NetInProject_netClassViaHoleDiameter (
        _ self_mNetClass_mViaHoleDiameter : Int?
 ) -> Int {
 //--- START OF USER ZONE 2

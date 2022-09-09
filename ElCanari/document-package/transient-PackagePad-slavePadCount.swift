@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackagePad_slavePadCount (
+@MainActor func transient_PackagePad_slavePadCount (
        _ self_slaves_count : Int
 ) -> Int {
 //--- START OF USER ZONE 2

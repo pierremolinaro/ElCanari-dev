@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SheetInProject_issues (
+@MainActor func transient_SheetInProject_issues (
        _ self_mPoints_status : [PointInSchematic_status]
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardTrack_objectDisplay (
+@MainActor func transient_BoardTrack_objectDisplay (
        _ self_mConnectorP1_location : CanariPoint?,
        _ self_mConnectorP2_location : CanariPoint?,
        _ self_BoardObject_displayFrontLayoutForBoard : Bool,

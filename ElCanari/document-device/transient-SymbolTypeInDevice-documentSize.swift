@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolTypeInDevice_documentSize (
+@MainActor func transient_SymbolTypeInDevice_documentSize (
        _ self_mFileData : Data
 ) -> Int {
 //--- START OF USER ZONE 2

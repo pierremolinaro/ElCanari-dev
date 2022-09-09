@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardConnector_netNameAndPadLocation (
+@MainActor func transient_BoardConnector_netNameAndPadLocation (
        _ self_mComponent_padNetDictionary : PadNetDictionary?,
        _ self_mComponentPadName : String,            
        _ self_location : CanariPoint,                

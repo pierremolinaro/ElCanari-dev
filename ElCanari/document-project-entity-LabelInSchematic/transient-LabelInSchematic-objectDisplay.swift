@@ -12,7 +12,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_LabelInSchematic_objectDisplay (
+@MainActor func transient_LabelInSchematic_objectDisplay (
        _ prefs_symbolColorForSchematic : NSColor,
        _ prefs_schematicFrameColor : NSColor,  
        _ prefs_symbolDrawingWidthMultipliedByTenForSchematic : Int,

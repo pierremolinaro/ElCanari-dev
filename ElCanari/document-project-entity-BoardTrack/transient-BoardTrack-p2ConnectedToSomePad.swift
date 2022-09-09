@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardTrack_p2ConnectedToSomePad (
+@MainActor func transient_BoardTrack_p2ConnectedToSomePad (
        _ self_mConnectorP2_isConnectedToSomePad : Bool?
 ) -> Bool {
 //--- START OF USER ZONE 2

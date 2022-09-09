@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolInstanceInDevice_unconnectedPins (
+@MainActor func transient_SymbolInstanceInDevice_unconnectedPins (
        _ self_mPinInstances_pinName : [SymbolPinInstanceInDevice_pinName],
        _ self_mPinInstances_isConnected : [SymbolPinInstanceInDevice_isConnected],
        _ self_mInstanceName : String

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolPin_objectDisplay (
+@MainActor func transient_SymbolPin_objectDisplay (
        _ self_xPin : Int,               
        _ self_yPin : Int,               
        _ self_xName : Int,              

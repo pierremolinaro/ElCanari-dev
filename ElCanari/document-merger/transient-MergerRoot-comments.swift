@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerRoot_comments (
+@MainActor func transient_MergerRoot_comments (
        _ self_mArtwork_comments : String?
 ) -> String {
 //--- START OF USER ZONE 2

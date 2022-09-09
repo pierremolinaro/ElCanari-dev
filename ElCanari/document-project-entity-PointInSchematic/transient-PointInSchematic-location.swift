@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematic_location (
+@MainActor func transient_PointInSchematic_location (
        _ self_mX : Int,                   
        _ self_mY : Int,                   
        _ self_mSymbolPinName : String,    

@@ -31,12 +31,12 @@ final class AutoLayoutCanariRestrictRectangleView : AutoLayoutVerticalStackView 
 
   override init () {
     super.init ()
-    self.appendView (self.mFrontLayerCheckBox)
-    self.appendView (self.mBackLayerCheckBox)
-    self.appendView (self.mInner1LayerCheckBox)
-    self.appendView (self.mInner2LayerCheckBox)
-    self.appendView (self.mInner3LayerCheckBox)
-    self.appendView (self.mInner4LayerCheckBox)
+    _ = self.appendView (self.mFrontLayerCheckBox)
+    _ = self.appendView (self.mBackLayerCheckBox)
+    _ = self.appendView (self.mInner1LayerCheckBox)
+    _ = self.appendView (self.mInner2LayerCheckBox)
+    _ = self.appendView (self.mInner3LayerCheckBox)
+    _ = self.appendView (self.mInner4LayerCheckBox)
   }
 
   //····················································································································

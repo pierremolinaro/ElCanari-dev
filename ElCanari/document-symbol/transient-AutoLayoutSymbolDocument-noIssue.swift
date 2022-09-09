@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutSymbolDocument_noIssue (
+@MainActor func transient_AutoLayoutSymbolDocument_noIssue (
        _ self_issues : CanariIssueArray
 ) -> Bool {
 //--- START OF USER ZONE 2

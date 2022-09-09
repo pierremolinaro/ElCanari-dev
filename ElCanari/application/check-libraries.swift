@@ -11,8 +11,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func checkLibrary (_ window : NSWindow,
-                   logView : AutoLayoutStaticTextView) {
+@MainActor func checkLibrary (_ window : NSWindow,
+                              logView : AutoLayoutStaticTextView) {
 //--- Clear Log
   logView.clear ()
   var errorCount = 0
@@ -63,8 +63,8 @@ func checkLibrary (_ window : NSWindow,
     if (errorCount + warningCount) > 0 {
       let alert = NSAlert ()
       alert.messageText = "There are inconsistencies in the librairies"
-      alert.addButton (withTitle: "Ok")
-      alert.addButton (withTitle: "Show Log Window")
+      _ = alert.addButton (withTitle: "Ok")
+      _ = alert.addButton (withTitle: "Show Log Window")
       alert.informativeText = "Select the 'Show Log Window' button for details."
       alert.beginSheetModal (for: window) { inReturnCode in
         if inReturnCode == .alertSecondButtonReturn {
@@ -75,7 +75,7 @@ func checkLibrary (_ window : NSWindow,
       presentAlertWithLocalizedMessage ("Librairies are consistent.", window:window)
     }
   }catch let error {
-    window.presentError (error)
+    _ = window.presentError (error)
   }
 }
 
@@ -102,7 +102,6 @@ private enum PartStatus {
 //   DEVICE
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-
 private struct PMDeviceDictionaryEntry {
   let mPartStatus : PartStatus
   let mVersion : Int
@@ -128,9 +127,9 @@ private struct PMDeviceDictionaryEntry {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func checkDeviceLibraryCheckAtPath (_ deviceFullPath : String,
-                                            logView : AutoLayoutStaticTextView,
-                                            deviceDict:inout [String : PMDeviceDictionaryEntry]) throws {
+@MainActor private func checkDeviceLibraryCheckAtPath (_ deviceFullPath : String,
+                                                       logView : AutoLayoutStaticTextView,
+                                                       deviceDict:inout [String : PMDeviceDictionaryEntry]) throws {
   let deviceName = ((deviceFullPath as NSString).lastPathComponent as NSString).deletingPathExtension
 //--- Get metadata dictionary
   let metadata = try getFileMetadata (atPath: deviceFullPath)
@@ -202,9 +201,9 @@ private func checkDeviceLibraryCheckAtPath (_ deviceFullPath : String,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-private func performDeviceLibraryEnumerationAtPath (_ inPackageLibraryPath : String,
-                                                    deviceDict: inout [String : PMDeviceDictionaryEntry],
-                                                    logView : AutoLayoutStaticTextView) throws {
+@MainActor private func performDeviceLibraryEnumerationAtPath (_ inPackageLibraryPath : String,
+                                                               deviceDict: inout [String : PMDeviceDictionaryEntry],
+                                                               logView : AutoLayoutStaticTextView) throws {
   let fm = FileManager ()
   if let unwSubpaths = fm.subpaths (atPath: inPackageLibraryPath) {
     for path in unwSubpaths {
@@ -219,12 +218,12 @@ private func performDeviceLibraryEnumerationAtPath (_ inPackageLibraryPath : Str
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-private func checkDeviceLibrary (_ logView : AutoLayoutStaticTextView,
-                                 symbolDict : [String : PMSymbolDictionaryEntry],
-                                 packageDict : [String : PMPackageDictionaryEntry],
-                                 deviceToUpdateSet : inout Set <String>,
-                                 errorCount : inout Int,
-                                 warningCount : inout Int) throws {
+@MainActor private func checkDeviceLibrary (_ logView : AutoLayoutStaticTextView,
+                                            symbolDict : [String : PMSymbolDictionaryEntry],
+                                            packageDict : [String : PMPackageDictionaryEntry],
+                                            deviceToUpdateSet : inout Set <String>,
+                                            errorCount : inout Int,
+                                            warningCount : inout Int) throws {
   var deviceDict : [String : PMDeviceDictionaryEntry] = [:]
   logView.appendMessageString ("\nChecking devices library...\n")
   for path in existingLibraryPathArray () {
@@ -404,11 +403,10 @@ private func performSymbolLibraryEnumerationAtPath (_ inSymbolLibraryPath : Stri
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-
-private func checkSymbolLibrary (_ logView : AutoLayoutStaticTextView,
-                                 symbolDict : inout [String : PMSymbolDictionaryEntry],
-                                 errorCount : inout Int,
-                                 warningCount : inout Int) throws {
+@MainActor private func checkSymbolLibrary (_ logView : AutoLayoutStaticTextView,
+                                            symbolDict : inout [String : PMSymbolDictionaryEntry],
+                                            errorCount : inout Int,
+                                            warningCount : inout Int) throws {
   logView.appendMessageString ("Checking symbols library...\n")
   for path in existingLibraryPathArray () {
     let symbolLibraryPath = symbolLibraryPathForPath (path)
@@ -535,11 +533,10 @@ private func performPackageLibraryEnumerationAtPath (_ inPackageLibraryPath : St
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-
-private func checkPackageLibrary (_ logView : AutoLayoutStaticTextView,
-                                  packageDict : inout [String : PMPackageDictionaryEntry],
-                                  errorCount : inout Int,
-                                  warningCount : inout Int) throws {
+@MainActor private func checkPackageLibrary (_ logView : AutoLayoutStaticTextView,
+                                             packageDict : inout [String : PMPackageDictionaryEntry],
+                                             errorCount : inout Int,
+                                             warningCount : inout Int) throws {
   logView.appendMessageString ("\nChecking packages library...\n")
   for path in existingLibraryPathArray () {
     let packageLibraryPath = packageLibraryPathForPath (path)
@@ -667,10 +664,9 @@ private func performFontLibraryEnumerationAtPath (_ inFontLibraryPath : String,
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-
-private func checkFontLibrary (_ logView : AutoLayoutStaticTextView,
-                               errorCount : inout Int,
-                               warningCount : inout Int) throws {
+@MainActor private func checkFontLibrary (_ logView : AutoLayoutStaticTextView,
+                                          errorCount : inout Int,
+                                          warningCount : inout Int) throws {
   var fontDict : [String : PMFontDictionaryEntry] = [:]
   logView.appendMessageString ("\nChecking font library...\n")
   for path in existingLibraryPathArray () {
@@ -788,10 +784,9 @@ private func performArtworkLibraryEnumerationAtPath (_ inPackageLibraryPath : St
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-
-private func checkArtworkLibrary (_ logView : AutoLayoutStaticTextView,
-                                  errorCount : inout Int,
-                                  warningCount : inout Int) throws {
+@MainActor private func checkArtworkLibrary (_ logView : AutoLayoutStaticTextView,
+                                             errorCount : inout Int,
+                                             warningCount : inout Int) throws {
   var artworkDict : [String : PMArtworkDictionaryEntry] = [:]
   logView.appendMessageString ("\nChecking artworks library...\n")
   for path in existingLibraryPathArray () {

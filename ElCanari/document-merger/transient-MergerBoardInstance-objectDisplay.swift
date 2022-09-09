@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerBoardInstance_objectDisplay (
+@MainActor func transient_MergerBoardInstance_objectDisplay (
        _ self_x : Int,                            
        _ self_y : Int,                            
        _ self_myModel_modelWidth : Int?,          

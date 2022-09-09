@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageBezier_objectDisplay (
+@MainActor func transient_PackageBezier_objectDisplay (
        _ self_strokeBezierPath : NSBezierPath,
        _ prefs_packageColor : NSColor,      
        _ prefs_packageDrawingWidthMultipliedByTen : Int

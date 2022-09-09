@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageInDevice_versionString (
+@MainActor func transient_PackageInDevice_versionString (
        _ self_mVersion : Int
 ) -> String {
 //--- START OF USER ZONE 2

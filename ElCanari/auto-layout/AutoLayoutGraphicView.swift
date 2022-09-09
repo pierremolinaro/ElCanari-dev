@@ -32,28 +32,28 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
   //---
     let hStack = AutoLayoutHorizontalStackView ().set (margins: FOCUS_RING_MARGIN)
     hStack.alignment = .firstBaseline
-    self.appendView (hStack)
+    _ = self.appendView (hStack)
   //--- Build popup button
     let zoomPopUp = buildZoomPopUpButton (minZoom: inMinZoom, maxZoom: inMaxZoom)
-    hStack.appendView (zoomPopUp)
+    _ = hStack.appendView (zoomPopUp)
     self.mZoomPopUpButton = zoomPopUp
   //--- Build zoom to fit button
     let zoomToFitButton = buildZoomToFitButton ()
-    hStack.appendView (zoomToFitButton)
+    _ = hStack.appendView (zoomToFitButton)
     self.mZoomToFitButton = zoomToFitButton
   //--- Build helper text
     let helperTextField = AutoLayoutLabel (bold: false, size: .small).set (minWidth: 200)
-    hStack.appendView (helperTextField)
+    _ = hStack.appendView (helperTextField)
     self.mHelperTextField = helperTextField
-    hStack.appendView (AutoLayoutFlexibleSpace ())
+    _ = hStack.appendView (AutoLayoutFlexibleSpace ())
   //--- Build focus ring
     let focusRingView = EBFocusRingView ()
-    self.appendView (focusRingView)
+    _ = self.appendView (focusRingView)
     self.mFocusRing = focusRingView
     self.mGraphicView.set (focusRingView: focusRingView)
   //--- Build scroll view
     let scrollView = self.buildScrollView (minZoom: inMinZoom, maxZoom: inMaxZoom)
-    focusRingView.appendView (scrollView)
+    _ = focusRingView.appendView (scrollView)
     self.mScrollView = scrollView
 
     self.mGraphicView.mZoomDidChangeCallback = {

@@ -31,16 +31,16 @@ final class AutoLayoutCanariDeviceDroppableImageView : AutoLayoutVerticalStackVi
     self.mImageView.imageScaling = .scaleProportionallyUpOrDown
     self.mImageView.imageFrameStyle = .grayBezel
 
-    self.appendView (self.mImageView)
+    _ = self.appendView (self.mImageView)
     let hStack = AutoLayoutHorizontalStackView ()
     _ = self.mRemoveButton.bind_run (target: self, selector: #selector (Self.removeImageAction (_:)))
-    hStack.appendView (self.mRemoveButton)
-    hStack.appendView (self.mPasteImageButton)
+    _ = hStack.appendView (self.mRemoveButton)
+    _ = hStack.appendView (self.mPasteImageButton)
     _ = self.mPasteImageButton.bind_run (target: self, selector: #selector (Self.pasteImageAction (_:)))
-    hStack.appendView (self.mCopyImageButton)
+    _ = hStack.appendView (self.mCopyImageButton)
     _ = self.mCopyImageButton.bind_run (target: self, selector: #selector (Self.copyImageAction (_:)))
-    hStack.appendFlexibleSpace ()
-    self.appendView (hStack)
+    _ = hStack.appendFlexibleSpace ()
+    _ = self.appendView (hStack)
   }
 
  //····················································································································

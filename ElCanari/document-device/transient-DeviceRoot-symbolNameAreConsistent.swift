@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceRoot_symbolNameAreConsistent (
+@MainActor func transient_DeviceRoot_symbolNameAreConsistent (
        _ self_inconsistentSymbolNameSetMessage : String
 ) -> Bool {
 //--- START OF USER ZONE 2

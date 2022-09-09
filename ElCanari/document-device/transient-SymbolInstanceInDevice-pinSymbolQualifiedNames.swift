@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolInstanceInDevice_pinSymbolQualifiedNames (
+@MainActor func transient_SymbolInstanceInDevice_pinSymbolQualifiedNames (
        _ self_mInstanceName : String,                          
        _ self_mPinInstances_pinName : [SymbolPinInstanceInDevice_pinName]
 ) -> StringArray {

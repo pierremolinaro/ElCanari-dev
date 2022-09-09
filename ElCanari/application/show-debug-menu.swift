@@ -9,7 +9,7 @@ import Cocoa
 //   Public function
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func instanciateDebugMenuVisibilityObjectOnDidFinishLaunchingNotification () {
+@MainActor func instanciateDebugMenuVisibilityObjectOnDidFinishLaunchingNotification () {
   gDebugMenuVisibility = DebugMenuVisibility ()
 }
 
@@ -17,11 +17,11 @@ func instanciateDebugMenuVisibilityObjectOnDidFinishLaunchingNotification () {
 //   Private entities
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate var gDebugMenuVisibility : DebugMenuVisibility? = nil
+@MainActor fileprivate var gDebugMenuVisibility : DebugMenuVisibility? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class DebugMenuVisibility : EBSwiftBaseObject {
+@MainActor fileprivate final class DebugMenuVisibility {
 
   //····················································································································
   //  Property
@@ -34,8 +34,7 @@ fileprivate final class DebugMenuVisibility : EBSwiftBaseObject {
   //  Init
   //····················································································································
 
-  override init () {
-    super.init ()
+  init () {
     let menu = NSMenu (title: "Debug")
     self.mDebugMenuItem.submenu = menu
     self.mShowMenuController = EBObservablePropertyController (

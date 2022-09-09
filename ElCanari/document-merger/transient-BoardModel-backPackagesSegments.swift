@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardModel_backPackagesSegments (
+@MainActor func transient_BoardModel_backPackagesSegments (
        _ self_backPackages_x1 : [SegmentEntity_x1],
        _ self_backPackages_y1 : [SegmentEntity_y1],
        _ self_backPackages_x2 : [SegmentEntity_x2],

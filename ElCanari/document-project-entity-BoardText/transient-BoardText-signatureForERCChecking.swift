@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardText_signatureForERCChecking (
+@MainActor func transient_BoardText_signatureForERCChecking (
        _ self_mLayer : BoardTextLayer,            
        _ self_mX : Int,                           
        _ self_mY : Int,                           

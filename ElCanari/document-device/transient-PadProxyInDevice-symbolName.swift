@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PadProxyInDevice_symbolName (
+@MainActor func transient_PadProxyInDevice_symbolName (
        _ self_mPinInstance_symbolName : String?
 ) -> String {
 //--- START OF USER ZONE 2

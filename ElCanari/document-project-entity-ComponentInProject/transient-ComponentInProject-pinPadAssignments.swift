@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentInProject_pinPadAssignments (
+@MainActor func transient_ComponentInProject_pinPadAssignments (
        _ self_mDevice_pinPadAssignments : ThreeStringArray?
 ) -> ThreeStringArray {
 //--- START OF USER ZONE 2

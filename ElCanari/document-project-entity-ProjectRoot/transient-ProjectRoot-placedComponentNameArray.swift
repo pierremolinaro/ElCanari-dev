@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_placedComponentNameArray (
+@MainActor func transient_ProjectRoot_placedComponentNameArray (
        _ self_mComponents_componentName : [ComponentInProject_componentName],
        _ self_mComponents_componentIsPlacedInBoard : [ComponentInProject_componentIsPlacedInBoard]
 ) -> StringArray {

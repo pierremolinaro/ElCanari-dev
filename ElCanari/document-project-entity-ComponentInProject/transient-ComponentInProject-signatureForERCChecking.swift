@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentInProject_signatureForERCChecking (
+@MainActor func transient_ComponentInProject_signatureForERCChecking (
        _ self_mSlavePadsShouldBeRouted : Bool
 ) -> UInt32 {
 //--- START OF USER ZONE 2

@@ -99,7 +99,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
       let gridView = AutoLayoutGridView2 ()
     //---
       layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Rename Net", bold: true, size: .regular, alignment: .center))
-      layoutView.appendFlexibleSpace ()
+      _ = layoutView.appendFlexibleSpace ()
     //---
       do{
         let left = AutoLayoutStaticLabel (title: "Current Net Name", bold: false, size: .regular, alignment: .right)
@@ -114,15 +114,15 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
       let errorLabel = AutoLayoutStaticLabel (title: "", bold: true, size: .regular, alignment: .right)
          .setRedTextColor ().expandableWidth()
       _ = gridView.add (single: errorLabel)
-      layoutView.appendView (gridView)
-      layoutView.appendFlexibleSpace ()
+      _ = layoutView.appendView (gridView)
+      _ = layoutView.appendFlexibleSpace ()
     //---
       do{
         let hStack = AutoLayoutHorizontalStackView ()
-        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
-        hStack.appendFlexibleSpace ()
-        hStack.appendView (okButton)
-        layoutView.appendView (hStack)
+        _ = hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
+        _ = hStack.appendFlexibleSpace ()
+        _ = hStack.appendView (okButton)
+        _ = layoutView.appendView (hStack)
       }
     //---
       newNameTextField.stringValue = inNet.mNetName
@@ -187,8 +187,8 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
       let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
       let gridView = AutoLayoutGridView2 ()
     //---
-      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Merge Subnet into an Existing Net", bold: true, size: .regular, alignment: .center))
-      layoutView.appendFlexibleSpace ()
+      _ = layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Merge Subnet into an Existing Net", bold: true, size: .regular, alignment: .center))
+      _ = layoutView.appendFlexibleSpace ()
     //---
       let popUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth ()
       var nets = [NetInProject] ()
@@ -209,16 +209,16 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
         let left = AutoLayoutStaticLabel (title: "Resulting Net Name", bold: false, size: .regular, alignment: .right)
         _ = gridView.addFirstBaseLineAligned (left: left, right: popUpButton)
       }
-      layoutView.appendView (gridView)
-      layoutView.appendFlexibleSpace ()
+      _ = layoutView.appendView (gridView)
+      _ = layoutView.appendFlexibleSpace ()
     //---
       do{
         let hStack = AutoLayoutHorizontalStackView ()
-        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
-        hStack.appendFlexibleSpace ()
+        _ = hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
+        _ = hStack.appendFlexibleSpace ()
         let okButton = AutoLayoutSheetDefaultOkButton (title: "Merge", size: .regular, sheet: panel)
-        hStack.appendView (okButton)
-        layoutView.appendView (hStack)
+        _ = hStack.appendView (okButton)
+        _ = layoutView.appendView (hStack)
       }
     //---
       panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
@@ -249,9 +249,9 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
       layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Select Net Class", bold: true, size: .regular, alignment: .center))
     //---
       let popUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth ()
-      layoutView.appendFlexibleSpace ()
-      layoutView.appendView (popUpButton)
-      layoutView.appendFlexibleSpace ()
+      _ = layoutView.appendFlexibleSpace ()
+      _ = layoutView.appendView (popUpButton)
+      _ = layoutView.appendFlexibleSpace ()
     //--- Find net
       var possibleNet : NetInProject? = nil
       for netClass in self.rootObject.mNetClasses.values {
@@ -276,11 +276,11 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
       //---
         do{
           let hStack = AutoLayoutHorizontalStackView ()
-          hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
-          hStack.appendFlexibleSpace ()
+          _ = hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
+          _ = hStack.appendFlexibleSpace ()
           let okButton = AutoLayoutSheetDefaultOkButton (title: "Select", size: .regular, sheet: panel)
-          hStack.appendView (okButton)
-          layoutView.appendView (hStack)
+          _ = hStack.appendView (okButton)
+          _ = layoutView.appendView (hStack)
         }
       //---
         panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))

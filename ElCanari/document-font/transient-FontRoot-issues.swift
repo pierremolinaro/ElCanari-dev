@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_FontRoot_issues (
+@MainActor func transient_FontRoot_issues (
        _ self_characters_issues : [FontCharacter_issues]
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2

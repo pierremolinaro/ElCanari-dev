@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageBezier_selectionDisplay (
+@MainActor func transient_PackageBezier_selectionDisplay (
        _ self_x1 : Int,                        
        _ self_y1 : Int,                        
        _ self_x2 : Int,                        

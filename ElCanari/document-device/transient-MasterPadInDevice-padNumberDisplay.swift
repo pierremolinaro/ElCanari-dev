@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MasterPadInDevice_padNumberDisplay (
+@MainActor func transient_MasterPadInDevice_padNumberDisplay (
        _ self_mCenterX : Int,                      
        _ self_mCenterY : Int,                      
        _ prefs_padNumberColor : NSColor,           

@@ -9,12 +9,12 @@ private var gPreferences : Preferences? = nil
 // https://stackoverflow.com/questions/31173903/swift-2-cannot-invoke-fseventstreamcreate-with-an-argument-list-of-type
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func callbackForFSEvent (streamRef : ConstFSEventStreamRef,
-                         clientCallBackInfo : UnsafeMutableRawPointer?,
-                         numEvents : Int,
-                         eventPaths : UnsafeMutableRawPointer,
-                         eventFlags : UnsafePointer <FSEventStreamEventFlags>?,
-                         eventIds : UnsafePointer <FSEventStreamEventId>?) {
+@MainActor func callbackForFSEvent (streamRef : ConstFSEventStreamRef,
+                                    clientCallBackInfo : UnsafeMutableRawPointer?,
+                                    numEvents : Int,
+                                    eventPaths : UnsafeMutableRawPointer,
+                                    eventFlags : UnsafePointer <FSEventStreamEventFlags>?,
+                                    eventIds : UnsafePointer <FSEventStreamEventId>?) {
   gPreferences?.updateForLibrary ()
 }
 

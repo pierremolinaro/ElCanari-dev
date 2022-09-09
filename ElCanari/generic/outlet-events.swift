@@ -68,7 +68,7 @@ class EBOutletEvent : EBSwiftBaseObject, EBObserverProtocol {
 //    flushOutletEvents
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func flushOutletEvents () {
+@MainActor func flushOutletEvents () {
   if gPendingOutletEvents.count > 0 {
     #if BUILD_OBJECT_EXPLORER
       if logEvents () {

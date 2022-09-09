@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceSymbolInstanceInProject_filledBezierPath (
+@MainActor func transient_DeviceSymbolInstanceInProject_filledBezierPath (
        _ self_mSymbolType_mFilledBezierPath : NSBezierPath?
 ) -> NSBezierPath {
 //--- START OF USER ZONE 2

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardConnector_signatureForERCChecking (
+@MainActor func transient_BoardConnector_signatureForERCChecking (
        _ self_location : CanariPoint,                  
        _ self_isVia : Bool,                            
        _ self_actualPadDiameter : Int

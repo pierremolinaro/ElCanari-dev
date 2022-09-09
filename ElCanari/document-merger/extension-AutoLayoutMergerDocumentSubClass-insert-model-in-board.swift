@@ -77,7 +77,7 @@ extension AutoLayoutMergerDocumentSubClass {
         .appendFlexibleSpace ()
       let rightColumn = AutoLayoutVerticalStackView ()
       rightColumn.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Insert an Array of Boards", bold: true, size: .regular, alignment: .center))
-      rightColumn.appendFlexibleSpace ()
+      _ = rightColumn.appendFlexibleSpace ()
 
       let grid = AutoLayoutGridView2 ()
       _ = grid.addFirstBaseLineAligned (
@@ -85,15 +85,15 @@ extension AutoLayoutMergerDocumentSubClass {
         right: modelPopUpButton
       )
       let hStackXCount = AutoLayoutHorizontalStackView ()
-      hStackXCount.appendView (xCountTextField)
-      hStackXCount.appendFlexibleSpace ()
+      _ = hStackXCount.appendView (xCountTextField)
+      _ = hStackXCount.appendFlexibleSpace ()
       _ = grid.addFirstBaseLineAligned (
         left: AutoLayoutStaticLabel (title: "X Count", bold: false, size: .small, alignment: .center),
         right: hStackXCount
       )
       let hStackYCount = AutoLayoutHorizontalStackView ()
-      hStackYCount.appendView (yCountTextField)
-      hStackYCount.appendFlexibleSpace ()
+      _ = hStackYCount.appendView (yCountTextField)
+      _ = hStackYCount.appendFlexibleSpace ()
       _ = grid.addFirstBaseLineAligned (
         left: AutoLayoutStaticLabel (title: "Y Count", bold: false, size: .small, alignment: .center),
         right: hStackYCount
@@ -102,16 +102,16 @@ extension AutoLayoutMergerDocumentSubClass {
         left: AutoLayoutStaticLabel (title: "Orientation", bold: false, size: .small, alignment: .center),
         right: orientationSegmentedControl
       )
-      rightColumn.appendView (grid)
+      _ = rightColumn.appendView (grid)
 
-      rightColumn.appendFlexibleSpace ()
+      _ = rightColumn.appendFlexibleSpace ()
       let lastLine = AutoLayoutHorizontalStackView ()
       let cancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular)
-      lastLine.appendView (cancelButton)
-      lastLine.appendFlexibleSpace ()
+      _ = lastLine.appendView (cancelButton)
+      _ = lastLine.appendFlexibleSpace ()
       let okButton = AutoLayoutSheetDefaultOkButton (title: "Insert", size: .regular, sheet: panel)
-      lastLine.appendView (okButton)
-      rightColumn.appendView (lastLine)
+      _ = lastLine.appendView (okButton)
+      _ = rightColumn.appendView (lastLine)
       mainView.appendViewPreceededByFlexibleSpace (rightColumn)
       panel.contentView = AutoLayoutWindowContentView (view: mainView)
       self.windowForSheet?.beginSheet (panel) { (inResponse : NSApplication.ModalResponse) in

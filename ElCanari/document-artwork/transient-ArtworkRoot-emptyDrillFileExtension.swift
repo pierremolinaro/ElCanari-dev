@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ArtworkRoot_emptyDrillFileExtension (
+@MainActor func transient_ArtworkRoot_emptyDrillFileExtension (
        _ self_drillDataFileExtension : String
 ) -> Bool {
 //--- START OF USER ZONE 2

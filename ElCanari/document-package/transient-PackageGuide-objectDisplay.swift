@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageGuide_objectDisplay (
+@MainActor func transient_PackageGuide_objectDisplay (
        _ self_x1 : Int,                    
        _ self_y1 : Int,                    
        _ self_x2 : Int,                    

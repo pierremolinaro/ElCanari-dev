@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematic_symbolRotation (
+@MainActor func transient_PointInSchematic_symbolRotation (
        _ self_mSymbol_mRotation : QuadrantRotation?,
        _ self_mSymbol_mMirror : Bool?
 ) -> QuadrantRotation {

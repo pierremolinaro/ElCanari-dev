@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutMergerDocument_issues (
+@MainActor func transient_AutoLayoutMergerDocument_issues (
        _ root_overlapingArrangment : Bool,      
        _ root_boardRect : CanariRect,           
        _ root_boardLimitWidth : Int,            

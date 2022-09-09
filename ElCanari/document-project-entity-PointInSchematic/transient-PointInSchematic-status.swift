@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PointInSchematic_status (
+@MainActor func transient_PointInSchematic_status (
        _ self_location : CanariPoint,   
        _ self_isConnected : Bool
 ) -> SchematicPointStatus {

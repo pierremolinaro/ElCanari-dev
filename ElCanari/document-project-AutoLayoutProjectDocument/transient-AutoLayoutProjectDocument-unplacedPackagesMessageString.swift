@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutProjectDocument_unplacedPackagesMessageString (
+@MainActor func transient_AutoLayoutProjectDocument_unplacedPackagesMessageString (
        _ self_unplacedPackageCount : Int
 ) -> String {
 //--- START OF USER ZONE 2

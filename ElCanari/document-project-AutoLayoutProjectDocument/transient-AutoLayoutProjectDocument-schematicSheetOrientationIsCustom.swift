@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutProjectDocument_schematicSheetOrientationIsCustom (
+@MainActor func transient_AutoLayoutProjectDocument_schematicSheetOrientationIsCustom (
        _ root_mSchematicSheetOrientation : SchematicSheetOrientation
 ) -> Bool {
 //--- START OF USER ZONE 2

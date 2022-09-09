@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceInProject_canExport (
+@MainActor func transient_DeviceInProject_canExport (
        _ self_mDeviceFileData : Data
 ) -> Bool {
 //--- START OF USER ZONE 2

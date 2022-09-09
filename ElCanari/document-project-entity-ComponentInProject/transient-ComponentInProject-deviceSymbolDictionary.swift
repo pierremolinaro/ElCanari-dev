@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentInProject_deviceSymbolDictionary (
+@MainActor func transient_ComponentInProject_deviceSymbolDictionary (
        _ self_mDevice_deviceSymbolDictionary : DeviceSymbolDictionary?
 ) -> DeviceSymbolDictionary {
 //--- START OF USER ZONE 2

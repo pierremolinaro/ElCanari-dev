@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_NetClassInProject_canRemove (
+@MainActor func transient_NetClassInProject_canRemove (
        _ self_mNets_count : Int
 ) -> Bool {
 //--- START OF USER ZONE 2

@@ -44,18 +44,18 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
     let topView = AutoLayoutHorizontalStackView ()
   //--- First column
     let firstColumn = AutoLayoutVerticalStackView ()
-    firstColumn.appendView (self.mSearchField)
-    firstColumn.appendView (self.mTableView)
-    topView.appendView (firstColumn)
+    _ = firstColumn.appendView (self.mSearchField)
+    _ = firstColumn.appendView (self.mTableView)
+    _ = topView.appendView (firstColumn)
  //--- Second Column
-    self.mNoSelectedPartView.appendFlexibleSpace ()
+    _ = self.mNoSelectedPartView.appendFlexibleSpace ()
     self.mNoSelectedPartView.appendViewSurroundedByFlexibleSpaces (self.mNoSelectedPartTextField)
-    self.mNoSelectedPartView.appendFlexibleSpace ()
-    topView.appendView (self.mNoSelectedPartView)
+    _ = self.mNoSelectedPartView.appendFlexibleSpace ()
+    _ = topView.appendView (self.mNoSelectedPartView)
   //---
-    topView.appendView (self.mPartImage)
+    _ = topView.appendView (self.mPartImage)
   //--- Add view
-    mainView.appendView (topView)
+    _ = mainView.appendView (topView)
   //--- Grid view: status and path
     let gridView = AutoLayoutGridView2 ()
       .addFirstBaseLineAligned (
@@ -66,15 +66,15 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
         left: AutoLayoutStaticLabel (title: "Path:", bold: false, size: .regular, alignment: .center),
         right: self.mFullPathTextField
       )
-    mainView.appendView (gridView)
+    _ = mainView.appendView (gridView)
   //--- Bottom view
     let bottomView = AutoLayoutHorizontalStackView ()
     self.mCancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular)
-    bottomView.appendView (self.mCancelButton)
-    bottomView.appendFlexibleSpace ()
+    _ = bottomView.appendView (self.mCancelButton)
+    _ = bottomView.appendFlexibleSpace ()
     self.mOpenButton = AutoLayoutSheetDefaultOkButton (title: "Open", size: .regular, sheet: self.mDialog)
-    bottomView.appendView (self.mOpenButton)
-    mainView.appendView (bottomView)
+    _ = bottomView.appendView (self.mOpenButton)
+    _ = mainView.appendView (bottomView)
   //--- Set content view
     self.mDialog.contentView = mainView
   //---
@@ -332,11 +332,11 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func enterPart (_ tableViewDataSource : inout [OpenInLibraryDialogItem],
-                            _ inPathAsArray : [String],
-                            _ inFullpath : String,
-                            _ inIsDuplicated : Bool,
-                            _ inIsAlreadyLoaded : Bool,
+@MainActor fileprivate func enterPart (_ tableViewDataSource : inout [OpenInLibraryDialogItem],
+                                       _ inPathAsArray : [String],
+                                       _ inFullpath : String,
+                                       _ inIsDuplicated : Bool,
+                                       _ inIsAlreadyLoaded : Bool,
         _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> NSImage?) {
   if inPathAsArray.count == 1 {
     tableViewDataSource.append (OpenInLibraryDialogItem (inPathAsArray [0], inFullpath, inIsDuplicated, inIsAlreadyLoaded, inBuildPreviewShapeFunction))
@@ -349,7 +349,7 @@ fileprivate func enterPart (_ tableViewDataSource : inout [OpenInLibraryDialogIt
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate final class OpenInLibraryDialogItem : EBSwiftBaseObject {
+@MainActor fileprivate final class OpenInLibraryDialogItem : EBSwiftBaseObject {
 
   let mPartName : String
   let mIsDuplicated : Bool

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BorderCurve_p2Xstring (
+@MainActor func transient_BorderCurve_p2Xstring (
        _ self_mNext_mX : Int?,        
        _ self_mRoot_mBoardSelectedCurveDisplayUnit : Int?
 ) -> String {

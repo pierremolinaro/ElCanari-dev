@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_boardShapeIsRectangular (
+@MainActor func transient_ProjectRoot_boardShapeIsRectangular (
        _ self_mBoardShape : BoardShape
 ) -> Bool {
 //--- START OF USER ZONE 2

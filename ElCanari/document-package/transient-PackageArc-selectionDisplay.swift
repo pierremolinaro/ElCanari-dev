@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageArc_selectionDisplay (
+@MainActor func transient_PackageArc_selectionDisplay (
        _ self_xCenter : Int,                
        _ self_yCenter : Int,                
        _ self_radius : Int,                 

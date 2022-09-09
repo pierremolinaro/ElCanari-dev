@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolPinTypeInDevice_nameShape (
+@MainActor func transient_SymbolPinTypeInDevice_nameShape (
        _ self_mXName : Int,                     
        _ self_mYName : Int,                     
        _ self_mName : String,                   

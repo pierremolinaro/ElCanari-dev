@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardObject_displayInner4RestrictRectangles (
+@MainActor func transient_BoardObject_displayInner4RestrictRectangles (
        _ self_mRoot_displayInner4RestrictRectangles : Bool?
 ) -> Bool {
 //--- START OF USER ZONE 2

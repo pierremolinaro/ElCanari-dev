@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func startLibraryRevisionListOperation (_ inLogTextView : AutoLayoutStaticTextView) {
+@MainActor func startLibraryRevisionListOperation (_ inLogTextView : AutoLayoutStaticTextView) {
   inLogTextView.appendMessageString ("Start getting library revision list\n", color: NSColor.blue)
 //--- Disable update buttons
   g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = false
@@ -84,9 +84,9 @@ func startLibraryRevisionListOperation (_ inLogTextView : AutoLayoutStaticTextVi
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func getRepositoryCommitList (_ ioPossibleAlert : inout NSAlert?,
-                                      _ inProxy : [String],
-                                      _ inLogTextView : AutoLayoutStaticTextView) -> [LibraryRevisionDescriptor] {
+@MainActor private func getRepositoryCommitList (_ ioPossibleAlert : inout NSAlert?,
+                                                 _ inProxy : [String],
+                                                 _ inLogTextView : AutoLayoutStaticTextView) -> [LibraryRevisionDescriptor] {
   var revisions = [LibraryRevisionDescriptor] ()
 //--- Get lastest commit
   let possibleRemoteCurrentCommit = getRemoteCurrentCommit (inLogTextView, &ioPossibleAlert, inProxy)
@@ -260,17 +260,17 @@ fileprivate final class LibraryCommitListController : EBSwiftBaseObject { // , A
   //--- Informative text
     let informativeText = AutoLayoutLabel (bold: false, size: .regular).set (alignment: .center).expandableWidth ()
     informativeText.stringValue = "Select Library Revision"
-    mainView.appendView (informativeText)
+    _ = mainView.appendView (informativeText)
   //--- Table view
-    mainView.appendView (self.mTableView)
+    _ = mainView.appendView (self.mTableView)
   //--- Last line
     let lastLine = AutoLayoutHorizontalStackView ()
-    lastLine.appendFlexibleSpace ()
+    _ = lastLine.appendFlexibleSpace ()
     let cancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular)
-    lastLine.appendView (cancelButton)
+    _ = lastLine.appendView (cancelButton)
     let upDateButton = AutoLayoutSheetDefaultOkButton (title: "Update", size: .regular, sheet: panel)
-    lastLine.appendView (upDateButton)
-    mainView.appendView (lastLine)
+    _ = lastLine.appendView (upDateButton)
+    _ = mainView.appendView (lastLine)
   //--- Set autolayout view to panel
     panel.contentView = AutoLayoutViewByPrefixingAppIcon (prefixedView: AutoLayoutWindowContentView (view: mainView))
   //--- Run modal
@@ -290,9 +290,9 @@ fileprivate final class LibraryCommitListController : EBSwiftBaseObject { // , A
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func displayRepositoryCommitList (_ revisions : [LibraryRevisionDescriptor],
-                                              _ proxy : [String],
-                                              _ inLogTextView : AutoLayoutStaticTextView) -> Int? {
+@MainActor fileprivate func displayRepositoryCommitList (_ revisions : [LibraryRevisionDescriptor],
+                                                         _ proxy : [String],
+                                                         _ inLogTextView : AutoLayoutStaticTextView) -> Int? {
   let libraryCommitListController = LibraryCommitListController (revisions)
   let result = libraryCommitListController.dialog (inLogTextView)
   return result

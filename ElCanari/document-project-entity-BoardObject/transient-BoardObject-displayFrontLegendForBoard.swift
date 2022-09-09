@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardObject_displayFrontLegendForBoard (
+@MainActor func transient_BoardObject_displayFrontLegendForBoard (
        _ self_mRoot_displayFrontLegendForBoard : Bool?
 ) -> Bool {
 //--- START OF USER ZONE 2

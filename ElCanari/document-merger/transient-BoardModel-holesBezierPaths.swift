@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardModel_holesBezierPaths (
+@MainActor func transient_BoardModel_holesBezierPaths (
        _ self_drillSegments : MergerSegmentArray
 ) -> BezierPathArray {
 //--- START OF USER ZONE 2

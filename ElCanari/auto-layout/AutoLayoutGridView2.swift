@@ -44,18 +44,18 @@ final class AutoLayoutGridView2 : AutoLayoutVerticalStackView {
         )
         self.addConstraint (c)
       }
-      hStack.appendView (inViews [i])
+      _ = hStack.appendView (inViews [i])
       self.mLastView [i] = inViews [i]
     }
     hStack.alignment = inAlignement
-    self.appendView (hStack)
+    _ = self.appendView (hStack)
     return self
   }
 
   //····················································································································
 
   final func add (single inView : NSView) -> Self {
-    self.appendView (inView)
+    _ = self.appendView (inView)
     return self
   }
 

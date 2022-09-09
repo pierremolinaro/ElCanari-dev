@@ -15,7 +15,7 @@ extension SheetInProject {
 
   func addLabelInSchematics (at inLocation : CanariPoint,
                              orientation inOrientation : QuadrantRotation,
-                             newNetCreator inNewNetCreator : () -> NetInProject) -> LabelInSchematic? {
+                             newNetCreator inNewNetCreator : @MainActor () -> NetInProject) -> LabelInSchematic? {
     let canariAlignedMouseDownLocation = inLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
     let points = self.pointsInSchematics (at: canariAlignedMouseDownLocation)
     var possiblePoint : PointInSchematic? = nil

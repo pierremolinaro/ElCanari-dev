@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerRoot_boardLimitWidthErrorMessage (
+@MainActor func transient_MergerRoot_boardLimitWidthErrorMessage (
        _ self_boardLimitWidth : Int,                   
        _ self_boardModels_modelLimitWidth : [BoardModel_modelLimitWidth]
 ) -> String {

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DevicePadAssignmentInProject_descriptor (
+@MainActor func transient_DevicePadAssignmentInProject_descriptor (
        _ self_mPadName : String,                        
        _ self_mPin_descriptor : PinInProjectDescriptor?
 ) -> PinPadAssignmentInProject {

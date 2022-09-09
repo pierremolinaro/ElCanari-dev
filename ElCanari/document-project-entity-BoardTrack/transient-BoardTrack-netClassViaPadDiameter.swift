@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardTrack_netClassViaPadDiameter (
+@MainActor func transient_BoardTrack_netClassViaPadDiameter (
        _ self_mNet_netClassViaPadDiameter : Int?
 ) -> Int {
 //--- START OF USER ZONE 2

@@ -156,7 +156,7 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
       headerAlignment: .left,
       contentAlignment: .left
     )
-    self.appendView (self.mTableView)
+    _ = self.appendView (self.mTableView)
   }
 
   //····················································································································

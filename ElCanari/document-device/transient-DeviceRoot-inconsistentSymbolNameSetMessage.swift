@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceRoot_inconsistentSymbolNameSetMessage (
+@MainActor func transient_DeviceRoot_inconsistentSymbolNameSetMessage (
        _ self_mSymbolInstances_symbolQualifiedName : [SymbolInstanceInDevice_symbolQualifiedName],
        _ self_mSymbolInstances_pinSymbolQualifiedNames : [SymbolInstanceInDevice_pinSymbolQualifiedNames]
 ) -> String {

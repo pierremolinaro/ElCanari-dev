@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_BoardRestrictRectangle_objectDisplay (
+@MainActor func transient_BoardRestrictRectangle_objectDisplay (
        _ self_mX : Int,                              
        _ self_mY : Int,                              
        _ self_mWidth : Int,                          

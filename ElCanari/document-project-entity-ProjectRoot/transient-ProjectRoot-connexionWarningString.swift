@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_connexionWarningString (
+@MainActor func transient_ProjectRoot_connexionWarningString (
        _ self_mSheets_connexionWarnings : [SheetInProject_connexionWarnings]
 ) -> String {
 //--- START OF USER ZONE 2

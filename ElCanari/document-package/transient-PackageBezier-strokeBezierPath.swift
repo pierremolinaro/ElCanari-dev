@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageBezier_strokeBezierPath (
+@MainActor func transient_PackageBezier_strokeBezierPath (
        _ self_x1 : Int,                        
        _ self_y1 : Int,                        
        _ self_x2 : Int,                        

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerRoot_boardOutlineRectDisplay (
+@MainActor func transient_MergerRoot_boardOutlineRectDisplay (
        _ self_boardRect : CanariRect,              
        _ self_boardLimitWidth : Int,               
        _ prefs_mergerBoardViewDisplayBoardLimits : Bool,

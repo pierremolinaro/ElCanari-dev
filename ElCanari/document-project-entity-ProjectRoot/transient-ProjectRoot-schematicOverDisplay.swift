@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_schematicOverDisplay (
+@MainActor func transient_ProjectRoot_schematicOverDisplay (
        _ self_mSelectedSheet_connectedPoints : EBShape?,
        _ self_selectedSheetIssues : CanariIssueArray
 ) -> EBShape {

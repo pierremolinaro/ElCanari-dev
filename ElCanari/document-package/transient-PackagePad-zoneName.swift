@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackagePad_zoneName (
+@MainActor func transient_PackagePad_zoneName (
        _ self_zone_zoneName : String?
 ) -> String {
 //--- START OF USER ZONE 2

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolSolidRect_issues (
+@MainActor func transient_SymbolSolidRect_issues (
        _ self_x : Int,                 
        _ self_y : Int,                 
        _ self_width : Int,             

@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectRoot_boardBoundBox (
+@MainActor func transient_ProjectRoot_boardBoundBox (
        _ self_interiorBoundBox : CanariRect,
        _ self_mBoardLimitsWidth : Int,    
        _ self_mBoardClearance : Int

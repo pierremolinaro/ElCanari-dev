@@ -116,7 +116,7 @@ enum MultipleBindingIntegerOperation {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-indirect enum EBMultipleBindingBooleanExpression {
+@MainActor indirect enum EBMultipleBindingBooleanExpression {
 
   //····················································································································
 
@@ -214,7 +214,7 @@ indirect enum EBMultipleBindingBooleanExpression {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum EBMultipleBindingIntegerExpression {
+@MainActor enum EBMultipleBindingIntegerExpression {
 
   //····················································································································
 

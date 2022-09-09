@@ -30,8 +30,8 @@ final class AutoLayoutCanariObservedDimensionAndPopUp : AutoLayoutHorizontalStac
     _ = self.setFirstBaselineAlignment ().equalWidth ()
 //    self.alignment = .lastBaseline
 //    _ = self.equalWidth ()
-    self.appendView (self.mDimensionField)
-    self.appendView (self.mUnitPopUpButton)
+    _ = self.appendView (self.mDimensionField)
+    _ = self.appendView (self.mUnitPopUpButton)
   }
 
   //····················································································································

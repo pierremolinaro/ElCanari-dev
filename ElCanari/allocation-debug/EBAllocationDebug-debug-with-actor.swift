@@ -155,7 +155,7 @@ func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN TH
 //    appendAllocationDebugMenuItems
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func appendAllocationDebugMenuItems (_ inMenu : NSMenu) {
+@MainActor func appendAllocationDebugMenuItems (_ inMenu : NSMenu) {
   gDebugObject = EBAllocationDebug ()
 //---
   let item = NSMenuItem (
@@ -181,11 +181,11 @@ fileprivate struct EBAllocationItemDisplay {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private var gDebugObject : EBAllocationDebug? = nil
+@MainActor private var gDebugObject : EBAllocationDebug? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBAllocationDebug : NSObject {
+@MainActor final class EBAllocationDebug : NSObject {
 
   //····················································································································
   //   Properties

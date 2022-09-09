@@ -45,11 +45,11 @@ extension AutoLayoutProjectDocument {
     //---
       do{
         let hStack = AutoLayoutHorizontalStackView ()
-        hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
-        hStack.appendFlexibleSpace ()
+        _ = hStack.appendView (AutoLayoutSheetCancelButton (title: "Cancel", size: .regular))
+        _ = hStack.appendFlexibleSpace ()
         let okButton = AutoLayoutSheetDefaultOkButton (title: "Mode Selected Elements", size: .regular, sheet: panel)
-        hStack.appendView (okButton)
-        layoutView.appendView (hStack)
+        _ = hStack.appendView (okButton)
+        _ = layoutView.appendView (hStack)
       }
     //---
       panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))

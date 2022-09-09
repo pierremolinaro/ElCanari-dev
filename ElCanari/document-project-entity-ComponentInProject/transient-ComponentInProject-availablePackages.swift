@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentInProject_availablePackages (
+@MainActor func transient_ComponentInProject_availablePackages (
        _ self_mDevice_packageNames : StringArray?
 ) -> StringArray {
 //--- START OF USER ZONE 2

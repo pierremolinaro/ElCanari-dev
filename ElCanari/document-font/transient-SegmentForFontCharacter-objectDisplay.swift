@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SegmentForFontCharacter_objectDisplay (
+@MainActor func transient_SegmentForFontCharacter_objectDisplay (
        _ self_x1 : Int,                               
        _ self_y1 : Int,                               
        _ self_x2 : Int,                               

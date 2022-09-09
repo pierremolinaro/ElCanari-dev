@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutProjectDocument_unplacedSymbolsCountString (
+@MainActor func transient_AutoLayoutProjectDocument_unplacedSymbolsCountString (
        _ self_unplacedSymbolsCount : Int
 ) -> String {
 //--- START OF USER ZONE 2

@@ -63,7 +63,7 @@ private func computeRasnet (_ inPointArray : [CanariPoint], _ ioBezierPath : ino
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_AutoLayoutProjectDocument_rastnetShape (
+@MainActor func transient_AutoLayoutProjectDocument_rastnetShape (
        _ root_mRastnetDisplay : RastnetDisplay,        
        _ root_mRastnetDisplayedNetName : String,       
        _ root_mRastnetDisplayedComponentName : String, 

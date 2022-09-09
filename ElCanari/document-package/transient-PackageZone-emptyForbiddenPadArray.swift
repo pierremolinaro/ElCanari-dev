@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageZone_emptyForbiddenPadArray (
+@MainActor func transient_PackageZone_emptyForbiddenPadArray (
        _ self_forbiddenPadNumbers_count : Int
 ) -> Bool {
 //--- START OF USER ZONE 2

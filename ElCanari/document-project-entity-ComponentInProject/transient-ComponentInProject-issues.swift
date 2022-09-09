@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ComponentInProject_issues (
+@MainActor func transient_ComponentInProject_issues (
        _ self_mConnectors_issues : [BoardConnector_issues]
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
