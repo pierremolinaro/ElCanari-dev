@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardTrack_p2CanMove (
-       _ self_mManualLockP2 : Bool,  
+       _ self_mManualLockP2 : Bool,             
        _ self_p2ConnectedToSomePad : Bool
 ) -> Bool {
 //--- START OF USER ZONE 2

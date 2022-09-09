@@ -14,17 +14,17 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PackageSlavePad_objectDisplay (
-       _ self_xCenter : Int,                  
-       _ self_yCenter : Int,                  
-       _ self_width : Int,                    
-       _ self_height : Int,                   
-       _ self_holeWidth : Int,                
-       _ self_holeHeight : Int,               
-       _ self_padShape : PadShape,            
-       _ self_padStyle : SlavePadStyle,       
-       _ prefs_frontSidePadColor : NSColor,   
-       _ prefs_displayPackageFrontSidePads : Bool,
-       _ prefs_backSidePadColor : NSColor,    
+       _ self_xCenter : Int,                             
+       _ self_yCenter : Int,                             
+       _ self_width : Int,                               
+       _ self_height : Int,                              
+       _ self_holeWidth : Int,                           
+       _ self_holeHeight : Int,                          
+       _ self_padShape : PadShape,                       
+       _ self_padStyle : SlavePadStyle,                  
+       _ prefs_frontSidePadColor : NSColor,              
+       _ prefs_displayPackageFrontSidePads : Bool,       
+       _ prefs_backSidePadColor : NSColor,               
        _ prefs_displayPackageBackSidePads : Bool
 ) -> EBShape {
 //--- START OF USER ZONE 2

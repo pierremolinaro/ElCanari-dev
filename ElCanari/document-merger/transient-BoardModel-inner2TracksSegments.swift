@@ -14,10 +14,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardModel_inner2TracksSegments (
-       _ self_inner2Tracks_x1 : [SegmentEntity_x1],
-       _ self_inner2Tracks_y1 : [SegmentEntity_y1],
-       _ self_inner2Tracks_x2 : [SegmentEntity_x2],
-       _ self_inner2Tracks_y2 : [SegmentEntity_y2],
+       _ self_inner2Tracks_x1 : [SegmentEntity_x1],        
+       _ self_inner2Tracks_y1 : [SegmentEntity_y1],        
+       _ self_inner2Tracks_x2 : [SegmentEntity_x2],        
+       _ self_inner2Tracks_y2 : [SegmentEntity_y2],        
        _ self_inner2Tracks_width : [SegmentEntity_width]
 ) -> MergerSegmentArray {
 //--- START OF USER ZONE 2

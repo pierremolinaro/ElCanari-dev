@@ -14,19 +14,19 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ComponentSymbolInProject_symbolInfo (
-       _ prefs_pinNameColorForSchematic : NSColor,  
-       _ prefs_pinNameFontForSchematic : NSFont,    
-       _ prefs_pinNumberColorForSchematic : NSColor,
-       _ prefs_pinNumberFontForSchematic : NSFont,  
-       _ self_mRotation : QuadrantRotation,         
-       _ self_mMirror : Bool,                       
-       _ self_componentName : String,               
-       _ self_mComponent_mComponentValue : String?, 
+       _ prefs_pinNameColorForSchematic : NSColor,             
+       _ prefs_pinNameFontForSchematic : NSFont,               
+       _ prefs_pinNumberColorForSchematic : NSColor,           
+       _ prefs_pinNumberFontForSchematic : NSFont,             
+       _ self_mRotation : QuadrantRotation,                    
+       _ self_mMirror : Bool,                                  
+       _ self_componentName : String,                          
+       _ self_mComponent_mComponentValue : String?,            
        _ self_mComponent_deviceSymbolDictionary : DeviceSymbolDictionary?,
-       _ self_mSymbolInstanceName : String,         
-       _ self_mSymbolTypeName : String,             
-       _ self_mCenterX : Int,                       
-       _ self_mCenterY : Int,                       
+       _ self_mSymbolInstanceName : String,                    
+       _ self_mSymbolTypeName : String,                        
+       _ self_mCenterX : Int,                                  
+       _ self_mCenterY : Int,                                  
        _ self_mPoints_symbolNameNetName : [PointInSchematic_symbolNameNetName]
 ) -> ComponentSymbolInfo {
 //--- START OF USER ZONE 2

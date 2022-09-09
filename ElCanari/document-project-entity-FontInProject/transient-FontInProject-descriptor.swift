@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_FontInProject_descriptor (
-       _ self_mNominalSize : Int,        
+       _ self_mNominalSize : Int,                   
        _ self_mDescriptiveString : String
 ) -> BoardFontDescriptor {
 //--- START OF USER ZONE 2

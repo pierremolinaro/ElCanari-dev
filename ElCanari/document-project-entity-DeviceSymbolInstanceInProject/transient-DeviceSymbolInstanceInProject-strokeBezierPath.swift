@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_DeviceSymbolInstanceInProject_strokeBezierPath (
-       _ self_mSymbolType_mStrokeBezierPath : NSBezierPath?,   
+       _ self_mSymbolType_mStrokeBezierPath : NSBezierPath?,              
        _ prefs_symbolDrawingWidthMultipliedByTenForSchematic : Int
 ) -> NSBezierPath {
 //--- START OF USER ZONE 2

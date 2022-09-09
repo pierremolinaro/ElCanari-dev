@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_SymbolPin_filledBezierPath (
-       _ self_xPin : Int,                  
+       _ self_xPin : Int,                             
        _ self_yPin : Int
 ) -> NSBezierPath {
 //--- START OF USER ZONE 2

@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardTrack_trackCanRotate (
-       _ self_p1CanMove : Bool,           
+       _ self_p1CanMove : Bool,                      
        _ self_p2CanMove : Bool
 ) -> Bool {
 //--- START OF USER ZONE 2

@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ProjectRoot_boardStatusMessage (
-       _ self_boardIssues : CanariIssueArray,  
+       _ self_boardIssues : CanariIssueArray,             
        _ self_unplacedPackages : StringTagArray
 ) -> String {
 //--- START OF USER ZONE 2

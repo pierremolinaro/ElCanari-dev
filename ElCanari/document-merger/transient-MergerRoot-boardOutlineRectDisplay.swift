@@ -14,9 +14,9 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_MergerRoot_boardOutlineRectDisplay (
-       _ self_boardRect : CanariRect,              
-       _ self_boardLimitWidth : Int,               
-       _ prefs_mergerBoardViewDisplayBoardLimits : Bool,
+       _ self_boardRect : CanariRect,                         
+       _ self_boardLimitWidth : Int,                          
+       _ prefs_mergerBoardViewDisplayBoardLimits : Bool,      
        _ prefs_mergerColorBoardLimits : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2

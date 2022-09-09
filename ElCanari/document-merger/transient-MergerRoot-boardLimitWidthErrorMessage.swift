@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_MergerRoot_boardLimitWidthErrorMessage (
-       _ self_boardLimitWidth : Int,                   
+       _ self_boardLimitWidth : Int,                              
        _ self_boardModels_modelLimitWidth : [BoardModel_modelLimitWidth]
 ) -> String {
 //--- START OF USER ZONE 2

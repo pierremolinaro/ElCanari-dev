@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_AutoLayoutProjectDocument_canRemoveNetClasses (
-       _ root_mNetClasses_count : Int,                        
+       _ root_mNetClasses_count : Int,                                   
        _ self_netClassController_selectedArray_all_canRemove : [NetClassInProject_canRemove]
 ) -> Bool {
 //--- START OF USER ZONE 2

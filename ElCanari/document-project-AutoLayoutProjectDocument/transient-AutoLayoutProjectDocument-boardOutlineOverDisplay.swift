@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_AutoLayoutProjectDocument_boardOutlineOverDisplay (
-       _ self_rastnetShape : EBShape,                             
+       _ self_rastnetShape : EBShape,                                        
        _ root_boardIssues : CanariIssueArray
 ) -> EBShape {
 //--- START OF USER ZONE 2

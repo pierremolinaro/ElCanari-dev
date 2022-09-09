@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ProjectRoot_boardLimitBorderLeft (
-       _ self_boardBoundBox : CanariRect,        
+       _ self_boardBoundBox : CanariRect,                   
        _ self_mBoardLimitsBoundingBoxUnit : Int
 ) -> String {
 //--- START OF USER ZONE 2

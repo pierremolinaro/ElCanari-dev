@@ -14,10 +14,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ComponentInProject_componentPadDictionary (
-       _ self_mX : Int,                                   
-       _ self_mY : Int,                                   
-       _ self_mRotation : Int,                            
-       _ self_mSide : ComponentSide,                      
+       _ self_mX : Int,                                              
+       _ self_mY : Int,                                              
+       _ self_mRotation : Int,                                       
+       _ self_mSide : ComponentSide,                                 
        _ self_packagePadDictionary : PackageMasterPadDictionary
 ) -> ComponentPadDescriptorDictionary {
 //--- START OF USER ZONE 2

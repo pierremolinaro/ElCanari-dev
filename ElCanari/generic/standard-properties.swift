@@ -26,7 +26,8 @@ func values_UInt32_are_ordered (_ inLeft : UInt32, _ inAscending : Bool, _ inRig
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func compare_UInt32_properties (_ inLeft : EBReadOnlyProperty_UInt32, _ inAscending : Bool, _ inRight : EBReadOnlyProperty_UInt32) -> ComparisonResult {
+@MainActor func compare_UInt32_properties (_ inLeft : EBReadOnlyProperty_UInt32, _ inAscending : Bool,
+                                            _ inRight : EBReadOnlyProperty_UInt32) -> ComparisonResult {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   switch left.selection {
@@ -84,7 +85,8 @@ func values_Int_are_ordered (_ inLeft : Int, _ inAscending : Bool, _ inRight : I
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func compare_Int_properties (_ inLeft : EBReadOnlyProperty_Int, _ inAscending : Bool, _ inRight : EBReadOnlyProperty_Int) -> ComparisonResult {
+@MainActor func compare_Int_properties (_ inLeft : EBReadOnlyProperty_Int, _ inAscending : Bool,
+                                            _ inRight : EBReadOnlyProperty_Int) -> ComparisonResult {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   switch left.selection {
@@ -142,7 +144,8 @@ func values_Bool_are_ordered (_ inLeft : Bool, _ inAscending : Bool, _ inRight :
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func compare_Bool_properties (_ inLeft : EBReadOnlyProperty_Bool, _ inAscending : Bool, _ inRight : EBReadOnlyProperty_Bool) -> ComparisonResult {
+@MainActor func compare_Bool_properties (_ inLeft : EBReadOnlyProperty_Bool, _ inAscending : Bool,
+                                            _ inRight : EBReadOnlyProperty_Bool) -> ComparisonResult {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   switch left.selection {
@@ -200,7 +203,8 @@ func values_Double_are_ordered (_ inLeft : Double, _ inAscending : Bool, _ inRig
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func compare_Double_properties (_ inLeft : EBReadOnlyProperty_Double, _ inAscending : Bool, _ inRight : EBReadOnlyProperty_Double) -> ComparisonResult {
+@MainActor func compare_Double_properties (_ inLeft : EBReadOnlyProperty_Double, _ inAscending : Bool,
+                                            _ inRight : EBReadOnlyProperty_Double) -> ComparisonResult {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   switch left.selection {
@@ -258,7 +262,8 @@ func values_String_are_ordered (_ inLeft : String, _ inAscending : Bool, _ inRig
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func compare_String_properties (_ inLeft : EBReadOnlyProperty_String, _ inAscending : Bool, _ inRight : EBReadOnlyProperty_String) -> ComparisonResult {
+@MainActor func compare_String_properties (_ inLeft : EBReadOnlyProperty_String, _ inAscending : Bool,
+                                            _ inRight : EBReadOnlyProperty_String) -> ComparisonResult {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   switch left.selection {
@@ -310,7 +315,8 @@ func values_Data_are_ordered (_ inLeft : Data, _ inAscending : Bool, _ inRight :
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func compare_Data_properties (_ inLeft : EBReadOnlyProperty_Data, _ inAscending : Bool, _ inRight : EBReadOnlyProperty_Data) -> ComparisonResult {
+@MainActor func compare_Data_properties (_ inLeft : EBReadOnlyProperty_Data, _ inAscending : Bool,
+                                            _ inRight : EBReadOnlyProperty_Data) -> ComparisonResult {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   switch left.selection {
@@ -368,7 +374,8 @@ func values_Date_are_ordered (_ inLeft : Date, _ inAscending : Bool, _ inRight :
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func compare_Date_properties (_ inLeft : EBReadOnlyProperty_Date, _ inAscending : Bool, _ inRight : EBReadOnlyProperty_Date) -> ComparisonResult {
+@MainActor func compare_Date_properties (_ inLeft : EBReadOnlyProperty_Date, _ inAscending : Bool,
+                                            _ inRight : EBReadOnlyProperty_Date) -> ComparisonResult {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   switch left.selection {
@@ -426,7 +433,8 @@ func values_BezierPathArray_are_ordered (_ inLeft : BezierPathArray, _ inAscendi
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func compare_BezierPathArray_properties (_ inLeft : EBReadOnlyProperty_BezierPathArray, _ inAscending : Bool, _ inRight : EBReadOnlyProperty_BezierPathArray) -> ComparisonResult {
+@MainActor func compare_BezierPathArray_properties (_ inLeft : EBReadOnlyProperty_BezierPathArray, _ inAscending : Bool,
+                                            _ inRight : EBReadOnlyProperty_BezierPathArray) -> ComparisonResult {
   let left  = inAscending ? inLeft  : inRight
   let right = inAscending ? inRight : inLeft
   switch left.selection {

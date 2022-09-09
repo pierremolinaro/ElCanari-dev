@@ -14,9 +14,9 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_SymbolPin_nameRect (
-       _ self_xName : Int,         
-       _ self_yName : Int,         
-       _ self_name : String,       
+       _ self_xName : Int,                    
+       _ self_yName : Int,                    
+       _ self_name : String,                  
        _ self_nameHorizontalAlignment : HorizontalAlignment,
        _ prefs_pinNameFont : NSFont
 ) -> NSRect {

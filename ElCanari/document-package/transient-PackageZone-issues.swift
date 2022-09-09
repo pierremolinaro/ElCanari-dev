@@ -14,12 +14,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PackageZone_issues (
-       _ self_x : Int,             
-       _ self_y : Int,             
-       _ self_width : Int,         
-       _ self_height : Int,        
-       _ self_xName : Int,         
-       _ self_yName : Int,         
+       _ self_x : Int,                        
+       _ self_y : Int,                        
+       _ self_width : Int,                    
+       _ self_height : Int,                   
+       _ self_xName : Int,                    
+       _ self_yName : Int,                    
        _ self_zoneName : String
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2

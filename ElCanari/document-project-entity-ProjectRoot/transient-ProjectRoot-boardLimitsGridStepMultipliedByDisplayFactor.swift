@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor (
-       _ self_mBoardLimitsGridStep : Int,                                
+       _ self_mBoardLimitsGridStep : Int,                                           
        _ self_mBoardLimitsGridDisplayFactor : Int
 ) -> Int {
 //--- START OF USER ZONE 2

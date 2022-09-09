@@ -14,10 +14,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PackageSlavePad_padNumberDisplay (
-       _ self_xCenter : Int,                     
-       _ self_yCenter : Int,                     
-       _ prefs_padNumberFont : NSFont,           
-       _ prefs_padNumberColor : NSColor,         
+       _ self_xCenter : Int,                                
+       _ self_yCenter : Int,                                
+       _ prefs_padNumberFont : NSFont,                      
+       _ prefs_padNumberColor : NSColor,                    
        _ self_padNameForDisplay : String
 ) -> EBShape {
 //--- START OF USER ZONE 2

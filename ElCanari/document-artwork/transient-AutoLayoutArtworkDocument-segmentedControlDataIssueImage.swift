@@ -16,7 +16,7 @@ import Cocoa
 @MainActor func transient_AutoLayoutArtworkDocument_segmentedControlDataIssueImage (
        _ root_fileGenerationParameterArray_fileExtension : [ArtworkFileGenerationParameters_fileExtension],
        _ root_fileGenerationParameterArray_name : [ArtworkFileGenerationParameters_name],
-       _ root_hasDataWarning : Bool,                                     
+       _ root_hasDataWarning : Bool,                                                
        _ root_emptyDrillFileExtension : Bool
 ) -> NSImage {
 //--- START OF USER ZONE 2

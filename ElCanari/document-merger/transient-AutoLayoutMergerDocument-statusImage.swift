@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_AutoLayoutMergerDocument_statusImage (
-       _ self_issues : CanariIssueArray,             
+       _ self_issues : CanariIssueArray,                        
        _ root_boardLimitWidthOk : Bool
 ) -> NSImage {
 //--- START OF USER ZONE 2

@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PackageRoot_gridStepMultipliedByDisplayFactor (
-       _ self_gridStep : Int,                                 
+       _ self_gridStep : Int,                                            
        _ self_gridDisplayFactor : Int
 ) -> Int {
 //--- START OF USER ZONE 2

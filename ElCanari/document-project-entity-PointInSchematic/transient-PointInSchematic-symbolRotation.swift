@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PointInSchematic_symbolRotation (
-       _ self_mSymbol_mRotation : QuadrantRotation?,
+       _ self_mSymbol_mRotation : QuadrantRotation?,       
        _ self_mSymbol_mMirror : Bool?
 ) -> QuadrantRotation {
 //--- START OF USER ZONE 2

@@ -14,17 +14,17 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_DevicePinInProject_descriptor (
-       _ self_mPinName : String,              
-       _ self_mSymbolInstanceName : String,   
-       _ self_mSymbolTypeName : String,       
-       _ self_mPinX : Int,                    
-       _ self_mPinY : Int,                    
-       _ self_mXName : Int,                   
-       _ self_mYName : Int,                   
+       _ self_mPinName : String,                         
+       _ self_mSymbolInstanceName : String,              
+       _ self_mSymbolTypeName : String,                  
+       _ self_mPinX : Int,                               
+       _ self_mPinY : Int,                               
+       _ self_mXName : Int,                              
+       _ self_mYName : Int,                              
        _ self_mNameHorizontalAlignment : HorizontalAlignment,
-       _ self_mPinNameIsDisplayedInSchematic : Bool,
-       _ self_mXNumber : Int,                 
-       _ self_mYNumber : Int,                 
+       _ self_mPinNameIsDisplayedInSchematic : Bool,     
+       _ self_mXNumber : Int,                            
+       _ self_mYNumber : Int,                            
        _ self_mNumberHorizontalAlignment : HorizontalAlignment
 ) -> PinInProjectDescriptor {
 //--- START OF USER ZONE 2

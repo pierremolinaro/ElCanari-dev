@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_AutoLayoutMergerDocument_statusMessage (
-       _ self_issues : CanariIssueArray,               
+       _ self_issues : CanariIssueArray,                          
        _ root_boardLimitWidthErrorMessage : String
 ) -> String {
 //--- START OF USER ZONE 2

@@ -14,10 +14,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardModel_internalBoardsLimitsSegments (
-       _ self_internalBoardsLimits_x1 : [SegmentEntity_x1],
-       _ self_internalBoardsLimits_y1 : [SegmentEntity_y1],
-       _ self_internalBoardsLimits_x2 : [SegmentEntity_x2],
-       _ self_internalBoardsLimits_y2 : [SegmentEntity_y2],
+       _ self_internalBoardsLimits_x1 : [SegmentEntity_x1],        
+       _ self_internalBoardsLimits_y1 : [SegmentEntity_y1],        
+       _ self_internalBoardsLimits_x2 : [SegmentEntity_x2],        
+       _ self_internalBoardsLimits_y2 : [SegmentEntity_y2],        
        _ self_internalBoardsLimits_width : [SegmentEntity_width]
 ) -> MergerSegmentArray {
 //--- START OF USER ZONE 2

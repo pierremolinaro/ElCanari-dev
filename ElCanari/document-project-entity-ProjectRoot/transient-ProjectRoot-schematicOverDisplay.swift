@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ProjectRoot_schematicOverDisplay (
-       _ self_mSelectedSheet_connectedPoints : EBShape?,
+       _ self_mSelectedSheet_connectedPoints : EBShape?,    
        _ self_selectedSheetIssues : CanariIssueArray
 ) -> EBShape {
 //--- START OF USER ZONE 2

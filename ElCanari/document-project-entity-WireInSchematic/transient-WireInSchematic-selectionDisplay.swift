@@ -14,9 +14,9 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_WireInSchematic_selectionDisplay (
-       _ self_mP1_location : CanariPoint?,       
-       _ self_mP1_canMove : Bool?,               
-       _ self_mP2_location : CanariPoint?,       
+       _ self_mP1_location : CanariPoint?,                  
+       _ self_mP1_canMove : Bool?,                          
+       _ self_mP2_location : CanariPoint?,                  
        _ self_mP2_canMove : Bool?
 ) -> EBShape {
 //--- START OF USER ZONE 2

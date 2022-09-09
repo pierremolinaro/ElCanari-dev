@@ -14,8 +14,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardModel_traversingPadArray (
-       _ self_traversingPads_x : [BoardModelPad_x],
-       _ self_traversingPads_y : [BoardModelPad_y],
+       _ self_traversingPads_x : [BoardModelPad_x],      
+       _ self_traversingPads_y : [BoardModelPad_y],      
        _ self_traversingPads_width : [BoardModelPad_width],
        _ self_traversingPads_height : [BoardModelPad_height],
        _ self_traversingPads_shape : [BoardModelPad_shape],

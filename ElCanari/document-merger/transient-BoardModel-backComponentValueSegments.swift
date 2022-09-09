@@ -14,10 +14,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardModel_backComponentValueSegments (
-       _ self_backComponentValues_x1 : [SegmentEntity_x1],
-       _ self_backComponentValues_y1 : [SegmentEntity_y1],
-       _ self_backComponentValues_x2 : [SegmentEntity_x2],
-       _ self_backComponentValues_y2 : [SegmentEntity_y2],
+       _ self_backComponentValues_x1 : [SegmentEntity_x1],       
+       _ self_backComponentValues_y1 : [SegmentEntity_y1],       
+       _ self_backComponentValues_x2 : [SegmentEntity_x2],       
+       _ self_backComponentValues_y2 : [SegmentEntity_y2],       
        _ self_backComponentValues_width : [SegmentEntity_width]
 ) -> MergerSegmentArray {
 //--- START OF USER ZONE 2

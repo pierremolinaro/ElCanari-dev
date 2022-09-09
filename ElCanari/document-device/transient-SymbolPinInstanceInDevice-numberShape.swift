@@ -14,10 +14,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_SymbolPinInstanceInDevice_numberShape (
-       _ self_mType_mXNumber : Int?,                  
-       _ self_mType_mYNumber : Int?,                  
+       _ self_mType_mXNumber : Int?,                             
+       _ self_mType_mYNumber : Int?,                             
        _ self_mType_mNumberHorizontalAlignment : HorizontalAlignment?,
-       _ self_mPadProxy_mPadName : String?,           
+       _ self_mPadProxy_mPadName : String?,                      
        _ prefs_pinNameFont : NSFont
 ) -> EBShape {
 //--- START OF USER ZONE 2

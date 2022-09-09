@@ -13528,7 +13528,6 @@
 				PRODUCT_NAME = "ElCanari-Debug";
 				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_STRICT_CONCURRENCY = targeted;
 			};
 			name = Release;
 		};
@@ -13555,7 +13554,6 @@
 				PRODUCT_NAME = "ElCanari-Debug";
 				STRIP_SWIFT_SYMBOLS = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_STRICT_CONCURRENCY = targeted;
 			};
 			name = Debug;
 		};

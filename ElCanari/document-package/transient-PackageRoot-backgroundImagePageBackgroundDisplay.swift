@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PackageRoot_backgroundImagePageBackgroundDisplay (
-       _ self_packageObjects_objectDisplay : [PackageObject_objectDisplay],
+       _ self_packageObjects_objectDisplay : [PackageObject_objectDisplay], 
        _ self_mModelImageData : Data
 ) -> EBShape {
 //--- START OF USER ZONE 2

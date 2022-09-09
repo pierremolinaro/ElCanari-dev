@@ -14,9 +14,9 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ArtworkRoot_signatureForERCChecking (
-       _ self_minPPTPTTTW : Int,                    
-       _ self_minValueForOARinEBUnit : Int,         
-       _ self_minValueForBoardLimitWidth : Int,     
+       _ self_minPPTPTTTW : Int,                               
+       _ self_minValueForOARinEBUnit : Int,                    
+       _ self_minValueForBoardLimitWidth : Int,                
        _ self_minValueForPHDinEBUnit : Int
 ) -> UInt32 {
 //--- START OF USER ZONE 2

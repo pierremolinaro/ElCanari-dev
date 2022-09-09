@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ComponentInProject_componentName (
-       _ self_mNamePrefix : String,              
+       _ self_mNamePrefix : String,                         
        _ self_mNameIndex : Int
 ) -> String {
 //--- START OF USER ZONE 2

@@ -14,9 +14,9 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_AutoLayoutMergerDocument_issues (
-       _ root_overlapingArrangment : Bool,      
-       _ root_boardRect : CanariRect,           
-       _ root_boardLimitWidth : Int,            
+       _ root_overlapingArrangment : Bool,                 
+       _ root_boardRect : CanariRect,                      
+       _ root_boardLimitWidth : Int,                       
        _ root_boardInstances_instanceRect : [MergerBoardInstance_instanceRect],
        _ root_boardInstances_boardLimitWidth : [MergerBoardInstance_boardLimitWidth]
 ) -> CanariIssueArray {

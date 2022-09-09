@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PointInSchematic_symbolNameNetName (
-       _ self_mSymbolPinName : String,             
+       _ self_mSymbolPinName : String,                        
        _ self_netName : String
 ) -> TwoStrings {
 //--- START OF USER ZONE 2

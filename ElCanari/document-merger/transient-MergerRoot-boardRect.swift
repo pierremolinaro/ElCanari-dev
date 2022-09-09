@@ -14,10 +14,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_MergerRoot_boardRect (
-       _ self_automaticBoardSize : Bool,
-       _ self_boardLimitWidth : Int, 
-       _ self_boardManualWidth : Int,
-       _ self_boardManualHeight : Int,
+       _ self_automaticBoardSize : Bool,        
+       _ self_boardLimitWidth : Int,            
+       _ self_boardManualWidth : Int,           
+       _ self_boardManualHeight : Int,          
        _ self_boardInstances_instanceRect : [MergerBoardInstance_instanceRect],
        _ self_boardInstances_boardLimitWidth : [MergerBoardInstance_boardLimitWidth]
 ) -> CanariRect {

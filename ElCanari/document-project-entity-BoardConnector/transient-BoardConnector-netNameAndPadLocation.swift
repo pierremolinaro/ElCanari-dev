@@ -14,9 +14,9 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardConnector_netNameAndPadLocation (
-       _ self_mComponent_padNetDictionary : PadNetDictionary?,
-       _ self_mComponentPadName : String,            
-       _ self_location : CanariPoint,                
+       _ self_mComponent_padNetDictionary : PadNetDictionary?,  
+       _ self_mComponentPadName : String,                       
+       _ self_location : CanariPoint,                           
        _ self_mComponent_componentName : String?
 ) -> RastnetInfoArray {
 //--- START OF USER ZONE 2

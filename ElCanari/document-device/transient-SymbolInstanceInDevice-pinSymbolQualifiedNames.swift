@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_SymbolInstanceInDevice_pinSymbolQualifiedNames (
-       _ self_mInstanceName : String,                          
+       _ self_mInstanceName : String,                                     
        _ self_mPinInstances_pinName : [SymbolPinInstanceInDevice_pinName]
 ) -> StringArray {
 //--- START OF USER ZONE 2

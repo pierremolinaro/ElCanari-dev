@@ -14,11 +14,11 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_SymbolPinTypeInDevice_nameShape (
-       _ self_mXName : Int,                     
-       _ self_mYName : Int,                     
-       _ self_mName : String,                   
+       _ self_mXName : Int,                                
+       _ self_mYName : Int,                                
+       _ self_mName : String,                              
        _ self_mNameHorizontalAlignment : HorizontalAlignment,
-       _ self_mPinNameIsDisplayedInSchematics : Bool,
+       _ self_mPinNameIsDisplayedInSchematics : Bool,      
        _ prefs_pinNameFont : NSFont
 ) -> EBShape {
 //--- START OF USER ZONE 2

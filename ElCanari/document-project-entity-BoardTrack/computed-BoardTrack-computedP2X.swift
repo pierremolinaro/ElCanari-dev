@@ -13,7 +13,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func computed_BoardTrack_computedP2X (
+@MainActor func computed_BoardTrack_computedP2X (
        _ self_mConnectorP2_location : CanariPoint?
 ) -> Int {
 //--- START OF USER ZONE 2

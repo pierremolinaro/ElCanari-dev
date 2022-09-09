@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_FontInProject_canRemoveFont (
-       _ self_mComponentNames_count : Int,  
+       _ self_mComponentNames_count : Int,             
        _ self_mComponentValues_count : Int
 ) -> Bool {
 //--- START OF USER ZONE 2

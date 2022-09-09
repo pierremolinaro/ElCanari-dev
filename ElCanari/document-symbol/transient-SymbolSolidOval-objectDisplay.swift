@@ -14,10 +14,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_SymbolSolidOval_objectDisplay (
-       _ self_x : Int,                        
-       _ self_y : Int,                        
-       _ self_width : Int,                    
-       _ self_height : Int,                   
+       _ self_x : Int,                                   
+       _ self_y : Int,                                   
+       _ self_width : Int,                               
+       _ self_height : Int,                              
        _ prefs_symbolColor : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2

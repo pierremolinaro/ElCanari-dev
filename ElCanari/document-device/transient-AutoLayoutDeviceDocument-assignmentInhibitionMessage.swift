@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_AutoLayoutDeviceDocument_assignmentInhibitionMessage (
-       _ root_inconsistentPackagePadNameSetsMessage : String,        
+       _ root_inconsistentPackagePadNameSetsMessage : String,                   
        _ root_inconsistentSymbolNameSetMessage : String
 ) -> String {
 //--- START OF USER ZONE 2

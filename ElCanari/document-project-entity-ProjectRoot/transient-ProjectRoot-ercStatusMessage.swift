@@ -14,8 +14,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ProjectRoot_ercStatusMessage (
-       _ self_mLastERCCheckingIsSuccess : Bool,
-       _ self_mLastERCCheckingSignature : UInt32,
+       _ self_mLastERCCheckingIsSuccess : Bool,         
+       _ self_mLastERCCheckingSignature : UInt32,       
        _ self_signatureForERCChecking : UInt32
 ) -> String {
 //--- START OF USER ZONE 2

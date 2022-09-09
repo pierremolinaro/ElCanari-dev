@@ -15,8 +15,8 @@ import Cocoa
 
 @MainActor func transient_BoardConnector_side (
        _ self_mComponent_componentPadDictionary : ComponentPadDescriptorDictionary?,
-       _ self_mComponentPadName : String,
-       _ self_mPadIndex : Int,      
+       _ self_mComponentPadName : String,      
+       _ self_mPadIndex : Int,                 
        _ self_mTracksP1_mSide : [BoardTrack_mSide],
        _ self_mTracksP2_mSide : [BoardTrack_mSide]
 ) -> ConnectorSide {

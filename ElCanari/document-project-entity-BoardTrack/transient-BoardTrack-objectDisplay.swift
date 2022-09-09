@@ -14,21 +14,21 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardTrack_objectDisplay (
-       _ self_mConnectorP1_location : CanariPoint?,
-       _ self_mConnectorP2_location : CanariPoint?,
+       _ self_mConnectorP1_location : CanariPoint?, 
+       _ self_mConnectorP2_location : CanariPoint?, 
        _ self_BoardObject_displayFrontLayoutForBoard : Bool,
        _ prefs_frontSideLayoutColorForBoard : NSColor,
        _ self_BoardObject_displayBackLayoutForBoard : Bool,
        _ prefs_backSideLayoutColorForBoard : NSColor,
        _ self_BoardObject_displayInner1LayoutForBoard : Bool,
-       _ prefs_inner1LayoutColorForBoard : NSColor,
+       _ prefs_inner1LayoutColorForBoard : NSColor, 
        _ self_BoardObject_displayInner2LayoutForBoard : Bool,
-       _ prefs_inner2LayoutColorForBoard : NSColor,
+       _ prefs_inner2LayoutColorForBoard : NSColor, 
        _ self_BoardObject_displayInner3LayoutForBoard : Bool,
-       _ prefs_inner3LayoutColorForBoard : NSColor,
+       _ prefs_inner3LayoutColorForBoard : NSColor, 
        _ self_BoardObject_displayInner4LayoutForBoard : Bool,
-       _ prefs_inner4LayoutColorForBoard : NSColor,
-       _ self_actualTrackWidth : Int,    
+       _ prefs_inner4LayoutColorForBoard : NSColor, 
+       _ self_actualTrackWidth : Int,               
        _ self_mSide : TrackSide
 ) -> EBShape {
 //--- START OF USER ZONE 2

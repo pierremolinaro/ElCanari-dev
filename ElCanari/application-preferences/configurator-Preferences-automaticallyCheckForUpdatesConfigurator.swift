@@ -18,7 +18,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Preferences {
-  @MainActor final func configure_automaticallyCheckForUpdatesConfigurator (_ inOutlet : AutoLayoutCheckbox) {
+  final func configure_automaticallyCheckForUpdatesConfigurator (_ inOutlet : AutoLayoutCheckbox) {
 //--- START OF USER ZONE 2
         gApplicationDelegate?.configureAutomaticallyCheckForUpdatesButton (inOutlet)
 //--- END OF USER ZONE 2

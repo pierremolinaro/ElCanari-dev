@@ -14,14 +14,14 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PointInSchematic_netInfoForPoint (
-       _ self_mLabels_count : Int,               
-       _ self_mSymbol_componentName : String?,   
-       _ self_mSymbol_mSymbolInstanceName : String?,
-       _ self_mSymbolPinName : String,           
+       _ self_mLabels_count : Int,                          
+       _ self_mSymbol_componentName : String?,              
+       _ self_mSymbol_mSymbolInstanceName : String?,        
+       _ self_mSymbolPinName : String,                      
        _ self_mSymbol_pinPadAssignments : ThreeStringArray?,
-       _ self_mWiresP1s : [ObjectIndexProtocol], 
-       _ self_mWiresP2s : [ObjectIndexProtocol], 
-       _ self_location : CanariPoint,            
+       _ self_mWiresP1s : [ObjectIndexProtocol],            
+       _ self_mWiresP2s : [ObjectIndexProtocol],            
+       _ self_location : CanariPoint,                       
        _ self_mSheet_sheetDescriptor : SchematicSheetDescriptor?
 ) -> NetInfoPoint {
 //--- START OF USER ZONE 2

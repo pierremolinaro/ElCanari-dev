@@ -14,11 +14,11 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_MergerBoardInstance_objectDisplay (
-       _ self_x : Int,                            
-       _ self_y : Int,                            
-       _ self_myModel_modelWidth : Int?,          
-       _ self_myModel_modelHeight : Int?,         
-       _ self_instanceRotation : QuadrantRotation,
+       _ self_x : Int,                                       
+       _ self_y : Int,                                       
+       _ self_myModel_modelWidth : Int?,                     
+       _ self_myModel_modelHeight : Int?,                    
+       _ self_instanceRotation : QuadrantRotation,           
        _ self_myModel_imageForInstances : EBShape?
 ) -> EBShape {
 //--- START OF USER ZONE 2

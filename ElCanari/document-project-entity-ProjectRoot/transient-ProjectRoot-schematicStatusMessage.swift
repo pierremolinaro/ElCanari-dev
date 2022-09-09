@@ -14,8 +14,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ProjectRoot_schematicStatusMessage (
-       _ self_unplacedSymbols : StringTagArray,    
-       _ self_netWarningCount : Int,               
+       _ self_unplacedSymbols : StringTagArray,               
+       _ self_netWarningCount : Int,                          
        _ self_mSheets_connexionWarnings : [SheetInProject_connexionWarnings],
        _ self_mSheets_connexionErrors : [SheetInProject_connexionErrors]
 ) -> String {

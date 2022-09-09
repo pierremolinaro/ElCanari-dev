@@ -14,19 +14,19 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ComponentSymbolInProject_objectDisplay (
-       _ prefs_pinNameFont : NSFont,                   
-       _ prefs_componentNameColorForSchematic : NSColor,
-       _ prefs_componentNameFontForSchematic : NSFont, 
-       _ prefs_componentValueColorForSchematic : NSColor,
-       _ prefs_componentValueFontForSchematic : NSFont,
-       _ prefs_symbolColorForSchematic : NSColor,      
-       _ self_mDisplayComponentNameOffsetX : Int,      
-       _ self_mDisplayComponentNameOffsetY : Int,      
-       _ self_mDisplayComponentValue : Bool,           
-       _ self_mDisplayComponentValueOffsetX : Int,     
-       _ self_mDisplayComponentValueOffsetY : Int,     
-       _ self_symbolInfo : ComponentSymbolInfo,        
-       _ self_mSymbolInstanceName : String,            
+       _ prefs_pinNameFont : NSFont,                              
+       _ prefs_componentNameColorForSchematic : NSColor,          
+       _ prefs_componentNameFontForSchematic : NSFont,            
+       _ prefs_componentValueColorForSchematic : NSColor,         
+       _ prefs_componentValueFontForSchematic : NSFont,           
+       _ prefs_symbolColorForSchematic : NSColor,                 
+       _ self_mDisplayComponentNameOffsetX : Int,                 
+       _ self_mDisplayComponentNameOffsetY : Int,                 
+       _ self_mDisplayComponentValue : Bool,                      
+       _ self_mDisplayComponentValueOffsetX : Int,                
+       _ self_mDisplayComponentValueOffsetY : Int,                
+       _ self_symbolInfo : ComponentSymbolInfo,                   
+       _ self_mSymbolInstanceName : String,                       
        _ self_mSymbolTypeName : String
 ) -> EBShape {
 //--- START OF USER ZONE 2

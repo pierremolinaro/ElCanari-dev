@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardConnector_selectionDisplay (
-       _ self_isVia : Bool,                     
+       _ self_isVia : Bool,                                
        _ self_location : CanariPoint
 ) -> EBShape {
 //--- START OF USER ZONE 2

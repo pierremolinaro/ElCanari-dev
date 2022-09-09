@@ -14,8 +14,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ComponentInProject_unplacedSymbols (
-       _ self_componentName : String,              
-       _ self_mSymbols : [ObjectIndexProtocol],    
+       _ self_componentName : String,                         
+       _ self_mSymbols : [ObjectIndexProtocol],               
        _ self_mSymbols_symbolInSchematic : [ComponentSymbolInProject_symbolInSchematic],
        _ self_mSymbols_mSymbolInstanceName : [ComponentSymbolInProject_mSymbolInstanceName],
        _ self_mSymbols_mSymbolTypeName : [ComponentSymbolInProject_mSymbolTypeName],

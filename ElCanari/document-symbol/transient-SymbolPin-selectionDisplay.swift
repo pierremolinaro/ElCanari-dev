@@ -14,12 +14,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_SymbolPin_selectionDisplay (
-       _ self_xPin : Int,                  
-       _ self_yPin : Int,                  
-       _ self_xName : Int,                 
-       _ self_yName : Int,                 
-       _ self_xNumber : Int,               
-       _ self_yNumber : Int,               
+       _ self_xPin : Int,                             
+       _ self_yPin : Int,                             
+       _ self_xName : Int,                            
+       _ self_yName : Int,                            
+       _ self_xNumber : Int,                          
+       _ self_yNumber : Int,                          
        _ self_nameHorizontalAlignment : HorizontalAlignment,
        _ self_numberHorizontalAlignment : HorizontalAlignment
 ) -> EBShape {

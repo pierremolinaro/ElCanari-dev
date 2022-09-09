@@ -14,10 +14,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardModel_frontLayoutTextsSegments (
-       _ self_frontLayoutTexts_x1 : [SegmentEntity_x1],
-       _ self_frontLayoutTexts_y1 : [SegmentEntity_y1],
-       _ self_frontLayoutTexts_x2 : [SegmentEntity_x2],
-       _ self_frontLayoutTexts_y2 : [SegmentEntity_y2],
+       _ self_frontLayoutTexts_x1 : [SegmentEntity_x1],        
+       _ self_frontLayoutTexts_y1 : [SegmentEntity_y1],        
+       _ self_frontLayoutTexts_x2 : [SegmentEntity_x2],        
+       _ self_frontLayoutTexts_y2 : [SegmentEntity_y2],        
        _ self_frontLayoutTexts_width : [SegmentEntity_width]
 ) -> MergerSegmentArray {
 //--- START OF USER ZONE 2

@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PointInSchematic_connectedPoints (
-       _ self_location : CanariPoint,            
+       _ self_location : CanariPoint,                       
        _ self_isConnected : Bool
 ) -> CanariPointArray {
 //--- START OF USER ZONE 2

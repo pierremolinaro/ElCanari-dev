@@ -14,12 +14,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_DeviceRoot_issues (
-       _ self_mTitle : String,    
-       _ self_mPrefix : String,   
+       _ self_mTitle : String,               
+       _ self_mPrefix : String,              
        _ self_inconsistentPackagePadNameSetsMessage : String,
        _ self_inconsistentSymbolNameSetMessage : String,
        _ self_unconnectedPins : UnconnectedSymbolPinsInDevice,
-       _ self_unconnectedPads : StringArray,
+       _ self_unconnectedPads : StringArray, 
        _ self_mPackages_mVersion : [PackageInDevice_mVersion],
        _ self_mPackages_mName : [PackageInDevice_mName],
        _ self_mSymbolTypes_mVersion : [SymbolTypeInDevice_mVersion],

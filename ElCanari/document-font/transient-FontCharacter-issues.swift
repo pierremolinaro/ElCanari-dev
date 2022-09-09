@@ -14,10 +14,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_FontCharacter_issues (
-       _ self_codePoint : Int,       
-       _ self_advance : Int,         
-       _ self_mWarnsWhenNoSegment : Bool,
-       _ self_mWarnsWhenAdvanceIsZero : Bool,
+       _ self_codePoint : Int,                  
+       _ self_advance : Int,                    
+       _ self_mWarnsWhenNoSegment : Bool,       
+       _ self_mWarnsWhenAdvanceIsZero : Bool,   
        _ self_segments_count : Int
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2

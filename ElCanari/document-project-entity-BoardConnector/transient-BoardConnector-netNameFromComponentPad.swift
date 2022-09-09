@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardConnector_netNameFromComponentPad (
-       _ self_mComponent_padNetDictionary : PadNetDictionary?,
+       _ self_mComponent_padNetDictionary : PadNetDictionary?,    
        _ self_mComponentPadName : String
 ) -> String {
 //--- START OF USER ZONE 2

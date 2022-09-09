@@ -15,16 +15,16 @@ import Cocoa
 
 @MainActor func transient_PackageInDevice_selectionDisplay (
        _ self_mMasterPads_padNumberDisplay : [MasterPadInDevice_padNumberDisplay],
-       _ self_mRoot_mShowPackagePadNumbers : Bool?,
-       _ self_mRoot_mShowPackages : Bool?,       
-       _ self_mRoot_mShowPackageFrontPads : Bool?,
-       _ self_mRoot_mShowPackageBackPads : Bool?,
-       _ self_mStrokeBezierPath : NSBezierPath,  
-       _ prefs_packageDrawingWidthMultipliedByTen : Int,
+       _ self_mRoot_mShowPackagePadNumbers : Bool?,         
+       _ self_mRoot_mShowPackages : Bool?,                  
+       _ self_mRoot_mShowPackageFrontPads : Bool?,          
+       _ self_mRoot_mShowPackageBackPads : Bool?,           
+       _ self_mStrokeBezierPath : NSBezierPath,             
+       _ prefs_packageDrawingWidthMultipliedByTen : Int,    
        _ self_frontSidePadFilledBezierPathArray : BezierPathArray,
        _ self_backSidePadFilledBezierPathArray : BezierPathArray,
-       _ self_mName : String,                    
-       _ self_mX : Int,                          
+       _ self_mName : String,                               
+       _ self_mX : Int,                                     
        _ self_mY : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2

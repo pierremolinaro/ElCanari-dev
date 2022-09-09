@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_AutoLayoutSymbolDocument_issues (
-       _ root_issues : CanariIssueArray,        
+       _ root_issues : CanariIssueArray,                   
        _ self_documentFileName : String
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2

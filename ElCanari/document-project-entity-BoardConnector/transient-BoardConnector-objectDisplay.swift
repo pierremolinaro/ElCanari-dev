@@ -14,10 +14,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardConnector_objectDisplay (
-       _ self_isVia : Bool,                  
-       _ self_location : CanariPoint,        
-       _ self_actualHoleDiameter : Int,      
-       _ self_actualPadDiameter : Int,       
+       _ self_isVia : Bool,                             
+       _ self_location : CanariPoint,                   
+       _ self_actualHoleDiameter : Int,                 
+       _ self_actualPadDiameter : Int,                  
        _ prefs_frontSidePadColorForBoard : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2

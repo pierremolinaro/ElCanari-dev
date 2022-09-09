@@ -15,10 +15,10 @@ import Cocoa
 
 @MainActor func transient_ProjectRoot_interiorBoundBox (
        _ self_mBorderCurves_descriptor : [BorderCurve_descriptor],
-       _ self_mBoardShape : BoardShape,      
-       _ self_mRectangularBoardWidth : Int,  
-       _ self_mRectangularBoardHeight : Int, 
-       _ self_mBoardClearance : Int,         
+       _ self_mBoardShape : BoardShape,                 
+       _ self_mRectangularBoardWidth : Int,             
+       _ self_mRectangularBoardHeight : Int,            
+       _ self_mBoardClearance : Int,                    
        _ self_mBoardLimitsWidth : Int
 ) -> CanariRect {
 //--- START OF USER ZONE 2

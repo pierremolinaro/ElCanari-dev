@@ -14,9 +14,9 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PointInSchematic_location (
-       _ self_mX : Int,                   
-       _ self_mY : Int,                   
-       _ self_mSymbolPinName : String,    
+       _ self_mX : Int,                              
+       _ self_mY : Int,                              
+       _ self_mSymbolPinName : String,               
        _ self_mSymbol_symbolInfo : ComponentSymbolInfo?,
        _ self_mSymbol_mSymbolInstanceName : String?
 ) -> CanariPoint {

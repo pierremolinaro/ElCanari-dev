@@ -13,12 +13,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_LabelInSchematic_objectDisplay (
-       _ prefs_symbolColorForSchematic : NSColor,
-       _ prefs_schematicFrameColor : NSColor,  
+       _ prefs_symbolColorForSchematic : NSColor,         
+       _ prefs_schematicFrameColor : NSColor,             
        _ prefs_symbolDrawingWidthMultipliedByTenForSchematic : Int,
-       _ self_mPoint_location : CanariPoint?,  
-       _ self_netName : String,                
-       _ prefs_pinNameFont : NSFont,           
+       _ self_mPoint_location : CanariPoint?,             
+       _ self_netName : String,                           
+       _ prefs_pinNameFont : NSFont,                      
        _ self_mOrientation : QuadrantRotation
 ) -> EBShape {
 //--- START OF USER ZONE 2

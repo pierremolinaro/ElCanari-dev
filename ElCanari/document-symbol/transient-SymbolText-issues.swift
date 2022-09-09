@@ -14,8 +14,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_SymbolText_issues (
-       _ self_x : Int,            
-       _ self_y : Int,            
+       _ self_x : Int,                       
+       _ self_y : Int,                       
        _ self_text : String
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2

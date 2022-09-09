@@ -18,7 +18,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Preferences {
-  @MainActor final func configure_usingSparkleTextFieldConfigurator (_ inOutlet : AutoLayoutStaticLabel) {
+  final func configure_usingSparkleTextFieldConfigurator (_ inOutlet : AutoLayoutStaticLabel) {
 //--- START OF USER ZONE 2
         if let appUpdaterSettings = gApplicationDelegate {
           inOutlet.stringValue = "Using Sparkle " + appUpdaterSettings.sparkleVersionString ()

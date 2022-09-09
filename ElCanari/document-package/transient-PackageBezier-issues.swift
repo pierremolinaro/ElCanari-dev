@@ -14,13 +14,13 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PackageBezier_issues (
-       _ self_x1 : Int,              
-       _ self_y1 : Int,              
-       _ self_x2 : Int,              
-       _ self_y2 : Int,              
-       _ self_cpx1 : Int,            
-       _ self_cpy1 : Int,            
-       _ self_cpx2 : Int,            
+       _ self_x1 : Int,                         
+       _ self_y1 : Int,                         
+       _ self_x2 : Int,                         
+       _ self_y2 : Int,                         
+       _ self_cpx1 : Int,                       
+       _ self_cpy1 : Int,                       
+       _ self_cpx2 : Int,                       
        _ self_cpy2 : Int
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2

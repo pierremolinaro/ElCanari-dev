@@ -14,8 +14,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardConnector_actualHoleDiameter (
-       _ self_viaDefaultHoleDiameter : Int,       
-       _ self_mUsesCustomHoleDiameter : Bool,     
+       _ self_viaDefaultHoleDiameter : Int,                  
+       _ self_mUsesCustomHoleDiameter : Bool,                
        _ self_mCustomHoleDiameter : Int
 ) -> Int {
 //--- START OF USER ZONE 2

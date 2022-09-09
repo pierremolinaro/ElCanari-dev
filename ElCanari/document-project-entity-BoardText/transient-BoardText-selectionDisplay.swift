@@ -14,22 +14,22 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardText_selectionDisplay (
-       _ self_mX : Int,                    
-       _ self_mY : Int,                    
-       _ self_mText : String,              
-       _ self_mFontSize : Double,          
+       _ self_mX : Int,                               
+       _ self_mY : Int,                               
+       _ self_mText : String,                         
+       _ self_mFontSize : Double,                     
        _ self_mFont_descriptor : BoardFontDescriptor?,
        _ self_mHorizontalAlignment : HorizontalAlignment,
        _ self_mVerticalAlignment : BoardTextVerticalAlignment,
-       _ self_mLayer : BoardTextLayer,     
-       _ self_mRotation : Int,             
-       _ self_mWeight : Double,            
-       _ self_mOblique : Bool,             
+       _ self_mLayer : BoardTextLayer,                
+       _ self_mRotation : Int,                        
+       _ self_mWeight : Double,                       
+       _ self_mOblique : Bool,                        
        _ prefs_frontSideLegendColorForBoard : NSColor,
        _ prefs_frontSideLayoutColorForBoard : NSColor,
-       _ prefs_backSideLayoutColorForBoard : NSColor,
-       _ prefs_backSideLegendColorForBoard : NSColor,
-       _ prefs_hiliteWidthMultipliedByTen : Int,
+       _ prefs_backSideLayoutColorForBoard : NSColor, 
+       _ prefs_backSideLegendColorForBoard : NSColor, 
+       _ prefs_hiliteWidthMultipliedByTen : Int,      
        _ prefs_mShowTextRotationKnobInBoard : Bool
 ) -> EBShape {
 //--- START OF USER ZONE 2

@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PointInSchematic_status (
-       _ self_location : CanariPoint,   
+       _ self_location : CanariPoint,              
        _ self_isConnected : Bool
 ) -> SchematicPointStatus {
 //--- START OF USER ZONE 2

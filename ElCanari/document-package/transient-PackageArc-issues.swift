@@ -14,11 +14,11 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PackageArc_issues (
-       _ self_xCenter : Int,      
-       _ self_yCenter : Int,      
-       _ self_radius : Int,       
-       _ self_startAngle : Int,   
-       _ self_arcAngle : Int,     
+       _ self_xCenter : Int,                 
+       _ self_yCenter : Int,                 
+       _ self_radius : Int,                  
+       _ self_startAngle : Int,              
+       _ self_arcAngle : Int,                
        _ self_pathIsClosed : Bool
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2

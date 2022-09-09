@@ -14,13 +14,13 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardConnector_issues (
-       _ self_location : CanariPoint, 
-       _ self_mComponent_none : Bool, 
-       _ self_mComponentPadName : String,
-       _ self_mTracksP1_count : Int,  
-       _ self_mTracksP2_count : Int,  
+       _ self_location : CanariPoint,            
+       _ self_mComponent_none : Bool,            
+       _ self_mComponentPadName : String,        
+       _ self_mTracksP1_count : Int,             
+       _ self_mTracksP2_count : Int,             
        _ self_BoardObject_errorOrWarningIssueSize : Double,
-       _ self_mPadIndex : Int,        
+       _ self_mPadIndex : Int,                   
        _ self_mComponent_mSlavePadsShouldBeRouted : Bool?,
        _ self_mComponent_padNetDictionary : PadNetDictionary?
 ) -> CanariIssueArray {

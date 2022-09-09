@@ -14,9 +14,9 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_SymbolOval_strokeBezierPath (
-       _ self_x : Int,                      
-       _ self_y : Int,                      
-       _ self_width : Int,                  
+       _ self_x : Int,                                 
+       _ self_y : Int,                                 
+       _ self_width : Int,                             
        _ self_height : Int
 ) -> NSBezierPath {
 //--- START OF USER ZONE 2

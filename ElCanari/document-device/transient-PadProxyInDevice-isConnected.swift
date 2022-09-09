@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PadProxyInDevice_isConnected (
-       _ self_mIsNC : Bool,                  
+       _ self_mIsNC : Bool,                             
        _ self_mPinInstance_none : Bool
 ) -> Bool {
 //--- START OF USER ZONE 2

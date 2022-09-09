@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_SheetInProject_connectedPoints (
-       _ prefs_connectionColorForSchematic : NSColor,
+       _ prefs_connectionColorForSchematic : NSColor,     
        _ self_mPoints_connectedPoints : [PointInSchematic_connectedPoints]
 ) -> EBShape {
 //--- START OF USER ZONE 2

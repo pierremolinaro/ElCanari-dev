@@ -14,10 +14,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_FontRoot_sampleStringBezierPath (
-       _ self_nominalSize : Int,                
+       _ self_nominalSize : Int,                           
        _ self_characters_segmentArrayForDrawing : [FontCharacter_segmentArrayForDrawing],
        _ self_characters_advance : [FontCharacter_advance],
-       _ prefs_sampleString : String,           
+       _ prefs_sampleString : String,                      
        _ prefs_sampleStringSize : Double
 ) -> NSBezierPath {
 //--- START OF USER ZONE 2

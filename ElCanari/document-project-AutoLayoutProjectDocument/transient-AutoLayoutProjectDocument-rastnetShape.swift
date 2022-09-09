@@ -64,9 +64,9 @@ private func computeRasnet (_ inPointArray : [CanariPoint], _ ioBezierPath : ino
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_AutoLayoutProjectDocument_rastnetShape (
-       _ root_mRastnetDisplay : RastnetDisplay,        
-       _ root_mRastnetDisplayedNetName : String,       
-       _ root_mRastnetDisplayedComponentName : String, 
+       _ root_mRastnetDisplay : RastnetDisplay,                   
+       _ root_mRastnetDisplayedNetName : String,                  
+       _ root_mRastnetDisplayedComponentName : String,            
        _ root_mBoardObjects_netNameAndPadLocation : [BoardObject_netNameAndPadLocation],
        _ self_boardObjectsController_selectedArray_all_componentName : [BoardObject_componentName]
 ) -> EBShape {

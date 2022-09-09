@@ -15,9 +15,9 @@ import Cocoa
 
 @MainActor func transient_BoardConnector_location (
        _ self_mComponent_componentPadDictionary : ComponentPadDescriptorDictionary?,
-       _ self_mComponentPadName : String,
-       _ self_mPadIndex : Int,          
-       _ self_mX : Int,                 
+       _ self_mComponentPadName : String,          
+       _ self_mPadIndex : Int,                     
+       _ self_mX : Int,                            
        _ self_mY : Int
 ) -> CanariPoint {
 //--- START OF USER ZONE 2

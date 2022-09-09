@@ -14,13 +14,13 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_SymbolInstanceInDevice_selectionDisplay (
-       _ self_mType_mStrokeBezierPath : NSBezierPath?,  
-       _ self_mType_mFilledBezierPath : NSBezierPath?,  
-       _ self_mType_pinNameShape : EBShape?,            
+       _ self_mType_mStrokeBezierPath : NSBezierPath?,             
+       _ self_mType_mFilledBezierPath : NSBezierPath?,             
+       _ self_mType_pinNameShape : EBShape?,                       
        _ self_mPinInstances_numberShape : [SymbolPinInstanceInDevice_numberShape],
-       _ self_symbolQualifiedName : String,             
-       _ prefs_symbolDrawingWidthMultipliedByTen : Int, 
-       _ self_mX : Int,                                 
+       _ self_symbolQualifiedName : String,                        
+       _ prefs_symbolDrawingWidthMultipliedByTen : Int,            
+       _ self_mX : Int,                                            
        _ self_mY : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2

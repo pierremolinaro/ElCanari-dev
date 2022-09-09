@@ -14,8 +14,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PackageSegment_objectDisplay (
-       _ self_strokeBezierPath : NSBezierPath,
-       _ prefs_packageColor : NSColor,       
+       _ self_strokeBezierPath : NSBezierPath,          
+       _ prefs_packageColor : NSColor,                  
        _ prefs_packageDrawingWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2

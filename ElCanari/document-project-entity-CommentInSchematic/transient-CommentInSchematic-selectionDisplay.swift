@@ -14,13 +14,13 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_CommentInSchematic_selectionDisplay (
-       _ self_mComment : String,                    
-       _ self_mColor : NSColor,                     
-       _ self_mSize : Double,                       
-       _ self_mHorizontalAlignment : HorizontalAlignment,
-       _ self_mVerticalAlignment : VerticalAlignment,
-       _ prefs_schematicBackColor : NSColor,        
-       _ self_mX : Int,                             
+       _ self_mComment : String,                               
+       _ self_mColor : NSColor,                                
+       _ self_mSize : Double,                                  
+       _ self_mHorizontalAlignment : HorizontalAlignment,      
+       _ self_mVerticalAlignment : VerticalAlignment,          
+       _ prefs_schematicBackColor : NSColor,                   
+       _ self_mX : Int,                                        
        _ self_mY : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2

@@ -14,8 +14,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardConnector_actualPadDiameter (
-       _ self_viaDefaultPadDiameter : Int,       
-       _ self_mUsesCustomPadDiameter : Bool,     
+       _ self_viaDefaultPadDiameter : Int,                  
+       _ self_mUsesCustomPadDiameter : Bool,                
        _ self_mCustomPadDiameter : Int
 ) -> Int {
 //--- START OF USER ZONE 2

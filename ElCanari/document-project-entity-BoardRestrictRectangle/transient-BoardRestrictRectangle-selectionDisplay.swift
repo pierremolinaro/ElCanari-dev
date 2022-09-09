@@ -14,10 +14,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardRestrictRectangle_selectionDisplay (
-       _ self_mX : Int,                                 
-       _ self_mY : Int,                                 
-       _ self_mWidth : Int,                             
-       _ self_mHeight : Int,                            
+       _ self_mX : Int,                                            
+       _ self_mY : Int,                                            
+       _ self_mWidth : Int,                                        
+       _ self_mHeight : Int,                                       
        _ prefs_hiliteWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2

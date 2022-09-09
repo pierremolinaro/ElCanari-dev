@@ -14,8 +14,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardConnector_signatureForERCChecking (
-       _ self_location : CanariPoint,                  
-       _ self_isVia : Bool,                            
+       _ self_location : CanariPoint,                             
+       _ self_isVia : Bool,                                       
        _ self_actualPadDiameter : Int
 ) -> UInt32 {
 //--- START OF USER ZONE 2

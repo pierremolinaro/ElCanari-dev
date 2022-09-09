@@ -14,11 +14,11 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PackageSlavePad_issues (
-       _ self_xCenter : Int,           
-       _ self_yCenter : Int,           
-       _ self_width : Int,             
-       _ self_height : Int,            
-       _ self_holeWidth : Int,         
+       _ self_xCenter : Int,                      
+       _ self_yCenter : Int,                      
+       _ self_width : Int,                        
+       _ self_height : Int,                       
+       _ self_holeWidth : Int,                    
        _ self_holeHeight : Int
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2

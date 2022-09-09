@@ -14,7 +14,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardTrack_signatureForERCChecking (
-       _ self_mSide : TrackSide,                   
+       _ self_mSide : TrackSide,                              
        _ self_actualTrackWidth : Int
 ) -> UInt32 {
 //--- START OF USER ZONE 2

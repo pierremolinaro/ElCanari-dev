@@ -14,8 +14,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_DevicePadAssignmentInProject_pinPadAssignment (
-       _ self_mPadName : String,                              
-       _ self_mPin_mSymbolInstanceName : String?,             
+       _ self_mPadName : String,                                         
+       _ self_mPin_mSymbolInstanceName : String?,                        
        _ self_mPin_mPinName : String?
 ) -> ThreeStrings {
 //--- START OF USER ZONE 2

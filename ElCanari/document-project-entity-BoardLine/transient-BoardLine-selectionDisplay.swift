@@ -14,12 +14,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardLine_selectionDisplay (
-       _ self_mX1 : Int,                   
-       _ self_mY1 : Int,                   
-       _ self_mX2 : Int,                   
-       _ self_mY2 : Int,                   
-       _ self_mWidth : Int,                
-       _ self_mLayer : BoardLineLayer,     
+       _ self_mX1 : Int,                              
+       _ self_mY1 : Int,                              
+       _ self_mX2 : Int,                              
+       _ self_mY2 : Int,                              
+       _ self_mWidth : Int,                           
+       _ self_mLayer : BoardLineLayer,                
        _ prefs_hiliteWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2

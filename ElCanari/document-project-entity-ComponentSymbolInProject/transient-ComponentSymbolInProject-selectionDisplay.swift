@@ -14,14 +14,14 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ComponentSymbolInProject_selectionDisplay (
-       _ prefs_pinNameFont : NSFont,                      
-       _ prefs_schematicBackColor : NSColor,              
-       _ self_mDisplayComponentNameOffsetX : Int,         
-       _ self_mDisplayComponentNameOffsetY : Int,         
-       _ self_mDisplayComponentValue : Bool,              
-       _ self_mDisplayComponentValueOffsetX : Int,        
-       _ self_mDisplayComponentValueOffsetY : Int,        
-       _ self_symbolInfo : ComponentSymbolInfo,           
+       _ prefs_pinNameFont : NSFont,                                 
+       _ prefs_schematicBackColor : NSColor,                         
+       _ self_mDisplayComponentNameOffsetX : Int,                    
+       _ self_mDisplayComponentNameOffsetY : Int,                    
+       _ self_mDisplayComponentValue : Bool,                         
+       _ self_mDisplayComponentValueOffsetX : Int,                   
+       _ self_mDisplayComponentValueOffsetY : Int,                   
+       _ self_symbolInfo : ComponentSymbolInfo,                      
        _ self_mRotation : QuadrantRotation
 ) -> EBShape {
 //--- START OF USER ZONE 2

@@ -17,7 +17,7 @@ import Cocoa
        _ root_fileGenerationParameterArray_fileExtension : [ArtworkFileGenerationParameters_fileExtension],
        _ root_fileGenerationParameterArray_name : [ArtworkFileGenerationParameters_name],
        _ root_fileGenerationParameterArray_hasNoData : [ArtworkFileGenerationParameters_hasNoData],
-       _ root_emptyDrillFileExtension : Bool,         
+       _ root_emptyDrillFileExtension : Bool,                    
        _ self_documentFileName : String
 ) -> NSImage {
 //--- START OF USER ZONE 2

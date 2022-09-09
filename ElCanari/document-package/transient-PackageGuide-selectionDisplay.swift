@@ -14,10 +14,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PackageGuide_selectionDisplay (
-       _ self_x1 : Int,                       
-       _ self_y1 : Int,                       
-       _ self_x2 : Int,                       
-       _ self_y2 : Int,                       
+       _ self_x1 : Int,                                  
+       _ self_y1 : Int,                                  
+       _ self_x2 : Int,                                  
+       _ self_y2 : Int,                                  
        _ self_PackageObject_knobSize : Double
 ) -> EBShape {
 //--- START OF USER ZONE 2

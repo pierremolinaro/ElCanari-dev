@@ -14,10 +14,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_WireInSchematic_objectDisplay (
-       _ self_mP1_wireColor : NSColor?,       
+       _ self_mP1_wireColor : NSColor?,                  
        _ prefs_symbolDrawingWidthMultipliedByTenForSchematic : Int,
-       _ prefs_schematicBackColor : NSColor,  
-       _ self_mP1_location : CanariPoint?,    
+       _ prefs_schematicBackColor : NSColor,             
+       _ self_mP1_location : CanariPoint?,               
        _ self_mP2_location : CanariPoint?
 ) -> EBShape {
 //--- START OF USER ZONE 2

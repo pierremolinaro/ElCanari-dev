@@ -14,13 +14,13 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_DeviceSlavePadInProject_descriptor (
-       _ self_mCenterX : Int,                      
-       _ self_mCenterY : Int,                      
-       _ self_mWidth : Int,                        
-       _ self_mHeight : Int,                       
-       _ self_mHoleWidth : Int,                    
-       _ self_mHoleHeight : Int,                   
-       _ self_mShape : PadShape,                   
+       _ self_mCenterX : Int,                                 
+       _ self_mCenterY : Int,                                 
+       _ self_mWidth : Int,                                   
+       _ self_mHeight : Int,                                  
+       _ self_mHoleWidth : Int,                               
+       _ self_mHoleHeight : Int,                              
+       _ self_mShape : PadShape,                              
        _ self_mStyle : SlavePadStyle
 ) -> SlavePadDescriptor {
 //--- START OF USER ZONE 2

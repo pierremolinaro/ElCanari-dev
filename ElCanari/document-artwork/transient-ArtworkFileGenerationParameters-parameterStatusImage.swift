@@ -14,8 +14,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ArtworkFileGenerationParameters_parameterStatusImage (
-       _ self_name : String,                                         
-       _ self_fileExtension : String,                                
+       _ self_name : String,                                                    
+       _ self_fileExtension : String,                                           
        _ self_hasNoData : Bool
 ) -> NSImage {
 //--- START OF USER ZONE 2

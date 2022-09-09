@@ -15,13 +15,13 @@ let IMAGE_MODEL_POINT_CIRCLE_LINE_WIDTH = CGFloat (2.0)
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PackageModelImageDoublePoint_objectDisplay (
-       _ self_mFirstX : Int,                               
-       _ self_mFirstY : Int,                               
-       _ self_mFirstColor : NSColor,                       
-       _ self_mSecondDx : Int,                             
-       _ self_mSecondDy : Int,                             
-       _ self_mSecondColor : NSColor,                      
-       _ self_mRoot_mModelPointsCircleRadius : Int?,       
+       _ self_mFirstX : Int,                                          
+       _ self_mFirstY : Int,                                          
+       _ self_mFirstColor : NSColor,                                  
+       _ self_mSecondDx : Int,                                        
+       _ self_mSecondDy : Int,                                        
+       _ self_mSecondColor : NSColor,                                 
+       _ self_mRoot_mModelPointsCircleRadius : Int?,                  
        _ self_mRoot_mPointsAreLocked : Bool?
 ) -> EBShape {
 //--- START OF USER ZONE 2

@@ -14,14 +14,14 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_ProjectRoot_schematicBackgroundDisplay (
-       _ self_mSchematicTitle : String,                
-       _ self_mSchematicVersion : String,              
-       _ self_sheetGeometry : SchematicSheetGeometry,  
-       _ self_mSelectedSheet_mSheetTitle : String?,    
-       _ self_mSheets : [ObjectIndexProtocol],         
-       _ self_mSelectedSheet : ObjectIndexProtocol?,   
-       _ self_mSchematicDate : Date,                   
-       _ prefs_schematicBackColor : NSColor,           
+       _ self_mSchematicTitle : String,                           
+       _ self_mSchematicVersion : String,                         
+       _ self_sheetGeometry : SchematicSheetGeometry,             
+       _ self_mSelectedSheet_mSheetTitle : String?,               
+       _ self_mSheets : [ObjectIndexProtocol],                    
+       _ self_mSelectedSheet : ObjectIndexProtocol?,              
+       _ self_mSchematicDate : Date,                              
+       _ prefs_schematicBackColor : NSColor,                      
        _ prefs_schematicFrameColor : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2

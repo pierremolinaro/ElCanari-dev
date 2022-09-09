@@ -14,14 +14,14 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_PackageBezier_selectionDisplay (
-       _ self_x1 : Int,                        
-       _ self_y1 : Int,                        
-       _ self_x2 : Int,                        
-       _ self_y2 : Int,                        
-       _ self_cpx1 : Int,                      
-       _ self_cpy1 : Int,                      
-       _ self_cpx2 : Int,                      
-       _ self_cpy2 : Int,                      
+       _ self_x1 : Int,                                   
+       _ self_y1 : Int,                                   
+       _ self_x2 : Int,                                   
+       _ self_y2 : Int,                                   
+       _ self_cpx1 : Int,                                 
+       _ self_cpy1 : Int,                                 
+       _ self_cpx2 : Int,                                 
+       _ self_cpy2 : Int,                                 
        _ self_PackageObject_knobSize : Double
 ) -> EBShape {
 //--- START OF USER ZONE 2

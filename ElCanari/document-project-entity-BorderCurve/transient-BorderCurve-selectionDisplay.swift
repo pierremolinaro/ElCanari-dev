@@ -14,15 +14,15 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BorderCurve_selectionDisplay (
-       _ self_mX : Int,                      
-       _ self_mY : Int,                      
-       _ self_mNext_mX : Int?,               
-       _ self_mNext_mY : Int?,               
-       _ self_mCPX1 : Int,                   
-       _ self_mCPY1 : Int,                   
-       _ self_mCPX2 : Int,                   
-       _ self_mCPY2 : Int,                   
-       _ self_mShape : BorderCurveShape,     
+       _ self_mX : Int,                                 
+       _ self_mY : Int,                                 
+       _ self_mNext_mX : Int?,                          
+       _ self_mNext_mY : Int?,                          
+       _ self_mCPX1 : Int,                              
+       _ self_mCPY1 : Int,                              
+       _ self_mCPX2 : Int,                              
+       _ self_mCPY2 : Int,                              
+       _ self_mShape : BorderCurveShape,                
        _ self_mRoot_mBoardShape : BoardShape?
 ) -> EBShape {
 //--- START OF USER ZONE 2

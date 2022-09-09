@@ -13,8 +13,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func computed_BoardTrack_trackDirectionInDegrees (
-       _ self_mConnectorP1_location : CanariPoint?,
+@MainActor func computed_BoardTrack_trackDirectionInDegrees (
+       _ self_mConnectorP1_location : CanariPoint?,          
        _ self_mConnectorP2_location : CanariPoint?
 ) -> Int {
 //--- START OF USER ZONE 2

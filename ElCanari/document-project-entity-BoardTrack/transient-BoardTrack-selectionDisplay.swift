@@ -14,17 +14,17 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func transient_BoardTrack_selectionDisplay (
-       _ self_mConnectorP1_location : CanariPoint?,
-       _ self_p1CanMove : Bool,             
-       _ self_mConnectorP2_location : CanariPoint?,
-       _ self_p2CanMove : Bool,             
-       _ prefs_frontSideLayoutColorForBoard : NSColor,
-       _ prefs_inner1LayoutColorForBoard : NSColor,
-       _ prefs_inner2LayoutColorForBoard : NSColor,
-       _ prefs_inner3LayoutColorForBoard : NSColor,
-       _ prefs_inner4LayoutColorForBoard : NSColor,
-       _ prefs_backSideLayoutColorForBoard : NSColor,
-       _ self_mSide : TrackSide,            
+       _ self_mConnectorP1_location : CanariPoint?,    
+       _ self_p1CanMove : Bool,                        
+       _ self_mConnectorP2_location : CanariPoint?,    
+       _ self_p2CanMove : Bool,                        
+       _ prefs_frontSideLayoutColorForBoard : NSColor, 
+       _ prefs_inner1LayoutColorForBoard : NSColor,    
+       _ prefs_inner2LayoutColorForBoard : NSColor,    
+       _ prefs_inner3LayoutColorForBoard : NSColor,    
+       _ prefs_inner4LayoutColorForBoard : NSColor,    
+       _ prefs_backSideLayoutColorForBoard : NSColor,  
+       _ self_mSide : TrackSide,                       
        _ self_actualTrackWidth : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2

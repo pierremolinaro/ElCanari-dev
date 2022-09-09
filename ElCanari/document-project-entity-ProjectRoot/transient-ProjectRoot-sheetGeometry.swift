@@ -15,7 +15,7 @@ import Cocoa
 
 @MainActor func transient_ProjectRoot_sheetGeometry (
        _ self_mSchematicSheetOrientation : SchematicSheetOrientation,
-       _ self_mSchematicCustomWidth : Int,
+       _ self_mSchematicCustomWidth : Int,           
        _ self_mSchematicCustomHeight : Int
 ) -> SchematicSheetGeometry {
 //--- START OF USER ZONE 2
