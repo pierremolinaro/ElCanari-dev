@@ -473,11 +473,13 @@ final class BoardTrack : BoardObject,
       return self.mConnectorP1_property.propval
     }
     set {
-      if self.mConnectorP1_property.propval != nil {
-        self.mConnectorP1_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mConnectorP1_property.setProp (newValue)
+      if self.mConnectorP1_property.propval !== newValue {
+        if self.mConnectorP1_property.propval != nil {
+          self.mConnectorP1_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mConnectorP1_property.setProp (newValue)
+        }
       }
     }
   }
@@ -499,11 +501,13 @@ final class BoardTrack : BoardObject,
       return self.mConnectorP2_property.propval
     }
     set {
-      if self.mConnectorP2_property.propval != nil {
-        self.mConnectorP2_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mConnectorP2_property.setProp (newValue)
+      if self.mConnectorP2_property.propval !== newValue {
+        if self.mConnectorP2_property.propval != nil {
+          self.mConnectorP2_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mConnectorP2_property.setProp (newValue)
+        }
       }
     }
   }
@@ -525,11 +529,13 @@ final class BoardTrack : BoardObject,
       return self.mNet_property.propval
     }
     set {
-      if self.mNet_property.propval != nil {
-        self.mNet_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mNet_property.setProp (newValue)
+      if self.mNet_property.propval !== newValue {
+        if self.mNet_property.propval != nil {
+          self.mNet_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mNet_property.setProp (newValue)
+        }
       }
     }
   }
@@ -853,7 +859,7 @@ final class BoardTrack : BoardObject,
       }
     }
     self.mNet_property.addEBObserver (self.mNet_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To one property: mConnectorP1 (has opposite to many relationship: mTracksP1)
     self.mConnectorP1_property.ebUndoManager = self.ebUndoManager
     self.mConnectorP1_property.setOppositeRelationShipFunctions (
@@ -1406,7 +1412,7 @@ final class BoardTrack : BoardObject,
     preferences_backSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     self.mSide_property.addEBObserver (self.selectionDisplay_property)
     self.actualTrackWidth_property.addEBObserver (self.selectionDisplay_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

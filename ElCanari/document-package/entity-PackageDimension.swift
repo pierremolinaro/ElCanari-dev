@@ -439,7 +439,7 @@ final class PackageDimension : PackageObject,
     self.drawDimensionBackground_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- Atomic property: distanceInCanariUnit
     self.distanceInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -624,7 +624,7 @@ final class PackageDimension : PackageObject,
     self.y1_property.addEBObserver (self.issues_property)
     self.x2_property.addEBObserver (self.issues_property)
     self.y2_property.addEBObserver (self.issues_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.distanceUnit_property.setSignatureObserver (observer: self)

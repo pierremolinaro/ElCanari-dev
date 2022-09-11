@@ -346,7 +346,7 @@ final class MasterPadInDevice : EBManagedObject,
     self.mStyle_property = EBStoredProperty_PadStyle (defaultValue: PadStyle.traversing, undoManager: ebUndoManager)
     self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To many property: mSlavePads (has opposite relationship)
     self.mSlavePads_property.ebUndoManager = self.ebUndoManager
     self.mSlavePads_property.setOppositeRelationShipFunctions (
@@ -484,7 +484,7 @@ final class MasterPadInDevice : EBManagedObject,
     self.mShape_property.addEBObserver (self.backSideFilledBezierPathArray_property)
     self.mStyle_property.addEBObserver (self.backSideFilledBezierPathArray_property)
     self.mSlavePads_property.addEBObserverOf_backSideFilledBezierPath (self.backSideFilledBezierPathArray_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mSlavePads_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mMasterPad_property.setProp (me) } },

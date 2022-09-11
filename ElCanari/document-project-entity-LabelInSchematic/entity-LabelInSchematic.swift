@@ -84,11 +84,13 @@ final class LabelInSchematic : SchematicObject,
       return self.mPoint_property.propval
     }
     set {
-      if self.mPoint_property.propval != nil {
-        self.mPoint_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mPoint_property.setProp (newValue)
+      if self.mPoint_property.propval !== newValue {
+        if self.mPoint_property.propval != nil {
+          self.mPoint_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mPoint_property.setProp (newValue)
+        }
       }
     }
   }
@@ -163,7 +165,7 @@ final class LabelInSchematic : SchematicObject,
       }
     }
     self.mPoint_property.addEBObserver (self.mPoint_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To one property: mPoint (has opposite to many relationship: mLabels)
     self.mPoint_property.ebUndoManager = self.ebUndoManager
     self.mPoint_property.setOppositeRelationShipFunctions (
@@ -291,7 +293,7 @@ final class LabelInSchematic : SchematicObject,
     self.netName_property.addEBObserver (self.objectDisplay_property)
     preferences_pinNameFont_property.addEBObserver (self.objectDisplay_property)
     self.mOrientation_property.addEBObserver (self.objectDisplay_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

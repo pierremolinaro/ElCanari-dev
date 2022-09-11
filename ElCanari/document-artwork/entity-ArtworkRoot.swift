@@ -502,7 +502,7 @@ final class ArtworkRoot : EBManagedObject,
     self.title_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.drillDataFileExtension_property = EBStoredProperty_String (defaultValue: "DRF", undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To many property: fileGenerationParameterArray (has opposite relationship)
     self.fileGenerationParameterArray_property.ebUndoManager = self.ebUndoManager
     self.fileGenerationParameterArray_property.setOppositeRelationShipFunctions (
@@ -606,7 +606,7 @@ final class ArtworkRoot : EBManagedObject,
     self.minValueForOARinEBUnit_property.addEBObserver (self.signatureForERCChecking_property)
     self.minValueForBoardLimitWidth_property.addEBObserver (self.signatureForERCChecking_property)
     self.minValueForPHDinEBUnit_property.addEBObserver (self.signatureForERCChecking_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.fileGenerationParameterArray_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mArtwork_property.setProp (me) } },

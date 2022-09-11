@@ -501,11 +501,13 @@ final class BoardConnector : BoardObject,
       return self.mComponent_property.propval
     }
     set {
-      if self.mComponent_property.propval != nil {
-        self.mComponent_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mComponent_property.setProp (newValue)
+      if self.mComponent_property.propval !== newValue {
+        if self.mComponent_property.propval != nil {
+          self.mComponent_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mComponent_property.setProp (newValue)
+        }
       }
     }
   }
@@ -710,7 +712,7 @@ final class BoardConnector : BoardObject,
       }
     }
     self.mComponent_property.addEBObserver (self.mComponent_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To many property: mTracksP2 (has opposite relationship)
     self.mTracksP2_property.ebUndoManager = self.ebUndoManager
     self.mTracksP2_property.setOppositeRelationShipFunctions (
@@ -1166,7 +1168,7 @@ final class BoardConnector : BoardObject,
     self.location_property.addEBObserver (self.signatureForERCChecking_property)
     self.isVia_property.addEBObserver (self.signatureForERCChecking_property)
     self.actualPadDiameter_property.addEBObserver (self.signatureForERCChecking_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mTracksP2_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mConnectorP2_property.setProp (me) } },

@@ -154,11 +154,13 @@ final class NetInProject : EBManagedObject,
       return self.mNetClass_property.propval
     }
     set {
-      if self.mNetClass_property.propval != nil {
-        self.mNetClass_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mNetClass_property.setProp (newValue)
+      if self.mNetClass_property.propval !== newValue {
+        if self.mNetClass_property.propval != nil {
+          self.mNetClass_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mNetClass_property.setProp (newValue)
+        }
       }
     }
   }
@@ -302,7 +304,7 @@ final class NetInProject : EBManagedObject,
       }
     }
     self.mNetClass_property.addEBObserver (self.mNetClass_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.ebUndoManager = self.ebUndoManager
     self.mPoints_property.setOppositeRelationShipFunctions (
@@ -440,7 +442,7 @@ final class NetInProject : EBManagedObject,
       }
     }
     self.mTracks_property.addEBObserver (self.trackCount_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },

@@ -252,11 +252,13 @@ final class SlavePadInDevice : EBManagedObject,
       return self.mMasterPad_property.propval
     }
     set {
-      if self.mMasterPad_property.propval != nil {
-        self.mMasterPad_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mMasterPad_property.setProp (newValue)
+      if self.mMasterPad_property.propval !== newValue {
+        if self.mMasterPad_property.propval != nil {
+          self.mMasterPad_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mMasterPad_property.setProp (newValue)
+        }
       }
     }
   }
@@ -338,7 +340,7 @@ final class SlavePadInDevice : EBManagedObject,
       }
     }
     self.mMasterPad_property.addEBObserver (self.mMasterPad_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To one property: mMasterPad (has opposite to many relationship: mSlavePads)
     self.mMasterPad_property.ebUndoManager = self.ebUndoManager
     self.mMasterPad_property.setOppositeRelationShipFunctions (
@@ -468,7 +470,7 @@ final class SlavePadInDevice : EBManagedObject,
     preferences_padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
     preferences_padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
     self.mMasterPad_property.mName_property.addEBObserver (self.padNumberDisplay_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mCenterX_property.setSignatureObserver (observer: self)

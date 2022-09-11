@@ -776,11 +776,13 @@ final class ComponentInProject : BoardObject,
       return self.mDevice_property.propval
     }
     set {
-      if self.mDevice_property.propval != nil {
-        self.mDevice_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mDevice_property.setProp (newValue)
+      if self.mDevice_property.propval !== newValue {
+        if self.mDevice_property.propval != nil {
+          self.mDevice_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mDevice_property.setProp (newValue)
+        }
       }
     }
   }
@@ -819,11 +821,13 @@ final class ComponentInProject : BoardObject,
       return self.mSelectedPackage_property.propval
     }
     set {
-      if self.mSelectedPackage_property.propval != nil {
-        self.mSelectedPackage_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mSelectedPackage_property.setProp (newValue)
+      if self.mSelectedPackage_property.propval !== newValue {
+        if self.mSelectedPackage_property.propval != nil {
+          self.mSelectedPackage_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mSelectedPackage_property.setProp (newValue)
+        }
       }
     }
   }
@@ -947,11 +951,13 @@ final class ComponentInProject : BoardObject,
       return self.mNameFont_property.propval
     }
     set {
-      if self.mNameFont_property.propval != nil {
-        self.mNameFont_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mNameFont_property.setProp (newValue)
+      if self.mNameFont_property.propval !== newValue {
+        if self.mNameFont_property.propval != nil {
+          self.mNameFont_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mNameFont_property.setProp (newValue)
+        }
       }
     }
   }
@@ -973,11 +979,13 @@ final class ComponentInProject : BoardObject,
       return self.mValueFont_property.propval
     }
     set {
-      if self.mValueFont_property.propval != nil {
-        self.mValueFont_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mValueFont_property.setProp (newValue)
+      if self.mValueFont_property.propval !== newValue {
+        if self.mValueFont_property.propval != nil {
+          self.mValueFont_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mValueFont_property.setProp (newValue)
+        }
       }
     }
   }
@@ -1198,7 +1206,7 @@ final class ComponentInProject : BoardObject,
       }
     }
     self.mValueFont_property.addEBObserver (self.mValueFont_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To many property: mConnectors (has opposite relationship)
     self.mConnectors_property.ebUndoManager = self.ebUndoManager
     self.mConnectors_property.setOppositeRelationShipFunctions (
@@ -1915,7 +1923,7 @@ final class ComponentInProject : BoardObject,
     self.mValueRotation_property.addEBObserver (self.objectDisplay_property)
     self.mComponentValue_property.addEBObserver (self.objectDisplay_property)
     self.mDevice_property.pinPadAssignments_property.addEBObserver (self.objectDisplay_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mConnectors_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },

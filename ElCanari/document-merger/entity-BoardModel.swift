@@ -1933,7 +1933,7 @@ final class BoardModel : EBManagedObject,
     self.modelLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.artworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To many property: frontLegendLines (no option)
     self.frontLegendLines_property.ebUndoManager = self.ebUndoManager
   //--- To many property: backLegendLines (no option)
@@ -3885,7 +3885,7 @@ final class BoardModel : EBManagedObject,
     self.backPackagesBezierPaths_property.addEBObserver (self.imageForInstances_property)
     preferences_mergerBoardViewDisplayBackPackages_property.addEBObserver (self.imageForInstances_property)
     preferences_mergerColorBackPackages_property.addEBObserver (self.imageForInstances_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.myInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.myModel_property.setProp (me) } },

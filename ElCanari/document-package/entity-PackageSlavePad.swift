@@ -476,11 +476,13 @@ final class PackageSlavePad : PackageObject,
       return self.master_property.propval
     }
     set {
-      if self.master_property.propval != nil {
-        self.master_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.master_property.setProp (newValue)
+      if self.master_property.propval !== newValue {
+        if self.master_property.propval != nil {
+          self.master_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.master_property.setProp (newValue)
+        }
       }
     }
   }
@@ -620,7 +622,7 @@ final class PackageSlavePad : PackageObject,
       }
     }
     self.master_property.addEBObserver (self.master_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To one property: master (has opposite to many relationship: slaves)
     self.master_property.ebUndoManager = self.ebUndoManager
     self.master_property.setOppositeRelationShipFunctions (
@@ -888,7 +890,7 @@ final class PackageSlavePad : PackageObject,
     preferences_padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
     preferences_padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
     self.padNameForDisplay_property.addEBObserver (self.padNumberDisplay_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.annularRingUnit_property.setSignatureObserver (observer: self)

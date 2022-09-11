@@ -721,7 +721,7 @@ final class NetClassInProject : EBManagedObject,
     self.mAllowTracksOnInner3Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     self.mAllowTracksOnInner4Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To many property: mNets (has opposite relationship)
     self.mNets_property.ebUndoManager = self.ebUndoManager
     self.mNets_property.setOppositeRelationShipFunctions (
@@ -981,7 +981,7 @@ final class NetClassInProject : EBManagedObject,
       }
     }
     self.netsDescription_property.addEBObserver (self.netWarningCount_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mNets_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNetClass_property.setProp (me) } },

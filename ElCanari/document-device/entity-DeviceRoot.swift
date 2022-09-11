@@ -736,7 +736,7 @@ final class DeviceRoot : EBManagedObject,
     self.mShowPackageBackPads_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
     self.mSymbolDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To many property: mDocs (no option)
     self.mDocs_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSymbolInstances (no option)
@@ -985,7 +985,7 @@ final class DeviceRoot : EBManagedObject,
     self.mSymbolTypes_property.addEBObserverOf_mVersion (self.issues_property)
     self.mSymbolTypes_property.addEBObserverOf_mTypeName (self.issues_property)
     self.mSymbolTypes_property.addEBObserverOf_instanceCount (self.issues_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mPackages_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },

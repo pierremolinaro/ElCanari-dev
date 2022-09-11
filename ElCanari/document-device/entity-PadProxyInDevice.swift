@@ -115,11 +115,13 @@ final class PadProxyInDevice : EBManagedObject,
       return self.mPinInstance_property.propval
     }
     set {
-      if self.mPinInstance_property.propval != nil {
-        self.mPinInstance_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mPinInstance_property.setProp (newValue)
+      if self.mPinInstance_property.propval !== newValue {
+        if self.mPinInstance_property.propval != nil {
+          self.mPinInstance_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mPinInstance_property.setProp (newValue)
+        }
       }
     }
   }
@@ -179,7 +181,7 @@ final class PadProxyInDevice : EBManagedObject,
       }
     }
     self.mPinInstance_property.addEBObserver (self.mPinInstance_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To one property: mPinInstance (has opposite to one relationship: mPadProxy)
     self.mPinInstance_property.ebUndoManager = self.ebUndoManager
     self.mPinInstance_property.setOppositeRelationShipFunctions (
@@ -224,7 +226,7 @@ final class PadProxyInDevice : EBManagedObject,
       }
     }
     self.mPinInstance_property.symbolName_property.addEBObserver (self.symbolName_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mIsNC_property.setSignatureObserver (observer: self)

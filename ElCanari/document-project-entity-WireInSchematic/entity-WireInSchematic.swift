@@ -58,11 +58,13 @@ final class WireInSchematic : SchematicObject,
       return self.mP1_property.propval
     }
     set {
-      if self.mP1_property.propval != nil {
-        self.mP1_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mP1_property.setProp (newValue)
+      if self.mP1_property.propval !== newValue {
+        if self.mP1_property.propval != nil {
+          self.mP1_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mP1_property.setProp (newValue)
+        }
       }
     }
   }
@@ -84,11 +86,13 @@ final class WireInSchematic : SchematicObject,
       return self.mP2_property.propval
     }
     set {
-      if self.mP2_property.propval != nil {
-        self.mP2_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mP2_property.setProp (newValue)
+      if self.mP2_property.propval !== newValue {
+        if self.mP2_property.propval != nil {
+          self.mP2_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mP2_property.setProp (newValue)
+        }
       }
     }
   }
@@ -170,7 +174,7 @@ final class WireInSchematic : SchematicObject,
       }
     }
     self.mP2_property.addEBObserver (self.mP2_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To one property: mP1 (has opposite to many relationship: mWiresP1s)
     self.mP1_property.ebUndoManager = self.ebUndoManager
     self.mP1_property.setOppositeRelationShipFunctions (
@@ -296,7 +300,7 @@ final class WireInSchematic : SchematicObject,
       }
     }
     self.mP1_property.hasNet_property.addEBObserver (self.hasNet_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

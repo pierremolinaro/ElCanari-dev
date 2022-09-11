@@ -404,11 +404,13 @@ final class ComponentSymbolInProject : SchematicObject,
       return self.mComponent_property.propval
     }
     set {
-      if self.mComponent_property.propval != nil {
-        self.mComponent_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mComponent_property.setProp (newValue)
+      if self.mComponent_property.propval !== newValue {
+        if self.mComponent_property.propval != nil {
+          self.mComponent_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mComponent_property.setProp (newValue)
+        }
       }
     }
   }
@@ -527,7 +529,7 @@ final class ComponentSymbolInProject : SchematicObject,
       }
     }
     self.mComponent_property.addEBObserver (self.mComponent_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.ebUndoManager = self.ebUndoManager
     self.mPoints_property.setOppositeRelationShipFunctions (
@@ -818,7 +820,7 @@ final class ComponentSymbolInProject : SchematicObject,
       }
     }
     self.isPlacedInSchematic_property.addEBObserver (self.symbolInSchematic_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSymbol_property.setProp (me) } },

@@ -65,11 +65,13 @@ class SchematicObject : EBGraphicManagedObject,
       return self.mSheet_property.propval
     }
     set {
-      if self.mSheet_property.propval != nil {
-        self.mSheet_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mSheet_property.setProp (newValue)
+      if self.mSheet_property.propval !== newValue {
+        if self.mSheet_property.propval != nil {
+          self.mSheet_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mSheet_property.setProp (newValue)
+        }
       }
     }
   }
@@ -160,7 +162,7 @@ class SchematicObject : EBGraphicManagedObject,
       }
     }
     self.mSheet_property.addEBObserver (self.mSheet_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To one property: mSheet (has opposite to many relationship: mObjects)
     self.mSheet_property.ebUndoManager = self.ebUndoManager
     self.mSheet_property.setOppositeRelationShipFunctions (
@@ -201,7 +203,7 @@ class SchematicObject : EBGraphicManagedObject,
       }
     }
     self.mSheet_property.addEBObserver (self.isPlacedInSchematic_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

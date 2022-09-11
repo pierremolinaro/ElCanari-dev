@@ -1095,11 +1095,13 @@ final class MergerRoot : EBManagedObject,
       return self.mArtwork_property.propval
     }
     set {
-      if self.mArtwork_property.propval != nil {
-        self.mArtwork_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mArtwork_property.setProp (newValue)
+      if self.mArtwork_property.propval !== newValue {
+        if self.mArtwork_property.propval != nil {
+          self.mArtwork_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mArtwork_property.setProp (newValue)
+        }
       }
     }
   }
@@ -1262,7 +1264,7 @@ final class MergerRoot : EBManagedObject,
       }
     }
     self.mArtwork_property.addEBObserver (self.mArtwork_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To many property: boardModels (no option)
     self.boardModels_property.ebUndoManager = self.ebUndoManager
   //--- To many property: boardInstances (has opposite relationship)
@@ -1758,7 +1760,7 @@ final class MergerRoot : EBManagedObject,
     self.boardLimitWidth_property.addEBObserver (self.boardOutlineRectDisplay_property)
     preferences_mergerBoardViewDisplayBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
     preferences_mergerColorBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.boardInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.myRoot_property.setProp (me) } },

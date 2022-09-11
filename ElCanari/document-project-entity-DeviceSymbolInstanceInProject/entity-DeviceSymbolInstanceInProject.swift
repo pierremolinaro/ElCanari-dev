@@ -77,11 +77,13 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
       return self.mSymbolType_property.propval
     }
     set {
-      if self.mSymbolType_property.propval != nil {
-        self.mSymbolType_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mSymbolType_property.setProp (newValue)
+      if self.mSymbolType_property.propval !== newValue {
+        if self.mSymbolType_property.propval != nil {
+          self.mSymbolType_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mSymbolType_property.setProp (newValue)
+        }
       }
     }
   }
@@ -173,7 +175,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
       }
     }
     self.mSymbolType_property.addEBObserver (self.mSymbolType_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To one property: mSymbolType
     self.mSymbolType_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: symbolAndTypeName
@@ -252,7 +254,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
     }
     self.mSymbolType_property.mStrokeBezierPath_property.addEBObserver (self.strokeBezierPath_property)
     preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.strokeBezierPath_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

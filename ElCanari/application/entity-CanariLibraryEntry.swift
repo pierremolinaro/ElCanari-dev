@@ -148,7 +148,7 @@ final class CanariLibraryEntry : EBManagedObject,
     self.mLibraryRepositoryURL_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     self.mUserAndPasswordTag_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -166,7 +166,7 @@ final class CanariLibraryEntry : EBManagedObject,
       }
     }
     self.mPath_property.addEBObserver (self.mStatusImage_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

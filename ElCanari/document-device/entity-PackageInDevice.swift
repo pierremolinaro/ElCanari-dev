@@ -243,11 +243,13 @@ final class PackageInDevice : EBGraphicManagedObject,
       return self.mRoot_property.propval
     }
     set {
-      if self.mRoot_property.propval != nil {
-        self.mRoot_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mRoot_property.setProp (newValue)
+      if self.mRoot_property.propval !== newValue {
+        if self.mRoot_property.propval != nil {
+          self.mRoot_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mRoot_property.setProp (newValue)
+        }
       }
     }
   }
@@ -361,7 +363,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.addEBObserver (self.mRoot_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mRoot (has opposite to many relationship: mPackages)
@@ -589,7 +591,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       }
     }
     self.mMasterPads_property.addEBObserverOf_mName (self.padNameSet_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: self)

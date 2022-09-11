@@ -77,17 +77,18 @@ struct RawObject {
   rawObjectArray.sort { $0.index < $1.index }
   appendDocumentFileOperationInfo ("read \(rawObjectArray.count) objects done with \(pendingOperationCount) pending ops")
 //--- Setup toOne
+  let scannerData = ioDataScanner.data
   for rawObject in rawObjectArray {
     let valueDictionary = rawObject.propertyDictionary
     let managedObject = rawObject.object
-    managedObject.setUpToOneRelationshipsWithTextDictionary (valueDictionary, rawObjectArray, ioDataScanner.data)
+    managedObject.setUpToOneRelationshipsWithTextDictionary (valueDictionary, rawObjectArray, scannerData)
   }
   appendDocumentFileOperationInfo ("setup toOne done")
 //--- Setup toMany
   for rawObject in rawObjectArray {
     let valueDictionary = rawObject.propertyDictionary
     let managedObject = rawObject.object
-    managedObject.setUpToManyRelationshipsWithTextDictionary (valueDictionary, rawObjectArray, ioDataScanner.data)
+    managedObject.setUpToManyRelationshipsWithTextDictionary (valueDictionary, rawObjectArray, scannerData)
   }
   appendDocumentFileOperationInfo ("setup toMany done")
 //--- Scanner error ?

@@ -337,7 +337,7 @@ final class SymbolRoot : EBManagedObject,
     self.yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
     self.selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     super.init (ebUndoManager)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To many property: symbolObjects (no option)
     self.symbolObjects_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: issues
@@ -373,7 +373,7 @@ final class SymbolRoot : EBManagedObject,
     self.symbolPins_property.addEBObserverOf_nameRect (self.issues_property)
     self.symbolPins_property.addEBObserverOf_xPin (self.issues_property)
     self.symbolPins_property.addEBObserverOf_yPin (self.issues_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.symbolPins_property.setDataProvider (self.symbolObjects_property)
   //--- Register properties for handling signature

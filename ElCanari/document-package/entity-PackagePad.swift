@@ -545,11 +545,13 @@ final class PackagePad : PackageObject,
       return self.zone_property.propval
     }
     set {
-      if self.zone_property.propval != nil {
-        self.zone_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.zone_property.setProp (newValue)
+      if self.zone_property.propval !== newValue {
+        if self.zone_property.propval != nil {
+          self.zone_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.zone_property.setProp (newValue)
+        }
       }
     }
   }
@@ -758,7 +760,7 @@ final class PackagePad : PackageObject,
       }
     }
     self.zone_property.addEBObserver (self.zone_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To many property: slaves (has opposite relationship)
     self.slaves_property.ebUndoManager = self.ebUndoManager
     self.slaves_property.setOppositeRelationShipFunctions (
@@ -1107,7 +1109,7 @@ final class PackagePad : PackageObject,
     preferences_padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
     preferences_padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
     self.padNameForDisplay_property.addEBObserver (self.padNumberDisplay_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.slaves_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.master_property.setProp (me) } },

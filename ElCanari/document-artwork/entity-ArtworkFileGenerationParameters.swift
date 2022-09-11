@@ -772,11 +772,13 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       return self.mArtwork_property.propval
     }
     set {
-      if self.mArtwork_property.propval != nil {
-        self.mArtwork_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mArtwork_property.setProp (newValue)
+      if self.mArtwork_property.propval !== newValue {
+        if self.mArtwork_property.propval != nil {
+          self.mArtwork_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mArtwork_property.setProp (newValue)
+        }
       }
     }
   }
@@ -878,7 +880,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       }
     }
     self.mArtwork_property.addEBObserver (self.mArtwork_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To one property: mArtwork (has opposite to many relationship: fileGenerationParameterArray)
     self.mArtwork_property.ebUndoManager = self.ebUndoManager
     self.mArtwork_property.setOppositeRelationShipFunctions (
@@ -1036,7 +1038,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       }
     }
     self.fileExtension_property.addEBObserver (self.emptyFileExtensionImage_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.drawBoardLimits_property.setSignatureObserver (observer: self)

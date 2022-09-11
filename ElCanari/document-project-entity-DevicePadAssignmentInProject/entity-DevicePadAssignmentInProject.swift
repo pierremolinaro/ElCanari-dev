@@ -63,11 +63,13 @@ final class DevicePadAssignmentInProject : EBManagedObject,
       return self.mPin_property.propval
     }
     set {
-      if self.mPin_property.propval != nil {
-        self.mPin_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mPin_property.setProp (newValue)
+      if self.mPin_property.propval !== newValue {
+        if self.mPin_property.propval != nil {
+          self.mPin_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mPin_property.setProp (newValue)
+        }
       }
     }
   }
@@ -125,7 +127,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
       }
     }
     self.mPin_property.addEBObserver (self.mPin_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To one property: mPin
     self.mPin_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: pinPadAssignment
@@ -174,7 +176,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
     }
     self.mPadName_property.addEBObserver (self.descriptor_property)
     self.mPin_property.descriptor_property.addEBObserver (self.descriptor_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

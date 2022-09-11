@@ -58,11 +58,13 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       return self.mSymbolInstance_property.propval
     }
     set {
-      if self.mSymbolInstance_property.propval != nil {
-        self.mSymbolInstance_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mSymbolInstance_property.setProp (newValue)
+      if self.mSymbolInstance_property.propval !== newValue {
+        if self.mSymbolInstance_property.propval != nil {
+          self.mSymbolInstance_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mSymbolInstance_property.setProp (newValue)
+        }
       }
     }
   }
@@ -84,11 +86,13 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       return self.mType_property.propval
     }
     set {
-      if self.mType_property.propval != nil {
-        self.mType_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mType_property.setProp (newValue)
+      if self.mType_property.propval !== newValue {
+        if self.mType_property.propval != nil {
+          self.mType_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mType_property.setProp (newValue)
+        }
       }
     }
   }
@@ -110,11 +114,13 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       return self.mPadProxy_property.propval
     }
     set {
-      if self.mPadProxy_property.propval != nil {
-        self.mPadProxy_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mPadProxy_property.setProp (newValue)
+      if self.mPadProxy_property.propval !== newValue {
+        if self.mPadProxy_property.propval != nil {
+          self.mPadProxy_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mPadProxy_property.setProp (newValue)
+        }
       }
     }
   }
@@ -238,7 +244,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       }
     }
     self.mPadProxy_property.addEBObserver (self.mPadProxy_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To one property: mSymbolInstance (has opposite to many relationship: mPinInstances)
     self.mSymbolInstance_property.ebUndoManager = self.ebUndoManager
     self.mSymbolInstance_property.setOppositeRelationShipFunctions (
@@ -362,7 +368,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
     self.mType_property.mNumberHorizontalAlignment_property.addEBObserver (self.numberShape_property)
     self.mPadProxy_property.mPadName_property.addEBObserver (self.numberShape_property)
     preferences_pinNameFont_property.addEBObserver (self.numberShape_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

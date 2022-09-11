@@ -1465,11 +1465,13 @@ final class PackageRoot : EBManagedObject,
       return self.mModelImageDoublePoint_property.propval
     }
     set {
-      if self.mModelImageDoublePoint_property.propval != nil {
-        self.mModelImageDoublePoint_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mModelImageDoublePoint_property.setProp (newValue)
+      if self.mModelImageDoublePoint_property.propval !== newValue {
+        if self.mModelImageDoublePoint_property.propval != nil {
+          self.mModelImageDoublePoint_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mModelImageDoublePoint_property.setProp (newValue)
+        }
       }
     }
   }
@@ -1635,7 +1637,7 @@ final class PackageRoot : EBManagedObject,
       }
     }
     self.mModelImageDoublePoint_property.addEBObserver (self.mModelImageDoublePoint_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To many property: mModelImageObjects (has opposite relationship)
     self.mModelImageObjects_property.ebUndoManager = self.ebUndoManager
     self.mModelImageObjects_property.setOppositeRelationShipFunctions (
@@ -1990,7 +1992,7 @@ final class PackageRoot : EBManagedObject,
     self.packageZones_property.addEBObserverOf_xName (self.issues_property)
     self.packageZones_property.addEBObserverOf_yName (self.issues_property)
     preferences_padZoneFont_property.addEBObserver (self.issues_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mModelImageObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },

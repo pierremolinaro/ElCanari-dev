@@ -230,11 +230,13 @@ final class PointInSchematic : EBManagedObject,
       return self.mSymbol_property.propval
     }
     set {
-      if self.mSymbol_property.propval != nil {
-        self.mSymbol_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mSymbol_property.setProp (newValue)
+      if self.mSymbol_property.propval !== newValue {
+        if self.mSymbol_property.propval != nil {
+          self.mSymbol_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mSymbol_property.setProp (newValue)
+        }
       }
     }
   }
@@ -256,11 +258,13 @@ final class PointInSchematic : EBManagedObject,
       return self.mNet_property.propval
     }
     set {
-      if self.mNet_property.propval != nil {
-        self.mNet_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mNet_property.setProp (newValue)
+      if self.mNet_property.propval !== newValue {
+        if self.mNet_property.propval != nil {
+          self.mNet_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mNet_property.setProp (newValue)
+        }
       }
     }
   }
@@ -282,11 +286,13 @@ final class PointInSchematic : EBManagedObject,
       return self.mNC_property.propval
     }
     set {
-      if self.mNC_property.propval != nil {
-        self.mNC_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mNC_property.setProp (newValue)
+      if self.mNC_property.propval !== newValue {
+        if self.mNC_property.propval != nil {
+          self.mNC_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mNC_property.setProp (newValue)
+        }
       }
     }
   }
@@ -427,11 +433,13 @@ final class PointInSchematic : EBManagedObject,
       return self.mSheet_property.propval
     }
     set {
-      if self.mSheet_property.propval != nil {
-        self.mSheet_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mSheet_property.setProp (newValue)
+      if self.mSheet_property.propval !== newValue {
+        if self.mSheet_property.propval != nil {
+          self.mSheet_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mSheet_property.setProp (newValue)
+        }
       }
     }
   }
@@ -566,7 +574,7 @@ final class PointInSchematic : EBManagedObject,
       }
     }
     self.mSheet_property.addEBObserver (self.mSheet_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To many property: mLabels (has opposite relationship)
     self.mLabels_property.ebUndoManager = self.ebUndoManager
     self.mLabels_property.setOppositeRelationShipFunctions (
@@ -893,7 +901,7 @@ final class PointInSchematic : EBManagedObject,
     self.mWiresP2s_property.addEBObserver (self.netInfoForPoint_property)
     self.location_property.addEBObserver (self.netInfoForPoint_property)
     self.mSheet_property.sheetDescriptor_property.addEBObserver (self.netInfoForPoint_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mLabels_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },

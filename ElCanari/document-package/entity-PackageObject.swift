@@ -68,11 +68,13 @@ class PackageObject : EBGraphicManagedObject,
       return self.mRoot_property.propval
     }
     set {
-      if self.mRoot_property.propval != nil {
-        self.mRoot_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mRoot_property.setProp (newValue)
+      if self.mRoot_property.propval !== newValue {
+        if self.mRoot_property.propval != nil {
+          self.mRoot_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mRoot_property.setProp (newValue)
+        }
       }
     }
   }
@@ -112,7 +114,7 @@ class PackageObject : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.addEBObserver (self.mRoot_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To one property: mRoot (has opposite to many relationship: packageObjects)
     self.mRoot_property.ebUndoManager = self.ebUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
@@ -136,7 +138,7 @@ class PackageObject : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.knobSizeMultpliedByTen_property.addEBObserver (self.knobSize_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

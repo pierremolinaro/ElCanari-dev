@@ -311,11 +311,13 @@ final class BoardText : BoardObject,
       return self.mFont_property.propval
     }
     set {
-      if self.mFont_property.propval != nil {
-        self.mFont_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mFont_property.setProp (newValue)
+      if self.mFont_property.propval !== newValue {
+        if self.mFont_property.propval != nil {
+          self.mFont_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mFont_property.setProp (newValue)
+        }
       }
     }
   }
@@ -365,7 +367,7 @@ final class BoardText : BoardObject,
       }
     }
     self.mFont_property.addEBObserver (self.mFont_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To one property: mFont (has opposite to many relationship: mTexts)
     self.mFont_property.ebUndoManager = self.ebUndoManager
     self.mFont_property.setOppositeRelationShipFunctions (
@@ -640,7 +642,7 @@ final class BoardText : BoardObject,
     self.mRotation_property.addEBObserver (self.signatureForERCChecking_property)
     self.mWeight_property.addEBObserver (self.signatureForERCChecking_property)
     self.mOblique_property.addEBObserver (self.signatureForERCChecking_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

@@ -114,11 +114,13 @@ final class SheetInProject : EBManagedObject,
       return self.mRoot_property.propval
     }
     set {
-      if self.mRoot_property.propval != nil {
-        self.mRoot_property.setProp (nil)
-      }
-      if newValue != nil {
-        self.mRoot_property.setProp (newValue)
+      if self.mRoot_property.propval !== newValue {
+        if self.mRoot_property.propval != nil {
+          self.mRoot_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mRoot_property.setProp (newValue)
+        }
       }
     }
   }
@@ -227,7 +229,7 @@ final class SheetInProject : EBManagedObject,
       }
     }
     self.mRoot_property.addEBObserver (self.mRoot_none)
-    gInitSemaphore.wait ()
+    // gInitSemaphore.wait ()
   //--- To many property: mObjects (has opposite relationship)
     self.mObjects_property.ebUndoManager = self.ebUndoManager
     self.mObjects_property.setOppositeRelationShipFunctions (
@@ -342,7 +344,7 @@ final class SheetInProject : EBManagedObject,
     }
     self.mRoot_property.sheetGeometry_property.addEBObserver (self.sheetDescriptor_property)
     self.mRoot_property.sheetIndexes_property.addEBObserver (self.sheetDescriptor_property)
-    gInitSemaphore.signal ()
+    // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },
