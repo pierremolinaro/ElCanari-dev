@@ -70,11 +70,11 @@ prefs {
     StaticLabel (title: "User Interface", bold: yes, size: .regular, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Selection Width", bold: no, size: .regular, alignment: .center),
+        left: StaticLabel (title: "Selection Hilite Color", bold: no, size: .regular, alignment: .right),
         right: hStack { ColorWell { $color prefs.selectionHiliteColor (sendContinously: yes) } space }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Selection Hilite Color", bold: no, size: .regular, alignment: .center) { notExpandableWidth () },
+        left: StaticLabel (title: "Selection Width", bold: no, size: .regular, alignment: .right),
         right: TaggedPopUpButton (size: .regular) {
           add (title: "0.5 Point", withTag:  5)
           add (title: "1.0 Point", withTag: 10)
@@ -85,7 +85,7 @@ prefs {
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "User Interface Style", bold: no, size: .regular, alignment: .center),
+        left: StaticLabel (title: "User Interface Style", bold: no, size: .regular, alignment: .right),
         right: EnumPopUpButton (titles: enum AutoLayoutUserInterfaceStyle.popupTitles, size: .regular) {
           notExpandableWidth ()
           $selectedIndex prefs.mAutoLayoutStyle

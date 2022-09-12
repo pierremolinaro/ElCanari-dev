@@ -58,10 +58,11 @@ let SU_LAST_CHECK_TIME = "SULastCheckTime"
   //--- Build Batch Window
     self.mBatchWindow = NSWindow (
       contentRect: NSRect (x: 0, y: 0, width: 600, height: 400),
-      styleMask: [.titled, .resizable],
+      styleMask: [.titled, .resizable, .closable],
       backing: .buffered,
       defer: false
     )
+    self.mBatchWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
     self.mBatchWindow.title = "Batch Operations"
     self.mBatchWindow.hasShadow = true
   //--- Main view

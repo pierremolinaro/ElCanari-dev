@@ -79,7 +79,7 @@ extension AutoLayoutProjectDocument {
       _ = gridView.addFirstBaseLineAligned (left: AutoLayoutHorizontalStackView (), right: allowInner4TrackCheckBox)
     //---  Allow Back track
       let allowBackTrack_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnBackSide, undoManager: nil)
-      let allowBackTrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Front Layer", size: .regular).bind_value (allowBackTrack_property).expandableWidth ()
+      let allowBackTrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Back Layer", size: .regular).bind_value (allowBackTrack_property).expandableWidth ()
       _ = gridView.addFirstBaseLineAligned (left: AutoLayoutHorizontalStackView (), right: allowBackTrackCheckBox)
     //--- Hole Diameter
       let viaHoleDiameter_property = EBStoredProperty_Int (defaultValue: inNetClass.mViaHoleDiameter, undoManager: nil)

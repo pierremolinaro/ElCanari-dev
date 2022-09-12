@@ -276,7 +276,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_0 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Selection Width", bold: false, size: .regular, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Selection Hilite Color", bold: false, size: .regular, alignment: .right)
     return view
   }
 
@@ -301,8 +301,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_2 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Selection Hilite Color", bold: false, size: .regular, alignment: .center)
-      .notExpandableWidth ()
+    let view = AutoLayoutStaticLabel (title: "Selection Width", bold: false, size: .regular, alignment: .right)
     return view
   }
 
@@ -326,7 +325,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_4 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "User Interface Style", bold: false, size: .regular, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "User Interface Style", bold: false, size: .regular, alignment: .right)
     return view
   }
 
