@@ -230,6 +230,8 @@ let SU_LAST_CHECK_TIME = "SULastCheckTime"
       validate = true
     }else if action == #selector (Self.showBatchWindow (_:)) {
       validate = true
+    }else if action == #selector (Self.openElCanariDocumentationAction (_:)) {
+      validate = true
     }else{
       validate = false
     }
