@@ -522,15 +522,16 @@ import Cocoa
       let view_0_4 = AutoLayoutGridView2 ()
         .set (leftMargin: 20)
         .set (rightMargin: 20)
-        .add (single: self.computeImplicitView_14 ())
-        .addFirstBaseLineAligned (left: self.computeImplicitView_15 (), right: self.computeImplicitView_16 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_14 (), right: self.computeImplicitView_15 ())
+        .add (single: self.computeImplicitView_16 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_17 (), right: self.computeImplicitView_18 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_19 (), right: self.computeImplicitView_20 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_21 (), right: self.computeImplicitView_22 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_23 (), right: self.computeImplicitView_24 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_25 (), right: self.computeImplicitView_26 ())
         .addFirstBaseLineAligned (left: self.computeImplicitView_27 (), right: self.computeImplicitView_28 ())
-        .add (single: self.computeImplicitView_29 ())
+        .addFirstBaseLineAligned (left: self.computeImplicitView_29 (), right: self.computeImplicitView_30 ())
+        .add (single: self.computeImplicitView_31 ())
       _ = view_0.appendView (view_0_4)
       let view_0_5 = AutoLayoutFlexibleSpace ()
       _ = view_0.appendView (view_0_5)
@@ -641,9 +642,9 @@ import Cocoa
         }
         _ = view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutGridView2 ()
-          .addCenterYAligned (left: self.computeImplicitView_30 (), right: self.computeImplicitView_31 ())
-          .addFirstBaseLineAligned (left: self.computeImplicitView_32 (), right: self.computeImplicitView_33 ())
+          .addCenterYAligned (left: self.computeImplicitView_32 (), right: self.computeImplicitView_33 ())
           .addFirstBaseLineAligned (left: self.computeImplicitView_34 (), right: self.computeImplicitView_35 ())
+          .addFirstBaseLineAligned (left: self.computeImplicitView_36 (), right: self.computeImplicitView_37 ())
         _ = view_0_0.appendView (view_0_0_1)
       }
       _ = view_0.appendView (view_0_0)
@@ -760,12 +761,12 @@ import Cocoa
     let view_0 = AutoLayoutStaticLabel (title: "Segment Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
-      .add (single: self.computeImplicitView_36 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_37 (), right: self.computeImplicitView_38 ())
+      .add (single: self.computeImplicitView_38 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_39 (), right: self.computeImplicitView_40 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_41 (), right: self.computeImplicitView_42 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_43 (), right: self.computeImplicitView_44 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_45 (), right: self.computeImplicitView_46 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_47 (), right: self.computeImplicitView_48 ())
     _ = vStackView.appendView (view_1)
     return vStackView
   } ()
@@ -779,8 +780,7 @@ import Cocoa
     let view_0 = AutoLayoutStaticLabel (title: "Bezier Curve Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
-      .add (single: self.computeImplicitView_47 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_48 (), right: self.computeImplicitView_49 ())
+      .add (single: self.computeImplicitView_49 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_50 (), right: self.computeImplicitView_51 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_52 (), right: self.computeImplicitView_53 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_54 (), right: self.computeImplicitView_55 ())
@@ -788,6 +788,7 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_58 (), right: self.computeImplicitView_59 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_60 (), right: self.computeImplicitView_61 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_62 (), right: self.computeImplicitView_63 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_64 (), right: self.computeImplicitView_65 ())
     _ = vStackView.appendView (view_1)
     return vStackView
   } ()
@@ -801,11 +802,11 @@ import Cocoa
     let view_0 = AutoLayoutStaticLabel (title: "Oval Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
-      .add (single: self.computeImplicitView_64 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_65 (), right: self.computeImplicitView_66 ())
+      .add (single: self.computeImplicitView_66 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_67 (), right: self.computeImplicitView_68 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_69 (), right: self.computeImplicitView_70 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_71 (), right: self.computeImplicitView_72 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_73 (), right: self.computeImplicitView_74 ())
     _ = vStackView.appendView (view_1)
     return vStackView
   } ()
@@ -819,14 +820,14 @@ import Cocoa
     let view_0 = AutoLayoutStaticLabel (title: "Arc Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
-      .add (single: self.computeImplicitView_73 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_74 (), right: self.computeImplicitView_75 ())
+      .add (single: self.computeImplicitView_75 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_76 (), right: self.computeImplicitView_77 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_78 (), right: self.computeImplicitView_79 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_80 (), right: self.computeImplicitView_81 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_82 (), right: self.computeImplicitView_83 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_84 (), right: self.computeImplicitView_85 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_86 (), right: self.computeImplicitView_87 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_88 (), right: self.computeImplicitView_89 ())
     _ = vStackView.appendView (view_1)
     let view_2 = AutoLayoutHorizontalStackView ()
     do{
@@ -849,11 +850,11 @@ import Cocoa
     let view_0 = AutoLayoutStaticLabel (title: "Guide Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
-      .add (single: self.computeImplicitView_88 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_89 (), right: self.computeImplicitView_90 ())
+      .add (single: self.computeImplicitView_90 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_91 (), right: self.computeImplicitView_92 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_93 (), right: self.computeImplicitView_94 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_95 (), right: self.computeImplicitView_96 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_97 (), right: self.computeImplicitView_98 ())
     _ = vStackView.appendView (view_1)
     return vStackView
   } ()
@@ -867,15 +868,15 @@ import Cocoa
     let view_0 = AutoLayoutStaticLabel (title: "Dimension Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
-      .add (single: self.computeImplicitView_97 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_98 (), right: self.computeImplicitView_99 ())
+      .add (single: self.computeImplicitView_99 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_100 (), right: self.computeImplicitView_101 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_102 (), right: self.computeImplicitView_103 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_104 (), right: self.computeImplicitView_105 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_106 (), right: self.computeImplicitView_107 ())
-      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_108 (), right: self.computeImplicitView_109 ())
+      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_110 (), right: self.computeImplicitView_111 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_112 (), right: self.computeImplicitView_113 ())
     _ = vStackView.appendView (view_1)
     let view_2 = AutoLayoutHorizontalStackView ()
     do{
@@ -912,19 +913,19 @@ import Cocoa
     let view_0 = AutoLayoutStaticLabel (title: "Zone Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
-      .add (single: self.computeImplicitView_112 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_113 (), right: self.computeImplicitView_114 ())
+      .add (single: self.computeImplicitView_114 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_115 (), right: self.computeImplicitView_116 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_117 (), right: self.computeImplicitView_118 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_119 (), right: self.computeImplicitView_120 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_121 (), right: self.computeImplicitView_122 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_123 (), right: self.computeImplicitView_124 ())
-      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_125 (), right: self.computeImplicitView_126 ())
-      .add (single: self.computeImplicitView_127 ())
-      .add (single: self.computeImplicitView_128 ())
       .addSeparator ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_129 (), right: self.computeImplicitView_130 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_127 (), right: self.computeImplicitView_128 ())
+      .add (single: self.computeImplicitView_129 ())
+      .add (single: self.computeImplicitView_130 ())
+      .addSeparator ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_131 (), right: self.computeImplicitView_132 ())
       .addSeparator ()
     _ = vStackView.appendView (view_1)
     let view_2 = AutoLayoutHorizontalStackView ()
@@ -968,8 +969,7 @@ import Cocoa
     let view_0 = AutoLayoutStaticLabel (title: "Master Pad Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
-      .add (single: self.computeImplicitView_131 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_132 (), right: self.computeImplicitView_133 ())
+      .add (single: self.computeImplicitView_133 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_134 (), right: self.computeImplicitView_135 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_136 (), right: self.computeImplicitView_137 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_138 (), right: self.computeImplicitView_139 ())
@@ -978,12 +978,13 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_144 (), right: self.computeImplicitView_145 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_146 (), right: self.computeImplicitView_147 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_148 (), right: self.computeImplicitView_149 ())
-      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_150 (), right: self.computeImplicitView_151 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_152 (), right: self.computeImplicitView_153 ())
       .addSeparator ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_152 (), right: self.computeImplicitView_153 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_154 (), right: self.computeImplicitView_155 ())
-      .add (single: self.computeImplicitView_156 ())
+      .addSeparator ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_156 (), right: self.computeImplicitView_157 ())
+      .add (single: self.computeImplicitView_158 ())
     _ = vStackView.appendView (view_1)
     return vStackView
   } ()
@@ -997,8 +998,7 @@ import Cocoa
     let view_0 = AutoLayoutStaticLabel (title: "Slave Pad Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
-      .add (single: self.computeImplicitView_157 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_158 (), right: self.computeImplicitView_159 ())
+      .add (single: self.computeImplicitView_159 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_160 (), right: self.computeImplicitView_161 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_162 (), right: self.computeImplicitView_163 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_164 (), right: self.computeImplicitView_165 ())
@@ -1007,8 +1007,9 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_170 (), right: self.computeImplicitView_171 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_172 (), right: self.computeImplicitView_173 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_174 (), right: self.computeImplicitView_175 ())
-      .addSeparator ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_176 (), right: self.computeImplicitView_177 ())
+      .addSeparator ()
+      .addFirstBaseLineAligned (left: self.computeImplicitView_178 (), right: self.computeImplicitView_179 ())
     _ = vStackView.appendView (view_1)
     return vStackView
   } ()
@@ -1022,7 +1023,6 @@ import Cocoa
     let view_0 = AutoLayoutStaticLabel (title: "(Stored in Document Preferences)", bold: false, size: .mini, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
-      .addFirstBaseLineAligned (left: self.computeImplicitView_178 (), right: self.computeImplicitView_179 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_180 (), right: self.computeImplicitView_181 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_182 (), right: self.computeImplicitView_183 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_184 (), right: self.computeImplicitView_185 ())
@@ -1030,6 +1030,7 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_188 (), right: self.computeImplicitView_189 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_190 (), right: self.computeImplicitView_191 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_192 (), right: self.computeImplicitView_193 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_194 (), right: self.computeImplicitView_195 ())
     _ = vStackView.appendView (view_1)
     let view_2 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_2)
@@ -1045,25 +1046,25 @@ import Cocoa
     let view_0 = AutoLayoutStaticLabel (title: "(Stored in Application Preferences)", bold: false, size: .mini, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
-      .addCenterYAligned (left: self.computeImplicitView_194 (), right: self.computeImplicitView_195 ())
       .addCenterYAligned (left: self.computeImplicitView_196 (), right: self.computeImplicitView_197 ())
       .addCenterYAligned (left: self.computeImplicitView_198 (), right: self.computeImplicitView_199 ())
-      .addSeparator ()
       .addCenterYAligned (left: self.computeImplicitView_200 (), right: self.computeImplicitView_201 ())
-      .addFirstBaseLineAligned (left: self.computeImplicitView_202 (), right: self.computeImplicitView_203 ())
       .addSeparator ()
-      .addCenterYAligned (left: self.computeImplicitView_204 (), right: self.computeImplicitView_205 ())
-      .add (single: self.computeImplicitView_206 ())
-      .add (single: self.computeImplicitView_207 ())
-      .addCenterYAligned (left: self.computeImplicitView_208 (), right: self.computeImplicitView_209 ())
+      .addCenterYAligned (left: self.computeImplicitView_202 (), right: self.computeImplicitView_203 ())
+      .addFirstBaseLineAligned (left: self.computeImplicitView_204 (), right: self.computeImplicitView_205 ())
+      .addSeparator ()
+      .addCenterYAligned (left: self.computeImplicitView_206 (), right: self.computeImplicitView_207 ())
+      .add (single: self.computeImplicitView_208 ())
+      .add (single: self.computeImplicitView_209 ())
       .addCenterYAligned (left: self.computeImplicitView_210 (), right: self.computeImplicitView_211 ())
-      .addSeparator ()
       .addCenterYAligned (left: self.computeImplicitView_212 (), right: self.computeImplicitView_213 ())
-      .addCenterYAligned (left: self.computeImplicitView_214 (), right: self.computeImplicitView_215 ())
-      .add (single: self.computeImplicitView_216 ())
-      .add (single: self.computeImplicitView_217 ())
       .addSeparator ()
-      .addCenterYAligned (left: self.computeImplicitView_218 (), right: self.computeImplicitView_219 ())
+      .addCenterYAligned (left: self.computeImplicitView_214 (), right: self.computeImplicitView_215 ())
+      .addCenterYAligned (left: self.computeImplicitView_216 (), right: self.computeImplicitView_217 ())
+      .add (single: self.computeImplicitView_218 ())
+      .add (single: self.computeImplicitView_219 ())
+      .addSeparator ()
+      .addCenterYAligned (left: self.computeImplicitView_220 (), right: self.computeImplicitView_221 ())
     _ = vStackView.appendView (view_1)
     let view_2 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_2)
@@ -1313,10 +1314,12 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_14 () -> NSView {
-    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
-      .expandableWidth ()
-      .bind_setter6 (self.rootObject.mDimensionUnitFirstModelPointX_property, self.rootObject.mDimensionUnitFirstModelPointY_property, self.rootObject.mDimensionUnitSecondModelPointDx_property, self.rootObject.mDimensionUnitSecondModelPointDy_property, self.rootObject.mModelImageSecondPointXUnit_property, self.rootObject.mModelImageSecondPointYUnit_property)
-      .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
+    let view = AutoLayoutPullDownButton (title: "Action", size: .small)
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Paste Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.loadModelImageFromPasteboardAction (_:)), enableBinding: .not (.prop (self.rootObject.hasModelImage_property))))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Load DIL16 Embedded Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.loadDIL16ModelImageFromResourcesAction (_:)), enableBinding: .not (.prop (self.rootObject.hasModelImage_property))))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Copy Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.copyModelImageAction (_:)), enableBinding: .prop (self.rootObject.hasModelImage_property)))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Remove Model Image", target: self, selector: #selector (AutoLayoutPackageDocument.removeModelImageAction (_:)), enableBinding: .prop (self.rootObject.hasModelImage_property)))
+      .add (item: AutoLayoutMenuItemDescriptor (title: "Reset Green and Brown Points", target: self, selector: #selector (AutoLayoutPackageDocument.resetModelImagePointsAction (_:)), enableBinding: .prop (self.rootObject.hasModelImage_property)))
     return view
   }
 
@@ -1325,8 +1328,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_15 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Green", right: "X", bold: false, size: .small)
-      .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
+    let view = AutoLayoutLabel (bold: false, size: .small)
+      .bind_title (self.rootObject.modelImageSizeString_property)
     return view
   }
 
@@ -1335,8 +1338,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_16 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointX_property, self.rootObject.mDimensionUnitFirstModelPointX_property)
+    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
+      .expandableWidth ()
+      .bind_setter6 (self.rootObject.mDimensionUnitFirstModelPointX_property, self.rootObject.mDimensionUnitFirstModelPointY_property, self.rootObject.mDimensionUnitSecondModelPointDx_property, self.rootObject.mDimensionUnitSecondModelPointDy_property, self.rootObject.mModelImageSecondPointXUnit_property, self.rootObject.mModelImageSecondPointYUnit_property)
       .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
     return view
   }
@@ -1346,7 +1350,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_17 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabels (left: "Green", right: "X", bold: false, size: .small)
       .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
     return view
   }
@@ -1357,7 +1361,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_18 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointY_property, self.rootObject.mDimensionUnitFirstModelPointY_property)
+      .bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointX_property, self.rootObject.mDimensionUnitFirstModelPointX_property)
       .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
     return view
   }
@@ -1367,7 +1371,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_19 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "∆X", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
       .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
     return view
   }
@@ -1378,7 +1382,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_20 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDx_property, self.rootObject.mDimensionUnitSecondModelPointDx_property)
+      .bind_dimensionAndUnit (self.rootObject.mModelImageFirstPointY_property, self.rootObject.mDimensionUnitFirstModelPointY_property)
       .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
     return view
   }
@@ -1388,7 +1392,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_21 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "∆Y", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "∆X", bold: false, size: .small, alignment: .right)
       .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
     return view
   }
@@ -1399,7 +1403,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_22 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDy_property, self.rootObject.mDimensionUnitSecondModelPointDy_property)
+      .bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDx_property, self.rootObject.mDimensionUnitSecondModelPointDx_property)
       .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
     return view
   }
@@ -1409,7 +1413,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_23 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Brown", right: "X", bold: false, size: .small)
+    let view = AutoLayoutStaticLabel (title: "∆Y", bold: false, size: .small, alignment: .right)
       .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
     return view
   }
@@ -1419,8 +1423,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_24 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.secondPointX_property, self.rootObject.mModelImageSecondPointXUnit_property)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.rootObject.mModelImageSecondPointDy_property, self.rootObject.mDimensionUnitSecondModelPointDy_property)
       .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
     return view
   }
@@ -1430,7 +1434,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_25 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabels (left: "Brown", right: "X", bold: false, size: .small)
       .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
     return view
   }
@@ -1441,7 +1445,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_26 () -> NSView {
     let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.secondPointY_property, self.rootObject.mModelImageSecondPointYUnit_property)
+      .bind_dimensionAndUnit (self.rootObject.secondPointX_property, self.rootObject.mModelImageSecondPointXUnit_property)
       .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
     return view
   }
@@ -1451,7 +1455,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_27 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "PointSize", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
       .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
     return view
   }
@@ -1461,8 +1465,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_28 () -> NSView {
-    let view = AutoLayoutLinearSlider (min: 1, max: 61, ticks: 19)
-      .bind_intValue (self.rootObject.mModelPointsCircleRadius_property, sendContinously:true)
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.rootObject.secondPointY_property, self.rootObject.mModelImageSecondPointYUnit_property)
       .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
     return view
   }
@@ -1472,6 +1476,27 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_29 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "PointSize", bold: false, size: .small, alignment: .right)
+      .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 30
+  //····················································································································
+
+  fileprivate final func computeImplicitView_30 () -> NSView {
+    let view = AutoLayoutLinearSlider (min: 1, max: 61, ticks: 19)
+      .bind_intValue (self.rootObject.mModelPointsCircleRadius_property, sendContinously:true)
+      .bind_hidden (.not (.prop (self.rootObject.hasModelImage_property)))
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 31
+  //····················································································································
+
+  fileprivate final func computeImplicitView_31 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutButton (title: "Lock Points to Model Image", size: .small)
@@ -1493,31 +1518,11 @@ import Cocoa
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 30
-  //····················································································································
-
-  fileprivate final func computeImplicitView_30 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Model Image Opacity", bold: false, size: .small, alignment: .center)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 31
-  //····················································································································
-
-  fileprivate final func computeImplicitView_31 () -> NSView {
-    let view = AutoLayoutLinearSlider (min: 0, max: 1, ticks: 11)
-      .bind_doubleValue (self.rootObject.mModelImageOpacity_property, sendContinously:true)
-      .bind_enabled (.prop (self.rootObject.hasModelImage_property))
-    return view
-  }
-
-  //····················································································································
   //    IMPLICIT VIEW 32
   //····················································································································
 
   fileprivate final func computeImplicitView_32 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Auto Numbering", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Model Image Opacity", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -1526,8 +1531,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_33 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: PadNumbering.popupTitles (), size: .small)
-      .bind_selectedIndex (self.rootObject.padNumbering_property)
+    let view = AutoLayoutLinearSlider (min: 0, max: 1, ticks: 11)
+      .bind_doubleValue (self.rootObject.mModelImageOpacity_property, sendContinously:true)
+      .bind_enabled (.prop (self.rootObject.hasModelImage_property))
     return view
   }
 
@@ -1536,7 +1542,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_34 () -> NSView {
-    let view = AutoLayoutFlexibleSpace ()
+    let view = AutoLayoutStaticLabel (title: "Auto Numbering", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -1545,6 +1551,25 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_35 () -> NSView {
+    let view = AutoLayoutEnumPopUpButton (titles: PadNumbering.popupTitles (), size: .small)
+      .bind_selectedIndex (self.rootObject.padNumbering_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 36
+  //····················································································································
+
+  fileprivate final func computeImplicitView_36 () -> NSView {
+    let view = AutoLayoutFlexibleSpace ()
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 37
+  //····················································································································
+
+  fileprivate final func computeImplicitView_37 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutStaticLabel (title: "From", bold: false, size: .small, alignment: .center)
@@ -1562,31 +1587,12 @@ import Cocoa
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 36
-  //····················································································································
-
-  fileprivate final func computeImplicitView_36 () -> NSView {
-    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
-      .bind_setter5 (self.mPackageSegmentSelectionController.x1Unit_property, self.mPackageSegmentSelectionController.y1Unit_property, self.mPackageSegmentSelectionController.x2Unit_property, self.mPackageSegmentSelectionController.y2Unit_property, self.mPackageSegmentSelectionController.lengthUnit_property)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 37
-  //····················································································································
-
-  fileprivate final func computeImplicitView_37 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "First", right: "X", bold: false, size: .small)
-    return view
-  }
-
-  //····················································································································
   //    IMPLICIT VIEW 38
   //····················································································································
 
   fileprivate final func computeImplicitView_38 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.x1_property, self.mPackageSegmentSelectionController.x1Unit_property)
+    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
+      .bind_setter5 (self.mPackageSegmentSelectionController.x1Unit_property, self.mPackageSegmentSelectionController.y1Unit_property, self.mPackageSegmentSelectionController.x2Unit_property, self.mPackageSegmentSelectionController.y2Unit_property, self.mPackageSegmentSelectionController.lengthUnit_property)
     return view
   }
 
@@ -1595,7 +1601,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_39 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabels (left: "First", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -1605,7 +1611,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_40 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.y1_property, self.mPackageSegmentSelectionController.y1Unit_property)
+      .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.x1_property, self.mPackageSegmentSelectionController.x1Unit_property)
     return view
   }
 
@@ -1614,7 +1620,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_41 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Second", right: "X", bold: false, size: .small)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -1624,7 +1630,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_42 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.x2_property, self.mPackageSegmentSelectionController.x2Unit_property)
+      .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.y1_property, self.mPackageSegmentSelectionController.y1Unit_property)
     return view
   }
 
@@ -1633,7 +1639,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_43 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabels (left: "Second", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -1643,7 +1649,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_44 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.y2_property, self.mPackageSegmentSelectionController.y2Unit_property)
+      .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.x2_property, self.mPackageSegmentSelectionController.x2Unit_property)
     return view
   }
 
@@ -1652,7 +1658,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_45 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Length", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -1661,8 +1667,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_46 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.lengthInCanariUnit_property, self.mPackageSegmentSelectionController.lengthUnit_property)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.y2_property, self.mPackageSegmentSelectionController.y2Unit_property)
     return view
   }
 
@@ -1671,8 +1677,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_47 () -> NSView {
-    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
-      .bind_setter8 (self.mPackageBezierCurveSelectionController.x1Unit_property, self.mPackageBezierCurveSelectionController.y1Unit_property, self.mPackageBezierCurveSelectionController.x2Unit_property, self.mPackageBezierCurveSelectionController.y2Unit_property, self.mPackageBezierCurveSelectionController.cpx1Unit_property, self.mPackageBezierCurveSelectionController.cpy1Unit_property, self.mPackageBezierCurveSelectionController.cpx2Unit_property, self.mPackageBezierCurveSelectionController.cpy2Unit_property)
+    let view = AutoLayoutStaticLabel (title: "Length", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -1681,7 +1686,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_48 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "First", right: "X", bold: false, size: .small)
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mPackageSegmentSelectionController.lengthInCanariUnit_property, self.mPackageSegmentSelectionController.lengthUnit_property)
     return view
   }
 
@@ -1690,8 +1696,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_49 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.x1_property, self.mPackageBezierCurveSelectionController.x1Unit_property)
+    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
+      .bind_setter8 (self.mPackageBezierCurveSelectionController.x1Unit_property, self.mPackageBezierCurveSelectionController.y1Unit_property, self.mPackageBezierCurveSelectionController.x2Unit_property, self.mPackageBezierCurveSelectionController.y2Unit_property, self.mPackageBezierCurveSelectionController.cpx1Unit_property, self.mPackageBezierCurveSelectionController.cpy1Unit_property, self.mPackageBezierCurveSelectionController.cpx2Unit_property, self.mPackageBezierCurveSelectionController.cpy2Unit_property)
     return view
   }
 
@@ -1700,7 +1706,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_50 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabels (left: "First", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -1710,7 +1716,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_51 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.y1_property, self.mPackageBezierCurveSelectionController.y1Unit_property)
+      .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.x1_property, self.mPackageBezierCurveSelectionController.x1Unit_property)
     return view
   }
 
@@ -1719,7 +1725,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_52 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Second", right: "X", bold: false, size: .small)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -1729,7 +1735,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_53 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.x2_property, self.mPackageBezierCurveSelectionController.x2Unit_property)
+      .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.y1_property, self.mPackageBezierCurveSelectionController.y1Unit_property)
     return view
   }
 
@@ -1738,7 +1744,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_54 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabels (left: "Second", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -1748,7 +1754,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_55 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.y2_property, self.mPackageBezierCurveSelectionController.y2Unit_property)
+      .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.x2_property, self.mPackageBezierCurveSelectionController.x2Unit_property)
     return view
   }
 
@@ -1757,7 +1763,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_56 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "First Ctrl", right: "X", bold: false, size: .small)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -1767,7 +1773,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_57 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpx1_property, self.mPackageBezierCurveSelectionController.cpx1Unit_property)
+      .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.y2_property, self.mPackageBezierCurveSelectionController.y2Unit_property)
     return view
   }
 
@@ -1776,7 +1782,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_58 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabels (left: "First Ctrl", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -1786,7 +1792,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_59 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpy1_property, self.mPackageBezierCurveSelectionController.cpy1Unit_property)
+      .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpx1_property, self.mPackageBezierCurveSelectionController.cpx1Unit_property)
     return view
   }
 
@@ -1795,7 +1801,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_60 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Second Ctrl", right: "X", bold: false, size: .small)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -1805,7 +1811,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_61 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpx2_property, self.mPackageBezierCurveSelectionController.cpx2Unit_property)
+      .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpy1_property, self.mPackageBezierCurveSelectionController.cpy1Unit_property)
     return view
   }
 
@@ -1814,7 +1820,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_62 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabels (left: "Second Ctrl", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -1824,7 +1830,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_63 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpy2_property, self.mPackageBezierCurveSelectionController.cpy2Unit_property)
+      .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpx2_property, self.mPackageBezierCurveSelectionController.cpx2Unit_property)
     return view
   }
 
@@ -1833,8 +1839,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_64 () -> NSView {
-    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
-      .bind_setter4 (self.mPackageOvalSelectionController.xUnit_property, self.mPackageOvalSelectionController.yUnit_property, self.mPackageOvalSelectionController.widthUnit_property, self.mPackageOvalSelectionController.heightUnit_property)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -1843,7 +1848,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_65 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Bottom Left", right: "X", bold: false, size: .small)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpy2_property, self.mPackageBezierCurveSelectionController.cpy2Unit_property)
     return view
   }
 
@@ -1852,8 +1858,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_66 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageOvalSelectionController.x_property, self.mPackageOvalSelectionController.xUnit_property)
+    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
+      .bind_setter4 (self.mPackageOvalSelectionController.xUnit_property, self.mPackageOvalSelectionController.yUnit_property, self.mPackageOvalSelectionController.widthUnit_property, self.mPackageOvalSelectionController.heightUnit_property)
     return view
   }
 
@@ -1862,7 +1868,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_67 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabels (left: "Bottom Left", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -1872,7 +1878,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_68 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageOvalSelectionController.y_property, self.mPackageOvalSelectionController.yUnit_property)
+      .bind_dimensionAndUnit (self.mPackageOvalSelectionController.x_property, self.mPackageOvalSelectionController.xUnit_property)
     return view
   }
 
@@ -1881,7 +1887,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_69 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -1891,7 +1897,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_70 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageOvalSelectionController.width_property, self.mPackageOvalSelectionController.widthUnit_property)
+      .bind_dimensionAndUnit (self.mPackageOvalSelectionController.y_property, self.mPackageOvalSelectionController.yUnit_property)
     return view
   }
 
@@ -1900,7 +1906,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_71 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -1910,7 +1916,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_72 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageOvalSelectionController.height_property, self.mPackageOvalSelectionController.heightUnit_property)
+      .bind_dimensionAndUnit (self.mPackageOvalSelectionController.width_property, self.mPackageOvalSelectionController.widthUnit_property)
     return view
   }
 
@@ -1919,8 +1925,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_73 () -> NSView {
-    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
-      .bind_setter5 (self.mPackageArcSelectionController.xCenterUnit_property, self.mPackageArcSelectionController.yCenterUnit_property, self.mPackageArcSelectionController.radiusUnit_property, self.mPackageArcSelectionController.startTangentUnit_property, self.mPackageArcSelectionController.endTangentUnit_property)
+    let view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -1929,7 +1934,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_74 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Center", right: "X", bold: false, size: .small)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mPackageOvalSelectionController.height_property, self.mPackageOvalSelectionController.heightUnit_property)
     return view
   }
 
@@ -1938,8 +1944,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_75 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageArcSelectionController.xCenter_property, self.mPackageArcSelectionController.xCenterUnit_property)
+    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
+      .bind_setter5 (self.mPackageArcSelectionController.xCenterUnit_property, self.mPackageArcSelectionController.yCenterUnit_property, self.mPackageArcSelectionController.radiusUnit_property, self.mPackageArcSelectionController.startTangentUnit_property, self.mPackageArcSelectionController.endTangentUnit_property)
     return view
   }
 
@@ -1948,7 +1954,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_76 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabels (left: "Center", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -1958,7 +1964,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_77 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageArcSelectionController.yCenter_property, self.mPackageArcSelectionController.yCenterUnit_property)
+      .bind_dimensionAndUnit (self.mPackageArcSelectionController.xCenter_property, self.mPackageArcSelectionController.xCenterUnit_property)
     return view
   }
 
@@ -1967,7 +1973,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_78 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Radius", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -1977,7 +1983,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_79 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageArcSelectionController.radius_property, self.mPackageArcSelectionController.radiusUnit_property)
+      .bind_dimensionAndUnit (self.mPackageArcSelectionController.yCenter_property, self.mPackageArcSelectionController.yCenterUnit_property)
     return view
   }
 
@@ -1986,7 +1992,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_80 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Start Angle", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Radius", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -1995,8 +2001,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_81 () -> NSView {
-    let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
-      .bind_angle (self.mPackageArcSelectionController.startAngle_property)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mPackageArcSelectionController.radius_property, self.mPackageArcSelectionController.radiusUnit_property)
     return view
   }
 
@@ -2005,7 +2011,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_82 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Angle", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Start Angle", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2014,8 +2020,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_83 () -> NSView {
-    let view = AutoLayoutCanariAngleField (minWidth: 64, size: .small)
-      .bind_angle (self.mPackageArcSelectionController.arcAngle_property)
+    let view = AutoLayoutCanariAngleFieldAndSlider (fieldMinWidth: 64, size: .small)
+      .bind_angle (self.mPackageArcSelectionController.startAngle_property)
     return view
   }
 
@@ -2024,7 +2030,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_84 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Start Tangent", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Angle", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2033,8 +2039,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_85 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageArcSelectionController.startTangent_property, self.mPackageArcSelectionController.startTangentUnit_property)
+    let view = AutoLayoutCanariAngleField (minWidth: 64, size: .small)
+      .bind_angle (self.mPackageArcSelectionController.arcAngle_property)
     return view
   }
 
@@ -2043,7 +2049,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_86 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "End Tangent", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Start Tangent", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2053,7 +2059,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_87 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageArcSelectionController.endTangent_property, self.mPackageArcSelectionController.endTangentUnit_property)
+      .bind_dimensionAndUnit (self.mPackageArcSelectionController.startTangent_property, self.mPackageArcSelectionController.startTangentUnit_property)
     return view
   }
 
@@ -2062,8 +2068,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_88 () -> NSView {
-    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
-      .bind_setter4 (self.mPackageGuideSelectionController.x1Unit_property, self.mPackageGuideSelectionController.y1Unit_property, self.mPackageGuideSelectionController.x2Unit_property, self.mPackageGuideSelectionController.y2Unit_property)
+    let view = AutoLayoutStaticLabel (title: "End Tangent", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2072,7 +2077,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_89 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "First", right: "X", bold: false, size: .small)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mPackageArcSelectionController.endTangent_property, self.mPackageArcSelectionController.endTangentUnit_property)
     return view
   }
 
@@ -2081,8 +2087,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_90 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageGuideSelectionController.x1_property, self.mPackageGuideSelectionController.x1Unit_property)
+    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
+      .bind_setter4 (self.mPackageGuideSelectionController.x1Unit_property, self.mPackageGuideSelectionController.y1Unit_property, self.mPackageGuideSelectionController.x2Unit_property, self.mPackageGuideSelectionController.y2Unit_property)
     return view
   }
 
@@ -2091,7 +2097,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_91 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabels (left: "First", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -2101,7 +2107,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_92 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageGuideSelectionController.y1_property, self.mPackageGuideSelectionController.y1Unit_property)
+      .bind_dimensionAndUnit (self.mPackageGuideSelectionController.x1_property, self.mPackageGuideSelectionController.x1Unit_property)
     return view
   }
 
@@ -2110,7 +2116,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_93 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Second", right: "X", bold: false, size: .small)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2120,7 +2126,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_94 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageGuideSelectionController.x2_property, self.mPackageGuideSelectionController.x2Unit_property)
+      .bind_dimensionAndUnit (self.mPackageGuideSelectionController.y1_property, self.mPackageGuideSelectionController.y1Unit_property)
     return view
   }
 
@@ -2129,7 +2135,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_95 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabels (left: "Second", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -2139,7 +2145,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_96 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageGuideSelectionController.y2_property, self.mPackageGuideSelectionController.y2Unit_property)
+      .bind_dimensionAndUnit (self.mPackageGuideSelectionController.x2_property, self.mPackageGuideSelectionController.x2Unit_property)
     return view
   }
 
@@ -2148,8 +2154,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_97 () -> NSView {
-    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
-      .bind_setter7 (self.mPackageDimensionSelectionController.x1Unit_property, self.mPackageDimensionSelectionController.y1Unit_property, self.mPackageDimensionSelectionController.x2Unit_property, self.mPackageDimensionSelectionController.y2Unit_property, self.mPackageDimensionSelectionController.distanceUnit_property, self.mPackageDimensionSelectionController.xDimensionUnit_property, self.mPackageDimensionSelectionController.yDimensionUnit_property)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2158,7 +2163,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_98 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "First", right: "X", bold: false, size: .small)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mPackageGuideSelectionController.y2_property, self.mPackageGuideSelectionController.y2Unit_property)
     return view
   }
 
@@ -2167,8 +2173,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_99 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.x1_property, self.mPackageDimensionSelectionController.x1Unit_property)
+    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
+      .bind_setter7 (self.mPackageDimensionSelectionController.x1Unit_property, self.mPackageDimensionSelectionController.y1Unit_property, self.mPackageDimensionSelectionController.x2Unit_property, self.mPackageDimensionSelectionController.y2Unit_property, self.mPackageDimensionSelectionController.distanceUnit_property, self.mPackageDimensionSelectionController.xDimensionUnit_property, self.mPackageDimensionSelectionController.yDimensionUnit_property)
     return view
   }
 
@@ -2177,7 +2183,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_100 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabels (left: "First", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -2187,7 +2193,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_101 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.y1_property, self.mPackageDimensionSelectionController.y1Unit_property)
+      .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.x1_property, self.mPackageDimensionSelectionController.x1Unit_property)
     return view
   }
 
@@ -2196,7 +2202,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_102 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Second", right: "X", bold: false, size: .small)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -2206,7 +2212,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_103 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.x2_property, self.mPackageDimensionSelectionController.x2Unit_property)
+      .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.y1_property, self.mPackageDimensionSelectionController.y1Unit_property)
     return view
   }
 
@@ -2215,7 +2221,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_104 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabels (left: "Second", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -2225,7 +2231,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_105 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.y2_property, self.mPackageDimensionSelectionController.y2Unit_property)
+      .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.x2_property, self.mPackageDimensionSelectionController.x2Unit_property)
     return view
   }
 
@@ -2234,7 +2240,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_106 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Distance", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -2243,8 +2249,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_107 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.distanceInCanariUnit_property, self.mPackageDimensionSelectionController.distanceUnit_property)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.y2_property, self.mPackageDimensionSelectionController.y2Unit_property)
     return view
   }
 
@@ -2253,7 +2259,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_108 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Label", right: "∆X", bold: false, size: .small)
+    let view = AutoLayoutStaticLabel (title: "Distance", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -2262,8 +2268,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_109 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.xDimension_property, self.mPackageDimensionSelectionController.xDimensionUnit_property)
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.distanceInCanariUnit_property, self.mPackageDimensionSelectionController.distanceUnit_property)
     return view
   }
 
@@ -2272,7 +2278,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_110 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "∆Y", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabels (left: "Label", right: "∆X", bold: false, size: .small)
     return view
   }
 
@@ -2282,7 +2288,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_111 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.yDimension_property, self.mPackageDimensionSelectionController.yDimensionUnit_property)
+      .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.xDimension_property, self.mPackageDimensionSelectionController.xDimensionUnit_property)
     return view
   }
 
@@ -2291,8 +2297,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_112 () -> NSView {
-    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
-      .bind_setter6 (self.mPackageZoneSelectionController.xUnit_property, self.mPackageZoneSelectionController.yUnit_property, self.mPackageZoneSelectionController.widthUnit_property, self.mPackageZoneSelectionController.heightUnit_property, self.mPackageZoneSelectionController.xNameUnit_property, self.mPackageZoneSelectionController.yNameUnit_property)
+    let view = AutoLayoutStaticLabel (title: "∆Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -2301,7 +2306,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_113 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Bottom Left", right: "X", bold: false, size: .small)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mPackageDimensionSelectionController.yDimension_property, self.mPackageDimensionSelectionController.yDimensionUnit_property)
     return view
   }
 
@@ -2310,8 +2316,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_114 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageZoneSelectionController.x_property, self.mPackageZoneSelectionController.xUnit_property)
+    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
+      .bind_setter6 (self.mPackageZoneSelectionController.xUnit_property, self.mPackageZoneSelectionController.yUnit_property, self.mPackageZoneSelectionController.widthUnit_property, self.mPackageZoneSelectionController.heightUnit_property, self.mPackageZoneSelectionController.xNameUnit_property, self.mPackageZoneSelectionController.yNameUnit_property)
     return view
   }
 
@@ -2320,7 +2326,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_115 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabels (left: "Bottom Left", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -2330,7 +2336,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_116 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageZoneSelectionController.y_property, self.mPackageZoneSelectionController.yUnit_property)
+      .bind_dimensionAndUnit (self.mPackageZoneSelectionController.x_property, self.mPackageZoneSelectionController.xUnit_property)
     return view
   }
 
@@ -2339,7 +2345,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_117 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2349,7 +2355,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_118 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageZoneSelectionController.width_property, self.mPackageZoneSelectionController.widthUnit_property)
+      .bind_dimensionAndUnit (self.mPackageZoneSelectionController.y_property, self.mPackageZoneSelectionController.yUnit_property)
     return view
   }
 
@@ -2358,7 +2364,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_119 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2368,7 +2374,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_120 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageZoneSelectionController.height_property, self.mPackageZoneSelectionController.heightUnit_property)
+      .bind_dimensionAndUnit (self.mPackageZoneSelectionController.width_property, self.mPackageZoneSelectionController.widthUnit_property)
     return view
   }
 
@@ -2377,7 +2383,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_121 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Label", right: "X", bold: false, size: .small)
+    let view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2387,7 +2393,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_122 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageZoneSelectionController.xName_property, self.mPackageZoneSelectionController.xNameUnit_property)
+      .bind_dimensionAndUnit (self.mPackageZoneSelectionController.height_property, self.mPackageZoneSelectionController.heightUnit_property)
     return view
   }
 
@@ -2396,7 +2402,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_123 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabels (left: "Label", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -2406,7 +2412,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_124 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageZoneSelectionController.yName_property, self.mPackageZoneSelectionController.yNameUnit_property)
+      .bind_dimensionAndUnit (self.mPackageZoneSelectionController.xName_property, self.mPackageZoneSelectionController.xNameUnit_property)
     return view
   }
 
@@ -2415,7 +2421,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_125 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Name", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2424,8 +2430,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_126 () -> NSView {
-    let view = AutoLayoutTextField (minWidth: 56, size: .small)
-      .bind_value (self.mPackageZoneSelectionController.zoneName_property, sendContinously:true)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mPackageZoneSelectionController.yName_property, self.mPackageZoneSelectionController.yNameUnit_property)
     return view
   }
 
@@ -2434,9 +2440,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_127 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Show Zone Name", size: .small)
-      .expandableWidth ()
-      .bind_value (self.mPackageZoneSelectionController.displayZoneName_property)
+    let view = AutoLayoutStaticLabel (title: "Name", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2445,9 +2449,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_128 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Show Zone Name with Pad Numbers", size: .small)
-      .expandableWidth ()
-      .bind_value (self.mPackageZoneSelectionController.displayZoneNameWithPadNumbers_property)
+    let view = AutoLayoutTextField (minWidth: 56, size: .small)
+      .bind_value (self.mPackageZoneSelectionController.zoneName_property, sendContinously:true)
     return view
   }
 
@@ -2456,7 +2459,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_129 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Auto Numbering", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutCheckbox (title: "Show Zone Name", size: .small)
+      .expandableWidth ()
+      .bind_value (self.mPackageZoneSelectionController.displayZoneName_property)
     return view
   }
 
@@ -2465,8 +2470,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_130 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: PadNumbering.popupTitles (), size: .small)
-      .bind_selectedIndex (self.mPackageZoneSelectionController.zoneNumbering_property)
+    let view = AutoLayoutCheckbox (title: "Show Zone Name with Pad Numbers", size: .small)
+      .expandableWidth ()
+      .bind_value (self.mPackageZoneSelectionController.displayZoneNameWithPadNumbers_property)
     return view
   }
 
@@ -2475,8 +2481,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_131 () -> NSView {
-    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
-      .bind_setter7 (self.mPackagePadSelectionController.xCenterUnit_property, self.mPackagePadSelectionController.yCenterUnit_property, self.mPackagePadSelectionController.widthUnit_property, self.mPackagePadSelectionController.heightUnit_property, self.mPackagePadSelectionController.holeWidthUnit_property, self.mPackagePadSelectionController.holeHeightUnit_property, self.mPackagePadSelectionController.annularRingUnit_property)
+    let view = AutoLayoutStaticLabel (title: "Auto Numbering", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2485,7 +2490,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_132 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Center", right: "X", bold: false, size: .small)
+    let view = AutoLayoutEnumPopUpButton (titles: PadNumbering.popupTitles (), size: .small)
+      .bind_selectedIndex (self.mPackageZoneSelectionController.zoneNumbering_property)
     return view
   }
 
@@ -2494,8 +2500,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_133 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackagePadSelectionController.xCenter_property, self.mPackagePadSelectionController.xCenterUnit_property)
+    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
+      .bind_setter7 (self.mPackagePadSelectionController.xCenterUnit_property, self.mPackagePadSelectionController.yCenterUnit_property, self.mPackagePadSelectionController.widthUnit_property, self.mPackagePadSelectionController.heightUnit_property, self.mPackagePadSelectionController.holeWidthUnit_property, self.mPackagePadSelectionController.holeHeightUnit_property, self.mPackagePadSelectionController.annularRingUnit_property)
     return view
   }
 
@@ -2504,7 +2510,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_134 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabels (left: "Center", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -2514,7 +2520,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_135 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackagePadSelectionController.yCenter_property, self.mPackagePadSelectionController.yCenterUnit_property)
+      .bind_dimensionAndUnit (self.mPackagePadSelectionController.xCenter_property, self.mPackagePadSelectionController.xCenterUnit_property)
     return view
   }
 
@@ -2523,7 +2529,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_136 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2533,7 +2539,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_137 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackagePadSelectionController.width_property, self.mPackagePadSelectionController.widthUnit_property)
+      .bind_dimensionAndUnit (self.mPackagePadSelectionController.yCenter_property, self.mPackagePadSelectionController.yCenterUnit_property)
     return view
   }
 
@@ -2542,7 +2548,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_138 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2552,7 +2558,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_139 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackagePadSelectionController.height_property, self.mPackagePadSelectionController.heightUnit_property)
+      .bind_dimensionAndUnit (self.mPackagePadSelectionController.width_property, self.mPackagePadSelectionController.widthUnit_property)
     return view
   }
 
@@ -2561,7 +2567,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_140 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Shape", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2570,8 +2576,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_141 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: PadShape.popupTitles (), size: .small)
-      .bind_selectedIndex (self.mPackagePadSelectionController.padShape_property)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mPackagePadSelectionController.height_property, self.mPackagePadSelectionController.heightUnit_property)
     return view
   }
 
@@ -2580,7 +2586,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_142 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Style", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Shape", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2589,8 +2595,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_143 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: PadStyle.popupTitles (), size: .small)
-      .bind_selectedIndex (self.mPackagePadSelectionController.padStyle_property)
+    let view = AutoLayoutEnumPopUpButton (titles: PadShape.popupTitles (), size: .small)
+      .bind_selectedIndex (self.mPackagePadSelectionController.padShape_property)
     return view
   }
 
@@ -2599,8 +2605,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_144 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Hole Width", bold: false, size: .small, alignment: .center)
-      .bind_hidden (.not (.prop (self.mPackagePadSelectionController.padIsTraversing_property)))
+    let view = AutoLayoutStaticLabel (title: "Style", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2609,9 +2614,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_145 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackagePadSelectionController.holeWidth_property, self.mPackagePadSelectionController.holeWidthUnit_property)
-      .bind_hidden (.not (.prop (self.mPackagePadSelectionController.padIsTraversing_property)))
+    let view = AutoLayoutEnumPopUpButton (titles: PadStyle.popupTitles (), size: .small)
+      .bind_selectedIndex (self.mPackagePadSelectionController.padStyle_property)
     return view
   }
 
@@ -2620,7 +2624,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_146 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Hole Height", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Hole Width", bold: false, size: .small, alignment: .center)
       .bind_hidden (.not (.prop (self.mPackagePadSelectionController.padIsTraversing_property)))
     return view
   }
@@ -2631,7 +2635,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_147 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackagePadSelectionController.holeHeight_property, self.mPackagePadSelectionController.holeHeightUnit_property)
+      .bind_dimensionAndUnit (self.mPackagePadSelectionController.holeWidth_property, self.mPackagePadSelectionController.holeWidthUnit_property)
       .bind_hidden (.not (.prop (self.mPackagePadSelectionController.padIsTraversing_property)))
     return view
   }
@@ -2641,7 +2645,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_148 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Annular Ring", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Hole Height", bold: false, size: .small, alignment: .center)
       .bind_hidden (.not (.prop (self.mPackagePadSelectionController.padIsTraversing_property)))
     return view
   }
@@ -2651,8 +2655,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_149 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackagePadSelectionController.annularRing_property, self.mPackagePadSelectionController.annularRingUnit_property)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mPackagePadSelectionController.holeHeight_property, self.mPackagePadSelectionController.holeHeightUnit_property)
       .bind_hidden (.not (.prop (self.mPackagePadSelectionController.padIsTraversing_property)))
     return view
   }
@@ -2662,7 +2666,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_150 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Zone", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Annular Ring", bold: false, size: .small, alignment: .center)
+      .bind_hidden (.not (.prop (self.mPackagePadSelectionController.padIsTraversing_property)))
     return view
   }
 
@@ -2671,8 +2676,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_151 () -> NSView {
-    let view = AutoLayoutLabel (bold: true, size: .small)
-      .bind_title (self.mPackagePadSelectionController.zoneName_property)
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mPackagePadSelectionController.annularRing_property, self.mPackagePadSelectionController.annularRingUnit_property)
+      .bind_hidden (.not (.prop (self.mPackagePadSelectionController.padIsTraversing_property)))
     return view
   }
 
@@ -2681,7 +2687,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_152 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Pad Number", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Zone", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2690,8 +2696,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_153 () -> NSView {
-    let view = AutoLayoutIntObserverField (bold: true, size: .small)
-      .bind_observedValue (self.mPackagePadSelectionController.padNumber_property)
+    let view = AutoLayoutLabel (bold: true, size: .small)
+      .bind_title (self.mPackagePadSelectionController.zoneName_property)
     return view
   }
 
@@ -2700,7 +2706,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_154 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Slave Pads", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Pad Number", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2710,7 +2716,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_155 () -> NSView {
     let view = AutoLayoutIntObserverField (bold: true, size: .small)
-      .bind_observedValue (self.mPackagePadSelectionController.slavePadCount_property)
+      .bind_observedValue (self.mPackagePadSelectionController.padNumber_property)
     return view
   }
 
@@ -2719,6 +2725,25 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_156 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Slave Pads", bold: false, size: .small, alignment: .center)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 157
+  //····················································································································
+
+  fileprivate final func computeImplicitView_157 () -> NSView {
+    let view = AutoLayoutIntObserverField (bold: true, size: .small)
+      .bind_observedValue (self.mPackagePadSelectionController.slavePadCount_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 158
+  //····················································································································
+
+  fileprivate final func computeImplicitView_158 () -> NSView {
     let view = AutoLayoutCanariPadRenumberPullDownButton ()
       .bind_currentNumber (self.mPackagePadSelectionController.padNumber_property)
       .bind_currentZoneName (self.mPackagePadSelectionController.zoneName_property)
@@ -2728,31 +2753,12 @@ import Cocoa
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 157
-  //····················································································································
-
-  fileprivate final func computeImplicitView_157 () -> NSView {
-    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
-      .bind_setter7 (self.mPackageSlavePadSelectionController.xCenterUnit_property, self.mPackageSlavePadSelectionController.yCenterUnit_property, self.mPackageSlavePadSelectionController.widthUnit_property, self.mPackageSlavePadSelectionController.heightUnit_property, self.mPackageSlavePadSelectionController.holeWidthUnit_property, self.mPackageSlavePadSelectionController.holeHeightUnit_property, self.mPackageSlavePadSelectionController.annularRingUnit_property)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 158
-  //····················································································································
-
-  fileprivate final func computeImplicitView_158 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Center", right: "X", bold: false, size: .small)
-    return view
-  }
-
-  //····················································································································
   //    IMPLICIT VIEW 159
   //····················································································································
 
   fileprivate final func computeImplicitView_159 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.xCenter_property, self.mPackageSlavePadSelectionController.xCenterUnit_property)
+    let view = AutoLayoutCanariDimensionUnitSetterPullDownButton (size: .small)
+      .bind_setter7 (self.mPackageSlavePadSelectionController.xCenterUnit_property, self.mPackageSlavePadSelectionController.yCenterUnit_property, self.mPackageSlavePadSelectionController.widthUnit_property, self.mPackageSlavePadSelectionController.heightUnit_property, self.mPackageSlavePadSelectionController.holeWidthUnit_property, self.mPackageSlavePadSelectionController.holeHeightUnit_property, self.mPackageSlavePadSelectionController.annularRingUnit_property)
     return view
   }
 
@@ -2761,7 +2767,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_160 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabels (left: "Center", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -2771,7 +2777,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_161 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.yCenter_property, self.mPackageSlavePadSelectionController.yCenterUnit_property)
+      .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.xCenter_property, self.mPackageSlavePadSelectionController.xCenterUnit_property)
     return view
   }
 
@@ -2780,7 +2786,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_162 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2790,7 +2796,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_163 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.width_property, self.mPackageSlavePadSelectionController.widthUnit_property)
+      .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.yCenter_property, self.mPackageSlavePadSelectionController.yCenterUnit_property)
     return view
   }
 
@@ -2799,7 +2805,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_164 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2809,7 +2815,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_165 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.height_property, self.mPackageSlavePadSelectionController.heightUnit_property)
+      .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.width_property, self.mPackageSlavePadSelectionController.widthUnit_property)
     return view
   }
 
@@ -2818,7 +2824,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_166 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Shape", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Height", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2827,8 +2833,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_167 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: PadShape.popupTitles (), size: .small)
-      .bind_selectedIndex (self.mPackageSlavePadSelectionController.padShape_property)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.height_property, self.mPackageSlavePadSelectionController.heightUnit_property)
     return view
   }
 
@@ -2837,7 +2843,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_168 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Style", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Shape", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2846,8 +2852,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_169 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: SlavePadStyle.popupTitles (), size: .small)
-      .bind_selectedIndex (self.mPackageSlavePadSelectionController.padStyle_property)
+    let view = AutoLayoutEnumPopUpButton (titles: PadShape.popupTitles (), size: .small)
+      .bind_selectedIndex (self.mPackageSlavePadSelectionController.padShape_property)
     return view
   }
 
@@ -2856,8 +2862,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_170 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Hole Width", bold: false, size: .small, alignment: .center)
-      .bind_hidden (.not (.prop (self.mPackageSlavePadSelectionController.padIsTraversing_property)))
+    let view = AutoLayoutStaticLabel (title: "Style", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2866,9 +2871,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_171 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.holeWidth_property, self.mPackageSlavePadSelectionController.holeWidthUnit_property)
-      .bind_hidden (.not (.prop (self.mPackageSlavePadSelectionController.padIsTraversing_property)))
+    let view = AutoLayoutEnumPopUpButton (titles: SlavePadStyle.popupTitles (), size: .small)
+      .bind_selectedIndex (self.mPackageSlavePadSelectionController.padStyle_property)
     return view
   }
 
@@ -2877,7 +2881,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_172 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Hole Height", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Hole Width", bold: false, size: .small, alignment: .center)
       .bind_hidden (.not (.prop (self.mPackageSlavePadSelectionController.padIsTraversing_property)))
     return view
   }
@@ -2888,7 +2892,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_173 () -> NSView {
     let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.holeHeight_property, self.mPackageSlavePadSelectionController.holeHeightUnit_property)
+      .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.holeWidth_property, self.mPackageSlavePadSelectionController.holeWidthUnit_property)
       .bind_hidden (.not (.prop (self.mPackageSlavePadSelectionController.padIsTraversing_property)))
     return view
   }
@@ -2898,7 +2902,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_174 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Annular Ring", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Hole Height", bold: false, size: .small, alignment: .center)
       .bind_hidden (.not (.prop (self.mPackageSlavePadSelectionController.padIsTraversing_property)))
     return view
   }
@@ -2908,8 +2912,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_175 () -> NSView {
-    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.annularRing_property, self.mPackageSlavePadSelectionController.annularRingUnit_property)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.holeHeight_property, self.mPackageSlavePadSelectionController.holeHeightUnit_property)
       .bind_hidden (.not (.prop (self.mPackageSlavePadSelectionController.padIsTraversing_property)))
     return view
   }
@@ -2919,7 +2923,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_176 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Linked to Pad", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Annular Ring", bold: false, size: .small, alignment: .center)
+      .bind_hidden (.not (.prop (self.mPackageSlavePadSelectionController.padIsTraversing_property)))
     return view
   }
 
@@ -2928,10 +2933,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_177 () -> NSView {
-    let view = AutoLayoutCanariSlavePadAssignPopUpButton ()
-      .bind_masterPadName (self.mPackageSlavePadSelectionController.masterPadNameWithZoneName_property)
-      .bind_masterPadObjectIndexArray (self.rootObject.masterPadObjectIndexArray_property)
-    self.configure_configureSlavePadAssignPopUpButton (view) // Configurator
+    let view = AutoLayoutCanariObservedDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.annularRing_property, self.mPackageSlavePadSelectionController.annularRingUnit_property)
+      .bind_hidden (.not (.prop (self.mPackageSlavePadSelectionController.padIsTraversing_property)))
     return view
   }
 
@@ -2940,7 +2944,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_178 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Grid Style", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Linked to Pad", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2949,8 +2953,10 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_179 () -> NSView {
-    let view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles (), size: .small)
-      .bind_selectedIndex (self.rootObject.gridStyle_property)
+    let view = AutoLayoutCanariSlavePadAssignPopUpButton ()
+      .bind_masterPadName (self.mPackageSlavePadSelectionController.masterPadNameWithZoneName_property)
+      .bind_masterPadObjectIndexArray (self.rootObject.masterPadObjectIndexArray_property)
+    self.configure_configureSlavePadAssignPopUpButton (view) // Configurator
     return view
   }
 
@@ -2959,7 +2965,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_180 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Grid Display", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Grid Style", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -2968,6 +2974,25 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_181 () -> NSView {
+    let view = AutoLayoutEnumPopUpButton (titles: GridStyle.popupTitles (), size: .small)
+      .bind_selectedIndex (self.rootObject.gridStyle_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 182
+  //····················································································································
+
+  fileprivate final func computeImplicitView_182 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Grid Display", bold: false, size: .small, alignment: .center)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 183
+  //····················································································································
+
+  fileprivate final func computeImplicitView_183 () -> NSView {
     let view = AutoLayoutTaggedPopUpButton (size: .small)
       .add (title: "1 Step", withTag: 1)
       .add (title: "2 Steps", withTag: 2)
@@ -2979,30 +3004,11 @@ import Cocoa
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 182
-  //····················································································································
-
-  fileprivate final func computeImplicitView_182 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Grid Step", bold: false, size: .small, alignment: .center)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 183
-  //····················································································································
-
-  fileprivate final func computeImplicitView_183 () -> NSView {
-    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
-      .bind_dimensionAndUnit (self.rootObject.gridStep_property, self.rootObject.gridStepUnit_property)
-    return view
-  }
-
-  //····················································································································
   //    IMPLICIT VIEW 184
   //····················································································································
 
   fileprivate final func computeImplicitView_184 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Grid Step", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -3011,9 +3017,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_185 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
-      .expandableWidth ()
-      .bind_value (self.rootObject.horizontalFlip_property)
+    let view = AutoLayoutCanariDimensionAndPopUp (size: .small)
+      .bind_dimensionAndUnit (self.rootObject.gridStep_property, self.rootObject.gridStepUnit_property)
     return view
   }
 
@@ -3022,7 +3027,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_186 () -> NSView {
-    let view = AutoLayoutFlexibleSpace ()
+    let view = AutoLayoutStaticLabel (title: "Flip", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -3031,9 +3036,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_187 () -> NSView {
-    let view = AutoLayoutCheckbox (title: "Vertical", size: .small)
+    let view = AutoLayoutCheckbox (title: "Horizontal", size: .small)
       .expandableWidth ()
-      .bind_value (self.rootObject.verticalFlip_property)
+      .bind_value (self.rootObject.horizontalFlip_property)
     return view
   }
 
@@ -3042,7 +3047,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_188 () -> NSView {
-    let view = AutoLayoutStaticLabels (left: "Placard", right: "X", bold: false, size: .small)
+    let view = AutoLayoutFlexibleSpace ()
     return view
   }
 
@@ -3051,8 +3056,9 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_189 () -> NSView {
-    let view = AutoLayoutCanariUnitPopUpButton (size: .small)
-      .bind_unit (self.rootObject.xPlacardUnit_property)
+    let view = AutoLayoutCheckbox (title: "Vertical", size: .small)
+      .expandableWidth ()
+      .bind_value (self.rootObject.verticalFlip_property)
     return view
   }
 
@@ -3061,7 +3067,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_190 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
+    let view = AutoLayoutStaticLabels (left: "Placard", right: "X", bold: false, size: .small)
     return view
   }
 
@@ -3071,7 +3077,7 @@ import Cocoa
 
   fileprivate final func computeImplicitView_191 () -> NSView {
     let view = AutoLayoutCanariUnitPopUpButton (size: .small)
-      .bind_unit (self.rootObject.yPlacardUnit_property)
+      .bind_unit (self.rootObject.xPlacardUnit_property)
     return view
   }
 
@@ -3080,7 +3086,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_192 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Knob Size", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .right)
     return view
   }
 
@@ -3089,9 +3095,8 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_193 () -> NSView {
-    let view = AutoLayoutLinearSlider (min: 7, max: 41, ticks: 18)
-      .expandableWidth ()
-      .bind_intValue (self.rootObject.knobSizeMultpliedByTen_property, sendContinously:true)
+    let view = AutoLayoutCanariUnitPopUpButton (size: .small)
+      .bind_unit (self.rootObject.yPlacardUnit_property)
     return view
   }
 
@@ -3100,7 +3105,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_194 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Background", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Knob Size", bold: false, size: .small, alignment: .center)
     return view
   }
 
@@ -3109,6 +3114,26 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_195 () -> NSView {
+    let view = AutoLayoutLinearSlider (min: 7, max: 41, ticks: 18)
+      .expandableWidth ()
+      .bind_intValue (self.rootObject.knobSizeMultpliedByTen_property, sendContinously:true)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 196
+  //····················································································································
+
+  fileprivate final func computeImplicitView_196 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Background", bold: false, size: .small, alignment: .center)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 197
+  //····················································································································
+
+  fileprivate final func computeImplicitView_197 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutColorWell ()
@@ -3122,19 +3147,19 @@ import Cocoa
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 196
+  //    IMPLICIT VIEW 198
   //····················································································································
 
-  fileprivate final func computeImplicitView_196 () -> NSView {
+  fileprivate final func computeImplicitView_198 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Cross Grid", bold: false, size: .small, alignment: .center)
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 197
+  //    IMPLICIT VIEW 199
   //····················································································································
 
-  fileprivate final func computeImplicitView_197 () -> NSView {
+  fileprivate final func computeImplicitView_199 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutColorWell ()
@@ -3148,19 +3173,19 @@ import Cocoa
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 198
+  //    IMPLICIT VIEW 200
   //····················································································································
 
-  fileprivate final func computeImplicitView_198 () -> NSView {
+  fileprivate final func computeImplicitView_200 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Line Grid", bold: false, size: .small, alignment: .center)
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 199
+  //    IMPLICIT VIEW 201
   //····················································································································
 
-  fileprivate final func computeImplicitView_199 () -> NSView {
+  fileprivate final func computeImplicitView_201 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutColorWell ()
@@ -3174,19 +3199,19 @@ import Cocoa
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 200
+  //    IMPLICIT VIEW 202
   //····················································································································
 
-  fileprivate final func computeImplicitView_200 () -> NSView {
+  fileprivate final func computeImplicitView_202 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Package", bold: false, size: .small, alignment: .center)
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 201
+  //    IMPLICIT VIEW 203
   //····················································································································
 
-  fileprivate final func computeImplicitView_201 () -> NSView {
+  fileprivate final func computeImplicitView_203 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutColorWell ()
@@ -3200,19 +3225,19 @@ import Cocoa
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 202
+  //    IMPLICIT VIEW 204
   //····················································································································
 
-  fileprivate final func computeImplicitView_202 () -> NSView {
+  fileprivate final func computeImplicitView_204 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Line Width", bold: false, size: .small, alignment: .center)
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 203
+  //    IMPLICIT VIEW 205
   //····················································································································
 
-  fileprivate final func computeImplicitView_203 () -> NSView {
+  fileprivate final func computeImplicitView_205 () -> NSView {
     let view = AutoLayoutTaggedPopUpButton (size: .small)
       .add (title: "0.5 Point", withTag: 5)
       .add (title: "1.0 Point", withTag: 10)
@@ -3224,19 +3249,19 @@ import Cocoa
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 204
+  //    IMPLICIT VIEW 206
   //····················································································································
 
-  fileprivate final func computeImplicitView_204 () -> NSView {
+  fileprivate final func computeImplicitView_206 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Pad Numbering", bold: false, size: .small, alignment: .center)
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 205
+  //    IMPLICIT VIEW 207
   //····················································································································
 
-  fileprivate final func computeImplicitView_205 () -> NSView {
+  fileprivate final func computeImplicitView_207 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
       .setCenterYAlignment ()
     do{
@@ -3255,30 +3280,11 @@ import Cocoa
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 206
-  //····················································································································
-
-  fileprivate final func computeImplicitView_206 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Pad Font", bold: false, size: .small, alignment: .left)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 207
-  //····················································································································
-
-  fileprivate final func computeImplicitView_207 () -> NSView {
-    let view = AutoLayoutFontButton (size: .small)
-      .bind_fontValue (preferences_padNumberFont_property)
-    return view
-  }
-
-  //····················································································································
   //    IMPLICIT VIEW 208
   //····················································································································
 
   fileprivate final func computeImplicitView_208 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Top Side Pads", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Pad Font", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -3287,6 +3293,25 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_209 () -> NSView {
+    let view = AutoLayoutFontButton (size: .small)
+      .bind_fontValue (preferences_padNumberFont_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 210
+  //····················································································································
+
+  fileprivate final func computeImplicitView_210 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Top Side Pads", bold: false, size: .small, alignment: .center)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 211
+  //····················································································································
+
+  fileprivate final func computeImplicitView_211 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
       .setCenterYAlignment ()
     do{
@@ -3305,19 +3330,19 @@ import Cocoa
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 210
+  //    IMPLICIT VIEW 212
   //····················································································································
 
-  fileprivate final func computeImplicitView_210 () -> NSView {
+  fileprivate final func computeImplicitView_212 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Back Side Pads", bold: false, size: .small, alignment: .center)
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 211
+  //    IMPLICIT VIEW 213
   //····················································································································
 
-  fileprivate final func computeImplicitView_211 () -> NSView {
+  fileprivate final func computeImplicitView_213 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
       .setCenterYAlignment ()
     do{
@@ -3336,19 +3361,19 @@ import Cocoa
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 212
+  //    IMPLICIT VIEW 214
   //····················································································································
 
-  fileprivate final func computeImplicitView_212 () -> NSView {
+  fileprivate final func computeImplicitView_214 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Guide Color", bold: false, size: .small, alignment: .center)
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 213
+  //    IMPLICIT VIEW 215
   //····················································································································
 
-  fileprivate final func computeImplicitView_213 () -> NSView {
+  fileprivate final func computeImplicitView_215 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutColorWell ()
@@ -3362,19 +3387,19 @@ import Cocoa
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 214
+  //    IMPLICIT VIEW 216
   //····················································································································
 
-  fileprivate final func computeImplicitView_214 () -> NSView {
+  fileprivate final func computeImplicitView_216 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Dimension Color", bold: false, size: .small, alignment: .center)
     return view
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 215
+  //    IMPLICIT VIEW 217
   //····················································································································
 
-  fileprivate final func computeImplicitView_215 () -> NSView {
+  fileprivate final func computeImplicitView_217 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutColorWell ()
@@ -3388,30 +3413,11 @@ import Cocoa
   }
 
   //····················································································································
-  //    IMPLICIT VIEW 216
-  //····················································································································
-
-  fileprivate final func computeImplicitView_216 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Dimension Font", bold: false, size: .small, alignment: .left)
-    return view
-  }
-
-  //····················································································································
-  //    IMPLICIT VIEW 217
-  //····················································································································
-
-  fileprivate final func computeImplicitView_217 () -> NSView {
-    let view = AutoLayoutFontButton (size: .small)
-      .bind_fontValue (preferences_dimensionFont_property)
-    return view
-  }
-
-  //····················································································································
   //    IMPLICIT VIEW 218
   //····················································································································
 
   fileprivate final func computeImplicitView_218 () -> NSView {
-    let view = AutoLayoutStaticLabel (title: "Zone Color", bold: false, size: .small, alignment: .center)
+    let view = AutoLayoutStaticLabel (title: "Dimension Font", bold: false, size: .small, alignment: .left)
     return view
   }
 
@@ -3420,6 +3426,25 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_219 () -> NSView {
+    let view = AutoLayoutFontButton (size: .small)
+      .bind_fontValue (preferences_dimensionFont_property)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 220
+  //····················································································································
+
+  fileprivate final func computeImplicitView_220 () -> NSView {
+    let view = AutoLayoutStaticLabel (title: "Zone Color", bold: false, size: .small, alignment: .center)
+    return view
+  }
+
+  //····················································································································
+  //    IMPLICIT VIEW 221
+  //····················································································································
+
+  fileprivate final func computeImplicitView_221 () -> NSView {
     let view = AutoLayoutHorizontalStackView ()
     do{
       let view_0 = AutoLayoutColorWell ()

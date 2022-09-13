@@ -118,6 +118,16 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       separator
       GridView2 {
         set (leftMargin: 20) set (rightMargin: 20)
+        addFirstBaseLineAligned (
+          left: PullDownButton (title: "Action", size : .small) {
+            add (item: menuItem "Paste Model Image" $run loadModelImageFromPasteboardAction $enabled !root.hasModelImage)
+            add (item: menuItem "Load DIL16 Embedded Model Image" $run loadDIL16ModelImageFromResourcesAction $enabled !root.hasModelImage)
+            add (item: menuItem "Copy Model Image" $run copyModelImageAction $enabled root.hasModelImage)
+            add (item: menuItem "Remove Model Image" $run removeModelImageAction $enabled root.hasModelImage)
+            add (item: menuItem "Reset Green and Brown Points" $run resetModelImagePointsAction $enabled root.hasModelImage)
+          },
+          right: Label (bold: no, size : .small) { $title root.modelImageSizeString }
+        )
         add (single: CanariDimensionUnitSetterPullDownButton (size : .small) {
            expandableWidth ()
            $hidden !root.hasModelImage
@@ -131,11 +141,11 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
           right: CanariDimensionAndPopUp (size : .small) { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageFirstPointX, root.mDimensionUnitFirstModelPointX }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .center) { $hidden !root.hasModelImage },
+          left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right) { $hidden !root.hasModelImage },
           right: CanariDimensionAndPopUp (size : .small) { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageFirstPointY, root.mDimensionUnitFirstModelPointY }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "∆X", bold: no, size : .small, alignment: .center) { $hidden !root.hasModelImage },
+          left: StaticLabel (title: "∆X", bold: no, size : .small, alignment: .right) { $hidden !root.hasModelImage },
           right: CanariDimensionAndPopUp (size : .small) { $hidden !root.hasModelImage $dimensionAndUnit root.mModelImageSecondPointDx, root.mDimensionUnitSecondModelPointDx }
         )
         addFirstBaseLineAligned (
@@ -147,15 +157,14 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
           right: CanariObservedDimensionAndPopUp (size : .small) { $hidden !root.hasModelImage $dimensionAndUnit root.secondPointX, root.mModelImageSecondPointXUnit }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .center) { $hidden !root.hasModelImage },
+          left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right) { $hidden !root.hasModelImage },
           right: CanariObservedDimensionAndPopUp (size : .small) { $hidden !root.hasModelImage $dimensionAndUnit root.secondPointY, root.mModelImageSecondPointYUnit }
         )
         addFirstBaseLineAligned (
-          left: StaticLabel (title: "PointSize", bold: no, size : .small, alignment: .center) { $hidden !root.hasModelImage },
+          left: StaticLabel (title: "PointSize", bold: no, size : .small, alignment: .right) { $hidden !root.hasModelImage },
           right: LinearSlider (min:1, max:61, ticks: 19) {
             $intValue root.mModelPointsCircleRadius (sendContinously : yes)
             $hidden !root.hasModelImage
-  //          $enabled root.hasModelImage
           }
         )
         add (single:
