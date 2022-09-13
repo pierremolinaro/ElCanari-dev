@@ -1773,6 +1773,7 @@ import Cocoa
       .bind_xPlacardUnit (self.rootObject.mBoardLimitsGridStepUnit_property)
       .bind_yPlacardUnit (self.rootObject.mBoardLimitsGridStepUnit_property)
       .bind_graphic_controller (self.boardCurveObjectsController)
+    self.configure_boardOutlineView (view_2) // Configurator
     _ = hStackView.appendView (view_2)
     return hStackView
   } ()
@@ -1886,18 +1887,13 @@ import Cocoa
 
   lazy final var mBoardBezierPathOutlineView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
-    let view_0 = AutoLayoutHorizontalStackView ()
-      .bind_hidden (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .ne, .literalInt (0)))
-    do{
-      let view_0_0 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutStaticLabel (title: "No Selected Board Limit Element", bold: true, size: .small, alignment: .center)
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_2)
-    }
+    let view_0 = AutoLayoutLabel (bold: true, size: .small)
+      .bind_title (self.rootObject.borderElementCountString_property)
     _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutGridView2 ()
+    let view_1 = AutoLayoutStaticLabel (title: "For editing Board limits, click on a line, use contextual click on a line.", bold: false, size: .small, alignment: .center)
+      .expandableHeight ()
+    _ = vStackView.appendView (view_1)
+    let view_2 = AutoLayoutGridView2 ()
       .add (single: self.computeImplicitView_77 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_78 (), right: self.computeImplicitView_79 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_80 (), right: self.computeImplicitView_81 ())
@@ -1907,7 +1903,7 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_88 (), right: self.computeImplicitView_89 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_90 (), right: self.computeImplicitView_91 ())
       .bind_hidden (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)))
-    _ = vStackView.appendView (view_1)
+    _ = vStackView.appendView (view_2)
     return vStackView
   } ()
 
@@ -3368,7 +3364,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_54 () -> NSView {
-    let view = AutoLayoutDoubleField (minWidth: 64, size: .small)
+    let view = AutoLayoutDoubleField (width: 64, size: .small)
       .bind_value (self.commentInSchematicSelectionController.mSize_property, sendContinously:true)
     return view
   }
@@ -3647,7 +3643,7 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
       .setFirstBaselineAlignment ()
     do{
-      let view_0 = AutoLayoutStaticLabel (title: "X", bold: false, size: .small, alignment: .center)
+      let view_0 = AutoLayoutStaticLabel (title: "X", bold: false, size: .small, alignment: .left)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutCanariDimensionField (size: .small)
         .bind_dimensionAndUnit (self.boardCurveSelectionController.mX_property, self.rootObject.mBoardSelectedCurveDisplayUnit_property)
@@ -3664,7 +3660,7 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
       .setFirstBaselineAlignment ()
     do{
-      let view_0 = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+      let view_0 = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .left)
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutCanariDimensionField (size: .small)
         .bind_dimensionAndUnit (self.boardCurveSelectionController.mY_property, self.rootObject.mBoardSelectedCurveDisplayUnit_property)
@@ -3681,12 +3677,10 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
       .setFirstBaselineAlignment ()
     do{
-      let view_0 = AutoLayoutStaticLabel (title: "X", bold: false, size: .small, alignment: .center)
+      let view_0 = AutoLayoutStaticLabel (title: "X", bold: false, size: .small, alignment: .left)
       _ = view.appendView (view_0)
-      let view_1 = AutoLayoutLabel (bold: true, size: .small)
-        .set (minWidth: 80)
-        .set (alignment: .center)
-        .bind_title (self.boardCurveSelectionController.p2Xstring_property)
+      let view_1 = AutoLayoutDoubleObserverField (width: 72, bold: true, size: .small)
+        .bind_observedValue (self.boardCurveSelectionController.p2Xvalue_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -3700,12 +3694,10 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
       .setFirstBaselineAlignment ()
     do{
-      let view_0 = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+      let view_0 = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .left)
       _ = view.appendView (view_0)
-      let view_1 = AutoLayoutLabel (bold: true, size: .small)
-        .set (minWidth: 80)
-        .set (alignment: .center)
-        .bind_title (self.boardCurveSelectionController.p2Ystring_property)
+      let view_1 = AutoLayoutDoubleObserverField (width: 72, bold: true, size: .small)
+        .bind_observedValue (self.boardCurveSelectionController.p2Yvalue_property)
       _ = view.appendView (view_1)
     }
     return view
@@ -3740,7 +3732,7 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
       .setFirstBaselineAlignment ()
     do{
-      let view_0 = AutoLayoutStaticLabel (title: "X", bold: false, size: .small, alignment: .center)
+      let view_0 = AutoLayoutStaticLabel (title: "X", bold: false, size: .small, alignment: .left)
         .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutCanariDimensionField (size: .small)
@@ -3759,7 +3751,7 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
       .setFirstBaselineAlignment ()
     do{
-      let view_0 = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+      let view_0 = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .left)
         .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutCanariDimensionField (size: .small)
@@ -3778,7 +3770,7 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
       .setFirstBaselineAlignment ()
     do{
-      let view_0 = AutoLayoutStaticLabel (title: "X", bold: false, size: .small, alignment: .center)
+      let view_0 = AutoLayoutStaticLabel (title: "X", bold: false, size: .small, alignment: .left)
         .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutCanariDimensionField (size: .small)
@@ -3797,7 +3789,7 @@ import Cocoa
     let view = AutoLayoutHorizontalStackView ()
       .setFirstBaselineAlignment ()
     do{
-      let view_0 = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .center)
+      let view_0 = AutoLayoutStaticLabel (title: "Y", bold: false, size: .small, alignment: .left)
         .bind_hidden (.prop (self.boardCurveSelectionController.isLine_property))
       _ = view.appendView (view_0)
       let view_1 = AutoLayoutCanariDimensionField (size: .small)
@@ -5798,7 +5790,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_256 () -> NSView {
-    let view = AutoLayoutDoubleField (minWidth: 64, size: .small)
+    let view = AutoLayoutDoubleField (width: 64, size: .small)
       .bind_value (self.boardTextSelectionController.mFontSize_property, sendContinously:true)
     return view
   }
@@ -5817,7 +5809,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_258 () -> NSView {
-    let view = AutoLayoutDoubleField (minWidth: 64, size: .small)
+    let view = AutoLayoutDoubleField (width: 64, size: .small)
       .bind_value (self.boardTextSelectionController.mWeight_property, sendContinously:true)
     return view
   }
@@ -5981,7 +5973,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_275 () -> NSView {
-    let view = AutoLayoutDoubleField (minWidth: 64, size: .small)
+    let view = AutoLayoutDoubleField (width: 64, size: .small)
       .bind_value (self.componentInBoardSelectionController.mNameFontSize_property, sendContinously:false)
     return view
   }
@@ -6218,7 +6210,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_299 () -> NSView {
-    let view = AutoLayoutDoubleField (minWidth: 64, size: .small)
+    let view = AutoLayoutDoubleField (width: 64, size: .small)
       .bind_value (self.componentInBoardSelectionController.mValueFontSize_property, sendContinously:false)
     return view
   }

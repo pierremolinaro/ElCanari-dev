@@ -36,7 +36,7 @@ import Cocoa
           )
           bp.appendRect (r.cocoaRect)
         case .bezierPathes :
-          if self_mBorderCurves_descriptor.count == 4 {
+//          if self_mBorderCurves_descriptor.count == 4 {
             var curveDictionary = [CanariPoint : BorderCurveDescriptor] ()
             for curve in self_mBorderCurves_descriptor {
               let descriptor = curve.descriptor!
@@ -58,7 +58,7 @@ import Cocoa
               descriptor = curveDictionary [descriptor.p2]!
               loop = p != descriptor.p1
             }
-          }
+//          }
         }
         bp.lineCapStyle = .round
         bp.lineJoinStyle = .round

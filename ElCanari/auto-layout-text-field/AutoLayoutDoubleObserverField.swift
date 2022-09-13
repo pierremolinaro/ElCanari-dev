@@ -1,18 +1,18 @@
 //
-//  AutoLayoutIntObserverField.swift
+//  AutoLayoutDoubleObserverField.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 15/06/2021.
+//  Created by Pierre Molinaro on 13/09/2022.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   AutoLayoutIntObserverField
+//   AutoLayoutDoubleObserverField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutIntObserverField : AutoLayoutBase_NSTextField {
+final class AutoLayoutDoubleObserverField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
@@ -20,23 +20,19 @@ final class AutoLayoutIntObserverField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  init (bold inBold : Bool, size inSize : EBControlSize) {
-    super.init (optionalWidth: nil, bold: inBold, size: inSize)
+  init (width inWidth : Int, bold inBold : Bool, size inSize : EBControlSize) {
+    super.init (optionalWidth: inWidth, bold: inBold, size: inSize)
 
-//    self.controlSize = inSize.cocoaControlSize
-//    let s = NSFont.systemFontSize (for: self.controlSize)
-//    self.font = inBold ? NSFont.boldSystemFont (ofSize: s) : NSFont.systemFont (ofSize: s)
-//    self.alignment = .center
     self.isBezeled = false
     self.isBordered = false
     self.drawsBackground = false
     self.isEditable = false
-//--- Number formatter
+  //--- Number formatter
     self.mNumberFormatter.formatterBehavior = .behavior10_4
     self.mNumberFormatter.numberStyle = .decimal
     self.mNumberFormatter.localizesFormat = true
-    self.mNumberFormatter.minimumFractionDigits = 0
-    self.mNumberFormatter.maximumFractionDigits = 0
+    self.mNumberFormatter.minimumFractionDigits = 2
+    self.mNumberFormatter.maximumFractionDigits = 2
     self.mNumberFormatter.isLenient = true
     self.formatter = self.mNumberFormatter
   }
@@ -48,42 +44,39 @@ final class AutoLayoutIntObserverField : AutoLayoutBase_NSTextField {
   }
 
   //····················································································································
-
-  final func set (format inFormatString : String) -> Self {
-    self.mNumberFormatter.format = inFormatString
-    return self
-  }
-
-  //····················································································································
-  //  observedValue binding
+  //MARK:  $value binding
   //····················································································································
 
-  private var mController : EBObservablePropertyController? = nil
+  private var mValueController : EBObservablePropertyController? = nil
 
   //····················································································································
 
-  final func bind_observedValue (_ inObject : EBReadOnlyProperty_Int) -> Self {
-    self.mController = EBObservablePropertyController (
+  final func bind_observedValue (_ inObject : EBReadOnlyProperty_Double) -> Self {
+    self.mValueController = EBObservablePropertyController (
       observedObjects: [inObject],
-      callBack:  { [weak self] in self?.update (from: inObject) }
+      callBack: { [weak self] in self?.update (from: inObject) }
     )
     return self
   }
 
   //····················································································································
 
-  private func update (from model : EBReadOnlyProperty_Int) {
-    switch model.selection {
+  private func update (from inObject : EBReadOnlyProperty_Double) {
+    let selection = inObject.selection // TOUJOURS lire la sélection
+    switch selection {
     case .empty :
+//        Swift.print ("updateOutlet, empty")
       self.enable (fromValueBinding: false, self.enabledBindingController)
-      self.placeholderString = "—"
+      self.placeholderString = "No Selection"
       self.stringValue = ""
     case .single (let v) :
+//        Swift.print ("updateOutlet, single \(v)")
       self.enable (fromValueBinding: true, self.enabledBindingController)
       self.placeholderString = nil
-      self.intValue = Int32 (v)
+      self.doubleValue = CGFloat (v)
     case .multiple :
-      self.enable (fromValueBinding: false, self.enabledBindingController)
+//        Swift.print ("multiple, empty")
+      self.enable (fromValueBinding: true, self.enabledBindingController)
       self.placeholderString = "Multiple Selection"
       self.stringValue = ""
     }

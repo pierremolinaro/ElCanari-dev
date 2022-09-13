@@ -95,16 +95,16 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   var objectDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
-  //   Selection observable property: p2Xstring
+  //   Selection observable property: p2Xvalue
   //····················································································································
 
-  var p2Xstring_property = EBTransientProperty_String ()
+  var p2Xvalue_property = EBTransientProperty_Double ()
 
   //····················································································································
-  //   Selection observable property: p2Ystring
+  //   Selection observable property: p2Yvalue
   //····················································································································
 
-  var p2Ystring_property = EBTransientProperty_String ()
+  var p2Yvalue_property = EBTransientProperty_Double ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
@@ -134,8 +134,8 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
     self.bind_property_mX (model: model)
     self.bind_property_mY (model: model)
     self.bind_property_objectDisplay (model: model)
-    self.bind_property_p2Xstring (model: model)
-    self.bind_property_p2Ystring (model: model)
+    self.bind_property_p2Xvalue (model: model)
+    self.bind_property_p2Yvalue (model: model)
     self.bind_property_selectionDisplay (model: model)
   }
 
@@ -189,12 +189,12 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
-  //--- p2Xstring
-    self.p2Xstring_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_p2Xstring (self.p2Xstring_property)
-  //--- p2Ystring
-    self.p2Ystring_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_p2Ystring (self.p2Ystring_property)
+  //--- p2Xvalue
+    self.p2Xvalue_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_p2Xvalue (self.p2Xvalue_property)
+  //--- p2Yvalue
+    self.p2Yvalue_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_p2Yvalue (self.p2Yvalue_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
@@ -792,9 +792,9 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
 
   //···················································································································*
 
-  private final func bind_property_p2Xstring (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_p2Xstring (self.p2Xstring_property)
-    self.p2Xstring_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_p2Xvalue (model : ReadOnlyArrayOf_BorderCurve) {
+    model.addEBObserverOf_p2Xvalue (self.p2Xvalue_property)
+    self.p2Xvalue_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
         case .empty :
@@ -802,10 +802,10 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <String> ()
+          var s = Set <Double> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.p2Xstring_property.selection {
+            switch object.p2Xvalue_property.selection {
             case .empty :
               return .empty
             case .multiple :
@@ -832,9 +832,9 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
 
   //···················································································································*
 
-  private final func bind_property_p2Ystring (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_p2Ystring (self.p2Ystring_property)
-    self.p2Ystring_property.mReadModelFunction = { [weak self] in
+  private final func bind_property_p2Yvalue (model : ReadOnlyArrayOf_BorderCurve) {
+    model.addEBObserverOf_p2Yvalue (self.p2Yvalue_property)
+    self.p2Yvalue_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
         case .empty :
@@ -842,10 +842,10 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <String> ()
+          var s = Set <Double> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.p2Ystring_property.selection {
+            switch object.p2Yvalue_property.selection {
             case .empty :
               return .empty
             case .multiple :

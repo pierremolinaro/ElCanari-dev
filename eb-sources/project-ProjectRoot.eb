@@ -131,7 +131,7 @@ handlingOpposite entity ProjectRoot {
   property Int mBoardClearance default 90_000 ; // 1 mm
   property Int mBoardClearanceUnit default 90_000 ; // mm
 
-  property Int mBoardLimitsSelectedInspector default 1 ;
+  property Int mBoardLimitsSelectedInspector default 0 ;
   property Bool mBoardLimitsHorizontalFlip default no ;
   property Bool mBoardLimitsVerticalFlip default no ;
   property GridStyle mBoardLimitsGridStyle default line ;

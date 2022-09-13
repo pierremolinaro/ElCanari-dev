@@ -52,8 +52,8 @@ graphic handlingOpposite entity BorderCurve {
   property proxy Int mNextX : mNext.mX ;
   property proxy Int mNextY : mNext.mY ;
   
-  transient String p2Xstring dependsFrom self.mNext.one.mX, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
-  transient String p2Ystring dependsFrom self.mNext.one.mY, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+  transient Double p2Xvalue dependsFrom self.mNext.one.mX, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
+  transient Double p2Yvalue dependsFrom self.mNext.one.mY, self.mRoot.one.mBoardSelectedCurveDisplayUnit ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————

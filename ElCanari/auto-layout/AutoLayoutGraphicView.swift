@@ -91,22 +91,6 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
-//  fileprivate func buildHelperTextField () -> NSTextField {
-//    let tf = AutoLayoutLabel (bold: false, size: .small).set (minWidth: 200)
-////    tf.isBezeled = false
-////    tf.isBordered = false
-////    tf.drawsBackground = false
-////    tf.textColor = .black
-////    tf.isEnabled = true
-////    tf.isEditable = false
-////    tf.alignment = .left
-////    tf.controlSize = .small
-////    tf.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: tf.controlSize))
-//    return tf
-//  }
-
-  //····················································································································
-
   fileprivate func buildZoomToFitButton () -> AutoLayoutBase_NSButton {
     let button = AutoLayoutBase_NSButton (title: "Zoom to Fit", size: .small)
     button.target = self

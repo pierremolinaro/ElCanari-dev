@@ -24,8 +24,8 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
       self.removeEBObserversOf_mCPX2_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mCPY2_fromElementsOfSet (inRemovedSet) // Stored property
       self.removeEBObserversOf_mShape_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_p2Xstring_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_p2Ystring_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_p2Xvalue_fromElementsOfSet (inRemovedSet) // Transient property
+      self.removeEBObserversOf_p2Yvalue_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_descriptor_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
       self.removeEBObserversOf_isLine_fromElementsOfSet (inRemovedSet) // Transient property
@@ -40,8 +40,8 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
       self.addEBObserversOf_mCPX2_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mCPY2_toElementsOfSet (inAddedSet) // Stored property
       self.addEBObserversOf_mShape_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_p2Xstring_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_p2Ystring_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_p2Xvalue_toElementsOfSet (inAddedSet) // Transient property
+      self.addEBObserversOf_p2Yvalue_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_descriptor_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
       self.addEBObserversOf_isLine_toElementsOfSet (inAddedSet) // Transient property
@@ -649,50 +649,50 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   }
 
   //····················································································································
-  //   Observers of 'p2Xstring' transient property
+  //   Observers of 'p2Xvalue' transient property
   //····················································································································
 
-  private final var mObserversOf_p2Xstring = EBWeakEventSet ()
+  private final var mObserversOf_p2Xvalue = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_p2Xstring (_ inObserver : EBObserverProtocol) {
+  final func addEBObserverOf_p2Xvalue (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_p2Xstring.insert (inObserver)
+    self.mObserversOf_p2Xvalue.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.p2Xstring_property.addEBObserver (inObserver)
+        managedObject.p2Xvalue_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_p2Xstring (_ inObserver : EBObserverProtocol) {
+  final func removeEBObserverOf_p2Xvalue (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_p2Xstring.remove (inObserver)
+    self.mObserversOf_p2Xvalue.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.p2Xstring_property.removeEBObserver (inObserver)
+        managedObject.p2Xvalue_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_p2Xstring_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+  final func addEBObserversOf_p2Xvalue_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_p2Xstring.dictionary {
+      for (_, entry) in self.mObserversOf_p2Xvalue.dictionary {
         if let observer = entry.observer {
-          managedObject.p2Xstring_property.addEBObserver (observer)
+          managedObject.p2Xvalue_property.addEBObserver (observer)
         }else{
-          self.mObserversOf_p2Xstring.triggerPacking ()
+          self.mObserversOf_p2Xvalue.triggerPacking ()
         }
       }
     }
@@ -700,63 +700,63 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   //····················································································································
 
-  final func removeEBObserversOf_p2Xstring_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+  final func removeEBObserversOf_p2Xvalue_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_p2Xstring.dictionary {
+      for (_, entry) in self.mObserversOf_p2Xvalue.dictionary {
         if let observer = entry.observer {
-          managedObject.p2Xstring_property.removeEBObserver (observer)
+          managedObject.p2Xvalue_property.removeEBObserver (observer)
         }else{
-          self.mObserversOf_p2Xstring.triggerPacking ()
+          self.mObserversOf_p2Xvalue.triggerPacking ()
         }
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'p2Ystring' transient property
+  //   Observers of 'p2Yvalue' transient property
   //····················································································································
 
-  private final var mObserversOf_p2Ystring = EBWeakEventSet ()
+  private final var mObserversOf_p2Yvalue = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_p2Ystring (_ inObserver : EBObserverProtocol) {
+  final func addEBObserverOf_p2Yvalue (_ inObserver : EBObserverProtocol) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_p2Ystring.insert (inObserver)
+    self.mObserversOf_p2Yvalue.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.p2Ystring_property.addEBObserver (inObserver)
+        managedObject.p2Yvalue_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_p2Ystring (_ inObserver : EBObserverProtocol) {
+  final func removeEBObserverOf_p2Yvalue (_ inObserver : EBObserverProtocol) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_p2Ystring.remove (inObserver)
+    self.mObserversOf_p2Yvalue.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.p2Ystring_property.removeEBObserver (inObserver)
+        managedObject.p2Yvalue_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_p2Ystring_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+  final func addEBObserversOf_p2Yvalue_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_p2Ystring.dictionary {
+      for (_, entry) in self.mObserversOf_p2Yvalue.dictionary {
         if let observer = entry.observer {
-          managedObject.p2Ystring_property.addEBObserver (observer)
+          managedObject.p2Yvalue_property.addEBObserver (observer)
         }else{
-          self.mObserversOf_p2Ystring.triggerPacking ()
+          self.mObserversOf_p2Yvalue.triggerPacking ()
         }
       }
     }
@@ -764,13 +764,13 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   //····················································································································
 
-  final func removeEBObserversOf_p2Ystring_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+  final func removeEBObserversOf_p2Yvalue_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_p2Ystring.dictionary {
+      for (_, entry) in self.mObserversOf_p2Yvalue.dictionary {
         if let observer = entry.observer {
-          managedObject.p2Ystring_property.removeEBObserver (observer)
+          managedObject.p2Yvalue_property.removeEBObserver (observer)
         }else{
-          self.mObserversOf_p2Ystring.triggerPacking ()
+          self.mObserversOf_p2Yvalue.triggerPacking ()
         }
       }
     }

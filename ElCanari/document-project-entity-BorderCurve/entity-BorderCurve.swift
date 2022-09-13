@@ -60,14 +60,14 @@ protocol BorderCurve_mNextY : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BorderCurve_p2Xstring : AnyObject {
-  var p2Xstring : String? { get }
+protocol BorderCurve_p2Xvalue : AnyObject {
+  var p2Xvalue : Double? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BorderCurve_p2Ystring : AnyObject {
-  var p2Ystring : String? { get }
+protocol BorderCurve_p2Yvalue : AnyObject {
+  var p2Yvalue : Double? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -108,8 +108,8 @@ final class BorderCurve : EBGraphicManagedObject,
          BorderCurve_mShape,
          BorderCurve_mNextX,
          BorderCurve_mNextY,
-         BorderCurve_p2Xstring,
-         BorderCurve_p2Ystring,
+         BorderCurve_p2Xvalue,
+         BorderCurve_p2Yvalue,
          BorderCurve_descriptor,
          BorderCurve_objectDisplay,
          BorderCurve_isLine,
@@ -381,15 +381,15 @@ final class BorderCurve : EBGraphicManagedObject,
   final let mPrevious_none = EBGenericTransientProperty <Bool> ()
 
   //····················································································································
-  //   Transient property: p2Xstring
+  //   Transient property: p2Xvalue
   //····················································································································
 
-  final let p2Xstring_property = EBTransientProperty_String ()
+  final let p2Xvalue_property = EBTransientProperty_Double ()
 
   //····················································································································
 
-  final var p2Xstring : String? {
-    switch self.p2Xstring_property.selection {
+  final var p2Xvalue : Double? {
+    switch self.p2Xvalue_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -398,15 +398,15 @@ final class BorderCurve : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //   Transient property: p2Ystring
+  //   Transient property: p2Yvalue
   //····················································································································
 
-  final let p2Ystring_property = EBTransientProperty_String ()
+  final let p2Yvalue_property = EBTransientProperty_Double ()
 
   //····················································································································
 
-  final var p2Ystring : String? {
-    switch self.p2Ystring_property.selection {
+  final var p2Yvalue : Double? {
+    switch self.p2Yvalue_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -550,15 +550,15 @@ final class BorderCurve : EBGraphicManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.mNext_property.setProp (me) } },
       resetter: { inObject in inObject.mNext_property.setProp (nil) }
     )
-  //--- Atomic property: p2Xstring
-    self.p2Xstring_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: p2Xvalue
+    self.p2Xvalue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let s0 = unwSelf.mNext_property.mX_property.selection
         let s1 = unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property.selection
         switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
-          return .single (transient_BorderCurve_p2Xstring (v0, v1))
+          return .single (transient_BorderCurve_p2Xvalue (v0, v1))
         case (.multiple,
               .multiple) :
           return .multiple
@@ -569,17 +569,17 @@ final class BorderCurve : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mNext_property.mX_property.addEBObserver (self.p2Xstring_property)
-    self.mRoot_property.mBoardSelectedCurveDisplayUnit_property.addEBObserver (self.p2Xstring_property)
-  //--- Atomic property: p2Ystring
-    self.p2Ystring_property.mReadModelFunction = { [weak self] in
+    self.mNext_property.mX_property.addEBObserver (self.p2Xvalue_property)
+    self.mRoot_property.mBoardSelectedCurveDisplayUnit_property.addEBObserver (self.p2Xvalue_property)
+  //--- Atomic property: p2Yvalue
+    self.p2Yvalue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let s0 = unwSelf.mNext_property.mY_property.selection
         let s1 = unwSelf.mRoot_property.mBoardSelectedCurveDisplayUnit_property.selection
         switch (s0, s1) {
         case (.single (let v0),
               .single (let v1)) :
-          return .single (transient_BorderCurve_p2Ystring (v0, v1))
+          return .single (transient_BorderCurve_p2Yvalue (v0, v1))
         case (.multiple,
               .multiple) :
           return .multiple
@@ -590,8 +590,8 @@ final class BorderCurve : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mNext_property.mY_property.addEBObserver (self.p2Ystring_property)
-    self.mRoot_property.mBoardSelectedCurveDisplayUnit_property.addEBObserver (self.p2Ystring_property)
+    self.mNext_property.mY_property.addEBObserver (self.p2Yvalue_property)
+    self.mRoot_property.mBoardSelectedCurveDisplayUnit_property.addEBObserver (self.p2Yvalue_property)
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

@@ -13,16 +13,16 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_BorderCurve_p2Xstring (
-       _ self_mNext_mX : Int?,                   
+@MainActor func transient_BorderCurve_p2Yvalue (
+       _ self_mNext_mY : Int?,                  
        _ self_mRoot_mBoardSelectedCurveDisplayUnit : Int?
-) -> String {
+) -> Double {
 //--- START OF USER ZONE 2
-        if let x = self_mNext_mX, let unit = self_mRoot_mBoardSelectedCurveDisplayUnit {
-          return stringFrom (valueInCanariUnit: x, displayUnit: unit)
-        }else{
-          return "???"
-        }
+       if let y = self_mNext_mY, let unit = self_mRoot_mBoardSelectedCurveDisplayUnit {
+         return Double (y) / Double (unit)
+       }else{
+        return 0.0
+       }
 //--- END OF USER ZONE 2
 }
 

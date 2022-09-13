@@ -262,7 +262,7 @@ import Cocoa
         .expandableWidth ()
         .bind_value (preferences_sampleString_property, sendContinously:true)
       _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutDoubleField (minWidth: 60, size: .small)
+      let view_0_1 = AutoLayoutDoubleField (width: 60, size: .small)
         .bind_value (preferences_sampleStringSize_property, sendContinously:true)
       _ = view_0.appendView (view_0_1)
     }
@@ -398,7 +398,7 @@ import Cocoa
       let view_3_0 = AutoLayoutDoubleSlider (width: -1, min: 0, max: 1, ticks: 11)
         .bind_value (preferences_fontEditionTransparency_property)
       _ = view_3.appendView (view_3_0)
-      let view_3_1 = AutoLayoutDoubleField (minWidth: 56, size: .small)
+      let view_3_1 = AutoLayoutDoubleField (width: 56, size: .small)
         .bind_value (preferences_fontEditionTransparency_property, sendContinously:false)
       _ = view_3.appendView (view_3_1)
     }
@@ -559,7 +559,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_1 () -> NSView {
-    let view = AutoLayoutDoubleField (minWidth: 64, size: .small)
+    let view = AutoLayoutDoubleField (width: 64, size: .small)
       .bind_value (preferences_sampleStringSize_property, sendContinously:true)
     return view
   }

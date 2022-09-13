@@ -246,9 +246,16 @@ extern autolayout class IntObserverField (bold: Bool, size: EBControlSize) $enab
   $observedValue transient Int
 }
 
-extern autolayout class DoubleField (minWidth: Int, size: EBControlSize) $enabled {
+extern autolayout class DoubleField (width: Int, size: EBControlSize) $enabled {
   $value property Double (sendContinously: Bool)
 }
+
+extern autolayout class DoubleObserverField (width: Int, bold: Bool, size: EBControlSize) $enabled $hidden {
+//  func set (alignment: TextAlignment)
+  func expandableWidth ()
+  $observedValue transient Double
+}
+
 
 extern autolayout class ColorWell {
   func expandableHeight ()

@@ -23,8 +23,8 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
       oldValue.mCPX2_property.removeEBObserver (self.mCPX2_property) // Stored property
       oldValue.mCPY2_property.removeEBObserver (self.mCPY2_property) // Stored property
       oldValue.mShape_property.removeEBObserver (self.mShape_property) // Stored property
-      oldValue.p2Xstring_property.removeEBObserver (self.p2Xstring_property) // Transient property
-      oldValue.p2Ystring_property.removeEBObserver (self.p2Ystring_property) // Transient property
+      oldValue.p2Xvalue_property.removeEBObserver (self.p2Xvalue_property) // Transient property
+      oldValue.p2Yvalue_property.removeEBObserver (self.p2Yvalue_property) // Transient property
       oldValue.descriptor_property.removeEBObserver (self.descriptor_property) // Transient property
       oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
       oldValue.isLine_property.removeEBObserver (self.isLine_property) // Transient property
@@ -39,8 +39,8 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
       newValue.mCPX2_property.addEBObserver (self.mCPX2_property) // Stored property
       newValue.mCPY2_property.addEBObserver (self.mCPY2_property) // Stored property
       newValue.mShape_property.addEBObserver (self.mShape_property) // Stored property
-      newValue.p2Xstring_property.addEBObserver (self.p2Xstring_property) // Transient property
-      newValue.p2Ystring_property.addEBObserver (self.p2Ystring_property) // Transient property
+      newValue.p2Xvalue_property.addEBObserver (self.p2Xvalue_property) // Transient property
+      newValue.p2Yvalue_property.addEBObserver (self.p2Yvalue_property) // Transient property
       newValue.descriptor_property.addEBObserver (self.descriptor_property) // Transient property
       newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
       newValue.isLine_property.addEBObserver (self.isLine_property) // Transient property
@@ -91,16 +91,16 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
   final let mShape_property = EBGenericTransientProperty <BorderCurveShape?> ()
 
   //····················································································································
-  //   Observers of 'p2Xstring' transient property
+  //   Observers of 'p2Xvalue' transient property
   //····················································································································
 
-  final let p2Xstring_property = EBGenericTransientProperty <String?> ()
+  final let p2Xvalue_property = EBGenericTransientProperty <Double?> ()
 
   //····················································································································
-  //   Observers of 'p2Ystring' transient property
+  //   Observers of 'p2Yvalue' transient property
   //····················································································································
 
-  final let p2Ystring_property = EBGenericTransientProperty <String?> ()
+  final let p2Yvalue_property = EBGenericTransientProperty <Double?> ()
 
   //····················································································································
   //   Observers of 'descriptor' transient property
@@ -237,10 +237,10 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
         return .single (nil)
       }
     }
-  //--- Configure p2Xstring transient property
-    self.p2Xstring_property.mReadModelFunction = { [weak self] in
+  //--- Configure p2Xvalue transient property
+    self.p2Xvalue_property.mReadModelFunction = { [weak self] in
       if let model = self?.mWeakInternalValue {
-        switch model.p2Xstring_property.selection {
+        switch model.p2Xvalue_property.selection {
         case .empty :
           return .empty
         case .multiple :
@@ -252,10 +252,10 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
         return .single (nil)
       }
     }
-  //--- Configure p2Ystring transient property
-    self.p2Ystring_property.mReadModelFunction = { [weak self] in
+  //--- Configure p2Yvalue transient property
+    self.p2Yvalue_property.mReadModelFunction = { [weak self] in
       if let model = self?.mWeakInternalValue {
-        switch model.p2Ystring_property.selection {
+        switch model.p2Yvalue_property.selection {
         case .empty :
           return .empty
         case .multiple :

@@ -13,17 +13,23 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func transient_BorderCurve_p2Ystring (
-       _ self_mNext_mY : Int?,                   
-       _ self_mRoot_mBoardSelectedCurveDisplayUnit : Int?
-) -> String {
+import Cocoa
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension AutoLayoutProjectDocument {
+  final func configure_boardOutlineView (_ inOutlet : AutoLayoutGraphicView) {
 //--- START OF USER ZONE 2
-        if let y = self_mNext_mY, let unit = self_mRoot_mBoardSelectedCurveDisplayUnit {
-          return stringFrom (valueInCanariUnit: y, displayUnit: unit)
-        }else{
-          return "???"
-        }
+  //--- Set Board limits inspector segmented control
+//    let boardLimitsInspectors = [
+//      self.mSelectedObjectsBoardLimitsInspectorView,
+//      self.mGridZoomBoardLimitsInspectorView,
+//      self.mOperationBoardLimitsInspectorView
+//    ]
+//    self.mBoardLimitsInspectorSegmentedControl?.register (masterView: self.mBaseBoardLimitsInspectorView, boardLimitsInspectors)
+    inOutlet.mGraphicView.mContextualMenuBuilder = { [weak self] in self?.populateContextualClickOnBoardLimits ($0) }
 //--- END OF USER ZONE 2
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

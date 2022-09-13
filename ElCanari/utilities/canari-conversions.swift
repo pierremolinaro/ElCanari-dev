@@ -168,19 +168,40 @@ func stringFrom (valueInCocoaUnit : CGFloat, displayUnit : Int) -> String {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func stringFrom (valueInCanariUnit : Int, displayUnit : Int) -> String {
+func stringFrom (valueInCanariUnit : Int, unit inUnit : Int) -> String {
   let value = CGFloat (valueInCanariUnit)
-  if displayUnit == 90 {
+  if inUnit == 90 {
+    return "\(Int (value / 90.0))"
+  }else if inUnit == 90_000 {
+    return String (format:"%.2f", value / 90_000.0)
+  }else if inUnit == 900_000 {
+    return String (format:"%.2f", value / 900_000.0)
+  }else if inUnit == 2_286_000 {
+    return String (format:"%.2f", value / 2_286_000.0)
+  }else if inUnit == 31_750 {
+    return String (format:"%.2f", value / 31_750.0)
+  }else if inUnit == 381_000 {
+    return String (format:"%.2f", value / 381_000.0)
+  }else{
+    return "\(Int (value / 2_286.0))"
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func stringFrom (valueInCanariUnit : Int, displayUnit inUnit : Int) -> String {
+  let value = CGFloat (valueInCanariUnit)
+  if inUnit == 90 {
     return "\(Int (value / 90.0)) µm"
-  }else if displayUnit == 90_000 {
+  }else if inUnit == 90_000 {
     return String (format:"%.2f mm", value / 90_000.0)
-  }else if displayUnit == 900_000 {
+  }else if inUnit == 900_000 {
     return String (format:"%.2f cm", value / 900_000.0)
-  }else if displayUnit == 2_286_000 {
+  }else if inUnit == 2_286_000 {
     return String (format:"%.2f in", value / 2_286_000.0)
-  }else if displayUnit == 31_750 {
+  }else if inUnit == 31_750 {
     return String (format:"%.2f pt", value / 31_750.0)
-  }else if displayUnit == 381_000 {
+  }else if inUnit == 381_000 {
     return String (format:"%.2f pc", value / 381_000.0)
   }else{
     return "\(Int (value / 2_286.0)) mil"
@@ -189,18 +210,18 @@ func stringFrom (valueInCanariUnit : Int, displayUnit : Int) -> String {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func stringFrom (displayUnit : Int) -> String {
-  if displayUnit == 90 {
+func stringFrom (displayUnit inUnit : Int) -> String {
+  if inUnit == 90 {
     return "µm"
-  }else if displayUnit == 90_000 {
+  }else if inUnit == 90_000 {
     return "mm"
-  }else if displayUnit == 900_000 {
+  }else if inUnit == 900_000 {
     return "cm"
-  }else if displayUnit == 2_286_000 {
+  }else if inUnit == 2_286_000 {
     return "in"
-  }else if displayUnit == 31_750 {
+  }else if inUnit == 31_750 {
     return "pt"
-  }else if displayUnit == 381_000 {
+  }else if inUnit == 381_000 {
     return "pc"
   }else{
     return "mil"

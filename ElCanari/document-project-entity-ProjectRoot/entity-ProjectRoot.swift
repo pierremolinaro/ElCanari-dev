@@ -1861,7 +1861,7 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final func reset_mBoardLimitsSelectedInspector_toDefaultValue () {
-    self.mBoardLimitsSelectedInspector = 1
+    self.mBoardLimitsSelectedInspector = 0
   }
 
   //····················································································································
@@ -4379,7 +4379,7 @@ final class ProjectRoot : EBManagedObject,
     self.mBoardLimitsWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
     self.mBoardClearance_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
     self.mBoardClearanceUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.mBoardLimitsSelectedInspector_property = EBStoredProperty_Int (defaultValue: 1, undoManager: ebUndoManager)
+    self.mBoardLimitsSelectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
     self.mBoardLimitsHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.mBoardLimitsVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
     self.mBoardLimitsGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: ebUndoManager)

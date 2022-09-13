@@ -811,7 +811,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       addSeparator ()
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
-        right: DoubleField (minWidth: 64, size: .small) { $value #commentInSchematicSelectionController.mSize (sendContinously:yes) }
+        right: DoubleField (width: 64, size: .small) { $value #commentInSchematicSelectionController.mSize (sendContinously:yes) }
       )
     }
     LinearSlider (min: 4, max: 20, ticks: 17) { setAllowsTickMarkValuesOnly () $doubleValue #commentInSchematicSelectionController.mSize (sendContinously:yes) }
@@ -899,7 +899,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       stackViewRef mBoardOutlineBaseView
     }
     separator
-    GraphicView (minZoom: 10, maxZoom: 20_000) {
+    GraphicView (minZoom: 10, maxZoom: 20_000) [configurator boardOutlineView]{
       $underObjectsDisplay root.borderViewBackground
       $horizontalFlip root.mBoardLimitsHorizontalFlip
       $verticalFlip root.mBoardLimitsVerticalFlip
@@ -1032,10 +1032,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   }
   
   stackView mBoardBezierPathOutlineView vStack {
-    hStack $hidden #boardCurveObjectsController.selectedArray.count != 0 {
-      space
-      StaticLabel (title: "No Selected Board Limit Element", bold: yes, size : .small, alignment: .center)
-      space
+    Label (bold: yes, size : .small) { $title root.borderElementCountString }
+    StaticLabel (title: "For editing Board limits, click on a line, use contextual click on a line.", 
+                 bold: no,
+                 size : .small,
+                 alignment: .center) {
+      expandableHeight ()
     }
     GridView2 {
       add (single: StaticLabel (title: "Selected Board Limit Element", bold: yes, size : .small, alignment: .center))
@@ -1053,13 +1055,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addFirstBaseLineAligned (
         left: hStack setFirstBaselineAlignment () {
-          StaticLabel (title: "X", bold: no, size : .small, alignment: .center)
+          StaticLabel (title: "X", bold: no, size : .small, alignment: .left)
           CanariDimensionField (size: .small) {
             $dimensionAndUnit #boardCurveSelectionController.mX, root.mBoardSelectedCurveDisplayUnit
           }
         },
         right: hStack setFirstBaselineAlignment () {
-          StaticLabel (title: "Y", bold: no, size : .small, alignment: .center)
+          StaticLabel (title: "Y", bold: no, size : .small, alignment: .left)
           CanariDimensionField (size: .small) {
             $dimensionAndUnit #boardCurveSelectionController.mY, root.mBoardSelectedCurveDisplayUnit
           }
@@ -1067,17 +1069,15 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addFirstBaseLineAligned (
         left: hStack setFirstBaselineAlignment () {
-          StaticLabel (title: "X", bold: no, size : .small, alignment: .center)
-          Label (bold: yes, size: .small) {
-            set (minWidth: 80) set (alignment: .center)
-            $title #boardCurveSelectionController.p2Xstring
+          StaticLabel (title: "X", bold: no, size : .small, alignment: .left)
+          DoubleObserverField (width: 72, bold: yes, size: .small) {
+            $observedValue #boardCurveSelectionController.p2Xvalue
           }
         },
         right: hStack setFirstBaselineAlignment () {
-          StaticLabel (title: "Y", bold: no, size : .small, alignment: .center)
-          Label (bold: yes, size: .small) {
-            set (minWidth: 80) set (alignment: .center)
-            $title #boardCurveSelectionController.p2Ystring
+          StaticLabel (title: "Y", bold: no, size : .small, alignment: .left)
+          DoubleObserverField (width: 72, bold: yes, size: .small) {
+            $observedValue #boardCurveSelectionController.p2Yvalue
           }
         }
       )
@@ -1092,7 +1092,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addFirstBaseLineAligned (
         left: hStack setFirstBaselineAlignment () {
-          StaticLabel (title: "X", bold: no, size : .small, alignment: .center) {
+          StaticLabel (title: "X", bold: no, size : .small, alignment: .left) {
             $hidden #boardCurveSelectionController.isLine
           }
           CanariDimensionField (size: .small) {
@@ -1101,7 +1101,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           }
         },
         right: hStack setFirstBaselineAlignment () {
-          StaticLabel (title: "Y", bold: no, size : .small, alignment: .center) {
+          StaticLabel (title: "Y", bold: no, size : .small, alignment: .left) {
             $hidden #boardCurveSelectionController.isLine
           }
           CanariDimensionField (size: .small) {
@@ -1112,7 +1112,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addFirstBaseLineAligned (
         left: hStack setFirstBaselineAlignment () {
-          StaticLabel (title: "X", bold: no, size : .small, alignment: .center) {
+          StaticLabel (title: "X", bold: no, size : .small, alignment: .left) {
             $hidden #boardCurveSelectionController.isLine
           }
           CanariDimensionField (size: .small) {
@@ -1121,7 +1121,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           }
         },
         right: hStack setFirstBaselineAlignment () {
-          StaticLabel (title: "Y", bold: no, size : .small, alignment: .center) {
+          StaticLabel (title: "Y", bold: no, size : .small, alignment: .left) {
             $hidden #boardCurveSelectionController.isLine
           }
           CanariDimensionField (size: .small) {
@@ -1838,13 +1838,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
-        right: DoubleField (minWidth: 64, size: .small) {
+        right: DoubleField (width: 64, size: .small) {
           $value #boardTextSelectionController.mFontSize (sendContinously: yes)
         }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Weight", bold: no, size: .small, alignment: .right),
-        right: DoubleField (minWidth: 64, size: .small) {
+        right: DoubleField (width: 64, size: .small) {
           $value #boardTextSelectionController.mWeight (sendContinously: yes)
         }
       )
@@ -1897,7 +1897,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
-        right: DoubleField (minWidth: 64, size: .small) {
+        right: DoubleField (width: 64, size: .small) {
           $value #componentInBoardSelectionController.mNameFontSize (sendContinously : no)
           // $enabled #componentInBoardSelectionController.mNameIsVisibleInBoard
         }
@@ -1967,7 +1967,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Size", bold: no, size: .small, alignment: .right),
-        right: DoubleField (minWidth: 64, size: .small) {
+        right: DoubleField (width: 64, size: .small) {
           $value #componentInBoardSelectionController.mValueFontSize (sendContinously : no)
          // $enabled #componentInBoardSelectionController.mValueIsVisibleInBoard
         }

@@ -28,7 +28,7 @@ final class AutoLayoutDoubleField : AutoLayoutBase_NSTextField {
 
   //····················································································································
 
-  init (minWidth inWidth : Int, size inSize : EBControlSize) {
+  init (width inWidth : Int, size inSize : EBControlSize) {
     super.init (optionalWidth: inWidth, bold: true, size: inSize)
   //--- Number formatter
     self.mNumberFormatter.formatterBehavior = .behavior10_4
