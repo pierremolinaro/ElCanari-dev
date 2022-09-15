@@ -24,6 +24,8 @@ class AutoLayoutBase_NSButton : NSButton {
     self.font = NSFont.systemFont (ofSize: NSFont.systemFontSize (for: self.controlSize))
     self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
 
+    self.lineBreakMode = .byTruncatingTail
+
     self.setContentCompressionResistancePriority (.required, for: .vertical)
     self.setContentHuggingPriority (.required, for: .vertical)
     self.setContentCompressionResistancePriority (.required, for: .horizontal)

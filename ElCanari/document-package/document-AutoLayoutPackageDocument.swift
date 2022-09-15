@@ -3293,7 +3293,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_209 () -> NSView {
-    let view = AutoLayoutFontButton (size: .small)
+    let view = AutoLayoutFontButton (width: 125, size: .small)
       .bind_fontValue (preferences_padNumberFont_property)
     return view
   }
@@ -3426,7 +3426,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_219 () -> NSView {
-    let view = AutoLayoutFontButton (size: .small)
+    let view = AutoLayoutFontButton (width: 125, size: .small)
       .bind_fontValue (preferences_dimensionFont_property)
     return view
   }

@@ -1005,7 +1005,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         }
       )
       add (single: StaticLabel (title: "Pad Font", bold: no, size : .small, alignment: .left) )
-      add (single: FontButton (size : .small) { $fontValue prefs.padNumberFont } )
+      add (single: FontButton (width: 125, size : .small) { $fontValue prefs.padNumberFont } )
       addCenterYAligned (
         left: StaticLabel (title: "Top Side Pads", bold: no, size : .small, alignment: .center),
         right: hStack setCenterYAlignment () {
@@ -1032,7 +1032,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.packageDimensionColor (sendContinously:no) } space }
       )
       add (single: StaticLabel (title: "Dimension Font", bold: no, size : .small, alignment: .left) )
-      add (single: FontButton (size : .small) {$fontValue prefs.dimensionFont})
+      add (single: FontButton (width: 125, size : .small) {$fontValue prefs.dimensionFont})
       addSeparator ()
       addCenterYAligned (
         left: StaticLabel (title: "Zone Color", bold: no, size : .small, alignment: .center),

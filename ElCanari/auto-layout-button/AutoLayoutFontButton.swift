@@ -16,10 +16,12 @@ final class AutoLayoutFontButton : AutoLayoutBase_NSButton {
   //····················································································································
 
   private var mFont : NSFont? = nil
+  private var mWidth : CGFloat
 
   //····················································································································
 
-  init (size inSize : EBControlSize) {
+  init (width inWidth : Int, size inSize : EBControlSize) {
+    self.mWidth = CGFloat (inWidth)
     super.init (title: "", size: inSize)
   }
 
@@ -37,14 +39,26 @@ final class AutoLayoutFontButton : AutoLayoutBase_NSButton {
   }
 
   //····················································································································
+  //  By Default, super.intrinsicContentSize.width is -1, meaning the text field is invisible
+  //  So we need to define intrinsicContentSize.width explicitly
+  //  super.intrinsicContentSize.height is valid (19.0 for small size, 22.0 for regular size, ...)-
+  //····················································································································
+
+  override var intrinsicContentSize : NSSize {
+    var s = super.intrinsicContentSize
+    s.width = self.mWidth
+    return s
+  }
+
+  //····················································································································
 
   func showFontManager () {
     if let font = self.mFont {
       let fontManager = NSFontManager.shared
       fontManager.setSelectedFont (font, isMultiple: false)
-      fontManager.orderFrontFontPanel (self)
       fontManager.target = self
       fontManager.action = #selector (Self.changeFont (_:))
+      fontManager.orderFrontFontPanel (self)
     }
   }
 
@@ -61,8 +75,9 @@ final class AutoLayoutFontButton : AutoLayoutBase_NSButton {
 
   func mySetFont (font : NSFont) {
     self.mFont = font
-    let newTitle = String (format:"%@ - %g pt.", font.displayName!, font.pointSize)
+    let newTitle = String (format:"%@ - %g pt.", font.displayName ?? "?", font.pointSize)
     self.title = newTitle
+    self.toolTip = newTitle
   }
 
   //····················································································································

@@ -1081,8 +1081,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_11 () -> NSView {
-    let view = AutoLayoutFontButton (size: .small)
-      .expandableWidth ()
+    let view = AutoLayoutFontButton (width: 125, size: .small)
       .bind_fontValue (preferences_mSymbolNameFontForDevice_property)
     return view
   }
@@ -1101,8 +1100,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_13 () -> NSView {
-    let view = AutoLayoutFontButton (size: .small)
-      .expandableWidth ()
+    let view = AutoLayoutFontButton (width: 125, size: .small)
       .bind_fontValue (preferences_mPinNameFontForDevice_property)
     return view
   }
@@ -1313,8 +1311,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_31 () -> NSView {
-    let view = AutoLayoutFontButton (size: .small)
-      .expandableWidth ()
+    let view = AutoLayoutFontButton (width: 125, size: .small)
       .bind_fontValue (preferences_mPadNumberFontForDevice_property)
     return view
   }
@@ -1333,8 +1330,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_33 () -> NSView {
-    let view = AutoLayoutFontButton (size: .small)
-      .expandableWidth ()
+    let view = AutoLayoutFontButton (width: 125, size: .small)
       .bind_fontValue (preferences_mPackageNameFontForDevice_property)
     return view
   }

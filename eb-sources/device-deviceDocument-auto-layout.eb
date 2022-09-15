@@ -184,9 +184,9 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
         }
       )
       add (single: StaticLabel (title: "Symbol Name Font", bold: no, size: .small, alignment: .left))
-      add (single: FontButton (size: .small) { expandableWidth () $fontValue prefs.mSymbolNameFontForDevice } )
+      add (single: FontButton (width: 125, size: .small) { $fontValue prefs.mSymbolNameFontForDevice } )
       add (single: StaticLabel (title: "Pin Name Font", bold: no, size: .small, alignment: .left) )
-      add (single: FontButton (size: .small) { expandableWidth () $fontValue prefs.mPinNameFontForDevice } )
+      add (single: FontButton (width: 125, size: .small) { $fontValue prefs.mPinNameFontForDevice } )
     }
   }
 
@@ -264,9 +264,9 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
         right: hStack { ColorWell { set (toolTip: "Stored in Preferences") $color prefs.mPadNumberColorForDevice (sendContinously:no) } space }
       )
       add (single: StaticLabel (title: "Pad Number Font", bold: no, size: .small, alignment: .left))
-      add (single: FontButton (size: .small) { expandableWidth () $fontValue prefs.mPadNumberFontForDevice } )
+      add (single: FontButton (width: 125, size: .small) { $fontValue prefs.mPadNumberFontForDevice } )
       add (single: StaticLabel (title: "Package Name Font", bold: no, size: .small, alignment: .left))
-      add (single: FontButton (size: .small) { expandableWidth () $fontValue prefs.mPackageNameFontForDevice } )
+      add (single: FontButton (width: 125, size: .small) { $fontValue prefs.mPackageNameFontForDevice } )
     }
   }
 

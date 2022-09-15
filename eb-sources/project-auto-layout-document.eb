@@ -567,25 +567,25 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
             left: StaticLabel (title: "Component Name", bold: no, size : .small, alignment: .center),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.componentNameColorForSchematic (sendContinously:yes) } 
           )
-          add (single: FontButton (size: .small) { $fontValue prefs.componentNameFontForSchematic })
+          add (single: FontButton (width: 125, size: .small) { $fontValue prefs.componentNameFontForSchematic })
           addSeparator ()
           addFirstBaseLineAligned (
             left: StaticLabel (title: "Component Value", bold: no, size : .small, alignment: .center),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.componentValueColorForSchematic (sendContinously:yes) } 
           )
-          add (single: FontButton (size: .small) { $fontValue prefs.componentValueFontForSchematic })
+          add (single: FontButton (width: 125, size: .small) { $fontValue prefs.componentValueFontForSchematic })
           addSeparator ()
           addFirstBaseLineAligned (
             left: StaticLabel (title: "Pin Name", bold: no, size : .small, alignment: .center),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.pinNameColorForSchematic (sendContinously:yes) } 
           )
-          add (single: FontButton (size: .small) { $fontValue prefs.pinNameFontForSchematic })
+          add (single: FontButton (width: 125, size: .small) { $fontValue prefs.pinNameFontForSchematic })
           addSeparator ()
           addFirstBaseLineAligned (
             left: StaticLabel (title: "Pin Number", bold: no, size : .small, alignment: .center),
             right: ColorWell { set (toolTip: "Stored in Preferences") $color prefs.pinNumberColorForSchematic (sendContinously:yes) } 
           )
-          add (single: FontButton (size: .small) { $fontValue prefs.pinNumberFontForSchematic })
+          add (single: FontButton (width: 125, size: .small) { $fontValue prefs.pinNumberFontForSchematic })
           addSeparator ()
           addFirstBaseLineAligned (
             left: StaticLabel (title: "Connection", bold: no, size : .small, alignment: .center),
@@ -1287,7 +1287,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           single: LinearSlider (min: 10, max: 200, ticks: 10) { $doubleValue root.mControlKeyHiliteDiameter (sendContinously : yes) }
         )
         add (single: StaticLabel (title: "Pad Number", bold: yes, size: .small, alignment: .left) )
-        add (single: FontButton (size: .small) { $fontValue prefs.padNumberFontForBoard } )
+        add (single: FontButton (width: 125, size: .small) { $fontValue prefs.padNumberFontForBoard } )
         add (single: StaticLabel (title: "Package Width", bold: yes, size: .small, alignment: .left) )
         add (single: TaggedPopUpButton (size: .small) {
             add (title: "0.5 Point",   withTag:  5)

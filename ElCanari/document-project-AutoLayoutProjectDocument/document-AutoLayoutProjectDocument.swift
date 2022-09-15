@@ -3010,7 +3010,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_22 () -> NSView {
-    let view = AutoLayoutFontButton (size: .small)
+    let view = AutoLayoutFontButton (width: 125, size: .small)
       .bind_fontValue (preferences_componentNameFontForSchematic_property)
     return view
   }
@@ -3040,7 +3040,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_25 () -> NSView {
-    let view = AutoLayoutFontButton (size: .small)
+    let view = AutoLayoutFontButton (width: 125, size: .small)
       .bind_fontValue (preferences_componentValueFontForSchematic_property)
     return view
   }
@@ -3070,7 +3070,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_28 () -> NSView {
-    let view = AutoLayoutFontButton (size: .small)
+    let view = AutoLayoutFontButton (width: 125, size: .small)
       .bind_fontValue (preferences_pinNameFontForSchematic_property)
     return view
   }
@@ -3100,7 +3100,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_31 () -> NSView {
-    let view = AutoLayoutFontButton (size: .small)
+    let view = AutoLayoutFontButton (width: 125, size: .small)
       .bind_fontValue (preferences_pinNumberFontForSchematic_property)
     return view
   }
@@ -4055,7 +4055,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_116 () -> NSView {
-    let view = AutoLayoutFontButton (size: .small)
+    let view = AutoLayoutFontButton (width: 125, size: .small)
       .bind_fontValue (preferences_padNumberFontForBoard_property)
     return view
   }

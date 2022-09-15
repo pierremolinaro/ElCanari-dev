@@ -263,8 +263,7 @@ extern autolayout class ColorWell {
   $color property NSColor (sendContinously: Bool)
 }
 
-extern autolayout class FontButton (size: EBControlSize) {
-  func expandableWidth ()
+extern autolayout class FontButton (width: Int, size: EBControlSize) {
   $fontValue property NSFont
 }
 

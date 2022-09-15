@@ -1077,7 +1077,7 @@ import Cocoa
   //····················································································································
 
   fileprivate final func computeImplicitView_36 () -> NSView {
-    let view = AutoLayoutFontButton (size: .small)
+    let view = AutoLayoutFontButton (width: 125, size: .small)
       .bind_fontValue (preferences_pinNameFont_property)
     return view
   }
