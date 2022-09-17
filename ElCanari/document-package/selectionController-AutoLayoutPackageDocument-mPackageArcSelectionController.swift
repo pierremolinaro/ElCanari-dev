@@ -138,7 +138,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //   UNBIND SELECTION
   //····················································································································
 
-  final func unbind_selection () {
+  /* final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- yCenter
     self.yCenter_property.mReadModelFunction = nil 
@@ -204,7 +204,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //--- issues
     self.issues_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_issues (self.issues_property)
-  }
+  } */
 
   //····················································································································
 

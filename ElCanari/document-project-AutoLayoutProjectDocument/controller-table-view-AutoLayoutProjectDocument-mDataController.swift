@@ -82,11 +82,11 @@ final class Controller_AutoLayoutProjectDocument_mDataController : EBObjcBaseObj
 
   //····················································································································
 
-  final func unbind_model () {
+  /* final func unbind_model () {
     self.sortedArray_property.resetDataProvider ()
     self.mModel = nil
     self.mUndoManager = nil
- }
+  } */
 
   //····················································································································
   //   Selected Array

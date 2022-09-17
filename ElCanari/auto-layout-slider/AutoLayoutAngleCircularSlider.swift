@@ -10,7 +10,7 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   AutoLayoutAngleCircularSlider
+//  AutoLayoutAngleCircularSlider
 //  Min Value : 0, max Value : 3600
 //  Current value :    0 -> knob at top
 //                   900 -> knob at right

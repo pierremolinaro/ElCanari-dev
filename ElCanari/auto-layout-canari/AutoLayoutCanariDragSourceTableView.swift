@@ -234,10 +234,10 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
 
   //····················································································································
 
-  final func unbind_models () {
-    self.mModelsController?.unregister ()
-    self.mModelsController = nil
-  }
+//  final func unbind_models () {
+//    self.mModelsController?.unregister ()
+//    self.mModelsController = nil
+//  }
 
   //····················································································································
 

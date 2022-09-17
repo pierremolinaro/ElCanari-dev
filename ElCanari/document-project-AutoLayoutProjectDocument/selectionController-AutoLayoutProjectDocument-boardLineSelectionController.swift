@@ -112,7 +112,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
   //   UNBIND SELECTION
   //····················································································································
 
-  final func unbind_selection () {
+  /* final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- mWidthUnit
     self.mWidthUnit_property.mReadModelFunction = nil 
@@ -164,7 +164,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-  }
+  } */
 
   //····················································································································
 

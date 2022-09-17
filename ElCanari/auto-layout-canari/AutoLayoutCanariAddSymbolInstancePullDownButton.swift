@@ -105,10 +105,10 @@ final class AutoLayoutCanariAddSymbolInstancePullDownButton : AutoLayoutBase_NSP
 
   //····················································································································
 
-  final func unbind_symbolTypeNames () {
-    self.mSymbolTypeNamesController?.unregister ()
-    self.mSymbolTypeNamesController = nil
-  }
+//  final func unbind_symbolTypeNames () {
+//    self.mSymbolTypeNamesController?.unregister ()
+//    self.mSymbolTypeNamesController = nil
+//  }
 
   //····················································································································
 

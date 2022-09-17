@@ -567,7 +567,7 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
   //   UNBIND SELECTION
   //····················································································································
 
-  final func unbind_selection () {
+  /* final func unbind_selection () {
   //--- artworkName
     self.artworkName_property.mReadModelFunction = nil 
     self.artworkName_property.mWriteModelFunction = nil 
@@ -769,7 +769,7 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
     self.mModel?.removeEBObserverOf_zoom (self.zoom_property)
   //---
     self.mModel = nil
-  }
+  } */
 
   //···················································································································*
 

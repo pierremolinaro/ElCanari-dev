@@ -67,7 +67,7 @@ final class SelectionController_AutoLayoutProjectDocument_wireInSchematicSelecti
   //   UNBIND SELECTION
   //····················································································································
 
-  final func unbind_selection () {
+  /* final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
@@ -84,7 +84,7 @@ final class SelectionController_AutoLayoutProjectDocument_wireInSchematicSelecti
   //--- hasNet
     self.hasNet_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_hasNet (self.hasNet_property)
-  }
+  } */
 
   //····················································································································
 

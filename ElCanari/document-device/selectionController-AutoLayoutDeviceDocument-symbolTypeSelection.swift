@@ -97,7 +97,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
   //   UNBIND SELECTION
   //····················································································································
 
-  final func unbind_selection () {
+  /* final func unbind_selection () {
   //--- documentSize
     self.documentSize_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_documentSize (self.documentSize_property)
@@ -132,7 +132,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
     self.mModel?.removeEBObserverOf_versionString (self.versionString_property)
   //---
     self.mModel = nil
-  }
+  } */
 
   //···················································································································*
 

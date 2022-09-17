@@ -276,10 +276,10 @@ final class AutoLayoutCanariFontCharacterView : NSView {
 
   //····················································································································
 
-  final func unbind_advance () {
-    self.mAdvanceController?.unregister ()
-    self.mAdvanceController = nil
-  }
+//  final func unbind_advance () {
+//    self.mAdvanceController?.unregister ()
+//    self.mAdvanceController = nil
+//  }
 
   //····················································································································
 
@@ -308,10 +308,10 @@ final class AutoLayoutCanariFontCharacterView : NSView {
 
   //····················································································································
 
-  final func unbind_characterSegmentList () {
-    self.mCharacterSegmentListController?.unregister ()
-    self.mCharacterSegmentListController = nil
-  }
+//  final func unbind_characterSegmentList () {
+//    self.mCharacterSegmentListController?.unregister ()
+//    self.mCharacterSegmentListController = nil
+//  }
 
   //····················································································································
 
@@ -364,10 +364,10 @@ final class AutoLayoutCanariFontCharacterView : NSView {
 
   //····················································································································
 
-  final func unbind_transparency () {
-    self.mTransparencyController?.unregister ()
-    self.mTransparencyController = nil
-  }
+//  final func unbind_transparency () {
+//    self.mTransparencyController?.unregister ()
+//    self.mTransparencyController = nil
+//  }
 
   //····················································································································
 
@@ -407,10 +407,10 @@ final class AutoLayoutCanariFontCharacterView : NSView {
 
   //····················································································································
 
-  final func unbind_displayFlow () {
-    self.mDisplayFlowController?.unregister ()
-    self.mDisplayFlowController = nil
-  }
+//  final func unbind_displayFlow () {
+//    self.mDisplayFlowController?.unregister ()
+//    self.mDisplayFlowController = nil
+//  }
 
   //····················································································································
 
@@ -450,10 +450,10 @@ final class AutoLayoutCanariFontCharacterView : NSView {
 
   //····················································································································
 
-  final func unbind_displayDrawingIndexes () {
-    self.mDisplayDrawingIndexesController?.unregister ()
-    self.mDisplayDrawingIndexesController = nil
-  }
+//  final func unbind_displayDrawingIndexes () {
+//    self.mDisplayDrawingIndexesController?.unregister ()
+//    self.mDisplayDrawingIndexesController = nil
+//  }
 
   //····················································································································
 

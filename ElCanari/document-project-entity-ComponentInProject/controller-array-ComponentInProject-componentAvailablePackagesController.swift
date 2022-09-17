@@ -94,7 +94,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
     self.selectedSet = EBReferenceSet ()
     self.mModel = nil
     self.mUndoManager = nil
- }
+  }
 
   //····················································································································
 

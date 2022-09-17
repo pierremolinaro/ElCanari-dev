@@ -110,10 +110,10 @@ final class AutoLayoutCanariSampleFontStringView : NSView {
 
   //····················································································································
 
-  final func unbind_bezierPath () {
-    self.mBezierPathBindingController?.unregister ()
-    self.mBezierPathBindingController = nil
-  }
+//  final func unbind_bezierPath () {
+//    self.mBezierPathBindingController?.unregister ()
+//    self.mBezierPathBindingController = nil
+//  }
 
   //····················································································································
 

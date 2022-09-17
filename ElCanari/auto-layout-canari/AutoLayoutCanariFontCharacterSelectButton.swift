@@ -108,10 +108,10 @@ final class AutoLayoutCanariFontCharacterSelectButton : AutoLayoutBase_NSButton 
 
   //····················································································································
 
-  final func unbind_codePoint () {
-    self.mCodePointController?.unregister ()
-    self.mCodePointController = nil
-  }
+//  final func unbind_codePoint () {
+//    self.mCodePointController?.unregister ()
+//    self.mCodePointController = nil
+//  }
 
   //····················································································································
   //  $characters binding
@@ -156,10 +156,10 @@ final class AutoLayoutCanariFontCharacterSelectButton : AutoLayoutBase_NSButton 
 
   //····················································································································
 
-  final func unbind_characters () {
-    self.mCharactersController?.unregister ()
-    self.mCharactersController = nil
-  }
+//  final func unbind_characters () {
+//    self.mCharactersController?.unregister ()
+//    self.mCharactersController = nil
+//  }
 
   //····················································································································
 

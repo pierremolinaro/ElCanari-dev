@@ -97,7 +97,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolInstanceSelection
   //   UNBIND SELECTION
   //····················································································································
 
-  final func unbind_selection () {
+  /* final func unbind_selection () {
   //--- mInstanceName
     self.mInstanceName_property.mReadModelFunction = nil 
     self.mInstanceName_property.mWriteModelFunction = nil 
@@ -130,7 +130,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolInstanceSelection
     self.mModel?.removeEBObserverOf_unconnectedPins (self.unconnectedPins_property)
   //---
     self.mModel = nil
-  }
+  } */
 
   //···················································································································*
 

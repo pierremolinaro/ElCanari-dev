@@ -121,7 +121,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSegmentSelecti
   //   UNBIND SELECTION
   //····················································································································
 
-  final func unbind_selection () {
+  /* final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- y1
     self.y1_property.mReadModelFunction = nil 
@@ -174,7 +174,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSegmentSelecti
   //--- lengthInCanariUnit
     self.lengthInCanariUnit_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_lengthInCanariUnit (self.lengthInCanariUnit_property)
-  }
+  } */
 
   //····················································································································
 

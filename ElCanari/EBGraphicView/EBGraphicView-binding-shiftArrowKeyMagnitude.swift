@@ -21,10 +21,10 @@ extension EBGraphicView {
 
  //····················································································································
 
-  final func unbind_shiftArrowKeyMagnitude () {
-    self.mShiftArrowKeyMagnitudeController?.unregister ()
-    self.mShiftArrowKeyMagnitudeController = nil
-  }
+//  final func unbind_shiftArrowKeyMagnitude () {
+//    self.mShiftArrowKeyMagnitudeController?.unregister ()
+//    self.mShiftArrowKeyMagnitudeController = nil
+//  }
 
   //····················································································································
 

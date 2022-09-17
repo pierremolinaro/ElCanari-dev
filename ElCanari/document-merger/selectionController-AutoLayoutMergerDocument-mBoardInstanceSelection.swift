@@ -90,7 +90,7 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection
   //   UNBIND SELECTION
   //····················································································································
 
-  final func unbind_selection () {
+  /* final func unbind_selection () {
   //--- boardLimitWidth
     self.boardLimitWidth_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_boardLimitWidth (self.boardLimitWidth_property)
@@ -120,7 +120,7 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection
     self.mModel?.removeEBObserverOf_y (self.y_property)
   //---
     self.mModel = nil
-  }
+  } */
 
   //···················································································································*
 

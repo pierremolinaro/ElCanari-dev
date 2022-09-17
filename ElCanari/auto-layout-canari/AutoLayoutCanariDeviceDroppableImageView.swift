@@ -124,10 +124,10 @@ final class AutoLayoutCanariDeviceDroppableImageView : AutoLayoutVerticalStackVi
 
   //····················································································································
 
-  final func unbind_imageData () {
-    self.mImageDataController?.unregister ()
-    self.mImageDataController = nil
-  }
+//  final func unbind_imageData () {
+//    self.mImageDataController?.unregister ()
+//    self.mImageDataController = nil
+//  }
 
   //····················································································································
 

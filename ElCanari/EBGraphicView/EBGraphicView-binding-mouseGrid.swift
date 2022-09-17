@@ -21,10 +21,10 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func unbind_mouseGrid () {
-    self.mMouseGridController?.unregister ()
-    self.mMouseGridController = nil
-  }
+//  final func unbind_mouseGrid () {
+//    self.mMouseGridController?.unregister ()
+//    self.mMouseGridController = nil
+//  }
 
   //····················································································································
 

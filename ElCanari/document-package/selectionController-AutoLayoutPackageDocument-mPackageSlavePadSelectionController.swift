@@ -185,7 +185,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //   UNBIND SELECTION
   //····················································································································
 
-  final func unbind_selection () {
+  /* final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- xCenter
     self.xCenter_property.mReadModelFunction = nil 
@@ -274,7 +274,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //--- padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
-  }
+  } */
 
   //····················································································································
 

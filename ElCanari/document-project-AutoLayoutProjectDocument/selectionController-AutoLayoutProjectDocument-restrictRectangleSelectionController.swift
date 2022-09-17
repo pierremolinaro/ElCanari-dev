@@ -113,7 +113,7 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
   //   UNBIND SELECTION
   //····················································································································
 
-  final func unbind_selection () {
+  /* final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- mY
     self.mY_property.mReadModelFunction = nil 
@@ -164,7 +164,7 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
   //--- signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
-  }
+  } */
 
   //····················································································································
 

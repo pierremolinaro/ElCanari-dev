@@ -84,10 +84,10 @@ final class AutoLayoutIntSlider : AutoLayoutBase_NSSlider {
 
   //····················································································································
 
-  final func unbind_value () {
-    self.mValueController?.unregister ()
-    self.mValueController = nil
-  }
+//  final func unbind_value () {
+//    self.mValueController?.unregister ()
+//    self.mValueController = nil
+//  }
 
   //····················································································································
 

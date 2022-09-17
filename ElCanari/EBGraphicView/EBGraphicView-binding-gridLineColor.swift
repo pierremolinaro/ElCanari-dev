@@ -21,10 +21,10 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func unbind_gridLineColor () {
-    self.mGridLineColorController?.unregister ()
-    self.mGridLineColorController = nil
-  }
+//  final func unbind_gridLineColor () {
+//    self.mGridLineColorController?.unregister ()
+//    self.mGridLineColorController = nil
+//  }
 
   //····················································································································
 

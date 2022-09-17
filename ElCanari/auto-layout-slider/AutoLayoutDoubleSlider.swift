@@ -10,6 +10,8 @@ import Cocoa
 
 final class AutoLayoutDoubleSlider : AutoLayoutBase_NSSlider {
 
+  //····················································································································
+
   private var mWidth : Int
   
   //····················································································································
@@ -80,10 +82,10 @@ final class AutoLayoutDoubleSlider : AutoLayoutBase_NSSlider {
 
   //····················································································································
 
-  final func unbind_value () {
-    self.mValueController?.unregister ()
-    self.mValueController = nil
-  }
+//  final func unbind_value () {
+//    self.mValueController?.unregister ()
+//    self.mValueController = nil
+//  }
 
   //····················································································································
 

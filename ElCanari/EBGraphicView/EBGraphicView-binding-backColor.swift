@@ -21,10 +21,10 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func unbind_backColor () {
-    self.mBackColorController?.unregister ()
-    self.mBackColorController = nil
-  }
+//  final func unbind_backColor () {
+//    self.mBackColorController?.unregister ()
+//    self.mBackColorController = nil
+//  }
 
   //····················································································································
 

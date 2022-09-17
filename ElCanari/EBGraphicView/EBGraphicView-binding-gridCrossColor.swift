@@ -21,10 +21,10 @@ extension  EBGraphicView {
 
   //····················································································································
 
-  final func unbind_gridCrossColor () {
-    self.mGridCrossColorController?.unregister ()
-    self.mGridCrossColorController = nil
-  }
+//  final func unbind_gridCrossColor () {
+//    self.mGridCrossColorController?.unregister ()
+//    self.mGridCrossColorController = nil
+//  }
 
   //····················································································································
 

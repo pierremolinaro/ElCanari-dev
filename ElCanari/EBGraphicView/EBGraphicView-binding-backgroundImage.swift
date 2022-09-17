@@ -21,10 +21,10 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func unbind_backgroundImageData () {
-    self.mBackgroundImageDataController?.unregister ()
-    self.mBackgroundImageDataController = nil
-  }
+//  final func unbind_backgroundImageData () {
+//    self.mBackgroundImageDataController?.unregister ()
+//    self.mBackgroundImageDataController = nil
+//  }
 
   //····················································································································
 
@@ -57,10 +57,10 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func unbind_backgroundImageOpacity () {
-    self.mBackgroundImageOpacityController?.unregister ()
-    self.mBackgroundImageOpacityController = nil
-  }
+//  final func unbind_backgroundImageOpacity () {
+//    self.mBackgroundImageOpacityController?.unregister ()
+//    self.mBackgroundImageOpacityController = nil
+//  }
 
   //····················································································································
 

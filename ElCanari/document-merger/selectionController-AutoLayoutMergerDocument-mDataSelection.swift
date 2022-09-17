@@ -247,7 +247,7 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
   //   UNBIND SELECTION
   //····················································································································
 
-  final func unbind_selection () {
+  /* final func unbind_selection () {
   //--- drawBoardLimits
     self.drawBoardLimits_property.mReadModelFunction = nil 
     self.drawBoardLimits_property.mWriteModelFunction = nil 
@@ -371,7 +371,7 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
     self.mModel?.removeEBObserverOf_parameterStatusImage (self.parameterStatusImage_property)
   //---
     self.mModel = nil
-  }
+  } */
 
   //···················································································································*
 

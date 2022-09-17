@@ -21,10 +21,10 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func unbind_gridDisplayFactor () {
-    self.mGridDisplayFactorController?.unregister ()
-    self.mGridDisplayFactorController = nil
-  }
+//  final func unbind_gridDisplayFactor () {
+//    self.mGridDisplayFactorController?.unregister ()
+//    self.mGridDisplayFactorController = nil
+//  }
 
   //····················································································································
 

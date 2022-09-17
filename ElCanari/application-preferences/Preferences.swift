@@ -517,11 +517,11 @@ import Cocoa
     preferences_additionnalLibraryArray_property.addEBObserverOf_mUses (preferences_mValueRevealInFinder_symbols_property)
     preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_symbols_property)
   //--- Notify application will terminate
-    NotificationCenter.default.addObserver (self,
+    /* NotificationCenter.default.addObserver (self,
       selector:#selector(Preferences.applicationWillTerminateAction(_:)),
       name:NSApplication.willTerminateNotification,
       object:nil
-    )
+    ) */
   //--- Extern functions
   }
 
@@ -546,14 +546,6 @@ import Cocoa
   //--------------------------- Set targets / actions
   //--------------------------- Extern functions
     self.setupForLibrary ()
-  }
-
-  //····················································································································
-  //    applicationWillTerminateAction
-  //····················································································································
-
-  @objc func applicationWillTerminateAction (_ : NSNotification) {
-  //--------------------------- Array controller
   }
 
   //····················································································································

@@ -198,10 +198,10 @@ final class AutoLayoutOneStringArrayTableView : NSScrollView, NSTableViewDataSou
 
   //····················································································································
 
-  final func unbind_array () {
-    self.mController?.unregister ()
-    self.mController = nil
-  }
+//  final func unbind_array () {
+//    self.mController?.unregister ()
+//    self.mController = nil
+//  }
 
   //····················································································································
   //  SELECTED TITLE

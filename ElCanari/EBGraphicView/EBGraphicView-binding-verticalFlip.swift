@@ -21,10 +21,10 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func unbind_verticalFlip () {
-    self.mVerticalFlipController?.unregister ()
-    self.mVerticalFlipController = nil
-  }
+//  final func unbind_verticalFlip () {
+//    self.mVerticalFlipController?.unregister ()
+//    self.mVerticalFlipController = nil
+//  }
 
   //····················································································································
 

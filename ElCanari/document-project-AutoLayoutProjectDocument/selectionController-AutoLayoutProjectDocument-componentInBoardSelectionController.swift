@@ -311,7 +311,7 @@ final class SelectionController_AutoLayoutProjectDocument_componentInBoardSelect
   //   UNBIND SELECTION
   //····················································································································
 
-  final func unbind_selection () {
+  /* final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- mSlavePadsShouldBeRouted
     self.mSlavePadsShouldBeRouted_property.mReadModelFunction = nil 
@@ -460,7 +460,7 @@ final class SelectionController_AutoLayoutProjectDocument_componentInBoardSelect
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
-  }
+  } */
 
   //····················································································································
 

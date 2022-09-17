@@ -21,10 +21,10 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func unbind_gridStep () {
-    self.mGridStepController?.unregister ()
-    self.mGridStepController = nil
-  }
+//  final func unbind_gridStep () {
+//    self.mGridStepController?.unregister ()
+//    self.mGridStepController = nil
+//  }
 
   //····················································································································
 

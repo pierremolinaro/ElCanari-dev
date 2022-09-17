@@ -127,7 +127,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //   UNBIND SELECTION
   //····················································································································
 
-  final func unbind_selection () {
+  /* final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- yPin
     self.yPin_property.mReadModelFunction = nil 
@@ -184,7 +184,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //--- nameRect
     self.nameRect_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_nameRect (self.nameRect_property)
-  }
+  } */
 
   //····················································································································
 

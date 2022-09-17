@@ -91,10 +91,10 @@ final class AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView : AutoLayoutV
 
   //····················································································································
 
-  final func unbind_assignedPadProxies () {
-    self.mController?.unregister ()
-    self.mController = nil
-  }
+//  final func unbind_assignedPadProxies () {
+//    self.mController?.unregister ()
+//    self.mController = nil
+//  }
 
   //····················································································································
 

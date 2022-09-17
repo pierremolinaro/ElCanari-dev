@@ -33,10 +33,10 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func unbind_zoom () {
-    self.mZoomController?.unregister ()
-    self.mZoomController = nil
-  }
+//  final func unbind_zoom () {
+//    self.mZoomController?.unregister ()
+//    self.mZoomController = nil
+//  }
 
   //····················································································································
 

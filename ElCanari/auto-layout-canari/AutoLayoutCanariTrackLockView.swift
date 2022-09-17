@@ -309,10 +309,10 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  final func unbind_angle () {
-    self.mAngleController?.unregister ()
-    self.mAngleController = nil
-  }
+//  final func unbind_angle () {
+//    self.mAngleController?.unregister ()
+//    self.mAngleController = nil
+//  }
 
   //····················································································································
 
@@ -343,10 +343,10 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  final func unbind_manualLockP1 () {
-    self.mManualLockP1Controller?.unregister ()
-    self.mManualLockP1Controller = nil
-  }
+//  final func unbind_manualLockP1 () {
+//    self.mManualLockP1Controller?.unregister ()
+//    self.mManualLockP1Controller = nil
+//  }
 
   //····················································································································
 
@@ -377,10 +377,10 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  final func unbind_manualLockP2 () {
-    self.mManualLockP2Controller?.unregister ()
-    self.mManualLockP2Controller = nil
-  }
+//  final func unbind_manualLockP2 () {
+//    self.mManualLockP2Controller?.unregister ()
+//    self.mManualLockP2Controller = nil
+//  }
 
   //····················································································································
 
@@ -411,10 +411,10 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  final func unbind_p1ConnectedToSomePad () {
-    self.mP1ConnectedToPadController?.unregister ()
-    self.mP1ConnectedToPadController = nil
-  }
+//  final func unbind_p1ConnectedToSomePad () {
+//    self.mP1ConnectedToPadController?.unregister ()
+//    self.mP1ConnectedToPadController = nil
+//  }
 
   //····················································································································
 
@@ -445,10 +445,10 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-  final func unbind_p2ConnectedToSomePad () {
-    self.mP2ConnectedToPadController?.unregister ()
-    self.mP2ConnectedToPadController = nil
-  }
+//  final func unbind_p2ConnectedToSomePad () {
+//    self.mP2ConnectedToPadController?.unregister ()
+//    self.mP2ConnectedToPadController = nil
+//  }
 
   //····················································································································
 

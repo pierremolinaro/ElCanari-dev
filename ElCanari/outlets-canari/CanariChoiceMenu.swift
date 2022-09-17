@@ -74,10 +74,10 @@ import Cocoa
 
   //····················································································································
 
-  final func unbind_selectedIndex () {
-    self.mSelectedIndexController?.unregister ()
-    self.mSelectedIndexController = nil
-  }
+//  final func unbind_selectedIndex () {
+//    self.mSelectedIndexController?.unregister ()
+//    self.mSelectedIndexController = nil
+//  }
 
   //····················································································································
 

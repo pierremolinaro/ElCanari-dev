@@ -183,7 +183,7 @@ final class Controller_AutoLayoutMergerDocument_mBoardInstanceController : ReadO
     self.selectedSet = EBReferenceSet ()
     self.mModel = nil
     self.mUndoManager = nil
- }
+  }
 
   //····················································································································
 
@@ -391,13 +391,13 @@ final class Controller_AutoLayoutMergerDocument_mBoardInstanceController : ReadO
 
   //····················································································································
 
-  final func unbind_ebView (_ inEBView : EBGraphicView?) {
+  /* final func unbind_ebView (_ inEBView : EBGraphicView?) {
     if let ebView = inEBView {
       ebView.updateObjectDisplay ([])
       ebView.updateSelectionShape ([])
       self.mEBGraphicViews.remove (ebView)
     }
-  }
+  } */
 
   //····················································································································
   //    Explorer

@@ -143,7 +143,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //   UNBIND SELECTION
   //····················································································································
 
-  final func unbind_selection () {
+  /* final func unbind_selection () {
   //--- descriptor
     self.descriptor_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_descriptor (self.descriptor_property)
@@ -200,7 +200,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
     self.mModel?.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
   //---
     self.mModel = nil
-  }
+  } */
 
   //···················································································································*
 

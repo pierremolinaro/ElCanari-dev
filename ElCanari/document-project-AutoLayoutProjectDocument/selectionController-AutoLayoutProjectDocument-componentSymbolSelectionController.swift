@@ -154,7 +154,7 @@ final class SelectionController_AutoLayoutProjectDocument_componentSymbolSelecti
   //   UNBIND SELECTION
   //····················································································································
 
-  final func unbind_selection () {
+  /* final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- mCenterX
     self.mCenterX_property.mReadModelFunction = nil 
@@ -221,7 +221,7 @@ final class SelectionController_AutoLayoutProjectDocument_componentSymbolSelecti
   //--- symbolInSchematic
     self.symbolInSchematic_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_symbolInSchematic (self.symbolInSchematic_property)
-  }
+  } */
 
   //····················································································································
 

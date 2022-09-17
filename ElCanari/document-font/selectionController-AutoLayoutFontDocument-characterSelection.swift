@@ -86,7 +86,7 @@ final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSw
   //   UNBIND SELECTION
   //····················································································································
 
-  final func unbind_selection () {
+  /* final func unbind_selection () {
   //--- advance
     self.advance_property.mReadModelFunction = nil 
     self.advance_property.mWriteModelFunction = nil 
@@ -117,7 +117,7 @@ final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSw
     self.mModel?.removeEBObserverOf_segmentArrayForDrawing (self.segmentArrayForDrawing_property)
   //---
     self.mModel = nil
-  }
+  } */
 
   //···················································································································*
 

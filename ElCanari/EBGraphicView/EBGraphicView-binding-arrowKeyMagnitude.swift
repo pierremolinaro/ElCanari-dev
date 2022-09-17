@@ -21,10 +21,10 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func unbind_arrowKeyMagnitude () {
-    self.mArrowKeyMagnitudeController?.unregister ()
-    self.mArrowKeyMagnitudeController = nil
-  }
+//  final func unbind_arrowKeyMagnitude () {
+//    self.mArrowKeyMagnitudeController?.unregister ()
+//    self.mArrowKeyMagnitudeController = nil
+//  }
 
   //····················································································································
 

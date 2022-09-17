@@ -156,7 +156,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
   //   UNBIND SELECTION
   //····················································································································
 
-  final func unbind_selection () {
+  /* final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- y1
     self.y1_property.mReadModelFunction = nil 
@@ -234,7 +234,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageBezierCurveSel
   //--- issues
     self.issues_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_issues (self.issues_property)
-  }
+  } */
 
   //····················································································································
 

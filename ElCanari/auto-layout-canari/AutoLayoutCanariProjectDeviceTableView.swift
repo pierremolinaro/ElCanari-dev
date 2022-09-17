@@ -77,10 +77,10 @@ final class AutoLayoutCanariProjectDeviceTableView : AutoLayoutTableView {
 
   //····················································································································
 
-  final func unbind_array () {
-    self.mArrayController?.unregister ()
-    self.mArrayController = nil
-  }
+//  final func unbind_array () {
+//    self.mArrayController?.unregister ()
+//    self.mArrayController = nil
+//  }
 
   //····················································································································
 

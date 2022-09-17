@@ -52,7 +52,7 @@ final class SelectionController_AutoLayoutProjectDocument_ncInSchematicSelection
   //   UNBIND SELECTION
   //····················································································································
 
-  final func unbind_selection () {
+  /* final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- mOrientation
     self.mOrientation_property.mReadModelFunction = nil 
@@ -64,7 +64,7 @@ final class SelectionController_AutoLayoutProjectDocument_ncInSchematicSelection
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-  }
+  } */
 
   //····················································································································
 

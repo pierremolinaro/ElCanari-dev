@@ -21,10 +21,10 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func unbind_yPlacardUnit () {
-    self.mYPlacardUnitController?.unregister ()
-    self.mYPlacardUnitController = nil
-  }
+//  final func unbind_yPlacardUnit () {
+//    self.mYPlacardUnitController?.unregister ()
+//    self.mYPlacardUnitController = nil
+//  }
 
   //····················································································································
 

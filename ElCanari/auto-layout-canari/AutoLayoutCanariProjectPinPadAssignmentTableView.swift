@@ -101,10 +101,10 @@ final class AutoLayoutCanariProjectPinPadAssignmentTableView : AutoLayoutTableVi
 
   //····················································································································
 
-  final func unbind_array () {
-    self.mArrayController?.unregister ()
-    self.mArrayController = nil
-  }
+//  final func unbind_array () {
+//    self.mArrayController?.unregister ()
+//    self.mArrayController = nil
+//  }
 
   //····················································································································
 

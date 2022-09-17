@@ -170,7 +170,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
   //   UNBIND SELECTION
   //····················································································································
 
-  final func unbind_selection () {
+  /* final func unbind_selection () {
     self.selectedArray_property.setDataProvider (nil)
   //--- x
     self.x_property.mReadModelFunction = nil 
@@ -254,7 +254,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageZoneSelectionC
   //--- emptyForbiddenPadArray
     self.emptyForbiddenPadArray_property.mReadModelFunction = nil 
     self.selectedArray_property.removeEBObserverOf_emptyForbiddenPadArray (self.emptyForbiddenPadArray_property)
-  }
+  } */
 
   //····················································································································
 

@@ -235,10 +235,10 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
 
   //····················································································································
 
-  final func unbind_netInfo () {
-    self.mController?.unregister ()
-    self.mController = nil
-  }
+//  final func unbind_netInfo () {
+//    self.mController?.unregister ()
+//    self.mController = nil
+//  }
 
   //····················································································································
 

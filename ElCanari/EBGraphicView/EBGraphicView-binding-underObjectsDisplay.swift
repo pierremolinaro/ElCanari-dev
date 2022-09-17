@@ -21,10 +21,10 @@ extension EBGraphicView {
 
   //····················································································································
 
-  final func unbind_underObjectsDisplay () {
-    self.mUnderObjectsDisplayController?.unregister ()
-    self.mUnderObjectsDisplayController = nil
-  }
+//  final func unbind_underObjectsDisplay () {
+//    self.mUnderObjectsDisplayController?.unregister ()
+//    self.mUnderObjectsDisplayController = nil
+//  }
 
   //····················································································································
 
