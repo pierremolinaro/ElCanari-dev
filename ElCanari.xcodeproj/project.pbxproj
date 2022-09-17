@@ -6873,7 +6873,7 @@
 				CF6172BC1B3C4CD600F3CA82 /* ZoomOutToolbarImage.tiff */,
 			);
 			name = Resources;
-			path = ElCanari/images;
+			path = ElCanari/resources;
 			sourceTree = "<group>";
 		};
 		CF61FA911B3EBF21000E0257 /* Outlets Canari */ = {

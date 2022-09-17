@@ -167,7 +167,7 @@ do{
 //  let sha = runHiddenCommand ("/usr/local/bin/git", ["log", "-n1", "--format=format:\"%H\""])
 //  Swift.print ("sha \(sha)")
 //-------------------- Écrire le SHA
-  let fileRelativePath = "ElCanari/application/images/Credits.rtf"
+  let fileRelativePath = "ElCanari/resources/Credits.rtf"
   let str : String = try! String (contentsOf: URL (fileURLWithPath: fileRelativePath), encoding: .utf8)
   let components = str.components (separatedBy: "$SHA_GITHUB$")
   let str2 = components.joined (separator: sha)
