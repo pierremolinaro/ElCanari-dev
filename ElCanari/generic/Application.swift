@@ -13,7 +13,7 @@ let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
 //    A P P L I C A T I O N    C L A S S
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(EBApplication) final class EBApplication : NSApplication {
+@MainActor @objc(EBApplication) final class EBApplication : NSApplication {
 
   //····················································································································
 
@@ -78,11 +78,11 @@ let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
 
   #if BUILD_OBJECT_EXPLORER
     func logEvents () -> Bool {
-      if Thread.isMainThread {
+  //    if Thread.isMainThread {
         return self.mTransientEventExplorerWindow?.isVisible ?? false
-      }else{
-        return false
-      }
+//      }else{
+//        return false
+//      }
     }
   #endif
 
