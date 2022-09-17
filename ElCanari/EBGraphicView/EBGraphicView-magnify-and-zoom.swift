@@ -44,19 +44,17 @@ extension EBGraphicView {
       if visibleRect.maxY > newBounds.maxY {
         newBounds.size.height = visibleRect.maxY - newBounds.origin.y
       }
-//      self.mReferenceBounds = newBounds
       self.frame.size = newBounds.size
       self.bounds = newBounds
-      let selectionBounds = self.selectionShapeBoundingBox
-      if !selectionBounds.isEmpty {
-        self.scrollToVisible (selectionBounds)
-      }else{
-        let objectBounds = self.objectDisplayBounds
-        if !objectBounds.isEmpty {
-          self.scrollToVisible (objectBounds)
-        }
-      }
-//      self.needsDisplay = true
+//      let selectionBounds = self.selectionShapeBoundingBox
+//      if !selectionBounds.isEmpty {
+//        self.scrollToVisible (selectionBounds)
+//      }else{
+//        let objectBounds = self.objectDisplayBounds
+//        if !objectBounds.isEmpty {
+//          self.scrollToVisible (objectBounds)
+//        }
+//      }
       let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
       self.mZoomDidChangeCallback? (newZoom)
     }
