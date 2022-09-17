@@ -10,20 +10,15 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let SHA_GITHUB = "commit: $SHA_GITHUB$"
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 extension EBApplication {
 
   //····················································································································
 
   @IBAction func showElCanariAboutPanel (_ inSender : Any?) {
     let dict : [NSApplication.AboutPanelOptionKey : Any] = [
-      .version : SHA_GITHUB
+      .version : "commit: $SHA_GITHUB$"
     ]
     self.orderFrontStandardAboutPanel (options: dict)
-//    self.orderFrontStandardAboutPanel ()
   }
 
   //····················································································································

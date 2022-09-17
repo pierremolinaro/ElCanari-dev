@@ -3291,6 +3291,9 @@
 		CFA952492391888700C1612A /* transient-ComponentInProject-pinPadAssignments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA952472391888700C1612A /* transient-ComponentInProject-pinPadAssignments.swift */; };
 		CFA9524B2391891700C1612A /* transient-ComponentSymbolInProject-pinPadAssignments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA9524A2391891700C1612A /* transient-ComponentSymbolInProject-pinPadAssignments.swift */; };
 		CFA9524C2391891700C1612A /* transient-ComponentSymbolInProject-pinPadAssignments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA9524A2391891700C1612A /* transient-ComponentSymbolInProject-pinPadAssignments.swift */; };
+		CFA9F51428D5FA3E0031FD35 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CFA9F51328D5FA3D0031FD35 /* Credits.rtf */; };
+		CFA9F51528D5FA3E0031FD35 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CFA9F51328D5FA3D0031FD35 /* Credits.rtf */; };
+		CFA9F51628D5FA3E0031FD35 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CFA9F51328D5FA3D0031FD35 /* Credits.rtf */; };
 		CFAA052F22F1D4F300030A0C /* EBLinePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA052E22F1D4F300030A0C /* EBLinePath.swift */; };
 		CFAA053022F1D4F300030A0C /* EBLinePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA052E22F1D4F300030A0C /* EBLinePath.swift */; };
 		CFAA74191B46955400327BAE /* entity-ArtworkFileGenerationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA74181B46955400327BAE /* entity-ArtworkFileGenerationParameters.swift */; };
@@ -5652,6 +5655,7 @@
 		CFA80DEE25C078D100966D91 /* enum-TrackLockDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-TrackLockDirection.swift"; sourceTree = "<group>"; };
 		CFA952472391888700C1612A /* transient-ComponentInProject-pinPadAssignments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ComponentInProject-pinPadAssignments.swift"; sourceTree = "<group>"; };
 		CFA9524A2391891700C1612A /* transient-ComponentSymbolInProject-pinPadAssignments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ComponentSymbolInProject-pinPadAssignments.swift"; sourceTree = "<group>"; };
+		CFA9F51328D5FA3D0031FD35 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		CFAA052E22F1D4F300030A0C /* EBLinePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBLinePath.swift; sourceTree = "<group>"; };
 		CFAA74181B46955400327BAE /* entity-ArtworkFileGenerationParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-ArtworkFileGenerationParameters.swift"; sourceTree = "<group>"; };
 		CFAB36A423786D68000C9954 /* transient-PackageObject-knobSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageObject-knobSize.swift"; sourceTree = "<group>"; };
@@ -6849,6 +6853,7 @@
 				CFC5FBC01FDF06220014A257 /* Assets.xcassets */,
 				CF6172781B3C4CD600F3CA82 /* autorouter.png */,
 				CF6172831B3C4CD600F3CA82 /* circuit-imprime.png */,
+				CFA9F51328D5FA3D0031FD35 /* Credits.rtf */,
 				CF1C8F4B2364DB4800A36E44 /* danger.png */,
 				CF9BB56D23ACDAB4006A5EC3 /* ElCanari-user-manual.pdf */,
 				CF6172891B3C4CD600F3CA82 /* exclamation.tif */,
@@ -8551,6 +8556,7 @@
 				CF7034C02353ABD100F4D2C7 /* alignmentTop.png in Resources */,
 				CF76EF302205ADA4005ECF32 /* how-to.rtf in Resources */,
 				CF6172F41B3C4CD600F3CA82 /* SaveAsToolbarImage.tiff in Resources */,
+				CFA9F51428D5FA3E0031FD35 /* Credits.rtf in Resources */,
 				CF6172D71B3C4CD600F3CA82 /* exclamation.tif in Resources */,
 				CF012693248BDA22008CC8DA /* Freerouting.app in Resources */,
 				CFB1415627A72E97000F9EAE /* update.png in Resources */,
@@ -8598,6 +8604,7 @@
 				CF7034C12353ABD100F4D2C7 /* alignmentTop.png in Resources */,
 				CF76EF312205ADA4005ECF32 /* how-to.rtf in Resources */,
 				CF5C4C9B219F04D600EAC52A /* SaveAsToolbarImage.tiff in Resources */,
+				CFA9F51528D5FA3E0031FD35 /* Credits.rtf in Resources */,
 				CF5C4C9C219F04D600EAC52A /* exclamation.tif in Resources */,
 				CF012694248BDA22008CC8DA /* Freerouting.app in Resources */,
 				CFB1415727A72E97000F9EAE /* update.png in Resources */,
@@ -8645,6 +8652,7 @@
 				CF9C607425CABE5C00A00D5C /* how-to.rtf in Resources */,
 				CF9C607525CABE5C00A00D5C /* SaveAsToolbarImage.tiff in Resources */,
 				CF9C607625CABE5C00A00D5C /* exclamation.tif in Resources */,
+				CFA9F51628D5FA3E0031FD35 /* Credits.rtf in Resources */,
 				CF9C607725CABE5C00A00D5C /* Freerouting.app in Resources */,
 				CF9C607825CABE5C00A00D5C /* text-in-symbol.png in Resources */,
 				CFB1415827A72E97000F9EAE /* update.png in Resources */,
