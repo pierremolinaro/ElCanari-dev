@@ -24,7 +24,7 @@
                             <menuItem title="About ElCanari" id="58">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="showElCanariAboutPanel:" target="-3" id="eUi-S3-3CM"/>
+                                    <action selector="orderFrontStandardAboutPanel:" target="-3" id="Ykz-63-udf"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Check for Library Updates…" id="tfP-CB-tqy">
