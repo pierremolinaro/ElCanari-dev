@@ -12,33 +12,33 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct EBReferenceDictionary <KEY : AnyObject, VALUE> {
+struct EBReferenceDictionary <KEY : ObjectIndexProtocol, VALUE> {
 
   //····················································································································
 
-  private var mDictionary : Dictionary <ObjectIdentifier, (KEY, VALUE)>
+  private var mDictionary : Dictionary <Int, (KEY, VALUE)>
 
   //····················································································································
 
   init () {
-    self.mDictionary = Dictionary <ObjectIdentifier, (KEY, VALUE)> ()
+    self.mDictionary = Dictionary <Int, (KEY, VALUE)> ()
   }
 
   //····················································································································
 
   init (minimumCapacity inMinimumCapacity : Int) {
-    self.mDictionary = Dictionary <ObjectIdentifier, (KEY, VALUE)> (minimumCapacity: inMinimumCapacity)
+    self.mDictionary = Dictionary <Int, (KEY, VALUE)> (minimumCapacity: inMinimumCapacity)
   }
 
   //····················································································································
 
   subscript (_ inKey : KEY) -> VALUE? {
     get {
-      let address = ObjectIdentifier (inKey)
+      let address = inKey.objectIndex
       return self.mDictionary [address]?.1
     }
     set (optionalNewValue) {
-      let address = ObjectIdentifier (inKey)
+      let address = inKey.objectIndex
       if let newValue = optionalNewValue {
         self.mDictionary [address] = (inKey, newValue)
       }else{
@@ -50,7 +50,7 @@ struct EBReferenceDictionary <KEY : AnyObject, VALUE> {
   //····················································································································
 
   func contains (_ inKey : KEY) -> Bool {
-    let address = ObjectIdentifier (inKey)
+    let address = inKey.objectIndex
     return self.mDictionary [address] != nil
   }
 
@@ -64,7 +64,7 @@ struct EBReferenceDictionary <KEY : AnyObject, VALUE> {
 
   //····················································································································
 
-  var values : Dictionary <ObjectIdentifier, (KEY, VALUE)>.Values { return self.mDictionary.values }
+  var values : Dictionary <Int, (KEY, VALUE)>.Values { return self.mDictionary.values }
 
   //····················································································································
 

@@ -62,12 +62,12 @@ extension SegmentForFontCharacter {
 
  //····················································································································
 
-  func rotate90Clockwise_SegmentForFontCharacter (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func rotate90Clockwise_SegmentForFontCharacter (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
   }
 
  //····················································································································
 
-  func rotate90CounterClockwise_SegmentForFontCharacter (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func rotate90CounterClockwise_SegmentForFontCharacter (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
@@ -149,7 +149,7 @@ extension SegmentForFontCharacter {
 
   //····················································································································
 
-  func translate_SegmentForFontCharacter (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func translate_SegmentForFontCharacter (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································

@@ -100,7 +100,7 @@ let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolina
            let dictionaryArray = dataDictionary [OBJECT_DICTIONARY_KEY] as? [NSDictionary],
            let X = dataDictionary [X_KEY] as? Int,
            let Y = dataDictionary [Y_KEY] as? Int {
-          var userSet = EBReferenceSet <AnyObject> ()
+          var userSet = EBReferenceSet <EBManagedObject> ()
           for dictionary in dictionaryArray {
             if let newObject = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? SymbolObject {
               newObject.translate (

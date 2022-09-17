@@ -89,7 +89,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
     if !self.mObserversOf_mCenterX.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mCenterX.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mCenterX_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mCenterX.triggerPacking ()
@@ -103,7 +103,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func removeEBObserversOf_mCenterX_fromElementsOfSet (_ inSet : EBReferenceSet <MasterPadInDevice>) {
     for (_, entry) in self.mObserversOf_mCenterX.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mCenterX_property.removeEBObserver (observer)
@@ -156,7 +156,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
     if !self.mObserversOf_mCenterY.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mCenterY.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mCenterY_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mCenterY.triggerPacking ()
@@ -170,7 +170,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func removeEBObserversOf_mCenterY_fromElementsOfSet (_ inSet : EBReferenceSet <MasterPadInDevice>) {
     for (_, entry) in self.mObserversOf_mCenterY.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mCenterY_property.removeEBObserver (observer)
@@ -223,7 +223,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
     if !self.mObserversOf_mWidth.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mWidth.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mWidth_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mWidth.triggerPacking ()
@@ -237,7 +237,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : EBReferenceSet <MasterPadInDevice>) {
     for (_, entry) in self.mObserversOf_mWidth.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mWidth_property.removeEBObserver (observer)
@@ -290,7 +290,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
     if !self.mObserversOf_mHeight.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mHeight.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mHeight_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mHeight.triggerPacking ()
@@ -304,7 +304,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func removeEBObserversOf_mHeight_fromElementsOfSet (_ inSet : EBReferenceSet <MasterPadInDevice>) {
     for (_, entry) in self.mObserversOf_mHeight.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mHeight_property.removeEBObserver (observer)
@@ -357,7 +357,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
     if !self.mObserversOf_mHoleWidth.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mHoleWidth.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mHoleWidth_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mHoleWidth.triggerPacking ()
@@ -371,7 +371,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func removeEBObserversOf_mHoleWidth_fromElementsOfSet (_ inSet : EBReferenceSet <MasterPadInDevice>) {
     for (_, entry) in self.mObserversOf_mHoleWidth.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mHoleWidth_property.removeEBObserver (observer)
@@ -424,7 +424,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
     if !self.mObserversOf_mHoleHeight.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mHoleHeight.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mHoleHeight_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mHoleHeight.triggerPacking ()
@@ -438,7 +438,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func removeEBObserversOf_mHoleHeight_fromElementsOfSet (_ inSet : EBReferenceSet <MasterPadInDevice>) {
     for (_, entry) in self.mObserversOf_mHoleHeight.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mHoleHeight_property.removeEBObserver (observer)
@@ -491,7 +491,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
     if !self.mObserversOf_mShape.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mShape.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mShape_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mShape.triggerPacking ()
@@ -505,7 +505,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func removeEBObserversOf_mShape_fromElementsOfSet (_ inSet : EBReferenceSet <MasterPadInDevice>) {
     for (_, entry) in self.mObserversOf_mShape.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mShape_property.removeEBObserver (observer)
@@ -558,7 +558,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
     if !self.mObserversOf_mStyle.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mStyle.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mStyle_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mStyle.triggerPacking ()
@@ -572,7 +572,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func removeEBObserversOf_mStyle_fromElementsOfSet (_ inSet : EBReferenceSet <MasterPadInDevice>) {
     for (_, entry) in self.mObserversOf_mStyle.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mStyle_property.removeEBObserver (observer)
@@ -625,7 +625,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
     if !self.mObserversOf_mName.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mName.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mName_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mName.triggerPacking ()
@@ -639,7 +639,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
 
   final func removeEBObserversOf_mName_fromElementsOfSet (_ inSet : EBReferenceSet <MasterPadInDevice>) {
     for (_, entry) in self.mObserversOf_mName.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mName_property.removeEBObserver (observer)
@@ -691,7 +691,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
   final func addEBObserversOf_padNumberDisplay_toElementsOfSet (_ inSet : EBReferenceSet <MasterPadInDevice>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_padNumberDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.padNumberDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_padNumberDisplay.triggerPacking ()
@@ -705,7 +705,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
   final func removeEBObserversOf_padNumberDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <MasterPadInDevice>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_padNumberDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.padNumberDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_padNumberDisplay.triggerPacking ()
@@ -755,7 +755,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
   final func addEBObserversOf_frontSideFilledBezierPathArray_toElementsOfSet (_ inSet : EBReferenceSet <MasterPadInDevice>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_frontSideFilledBezierPathArray.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.frontSideFilledBezierPathArray_property.addEBObserver (observer)
         }else{
           self.mObserversOf_frontSideFilledBezierPathArray.triggerPacking ()
@@ -769,7 +769,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
   final func removeEBObserversOf_frontSideFilledBezierPathArray_fromElementsOfSet (_ inSet : EBReferenceSet <MasterPadInDevice>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_frontSideFilledBezierPathArray.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.frontSideFilledBezierPathArray_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_frontSideFilledBezierPathArray.triggerPacking ()
@@ -819,7 +819,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
   final func addEBObserversOf_backSideFilledBezierPathArray_toElementsOfSet (_ inSet : EBReferenceSet <MasterPadInDevice>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_backSideFilledBezierPathArray.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.backSideFilledBezierPathArray_property.addEBObserver (observer)
         }else{
           self.mObserversOf_backSideFilledBezierPathArray.triggerPacking ()
@@ -833,7 +833,7 @@ class ReadOnlyArrayOf_MasterPadInDevice : ReadOnlyAbstractArrayProperty <MasterP
   final func removeEBObserversOf_backSideFilledBezierPathArray_fromElementsOfSet (_ inSet : EBReferenceSet <MasterPadInDevice>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_backSideFilledBezierPathArray.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.backSideFilledBezierPathArray_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_backSideFilledBezierPathArray.triggerPacking ()

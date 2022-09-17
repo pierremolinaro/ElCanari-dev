@@ -91,7 +91,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
     if !self.mObserversOf_mWidthUnit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mWidthUnit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mWidthUnit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mWidthUnit.triggerPacking ()
@@ -105,7 +105,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mWidthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     for (_, entry) in self.mObserversOf_mWidthUnit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mWidthUnit_property.removeEBObserver (observer)
@@ -158,7 +158,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
     if !self.mObserversOf_mX1.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mX1.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mX1_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mX1.triggerPacking ()
@@ -172,7 +172,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mX1_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     for (_, entry) in self.mObserversOf_mX1.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mX1_property.removeEBObserver (observer)
@@ -225,7 +225,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
     if !self.mObserversOf_mX1Unit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mX1Unit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mX1Unit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mX1Unit.triggerPacking ()
@@ -239,7 +239,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mX1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     for (_, entry) in self.mObserversOf_mX1Unit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mX1Unit_property.removeEBObserver (observer)
@@ -292,7 +292,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
     if !self.mObserversOf_mY1.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mY1.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mY1_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mY1.triggerPacking ()
@@ -306,7 +306,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mY1_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     for (_, entry) in self.mObserversOf_mY1.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mY1_property.removeEBObserver (observer)
@@ -359,7 +359,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
     if !self.mObserversOf_mY1Unit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mY1Unit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mY1Unit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mY1Unit.triggerPacking ()
@@ -373,7 +373,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mY1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     for (_, entry) in self.mObserversOf_mY1Unit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mY1Unit_property.removeEBObserver (observer)
@@ -426,7 +426,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
     if !self.mObserversOf_mX2.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mX2.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mX2_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mX2.triggerPacking ()
@@ -440,7 +440,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mX2_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     for (_, entry) in self.mObserversOf_mX2.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mX2_property.removeEBObserver (observer)
@@ -493,7 +493,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
     if !self.mObserversOf_mX2Unit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mX2Unit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mX2Unit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mX2Unit.triggerPacking ()
@@ -507,7 +507,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mX2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     for (_, entry) in self.mObserversOf_mX2Unit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mX2Unit_property.removeEBObserver (observer)
@@ -560,7 +560,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
     if !self.mObserversOf_mY2.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mY2.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mY2_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mY2.triggerPacking ()
@@ -574,7 +574,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mY2_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     for (_, entry) in self.mObserversOf_mY2.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mY2_property.removeEBObserver (observer)
@@ -627,7 +627,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
     if !self.mObserversOf_mY2Unit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mY2Unit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mY2Unit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mY2Unit.triggerPacking ()
@@ -641,7 +641,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mY2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     for (_, entry) in self.mObserversOf_mY2Unit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mY2Unit_property.removeEBObserver (observer)
@@ -694,7 +694,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
     if !self.mObserversOf_mLayer.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mLayer.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mLayer_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mLayer.triggerPacking ()
@@ -708,7 +708,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mLayer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     for (_, entry) in self.mObserversOf_mLayer.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mLayer_property.removeEBObserver (observer)
@@ -761,7 +761,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
     if !self.mObserversOf_mWidth.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mWidth.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mWidth_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mWidth.triggerPacking ()
@@ -775,7 +775,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
 
   final func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     for (_, entry) in self.mObserversOf_mWidth.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mWidth_property.removeEBObserver (observer)
@@ -827,7 +827,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
@@ -841,7 +841,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
@@ -891,7 +891,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
@@ -905,7 +905,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()

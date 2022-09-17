@@ -91,7 +91,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
     if !self.mObserversOf_mY.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mY.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mY_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mY.triggerPacking ()
@@ -105,7 +105,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for (_, entry) in self.mObserversOf_mY.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mY_property.removeEBObserver (observer)
@@ -158,7 +158,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
     if !self.mObserversOf_mWidth.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mWidth.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mWidth_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mWidth.triggerPacking ()
@@ -172,7 +172,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   final func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for (_, entry) in self.mObserversOf_mWidth.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mWidth_property.removeEBObserver (observer)
@@ -225,7 +225,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
     if !self.mObserversOf_mHeight.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mHeight.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mHeight_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mHeight.triggerPacking ()
@@ -239,7 +239,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   final func removeEBObserversOf_mHeight_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for (_, entry) in self.mObserversOf_mHeight.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mHeight_property.removeEBObserver (observer)
@@ -292,7 +292,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
     if !self.mObserversOf_mIsInFrontLayer.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mIsInFrontLayer.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mIsInFrontLayer_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mIsInFrontLayer.triggerPacking ()
@@ -306,7 +306,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   final func removeEBObserversOf_mIsInFrontLayer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for (_, entry) in self.mObserversOf_mIsInFrontLayer.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mIsInFrontLayer_property.removeEBObserver (observer)
@@ -359,7 +359,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
     if !self.mObserversOf_mIsInBackLayer.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mIsInBackLayer.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mIsInBackLayer_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mIsInBackLayer.triggerPacking ()
@@ -373,7 +373,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   final func removeEBObserversOf_mIsInBackLayer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for (_, entry) in self.mObserversOf_mIsInBackLayer.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mIsInBackLayer_property.removeEBObserver (observer)
@@ -426,7 +426,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
     if !self.mObserversOf_mIsInInner1Layer.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mIsInInner1Layer.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mIsInInner1Layer_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mIsInInner1Layer.triggerPacking ()
@@ -440,7 +440,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   final func removeEBObserversOf_mIsInInner1Layer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for (_, entry) in self.mObserversOf_mIsInInner1Layer.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mIsInInner1Layer_property.removeEBObserver (observer)
@@ -493,7 +493,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
     if !self.mObserversOf_mIsInInner2Layer.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mIsInInner2Layer.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mIsInInner2Layer_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mIsInInner2Layer.triggerPacking ()
@@ -507,7 +507,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   final func removeEBObserversOf_mIsInInner2Layer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for (_, entry) in self.mObserversOf_mIsInInner2Layer.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mIsInInner2Layer_property.removeEBObserver (observer)
@@ -560,7 +560,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
     if !self.mObserversOf_mIsInInner3Layer.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mIsInInner3Layer.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mIsInInner3Layer_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mIsInInner3Layer.triggerPacking ()
@@ -574,7 +574,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   final func removeEBObserversOf_mIsInInner3Layer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for (_, entry) in self.mObserversOf_mIsInInner3Layer.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mIsInInner3Layer_property.removeEBObserver (observer)
@@ -627,7 +627,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
     if !self.mObserversOf_mIsInInner4Layer.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mIsInInner4Layer.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mIsInInner4Layer_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mIsInInner4Layer.triggerPacking ()
@@ -641,7 +641,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   final func removeEBObserversOf_mIsInInner4Layer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for (_, entry) in self.mObserversOf_mIsInInner4Layer.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mIsInInner4Layer_property.removeEBObserver (observer)
@@ -694,7 +694,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
     if !self.mObserversOf_mX.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mX.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mX_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mX.triggerPacking ()
@@ -708,7 +708,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
 
   final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for (_, entry) in self.mObserversOf_mX.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mX_property.removeEBObserver (observer)
@@ -760,7 +760,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
@@ -774,7 +774,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
@@ -824,7 +824,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
@@ -838,7 +838,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
@@ -888,7 +888,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_signatureForERCChecking.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.signatureForERCChecking_property.addEBObserver (observer)
         }else{
           self.mObserversOf_signatureForERCChecking.triggerPacking ()
@@ -902,7 +902,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_signatureForERCChecking.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.signatureForERCChecking_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_signatureForERCChecking.triggerPacking ()

@@ -41,7 +41,7 @@ struct EBWeakReferenceSet <T : ObjectIndexProtocol> {
   mutating func values () -> [T] {
     var result = [T] ()
     for (key, weakElement) in self.mDictionary {
-      if let element = weakElement.element {
+      if let element = weakElement.possibleElement {
         result.append (element)
       }else{
         self.mDictionary [key] = nil
@@ -58,13 +58,21 @@ struct EBWeakReferenceSet <T : ObjectIndexProtocol> {
 
 fileprivate struct EBWeakReferenceSetElement <T : ObjectIndexProtocol> {
 
-  private weak var mElement : T?
+  //····················································································································
+
+  private weak var mWeakElement : T?
+
+  //····················································································································
 
   init (_ inElement : T) {
-    self.mElement = inElement
+    self.mWeakElement = inElement
   }
 
-  var element : T?  { return self.mElement }
+  //····················································································································
+
+  var possibleElement : T?  { return self.mWeakElement }
+
+  //····················································································································
 
 }
 

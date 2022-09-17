@@ -53,12 +53,14 @@ extension BoardConnector {
 
   //····················································································································
 
-  func rotate90Clockwise_BoardConnector (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func rotate90Clockwise_BoardConnector (from inRotationCenter : CanariPoint,
+                                         userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise_BoardConnector (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func rotate90CounterClockwise_BoardConnector (from inRotationCenter : CanariPoint,
+                                                userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
@@ -92,7 +94,7 @@ extension BoardConnector {
 
   //····················································································································
 
-  func translate_BoardConnector (xBy inDx : Int, yBy inDy : Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func translate_BoardConnector (xBy inDx : Int, yBy inDy : Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     if !ioSet.contains (self) {
       ioSet.insert (self)
       self.mX += inDx

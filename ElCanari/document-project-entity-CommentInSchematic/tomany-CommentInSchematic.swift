@@ -83,7 +83,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
     if !self.mObserversOf_mColor.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mColor.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mColor_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mColor.triggerPacking ()
@@ -97,7 +97,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   final func removeEBObserversOf_mColor_fromElementsOfSet (_ inSet : EBReferenceSet <CommentInSchematic>) {
     for (_, entry) in self.mObserversOf_mColor.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mColor_property.removeEBObserver (observer)
@@ -150,7 +150,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
     if !self.mObserversOf_mSize.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mSize.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mSize_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mSize.triggerPacking ()
@@ -164,7 +164,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   final func removeEBObserversOf_mSize_fromElementsOfSet (_ inSet : EBReferenceSet <CommentInSchematic>) {
     for (_, entry) in self.mObserversOf_mSize.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mSize_property.removeEBObserver (observer)
@@ -217,7 +217,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
     if !self.mObserversOf_mHorizontalAlignment.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mHorizontalAlignment.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mHorizontalAlignment_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mHorizontalAlignment.triggerPacking ()
@@ -231,7 +231,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   final func removeEBObserversOf_mHorizontalAlignment_fromElementsOfSet (_ inSet : EBReferenceSet <CommentInSchematic>) {
     for (_, entry) in self.mObserversOf_mHorizontalAlignment.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mHorizontalAlignment_property.removeEBObserver (observer)
@@ -284,7 +284,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
     if !self.mObserversOf_mVerticalAlignment.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mVerticalAlignment.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mVerticalAlignment_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mVerticalAlignment.triggerPacking ()
@@ -298,7 +298,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   final func removeEBObserversOf_mVerticalAlignment_fromElementsOfSet (_ inSet : EBReferenceSet <CommentInSchematic>) {
     for (_, entry) in self.mObserversOf_mVerticalAlignment.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mVerticalAlignment_property.removeEBObserver (observer)
@@ -351,7 +351,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
     if !self.mObserversOf_mX.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mX.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mX_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mX.triggerPacking ()
@@ -365,7 +365,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <CommentInSchematic>) {
     for (_, entry) in self.mObserversOf_mX.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mX_property.removeEBObserver (observer)
@@ -418,7 +418,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
     if !self.mObserversOf_mY.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mY.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mY_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mY.triggerPacking ()
@@ -432,7 +432,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <CommentInSchematic>) {
     for (_, entry) in self.mObserversOf_mY.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mY_property.removeEBObserver (observer)
@@ -485,7 +485,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
     if !self.mObserversOf_mComment.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mComment.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mComment_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mComment.triggerPacking ()
@@ -499,7 +499,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
 
   final func removeEBObserversOf_mComment_fromElementsOfSet (_ inSet : EBReferenceSet <CommentInSchematic>) {
     for (_, entry) in self.mObserversOf_mComment.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mComment_property.removeEBObserver (observer)
@@ -551,7 +551,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <CommentInSchematic>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
@@ -565,7 +565,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <CommentInSchematic>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
@@ -615,7 +615,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <CommentInSchematic>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
@@ -629,7 +629,7 @@ class ReadOnlyArrayOf_CommentInSchematic : ReadOnlyAbstractArrayProperty <Commen
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <CommentInSchematic>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()

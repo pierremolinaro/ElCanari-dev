@@ -127,7 +127,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawBoardLimits.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawBoardLimits.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawBoardLimits_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawBoardLimits.triggerPacking ()
@@ -141,7 +141,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawBoardLimits_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawBoardLimits.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawBoardLimits_property.removeEBObserver (observer)
@@ -194,7 +194,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawInternalBoardLimits.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawInternalBoardLimits.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawInternalBoardLimits_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawInternalBoardLimits.triggerPacking ()
@@ -208,7 +208,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawInternalBoardLimits_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawInternalBoardLimits.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawInternalBoardLimits_property.removeEBObserver (observer)
@@ -261,7 +261,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawComponentNamesTopSide.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawComponentNamesTopSide.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawComponentNamesTopSide_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawComponentNamesTopSide.triggerPacking ()
@@ -275,7 +275,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawComponentNamesTopSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawComponentNamesTopSide.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawComponentNamesTopSide_property.removeEBObserver (observer)
@@ -328,7 +328,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawComponentNamesBottomSide.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawComponentNamesBottomSide.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawComponentNamesBottomSide_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawComponentNamesBottomSide.triggerPacking ()
@@ -342,7 +342,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawComponentNamesBottomSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawComponentNamesBottomSide.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawComponentNamesBottomSide_property.removeEBObserver (observer)
@@ -395,7 +395,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawComponentValuesTopSide.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawComponentValuesTopSide.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawComponentValuesTopSide_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawComponentValuesTopSide.triggerPacking ()
@@ -409,7 +409,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawComponentValuesTopSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawComponentValuesTopSide.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawComponentValuesTopSide_property.removeEBObserver (observer)
@@ -462,7 +462,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawComponentValuesBottomSide.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawComponentValuesBottomSide.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawComponentValuesBottomSide_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawComponentValuesBottomSide.triggerPacking ()
@@ -476,7 +476,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawComponentValuesBottomSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawComponentValuesBottomSide.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawComponentValuesBottomSide_property.removeEBObserver (observer)
@@ -529,7 +529,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawPackageLegendTopSide.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawPackageLegendTopSide.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawPackageLegendTopSide_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawPackageLegendTopSide.triggerPacking ()
@@ -543,7 +543,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawPackageLegendTopSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawPackageLegendTopSide.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawPackageLegendTopSide_property.removeEBObserver (observer)
@@ -596,7 +596,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawPackageLegendBottomSide.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawPackageLegendBottomSide.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawPackageLegendBottomSide_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawPackageLegendBottomSide.triggerPacking ()
@@ -610,7 +610,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawPackageLegendBottomSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawPackageLegendBottomSide.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawPackageLegendBottomSide_property.removeEBObserver (observer)
@@ -663,7 +663,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawPadHolesInPDF.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawPadHolesInPDF.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawPadHolesInPDF_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawPadHolesInPDF.triggerPacking ()
@@ -677,7 +677,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawPadHolesInPDF_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawPadHolesInPDF.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawPadHolesInPDF_property.removeEBObserver (observer)
@@ -730,7 +730,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawPadsTopSide.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawPadsTopSide.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawPadsTopSide_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawPadsTopSide.triggerPacking ()
@@ -744,7 +744,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawPadsTopSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawPadsTopSide.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawPadsTopSide_property.removeEBObserver (observer)
@@ -797,7 +797,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawPadsBottomSide.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawPadsBottomSide.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawPadsBottomSide_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawPadsBottomSide.triggerPacking ()
@@ -811,7 +811,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawPadsBottomSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawPadsBottomSide.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawPadsBottomSide_property.removeEBObserver (observer)
@@ -864,7 +864,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawTextsLayoutTopSide.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTextsLayoutTopSide.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawTextsLayoutTopSide_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawTextsLayoutTopSide.triggerPacking ()
@@ -878,7 +878,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTextsLayoutTopSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawTextsLayoutTopSide.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawTextsLayoutTopSide_property.removeEBObserver (observer)
@@ -931,7 +931,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawTextsLayoutBottomSide.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTextsLayoutBottomSide.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawTextsLayoutBottomSide_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawTextsLayoutBottomSide.triggerPacking ()
@@ -945,7 +945,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTextsLayoutBottomSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawTextsLayoutBottomSide.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawTextsLayoutBottomSide_property.removeEBObserver (observer)
@@ -998,7 +998,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawTextsLegendTopSide.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTextsLegendTopSide.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawTextsLegendTopSide_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawTextsLegendTopSide.triggerPacking ()
@@ -1012,7 +1012,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTextsLegendTopSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawTextsLegendTopSide.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawTextsLegendTopSide_property.removeEBObserver (observer)
@@ -1065,7 +1065,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawTextsLegendBottomSide.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTextsLegendBottomSide.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawTextsLegendBottomSide_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawTextsLegendBottomSide.triggerPacking ()
@@ -1079,7 +1079,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTextsLegendBottomSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawTextsLegendBottomSide.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawTextsLegendBottomSide_property.removeEBObserver (observer)
@@ -1132,7 +1132,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawTracksTopSide.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTracksTopSide.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawTracksTopSide_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawTracksTopSide.triggerPacking ()
@@ -1146,7 +1146,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTracksTopSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawTracksTopSide.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawTracksTopSide_property.removeEBObserver (observer)
@@ -1199,7 +1199,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawTracksInner1Layer.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTracksInner1Layer.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawTracksInner1Layer_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawTracksInner1Layer.triggerPacking ()
@@ -1213,7 +1213,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTracksInner1Layer_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawTracksInner1Layer.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawTracksInner1Layer_property.removeEBObserver (observer)
@@ -1266,7 +1266,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawTracksInner2Layer.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTracksInner2Layer.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawTracksInner2Layer_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawTracksInner2Layer.triggerPacking ()
@@ -1280,7 +1280,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTracksInner2Layer_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawTracksInner2Layer.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawTracksInner2Layer_property.removeEBObserver (observer)
@@ -1333,7 +1333,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawTracksInner3Layer.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTracksInner3Layer.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawTracksInner3Layer_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawTracksInner3Layer.triggerPacking ()
@@ -1347,7 +1347,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTracksInner3Layer_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawTracksInner3Layer.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawTracksInner3Layer_property.removeEBObserver (observer)
@@ -1400,7 +1400,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawTracksInner4Layer.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTracksInner4Layer.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawTracksInner4Layer_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawTracksInner4Layer.triggerPacking ()
@@ -1414,7 +1414,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTracksInner4Layer_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawTracksInner4Layer.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawTracksInner4Layer_property.removeEBObserver (observer)
@@ -1467,7 +1467,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawTracksBottomSide.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTracksBottomSide.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawTracksBottomSide_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawTracksBottomSide.triggerPacking ()
@@ -1481,7 +1481,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTracksBottomSide_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawTracksBottomSide.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawTracksBottomSide_property.removeEBObserver (observer)
@@ -1534,7 +1534,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawTraversingPads.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTraversingPads.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawTraversingPads_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawTraversingPads.triggerPacking ()
@@ -1548,7 +1548,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawTraversingPads_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawTraversingPads.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawTraversingPads_property.removeEBObserver (observer)
@@ -1601,7 +1601,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_drawVias.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawVias.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.drawVias_property.addEBObserver (observer)
           }else{
             self.mObserversOf_drawVias.triggerPacking ()
@@ -1615,7 +1615,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_drawVias_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_drawVias.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.drawVias_property.removeEBObserver (observer)
@@ -1668,7 +1668,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_fileExtension.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_fileExtension.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.fileExtension_property.addEBObserver (observer)
           }else{
             self.mObserversOf_fileExtension.triggerPacking ()
@@ -1682,7 +1682,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_fileExtension_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_fileExtension.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.fileExtension_property.removeEBObserver (observer)
@@ -1735,7 +1735,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_horizontalMirror.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_horizontalMirror.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.horizontalMirror_property.addEBObserver (observer)
           }else{
             self.mObserversOf_horizontalMirror.triggerPacking ()
@@ -1749,7 +1749,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_horizontalMirror_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_horizontalMirror.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.horizontalMirror_property.removeEBObserver (observer)
@@ -1802,7 +1802,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_name.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_name.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.name_property.addEBObserver (observer)
           }else{
             self.mObserversOf_name.triggerPacking ()
@@ -1816,7 +1816,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_name_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_name.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.name_property.removeEBObserver (observer)
@@ -1869,7 +1869,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_measurementUnitForPadHoleInPDF.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_measurementUnitForPadHoleInPDF.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.measurementUnitForPadHoleInPDF_property.addEBObserver (observer)
           }else{
             self.mObserversOf_measurementUnitForPadHoleInPDF.triggerPacking ()
@@ -1883,7 +1883,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_measurementUnitForPadHoleInPDF_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_measurementUnitForPadHoleInPDF.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.measurementUnitForPadHoleInPDF_property.removeEBObserver (observer)
@@ -1936,7 +1936,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     if !self.mObserversOf_padHoleDiameterInPDF.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_padHoleDiameterInPDF.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.padHoleDiameterInPDF_property.addEBObserver (observer)
           }else{
             self.mObserversOf_padHoleDiameterInPDF.triggerPacking ()
@@ -1950,7 +1950,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func removeEBObserversOf_padHoleDiameterInPDF_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for (_, entry) in self.mObserversOf_padHoleDiameterInPDF.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.padHoleDiameterInPDF_property.removeEBObserver (observer)
@@ -2002,7 +2002,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserversOf_hasNoData_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_hasNoData.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.hasNoData_property.addEBObserver (observer)
         }else{
           self.mObserversOf_hasNoData.triggerPacking ()
@@ -2016,7 +2016,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserversOf_hasNoData_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_hasNoData.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.hasNoData_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_hasNoData.triggerPacking ()
@@ -2066,7 +2066,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserversOf_parameterStatusImage_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_parameterStatusImage.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.parameterStatusImage_property.addEBObserver (observer)
         }else{
           self.mObserversOf_parameterStatusImage.triggerPacking ()
@@ -2080,7 +2080,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserversOf_parameterStatusImage_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_parameterStatusImage.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.parameterStatusImage_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_parameterStatusImage.triggerPacking ()
@@ -2130,7 +2130,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func addEBObserversOf_emptyFileExtensionImage_toElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_emptyFileExtensionImage.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.emptyFileExtensionImage_property.addEBObserver (observer)
         }else{
           self.mObserversOf_emptyFileExtensionImage.triggerPacking ()
@@ -2144,7 +2144,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   final func removeEBObserversOf_emptyFileExtensionImage_fromElementsOfSet (_ inSet : EBReferenceSet <ArtworkFileGenerationParameters>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_emptyFileExtensionImage.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.emptyFileExtensionImage_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_emptyFileExtensionImage.triggerPacking ()

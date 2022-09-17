@@ -71,7 +71,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
     if !self.mObserversOf_mFileName.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mFileName.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mFileName_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mFileName.triggerPacking ()
@@ -85,7 +85,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   final func removeEBObserversOf_mFileName_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceDocumentation>) {
     for (_, entry) in self.mObserversOf_mFileName.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mFileName_property.removeEBObserver (observer)
@@ -138,7 +138,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
     if !self.mObserversOf_mFileData.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mFileData.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mFileData_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mFileData.triggerPacking ()
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   final func removeEBObserversOf_mFileData_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceDocumentation>) {
     for (_, entry) in self.mObserversOf_mFileData.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mFileData_property.removeEBObserver (observer)
@@ -204,7 +204,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
   final func addEBObserversOf_fileSize_toElementsOfSet (_ inSet : EBReferenceSet <DeviceDocumentation>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_fileSize.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.fileSize_property.addEBObserver (observer)
         }else{
           self.mObserversOf_fileSize.triggerPacking ()
@@ -218,7 +218,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
   final func removeEBObserversOf_fileSize_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceDocumentation>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_fileSize.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.fileSize_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_fileSize.triggerPacking ()

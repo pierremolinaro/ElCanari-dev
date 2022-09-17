@@ -123,7 +123,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
     if !self.mObserversOf_mComponentPadName.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mComponentPadName.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mComponentPadName_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mComponentPadName.triggerPacking ()
@@ -137,7 +137,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mComponentPadName_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for (_, entry) in self.mObserversOf_mComponentPadName.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mComponentPadName_property.removeEBObserver (observer)
@@ -190,7 +190,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
     if !self.mObserversOf_mPadIndex.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mPadIndex.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mPadIndex_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mPadIndex.triggerPacking ()
@@ -204,7 +204,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mPadIndex_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for (_, entry) in self.mObserversOf_mPadIndex.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mPadIndex_property.removeEBObserver (observer)
@@ -257,7 +257,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
     if !self.mObserversOf_mX.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mX.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mX_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mX.triggerPacking ()
@@ -271,7 +271,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for (_, entry) in self.mObserversOf_mX.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mX_property.removeEBObserver (observer)
@@ -324,7 +324,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
     if !self.mObserversOf_mY.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mY.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mY_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mY.triggerPacking ()
@@ -338,7 +338,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for (_, entry) in self.mObserversOf_mY.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mY_property.removeEBObserver (observer)
@@ -391,7 +391,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
     if !self.mObserversOf_mDefaultHoleDiameterUnit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mDefaultHoleDiameterUnit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mDefaultHoleDiameterUnit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mDefaultHoleDiameterUnit.triggerPacking ()
@@ -405,7 +405,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mDefaultHoleDiameterUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for (_, entry) in self.mObserversOf_mDefaultHoleDiameterUnit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mDefaultHoleDiameterUnit_property.removeEBObserver (observer)
@@ -458,7 +458,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
     if !self.mObserversOf_mCustomHoleDiameter.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mCustomHoleDiameter.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mCustomHoleDiameter_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mCustomHoleDiameter.triggerPacking ()
@@ -472,7 +472,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mCustomHoleDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for (_, entry) in self.mObserversOf_mCustomHoleDiameter.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mCustomHoleDiameter_property.removeEBObserver (observer)
@@ -525,7 +525,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
     if !self.mObserversOf_mCustomHoleDiameterUnit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mCustomHoleDiameterUnit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mCustomHoleDiameterUnit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mCustomHoleDiameterUnit.triggerPacking ()
@@ -539,7 +539,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mCustomHoleDiameterUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for (_, entry) in self.mObserversOf_mCustomHoleDiameterUnit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mCustomHoleDiameterUnit_property.removeEBObserver (observer)
@@ -592,7 +592,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
     if !self.mObserversOf_mUsesCustomHoleDiameter.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mUsesCustomHoleDiameter.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mUsesCustomHoleDiameter_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mUsesCustomHoleDiameter.triggerPacking ()
@@ -606,7 +606,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mUsesCustomHoleDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for (_, entry) in self.mObserversOf_mUsesCustomHoleDiameter.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mUsesCustomHoleDiameter_property.removeEBObserver (observer)
@@ -659,7 +659,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
     if !self.mObserversOf_mDefaultPadDiameterUnit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mDefaultPadDiameterUnit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mDefaultPadDiameterUnit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mDefaultPadDiameterUnit.triggerPacking ()
@@ -673,7 +673,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mDefaultPadDiameterUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for (_, entry) in self.mObserversOf_mDefaultPadDiameterUnit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mDefaultPadDiameterUnit_property.removeEBObserver (observer)
@@ -726,7 +726,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
     if !self.mObserversOf_mCustomPadDiameter.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mCustomPadDiameter.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mCustomPadDiameter_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mCustomPadDiameter.triggerPacking ()
@@ -740,7 +740,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mCustomPadDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for (_, entry) in self.mObserversOf_mCustomPadDiameter.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mCustomPadDiameter_property.removeEBObserver (observer)
@@ -793,7 +793,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
     if !self.mObserversOf_mCustomPadDiameterUnit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mCustomPadDiameterUnit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mCustomPadDiameterUnit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mCustomPadDiameterUnit.triggerPacking ()
@@ -807,7 +807,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mCustomPadDiameterUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for (_, entry) in self.mObserversOf_mCustomPadDiameterUnit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mCustomPadDiameterUnit_property.removeEBObserver (observer)
@@ -860,7 +860,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
     if !self.mObserversOf_mUsesCustomPadDiameter.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mUsesCustomPadDiameter.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mUsesCustomPadDiameter_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mUsesCustomPadDiameter.triggerPacking ()
@@ -874,7 +874,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
 
   final func removeEBObserversOf_mUsesCustomPadDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for (_, entry) in self.mObserversOf_mUsesCustomPadDiameter.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mUsesCustomPadDiameter_property.removeEBObserver (observer)
@@ -926,7 +926,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserversOf_isConnectedToSomePad_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_isConnectedToSomePad.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.isConnectedToSomePad_property.addEBObserver (observer)
         }else{
           self.mObserversOf_isConnectedToSomePad.triggerPacking ()
@@ -940,7 +940,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserversOf_isConnectedToSomePad_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_isConnectedToSomePad.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.isConnectedToSomePad_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_isConnectedToSomePad.triggerPacking ()
@@ -990,7 +990,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserversOf_location_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_location.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.location_property.addEBObserver (observer)
         }else{
           self.mObserversOf_location.triggerPacking ()
@@ -1004,7 +1004,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserversOf_location_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_location.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.location_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_location.triggerPacking ()
@@ -1054,7 +1054,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserversOf_netNameFromComponentPad_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_netNameFromComponentPad.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.netNameFromComponentPad_property.addEBObserver (observer)
         }else{
           self.mObserversOf_netNameFromComponentPad.triggerPacking ()
@@ -1068,7 +1068,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserversOf_netNameFromComponentPad_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_netNameFromComponentPad.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.netNameFromComponentPad_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_netNameFromComponentPad.triggerPacking ()
@@ -1118,7 +1118,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserversOf_netNameAndPadLocation_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_netNameAndPadLocation.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.netNameAndPadLocation_property.addEBObserver (observer)
         }else{
           self.mObserversOf_netNameAndPadLocation.triggerPacking ()
@@ -1132,7 +1132,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserversOf_netNameAndPadLocation_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_netNameAndPadLocation.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.netNameAndPadLocation_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_netNameAndPadLocation.triggerPacking ()
@@ -1182,7 +1182,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserversOf_side_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_side.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.side_property.addEBObserver (observer)
         }else{
           self.mObserversOf_side.triggerPacking ()
@@ -1196,7 +1196,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserversOf_side_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_side.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.side_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_side.triggerPacking ()
@@ -1246,7 +1246,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserversOf_isVia_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_isVia.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.isVia_property.addEBObserver (observer)
         }else{
           self.mObserversOf_isVia.triggerPacking ()
@@ -1260,7 +1260,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserversOf_isVia_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_isVia.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.isVia_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_isVia.triggerPacking ()
@@ -1310,7 +1310,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_issues.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.issues_property.addEBObserver (observer)
         }else{
           self.mObserversOf_issues.triggerPacking ()
@@ -1324,7 +1324,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_issues.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.issues_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_issues.triggerPacking ()
@@ -1374,7 +1374,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserversOf_viaDefaultHoleDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_viaDefaultHoleDiameter.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.viaDefaultHoleDiameter_property.addEBObserver (observer)
         }else{
           self.mObserversOf_viaDefaultHoleDiameter.triggerPacking ()
@@ -1388,7 +1388,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserversOf_viaDefaultHoleDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_viaDefaultHoleDiameter.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.viaDefaultHoleDiameter_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_viaDefaultHoleDiameter.triggerPacking ()
@@ -1438,7 +1438,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserversOf_viaDefaultPadDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_viaDefaultPadDiameter.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.viaDefaultPadDiameter_property.addEBObserver (observer)
         }else{
           self.mObserversOf_viaDefaultPadDiameter.triggerPacking ()
@@ -1452,7 +1452,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserversOf_viaDefaultPadDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_viaDefaultPadDiameter.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.viaDefaultPadDiameter_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_viaDefaultPadDiameter.triggerPacking ()
@@ -1502,7 +1502,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserversOf_netNameFromTracks_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_netNameFromTracks.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.netNameFromTracks_property.addEBObserver (observer)
         }else{
           self.mObserversOf_netNameFromTracks.triggerPacking ()
@@ -1516,7 +1516,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserversOf_netNameFromTracks_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_netNameFromTracks.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.netNameFromTracks_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_netNameFromTracks.triggerPacking ()
@@ -1566,7 +1566,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserversOf_netClassName_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_netClassName.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.netClassName_property.addEBObserver (observer)
         }else{
           self.mObserversOf_netClassName.triggerPacking ()
@@ -1580,7 +1580,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserversOf_netClassName_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_netClassName.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.netClassName_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_netClassName.triggerPacking ()
@@ -1630,7 +1630,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserversOf_connectedToComponent_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_connectedToComponent.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.connectedToComponent_property.addEBObserver (observer)
         }else{
           self.mObserversOf_connectedToComponent.triggerPacking ()
@@ -1644,7 +1644,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserversOf_connectedToComponent_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_connectedToComponent.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.connectedToComponent_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_connectedToComponent.triggerPacking ()
@@ -1694,7 +1694,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserversOf_actualHoleDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_actualHoleDiameter.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.actualHoleDiameter_property.addEBObserver (observer)
         }else{
           self.mObserversOf_actualHoleDiameter.triggerPacking ()
@@ -1708,7 +1708,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserversOf_actualHoleDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_actualHoleDiameter.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.actualHoleDiameter_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_actualHoleDiameter.triggerPacking ()
@@ -1758,7 +1758,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserversOf_actualPadDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_actualPadDiameter.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.actualPadDiameter_property.addEBObserver (observer)
         }else{
           self.mObserversOf_actualPadDiameter.triggerPacking ()
@@ -1772,7 +1772,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserversOf_actualPadDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_actualPadDiameter.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.actualPadDiameter_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_actualPadDiameter.triggerPacking ()
@@ -1822,7 +1822,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
@@ -1836,7 +1836,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
@@ -1886,7 +1886,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
@@ -1900,7 +1900,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
@@ -1950,7 +1950,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_signatureForERCChecking.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.signatureForERCChecking_property.addEBObserver (observer)
         }else{
           self.mObserversOf_signatureForERCChecking.triggerPacking ()
@@ -1964,7 +1964,7 @@ class ReadOnlyArrayOf_BoardConnector : ReadOnlyAbstractArrayProperty <BoardConne
   final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : EBReferenceSet <BoardConnector>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_signatureForERCChecking.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.signatureForERCChecking_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_signatureForERCChecking.triggerPacking ()

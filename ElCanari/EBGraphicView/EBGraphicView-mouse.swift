@@ -133,7 +133,7 @@ extension EBGraphicView {
         dy = p.y
       }
       if (dx != 0) || (dy != 0) {
-        var userSet = EBReferenceSet <AnyObject> ()
+        var userSet = EBReferenceSet <EBManagedObject> ()
         for object in controller.selectedGraphicObjectSet.values {
           object.translate (xBy: dx, yBy: dy, userSet: &userSet)
         }

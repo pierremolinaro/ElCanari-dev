@@ -66,7 +66,7 @@ extension MergerBoardInstance {
 
   //····················································································································
 
-  func translate_MergerBoardInstance (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func translate_MergerBoardInstance (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     self.x += inDx
     self.y += inDy
   }
@@ -97,12 +97,12 @@ extension MergerBoardInstance {
 
  //····················································································································
 
-  func rotate90Clockwise_MergerBoardInstance (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func rotate90Clockwise_MergerBoardInstance (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
   }
 
  //····················································································································
 
-  func rotate90CounterClockwise_MergerBoardInstance (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func rotate90CounterClockwise_MergerBoardInstance (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································

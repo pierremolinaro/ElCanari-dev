@@ -52,7 +52,7 @@ extension PackageModelImageDoublePoint {
 
   //····················································································································
 
-  func translate_PackageModelImageDoublePoint (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func translate_PackageModelImageDoublePoint (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     self.mFirstX += inDx
     self.mFirstY += inDy
   }
@@ -139,12 +139,12 @@ extension PackageModelImageDoublePoint {
 
  //····················································································································
 
-  func rotate90Clockwise_PackageModelImageDoublePoint (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func rotate90Clockwise_PackageModelImageDoublePoint (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
   }
 
  //····················································································································
 
-  func rotate90CounterClockwise_PackageModelImageDoublePoint (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func rotate90CounterClockwise_PackageModelImageDoublePoint (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································

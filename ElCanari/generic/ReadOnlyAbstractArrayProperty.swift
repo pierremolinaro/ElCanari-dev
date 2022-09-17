@@ -42,7 +42,7 @@ fileprivate func update <T : AnyObject> (currentSet ioCurrentSet : inout EBRefer
 //    ReadOnlyAbstractArrayProperty
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyAbstractArrayProperty <T : AnyObject> : ReadOnlyAbstractGenericRelationshipProperty, EBObserverProtocol {
+class ReadOnlyAbstractArrayProperty <T : ObjectIndexProtocol> : ReadOnlyAbstractGenericRelationshipProperty, EBObserverProtocol {
 
   //····················································································································
   // Abstract methods

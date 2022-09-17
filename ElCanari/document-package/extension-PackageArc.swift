@@ -51,7 +51,7 @@ extension PackageArc {
 
   //····················································································································
 
-  func translate_PackageArc (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func translate_PackageArc (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     self.xCenter += inDx
     self.yCenter += inDy
   }
@@ -226,12 +226,12 @@ extension PackageArc {
 
  //····················································································································
 
-  func rotate90Clockwise_PackageArc (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func rotate90Clockwise_PackageArc (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
   }
 
  //····················································································································
 
-  func rotate90CounterClockwise_PackageArc (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func rotate90CounterClockwise_PackageArc (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································

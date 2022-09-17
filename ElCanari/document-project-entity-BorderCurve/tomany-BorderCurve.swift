@@ -91,7 +91,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
     if !self.mObserversOf_mX.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mX.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mX_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mX.triggerPacking ()
@@ -105,7 +105,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for (_, entry) in self.mObserversOf_mX.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mX_property.removeEBObserver (observer)
@@ -158,7 +158,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
     if !self.mObserversOf_mY.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mY.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mY_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mY.triggerPacking ()
@@ -172,7 +172,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for (_, entry) in self.mObserversOf_mY.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mY_property.removeEBObserver (observer)
@@ -225,7 +225,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
     if !self.mObserversOf_mCPX1.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mCPX1.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mCPX1_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mCPX1.triggerPacking ()
@@ -239,7 +239,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   final func removeEBObserversOf_mCPX1_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for (_, entry) in self.mObserversOf_mCPX1.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mCPX1_property.removeEBObserver (observer)
@@ -292,7 +292,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
     if !self.mObserversOf_mCPY1.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mCPY1.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mCPY1_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mCPY1.triggerPacking ()
@@ -306,7 +306,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   final func removeEBObserversOf_mCPY1_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for (_, entry) in self.mObserversOf_mCPY1.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mCPY1_property.removeEBObserver (observer)
@@ -359,7 +359,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
     if !self.mObserversOf_mCPX2.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mCPX2.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mCPX2_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mCPX2.triggerPacking ()
@@ -373,7 +373,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   final func removeEBObserversOf_mCPX2_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for (_, entry) in self.mObserversOf_mCPX2.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mCPX2_property.removeEBObserver (observer)
@@ -426,7 +426,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
     if !self.mObserversOf_mCPY2.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mCPY2.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mCPY2_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mCPY2.triggerPacking ()
@@ -440,7 +440,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   final func removeEBObserversOf_mCPY2_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for (_, entry) in self.mObserversOf_mCPY2.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mCPY2_property.removeEBObserver (observer)
@@ -493,7 +493,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
     if !self.mObserversOf_mShape.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mShape.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mShape_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mShape.triggerPacking ()
@@ -507,7 +507,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   final func removeEBObserversOf_mShape_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for (_, entry) in self.mObserversOf_mShape.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mShape_property.removeEBObserver (observer)
@@ -559,7 +559,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserversOf_mNextX_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_mNextX.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.mNextX_property.addEBObserver (observer)
         }else{
           self.mObserversOf_mNextX.triggerPacking ()
@@ -572,7 +572,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   final func removeEBObserversOf_mNextX_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for (_, entry) in self.mObserversOf_mNextX.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mNextX_property.removeEBObserver (observer)
@@ -624,7 +624,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserversOf_mNextY_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_mNextY.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.mNextY_property.addEBObserver (observer)
         }else{
           self.mObserversOf_mNextY.triggerPacking ()
@@ -637,7 +637,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
 
   final func removeEBObserversOf_mNextY_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for (_, entry) in self.mObserversOf_mNextY.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mNextY_property.removeEBObserver (observer)
@@ -689,7 +689,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserversOf_p2Xvalue_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_p2Xvalue.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.p2Xvalue_property.addEBObserver (observer)
         }else{
           self.mObserversOf_p2Xvalue.triggerPacking ()
@@ -703,7 +703,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserversOf_p2Xvalue_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_p2Xvalue.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.p2Xvalue_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_p2Xvalue.triggerPacking ()
@@ -753,7 +753,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserversOf_p2Yvalue_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_p2Yvalue.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.p2Yvalue_property.addEBObserver (observer)
         }else{
           self.mObserversOf_p2Yvalue.triggerPacking ()
@@ -767,7 +767,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserversOf_p2Yvalue_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_p2Yvalue.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.p2Yvalue_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_p2Yvalue.triggerPacking ()
@@ -817,7 +817,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_descriptor.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.descriptor_property.addEBObserver (observer)
         }else{
           self.mObserversOf_descriptor.triggerPacking ()
@@ -831,7 +831,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_descriptor.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.descriptor_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_descriptor.triggerPacking ()
@@ -881,7 +881,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
@@ -895,7 +895,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
@@ -945,7 +945,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserversOf_isLine_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_isLine.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.isLine_property.addEBObserver (observer)
         }else{
           self.mObserversOf_isLine.triggerPacking ()
@@ -959,7 +959,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserversOf_isLine_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_isLine.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.isLine_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_isLine.triggerPacking ()
@@ -1009,7 +1009,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
@@ -1023,7 +1023,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()

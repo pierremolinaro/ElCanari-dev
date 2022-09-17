@@ -53,7 +53,7 @@ extension ComponentSymbolInProject {
 
   //····················································································································
 
-  func translate_ComponentSymbolInProject (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func translate_ComponentSymbolInProject (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     self.mCenterX += inDx
     self.mCenterY += inDy
   }
@@ -173,7 +173,7 @@ extension ComponentSymbolInProject {
 
   //····················································································································
 
-  func rotate90Clockwise_ComponentSymbolInProject (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func rotate90Clockwise_ComponentSymbolInProject (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90Clockwise (x: self.mCenterX, y: self.mCenterY)
     self.mCenterX = p.x
     self.mCenterY = p.y
@@ -186,7 +186,7 @@ extension ComponentSymbolInProject {
 
   //····················································································································
 
-  func rotate90CounterClockwise_ComponentSymbolInProject (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func rotate90CounterClockwise_ComponentSymbolInProject (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     let p = inRotationCenter.rotated90CounterClockwise (x: self.mCenterX, y: self.mCenterY)
     self.mCenterX = p.x
     self.mCenterY = p.y

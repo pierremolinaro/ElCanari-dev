@@ -84,7 +84,7 @@ extension WireInSchematic {
 
   //····················································································································
 
-  func translate_WireInSchematic (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func translate_WireInSchematic (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     if let p1 = self.mP1, !ioSet.contains (p1) {
       ioSet.insert (p1)
       p1.mX += inDx
@@ -107,12 +107,12 @@ extension WireInSchematic {
 
   //····················································································································
 
-  func rotate90Clockwise_WireInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func rotate90Clockwise_WireInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
 
-  func rotate90CounterClockwise_WireInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func rotate90CounterClockwise_WireInSchematic (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································

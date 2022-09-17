@@ -71,7 +71,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
     if !self.mObserversOf_mPackageName.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mPackageName.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mPackageName_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mPackageName.triggerPacking ()
@@ -85,7 +85,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
 
   final func removeEBObserversOf_mPackageName_fromElementsOfSet (_ inSet : EBReferenceSet <DevicePackageInProject>) {
     for (_, entry) in self.mObserversOf_mPackageName.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mPackageName_property.removeEBObserver (observer)
@@ -138,7 +138,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
     if !self.mObserversOf_mStrokeBezierPath.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mStrokeBezierPath.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mStrokeBezierPath_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mStrokeBezierPath.triggerPacking ()
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
 
   final func removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <DevicePackageInProject>) {
     for (_, entry) in self.mObserversOf_mStrokeBezierPath.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mStrokeBezierPath_property.removeEBObserver (observer)
@@ -204,7 +204,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
   final func addEBObserversOf_packagePadDictionary_toElementsOfSet (_ inSet : EBReferenceSet <DevicePackageInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_packagePadDictionary.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.packagePadDictionary_property.addEBObserver (observer)
         }else{
           self.mObserversOf_packagePadDictionary.triggerPacking ()
@@ -218,7 +218,7 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
   final func removeEBObserversOf_packagePadDictionary_fromElementsOfSet (_ inSet : EBReferenceSet <DevicePackageInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_packagePadDictionary.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.packagePadDictionary_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_packagePadDictionary.triggerPacking ()

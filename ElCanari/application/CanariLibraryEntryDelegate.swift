@@ -15,15 +15,15 @@ import Cocoa
 
 final class CanariLibraryEntryDelegate : EBSwiftBaseObject, EBObserverProtocol {
   
-  private weak var mObject : CanariLibraryEntry?
+  private weak var mObject : CanariLibraryEntry? // SHOULD BE WEAK
   private var mStream : FSEventStreamRef? = nil
 
   //····················································································································
 
-  init (object : CanariLibraryEntry) {
-    mObject = object
+  init (object inObject : CanariLibraryEntry) {
+    self.mObject = inObject
     super.init ()
-    object.mPath_property.addEBObserver (self)
+    inObject.mPath_property.addEBObserver (self)
   }
 
   //····················································································································
@@ -87,13 +87,6 @@ final class CanariLibraryEntryDelegate : EBSwiftBaseObject, EBObserverProtocol {
       self.mStream = nil
     }
   }
-  
-  //····················································································································
-
-//  deinit {
-//    self.mObject?.mPath_property.removeEBObserver (self)
-//    self.removeFileSystemMonitoring ()
-//  }
   
   //····················································································································
 

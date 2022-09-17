@@ -89,7 +89,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
     if !self.mObserversOf_y.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_y.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.y_property.addEBObserver (observer)
           }else{
             self.mObserversOf_y.triggerPacking ()
@@ -103,7 +103,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for (_, entry) in self.mObserversOf_y.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.y_property.removeEBObserver (observer)
@@ -156,7 +156,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
     if !self.mObserversOf_width.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_width.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.width_property.addEBObserver (observer)
           }else{
             self.mObserversOf_width.triggerPacking ()
@@ -170,7 +170,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for (_, entry) in self.mObserversOf_width.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.width_property.removeEBObserver (observer)
@@ -223,7 +223,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
     if !self.mObserversOf_height.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_height.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.height_property.addEBObserver (observer)
           }else{
             self.mObserversOf_height.triggerPacking ()
@@ -237,7 +237,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for (_, entry) in self.mObserversOf_height.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.height_property.removeEBObserver (observer)
@@ -290,7 +290,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
     if !self.mObserversOf_xUnit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_xUnit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.xUnit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_xUnit.triggerPacking ()
@@ -304,7 +304,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_xUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for (_, entry) in self.mObserversOf_xUnit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.xUnit_property.removeEBObserver (observer)
@@ -357,7 +357,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
     if !self.mObserversOf_yUnit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_yUnit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.yUnit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_yUnit.triggerPacking ()
@@ -371,7 +371,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_yUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for (_, entry) in self.mObserversOf_yUnit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.yUnit_property.removeEBObserver (observer)
@@ -424,7 +424,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
     if !self.mObserversOf_widthUnit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_widthUnit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.widthUnit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_widthUnit.triggerPacking ()
@@ -438,7 +438,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_widthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for (_, entry) in self.mObserversOf_widthUnit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.widthUnit_property.removeEBObserver (observer)
@@ -491,7 +491,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
     if !self.mObserversOf_heightUnit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_heightUnit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.heightUnit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_heightUnit.triggerPacking ()
@@ -505,7 +505,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_heightUnit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for (_, entry) in self.mObserversOf_heightUnit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.heightUnit_property.removeEBObserver (observer)
@@ -558,7 +558,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
     if !self.mObserversOf_x.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_x.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.x_property.addEBObserver (observer)
           }else{
             self.mObserversOf_x.triggerPacking ()
@@ -572,7 +572,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for (_, entry) in self.mObserversOf_x.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.x_property.removeEBObserver (observer)
@@ -624,7 +624,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_strokeBezierPath.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.strokeBezierPath_property.addEBObserver (observer)
         }else{
           self.mObserversOf_strokeBezierPath.triggerPacking ()
@@ -638,7 +638,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_strokeBezierPath.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.strokeBezierPath_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_strokeBezierPath.triggerPacking ()
@@ -688,7 +688,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
@@ -702,7 +702,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
@@ -752,7 +752,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
@@ -766,7 +766,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
@@ -816,7 +816,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_issues.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.issues_property.addEBObserver (observer)
         }else{
           self.mObserversOf_issues.triggerPacking ()
@@ -830,7 +830,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : EBReferenceSet <PackageOval>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_issues.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.issues_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_issues.triggerPacking ()

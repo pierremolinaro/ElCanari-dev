@@ -87,7 +87,7 @@ struct EBWeakEventSet {
     if self.mPackingTriggered {
       self.mPackingTriggered = false
       for (key, entry) in self.mDictionary {
-        if entry.observer == nil {
+        if entry.possibleObserver == nil {
           self.mDictionary [key] = nil
         }
       }
@@ -130,12 +130,12 @@ struct EBWeakObserverSetElement {
 
   //····················································································································
 
-  var observer : EBObserverProtocol? { return self.mObserver }
+  var possibleObserver : EBObserverProtocol? { return self.mObserver }
 
   //····················································································································
 
-  init (observer : EBObserverProtocol) {
-    self.mObserver = observer
+  init (observer inObserver : EBObserverProtocol) {
+    self.mObserver = inObserver
   }
 
   //····················································································································

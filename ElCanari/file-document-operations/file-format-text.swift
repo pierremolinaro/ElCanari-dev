@@ -7,7 +7,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct RawObject {
-  let index : Int
+//  let index : Int
   let object : EBManagedObject
   let propertyDictionary : [String : NSRange]
 }
@@ -49,24 +49,24 @@ struct RawObject {
 //  let operationQueue = OperationQueue ()
 //  let mutex = DispatchSemaphore (value: 1)
   var rawObjectArray = [RawObject] ()
-  var idx = 0
+//  var idx = 0
   let data = ioDataScanner.data
   while !ioDataScanner.eof (), ioDataScanner.testAccept (byte: ASCII.at.rawValue) {
-    let index = idx
-    idx += 1
+//    let index = idx
+//    idx += 1
     let classIndex = ioDataScanner.parseBase62EncodedInt ()
     let propertyNameArray = classDefinition [classIndex].1
+    let className = classDefinition [classIndex].0
     var propertyValueDictionary = [String : NSRange] ()
-    propertyValueDictionary.reserveCapacity (propertyNameArray.count)
+//    propertyValueDictionary.reserveCapacity (propertyNameArray.count)
     for propertyName in propertyNameArray {
       let propertyRange = ioDataScanner.getLineRangeAndAdvance ()
       propertyValueDictionary [propertyName] = propertyRange
     }
-    let className = classDefinition [classIndex].0
 //    operationQueue.addOperation {
       let managedObject = newInstanceOfEntityNamed (inUndoManager, className)!
       managedObject.setUpPropertiesWithTextDictionary (propertyValueDictionary, data)
-      let rawObject = RawObject (index: index, object: managedObject, propertyDictionary: propertyValueDictionary)
+      let rawObject = RawObject (/* index: index, */ object: managedObject, propertyDictionary: propertyValueDictionary)
 //      mutex.wait ()
       rawObjectArray.append (rawObject)
 //      mutex.signal ()

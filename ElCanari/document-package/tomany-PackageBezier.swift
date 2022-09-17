@@ -105,7 +105,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
     if !self.mObserversOf_y1.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_y1.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.y1_property.addEBObserver (observer)
           }else{
             self.mObserversOf_y1.triggerPacking ()
@@ -119,7 +119,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for (_, entry) in self.mObserversOf_y1.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.y1_property.removeEBObserver (observer)
@@ -172,7 +172,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
     if !self.mObserversOf_x2.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_x2.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.x2_property.addEBObserver (observer)
           }else{
             self.mObserversOf_x2.triggerPacking ()
@@ -186,7 +186,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for (_, entry) in self.mObserversOf_x2.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.x2_property.removeEBObserver (observer)
@@ -239,7 +239,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
     if !self.mObserversOf_y2.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_y2.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.y2_property.addEBObserver (observer)
           }else{
             self.mObserversOf_y2.triggerPacking ()
@@ -253,7 +253,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for (_, entry) in self.mObserversOf_y2.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.y2_property.removeEBObserver (observer)
@@ -306,7 +306,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
     if !self.mObserversOf_cpx1.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_cpx1.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.cpx1_property.addEBObserver (observer)
           }else{
             self.mObserversOf_cpx1.triggerPacking ()
@@ -320,7 +320,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   final func removeEBObserversOf_cpx1_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for (_, entry) in self.mObserversOf_cpx1.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.cpx1_property.removeEBObserver (observer)
@@ -373,7 +373,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
     if !self.mObserversOf_cpy1.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_cpy1.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.cpy1_property.addEBObserver (observer)
           }else{
             self.mObserversOf_cpy1.triggerPacking ()
@@ -387,7 +387,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   final func removeEBObserversOf_cpy1_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for (_, entry) in self.mObserversOf_cpy1.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.cpy1_property.removeEBObserver (observer)
@@ -440,7 +440,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
     if !self.mObserversOf_cpx2.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_cpx2.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.cpx2_property.addEBObserver (observer)
           }else{
             self.mObserversOf_cpx2.triggerPacking ()
@@ -454,7 +454,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   final func removeEBObserversOf_cpx2_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for (_, entry) in self.mObserversOf_cpx2.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.cpx2_property.removeEBObserver (observer)
@@ -507,7 +507,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
     if !self.mObserversOf_cpy2.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_cpy2.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.cpy2_property.addEBObserver (observer)
           }else{
             self.mObserversOf_cpy2.triggerPacking ()
@@ -521,7 +521,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   final func removeEBObserversOf_cpy2_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for (_, entry) in self.mObserversOf_cpy2.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.cpy2_property.removeEBObserver (observer)
@@ -574,7 +574,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
     if !self.mObserversOf_x1Unit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_x1Unit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.x1Unit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_x1Unit.triggerPacking ()
@@ -588,7 +588,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   final func removeEBObserversOf_x1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for (_, entry) in self.mObserversOf_x1Unit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.x1Unit_property.removeEBObserver (observer)
@@ -641,7 +641,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
     if !self.mObserversOf_y1Unit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_y1Unit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.y1Unit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_y1Unit.triggerPacking ()
@@ -655,7 +655,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   final func removeEBObserversOf_y1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for (_, entry) in self.mObserversOf_y1Unit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.y1Unit_property.removeEBObserver (observer)
@@ -708,7 +708,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
     if !self.mObserversOf_x2Unit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_x2Unit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.x2Unit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_x2Unit.triggerPacking ()
@@ -722,7 +722,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   final func removeEBObserversOf_x2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for (_, entry) in self.mObserversOf_x2Unit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.x2Unit_property.removeEBObserver (observer)
@@ -775,7 +775,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
     if !self.mObserversOf_y2Unit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_y2Unit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.y2Unit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_y2Unit.triggerPacking ()
@@ -789,7 +789,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   final func removeEBObserversOf_y2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for (_, entry) in self.mObserversOf_y2Unit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.y2Unit_property.removeEBObserver (observer)
@@ -842,7 +842,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
     if !self.mObserversOf_cpx1Unit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_cpx1Unit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.cpx1Unit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_cpx1Unit.triggerPacking ()
@@ -856,7 +856,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   final func removeEBObserversOf_cpx1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for (_, entry) in self.mObserversOf_cpx1Unit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.cpx1Unit_property.removeEBObserver (observer)
@@ -909,7 +909,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
     if !self.mObserversOf_cpy1Unit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_cpy1Unit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.cpy1Unit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_cpy1Unit.triggerPacking ()
@@ -923,7 +923,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   final func removeEBObserversOf_cpy1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for (_, entry) in self.mObserversOf_cpy1Unit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.cpy1Unit_property.removeEBObserver (observer)
@@ -976,7 +976,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
     if !self.mObserversOf_cpx2Unit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_cpx2Unit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.cpx2Unit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_cpx2Unit.triggerPacking ()
@@ -990,7 +990,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   final func removeEBObserversOf_cpx2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for (_, entry) in self.mObserversOf_cpx2Unit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.cpx2Unit_property.removeEBObserver (observer)
@@ -1043,7 +1043,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
     if !self.mObserversOf_cpy2Unit.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_cpy2Unit.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.cpy2Unit_property.addEBObserver (observer)
           }else{
             self.mObserversOf_cpy2Unit.triggerPacking ()
@@ -1057,7 +1057,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   final func removeEBObserversOf_cpy2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for (_, entry) in self.mObserversOf_cpy2Unit.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.cpy2Unit_property.removeEBObserver (observer)
@@ -1110,7 +1110,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
     if !self.mObserversOf_x1.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_x1.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.x1_property.addEBObserver (observer)
           }else{
             self.mObserversOf_x1.triggerPacking ()
@@ -1124,7 +1124,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
 
   final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for (_, entry) in self.mObserversOf_x1.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.x1_property.removeEBObserver (observer)
@@ -1176,7 +1176,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_strokeBezierPath.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.strokeBezierPath_property.addEBObserver (observer)
         }else{
           self.mObserversOf_strokeBezierPath.triggerPacking ()
@@ -1190,7 +1190,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_strokeBezierPath.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.strokeBezierPath_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_strokeBezierPath.triggerPacking ()
@@ -1240,7 +1240,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
@@ -1254,7 +1254,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
@@ -1304,7 +1304,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
@@ -1318,7 +1318,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
@@ -1368,7 +1368,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_issues.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.issues_property.addEBObserver (observer)
         }else{
           self.mObserversOf_issues.triggerPacking ()
@@ -1382,7 +1382,7 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : EBReferenceSet <PackageBezier>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_issues.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.issues_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_issues.triggerPacking ()

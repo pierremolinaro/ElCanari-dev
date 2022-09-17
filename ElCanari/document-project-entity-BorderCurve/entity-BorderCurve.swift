@@ -1066,7 +1066,8 @@ final class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  override func translate (xBy inDx: Int, yBy inDy: Int,
+                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     translate_BorderCurve (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
@@ -1162,13 +1163,15 @@ final class BorderCurve : EBGraphicManagedObject,
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  override func rotate90Clockwise (from inRotationCenter : CanariPoint,
+                                   userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     rotate90Clockwise_BorderCurve (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
+                                          userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     rotate90CounterClockwise_BorderCurve (from: inRotationCenter, userSet: &ioSet)
   }
 

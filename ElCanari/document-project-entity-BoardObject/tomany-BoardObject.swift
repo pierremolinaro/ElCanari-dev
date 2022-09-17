@@ -122,7 +122,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_isPlacedInBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_isPlacedInBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.isPlacedInBoard_property.addEBObserver (observer)
         }else{
           self.mObserversOf_isPlacedInBoard.triggerPacking ()
@@ -136,7 +136,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_isPlacedInBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_isPlacedInBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.isPlacedInBoard_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_isPlacedInBoard.triggerPacking ()
@@ -186,7 +186,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_issues.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.issues_property.addEBObserver (observer)
         }else{
           self.mObserversOf_issues.triggerPacking ()
@@ -200,7 +200,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_issues.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.issues_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_issues.triggerPacking ()
@@ -250,7 +250,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_isVia_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_isVia.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.isVia_property.addEBObserver (observer)
         }else{
           self.mObserversOf_isVia.triggerPacking ()
@@ -264,7 +264,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_isVia_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_isVia.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.isVia_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_isVia.triggerPacking ()
@@ -314,7 +314,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_trackLengthInCanariUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_trackLengthInCanariUnit.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.trackLengthInCanariUnit_property.addEBObserver (observer)
         }else{
           self.mObserversOf_trackLengthInCanariUnit.triggerPacking ()
@@ -328,7 +328,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_trackLengthInCanariUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_trackLengthInCanariUnit.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.trackLengthInCanariUnit_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_trackLengthInCanariUnit.triggerPacking ()
@@ -378,7 +378,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_signatureForERCChecking.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.signatureForERCChecking_property.addEBObserver (observer)
         }else{
           self.mObserversOf_signatureForERCChecking.triggerPacking ()
@@ -392,7 +392,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_signatureForERCChecking.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.signatureForERCChecking_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_signatureForERCChecking.triggerPacking ()
@@ -442,7 +442,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_netNameAndPadLocation_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_netNameAndPadLocation.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.netNameAndPadLocation_property.addEBObserver (observer)
         }else{
           self.mObserversOf_netNameAndPadLocation.triggerPacking ()
@@ -456,7 +456,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_netNameAndPadLocation_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_netNameAndPadLocation.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.netNameAndPadLocation_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_netNameAndPadLocation.triggerPacking ()
@@ -506,7 +506,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_componentName_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_componentName.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.componentName_property.addEBObserver (observer)
         }else{
           self.mObserversOf_componentName.triggerPacking ()
@@ -520,7 +520,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_componentName_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_componentName.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.componentName_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_componentName.triggerPacking ()
@@ -570,7 +570,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_displayFrontLegendForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayFrontLegendForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayFrontLegendForBoard_property.addEBObserver (observer)
         }else{
           self.mObserversOf_displayFrontLegendForBoard.triggerPacking ()
@@ -584,7 +584,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_displayFrontLegendForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayFrontLegendForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayFrontLegendForBoard_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_displayFrontLegendForBoard.triggerPacking ()
@@ -634,7 +634,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_displayBackLegendForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayBackLegendForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayBackLegendForBoard_property.addEBObserver (observer)
         }else{
           self.mObserversOf_displayBackLegendForBoard.triggerPacking ()
@@ -648,7 +648,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_displayBackLegendForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayBackLegendForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayBackLegendForBoard_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_displayBackLegendForBoard.triggerPacking ()
@@ -698,7 +698,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_displayFrontLayoutForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayFrontLayoutForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayFrontLayoutForBoard_property.addEBObserver (observer)
         }else{
           self.mObserversOf_displayFrontLayoutForBoard.triggerPacking ()
@@ -712,7 +712,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_displayFrontLayoutForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayFrontLayoutForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayFrontLayoutForBoard_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_displayFrontLayoutForBoard.triggerPacking ()
@@ -762,7 +762,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_displayBackLayoutForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayBackLayoutForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayBackLayoutForBoard_property.addEBObserver (observer)
         }else{
           self.mObserversOf_displayBackLayoutForBoard.triggerPacking ()
@@ -776,7 +776,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_displayBackLayoutForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayBackLayoutForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayBackLayoutForBoard_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_displayBackLayoutForBoard.triggerPacking ()
@@ -826,7 +826,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_displayInner1LayoutForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayInner1LayoutForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayInner1LayoutForBoard_property.addEBObserver (observer)
         }else{
           self.mObserversOf_displayInner1LayoutForBoard.triggerPacking ()
@@ -840,7 +840,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_displayInner1LayoutForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayInner1LayoutForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayInner1LayoutForBoard_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_displayInner1LayoutForBoard.triggerPacking ()
@@ -890,7 +890,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_displayInner2LayoutForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayInner2LayoutForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayInner2LayoutForBoard_property.addEBObserver (observer)
         }else{
           self.mObserversOf_displayInner2LayoutForBoard.triggerPacking ()
@@ -904,7 +904,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_displayInner2LayoutForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayInner2LayoutForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayInner2LayoutForBoard_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_displayInner2LayoutForBoard.triggerPacking ()
@@ -954,7 +954,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_displayInner3LayoutForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayInner3LayoutForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayInner3LayoutForBoard_property.addEBObserver (observer)
         }else{
           self.mObserversOf_displayInner3LayoutForBoard.triggerPacking ()
@@ -968,7 +968,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_displayInner3LayoutForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayInner3LayoutForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayInner3LayoutForBoard_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_displayInner3LayoutForBoard.triggerPacking ()
@@ -1018,7 +1018,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_displayInner4LayoutForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayInner4LayoutForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayInner4LayoutForBoard_property.addEBObserver (observer)
         }else{
           self.mObserversOf_displayInner4LayoutForBoard.triggerPacking ()
@@ -1032,7 +1032,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_displayInner4LayoutForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayInner4LayoutForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayInner4LayoutForBoard_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_displayInner4LayoutForBoard.triggerPacking ()
@@ -1082,7 +1082,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_displayFrontPadsForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayFrontPadsForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayFrontPadsForBoard_property.addEBObserver (observer)
         }else{
           self.mObserversOf_displayFrontPadsForBoard.triggerPacking ()
@@ -1096,7 +1096,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_displayFrontPadsForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayFrontPadsForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayFrontPadsForBoard_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_displayFrontPadsForBoard.triggerPacking ()
@@ -1146,7 +1146,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_displayBackPadsForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayBackPadsForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayBackPadsForBoard_property.addEBObserver (observer)
         }else{
           self.mObserversOf_displayBackPadsForBoard.triggerPacking ()
@@ -1160,7 +1160,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_displayBackPadsForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayBackPadsForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayBackPadsForBoard_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_displayBackPadsForBoard.triggerPacking ()
@@ -1210,7 +1210,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_displayPadNumbersForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayPadNumbersForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayPadNumbersForBoard_property.addEBObserver (observer)
         }else{
           self.mObserversOf_displayPadNumbersForBoard.triggerPacking ()
@@ -1224,7 +1224,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_displayPadNumbersForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayPadNumbersForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayPadNumbersForBoard_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_displayPadNumbersForBoard.triggerPacking ()
@@ -1274,7 +1274,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_displayFrontRestrictRectangles_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayFrontRestrictRectangles.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayFrontRestrictRectangles_property.addEBObserver (observer)
         }else{
           self.mObserversOf_displayFrontRestrictRectangles.triggerPacking ()
@@ -1288,7 +1288,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_displayFrontRestrictRectangles_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayFrontRestrictRectangles.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayFrontRestrictRectangles_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_displayFrontRestrictRectangles.triggerPacking ()
@@ -1338,7 +1338,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_displayBackRestrictRectangles_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayBackRestrictRectangles.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayBackRestrictRectangles_property.addEBObserver (observer)
         }else{
           self.mObserversOf_displayBackRestrictRectangles.triggerPacking ()
@@ -1352,7 +1352,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_displayBackRestrictRectangles_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayBackRestrictRectangles.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayBackRestrictRectangles_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_displayBackRestrictRectangles.triggerPacking ()
@@ -1402,7 +1402,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_displayInner1RestrictRectangles_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayInner1RestrictRectangles.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayInner1RestrictRectangles_property.addEBObserver (observer)
         }else{
           self.mObserversOf_displayInner1RestrictRectangles.triggerPacking ()
@@ -1416,7 +1416,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_displayInner1RestrictRectangles_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayInner1RestrictRectangles.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayInner1RestrictRectangles_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_displayInner1RestrictRectangles.triggerPacking ()
@@ -1466,7 +1466,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_displayInner2RestrictRectangles_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayInner2RestrictRectangles.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayInner2RestrictRectangles_property.addEBObserver (observer)
         }else{
           self.mObserversOf_displayInner2RestrictRectangles.triggerPacking ()
@@ -1480,7 +1480,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_displayInner2RestrictRectangles_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayInner2RestrictRectangles.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayInner2RestrictRectangles_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_displayInner2RestrictRectangles.triggerPacking ()
@@ -1530,7 +1530,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_displayInner3RestrictRectangles_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayInner3RestrictRectangles.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayInner3RestrictRectangles_property.addEBObserver (observer)
         }else{
           self.mObserversOf_displayInner3RestrictRectangles.triggerPacking ()
@@ -1544,7 +1544,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_displayInner3RestrictRectangles_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayInner3RestrictRectangles.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayInner3RestrictRectangles_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_displayInner3RestrictRectangles.triggerPacking ()
@@ -1594,7 +1594,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_displayInner4RestrictRectangles_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayInner4RestrictRectangles.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayInner4RestrictRectangles_property.addEBObserver (observer)
         }else{
           self.mObserversOf_displayInner4RestrictRectangles.triggerPacking ()
@@ -1608,7 +1608,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_displayInner4RestrictRectangles_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_displayInner4RestrictRectangles.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.displayInner4RestrictRectangles_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_displayInner4RestrictRectangles.triggerPacking ()
@@ -1658,7 +1658,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_packageDrawingWidthMultpliedByTenForBoard_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_packageDrawingWidthMultpliedByTenForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.packageDrawingWidthMultpliedByTenForBoard_property.addEBObserver (observer)
         }else{
           self.mObserversOf_packageDrawingWidthMultpliedByTenForBoard.triggerPacking ()
@@ -1672,7 +1672,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_packageDrawingWidthMultpliedByTenForBoard_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_packageDrawingWidthMultpliedByTenForBoard.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.packageDrawingWidthMultpliedByTenForBoard_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_packageDrawingWidthMultpliedByTenForBoard.triggerPacking ()
@@ -1722,7 +1722,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
@@ -1736,7 +1736,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
@@ -1786,7 +1786,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
@@ -1800,7 +1800,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
@@ -1850,7 +1850,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_errorOrWarningIssueSize_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_errorOrWarningIssueSize.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.errorOrWarningIssueSize_property.addEBObserver (observer)
         }else{
           self.mObserversOf_errorOrWarningIssueSize.triggerPacking ()
@@ -1864,7 +1864,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_errorOrWarningIssueSize_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_errorOrWarningIssueSize.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.errorOrWarningIssueSize_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_errorOrWarningIssueSize.triggerPacking ()
@@ -1914,7 +1914,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func addEBObserversOf_trackSide_toElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_trackSide.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.trackSide_property.addEBObserver (observer)
         }else{
           self.mObserversOf_trackSide.triggerPacking ()
@@ -1928,7 +1928,7 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   final func removeEBObserversOf_trackSide_fromElementsOfSet (_ inSet : EBReferenceSet <BoardObject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_trackSide.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.trackSide_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_trackSide.triggerPacking ()

@@ -47,7 +47,7 @@ extension SymbolInstanceInDevice {
 
   //····················································································································
 
-  func translate_SymbolInstanceInDevice (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func translate_SymbolInstanceInDevice (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     self.mX += inDx
     self.mY += inDy
   }
@@ -108,12 +108,12 @@ extension SymbolInstanceInDevice {
 
  //····················································································································
 
-  func rotate90Clockwise_SymbolInstanceInDevice (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func rotate90Clockwise_SymbolInstanceInDevice (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
   }
 
  //····················································································································
 
-  func rotate90CounterClockwise_SymbolInstanceInDevice (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  func rotate90CounterClockwise_SymbolInstanceInDevice (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································

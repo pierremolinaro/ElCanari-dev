@@ -74,7 +74,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <WireInSchematic>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
@@ -88,7 +88,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <WireInSchematic>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
@@ -138,7 +138,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <WireInSchematic>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <WireInSchematic>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
@@ -202,7 +202,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func addEBObserversOf_netName_toElementsOfSet (_ inSet : EBReferenceSet <WireInSchematic>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_netName.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.netName_property.addEBObserver (observer)
         }else{
           self.mObserversOf_netName.triggerPacking ()
@@ -216,7 +216,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func removeEBObserversOf_netName_fromElementsOfSet (_ inSet : EBReferenceSet <WireInSchematic>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_netName.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.netName_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_netName.triggerPacking ()
@@ -266,7 +266,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func addEBObserversOf_netClassName_toElementsOfSet (_ inSet : EBReferenceSet <WireInSchematic>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_netClassName.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.netClassName_property.addEBObserver (observer)
         }else{
           self.mObserversOf_netClassName.triggerPacking ()
@@ -280,7 +280,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func removeEBObserversOf_netClassName_fromElementsOfSet (_ inSet : EBReferenceSet <WireInSchematic>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_netClassName.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.netClassName_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_netClassName.triggerPacking ()
@@ -330,7 +330,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func addEBObserversOf_hasNet_toElementsOfSet (_ inSet : EBReferenceSet <WireInSchematic>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_hasNet.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.hasNet_property.addEBObserver (observer)
         }else{
           self.mObserversOf_hasNet.triggerPacking ()
@@ -344,7 +344,7 @@ class ReadOnlyArrayOf_WireInSchematic : ReadOnlyAbstractArrayProperty <WireInSch
   final func removeEBObserversOf_hasNet_fromElementsOfSet (_ inSet : EBReferenceSet <WireInSchematic>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_hasNet.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.hasNet_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_hasNet.triggerPacking ()

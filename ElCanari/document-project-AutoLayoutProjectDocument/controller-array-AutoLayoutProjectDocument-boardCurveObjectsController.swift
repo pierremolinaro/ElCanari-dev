@@ -645,7 +645,7 @@ final class Controller_AutoLayoutProjectDocument_boardCurveObjectsController : R
            let X = dataDictionary [X_KEY] as? Int,
            let Y = dataDictionary [Y_KEY] as? Int {
       var newObjects = [BorderCurve] ()
-      var userSet = EBReferenceSet <AnyObject> ()
+      var userSet = EBReferenceSet <EBManagedObject> ()
       var idx = -1
       var errorMessage = ""
       for dictionary in dictionaryArray {
@@ -968,7 +968,7 @@ final class Controller_AutoLayoutProjectDocument_boardCurveObjectsController : R
 
   func rotate90Clockwise () {
     let r = CanariRect (points: Array (self.mRotate90PointSet))
-    var userSet = EBReferenceSet <AnyObject> ()
+    var userSet = EBReferenceSet <EBManagedObject> ()
     for object in self.selectedArray.values {
       object.rotate90Clockwise (from: r.center, userSet: &userSet)
     }
@@ -978,7 +978,7 @@ final class Controller_AutoLayoutProjectDocument_boardCurveObjectsController : R
 
   func rotate90CounterClockwise () {
     let r = CanariRect (points: Array (self.mRotate90PointSet))
-    var userSet = EBReferenceSet <AnyObject> ()
+    var userSet = EBReferenceSet <EBManagedObject> ()
     for object in self.selectedArray.values {
       object.rotate90CounterClockwise (from: r.center, userSet: &userSet)
     }

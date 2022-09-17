@@ -81,7 +81,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
     if !self.mObserversOf_x.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_x.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.x_property.addEBObserver (observer)
           }else{
             self.mObserversOf_x.triggerPacking ()
@@ -95,7 +95,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for (_, entry) in self.mObserversOf_x.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.x_property.removeEBObserver (observer)
@@ -148,7 +148,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
     if !self.mObserversOf_y.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_y.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.y_property.addEBObserver (observer)
           }else{
             self.mObserversOf_y.triggerPacking ()
@@ -162,7 +162,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for (_, entry) in self.mObserversOf_y.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.y_property.removeEBObserver (observer)
@@ -215,7 +215,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
     if !self.mObserversOf_instanceRotation.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_instanceRotation.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.instanceRotation_property.addEBObserver (observer)
           }else{
             self.mObserversOf_instanceRotation.triggerPacking ()
@@ -229,7 +229,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserversOf_instanceRotation_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for (_, entry) in self.mObserversOf_instanceRotation.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.instanceRotation_property.removeEBObserver (observer)
@@ -281,7 +281,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   final func addEBObserversOf_instanceRect_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_instanceRect.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.instanceRect_property.addEBObserver (observer)
         }else{
           self.mObserversOf_instanceRect.triggerPacking ()
@@ -295,7 +295,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   final func removeEBObserversOf_instanceRect_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_instanceRect.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.instanceRect_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_instanceRect.triggerPacking ()
@@ -345,7 +345,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   final func addEBObserversOf_modelName_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_modelName.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.modelName_property.addEBObserver (observer)
         }else{
           self.mObserversOf_modelName.triggerPacking ()
@@ -359,7 +359,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   final func removeEBObserversOf_modelName_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_modelName.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.modelName_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_modelName.triggerPacking ()
@@ -409,7 +409,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   final func addEBObserversOf_boardLimitWidth_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_boardLimitWidth.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.boardLimitWidth_property.addEBObserver (observer)
         }else{
           self.mObserversOf_boardLimitWidth.triggerPacking ()
@@ -423,7 +423,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   final func removeEBObserversOf_boardLimitWidth_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_boardLimitWidth.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.boardLimitWidth_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_boardLimitWidth.triggerPacking ()
@@ -473,7 +473,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
@@ -487,7 +487,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
@@ -537,7 +537,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
@@ -551,7 +551,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()

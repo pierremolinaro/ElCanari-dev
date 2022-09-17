@@ -75,7 +75,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
     if !self.mObserversOf_mSymbolInstanceName.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mSymbolInstanceName.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mSymbolInstanceName_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mSymbolInstanceName.triggerPacking ()
@@ -89,7 +89,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
 
   final func removeEBObserversOf_mSymbolInstanceName_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
     for (_, entry) in self.mObserversOf_mSymbolInstanceName.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mSymbolInstanceName_property.removeEBObserver (observer)
@@ -141,7 +141,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func addEBObserversOf_symbolAndTypeName_toElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_symbolAndTypeName.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.symbolAndTypeName_property.addEBObserver (observer)
         }else{
           self.mObserversOf_symbolAndTypeName.triggerPacking ()
@@ -155,7 +155,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func removeEBObserversOf_symbolAndTypeName_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_symbolAndTypeName.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.symbolAndTypeName_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_symbolAndTypeName.triggerPacking ()
@@ -205,7 +205,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func addEBObserversOf_symbolTypeName_toElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_symbolTypeName.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.symbolTypeName_property.addEBObserver (observer)
         }else{
           self.mObserversOf_symbolTypeName.triggerPacking ()
@@ -219,7 +219,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func removeEBObserversOf_symbolTypeName_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_symbolTypeName.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.symbolTypeName_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_symbolTypeName.triggerPacking ()
@@ -269,7 +269,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func addEBObserversOf_filledBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_filledBezierPath.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.filledBezierPath_property.addEBObserver (observer)
         }else{
           self.mObserversOf_filledBezierPath.triggerPacking ()
@@ -283,7 +283,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func removeEBObserversOf_filledBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_filledBezierPath.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.filledBezierPath_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_filledBezierPath.triggerPacking ()
@@ -333,7 +333,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_strokeBezierPath.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.strokeBezierPath_property.addEBObserver (observer)
         }else{
           self.mObserversOf_strokeBezierPath.triggerPacking ()
@@ -347,7 +347,7 @@ class ReadOnlyArrayOf_DeviceSymbolInstanceInProject : ReadOnlyAbstractArrayPrope
   final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceSymbolInstanceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_strokeBezierPath.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.strokeBezierPath_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_strokeBezierPath.triggerPacking ()

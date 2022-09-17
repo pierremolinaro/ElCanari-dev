@@ -91,7 +91,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
     if !self.mObserversOf_mDeviceName.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mDeviceName.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mDeviceName_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mDeviceName.triggerPacking ()
@@ -105,7 +105,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func removeEBObserversOf_mDeviceName_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for (_, entry) in self.mObserversOf_mDeviceName.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mDeviceName_property.removeEBObserver (observer)
@@ -158,7 +158,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
     if !self.mObserversOf_mPrefix.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mPrefix.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mPrefix_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mPrefix.triggerPacking ()
@@ -172,7 +172,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func removeEBObserversOf_mPrefix_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for (_, entry) in self.mObserversOf_mPrefix.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mPrefix_property.removeEBObserver (observer)
@@ -225,7 +225,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
     if !self.mObserversOf_mDeviceVersion.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mDeviceVersion.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mDeviceVersion_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mDeviceVersion.triggerPacking ()
@@ -239,7 +239,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func removeEBObserversOf_mDeviceVersion_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for (_, entry) in self.mObserversOf_mDeviceVersion.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mDeviceVersion_property.removeEBObserver (observer)
@@ -292,7 +292,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
     if !self.mObserversOf_mDeviceFileData.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mDeviceFileData.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mDeviceFileData_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mDeviceFileData.triggerPacking ()
@@ -306,7 +306,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
 
   final func removeEBObserversOf_mDeviceFileData_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for (_, entry) in self.mObserversOf_mDeviceFileData.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mDeviceFileData_property.removeEBObserver (observer)
@@ -358,7 +358,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_versionString.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.versionString_property.addEBObserver (observer)
         }else{
           self.mObserversOf_versionString.triggerPacking ()
@@ -372,7 +372,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_versionString.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.versionString_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_versionString.triggerPacking ()
@@ -422,7 +422,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserversOf_sizeString_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_sizeString.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.sizeString_property.addEBObserver (observer)
         }else{
           self.mObserversOf_sizeString.triggerPacking ()
@@ -436,7 +436,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func removeEBObserversOf_sizeString_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_sizeString.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.sizeString_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_sizeString.triggerPacking ()
@@ -486,7 +486,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserversOf_canExport_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_canExport.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.canExport_property.addEBObserver (observer)
         }else{
           self.mObserversOf_canExport.triggerPacking ()
@@ -500,7 +500,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func removeEBObserversOf_canExport_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_canExport.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.canExport_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_canExport.triggerPacking ()
@@ -550,7 +550,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserversOf_packageNames_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_packageNames.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.packageNames_property.addEBObserver (observer)
         }else{
           self.mObserversOf_packageNames.triggerPacking ()
@@ -564,7 +564,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func removeEBObserversOf_packageNames_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_packageNames.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.packageNames_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_packageNames.triggerPacking ()
@@ -614,7 +614,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserversOf_deviceComponentCountString_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_deviceComponentCountString.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.deviceComponentCountString_property.addEBObserver (observer)
         }else{
           self.mObserversOf_deviceComponentCountString.triggerPacking ()
@@ -628,7 +628,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func removeEBObserversOf_deviceComponentCountString_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_deviceComponentCountString.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.deviceComponentCountString_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_deviceComponentCountString.triggerPacking ()
@@ -678,7 +678,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserversOf_canRemove_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_canRemove.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.canRemove_property.addEBObserver (observer)
         }else{
           self.mObserversOf_canRemove.triggerPacking ()
@@ -692,7 +692,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func removeEBObserversOf_canRemove_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_canRemove.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.canRemove_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_canRemove.triggerPacking ()
@@ -742,7 +742,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserversOf_symbolAndTypesNames_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_symbolAndTypesNames.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.symbolAndTypesNames_property.addEBObserver (observer)
         }else{
           self.mObserversOf_symbolAndTypesNames.triggerPacking ()
@@ -756,7 +756,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func removeEBObserversOf_symbolAndTypesNames_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_symbolAndTypesNames.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.symbolAndTypesNames_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_symbolAndTypesNames.triggerPacking ()
@@ -806,7 +806,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserversOf_pinPadAssignments_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_pinPadAssignments.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.pinPadAssignments_property.addEBObserver (observer)
         }else{
           self.mObserversOf_pinPadAssignments.triggerPacking ()
@@ -820,7 +820,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func removeEBObserversOf_pinPadAssignments_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_pinPadAssignments.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.pinPadAssignments_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_pinPadAssignments.triggerPacking ()
@@ -870,7 +870,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_deviceSymbolDictionary.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.deviceSymbolDictionary_property.addEBObserver (observer)
         }else{
           self.mObserversOf_deviceSymbolDictionary.triggerPacking ()
@@ -884,7 +884,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_deviceSymbolDictionary.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.deviceSymbolDictionary_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_deviceSymbolDictionary.triggerPacking ()

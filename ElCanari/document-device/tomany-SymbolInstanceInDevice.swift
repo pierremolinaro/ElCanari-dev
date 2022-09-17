@@ -83,7 +83,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
     if !self.mObserversOf_mInstanceName.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mInstanceName.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mInstanceName_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mInstanceName.triggerPacking ()
@@ -97,7 +97,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   final func removeEBObserversOf_mInstanceName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolInstanceInDevice>) {
     for (_, entry) in self.mObserversOf_mInstanceName.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mInstanceName_property.removeEBObserver (observer)
@@ -150,7 +150,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
     if !self.mObserversOf_mX.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mX.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mX_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mX.triggerPacking ()
@@ -164,7 +164,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolInstanceInDevice>) {
     for (_, entry) in self.mObserversOf_mX.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mX_property.removeEBObserver (observer)
@@ -217,7 +217,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
     if !self.mObserversOf_mY.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mY.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mY_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mY.triggerPacking ()
@@ -231,7 +231,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
 
   final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolInstanceInDevice>) {
     for (_, entry) in self.mObserversOf_mY.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mY_property.removeEBObserver (observer)
@@ -283,7 +283,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func addEBObserversOf_symbolQualifiedName_toElementsOfSet (_ inSet : EBReferenceSet <SymbolInstanceInDevice>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_symbolQualifiedName.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.symbolQualifiedName_property.addEBObserver (observer)
         }else{
           self.mObserversOf_symbolQualifiedName.triggerPacking ()
@@ -297,7 +297,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func removeEBObserversOf_symbolQualifiedName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolInstanceInDevice>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_symbolQualifiedName.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.symbolQualifiedName_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_symbolQualifiedName.triggerPacking ()
@@ -347,7 +347,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func addEBObserversOf_symbolTypeName_toElementsOfSet (_ inSet : EBReferenceSet <SymbolInstanceInDevice>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_symbolTypeName.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.symbolTypeName_property.addEBObserver (observer)
         }else{
           self.mObserversOf_symbolTypeName.triggerPacking ()
@@ -361,7 +361,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func removeEBObserversOf_symbolTypeName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolInstanceInDevice>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_symbolTypeName.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.symbolTypeName_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_symbolTypeName.triggerPacking ()
@@ -411,7 +411,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func addEBObserversOf_pinSymbolQualifiedNames_toElementsOfSet (_ inSet : EBReferenceSet <SymbolInstanceInDevice>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_pinSymbolQualifiedNames.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.pinSymbolQualifiedNames_property.addEBObserver (observer)
         }else{
           self.mObserversOf_pinSymbolQualifiedNames.triggerPacking ()
@@ -425,7 +425,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func removeEBObserversOf_pinSymbolQualifiedNames_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolInstanceInDevice>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_pinSymbolQualifiedNames.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.pinSymbolQualifiedNames_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_pinSymbolQualifiedNames.triggerPacking ()
@@ -475,7 +475,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <SymbolInstanceInDevice>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
@@ -489,7 +489,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolInstanceInDevice>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
@@ -539,7 +539,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func addEBObserversOf_unconnectedPins_toElementsOfSet (_ inSet : EBReferenceSet <SymbolInstanceInDevice>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_unconnectedPins.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.unconnectedPins_property.addEBObserver (observer)
         }else{
           self.mObserversOf_unconnectedPins.triggerPacking ()
@@ -553,7 +553,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func removeEBObserversOf_unconnectedPins_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolInstanceInDevice>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_unconnectedPins.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.unconnectedPins_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_unconnectedPins.triggerPacking ()
@@ -603,7 +603,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <SymbolInstanceInDevice>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.addEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
@@ -617,7 +617,7 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolInstanceInDevice>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()

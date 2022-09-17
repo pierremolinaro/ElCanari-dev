@@ -58,7 +58,7 @@ extension EBGraphicView {
         }
       }
       if accepted {
-        var userSet = EBReferenceSet <AnyObject> ()
+        var userSet = EBReferenceSet <EBManagedObject> ()
         for object in controller.selectedGraphicObjectSet.values {
           object.translate (xBy: inDx, yBy:inDy, userSet: &userSet)
         }

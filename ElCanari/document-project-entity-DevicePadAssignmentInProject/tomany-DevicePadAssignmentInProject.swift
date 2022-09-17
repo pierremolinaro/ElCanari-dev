@@ -71,7 +71,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
     if !self.mObserversOf_mPadName.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mPadName.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mPadName_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mPadName.triggerPacking ()
@@ -85,7 +85,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   final func removeEBObserversOf_mPadName_fromElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
     for (_, entry) in self.mObserversOf_mPadName.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mPadName_property.removeEBObserver (observer)
@@ -137,7 +137,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
   final func addEBObserversOf_pinPadAssignment_toElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_pinPadAssignment.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.pinPadAssignment_property.addEBObserver (observer)
         }else{
           self.mObserversOf_pinPadAssignment.triggerPacking ()
@@ -151,7 +151,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
   final func removeEBObserversOf_pinPadAssignment_fromElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_pinPadAssignment.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.pinPadAssignment_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_pinPadAssignment.triggerPacking ()
@@ -201,7 +201,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
   final func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_descriptor.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.descriptor_property.addEBObserver (observer)
         }else{
           self.mObserversOf_descriptor.triggerPacking ()
@@ -215,7 +215,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
   final func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_descriptor.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.descriptor_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_descriptor.triggerPacking ()

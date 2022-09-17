@@ -1758,7 +1758,8 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  override func translate (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  override func translate (xBy inDx: Int, yBy inDy: Int,
+                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     translate_BoardTrack (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
@@ -1854,13 +1855,15 @@ final class BoardTrack : BoardObject,
 
   //····················································································································
 
-  override func rotate90Clockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  override func rotate90Clockwise (from inRotationCenter : CanariPoint,
+                                   userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     rotate90Clockwise_BoardTrack (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
-  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <AnyObject>) {
+  override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
+                                          userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     rotate90CounterClockwise_BoardTrack (from: inRotationCenter, userSet: &ioSet)
   }
 

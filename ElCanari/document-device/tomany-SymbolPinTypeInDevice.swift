@@ -87,7 +87,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
     if !self.mObserversOf_mPinX.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mPinX.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mPinX_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mPinX.triggerPacking ()
@@ -101,7 +101,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_mPinX_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     for (_, entry) in self.mObserversOf_mPinX.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mPinX_property.removeEBObserver (observer)
@@ -154,7 +154,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
     if !self.mObserversOf_mPinY.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mPinY.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mPinY_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mPinY.triggerPacking ()
@@ -168,7 +168,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_mPinY_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     for (_, entry) in self.mObserversOf_mPinY.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mPinY_property.removeEBObserver (observer)
@@ -221,7 +221,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
     if !self.mObserversOf_mXName.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mXName.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mXName_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mXName.triggerPacking ()
@@ -235,7 +235,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_mXName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     for (_, entry) in self.mObserversOf_mXName.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mXName_property.removeEBObserver (observer)
@@ -288,7 +288,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
     if !self.mObserversOf_mYName.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mYName.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mYName_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mYName.triggerPacking ()
@@ -302,7 +302,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_mYName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     for (_, entry) in self.mObserversOf_mYName.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mYName_property.removeEBObserver (observer)
@@ -355,7 +355,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
     if !self.mObserversOf_mName.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mName.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mName_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mName.triggerPacking ()
@@ -369,7 +369,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_mName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     for (_, entry) in self.mObserversOf_mName.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mName_property.removeEBObserver (observer)
@@ -422,7 +422,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
     if !self.mObserversOf_mNameHorizontalAlignment.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mNameHorizontalAlignment.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mNameHorizontalAlignment_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mNameHorizontalAlignment.triggerPacking ()
@@ -436,7 +436,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_mNameHorizontalAlignment_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     for (_, entry) in self.mObserversOf_mNameHorizontalAlignment.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mNameHorizontalAlignment_property.removeEBObserver (observer)
@@ -489,7 +489,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
     if !self.mObserversOf_mPinNameIsDisplayedInSchematics.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mPinNameIsDisplayedInSchematics.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mPinNameIsDisplayedInSchematics_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mPinNameIsDisplayedInSchematics.triggerPacking ()
@@ -503,7 +503,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_mPinNameIsDisplayedInSchematics_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     for (_, entry) in self.mObserversOf_mPinNameIsDisplayedInSchematics.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mPinNameIsDisplayedInSchematics_property.removeEBObserver (observer)
@@ -556,7 +556,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
     if !self.mObserversOf_mXNumber.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mXNumber.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mXNumber_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mXNumber.triggerPacking ()
@@ -570,7 +570,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_mXNumber_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     for (_, entry) in self.mObserversOf_mXNumber.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mXNumber_property.removeEBObserver (observer)
@@ -623,7 +623,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
     if !self.mObserversOf_mYNumber.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mYNumber.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mYNumber_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mYNumber.triggerPacking ()
@@ -637,7 +637,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_mYNumber_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     for (_, entry) in self.mObserversOf_mYNumber.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mYNumber_property.removeEBObserver (observer)
@@ -690,7 +690,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
     if !self.mObserversOf_mNumberHorizontalAlignment.isEmpty {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mNumberHorizontalAlignment.dictionary {
-          if let observer = entry.observer {
+          if let observer = entry.possibleObserver {
             managedObject.mNumberHorizontalAlignment_property.addEBObserver (observer)
           }else{
             self.mObserversOf_mNumberHorizontalAlignment.triggerPacking ()
@@ -704,7 +704,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
 
   final func removeEBObserversOf_mNumberHorizontalAlignment_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     for (_, entry) in self.mObserversOf_mNumberHorizontalAlignment.dictionary {
-      if let observer = entry.observer {
+      if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
           managedObject.mNumberHorizontalAlignment_property.removeEBObserver (observer)
@@ -756,7 +756,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   final func addEBObserversOf_nameShape_toElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_nameShape.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.nameShape_property.addEBObserver (observer)
         }else{
           self.mObserversOf_nameShape.triggerPacking ()
@@ -770,7 +770,7 @@ class ReadOnlyArrayOf_SymbolPinTypeInDevice : ReadOnlyAbstractArrayProperty <Sym
   final func removeEBObserversOf_nameShape_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolPinTypeInDevice>) {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_nameShape.dictionary {
-        if let observer = entry.observer {
+        if let observer = entry.possibleObserver {
           managedObject.nameShape_property.removeEBObserver (observer)
         }else{
           self.mObserversOf_nameShape.triggerPacking ()
