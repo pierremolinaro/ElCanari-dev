@@ -926,29 +926,6 @@ final class PointInSchematic : EBManagedObject,
 
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-/*  override func cleanUpToManyRelationships () {
-    self.mLabels.removeAll ()
-    self.mWiresP2s.removeAll ()
-    self.mWiresP1s.removeAll ()
-    super.cleanUpToManyRelationships ()
-  } */
-
-  //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-/*  override func cleanUpToOneRelationships () {
-    self.mSymbol = nil
-    self.mNet = nil
-    self.mNC = nil
-    self.mSheet = nil
-    super.cleanUpToOneRelationships ()
-  } */
-
-  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -1307,42 +1284,6 @@ final class PointInSchematic : EBManagedObject,
         self.mWiresP1s = relationshipArray
       }
   }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  //--- To many property: mLabels
-    for managedObject in self.mLabels.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: mWiresP2s
-    for managedObject in self.mWiresP2s.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: mWiresP1s
-    for managedObject in self.mWiresP1s.values {
-      objects.append (managedObject)
-    }
-  //--- To one property: mSymbol
-    if let object = self.mSymbol {
-      objects.append (object)
-    }
-  //--- To one property: mNet
-    if let object = self.mNet {
-      objects.append (object)
-    }
-  //--- To one property: mNC
-    if let object = self.mNC {
-      objects.append (object)
-    }
-  //--- To one property: mSheet
-    if let object = self.mSheet {
-      objects.append (object)
-    }
-  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

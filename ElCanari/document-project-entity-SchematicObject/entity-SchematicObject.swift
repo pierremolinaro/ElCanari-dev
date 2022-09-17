@@ -216,15 +216,6 @@ class SchematicObject : EBGraphicManagedObject,
 
 
   //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-/*  override func cleanUpToOneRelationships () {
-    self.mSheet = nil
-    super.cleanUpToOneRelationships ()
-  } */
-
-  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -301,18 +292,6 @@ class SchematicObject : EBGraphicManagedObject,
       self.mSheet = object
     }
   }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  //--- To one property: mSheet
-    if let object = self.mSheet {
-      objects.append (object)
-    }
-  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

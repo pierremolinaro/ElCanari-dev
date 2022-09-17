@@ -402,16 +402,6 @@ final class MergerBoardInstance : EBGraphicManagedObject,
 
 
   //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-/*  override func cleanUpToOneRelationships () {
-    self.myModel = nil
-    self.myRoot = nil
-    super.cleanUpToOneRelationships ()
-  } */
-
-  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -551,22 +541,6 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       self.myRoot = object
     }
   }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  //--- To one property: myModel
-    if let object = self.myModel {
-      objects.append (object)
-    }
-  //--- To one property: myRoot
-    if let object = self.myRoot {
-      objects.append (object)
-    }
-  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

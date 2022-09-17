@@ -352,15 +352,6 @@ final class FontCharacter : EBManagedObject,
 
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-/*  override func cleanUpToManyRelationships () {
-    self.segments.removeAll ()
-    super.cleanUpToManyRelationships ()
-  } */
-
-  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -525,18 +516,6 @@ final class FontCharacter : EBManagedObject,
         self.segments = relationshipArray
       }
   }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  //--- To many property: segments
-    for managedObject in self.segments.values {
-      objects.append (managedObject)
-    }
-  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

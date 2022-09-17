@@ -1189,25 +1189,6 @@ final class BoardConnector : BoardObject,
 
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-/*  override func cleanUpToManyRelationships () {
-    self.mTracksP2.removeAll ()
-    self.mTracksP1.removeAll ()
-    super.cleanUpToManyRelationships ()
-  } */
-
-  //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-/*  override func cleanUpToOneRelationships () {
-    self.mComponent = nil
-    super.cleanUpToOneRelationships ()
-  } */
-
-  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -1537,26 +1518,6 @@ final class BoardConnector : BoardObject,
         self.mTracksP1 = relationshipArray
       }
   }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  //--- To many property: mTracksP2
-    for managedObject in self.mTracksP2.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: mTracksP1
-    for managedObject in self.mTracksP1.values {
-      objects.append (managedObject)
-    }
-  //--- To one property: mComponent
-    if let object = self.mComponent {
-      objects.append (object)
-    }
-  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

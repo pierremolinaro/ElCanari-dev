@@ -1011,19 +1011,6 @@ final class DeviceRoot : EBManagedObject,
 
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-/*  override func cleanUpToManyRelationships () {
-    self.mDocs.removeAll ()
-    self.mSymbolInstances.removeAll ()
-    self.mPackages.removeAll ()
-    self.mSymbolTypes.removeAll ()
-    self.mPadProxies.removeAll ()
-    super.cleanUpToManyRelationships ()
-  } */
-
-  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -1518,34 +1505,6 @@ final class DeviceRoot : EBManagedObject,
         self.mPadProxies = relationshipArray
       }
   }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  //--- To many property: mDocs
-    for managedObject in self.mDocs.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: mSymbolInstances
-    for managedObject in self.mSymbolInstances.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: mPackages
-    for managedObject in self.mPackages.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: mSymbolTypes
-    for managedObject in self.mSymbolTypes.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: mPadProxies
-    for managedObject in self.mPadProxies.values {
-      objects.append (managedObject)
-    }
-  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

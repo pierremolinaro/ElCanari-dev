@@ -805,15 +805,6 @@ final class PackageZone : PackageObject,
 
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-/*  override func cleanUpToManyRelationships () {
-    self.forbiddenPadNumbers.removeAll ()
-    super.cleanUpToManyRelationships ()
-  } */
-
-  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -1098,18 +1089,6 @@ final class PackageZone : PackageObject,
         self.forbiddenPadNumbers = relationshipArray
       }
   }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  //--- To many property: forbiddenPadNumbers
-    for managedObject in self.forbiddenPadNumbers.values {
-      objects.append (managedObject)
-    }
-  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

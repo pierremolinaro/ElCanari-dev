@@ -632,15 +632,6 @@ final class ArtworkRoot : EBManagedObject,
 
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-/*  override func cleanUpToManyRelationships () {
-    self.fileGenerationParameterArray.removeAll ()
-    super.cleanUpToManyRelationships ()
-  } */
-
-  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -895,18 +886,6 @@ final class ArtworkRoot : EBManagedObject,
         self.fileGenerationParameterArray = relationshipArray
       }
   }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  //--- To many property: fileGenerationParameterArray
-    for managedObject in self.fileGenerationParameterArray.values {
-      objects.append (managedObject)
-    }
-  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

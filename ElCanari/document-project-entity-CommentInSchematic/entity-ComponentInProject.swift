@@ -1944,28 +1944,6 @@ final class ComponentInProject : BoardObject,
 
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-/*  override func cleanUpToManyRelationships () {
-    self.mConnectors.removeAll ()
-    self.mSymbols.removeAll ()
-    super.cleanUpToManyRelationships ()
-  } */
-
-  //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-/*  override func cleanUpToOneRelationships () {
-    self.mDevice = nil
-    self.mSelectedPackage = nil
-    self.mNameFont = nil
-    self.mValueFont = nil
-    super.cleanUpToOneRelationships ()
-  } */
-
-  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -2449,38 +2427,6 @@ final class ComponentInProject : BoardObject,
         self.mSymbols = relationshipArray
       }
   }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  //--- To many property: mConnectors
-    for managedObject in self.mConnectors.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: mSymbols
-    for managedObject in self.mSymbols.values {
-      objects.append (managedObject)
-    }
-  //--- To one property: mDevice
-    if let object = self.mDevice {
-      objects.append (object)
-    }
-  //--- To one property: mSelectedPackage
-    if let object = self.mSelectedPackage {
-      objects.append (object)
-    }
-  //--- To one property: mNameFont
-    if let object = self.mNameFont {
-      objects.append (object)
-    }
-  //--- To one property: mValueFont
-    if let object = self.mValueFont {
-      objects.append (object)
-    }
-  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

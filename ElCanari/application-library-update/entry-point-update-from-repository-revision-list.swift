@@ -221,29 +221,6 @@ fileprivate final class LibraryCommitListController : EBSwiftBaseObject { // , A
   }
 
   //····················································································································
-  //   AutoLayoutTableViewDelegate
-  //····················································································································
-
-//  func tableViewSelectionDidChange (selectedRows inSelectedRows: IndexSet) {
-//  }
-//
-//  func indexesOfSelectedObjects() -> IndexSet {
-//    return IndexSet ()
-//  }
-//
-//  func addEntry () {
-//  }
-//
-//  func removeSelectedEntries() {
-//  }
-//
-//  func beginSorting() {
-//  }
-//
-//  func endSorting () {
-//  }
-
-  //····················································································································
 
   func dialog (_ inLogTextView : AutoLayoutStaticTextView) -> Int? {
   //--- Build Panel

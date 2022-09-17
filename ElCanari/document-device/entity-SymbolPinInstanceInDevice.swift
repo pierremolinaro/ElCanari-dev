@@ -381,17 +381,6 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
 
 
   //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-/*  override func cleanUpToOneRelationships () {
-    self.mSymbolInstance = nil
-    self.mType = nil
-    self.mPadProxy = nil
-    super.cleanUpToOneRelationships ()
-  } */
-
-  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -512,26 +501,6 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       self.mPadProxy = object
     }
   }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  //--- To one property: mSymbolInstance
-    if let object = self.mSymbolInstance {
-      objects.append (object)
-    }
-  //--- To one property: mType
-    if let object = self.mType {
-      objects.append (object)
-    }
-  //--- To one property: mPadProxy
-    if let object = self.mPadProxy {
-      objects.append (object)
-    }
-  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

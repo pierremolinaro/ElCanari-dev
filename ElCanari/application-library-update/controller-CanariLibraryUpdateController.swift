@@ -215,7 +215,7 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
   @objc func startLibraryUpdateAction (_ inSender : AnyObject) {
     self.mUpDateButton.isEnabled = false
   //--- Launch parallel downloads
-    for _ in 1...parallelDownloadCount {
+    for _ in 1 ... parallelDownloadCount {
       self.launchElementDownload ()
     }
   }

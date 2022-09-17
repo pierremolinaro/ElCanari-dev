@@ -313,16 +313,6 @@ final class WireInSchematic : SchematicObject,
 
 
   //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-/*  override func cleanUpToOneRelationships () {
-    self.mP1 = nil
-    self.mP2 = nil
-    super.cleanUpToOneRelationships ()
-  } */
-
-  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -419,22 +409,6 @@ final class WireInSchematic : SchematicObject,
       self.mP2 = object
     }
   }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  //--- To one property: mP1
-    if let object = self.mP1 {
-      objects.append (object)
-    }
-  //--- To one property: mP2
-    if let object = self.mP2 {
-      objects.append (object)
-    }
-  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

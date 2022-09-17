@@ -391,15 +391,6 @@ final class SymbolRoot : EBManagedObject,
 
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-/*  override func cleanUpToManyRelationships () {
-    self.symbolObjects.removeAll ()
-    super.cleanUpToManyRelationships ()
-  } */
-
-  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -625,22 +616,6 @@ final class SymbolRoot : EBManagedObject,
         self.symbolObjects = relationshipArray
       }
   }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  //--- To many property: symbolObjects
-    for managedObject in self.symbolObjects.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: symbolPins
-    for managedObject in self.symbolPins.values {
-      objects.append (managedObject)
-    }
-  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

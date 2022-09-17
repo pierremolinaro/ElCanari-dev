@@ -609,24 +609,6 @@ final class PackageInDevice : EBGraphicManagedObject,
 
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-/*  override func cleanUpToManyRelationships () {
-    self.mMasterPads.removeAll ()
-    super.cleanUpToManyRelationships ()
-  } */
-
-  //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-/*  override func cleanUpToOneRelationships () {
-    self.mRoot = nil
-    super.cleanUpToOneRelationships ()
-  } */
-
-  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -841,22 +823,6 @@ final class PackageInDevice : EBGraphicManagedObject,
         self.mMasterPads = relationshipArray
       }
   }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  //--- To many property: mMasterPads
-    for managedObject in self.mMasterPads.values {
-      objects.append (managedObject)
-    }
-  //--- To one property: mRoot
-    if let object = self.mRoot {
-      objects.append (object)
-    }
-  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

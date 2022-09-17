@@ -463,25 +463,6 @@ final class NetInProject : EBManagedObject,
 
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-/*  override func cleanUpToManyRelationships () {
-    self.mPoints.removeAll ()
-    self.mTracks.removeAll ()
-    super.cleanUpToManyRelationships ()
-  } */
-
-  //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-/*  override func cleanUpToOneRelationships () {
-    self.mNetClass = nil
-    super.cleanUpToOneRelationships ()
-  } */
-
-  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -711,26 +692,6 @@ final class NetInProject : EBManagedObject,
         self.mTracks = relationshipArray
       }
   }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  //--- To many property: mPoints
-    for managedObject in self.mPoints.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: mTracks
-    for managedObject in self.mTracks.values {
-      objects.append (managedObject)
-    }
-  //--- To one property: mNetClass
-    if let object = self.mNetClass {
-      objects.append (object)
-    }
-  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

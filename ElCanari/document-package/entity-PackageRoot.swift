@@ -2022,25 +2022,6 @@ final class PackageRoot : EBManagedObject,
 
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-/*  override func cleanUpToManyRelationships () {
-    self.mModelImageObjects.removeAll ()
-    self.packageObjects.removeAll ()
-    super.cleanUpToManyRelationships ()
-  } */
-
-  //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-/*  override func cleanUpToOneRelationships () {
-    self.mModelImageDoublePoint = nil
-    super.cleanUpToOneRelationships ()
-  } */
-
-  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -2667,38 +2648,6 @@ final class PackageRoot : EBManagedObject,
         self.packageObjects = relationshipArray
       }
   }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  //--- To many property: mModelImageObjects
-    for managedObject in self.mModelImageObjects.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: packageObjects
-    for managedObject in self.packageObjects.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: packagePads
-    for managedObject in self.packagePads.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: packageSlavePads
-    for managedObject in self.packageSlavePads.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: packageZones
-    for managedObject in self.packageZones.values {
-      objects.append (managedObject)
-    }
-  //--- To one property: mModelImageDoublePoint
-    if let object = self.mModelImageDoublePoint {
-      objects.append (object)
-    }
-  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

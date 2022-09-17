@@ -508,17 +508,6 @@ final class FontInProject : EBManagedObject,
 
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-/*  override func cleanUpToManyRelationships () {
-    self.mTexts.removeAll ()
-    self.mComponentNames.removeAll ()
-    self.mComponentValues.removeAll ()
-    super.cleanUpToManyRelationships ()
-  } */
-
-  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -793,26 +782,6 @@ final class FontInProject : EBManagedObject,
         self.mComponentValues = relationshipArray
       }
   }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  //--- To many property: mTexts
-    for managedObject in self.mTexts.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: mComponentNames
-    for managedObject in self.mComponentNames.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: mComponentValues
-    for managedObject in self.mComponentValues.values {
-      objects.append (managedObject)
-    }
-  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

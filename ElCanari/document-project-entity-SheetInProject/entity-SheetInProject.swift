@@ -365,25 +365,6 @@ final class SheetInProject : EBManagedObject,
 
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-/*  override func cleanUpToManyRelationships () {
-    self.mObjects.removeAll ()
-    self.mPoints.removeAll ()
-    super.cleanUpToManyRelationships ()
-  } */
-
-  //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-/*  override func cleanUpToOneRelationships () {
-    self.mRoot = nil
-    super.cleanUpToOneRelationships ()
-  } */
-
-  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -603,26 +584,6 @@ final class SheetInProject : EBManagedObject,
         self.mPoints = relationshipArray
       }
   }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  //--- To many property: mObjects
-    for managedObject in self.mObjects.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: mPoints
-    for managedObject in self.mPoints.values {
-      objects.append (managedObject)
-    }
-  //--- To one property: mRoot
-    if let object = self.mRoot {
-      objects.append (object)
-    }
-  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

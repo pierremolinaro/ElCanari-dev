@@ -5990,31 +5990,6 @@ final class ProjectRoot : EBManagedObject,
 
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-/*  override func cleanUpToManyRelationships () {
-    self.mSheets.removeAll ()
-    self.mFonts.removeAll ()
-    self.mDevices.removeAll ()
-    self.mNetClasses.removeAll ()
-    self.mBorderCurves.removeAll ()
-    self.mBoardObjects.removeAll ()
-    self.mComponents.removeAll ()
-    super.cleanUpToManyRelationships ()
-  } */
-
-  //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-/*  override func cleanUpToOneRelationships () {
-    self.mArtwork = nil
-    self.mSelectedSheet = nil
-    super.cleanUpToOneRelationships ()
-  } */
-
-  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -7457,50 +7432,6 @@ final class ProjectRoot : EBManagedObject,
         self.mComponents = relationshipArray
       }
   }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  //--- To many property: mSheets
-    for managedObject in self.mSheets.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: mFonts
-    for managedObject in self.mFonts.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: mDevices
-    for managedObject in self.mDevices.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: mNetClasses
-    for managedObject in self.mNetClasses.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: mBorderCurves
-    for managedObject in self.mBorderCurves.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: mBoardObjects
-    for managedObject in self.mBoardObjects.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: mComponents
-    for managedObject in self.mComponents.values {
-      objects.append (managedObject)
-    }
-  //--- To one property: mArtwork
-    if let object = self.mArtwork {
-      objects.append (object)
-    }
-  //--- To one property: mSelectedSheet
-    if let object = self.mSelectedSheet {
-      objects.append (object)
-    }
-  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

@@ -49,10 +49,6 @@ import Cocoa
 @MainActor func commitAllActions (_ inActionArray : [LibraryOperationElement],
                                   _ inNewRepositoryFileDictionary : [String : CanariLibraryFileDescriptor],
                                   _ inLogTextView : AutoLayoutStaticTextView) {
-//--- Update UI
-//  gCanariLibraryUpdateController?.unbind ()
-//  gCanariLibraryUpdateController?.orderOutLibraryUpdatePanel ()
-//  gCanariLibraryUpdateController = nil
 //--- Commit change only if all actions has been successdully completed
   var newRepositoryFileDictionary = inNewRepositoryFileDictionary
   var performCommit = true

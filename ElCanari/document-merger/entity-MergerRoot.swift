@@ -1777,25 +1777,6 @@ final class MergerRoot : EBManagedObject,
 
 
   //····················································································································
-  //    cleanUpToManyRelationships
-  //····················································································································
-
-/*  override func cleanUpToManyRelationships () {
-    self.boardModels.removeAll ()
-    self.boardInstances.removeAll ()
-    super.cleanUpToManyRelationships ()
-  } */
-
-  //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-/*  override func cleanUpToOneRelationships () {
-    self.mArtwork = nil
-    super.cleanUpToOneRelationships ()
-  } */
-
-  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -2219,26 +2200,6 @@ final class MergerRoot : EBManagedObject,
         self.boardInstances = relationshipArray
       }
   }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  //--- To many property: boardModels
-    for managedObject in self.boardModels.values {
-      objects.append (managedObject)
-    }
-  //--- To many property: boardInstances
-    for managedObject in self.boardInstances.values {
-      objects.append (managedObject)
-    }
-  //--- To one property: mArtwork
-    if let object = self.mArtwork {
-      objects.append (object)
-    }
-  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

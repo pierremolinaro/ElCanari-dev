@@ -15,7 +15,7 @@ import Cocoa
                                                _ inLibraryFileDictionary : [String : CanariLibraryFileDescriptor],
                                                _ inLogTextView : AutoLayoutStaticTextView,
                                                _ inProxy : [String])
-        -> ([LibraryOperationElement], [String : CanariLibraryFileDescriptor] ) {
+                                               -> ([LibraryOperationElement], [String : CanariLibraryFileDescriptor] ) {
   inLogTextView.appendMessageString ("Phase 5: build operation list\n", color: NSColor.purple)
   inLogTextView.appendMessageString ("  Repository File Dictionary has \(inRepositoryFileDictionary.count) entries\n")
   inLogTextView.appendMessageString ("  Local files: \(inLocalFileSet.count)\n")

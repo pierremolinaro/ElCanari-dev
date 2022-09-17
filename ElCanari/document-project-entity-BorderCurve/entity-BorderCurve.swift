@@ -785,17 +785,6 @@ final class BorderCurve : EBGraphicManagedObject,
 
 
   //····················································································································
-  //    cleanUpToOneRelationships
-  //····················································································································
-
-/*  override func cleanUpToOneRelationships () {
-    self.mRoot = nil
-    self.mNext = nil
-    self.mPrevious = nil
-    super.cleanUpToOneRelationships ()
-  } */
-
-  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -1003,26 +992,6 @@ final class BorderCurve : EBGraphicManagedObject,
       self.mPrevious = object
     }
   }
-
-  //····················································································································
-  //   accessibleObjects
-  //····················································································································
-
-/*  override func accessibleObjects (objects : inout [EBManagedObject]) {
-    super.accessibleObjects (objects: &objects)
-  //--- To one property: mRoot
-    if let object = self.mRoot {
-      objects.append (object)
-    }
-  //--- To one property: mNext
-    if let object = self.mNext {
-      objects.append (object)
-    }
-  //--- To one property: mPrevious
-    if let object = self.mPrevious {
-      objects.append (object)
-    }
-  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation
