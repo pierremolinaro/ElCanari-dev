@@ -46,8 +46,8 @@ struct RawObject {
   }
   appendDocumentFileOperationInfo ("read \(classDefinition.count) classes done")
 //--- Read objects
-  let operationQueue = OperationQueue ()
-  let mutex = DispatchSemaphore (value: 1)
+//  let operationQueue = OperationQueue ()
+//  let mutex = DispatchSemaphore (value: 1)
   var rawObjectArray = [RawObject] ()
   var idx = 0
   let data = ioDataScanner.data
@@ -63,19 +63,20 @@ struct RawObject {
       propertyValueDictionary [propertyName] = propertyRange
     }
     let className = classDefinition [classIndex].0
-    operationQueue.addOperation {
+//    operationQueue.addOperation {
       let managedObject = newInstanceOfEntityNamed (inUndoManager, className)!
       managedObject.setUpPropertiesWithTextDictionary (propertyValueDictionary, data)
       let rawObject = RawObject (index: index, object: managedObject, propertyDictionary: propertyValueDictionary)
-      mutex.wait ()
+//      mutex.wait ()
       rawObjectArray.append (rawObject)
-      mutex.signal ()
-    }
+//      mutex.signal ()
+//    }
   }
-  let pendingOperationCount = operationQueue.operationCount
-  operationQueue.waitUntilAllOperationsAreFinished ()
-  rawObjectArray.sort { $0.index < $1.index }
-  appendDocumentFileOperationInfo ("read \(rawObjectArray.count) objects done with \(pendingOperationCount) pending ops")
+//  let pendingOperationCount = operationQueue.operationCount
+//  operationQueue.waitUntilAllOperationsAreFinished ()
+//  rawObjectArray.sort { $0.index < $1.index }
+//  appendDocumentFileOperationInfo ("read \(rawObjectArray.count) objects done with \(pendingOperationCount) pending ops")
+  appendDocumentFileOperationInfo ("read \(rawObjectArray.count) objects done")
 //--- Setup toOne
   let scannerData = ioDataScanner.data
   for rawObject in rawObjectArray {

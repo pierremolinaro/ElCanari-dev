@@ -31,12 +31,18 @@ let BUILD_KIND = ProductKind.release
 let VERSION_CANARI = "1.6.0"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
+  "La version MacOS miminum devient 10.15 (Catalina)"
 ]
 let BUGFIXES : [String] = [
+  "3 fuites mémoire corrigées",
+  "Rétablissement de l'édition de l'image modèle de package",
+  "Rétablissement de l'item de menu « ElCanari documentation »",
+  "Rétablissement de l'édition du contour non rectangulaire de carte"
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
+  "Ajout boutons pour réordonner les pages du schéma"
 ]
 
 //--------------------------------------------------------------------------------------------------

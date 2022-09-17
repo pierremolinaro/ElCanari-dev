@@ -62,33 +62,33 @@ class EBObservedObject : EBSwiftBaseObject {
   //····················································································································
 
   private final var mObservers = EBWeakEventSet ()
-  private final var mMutex = DispatchSemaphore (value: 1)
+//  private final var mMutex = DispatchSemaphore (value: 1)
 
   //····················································································································
 
   final func addEBObserver (_ inObserver : EBObserverProtocol) {
-    self.mMutex.wait ()
+//    self.mMutex.wait ()
 //    Task {
       self.mObservers.insert (inObserver)
 //    }
     inObserver.observedObjectDidChange ()
-    self.mMutex.signal ()
+//    self.mMutex.signal ()
   }
 
   //····················································································································
 
   final func removeEBObserver (_ inObserver : EBObserverProtocol) {
-    self.mMutex.wait ()
+//    self.mMutex.wait ()
 //    Task {
       self.mObservers.remove (inObserver)
 //    }
-    self.mMutex.signal ()
+//    self.mMutex.signal ()
   }
 
   //····················································································································
 
   func observedObjectDidChange () {
-    self.mMutex.wait ()
+//    self.mMutex.wait ()
 //    Task {
       for (_, entry) in self.mObservers.dictionary {
         if let observer = entry.observer {
@@ -98,7 +98,7 @@ class EBObservedObject : EBSwiftBaseObject {
         }
       }
 //    }
-    self.mMutex.signal ()
+//    self.mMutex.signal ()
   }
 
   //····················································································································
