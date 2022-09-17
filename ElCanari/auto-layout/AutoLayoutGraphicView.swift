@@ -43,6 +43,8 @@ final class AutoLayoutGraphicView : AutoLayoutVerticalStackView {
     self.mZoomToFitButton = zoomToFitButton
   //--- Build helper text
     let helperTextField = AutoLayoutLabel (bold: false, size: .small).set (minWidth: 200)
+    helperTextField.setContentCompressionResistancePriority (.defaultLow, for: .horizontal)
+    helperTextField.lineBreakMode = .byTruncatingTail
     _ = hStack.appendView (helperTextField)
     self.mHelperTextField = helperTextField
     _ = hStack.appendView (AutoLayoutFlexibleSpace ())

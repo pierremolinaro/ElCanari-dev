@@ -480,17 +480,11 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   //····················································································································
 
   final private var mDeferredUpdateViewFrameAndBoundsRegistered = false
- // final var mReferenceBounds : NSRect? = nil
 
   final func setNeedsDisplayAndUpdateViewBounds () {
-    // Swift.print ("setNeedsDisplayAndUpdateViewBounds")
     self.needsDisplay = true
-//    let candidateBounds = self.contentsBoundingBox
-//    if let referenceBounds = self.mReferenceBounds, referenceBounds == candidateBounds {
-//    }else if self.enclosingScrollView != nil, !self.mDeferredUpdateViewFrameAndBoundsRegistered {
-      self.mDeferredUpdateViewFrameAndBoundsRegistered = true
-      self.deferredApplyZoom ()
-//    }
+    self.mDeferredUpdateViewFrameAndBoundsRegistered = true
+    self.deferredApplyZoom ()
   }
 
   //····················································································································
