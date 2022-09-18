@@ -6,31 +6,31 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPinInstanceInDevice_pinName : AnyObject {
+@MainActor protocol SymbolPinInstanceInDevice_pinName : AnyObject {
   var pinName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPinInstanceInDevice_symbolName : AnyObject {
+@MainActor protocol SymbolPinInstanceInDevice_symbolName : AnyObject {
   var symbolName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPinInstanceInDevice_pinQualifiedName : AnyObject {
+@MainActor protocol SymbolPinInstanceInDevice_pinQualifiedName : AnyObject {
   var pinQualifiedName : PinQualifiedNameStruct? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPinInstanceInDevice_isConnected : AnyObject {
+@MainActor protocol SymbolPinInstanceInDevice_isConnected : AnyObject {
   var isConnected : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPinInstanceInDevice_numberShape : AnyObject {
+@MainActor protocol SymbolPinInstanceInDevice_numberShape : AnyObject {
   var numberShape : EBShape? { get }
 }
 

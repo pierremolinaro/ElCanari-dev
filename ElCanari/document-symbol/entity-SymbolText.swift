@@ -6,43 +6,43 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolText_y : AnyObject {
+@MainActor protocol SymbolText_y : AnyObject {
   var y : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolText_text : AnyObject {
+@MainActor protocol SymbolText_text : AnyObject {
   var text : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolText_horizontalAlignment : AnyObject {
+@MainActor protocol SymbolText_horizontalAlignment : AnyObject {
   var horizontalAlignment : HorizontalAlignment { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolText_x : AnyObject {
+@MainActor protocol SymbolText_x : AnyObject {
   var x : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolText_objectDisplay : AnyObject {
+@MainActor protocol SymbolText_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolText_selectionDisplay : AnyObject {
+@MainActor protocol SymbolText_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolText_issues : AnyObject {
+@MainActor protocol SymbolText_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 

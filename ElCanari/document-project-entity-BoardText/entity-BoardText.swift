@@ -6,85 +6,85 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardText_mX : AnyObject {
+@MainActor protocol BoardText_mX : AnyObject {
   var mX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardText_mY : AnyObject {
+@MainActor protocol BoardText_mY : AnyObject {
   var mY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardText_mFontSize : AnyObject {
+@MainActor protocol BoardText_mFontSize : AnyObject {
   var mFontSize : Double { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardText_mLayer : AnyObject {
+@MainActor protocol BoardText_mLayer : AnyObject {
   var mLayer : BoardTextLayer { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardText_mText : AnyObject {
+@MainActor protocol BoardText_mText : AnyObject {
   var mText : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardText_mHorizontalAlignment : AnyObject {
+@MainActor protocol BoardText_mHorizontalAlignment : AnyObject {
   var mHorizontalAlignment : HorizontalAlignment { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardText_mVerticalAlignment : AnyObject {
+@MainActor protocol BoardText_mVerticalAlignment : AnyObject {
   var mVerticalAlignment : BoardTextVerticalAlignment { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardText_mRotation : AnyObject {
+@MainActor protocol BoardText_mRotation : AnyObject {
   var mRotation : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardText_mWeight : AnyObject {
+@MainActor protocol BoardText_mWeight : AnyObject {
   var mWeight : Double { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardText_mOblique : AnyObject {
+@MainActor protocol BoardText_mOblique : AnyObject {
   var mOblique : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardText_objectDisplay : AnyObject {
+@MainActor protocol BoardText_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardText_selectionDisplay : AnyObject {
+@MainActor protocol BoardText_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardText_fontName : AnyObject {
+@MainActor protocol BoardText_fontName : AnyObject {
   var fontName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardText_signatureForERCChecking : AnyObject {
+@MainActor protocol BoardText_signatureForERCChecking : AnyObject {
   var signatureForERCChecking : UInt32? { get }
 }
 

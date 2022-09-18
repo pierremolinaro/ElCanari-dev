@@ -6,91 +6,91 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematic_mSymbolPinName : AnyObject {
+@MainActor protocol PointInSchematic_mSymbolPinName : AnyObject {
   var mSymbolPinName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematic_mX : AnyObject {
+@MainActor protocol PointInSchematic_mX : AnyObject {
   var mX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematic_mY : AnyObject {
+@MainActor protocol PointInSchematic_mY : AnyObject {
   var mY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematic_location : AnyObject {
+@MainActor protocol PointInSchematic_location : AnyObject {
   var location : CanariPoint? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematic_netName : AnyObject {
+@MainActor protocol PointInSchematic_netName : AnyObject {
   var netName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematic_netClassName : AnyObject {
+@MainActor protocol PointInSchematic_netClassName : AnyObject {
   var netClassName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematic_hasNet : AnyObject {
+@MainActor protocol PointInSchematic_hasNet : AnyObject {
   var hasNet : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematic_canMove : AnyObject {
+@MainActor protocol PointInSchematic_canMove : AnyObject {
   var canMove : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematic_wireColor : AnyObject {
+@MainActor protocol PointInSchematic_wireColor : AnyObject {
   var wireColor : NSColor? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematic_symbolRotation : AnyObject {
+@MainActor protocol PointInSchematic_symbolRotation : AnyObject {
   var symbolRotation : QuadrantRotation? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematic_symbolNameNetName : AnyObject {
+@MainActor protocol PointInSchematic_symbolNameNetName : AnyObject {
   var symbolNameNetName : TwoStrings? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematic_isConnected : AnyObject {
+@MainActor protocol PointInSchematic_isConnected : AnyObject {
   var isConnected : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematic_status : AnyObject {
+@MainActor protocol PointInSchematic_status : AnyObject {
   var status : SchematicPointStatus? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematic_connectedPoints : AnyObject {
+@MainActor protocol PointInSchematic_connectedPoints : AnyObject {
   var connectedPoints : CanariPointArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PointInSchematic_netInfoForPoint : AnyObject {
+@MainActor protocol PointInSchematic_netInfoForPoint : AnyObject {
   var netInfoForPoint : NetInfoPoint? { get }
 }
 

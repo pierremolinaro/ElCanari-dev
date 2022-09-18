@@ -118,7 +118,7 @@ extension AutoLayoutProjectDocument {
       }
     }
     self.boardObjectsController.setSelection (newSelection)
-    self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+    _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
   //····················································································································
@@ -131,7 +131,7 @@ extension AutoLayoutProjectDocument {
       }
     }
     self.boardObjectsController.setSelection (newSelection)
-    self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+    _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
   //····················································································································
@@ -144,7 +144,7 @@ extension AutoLayoutProjectDocument {
       }
     }
     self.boardObjectsController.setSelection (newSelection)
-    self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+    _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
   //····················································································································
@@ -157,7 +157,7 @@ extension AutoLayoutProjectDocument {
       }
     }
     self.boardObjectsController.setSelection (newSelection)
-    self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+    _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
   //····················································································································
@@ -176,7 +176,7 @@ extension AutoLayoutProjectDocument {
       }
     }
     self.boardObjectsController.addToSelection (objects: newSelectedObjects)
-    self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+    _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
   //····················································································································
@@ -222,7 +222,7 @@ extension AutoLayoutProjectDocument {
        }
      }
      self.boardObjectsController.addToSelection (objects: objectsToSelect)
-     self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+     _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
   //····················································································································
@@ -235,7 +235,7 @@ extension AutoLayoutProjectDocument {
       }
     }
     self.boardObjectsController.addToSelection (objects: objectsToSelect)
-    self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+    _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
   //····················································································································

@@ -6,73 +6,73 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolBezierCurve_y1 : AnyObject {
+@MainActor protocol SymbolBezierCurve_y1 : AnyObject {
   var y1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolBezierCurve_x2 : AnyObject {
+@MainActor protocol SymbolBezierCurve_x2 : AnyObject {
   var x2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolBezierCurve_y2 : AnyObject {
+@MainActor protocol SymbolBezierCurve_y2 : AnyObject {
   var y2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolBezierCurve_cpx1 : AnyObject {
+@MainActor protocol SymbolBezierCurve_cpx1 : AnyObject {
   var cpx1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolBezierCurve_cpy1 : AnyObject {
+@MainActor protocol SymbolBezierCurve_cpy1 : AnyObject {
   var cpy1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolBezierCurve_cpx2 : AnyObject {
+@MainActor protocol SymbolBezierCurve_cpx2 : AnyObject {
   var cpx2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolBezierCurve_cpy2 : AnyObject {
+@MainActor protocol SymbolBezierCurve_cpy2 : AnyObject {
   var cpy2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolBezierCurve_x1 : AnyObject {
+@MainActor protocol SymbolBezierCurve_x1 : AnyObject {
   var x1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolBezierCurve_strokeBezierPath : AnyObject {
+@MainActor protocol SymbolBezierCurve_strokeBezierPath : AnyObject {
   var strokeBezierPath : NSBezierPath? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolBezierCurve_objectDisplay : AnyObject {
+@MainActor protocol SymbolBezierCurve_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolBezierCurve_selectionDisplay : AnyObject {
+@MainActor protocol SymbolBezierCurve_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolBezierCurve_issues : AnyObject {
+@MainActor protocol SymbolBezierCurve_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 

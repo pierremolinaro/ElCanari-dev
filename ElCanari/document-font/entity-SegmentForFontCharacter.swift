@@ -6,37 +6,37 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SegmentForFontCharacter_x1 : AnyObject {
+@MainActor protocol SegmentForFontCharacter_x1 : AnyObject {
   var x1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SegmentForFontCharacter_y1 : AnyObject {
+@MainActor protocol SegmentForFontCharacter_y1 : AnyObject {
   var y1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SegmentForFontCharacter_x2 : AnyObject {
+@MainActor protocol SegmentForFontCharacter_x2 : AnyObject {
   var x2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SegmentForFontCharacter_y2 : AnyObject {
+@MainActor protocol SegmentForFontCharacter_y2 : AnyObject {
   var y2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SegmentForFontCharacter_selectionDisplay : AnyObject {
+@MainActor protocol SegmentForFontCharacter_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SegmentForFontCharacter_objectDisplay : AnyObject {
+@MainActor protocol SegmentForFontCharacter_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 

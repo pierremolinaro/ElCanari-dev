@@ -134,7 +134,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
         }else{
            let alert = NSAlert ()
            alert.messageText = errorMessage
-           alert.addButton (withTitle: "Ok")
+           _ = alert.addButton (withTitle: "Ok")
            alert.beginSheetModal (for: self.windowForSheet!) { (inReturnCode : NSApplication.ModalResponse) in }
         }
         ok = true

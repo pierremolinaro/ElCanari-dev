@@ -6,187 +6,187 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawBoardLimits : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawBoardLimits : AnyObject {
   var drawBoardLimits : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawInternalBoardLimits : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawInternalBoardLimits : AnyObject {
   var drawInternalBoardLimits : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawComponentNamesTopSide : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawComponentNamesTopSide : AnyObject {
   var drawComponentNamesTopSide : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawComponentNamesBottomSide : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawComponentNamesBottomSide : AnyObject {
   var drawComponentNamesBottomSide : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawComponentValuesTopSide : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawComponentValuesTopSide : AnyObject {
   var drawComponentValuesTopSide : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawComponentValuesBottomSide : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawComponentValuesBottomSide : AnyObject {
   var drawComponentValuesBottomSide : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawPackageLegendTopSide : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawPackageLegendTopSide : AnyObject {
   var drawPackageLegendTopSide : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawPackageLegendBottomSide : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawPackageLegendBottomSide : AnyObject {
   var drawPackageLegendBottomSide : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawPadHolesInPDF : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawPadHolesInPDF : AnyObject {
   var drawPadHolesInPDF : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawPadsTopSide : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawPadsTopSide : AnyObject {
   var drawPadsTopSide : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawPadsBottomSide : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawPadsBottomSide : AnyObject {
   var drawPadsBottomSide : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawTextsLayoutTopSide : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawTextsLayoutTopSide : AnyObject {
   var drawTextsLayoutTopSide : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawTextsLayoutBottomSide : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawTextsLayoutBottomSide : AnyObject {
   var drawTextsLayoutBottomSide : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawTextsLegendTopSide : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawTextsLegendTopSide : AnyObject {
   var drawTextsLegendTopSide : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawTextsLegendBottomSide : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawTextsLegendBottomSide : AnyObject {
   var drawTextsLegendBottomSide : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawTracksTopSide : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawTracksTopSide : AnyObject {
   var drawTracksTopSide : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawTracksInner1Layer : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawTracksInner1Layer : AnyObject {
   var drawTracksInner1Layer : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawTracksInner2Layer : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawTracksInner2Layer : AnyObject {
   var drawTracksInner2Layer : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawTracksInner3Layer : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawTracksInner3Layer : AnyObject {
   var drawTracksInner3Layer : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawTracksInner4Layer : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawTracksInner4Layer : AnyObject {
   var drawTracksInner4Layer : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawTracksBottomSide : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawTracksBottomSide : AnyObject {
   var drawTracksBottomSide : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawTraversingPads : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawTraversingPads : AnyObject {
   var drawTraversingPads : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_drawVias : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_drawVias : AnyObject {
   var drawVias : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_fileExtension : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_fileExtension : AnyObject {
   var fileExtension : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_horizontalMirror : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_horizontalMirror : AnyObject {
   var horizontalMirror : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_name : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_name : AnyObject {
   var name : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_measurementUnitForPadHoleInPDF : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_measurementUnitForPadHoleInPDF : AnyObject {
   var measurementUnitForPadHoleInPDF : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_padHoleDiameterInPDF : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_padHoleDiameterInPDF : AnyObject {
   var padHoleDiameterInPDF : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_hasNoData : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_hasNoData : AnyObject {
   var hasNoData : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_parameterStatusImage : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_parameterStatusImage : AnyObject {
   var parameterStatusImage : NSImage? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkFileGenerationParameters_emptyFileExtensionImage : AnyObject {
+@MainActor protocol ArtworkFileGenerationParameters_emptyFileExtensionImage : AnyObject {
   var emptyFileExtensionImage : NSImage? { get }
 }
 

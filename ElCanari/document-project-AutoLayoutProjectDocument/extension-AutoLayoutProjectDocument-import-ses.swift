@@ -114,7 +114,7 @@ extension AutoLayoutProjectDocumentSubClass {
     }else{
       let alert = NSAlert ()
       alert.messageText =  "Cannot Import the .ses File"
-      alert.addButton (withTitle: "Ok")
+      _ = alert.addButton (withTitle: "Ok")
       alert.informativeText = "Cannot Import the .ses File, due to the following errors:\(errorMessage)"
       alert.beginSheetModal (for: self.windowForSheet!) { (response) in }
     }

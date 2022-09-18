@@ -32,7 +32,7 @@ import Cocoa
         defer: false
       )
       self.mWindow = window
-      window.setFrameAutosaveName ("PrefsWindowSettings")
+      _ = window.setFrameAutosaveName ("PrefsWindowSettings")
       window.title = "Preferences"
       window.isReleasedWhenClosed = false
       window.contentView = AutoLayoutWindowContentView (view: self.mPrefsMainView)

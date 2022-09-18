@@ -6,175 +6,175 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_isPlacedInBoard : AnyObject {
+@MainActor protocol BoardObject_isPlacedInBoard : AnyObject {
   var isPlacedInBoard : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_issues : AnyObject {
+@MainActor protocol BoardObject_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_isVia : AnyObject {
+@MainActor protocol BoardObject_isVia : AnyObject {
   var isVia : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_trackLengthInCanariUnit : AnyObject {
+@MainActor protocol BoardObject_trackLengthInCanariUnit : AnyObject {
   var trackLengthInCanariUnit : Double? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_signatureForERCChecking : AnyObject {
+@MainActor protocol BoardObject_signatureForERCChecking : AnyObject {
   var signatureForERCChecking : UInt32? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_netNameAndPadLocation : AnyObject {
+@MainActor protocol BoardObject_netNameAndPadLocation : AnyObject {
   var netNameAndPadLocation : RastnetInfoArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_componentName : AnyObject {
+@MainActor protocol BoardObject_componentName : AnyObject {
   var componentName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayFrontLegendForBoard : AnyObject {
+@MainActor protocol BoardObject_displayFrontLegendForBoard : AnyObject {
   var displayFrontLegendForBoard : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayBackLegendForBoard : AnyObject {
+@MainActor protocol BoardObject_displayBackLegendForBoard : AnyObject {
   var displayBackLegendForBoard : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayFrontLayoutForBoard : AnyObject {
+@MainActor protocol BoardObject_displayFrontLayoutForBoard : AnyObject {
   var displayFrontLayoutForBoard : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayBackLayoutForBoard : AnyObject {
+@MainActor protocol BoardObject_displayBackLayoutForBoard : AnyObject {
   var displayBackLayoutForBoard : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayInner1LayoutForBoard : AnyObject {
+@MainActor protocol BoardObject_displayInner1LayoutForBoard : AnyObject {
   var displayInner1LayoutForBoard : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayInner2LayoutForBoard : AnyObject {
+@MainActor protocol BoardObject_displayInner2LayoutForBoard : AnyObject {
   var displayInner2LayoutForBoard : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayInner3LayoutForBoard : AnyObject {
+@MainActor protocol BoardObject_displayInner3LayoutForBoard : AnyObject {
   var displayInner3LayoutForBoard : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayInner4LayoutForBoard : AnyObject {
+@MainActor protocol BoardObject_displayInner4LayoutForBoard : AnyObject {
   var displayInner4LayoutForBoard : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayFrontPadsForBoard : AnyObject {
+@MainActor protocol BoardObject_displayFrontPadsForBoard : AnyObject {
   var displayFrontPadsForBoard : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayBackPadsForBoard : AnyObject {
+@MainActor protocol BoardObject_displayBackPadsForBoard : AnyObject {
   var displayBackPadsForBoard : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayPadNumbersForBoard : AnyObject {
+@MainActor protocol BoardObject_displayPadNumbersForBoard : AnyObject {
   var displayPadNumbersForBoard : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayFrontRestrictRectangles : AnyObject {
+@MainActor protocol BoardObject_displayFrontRestrictRectangles : AnyObject {
   var displayFrontRestrictRectangles : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayBackRestrictRectangles : AnyObject {
+@MainActor protocol BoardObject_displayBackRestrictRectangles : AnyObject {
   var displayBackRestrictRectangles : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayInner1RestrictRectangles : AnyObject {
+@MainActor protocol BoardObject_displayInner1RestrictRectangles : AnyObject {
   var displayInner1RestrictRectangles : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayInner2RestrictRectangles : AnyObject {
+@MainActor protocol BoardObject_displayInner2RestrictRectangles : AnyObject {
   var displayInner2RestrictRectangles : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayInner3RestrictRectangles : AnyObject {
+@MainActor protocol BoardObject_displayInner3RestrictRectangles : AnyObject {
   var displayInner3RestrictRectangles : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_displayInner4RestrictRectangles : AnyObject {
+@MainActor protocol BoardObject_displayInner4RestrictRectangles : AnyObject {
   var displayInner4RestrictRectangles : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_packageDrawingWidthMultpliedByTenForBoard : AnyObject {
+@MainActor protocol BoardObject_packageDrawingWidthMultpliedByTenForBoard : AnyObject {
   var packageDrawingWidthMultpliedByTenForBoard : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_selectionDisplay : AnyObject {
+@MainActor protocol BoardObject_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_objectDisplay : AnyObject {
+@MainActor protocol BoardObject_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_errorOrWarningIssueSize : AnyObject {
+@MainActor protocol BoardObject_errorOrWarningIssueSize : AnyObject {
   var errorOrWarningIssueSize : Double? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardObject_trackSide : AnyObject {
+@MainActor protocol BoardObject_trackSide : AnyObject {
   var trackSide : TrackSide? { get }
 }
 

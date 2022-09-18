@@ -225,7 +225,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   //   NSTableViewDataSource protocol
   //····················································································································
 
-  final func numberOfRows (in tableView: NSTableView) -> Int {
+  @MainActor final func numberOfRows (in tableView: NSTableView) -> Int {
     return self.mRowCountCallBack? () ?? 0
   }
 
@@ -233,7 +233,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   //   NSTableViewDelegate protocol
   //····················································································································
 
-  final func tableView (_ tableView : NSTableView,
+  @MainActor final func tableView (_ tableView : NSTableView,
                         viewFor inTableColumn : NSTableColumn?,
                         row inRowIndex : Int) -> NSView? {
     if let tableColumn = inTableColumn as? AutoLayoutTableColumn {

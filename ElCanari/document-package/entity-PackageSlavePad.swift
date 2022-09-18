@@ -6,145 +6,145 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_xCenter : AnyObject {
+@MainActor protocol PackageSlavePad_xCenter : AnyObject {
   var xCenter : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_yCenter : AnyObject {
+@MainActor protocol PackageSlavePad_yCenter : AnyObject {
   var yCenter : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_width : AnyObject {
+@MainActor protocol PackageSlavePad_width : AnyObject {
   var width : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_height : AnyObject {
+@MainActor protocol PackageSlavePad_height : AnyObject {
   var height : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_holeWidth : AnyObject {
+@MainActor protocol PackageSlavePad_holeWidth : AnyObject {
   var holeWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_holeHeight : AnyObject {
+@MainActor protocol PackageSlavePad_holeHeight : AnyObject {
   var holeHeight : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_padShape : AnyObject {
+@MainActor protocol PackageSlavePad_padShape : AnyObject {
   var padShape : PadShape { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_padStyle : AnyObject {
+@MainActor protocol PackageSlavePad_padStyle : AnyObject {
   var padStyle : SlavePadStyle { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_xCenterUnit : AnyObject {
+@MainActor protocol PackageSlavePad_xCenterUnit : AnyObject {
   var xCenterUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_yCenterUnit : AnyObject {
+@MainActor protocol PackageSlavePad_yCenterUnit : AnyObject {
   var yCenterUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_widthUnit : AnyObject {
+@MainActor protocol PackageSlavePad_widthUnit : AnyObject {
   var widthUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_heightUnit : AnyObject {
+@MainActor protocol PackageSlavePad_heightUnit : AnyObject {
   var heightUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_holeWidthUnit : AnyObject {
+@MainActor protocol PackageSlavePad_holeWidthUnit : AnyObject {
   var holeWidthUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_holeHeightUnit : AnyObject {
+@MainActor protocol PackageSlavePad_holeHeightUnit : AnyObject {
   var holeHeightUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_annularRingUnit : AnyObject {
+@MainActor protocol PackageSlavePad_annularRingUnit : AnyObject {
   var annularRingUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_objectDisplay : AnyObject {
+@MainActor protocol PackageSlavePad_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_selectionDisplay : AnyObject {
+@MainActor protocol PackageSlavePad_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_issues : AnyObject {
+@MainActor protocol PackageSlavePad_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_padIsTraversing : AnyObject {
+@MainActor protocol PackageSlavePad_padIsTraversing : AnyObject {
   var padIsTraversing : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_annularRing : AnyObject {
+@MainActor protocol PackageSlavePad_annularRing : AnyObject {
   var annularRing : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_padNameWithZoneName : AnyObject {
+@MainActor protocol PackageSlavePad_padNameWithZoneName : AnyObject {
   var padNameWithZoneName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_masterPadNameWithZoneName : AnyObject {
+@MainActor protocol PackageSlavePad_masterPadNameWithZoneName : AnyObject {
   var masterPadNameWithZoneName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_padNameForDisplay : AnyObject {
+@MainActor protocol PackageSlavePad_padNameForDisplay : AnyObject {
   var padNameForDisplay : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageSlavePad_padNumberDisplay : AnyObject {
+@MainActor protocol PackageSlavePad_padNumberDisplay : AnyObject {
   var padNumberDisplay : EBShape? { get }
 }
 

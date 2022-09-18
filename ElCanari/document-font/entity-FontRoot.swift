@@ -6,73 +6,73 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontRoot_comments : AnyObject {
+@MainActor protocol FontRoot_comments : AnyObject {
   var comments : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontRoot_nominalSize : AnyObject {
+@MainActor protocol FontRoot_nominalSize : AnyObject {
   var nominalSize : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontRoot_selectedTab : AnyObject {
+@MainActor protocol FontRoot_selectedTab : AnyObject {
   var selectedTab : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontRoot_selectedInspector : AnyObject {
+@MainActor protocol FontRoot_selectedInspector : AnyObject {
   var selectedInspector : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontRoot_currentCharacterCodePoint : AnyObject {
+@MainActor protocol FontRoot_currentCharacterCodePoint : AnyObject {
   var currentCharacterCodePoint : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontRoot_currentCharacterCodePointString : AnyObject {
+@MainActor protocol FontRoot_currentCharacterCodePointString : AnyObject {
   var currentCharacterCodePointString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontRoot_sampleStringBezierPath : AnyObject {
+@MainActor protocol FontRoot_sampleStringBezierPath : AnyObject {
   var sampleStringBezierPath : NSBezierPath? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontRoot_sampleStringBezierPathWidth : AnyObject {
+@MainActor protocol FontRoot_sampleStringBezierPathWidth : AnyObject {
   var sampleStringBezierPathWidth : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontRoot_sampleStringBezierPathAscent : AnyObject {
+@MainActor protocol FontRoot_sampleStringBezierPathAscent : AnyObject {
   var sampleStringBezierPathAscent : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontRoot_sampleStringBezierPathDescent : AnyObject {
+@MainActor protocol FontRoot_sampleStringBezierPathDescent : AnyObject {
   var sampleStringBezierPathDescent : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontRoot_definedCharacters : AnyObject {
+@MainActor protocol FontRoot_definedCharacters : AnyObject {
   var definedCharacters : DefinedCharactersInDevice? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontRoot_issues : AnyObject {
+@MainActor protocol FontRoot_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 

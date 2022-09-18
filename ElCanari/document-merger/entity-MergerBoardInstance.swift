@@ -6,49 +6,49 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerBoardInstance_x : AnyObject {
+@MainActor protocol MergerBoardInstance_x : AnyObject {
   var x : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerBoardInstance_y : AnyObject {
+@MainActor protocol MergerBoardInstance_y : AnyObject {
   var y : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerBoardInstance_instanceRotation : AnyObject {
+@MainActor protocol MergerBoardInstance_instanceRotation : AnyObject {
   var instanceRotation : QuadrantRotation { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerBoardInstance_instanceRect : AnyObject {
+@MainActor protocol MergerBoardInstance_instanceRect : AnyObject {
   var instanceRect : CanariRect? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerBoardInstance_modelName : AnyObject {
+@MainActor protocol MergerBoardInstance_modelName : AnyObject {
   var modelName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerBoardInstance_boardLimitWidth : AnyObject {
+@MainActor protocol MergerBoardInstance_boardLimitWidth : AnyObject {
   var boardLimitWidth : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerBoardInstance_selectionDisplay : AnyObject {
+@MainActor protocol MergerBoardInstance_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerBoardInstance_objectDisplay : AnyObject {
+@MainActor protocol MergerBoardInstance_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 

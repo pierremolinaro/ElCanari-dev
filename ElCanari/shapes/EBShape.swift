@@ -22,8 +22,8 @@ struct EBShape : Hashable {
   //  Hashable Protocol
   //····················································································································
 
-   func hash (into hasher: inout Hasher) {
-    if let sharedObject = mSharedObject {
+  func hash (into hasher: inout Hasher) {
+    if let sharedObject = self.mSharedObject {
       let address = ObjectIdentifier (sharedObject)
       address.hash (into: &hasher)
     }
@@ -561,7 +561,7 @@ fileprivate final class EBShapeObject {
 
   func installToolTips (toView inView : EBGraphicView) {
     for tooltip in self.mToolTips {
-      inView.addToolTip (tooltip.path.bounds, owner: tooltip.string, userData: nil)
+      _ = inView.addToolTip (tooltip.path.bounds, owner: tooltip.string, userData: nil)
     }
   }
 

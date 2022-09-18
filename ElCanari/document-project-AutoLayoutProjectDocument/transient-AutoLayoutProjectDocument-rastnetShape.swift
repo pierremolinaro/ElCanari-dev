@@ -8,7 +8,7 @@ import Cocoa
 
 //--- START OF USER ZONE 1
 
-private func computeRasnet (_ inPointArray : [CanariPoint], _ ioBezierPath : inout EBBezierPath) {
+@MainActor private func computeRasnet (_ inPointArray : [CanariPoint], _ ioBezierPath : inout EBBezierPath) {
   if inPointArray.count >= 2 {
     var points = inPointArray
   //------------------------------- Find the two nearest points

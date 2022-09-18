@@ -6,109 +6,109 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageDimension_y1 : AnyObject {
+@MainActor protocol PackageDimension_y1 : AnyObject {
   var y1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageDimension_x2 : AnyObject {
+@MainActor protocol PackageDimension_x2 : AnyObject {
   var x2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageDimension_y2 : AnyObject {
+@MainActor protocol PackageDimension_y2 : AnyObject {
   var y2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageDimension_xDimension : AnyObject {
+@MainActor protocol PackageDimension_xDimension : AnyObject {
   var xDimension : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageDimension_yDimension : AnyObject {
+@MainActor protocol PackageDimension_yDimension : AnyObject {
   var yDimension : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageDimension_x1Unit : AnyObject {
+@MainActor protocol PackageDimension_x1Unit : AnyObject {
   var x1Unit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageDimension_y1Unit : AnyObject {
+@MainActor protocol PackageDimension_y1Unit : AnyObject {
   var y1Unit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageDimension_x2Unit : AnyObject {
+@MainActor protocol PackageDimension_x2Unit : AnyObject {
   var x2Unit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageDimension_y2Unit : AnyObject {
+@MainActor protocol PackageDimension_y2Unit : AnyObject {
   var y2Unit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageDimension_xDimensionUnit : AnyObject {
+@MainActor protocol PackageDimension_xDimensionUnit : AnyObject {
   var xDimensionUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageDimension_yDimensionUnit : AnyObject {
+@MainActor protocol PackageDimension_yDimensionUnit : AnyObject {
   var yDimensionUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageDimension_distanceUnit : AnyObject {
+@MainActor protocol PackageDimension_distanceUnit : AnyObject {
   var distanceUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageDimension_drawDimensionBackground : AnyObject {
+@MainActor protocol PackageDimension_drawDimensionBackground : AnyObject {
   var drawDimensionBackground : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageDimension_x1 : AnyObject {
+@MainActor protocol PackageDimension_x1 : AnyObject {
   var x1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageDimension_distanceInCanariUnit : AnyObject {
+@MainActor protocol PackageDimension_distanceInCanariUnit : AnyObject {
   var distanceInCanariUnit : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageDimension_objectDisplay : AnyObject {
+@MainActor protocol PackageDimension_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageDimension_selectionDisplay : AnyObject {
+@MainActor protocol PackageDimension_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageDimension_issues : AnyObject {
+@MainActor protocol PackageDimension_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 

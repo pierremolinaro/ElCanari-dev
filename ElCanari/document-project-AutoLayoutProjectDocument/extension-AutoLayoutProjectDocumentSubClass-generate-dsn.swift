@@ -33,8 +33,8 @@ extension AutoLayoutProjectDocumentSubClass {
     }else if let window = self.windowForSheet {
       let alert = NSAlert ()
       alert.messageText = "Schematic has warning(s) and/or error(s). Continue?"
-      alert.addButton (withTitle: "Cancel")
-      alert.addButton (withTitle: "Continue")
+      _ = alert.addButton (withTitle: "Cancel")
+      _ = alert.addButton (withTitle: "Continue")
       alert.beginSheetModal (
         for: window,
         completionHandler: { if $0 == .alertSecondButtonReturn { self.performGenerateDSNFile () } }
@@ -77,7 +77,7 @@ extension AutoLayoutProjectDocumentSubClass {
           let s = self.dsnContents (exportTracks)
           try s.write (to: url, atomically: true, encoding: .utf8)
         }catch (let error) {
-          self.windowForSheet!.presentError (error)
+          _ = self.windowForSheet!.presentError (error)
         }
         savePanel.directoryURL = savedDirectoryURL
         self.rootObject.mDSNFileProposedName = savePanel.nameFieldStringValue

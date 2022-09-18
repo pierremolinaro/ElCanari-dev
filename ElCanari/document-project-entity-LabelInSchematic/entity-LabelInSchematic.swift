@@ -6,37 +6,37 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol LabelInSchematic_mOrientation : AnyObject {
+@MainActor protocol LabelInSchematic_mOrientation : AnyObject {
   var mOrientation : QuadrantRotation { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol LabelInSchematic_location : AnyObject {
+@MainActor protocol LabelInSchematic_location : AnyObject {
   var location : CanariPoint? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol LabelInSchematic_netName : AnyObject {
+@MainActor protocol LabelInSchematic_netName : AnyObject {
   var netName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol LabelInSchematic_selectionDisplay : AnyObject {
+@MainActor protocol LabelInSchematic_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol LabelInSchematic_netClassName : AnyObject {
+@MainActor protocol LabelInSchematic_netClassName : AnyObject {
   var netClassName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol LabelInSchematic_objectDisplay : AnyObject {
+@MainActor protocol LabelInSchematic_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 

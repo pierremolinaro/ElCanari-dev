@@ -6,343 +6,343 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_selectedPageIndex : AnyObject {
+@MainActor protocol PackageRoot_selectedPageIndex : AnyObject {
   var selectedPageIndex : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_selectedInspector : AnyObject {
+@MainActor protocol PackageRoot_selectedInspector : AnyObject {
   var selectedInspector : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_comments : AnyObject {
+@MainActor protocol PackageRoot_comments : AnyObject {
   var comments : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_program : AnyObject {
+@MainActor protocol PackageRoot_program : AnyObject {
   var program : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_horizontalFlip : AnyObject {
+@MainActor protocol PackageRoot_horizontalFlip : AnyObject {
   var horizontalFlip : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_verticalFlip : AnyObject {
+@MainActor protocol PackageRoot_verticalFlip : AnyObject {
   var verticalFlip : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_gridStyle : AnyObject {
+@MainActor protocol PackageRoot_gridStyle : AnyObject {
   var gridStyle : GridStyle { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_gridStep : AnyObject {
+@MainActor protocol PackageRoot_gridStep : AnyObject {
   var gridStep : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_gridStepUnit : AnyObject {
+@MainActor protocol PackageRoot_gridStepUnit : AnyObject {
   var gridStepUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_gridDisplayFactor : AnyObject {
+@MainActor protocol PackageRoot_gridDisplayFactor : AnyObject {
   var gridDisplayFactor : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_zoom : AnyObject {
+@MainActor protocol PackageRoot_zoom : AnyObject {
   var zoom : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImageOpacity : AnyObject {
+@MainActor protocol PackageRoot_mModelImageOpacity : AnyObject {
   var mModelImageOpacity : Double { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImagePageHorizontalFlip : AnyObject {
+@MainActor protocol PackageRoot_mModelImagePageHorizontalFlip : AnyObject {
   var mModelImagePageHorizontalFlip : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImagePageVerticalFlip : AnyObject {
+@MainActor protocol PackageRoot_mModelImagePageVerticalFlip : AnyObject {
   var mModelImagePageVerticalFlip : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImagePageGridStyle : AnyObject {
+@MainActor protocol PackageRoot_mModelImagePageGridStyle : AnyObject {
   var mModelImagePageGridStyle : GridStyle { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImagePageGridStep : AnyObject {
+@MainActor protocol PackageRoot_mModelImagePageGridStep : AnyObject {
   var mModelImagePageGridStep : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImagePageGridStepUnit : AnyObject {
+@MainActor protocol PackageRoot_mModelImagePageGridStepUnit : AnyObject {
   var mModelImagePageGridStepUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImagePageGridDisplayFactor : AnyObject {
+@MainActor protocol PackageRoot_mModelImagePageGridDisplayFactor : AnyObject {
   var mModelImagePageGridDisplayFactor : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImagePageZoom : AnyObject {
+@MainActor protocol PackageRoot_mModelImagePageZoom : AnyObject {
   var mModelImagePageZoom : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImagePageXPlacardUnit : AnyObject {
+@MainActor protocol PackageRoot_mModelImagePageXPlacardUnit : AnyObject {
   var mModelImagePageXPlacardUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImagePageYPlacardUnit : AnyObject {
+@MainActor protocol PackageRoot_mModelImagePageYPlacardUnit : AnyObject {
   var mModelImagePageYPlacardUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImageSecondPointXUnit : AnyObject {
+@MainActor protocol PackageRoot_mModelImageSecondPointXUnit : AnyObject {
   var mModelImageSecondPointXUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImageSecondPointYUnit : AnyObject {
+@MainActor protocol PackageRoot_mModelImageSecondPointYUnit : AnyObject {
   var mModelImageSecondPointYUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImageFirstPointXOnLock : AnyObject {
+@MainActor protocol PackageRoot_mModelImageFirstPointXOnLock : AnyObject {
   var mModelImageFirstPointXOnLock : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImageFirstPointYOnLock : AnyObject {
+@MainActor protocol PackageRoot_mModelImageFirstPointYOnLock : AnyObject {
   var mModelImageFirstPointYOnLock : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImagePointsDxOnLock : AnyObject {
+@MainActor protocol PackageRoot_mModelImagePointsDxOnLock : AnyObject {
   var mModelImagePointsDxOnLock : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImagePointsDyOnLock : AnyObject {
+@MainActor protocol PackageRoot_mModelImagePointsDyOnLock : AnyObject {
   var mModelImagePointsDyOnLock : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImageScale : AnyObject {
+@MainActor protocol PackageRoot_mModelImageScale : AnyObject {
   var mModelImageScale : Double { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImageRotationInRadians : AnyObject {
+@MainActor protocol PackageRoot_mModelImageRotationInRadians : AnyObject {
   var mModelImageRotationInRadians : Double { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mDimensionUnitFirstModelPointX : AnyObject {
+@MainActor protocol PackageRoot_mDimensionUnitFirstModelPointX : AnyObject {
   var mDimensionUnitFirstModelPointX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mDimensionUnitFirstModelPointY : AnyObject {
+@MainActor protocol PackageRoot_mDimensionUnitFirstModelPointY : AnyObject {
   var mDimensionUnitFirstModelPointY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mDimensionUnitSecondModelPointDx : AnyObject {
+@MainActor protocol PackageRoot_mDimensionUnitSecondModelPointDx : AnyObject {
   var mDimensionUnitSecondModelPointDx : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mDimensionUnitSecondModelPointDy : AnyObject {
+@MainActor protocol PackageRoot_mDimensionUnitSecondModelPointDy : AnyObject {
   var mDimensionUnitSecondModelPointDy : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelPointsCircleRadius : AnyObject {
+@MainActor protocol PackageRoot_mModelPointsCircleRadius : AnyObject {
   var mModelPointsCircleRadius : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mPointsAreLocked : AnyObject {
+@MainActor protocol PackageRoot_mPointsAreLocked : AnyObject {
   var mPointsAreLocked : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_knobSizeMultpliedByTen : AnyObject {
+@MainActor protocol PackageRoot_knobSizeMultpliedByTen : AnyObject {
   var knobSizeMultpliedByTen : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_padNumbering : AnyObject {
+@MainActor protocol PackageRoot_padNumbering : AnyObject {
   var padNumbering : PadNumbering { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_counterClockNumberingStartAngle : AnyObject {
+@MainActor protocol PackageRoot_counterClockNumberingStartAngle : AnyObject {
   var counterClockNumberingStartAngle : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_xPlacardUnit : AnyObject {
+@MainActor protocol PackageRoot_xPlacardUnit : AnyObject {
   var xPlacardUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_yPlacardUnit : AnyObject {
+@MainActor protocol PackageRoot_yPlacardUnit : AnyObject {
   var yPlacardUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImageData : AnyObject {
+@MainActor protocol PackageRoot_mModelImageData : AnyObject {
   var mModelImageData : Data { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImageFirstPointX : AnyObject {
+@MainActor protocol PackageRoot_mModelImageFirstPointX : AnyObject {
   var mModelImageFirstPointX : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImageFirstPointY : AnyObject {
+@MainActor protocol PackageRoot_mModelImageFirstPointY : AnyObject {
   var mModelImageFirstPointY : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImageSecondPointDx : AnyObject {
+@MainActor protocol PackageRoot_mModelImageSecondPointDx : AnyObject {
   var mModelImageSecondPointDx : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_mModelImageSecondPointDy : AnyObject {
+@MainActor protocol PackageRoot_mModelImageSecondPointDy : AnyObject {
   var mModelImageSecondPointDy : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_freePadNumbering : AnyObject {
+@MainActor protocol PackageRoot_freePadNumbering : AnyObject {
   var freePadNumbering : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_counterClockNumbering : AnyObject {
+@MainActor protocol PackageRoot_counterClockNumbering : AnyObject {
   var counterClockNumbering : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_gridStepMultipliedByDisplayFactor : AnyObject {
+@MainActor protocol PackageRoot_gridStepMultipliedByDisplayFactor : AnyObject {
   var gridStepMultipliedByDisplayFactor : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_secondPointX : AnyObject {
+@MainActor protocol PackageRoot_secondPointX : AnyObject {
   var secondPointX : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_secondPointY : AnyObject {
+@MainActor protocol PackageRoot_secondPointY : AnyObject {
   var secondPointY : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_lockImageView : AnyObject {
+@MainActor protocol PackageRoot_lockImageView : AnyObject {
   var lockImageView : NSImage? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_padNumberDisplay : AnyObject {
+@MainActor protocol PackageRoot_padNumberDisplay : AnyObject {
   var padNumberDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_backgroundImagePageBackgroundDisplay : AnyObject {
+@MainActor protocol PackageRoot_backgroundImagePageBackgroundDisplay : AnyObject {
   var backgroundImagePageBackgroundDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_modelImageSizeString : AnyObject {
+@MainActor protocol PackageRoot_modelImageSizeString : AnyObject {
   var modelImageSizeString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_hasModelImage : AnyObject {
+@MainActor protocol PackageRoot_hasModelImage : AnyObject {
   var hasModelImage : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_masterPadObjectIndexArray : AnyObject {
+@MainActor protocol PackageRoot_masterPadObjectIndexArray : AnyObject {
   var masterPadObjectIndexArray : IntArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_issues : AnyObject {
+@MainActor protocol PackageRoot_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 

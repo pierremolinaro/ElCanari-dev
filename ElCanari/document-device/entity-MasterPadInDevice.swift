@@ -6,73 +6,73 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MasterPadInDevice_mCenterX : AnyObject {
+@MainActor protocol MasterPadInDevice_mCenterX : AnyObject {
   var mCenterX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MasterPadInDevice_mCenterY : AnyObject {
+@MainActor protocol MasterPadInDevice_mCenterY : AnyObject {
   var mCenterY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MasterPadInDevice_mWidth : AnyObject {
+@MainActor protocol MasterPadInDevice_mWidth : AnyObject {
   var mWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MasterPadInDevice_mHeight : AnyObject {
+@MainActor protocol MasterPadInDevice_mHeight : AnyObject {
   var mHeight : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MasterPadInDevice_mHoleWidth : AnyObject {
+@MainActor protocol MasterPadInDevice_mHoleWidth : AnyObject {
   var mHoleWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MasterPadInDevice_mHoleHeight : AnyObject {
+@MainActor protocol MasterPadInDevice_mHoleHeight : AnyObject {
   var mHoleHeight : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MasterPadInDevice_mShape : AnyObject {
+@MainActor protocol MasterPadInDevice_mShape : AnyObject {
   var mShape : PadShape { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MasterPadInDevice_mStyle : AnyObject {
+@MainActor protocol MasterPadInDevice_mStyle : AnyObject {
   var mStyle : PadStyle { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MasterPadInDevice_mName : AnyObject {
+@MainActor protocol MasterPadInDevice_mName : AnyObject {
   var mName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MasterPadInDevice_padNumberDisplay : AnyObject {
+@MainActor protocol MasterPadInDevice_padNumberDisplay : AnyObject {
   var padNumberDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MasterPadInDevice_frontSideFilledBezierPathArray : AnyObject {
+@MainActor protocol MasterPadInDevice_frontSideFilledBezierPathArray : AnyObject {
   var frontSideFilledBezierPathArray : BezierPathArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MasterPadInDevice_backSideFilledBezierPathArray : AnyObject {
+@MainActor protocol MasterPadInDevice_backSideFilledBezierPathArray : AnyObject {
   var backSideFilledBezierPathArray : BezierPathArray? { get }
 }
 

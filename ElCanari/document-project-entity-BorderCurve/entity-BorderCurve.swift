@@ -6,91 +6,91 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BorderCurve_mX : AnyObject {
+@MainActor protocol BorderCurve_mX : AnyObject {
   var mX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BorderCurve_mY : AnyObject {
+@MainActor protocol BorderCurve_mY : AnyObject {
   var mY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BorderCurve_mCPX1 : AnyObject {
+@MainActor protocol BorderCurve_mCPX1 : AnyObject {
   var mCPX1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BorderCurve_mCPY1 : AnyObject {
+@MainActor protocol BorderCurve_mCPY1 : AnyObject {
   var mCPY1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BorderCurve_mCPX2 : AnyObject {
+@MainActor protocol BorderCurve_mCPX2 : AnyObject {
   var mCPX2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BorderCurve_mCPY2 : AnyObject {
+@MainActor protocol BorderCurve_mCPY2 : AnyObject {
   var mCPY2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BorderCurve_mShape : AnyObject {
+@MainActor protocol BorderCurve_mShape : AnyObject {
   var mShape : BorderCurveShape { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BorderCurve_mNextX : AnyObject {
+@MainActor protocol BorderCurve_mNextX : AnyObject {
   var mNextX : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BorderCurve_mNextY : AnyObject {
+@MainActor protocol BorderCurve_mNextY : AnyObject {
   var mNextY : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BorderCurve_p2Xvalue : AnyObject {
+@MainActor protocol BorderCurve_p2Xvalue : AnyObject {
   var p2Xvalue : Double? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BorderCurve_p2Yvalue : AnyObject {
+@MainActor protocol BorderCurve_p2Yvalue : AnyObject {
   var p2Yvalue : Double? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BorderCurve_descriptor : AnyObject {
+@MainActor protocol BorderCurve_descriptor : AnyObject {
   var descriptor : BorderCurveDescriptor? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BorderCurve_objectDisplay : AnyObject {
+@MainActor protocol BorderCurve_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BorderCurve_isLine : AnyObject {
+@MainActor protocol BorderCurve_isLine : AnyObject {
   var isLine : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BorderCurve_selectionDisplay : AnyObject {
+@MainActor protocol BorderCurve_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 

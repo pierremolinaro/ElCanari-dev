@@ -6,31 +6,31 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PadProxyInDevice_mPinInstanceName : AnyObject {
+@MainActor protocol PadProxyInDevice_mPinInstanceName : AnyObject {
   var mPinInstanceName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PadProxyInDevice_mPadName : AnyObject {
+@MainActor protocol PadProxyInDevice_mPadName : AnyObject {
   var mPadName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PadProxyInDevice_mIsNC : AnyObject {
+@MainActor protocol PadProxyInDevice_mIsNC : AnyObject {
   var mIsNC : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PadProxyInDevice_isConnected : AnyObject {
+@MainActor protocol PadProxyInDevice_isConnected : AnyObject {
   var isConnected : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PadProxyInDevice_symbolName : AnyObject {
+@MainActor protocol PadProxyInDevice_symbolName : AnyObject {
   var symbolName : String? { get }
 }
 

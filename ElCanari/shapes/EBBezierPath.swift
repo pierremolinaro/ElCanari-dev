@@ -166,7 +166,7 @@ struct EBBezierPath : Hashable {
 
   //····················································································································
 
-  static func == (lhs : EBBezierPath, rhs : EBBezierPath) -> Bool {
+  nonisolated static func == (lhs : EBBezierPath, rhs : EBBezierPath) -> Bool {
     return lhs.mBezierPathIndex == rhs.mBezierPathIndex
   }
 
@@ -186,7 +186,7 @@ struct EBBezierPath : Hashable {
   //  Hashable Protocol
   //····················································································································
 
-   func hash (into hasher: inout Hasher) {
+  nonisolated func hash (into hasher: inout Hasher) {
     self.mBezierPathIndex.hash (into: &hasher)
   }
 

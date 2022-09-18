@@ -6,31 +6,31 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SegmentEntity_y1 : AnyObject {
+@MainActor protocol SegmentEntity_y1 : AnyObject {
   var y1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SegmentEntity_x2 : AnyObject {
+@MainActor protocol SegmentEntity_x2 : AnyObject {
   var x2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SegmentEntity_y2 : AnyObject {
+@MainActor protocol SegmentEntity_y2 : AnyObject {
   var y2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SegmentEntity_width : AnyObject {
+@MainActor protocol SegmentEntity_width : AnyObject {
   var width : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SegmentEntity_x1 : AnyObject {
+@MainActor protocol SegmentEntity_x1 : AnyObject {
   var x1 : Int { get }
 }
 

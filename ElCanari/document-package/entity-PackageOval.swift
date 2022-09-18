@@ -6,73 +6,73 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageOval_y : AnyObject {
+@MainActor protocol PackageOval_y : AnyObject {
   var y : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageOval_width : AnyObject {
+@MainActor protocol PackageOval_width : AnyObject {
   var width : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageOval_height : AnyObject {
+@MainActor protocol PackageOval_height : AnyObject {
   var height : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageOval_xUnit : AnyObject {
+@MainActor protocol PackageOval_xUnit : AnyObject {
   var xUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageOval_yUnit : AnyObject {
+@MainActor protocol PackageOval_yUnit : AnyObject {
   var yUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageOval_widthUnit : AnyObject {
+@MainActor protocol PackageOval_widthUnit : AnyObject {
   var widthUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageOval_heightUnit : AnyObject {
+@MainActor protocol PackageOval_heightUnit : AnyObject {
   var heightUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageOval_x : AnyObject {
+@MainActor protocol PackageOval_x : AnyObject {
   var x : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageOval_strokeBezierPath : AnyObject {
+@MainActor protocol PackageOval_strokeBezierPath : AnyObject {
   var strokeBezierPath : NSBezierPath? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageOval_objectDisplay : AnyObject {
+@MainActor protocol PackageOval_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageOval_selectionDisplay : AnyObject {
+@MainActor protocol PackageOval_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageOval_issues : AnyObject {
+@MainActor protocol PackageOval_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 

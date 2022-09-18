@@ -6,79 +6,79 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceInProject_mDeviceName : AnyObject {
+@MainActor protocol DeviceInProject_mDeviceName : AnyObject {
   var mDeviceName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceInProject_mPrefix : AnyObject {
+@MainActor protocol DeviceInProject_mPrefix : AnyObject {
   var mPrefix : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceInProject_mDeviceVersion : AnyObject {
+@MainActor protocol DeviceInProject_mDeviceVersion : AnyObject {
   var mDeviceVersion : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceInProject_mDeviceFileData : AnyObject {
+@MainActor protocol DeviceInProject_mDeviceFileData : AnyObject {
   var mDeviceFileData : Data { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceInProject_versionString : AnyObject {
+@MainActor protocol DeviceInProject_versionString : AnyObject {
   var versionString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceInProject_sizeString : AnyObject {
+@MainActor protocol DeviceInProject_sizeString : AnyObject {
   var sizeString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceInProject_canExport : AnyObject {
+@MainActor protocol DeviceInProject_canExport : AnyObject {
   var canExport : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceInProject_packageNames : AnyObject {
+@MainActor protocol DeviceInProject_packageNames : AnyObject {
   var packageNames : StringArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceInProject_deviceComponentCountString : AnyObject {
+@MainActor protocol DeviceInProject_deviceComponentCountString : AnyObject {
   var deviceComponentCountString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceInProject_canRemove : AnyObject {
+@MainActor protocol DeviceInProject_canRemove : AnyObject {
   var canRemove : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceInProject_symbolAndTypesNames : AnyObject {
+@MainActor protocol DeviceInProject_symbolAndTypesNames : AnyObject {
   var symbolAndTypesNames : SymbolInProjectIdentifierArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceInProject_pinPadAssignments : AnyObject {
+@MainActor protocol DeviceInProject_pinPadAssignments : AnyObject {
   var pinPadAssignments : ThreeStringArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceInProject_deviceSymbolDictionary : AnyObject {
+@MainActor protocol DeviceInProject_deviceSymbolDictionary : AnyObject {
   var deviceSymbolDictionary : DeviceSymbolDictionary? { get }
 }
 

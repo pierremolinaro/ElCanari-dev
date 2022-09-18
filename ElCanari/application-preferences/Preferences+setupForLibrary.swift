@@ -2,8 +2,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private var gStream : FSEventStreamRef? = nil
-private var gPreferences : Preferences? = nil
+@MainActor private var gStream : FSEventStreamRef? = nil
+@MainActor private var gPreferences : Preferences? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // https://stackoverflow.com/questions/31173903/swift-2-cannot-invoke-fseventstreamcreate-with-an-argument-list-of-type

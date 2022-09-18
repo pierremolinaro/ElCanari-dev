@@ -6,55 +6,55 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolTypeInDevice_mTypeName : AnyObject {
+@MainActor protocol SymbolTypeInDevice_mTypeName : AnyObject {
   var mTypeName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolTypeInDevice_mVersion : AnyObject {
+@MainActor protocol SymbolTypeInDevice_mVersion : AnyObject {
   var mVersion : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolTypeInDevice_mFileData : AnyObject {
+@MainActor protocol SymbolTypeInDevice_mFileData : AnyObject {
   var mFileData : Data { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolTypeInDevice_mStrokeBezierPath : AnyObject {
+@MainActor protocol SymbolTypeInDevice_mStrokeBezierPath : AnyObject {
   var mStrokeBezierPath : NSBezierPath { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolTypeInDevice_mFilledBezierPath : AnyObject {
+@MainActor protocol SymbolTypeInDevice_mFilledBezierPath : AnyObject {
   var mFilledBezierPath : NSBezierPath { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolTypeInDevice_versionString : AnyObject {
+@MainActor protocol SymbolTypeInDevice_versionString : AnyObject {
   var versionString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolTypeInDevice_instanceCount : AnyObject {
+@MainActor protocol SymbolTypeInDevice_instanceCount : AnyObject {
   var instanceCount : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolTypeInDevice_documentSize : AnyObject {
+@MainActor protocol SymbolTypeInDevice_documentSize : AnyObject {
   var documentSize : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolTypeInDevice_pinNameShape : AnyObject {
+@MainActor protocol SymbolTypeInDevice_pinNameShape : AnyObject {
   var pinNameShape : EBShape? { get }
 }
 

@@ -6,55 +6,55 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolInstanceInDevice_mInstanceName : AnyObject {
+@MainActor protocol SymbolInstanceInDevice_mInstanceName : AnyObject {
   var mInstanceName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolInstanceInDevice_mX : AnyObject {
+@MainActor protocol SymbolInstanceInDevice_mX : AnyObject {
   var mX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolInstanceInDevice_mY : AnyObject {
+@MainActor protocol SymbolInstanceInDevice_mY : AnyObject {
   var mY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolInstanceInDevice_symbolQualifiedName : AnyObject {
+@MainActor protocol SymbolInstanceInDevice_symbolQualifiedName : AnyObject {
   var symbolQualifiedName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolInstanceInDevice_symbolTypeName : AnyObject {
+@MainActor protocol SymbolInstanceInDevice_symbolTypeName : AnyObject {
   var symbolTypeName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolInstanceInDevice_pinSymbolQualifiedNames : AnyObject {
+@MainActor protocol SymbolInstanceInDevice_pinSymbolQualifiedNames : AnyObject {
   var pinSymbolQualifiedNames : StringArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolInstanceInDevice_selectionDisplay : AnyObject {
+@MainActor protocol SymbolInstanceInDevice_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolInstanceInDevice_unconnectedPins : AnyObject {
+@MainActor protocol SymbolInstanceInDevice_unconnectedPins : AnyObject {
   var unconnectedPins : UnconnectedSymbolPinsInDevice? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolInstanceInDevice_objectDisplay : AnyObject {
+@MainActor protocol SymbolInstanceInDevice_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 

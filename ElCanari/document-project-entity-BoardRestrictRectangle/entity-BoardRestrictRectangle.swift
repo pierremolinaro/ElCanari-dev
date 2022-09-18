@@ -6,79 +6,79 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardRestrictRectangle_mY : AnyObject {
+@MainActor protocol BoardRestrictRectangle_mY : AnyObject {
   var mY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardRestrictRectangle_mWidth : AnyObject {
+@MainActor protocol BoardRestrictRectangle_mWidth : AnyObject {
   var mWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardRestrictRectangle_mHeight : AnyObject {
+@MainActor protocol BoardRestrictRectangle_mHeight : AnyObject {
   var mHeight : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardRestrictRectangle_mIsInFrontLayer : AnyObject {
+@MainActor protocol BoardRestrictRectangle_mIsInFrontLayer : AnyObject {
   var mIsInFrontLayer : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardRestrictRectangle_mIsInBackLayer : AnyObject {
+@MainActor protocol BoardRestrictRectangle_mIsInBackLayer : AnyObject {
   var mIsInBackLayer : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardRestrictRectangle_mIsInInner1Layer : AnyObject {
+@MainActor protocol BoardRestrictRectangle_mIsInInner1Layer : AnyObject {
   var mIsInInner1Layer : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardRestrictRectangle_mIsInInner2Layer : AnyObject {
+@MainActor protocol BoardRestrictRectangle_mIsInInner2Layer : AnyObject {
   var mIsInInner2Layer : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardRestrictRectangle_mIsInInner3Layer : AnyObject {
+@MainActor protocol BoardRestrictRectangle_mIsInInner3Layer : AnyObject {
   var mIsInInner3Layer : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardRestrictRectangle_mIsInInner4Layer : AnyObject {
+@MainActor protocol BoardRestrictRectangle_mIsInInner4Layer : AnyObject {
   var mIsInInner4Layer : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardRestrictRectangle_mX : AnyObject {
+@MainActor protocol BoardRestrictRectangle_mX : AnyObject {
   var mX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardRestrictRectangle_objectDisplay : AnyObject {
+@MainActor protocol BoardRestrictRectangle_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardRestrictRectangle_selectionDisplay : AnyObject {
+@MainActor protocol BoardRestrictRectangle_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardRestrictRectangle_signatureForERCChecking : AnyObject {
+@MainActor protocol BoardRestrictRectangle_signatureForERCChecking : AnyObject {
   var signatureForERCChecking : UInt32? { get }
 }
 

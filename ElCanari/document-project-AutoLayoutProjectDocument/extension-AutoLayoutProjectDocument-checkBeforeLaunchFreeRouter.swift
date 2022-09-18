@@ -20,8 +20,8 @@ extension AutoLayoutProjectDocument {
     }else{
       let alert = NSAlert ()
       alert.messageText = "There are issues in schematics. Continue anyway?"
-      alert.addButton (withTitle: "Cancel")
-      alert.addButton (withTitle: "Continue")
+      _ = alert.addButton (withTitle: "Cancel")
+      _ = alert.addButton (withTitle: "Continue")
       alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
         if response == .alertSecondButtonReturn {
           self.checkAllComponentsAreInBoard (inCallBack)
@@ -48,8 +48,8 @@ extension AutoLayoutProjectDocument {
         ? "There is 1 unplaced component in board. Continue anyway?"
         : "There are \(unplacedComponentNames.count) unplaced components in board. Continue anyway?"
       alert.informativeText = unplacedComponentNames.joined (separator: ", ")
-      alert.addButton (withTitle: "Cancel")
-      alert.addButton (withTitle: "Continue")
+      _ = alert.addButton (withTitle: "Cancel")
+      _ = alert.addButton (withTitle: "Continue")
       alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
         if response == .alertSecondButtonReturn {
           inCallBack ()

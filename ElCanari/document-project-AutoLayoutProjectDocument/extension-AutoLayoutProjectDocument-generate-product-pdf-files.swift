@@ -134,7 +134,7 @@ extension AutoLayoutProjectDocument {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension Array where Element == EBBezierPath {
+@MainActor extension Array where Element == EBBezierPath {
 
   //····················································································································
 

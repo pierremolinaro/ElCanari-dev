@@ -32,7 +32,7 @@ final class LibraryOperationElement : EBSwiftBaseObject, Equatable {
   //   Equatable protocol
   //····················································································································
 
-  static func == (lhs: LibraryOperationElement, rhs: LibraryOperationElement) -> Bool {
+  nonisolated static func == (lhs: LibraryOperationElement, rhs: LibraryOperationElement) -> Bool {
     return ObjectIdentifier (lhs) == ObjectIdentifier (rhs)
   }
 

@@ -31,8 +31,8 @@ extension AutoLayoutProjectDocumentSubClass {
     let filePath = inFileBasePath + "gui_defaults.par"
     if let fileContents = try? String (contentsOf: URL (fileURLWithPath: filePath), encoding: .utf8), preferences_mFreeRouterGuiDefaultFileContents != fileContents {
       let alert = NSAlert ()
-      alert.addButton (withTitle: "Import")
-      alert.addButton (withTitle: "Do not Import")
+      _ = alert.addButton (withTitle: "Import")
+      _ = alert.addButton (withTitle: "Do not Import")
       alert.messageText = "FreeRouter gui defaults file did change."
       alert.informativeText = "Import new contents into ElCanari preferences ?"
       alert.beginSheetModal (for: self.windowForSheet!) { (inResponse : NSApplication.ModalResponse) in

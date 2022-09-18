@@ -6,79 +6,79 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardLine_mWidthUnit : AnyObject {
+@MainActor protocol BoardLine_mWidthUnit : AnyObject {
   var mWidthUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardLine_mX1 : AnyObject {
+@MainActor protocol BoardLine_mX1 : AnyObject {
   var mX1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardLine_mX1Unit : AnyObject {
+@MainActor protocol BoardLine_mX1Unit : AnyObject {
   var mX1Unit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardLine_mY1 : AnyObject {
+@MainActor protocol BoardLine_mY1 : AnyObject {
   var mY1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardLine_mY1Unit : AnyObject {
+@MainActor protocol BoardLine_mY1Unit : AnyObject {
   var mY1Unit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardLine_mX2 : AnyObject {
+@MainActor protocol BoardLine_mX2 : AnyObject {
   var mX2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardLine_mX2Unit : AnyObject {
+@MainActor protocol BoardLine_mX2Unit : AnyObject {
   var mX2Unit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardLine_mY2 : AnyObject {
+@MainActor protocol BoardLine_mY2 : AnyObject {
   var mY2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardLine_mY2Unit : AnyObject {
+@MainActor protocol BoardLine_mY2Unit : AnyObject {
   var mY2Unit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardLine_mLayer : AnyObject {
+@MainActor protocol BoardLine_mLayer : AnyObject {
   var mLayer : BoardLineLayer { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardLine_mWidth : AnyObject {
+@MainActor protocol BoardLine_mWidth : AnyObject {
   var mWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardLine_objectDisplay : AnyObject {
+@MainActor protocol BoardLine_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardLine_selectionDisplay : AnyObject {
+@MainActor protocol BoardLine_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 

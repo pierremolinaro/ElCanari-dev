@@ -6,151 +6,151 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_mSelectedPageIndex : AnyObject {
+@MainActor protocol DeviceRoot_mSelectedPageIndex : AnyObject {
   var mSelectedPageIndex : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_mSelectedSymbolInspectorIndex : AnyObject {
+@MainActor protocol DeviceRoot_mSelectedSymbolInspectorIndex : AnyObject {
   var mSelectedSymbolInspectorIndex : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_mSelectedPackageInspectorIndex : AnyObject {
+@MainActor protocol DeviceRoot_mSelectedPackageInspectorIndex : AnyObject {
   var mSelectedPackageInspectorIndex : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_mTitle : AnyObject {
+@MainActor protocol DeviceRoot_mTitle : AnyObject {
   var mTitle : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_mImageData : AnyObject {
+@MainActor protocol DeviceRoot_mImageData : AnyObject {
   var mImageData : Data { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_mPrefix : AnyObject {
+@MainActor protocol DeviceRoot_mPrefix : AnyObject {
   var mPrefix : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_mComments : AnyObject {
+@MainActor protocol DeviceRoot_mComments : AnyObject {
   var mComments : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_mPackageDisplayZoom : AnyObject {
+@MainActor protocol DeviceRoot_mPackageDisplayZoom : AnyObject {
   var mPackageDisplayZoom : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_mPackageDisplayHorizontalFlip : AnyObject {
+@MainActor protocol DeviceRoot_mPackageDisplayHorizontalFlip : AnyObject {
   var mPackageDisplayHorizontalFlip : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_mPackageDisplayVerticalFlip : AnyObject {
+@MainActor protocol DeviceRoot_mPackageDisplayVerticalFlip : AnyObject {
   var mPackageDisplayVerticalFlip : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_mShowPackages : AnyObject {
+@MainActor protocol DeviceRoot_mShowPackages : AnyObject {
   var mShowPackages : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_mShowPackagePadNumbers : AnyObject {
+@MainActor protocol DeviceRoot_mShowPackagePadNumbers : AnyObject {
   var mShowPackagePadNumbers : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_mShowPackageFrontPads : AnyObject {
+@MainActor protocol DeviceRoot_mShowPackageFrontPads : AnyObject {
   var mShowPackageFrontPads : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_mShowPackageBackPads : AnyObject {
+@MainActor protocol DeviceRoot_mShowPackageBackPads : AnyObject {
   var mShowPackageBackPads : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_mSymbolDisplayZoom : AnyObject {
+@MainActor protocol DeviceRoot_mSymbolDisplayZoom : AnyObject {
   var mSymbolDisplayZoom : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_imageIsValid : AnyObject {
+@MainActor protocol DeviceRoot_imageIsValid : AnyObject {
   var imageIsValid : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_unconnectedPins : AnyObject {
+@MainActor protocol DeviceRoot_unconnectedPins : AnyObject {
   var unconnectedPins : UnconnectedSymbolPinsInDevice? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_inconsistentPackagePadNameSetsMessage : AnyObject {
+@MainActor protocol DeviceRoot_inconsistentPackagePadNameSetsMessage : AnyObject {
   var inconsistentPackagePadNameSetsMessage : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_inconsistentSymbolNameSetMessage : AnyObject {
+@MainActor protocol DeviceRoot_inconsistentSymbolNameSetMessage : AnyObject {
   var inconsistentSymbolNameSetMessage : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_packagePadNameSetsAreConsistent : AnyObject {
+@MainActor protocol DeviceRoot_packagePadNameSetsAreConsistent : AnyObject {
   var packagePadNameSetsAreConsistent : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_symbolNameAreConsistent : AnyObject {
+@MainActor protocol DeviceRoot_symbolNameAreConsistent : AnyObject {
   var symbolNameAreConsistent : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_symbolTypeNames : AnyObject {
+@MainActor protocol DeviceRoot_symbolTypeNames : AnyObject {
   var symbolTypeNames : StringArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_unconnectedPads : AnyObject {
+@MainActor protocol DeviceRoot_unconnectedPads : AnyObject {
   var unconnectedPads : StringArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_assignedPadProxies : AnyObject {
+@MainActor protocol DeviceRoot_assignedPadProxies : AnyObject {
   var assignedPadProxies : AssignedPadProxiesInDevice? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_issues : AnyObject {
+@MainActor protocol DeviceRoot_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 

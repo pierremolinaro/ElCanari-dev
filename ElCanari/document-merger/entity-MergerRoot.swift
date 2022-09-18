@@ -6,259 +6,259 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_selectedPageIndex : AnyObject {
+@MainActor protocol MergerRoot_selectedPageIndex : AnyObject {
   var selectedPageIndex : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_zoom : AnyObject {
+@MainActor protocol MergerRoot_zoom : AnyObject {
   var zoom : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_showDisplaySettingView : AnyObject {
+@MainActor protocol MergerRoot_showDisplaySettingView : AnyObject {
   var showDisplaySettingView : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_modelInsertionRotation : AnyObject {
+@MainActor protocol MergerRoot_modelInsertionRotation : AnyObject {
   var modelInsertionRotation : QuadrantRotation { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_automaticBoardSize : AnyObject {
+@MainActor protocol MergerRoot_automaticBoardSize : AnyObject {
   var automaticBoardSize : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_boardManualWidth : AnyObject {
+@MainActor protocol MergerRoot_boardManualWidth : AnyObject {
   var boardManualWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_boardManualHeight : AnyObject {
+@MainActor protocol MergerRoot_boardManualHeight : AnyObject {
   var boardManualHeight : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_boardWidthUnit : AnyObject {
+@MainActor protocol MergerRoot_boardWidthUnit : AnyObject {
   var boardWidthUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_boardHeightUnit : AnyObject {
+@MainActor protocol MergerRoot_boardHeightUnit : AnyObject {
   var boardHeightUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_overlapingArrangment : AnyObject {
+@MainActor protocol MergerRoot_overlapingArrangment : AnyObject {
   var overlapingArrangment : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_selectedBoardXUnit : AnyObject {
+@MainActor protocol MergerRoot_selectedBoardXUnit : AnyObject {
   var selectedBoardXUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_selectedBoardYUnit : AnyObject {
+@MainActor protocol MergerRoot_selectedBoardYUnit : AnyObject {
   var selectedBoardYUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_boardLimitWidth : AnyObject {
+@MainActor protocol MergerRoot_boardLimitWidth : AnyObject {
   var boardLimitWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_boardLimitWidthUnit : AnyObject {
+@MainActor protocol MergerRoot_boardLimitWidthUnit : AnyObject {
   var boardLimitWidthUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_arrowMagnitude : AnyObject {
+@MainActor protocol MergerRoot_arrowMagnitude : AnyObject {
   var arrowMagnitude : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_arrowMagnitudeUnit : AnyObject {
+@MainActor protocol MergerRoot_arrowMagnitudeUnit : AnyObject {
   var arrowMagnitudeUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_shiftArrowMagnitude : AnyObject {
+@MainActor protocol MergerRoot_shiftArrowMagnitude : AnyObject {
   var shiftArrowMagnitude : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_shiftArrowMagnitudeUnit : AnyObject {
+@MainActor protocol MergerRoot_shiftArrowMagnitudeUnit : AnyObject {
   var shiftArrowMagnitudeUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_mPDFBoardBackgroundColor : AnyObject {
+@MainActor protocol MergerRoot_mPDFBoardBackgroundColor : AnyObject {
   var mPDFBoardBackgroundColor : NSColor { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_mArtworkName : AnyObject {
+@MainActor protocol MergerRoot_mArtworkName : AnyObject {
   var mArtworkName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_mArtworkVersion : AnyObject {
+@MainActor protocol MergerRoot_mArtworkVersion : AnyObject {
   var mArtworkVersion : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_minPPTPTTTWdisplayUnit : AnyObject {
+@MainActor protocol MergerRoot_minPPTPTTTWdisplayUnit : AnyObject {
   var minPPTPTTTWdisplayUnit : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_minPPTPTTTW : AnyObject {
+@MainActor protocol MergerRoot_minPPTPTTTW : AnyObject {
   var minPPTPTTTW : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_minValueForOARdisplayUnit : AnyObject {
+@MainActor protocol MergerRoot_minValueForOARdisplayUnit : AnyObject {
   var minValueForOARdisplayUnit : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_minValueForOARinEBUnit : AnyObject {
+@MainActor protocol MergerRoot_minValueForOARinEBUnit : AnyObject {
   var minValueForOARinEBUnit : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_minValueForPHDdisplayUnit : AnyObject {
+@MainActor protocol MergerRoot_minValueForPHDdisplayUnit : AnyObject {
   var minValueForPHDdisplayUnit : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_minValueForPHDinEBUnit : AnyObject {
+@MainActor protocol MergerRoot_minValueForPHDinEBUnit : AnyObject {
   var minValueForPHDinEBUnit : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_minValueForBoardLimitWidth : AnyObject {
+@MainActor protocol MergerRoot_minValueForBoardLimitWidth : AnyObject {
   var minValueForBoardLimitWidth : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_minValueForBoardLimitWidthDisplayUnit : AnyObject {
+@MainActor protocol MergerRoot_minValueForBoardLimitWidthDisplayUnit : AnyObject {
   var minValueForBoardLimitWidthDisplayUnit : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_drillDataFileExtension : AnyObject {
+@MainActor protocol MergerRoot_drillDataFileExtension : AnyObject {
   var drillDataFileExtension : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_modelNames : AnyObject {
+@MainActor protocol MergerRoot_modelNames : AnyObject {
   var modelNames : StringTagArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_boardRect : AnyObject {
+@MainActor protocol MergerRoot_boardRect : AnyObject {
   var boardRect : CanariRect? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_boardLimitWidthErrorMessage : AnyObject {
+@MainActor protocol MergerRoot_boardLimitWidthErrorMessage : AnyObject {
   var boardLimitWidthErrorMessage : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_boardLimitWidthOk : AnyObject {
+@MainActor protocol MergerRoot_boardLimitWidthOk : AnyObject {
   var boardLimitWidthOk : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_boardWidth : AnyObject {
+@MainActor protocol MergerRoot_boardWidth : AnyObject {
   var boardWidth : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_boardHeight : AnyObject {
+@MainActor protocol MergerRoot_boardHeight : AnyObject {
   var boardHeight : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_comments : AnyObject {
+@MainActor protocol MergerRoot_comments : AnyObject {
   var comments : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_layoutLayerWarningMessage : AnyObject {
+@MainActor protocol MergerRoot_layoutLayerWarningMessage : AnyObject {
   var layoutLayerWarningMessage : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_layerConfigurationString : AnyObject {
+@MainActor protocol MergerRoot_layerConfigurationString : AnyObject {
   var layerConfigurationString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_emptyDrillFileExtension : AnyObject {
+@MainActor protocol MergerRoot_emptyDrillFileExtension : AnyObject {
   var emptyDrillFileExtension : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_hasInnerElements : AnyObject {
+@MainActor protocol MergerRoot_hasInnerElements : AnyObject {
   var hasInnerElements : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_hasSixLayers : AnyObject {
+@MainActor protocol MergerRoot_hasSixLayers : AnyObject {
   var hasSixLayers : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_boardOutlineRectDisplay : AnyObject {
+@MainActor protocol MergerRoot_boardOutlineRectDisplay : AnyObject {
   var boardOutlineRectDisplay : EBShape? { get }
 }
 

@@ -6,163 +6,163 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_mNetClassName : AnyObject {
+@MainActor protocol NetClassInProject_mNetClassName : AnyObject {
   var mNetClassName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_mNetClassColor : AnyObject {
+@MainActor protocol NetClassInProject_mNetClassColor : AnyObject {
   var mNetClassColor : NSColor { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_mTrackWidth : AnyObject {
+@MainActor protocol NetClassInProject_mTrackWidth : AnyObject {
   var mTrackWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_mTrackWidthUnit : AnyObject {
+@MainActor protocol NetClassInProject_mTrackWidthUnit : AnyObject {
   var mTrackWidthUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_mViaHoleDiameter : AnyObject {
+@MainActor protocol NetClassInProject_mViaHoleDiameter : AnyObject {
   var mViaHoleDiameter : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_mViaHoleDiameterUnit : AnyObject {
+@MainActor protocol NetClassInProject_mViaHoleDiameterUnit : AnyObject {
   var mViaHoleDiameterUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_mViaPadDiameter : AnyObject {
+@MainActor protocol NetClassInProject_mViaPadDiameter : AnyObject {
   var mViaPadDiameter : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_mViaPadDiameterUnit : AnyObject {
+@MainActor protocol NetClassInProject_mViaPadDiameterUnit : AnyObject {
   var mViaPadDiameterUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_mAllowTracksOnFrontSide : AnyObject {
+@MainActor protocol NetClassInProject_mAllowTracksOnFrontSide : AnyObject {
   var mAllowTracksOnFrontSide : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_mAllowTracksOnBackSide : AnyObject {
+@MainActor protocol NetClassInProject_mAllowTracksOnBackSide : AnyObject {
   var mAllowTracksOnBackSide : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_mAllowTracksOnInner1Layer : AnyObject {
+@MainActor protocol NetClassInProject_mAllowTracksOnInner1Layer : AnyObject {
   var mAllowTracksOnInner1Layer : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_mAllowTracksOnInner2Layer : AnyObject {
+@MainActor protocol NetClassInProject_mAllowTracksOnInner2Layer : AnyObject {
   var mAllowTracksOnInner2Layer : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_mAllowTracksOnInner3Layer : AnyObject {
+@MainActor protocol NetClassInProject_mAllowTracksOnInner3Layer : AnyObject {
   var mAllowTracksOnInner3Layer : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_mAllowTracksOnInner4Layer : AnyObject {
+@MainActor protocol NetClassInProject_mAllowTracksOnInner4Layer : AnyObject {
   var mAllowTracksOnInner4Layer : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_trackWidthString : AnyObject {
+@MainActor protocol NetClassInProject_trackWidthString : AnyObject {
   var trackWidthString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_viaHoleDiameter : AnyObject {
+@MainActor protocol NetClassInProject_viaHoleDiameter : AnyObject {
   var viaHoleDiameter : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_viaPadDiameter : AnyObject {
+@MainActor protocol NetClassInProject_viaPadDiameter : AnyObject {
   var viaPadDiameter : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_allowTracksOnFrontSideString : AnyObject {
+@MainActor protocol NetClassInProject_allowTracksOnFrontSideString : AnyObject {
   var allowTracksOnFrontSideString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_allowTracksOnBackSideString : AnyObject {
+@MainActor protocol NetClassInProject_allowTracksOnBackSideString : AnyObject {
   var allowTracksOnBackSideString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_allowTracksOnInner1LayerString : AnyObject {
+@MainActor protocol NetClassInProject_allowTracksOnInner1LayerString : AnyObject {
   var allowTracksOnInner1LayerString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_allowTracksOnInner2LayerString : AnyObject {
+@MainActor protocol NetClassInProject_allowTracksOnInner2LayerString : AnyObject {
   var allowTracksOnInner2LayerString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_allowTracksOnInner3LayerString : AnyObject {
+@MainActor protocol NetClassInProject_allowTracksOnInner3LayerString : AnyObject {
   var allowTracksOnInner3LayerString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_allowTracksOnInner4LayerString : AnyObject {
+@MainActor protocol NetClassInProject_allowTracksOnInner4LayerString : AnyObject {
   var allowTracksOnInner4LayerString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_canRemove : AnyObject {
+@MainActor protocol NetClassInProject_canRemove : AnyObject {
   var canRemove : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_netUsage : AnyObject {
+@MainActor protocol NetClassInProject_netUsage : AnyObject {
   var netUsage : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_netsDescription : AnyObject {
+@MainActor protocol NetClassInProject_netsDescription : AnyObject {
   var netsDescription : NetInfoArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetClassInProject_netWarningCount : AnyObject {
+@MainActor protocol NetClassInProject_netWarningCount : AnyObject {
   var netWarningCount : Int? { get }
 }
 

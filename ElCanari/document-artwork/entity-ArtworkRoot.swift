@@ -6,109 +6,109 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_layerConfiguration : AnyObject {
+@MainActor protocol ArtworkRoot_layerConfiguration : AnyObject {
   var layerConfiguration : LayerConfiguration { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_selectedTab : AnyObject {
+@MainActor protocol ArtworkRoot_selectedTab : AnyObject {
   var selectedTab : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_comments : AnyObject {
+@MainActor protocol ArtworkRoot_comments : AnyObject {
   var comments : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_minPPTPTTTWdisplayUnit : AnyObject {
+@MainActor protocol ArtworkRoot_minPPTPTTTWdisplayUnit : AnyObject {
   var minPPTPTTTWdisplayUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_minPPTPTTTW : AnyObject {
+@MainActor protocol ArtworkRoot_minPPTPTTTW : AnyObject {
   var minPPTPTTTW : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_minValueForOARdisplayUnit : AnyObject {
+@MainActor protocol ArtworkRoot_minValueForOARdisplayUnit : AnyObject {
   var minValueForOARdisplayUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_minValueForOARinEBUnit : AnyObject {
+@MainActor protocol ArtworkRoot_minValueForOARinEBUnit : AnyObject {
   var minValueForOARinEBUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_minValueForPHDdisplayUnit : AnyObject {
+@MainActor protocol ArtworkRoot_minValueForPHDdisplayUnit : AnyObject {
   var minValueForPHDdisplayUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_minValueForPHDinEBUnit : AnyObject {
+@MainActor protocol ArtworkRoot_minValueForPHDinEBUnit : AnyObject {
   var minValueForPHDinEBUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_minValueForBoardLimitWidthDisplayUnit : AnyObject {
+@MainActor protocol ArtworkRoot_minValueForBoardLimitWidthDisplayUnit : AnyObject {
   var minValueForBoardLimitWidthDisplayUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_minValueForBoardLimitWidth : AnyObject {
+@MainActor protocol ArtworkRoot_minValueForBoardLimitWidth : AnyObject {
   var minValueForBoardLimitWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_title : AnyObject {
+@MainActor protocol ArtworkRoot_title : AnyObject {
   var title : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_drillDataFileExtension : AnyObject {
+@MainActor protocol ArtworkRoot_drillDataFileExtension : AnyObject {
   var drillDataFileExtension : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_hasInnerElements : AnyObject {
+@MainActor protocol ArtworkRoot_hasInnerElements : AnyObject {
   var hasInnerElements : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_hasSixLayers : AnyObject {
+@MainActor protocol ArtworkRoot_hasSixLayers : AnyObject {
   var hasSixLayers : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_hasDataWarning : AnyObject {
+@MainActor protocol ArtworkRoot_hasDataWarning : AnyObject {
   var hasDataWarning : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_emptyDrillFileExtension : AnyObject {
+@MainActor protocol ArtworkRoot_emptyDrillFileExtension : AnyObject {
   var emptyDrillFileExtension : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ArtworkRoot_signatureForERCChecking : AnyObject {
+@MainActor protocol ArtworkRoot_signatureForERCChecking : AnyObject {
   var signatureForERCChecking : UInt32? { get }
 }
 

@@ -6,55 +6,55 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceSlavePadInProject_mCenterX : AnyObject {
+@MainActor protocol DeviceSlavePadInProject_mCenterX : AnyObject {
   var mCenterX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceSlavePadInProject_mCenterY : AnyObject {
+@MainActor protocol DeviceSlavePadInProject_mCenterY : AnyObject {
   var mCenterY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceSlavePadInProject_mWidth : AnyObject {
+@MainActor protocol DeviceSlavePadInProject_mWidth : AnyObject {
   var mWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceSlavePadInProject_mHeight : AnyObject {
+@MainActor protocol DeviceSlavePadInProject_mHeight : AnyObject {
   var mHeight : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceSlavePadInProject_mHoleWidth : AnyObject {
+@MainActor protocol DeviceSlavePadInProject_mHoleWidth : AnyObject {
   var mHoleWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceSlavePadInProject_mHoleHeight : AnyObject {
+@MainActor protocol DeviceSlavePadInProject_mHoleHeight : AnyObject {
   var mHoleHeight : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceSlavePadInProject_mShape : AnyObject {
+@MainActor protocol DeviceSlavePadInProject_mShape : AnyObject {
   var mShape : PadShape { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceSlavePadInProject_mStyle : AnyObject {
+@MainActor protocol DeviceSlavePadInProject_mStyle : AnyObject {
   var mStyle : SlavePadStyle { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceSlavePadInProject_descriptor : AnyObject {
+@MainActor protocol DeviceSlavePadInProject_descriptor : AnyObject {
   var descriptor : SlavePadDescriptor? { get }
 }
 

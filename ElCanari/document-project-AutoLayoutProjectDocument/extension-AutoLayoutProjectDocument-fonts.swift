@@ -46,7 +46,7 @@ extension AutoLayoutProjectDocument {
     if !ok, let window = self.windowForSheet {
       let alert = NSAlert ()
       alert.messageText = "Internal error: cannot add font."
-      alert.addButton (withTitle: "Ok")
+      _ = alert.addButton (withTitle: "Ok")
       alert.beginSheetModal (for: window) { inReturnCode in }
     }
     return ok

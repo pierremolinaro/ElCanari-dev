@@ -6,19 +6,19 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelVia_y : AnyObject {
+@MainActor protocol BoardModelVia_y : AnyObject {
   var y : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelVia_padDiameter : AnyObject {
+@MainActor protocol BoardModelVia_padDiameter : AnyObject {
   var padDiameter : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelVia_x : AnyObject {
+@MainActor protocol BoardModelVia_x : AnyObject {
   var x : Int { get }
 }
 

@@ -6,91 +6,91 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPin_yPin : AnyObject {
+@MainActor protocol SymbolPin_yPin : AnyObject {
   var yPin : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPin_xName : AnyObject {
+@MainActor protocol SymbolPin_xName : AnyObject {
   var xName : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPin_yName : AnyObject {
+@MainActor protocol SymbolPin_yName : AnyObject {
   var yName : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPin_xNumber : AnyObject {
+@MainActor protocol SymbolPin_xNumber : AnyObject {
   var xNumber : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPin_yNumber : AnyObject {
+@MainActor protocol SymbolPin_yNumber : AnyObject {
   var yNumber : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPin_name : AnyObject {
+@MainActor protocol SymbolPin_name : AnyObject {
   var name : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPin_nameHorizontalAlignment : AnyObject {
+@MainActor protocol SymbolPin_nameHorizontalAlignment : AnyObject {
   var nameHorizontalAlignment : HorizontalAlignment { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPin_numberHorizontalAlignment : AnyObject {
+@MainActor protocol SymbolPin_numberHorizontalAlignment : AnyObject {
   var numberHorizontalAlignment : HorizontalAlignment { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPin_pinNameIsDisplayedInSchematics : AnyObject {
+@MainActor protocol SymbolPin_pinNameIsDisplayedInSchematics : AnyObject {
   var pinNameIsDisplayedInSchematics : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPin_xPin : AnyObject {
+@MainActor protocol SymbolPin_xPin : AnyObject {
   var xPin : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPin_filledBezierPath : AnyObject {
+@MainActor protocol SymbolPin_filledBezierPath : AnyObject {
   var filledBezierPath : NSBezierPath? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPin_objectDisplay : AnyObject {
+@MainActor protocol SymbolPin_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPin_selectionDisplay : AnyObject {
+@MainActor protocol SymbolPin_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPin_issues : AnyObject {
+@MainActor protocol SymbolPin_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPin_nameRect : AnyObject {
+@MainActor protocol SymbolPin_nameRect : AnyObject {
   var nameRect : NSRect? { get }
 }
 

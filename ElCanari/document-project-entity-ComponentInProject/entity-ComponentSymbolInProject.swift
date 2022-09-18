@@ -6,115 +6,115 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_mCenterX : AnyObject {
+@MainActor protocol ComponentSymbolInProject_mCenterX : AnyObject {
   var mCenterX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_mCenterY : AnyObject {
+@MainActor protocol ComponentSymbolInProject_mCenterY : AnyObject {
   var mCenterY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_mRotation : AnyObject {
+@MainActor protocol ComponentSymbolInProject_mRotation : AnyObject {
   var mRotation : QuadrantRotation { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_mMirror : AnyObject {
+@MainActor protocol ComponentSymbolInProject_mMirror : AnyObject {
   var mMirror : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_mSymbolInstanceName : AnyObject {
+@MainActor protocol ComponentSymbolInProject_mSymbolInstanceName : AnyObject {
   var mSymbolInstanceName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_mSymbolTypeName : AnyObject {
+@MainActor protocol ComponentSymbolInProject_mSymbolTypeName : AnyObject {
   var mSymbolTypeName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_mDisplayComponentNameOffsetX : AnyObject {
+@MainActor protocol ComponentSymbolInProject_mDisplayComponentNameOffsetX : AnyObject {
   var mDisplayComponentNameOffsetX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_mDisplayComponentNameOffsetY : AnyObject {
+@MainActor protocol ComponentSymbolInProject_mDisplayComponentNameOffsetY : AnyObject {
   var mDisplayComponentNameOffsetY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_mDisplayComponentValue : AnyObject {
+@MainActor protocol ComponentSymbolInProject_mDisplayComponentValue : AnyObject {
   var mDisplayComponentValue : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_mDisplayComponentValueOffsetX : AnyObject {
+@MainActor protocol ComponentSymbolInProject_mDisplayComponentValueOffsetX : AnyObject {
   var mDisplayComponentValueOffsetX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_mDisplayComponentValueOffsetY : AnyObject {
+@MainActor protocol ComponentSymbolInProject_mDisplayComponentValueOffsetY : AnyObject {
   var mDisplayComponentValueOffsetY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_componentValueProxy : AnyObject {
+@MainActor protocol ComponentSymbolInProject_componentValueProxy : AnyObject {
   var componentValueProxy : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_componentName : AnyObject {
+@MainActor protocol ComponentSymbolInProject_componentName : AnyObject {
   var componentName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_deviceName : AnyObject {
+@MainActor protocol ComponentSymbolInProject_deviceName : AnyObject {
   var deviceName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_symbolInfo : AnyObject {
+@MainActor protocol ComponentSymbolInProject_symbolInfo : AnyObject {
   var symbolInfo : ComponentSymbolInfo? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_pinPadAssignments : AnyObject {
+@MainActor protocol ComponentSymbolInProject_pinPadAssignments : AnyObject {
   var pinPadAssignments : ThreeStringArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_objectDisplay : AnyObject {
+@MainActor protocol ComponentSymbolInProject_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_selectionDisplay : AnyObject {
+@MainActor protocol ComponentSymbolInProject_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentSymbolInProject_symbolInSchematic : AnyObject {
+@MainActor protocol ComponentSymbolInProject_symbolInSchematic : AnyObject {
   var symbolInSchematic : Bool? { get }
 }
 

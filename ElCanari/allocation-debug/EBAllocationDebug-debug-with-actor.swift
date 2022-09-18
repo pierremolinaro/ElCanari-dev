@@ -48,7 +48,7 @@ func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN TH
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@globalActor actor PendingAllocationBufferActor { // : GlobalActor {
+@globalActor actor PendingAllocationBufferActor {
   static var shared = PendingAllocationBufferActor ()
 //  typealias ActorType = PendingAllocationBufferActor
 
@@ -99,7 +99,7 @@ func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN TH
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@globalActor actor AllocationDebugActor { // : GlobalActor {
+@globalActor actor AllocationDebugActor {
   static var shared = AllocationDebugActor ()
 //  typealias ActorType = AllocationDebugActor
 

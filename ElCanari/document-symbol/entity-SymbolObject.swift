@@ -6,19 +6,19 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolObject_selectionDisplay : AnyObject {
+@MainActor protocol SymbolObject_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolObject_objectDisplay : AnyObject {
+@MainActor protocol SymbolObject_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolObject_issues : AnyObject {
+@MainActor protocol SymbolObject_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 

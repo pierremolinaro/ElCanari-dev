@@ -12,7 +12,7 @@ protocol ObjectIndexProtocol : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate var gEasyBindingsObjectIndex = 0
+@MainActor fileprivate var gEasyBindingsObjectIndex = 0
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    EBObjcBaseObject class

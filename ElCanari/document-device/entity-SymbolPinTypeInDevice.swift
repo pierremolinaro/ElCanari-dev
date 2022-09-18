@@ -6,67 +6,67 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPinTypeInDevice_mPinX : AnyObject {
+@MainActor protocol SymbolPinTypeInDevice_mPinX : AnyObject {
   var mPinX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPinTypeInDevice_mPinY : AnyObject {
+@MainActor protocol SymbolPinTypeInDevice_mPinY : AnyObject {
   var mPinY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPinTypeInDevice_mXName : AnyObject {
+@MainActor protocol SymbolPinTypeInDevice_mXName : AnyObject {
   var mXName : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPinTypeInDevice_mYName : AnyObject {
+@MainActor protocol SymbolPinTypeInDevice_mYName : AnyObject {
   var mYName : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPinTypeInDevice_mName : AnyObject {
+@MainActor protocol SymbolPinTypeInDevice_mName : AnyObject {
   var mName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPinTypeInDevice_mNameHorizontalAlignment : AnyObject {
+@MainActor protocol SymbolPinTypeInDevice_mNameHorizontalAlignment : AnyObject {
   var mNameHorizontalAlignment : HorizontalAlignment { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPinTypeInDevice_mPinNameIsDisplayedInSchematics : AnyObject {
+@MainActor protocol SymbolPinTypeInDevice_mPinNameIsDisplayedInSchematics : AnyObject {
   var mPinNameIsDisplayedInSchematics : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPinTypeInDevice_mXNumber : AnyObject {
+@MainActor protocol SymbolPinTypeInDevice_mXNumber : AnyObject {
   var mXNumber : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPinTypeInDevice_mYNumber : AnyObject {
+@MainActor protocol SymbolPinTypeInDevice_mYNumber : AnyObject {
   var mYNumber : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPinTypeInDevice_mNumberHorizontalAlignment : AnyObject {
+@MainActor protocol SymbolPinTypeInDevice_mNumberHorizontalAlignment : AnyObject {
   var mNumberHorizontalAlignment : HorizontalAlignment { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPinTypeInDevice_nameShape : AnyObject {
+@MainActor protocol SymbolPinTypeInDevice_nameShape : AnyObject {
   var nameShape : EBShape? { get }
 }
 

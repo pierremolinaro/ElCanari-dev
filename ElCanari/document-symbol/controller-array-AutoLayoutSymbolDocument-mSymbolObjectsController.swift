@@ -670,7 +670,7 @@ final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : ReadO
       }else{
          let alert = NSAlert ()
          alert.messageText = errorMessage
-         alert.addButton (withTitle: "Ok")
+         _ = alert.addButton (withTitle: "Ok")
          alert.beginSheetModal (for: inWindow) { (inReturnCode : NSApplication.ModalResponse) in }
       }
     }

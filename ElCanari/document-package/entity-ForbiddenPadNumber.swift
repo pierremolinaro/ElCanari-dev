@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ForbiddenPadNumber_padNumber : AnyObject {
+@MainActor protocol ForbiddenPadNumber_padNumber : AnyObject {
   var padNumber : Int { get }
 }
 

@@ -12,13 +12,13 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Preferences {
-  func createUserLibraryAction (_ sender : NSObject) {
+  func createUserLibraryAction (_ inSender : NSObject) {
 //--- START OF USER ZONE 2
     do{
       try createLibraryAtPath (userLibraryPath ())
     }catch let error {
-      if sender is NSButton {
-        (sender as! NSButton).window?.presentError (error)
+      if let sender = inSender as? NSButton {
+        _ = sender.window?.presentError (error)
       }
     }
 //--- END OF USER ZONE 2

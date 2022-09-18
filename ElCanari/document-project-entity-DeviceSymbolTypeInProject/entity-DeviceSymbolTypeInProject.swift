@@ -6,19 +6,19 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceSymbolTypeInProject_mSymbolTypeName : AnyObject {
+@MainActor protocol DeviceSymbolTypeInProject_mSymbolTypeName : AnyObject {
   var mSymbolTypeName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceSymbolTypeInProject_mStrokeBezierPath : AnyObject {
+@MainActor protocol DeviceSymbolTypeInProject_mStrokeBezierPath : AnyObject {
   var mStrokeBezierPath : NSBezierPath { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceSymbolTypeInProject_mFilledBezierPath : AnyObject {
+@MainActor protocol DeviceSymbolTypeInProject_mFilledBezierPath : AnyObject {
   var mFilledBezierPath : NSBezierPath { get }
 }
 

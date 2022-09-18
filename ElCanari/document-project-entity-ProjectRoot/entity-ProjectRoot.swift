@@ -6,961 +6,961 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mArtworkName : AnyObject {
+@MainActor protocol ProjectRoot_mArtworkName : AnyObject {
   var mArtworkName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mArtworkVersion : AnyObject {
+@MainActor protocol ProjectRoot_mArtworkVersion : AnyObject {
   var mArtworkVersion : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mPDFBoardBackgroundColor : AnyObject {
+@MainActor protocol ProjectRoot_mPDFBoardBackgroundColor : AnyObject {
   var mPDFBoardBackgroundColor : NSColor { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mCheckClearanceBetweenPadsOfSameNet : AnyObject {
+@MainActor protocol ProjectRoot_mCheckClearanceBetweenPadsOfSameNet : AnyObject {
   var mCheckClearanceBetweenPadsOfSameNet : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mLastERCCheckingIsSuccess : AnyObject {
+@MainActor protocol ProjectRoot_mLastERCCheckingIsSuccess : AnyObject {
   var mLastERCCheckingIsSuccess : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mLastERCCheckingSignature : AnyObject {
+@MainActor protocol ProjectRoot_mLastERCCheckingSignature : AnyObject {
   var mLastERCCheckingSignature : UInt32 { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mLayerConfiguration : AnyObject {
+@MainActor protocol ProjectRoot_mLayerConfiguration : AnyObject {
   var mLayerConfiguration : LayerConfiguration { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardSideForNewTrack : AnyObject {
+@MainActor protocol ProjectRoot_mBoardSideForNewTrack : AnyObject {
   var mBoardSideForNewTrack : TrackSide { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mDirectionForNewTrack : AnyObject {
+@MainActor protocol ProjectRoot_mDirectionForNewTrack : AnyObject {
   var mDirectionForNewTrack : TrackCreationDirection { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardLayerForNewText : AnyObject {
+@MainActor protocol ProjectRoot_mBoardLayerForNewText : AnyObject {
   var mBoardLayerForNewText : BoardTextLayer { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardLayerForNewLine : AnyObject {
+@MainActor protocol ProjectRoot_mBoardLayerForNewLine : AnyObject {
   var mBoardLayerForNewLine : BoardLineLayer { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardSideForNewRestrictRectangle : AnyObject {
+@MainActor protocol ProjectRoot_mBoardSideForNewRestrictRectangle : AnyObject {
   var mBoardSideForNewRestrictRectangle : RestrictRectangleLayer { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mNewRestrictRectangleLayers : AnyObject {
+@MainActor protocol ProjectRoot_mNewRestrictRectangleLayers : AnyObject {
   var mNewRestrictRectangleLayers : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mAutoRouterPreferredDirections : AnyObject {
+@MainActor protocol ProjectRoot_mAutoRouterPreferredDirections : AnyObject {
   var mAutoRouterPreferredDirections : AutorouterPreferredDirections { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mAutorouterSnapAngle : AnyObject {
+@MainActor protocol ProjectRoot_mAutorouterSnapAngle : AnyObject {
   var mAutorouterSnapAngle : AutorouterSnapAngle { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mRouteDirection : AnyObject {
+@MainActor protocol ProjectRoot_mRouteDirection : AnyObject {
   var mRouteDirection : RouteDirection { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mRouteOrigin : AnyObject {
+@MainActor protocol ProjectRoot_mRouteOrigin : AnyObject {
   var mRouteOrigin : RouteOrigin { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mAutorouterInterfaceMode : AnyObject {
+@MainActor protocol ProjectRoot_mAutorouterInterfaceMode : AnyObject {
   var mAutorouterInterfaceMode : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mExportExistingTracksAndVias : AnyObject {
+@MainActor protocol ProjectRoot_mExportExistingTracksAndVias : AnyObject {
   var mExportExistingTracksAndVias : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mExportExistingTracksAndVias2 : AnyObject {
+@MainActor protocol ProjectRoot_mExportExistingTracksAndVias2 : AnyObject {
   var mExportExistingTracksAndVias2 : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mTrackLengthUnit : AnyObject {
+@MainActor protocol ProjectRoot_mTrackLengthUnit : AnyObject {
   var mTrackLengthUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mLayoutClearance : AnyObject {
+@MainActor protocol ProjectRoot_mLayoutClearance : AnyObject {
   var mLayoutClearance : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mLayoutClearanceUnit : AnyObject {
+@MainActor protocol ProjectRoot_mLayoutClearanceUnit : AnyObject {
   var mLayoutClearanceUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardSelectedInspector : AnyObject {
+@MainActor protocol ProjectRoot_mBoardSelectedInspector : AnyObject {
   var mBoardSelectedInspector : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardHorizontalFlip : AnyObject {
+@MainActor protocol ProjectRoot_mBoardHorizontalFlip : AnyObject {
   var mBoardHorizontalFlip : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardVerticalFlip : AnyObject {
+@MainActor protocol ProjectRoot_mBoardVerticalFlip : AnyObject {
   var mBoardVerticalFlip : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardGridStyle : AnyObject {
+@MainActor protocol ProjectRoot_mBoardGridStyle : AnyObject {
   var mBoardGridStyle : GridStyle { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardGridDisplayFactor : AnyObject {
+@MainActor protocol ProjectRoot_mBoardGridDisplayFactor : AnyObject {
   var mBoardGridDisplayFactor : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardZoom : AnyObject {
+@MainActor protocol ProjectRoot_mBoardZoom : AnyObject {
   var mBoardZoom : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardGridStep : AnyObject {
+@MainActor protocol ProjectRoot_mBoardGridStep : AnyObject {
   var mBoardGridStep : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardGridStepUnit : AnyObject {
+@MainActor protocol ProjectRoot_mBoardGridStepUnit : AnyObject {
   var mBoardGridStepUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mErrorOrWarningIssueSize : AnyObject {
+@MainActor protocol ProjectRoot_mErrorOrWarningIssueSize : AnyObject {
   var mErrorOrWarningIssueSize : Double { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mControlKeyHiliteDiameter : AnyObject {
+@MainActor protocol ProjectRoot_mControlKeyHiliteDiameter : AnyObject {
   var mControlKeyHiliteDiameter : Double { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mDSNFileProposedName : AnyObject {
+@MainActor protocol ProjectRoot_mDSNFileProposedName : AnyObject {
   var mDSNFileProposedName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardLimitsWidth : AnyObject {
+@MainActor protocol ProjectRoot_mBoardLimitsWidth : AnyObject {
   var mBoardLimitsWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardLimitsWidthUnit : AnyObject {
+@MainActor protocol ProjectRoot_mBoardLimitsWidthUnit : AnyObject {
   var mBoardLimitsWidthUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardClearance : AnyObject {
+@MainActor protocol ProjectRoot_mBoardClearance : AnyObject {
   var mBoardClearance : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardClearanceUnit : AnyObject {
+@MainActor protocol ProjectRoot_mBoardClearanceUnit : AnyObject {
   var mBoardClearanceUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardLimitsSelectedInspector : AnyObject {
+@MainActor protocol ProjectRoot_mBoardLimitsSelectedInspector : AnyObject {
   var mBoardLimitsSelectedInspector : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardLimitsHorizontalFlip : AnyObject {
+@MainActor protocol ProjectRoot_mBoardLimitsHorizontalFlip : AnyObject {
   var mBoardLimitsHorizontalFlip : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardLimitsVerticalFlip : AnyObject {
+@MainActor protocol ProjectRoot_mBoardLimitsVerticalFlip : AnyObject {
   var mBoardLimitsVerticalFlip : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardLimitsGridStyle : AnyObject {
+@MainActor protocol ProjectRoot_mBoardLimitsGridStyle : AnyObject {
   var mBoardLimitsGridStyle : GridStyle { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardLimitsGridDisplayFactor : AnyObject {
+@MainActor protocol ProjectRoot_mBoardLimitsGridDisplayFactor : AnyObject {
   var mBoardLimitsGridDisplayFactor : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardLimitsZoom : AnyObject {
+@MainActor protocol ProjectRoot_mBoardLimitsZoom : AnyObject {
   var mBoardLimitsZoom : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardLimitsGridStep : AnyObject {
+@MainActor protocol ProjectRoot_mBoardLimitsGridStep : AnyObject {
   var mBoardLimitsGridStep : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardLimitsGridStepUnit : AnyObject {
+@MainActor protocol ProjectRoot_mBoardLimitsGridStepUnit : AnyObject {
   var mBoardLimitsGridStepUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardLimitsBoundingBoxUnit : AnyObject {
+@MainActor protocol ProjectRoot_mBoardLimitsBoundingBoxUnit : AnyObject {
   var mBoardLimitsBoundingBoxUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardPointsBoundingBoxUnit : AnyObject {
+@MainActor protocol ProjectRoot_mBoardPointsBoundingBoxUnit : AnyObject {
   var mBoardPointsBoundingBoxUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardSelectedCurveDisplayUnit : AnyObject {
+@MainActor protocol ProjectRoot_mBoardSelectedCurveDisplayUnit : AnyObject {
   var mBoardSelectedCurveDisplayUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardLimitControlPointsDisplayUnit : AnyObject {
+@MainActor protocol ProjectRoot_mBoardLimitControlPointsDisplayUnit : AnyObject {
   var mBoardLimitControlPointsDisplayUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mBoardShape : AnyObject {
+@MainActor protocol ProjectRoot_mBoardShape : AnyObject {
   var mBoardShape : BoardShape { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mRectangularBoardWidth : AnyObject {
+@MainActor protocol ProjectRoot_mRectangularBoardWidth : AnyObject {
   var mRectangularBoardWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mRectangularBoardWidthUnit : AnyObject {
+@MainActor protocol ProjectRoot_mRectangularBoardWidthUnit : AnyObject {
   var mRectangularBoardWidthUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mRectangularBoardHeight : AnyObject {
+@MainActor protocol ProjectRoot_mRectangularBoardHeight : AnyObject {
   var mRectangularBoardHeight : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mRectangularBoardHeightUnit : AnyObject {
+@MainActor protocol ProjectRoot_mRectangularBoardHeightUnit : AnyObject {
   var mRectangularBoardHeightUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mDefaultNetClassName : AnyObject {
+@MainActor protocol ProjectRoot_mDefaultNetClassName : AnyObject {
   var mDefaultNetClassName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSelectedPageIndex : AnyObject {
+@MainActor protocol ProjectRoot_mSelectedPageIndex : AnyObject {
   var mSelectedPageIndex : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSelectedSchematicInspector : AnyObject {
+@MainActor protocol ProjectRoot_mSelectedSchematicInspector : AnyObject {
   var mSelectedSchematicInspector : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSchematicTitle : AnyObject {
+@MainActor protocol ProjectRoot_mSchematicTitle : AnyObject {
   var mSchematicTitle : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSchematicVersion : AnyObject {
+@MainActor protocol ProjectRoot_mSchematicVersion : AnyObject {
   var mSchematicVersion : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSchematicDate : AnyObject {
+@MainActor protocol ProjectRoot_mSchematicDate : AnyObject {
   var mSchematicDate : Date { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSchematicHorizontalFlip : AnyObject {
+@MainActor protocol ProjectRoot_mSchematicHorizontalFlip : AnyObject {
   var mSchematicHorizontalFlip : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSchematicVerticalFlip : AnyObject {
+@MainActor protocol ProjectRoot_mSchematicVerticalFlip : AnyObject {
   var mSchematicVerticalFlip : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSchematicZoom : AnyObject {
+@MainActor protocol ProjectRoot_mSchematicZoom : AnyObject {
   var mSchematicZoom : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSchematicGridStyle : AnyObject {
+@MainActor protocol ProjectRoot_mSchematicGridStyle : AnyObject {
   var mSchematicGridStyle : GridStyle { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSchematicGridDisplayFactor : AnyObject {
+@MainActor protocol ProjectRoot_mSchematicGridDisplayFactor : AnyObject {
   var mSchematicGridDisplayFactor : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSchematicCustomWidth : AnyObject {
+@MainActor protocol ProjectRoot_mSchematicCustomWidth : AnyObject {
   var mSchematicCustomWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSchematicCustomWidthUnit : AnyObject {
+@MainActor protocol ProjectRoot_mSchematicCustomWidthUnit : AnyObject {
   var mSchematicCustomWidthUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSchematicCustomHeight : AnyObject {
+@MainActor protocol ProjectRoot_mSchematicCustomHeight : AnyObject {
   var mSchematicCustomHeight : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSchematicCustomHeightUnit : AnyObject {
+@MainActor protocol ProjectRoot_mSchematicCustomHeightUnit : AnyObject {
   var mSchematicCustomHeightUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_drawErrorBackgroundForBoard : AnyObject {
+@MainActor protocol ProjectRoot_drawErrorBackgroundForBoard : AnyObject {
   var drawErrorBackgroundForBoard : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_displayFrontRestrictRectangles : AnyObject {
+@MainActor protocol ProjectRoot_displayFrontRestrictRectangles : AnyObject {
   var displayFrontRestrictRectangles : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_displayBackRestrictRectangles : AnyObject {
+@MainActor protocol ProjectRoot_displayBackRestrictRectangles : AnyObject {
   var displayBackRestrictRectangles : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_displayInner1RestrictRectangles : AnyObject {
+@MainActor protocol ProjectRoot_displayInner1RestrictRectangles : AnyObject {
   var displayInner1RestrictRectangles : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_displayInner2RestrictRectangles : AnyObject {
+@MainActor protocol ProjectRoot_displayInner2RestrictRectangles : AnyObject {
   var displayInner2RestrictRectangles : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_displayInner3RestrictRectangles : AnyObject {
+@MainActor protocol ProjectRoot_displayInner3RestrictRectangles : AnyObject {
   var displayInner3RestrictRectangles : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_displayInner4RestrictRectangles : AnyObject {
+@MainActor protocol ProjectRoot_displayInner4RestrictRectangles : AnyObject {
   var displayInner4RestrictRectangles : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_displayFrontLegendForBoard : AnyObject {
+@MainActor protocol ProjectRoot_displayFrontLegendForBoard : AnyObject {
   var displayFrontLegendForBoard : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_displayFrontLayoutForBoard : AnyObject {
+@MainActor protocol ProjectRoot_displayFrontLayoutForBoard : AnyObject {
   var displayFrontLayoutForBoard : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_displayBackLayoutForBoard : AnyObject {
+@MainActor protocol ProjectRoot_displayBackLayoutForBoard : AnyObject {
   var displayBackLayoutForBoard : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_displayInner1LayoutForBoard : AnyObject {
+@MainActor protocol ProjectRoot_displayInner1LayoutForBoard : AnyObject {
   var displayInner1LayoutForBoard : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_displayInner2LayoutForBoard : AnyObject {
+@MainActor protocol ProjectRoot_displayInner2LayoutForBoard : AnyObject {
   var displayInner2LayoutForBoard : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_displayInner3LayoutForBoard : AnyObject {
+@MainActor protocol ProjectRoot_displayInner3LayoutForBoard : AnyObject {
   var displayInner3LayoutForBoard : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_displayInner4LayoutForBoard : AnyObject {
+@MainActor protocol ProjectRoot_displayInner4LayoutForBoard : AnyObject {
   var displayInner4LayoutForBoard : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_displayBackLegendForBoard : AnyObject {
+@MainActor protocol ProjectRoot_displayBackLegendForBoard : AnyObject {
   var displayBackLegendForBoard : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_displayFrontPadsForBoard : AnyObject {
+@MainActor protocol ProjectRoot_displayFrontPadsForBoard : AnyObject {
   var displayFrontPadsForBoard : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_displayBackPadsForBoard : AnyObject {
+@MainActor protocol ProjectRoot_displayBackPadsForBoard : AnyObject {
   var displayBackPadsForBoard : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_displayPadNumbersForBoard : AnyObject {
+@MainActor protocol ProjectRoot_displayPadNumbersForBoard : AnyObject {
   var displayPadNumbersForBoard : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_packageDrawingWidthMultpliedByTenForBoard : AnyObject {
+@MainActor protocol ProjectRoot_packageDrawingWidthMultpliedByTenForBoard : AnyObject {
   var packageDrawingWidthMultpliedByTenForBoard : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSchematicSheetOrientation : AnyObject {
+@MainActor protocol ProjectRoot_mSchematicSheetOrientation : AnyObject {
   var mSchematicSheetOrientation : SchematicSheetOrientation { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mRastnetDisplay : AnyObject {
+@MainActor protocol ProjectRoot_mRastnetDisplay : AnyObject {
   var mRastnetDisplay : RastnetDisplay { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mRastnetDisplayedNetName : AnyObject {
+@MainActor protocol ProjectRoot_mRastnetDisplayedNetName : AnyObject {
   var mRastnetDisplayedNetName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mRastnetDisplayedComponentName : AnyObject {
+@MainActor protocol ProjectRoot_mRastnetDisplayedComponentName : AnyObject {
   var mRastnetDisplayedComponentName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_minPPTPTTTWdisplayUnit : AnyObject {
+@MainActor protocol ProjectRoot_minPPTPTTTWdisplayUnit : AnyObject {
   var minPPTPTTTWdisplayUnit : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_minPPTPTTTW : AnyObject {
+@MainActor protocol ProjectRoot_minPPTPTTTW : AnyObject {
   var minPPTPTTTW : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_minValueForOARdisplayUnit : AnyObject {
+@MainActor protocol ProjectRoot_minValueForOARdisplayUnit : AnyObject {
   var minValueForOARdisplayUnit : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_minValueForOARinEBUnit : AnyObject {
+@MainActor protocol ProjectRoot_minValueForOARinEBUnit : AnyObject {
   var minValueForOARinEBUnit : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_minValueForPHDdisplayUnit : AnyObject {
+@MainActor protocol ProjectRoot_minValueForPHDdisplayUnit : AnyObject {
   var minValueForPHDdisplayUnit : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_minValueForPHDinEBUnit : AnyObject {
+@MainActor protocol ProjectRoot_minValueForPHDinEBUnit : AnyObject {
   var minValueForPHDinEBUnit : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_minValueForBoardLimitWidth : AnyObject {
+@MainActor protocol ProjectRoot_minValueForBoardLimitWidth : AnyObject {
   var minValueForBoardLimitWidth : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_minValueForBoardLimitWidthDisplayUnit : AnyObject {
+@MainActor protocol ProjectRoot_minValueForBoardLimitWidthDisplayUnit : AnyObject {
   var minValueForBoardLimitWidthDisplayUnit : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_artworkComments : AnyObject {
+@MainActor protocol ProjectRoot_artworkComments : AnyObject {
   var artworkComments : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_artworkLayerConfiguration : AnyObject {
+@MainActor protocol ProjectRoot_artworkLayerConfiguration : AnyObject {
   var artworkLayerConfiguration : LayerConfiguration? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_artworkTitle : AnyObject {
+@MainActor protocol ProjectRoot_artworkTitle : AnyObject {
   var artworkTitle : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_selectedSheetTitle : AnyObject {
+@MainActor protocol ProjectRoot_selectedSheetTitle : AnyObject {
   var selectedSheetTitle : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_drillDataFileExtension : AnyObject {
+@MainActor protocol ProjectRoot_drillDataFileExtension : AnyObject {
   var drillDataFileExtension : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_hasInnerElements : AnyObject {
+@MainActor protocol ProjectRoot_hasInnerElements : AnyObject {
   var hasInnerElements : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_layerConfigurationString : AnyObject {
+@MainActor protocol ProjectRoot_layerConfigurationString : AnyObject {
   var layerConfigurationString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_boardGridStepMultipliedByDisplayFactor : AnyObject {
+@MainActor protocol ProjectRoot_boardGridStepMultipliedByDisplayFactor : AnyObject {
   var boardGridStepMultipliedByDisplayFactor : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor : AnyObject {
+@MainActor protocol ProjectRoot_boardLimitsGridStepMultipliedByDisplayFactor : AnyObject {
   var boardLimitsGridStepMultipliedByDisplayFactor : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_boardShapeIsRectangular : AnyObject {
+@MainActor protocol ProjectRoot_boardShapeIsRectangular : AnyObject {
   var boardShapeIsRectangular : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_selectedSheetIssues : AnyObject {
+@MainActor protocol ProjectRoot_selectedSheetIssues : AnyObject {
   var selectedSheetIssues : CanariIssueArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_schematicOverDisplay : AnyObject {
+@MainActor protocol ProjectRoot_schematicOverDisplay : AnyObject {
   var schematicOverDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_connexionWarningString : AnyObject {
+@MainActor protocol ProjectRoot_connexionWarningString : AnyObject {
   var connexionWarningString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_connexionErrorString : AnyObject {
+@MainActor protocol ProjectRoot_connexionErrorString : AnyObject {
   var connexionErrorString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_sheetIndexes : AnyObject {
+@MainActor protocol ProjectRoot_sheetIndexes : AnyObject {
   var sheetIndexes : IntArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_netsDescription : AnyObject {
+@MainActor protocol ProjectRoot_netsDescription : AnyObject {
   var netsDescription : NetInfoArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_boardIssues : AnyObject {
+@MainActor protocol ProjectRoot_boardIssues : AnyObject {
   var boardIssues : CanariIssueArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_hasSixLayers : AnyObject {
+@MainActor protocol ProjectRoot_hasSixLayers : AnyObject {
   var hasSixLayers : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_signatureForERCChecking : AnyObject {
+@MainActor protocol ProjectRoot_signatureForERCChecking : AnyObject {
   var signatureForERCChecking : UInt32? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_ercStatusImage : AnyObject {
+@MainActor protocol ProjectRoot_ercStatusImage : AnyObject {
   var ercStatusImage : NSImage? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_ercStatusMessage : AnyObject {
+@MainActor protocol ProjectRoot_ercStatusMessage : AnyObject {
   var ercStatusMessage : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_viaCountString : AnyObject {
+@MainActor protocol ProjectRoot_viaCountString : AnyObject {
   var viaCountString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_topSideTrackCountString : AnyObject {
+@MainActor protocol ProjectRoot_topSideTrackCountString : AnyObject {
   var topSideTrackCountString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_backSideTrackCountString : AnyObject {
+@MainActor protocol ProjectRoot_backSideTrackCountString : AnyObject {
   var backSideTrackCountString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_inner1LayerTrackCountString : AnyObject {
+@MainActor protocol ProjectRoot_inner1LayerTrackCountString : AnyObject {
   var inner1LayerTrackCountString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_inner2LayerTrackCountString : AnyObject {
+@MainActor protocol ProjectRoot_inner2LayerTrackCountString : AnyObject {
   var inner2LayerTrackCountString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_inner3LayerTrackCountString : AnyObject {
+@MainActor protocol ProjectRoot_inner3LayerTrackCountString : AnyObject {
   var inner3LayerTrackCountString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_inner4LayerTrackCountString : AnyObject {
+@MainActor protocol ProjectRoot_inner4LayerTrackCountString : AnyObject {
   var inner4LayerTrackCountString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_trackCountString : AnyObject {
+@MainActor protocol ProjectRoot_trackCountString : AnyObject {
   var trackCountString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_trackLengthString : AnyObject {
+@MainActor protocol ProjectRoot_trackLengthString : AnyObject {
   var trackLengthString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_interiorBoundBox : AnyObject {
+@MainActor protocol ProjectRoot_interiorBoundBox : AnyObject {
   var interiorBoundBox : CanariRect? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_boardBoundBox : AnyObject {
+@MainActor protocol ProjectRoot_boardBoundBox : AnyObject {
   var boardBoundBox : CanariRect? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_boardInteriorTop : AnyObject {
+@MainActor protocol ProjectRoot_boardInteriorTop : AnyObject {
   var boardInteriorTop : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_boardInteriorBottom : AnyObject {
+@MainActor protocol ProjectRoot_boardInteriorBottom : AnyObject {
   var boardInteriorBottom : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_boardInteriorLeft : AnyObject {
+@MainActor protocol ProjectRoot_boardInteriorLeft : AnyObject {
   var boardInteriorLeft : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_boardInteriorRight : AnyObject {
+@MainActor protocol ProjectRoot_boardInteriorRight : AnyObject {
   var boardInteriorRight : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_boardLimitBorderTop : AnyObject {
+@MainActor protocol ProjectRoot_boardLimitBorderTop : AnyObject {
   var boardLimitBorderTop : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_boardLimitBorderBottom : AnyObject {
+@MainActor protocol ProjectRoot_boardLimitBorderBottom : AnyObject {
   var boardLimitBorderBottom : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_boardLimitBorderLeft : AnyObject {
+@MainActor protocol ProjectRoot_boardLimitBorderLeft : AnyObject {
   var boardLimitBorderLeft : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_boardLimitBorderRight : AnyObject {
+@MainActor protocol ProjectRoot_boardLimitBorderRight : AnyObject {
   var boardLimitBorderRight : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_borderElementCountString : AnyObject {
+@MainActor protocol ProjectRoot_borderElementCountString : AnyObject {
   var borderElementCountString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_borderOutlineBackground : AnyObject {
+@MainActor protocol ProjectRoot_borderOutlineBackground : AnyObject {
   var borderOutlineBackground : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_borderViewBackground : AnyObject {
+@MainActor protocol ProjectRoot_borderViewBackground : AnyObject {
   var borderViewBackground : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_fontNameArray : AnyObject {
+@MainActor protocol ProjectRoot_fontNameArray : AnyObject {
   var fontNameArray : StringArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_deviceNames : AnyObject {
+@MainActor protocol ProjectRoot_deviceNames : AnyObject {
   var deviceNames : StringArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_allClassNames : AnyObject {
+@MainActor protocol ProjectRoot_allClassNames : AnyObject {
   var allClassNames : StringArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_sheetGeometry : AnyObject {
+@MainActor protocol ProjectRoot_sheetGeometry : AnyObject {
   var sheetGeometry : SchematicSheetGeometry? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_schematicBackgroundDisplay : AnyObject {
+@MainActor protocol ProjectRoot_schematicBackgroundDisplay : AnyObject {
   var schematicBackgroundDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_netWarningCount : AnyObject {
+@MainActor protocol ProjectRoot_netWarningCount : AnyObject {
   var netWarningCount : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_netNamesArray : AnyObject {
+@MainActor protocol ProjectRoot_netNamesArray : AnyObject {
   var netNamesArray : StringArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_unplacedSymbols : AnyObject {
+@MainActor protocol ProjectRoot_unplacedSymbols : AnyObject {
   var unplacedSymbols : StringTagArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_unplacedPackages : AnyObject {
+@MainActor protocol ProjectRoot_unplacedPackages : AnyObject {
   var unplacedPackages : StringTagArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_componentsPlacedInBoard : AnyObject {
+@MainActor protocol ProjectRoot_componentsPlacedInBoard : AnyObject {
   var componentsPlacedInBoard : StringTagArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_boardStatusImage : AnyObject {
+@MainActor protocol ProjectRoot_boardStatusImage : AnyObject {
   var boardStatusImage : NSImage? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_boardStatusMessage : AnyObject {
+@MainActor protocol ProjectRoot_boardStatusMessage : AnyObject {
   var boardStatusMessage : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_placedComponentNameArray : AnyObject {
+@MainActor protocol ProjectRoot_placedComponentNameArray : AnyObject {
   var placedComponentNameArray : StringArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_schematicHasErrorOrWarning : AnyObject {
+@MainActor protocol ProjectRoot_schematicHasErrorOrWarning : AnyObject {
   var schematicHasErrorOrWarning : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_schematicStatusMessage : AnyObject {
+@MainActor protocol ProjectRoot_schematicStatusMessage : AnyObject {
   var schematicStatusMessage : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_schematicStatusImage : AnyObject {
+@MainActor protocol ProjectRoot_schematicStatusImage : AnyObject {
   var schematicStatusImage : NSImage? { get }
 }
 

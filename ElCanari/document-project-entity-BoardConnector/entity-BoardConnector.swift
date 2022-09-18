@@ -6,175 +6,175 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_mComponentPadName : AnyObject {
+@MainActor protocol BoardConnector_mComponentPadName : AnyObject {
   var mComponentPadName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_mPadIndex : AnyObject {
+@MainActor protocol BoardConnector_mPadIndex : AnyObject {
   var mPadIndex : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_mX : AnyObject {
+@MainActor protocol BoardConnector_mX : AnyObject {
   var mX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_mY : AnyObject {
+@MainActor protocol BoardConnector_mY : AnyObject {
   var mY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_mDefaultHoleDiameterUnit : AnyObject {
+@MainActor protocol BoardConnector_mDefaultHoleDiameterUnit : AnyObject {
   var mDefaultHoleDiameterUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_mCustomHoleDiameter : AnyObject {
+@MainActor protocol BoardConnector_mCustomHoleDiameter : AnyObject {
   var mCustomHoleDiameter : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_mCustomHoleDiameterUnit : AnyObject {
+@MainActor protocol BoardConnector_mCustomHoleDiameterUnit : AnyObject {
   var mCustomHoleDiameterUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_mUsesCustomHoleDiameter : AnyObject {
+@MainActor protocol BoardConnector_mUsesCustomHoleDiameter : AnyObject {
   var mUsesCustomHoleDiameter : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_mDefaultPadDiameterUnit : AnyObject {
+@MainActor protocol BoardConnector_mDefaultPadDiameterUnit : AnyObject {
   var mDefaultPadDiameterUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_mCustomPadDiameter : AnyObject {
+@MainActor protocol BoardConnector_mCustomPadDiameter : AnyObject {
   var mCustomPadDiameter : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_mCustomPadDiameterUnit : AnyObject {
+@MainActor protocol BoardConnector_mCustomPadDiameterUnit : AnyObject {
   var mCustomPadDiameterUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_mUsesCustomPadDiameter : AnyObject {
+@MainActor protocol BoardConnector_mUsesCustomPadDiameter : AnyObject {
   var mUsesCustomPadDiameter : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_isConnectedToSomePad : AnyObject {
+@MainActor protocol BoardConnector_isConnectedToSomePad : AnyObject {
   var isConnectedToSomePad : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_location : AnyObject {
+@MainActor protocol BoardConnector_location : AnyObject {
   var location : CanariPoint? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_netNameFromComponentPad : AnyObject {
+@MainActor protocol BoardConnector_netNameFromComponentPad : AnyObject {
   var netNameFromComponentPad : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_netNameAndPadLocation : AnyObject {
+@MainActor protocol BoardConnector_netNameAndPadLocation : AnyObject {
   var netNameAndPadLocation : RastnetInfoArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_side : AnyObject {
+@MainActor protocol BoardConnector_side : AnyObject {
   var side : ConnectorSide? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_isVia : AnyObject {
+@MainActor protocol BoardConnector_isVia : AnyObject {
   var isVia : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_issues : AnyObject {
+@MainActor protocol BoardConnector_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_viaDefaultHoleDiameter : AnyObject {
+@MainActor protocol BoardConnector_viaDefaultHoleDiameter : AnyObject {
   var viaDefaultHoleDiameter : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_viaDefaultPadDiameter : AnyObject {
+@MainActor protocol BoardConnector_viaDefaultPadDiameter : AnyObject {
   var viaDefaultPadDiameter : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_netNameFromTracks : AnyObject {
+@MainActor protocol BoardConnector_netNameFromTracks : AnyObject {
   var netNameFromTracks : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_netClassName : AnyObject {
+@MainActor protocol BoardConnector_netClassName : AnyObject {
   var netClassName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_connectedToComponent : AnyObject {
+@MainActor protocol BoardConnector_connectedToComponent : AnyObject {
   var connectedToComponent : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_actualHoleDiameter : AnyObject {
+@MainActor protocol BoardConnector_actualHoleDiameter : AnyObject {
   var actualHoleDiameter : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_actualPadDiameter : AnyObject {
+@MainActor protocol BoardConnector_actualPadDiameter : AnyObject {
   var actualPadDiameter : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_objectDisplay : AnyObject {
+@MainActor protocol BoardConnector_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_selectionDisplay : AnyObject {
+@MainActor protocol BoardConnector_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardConnector_signatureForERCChecking : AnyObject {
+@MainActor protocol BoardConnector_signatureForERCChecking : AnyObject {
   var signatureForERCChecking : UInt32? { get }
 }
 

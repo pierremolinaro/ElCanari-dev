@@ -260,7 +260,7 @@ import Cocoa
   //--- Enter symbol
     self.rootObject.mSelectedSheet?.mObjects.append (inSymbol)
     self.schematicObjectsController.setSelection ([inSymbol])
-    self.windowForSheet?.makeFirstResponder (self.mSchematicsView?.mGraphicView)
+    _ = self.windowForSheet?.makeFirstResponder (self.mSchematicsView?.mGraphicView)
   }
 
   //····················································································································
@@ -272,7 +272,7 @@ import Cocoa
     comment.mY = p.y
     self.rootObject.mSelectedSheet?.mObjects.append (comment)
     self.schematicObjectsController.setSelection ([comment])
-    self.windowForSheet?.makeFirstResponder (self.mSchematicsView?.mGraphicView)
+    _ = self.windowForSheet?.makeFirstResponder (self.mSchematicsView?.mGraphicView)
   }
 
   //····················································································································
@@ -294,7 +294,7 @@ import Cocoa
     restrictRectangle.mHeight = (restrictRectangle.mHeight / boardGridStep) * boardGridStep
     self.rootObject.mBoardObjects.append (restrictRectangle)
     self.boardObjectsController.setSelection ([restrictRectangle])
-    self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+    _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
   //····················································································································
@@ -308,7 +308,7 @@ import Cocoa
     boardText.mFont = self.rootObject.mFonts.first!
     self.rootObject.mBoardObjects.append (boardText)
     self.boardObjectsController.setSelection ([boardText])
-    self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+    _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
   //····················································································································
@@ -331,7 +331,7 @@ import Cocoa
           }
         }
       }
-      self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+      _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
     }
   }
 
@@ -357,7 +357,7 @@ import Cocoa
     newLine.mY2Unit = boardGridUnit
     self.rootObject.mBoardObjects.append (newLine)
     self.boardObjectsController.setSelection ([newLine])
-    self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
+    _ = self.windowForSheet?.makeFirstResponder (self.mBoardView?.mGraphicView)
   }
 
   //····················································································································

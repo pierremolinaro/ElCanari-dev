@@ -6,175 +6,175 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_mSide : AnyObject {
+@MainActor protocol BoardTrack_mSide : AnyObject {
   var mSide : TrackSide { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_mDefaultTrackWidthUnit : AnyObject {
+@MainActor protocol BoardTrack_mDefaultTrackWidthUnit : AnyObject {
   var mDefaultTrackWidthUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_mCustomTrackWidth : AnyObject {
+@MainActor protocol BoardTrack_mCustomTrackWidth : AnyObject {
   var mCustomTrackWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_mCustomTrackWidthUnit : AnyObject {
+@MainActor protocol BoardTrack_mCustomTrackWidthUnit : AnyObject {
   var mCustomTrackWidthUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_mUsesCustomTrackWidth : AnyObject {
+@MainActor protocol BoardTrack_mUsesCustomTrackWidth : AnyObject {
   var mUsesCustomTrackWidth : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_mIsPreservedByAutoRouter : AnyObject {
+@MainActor protocol BoardTrack_mIsPreservedByAutoRouter : AnyObject {
   var mIsPreservedByAutoRouter : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_mP1XUnit : AnyObject {
+@MainActor protocol BoardTrack_mP1XUnit : AnyObject {
   var mP1XUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_mP1YUnit : AnyObject {
+@MainActor protocol BoardTrack_mP1YUnit : AnyObject {
   var mP1YUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_mP2XUnit : AnyObject {
+@MainActor protocol BoardTrack_mP2XUnit : AnyObject {
   var mP2XUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_mP2YUnit : AnyObject {
+@MainActor protocol BoardTrack_mP2YUnit : AnyObject {
   var mP2YUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_mManualLockP1 : AnyObject {
+@MainActor protocol BoardTrack_mManualLockP1 : AnyObject {
   var mManualLockP1 : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_mManualLockP2 : AnyObject {
+@MainActor protocol BoardTrack_mManualLockP2 : AnyObject {
   var mManualLockP2 : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_mDirectionLockOnKnobDragging : AnyObject {
+@MainActor protocol BoardTrack_mDirectionLockOnKnobDragging : AnyObject {
   var mDirectionLockOnKnobDragging : TrackLockDirection { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_actualTrackWidth : AnyObject {
+@MainActor protocol BoardTrack_actualTrackWidth : AnyObject {
   var actualTrackWidth : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_netName : AnyObject {
+@MainActor protocol BoardTrack_netName : AnyObject {
   var netName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_netClassName : AnyObject {
+@MainActor protocol BoardTrack_netClassName : AnyObject {
   var netClassName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_netClassTrackWidth : AnyObject {
+@MainActor protocol BoardTrack_netClassTrackWidth : AnyObject {
   var netClassTrackWidth : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_netClassViaHoleDiameter : AnyObject {
+@MainActor protocol BoardTrack_netClassViaHoleDiameter : AnyObject {
   var netClassViaHoleDiameter : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_netClassViaPadDiameter : AnyObject {
+@MainActor protocol BoardTrack_netClassViaPadDiameter : AnyObject {
   var netClassViaPadDiameter : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_trackLengthInCanariUnit : AnyObject {
+@MainActor protocol BoardTrack_trackLengthInCanariUnit : AnyObject {
   var trackLengthInCanariUnit : Double? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_trackSide : AnyObject {
+@MainActor protocol BoardTrack_trackSide : AnyObject {
   var trackSide : TrackSide? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_signatureForERCChecking : AnyObject {
+@MainActor protocol BoardTrack_signatureForERCChecking : AnyObject {
   var signatureForERCChecking : UInt32? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_p1ConnectedToSomePad : AnyObject {
+@MainActor protocol BoardTrack_p1ConnectedToSomePad : AnyObject {
   var p1ConnectedToSomePad : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_p2ConnectedToSomePad : AnyObject {
+@MainActor protocol BoardTrack_p2ConnectedToSomePad : AnyObject {
   var p2ConnectedToSomePad : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_objectDisplay : AnyObject {
+@MainActor protocol BoardTrack_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_p1CanMove : AnyObject {
+@MainActor protocol BoardTrack_p1CanMove : AnyObject {
   var p1CanMove : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_p2CanMove : AnyObject {
+@MainActor protocol BoardTrack_p2CanMove : AnyObject {
   var p2CanMove : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_trackCanRotate : AnyObject {
+@MainActor protocol BoardTrack_trackCanRotate : AnyObject {
   var trackCanRotate : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardTrack_selectionDisplay : AnyObject {
+@MainActor protocol BoardTrack_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 

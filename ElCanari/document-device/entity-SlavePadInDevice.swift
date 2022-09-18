@@ -6,67 +6,67 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SlavePadInDevice_mCenterX : AnyObject {
+@MainActor protocol SlavePadInDevice_mCenterX : AnyObject {
   var mCenterX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SlavePadInDevice_mCenterY : AnyObject {
+@MainActor protocol SlavePadInDevice_mCenterY : AnyObject {
   var mCenterY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SlavePadInDevice_mWidth : AnyObject {
+@MainActor protocol SlavePadInDevice_mWidth : AnyObject {
   var mWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SlavePadInDevice_mHeight : AnyObject {
+@MainActor protocol SlavePadInDevice_mHeight : AnyObject {
   var mHeight : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SlavePadInDevice_mHoleWidth : AnyObject {
+@MainActor protocol SlavePadInDevice_mHoleWidth : AnyObject {
   var mHoleWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SlavePadInDevice_mHoleHeight : AnyObject {
+@MainActor protocol SlavePadInDevice_mHoleHeight : AnyObject {
   var mHoleHeight : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SlavePadInDevice_mShape : AnyObject {
+@MainActor protocol SlavePadInDevice_mShape : AnyObject {
   var mShape : PadShape { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SlavePadInDevice_mStyle : AnyObject {
+@MainActor protocol SlavePadInDevice_mStyle : AnyObject {
   var mStyle : SlavePadStyle { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SlavePadInDevice_frontSideFilledBezierPath : AnyObject {
+@MainActor protocol SlavePadInDevice_frontSideFilledBezierPath : AnyObject {
   var frontSideFilledBezierPath : EBBezierPath? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SlavePadInDevice_backSideFilledBezierPath : AnyObject {
+@MainActor protocol SlavePadInDevice_backSideFilledBezierPath : AnyObject {
   var backSideFilledBezierPath : EBBezierPath? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SlavePadInDevice_padNumberDisplay : AnyObject {
+@MainActor protocol SlavePadInDevice_padNumberDisplay : AnyObject {
   var padNumberDisplay : EBShape? { get }
 }
 

@@ -222,7 +222,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
       }
     //---
       panel.contentView = AutoLayoutWindowContentView (view: AutoLayoutViewByPrefixingAppIcon (prefixedView: layoutView))
-      panel.makeFirstResponder (popUpButton)
+      _ = panel.makeFirstResponder (popUpButton)
       window.beginSheet (panel) { inResponse in
         if inResponse == .stop, let net = popUpButton.selectedItem?.representedObject as? NetInProject {
           inPoint.mNet = net

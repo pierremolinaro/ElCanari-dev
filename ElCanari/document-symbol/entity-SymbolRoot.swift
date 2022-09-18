@@ -6,67 +6,67 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolRoot_selectedInspector : AnyObject {
+@MainActor protocol SymbolRoot_selectedInspector : AnyObject {
   var selectedInspector : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolRoot_comments : AnyObject {
+@MainActor protocol SymbolRoot_comments : AnyObject {
   var comments : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolRoot_horizontalFlip : AnyObject {
+@MainActor protocol SymbolRoot_horizontalFlip : AnyObject {
   var horizontalFlip : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolRoot_verticalFlip : AnyObject {
+@MainActor protocol SymbolRoot_verticalFlip : AnyObject {
   var verticalFlip : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolRoot_gridStyle : AnyObject {
+@MainActor protocol SymbolRoot_gridStyle : AnyObject {
   var gridStyle : GridStyle { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolRoot_gridDisplay : AnyObject {
+@MainActor protocol SymbolRoot_gridDisplay : AnyObject {
   var gridDisplay : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolRoot_zoom : AnyObject {
+@MainActor protocol SymbolRoot_zoom : AnyObject {
   var zoom : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolRoot_xPlacardUnit : AnyObject {
+@MainActor protocol SymbolRoot_xPlacardUnit : AnyObject {
   var xPlacardUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolRoot_yPlacardUnit : AnyObject {
+@MainActor protocol SymbolRoot_yPlacardUnit : AnyObject {
   var yPlacardUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolRoot_selectedPageIndex : AnyObject {
+@MainActor protocol SymbolRoot_selectedPageIndex : AnyObject {
   var selectedPageIndex : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolRoot_issues : AnyObject {
+@MainActor protocol SymbolRoot_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 

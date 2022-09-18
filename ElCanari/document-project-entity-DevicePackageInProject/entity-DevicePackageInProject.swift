@@ -6,19 +6,19 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePackageInProject_mPackageName : AnyObject {
+@MainActor protocol DevicePackageInProject_mPackageName : AnyObject {
   var mPackageName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePackageInProject_mStrokeBezierPath : AnyObject {
+@MainActor protocol DevicePackageInProject_mStrokeBezierPath : AnyObject {
   var mStrokeBezierPath : NSBezierPath { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePackageInProject_packagePadDictionary : AnyObject {
+@MainActor protocol DevicePackageInProject_packagePadDictionary : AnyObject {
   var packagePadDictionary : PackageMasterPadDictionary? { get }
 }
 

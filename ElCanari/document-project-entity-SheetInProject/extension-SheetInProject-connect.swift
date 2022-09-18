@@ -126,9 +126,9 @@ extension SheetInProject {
       let alert = NSAlert ()
       alert.messageText = "Performing connection will merge two nets."
       for net in netArray {
-        alert.addButton (withTitle: "Select '\(net.mNetName)'")
+        _ = alert.addButton (withTitle: "Select '\(net.mNetName)'")
       }
-      alert.addButton (withTitle: "Cancel")
+      _ = alert.addButton (withTitle: "Cancel")
       alert.beginSheetModal (for: inWindow) { (response : NSApplication.ModalResponse) in
         self.handleAlertResponseForMergingNets (response, points, netArray, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
         inUpdateSchematicPointsAndNetsCallBack ()
@@ -137,9 +137,9 @@ extension SheetInProject {
       let alert = NSAlert ()
       alert.messageText = "Performing connection will merge three nets."
       for net in netArray {
-        alert.addButton (withTitle: "Select '\(net.mNetName)'")
+        _ = alert.addButton (withTitle: "Select '\(net.mNetName)'")
       }
-      alert.addButton (withTitle: "Cancel")
+      _ = alert.addButton (withTitle: "Cancel")
       alert.beginSheetModal (for: inWindow) { (response : NSApplication.ModalResponse) in
         self.handleAlertResponseForMergingNets (response, points, netArray, updateSchematicPointsAndNets: inUpdateSchematicPointsAndNetsCallBack)
       }

@@ -38,8 +38,8 @@ extension AutoLayoutProjectDocument {
         }else{
           alert.messageText = "Removed component has symbols in schematic and/or package in board."
         }
-        alert.addButton (withTitle: "Remove")
-        alert.addButton (withTitle: "Cancel")
+        _ = alert.addButton (withTitle: "Remove")
+        _ = alert.addButton (withTitle: "Cancel")
         alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
           if response == .alertFirstButtonReturn {
             self.performRemoveSelectedComponents ()

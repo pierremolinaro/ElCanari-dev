@@ -6,85 +6,85 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePinInProject_mPinName : AnyObject {
+@MainActor protocol DevicePinInProject_mPinName : AnyObject {
   var mPinName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePinInProject_mSymbolInstanceName : AnyObject {
+@MainActor protocol DevicePinInProject_mSymbolInstanceName : AnyObject {
   var mSymbolInstanceName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePinInProject_mSymbolTypeName : AnyObject {
+@MainActor protocol DevicePinInProject_mSymbolTypeName : AnyObject {
   var mSymbolTypeName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePinInProject_mPinX : AnyObject {
+@MainActor protocol DevicePinInProject_mPinX : AnyObject {
   var mPinX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePinInProject_mPinY : AnyObject {
+@MainActor protocol DevicePinInProject_mPinY : AnyObject {
   var mPinY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePinInProject_mXName : AnyObject {
+@MainActor protocol DevicePinInProject_mXName : AnyObject {
   var mXName : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePinInProject_mYName : AnyObject {
+@MainActor protocol DevicePinInProject_mYName : AnyObject {
   var mYName : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePinInProject_mNameHorizontalAlignment : AnyObject {
+@MainActor protocol DevicePinInProject_mNameHorizontalAlignment : AnyObject {
   var mNameHorizontalAlignment : HorizontalAlignment { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePinInProject_mPinNameIsDisplayedInSchematic : AnyObject {
+@MainActor protocol DevicePinInProject_mPinNameIsDisplayedInSchematic : AnyObject {
   var mPinNameIsDisplayedInSchematic : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePinInProject_mXNumber : AnyObject {
+@MainActor protocol DevicePinInProject_mXNumber : AnyObject {
   var mXNumber : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePinInProject_mYNumber : AnyObject {
+@MainActor protocol DevicePinInProject_mYNumber : AnyObject {
   var mYNumber : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePinInProject_mNumberHorizontalAlignment : AnyObject {
+@MainActor protocol DevicePinInProject_mNumberHorizontalAlignment : AnyObject {
   var mNumberHorizontalAlignment : HorizontalAlignment { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePinInProject_pinQualifiedName : AnyObject {
+@MainActor protocol DevicePinInProject_pinQualifiedName : AnyObject {
   var pinQualifiedName : PinQualifiedNameStruct? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DevicePinInProject_descriptor : AnyObject {
+@MainActor protocol DevicePinInProject_descriptor : AnyObject {
   var descriptor : PinInProjectDescriptor? { get }
 }
 

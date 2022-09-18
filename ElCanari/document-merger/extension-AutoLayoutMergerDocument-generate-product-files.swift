@@ -54,8 +54,8 @@ extension AutoLayoutMergerDocument {
         }
       }
       alert.informativeText = "Artwork handles \(artworkLayerString) layers, board elements have \(s) layers."
-      alert.addButton (withTitle: "Cancel")
-      alert.addButton (withTitle: "Proceed anyway")
+      _ = alert.addButton (withTitle: "Cancel")
+      _ = alert.addButton (withTitle: "Proceed anyway")
       alert.beginSheetModal (
         for: self.windowForSheet!,
         completionHandler: {(response : NSApplication.ModalResponse) in
@@ -112,7 +112,7 @@ extension AutoLayoutMergerDocument {
         self.mLogTextView?.appendMessageString ("Done.")
       }
     }catch let error {
-      self.windowForSheet?.presentError (error)
+      _ = self.windowForSheet?.presentError (error)
     }
   }
 

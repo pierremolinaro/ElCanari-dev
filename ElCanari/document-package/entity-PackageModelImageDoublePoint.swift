@@ -6,49 +6,49 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageModelImageDoublePoint_mFirstX : AnyObject {
+@MainActor protocol PackageModelImageDoublePoint_mFirstX : AnyObject {
   var mFirstX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageModelImageDoublePoint_mFirstY : AnyObject {
+@MainActor protocol PackageModelImageDoublePoint_mFirstY : AnyObject {
   var mFirstY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageModelImageDoublePoint_mFirstColor : AnyObject {
+@MainActor protocol PackageModelImageDoublePoint_mFirstColor : AnyObject {
   var mFirstColor : NSColor { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageModelImageDoublePoint_mSecondDx : AnyObject {
+@MainActor protocol PackageModelImageDoublePoint_mSecondDx : AnyObject {
   var mSecondDx : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageModelImageDoublePoint_mSecondDy : AnyObject {
+@MainActor protocol PackageModelImageDoublePoint_mSecondDy : AnyObject {
   var mSecondDy : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageModelImageDoublePoint_mSecondColor : AnyObject {
+@MainActor protocol PackageModelImageDoublePoint_mSecondColor : AnyObject {
   var mSecondColor : NSColor { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageModelImageDoublePoint_objectDisplay : AnyObject {
+@MainActor protocol PackageModelImageDoublePoint_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageModelImageDoublePoint_selectionDisplay : AnyObject {
+@MainActor protocol PackageModelImageDoublePoint_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 

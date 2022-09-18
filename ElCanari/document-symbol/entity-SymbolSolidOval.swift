@@ -6,49 +6,49 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolSolidOval_y : AnyObject {
+@MainActor protocol SymbolSolidOval_y : AnyObject {
   var y : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolSolidOval_width : AnyObject {
+@MainActor protocol SymbolSolidOval_width : AnyObject {
   var width : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolSolidOval_height : AnyObject {
+@MainActor protocol SymbolSolidOval_height : AnyObject {
   var height : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolSolidOval_x : AnyObject {
+@MainActor protocol SymbolSolidOval_x : AnyObject {
   var x : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolSolidOval_filledBezierPath : AnyObject {
+@MainActor protocol SymbolSolidOval_filledBezierPath : AnyObject {
   var filledBezierPath : NSBezierPath? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolSolidOval_objectDisplay : AnyObject {
+@MainActor protocol SymbolSolidOval_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolSolidOval_selectionDisplay : AnyObject {
+@MainActor protocol SymbolSolidOval_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolSolidOval_issues : AnyObject {
+@MainActor protocol SymbolSolidOval_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 

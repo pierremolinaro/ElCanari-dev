@@ -6,79 +6,79 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageInDevice_mFileData : AnyObject {
+@MainActor protocol PackageInDevice_mFileData : AnyObject {
   var mFileData : Data { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageInDevice_mName : AnyObject {
+@MainActor protocol PackageInDevice_mName : AnyObject {
   var mName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageInDevice_mVersion : AnyObject {
+@MainActor protocol PackageInDevice_mVersion : AnyObject {
   var mVersion : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageInDevice_mStrokeBezierPath : AnyObject {
+@MainActor protocol PackageInDevice_mStrokeBezierPath : AnyObject {
   var mStrokeBezierPath : NSBezierPath { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageInDevice_mX : AnyObject {
+@MainActor protocol PackageInDevice_mX : AnyObject {
   var mX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageInDevice_mY : AnyObject {
+@MainActor protocol PackageInDevice_mY : AnyObject {
   var mY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageInDevice_versionString : AnyObject {
+@MainActor protocol PackageInDevice_versionString : AnyObject {
   var versionString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageInDevice_documentSize : AnyObject {
+@MainActor protocol PackageInDevice_documentSize : AnyObject {
   var documentSize : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageInDevice_frontSidePadFilledBezierPathArray : AnyObject {
+@MainActor protocol PackageInDevice_frontSidePadFilledBezierPathArray : AnyObject {
   var frontSidePadFilledBezierPathArray : BezierPathArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageInDevice_backSidePadFilledBezierPathArray : AnyObject {
+@MainActor protocol PackageInDevice_backSidePadFilledBezierPathArray : AnyObject {
   var backSidePadFilledBezierPathArray : BezierPathArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageInDevice_objectDisplay : AnyObject {
+@MainActor protocol PackageInDevice_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageInDevice_selectionDisplay : AnyObject {
+@MainActor protocol PackageInDevice_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageInDevice_padNameSet : AnyObject {
+@MainActor protocol PackageInDevice_padNameSet : AnyObject {
   var padNameSet : StringSet? { get }
 }
 

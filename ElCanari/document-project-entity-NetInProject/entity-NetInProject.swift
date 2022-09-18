@@ -6,55 +6,55 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetInProject_mNetName : AnyObject {
+@MainActor protocol NetInProject_mNetName : AnyObject {
   var mNetName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetInProject_mWarnsExactlyOneLabel : AnyObject {
+@MainActor protocol NetInProject_mWarnsExactlyOneLabel : AnyObject {
   var mWarnsExactlyOneLabel : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetInProject_netClassName : AnyObject {
+@MainActor protocol NetInProject_netClassName : AnyObject {
   var netClassName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetInProject_netClassTrackWidth : AnyObject {
+@MainActor protocol NetInProject_netClassTrackWidth : AnyObject {
   var netClassTrackWidth : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetInProject_netClassViaHoleDiameter : AnyObject {
+@MainActor protocol NetInProject_netClassViaHoleDiameter : AnyObject {
   var netClassViaHoleDiameter : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetInProject_netClassViaPadDiameter : AnyObject {
+@MainActor protocol NetInProject_netClassViaPadDiameter : AnyObject {
   var netClassViaPadDiameter : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetInProject_wireColor : AnyObject {
+@MainActor protocol NetInProject_wireColor : AnyObject {
   var wireColor : NSColor? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetInProject_netSchematicPointsInfo : AnyObject {
+@MainActor protocol NetInProject_netSchematicPointsInfo : AnyObject {
   var netSchematicPointsInfo : NetInfoPointArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol NetInProject_trackCount : AnyObject {
+@MainActor protocol NetInProject_trackCount : AnyObject {
   var trackCount : Int? { get }
 }
 

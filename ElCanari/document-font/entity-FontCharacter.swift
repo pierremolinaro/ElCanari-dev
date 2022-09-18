@@ -6,49 +6,49 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontCharacter_codePoint : AnyObject {
+@MainActor protocol FontCharacter_codePoint : AnyObject {
   var codePoint : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontCharacter_advance : AnyObject {
+@MainActor protocol FontCharacter_advance : AnyObject {
   var advance : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontCharacter_mWarnsWhenNoSegment : AnyObject {
+@MainActor protocol FontCharacter_mWarnsWhenNoSegment : AnyObject {
   var mWarnsWhenNoSegment : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontCharacter_mWarnsWhenAdvanceIsZero : AnyObject {
+@MainActor protocol FontCharacter_mWarnsWhenAdvanceIsZero : AnyObject {
   var mWarnsWhenAdvanceIsZero : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontCharacter_segmentArrayForDrawing : AnyObject {
+@MainActor protocol FontCharacter_segmentArrayForDrawing : AnyObject {
   var segmentArrayForDrawing : CharacterSegmentList? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontCharacter_gerberCode : AnyObject {
+@MainActor protocol FontCharacter_gerberCode : AnyObject {
   var gerberCode : CharacterGerberCode? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontCharacter_gerberCodeInstructionCountMessage : AnyObject {
+@MainActor protocol FontCharacter_gerberCodeInstructionCountMessage : AnyObject {
   var gerberCodeInstructionCountMessage : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontCharacter_issues : AnyObject {
+@MainActor protocol FontCharacter_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 

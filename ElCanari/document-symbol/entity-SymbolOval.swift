@@ -6,49 +6,49 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolOval_y : AnyObject {
+@MainActor protocol SymbolOval_y : AnyObject {
   var y : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolOval_width : AnyObject {
+@MainActor protocol SymbolOval_width : AnyObject {
   var width : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolOval_height : AnyObject {
+@MainActor protocol SymbolOval_height : AnyObject {
   var height : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolOval_x : AnyObject {
+@MainActor protocol SymbolOval_x : AnyObject {
   var x : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolOval_strokeBezierPath : AnyObject {
+@MainActor protocol SymbolOval_strokeBezierPath : AnyObject {
   var strokeBezierPath : NSBezierPath? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolOval_objectDisplay : AnyObject {
+@MainActor protocol SymbolOval_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolOval_selectionDisplay : AnyObject {
+@MainActor protocol SymbolOval_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolOval_issues : AnyObject {
+@MainActor protocol SymbolOval_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 

@@ -6,67 +6,67 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontInProject_mNominalSize : AnyObject {
+@MainActor protocol FontInProject_mNominalSize : AnyObject {
   var mNominalSize : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontInProject_mFontName : AnyObject {
+@MainActor protocol FontInProject_mFontName : AnyObject {
   var mFontName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontInProject_mFontVersion : AnyObject {
+@MainActor protocol FontInProject_mFontVersion : AnyObject {
   var mFontVersion : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontInProject_mDescriptiveString : AnyObject {
+@MainActor protocol FontInProject_mDescriptiveString : AnyObject {
   var mDescriptiveString : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontInProject_versionString : AnyObject {
+@MainActor protocol FontInProject_versionString : AnyObject {
   var versionString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontInProject_sizeString : AnyObject {
+@MainActor protocol FontInProject_sizeString : AnyObject {
   var sizeString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontInProject_descriptor : AnyObject {
+@MainActor protocol FontInProject_descriptor : AnyObject {
   var descriptor : BoardFontDescriptor? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontInProject_textCount : AnyObject {
+@MainActor protocol FontInProject_textCount : AnyObject {
   var textCount : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontInProject_canRemoveFont : AnyObject {
+@MainActor protocol FontInProject_canRemoveFont : AnyObject {
   var canRemoveFont : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontInProject_componentNamesCount : AnyObject {
+@MainActor protocol FontInProject_componentNamesCount : AnyObject {
   var componentNamesCount : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontInProject_componentValuesCount : AnyObject {
+@MainActor protocol FontInProject_componentValuesCount : AnyObject {
   var componentValuesCount : Int? { get }
 }
 

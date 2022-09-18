@@ -20,8 +20,8 @@ extension AutoLayoutProjectDocument {
     }else{
       let alert = NSAlert ()
       alert.messageText = "The document should be saved before performing product file generation."
-      alert.addButton (withTitle: "Save…")
-      alert.addButton (withTitle: "Cancel")
+      _ = alert.addButton (withTitle: "Save…")
+      _ = alert.addButton (withTitle: "Cancel")
       alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
         if response == .alertFirstButtonReturn {
           self.save (nil)
@@ -38,8 +38,8 @@ extension AutoLayoutProjectDocument {
     }else{
       let alert = NSAlert ()
       alert.messageText = "ERC checking should be done before generating product files."
-      alert.addButton (withTitle: "Perform ERC Checking")
-      alert.addButton (withTitle: "Cancel")
+      _ = alert.addButton (withTitle: "Perform ERC Checking")
+      _ = alert.addButton (withTitle: "Cancel")
       alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
         if response == .alertFirstButtonReturn {
           _ = self.performERCChecking ()
@@ -57,8 +57,8 @@ extension AutoLayoutProjectDocument {
      }else{
       let alert = NSAlert ()
       alert.messageText = "ERC checking has detected errors. Continue anyway?"
-      alert.addButton (withTitle: "Cancel")
-      alert.addButton (withTitle: "Continue")
+      _ = alert.addButton (withTitle: "Cancel")
+      _ = alert.addButton (withTitle: "Continue")
       alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
         if response == .alertSecondButtonReturn {
           self.performProductFilesGeneration ()
@@ -75,7 +75,7 @@ extension AutoLayoutProjectDocument {
     do{
       try self.performProductFilesGeneration (atPath: self.fileURL!.path.deletingPathExtension, self.rootObject.mArtwork!)
     }catch let error {
-      self.windowForSheet?.presentError (error)
+      _ = self.windowForSheet?.presentError (error)
     }
   }
 

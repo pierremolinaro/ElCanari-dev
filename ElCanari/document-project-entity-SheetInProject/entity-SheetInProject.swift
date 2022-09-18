@@ -6,37 +6,37 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SheetInProject_mSheetTitle : AnyObject {
+@MainActor protocol SheetInProject_mSheetTitle : AnyObject {
   var mSheetTitle : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SheetInProject_issues : AnyObject {
+@MainActor protocol SheetInProject_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SheetInProject_connectedPoints : AnyObject {
+@MainActor protocol SheetInProject_connectedPoints : AnyObject {
   var connectedPoints : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SheetInProject_connexionWarnings : AnyObject {
+@MainActor protocol SheetInProject_connexionWarnings : AnyObject {
   var connexionWarnings : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SheetInProject_connexionErrors : AnyObject {
+@MainActor protocol SheetInProject_connexionErrors : AnyObject {
   var connexionErrors : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SheetInProject_sheetDescriptor : AnyObject {
+@MainActor protocol SheetInProject_sheetDescriptor : AnyObject {
   var sheetDescriptor : SchematicSheetDescriptor? { get }
 }
 

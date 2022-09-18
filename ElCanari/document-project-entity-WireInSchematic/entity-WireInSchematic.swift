@@ -6,31 +6,31 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol WireInSchematic_objectDisplay : AnyObject {
+@MainActor protocol WireInSchematic_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol WireInSchematic_selectionDisplay : AnyObject {
+@MainActor protocol WireInSchematic_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol WireInSchematic_netName : AnyObject {
+@MainActor protocol WireInSchematic_netName : AnyObject {
   var netName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol WireInSchematic_netClassName : AnyObject {
+@MainActor protocol WireInSchematic_netClassName : AnyObject {
   var netClassName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol WireInSchematic_hasNet : AnyObject {
+@MainActor protocol WireInSchematic_hasNet : AnyObject {
   var hasNet : Bool? { get }
 }
 

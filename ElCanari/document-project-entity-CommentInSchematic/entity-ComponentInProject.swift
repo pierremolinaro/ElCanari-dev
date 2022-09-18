@@ -6,253 +6,253 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mSlavePadsShouldBeRouted : AnyObject {
+@MainActor protocol ComponentInProject_mSlavePadsShouldBeRouted : AnyObject {
   var mSlavePadsShouldBeRouted : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mX : AnyObject {
+@MainActor protocol ComponentInProject_mX : AnyObject {
   var mX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mY : AnyObject {
+@MainActor protocol ComponentInProject_mY : AnyObject {
   var mY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mRotation : AnyObject {
+@MainActor protocol ComponentInProject_mRotation : AnyObject {
   var mRotation : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mSide : AnyObject {
+@MainActor protocol ComponentInProject_mSide : AnyObject {
   var mSide : ComponentSide { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mDisplayLegend : AnyObject {
+@MainActor protocol ComponentInProject_mDisplayLegend : AnyObject {
   var mDisplayLegend : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mNameIsVisibleInBoard : AnyObject {
+@MainActor protocol ComponentInProject_mNameIsVisibleInBoard : AnyObject {
   var mNameIsVisibleInBoard : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mXName : AnyObject {
+@MainActor protocol ComponentInProject_mXName : AnyObject {
   var mXName : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mYName : AnyObject {
+@MainActor protocol ComponentInProject_mYName : AnyObject {
   var mYName : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mNameFontSize : AnyObject {
+@MainActor protocol ComponentInProject_mNameFontSize : AnyObject {
   var mNameFontSize : Double { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mNameRotation : AnyObject {
+@MainActor protocol ComponentInProject_mNameRotation : AnyObject {
   var mNameRotation : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mValueIsVisibleInBoard : AnyObject {
+@MainActor protocol ComponentInProject_mValueIsVisibleInBoard : AnyObject {
   var mValueIsVisibleInBoard : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mXValue : AnyObject {
+@MainActor protocol ComponentInProject_mXValue : AnyObject {
   var mXValue : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mYValue : AnyObject {
+@MainActor protocol ComponentInProject_mYValue : AnyObject {
   var mYValue : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mValueFontSize : AnyObject {
+@MainActor protocol ComponentInProject_mValueFontSize : AnyObject {
   var mValueFontSize : Double { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mValueRotation : AnyObject {
+@MainActor protocol ComponentInProject_mValueRotation : AnyObject {
   var mValueRotation : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mComponentValue : AnyObject {
+@MainActor protocol ComponentInProject_mComponentValue : AnyObject {
   var mComponentValue : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mNamePrefix : AnyObject {
+@MainActor protocol ComponentInProject_mNamePrefix : AnyObject {
   var mNamePrefix : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mNameIndex : AnyObject {
+@MainActor protocol ComponentInProject_mNameIndex : AnyObject {
   var mNameIndex : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mXUnit : AnyObject {
+@MainActor protocol ComponentInProject_mXUnit : AnyObject {
   var mXUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_mYUnit : AnyObject {
+@MainActor protocol ComponentInProject_mYUnit : AnyObject {
   var mYUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_deviceName : AnyObject {
+@MainActor protocol ComponentInProject_deviceName : AnyObject {
   var deviceName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_signatureForERCChecking : AnyObject {
+@MainActor protocol ComponentInProject_signatureForERCChecking : AnyObject {
   var signatureForERCChecking : UInt32? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_packagePadDictionary : AnyObject {
+@MainActor protocol ComponentInProject_packagePadDictionary : AnyObject {
   var packagePadDictionary : PackageMasterPadDictionary? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_selectedPackageName : AnyObject {
+@MainActor protocol ComponentInProject_selectedPackageName : AnyObject {
   var selectedPackageName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_availablePackages : AnyObject {
+@MainActor protocol ComponentInProject_availablePackages : AnyObject {
   var availablePackages : StringArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_issues : AnyObject {
+@MainActor protocol ComponentInProject_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_componentIsPlacedInBoard : AnyObject {
+@MainActor protocol ComponentInProject_componentIsPlacedInBoard : AnyObject {
   var componentIsPlacedInBoard : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_componentIsPlacedInBoardString : AnyObject {
+@MainActor protocol ComponentInProject_componentIsPlacedInBoardString : AnyObject {
   var componentIsPlacedInBoardString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_strokeBezierPath : AnyObject {
+@MainActor protocol ComponentInProject_strokeBezierPath : AnyObject {
   var strokeBezierPath : EBBezierPath? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_pinPadAssignments : AnyObject {
+@MainActor protocol ComponentInProject_pinPadAssignments : AnyObject {
   var pinPadAssignments : ThreeStringArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_hasSlavePads : AnyObject {
+@MainActor protocol ComponentInProject_hasSlavePads : AnyObject {
   var hasSlavePads : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_placementInSchematic : AnyObject {
+@MainActor protocol ComponentInProject_placementInSchematic : AnyObject {
   var placementInSchematic : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_deviceSymbolDictionary : AnyObject {
+@MainActor protocol ComponentInProject_deviceSymbolDictionary : AnyObject {
   var deviceSymbolDictionary : DeviceSymbolDictionary? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_componentNameFontName : AnyObject {
+@MainActor protocol ComponentInProject_componentNameFontName : AnyObject {
   var componentNameFontName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_componentValueFontName : AnyObject {
+@MainActor protocol ComponentInProject_componentValueFontName : AnyObject {
   var componentValueFontName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_componentPadDictionary : AnyObject {
+@MainActor protocol ComponentInProject_componentPadDictionary : AnyObject {
   var componentPadDictionary : ComponentPadDescriptorDictionary? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_padNetDictionary : AnyObject {
+@MainActor protocol ComponentInProject_padNetDictionary : AnyObject {
   var padNetDictionary : PadNetDictionary? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_componentName : AnyObject {
+@MainActor protocol ComponentInProject_componentName : AnyObject {
   var componentName : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_selectionDisplay : AnyObject {
+@MainActor protocol ComponentInProject_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_unplacedSymbols : AnyObject {
+@MainActor protocol ComponentInProject_unplacedSymbols : AnyObject {
   var unplacedSymbols : StringTagArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ComponentInProject_objectDisplay : AnyObject {
+@MainActor protocol ComponentInProject_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 

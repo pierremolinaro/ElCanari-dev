@@ -160,7 +160,7 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
           let alert = NSAlert ()
           alert.messageText = "Internal error"
           alert.informativeText = "Empty image (\(#line))"
-          alert.runModal ()
+          _ = alert.runModal ()
         }else{
           let image = buildPDFimage (frame: rect, shape: displayShape)
         //--- Move image rect origin to mouse click location
@@ -181,12 +181,7 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
         //--- Set dragged image
           draggingItem.setDraggingFrame (r, contents: image)
         //--- Begin
-          self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
-        //--- Clean up temporary objects
-//          temporaryObject.cleanUpRelationshipsAndRemoveAllObservers ()
-//          for object in otherObjects {
-//            object.cleanUpRelationshipsAndRemoveAllObservers ()
-//          }
+          _ = self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
         }
     //--- Get dragged image
       }else if let shape = self.mDraggedObjectImage? () {
@@ -204,7 +199,7 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
           let alert = NSAlert ()
           alert.messageText = "Internal error"
           alert.informativeText = "Empty image (\(#line))"
-          alert.runModal ()
+          _ = alert.runModal ()
         }else{
           let image = buildPDFimage (frame: rect, shape: displayShape)
         //--- Move image rect origin to mouse click location
@@ -224,7 +219,7 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
         //--- Set dragged image
           draggingItem.setDraggingFrame (r, contents: image)
         //--- Begin
-          self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
+          _ = self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
         }
       }
     }

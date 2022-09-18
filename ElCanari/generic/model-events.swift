@@ -8,8 +8,8 @@ import Cocoa
 //    EBModelEvent class
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate var gPendingModelEvents = [EBModelEvent] ()
-fileprivate var gCurrentModelEvent : EBModelEvent? = nil
+@MainActor fileprivate var gPendingModelEvents = [EBModelEvent] ()
+@MainActor fileprivate var gCurrentModelEvent : EBModelEvent? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

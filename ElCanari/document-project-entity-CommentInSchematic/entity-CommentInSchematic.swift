@@ -6,55 +6,55 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CommentInSchematic_mColor : AnyObject {
+@MainActor protocol CommentInSchematic_mColor : AnyObject {
   var mColor : NSColor { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CommentInSchematic_mSize : AnyObject {
+@MainActor protocol CommentInSchematic_mSize : AnyObject {
   var mSize : Double { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CommentInSchematic_mHorizontalAlignment : AnyObject {
+@MainActor protocol CommentInSchematic_mHorizontalAlignment : AnyObject {
   var mHorizontalAlignment : HorizontalAlignment { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CommentInSchematic_mVerticalAlignment : AnyObject {
+@MainActor protocol CommentInSchematic_mVerticalAlignment : AnyObject {
   var mVerticalAlignment : VerticalAlignment { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CommentInSchematic_mX : AnyObject {
+@MainActor protocol CommentInSchematic_mX : AnyObject {
   var mX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CommentInSchematic_mY : AnyObject {
+@MainActor protocol CommentInSchematic_mY : AnyObject {
   var mY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CommentInSchematic_mComment : AnyObject {
+@MainActor protocol CommentInSchematic_mComment : AnyObject {
   var mComment : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CommentInSchematic_objectDisplay : AnyObject {
+@MainActor protocol CommentInSchematic_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CommentInSchematic_selectionDisplay : AnyObject {
+@MainActor protocol CommentInSchematic_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 

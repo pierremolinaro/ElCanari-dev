@@ -6,31 +6,31 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CanariLibraryEntry_mPath : AnyObject {
+@MainActor protocol CanariLibraryEntry_mPath : AnyObject {
   var mPath : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CanariLibraryEntry_mUses : AnyObject {
+@MainActor protocol CanariLibraryEntry_mUses : AnyObject {
   var mUses : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CanariLibraryEntry_mLibraryRepositoryURL : AnyObject {
+@MainActor protocol CanariLibraryEntry_mLibraryRepositoryURL : AnyObject {
   var mLibraryRepositoryURL : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CanariLibraryEntry_mUserAndPasswordTag : AnyObject {
+@MainActor protocol CanariLibraryEntry_mUserAndPasswordTag : AnyObject {
   var mUserAndPasswordTag : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol CanariLibraryEntry_mStatusImage : AnyObject {
+@MainActor protocol CanariLibraryEntry_mStatusImage : AnyObject {
   var mStatusImage : NSImage? { get }
 }
 

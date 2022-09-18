@@ -6,103 +6,103 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_yCenter : AnyObject {
+@MainActor protocol PackageArc_yCenter : AnyObject {
   var yCenter : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_radius : AnyObject {
+@MainActor protocol PackageArc_radius : AnyObject {
   var radius : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_startAngle : AnyObject {
+@MainActor protocol PackageArc_startAngle : AnyObject {
   var startAngle : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_arcAngle : AnyObject {
+@MainActor protocol PackageArc_arcAngle : AnyObject {
   var arcAngle : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_startTangent : AnyObject {
+@MainActor protocol PackageArc_startTangent : AnyObject {
   var startTangent : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_endTangent : AnyObject {
+@MainActor protocol PackageArc_endTangent : AnyObject {
   var endTangent : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_pathIsClosed : AnyObject {
+@MainActor protocol PackageArc_pathIsClosed : AnyObject {
   var pathIsClosed : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_xCenterUnit : AnyObject {
+@MainActor protocol PackageArc_xCenterUnit : AnyObject {
   var xCenterUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_yCenterUnit : AnyObject {
+@MainActor protocol PackageArc_yCenterUnit : AnyObject {
   var yCenterUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_radiusUnit : AnyObject {
+@MainActor protocol PackageArc_radiusUnit : AnyObject {
   var radiusUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_startTangentUnit : AnyObject {
+@MainActor protocol PackageArc_startTangentUnit : AnyObject {
   var startTangentUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_endTangentUnit : AnyObject {
+@MainActor protocol PackageArc_endTangentUnit : AnyObject {
   var endTangentUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_xCenter : AnyObject {
+@MainActor protocol PackageArc_xCenter : AnyObject {
   var xCenter : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_strokeBezierPath : AnyObject {
+@MainActor protocol PackageArc_strokeBezierPath : AnyObject {
   var strokeBezierPath : EBBezierPath? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_objectDisplay : AnyObject {
+@MainActor protocol PackageArc_objectDisplay : AnyObject {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_selectionDisplay : AnyObject {
+@MainActor protocol PackageArc_selectionDisplay : AnyObject {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_issues : AnyObject {
+@MainActor protocol PackageArc_issues : AnyObject {
   var issues : CanariIssueArray? { get }
 }
 
