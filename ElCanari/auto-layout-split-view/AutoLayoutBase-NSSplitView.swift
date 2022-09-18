@@ -40,7 +40,7 @@ class AutoLayoutBase_NSSplitView : NSSplitView {
 
   //····················································································································
 
-  @discardableResult final func appendView (_ inView : NSView) -> Self {
+  final func appendView (_ inView : NSView) -> Self {
     self.addSubview (inView)
     self.setHoldingPriority (.init (rawValue: 250.0), forSubviewAt: self.subviews.count - 1)
     return self

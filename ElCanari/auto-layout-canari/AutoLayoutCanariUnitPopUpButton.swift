@@ -47,7 +47,7 @@ final class AutoLayoutCanariUnitPopUpButton : AutoLayoutBase_NSPopUpButton {
       switch selection {
       case .single (let v) :
         self.enable (fromValueBinding: true, self.enabledBindingController)
-        self.selectItem (withTag: v)
+        _ = self.selectItem (withTag: v)
       case .empty :
         self.enable (fromValueBinding: false, self.enabledBindingController)
       case .multiple :

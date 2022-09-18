@@ -17,8 +17,8 @@ extension AutoLayoutProjectDocument {
           let alert = NSAlert ()
           alert.messageText = "Cannot Currently Add a Component: first, you need to add a Font."
           alert.informativeText = "This project does not embed any font. A font is needed for displaying component name and value in board."
-          alert.addButton (withTitle: "Add Font")
-          alert.addButton (withTitle: "Cancel")
+          _ = alert.addButton (withTitle: "Add Font")
+          _ = alert.addButton (withTitle: "Cancel")
           alert.beginSheetModal (for: self.windowForSheet!) {(inReturnCode : NSApplication.ModalResponse) in
             if (inReturnCode == .alertFirstButtonReturn) {
               self.addFont (postAction: self.addComponentDialog)

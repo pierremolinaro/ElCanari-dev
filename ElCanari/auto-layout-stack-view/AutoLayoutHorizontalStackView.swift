@@ -63,7 +63,7 @@ class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
   //   Facilities
   //····················································································································
 
-  @discardableResult final func appendViewPreceededByFlexibleSpace (_ inView : NSView) -> Self {
+  final func appendViewPreceededByFlexibleSpace (_ inView : NSView) -> Self {
     let hStack = AutoLayoutVerticalStackView ()
     _ = hStack.appendFlexibleSpace ()
     _ = hStack.appendView (inView)
@@ -73,7 +73,7 @@ class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
 
   //····················································································································
 
-  @discardableResult final func appendViewFollowedByFlexibleSpace (_ inView : NSView) -> Self {
+  final func appendViewFollowedByFlexibleSpace (_ inView : NSView) -> Self {
     let hStack = AutoLayoutVerticalStackView ()
     _ = hStack.appendView (inView)
     _ = hStack.appendFlexibleSpace ()
@@ -83,7 +83,7 @@ class AutoLayoutHorizontalStackView : AutoLayoutBase_NSStackView {
 
   //····················································································································
 
-  @discardableResult final func appendViewSurroundedByFlexibleSpaces (_ inView : NSView) -> Self {
+  final func appendViewSurroundedByFlexibleSpaces (_ inView : NSView) -> Self {
     let hStack = AutoLayoutVerticalStackView ()
     _ = hStack.appendFlexibleSpace ()
     _ = hStack.appendView (inView)

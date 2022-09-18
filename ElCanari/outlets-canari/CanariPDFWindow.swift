@@ -56,7 +56,7 @@ final class CanariPDFWindow : CanariWindow, NSToolbarDelegate {
   //   TOOL BAR
   //····················································································································
 
-  func toolbar (_ toolbar : NSToolbar,
+  @MainActor func toolbar (_ toolbar : NSToolbar,
                 itemForItemIdentifier itemIdentifier : NSToolbarItem.Identifier,
                 willBeInsertedIntoToolbar flag : Bool) -> NSToolbarItem? {
     let toolbarItem = NSToolbarItem (itemIdentifier: itemIdentifier)

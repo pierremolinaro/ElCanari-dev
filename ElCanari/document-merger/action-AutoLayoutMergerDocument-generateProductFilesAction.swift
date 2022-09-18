@@ -22,9 +22,9 @@ extension AutoLayoutMergerDocument {
       }else{
         let alert = NSAlert ()
         alert.messageText = "The board contains errors and / or warnings"
-        alert.addButton (withTitle: "Cancel")
-        alert.addButton (withTitle: "Proceed anyway")
-        alert.addButton (withTitle: "Show issues")
+        _ = alert.addButton (withTitle: "Cancel")
+        _ = alert.addButton (withTitle: "Proceed anyway")
+        _ = alert.addButton (withTitle: "Show issues")
         alert.beginSheetModal (
           for: self.windowForSheet!,
           completionHandler: {(response : NSApplication.ModalResponse) in

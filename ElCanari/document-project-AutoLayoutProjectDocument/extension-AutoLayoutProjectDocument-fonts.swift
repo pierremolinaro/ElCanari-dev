@@ -11,7 +11,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  final func addFont (postAction inPostAction : Optional <() -> Void>) {
+  final func addFont (postAction inPostAction : Optional <@MainActor () -> Void>) {
      var currentFontNames = Set <String> ()
      for font in self.rootObject.mFonts.values {
         currentFontNames.insert (font.mFontName)

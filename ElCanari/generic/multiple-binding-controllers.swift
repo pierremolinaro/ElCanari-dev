@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol HiddenEBProtocol : AnyObject {
+@MainActor protocol HiddenEBProtocol : AnyObject {
   var isHidden : Bool { get set }
 }
 

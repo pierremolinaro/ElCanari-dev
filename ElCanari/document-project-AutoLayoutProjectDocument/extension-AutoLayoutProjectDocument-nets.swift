@@ -98,7 +98,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
       let okButton = AutoLayoutSheetDefaultOkButton (title: "", size: .regular, sheet: panel)
       let gridView = AutoLayoutGridView2 ()
     //---
-      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Rename Net", bold: true, size: .regular, alignment: .center))
+      _ = layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Rename Net", bold: true, size: .regular, alignment: .center))
       _ = layoutView.appendFlexibleSpace ()
     //---
       do{
@@ -246,7 +246,7 @@ extension AutoLayoutProjectDocument : NSTextFieldDelegate {
     //---
       let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
     //---
-      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Select Net Class", bold: true, size: .regular, alignment: .center))
+      _ = layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Select Net Class", bold: true, size: .regular, alignment: .center))
     //---
       let popUpButton = AutoLayoutBase_NSPopUpButton (pullsDown: false, size: .regular).expandableWidth ()
       _ = layoutView.appendFlexibleSpace ()

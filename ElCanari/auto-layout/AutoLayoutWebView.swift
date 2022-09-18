@@ -25,7 +25,7 @@ final class AutoLayoutWebView : WKWebView, WKUIDelegate {
 
     if let url = URL (string: inURL) {
       let myRequest = URLRequest (url: url)
-      self.load (myRequest)
+      _ = self.load (myRequest)
     }
   }
 

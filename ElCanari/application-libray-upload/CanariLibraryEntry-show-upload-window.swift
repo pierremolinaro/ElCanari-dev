@@ -98,7 +98,7 @@ final class LibraryUploadDialog : EBSwiftBaseObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate var gLibraryUploadDialog : LibraryUploadDialog? = nil
+@MainActor fileprivate var gLibraryUploadDialog : LibraryUploadDialog? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

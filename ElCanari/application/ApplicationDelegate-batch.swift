@@ -150,8 +150,8 @@ extension ApplicationDelegate {
           }else{
             let alert = NSAlert ()
             alert.messageText = "Update \(retainedFiles.count) project\((retainedFiles.count > 1) ? "s" : "")? You cannot cancel this operation."
-            alert.addButton (withTitle: "Ok")
-            alert.addButton (withTitle: "Cancel")
+            _ = alert.addButton (withTitle: "Ok")
+            _ = alert.addButton (withTitle: "Cancel")
             alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
               if response == .alertFirstButtonReturn {
                 self.mMaintenanceLogTextField.stringValue = "No updated project"

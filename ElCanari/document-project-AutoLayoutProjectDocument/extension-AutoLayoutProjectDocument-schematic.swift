@@ -32,7 +32,7 @@ extension AutoLayoutProjectDocument {
       )
       panel.hasShadow = true
       let mainView = AutoLayoutHorizontalStackView ().set (margins: 12)
-      mainView.appendViewSurroundedByFlexibleSpaces (AutoLayoutApplicationImage ())
+      _ = mainView.appendViewSurroundedByFlexibleSpaces (AutoLayoutApplicationImage ())
       let rightColumn = AutoLayoutVerticalStackView ()
       let title = AutoLayoutStaticLabel (title: "Schematic Internal Error", bold: true, size: .regular, alignment: .center)
         .set (alignment: .left)
@@ -46,7 +46,7 @@ extension AutoLayoutProjectDocument {
         size: .regular,
         sheet: panel
       )
-      rightColumn.appendViewPreceededByFlexibleSpace (okButton)
+      _ = rightColumn.appendViewPreceededByFlexibleSpace (okButton)
       _ = mainView.appendView (rightColumn)
       panel.contentView = AutoLayoutWindowContentView (view: mainView)
       let message = errorList.joined (separator: "\n")

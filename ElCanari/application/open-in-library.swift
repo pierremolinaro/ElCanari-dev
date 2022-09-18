@@ -49,7 +49,7 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
     _ = topView.appendView (firstColumn)
  //--- Second Column
     _ = self.mNoSelectedPartView.appendFlexibleSpace ()
-    self.mNoSelectedPartView.appendViewSurroundedByFlexibleSpaces (self.mNoSelectedPartTextField)
+    _ = self.mNoSelectedPartView.appendViewSurroundedByFlexibleSpaces (self.mNoSelectedPartTextField)
     _ = self.mNoSelectedPartView.appendFlexibleSpace ()
     _ = topView.appendView (self.mNoSelectedPartView)
   //---
@@ -128,8 +128,8 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
 
   final func loadDocumentFromLibrary (windowForSheet inWindow : NSWindow,
                                       alreadyLoadedDocuments inNames : Set <String>,
-                                      callBack inCallBack : @escaping (_ inData : Data, _ inName : String) -> Bool,
-                                      postAction inPostAction : Optional <() -> Void>) {
+                                      callBack inCallBack : @MainActor @escaping (_ inData : Data, _ inName : String) -> Bool,
+                                      postAction inPostAction : Optional <@MainActor () -> Void>) {
   //--- Configure
     self.configureWith (alreadyLoadedDocuments: inNames)
     _ = self.mOpenButton.setDismissAction ()

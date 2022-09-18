@@ -1,6 +1,6 @@
 //--- START OF USER ZONE 1
 
-fileprivate var gDocWindowSet = Set <CanariPDFWindow> ()
+@MainActor fileprivate var gDocWindowSet = Set <CanariPDFWindow> ()
 
 extension ApplicationDelegate {
 

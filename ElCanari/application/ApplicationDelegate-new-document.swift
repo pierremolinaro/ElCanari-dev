@@ -18,7 +18,7 @@ extension ApplicationDelegate {
         newDocument.showWindows ()
       }
     }catch let error {
-      dc.presentError (error)
+      _ = dc.presentError (error)
     }
   }
 
@@ -50,7 +50,7 @@ extension ApplicationDelegate {
         newDocument.showWindows ()
       }
     }catch let error {
-      dc.presentError (error)
+      _ = dc.presentError (error)
     }
   }
 
@@ -82,7 +82,7 @@ extension ApplicationDelegate {
         newDocument.showWindows ()
       }
     }catch let error {
-      dc.presentError (error)
+      _ = dc.presentError (error)
     }
   }
 
@@ -118,7 +118,7 @@ extension ApplicationDelegate {
         appendDocumentFileOperationInfo ("showWindows done")
       }
     }catch let error {
-      dc.presentError (error)
+      _ = dc.presentError (error)
     }
   }
 

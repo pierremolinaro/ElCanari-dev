@@ -17,8 +17,8 @@ extension AutoLayoutProjectDocument {
     if !ok && (self.rootObject.mBoardSelectedInspector != 5) {
       let alert = NSAlert ()
       alert.messageText =  "ERC Checking error."
-      alert.addButton (withTitle: "Close")
-      alert.addButton (withTitle: "Select ERC Inspector")
+      _ = alert.addButton (withTitle: "Close")
+      _ = alert.addButton (withTitle: "Select ERC Inspector")
       alert.informativeText = "ERC checking has detected error(s)."
       alert.beginSheetModal (for: self.windowForSheet!) { (response : NSApplication.ModalResponse) in
         if response == .alertSecondButtonReturn {

@@ -40,7 +40,7 @@ extension AutoLayoutProjectDocument {
       let layoutView = AutoLayoutVerticalStackView ().set (margins: 20)
       let okButton = AutoLayoutSheetDefaultOkButton (title: "", size: .regular, sheet: panel)
     //---
-      layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Change Package", bold: true, size: .regular, alignment: .center))
+      _ = layoutView.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Change Package", bold: true, size: .regular, alignment: .center))
       _ = layoutView.appendFlexibleSpace ()
       let gridView = AutoLayoutGridView2 ()
     //---

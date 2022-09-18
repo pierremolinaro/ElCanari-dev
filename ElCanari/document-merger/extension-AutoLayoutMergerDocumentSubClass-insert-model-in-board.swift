@@ -76,7 +76,7 @@ extension AutoLayoutMergerDocumentSubClass {
       _ = mainView.appendViewSurroundedByFlexibleSpaces (AutoLayoutApplicationImage ())
         .appendFlexibleSpace ()
       let rightColumn = AutoLayoutVerticalStackView ()
-      rightColumn.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Insert an Array of Boards", bold: true, size: .regular, alignment: .center))
+      _ = rightColumn.appendViewSurroundedByFlexibleSpaces (AutoLayoutStaticLabel (title: "Insert an Array of Boards", bold: true, size: .regular, alignment: .center))
       _ = rightColumn.appendFlexibleSpace ()
 
       let grid = AutoLayoutGridView2 ()
@@ -112,7 +112,7 @@ extension AutoLayoutMergerDocumentSubClass {
       let okButton = AutoLayoutSheetDefaultOkButton (title: "Insert", size: .regular, sheet: panel)
       _ = lastLine.appendView (okButton)
       _ = rightColumn.appendView (lastLine)
-      mainView.appendViewPreceededByFlexibleSpace (rightColumn)
+      _ = mainView.appendViewPreceededByFlexibleSpace (rightColumn)
       panel.contentView = AutoLayoutWindowContentView (view: mainView)
       self.windowForSheet?.beginSheet (panel) { (inResponse : NSApplication.ModalResponse) in
         flushOutletEvents ()
