@@ -72,7 +72,8 @@ extension AutoLayoutMergerDocument {
         left: instanceRect.left,
         bottom: instanceRect.bottom,
         width: instanceRect.width,
-        height: boardHeight + instanceLimit - instanceRect.bottom
+        height: boardHeight - instanceRect.bottom
+    //    height: boardHeight + instanceLimit - instanceRect.bottom
       )
       for otherInstance in otherObjectSet.values {
         let inset = inOverlap ? min (instanceLimit, otherInstance.boardLimitWidth!) : 0
@@ -113,7 +114,8 @@ extension AutoLayoutMergerDocument {
       var acceptableNewRect = CanariRect (
         left: instanceRect.left,
         bottom: instanceRect.bottom,
-        width: boardWidth + instanceLimit - instanceRect.left,
+//        width: boardWidth + instanceLimit - instanceRect.left,
+        width: boardWidth - instanceRect.left,
         height: instanceRect.height
       )
       for otherInstance in otherObjectSet.values {
