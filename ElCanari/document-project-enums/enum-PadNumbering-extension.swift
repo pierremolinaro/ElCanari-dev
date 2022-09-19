@@ -14,7 +14,7 @@ extension PadNumbering {
 
   //····················································································································
 
-  func descriptionString () -> String {
+  var string : String {
     switch self {
       case .noNumbering : return "noNumbering" // 0
       case .counterClock : return "counterClock" // 1

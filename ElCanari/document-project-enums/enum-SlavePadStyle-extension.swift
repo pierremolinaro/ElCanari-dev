@@ -14,7 +14,7 @@ extension SlavePadStyle {
 
   //····················································································································
 
-  func descriptionString () -> String {
+  var string : String {
     switch self {
       case .traversing : return "traversing" // 0
       case .componentSide : return "componentSide" // 1

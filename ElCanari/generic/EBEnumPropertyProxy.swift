@@ -18,31 +18,6 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
 
   //····················································································································
 
-//  var mValueExplorer : NSTextField? {
-//    didSet {
-//      self.updateValueExplorer (possibleValue: self.mCachedValue)
-//    }
-//  }
-
-  //····················································································································
-
-//  private func updateValueExplorer (possibleValue : EBSelection <T>?) {
-//    if let value = possibleValue {
-//      switch value {
-//      case .empty :
-//        self.mValueExplorer?.stringValue = "-"
-//      case .multiple :
-//        self.mValueExplorer?.stringValue = "-"
-//      case .single (let value) :
-//        self.mValueExplorer?.stringValue = "\(value)"
-//      }
-//    }else{
-//      self.mValueExplorer?.stringValue = "nil"
-//    }
-//  }
-
-  //····················································································································
-
   override func observedObjectDidChange () {
     if self.mCachedValue != nil {
       self.mCachedValue = nil
@@ -60,7 +35,6 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
   override var selection : EBSelection <T> {
     if let unReadModelFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unReadModelFunction ()
-//      self.updateValueExplorer (possibleValue: self.mCachedValue)
     }
     if self.mCachedValue == nil {
       self.mCachedValue = .empty

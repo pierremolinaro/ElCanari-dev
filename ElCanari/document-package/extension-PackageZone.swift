@@ -228,7 +228,7 @@ extension PackageZone {
     s += " name "
     s += "\"" + self.zoneName + "\""
     s += " numbering "
-    s += self.zoneNumbering.descriptionString ()
+    s += self.zoneNumbering.string
     s += ";\n"
     return s
   }
@@ -243,12 +243,14 @@ extension PackageZone {
 
  //····················································································································
 
-  func rotate90Clockwise_PackageZone (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_PackageZone (from inRotationCenter : CanariPoint,
+                                      userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
   }
 
  //····················································································································
 
-  func rotate90CounterClockwise_PackageZone (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_PackageZone (from inRotationCenter : CanariPoint,
+                                             userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
   }
 
  //····················································································································

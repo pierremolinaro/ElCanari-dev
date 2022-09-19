@@ -14,7 +14,7 @@ extension PadShape {
 
   //····················································································································
 
-  func descriptionString () -> String {
+  var string : String {
     switch self {
       case .rect : return "rect" // 0
       case .round : return "round" // 1

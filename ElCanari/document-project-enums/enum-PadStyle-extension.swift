@@ -10,7 +10,7 @@ extension PadStyle {
 
   //····················································································································
 
-  func descriptionString () -> String {
+  var string : String {
     switch self {
       case .traversing : return "traversing" // 0
       case .surface : return "surface" // 1

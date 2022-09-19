@@ -14,7 +14,7 @@ extension TrackSide {
 
   //····················································································································
 
-  func descriptionString () -> String {
+  var string : String {
     switch self {
     case .front   : return "Front"
     case .back    : return "Back"

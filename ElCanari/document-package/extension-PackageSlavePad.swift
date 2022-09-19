@@ -206,9 +206,9 @@ extension PackageSlavePad {
     s += " : "
     s += stringFrom (valueInCanariUnit: self.height, displayUnit : self.heightUnit)
     s += " shape "
-    s += self.padShape.descriptionString ()
+    s += self.padShape.string
     s += " style "
-    s += self.padStyle.descriptionString ()
+    s += self.padStyle.string
     s += " hole "
     s += stringFrom (valueInCanariUnit: self.holeWidth, displayUnit : self.holeWidthUnit)
     s += " : "
