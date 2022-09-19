@@ -6,8 +6,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(AutoLayoutProjectDocument) class AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperClass, NSToolbarDelegate {
-
+@objc(AutoLayoutProjectDocument) class AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperClass {
+  
   //····················································································································
   //   Array controller: netClassController
   //····················································································································
@@ -6696,19 +6696,19 @@ import Cocoa
 
   final private func configureProperties () {
   //--- Array controller property: netClassController
-    self.netClassController.bind_model (self.rootObject.mNetClasses_property, self.ebUndoManager)
+    self.netClassController.bind_model (self.rootObject.mNetClasses_property, self.undoManager)
 
   //--- Array controller property: componentController
-    self.componentController.bind_model (self.rootObject.mComponents_property, self.ebUndoManager)
+    self.componentController.bind_model (self.rootObject.mComponents_property, self.undoManager)
 
   //--- Array controller property: projectFontController
-    self.projectFontController.bind_model (self.rootObject.mFonts_property, self.ebUndoManager)
+    self.projectFontController.bind_model (self.rootObject.mFonts_property, self.undoManager)
 
   //--- Array controller property: projectDeviceController
-    self.projectDeviceController.bind_model (self.rootObject.mDevices_property, self.ebUndoManager)
+    self.projectDeviceController.bind_model (self.rootObject.mDevices_property, self.undoManager)
 
   //--- Array controller property: schematicObjectsController
-    self.schematicObjectsController.bind_model (self.rootObject.selectedSheetObjects_property, self.ebUndoManager)
+    self.schematicObjectsController.bind_model (self.rootObject.selectedSheetObjects_property, self.undoManager)
 
   //--- Selection controller property: wireInSchematicSelectionController
     self.wireInSchematicSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property)
@@ -6726,13 +6726,13 @@ import Cocoa
     self.componentSymbolSelectionController.bind_selection (model: self.schematicObjectsController.selectedArray_property)
 
   //--- Array controller property: boardCurveObjectsController
-    self.boardCurveObjectsController.bind_model (self.rootObject.mBorderCurves_property, self.ebUndoManager)
+    self.boardCurveObjectsController.bind_model (self.rootObject.mBorderCurves_property, self.undoManager)
 
   //--- Selection controller property: boardCurveSelectionController
     self.boardCurveSelectionController.bind_selection (model: self.boardCurveObjectsController.selectedArray_property)
 
   //--- Array controller property: boardObjectsController
-    self.boardObjectsController.bind_model (self.rootObject.mBoardObjects_property, self.ebUndoManager)
+    self.boardObjectsController.bind_model (self.rootObject.mBoardObjects_property, self.undoManager)
 
   //--- Selection controller property: boardTrackSelectionController
     self.boardTrackSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property)
@@ -6753,7 +6753,7 @@ import Cocoa
     self.componentInBoardSelectionController.bind_selection (model: self.boardObjectsController.selectedArray_property)
 
   //--- Array controller property: mDataController
-    self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property, self.ebUndoManager)
+    self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property, self.undoManager)
 
   //--- Selection controller property: mDataSelection
     self.mDataSelection.bind_selection (model: self.mDataController.selectedArray_property)

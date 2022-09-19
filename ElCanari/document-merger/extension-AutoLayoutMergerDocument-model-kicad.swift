@@ -120,7 +120,7 @@ extension AutoLayoutMergerDocument {
     //--- Get first level items
       if let contents = possibleContents, contents.key == "kicad_pcb" {
         let font : [UInt32 : BoardFontCharacter] = kicadFont ()
-        let boardModel = BoardModel (self.ebUndoManager)
+        let boardModel = BoardModel (self.undoManager)
         boardModel.name = inName
         var errorArray = [(String, Int)] ()
         self.extractContents (contents.items, boardModel, font, &errorArray)
@@ -261,7 +261,7 @@ extension AutoLayoutMergerDocument {
        let endY = inKicadItem.getFloat (["segment", "end"], 1, &ioErrorArray, #line),
        let width = inKicadItem.getFloat (["segment", "width"], 0, &ioErrorArray, #line),
        let layer = inKicadItem.getString (["segment", "layer"], 0, &ioErrorArray, #line) {
-      let segment = SegmentEntity (self.ebUndoManager)
+      let segment = SegmentEntity (self.undoManager)
       segment.x1 = millimeterToCanariUnit (startX - ioTemporaryBoardModel.mLeftMM)
       segment.y1 = millimeterToCanariUnit (ioTemporaryBoardModel.mBottomMM - startY)
       segment.x2 = millimeterToCanariUnit (endX - ioTemporaryBoardModel.mLeftMM)
@@ -327,14 +327,14 @@ extension AutoLayoutMergerDocument {
        let diameter = inKicadItem.getFloat (["via", "size"], 0, &ioErrorArray, #line),
        let netIndex = inKicadItem.getInt (["via", "net"], 0, &ioErrorArray, #line) {
     //--- Add via
-      let via = BoardModelVia (self.ebUndoManager)
+      let via = BoardModelVia (self.undoManager)
       via.x = millimeterToCanariUnit (x - ioTemporaryBoardModel.mLeftMM)
       via.y = millimeterToCanariUnit (ioTemporaryBoardModel.mBottomMM - y)
       via.padDiameter = millimeterToCanariUnit (diameter)
       let netClass = inNetArray [netIndex]
       ioTemporaryBoardModel.mViaEntities.append (via)
     //--- Add drill
-      let segment = SegmentEntity (self.ebUndoManager)
+      let segment = SegmentEntity (self.undoManager)
       segment.x1 = via.x
       segment.y1 = via.y
       segment.x2 = via.x
@@ -389,7 +389,7 @@ extension AutoLayoutMergerDocument {
         leftMM: ioTemporaryBoardModel.mLeftMM,
         bottomMM: ioTemporaryBoardModel.mBottomMM,
         boardRect: ioTemporaryBoardModel.mBoardRect_mm,
-        self.ebUndoManager
+        self.undoManager
       )
       if textLayer == "F.Cu" {
         ioTemporaryBoardModel.mFrontLayoutTextEntities.append (objects: segments)
@@ -463,7 +463,7 @@ extension AutoLayoutMergerDocument {
             leftMM: ioTemporaryBoardModel.mLeftMM,
             bottomMM: ioTemporaryBoardModel.mBottomMM,
             boardRect: ioTemporaryBoardModel.mBoardRect_mm,
-            self.ebUndoManager
+            self.undoManager
           )
           if (kind == "reference") && (textLayer == "F.SilkS") {
             ioTemporaryBoardModel.mFrontComponentNamesEntities.append (objects: segments)
@@ -488,7 +488,7 @@ extension AutoLayoutMergerDocument {
             p2_mm: NSPoint (x: end.x, y: end.y),
             width_mm: widthMM,
             clipRect_mm: ioTemporaryBoardModel.mBoardRect_mm,
-            self.ebUndoManager,
+            self.undoManager,
             file: #file, #line
           ) {
             if layer == "F.Cu" {
@@ -536,7 +536,7 @@ extension AutoLayoutMergerDocument {
             case .moveTo :
               currentPoint = pointArray [0]
             case .lineTo :
-              let packageLine = SegmentEntity (self.ebUndoManager)
+              let packageLine = SegmentEntity (self.undoManager)
               packageLine.x1 = millimeterToCanariUnit (CGFloat (currentPoint.x))
               packageLine.y1 = millimeterToCanariUnit (CGFloat (currentPoint.y))
               packageLine.x2 = millimeterToCanariUnit (CGFloat (pointArray [0].x))
@@ -569,7 +569,7 @@ extension AutoLayoutMergerDocument {
               let atY = item.getFloat (["pad", "at"], 1, &ioErrorArray, #line),
               let widthMM = item.getFloat (["pad", "size"], 0, &ioErrorArray, #line),
               let heightMM = item.getFloat (["pad", "size"], 1, &ioErrorArray, #line) {
-          let pad = BoardModelPad (self.ebUndoManager)
+          let pad = BoardModelPad (self.undoManager)
           let padXY = moduleTransform.transform (NSPoint (x: atX, y: atY))
           pad.x = millimeterToCanariUnit (CGFloat (padXY.x))
           pad.y = millimeterToCanariUnit (CGFloat (padXY.y))
@@ -599,7 +599,7 @@ extension AutoLayoutMergerDocument {
                 let drillDiameter = millimeterToCanariUnit (CGFloat (holeDiameter))
                 let x1 = pad.x
                 let y1 = pad.y
-                let drill = SegmentEntity (self.ebUndoManager)
+                let drill = SegmentEntity (self.undoManager)
                 drill.x1 = x1
                 drill.y1 = y1
                 drill.x2 = x1
@@ -616,7 +616,7 @@ extension AutoLayoutMergerDocument {
                   let p = padTransform.transform (NSPoint (x: (ovalMM - drillDiameterMM) / 2.0, y:0))
                   let dx = millimeterToCanariUnit (CGFloat (p.x))
                   let dy = millimeterToCanariUnit (CGFloat (p.y))
-                  let drill = SegmentEntity (self.ebUndoManager)
+                  let drill = SegmentEntity (self.undoManager)
                   drill.x1 = pad.x - dx
                   drill.y1 = pad.y - dy
                   drill.x2 = pad.x + dx

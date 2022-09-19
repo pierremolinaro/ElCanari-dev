@@ -709,7 +709,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
   //   Undo manager
   //····················································································································
 
-  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   // Model will change
@@ -717,7 +717,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <SegmentEntity>) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+    self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
@@ -901,10 +901,9 @@ final class PreferencesArrayOf_SegmentEntity : StoredArrayOf_SegmentEntity {
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = EBReferenceArray <SegmentEntity> ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SegmentEntity") as? SegmentEntity {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
+        let object = newInstanceOfEntityNamed (self.undoManager, "SegmentEntity") as! SegmentEntity
+        object.setUpAtomicPropertiesWithDictionary (dictionary)
+        objectArray.append (object)
       }
       self.setProp (objectArray)
     }

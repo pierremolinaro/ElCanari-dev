@@ -21,8 +21,8 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
   //    Undo manager
   //····················································································································
 
-  private weak var mUndoManager : EBUndoManager? = nil // SHOULD BE WEAK
-  var ebUndoManager : EBUndoManager? { return self.mUndoManager }
+  private weak var mUndoManager : UndoManager? = nil // SHOULD BE WEAK
+  var undoManager : UndoManager? { return self.mUndoManager }
 
   //····················································································································
   //   Sorted Array
@@ -52,7 +52,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
 
   //····················································································································
 
-  final func bind_model (_ inModel : ReadWriteArrayOf_DeviceInProject, _ inUndoManager : EBUndoManager) {
+  final func bind_model (_ inModel : ReadWriteArrayOf_DeviceInProject, _ inUndoManager : UndoManager?) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     self.sortedArray_property.setDataProvider (
@@ -133,13 +133,6 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
 
   func setSelection (_ inObjects : [DeviceInProject]) {
     self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObjects))
-  }
-
-  //····················································································································
-  //    Explorer
-  //····················································································································
-
-  final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
   }
 
   //····················································································································
@@ -360,7 +353,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
       case .empty, .multiple :
         ()
       case .single (let v) :
-        let newObject = DeviceInProject (self.ebUndoManager)
+        let newObject = DeviceInProject (self.undoManager)
         var array = EBReferenceArray (v)
         array.append (newObject)
         model.setProp (array)

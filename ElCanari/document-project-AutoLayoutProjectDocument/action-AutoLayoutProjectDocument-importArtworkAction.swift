@@ -19,7 +19,7 @@ extension AutoLayoutProjectDocument {
             validationButtonTitle: "Import",
             callBack: { (_ inURL : URL, _ inName : String) -> Void in
               if let data = try? Data (contentsOf: inURL),
-                 let documentData = try? loadEasyBindingFile (fromData: data, documentName: inName, undoManager: self.ebUndoManager),
+                 let documentData = try? loadEasyBindingFile (fromData: data, documentName: inName, undoManager: self.undoManager),
                  let artworkRoot = documentData.documentRootObject as? ArtworkRoot {
                 self.invalidateERC ()
                 self.rootObject.mArtwork = artworkRoot

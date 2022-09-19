@@ -37,7 +37,7 @@ extension AutoLayoutDeviceDocument {
             for sourceURL in urls {
               if let data = try? Data (contentsOf: sourceURL) {
                 // NSLog ("sourceFileURL \(sourceFileURL), size \(data.count.stringWithSeparator) bytes") ;
-                let doc = DeviceDocumentation (self?.ebUndoManager)
+                let doc = DeviceDocumentation (self?.undoManager)
                 doc.mFileData = data
                 doc.mFileName = sourceURL.path.lastPathComponent.deletingPathExtension
                 self?.rootObject.mDocs_property.add (doc)

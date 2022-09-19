@@ -838,7 +838,7 @@ class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureObserve
   //   Undo manager
   //····················································································································
 
-  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   // Model will change
@@ -846,7 +846,7 @@ class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureObserve
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <SymbolText>) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+    self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
@@ -1030,10 +1030,9 @@ final class PreferencesArrayOf_SymbolText : StoredArrayOf_SymbolText {
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = EBReferenceArray <SymbolText> ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolText") as? SymbolText {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
+        let object = newInstanceOfEntityNamed (self.undoManager, "SymbolText") as! SymbolText
+        object.setUpAtomicPropertiesWithDictionary (dictionary)
+        objectArray.append (object)
       }
       self.setProp (objectArray)
     }

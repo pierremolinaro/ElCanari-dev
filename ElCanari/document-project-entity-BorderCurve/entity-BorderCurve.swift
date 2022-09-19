@@ -452,15 +452,15 @@ final class BorderCurve : EBGraphicManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mCPX1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mCPY1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mCPX2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mCPY2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mShape_property = EBStoredProperty_BorderCurveShape (defaultValue: BorderCurveShape.line, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mCPX1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mCPY1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mCPX2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mCPY2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mShape_property = EBStoredProperty_BorderCurveShape (defaultValue: BorderCurveShape.line, undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.mRoot_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mRoot_property.propval == nil)
@@ -533,19 +533,19 @@ final class BorderCurve : EBGraphicManagedObject,
     }
     self.mNext_property.mY_property.addEBObserver (self.mNextY_property)
   //--- To one property: mRoot (has opposite to many relationship: mBorderCurves)
-    self.mRoot_property.ebUndoManager = self.ebUndoManager
+    self.mRoot_property.undoManager = inUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mBorderCurves_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mBorderCurves_property.remove (me) } }
     )
   //--- To one property: mNext (has opposite to one relationship: mPrevious)
-    self.mNext_property.ebUndoManager = self.ebUndoManager
+    self.mNext_property.undoManager = inUndoManager
     self.mNext_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPrevious_property.setProp (me) } },
       resetter: { inObject in inObject.mPrevious_property.setProp (nil) }
     )
   //--- To one property: mPrevious (has opposite to one relationship: mNext)
-    self.mPrevious_property.ebUndoManager = self.ebUndoManager
+    self.mPrevious_property.undoManager = inUndoManager
     self.mPrevious_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNext_property.setProp (me) } },
       resetter: { inObject in inObject.mNext_property.setProp (nil) }

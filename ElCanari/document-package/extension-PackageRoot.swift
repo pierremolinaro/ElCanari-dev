@@ -14,7 +14,7 @@ extension PackageRoot {
 
   //····················································································································
 
-  func accumulate (withUndoManager inUndoManager : EBUndoManager,
+  func accumulate (withUndoManager inUndoManager : UndoManager?,
                    strokeBezierPathes : inout EBBezierPath,
                    masterPads : inout EBReferenceArray <MasterPadInDevice>) {
     var masterPadDictionary = EBReferenceDictionary <PackagePad, MasterPadInDevice> ()

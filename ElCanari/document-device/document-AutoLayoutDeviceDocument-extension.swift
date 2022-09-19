@@ -23,14 +23,14 @@ extension AutoLayoutDeviceDocument {
       let filledBezierPathes = NSBezierPath ()
       var symbolPinTypes = EBReferenceArray <SymbolPinTypeInDevice> ()
       symbolRoot.accumulate (
-        withUndoManager: self.ebUndoManager,
+        withUndoManager: self.undoManager,
         strokeBezierPathes: strokeBezierPathes,
         filledBezierPathes: filledBezierPathes,
         symbolPins: &symbolPinTypes
       )
 //      symbolRoot.removeRecursivelyAllRelationsShips ()
 
-      let symbolType = SymbolTypeInDevice (self.ebUndoManager)
+      let symbolType = SymbolTypeInDevice (self.undoManager)
       symbolType.mVersion = version
       symbolType.mTypeName = inName
       symbolType.mFileData = inData
@@ -43,14 +43,14 @@ extension AutoLayoutDeviceDocument {
       }
       let pinsCenter = CanariRect (points: pinLocations).center
       self.rootObject.mSymbolTypes_property.add (symbolType)
-      let symbolInstance = SymbolInstanceInDevice (self.ebUndoManager)
+      let symbolInstance = SymbolInstanceInDevice (self.undoManager)
       self.rootObject.mSymbolInstances_property.add (symbolInstance)
       symbolInstance.mType = symbolType
       symbolInstance.mX = -pinsCenter.x
       symbolInstance.mY = -pinsCenter.y
     //--- Add pin instances
       for pinType in symbolPinTypes.values {
-        let pinInstance = SymbolPinInstanceInDevice (self.ebUndoManager)
+        let pinInstance = SymbolPinInstanceInDevice (self.undoManager)
         pinInstance.mType = pinType
         symbolInstance.mPinInstances_property.add (pinInstance)
       }
@@ -87,7 +87,7 @@ extension AutoLayoutDeviceDocument {
             let filledBezierPathes = NSBezierPath ()
             var newSymbolPinTypes = EBReferenceArray <SymbolPinTypeInDevice> ()
             symbolRoot.accumulate (
-              withUndoManager: self.ebUndoManager,
+              withUndoManager: self.undoManager,
               strokeBezierPathes: strokeBezierPathes,
               filledBezierPathes: filledBezierPathes,
               symbolPins: &newSymbolPinTypes
@@ -152,11 +152,10 @@ extension AutoLayoutDeviceDocument {
       var strokeBezierPathes = EBBezierPath ()
       var masterPads = EBReferenceArray <MasterPadInDevice> ()
       packageRoot.accumulate (
-        withUndoManager: self.ebUndoManager,
+        withUndoManager: self.undoManager,
         strokeBezierPathes: &strokeBezierPathes,
         masterPads: &masterPads
       )
-//      packageRoot.removeRecursivelyAllRelationsShips ()
 
       var masterPadsLocations = [CanariPoint] ()
       for masterPad in masterPads.values {
@@ -164,7 +163,7 @@ extension AutoLayoutDeviceDocument {
       }
       let masterPadsCenter = CanariRect (points: masterPadsLocations).center
 
-      let package = PackageInDevice (self.ebUndoManager)
+      let package = PackageInDevice (self.undoManager)
       package.mX = -masterPadsCenter.x
       package.mY = -masterPadsCenter.y
       package.mVersion = version
@@ -208,7 +207,7 @@ extension AutoLayoutDeviceDocument {
             var strokeBezierPathes = EBBezierPath ()
             var masterPads = EBReferenceArray <MasterPadInDevice> ()
             packageRoot.accumulate (
-              withUndoManager: self.ebUndoManager,
+              withUndoManager: self.undoManager,
               strokeBezierPathes: &strokeBezierPathes,
               masterPads: &masterPads
             )
@@ -264,7 +263,7 @@ extension AutoLayoutDeviceDocument {
     }
   //--- Add missing pad proxies
     for padName in currentPackagePadNameSet.subtracting (currentProxyPadNameSet) {
-      let newPadProxy = PadProxyInDevice (self.ebUndoManager)
+      let newPadProxy = PadProxyInDevice (self.undoManager)
       newPadProxy.mPadName = padName
       self.rootObject.mPadProxies_property.add (newPadProxy)
     }

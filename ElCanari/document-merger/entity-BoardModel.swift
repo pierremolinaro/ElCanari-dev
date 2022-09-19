@@ -1921,69 +1921,69 @@ final class BoardModel : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.name_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.modelWidth_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.modelWidthUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.modelHeight_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.modelHeightUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.zoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.layerConfiguration_property = EBStoredProperty_LayerConfiguration (defaultValue: LayerConfiguration.twoLayers, undoManager: ebUndoManager)
-    self.modelLimitWidth_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.modelLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.artworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.name_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.modelWidth_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.modelWidthUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.modelHeight_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.modelHeightUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.zoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.layerConfiguration_property = EBStoredProperty_LayerConfiguration (defaultValue: LayerConfiguration.twoLayers, undoManager: inUndoManager)
+    self.modelLimitWidth_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.modelLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.artworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- To many property: frontLegendLines (no option)
-    self.frontLegendLines_property.ebUndoManager = self.ebUndoManager
+    self.frontLegendLines_property.undoManager = inUndoManager
   //--- To many property: backLegendLines (no option)
-    self.backLegendLines_property.ebUndoManager = self.ebUndoManager
+    self.backLegendLines_property.undoManager = inUndoManager
   //--- To many property: frontLegendTexts (no option)
-    self.frontLegendTexts_property.ebUndoManager = self.ebUndoManager
+    self.frontLegendTexts_property.undoManager = inUndoManager
   //--- To many property: frontLayoutTexts (no option)
-    self.frontLayoutTexts_property.ebUndoManager = self.ebUndoManager
+    self.frontLayoutTexts_property.undoManager = inUndoManager
   //--- To many property: backLegendTexts (no option)
-    self.backLegendTexts_property.ebUndoManager = self.ebUndoManager
+    self.backLegendTexts_property.undoManager = inUndoManager
   //--- To many property: backLayoutTexts (no option)
-    self.backLayoutTexts_property.ebUndoManager = self.ebUndoManager
+    self.backLayoutTexts_property.undoManager = inUndoManager
   //--- To many property: internalBoardsLimits (no option)
-    self.internalBoardsLimits_property.ebUndoManager = self.ebUndoManager
+    self.internalBoardsLimits_property.undoManager = inUndoManager
   //--- To many property: drills (no option)
-    self.drills_property.ebUndoManager = self.ebUndoManager
+    self.drills_property.undoManager = inUndoManager
   //--- To many property: vias (no option)
-    self.vias_property.ebUndoManager = self.ebUndoManager
+    self.vias_property.undoManager = inUndoManager
   //--- To many property: frontPads (no option)
-    self.frontPads_property.ebUndoManager = self.ebUndoManager
+    self.frontPads_property.undoManager = inUndoManager
   //--- To many property: backPads (no option)
-    self.backPads_property.ebUndoManager = self.ebUndoManager
+    self.backPads_property.undoManager = inUndoManager
   //--- To many property: traversingPads (no option)
-    self.traversingPads_property.ebUndoManager = self.ebUndoManager
+    self.traversingPads_property.undoManager = inUndoManager
   //--- To many property: backComponentNames (no option)
-    self.backComponentNames_property.ebUndoManager = self.ebUndoManager
+    self.backComponentNames_property.undoManager = inUndoManager
   //--- To many property: frontComponentNames (no option)
-    self.frontComponentNames_property.ebUndoManager = self.ebUndoManager
+    self.frontComponentNames_property.undoManager = inUndoManager
   //--- To many property: frontComponentValues (no option)
-    self.frontComponentValues_property.ebUndoManager = self.ebUndoManager
+    self.frontComponentValues_property.undoManager = inUndoManager
   //--- To many property: backComponentValues (no option)
-    self.backComponentValues_property.ebUndoManager = self.ebUndoManager
+    self.backComponentValues_property.undoManager = inUndoManager
   //--- To many property: backTracks (no option)
-    self.backTracks_property.ebUndoManager = self.ebUndoManager
+    self.backTracks_property.undoManager = inUndoManager
   //--- To many property: frontTracks (no option)
-    self.frontTracks_property.ebUndoManager = self.ebUndoManager
+    self.frontTracks_property.undoManager = inUndoManager
   //--- To many property: inner1Tracks (no option)
-    self.inner1Tracks_property.ebUndoManager = self.ebUndoManager
+    self.inner1Tracks_property.undoManager = inUndoManager
   //--- To many property: inner2Tracks (no option)
-    self.inner2Tracks_property.ebUndoManager = self.ebUndoManager
+    self.inner2Tracks_property.undoManager = inUndoManager
   //--- To many property: inner3Tracks (no option)
-    self.inner3Tracks_property.ebUndoManager = self.ebUndoManager
+    self.inner3Tracks_property.undoManager = inUndoManager
   //--- To many property: inner4Tracks (no option)
-    self.inner4Tracks_property.ebUndoManager = self.ebUndoManager
+    self.inner4Tracks_property.undoManager = inUndoManager
   //--- To many property: frontPackages (no option)
-    self.frontPackages_property.ebUndoManager = self.ebUndoManager
+    self.frontPackages_property.undoManager = inUndoManager
   //--- To many property: backPackages (no option)
-    self.backPackages_property.ebUndoManager = self.ebUndoManager
+    self.backPackages_property.undoManager = inUndoManager
   //--- To many property: myInstances (has opposite relationship)
-    self.myInstances_property.ebUndoManager = self.ebUndoManager
+    self.myInstances_property.undoManager = inUndoManager
     self.myInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.myModel_property.setProp (me) } },
       resetter: { inObject in inObject.myModel_property.setProp (nil) }

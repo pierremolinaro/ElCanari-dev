@@ -218,8 +218,8 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    super.init (inUndoManager)
     self.mSymbolInstance_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mSymbolInstance_property.propval == nil)
@@ -246,19 +246,19 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
     self.mPadProxy_property.addEBObserver (self.mPadProxy_none)
     // gInitSemaphore.wait ()
   //--- To one property: mSymbolInstance (has opposite to many relationship: mPinInstances)
-    self.mSymbolInstance_property.ebUndoManager = self.ebUndoManager
+    self.mSymbolInstance_property.undoManager = inUndoManager
     self.mSymbolInstance_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPinInstances_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mPinInstances_property.remove (me) } }
     )
   //--- To one property: mType (has opposite to many relationship: mInstances)
-    self.mType_property.ebUndoManager = self.ebUndoManager
+    self.mType_property.undoManager = inUndoManager
     self.mType_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mInstances_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mInstances_property.remove (me) } }
     )
   //--- To one property: mPadProxy (has opposite to one relationship: mPinInstance)
-    self.mPadProxy_property.ebUndoManager = self.ebUndoManager
+    self.mPadProxy_property.undoManager = inUndoManager
     self.mPadProxy_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPinInstance_property.setProp (me) } },
       resetter: { inObject in inObject.mPinInstance_property.setProp (nil) }

@@ -92,11 +92,11 @@ final class BoardModelVia : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.padDiameter_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.padDiameter_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
     // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships

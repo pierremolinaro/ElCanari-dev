@@ -719,38 +719,38 @@ final class DeviceRoot : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mSelectedSymbolInspectorIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mSelectedPackageInspectorIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mTitle_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mImageData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: ebUndoManager)
-    self.mPrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mComments_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mPackageDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400, undoManager: ebUndoManager)
-    self.mPackageDisplayHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mPackageDisplayVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mShowPackages_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.mShowPackagePadNumbers_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.mShowPackageFrontPads_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.mShowPackageBackPads_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.mSymbolDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mSelectedSymbolInspectorIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mSelectedPackageInspectorIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mTitle_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mImageData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager)
+    self.mPrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mComments_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mPackageDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400, undoManager: inUndoManager)
+    self.mPackageDisplayHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mPackageDisplayVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mShowPackages_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.mShowPackagePadNumbers_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.mShowPackageFrontPads_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.mShowPackageBackPads_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.mSymbolDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400, undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- To many property: mDocs (no option)
-    self.mDocs_property.ebUndoManager = self.ebUndoManager
+    self.mDocs_property.undoManager = inUndoManager
   //--- To many property: mSymbolInstances (no option)
-    self.mSymbolInstances_property.ebUndoManager = self.ebUndoManager
+    self.mSymbolInstances_property.undoManager = inUndoManager
   //--- To many property: mPackages (has opposite relationship)
-    self.mPackages_property.ebUndoManager = self.ebUndoManager
+    self.mPackages_property.undoManager = inUndoManager
     self.mPackages_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
     )
   //--- To many property: mSymbolTypes (no option)
-    self.mSymbolTypes_property.ebUndoManager = self.ebUndoManager
+    self.mSymbolTypes_property.undoManager = inUndoManager
   //--- To many property: mPadProxies (no option)
-    self.mPadProxies_property.ebUndoManager = self.ebUndoManager
+    self.mPadProxies_property.undoManager = inUndoManager
   //--- Atomic property: imageIsValid
     self.imageIsValid_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

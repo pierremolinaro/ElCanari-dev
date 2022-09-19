@@ -508,19 +508,19 @@ final class ComponentSymbolInProject : SchematicObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mCenterX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mCenterY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: ebUndoManager)
-    self.mMirror_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mDisplayComponentNameOffsetX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mDisplayComponentNameOffsetY_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: ebUndoManager)
-    self.mDisplayComponentValue_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.mDisplayComponentValueOffsetX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mDisplayComponentValueOffsetY_property = EBStoredProperty_Int (defaultValue: -457200, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mCenterX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mCenterY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: inUndoManager)
+    self.mMirror_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mDisplayComponentNameOffsetX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mDisplayComponentNameOffsetY_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager)
+    self.mDisplayComponentValue_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.mDisplayComponentValueOffsetX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mDisplayComponentValueOffsetY_property = EBStoredProperty_Int (defaultValue: -457200, undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.mComponent_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mComponent_property.propval == nil)
@@ -531,7 +531,7 @@ final class ComponentSymbolInProject : SchematicObject,
     self.mComponent_property.addEBObserver (self.mComponent_none)
     // gInitSemaphore.wait ()
   //--- To many property: mPoints (has opposite relationship)
-    self.mPoints_property.ebUndoManager = self.ebUndoManager
+    self.mPoints_property.undoManager = inUndoManager
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSymbol_property.setProp (me) } },
       resetter: { inObject in inObject.mSymbol_property.setProp (nil) }
@@ -560,7 +560,7 @@ final class ComponentSymbolInProject : SchematicObject,
     }
     self.mComponent_property.mComponentValue_property.addEBObserver (self.componentValueProxy_property)
   //--- To one property: mComponent (has opposite to many relationship: mSymbols)
-    self.mComponent_property.ebUndoManager = self.ebUndoManager
+    self.mComponent_property.undoManager = inUndoManager
     self.mComponent_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSymbols_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mSymbols_property.remove (me) } }

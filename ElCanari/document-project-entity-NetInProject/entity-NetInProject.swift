@@ -292,10 +292,10 @@ final class NetInProject : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mWarnsExactlyOneLabel_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mWarnsExactlyOneLabel_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.mNetClass_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mNetClass_property.propval == nil)
@@ -306,19 +306,19 @@ final class NetInProject : EBManagedObject,
     self.mNetClass_property.addEBObserver (self.mNetClass_none)
     // gInitSemaphore.wait ()
   //--- To many property: mPoints (has opposite relationship)
-    self.mPoints_property.ebUndoManager = self.ebUndoManager
+    self.mPoints_property.undoManager = inUndoManager
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },
       resetter: { inObject in inObject.mNet_property.setProp (nil) }
     )
   //--- To many property: mTracks (has opposite relationship)
-    self.mTracks_property.ebUndoManager = self.ebUndoManager
+    self.mTracks_property.undoManager = inUndoManager
     self.mTracks_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },
       resetter: { inObject in inObject.mNet_property.setProp (nil) }
     )
   //--- To one property: mNetClass (has opposite to many relationship: mNets)
-    self.mNetClass_property.ebUndoManager = self.ebUndoManager
+    self.mNetClass_property.undoManager = inUndoManager
     self.mNetClass_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNets_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mNets_property.remove (me) } }

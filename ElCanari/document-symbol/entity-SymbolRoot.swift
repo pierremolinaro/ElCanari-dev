@@ -325,21 +325,21 @@ final class SymbolRoot : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.selectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.comments_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.horizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.verticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.gridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: ebUndoManager)
-    self.gridDisplay_property = EBStoredProperty_Int (defaultValue: 4, undoManager: ebUndoManager)
-    self.zoom_property = EBStoredProperty_Int (defaultValue: 600, undoManager: ebUndoManager)
-    self.xPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.selectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.comments_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.horizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.verticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.gridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: inUndoManager)
+    self.gridDisplay_property = EBStoredProperty_Int (defaultValue: 4, undoManager: inUndoManager)
+    self.zoom_property = EBStoredProperty_Int (defaultValue: 600, undoManager: inUndoManager)
+    self.xPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- To many property: symbolObjects (no option)
-    self.symbolObjects_property.ebUndoManager = self.ebUndoManager
+    self.symbolObjects_property.undoManager = inUndoManager
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

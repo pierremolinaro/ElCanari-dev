@@ -1233,29 +1233,29 @@ final class MergerRoot : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.zoom_property = EBStoredProperty_Int (defaultValue: 100, undoManager: ebUndoManager)
-    self.showDisplaySettingView_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.modelInsertionRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: ebUndoManager)
-    self.automaticBoardSize_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.boardManualWidth_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: ebUndoManager)
-    self.boardManualHeight_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: ebUndoManager)
-    self.boardWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.boardHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.overlapingArrangment_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.selectedBoardXUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.selectedBoardYUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.boardLimitWidth_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.boardLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.arrowMagnitude_property = EBStoredProperty_Int (defaultValue: 900000, undoManager: ebUndoManager)
-    self.arrowMagnitudeUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.shiftArrowMagnitude_property = EBStoredProperty_Int (defaultValue: 3600000, undoManager: ebUndoManager)
-    self.shiftArrowMagnitudeUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray, undoManager: ebUndoManager)
-    self.mArtworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.zoom_property = EBStoredProperty_Int (defaultValue: 100, undoManager: inUndoManager)
+    self.showDisplaySettingView_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.modelInsertionRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: inUndoManager)
+    self.automaticBoardSize_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.boardManualWidth_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: inUndoManager)
+    self.boardManualHeight_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: inUndoManager)
+    self.boardWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.boardHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.overlapingArrangment_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.selectedBoardXUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.selectedBoardYUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.boardLimitWidth_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.boardLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.arrowMagnitude_property = EBStoredProperty_Int (defaultValue: 900000, undoManager: inUndoManager)
+    self.arrowMagnitudeUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.shiftArrowMagnitude_property = EBStoredProperty_Int (defaultValue: 3600000, undoManager: inUndoManager)
+    self.shiftArrowMagnitudeUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray, undoManager: inUndoManager)
+    self.mArtworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.mArtwork_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mArtwork_property.propval == nil)
@@ -1266,9 +1266,9 @@ final class MergerRoot : EBManagedObject,
     self.mArtwork_property.addEBObserver (self.mArtwork_none)
     // gInitSemaphore.wait ()
   //--- To many property: boardModels (no option)
-    self.boardModels_property.ebUndoManager = self.ebUndoManager
+    self.boardModels_property.undoManager = inUndoManager
   //--- To many property: boardInstances (has opposite relationship)
-    self.boardInstances_property.ebUndoManager = self.ebUndoManager
+    self.boardInstances_property.undoManager = inUndoManager
     self.boardInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.myRoot_property.setProp (me) } },
       resetter: { inObject in inObject.myRoot_property.setProp (nil) }
@@ -1624,7 +1624,7 @@ final class MergerRoot : EBManagedObject,
     }
     self.boardRect_property.addEBObserver (self.boardHeight_property)
   //--- To one property: mArtwork
-    self.mArtwork_property.ebUndoManager = self.ebUndoManager
+    self.mArtwork_property.undoManager = inUndoManager
   //--- Atomic property: comments
     self.comments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

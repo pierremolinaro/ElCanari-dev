@@ -6,8 +6,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(AutoLayoutSymbolDocument) class AutoLayoutSymbolDocument : EBAutoLayoutManagedDocument, NSToolbarDelegate {
-
+@objc(AutoLayoutSymbolDocument) class AutoLayoutSymbolDocument : EBAutoLayoutManagedDocument {
+  
   //····················································································································
   //   Array controller: mSymbolObjectsController
   //····················································································································
@@ -1110,7 +1110,7 @@ import Cocoa
 
   final private func configureProperties () {
   //--- Array controller property: mSymbolObjectsController
-    self.mSymbolObjectsController.bind_model (self.rootObject.symbolObjects_property, self.ebUndoManager)
+    self.mSymbolObjectsController.bind_model (self.rootObject.symbolObjects_property, self.undoManager)
 
   //--- Selection controller property: mSymbolTextSelectionController
     self.mSymbolTextSelectionController.bind_selection (model: self.mSymbolObjectsController.selectedArray_property)

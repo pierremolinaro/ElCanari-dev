@@ -1151,29 +1151,29 @@ final class ComponentInProject : BoardObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mSlavePadsShouldBeRouted_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mSide_property = EBStoredProperty_ComponentSide (defaultValue: ComponentSide.front, undoManager: ebUndoManager)
-    self.mDisplayLegend_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.mNameIsVisibleInBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.mXName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mYName_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: ebUndoManager)
-    self.mNameFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: ebUndoManager)
-    self.mNameRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mValueIsVisibleInBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.mXValue_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mYValue_property = EBStoredProperty_Int (defaultValue: -685800, undoManager: ebUndoManager)
-    self.mValueFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: ebUndoManager)
-    self.mValueRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mComponentValue_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mNamePrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mNameIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mSlavePadsShouldBeRouted_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mSide_property = EBStoredProperty_ComponentSide (defaultValue: ComponentSide.front, undoManager: inUndoManager)
+    self.mDisplayLegend_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.mNameIsVisibleInBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.mXName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mYName_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager)
+    self.mNameFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: inUndoManager)
+    self.mNameRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mValueIsVisibleInBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.mXValue_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mYValue_property = EBStoredProperty_Int (defaultValue: -685800, undoManager: inUndoManager)
+    self.mValueFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: inUndoManager)
+    self.mValueRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mComponentValue_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mNamePrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mNameIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.mDevice_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mDevice_property.propval == nil)
@@ -1208,19 +1208,19 @@ final class ComponentInProject : BoardObject,
     self.mValueFont_property.addEBObserver (self.mValueFont_none)
     // gInitSemaphore.wait ()
   //--- To many property: mConnectors (has opposite relationship)
-    self.mConnectors_property.ebUndoManager = self.ebUndoManager
+    self.mConnectors_property.undoManager = inUndoManager
     self.mConnectors_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
       resetter: { inObject in inObject.mComponent_property.setProp (nil) }
     )
   //--- To many property: mSymbols (has opposite relationship)
-    self.mSymbols_property.ebUndoManager = self.ebUndoManager
+    self.mSymbols_property.undoManager = inUndoManager
     self.mSymbols_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
       resetter: { inObject in inObject.mComponent_property.setProp (nil) }
     )
   //--- Array controller property: componentAvailablePackagesController
-    self.componentAvailablePackagesController.bind_model (self.mPackages_property, self.ebUndoManager)
+    self.componentAvailablePackagesController.bind_model (self.mPackages_property, self.undoManager)
   //--- ToMany proxy: mPackages
     do{
       let controller = EBObservablePropertyController (
@@ -1235,7 +1235,7 @@ final class ComponentInProject : BoardObject,
       self.mPackages_modelDidChangeController = controller
     }
   //--- To one property: mDevice (has opposite to many relationship: mComponents)
-    self.mDevice_property.ebUndoManager = self.ebUndoManager
+    self.mDevice_property.undoManager = inUndoManager
     self.mDevice_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponents_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mComponents_property.remove (me) } }
@@ -1275,7 +1275,7 @@ final class ComponentInProject : BoardObject,
     }
     self.mSlavePadsShouldBeRouted_property.addEBObserver (self.signatureForERCChecking_property)
   //--- To one property: mSelectedPackage
-    self.mSelectedPackage_property.ebUndoManager = self.ebUndoManager
+    self.mSelectedPackage_property.undoManager = inUndoManager
   //--- Atomic property: packagePadDictionary
     self.packagePadDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1396,13 +1396,13 @@ final class ComponentInProject : BoardObject,
     }
     self.mSelectedPackage_property.mStrokeBezierPath_property.addEBObserver (self.strokeBezierPath_property)
   //--- To one property: mNameFont (has opposite to many relationship: mComponentNames)
-    self.mNameFont_property.ebUndoManager = self.ebUndoManager
+    self.mNameFont_property.undoManager = inUndoManager
     self.mNameFont_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponentNames_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mComponentNames_property.remove (me) } }
     )
   //--- To one property: mValueFont (has opposite to many relationship: mComponentValues)
-    self.mValueFont_property.ebUndoManager = self.ebUndoManager
+    self.mValueFont_property.undoManager = inUndoManager
     self.mValueFont_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponentValues_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mComponentValues_property.remove (me) } }

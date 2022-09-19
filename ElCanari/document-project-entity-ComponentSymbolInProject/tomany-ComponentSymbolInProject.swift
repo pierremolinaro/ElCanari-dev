@@ -1650,7 +1650,7 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
   //   Undo manager
   //····················································································································
 
-  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
@@ -1673,7 +1673,7 @@ class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolI
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <ComponentSymbolInProject>) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+    self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
@@ -1859,10 +1859,9 @@ final class PreferencesArrayOf_ComponentSymbolInProject : StoredArrayOf_Componen
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = EBReferenceArray <ComponentSymbolInProject> ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ComponentSymbolInProject") as? ComponentSymbolInProject {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
+        let object = newInstanceOfEntityNamed (self.undoManager, "ComponentSymbolInProject") as! ComponentSymbolInProject
+        object.setUpAtomicPropertiesWithDictionary (dictionary)
+        objectArray.append (object)
       }
       self.setProp (objectArray)
     }

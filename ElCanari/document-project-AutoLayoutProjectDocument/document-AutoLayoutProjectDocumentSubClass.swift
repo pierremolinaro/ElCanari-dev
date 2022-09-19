@@ -18,12 +18,12 @@ import Cocoa
 
   override init () {
     super.init ()
-    self.ebUndoManager.disableUndoRegistration ()
+    self.undoManager?.disableUndoRegistration ()
   //--- Add default net class and first sheet
-    let netClass = NetClassInProject (self.ebUndoManager)
+    let netClass = NetClassInProject (self.undoManager)
     self.rootObject.mNetClasses.append (netClass)
     self.rootObject.mDefaultNetClassName = self.rootObject.mNetClasses [0].mNetClassName
-    let sheet = SheetInProject (self.ebUndoManager)
+    let sheet = SheetInProject (self.undoManager)
     self.rootObject.mSheets.append (sheet)
     self.rootObject.mSelectedSheet = sheet
   //--- Add board limits
@@ -31,16 +31,16 @@ import Cocoa
     // Swift.print (boardCumulatedWidth)
     let boardRight = millimeterToCanariUnit (100.0) - boardCumulatedWidth
     let boardTop = millimeterToCanariUnit (100.0) - boardCumulatedWidth
-    let bottom = BorderCurve (self.ebUndoManager)
+    let bottom = BorderCurve (self.undoManager)
     bottom.mX = boardCumulatedWidth
     bottom.mY = boardCumulatedWidth
-    let right = BorderCurve (self.ebUndoManager)
+    let right = BorderCurve (self.undoManager)
     right.mX = boardRight
     right.mY = boardCumulatedWidth
-    let top = BorderCurve (self.ebUndoManager)
+    let top = BorderCurve (self.undoManager)
     top.mX = boardRight
     top.mY = boardTop
-    let left = BorderCurve (self.ebUndoManager)
+    let left = BorderCurve (self.undoManager)
     left.mX = boardCumulatedWidth
     left.mY = boardTop
     bottom.mNext = right
@@ -53,7 +53,7 @@ import Cocoa
     bottom.setControlPointsDefaultValuesForLine ()
     top.setControlPointsDefaultValuesForLine ()
   //---
-    self.ebUndoManager.enableUndoRegistration ()
+    self.undoManager?.enableUndoRegistration ()
   }
 
   //····················································································································
@@ -251,7 +251,7 @@ import Cocoa
     for pin in symbolPins {
       // Swift.print ("\(pin.pinIdentifier.symbol.symbolInstanceName) — \(inSymbol.mSymbolInstanceName)")
       if pin.pinIdentifier.symbol.symbolInstanceName == inSymbol.mSymbolInstanceName {
-        let point = PointInSchematic (self.ebUndoManager)
+        let point = PointInSchematic (self.undoManager)
         point.mSymbol = inSymbol
         point.mSymbolPinName = pin.pinIdentifier.pinName
         self.rootObject.mSelectedSheet?.mPoints.append (point)
@@ -267,7 +267,7 @@ import Cocoa
 
   private func performAddCommentDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
-    let comment = CommentInSchematic (self.ebUndoManager)
+    let comment = CommentInSchematic (self.undoManager)
     comment.mX = p.x
     comment.mY = p.y
     self.rootObject.mSelectedSheet?.mObjects.append (comment)
@@ -279,7 +279,7 @@ import Cocoa
 
   private func performAddRestrictRectangleDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
-    let restrictRectangle = BoardRestrictRectangle (self.ebUndoManager)
+    let restrictRectangle = BoardRestrictRectangle (self.undoManager)
     let layers = self.rootObject.mNewRestrictRectangleLayers
     restrictRectangle.mIsInFrontLayer  = (layers &  1) != 0
     restrictRectangle.mIsInBackLayer   = (layers &  2) != 0
@@ -301,7 +301,7 @@ import Cocoa
 
   private func performAddBoardTextDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
-    let boardText = BoardText (self.ebUndoManager)
+    let boardText = BoardText (self.undoManager)
     boardText.mLayer = self.rootObject.mBoardLayerForNewText
     boardText.mX = p.x
     boardText.mY = p.y
@@ -323,7 +323,7 @@ import Cocoa
       if let padDictionary = component.componentPadDictionary {
         for (padName, descriptor) in padDictionary {
           for idx in 0 ..< descriptor.pads.count {
-            let newConnector = BoardConnector (self.ebUndoManager)
+            let newConnector = BoardConnector (self.undoManager)
             newConnector.mComponent = component
             newConnector.mComponentPadName = padName
             newConnector.mPadIndex = idx
@@ -339,7 +339,7 @@ import Cocoa
 
   private func performAddBoardLineDragOperation (_ inDraggingLocationInDestinationView : NSPoint) {
     let p = inDraggingLocationInDestinationView.canariPointAligned (onCanariGrid: self.mBoardView!.mGraphicView.mGridStepInCanariUnit)
-    let newLine = BoardLine (self.ebUndoManager)
+    let newLine = BoardLine (self.undoManager)
     newLine.mLayer = self.rootObject.mBoardLayerForNewLine
     newLine.mX1 += p.x
     newLine.mY1 += p.y

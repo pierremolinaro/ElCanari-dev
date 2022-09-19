@@ -156,8 +156,8 @@ final class WireInSchematic : SchematicObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    super.init (inUndoManager)
     self.mP1_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mP1_property.propval == nil)
@@ -176,13 +176,13 @@ final class WireInSchematic : SchematicObject,
     self.mP2_property.addEBObserver (self.mP2_none)
     // gInitSemaphore.wait ()
   //--- To one property: mP1 (has opposite to many relationship: mWiresP1s)
-    self.mP1_property.ebUndoManager = self.ebUndoManager
+    self.mP1_property.undoManager = inUndoManager
     self.mP1_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mWiresP1s_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mWiresP1s_property.remove (me) } }
     )
   //--- To one property: mP2 (has opposite to many relationship: mWiresP2s)
-    self.mP2_property.ebUndoManager = self.ebUndoManager
+    self.mP2_property.undoManager = inUndoManager
     self.mP2_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mWiresP2s_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mWiresP2s_property.remove (me) } }

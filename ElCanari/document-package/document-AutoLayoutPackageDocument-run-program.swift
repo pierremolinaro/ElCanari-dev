@@ -262,7 +262,7 @@ extension AutoLayoutPackageDocument {
     self.checkName ("unit", inString, &ioIndex, &ioOk)
     let distanceUnit = self.scanUnit (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
-    let object = PackageDimension (self.ebUndoManager)
+    let object = PackageDimension (self.undoManager)
     object.x1 = x1
     object.x1Unit = x1Unit
     object.y1 = y1
@@ -311,7 +311,7 @@ extension AutoLayoutPackageDocument {
       case _ : possibleZoneNumbering = nil
     }
     self.checkChar (";", inString, &ioIndex, &ioOk)
-    let object = PackageZone (self.ebUndoManager)
+    let object = PackageZone (self.undoManager)
     object.x = x
     object.xUnit = xUnit
     object.y = y
@@ -370,7 +370,7 @@ extension AutoLayoutPackageDocument {
     let slavePadErrorLocation = ioIndex
     let masterPadID = self.scanNumber (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
-    let object = PackageSlavePad (self.ebUndoManager)
+    let object = PackageSlavePad (self.undoManager)
     object.xCenter = xCenter
     object.xCenterUnit = xCenterUnit
     object.yCenter = yCenter
@@ -421,7 +421,7 @@ extension AutoLayoutPackageDocument {
     let ((holeWidth, holeWidthUnit), (holeHeight, holeHeightUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkName ("number", inString, &ioIndex, &ioOk)
     let padNumber = self.scanNumber (inString, &ioIndex, &ioOk)
-    let object = PackagePad (self.ebUndoManager)
+    let object = PackagePad (self.undoManager)
     if self.test ("id", inString, &ioIndex, &ioOk) {
       let padID = self.scanNumber (inString, &ioIndex, &ioOk)
       ioMasterPadDictionary [padID] = object
@@ -455,7 +455,7 @@ extension AutoLayoutPackageDocument {
     self.checkName ("to", inString, &ioIndex, &ioOk)
     let ((x2, x2Unit), (y2, y2Unit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
-    let object = PackageGuide (self.ebUndoManager)
+    let object = PackageGuide (self.undoManager)
     object.x1 = x1
     object.x1Unit = x1Unit
     object.y1 = y1
@@ -481,7 +481,7 @@ extension AutoLayoutPackageDocument {
     self.checkName ("cp", inString, &ioIndex, &ioOk)
     let ((cpx2, cpx2Unit), (cpy2, cpy2Unit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
-    let object = PackageBezier (self.ebUndoManager)
+    let object = PackageBezier (self.undoManager)
     object.x1 = x1
     object.x1Unit = x1Unit
     object.y1 = y1
@@ -519,7 +519,7 @@ extension AutoLayoutPackageDocument {
     self.checkName ("training", inString, &ioIndex, &ioOk)
     let (endTangentLength, endTangentLengthUnit) = self.scanNumberWithUnit (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
-    let object = PackageArc (self.ebUndoManager)
+    let object = PackageArc (self.undoManager)
     object.xCenter = xCenter
     object.xCenterUnit = xCenterUnit
     object.yCenter = yCenter
@@ -545,7 +545,7 @@ extension AutoLayoutPackageDocument {
     self.checkName ("size", inString, &ioIndex, &ioOk)
     let ((width, widthUnit), (height, heightUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
-    let object = PackageOval (self.ebUndoManager)
+    let object = PackageOval (self.undoManager)
     object.x = originX
     object.xUnit = originXUnit
     object.y = originY
@@ -567,7 +567,7 @@ extension AutoLayoutPackageDocument {
     self.checkName ("to", inString, &ioIndex, &ioOk)
     let ((p2X, p2XUnit), (p2Y, p2YUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
-    let object = PackageSegment (self.ebUndoManager)
+    let object = PackageSegment (self.undoManager)
     object.x1 = p1X
     object.x1Unit = p1XUnit
     object.y1 = p1Y

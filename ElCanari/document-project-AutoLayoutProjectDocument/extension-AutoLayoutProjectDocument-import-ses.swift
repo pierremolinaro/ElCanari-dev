@@ -190,7 +190,7 @@ extension AutoLayoutProjectDocumentSubClass {
              let x = scanner.scanDouble (),
              let y = scanner.scanDouble () {
             if let netClass = net.mNetClass {
-              let via = BoardConnector (self.ebUndoManager)
+              let via = BoardConnector (self.undoManager)
               via.mX = Int (x * Double (inResolution))
               via.mY = Int (y * Double (inResolution))
               via.mUsesCustomHoleDiameter = true
@@ -254,7 +254,7 @@ extension AutoLayoutProjectDocumentSubClass {
         }
       }
     }
-    let newConnector = BoardConnector (self.ebUndoManager)
+    let newConnector = BoardConnector (self.undoManager)
     newConnector.mX = inP.x
     newConnector.mY = inP.y
     ioConnectorArray.append (newConnector)
@@ -293,7 +293,7 @@ extension AutoLayoutProjectDocumentSubClass {
     }
   //--- Write tracks
     for t in routedTracksArray {
-     let track = BoardTrack (self.ebUndoManager)
+     let track = BoardTrack (self.undoManager)
       let p1 = self.findOrAddConnector (at: t.p1, t.net, t.side, t.width, inRoutedViaArray, &connectorArray, &addedObjectArray)
       let p2 = self.findOrAddConnector (at: t.p2, t.net, t.side, t.width, inRoutedViaArray, &connectorArray, &addedObjectArray)
       if p1 !== p2 {

@@ -347,14 +347,14 @@ final class PackageInDevice : EBGraphicManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: ebUndoManager)
-    self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: ebUndoManager)
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager)
+    self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager)
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.mRoot_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mRoot_property.propval == nil)
@@ -365,9 +365,9 @@ final class PackageInDevice : EBGraphicManagedObject,
     self.mRoot_property.addEBObserver (self.mRoot_none)
     // gInitSemaphore.wait ()
   //--- To many property: mMasterPads (no option)
-    self.mMasterPads_property.ebUndoManager = self.ebUndoManager
+    self.mMasterPads_property.undoManager = inUndoManager
   //--- To one property: mRoot (has opposite to many relationship: mPackages)
-    self.mRoot_property.ebUndoManager = self.ebUndoManager
+    self.mRoot_property.undoManager = inUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPackages_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mPackages_property.remove (me) } }

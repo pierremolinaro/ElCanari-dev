@@ -597,23 +597,23 @@ final class PackageSlavePad : PackageObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.xCenter_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.yCenter_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.width_property = EBStoredProperty_Int (defaultValue: 114300, undoManager: ebUndoManager)
-    self.height_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: ebUndoManager)
-    self.holeWidth_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: ebUndoManager)
-    self.holeHeight_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: ebUndoManager)
-    self.padShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo, undoManager: ebUndoManager)
-    self.padStyle_property = EBStoredProperty_SlavePadStyle (defaultValue: SlavePadStyle.traversing, undoManager: ebUndoManager)
-    self.xCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.yCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.widthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.heightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.holeWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.holeHeightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.annularRingUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.xCenter_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.yCenter_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.width_property = EBStoredProperty_Int (defaultValue: 114300, undoManager: inUndoManager)
+    self.height_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: inUndoManager)
+    self.holeWidth_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager)
+    self.holeHeight_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager)
+    self.padShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo, undoManager: inUndoManager)
+    self.padStyle_property = EBStoredProperty_SlavePadStyle (defaultValue: SlavePadStyle.traversing, undoManager: inUndoManager)
+    self.xCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.yCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.widthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.heightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.holeWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.holeHeightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.annularRingUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.master_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.master_property.propval == nil)
@@ -624,7 +624,7 @@ final class PackageSlavePad : PackageObject,
     self.master_property.addEBObserver (self.master_none)
     // gInitSemaphore.wait ()
   //--- To one property: master (has opposite to many relationship: slaves)
-    self.master_property.ebUndoManager = self.ebUndoManager
+    self.master_property.undoManager = inUndoManager
     self.master_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.slaves_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.slaves_property.remove (me) } }

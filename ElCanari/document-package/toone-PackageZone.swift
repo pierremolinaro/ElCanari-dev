@@ -749,7 +749,7 @@ final class StoredObject_PackageZone : ReadWriteObject_PackageZone, EBSignatureO
   //   Undo manager
   //····················································································································
 
-  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   // Model will change
@@ -757,7 +757,7 @@ final class StoredObject_PackageZone : ReadWriteObject_PackageZone, EBSignatureO
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : PackageZone?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
+    self.undoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {

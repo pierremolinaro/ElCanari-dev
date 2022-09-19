@@ -37,7 +37,7 @@ extension AutoLayoutMergerDocumentSubClass {
   @objc private func insertModelInBoardAction (_ inSender : NSMenuItem) {
     if let (boardModel, mouseDownLocationInView) = inSender.representedObject as? (BoardModel, CanariPoint) {
       let rotation = self.rootObject.modelInsertionRotation
-      let newBoard = MergerBoardInstance (self.ebUndoManager)
+      let newBoard = MergerBoardInstance (self.undoManager)
       newBoard.myModel_property.setProp (boardModel)
       newBoard.x = mouseDownLocationInView.x
       newBoard.y = mouseDownLocationInView.y
@@ -129,7 +129,7 @@ extension AutoLayoutMergerDocumentSubClass {
           for _ in 0 ..< yCount {
             var x = mouseDownLocationInView.x
             for _ in 0 ..< xCount {
-              let newBoard = MergerBoardInstance (self.ebUndoManager)
+              let newBoard = MergerBoardInstance (self.undoManager)
               newBoard.myModel_property.setProp (boardModel)
               newBoard.instanceRotation = rotation
               newBoard.x = x

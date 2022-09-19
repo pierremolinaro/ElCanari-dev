@@ -51,7 +51,7 @@ extension AutoLayoutProjectDocument {
       panel.contentView = AutoLayoutWindowContentView (view: mainView)
       let message = errorList.joined (separator: "\n")
       text.string = message
-      window.beginSheet (panel) { [weak self] (inModalResponse) in self?.ebUndoManager.undo () }
+      window.beginSheet (panel) { [weak self] (inModalResponse) in self?.undoManager?.undo () }
     }
   }
 

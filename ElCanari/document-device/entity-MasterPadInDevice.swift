@@ -335,20 +335,20 @@ final class MasterPadInDevice : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mCenterX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mCenterY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mWidth_property = EBStoredProperty_Int (defaultValue: 114300, undoManager: ebUndoManager)
-    self.mHeight_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: ebUndoManager)
-    self.mHoleWidth_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: ebUndoManager)
-    self.mHoleHeight_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: ebUndoManager)
-    self.mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo, undoManager: ebUndoManager)
-    self.mStyle_property = EBStoredProperty_PadStyle (defaultValue: PadStyle.traversing, undoManager: ebUndoManager)
-    self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mCenterX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mCenterY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mWidth_property = EBStoredProperty_Int (defaultValue: 114300, undoManager: inUndoManager)
+    self.mHeight_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: inUndoManager)
+    self.mHoleWidth_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager)
+    self.mHoleHeight_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager)
+    self.mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo, undoManager: inUndoManager)
+    self.mStyle_property = EBStoredProperty_PadStyle (defaultValue: PadStyle.traversing, undoManager: inUndoManager)
+    self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- To many property: mSlavePads (has opposite relationship)
-    self.mSlavePads_property.ebUndoManager = self.ebUndoManager
+    self.mSlavePads_property.undoManager = inUndoManager
     self.mSlavePads_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mMasterPad_property.setProp (me) } },
       resetter: { inObject in inObject.mMasterPad_property.setProp (nil) }

@@ -12,31 +12,23 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   //····················································································································
 
-  weak private var mEBUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak private var mUndoManager : UndoManager? = nil // SOULD BE WEAK
   fileprivate var mPreferenceKey : String?
 
   //····················································································································
 
-  var mValueExplorer : NSTextField? {
-    didSet {
-      self.mValueExplorer?.stringValue = "\(mValue)"
-    }
-  }
-
-  //····················································································································
-
-  init (defaultValue inValue : T, undoManager inEBUndoManager : EBUndoManager?) {
+  init (defaultValue inValue : T, undoManager inEBUndoManager : UndoManager?) {
     self.mValue = inValue
     self.mPreferenceKey = nil
-    self.mEBUndoManager = inEBUndoManager
+    self.mUndoManager = inEBUndoManager
     super.init ()
   }
 
   //····················································································································
 
   init (defaultValue inValue : T, prefKey inPreferenceKey : String) {
-    mValue = inValue
-    mPreferenceKey = inPreferenceKey
+    self.mValue = inValue
+    self.mPreferenceKey = inPreferenceKey
     super.init ()
   //--- Read from preferences
     let possibleValue = UserDefaults.standard.object (forKey: inPreferenceKey)
@@ -53,8 +45,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
         if let prefKey = self.mPreferenceKey {
           UserDefaults.standard.set (mValue.convertToNSObject (), forKey:prefKey)
         }
-        self.mValueExplorer?.stringValue = "\(mValue)"
-        self.mEBUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
+        self.mUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
         if logEvents () {
           appendMessageString ("Property #\(self.objectIndex) did change value to \(self.mValue)\n")
         }

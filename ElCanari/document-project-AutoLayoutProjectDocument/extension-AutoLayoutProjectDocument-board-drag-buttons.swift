@@ -38,7 +38,7 @@ extension AutoLayoutProjectDocument {
   func boardTextImageFactory () -> EBShape? {
     var result : EBShape? = nil
     if let font = self.rootObject.mFonts.first {
-      self.ebUndoManager.disableUndoRegistration ()
+      self.undoManager?.disableUndoRegistration ()
       do{
         let boardText = BoardText (nil)
         boardText.mLayer = self.rootObject.mBoardLayerForNewText
@@ -49,7 +49,7 @@ extension AutoLayoutProjectDocument {
         boardText.mFont = nil
 //        temporaryRootObject.cleanUpRelationshipsAndRemoveAllObservers ()
       }
-      self.ebUndoManager.enableUndoRegistration ()
+      self.undoManager?.enableUndoRegistration ()
     }else{
       let alert = NSAlert ()
       alert.messageText = "Cannot Currently Add a Text: first, you need to add a Font."

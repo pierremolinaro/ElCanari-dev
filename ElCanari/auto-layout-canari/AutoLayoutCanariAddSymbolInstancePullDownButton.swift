@@ -56,11 +56,11 @@ final class AutoLayoutCanariAddSymbolInstancePullDownButton : AutoLayoutBase_NSP
       }
     //--- Add instance
       if let symbolType = possibleSymbolType {
-        let newSymbolInstance = SymbolInstanceInDevice (document.ebUndoManager)
+        let newSymbolInstance = SymbolInstanceInDevice (document.undoManager)
         newSymbolInstance.mType_property.setProp (symbolType)
         document.rootObject.mSymbolInstances_property.add (newSymbolInstance)
         for pinType in symbolType.mPinTypes_property.propval.values {
-          let pinInstance = SymbolPinInstanceInDevice (document.ebUndoManager)
+          let pinInstance = SymbolPinInstanceInDevice (document.undoManager)
           pinInstance.mType_property.setProp (pinType)
           newSymbolInstance.mPinInstances_property.add (pinInstance)
         }

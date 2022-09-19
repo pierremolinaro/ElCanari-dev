@@ -6,28 +6,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum RestrictRectangleLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable {
-  case frontSide = 0
-  case backSide = 1
-  case bothSides = 2
-
-
-  //····················································································································
-
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .frontSide : return "frontSide" // 0
-      case .backSide : return "backSide" // 1
-      case .bothSides : return "bothSides" // 2
-    }
-  }
+enum TextAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+  case left = 0
+  case right = 1
+  case center = 2
 
   //····················································································································
   //  Enum generic bindings utility functions
   //····················································································································
 
-  static func buildfromRawValue (rawValue : Int) -> RestrictRectangleLayer? {
-    if let v = RestrictRectangleLayer (rawValue:rawValue) {
+  static func buildfromRawValue (rawValue : Int) -> TextAlignment? {
+    if let v = TextAlignment (rawValue:rawValue) {
       return v
     }else{
       return nil
@@ -36,9 +25,9 @@ enum RestrictRectangleLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable 
 
   //····················································································································
 
-  func enumfromRawValue (rawValue : Int) -> RestrictRectangleLayer {
+  func enumfromRawValue (rawValue : Int) -> TextAlignment {
     var result = self
-    let v : RestrictRectangleLayer? = RestrictRectangleLayer (rawValue:rawValue) ;
+    let v : TextAlignment? = TextAlignment (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
@@ -61,9 +50,9 @@ enum RestrictRectangleLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable 
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> RestrictRectangleLayer {
-    var result = RestrictRectangleLayer.frontSide
-    if let number = object as? NSNumber, let v = RestrictRectangleLayer (rawValue: number.intValue) {
+  static func convertFromNSObject (object : NSObject) -> TextAlignment {
+    var result = TextAlignment.left
+    if let number = object as? NSNumber, let v = TextAlignment (rawValue: number.intValue) {
       result = v
     }
     return result
@@ -71,8 +60,8 @@ enum RestrictRectangleLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable 
 
   //····················································································································
 
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> RestrictRectangleLayer? {
-    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = RestrictRectangleLayer (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> TextAlignment? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = TextAlignment (rawValue: rawValue) {
       return enumValue
     }else{
       return nil
@@ -91,11 +80,11 @@ enum RestrictRectangleLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_RestrictRectangleLayer = EBReadOnlyEnumProperty <RestrictRectangleLayer>
-typealias EBTransientProperty_RestrictRectangleLayer = EBTransientEnumProperty <RestrictRectangleLayer>
-typealias EBReadWriteProperty_RestrictRectangleLayer = EBReadWriteEnumProperty <RestrictRectangleLayer>
-typealias EBStoredProperty_RestrictRectangleLayer = EBStoredEnumProperty <RestrictRectangleLayer>
-typealias EBPropertyProxy_RestrictRectangleLayer = EBPropertyEnumProxy <RestrictRectangleLayer>
-typealias EBPreferencesProperty_RestrictRectangleLayer = EBStoredEnumProperty <RestrictRectangleLayer>
+typealias EBReadOnlyProperty_TextAlignment = EBReadOnlyEnumProperty <TextAlignment>
+typealias EBTransientProperty_TextAlignment = EBTransientEnumProperty <TextAlignment>
+typealias EBReadWriteProperty_TextAlignment = EBReadWriteEnumProperty <TextAlignment>
+typealias EBStoredProperty_TextAlignment = EBStoredEnumProperty <TextAlignment>
+typealias EBPropertyProxy_TextAlignment = EBPropertyEnumProxy <TextAlignment>
+typealias EBPreferencesProperty_TextAlignment = EBStoredEnumProperty <TextAlignment>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

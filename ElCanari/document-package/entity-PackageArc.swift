@@ -397,21 +397,21 @@ final class PackageArc : PackageObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.yCenter_property = EBStoredProperty_Int (defaultValue: 342900, undoManager: ebUndoManager)
-    self.radius_property = EBStoredProperty_Int (defaultValue: 342900, undoManager: ebUndoManager)
-    self.startAngle_property = EBStoredProperty_Int (defaultValue: 45000, undoManager: ebUndoManager)
-    self.arcAngle_property = EBStoredProperty_Int (defaultValue: 270000, undoManager: ebUndoManager)
-    self.startTangent_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.endTangent_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.pathIsClosed_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.xCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.yCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.radiusUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.startTangentUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.endTangentUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.xCenter_property = EBStoredProperty_Int (defaultValue: 342900, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.yCenter_property = EBStoredProperty_Int (defaultValue: 342900, undoManager: inUndoManager)
+    self.radius_property = EBStoredProperty_Int (defaultValue: 342900, undoManager: inUndoManager)
+    self.startAngle_property = EBStoredProperty_Int (defaultValue: 45000, undoManager: inUndoManager)
+    self.arcAngle_property = EBStoredProperty_Int (defaultValue: 270000, undoManager: inUndoManager)
+    self.startTangent_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.endTangent_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.pathIsClosed_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.xCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.yCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.radiusUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.startTangentUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.endTangentUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.xCenter_property = EBStoredProperty_Int (defaultValue: 342900, undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in

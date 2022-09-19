@@ -218,9 +218,9 @@ final class SheetInProject : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mSheetTitle_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mSheetTitle_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.mRoot_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mRoot_property.propval == nil)
@@ -231,19 +231,19 @@ final class SheetInProject : EBManagedObject,
     self.mRoot_property.addEBObserver (self.mRoot_none)
     // gInitSemaphore.wait ()
   //--- To many property: mObjects (has opposite relationship)
-    self.mObjects_property.ebUndoManager = self.ebUndoManager
+    self.mObjects_property.undoManager = inUndoManager
     self.mObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },
       resetter: { inObject in inObject.mSheet_property.setProp (nil) }
     )
   //--- To many property: mPoints (has opposite relationship)
-    self.mPoints_property.ebUndoManager = self.ebUndoManager
+    self.mPoints_property.undoManager = inUndoManager
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },
       resetter: { inObject in inObject.mSheet_property.setProp (nil) }
     )
   //--- To one property: mRoot (has opposite to many relationship: mSheets)
-    self.mRoot_property.ebUndoManager = self.ebUndoManager
+    self.mRoot_property.undoManager = inUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSheets_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mSheets_property.remove (me) } }

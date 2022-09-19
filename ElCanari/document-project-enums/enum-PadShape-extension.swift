@@ -1,8 +1,8 @@
 //
-//  extension-TrackSide.swift
+//  enum-PadShape-extension.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 19/11/2021.
+//  Created by Pierre Molinaro on 19/09/2022.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -10,21 +10,18 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension TrackSide {
+extension PadShape {
 
   //····················································································································
 
-  var string : String {
+  func descriptionString () -> String {
     switch self {
-    case .front   : return "Front"
-    case .back    : return "Back"
-    case .inner1  : return "Inner 1"
-    case .inner2  : return "Inner 2"
-    case .inner3  : return "Inner 3"
-    case .inner4  : return "Inner 4"
+      case .rect : return "rect" // 0
+      case .round : return "round" // 1
+      case .octo : return "octo" // 2
     }
   }
-  
+
   //····················································································································
 
 }

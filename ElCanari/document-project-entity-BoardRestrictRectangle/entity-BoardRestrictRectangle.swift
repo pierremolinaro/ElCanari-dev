@@ -295,18 +295,18 @@ final class BoardRestrictRectangle : BoardObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mWidth_property = EBStoredProperty_Int (defaultValue: 2286000, undoManager: ebUndoManager)
-    self.mHeight_property = EBStoredProperty_Int (defaultValue: 2286000, undoManager: ebUndoManager)
-    self.mIsInFrontLayer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.mIsInBackLayer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.mIsInInner1Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mIsInInner2Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mIsInInner3Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mIsInInner4Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mWidth_property = EBStoredProperty_Int (defaultValue: 2286000, undoManager: inUndoManager)
+    self.mHeight_property = EBStoredProperty_Int (defaultValue: 2286000, undoManager: inUndoManager)
+    self.mIsInFrontLayer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.mIsInBackLayer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.mIsInInner1Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mIsInInner2Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mIsInInner3Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mIsInInner4Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in

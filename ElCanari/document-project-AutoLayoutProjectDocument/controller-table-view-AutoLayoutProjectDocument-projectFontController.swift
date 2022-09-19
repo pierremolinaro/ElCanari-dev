@@ -21,8 +21,8 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : EBObjcB
   //    Undo manager
   //····················································································································
 
-  private weak var mUndoManager : EBUndoManager? = nil // SHOULD BE WEAK
-  var ebUndoManager : EBUndoManager? { return self.mUndoManager }
+  private weak var mUndoManager : UndoManager? = nil // SHOULD BE WEAK
+  var undoManager : UndoManager? { return self.mUndoManager }
 
   //····················································································································
   //   Sorted Array
@@ -52,7 +52,7 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : EBObjcB
 
   //····················································································································
 
-  final func bind_model (_ inModel : ReadWriteArrayOf_FontInProject, _ inUndoManager : EBUndoManager) {
+  final func bind_model (_ inModel : ReadWriteArrayOf_FontInProject, _ inUndoManager : UndoManager?) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     self.sortedArray_property.setDataProvider (
@@ -137,13 +137,6 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : EBObjcB
 
   func setSelection (_ inObjects : [FontInProject]) {
     self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObjects))
-  }
-
-  //····················································································································
-  //    Explorer
-  //····················································································································
-
-  final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
   }
 
   //····················································································································
@@ -394,7 +387,7 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : EBObjcB
       case .empty, .multiple :
         ()
       case .single (let v) :
-        let newObject = FontInProject (self.ebUndoManager)
+        let newObject = FontInProject (self.undoManager)
         var array = EBReferenceArray (v)
         array.append (newObject)
         model.setProp (array)

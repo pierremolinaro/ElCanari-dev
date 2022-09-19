@@ -14,7 +14,7 @@ struct RawObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func loadEasyBindingTextFile (_ inUndoManager : EBUndoManager?,
+@MainActor func loadEasyBindingTextFile (_ inUndoManager : UndoManager?,
                                          documentName inDocumentName : String,
                                          from ioDataScanner: inout EBDataScanner) throws -> EBDocumentData {
   setStartOperationDateToNow ("Read Text Document file: \(inDocumentName)")
@@ -64,7 +64,7 @@ struct RawObject {
       propertyValueDictionary [propertyName] = propertyRange
     }
 //    operationQueue.addOperation {
-      let managedObject = newInstanceOfEntityNamed (inUndoManager, className)!
+      let managedObject = newInstanceOfEntityNamed (inUndoManager, className)
       managedObject.setUpPropertiesWithTextDictionary (propertyValueDictionary, data)
       let rawObject = RawObject (/* index: index, */ object: managedObject, propertyDictionary: propertyValueDictionary)
 //      mutex.wait ()

@@ -210,15 +210,15 @@ final class CommentInSchematic : SchematicObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.black, undoManager: ebUndoManager)
-    self.mSize_property = EBStoredProperty_Double (defaultValue: 11, undoManager: ebUndoManager)
-    self.mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: ebUndoManager)
-    self.mVerticalAlignment_property = EBStoredProperty_VerticalAlignment (defaultValue: VerticalAlignment.center, undoManager: ebUndoManager)
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mComment_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.black, undoManager: inUndoManager)
+    self.mSize_property = EBStoredProperty_Double (defaultValue: 11, undoManager: inUndoManager)
+    self.mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager)
+    self.mVerticalAlignment_property = EBStoredProperty_VerticalAlignment (defaultValue: VerticalAlignment.center, undoManager: inUndoManager)
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mComment_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in

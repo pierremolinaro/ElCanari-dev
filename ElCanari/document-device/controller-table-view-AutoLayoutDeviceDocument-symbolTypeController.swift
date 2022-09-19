@@ -21,8 +21,8 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
   //    Undo manager
   //····················································································································
 
-  private weak var mUndoManager : EBUndoManager? = nil // SHOULD BE WEAK
-  var ebUndoManager : EBUndoManager? { return self.mUndoManager }
+  private weak var mUndoManager : UndoManager? = nil // SHOULD BE WEAK
+  var undoManager : UndoManager? { return self.mUndoManager }
 
   //····················································································································
   //   Sorted Array
@@ -52,7 +52,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
 
   //····················································································································
 
-  final func bind_model (_ inModel : ReadWriteArrayOf_SymbolTypeInDevice, _ inUndoManager : EBUndoManager) {
+  final func bind_model (_ inModel : ReadWriteArrayOf_SymbolTypeInDevice, _ inUndoManager : UndoManager?) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     self.sortedArray_property.setDataProvider (
@@ -133,13 +133,6 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
 
   func setSelection (_ inObjects : [SymbolTypeInDevice]) {
     self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObjects))
-  }
-
-  //····················································································································
-  //    Explorer
-  //····················································································································
-
-  final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
   }
 
   //····················································································································
@@ -360,7 +353,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
       case .empty, .multiple :
         ()
       case .single (let v) :
-        let newObject = SymbolTypeInDevice (self.ebUndoManager)
+        let newObject = SymbolTypeInDevice (self.undoManager)
         var array = EBReferenceArray (v)
         array.append (newObject)
         model.setProp (array)

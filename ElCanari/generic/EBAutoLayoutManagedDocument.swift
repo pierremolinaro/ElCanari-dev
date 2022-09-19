@@ -18,22 +18,24 @@ class EBAutoLayoutManagedDocument : NSDocument {
   private final var mSplashTextField : AutoLayoutLabel? = nil
 
   //····················································································································
-  //   Properties
+  //   Root Object
   //····················································································································
 
-  final var mRootObject : EBManagedObject?
+  final var mRootObject : EBManagedObject
 
   //····················································································································
   //    init
   //····················································································································
 
   override init () {
+    self.mRootObject = EBManagedObject (nil) // Temporary object
     super.init ()
     noteObjectAllocation (self)
-    self.undoManager = self.mUndoManager
-    self.mUndoManager.disableUndoRegistration ()
-    self.mRootObject = newInstanceOfEntityNamed (self.mUndoManager, rootEntityClassName ())!
-    self.mUndoManager.enableUndoRegistration ()
+    let undoManager = EBUndoManager ()
+    self.undoManager = undoManager
+    undoManager.disableUndoRegistration ()
+    self.mRootObject = newInstanceOfEntityNamed (undoManager, self.rootEntityClassName ())
+    undoManager.enableUndoRegistration ()
   }
 
   //····················································································································
@@ -43,16 +45,16 @@ class EBAutoLayoutManagedDocument : NSDocument {
   }
 
   //····················································································································
-  //    ebUndoManager
+  //    undoManager
   //····················································································································
 
-  fileprivate final var mUndoManager = EBUndoManager ()
+//  fileprivate final var mUndoManager = EBUndoManager ()
 
   //····················································································································
 
-  final var ebUndoManager : EBUndoManager {
-    return self.mUndoManager
-  }
+//  final var undoManager : EBUndoManager {
+//    return self.undoManager as! EBUndoManager
+//  }
 
   //····················································································································
   //    rootEntityClassName
@@ -67,17 +69,17 @@ class EBAutoLayoutManagedDocument : NSDocument {
   //····················································································································
 
   func dragImageForRows (source inSourceTableView : AutoLayoutCanariDragSourceTableView,
-                         with dragRows: IndexSet,
-                         tableColumns: [NSTableColumn],
-                         event dragEvent: NSEvent,
-                         offset dragImageOffset: NSPointPointer) -> NSImage {
+                         with dragRows : IndexSet,
+                         tableColumns : [NSTableColumn],
+                         event dragEvent : NSEvent,
+                         offset dragImageOffset : NSPointPointer) -> NSImage {
     return NSImage (named: NSImage.Name ("exclamation"))!
   }
 
   //····················································································································
   //   Drag destination
   //····················································································································
-  //The six NSDraggingDestination methods are invoked in a distinct order:
+  // The six NSDraggingDestination methods are invoked in a distinct order:
   //
   // ① As the image is dragged into the destination’s boundaries, the destination is sent a draggingEntered: message.
   //       The method should return a value that indicates which dragging operation the destination will perform.
@@ -138,7 +140,7 @@ class EBAutoLayoutManagedDocument : NSDocument {
   final var mManagedDocumentFileFormat : EBManagedDocumentFileFormat = .binary {
     didSet {
       if self.mManagedDocumentFileFormat != oldValue {
-        self.ebUndoManager.registerUndo (withTarget: self) { $0.mManagedDocumentFileFormat = oldValue }
+        self.undoManager?.registerUndo (withTarget: self) { $0.mManagedDocumentFileFormat = oldValue }
       }
     }
   }
@@ -185,35 +187,11 @@ class EBAutoLayoutManagedDocument : NSDocument {
     let documentData = EBDocumentData (
       documentMetadataStatus: self.metadataStatusForSaving (),
       documentMetadataDictionary: self.mMetadataDictionary,
-      documentRootObject: self.mRootObject!,
+      documentRootObject: self.mRootObject,
       documentFileFormat: self.mManagedDocumentFileFormat
     )
     return try dataForSaveOperation (from: documentData)
   }
-
-  //····················································································································
-  //  Reachable objects from root object
-  //····················································································································
-
-//  private final func reachableObjectsFromRootObject () -> [EBManagedObject] {
-//    let rootObject = self.mRootObject!
-//    var reachableObjectArray = [rootObject]
-//    var reachableObjectSet = EBReferenceSet (rootObject)
-//    var objectsToExploreArray = [rootObject]
-//    while let objectToExplore = objectsToExploreArray.last {
-//      objectsToExploreArray.removeLast ()
-//      var accessible = [EBManagedObject] ()
-//      objectToExplore.accessibleObjectsForSaveOperation (objects: &accessible)
-//      for managedObject in accessible {
-//        if !reachableObjectSet.contains (managedObject) {
-//          reachableObjectSet.insert (managedObject)
-//          reachableObjectArray.append (managedObject)
-//          objectsToExploreArray.append (managedObject)
-//        }
-//      }
-//    }
-//    return reachableObjectArray
-//  }
 
   //····················································································································
   //    READ DOCUMENT FROM FILE
@@ -249,9 +227,9 @@ class EBAutoLayoutManagedDocument : NSDocument {
 //      }
       RunLoop.current.run (until: Date ())
     }
-    self.ebUndoManager.disableUndoRegistration ()
+    self.undoManager?.disableUndoRegistration ()
   //--- Load file
-    let documentData = try loadEasyBindingFile (fromData: inData, documentName: self.displayName, undoManager: self.ebUndoManager)
+    let documentData = try loadEasyBindingFile (fromData: inData, documentName: self.displayName, undoManager: self.undoManager)
     self.mManagedDocumentFileFormat = documentData.documentFileFormat
   //--- Store Status
     self.mReadMetadataStatus = documentData.documentMetadataStatus
@@ -259,14 +237,10 @@ class EBAutoLayoutManagedDocument : NSDocument {
     self.mMetadataDictionary = documentData.documentMetadataDictionary
   //--- Read version from file
     self.mVersion.setProp (self.readVersionFromMetadataDictionary (documentData.documentMetadataDictionary))
-  //--- Remove current root object graph
-//    for object in self.reachableObjectsFromRootObject () {
-//      object.cleanUpRelationshipsAndRemoveAllObservers ()
-//    }
   //--- Store root object
     self.mRootObject = documentData.documentRootObject
   //---
-    self.ebUndoManager.enableUndoRegistration ()
+    self.undoManager?.enableUndoRegistration ()
   }
 
   //····················································································································
@@ -293,10 +267,10 @@ class EBAutoLayoutManagedDocument : NSDocument {
 
   override func makeWindowControllers () {
   //--- Signature observer
-    self.mRootObject?.setSignatureObserver (observer: self.mSignatureObserver)
-    self.mSignatureObserver.setRootObject (self.mRootObject!)
+    self.mRootObject.setSignatureObserver (observer: self.mSignatureObserver)
+    self.mSignatureObserver.setRootObject (self.mRootObject)
   //--- Version did change observer
-    self.mVersionShouldChangeObserver.setSignatureObserverAndUndoManager (self.mSignatureObserver, self.ebUndoManager)
+    self.mVersionShouldChangeObserver.setSignatureObserverAndUndoManager (self.mSignatureObserver, self.undoManager)
     self.mSignatureObserver.addEBObserver (self.mVersionShouldChangeObserver)
   //--- Create the window and set the content view
     let s = self.windowDefaultSize ()
@@ -336,39 +310,6 @@ class EBAutoLayoutManagedDocument : NSDocument {
   }
 
   //····················································································································
-  //   removeUserInterface
-  //····················································································································
-
-/*  func removeUserInterface () {
-//    self.mSignatureObserver.removeEBObserver (self.mVersionShouldChangeObserver)
-  } */
-
-  //····················································································································
-
-//  override final func removeWindowController (_ inWindowController : NSWindowController) {
-//    setStartOperationDateToNow ("Closing \(self.lastComponentOfFileName)")
-//  //--- Remove user interface
-//    self.mSignatureObserver.removeEBObserver (self.mVersionShouldChangeObserver)
-////    self.removeUserInterface ()
-//    appendDocumentFileOperationInfo ("remove interface done")
-//  //--- Remove all entities
-////    let allEntities = self.reachableObjectsFromRootObject ()
-////    appendDocumentFileOperationInfo ("remove entity observers done")
-////    for entity in allEntities {
-////      entity.cleanUpToManyRelationships ()
-////    }
-////    appendDocumentFileOperationInfo ("clean up to many relationship done")
-////    for entity in allEntities {
-//////      entity.cleanUpToOneRelationships ()
-////    }
-////    appendDocumentFileOperationInfo ("clean up to one relationship done")
-//  //---
-//    super.removeWindowController (inWindowController)
-//    appendDocumentFileOperationInfo ("removeWindowController done")
-//    appendTotalDurationDocumentFileOperationInfo ()
-//  }
-
-  //····················································································································
   //    Signature observer
   //····················································································································
 
@@ -405,7 +346,7 @@ class EBAutoLayoutManagedDocument : NSDocument {
   //····················································································································
 
   final func resetVersionAndSignature () {
-    self.ebUndoManager.registerUndo (
+    self.undoManager?.registerUndo (
       withTarget: self,
       selector: #selector (Self.performUndoVersionNumber(_:)),
       object: NSNumber (value: self.mVersion.propval)
@@ -417,7 +358,7 @@ class EBAutoLayoutManagedDocument : NSDocument {
   //····················································································································
 
   @objc func performUndoVersionNumber (_ oldValue : NSNumber) {
-    self.ebUndoManager.registerUndo (
+    self.undoManager?.registerUndo (
       withTarget: self,
       selector: #selector (Self.performUndoVersionNumber(_:)),
       object: NSNumber (value: self.mVersion.propval)
@@ -486,7 +427,7 @@ final class EBVersionShouldChangeObserver : EBGenericTransientProperty <Bool>, E
 
   //····················································································································
 
-  private weak var mUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  private weak var mUndoManager : UndoManager? = nil // SOULD BE WEAK
   private weak var mSignatureObserver : EBSignatureObserverEvent? = nil // SOULD BE WEAK
   private var mSignatureAtStartUp : UInt32 = 0
 
@@ -505,8 +446,9 @@ final class EBVersionShouldChangeObserver : EBGenericTransientProperty <Bool>, E
 
   //····················································································································
 
-  final func setSignatureObserverAndUndoManager (_ signatureObserver : EBSignatureObserverEvent, _ ebUndoManager : EBUndoManager?) {
-    self.mUndoManager = ebUndoManager
+  final func setSignatureObserverAndUndoManager (_ signatureObserver : EBSignatureObserverEvent,
+                                                 _ inUndoManager : UndoManager?) {
+    self.mUndoManager = inUndoManager
     self.mSignatureObserver = signatureObserver
     self.mSignatureAtStartUp = signatureObserver.signature ()
   }

@@ -487,24 +487,24 @@ final class ArtworkRoot : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.layerConfiguration_property = EBStoredProperty_LayerConfiguration (defaultValue: LayerConfiguration.twoLayers, undoManager: ebUndoManager)
-    self.selectedTab_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.comments_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.minPPTPTTTWdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90, undoManager: ebUndoManager)
-    self.minPPTPTTTW_property = EBStoredProperty_Int (defaultValue: 18000, undoManager: ebUndoManager)
-    self.minValueForOARdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90, undoManager: ebUndoManager)
-    self.minValueForOARinEBUnit_property = EBStoredProperty_Int (defaultValue: 18000, undoManager: ebUndoManager)
-    self.minValueForPHDdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90, undoManager: ebUndoManager)
-    self.minValueForPHDinEBUnit_property = EBStoredProperty_Int (defaultValue: 18000, undoManager: ebUndoManager)
-    self.minValueForBoardLimitWidthDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.minValueForBoardLimitWidth_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.title_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.drillDataFileExtension_property = EBStoredProperty_String (defaultValue: "DRF", undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.layerConfiguration_property = EBStoredProperty_LayerConfiguration (defaultValue: LayerConfiguration.twoLayers, undoManager: inUndoManager)
+    self.selectedTab_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.comments_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.minPPTPTTTWdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90, undoManager: inUndoManager)
+    self.minPPTPTTTW_property = EBStoredProperty_Int (defaultValue: 18000, undoManager: inUndoManager)
+    self.minValueForOARdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90, undoManager: inUndoManager)
+    self.minValueForOARinEBUnit_property = EBStoredProperty_Int (defaultValue: 18000, undoManager: inUndoManager)
+    self.minValueForPHDdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90, undoManager: inUndoManager)
+    self.minValueForPHDinEBUnit_property = EBStoredProperty_Int (defaultValue: 18000, undoManager: inUndoManager)
+    self.minValueForBoardLimitWidthDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.minValueForBoardLimitWidth_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.title_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.drillDataFileExtension_property = EBStoredProperty_String (defaultValue: "DRF", undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- To many property: fileGenerationParameterArray (has opposite relationship)
-    self.fileGenerationParameterArray_property.ebUndoManager = self.ebUndoManager
+    self.fileGenerationParameterArray_property.undoManager = inUndoManager
     self.fileGenerationParameterArray_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mArtwork_property.setProp (me) } },
       resetter: { inObject in inObject.mArtwork_property.setProp (nil) }

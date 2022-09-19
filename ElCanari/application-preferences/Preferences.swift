@@ -32,7 +32,7 @@ import Cocoa
         defer: false
       )
       self.mWindow = window
-      _ = window.setFrameAutosaveName ("PrefsWindowSettings")
+      window.setFrameAutosaveName ("PrefsWindowSettings")
       window.title = "Preferences"
       window.isReleasedWhenClosed = false
       window.contentView = AutoLayoutWindowContentView (view: self.mPrefsMainView)
@@ -389,14 +389,14 @@ import Cocoa
 
   //····················································································································
 
-  var ebUndoManager : EBUndoManager { return self.mUndoManager }
+  var undoManager : UndoManager { return self.mUndoManager }
 
   //····················································································································
   // The preferences window should register this object as delegate (do it in Interface Builder)
   //····················································································································
 
   @objc func windowWillReturnUndoManager (_ window: NSWindow) -> UndoManager? {
-    return self.ebUndoManager
+    return self.undoManager
   }
 
   //····················································································································
@@ -408,9 +408,9 @@ import Cocoa
     g_Preferences = self ;
   //--- Read from preferences
   //--- To many property: additionnalLibraryArray (no option)
-    preferences_additionnalLibraryArray_property.ebUndoManager = self.ebUndoManager
+    preferences_additionnalLibraryArray_property.undoManager = self.undoManager
   //--- Array controller property: userLibraryArrayController
-    preferences_userLibraryArrayController.bind_model (preferences_additionnalLibraryArray_property, self.ebUndoManager)
+    preferences_userLibraryArrayController.bind_model (preferences_additionnalLibraryArray_property, self.undoManager)
   //--- Atomic property: mValueRevealInFinder_packages
     preferences_mValueRevealInFinder_packages_property.mReadModelFunction = {
         let s0 = preferences_usesUserLibrary_property.selection

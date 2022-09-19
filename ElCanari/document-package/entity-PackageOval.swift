@@ -267,16 +267,16 @@ final class PackageOval : PackageObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.width_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: ebUndoManager)
-    self.height_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: ebUndoManager)
-    self.xUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.yUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.widthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.heightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.width_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager)
+    self.height_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager)
+    self.xUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.yUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.widthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.heightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in

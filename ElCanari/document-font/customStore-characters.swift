@@ -44,7 +44,7 @@ let FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY = "-characters-"
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func customRead_FontCharacter_characters (from inDictionary : NSDictionary,
-                                                     with inUndoManager : EBUndoManager?) -> [FontCharacter] {
+                                                     with inUndoManager : UndoManager?) -> [FontCharacter] {
 //  let start = Date ()
   var result = [FontCharacter] ()
   if let s = inDictionary [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String {

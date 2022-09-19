@@ -14,8 +14,8 @@ final class Controller_AutoLayoutProjectDocument_boardCurveObjectsController : R
   //    Undo manager
   //····················································································································
 
-  private weak var mUndoManager : EBUndoManager? = nil // SHOULD BE WEAK
-  var ebUndoManager : EBUndoManager? { return self.mUndoManager }
+  private weak var mUndoManager : UndoManager? = nil // SHOULD BE WEAK
+  var undoManager : UndoManager? { return self.mUndoManager }
 
   //····················································································································
   // Model
@@ -164,7 +164,7 @@ final class Controller_AutoLayoutProjectDocument_boardCurveObjectsController : R
 
   //····················································································································
 
-  final func bind_model (_ inModel : ReadWriteArrayOf_BorderCurve, _ inUndoManager : EBUndoManager?) {
+  final func bind_model (_ inModel : ReadWriteArrayOf_BorderCurve, _ inUndoManager : UndoManager?) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     inModel.attachClient (self)
@@ -400,13 +400,6 @@ final class Controller_AutoLayoutProjectDocument_boardCurveObjectsController : R
   } */
 
   //····················································································································
-  //    Explorer
-  //····················································································································
-
-  final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
-  }
-
-  //····················································································································
 
   func selectedObjectIndexSet () -> NSIndexSet {
     let modelObjects = self.objectArray
@@ -448,7 +441,7 @@ final class Controller_AutoLayoutProjectDocument_boardCurveObjectsController : R
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = BorderCurve (self.ebUndoManager)
+        let newObject = BorderCurve (self.undoManager)
         var array = EBReferenceArray (v)
         array.append (newObject)
       //--- New object is the selection
@@ -650,7 +643,7 @@ final class Controller_AutoLayoutProjectDocument_boardCurveObjectsController : R
       var errorMessage = ""
       for dictionary in dictionaryArray {
         idx += 1
-        if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? BorderCurve {
+        if let object = makeManagedObjectFromDictionary (self.undoManager, dictionary) as? BorderCurve {
           if errorMessage.isEmpty {
             errorMessage = object.operationAfterPasting (additionalDictionary: additionalDictionaryArray [idx],
                                                          optionalDocument: self.document,

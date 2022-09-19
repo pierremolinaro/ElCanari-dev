@@ -229,15 +229,15 @@ final class FontCharacter : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.codePoint_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.advance_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mWarnsWhenNoSegment_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.mWarnsWhenAdvanceIsZero_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.codePoint_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.advance_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mWarnsWhenNoSegment_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.mWarnsWhenAdvanceIsZero_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- To many property: segments (no option)
-    self.segments_property.ebUndoManager = self.ebUndoManager
+    self.segments_property.undoManager = inUndoManager
   //--- Atomic property: segmentArrayForDrawing
     self.segmentArrayForDrawing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

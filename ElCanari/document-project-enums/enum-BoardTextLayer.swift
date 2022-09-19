@@ -12,18 +12,6 @@ enum BoardTextLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case layoutBack = 2
   case legendBack = 3
 
-
-  //····················································································································
-
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .legendFront : return "legendFront" // 0
-      case .layoutFront : return "layoutFront" // 1
-      case .layoutBack : return "layoutBack" // 2
-      case .legendBack : return "legendBack" // 3
-    }
-  }
-
   //····················································································································
   // Function popupTitles
   //····················································································································

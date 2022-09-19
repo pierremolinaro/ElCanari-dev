@@ -234,11 +234,11 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.instanceRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.instanceRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.myModel_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.myModel_property.propval == nil)
@@ -257,7 +257,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
     self.myRoot_property.addEBObserver (self.myRoot_none)
     // gInitSemaphore.wait ()
   //--- To one property: myModel (has opposite to many relationship: myInstances)
-    self.myModel_property.ebUndoManager = self.ebUndoManager
+    self.myModel_property.undoManager = inUndoManager
     self.myModel_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.myInstances_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.myInstances_property.remove (me) } }
@@ -384,7 +384,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
     self.instanceRotation_property.addEBObserver (self.objectDisplay_property)
     self.myModel_property.imageForInstances_property.addEBObserver (self.objectDisplay_property)
   //--- To one property: myRoot (has opposite to many relationship: boardInstances)
-    self.myRoot_property.ebUndoManager = self.ebUndoManager
+    self.myRoot_property.undoManager = inUndoManager
     self.myRoot_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.remove (me) } }

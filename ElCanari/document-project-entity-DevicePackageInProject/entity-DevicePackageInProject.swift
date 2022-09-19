@@ -105,13 +105,13 @@ final class DevicePackageInProject : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mPackageName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mPackageName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- To many property: mMasterPads (no option)
-    self.mMasterPads_property.ebUndoManager = self.ebUndoManager
+    self.mMasterPads_property.undoManager = inUndoManager
   //--- Atomic property: packagePadDictionary
     self.packagePadDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

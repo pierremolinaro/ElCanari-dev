@@ -12,13 +12,13 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
 
   //····················································································································
 
-  weak private var mEBUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak private var mUndoManager : UndoManager? // SOULD BE WEAK
 
   //····················································································································
 
-  init (defaultValue inValue : T, undoManager inEBUndoManager : EBUndoManager?) {
+  init (defaultValue inValue : T, undoManager inUndoManager : UndoManager?) {
     self.mValue = inValue
-    self.mEBUndoManager = inEBUndoManager
+    self.mUndoManager = inUndoManager
     super.init ()
   }
 
@@ -27,7 +27,7 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
   private var mValue : T {
     didSet {
       if self.mValue != oldValue {
-        self.mEBUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
+        self.mUndoManager?.registerUndo (withTarget: self) { $0.mValue = oldValue }
         if logEvents () {
           appendMessageString ("Property #\(self.objectIndex) did change value to \(self.mValue)\n")
         }

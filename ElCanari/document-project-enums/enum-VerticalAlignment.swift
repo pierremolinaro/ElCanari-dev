@@ -6,28 +6,26 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum TrackCreationDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable {
-  case anyAngle = 0
-  case octolinear = 1
-  case rectilinear = 2
-
+enum VerticalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+  case above = 0
+  case base = 1
+  case center = 2
+  case below = 3
 
   //····················································································································
+  // Function popupTitles
+  //····················································································································
 
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .anyAngle : return "anyAngle" // 0
-      case .octolinear : return "octolinear" // 1
-      case .rectilinear : return "rectilinear" // 2
-    }
+  static func popupTitles () -> [String] {
+    return ["above", "base", "center", "below"]
   }
 
   //····················································································································
   //  Enum generic bindings utility functions
   //····················································································································
 
-  static func buildfromRawValue (rawValue : Int) -> TrackCreationDirection? {
-    if let v = TrackCreationDirection (rawValue:rawValue) {
+  static func buildfromRawValue (rawValue : Int) -> VerticalAlignment? {
+    if let v = VerticalAlignment (rawValue:rawValue) {
       return v
     }else{
       return nil
@@ -36,9 +34,9 @@ enum TrackCreationDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable 
 
   //····················································································································
 
-  func enumfromRawValue (rawValue : Int) -> TrackCreationDirection {
+  func enumfromRawValue (rawValue : Int) -> VerticalAlignment {
     var result = self
-    let v : TrackCreationDirection? = TrackCreationDirection (rawValue:rawValue) ;
+    let v : VerticalAlignment? = VerticalAlignment (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
@@ -61,9 +59,9 @@ enum TrackCreationDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable 
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> TrackCreationDirection {
-    var result = TrackCreationDirection.anyAngle
-    if let number = object as? NSNumber, let v = TrackCreationDirection (rawValue: number.intValue) {
+  static func convertFromNSObject (object : NSObject) -> VerticalAlignment {
+    var result = VerticalAlignment.above
+    if let number = object as? NSNumber, let v = VerticalAlignment (rawValue: number.intValue) {
       result = v
     }
     return result
@@ -71,8 +69,8 @@ enum TrackCreationDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable 
 
   //····················································································································
 
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> TrackCreationDirection? {
-    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = TrackCreationDirection (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> VerticalAlignment? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = VerticalAlignment (rawValue: rawValue) {
       return enumValue
     }else{
       return nil
@@ -91,11 +89,11 @@ enum TrackCreationDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_TrackCreationDirection = EBReadOnlyEnumProperty <TrackCreationDirection>
-typealias EBTransientProperty_TrackCreationDirection = EBTransientEnumProperty <TrackCreationDirection>
-typealias EBReadWriteProperty_TrackCreationDirection = EBReadWriteEnumProperty <TrackCreationDirection>
-typealias EBStoredProperty_TrackCreationDirection = EBStoredEnumProperty <TrackCreationDirection>
-typealias EBPropertyProxy_TrackCreationDirection = EBPropertyEnumProxy <TrackCreationDirection>
-typealias EBPreferencesProperty_TrackCreationDirection = EBStoredEnumProperty <TrackCreationDirection>
+typealias EBReadOnlyProperty_VerticalAlignment = EBReadOnlyEnumProperty <VerticalAlignment>
+typealias EBTransientProperty_VerticalAlignment = EBTransientEnumProperty <VerticalAlignment>
+typealias EBReadWriteProperty_VerticalAlignment = EBReadWriteEnumProperty <VerticalAlignment>
+typealias EBStoredProperty_VerticalAlignment = EBStoredEnumProperty <VerticalAlignment>
+typealias EBPropertyProxy_VerticalAlignment = EBPropertyEnumProxy <VerticalAlignment>
+typealias EBPreferencesProperty_VerticalAlignment = EBStoredEnumProperty <VerticalAlignment>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

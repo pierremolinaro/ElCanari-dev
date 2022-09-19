@@ -10,16 +10,6 @@ enum BorderCurveShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case line = 0
   case bezier = 1
 
-
-  //····················································································································
-
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .line : return "line" // 0
-      case .bezier : return "bezier" // 1
-    }
-  }
-
   //····················································································································
   // Function popupTitles
   //····················································································································

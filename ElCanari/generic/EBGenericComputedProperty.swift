@@ -17,15 +17,15 @@ final class EBGenericComputedProperty <T> : EBObservableMutableProperty <T>, EBO
 
   //····················································································································
 
-  var mValueExplorer : NSTextField? {
-    didSet {
-      if let valueCache = self.mValueCache {
-        self.mValueExplorer?.stringValue = "\(valueCache)"
-      }else{
-        self.mValueExplorer?.stringValue = "nil"
-      }
-    }
-  }
+//  var mValueExplorer : NSTextField? {
+//    didSet {
+//      if let valueCache = self.mValueCache {
+//        self.mValueExplorer?.stringValue = "\(valueCache)"
+//      }else{
+//        self.mValueExplorer?.stringValue = "nil"
+//      }
+//    }
+//  }
 
   //····················································································································
 
@@ -35,7 +35,7 @@ final class EBGenericComputedProperty <T> : EBObservableMutableProperty <T>, EBO
       if self.mValueCache == nil {
         self.mValueCache = .empty
       }
-      self.mValueExplorer?.stringValue = "\(self.mValueCache!)"
+//      self.mValueExplorer?.stringValue = "\(self.mValueCache!)"
     }
     return self.mValueCache!
   }
@@ -45,7 +45,7 @@ final class EBGenericComputedProperty <T> : EBObservableMutableProperty <T>, EBO
   override func observedObjectDidChange () {
     if self.mValueCache != nil {
       self.mValueCache = nil
-      self.mValueExplorer?.stringValue = "nil"
+//      self.mValueExplorer?.stringValue = "nil"
       if logEvents () {
         appendMessageString ("Transient #\(self.objectIndex) propagation\n")
       }

@@ -92,11 +92,11 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: ebUndoManager)
-    self.mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager)
+    self.mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
     // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships

@@ -11,17 +11,6 @@ enum AutorouterSnapAngle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case octolinear = 1
   case anyAngle = 2
 
-
-  //····················································································································
-
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .rectilinear : return "rectilinear" // 0
-      case .octolinear : return "octolinear" // 1
-      case .anyAngle : return "anyAngle" // 2
-    }
-  }
-
   //····················································································································
   // Function popupTitles
   //····················································································································

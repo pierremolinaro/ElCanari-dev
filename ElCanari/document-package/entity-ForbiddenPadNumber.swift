@@ -40,9 +40,9 @@ final class ForbiddenPadNumber : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.padNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.padNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
     // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships

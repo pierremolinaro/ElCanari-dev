@@ -239,7 +239,7 @@ extension SheetInProject {
         }
       }
       if ok {
-        let newPoint = PointInSchematic (self.ebUndoManager)
+        let newPoint = PointInSchematic (self.undoManager)
         newPoint.mSymbol = symbol
         newPoint.mSymbolPinName = symbolPinName
         newPoint.mNet = inNet

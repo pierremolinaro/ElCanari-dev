@@ -96,7 +96,7 @@ extension SheetInProject {
       }
     //--- Remove labels ?
       for label in p.mLabels.values {
-        let newPoint = PointInSchematic (self.ebUndoManager)
+        let newPoint = PointInSchematic (self.undoManager)
         newPoint.mX = location.x
         newPoint.mY = location.y
         label.mPoint = newPoint
@@ -106,7 +106,7 @@ extension SheetInProject {
       }
     //--- Remove wires ?
       for wire in p.mWiresP1s.values {
-        let newPoint = PointInSchematic (self.ebUndoManager)
+        let newPoint = PointInSchematic (self.undoManager)
         newPoint.mX = location.x
         newPoint.mY = location.y
         wire.mP1 = newPoint
@@ -115,7 +115,7 @@ extension SheetInProject {
         pointSet.insert (newPoint)
       }
       for wire in p.mWiresP2s.values {
-        let newPoint = PointInSchematic (self.ebUndoManager)
+        let newPoint = PointInSchematic (self.undoManager)
         newPoint.mX = location.x
         newPoint.mY = location.y
         wire.mP2 = newPoint

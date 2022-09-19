@@ -1114,7 +1114,7 @@ class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, EBSign
   //   Undo manager
   //····················································································································
 
-  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
@@ -1137,7 +1137,7 @@ class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, EBSign
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <SlavePadInDevice>) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+    self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
@@ -1323,10 +1323,9 @@ final class PreferencesArrayOf_SlavePadInDevice : StoredArrayOf_SlavePadInDevice
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = EBReferenceArray <SlavePadInDevice> ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SlavePadInDevice") as? SlavePadInDevice {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
+        let object = newInstanceOfEntityNamed (self.undoManager, "SlavePadInDevice") as! SlavePadInDevice
+        object.setUpAtomicPropertiesWithDictionary (dictionary)
+        objectArray.append (object)
       }
       self.setProp (objectArray)
     }

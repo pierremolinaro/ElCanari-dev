@@ -82,9 +82,9 @@ final class NCInSchematic : SchematicObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mOrientation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mOrientation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.mPoint_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mPoint_property.propval == nil)
@@ -95,7 +95,7 @@ final class NCInSchematic : SchematicObject,
     self.mPoint_property.addEBObserver (self.mPoint_none)
     // gInitSemaphore.wait ()
   //--- To one property: mPoint (has opposite to one relationship: mNC)
-    self.mPoint_property.ebUndoManager = self.ebUndoManager
+    self.mPoint_property.undoManager = inUndoManager
     self.mPoint_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNC_property.setProp (me) } },
       resetter: { inObject in inObject.mNC_property.setProp (nil) }

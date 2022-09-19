@@ -67,9 +67,9 @@ struct EBDataScanner {
 
   //····················································································································
 
-  mutating func testAcceptFromByte (lowerBound: UInt8,
-                                    upperBound: UInt8,
-                                    value: inout UInt8) -> Bool {
+  mutating func testAcceptFromByte (lowerBound : UInt8,
+                                    upperBound : UInt8,
+                                    value : inout UInt8) -> Bool {
     var result = self.mReadOk
     if result {
       if self.mReadIndex >= self.mData.count {
@@ -356,7 +356,7 @@ struct EBDataScanner {
   //····················································································································
 
   func ok () -> Bool {
-    return mReadOk
+    return self.mReadOk
   }
 
   //····················································································································

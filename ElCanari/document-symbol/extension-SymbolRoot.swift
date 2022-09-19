@@ -14,7 +14,7 @@ extension SymbolRoot {
 
   //····················································································································
 
-  func accumulate (withUndoManager inUndoManager : EBUndoManager,
+  func accumulate (withUndoManager inUndoManager : UndoManager?,
                    strokeBezierPathes : NSBezierPath,
                    filledBezierPathes : NSBezierPath,
                    symbolPins : inout EBReferenceArray <SymbolPinTypeInDevice>) {

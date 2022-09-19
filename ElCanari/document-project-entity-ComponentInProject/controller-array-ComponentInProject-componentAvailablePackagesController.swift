@@ -14,8 +14,8 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
   //    Undo manager
   //····················································································································
 
-  private weak var mUndoManager : EBUndoManager? = nil // SHOULD BE WEAK
-  var ebUndoManager : EBUndoManager? { return self.mUndoManager }
+  private weak var mUndoManager : UndoManager? = nil // SHOULD BE WEAK
+  var undoManager : UndoManager? { return self.mUndoManager }
 
   //····················································································································
   // Model
@@ -81,7 +81,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
 
   //····················································································································
 
-  final func bind_model (_ inModel : ReadWriteArrayOf_DevicePackageInProject, _ inUndoManager : EBUndoManager?) {
+  final func bind_model (_ inModel : ReadWriteArrayOf_DevicePackageInProject, _ inUndoManager : UndoManager?) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     inModel.attachClient (self)
@@ -140,13 +140,6 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
   }
 
   //····················································································································
-  //    Explorer
-  //····················································································································
-
-  final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
-  }
-
-  //····················································································································
 
   func selectedObjectIndexSet () -> NSIndexSet {
     let modelObjects = self.objectArray
@@ -188,7 +181,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = DevicePackageInProject (self.ebUndoManager)
+        let newObject = DevicePackageInProject (self.undoManager)
         var array = EBReferenceArray (v)
         array.append (newObject)
       //--- New object is the selection

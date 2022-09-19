@@ -6,36 +6,25 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum PadShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
-  case rect = 0
-  case round = 1
-  case octo = 2
-
-
-  //····················································································································
-
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .rect : return "rect" // 0
-      case .round : return "round" // 1
-      case .octo : return "octo" // 2
-    }
-  }
+enum GridStyle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+  case noGrid = 0
+  case cross = 1
+  case line = 2
 
   //····················································································································
   // Function popupTitles
   //····················································································································
 
   static func popupTitles () -> [String] {
-    return ["Rectangular", "Round", "Octogonal"]
+    return ["No Grid", "Cross Grid", "Line Grid"]
   }
 
   //····················································································································
   //  Enum generic bindings utility functions
   //····················································································································
 
-  static func buildfromRawValue (rawValue : Int) -> PadShape? {
-    if let v = PadShape (rawValue:rawValue) {
+  static func buildfromRawValue (rawValue : Int) -> GridStyle? {
+    if let v = GridStyle (rawValue:rawValue) {
       return v
     }else{
       return nil
@@ -44,9 +33,9 @@ enum PadShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  func enumfromRawValue (rawValue : Int) -> PadShape {
+  func enumfromRawValue (rawValue : Int) -> GridStyle {
     var result = self
-    let v : PadShape? = PadShape (rawValue:rawValue) ;
+    let v : GridStyle? = GridStyle (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
@@ -69,9 +58,9 @@ enum PadShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> PadShape {
-    var result = PadShape.rect
-    if let number = object as? NSNumber, let v = PadShape (rawValue: number.intValue) {
+  static func convertFromNSObject (object : NSObject) -> GridStyle {
+    var result = GridStyle.noGrid
+    if let number = object as? NSNumber, let v = GridStyle (rawValue: number.intValue) {
       result = v
     }
     return result
@@ -79,8 +68,8 @@ enum PadShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> PadShape? {
-    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = PadShape (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> GridStyle? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = GridStyle (rawValue: rawValue) {
       return enumValue
     }else{
       return nil
@@ -99,11 +88,11 @@ enum PadShape : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_PadShape = EBReadOnlyEnumProperty <PadShape>
-typealias EBTransientProperty_PadShape = EBTransientEnumProperty <PadShape>
-typealias EBReadWriteProperty_PadShape = EBReadWriteEnumProperty <PadShape>
-typealias EBStoredProperty_PadShape = EBStoredEnumProperty <PadShape>
-typealias EBPropertyProxy_PadShape = EBPropertyEnumProxy <PadShape>
-typealias EBPreferencesProperty_PadShape = EBStoredEnumProperty <PadShape>
+typealias EBReadOnlyProperty_GridStyle = EBReadOnlyEnumProperty <GridStyle>
+typealias EBTransientProperty_GridStyle = EBTransientEnumProperty <GridStyle>
+typealias EBReadWriteProperty_GridStyle = EBReadWriteEnumProperty <GridStyle>
+typealias EBStoredProperty_GridStyle = EBStoredEnumProperty <GridStyle>
+typealias EBPropertyProxy_GridStyle = EBPropertyEnumProxy <GridStyle>
+typealias EBPreferencesProperty_GridStyle = EBStoredEnumProperty <GridStyle>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

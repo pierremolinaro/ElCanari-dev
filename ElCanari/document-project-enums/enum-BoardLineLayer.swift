@@ -10,16 +10,6 @@ enum BoardLineLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case legendFront = 0
   case legendBack = 1
 
-
-  //····················································································································
-
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .legendFront : return "legendFront" // 0
-      case .legendBack : return "legendBack" // 1
-    }
-  }
-
   //····················································································································
   // Function popupTitles
   //····················································································································

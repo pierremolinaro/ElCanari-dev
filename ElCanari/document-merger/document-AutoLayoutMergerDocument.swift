@@ -6,8 +6,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(AutoLayoutMergerDocument) class AutoLayoutMergerDocument : EBAutoLayoutManagedDocument, NSToolbarDelegate {
-
+@objc(AutoLayoutMergerDocument) class AutoLayoutMergerDocument : EBAutoLayoutManagedDocument {
+  
   //····················································································································
   //   Array controller: mBoardModelController
   //····················································································································
@@ -4003,19 +4003,19 @@ import Cocoa
 
   final private func configureProperties () {
   //--- Array controller property: mBoardModelController
-    self.mBoardModelController.bind_model (self.rootObject.boardModels_property, self.ebUndoManager)
+    self.mBoardModelController.bind_model (self.rootObject.boardModels_property, self.undoManager)
 
   //--- Selection controller property: mBoardModelSelection
     self.mBoardModelSelection.bind_selection (model: self.mBoardModelController.selectedArray_property)
 
   //--- Array controller property: mBoardInstanceController
-    self.mBoardInstanceController.bind_model (self.rootObject.boardInstances_property, self.ebUndoManager)
+    self.mBoardInstanceController.bind_model (self.rootObject.boardInstances_property, self.undoManager)
 
   //--- Selection controller property: mBoardInstanceSelection
     self.mBoardInstanceSelection.bind_selection (model: self.mBoardInstanceController.selectedArray_property)
 
   //--- Array controller property: mDataController
-    self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property, self.ebUndoManager)
+    self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property, self.undoManager)
 
   //--- Selection controller property: mDataSelection
     self.mDataSelection.bind_selection (model: self.mDataController.selectedArray_property)

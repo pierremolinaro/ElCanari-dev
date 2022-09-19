@@ -6,8 +6,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(AutoLayoutArtworkDocument) class AutoLayoutArtworkDocument : EBAutoLayoutManagedDocument, NSToolbarDelegate {
-
+@objc(AutoLayoutArtworkDocument) class AutoLayoutArtworkDocument : EBAutoLayoutManagedDocument {
+  
   //····················································································································
   //   Array controller: mDataController
   //····················································································································
@@ -899,7 +899,7 @@ import Cocoa
 
   final private func configureProperties () {
   //--- Array controller property: mDataController
-    self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property, self.ebUndoManager)
+    self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property, self.undoManager)
 
   //--- Selection controller property: mDataSelection
     self.mDataSelection.bind_selection (model: self.mDataController.selectedArray_property)

@@ -152,8 +152,8 @@ class SchematicObject : EBGraphicManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    super.init (inUndoManager)
     self.mSheet_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mSheet_property.propval == nil)
@@ -164,7 +164,7 @@ class SchematicObject : EBGraphicManagedObject,
     self.mSheet_property.addEBObserver (self.mSheet_none)
     // gInitSemaphore.wait ()
   //--- To one property: mSheet (has opposite to many relationship: mObjects)
-    self.mSheet_property.ebUndoManager = self.ebUndoManager
+    self.mSheet_property.undoManager = inUndoManager
     self.mSheet_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mObjects_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mObjects_property.remove (me) } }

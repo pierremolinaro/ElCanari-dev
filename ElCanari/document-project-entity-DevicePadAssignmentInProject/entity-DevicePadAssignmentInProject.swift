@@ -116,9 +116,9 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mPadName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mPadName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.mPin_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mPin_property.propval == nil)
@@ -129,7 +129,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
     self.mPin_property.addEBObserver (self.mPin_none)
     // gInitSemaphore.wait ()
   //--- To one property: mPin
-    self.mPin_property.ebUndoManager = self.ebUndoManager
+    self.mPin_property.undoManager = inUndoManager
   //--- Atomic property: pinPadAssignment
     self.pinPadAssignment_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

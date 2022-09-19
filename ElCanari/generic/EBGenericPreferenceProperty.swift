@@ -24,7 +24,7 @@ final class EBGenericPreferenceProperty <T : EBStoredPropertyProtocol> : EBObser
     let possibleValue = UserDefaults.standard.object (forKey: inPreferenceKey)
     if let object = possibleValue as? NSObject {
       let value = T.convertFromNSObject (object: object)
-      setProp (value)
+      self.setProp (value)
     }
   }
 

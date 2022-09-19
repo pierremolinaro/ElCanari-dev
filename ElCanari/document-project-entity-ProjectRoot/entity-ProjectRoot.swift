@@ -4340,101 +4340,101 @@ final class ProjectRoot : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mArtworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray, undoManager: ebUndoManager)
-    self.mCheckClearanceBetweenPadsOfSameNet_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.mLastERCCheckingIsSuccess_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mLastERCCheckingSignature_property = EBStoredProperty_UInt32 (defaultValue: 1, undoManager: ebUndoManager)
-    self.mLayerConfiguration_property = EBStoredProperty_LayerConfiguration (defaultValue: LayerConfiguration.twoLayers, undoManager: ebUndoManager)
-    self.mBoardSideForNewTrack_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front, undoManager: ebUndoManager)
-    self.mDirectionForNewTrack_property = EBStoredProperty_TrackCreationDirection (defaultValue: TrackCreationDirection.anyAngle, undoManager: ebUndoManager)
-    self.mBoardLayerForNewText_property = EBStoredProperty_BoardTextLayer (defaultValue: BoardTextLayer.legendFront, undoManager: ebUndoManager)
-    self.mBoardLayerForNewLine_property = EBStoredProperty_BoardLineLayer (defaultValue: BoardLineLayer.legendFront, undoManager: ebUndoManager)
-    self.mBoardSideForNewRestrictRectangle_property = EBStoredProperty_RestrictRectangleLayer (defaultValue: RestrictRectangleLayer.frontSide, undoManager: ebUndoManager)
-    self.mNewRestrictRectangleLayers_property = EBStoredProperty_Int (defaultValue: 1, undoManager: ebUndoManager)
-    self.mAutoRouterPreferredDirections_property = EBStoredProperty_AutorouterPreferredDirections (defaultValue: AutorouterPreferredDirections.vFrontHback, undoManager: ebUndoManager)
-    self.mAutorouterSnapAngle_property = EBStoredProperty_AutorouterSnapAngle (defaultValue: AutorouterSnapAngle.octolinear, undoManager: ebUndoManager)
-    self.mRouteDirection_property = EBStoredProperty_RouteDirection (defaultValue: RouteDirection.from, undoManager: ebUndoManager)
-    self.mRouteOrigin_property = EBStoredProperty_RouteOrigin (defaultValue: RouteOrigin.center, undoManager: ebUndoManager)
-    self.mAutorouterInterfaceMode_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mExportExistingTracksAndVias_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mExportExistingTracksAndVias2_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mTrackLengthUnit_property = EBStoredProperty_Int (defaultValue: 90000000, undoManager: ebUndoManager)
-    self.mLayoutClearance_property = EBStoredProperty_Int (defaultValue: 22660, undoManager: ebUndoManager)
-    self.mLayoutClearanceUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mBoardSelectedInspector_property = EBStoredProperty_Int (defaultValue: 1, undoManager: ebUndoManager)
-    self.mBoardHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mBoardVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mBoardGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: ebUndoManager)
-    self.mBoardGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4, undoManager: ebUndoManager)
-    self.mBoardZoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mBoardGridStep_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: ebUndoManager)
-    self.mBoardGridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mErrorOrWarningIssueSize_property = EBStoredProperty_Double (defaultValue: 6, undoManager: ebUndoManager)
-    self.mControlKeyHiliteDiameter_property = EBStoredProperty_Double (defaultValue: 100, undoManager: ebUndoManager)
-    self.mDSNFileProposedName_property = EBStoredProperty_String (defaultValue: "design.dsn", undoManager: ebUndoManager)
-    self.mBoardLimitsWidth_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.mBoardLimitsWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.mBoardClearance_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.mBoardClearanceUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.mBoardLimitsSelectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mBoardLimitsHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mBoardLimitsVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mBoardLimitsGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: ebUndoManager)
-    self.mBoardLimitsGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 5, undoManager: ebUndoManager)
-    self.mBoardLimitsZoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mBoardLimitsGridStep_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.mBoardLimitsGridStepUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.mBoardLimitsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.mBoardPointsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.mBoardSelectedCurveDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.mBoardLimitControlPointsDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.mBoardShape_property = EBStoredProperty_BoardShape (defaultValue: BoardShape.rectangular, undoManager: ebUndoManager)
-    self.mRectangularBoardWidth_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: ebUndoManager)
-    self.mRectangularBoardWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.mRectangularBoardHeight_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: ebUndoManager)
-    self.mRectangularBoardHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.mDefaultNetClassName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mSelectedSchematicInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mSchematicTitle_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mSchematicVersion_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mSchematicDate_property = EBStoredProperty_Date (defaultValue: Date (), undoManager: ebUndoManager)
-    self.mSchematicHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mSchematicVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mSchematicZoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mSchematicGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: ebUndoManager)
-    self.mSchematicGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4, undoManager: ebUndoManager)
-    self.mSchematicCustomWidth_property = EBStoredProperty_Int (defaultValue: 27000000, undoManager: ebUndoManager)
-    self.mSchematicCustomWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.mSchematicCustomHeight_property = EBStoredProperty_Int (defaultValue: 27000000, undoManager: ebUndoManager)
-    self.mSchematicCustomHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: ebUndoManager)
-    self.drawErrorBackgroundForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.displayFrontRestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.displayBackRestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.displayInner1RestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.displayInner2RestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.displayInner3RestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.displayInner4RestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.displayFrontLegendForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.displayFrontLayoutForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.displayBackLayoutForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.displayInner1LayoutForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.displayInner2LayoutForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.displayInner3LayoutForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.displayInner4LayoutForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.displayBackLegendForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.displayFrontPadsForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.displayBackPadsForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.displayPadNumbersForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.packageDrawingWidthMultpliedByTenForBoard_property = EBStoredProperty_Int (defaultValue: 5, undoManager: ebUndoManager)
-    self.mSchematicSheetOrientation_property = EBStoredProperty_SchematicSheetOrientation (defaultValue: SchematicSheetOrientation.a4Horizontal, undoManager: ebUndoManager)
-    self.mRastnetDisplay_property = EBStoredProperty_RastnetDisplay (defaultValue: RastnetDisplay.allNets, undoManager: ebUndoManager)
-    self.mRastnetDisplayedNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mRastnetDisplayedComponentName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mArtworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mArtworkVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mPDFBoardBackgroundColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.lightGray, undoManager: inUndoManager)
+    self.mCheckClearanceBetweenPadsOfSameNet_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.mLastERCCheckingIsSuccess_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mLastERCCheckingSignature_property = EBStoredProperty_UInt32 (defaultValue: 1, undoManager: inUndoManager)
+    self.mLayerConfiguration_property = EBStoredProperty_LayerConfiguration (defaultValue: LayerConfiguration.twoLayers, undoManager: inUndoManager)
+    self.mBoardSideForNewTrack_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front, undoManager: inUndoManager)
+    self.mDirectionForNewTrack_property = EBStoredProperty_TrackCreationDirection (defaultValue: TrackCreationDirection.anyAngle, undoManager: inUndoManager)
+    self.mBoardLayerForNewText_property = EBStoredProperty_BoardTextLayer (defaultValue: BoardTextLayer.legendFront, undoManager: inUndoManager)
+    self.mBoardLayerForNewLine_property = EBStoredProperty_BoardLineLayer (defaultValue: BoardLineLayer.legendFront, undoManager: inUndoManager)
+    self.mBoardSideForNewRestrictRectangle_property = EBStoredProperty_RestrictRectangleLayer (defaultValue: RestrictRectangleLayer.frontSide, undoManager: inUndoManager)
+    self.mNewRestrictRectangleLayers_property = EBStoredProperty_Int (defaultValue: 1, undoManager: inUndoManager)
+    self.mAutoRouterPreferredDirections_property = EBStoredProperty_AutorouterPreferredDirections (defaultValue: AutorouterPreferredDirections.vFrontHback, undoManager: inUndoManager)
+    self.mAutorouterSnapAngle_property = EBStoredProperty_AutorouterSnapAngle (defaultValue: AutorouterSnapAngle.octolinear, undoManager: inUndoManager)
+    self.mRouteDirection_property = EBStoredProperty_RouteDirection (defaultValue: RouteDirection.from, undoManager: inUndoManager)
+    self.mRouteOrigin_property = EBStoredProperty_RouteOrigin (defaultValue: RouteOrigin.center, undoManager: inUndoManager)
+    self.mAutorouterInterfaceMode_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mExportExistingTracksAndVias_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mExportExistingTracksAndVias2_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mTrackLengthUnit_property = EBStoredProperty_Int (defaultValue: 90000000, undoManager: inUndoManager)
+    self.mLayoutClearance_property = EBStoredProperty_Int (defaultValue: 22660, undoManager: inUndoManager)
+    self.mLayoutClearanceUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mBoardSelectedInspector_property = EBStoredProperty_Int (defaultValue: 1, undoManager: inUndoManager)
+    self.mBoardHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mBoardVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mBoardGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: inUndoManager)
+    self.mBoardGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4, undoManager: inUndoManager)
+    self.mBoardZoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mBoardGridStep_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager)
+    self.mBoardGridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mErrorOrWarningIssueSize_property = EBStoredProperty_Double (defaultValue: 6, undoManager: inUndoManager)
+    self.mControlKeyHiliteDiameter_property = EBStoredProperty_Double (defaultValue: 100, undoManager: inUndoManager)
+    self.mDSNFileProposedName_property = EBStoredProperty_String (defaultValue: "design.dsn", undoManager: inUndoManager)
+    self.mBoardLimitsWidth_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.mBoardLimitsWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.mBoardClearance_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.mBoardClearanceUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.mBoardLimitsSelectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mBoardLimitsHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mBoardLimitsVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mBoardLimitsGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: inUndoManager)
+    self.mBoardLimitsGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 5, undoManager: inUndoManager)
+    self.mBoardLimitsZoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mBoardLimitsGridStep_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.mBoardLimitsGridStepUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.mBoardLimitsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.mBoardPointsBoundingBoxUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.mBoardSelectedCurveDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.mBoardLimitControlPointsDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.mBoardShape_property = EBStoredProperty_BoardShape (defaultValue: BoardShape.rectangular, undoManager: inUndoManager)
+    self.mRectangularBoardWidth_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: inUndoManager)
+    self.mRectangularBoardWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.mRectangularBoardHeight_property = EBStoredProperty_Int (defaultValue: 9000000, undoManager: inUndoManager)
+    self.mRectangularBoardHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.mDefaultNetClassName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mSelectedSchematicInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mSchematicTitle_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mSchematicVersion_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mSchematicDate_property = EBStoredProperty_Date (defaultValue: Date (), undoManager: inUndoManager)
+    self.mSchematicHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mSchematicVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mSchematicZoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mSchematicGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: inUndoManager)
+    self.mSchematicGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4, undoManager: inUndoManager)
+    self.mSchematicCustomWidth_property = EBStoredProperty_Int (defaultValue: 27000000, undoManager: inUndoManager)
+    self.mSchematicCustomWidthUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.mSchematicCustomHeight_property = EBStoredProperty_Int (defaultValue: 27000000, undoManager: inUndoManager)
+    self.mSchematicCustomHeightUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.drawErrorBackgroundForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.displayFrontRestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.displayBackRestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.displayInner1RestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.displayInner2RestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.displayInner3RestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.displayInner4RestrictRectangles_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.displayFrontLegendForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.displayFrontLayoutForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.displayBackLayoutForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.displayInner1LayoutForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.displayInner2LayoutForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.displayInner3LayoutForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.displayInner4LayoutForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.displayBackLegendForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.displayFrontPadsForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.displayBackPadsForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.displayPadNumbersForBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.packageDrawingWidthMultpliedByTenForBoard_property = EBStoredProperty_Int (defaultValue: 5, undoManager: inUndoManager)
+    self.mSchematicSheetOrientation_property = EBStoredProperty_SchematicSheetOrientation (defaultValue: SchematicSheetOrientation.a4Horizontal, undoManager: inUndoManager)
+    self.mRastnetDisplay_property = EBStoredProperty_RastnetDisplay (defaultValue: RastnetDisplay.allNets, undoManager: inUndoManager)
+    self.mRastnetDisplayedNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mRastnetDisplayedComponentName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.mArtwork_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mArtwork_property.propval == nil)
@@ -4453,31 +4453,31 @@ final class ProjectRoot : EBManagedObject,
     self.mSelectedSheet_property.addEBObserver (self.mSelectedSheet_none)
     // gInitSemaphore.wait ()
   //--- To many property: mSheets (has opposite relationship)
-    self.mSheets_property.ebUndoManager = self.ebUndoManager
+    self.mSheets_property.undoManager = inUndoManager
     self.mSheets_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
     )
   //--- To many property: mFonts (no option)
-    self.mFonts_property.ebUndoManager = self.ebUndoManager
+    self.mFonts_property.undoManager = inUndoManager
   //--- To many property: mDevices (no option)
-    self.mDevices_property.ebUndoManager = self.ebUndoManager
+    self.mDevices_property.undoManager = inUndoManager
   //--- To many property: mNetClasses (no option)
-    self.mNetClasses_property.ebUndoManager = self.ebUndoManager
+    self.mNetClasses_property.undoManager = inUndoManager
   //--- To many property: mBorderCurves (has opposite relationship)
-    self.mBorderCurves_property.ebUndoManager = self.ebUndoManager
+    self.mBorderCurves_property.undoManager = inUndoManager
     self.mBorderCurves_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
     )
   //--- To many property: mBoardObjects (has opposite relationship)
-    self.mBoardObjects_property.ebUndoManager = self.ebUndoManager
+    self.mBoardObjects_property.undoManager = inUndoManager
     self.mBoardObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
     )
   //--- To many property: mComponents (no option)
-    self.mComponents_property.ebUndoManager = self.ebUndoManager
+    self.mComponents_property.undoManager = inUndoManager
   //--- Atomic proxy property: minPPTPTTTWdisplayUnit
     self.minPPTPTTTWdisplayUnit_property.mReadModelFunction = { [weak self] in
       if let object = self?.mArtwork_property {
@@ -4804,7 +4804,7 @@ final class ProjectRoot : EBManagedObject,
       self.fileGenerationParameterArray_modelDidChangeController = controller
     }
   //--- To one property: mArtwork
-    self.mArtwork_property.ebUndoManager = self.ebUndoManager
+    self.mArtwork_property.undoManager = inUndoManager
   //--- Atomic property: hasInnerElements
     self.hasInnerElements_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -4899,7 +4899,7 @@ final class ProjectRoot : EBManagedObject,
     }
     self.mBoardShape_property.addEBObserver (self.boardShapeIsRectangular_property)
   //--- To one property: mSelectedSheet
-    self.mSelectedSheet_property.ebUndoManager = self.ebUndoManager
+    self.mSelectedSheet_property.undoManager = inUndoManager
   //--- Atomic property: selectedSheetIssues
     self.selectedSheetIssues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

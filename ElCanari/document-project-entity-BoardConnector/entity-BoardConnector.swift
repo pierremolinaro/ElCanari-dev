@@ -690,20 +690,20 @@ final class BoardConnector : BoardObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mComponentPadName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mPadIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mDefaultHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mCustomHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45720, undoManager: ebUndoManager)
-    self.mCustomHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mUsesCustomHoleDiameter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mDefaultPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mCustomPadDiameter_property = EBStoredProperty_Int (defaultValue: 91440, undoManager: ebUndoManager)
-    self.mCustomPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mUsesCustomPadDiameter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mComponentPadName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mPadIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mDefaultHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mCustomHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45720, undoManager: inUndoManager)
+    self.mCustomHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mUsesCustomHoleDiameter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mDefaultPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mCustomPadDiameter_property = EBStoredProperty_Int (defaultValue: 91440, undoManager: inUndoManager)
+    self.mCustomPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mUsesCustomPadDiameter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.mComponent_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mComponent_property.propval == nil)
@@ -714,13 +714,13 @@ final class BoardConnector : BoardObject,
     self.mComponent_property.addEBObserver (self.mComponent_none)
     // gInitSemaphore.wait ()
   //--- To many property: mTracksP2 (has opposite relationship)
-    self.mTracksP2_property.ebUndoManager = self.ebUndoManager
+    self.mTracksP2_property.undoManager = inUndoManager
     self.mTracksP2_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mConnectorP2_property.setProp (me) } },
       resetter: { inObject in inObject.mConnectorP2_property.setProp (nil) }
     )
   //--- To many property: mTracksP1 (has opposite relationship)
-    self.mTracksP1_property.ebUndoManager = self.ebUndoManager
+    self.mTracksP1_property.undoManager = inUndoManager
     self.mTracksP1_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mConnectorP1_property.setProp (me) } },
       resetter: { inObject in inObject.mConnectorP1_property.setProp (nil) }
@@ -743,7 +743,7 @@ final class BoardConnector : BoardObject,
     }
     self.mComponentPadName_property.addEBObserver (self.isConnectedToSomePad_property)
   //--- To one property: mComponent (has opposite to many relationship: mConnectors)
-    self.mComponent_property.ebUndoManager = self.ebUndoManager
+    self.mComponent_property.undoManager = inUndoManager
     self.mComponent_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mConnectors_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mConnectors_property.remove (me) } }

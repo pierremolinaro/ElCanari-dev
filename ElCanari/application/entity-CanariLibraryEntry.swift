@@ -142,12 +142,12 @@ final class CanariLibraryEntry : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mPath_property = EBStoredProperty_String (defaultValue: "Hello", undoManager: ebUndoManager)
-    self.mUses_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.mLibraryRepositoryURL_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mUserAndPasswordTag_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mPath_property = EBStoredProperty_String (defaultValue: "Hello", undoManager: inUndoManager)
+    self.mUses_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.mLibraryRepositoryURL_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mUserAndPasswordTag_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in

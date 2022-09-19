@@ -179,7 +179,7 @@ extension ComponentInProject {
 //                possibleConnectors [0].mComponentPadName = padName
 //                possibleConnectors [0].mPadIndex = slavePadIndex
 //              }else{ // Create a new connector
-                let newConnector = BoardConnector (self.ebUndoManager)
+                let newConnector = BoardConnector (self.undoManager)
                 newConnector.mComponent = self
                 newConnector.mComponentPadName = padName
                 newConnector.mPadIndex = slavePadIndex

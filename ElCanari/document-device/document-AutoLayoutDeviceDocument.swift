@@ -6,8 +6,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(AutoLayoutDeviceDocument) class AutoLayoutDeviceDocument : EBAutoLayoutManagedDocument, NSToolbarDelegate {
-
+@objc(AutoLayoutDeviceDocument) class AutoLayoutDeviceDocument : EBAutoLayoutManagedDocument {
+  
   //····················································································································
   //   Array controller: packageController
   //····················································································································
@@ -1454,22 +1454,22 @@ import Cocoa
 
   final private func configureProperties () {
   //--- Array controller property: packageController
-    self.packageController.bind_model (self.rootObject.mPackages_property, self.ebUndoManager)
+    self.packageController.bind_model (self.rootObject.mPackages_property, self.undoManager)
 
   //--- Array controller property: documentationController
-    self.documentationController.bind_model (self.rootObject.mDocs_property, self.ebUndoManager)
+    self.documentationController.bind_model (self.rootObject.mDocs_property, self.undoManager)
 
   //--- Array controller property: symbolDisplayController
-    self.symbolDisplayController.bind_model (self.rootObject.mSymbolInstances_property, self.ebUndoManager)
+    self.symbolDisplayController.bind_model (self.rootObject.mSymbolInstances_property, self.undoManager)
 
   //--- Selection controller property: symbolInstanceSelection
     self.symbolInstanceSelection.bind_selection (model: self.symbolDisplayController.selectedArray_property)
 
   //--- Array controller property: packageDisplayController
-    self.packageDisplayController.bind_model (self.rootObject.mPackages_property, self.ebUndoManager)
+    self.packageDisplayController.bind_model (self.rootObject.mPackages_property, self.undoManager)
 
   //--- Array controller property: symbolTypeController
-    self.symbolTypeController.bind_model (self.rootObject.mSymbolTypes_property, self.ebUndoManager)
+    self.symbolTypeController.bind_model (self.rootObject.mSymbolTypes_property, self.undoManager)
 
   //--- Selection controller property: symbolTypeSelection
     self.symbolTypeSelection.bind_selection (model: self.symbolTypeController.selectedArray_property)

@@ -18,31 +18,6 @@ final class EBGenericPropertyProxy <T> : EBObservableMutableProperty <T>, EBObse
 
   //····················································································································
 
-  var mValueExplorer : NSTextField? {
-    didSet {
-      self.updateValueExplorer (possibleValue: self.mCachedValue)
-    }
-  }
-
-  //····················································································································
-
-  private func updateValueExplorer (possibleValue : EBSelection <T>?) {
-    if let value = possibleValue {
-      switch value {
-      case .empty :
-        self.mValueExplorer?.stringValue = "-"
-      case .multiple :
-        self.mValueExplorer?.stringValue = "-"
-      case .single (let value) :
-        self.mValueExplorer?.stringValue = "\(value)"
-      }
-    }else{
-      self.mValueExplorer?.stringValue = "nil"
-    }
-  }
-
-  //····················································································································
-
   override func observedObjectDidChange () {
     if self.mCachedValue != nil {
       self.mCachedValue = nil
@@ -63,15 +38,14 @@ final class EBGenericPropertyProxy <T> : EBObservableMutableProperty <T>, EBObse
       if self.mCachedValue == nil {
         self.mCachedValue = .empty
       }
-      self.updateValueExplorer (possibleValue: self.mCachedValue)
     }
     return self.mCachedValue!
   }
 
   //····················································································································
 
-  override func setProp (_ value : T) {
-    self.mWriteModelFunction? (value)
+  override func setProp (_ inValue : T) {
+    self.mWriteModelFunction? (inValue)
   }
 
   //····················································································································

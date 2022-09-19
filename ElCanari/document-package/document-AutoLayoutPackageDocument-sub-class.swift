@@ -106,7 +106,7 @@ let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolin
         var idx = 0
         var errorMessage = ""
         for dictionary in dictionaryArray {
-          if let newObject = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? PackageObject {
+          if let newObject = makeManagedObjectFromDictionary (self.undoManager, dictionary) as? PackageObject {
             if errorMessage.isEmpty {
               errorMessage = newObject.operationAfterPasting (additionalDictionary: additionalDictionaryArray [idx],
                                                               optionalDocument: self,

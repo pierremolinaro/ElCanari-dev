@@ -170,14 +170,14 @@ final class BoardModelPad : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.width_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.height_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.shape_property = EBStoredProperty_PadShape (defaultValue: PadShape.rect, undoManager: ebUndoManager)
-    self.rotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.width_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.height_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.shape_property = EBStoredProperty_PadShape (defaultValue: PadShape.rect, undoManager: inUndoManager)
+    self.rotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
     // gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships

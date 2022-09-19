@@ -22,7 +22,7 @@ extension SheetInProject {
     if points.count == 1 {
       possiblePoint = points [0]
     }else if points.count == 0 {
-      let point = PointInSchematic (self.ebUndoManager)
+      let point = PointInSchematic (self.undoManager)
       point.mX = canariAlignedMouseDownLocation.x
       point.mY = canariAlignedMouseDownLocation.y
       point.mNet = inNewNetCreator ()
@@ -30,7 +30,7 @@ extension SheetInProject {
       possiblePoint = point
     }
     if let point = possiblePoint {
-      let label = LabelInSchematic (self.ebUndoManager)
+      let label = LabelInSchematic (self.undoManager)
       label.mPoint = point
       label.mOrientation = inOrientation
       self.mObjects.append (label)

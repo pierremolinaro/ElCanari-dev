@@ -697,7 +697,7 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbo
   //   Undo manager
   //····················································································································
 
-  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   // Model will change
@@ -705,7 +705,7 @@ class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbo
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <DeviceSymbolInstanceInProject>) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+    self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
@@ -889,10 +889,9 @@ final class PreferencesArrayOf_DeviceSymbolInstanceInProject : StoredArrayOf_Dev
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = EBReferenceArray <DeviceSymbolInstanceInProject> ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "DeviceSymbolInstanceInProject") as? DeviceSymbolInstanceInProject {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
+        let object = newInstanceOfEntityNamed (self.undoManager, "DeviceSymbolInstanceInProject") as! DeviceSymbolInstanceInProject
+        object.setUpAtomicPropertiesWithDictionary (dictionary)
+        objectArray.append (object)
       }
       self.setProp (objectArray)
     }

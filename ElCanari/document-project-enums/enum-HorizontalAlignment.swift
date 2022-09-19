@@ -6,28 +6,25 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum EBControlSize : Int, EnumPropertyProtocol, Hashable, CaseIterable {
-  case mini = 0
-  case small = 1
-  case regular = 2
-
+enum HorizontalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+  case onTheRight = 0
+  case center = 1
+  case onTheLeft = 2
 
   //····················································································································
+  // Function popupTitles
+  //····················································································································
 
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .mini : return "mini" // 0
-      case .small : return "small" // 1
-      case .regular : return "regular" // 2
-    }
+  static func popupTitles () -> [String] {
+    return ["Right", "Center", "Left"]
   }
 
   //····················································································································
   //  Enum generic bindings utility functions
   //····················································································································
 
-  static func buildfromRawValue (rawValue : Int) -> EBControlSize? {
-    if let v = EBControlSize (rawValue:rawValue) {
+  static func buildfromRawValue (rawValue : Int) -> HorizontalAlignment? {
+    if let v = HorizontalAlignment (rawValue:rawValue) {
       return v
     }else{
       return nil
@@ -36,9 +33,9 @@ enum EBControlSize : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  func enumfromRawValue (rawValue : Int) -> EBControlSize {
+  func enumfromRawValue (rawValue : Int) -> HorizontalAlignment {
     var result = self
-    let v : EBControlSize? = EBControlSize (rawValue:rawValue) ;
+    let v : HorizontalAlignment? = HorizontalAlignment (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
@@ -61,9 +58,9 @@ enum EBControlSize : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> EBControlSize {
-    var result = EBControlSize.mini
-    if let number = object as? NSNumber, let v = EBControlSize (rawValue: number.intValue) {
+  static func convertFromNSObject (object : NSObject) -> HorizontalAlignment {
+    var result = HorizontalAlignment.onTheRight
+    if let number = object as? NSNumber, let v = HorizontalAlignment (rawValue: number.intValue) {
       result = v
     }
     return result
@@ -71,8 +68,8 @@ enum EBControlSize : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> EBControlSize? {
-    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = EBControlSize (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> HorizontalAlignment? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = HorizontalAlignment (rawValue: rawValue) {
       return enumValue
     }else{
       return nil
@@ -91,11 +88,11 @@ enum EBControlSize : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_EBControlSize = EBReadOnlyEnumProperty <EBControlSize>
-typealias EBTransientProperty_EBControlSize = EBTransientEnumProperty <EBControlSize>
-typealias EBReadWriteProperty_EBControlSize = EBReadWriteEnumProperty <EBControlSize>
-typealias EBStoredProperty_EBControlSize = EBStoredEnumProperty <EBControlSize>
-typealias EBPropertyProxy_EBControlSize = EBPropertyEnumProxy <EBControlSize>
-typealias EBPreferencesProperty_EBControlSize = EBStoredEnumProperty <EBControlSize>
+typealias EBReadOnlyProperty_HorizontalAlignment = EBReadOnlyEnumProperty <HorizontalAlignment>
+typealias EBTransientProperty_HorizontalAlignment = EBTransientEnumProperty <HorizontalAlignment>
+typealias EBReadWriteProperty_HorizontalAlignment = EBReadWriteEnumProperty <HorizontalAlignment>
+typealias EBStoredProperty_HorizontalAlignment = EBStoredEnumProperty <HorizontalAlignment>
+typealias EBPropertyProxy_HorizontalAlignment = EBPropertyEnumProxy <HorizontalAlignment>
+typealias EBPreferencesProperty_HorizontalAlignment = EBStoredEnumProperty <HorizontalAlignment>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

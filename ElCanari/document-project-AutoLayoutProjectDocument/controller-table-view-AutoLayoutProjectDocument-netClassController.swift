@@ -21,8 +21,8 @@ final class Controller_AutoLayoutProjectDocument_netClassController : EBObjcBase
   //    Undo manager
   //····················································································································
 
-  private weak var mUndoManager : EBUndoManager? = nil // SHOULD BE WEAK
-  var ebUndoManager : EBUndoManager? { return self.mUndoManager }
+  private weak var mUndoManager : UndoManager? = nil // SHOULD BE WEAK
+  var undoManager : UndoManager? { return self.mUndoManager }
 
   //····················································································································
   //   Sorted Array
@@ -52,7 +52,7 @@ final class Controller_AutoLayoutProjectDocument_netClassController : EBObjcBase
 
   //····················································································································
 
-  final func bind_model (_ inModel : ReadWriteArrayOf_NetClassInProject, _ inUndoManager : EBUndoManager) {
+  final func bind_model (_ inModel : ReadWriteArrayOf_NetClassInProject, _ inUndoManager : UndoManager?) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     self.sortedArray_property.setDataProvider (
@@ -145,13 +145,6 @@ final class Controller_AutoLayoutProjectDocument_netClassController : EBObjcBase
 
   func setSelection (_ inObjects : [NetClassInProject]) {
     self.mInternalSelectedArrayProperty.setProp (EBReferenceArray (inObjects))
-  }
-
-  //····················································································································
-  //    Explorer
-  //····················································································································
-
-  final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
   }
 
   //····················································································································
@@ -492,7 +485,7 @@ final class Controller_AutoLayoutProjectDocument_netClassController : EBObjcBase
       case .empty, .multiple :
         ()
       case .single (let v) :
-        let newObject = NetClassInProject (self.ebUndoManager)
+        let newObject = NetClassInProject (self.undoManager)
         var array = EBReferenceArray (v)
         array.append (newObject)
         model.setProp (array)

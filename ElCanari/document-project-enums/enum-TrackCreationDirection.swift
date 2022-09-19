@@ -6,38 +6,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum TrackLockDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable {
-  case unlocked = 0
-  case locked = 1
-  case octolinear = 2
-  case rectilinear = 3
-
-
-  //····················································································································
-
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .unlocked : return "unlocked" // 0
-      case .locked : return "locked" // 1
-      case .octolinear : return "octolinear" // 2
-      case .rectilinear : return "rectilinear" // 3
-    }
-  }
-
-  //····················································································································
-  // Function popupTitles
-  //····················································································································
-
-  static func popupTitles () -> [String] {
-    return ["Free Angle", "Locked Angle", "Octolinear", "Rectilinear"]
-  }
+enum TrackCreationDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+  case anyAngle = 0
+  case octolinear = 1
+  case rectilinear = 2
 
   //····················································································································
   //  Enum generic bindings utility functions
   //····················································································································
 
-  static func buildfromRawValue (rawValue : Int) -> TrackLockDirection? {
-    if let v = TrackLockDirection (rawValue:rawValue) {
+  static func buildfromRawValue (rawValue : Int) -> TrackCreationDirection? {
+    if let v = TrackCreationDirection (rawValue:rawValue) {
       return v
     }else{
       return nil
@@ -46,9 +25,9 @@ enum TrackLockDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  func enumfromRawValue (rawValue : Int) -> TrackLockDirection {
+  func enumfromRawValue (rawValue : Int) -> TrackCreationDirection {
     var result = self
-    let v : TrackLockDirection? = TrackLockDirection (rawValue:rawValue) ;
+    let v : TrackCreationDirection? = TrackCreationDirection (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
@@ -71,9 +50,9 @@ enum TrackLockDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> TrackLockDirection {
-    var result = TrackLockDirection.unlocked
-    if let number = object as? NSNumber, let v = TrackLockDirection (rawValue: number.intValue) {
+  static func convertFromNSObject (object : NSObject) -> TrackCreationDirection {
+    var result = TrackCreationDirection.anyAngle
+    if let number = object as? NSNumber, let v = TrackCreationDirection (rawValue: number.intValue) {
       result = v
     }
     return result
@@ -81,8 +60,8 @@ enum TrackLockDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> TrackLockDirection? {
-    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = TrackLockDirection (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> TrackCreationDirection? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = TrackCreationDirection (rawValue: rawValue) {
       return enumValue
     }else{
       return nil
@@ -101,11 +80,11 @@ enum TrackLockDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_TrackLockDirection = EBReadOnlyEnumProperty <TrackLockDirection>
-typealias EBTransientProperty_TrackLockDirection = EBTransientEnumProperty <TrackLockDirection>
-typealias EBReadWriteProperty_TrackLockDirection = EBReadWriteEnumProperty <TrackLockDirection>
-typealias EBStoredProperty_TrackLockDirection = EBStoredEnumProperty <TrackLockDirection>
-typealias EBPropertyProxy_TrackLockDirection = EBPropertyEnumProxy <TrackLockDirection>
-typealias EBPreferencesProperty_TrackLockDirection = EBStoredEnumProperty <TrackLockDirection>
+typealias EBReadOnlyProperty_TrackCreationDirection = EBReadOnlyEnumProperty <TrackCreationDirection>
+typealias EBTransientProperty_TrackCreationDirection = EBTransientEnumProperty <TrackCreationDirection>
+typealias EBReadWriteProperty_TrackCreationDirection = EBReadWriteEnumProperty <TrackCreationDirection>
+typealias EBStoredProperty_TrackCreationDirection = EBStoredEnumProperty <TrackCreationDirection>
+typealias EBPropertyProxy_TrackCreationDirection = EBPropertyEnumProxy <TrackCreationDirection>
+typealias EBPreferencesProperty_TrackCreationDirection = EBStoredEnumProperty <TrackCreationDirection>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

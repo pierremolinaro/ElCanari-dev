@@ -132,12 +132,12 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.x1_property = EBStoredProperty_Int (defaultValue: 2, undoManager: ebUndoManager)
-    self.y1_property = EBStoredProperty_Int (defaultValue: 1, undoManager: ebUndoManager)
-    self.x2_property = EBStoredProperty_Int (defaultValue: 9, undoManager: ebUndoManager)
-    self.y2_property = EBStoredProperty_Int (defaultValue: 8, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.x1_property = EBStoredProperty_Int (defaultValue: 2, undoManager: inUndoManager)
+    self.y1_property = EBStoredProperty_Int (defaultValue: 1, undoManager: inUndoManager)
+    self.x2_property = EBStoredProperty_Int (defaultValue: 9, undoManager: inUndoManager)
+    self.y2_property = EBStoredProperty_Int (defaultValue: 8, undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in

@@ -11,17 +11,6 @@ enum SchematicSheetOrientation : Int, EnumPropertyProtocol, Hashable, CaseIterab
   case a4Horizontal = 1
   case custom = 2
 
-
-  //····················································································································
-
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .a4Vertical : return "a4Vertical" // 0
-      case .a4Horizontal : return "a4Horizontal" // 1
-      case .custom : return "custom" // 2
-    }
-  }
-
   //····················································································································
   // Function popupTitles
   //····················································································································

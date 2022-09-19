@@ -10,16 +10,6 @@ enum PadStyle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case traversing = 0
   case surface = 1
 
-
-  //····················································································································
-
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .traversing : return "traversing" // 0
-      case .surface : return "surface" // 1
-    }
-  }
-
   //····················································································································
   // Function popupTitles
   //····················································································································

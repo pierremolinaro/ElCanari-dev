@@ -6,30 +6,26 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
-  case unknown = 0
-  case ok = 1
-  case warning = 2
-  case error = 3
-
+enum TrackLockDirection : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+  case unlocked = 0
+  case locked = 1
+  case octolinear = 2
+  case rectilinear = 3
 
   //····················································································································
+  // Function popupTitles
+  //····················································································································
 
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .unknown : return "unknown" // 0
-      case .ok : return "ok" // 1
-      case .warning : return "warning" // 2
-      case .error : return "error" // 3
-    }
+  static func popupTitles () -> [String] {
+    return ["Free Angle", "Locked Angle", "Octolinear", "Rectilinear"]
   }
 
   //····················································································································
   //  Enum generic bindings utility functions
   //····················································································································
 
-  static func buildfromRawValue (rawValue : Int) -> MetadataStatus? {
-    if let v = MetadataStatus (rawValue:rawValue) {
+  static func buildfromRawValue (rawValue : Int) -> TrackLockDirection? {
+    if let v = TrackLockDirection (rawValue:rawValue) {
       return v
     }else{
       return nil
@@ -38,9 +34,9 @@ enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  func enumfromRawValue (rawValue : Int) -> MetadataStatus {
+  func enumfromRawValue (rawValue : Int) -> TrackLockDirection {
     var result = self
-    let v : MetadataStatus? = MetadataStatus (rawValue:rawValue) ;
+    let v : TrackLockDirection? = TrackLockDirection (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
@@ -63,9 +59,9 @@ enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> MetadataStatus {
-    var result = MetadataStatus.unknown
-    if let number = object as? NSNumber, let v = MetadataStatus (rawValue: number.intValue) {
+  static func convertFromNSObject (object : NSObject) -> TrackLockDirection {
+    var result = TrackLockDirection.unlocked
+    if let number = object as? NSNumber, let v = TrackLockDirection (rawValue: number.intValue) {
       result = v
     }
     return result
@@ -73,8 +69,8 @@ enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> MetadataStatus? {
-    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = MetadataStatus (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> TrackLockDirection? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = TrackLockDirection (rawValue: rawValue) {
       return enumValue
     }else{
       return nil
@@ -93,11 +89,11 @@ enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_MetadataStatus = EBReadOnlyEnumProperty <MetadataStatus>
-typealias EBTransientProperty_MetadataStatus = EBTransientEnumProperty <MetadataStatus>
-typealias EBReadWriteProperty_MetadataStatus = EBReadWriteEnumProperty <MetadataStatus>
-typealias EBStoredProperty_MetadataStatus = EBStoredEnumProperty <MetadataStatus>
-typealias EBPropertyProxy_MetadataStatus = EBPropertyEnumProxy <MetadataStatus>
-typealias EBPreferencesProperty_MetadataStatus = EBStoredEnumProperty <MetadataStatus>
+typealias EBReadOnlyProperty_TrackLockDirection = EBReadOnlyEnumProperty <TrackLockDirection>
+typealias EBTransientProperty_TrackLockDirection = EBTransientEnumProperty <TrackLockDirection>
+typealias EBReadWriteProperty_TrackLockDirection = EBReadWriteEnumProperty <TrackLockDirection>
+typealias EBStoredProperty_TrackLockDirection = EBStoredEnumProperty <TrackLockDirection>
+typealias EBPropertyProxy_TrackLockDirection = EBPropertyEnumProxy <TrackLockDirection>
+typealias EBPreferencesProperty_TrackLockDirection = EBStoredEnumProperty <TrackLockDirection>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

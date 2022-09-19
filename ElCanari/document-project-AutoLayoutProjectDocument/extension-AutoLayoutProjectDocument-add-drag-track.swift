@@ -28,7 +28,7 @@ extension AutoLayoutProjectDocument {
     if connectorsAt1.count == 1 {
       connector1 = connectorsAt1 [0]
     }else{
-      connector1 = BoardConnector (self.ebUndoManager)
+      connector1 = BoardConnector (self.undoManager)
       connector1.mX = p1.x
       connector1.mY = p1.y
       self.rootObject.mBoardObjects.append (connector1)
@@ -41,19 +41,19 @@ extension AutoLayoutProjectDocument {
       if c2.connectedTracksNet () === connector1Net {
         connector2 = c2
       }else{
-        connector2 = BoardConnector (self.ebUndoManager)
+        connector2 = BoardConnector (self.undoManager)
         connector2.mX = p2.x
         connector2.mY = p2.y
         self.rootObject.mBoardObjects.append (connector2)
       }
     }else{
-      connector2 = BoardConnector (self.ebUndoManager)
+      connector2 = BoardConnector (self.undoManager)
       connector2.mX = p2.x
       connector2.mY = p2.y
       self.rootObject.mBoardObjects.append (connector2)
     }
   //--- Build Track
-    let track = BoardTrack (self.ebUndoManager)
+    let track = BoardTrack (self.undoManager)
     track.mNet = connector1Net
     track.mSide = side
     track.mConnectorP1 = connector1
@@ -78,18 +78,18 @@ extension AutoLayoutProjectDocument {
     if connectorsAtP1.count == 1 {
       connector1 = connectorsAtP1 [0]
     }else{
-      connector1 = BoardConnector (self.ebUndoManager)
+      connector1 = BoardConnector (self.undoManager)
       connector1.mX = p1.x
       connector1.mY = p1.y
       self.rootObject.mBoardObjects.append (connector1)
     }
   //--- Build second connector
-    let connector2 = BoardConnector (self.ebUndoManager)
+    let connector2 = BoardConnector (self.undoManager)
     connector2.mX = p1.x
     connector2.mY = p1.y
     self.rootObject.mBoardObjects.append (connector2)
   //--- Build Track
-    let track = BoardTrack (self.ebUndoManager)
+    let track = BoardTrack (self.undoManager)
     track.mSide = side
     track.mConnectorP1 = connector1
     track.mConnectorP2 = connector2

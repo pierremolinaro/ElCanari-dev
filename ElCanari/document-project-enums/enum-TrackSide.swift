@@ -14,20 +14,6 @@ enum TrackSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case inner3 = 4
   case inner4 = 5
 
-
-  //····················································································································
-
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .front : return "front" // 0
-      case .back : return "back" // 1
-      case .inner1 : return "inner1" // 2
-      case .inner2 : return "inner2" // 3
-      case .inner3 : return "inner3" // 4
-      case .inner4 : return "inner4" // 5
-    }
-  }
-
   //····················································································································
   // Function popupTitles
   //····················································································································

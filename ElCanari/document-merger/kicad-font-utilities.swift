@@ -71,7 +71,7 @@ enum KicadStringJustification {
                                  leftMM inModelLeftMM  : CGFloat,
                                  bottomMM inModelBottomMM : CGFloat,
                                  boardRect inBoardRect : NSRect,
-                                 _ inUndoManager : EBUndoManager) -> [SegmentEntity] {
+                                 _ inUndoManager : UndoManager?) -> [SegmentEntity] {
   let mirror : CGFloat = inMirror ? -1.0 : 1.0
   let fontFactor = inFontSize * KICAD_STROKE_FONT_SCALE
 //--- Compute string metrics

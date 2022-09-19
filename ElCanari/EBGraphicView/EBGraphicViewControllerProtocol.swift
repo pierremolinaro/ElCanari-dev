@@ -19,7 +19,7 @@ import Cocoa
   var objectCount : Int { get }
   var graphicObjectArray : [EBGraphicManagedObject] { get }
 
-  var ebUndoManager : EBUndoManager? { get }
+  var undoManager : UndoManager? { get }
 
 //--- Selection operations
 

@@ -374,20 +374,20 @@ final class DevicePinInProject : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mPinName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mPinX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mPinY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mXName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mYName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mNameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: ebUndoManager)
-    self.mPinNameIsDisplayedInSchematic_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.mXNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mYNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mPinName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mPinX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mPinY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mXName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mYName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mNameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager)
+    self.mPinNameIsDisplayedInSchematic_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.mXNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mYNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- Atomic property: pinQualifiedName
     self.pinQualifiedName_property.mReadModelFunction = { [weak self] in

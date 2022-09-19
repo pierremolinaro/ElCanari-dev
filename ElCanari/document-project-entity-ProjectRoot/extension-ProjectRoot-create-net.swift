@@ -54,7 +54,7 @@ extension ProjectRoot {
       }
     }
   //--- Create new net
-    let newNet = NetInProject (self.ebUndoManager)
+    let newNet = NetInProject (self.undoManager)
     newNet.mNetName = newNetName
     if let netClass = selectedNetClass {
       newNet.mNetClass = netClass

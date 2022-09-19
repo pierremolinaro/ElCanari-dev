@@ -403,7 +403,7 @@ final class StoredObject_PackageModelImageDoublePoint : ReadWriteObject_PackageM
   //   Undo manager
   //····················································································································
 
-  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
@@ -426,7 +426,7 @@ final class StoredObject_PackageModelImageDoublePoint : ReadWriteObject_PackageM
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : PackageModelImageDoublePoint?) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
+    self.undoManager?.registerUndo (withTarget: self) { $0.mWeakInternalValue = inOldValue }
   //---
     if let object = inOldValue {
       if self.mUsedForSignature {

@@ -58,7 +58,7 @@ extension AutoLayoutMergerDocument {
   //····················································································································
 
   fileprivate func internal_parseBoardModel_ELCanariArchive (_ inBoardArchiveDict : NSDictionary, named inName : String) -> BoardModel? {
-    let boardModel = BoardModel (self.ebUndoManager)
+    let boardModel = BoardModel (self.undoManager)
   //--- Populate board model from dictionary (accumulate error messages in errorArray variable)
     var errorArray = [String] ()
     boardModel.name = inName
@@ -81,7 +81,7 @@ extension AutoLayoutMergerDocument {
       var internalBoardsLimitsEntities = EBReferenceArray <SegmentEntity> ()
       let internalBoardsLimits = optionalStringArray (fromDict: inBoardArchiveDict, key: "INTERNAL-BOARDS-LIMITS", &errorArray)
       for str in internalBoardsLimits {
-        let segment = SegmentEntity (self.ebUndoManager)
+        let segment = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, &errorArray)
         segment.x1 = ints [0]
         segment.y1 = ints [1]
@@ -97,7 +97,7 @@ extension AutoLayoutMergerDocument {
       var frontTrackEntities = EBReferenceArray <SegmentEntity> ()
       let frontTracks = stringArray (fromDict: inBoardArchiveDict, key: "TRACKS-FRONT", &errorArray)
       for str in frontTracks {
-        let track = SegmentEntity (self.ebUndoManager)
+        let track = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, &errorArray)
         track.x1 = ints [0]
         track.y1 = ints [1]
@@ -113,7 +113,7 @@ extension AutoLayoutMergerDocument {
       var backTrackEntities = EBReferenceArray <SegmentEntity> ()
       let backTracks = stringArray (fromDict: inBoardArchiveDict, key: "TRACKS-BACK", &errorArray)
       for str in backTracks {
-        let track = SegmentEntity (self.ebUndoManager)
+        let track = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, &errorArray)
         track.x1 = ints [0]
         track.y1 = ints [1]
@@ -129,7 +129,7 @@ extension AutoLayoutMergerDocument {
       var viaEntities = EBReferenceArray <BoardModelVia> ()
       let vias = stringArray (fromDict: inBoardArchiveDict, key: "VIAS", &errorArray)
       for str in vias {
-        let via = BoardModelVia (self.ebUndoManager)
+        let via = BoardModelVia (self.undoManager)
         let ints = array3int (fromString: str, &errorArray)
         via.x = ints [0]
         via.y = ints [1]
@@ -149,7 +149,7 @@ extension AutoLayoutMergerDocument {
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
-          self.ebUndoManager,
+          self.undoManager,
           file: #file, #line
         ) {
           backLegendLinesEntities.append (segment)
@@ -168,7 +168,7 @@ extension AutoLayoutMergerDocument {
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
-          self.ebUndoManager,
+          self.undoManager,
           file: #file, #line
         ) {
           frontLegendLinesEntities.append (segment)
@@ -181,7 +181,7 @@ extension AutoLayoutMergerDocument {
       var frontLayoutTextEntities = EBReferenceArray <SegmentEntity> ()
       let frontLayoutTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LAYOUT-FRONT", &errorArray)
       for str in frontLayoutTexts {
-        let segment = SegmentEntity (self.ebUndoManager)
+        let segment = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, &errorArray)
         segment.x1 = ints [0]
         segment.y1 = ints [1]
@@ -197,7 +197,7 @@ extension AutoLayoutMergerDocument {
       var backLayoutTextEntities = EBReferenceArray <SegmentEntity> ()
       let backLayoutTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LAYOUT-BACK", &errorArray)
       for str in backLayoutTexts {
-        let segment = SegmentEntity (self.ebUndoManager)
+        let segment = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, &errorArray)
         segment.x1 = ints [0]
         segment.y1 = ints [1]
@@ -219,7 +219,7 @@ extension AutoLayoutMergerDocument {
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
-          self.ebUndoManager,
+          self.undoManager,
           file: #file, #line
         ) {
           backLegendTextEntities.append (segment)
@@ -238,7 +238,7 @@ extension AutoLayoutMergerDocument {
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
-          self.ebUndoManager,
+          self.undoManager,
           file: #file, #line
         ) {
           frontLegendTextEntities.append (segment)
@@ -257,7 +257,7 @@ extension AutoLayoutMergerDocument {
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
-          self.ebUndoManager,
+          self.undoManager,
           file: #file, #line
         ) {
           backPackagesEntities.append (segment)
@@ -276,7 +276,7 @@ extension AutoLayoutMergerDocument {
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
-          self.ebUndoManager,
+          self.undoManager,
           file: #file, #line
         ) {
           frontPackagesEntities.append (segment)
@@ -295,7 +295,7 @@ extension AutoLayoutMergerDocument {
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
-          self.ebUndoManager,
+          self.undoManager,
           file: #file, #line
         ) {
           backComponentNamesEntities.append (segment)
@@ -314,7 +314,7 @@ extension AutoLayoutMergerDocument {
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
-          self.ebUndoManager,
+          self.undoManager,
           file: #file, #line
         ) {
           frontComponentNamesEntities.append (segment)
@@ -333,7 +333,7 @@ extension AutoLayoutMergerDocument {
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y: canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
-          self.ebUndoManager,
+          self.undoManager,
           file: #file, #line
         ) {
           frontComponentValuesEntities.append (segment)
@@ -352,7 +352,7 @@ extension AutoLayoutMergerDocument {
           p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y: canariUnitToMillimeter (ints [3])),
           width_mm: canariUnitToMillimeter (ints [4]),
           clipRect_mm: boardRect_mm,
-          self.ebUndoManager,
+          self.undoManager,
           file: #file, #line
         ) {
           backComponentValuesEntities.append (segment)
@@ -365,7 +365,7 @@ extension AutoLayoutMergerDocument {
       var drillEntities = EBReferenceArray <SegmentEntity> ()
       let drills = stringArray (fromDict: inBoardArchiveDict, key: "DRILLS", &errorArray)
       for str in drills {
-        let segment = SegmentEntity (self.ebUndoManager)
+        let segment = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, &errorArray)
         segment.x1 = ints [0]
         segment.y1 = ints [1]
@@ -381,7 +381,7 @@ extension AutoLayoutMergerDocument {
       var backPadEntities = EBReferenceArray <BoardModelPad> ()
       let backPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: "PADS-BACK", &errorArray)
       for padDict in backPadDictArray {
-        let pad = BoardModelPad (self.ebUndoManager)
+        let pad = BoardModelPad (self.undoManager)
         pad.x = int (fromDict: padDict, key: "X", &errorArray)
         pad.y = int (fromDict: padDict, key: "Y", &errorArray)
         pad.width = int (fromDict: padDict, key: "WIDTH", &errorArray)
@@ -406,7 +406,7 @@ extension AutoLayoutMergerDocument {
       var frontPadEntities = EBReferenceArray <BoardModelPad> ()
       let frontPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: "PADS-FRONT", &errorArray)
       for padDict in frontPadDictArray {
-        let pad = BoardModelPad (self.ebUndoManager)
+        let pad = BoardModelPad (self.undoManager)
         pad.x = int (fromDict: padDict, key: "X", &errorArray)
         pad.y = int (fromDict: padDict, key: "Y", &errorArray)
         pad.width = int (fromDict: padDict, key: "WIDTH", &errorArray)
@@ -446,7 +446,7 @@ extension AutoLayoutMergerDocument {
       var traversingPadEntities = EBReferenceArray <BoardModelPad> ()
       let traversingPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: "PADS-TRAVERSING", &errorArray)
       for padDict in traversingPadDictArray {
-        let pad = BoardModelPad (self.ebUndoManager)
+        let pad = BoardModelPad (self.undoManager)
         pad.x = int (fromDict: padDict, key: "X", &errorArray)
         pad.y = int (fromDict: padDict, key: "Y", &errorArray)
         pad.width = int (fromDict: padDict, key: "WIDTH", &errorArray)
@@ -471,7 +471,7 @@ extension AutoLayoutMergerDocument {
       var trackEntities = EBReferenceArray <SegmentEntity> ()
       let tracks = stringArray (fromDict: inBoardArchiveDict, key: "TRACKS-INNER1", &errorArray)
       for str in tracks {
-        let track = SegmentEntity (self.ebUndoManager)
+        let track = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, &errorArray)
         track.x1 = ints [0]
         track.y1 = ints [1]
@@ -487,7 +487,7 @@ extension AutoLayoutMergerDocument {
       var trackEntities = EBReferenceArray <SegmentEntity> ()
       let tracks = stringArray (fromDict: inBoardArchiveDict, key: "TRACKS-INNER2", &errorArray)
       for str in tracks {
-        let track = SegmentEntity (self.ebUndoManager)
+        let track = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, &errorArray)
         track.x1 = ints [0]
         track.y1 = ints [1]
@@ -503,7 +503,7 @@ extension AutoLayoutMergerDocument {
       var trackEntities = EBReferenceArray <SegmentEntity> ()
       let tracks = stringArray (fromDict: inBoardArchiveDict, key: "TRACKS-INNER3", &errorArray)
       for str in tracks {
-        let track = SegmentEntity (self.ebUndoManager)
+        let track = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, &errorArray)
         track.x1 = ints [0]
         track.y1 = ints [1]
@@ -519,7 +519,7 @@ extension AutoLayoutMergerDocument {
       var trackEntities = EBReferenceArray <SegmentEntity> ()
       let tracks = stringArray (fromDict: inBoardArchiveDict, key: "TRACKS-INNER4", &errorArray)
       for str in tracks {
-        let track = SegmentEntity (self.ebUndoManager)
+        let track = SegmentEntity (self.undoManager)
         let ints = array5int (fromString: str, &errorArray)
         track.x1 = ints [0]
         track.y1 = ints [1]

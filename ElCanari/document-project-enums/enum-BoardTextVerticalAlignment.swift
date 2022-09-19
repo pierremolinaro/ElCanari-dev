@@ -12,18 +12,6 @@ enum BoardTextVerticalAlignment : Int, EnumPropertyProtocol, Hashable, CaseItera
   case center = 2
   case below = 3
 
-
-  //····················································································································
-
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .above : return "above" // 0
-      case .base : return "base" // 1
-      case .center : return "center" // 2
-      case .below : return "below" // 3
-    }
-  }
-
   //····················································································································
   //  Enum generic bindings utility functions
   //····················································································································

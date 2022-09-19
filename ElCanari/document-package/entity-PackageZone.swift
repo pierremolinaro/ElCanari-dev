@@ -538,27 +538,27 @@ final class PackageZone : PackageObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.width_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: ebUndoManager)
-    self.height_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: ebUndoManager)
-    self.xUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.yUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.widthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.heightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.zoneName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.displayZoneName_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.displayZoneNameWithPadNumbers_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.xName_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: ebUndoManager)
-    self.yName_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: ebUndoManager)
-    self.xNameUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.yNameUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.zoneNumbering_property = EBStoredProperty_PadNumbering (defaultValue: PadNumbering.noNumbering, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.width_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager)
+    self.height_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager)
+    self.xUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.yUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.widthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.heightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.zoneName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.displayZoneName_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.displayZoneNameWithPadNumbers_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.xName_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: inUndoManager)
+    self.yName_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: inUndoManager)
+    self.xNameUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.yNameUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.zoneNumbering_property = EBStoredProperty_PadNumbering (defaultValue: PadNumbering.noNumbering, undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- To many property: forbiddenPadNumbers (no option)
-    self.forbiddenPadNumbers_property.ebUndoManager = self.ebUndoManager
+    self.forbiddenPadNumbers_property.undoManager = inUndoManager
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

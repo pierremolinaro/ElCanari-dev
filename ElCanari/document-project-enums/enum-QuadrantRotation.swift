@@ -6,36 +6,34 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum SlavePadStyle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
-  case traversing = 0
-  case componentSide = 1
-  case oppositeSide = 2
-
+enum QuadrantRotation : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+  case rotation0 = 0
+  case rotation90 = 1
+  case rotation180 = 2
+  case rotation270 = 3
 
   //····················································································································
+  // Function degreesTitles
+  //····················································································································
 
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .traversing : return "traversing" // 0
-      case .componentSide : return "componentSide" // 1
-      case .oppositeSide : return "oppositeSide" // 2
-    }
+  static func degreesTitles () -> [String] {
+    return ["0°", "90°", "180°", "270°"]
   }
 
   //····················································································································
-  // Function popupTitles
+  // Function directionTitles
   //····················································································································
 
-  static func popupTitles () -> [String] {
-    return ["Traversing", "Component Side", "Opposite Side"]
+  static func directionTitles () -> [String] {
+    return ["Right", "Above", "Left", "Below"]
   }
 
   //····················································································································
   //  Enum generic bindings utility functions
   //····················································································································
 
-  static func buildfromRawValue (rawValue : Int) -> SlavePadStyle? {
-    if let v = SlavePadStyle (rawValue:rawValue) {
+  static func buildfromRawValue (rawValue : Int) -> QuadrantRotation? {
+    if let v = QuadrantRotation (rawValue:rawValue) {
       return v
     }else{
       return nil
@@ -44,9 +42,9 @@ enum SlavePadStyle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  func enumfromRawValue (rawValue : Int) -> SlavePadStyle {
+  func enumfromRawValue (rawValue : Int) -> QuadrantRotation {
     var result = self
-    let v : SlavePadStyle? = SlavePadStyle (rawValue:rawValue) ;
+    let v : QuadrantRotation? = QuadrantRotation (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
@@ -69,9 +67,9 @@ enum SlavePadStyle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> SlavePadStyle {
-    var result = SlavePadStyle.traversing
-    if let number = object as? NSNumber, let v = SlavePadStyle (rawValue: number.intValue) {
+  static func convertFromNSObject (object : NSObject) -> QuadrantRotation {
+    var result = QuadrantRotation.rotation0
+    if let number = object as? NSNumber, let v = QuadrantRotation (rawValue: number.intValue) {
       result = v
     }
     return result
@@ -79,8 +77,8 @@ enum SlavePadStyle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> SlavePadStyle? {
-    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = SlavePadStyle (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> QuadrantRotation? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = QuadrantRotation (rawValue: rawValue) {
       return enumValue
     }else{
       return nil
@@ -99,11 +97,11 @@ enum SlavePadStyle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_SlavePadStyle = EBReadOnlyEnumProperty <SlavePadStyle>
-typealias EBTransientProperty_SlavePadStyle = EBTransientEnumProperty <SlavePadStyle>
-typealias EBReadWriteProperty_SlavePadStyle = EBReadWriteEnumProperty <SlavePadStyle>
-typealias EBStoredProperty_SlavePadStyle = EBStoredEnumProperty <SlavePadStyle>
-typealias EBPropertyProxy_SlavePadStyle = EBPropertyEnumProxy <SlavePadStyle>
-typealias EBPreferencesProperty_SlavePadStyle = EBStoredEnumProperty <SlavePadStyle>
+typealias EBReadOnlyProperty_QuadrantRotation = EBReadOnlyEnumProperty <QuadrantRotation>
+typealias EBTransientProperty_QuadrantRotation = EBTransientEnumProperty <QuadrantRotation>
+typealias EBReadWriteProperty_QuadrantRotation = EBReadWriteEnumProperty <QuadrantRotation>
+typealias EBStoredProperty_QuadrantRotation = EBStoredEnumProperty <QuadrantRotation>
+typealias EBPropertyProxy_QuadrantRotation = EBPropertyEnumProxy <QuadrantRotation>
+typealias EBPreferencesProperty_QuadrantRotation = EBStoredEnumProperty <QuadrantRotation>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

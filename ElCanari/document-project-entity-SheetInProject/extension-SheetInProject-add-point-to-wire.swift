@@ -34,19 +34,19 @@ extension SheetInProject {
     inWire.mP2 = nil
     inWire.mSheet = nil
   //--- Create a new point
-    let newPoint = PointInSchematic (self.ebUndoManager)
+    let newPoint = PointInSchematic (self.undoManager)
     let alignedLocation = inUnalignedLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
     newPoint.mX = alignedLocation.x
     newPoint.mY = alignedLocation.y
     newPoint.mNet = net
     self.mPoints.append (newPoint)
   //--- Create first wire
-    let firstWire = WireInSchematic (self.ebUndoManager)
+    let firstWire = WireInSchematic (self.undoManager)
     firstWire.mP1 = p1
     firstWire.mP2 = newPoint
     self.mObjects.append (firstWire)
   //--- Create second wire
-    let secondWire = WireInSchematic (self.ebUndoManager)
+    let secondWire = WireInSchematic (self.undoManager)
     secondWire.mP1 = newPoint
     secondWire.mP2 = p2
     self.mObjects.append (secondWire)

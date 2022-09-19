@@ -18,7 +18,7 @@ extension SheetInProject {
                       newNetCreator inNewNetCreator : @MainActor () -> NetInProject) -> LabelInSchematic? {
     let isConnected = inPoint.isConnected ?? true
     if !isConnected {
-      let label = LabelInSchematic (self.ebUndoManager)
+      let label = LabelInSchematic (self.undoManager)
       inPoint.mNet = inNewNetCreator ()
       label.mPoint = inPoint
       label.mOrientation = self.findPreferredNCOrientation (for: inPoint)
@@ -34,7 +34,7 @@ extension SheetInProject {
   func addNCToPin (toPoint inPoint : PointInSchematic) -> NCInSchematic? {
     let isConnected = inPoint.isConnected ?? true
     if !isConnected {
-      let nc = NCInSchematic (self.ebUndoManager)
+      let nc = NCInSchematic (self.undoManager)
       nc.mPoint = inPoint
       nc.mOrientation = self.findPreferredNCOrientation (for: inPoint)
       self.mObjects.append (nc)

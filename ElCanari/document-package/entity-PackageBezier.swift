@@ -475,24 +475,24 @@ final class PackageBezier : PackageObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.y1_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: ebUndoManager)
-    self.x2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.y2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.cpx1_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: ebUndoManager)
-    self.cpy1_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: ebUndoManager)
-    self.cpx2_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: ebUndoManager)
-    self.cpy2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.x1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.y1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.x2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.y2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.cpx1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.cpy1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.cpx2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.cpy2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.y1_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager)
+    self.x2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.y2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.cpx1_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager)
+    self.cpy1_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager)
+    self.cpx2_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager)
+    self.cpy2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.x1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.y1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.x2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.y2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.cpx1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.cpy1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.cpx2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.cpy2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in

@@ -228,7 +228,7 @@ extension PackageZone {
     s += " name "
     s += "\"" + self.zoneName + "\""
     s += " numbering "
-    s += self.zoneNumbering.descriptionForExplorer ()
+    s += self.zoneNumbering.descriptionString ()
     s += ";\n"
     return s
   }

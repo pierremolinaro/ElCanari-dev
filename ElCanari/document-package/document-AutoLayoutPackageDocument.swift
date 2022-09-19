@@ -6,8 +6,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(AutoLayoutPackageDocument) class AutoLayoutPackageDocument : EBAutoLayoutManagedDocument, NSToolbarDelegate {
-
+@objc(AutoLayoutPackageDocument) class AutoLayoutPackageDocument : EBAutoLayoutManagedDocument {
+  
   //····················································································································
   //   Array controller: mModelImageObjectsController
   //····················································································································
@@ -3485,10 +3485,10 @@ import Cocoa
 
   final private func configureProperties () {
   //--- Array controller property: mModelImageObjectsController
-    self.mModelImageObjectsController.bind_model (self.rootObject.mModelImageObjects_property, self.ebUndoManager)
+    self.mModelImageObjectsController.bind_model (self.rootObject.mModelImageObjects_property, self.undoManager)
 
   //--- Array controller property: mPackageObjectsController
-    self.mPackageObjectsController.bind_model (self.rootObject.packageObjects_property, self.ebUndoManager)
+    self.mPackageObjectsController.bind_model (self.rootObject.packageObjects_property, self.undoManager)
 
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property)

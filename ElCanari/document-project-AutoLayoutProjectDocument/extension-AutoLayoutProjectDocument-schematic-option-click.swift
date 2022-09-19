@@ -22,24 +22,24 @@ extension AutoLayoutProjectDocument {
       let pointsAtP = selectedSheet.pointsInSchematics (at: p)
     //---
       if pointsAtP.count == 1 { // Use point at p1, create a point at p2
-        let wire = WireInSchematic (self.ebUndoManager)
+        let wire = WireInSchematic (self.undoManager)
         self.mWireCreatedByOptionClick = wire
         wire.mP1 = pointsAtP [0]
-        let point = PointInSchematic (self.ebUndoManager)
+        let point = PointInSchematic (self.undoManager)
         point.mX = p.x
         point.mY = p.y
         point.mNet = wire.mP1?.mNet
         wire.mP2 = point
         selectedSheet.mPoints.append (point)
       }else{ // Assign no net
-        let wire = WireInSchematic (self.ebUndoManager)
+        let wire = WireInSchematic (self.undoManager)
         self.mWireCreatedByOptionClick = wire
-        let point1 = PointInSchematic (self.ebUndoManager)
+        let point1 = PointInSchematic (self.undoManager)
         point1.mX = p.x
         point1.mY = p.y
         wire.mP1 = point1
         selectedSheet.mPoints.append (point1)
-        let point2 = PointInSchematic (self.ebUndoManager)
+        let point2 = PointInSchematic (self.undoManager)
         point2.mX = p.x
         point2.mY = p.y
         wire.mP2 = point2

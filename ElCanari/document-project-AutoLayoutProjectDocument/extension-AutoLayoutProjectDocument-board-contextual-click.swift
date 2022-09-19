@@ -200,7 +200,7 @@ extension AutoLayoutProjectDocument {
       }
     }
     if connectedConnectors.count > 0 {
-      let title = "Disconnect in \(inSide.string) Layer"
+      let title = "Disconnect in \(inSide.descriptionString ()) Layer"
       let menuItem = NSMenuItem (title: title, action: #selector (Self.disconnectInBoardAction (_:)), keyEquivalent: "")
       menuItem.target = self
       menuItem.representedObject = (connectedConnectors, inSide)
@@ -217,7 +217,7 @@ extension AutoLayoutProjectDocument {
         for track in c.mTracksP1.values {
           if track.mSide == side {
             track.mConnectorP1 = nil
-            let newConnector = BoardConnector (self.ebUndoManager)
+            let newConnector = BoardConnector (self.undoManager)
             newConnector.mRoot = self.rootObject
             newConnector.mX = location.x
             newConnector.mY = location.y
@@ -227,7 +227,7 @@ extension AutoLayoutProjectDocument {
         for track in c.mTracksP2.values {
           if track.mSide == side {
             track.mConnectorP2 = nil
-            let newConnector = BoardConnector (self.ebUndoManager)
+            let newConnector = BoardConnector (self.undoManager)
             newConnector.mRoot = self.rootObject
             newConnector.mX = location.x
             newConnector.mY = location.y
@@ -275,7 +275,7 @@ extension AutoLayoutProjectDocument {
           let p0 = otherPoints [0]
           let p1 = otherPoints [1]
           if canRectiLinearAlign, p0.x != p1.x, p0.y != p1.y {
-            let title = "Rectilinear Track Alignment in \(inSide.string) Layer"
+            let title = "Rectilinear Track Alignment in \(inSide.descriptionString ()) Layer"
             let menuItem = NSMenuItem (title: title, action: #selector (Self.rectilinearAlignmentAction), keyEquivalent: "")
             menuItem.target = self
             if p0.x < p1.x {
@@ -286,7 +286,7 @@ extension AutoLayoutProjectDocument {
             menu.addItem (menuItem)
           }
           if canOctoLinearAlign, p0.x != p1.x, p0.y != p1.y, abs (p0.x - p1.x) != abs (p0.y - p1.y) {
-            let title = "Octolinear Track Alignment in \(inSide.string) Layer"
+            let title = "Octolinear Track Alignment in \(inSide.descriptionString ()) Layer"
             let menuItem = NSMenuItem (title: title, action: #selector (Self.octolinearAlignmentAction), keyEquivalent: "")
             menuItem.target = self
             if p0.x < p1.x {
@@ -409,7 +409,7 @@ extension AutoLayoutProjectDocument {
       let connector = connectorsUnderMouse [0]
       let connectionCount = connector.mTracksP1.count + connector.mTracksP2.count
       if connectionCount == 2 {
-        let title = "Merge Tracks in \(inSide.string) Layer"
+        let title = "Merge Tracks in \(inSide.descriptionString ()) Layer"
         let menuItem = NSMenuItem (title: title, action: #selector (Self.mergeTracksInBoardAction), keyEquivalent: "")
         menuItem.target = self
         menuItem.representedObject = (connector, inSide)
@@ -447,7 +447,7 @@ extension AutoLayoutProjectDocument {
       //--- Remove connector
         connector.mRoot = nil
       //--- Build Track
-        let track = BoardTrack (self.ebUndoManager)
+        let track = BoardTrack (self.undoManager)
         track.mSide = side
         track.mConnectorP1 = retainedConnectors [0]
         track.mConnectorP2 = retainedConnectors [1]
@@ -464,7 +464,7 @@ extension AutoLayoutProjectDocument {
   private func splitTrackInBoard (toMenu menu : NSMenu, _ inUnalignedMouseDownPoint : CanariPoint, _ inSide : TrackSide) {
     let tracksUnderMouse = self.rootObject.tracks (at: inUnalignedMouseDownPoint, trackSide: inSide)
     if tracksUnderMouse.count == 1 {
-      let title = "Split Track in \(inSide.string) Layer"
+      let title = "Split Track in \(inSide.descriptionString ()) Layer"
       let menuItem = NSMenuItem (title: title, action: #selector (Self.splitTrackInBoardAction), keyEquivalent: "")
       menuItem.target = self
       menuItem.representedObject = (tracksUnderMouse [0], inUnalignedMouseDownPoint)
@@ -486,19 +486,19 @@ extension AutoLayoutProjectDocument {
       track.mNet = nil
       track.mRoot = nil
     //--- New connector
-      let newConnector = BoardConnector (self.ebUndoManager)
+      let newConnector = BoardConnector (self.undoManager)
       newConnector.mX = mouseLocation.x
       newConnector.mY = mouseLocation.y
       self.rootObject.mBoardObjects.append (newConnector)
     //--- Add First frack
-      let track1 = BoardTrack (self.ebUndoManager)
+      let track1 = BoardTrack (self.undoManager)
       track1.mSide = side
       track1.mConnectorP1 = connector1
       track1.mConnectorP2 = newConnector
       track1.mNet = net
       self.rootObject.mBoardObjects.append (track1)
     //--- Add Second frack
-      let track2 = BoardTrack (self.ebUndoManager)
+      let track2 = BoardTrack (self.undoManager)
       track2.mSide = side
       track2.mConnectorP1 = newConnector
       track2.mConnectorP2 = connector2

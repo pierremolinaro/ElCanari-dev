@@ -17,7 +17,7 @@ extension AutoLayoutProjectDocument {
       let deviceRoot = documentData.documentRootObject as? DeviceRoot,
       let version = documentData.documentMetadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY] as? Int {
     //--- Create device
-      let newDevice = DeviceInProject (self.ebUndoManager)
+      let newDevice = DeviceInProject (self.undoManager)
       device = newDevice
       newDevice.mDeviceName = inName
       self.performUpdateDevice (newDevice, from: deviceRoot, version, inData)
@@ -256,13 +256,13 @@ extension AutoLayoutProjectDocument {
     var packageDictionary = [String : DevicePackageInProject] ()
   //--- Append packages
     for packageInDevice in inCandidateDeviceRoot.mPackages.values {
-      let packageInProject = DevicePackageInProject (self.ebUndoManager)
+      let packageInProject = DevicePackageInProject (self.undoManager)
       inCurrentDeviceInProject.mPackages.append (packageInProject)
       packageInProject.mPackageName = packageInDevice.mName
       packageInProject.mStrokeBezierPath = packageInDevice.mStrokeBezierPath
       packageDictionary [packageInProject.mPackageName] = packageInProject
       for masterPadInDevice in packageInDevice.mMasterPads.values {
-        let masterPadInProject = DeviceMasterPadInProject (self.ebUndoManager)
+        let masterPadInProject = DeviceMasterPadInProject (self.undoManager)
         packageInProject.mMasterPads.append (masterPadInProject)
         masterPadInProject.mCenterX = masterPadInDevice.mCenterX
         masterPadInProject.mCenterY = masterPadInDevice.mCenterY
@@ -274,7 +274,7 @@ extension AutoLayoutProjectDocument {
         masterPadInProject.mStyle = masterPadInDevice.mStyle
         masterPadInProject.mWidth = masterPadInDevice.mWidth
         for slavePadInDevice in masterPadInDevice.mSlavePads.values {
-          let slavePadInProject = DeviceSlavePadInProject (self.ebUndoManager)
+          let slavePadInProject = DeviceSlavePadInProject (self.undoManager)
           masterPadInProject.mSlavePads.append (slavePadInProject)
           slavePadInProject.mCenterX = slavePadInDevice.mCenterX
           slavePadInProject.mCenterY = slavePadInDevice.mCenterY
@@ -304,17 +304,17 @@ extension AutoLayoutProjectDocument {
   //--- Append symbols
     var devicePinDictionary = [PinQualifiedNameStruct : DevicePinInProject] ()
     for symbolTypeInDevice in inCandidateDeviceRoot.mSymbolTypes.values {
-      let symbolTypeInProject = DeviceSymbolTypeInProject (self.ebUndoManager)
+      let symbolTypeInProject = DeviceSymbolTypeInProject (self.undoManager)
       symbolTypeInProject.mFilledBezierPath = symbolTypeInDevice.mFilledBezierPath
       symbolTypeInProject.mStrokeBezierPath = symbolTypeInDevice.mStrokeBezierPath
       symbolTypeInProject.mSymbolTypeName = symbolTypeInDevice.mTypeName
       for symbolInstanceInDevice in symbolTypeInDevice.mInstances.values {
-        let symbolInstanceInProject = DeviceSymbolInstanceInProject (self.ebUndoManager)
+        let symbolInstanceInProject = DeviceSymbolInstanceInProject (self.undoManager)
         symbolInstanceInProject.mSymbolInstanceName = symbolInstanceInDevice.mInstanceName
         symbolInstanceInProject.mSymbolType = symbolTypeInProject
         inCurrentDeviceInProject.mSymbols.append (symbolInstanceInProject)
         for pinInDevice in symbolTypeInDevice.mPinTypes.values {
-          let pinInProject = DevicePinInProject (self.ebUndoManager)
+          let pinInProject = DevicePinInProject (self.undoManager)
           pinInProject.mPinName = pinInDevice.mName
           pinInProject.mSymbolInstanceName = symbolInstanceInDevice.mInstanceName
           pinInProject.mSymbolTypeName = symbolTypeInProject.mSymbolTypeName
@@ -336,7 +336,7 @@ extension AutoLayoutProjectDocument {
   //--- Append pin/pad assignments
     inCurrentDeviceInProject.mPadAssignments = EBReferenceArray ()
     for pinPadAssignmentInDevice in inCandidateDeviceRoot.mPadProxies.values {
-      let assignment = DevicePadAssignmentInProject (self.ebUndoManager)
+      let assignment = DevicePadAssignmentInProject (self.undoManager)
       let padName = pinPadAssignmentInDevice.mPadName
       assignment.mPadName = padName
       if let pinInstanceInDevice = pinPadAssignmentInDevice.mPinInstance { // If nil, pad is NC

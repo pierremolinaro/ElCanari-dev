@@ -138,7 +138,7 @@ final class MouseDownOnObjectBehaviour : DefaultBehaviourOnMouseDown { // Mouse 
     )
     if !self.mBeginUndoGroupingDone {
       self.mBeginUndoGroupingDone = true
-      inGraphicView.viewController?.ebUndoManager?.beginUndoGrouping ()
+      inGraphicView.viewController?.undoManager?.beginUndoGrouping ()
     }
     inGraphicView.guideFor (objectIndexes: [self.mObjectIndex])
     inGraphicView.dragObject (
@@ -165,7 +165,7 @@ final class MouseDownOnObjectBehaviour : DefaultBehaviourOnMouseDown { // Mouse 
   override func onMouseUp (_ inUnalignedMouseUpLocation : NSPoint,
                            _ inGraphicView : EBGraphicView) {
     if self.mBeginUndoGroupingDone {
-      inGraphicView.viewController?.ebUndoManager?.endUndoGrouping ()
+      inGraphicView.viewController?.undoManager?.endUndoGrouping ()
     }
   }
 
@@ -231,7 +231,7 @@ final class OptionMouseDownBehaviour : DefaultBehaviourOnMouseDown { // Mouse do
         _ inGraphicView : EBGraphicView,
         _ inViewController : EBGraphicViewControllerProtocol) {
     self.mOperationInProgress = true
-    inViewController.ebUndoManager?.beginUndoGrouping ()
+    inViewController.undoManager?.beginUndoGrouping ()
     inGraphicView.mStartOptionMouseDownCallback? (inUnalignedLocation)
   }
 
@@ -251,8 +251,8 @@ final class OptionMouseDownBehaviour : DefaultBehaviourOnMouseDown { // Mouse do
     if self.mOperationInProgress {
       self.mOperationInProgress = false
       inGraphicView.mAbortOptionMouseOperationCallback? ()
-      inGraphicView.viewController?.ebUndoManager?.endUndoGrouping ()
-      inGraphicView.viewController?.ebUndoManager?.undo ()
+      inGraphicView.viewController?.undoManager?.endUndoGrouping ()
+      inGraphicView.viewController?.undoManager?.undo ()
     }
   }
 
@@ -276,9 +276,9 @@ final class OptionMouseDownBehaviour : DefaultBehaviourOnMouseDown { // Mouse do
                            _ inGraphicView : EBGraphicView) {
     if self.mOperationInProgress {
       let accepts = inGraphicView.mStopOptionMouseUpCallback? (inUnalignedMouseUpLocation) ?? true
-      inGraphicView.viewController?.ebUndoManager?.endUndoGrouping ()
+      inGraphicView.viewController?.undoManager?.endUndoGrouping ()
       if !accepts {
-        inGraphicView.viewController?.ebUndoManager?.undo ()
+        inGraphicView.viewController?.undoManager?.undo ()
       }
     }
   }

@@ -16,7 +16,7 @@ extension AutoLayoutProjectDocument {
         if let selectedSheet = self.rootObject.mSelectedSheet {
           let sheets = self.rootObject.mSheets
           if let idx = sheets.firstIndex (of: selectedSheet) {
-            let newSheet = SheetInProject (self.ebUndoManager)
+            let newSheet = SheetInProject (self.undoManager)
             self.rootObject.mSheets.insert (newSheet, at: idx + 1)
             self.rootObject.mSelectedSheet = newSheet
           }

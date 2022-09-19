@@ -394,25 +394,25 @@ final class DeviceInProject : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mDeviceName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mPrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mDeviceVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mDeviceFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mDeviceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mPrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mDeviceVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mDeviceFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- To many property: mPackages (no option)
-    self.mPackages_property.ebUndoManager = self.ebUndoManager
+    self.mPackages_property.undoManager = inUndoManager
   //--- To many property: mSymbols (no option)
-    self.mSymbols_property.ebUndoManager = self.ebUndoManager
+    self.mSymbols_property.undoManager = inUndoManager
   //--- To many property: mComponents (has opposite relationship)
-    self.mComponents_property.ebUndoManager = self.ebUndoManager
+    self.mComponents_property.undoManager = inUndoManager
     self.mComponents_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mDevice_property.setProp (me) } },
       resetter: { inObject in inObject.mDevice_property.setProp (nil) }
     )
   //--- To many property: mPadAssignments (no option)
-    self.mPadAssignments_property.ebUndoManager = self.ebUndoManager
+    self.mPadAssignments_property.undoManager = inUndoManager
   //--- Atomic property: versionString
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

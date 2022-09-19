@@ -164,9 +164,9 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.mSymbolType_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mSymbolType_property.propval == nil)
@@ -177,7 +177,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
     self.mSymbolType_property.addEBObserver (self.mSymbolType_none)
     // gInitSemaphore.wait ()
   //--- To one property: mSymbolType
-    self.mSymbolType_property.ebUndoManager = self.ebUndoManager
+    self.mSymbolType_property.undoManager = inUndoManager
   //--- Atomic property: symbolAndTypeName
     self.symbolAndTypeName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

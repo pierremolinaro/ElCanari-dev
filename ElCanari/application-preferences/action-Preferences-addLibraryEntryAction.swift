@@ -23,7 +23,7 @@ extension Preferences {
         if inReturnCode == .OK {
           let URLToAdd : URL = op.urls [0]
           let pathToAdd = URLToAdd.path
-          let newEntry = CanariLibraryEntry (self.ebUndoManager)
+          let newEntry = CanariLibraryEntry (self.undoManager)
           newEntry.mPath = pathToAdd
           var array = preferences_additionnalLibraryArray_property.propval
           array.append (newEntry)

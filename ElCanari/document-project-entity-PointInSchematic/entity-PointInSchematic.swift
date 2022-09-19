@@ -537,11 +537,11 @@ final class PointInSchematic : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mSymbolPinName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mSymbolPinName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.mSymbol_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mSymbol_property.propval == nil)
@@ -576,37 +576,37 @@ final class PointInSchematic : EBManagedObject,
     self.mSheet_property.addEBObserver (self.mSheet_none)
     // gInitSemaphore.wait ()
   //--- To many property: mLabels (has opposite relationship)
-    self.mLabels_property.ebUndoManager = self.ebUndoManager
+    self.mLabels_property.undoManager = inUndoManager
     self.mLabels_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
       resetter: { inObject in inObject.mPoint_property.setProp (nil) }
     )
   //--- To many property: mWiresP2s (has opposite relationship)
-    self.mWiresP2s_property.ebUndoManager = self.ebUndoManager
+    self.mWiresP2s_property.undoManager = inUndoManager
     self.mWiresP2s_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mP2_property.setProp (me) } },
       resetter: { inObject in inObject.mP2_property.setProp (nil) }
     )
   //--- To many property: mWiresP1s (has opposite relationship)
-    self.mWiresP1s_property.ebUndoManager = self.ebUndoManager
+    self.mWiresP1s_property.undoManager = inUndoManager
     self.mWiresP1s_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mP1_property.setProp (me) } },
       resetter: { inObject in inObject.mP1_property.setProp (nil) }
     )
   //--- To one property: mSymbol (has opposite to many relationship: mPoints)
-    self.mSymbol_property.ebUndoManager = self.ebUndoManager
+    self.mSymbol_property.undoManager = inUndoManager
     self.mSymbol_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoints_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mPoints_property.remove (me) } }
     )
   //--- To one property: mNet (has opposite to many relationship: mPoints)
-    self.mNet_property.ebUndoManager = self.ebUndoManager
+    self.mNet_property.undoManager = inUndoManager
     self.mNet_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoints_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mPoints_property.remove (me) } }
     )
   //--- To one property: mNC (has opposite to one relationship: mPoint)
-    self.mNC_property.ebUndoManager = self.ebUndoManager
+    self.mNC_property.undoManager = inUndoManager
     self.mNC_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
       resetter: { inObject in inObject.mPoint_property.setProp (nil) }
@@ -751,7 +751,7 @@ final class PointInSchematic : EBManagedObject,
     self.mSymbol_property.mRotation_property.addEBObserver (self.symbolRotation_property)
     self.mSymbol_property.mMirror_property.addEBObserver (self.symbolRotation_property)
   //--- To one property: mSheet (has opposite to many relationship: mPoints)
-    self.mSheet_property.ebUndoManager = self.ebUndoManager
+    self.mSheet_property.undoManager = inUndoManager
     self.mSheet_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoints_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mPoints_property.remove (me) } }

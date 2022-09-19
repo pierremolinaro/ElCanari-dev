@@ -212,14 +212,14 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mFirstX_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: ebUndoManager)
-    self.mFirstY_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: ebUndoManager)
-    self.mFirstColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.green, undoManager: ebUndoManager)
-    self.mSecondDx_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: ebUndoManager)
-    self.mSecondDy_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: ebUndoManager)
-    self.mSecondColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.brown, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mFirstX_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager)
+    self.mFirstY_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager)
+    self.mFirstColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.green, undoManager: inUndoManager)
+    self.mSecondDx_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager)
+    self.mSecondDy_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager)
+    self.mSecondColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.brown, undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.mRoot_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mRoot_property.propval == nil)
@@ -230,7 +230,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
     self.mRoot_property.addEBObserver (self.mRoot_none)
     // gInitSemaphore.wait ()
   //--- To one property: mRoot (has opposite to many relationship: mModelImageObjects)
-    self.mRoot_property.ebUndoManager = self.ebUndoManager
+    self.mRoot_property.undoManager = inUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mModelImageObjects_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mModelImageObjects_property.remove (me) } }

@@ -30,7 +30,7 @@ extension AutoLayoutFontDocument {
     if let currentCharacter = possibleCurrentCharacter {
       var newSegmentEntityArray = EBReferenceArray <SegmentForFontCharacter> ()
       for segment in inSegments {
-        let newSegment = SegmentForFontCharacter (self.ebUndoManager)
+        let newSegment = SegmentForFontCharacter (self.undoManager)
         newSegment.x1 = segment.x1
         newSegment.y1 = segment.y1
         newSegment.x2 = segment.x2

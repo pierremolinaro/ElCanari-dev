@@ -154,9 +154,9 @@ final class LabelInSchematic : SchematicObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mOrientation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mOrientation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.mPoint_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mPoint_property.propval == nil)
@@ -167,7 +167,7 @@ final class LabelInSchematic : SchematicObject,
     self.mPoint_property.addEBObserver (self.mPoint_none)
     // gInitSemaphore.wait ()
   //--- To one property: mPoint (has opposite to many relationship: mLabels)
-    self.mPoint_property.ebUndoManager = self.ebUndoManager
+    self.mPoint_property.undoManager = inUndoManager
     self.mPoint_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mLabels_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mLabels_property.remove (me) } }

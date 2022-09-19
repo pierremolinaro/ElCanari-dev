@@ -19,7 +19,7 @@ extension AutoLayoutMergerDocument {
             validationButtonTitle: "Import",
             callBack: { (_ inURL : URL, _ inName : String) -> Void in
               if let data = try? Data (contentsOf: inURL),
-                 let documentData = try? loadEasyBindingFile (fromData: data, documentName: inName, undoManager: self.ebUndoManager),
+                 let documentData = try? loadEasyBindingFile (fromData: data, documentName: inName, undoManager: self.undoManager),
                  let artworkRoot = documentData.documentRootObject as? ArtworkRoot {
                 self.rootObject.mArtwork = artworkRoot
                 self.rootObject.mArtworkName = inName

@@ -313,21 +313,21 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mPinX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mPinY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mXName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mYName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mNameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: ebUndoManager)
-    self.mPinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (defaultValue: true, undoManager: ebUndoManager)
-    self.mXNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mYNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mPinX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mPinY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mXName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mYName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mNameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager)
+    self.mPinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.mXNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mYNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- To many property: mInstances (has opposite relationship)
-    self.mInstances_property.ebUndoManager = self.ebUndoManager
+    self.mInstances_property.undoManager = inUndoManager
     self.mInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mType_property.setProp (me) } },
       resetter: { inObject in inObject.mType_property.setProp (nil) }

@@ -347,18 +347,18 @@ final class BoardText : BoardObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: ebUndoManager)
-    self.mLayer_property = EBStoredProperty_BoardTextLayer (defaultValue: BoardTextLayer.legendFront, undoManager: ebUndoManager)
-    self.mText_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: ebUndoManager)
-    self.mVerticalAlignment_property = EBStoredProperty_BoardTextVerticalAlignment (defaultValue: BoardTextVerticalAlignment.base, undoManager: ebUndoManager)
-    self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mWeight_property = EBStoredProperty_Double (defaultValue: 1, undoManager: ebUndoManager)
-    self.mOblique_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: inUndoManager)
+    self.mLayer_property = EBStoredProperty_BoardTextLayer (defaultValue: BoardTextLayer.legendFront, undoManager: inUndoManager)
+    self.mText_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager)
+    self.mVerticalAlignment_property = EBStoredProperty_BoardTextVerticalAlignment (defaultValue: BoardTextVerticalAlignment.base, undoManager: inUndoManager)
+    self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mWeight_property = EBStoredProperty_Double (defaultValue: 1, undoManager: inUndoManager)
+    self.mOblique_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.mFont_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mFont_property.propval == nil)
@@ -369,7 +369,7 @@ final class BoardText : BoardObject,
     self.mFont_property.addEBObserver (self.mFont_none)
     // gInitSemaphore.wait ()
   //--- To one property: mFont (has opposite to many relationship: mTexts)
-    self.mFont_property.ebUndoManager = self.ebUndoManager
+    self.mFont_property.undoManager = inUndoManager
     self.mFont_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mTexts_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mTexts_property.remove (me) } }

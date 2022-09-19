@@ -10,16 +10,6 @@ enum AutorouterPreferredDirections : Int, EnumPropertyProtocol, Hashable, CaseIt
   case vFrontHback = 0
   case hFrontVback = 1
 
-
-  //····················································································································
-
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .vFrontHback : return "vFrontHback" // 0
-      case .hFrontVback : return "hFrontVback" // 1
-    }
-  }
-
   //····················································································································
   // Function popupTitles
   //····················································································································

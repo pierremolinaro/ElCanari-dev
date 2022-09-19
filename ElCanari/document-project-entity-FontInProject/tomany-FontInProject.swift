@@ -1102,7 +1102,7 @@ class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureO
   //   Undo manager
   //····················································································································
 
-  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
@@ -1125,7 +1125,7 @@ class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureO
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <FontInProject>) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+    self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
@@ -1311,10 +1311,9 @@ final class PreferencesArrayOf_FontInProject : StoredArrayOf_FontInProject {
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = EBReferenceArray <FontInProject> ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "FontInProject") as? FontInProject {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
+        let object = newInstanceOfEntityNamed (self.undoManager, "FontInProject") as! FontInProject
+        object.setUpAtomicPropertiesWithDictionary (dictionary)
+        objectArray.append (object)
       }
       self.setProp (objectArray)
     }

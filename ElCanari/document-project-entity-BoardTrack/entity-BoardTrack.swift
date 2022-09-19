@@ -820,21 +820,21 @@ final class BoardTrack : BoardObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mSide_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front, undoManager: ebUndoManager)
-    self.mDefaultTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mCustomTrackWidth_property = EBStoredProperty_Int (defaultValue: 45720, undoManager: ebUndoManager)
-    self.mCustomTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mUsesCustomTrackWidth_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mIsPreservedByAutoRouter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mP1XUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mP1YUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mP2XUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mP2YUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mManualLockP1_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mManualLockP2_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mDirectionLockOnKnobDragging_property = EBStoredProperty_TrackLockDirection (defaultValue: TrackLockDirection.unlocked, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mSide_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front, undoManager: inUndoManager)
+    self.mDefaultTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mCustomTrackWidth_property = EBStoredProperty_Int (defaultValue: 45720, undoManager: inUndoManager)
+    self.mCustomTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mUsesCustomTrackWidth_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mIsPreservedByAutoRouter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mP1XUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mP1YUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mP2XUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mP2YUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mManualLockP1_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mManualLockP2_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mDirectionLockOnKnobDragging_property = EBStoredProperty_TrackLockDirection (defaultValue: TrackLockDirection.unlocked, undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.mConnectorP1_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mConnectorP1_property.propval == nil)
@@ -861,19 +861,19 @@ final class BoardTrack : BoardObject,
     self.mNet_property.addEBObserver (self.mNet_none)
     // gInitSemaphore.wait ()
   //--- To one property: mConnectorP1 (has opposite to many relationship: mTracksP1)
-    self.mConnectorP1_property.ebUndoManager = self.ebUndoManager
+    self.mConnectorP1_property.undoManager = inUndoManager
     self.mConnectorP1_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mTracksP1_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mTracksP1_property.remove (me) } }
     )
   //--- To one property: mConnectorP2 (has opposite to many relationship: mTracksP2)
-    self.mConnectorP2_property.ebUndoManager = self.ebUndoManager
+    self.mConnectorP2_property.undoManager = inUndoManager
     self.mConnectorP2_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mTracksP2_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mTracksP2_property.remove (me) } }
     )
   //--- To one property: mNet (has opposite to many relationship: mTracks)
-    self.mNet_property.ebUndoManager = self.ebUndoManager
+    self.mNet_property.undoManager = inUndoManager
     self.mNet_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mTracks_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mTracks_property.remove (me) } }

@@ -6,36 +6,18 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum HorizontalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
-  case onTheRight = 0
-  case center = 1
-  case onTheLeft = 2
-
-
-  //····················································································································
-
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .onTheRight : return "onTheRight" // 0
-      case .center : return "center" // 1
-      case .onTheLeft : return "onTheLeft" // 2
-    }
-  }
-
-  //····················································································································
-  // Function popupTitles
-  //····················································································································
-
-  static func popupTitles () -> [String] {
-    return ["Right", "Center", "Left"]
-  }
+enum MetadataStatus : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+  case unknown = 0
+  case ok = 1
+  case warning = 2
+  case error = 3
 
   //····················································································································
   //  Enum generic bindings utility functions
   //····················································································································
 
-  static func buildfromRawValue (rawValue : Int) -> HorizontalAlignment? {
-    if let v = HorizontalAlignment (rawValue:rawValue) {
+  static func buildfromRawValue (rawValue : Int) -> MetadataStatus? {
+    if let v = MetadataStatus (rawValue:rawValue) {
       return v
     }else{
       return nil
@@ -44,9 +26,9 @@ enum HorizontalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  func enumfromRawValue (rawValue : Int) -> HorizontalAlignment {
+  func enumfromRawValue (rawValue : Int) -> MetadataStatus {
     var result = self
-    let v : HorizontalAlignment? = HorizontalAlignment (rawValue:rawValue) ;
+    let v : MetadataStatus? = MetadataStatus (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
@@ -69,9 +51,9 @@ enum HorizontalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> HorizontalAlignment {
-    var result = HorizontalAlignment.onTheRight
-    if let number = object as? NSNumber, let v = HorizontalAlignment (rawValue: number.intValue) {
+  static func convertFromNSObject (object : NSObject) -> MetadataStatus {
+    var result = MetadataStatus.unknown
+    if let number = object as? NSNumber, let v = MetadataStatus (rawValue: number.intValue) {
       result = v
     }
     return result
@@ -79,8 +61,8 @@ enum HorizontalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> HorizontalAlignment? {
-    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = HorizontalAlignment (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> MetadataStatus? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = MetadataStatus (rawValue: rawValue) {
       return enumValue
     }else{
       return nil
@@ -99,11 +81,11 @@ enum HorizontalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_HorizontalAlignment = EBReadOnlyEnumProperty <HorizontalAlignment>
-typealias EBTransientProperty_HorizontalAlignment = EBTransientEnumProperty <HorizontalAlignment>
-typealias EBReadWriteProperty_HorizontalAlignment = EBReadWriteEnumProperty <HorizontalAlignment>
-typealias EBStoredProperty_HorizontalAlignment = EBStoredEnumProperty <HorizontalAlignment>
-typealias EBPropertyProxy_HorizontalAlignment = EBPropertyEnumProxy <HorizontalAlignment>
-typealias EBPreferencesProperty_HorizontalAlignment = EBStoredEnumProperty <HorizontalAlignment>
+typealias EBReadOnlyProperty_MetadataStatus = EBReadOnlyEnumProperty <MetadataStatus>
+typealias EBTransientProperty_MetadataStatus = EBTransientEnumProperty <MetadataStatus>
+typealias EBReadWriteProperty_MetadataStatus = EBReadWriteEnumProperty <MetadataStatus>
+typealias EBStoredProperty_MetadataStatus = EBStoredEnumProperty <MetadataStatus>
+typealias EBPropertyProxy_MetadataStatus = EBPropertyEnumProxy <MetadataStatus>
+typealias EBPreferencesProperty_MetadataStatus = EBStoredEnumProperty <MetadataStatus>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

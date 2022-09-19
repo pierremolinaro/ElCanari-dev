@@ -168,11 +168,11 @@ final class PadProxyInDevice : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mPinInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mPadName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mIsNC_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mPinInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mPadName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mIsNC_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.mPinInstance_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mPinInstance_property.propval == nil)
@@ -183,7 +183,7 @@ final class PadProxyInDevice : EBManagedObject,
     self.mPinInstance_property.addEBObserver (self.mPinInstance_none)
     // gInitSemaphore.wait ()
   //--- To one property: mPinInstance (has opposite to one relationship: mPadProxy)
-    self.mPinInstance_property.ebUndoManager = self.ebUndoManager
+    self.mPinInstance_property.undoManager = inUndoManager
     self.mPinInstance_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPadProxy_property.setProp (me) } },
       resetter: { inObject in inObject.mPadProxy_property.setProp (nil) }

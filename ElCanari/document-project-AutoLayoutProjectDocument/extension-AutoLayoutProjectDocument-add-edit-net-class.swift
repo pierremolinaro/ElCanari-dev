@@ -193,7 +193,7 @@ extension AutoLayoutProjectDocument {
   func performAddNetClass () {
     let temporaryClass = NetClassInProject (nil)
     self.netClassEditionPanel (with: temporaryClass, creation: true) {
-      let newClass = NetClassInProject (self.ebUndoManager)
+      let newClass = NetClassInProject (self.undoManager)
       newClass.mNetClassName = temporaryClass.mNetClassName
       newClass.mNetClassColor = temporaryClass.mNetClassColor
       newClass.mTrackWidth = temporaryClass.mTrackWidth

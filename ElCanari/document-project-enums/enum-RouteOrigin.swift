@@ -17,23 +17,6 @@ enum RouteOrigin : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case topLeft = 7
   case middleLeft = 8
 
-
-  //····················································································································
-
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .center : return "center" // 0
-      case .bottomLeft : return "bottomLeft" // 1
-      case .middleBottom : return "middleBottom" // 2
-      case .bottomRight : return "bottomRight" // 3
-      case .middleRight : return "middleRight" // 4
-      case .topRight : return "topRight" // 5
-      case .middleTop : return "middleTop" // 6
-      case .topLeft : return "topLeft" // 7
-      case .middleLeft : return "middleLeft" // 8
-    }
-  }
-
   //····················································································································
   // Function popupTitles
   //····················································································································

@@ -245,11 +245,11 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.mType_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mType_property.propval == nil)
@@ -260,13 +260,13 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mType_property.addEBObserver (self.mType_none)
     // gInitSemaphore.wait ()
   //--- To many property: mPinInstances (has opposite relationship)
-    self.mPinInstances_property.ebUndoManager = self.ebUndoManager
+    self.mPinInstances_property.undoManager = inUndoManager
     self.mPinInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSymbolInstance_property.setProp (me) } },
       resetter: { inObject in inObject.mSymbolInstance_property.setProp (nil) }
     )
   //--- To one property: mType (has opposite to many relationship: mInstances)
-    self.mType_property.ebUndoManager = self.ebUndoManager
+    self.mType_property.undoManager = inUndoManager
     self.mType_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mInstances_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mInstances_property.remove (me) } }

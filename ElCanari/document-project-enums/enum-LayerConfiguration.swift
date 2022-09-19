@@ -6,28 +6,25 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum TextAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
-  case left = 0
-  case right = 1
-  case center = 2
-
+enum LayerConfiguration : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+  case twoLayers = 0
+  case fourLayers = 1
+  case sixLayers = 2
 
   //····················································································································
+  // Function popupTitles
+  //····················································································································
 
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .left : return "left" // 0
-      case .right : return "right" // 1
-      case .center : return "center" // 2
-    }
+  static func popupTitles () -> [String] {
+    return ["2 Layers", "4 Layers", "6 Layers"]
   }
 
   //····················································································································
   //  Enum generic bindings utility functions
   //····················································································································
 
-  static func buildfromRawValue (rawValue : Int) -> TextAlignment? {
-    if let v = TextAlignment (rawValue:rawValue) {
+  static func buildfromRawValue (rawValue : Int) -> LayerConfiguration? {
+    if let v = LayerConfiguration (rawValue:rawValue) {
       return v
     }else{
       return nil
@@ -36,9 +33,9 @@ enum TextAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  func enumfromRawValue (rawValue : Int) -> TextAlignment {
+  func enumfromRawValue (rawValue : Int) -> LayerConfiguration {
     var result = self
-    let v : TextAlignment? = TextAlignment (rawValue:rawValue) ;
+    let v : LayerConfiguration? = LayerConfiguration (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
@@ -61,9 +58,9 @@ enum TextAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> TextAlignment {
-    var result = TextAlignment.left
-    if let number = object as? NSNumber, let v = TextAlignment (rawValue: number.intValue) {
+  static func convertFromNSObject (object : NSObject) -> LayerConfiguration {
+    var result = LayerConfiguration.twoLayers
+    if let number = object as? NSNumber, let v = LayerConfiguration (rawValue: number.intValue) {
       result = v
     }
     return result
@@ -71,8 +68,8 @@ enum TextAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> TextAlignment? {
-    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = TextAlignment (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> LayerConfiguration? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = LayerConfiguration (rawValue: rawValue) {
       return enumValue
     }else{
       return nil
@@ -91,11 +88,11 @@ enum TextAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_TextAlignment = EBReadOnlyEnumProperty <TextAlignment>
-typealias EBTransientProperty_TextAlignment = EBTransientEnumProperty <TextAlignment>
-typealias EBReadWriteProperty_TextAlignment = EBReadWriteEnumProperty <TextAlignment>
-typealias EBStoredProperty_TextAlignment = EBStoredEnumProperty <TextAlignment>
-typealias EBPropertyProxy_TextAlignment = EBPropertyEnumProxy <TextAlignment>
-typealias EBPreferencesProperty_TextAlignment = EBStoredEnumProperty <TextAlignment>
+typealias EBReadOnlyProperty_LayerConfiguration = EBReadOnlyEnumProperty <LayerConfiguration>
+typealias EBTransientProperty_LayerConfiguration = EBTransientEnumProperty <LayerConfiguration>
+typealias EBReadWriteProperty_LayerConfiguration = EBReadWriteEnumProperty <LayerConfiguration>
+typealias EBStoredProperty_LayerConfiguration = EBStoredEnumProperty <LayerConfiguration>
+typealias EBPropertyProxy_LayerConfiguration = EBPropertyEnumProxy <LayerConfiguration>
+typealias EBPreferencesProperty_LayerConfiguration = EBStoredEnumProperty <LayerConfiguration>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

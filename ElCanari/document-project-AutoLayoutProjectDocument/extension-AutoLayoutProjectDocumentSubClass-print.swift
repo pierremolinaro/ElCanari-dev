@@ -85,7 +85,7 @@ extension AutoLayoutProjectDocumentSubClass {
       )
     //--- Draw sheets
       var yOffset : CGFloat = printHeight * CGFloat (sheets.count - 1)
-      self.ebUndoManager.disableUndoRegistration ()
+      self.undoManager?.disableUndoRegistration ()
       let currentSelectedSheet = self.rootObject.mSelectedSheet
       for sheet in sheets.values {
         self.rootObject.mSelectedSheet = sheet
@@ -98,7 +98,7 @@ extension AutoLayoutProjectDocumentSubClass {
         yOffset -= printHeight
       }
       self.rootObject.mSelectedSheet = currentSelectedSheet
-      self.ebUndoManager.enableUndoRegistration ()
+      self.undoManager?.enableUndoRegistration ()
     //---
       let printInfo = NSPrintInfo.shared
 //     Swift.print ("\(printInfo.imageablePageBounds)")

@@ -6,36 +6,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum LayerConfiguration : Int, EnumPropertyProtocol, Hashable, CaseIterable {
-  case twoLayers = 0
-  case fourLayers = 1
-  case sixLayers = 2
-
-
-  //····················································································································
-
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .twoLayers : return "twoLayers" // 0
-      case .fourLayers : return "fourLayers" // 1
-      case .sixLayers : return "sixLayers" // 2
-    }
-  }
-
-  //····················································································································
-  // Function popupTitles
-  //····················································································································
-
-  static func popupTitles () -> [String] {
-    return ["2 Layers", "4 Layers", "6 Layers"]
-  }
+enum RestrictRectangleLayer : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+  case frontSide = 0
+  case backSide = 1
+  case bothSides = 2
 
   //····················································································································
   //  Enum generic bindings utility functions
   //····················································································································
 
-  static func buildfromRawValue (rawValue : Int) -> LayerConfiguration? {
-    if let v = LayerConfiguration (rawValue:rawValue) {
+  static func buildfromRawValue (rawValue : Int) -> RestrictRectangleLayer? {
+    if let v = RestrictRectangleLayer (rawValue:rawValue) {
       return v
     }else{
       return nil
@@ -44,9 +25,9 @@ enum LayerConfiguration : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  func enumfromRawValue (rawValue : Int) -> LayerConfiguration {
+  func enumfromRawValue (rawValue : Int) -> RestrictRectangleLayer {
     var result = self
-    let v : LayerConfiguration? = LayerConfiguration (rawValue:rawValue) ;
+    let v : RestrictRectangleLayer? = RestrictRectangleLayer (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
@@ -69,9 +50,9 @@ enum LayerConfiguration : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> LayerConfiguration {
-    var result = LayerConfiguration.twoLayers
-    if let number = object as? NSNumber, let v = LayerConfiguration (rawValue: number.intValue) {
+  static func convertFromNSObject (object : NSObject) -> RestrictRectangleLayer {
+    var result = RestrictRectangleLayer.frontSide
+    if let number = object as? NSNumber, let v = RestrictRectangleLayer (rawValue: number.intValue) {
       result = v
     }
     return result
@@ -79,8 +60,8 @@ enum LayerConfiguration : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> LayerConfiguration? {
-    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = LayerConfiguration (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> RestrictRectangleLayer? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = RestrictRectangleLayer (rawValue: rawValue) {
       return enumValue
     }else{
       return nil
@@ -99,11 +80,11 @@ enum LayerConfiguration : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_LayerConfiguration = EBReadOnlyEnumProperty <LayerConfiguration>
-typealias EBTransientProperty_LayerConfiguration = EBTransientEnumProperty <LayerConfiguration>
-typealias EBReadWriteProperty_LayerConfiguration = EBReadWriteEnumProperty <LayerConfiguration>
-typealias EBStoredProperty_LayerConfiguration = EBStoredEnumProperty <LayerConfiguration>
-typealias EBPropertyProxy_LayerConfiguration = EBPropertyEnumProxy <LayerConfiguration>
-typealias EBPreferencesProperty_LayerConfiguration = EBStoredEnumProperty <LayerConfiguration>
+typealias EBReadOnlyProperty_RestrictRectangleLayer = EBReadOnlyEnumProperty <RestrictRectangleLayer>
+typealias EBTransientProperty_RestrictRectangleLayer = EBTransientEnumProperty <RestrictRectangleLayer>
+typealias EBReadWriteProperty_RestrictRectangleLayer = EBReadWriteEnumProperty <RestrictRectangleLayer>
+typealias EBStoredProperty_RestrictRectangleLayer = EBStoredEnumProperty <RestrictRectangleLayer>
+typealias EBPropertyProxy_RestrictRectangleLayer = EBPropertyEnumProxy <RestrictRectangleLayer>
+typealias EBPreferencesProperty_RestrictRectangleLayer = EBStoredEnumProperty <RestrictRectangleLayer>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

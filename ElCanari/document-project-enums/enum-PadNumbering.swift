@@ -6,28 +6,32 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum PadSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
-  case traversing = 0
-  case front = 1
-  case back = 2
-
+enum PadNumbering : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+  case noNumbering = 0
+  case counterClock = 1
+  case upRight = 2
+  case upLeft = 3
+  case downRight = 4
+  case downLeft = 5
+  case rightUp = 6
+  case rightDown = 7
+  case leftUp = 8
+  case leftDown = 9
 
   //····················································································································
+  // Function popupTitles
+  //····················································································································
 
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .traversing : return "traversing" // 0
-      case .front : return "front" // 1
-      case .back : return "back" // 2
-    }
+  static func popupTitles () -> [String] {
+    return ["No", "Counterclock", "Up, Right", "Up, Left", "Down, Right", "Down, Left", "Right, Up", "Right, Down", "Left, Up", "Left, Down"]
   }
 
   //····················································································································
   //  Enum generic bindings utility functions
   //····················································································································
 
-  static func buildfromRawValue (rawValue : Int) -> PadSide? {
-    if let v = PadSide (rawValue:rawValue) {
+  static func buildfromRawValue (rawValue : Int) -> PadNumbering? {
+    if let v = PadNumbering (rawValue:rawValue) {
       return v
     }else{
       return nil
@@ -36,9 +40,9 @@ enum PadSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  func enumfromRawValue (rawValue : Int) -> PadSide {
+  func enumfromRawValue (rawValue : Int) -> PadNumbering {
     var result = self
-    let v : PadSide? = PadSide (rawValue:rawValue) ;
+    let v : PadNumbering? = PadNumbering (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
@@ -61,9 +65,9 @@ enum PadSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> PadSide {
-    var result = PadSide.traversing
-    if let number = object as? NSNumber, let v = PadSide (rawValue: number.intValue) {
+  static func convertFromNSObject (object : NSObject) -> PadNumbering {
+    var result = PadNumbering.noNumbering
+    if let number = object as? NSNumber, let v = PadNumbering (rawValue: number.intValue) {
       result = v
     }
     return result
@@ -71,8 +75,8 @@ enum PadSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> PadSide? {
-    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = PadSide (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> PadNumbering? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = PadNumbering (rawValue: rawValue) {
       return enumValue
     }else{
       return nil
@@ -91,11 +95,11 @@ enum PadSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_PadSide = EBReadOnlyEnumProperty <PadSide>
-typealias EBTransientProperty_PadSide = EBTransientEnumProperty <PadSide>
-typealias EBReadWriteProperty_PadSide = EBReadWriteEnumProperty <PadSide>
-typealias EBStoredProperty_PadSide = EBStoredEnumProperty <PadSide>
-typealias EBPropertyProxy_PadSide = EBPropertyEnumProxy <PadSide>
-typealias EBPreferencesProperty_PadSide = EBStoredEnumProperty <PadSide>
+typealias EBReadOnlyProperty_PadNumbering = EBReadOnlyEnumProperty <PadNumbering>
+typealias EBTransientProperty_PadNumbering = EBTransientEnumProperty <PadNumbering>
+typealias EBReadWriteProperty_PadNumbering = EBReadWriteEnumProperty <PadNumbering>
+typealias EBStoredProperty_PadNumbering = EBStoredEnumProperty <PadNumbering>
+typealias EBPropertyProxy_PadNumbering = EBPropertyEnumProxy <PadNumbering>
+typealias EBPreferencesProperty_PadNumbering = EBStoredEnumProperty <PadNumbering>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

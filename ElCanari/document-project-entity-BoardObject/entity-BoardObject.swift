@@ -704,8 +704,8 @@ class BoardObject : EBGraphicManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    super.init (inUndoManager)
     self.mRoot_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mRoot_property.propval == nil)
@@ -716,7 +716,7 @@ class BoardObject : EBGraphicManagedObject,
     self.mRoot_property.addEBObserver (self.mRoot_none)
     // gInitSemaphore.wait ()
   //--- To one property: mRoot (has opposite to many relationship: mBoardObjects)
-    self.mRoot_property.ebUndoManager = self.ebUndoManager
+    self.mRoot_property.undoManager = inUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mBoardObjects_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.mBoardObjects_property.remove (me) } }

@@ -485,11 +485,11 @@ extension AutoLayoutProjectDocument {
           let netNameX = padArray [idx].0
           let frontPadX = padArray [idx].1
           if self.rootObject.mCheckClearanceBetweenPadsOfSameNet || (netNameX.isEmpty) {
-            self.checkPadInsulation (inArray: frontPadX, side.descriptionForExplorer(), &ioIssues, &collisionCount)
+            self.checkPadInsulation (inArray: frontPadX, side.descriptionString (), &ioIssues, &collisionCount)
           }
           for idy in idx+1 ..< padArray.count {
             let frontPadY = padArray [idy].1
-            self.checkPadInsulation (betweenArraies: (frontPadX, frontPadY), side.descriptionForExplorer(), &ioIssues, &collisionCount)
+            self.checkPadInsulation (betweenArraies: (frontPadX, frontPadY), side.descriptionString (), &ioIssues, &collisionCount)
           }
         }
       }
@@ -825,26 +825,26 @@ extension AutoLayoutProjectDocument {
     }
   //--- Insulation tests
     for side in TrackSide.allCases {
-      self.checkTrackTrackInsulation (&ioIssues, side.descriptionForExplorer(), layout [side])
+      self.checkTrackTrackInsulation (&ioIssues, side.descriptionString (), layout [side])
     }
     for side in TrackSide.allCases {
-      self.checkTrackPadInsulation (&ioIssues, side.descriptionForExplorer(), layout [side])
+      self.checkTrackPadInsulation (&ioIssues, side.descriptionString (), layout [side])
     }
     for side in TrackSide.allCases {
-      self.checkPadRestrictRectInsulation (&ioIssues, side.descriptionForExplorer(), layout [side], restrictRectangles [side])
+      self.checkPadRestrictRectInsulation (&ioIssues, side.descriptionString (), layout [side], restrictRectangles [side])
     }
 
     for side in TrackSide.allCases {
-      self.checkTrackRestrictRectInsulation (&ioIssues, side.descriptionForExplorer(), layout [side], restrictRectangles [side])
+      self.checkTrackRestrictRectInsulation (&ioIssues, side.descriptionString (), layout [side], restrictRectangles [side])
     }
     for side in TrackSide.allCases {
-      self.checkPadViaInsulation (&ioIssues, side.descriptionForExplorer(), layout [side])
+      self.checkPadViaInsulation (&ioIssues, side.descriptionString (), layout [side])
     }
     for side in TrackSide.allCases {
-      self.checkTrackViaInsulation (&ioIssues, side.descriptionForExplorer(), layout [side])
+      self.checkTrackViaInsulation (&ioIssues, side.descriptionString (), layout [side])
     }
     for side in TrackSide.allCases {
-      self.checkViaRestrictRectInsulation (&ioIssues, side.descriptionForExplorer(), layout [side], restrictRectangles [side])
+      self.checkViaRestrictRectInsulation (&ioIssues, side.descriptionString (), layout [side], restrictRectangles [side])
     }
     self.checkViaViaInsulation (&ioIssues, viaDictionary)
   }

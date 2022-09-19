@@ -66,7 +66,7 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
         if  let boardModel = possibleBoardModel {
          // NSLog ("x \(mouseLocation.x), y \(mouseLocation.y)")
           let rotation = self.rootObject.modelInsertionRotation
-          let newBoard = MergerBoardInstance (self.ebUndoManager)
+          let newBoard = MergerBoardInstance (self.undoManager)
           newBoard.myModel_property.setProp (boardModel)
           newBoard.x = cocoaToCanariUnit (draggingLocationInDestinationView.x)
           newBoard.y = cocoaToCanariUnit (draggingLocationInDestinationView.y)

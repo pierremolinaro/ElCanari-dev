@@ -89,28 +89,22 @@ fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
 //  newInstanceOfEntityNamed
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func newInstanceOfEntityNamed (_ ebUndoManager : EBUndoManager?,
-                                          _ inEntityTypeName : String) -> EBManagedObject? {
-  if let T = kEntityDictionary [inEntityTypeName] {
-    return T.init (ebUndoManager)
-  }else{
-    return nil
-  }
+@MainActor func newInstanceOfEntityNamed (_ inUndoManager : UndoManager?,
+                                          _ inEntityTypeName : String) -> EBManagedObject {
+  let T = kEntityDictionary [inEntityTypeName]!
+  return T.init (inUndoManager)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   makeManagedObjectFromDictionary
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func makeManagedObjectFromDictionary (_ inUndoManager : EBUndoManager?,
-                                                 _ inDictionary : NSDictionary) -> EBManagedObject? {
+@MainActor func makeManagedObjectFromDictionary (_ inUndoManager : UndoManager?,
+                                                 _ inDictionary : NSDictionary) -> EBManagedObject {
   let entityName = inDictionary.value (forKey: ENTITY_KEY) as! String
-  if let object = newInstanceOfEntityNamed (inUndoManager, entityName) {
-    object.setUpAtomicPropertiesWithDictionary (inDictionary)
-    return object
-  }else{
-    return nil
-  }
+  let object = newInstanceOfEntityNamed (inUndoManager, entityName)
+  object.setUpAtomicPropertiesWithDictionary (inDictionary)
+  return object
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

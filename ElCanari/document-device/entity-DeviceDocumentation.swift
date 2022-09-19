@@ -90,10 +90,10 @@ final class DeviceDocumentation : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mFileName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mFileName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- Atomic property: fileSize
     self.fileSize_property.mReadModelFunction = { [weak self] in

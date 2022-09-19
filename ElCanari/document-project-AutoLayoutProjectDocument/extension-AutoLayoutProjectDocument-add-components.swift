@@ -81,7 +81,7 @@ extension AutoLayoutProjectDocument {
     var optionalNewComponent : ComponentInProject? = nil
   //--- Append component
     if let deviceInProject = inPossibleDevice {
-      let newComponent = ComponentInProject (self.ebUndoManager)
+      let newComponent = ComponentInProject (self.undoManager)
     //--- Set device
       newComponent.mDevice = deviceInProject
     //--- Set package
@@ -92,7 +92,7 @@ extension AutoLayoutProjectDocument {
     //--- Set symbols
       var componentSymbols = EBReferenceArray <ComponentSymbolInProject> ()
       for symbolInDevice in deviceInProject.mSymbols.values {
-        let newSymbolInProject = ComponentSymbolInProject (self.ebUndoManager)
+        let newSymbolInProject = ComponentSymbolInProject (self.undoManager)
         newSymbolInProject.mSymbolTypeName = symbolInDevice.mSymbolType!.mSymbolTypeName
         newSymbolInProject.mSymbolInstanceName = symbolInDevice.mSymbolInstanceName
         componentSymbols.append (newSymbolInProject)

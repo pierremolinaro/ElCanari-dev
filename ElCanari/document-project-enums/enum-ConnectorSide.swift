@@ -15,21 +15,6 @@ enum ConnectorSide : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case inner4 = 5
   case traversing = 6
 
-
-  //····················································································································
-
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .front : return "front" // 0
-      case .back : return "back" // 1
-      case .inner1 : return "inner1" // 2
-      case .inner2 : return "inner2" // 3
-      case .inner3 : return "inner3" // 4
-      case .inner4 : return "inner4" // 5
-      case .traversing : return "traversing" // 6
-    }
-  }
-
   //····················································································································
   //  Enum generic bindings utility functions
   //····················································································································

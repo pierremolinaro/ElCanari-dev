@@ -270,22 +270,22 @@ final class SymbolTypeInDevice : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: ebUndoManager)
-    self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: ebUndoManager)
-    self.mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager)
+    self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager)
+    self.mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- To many property: mInstances (has opposite relationship)
-    self.mInstances_property.ebUndoManager = self.ebUndoManager
+    self.mInstances_property.undoManager = inUndoManager
     self.mInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mType_property.setProp (me) } },
       resetter: { inObject in inObject.mType_property.setProp (nil) }
     )
   //--- To many property: mPinTypes (no option)
-    self.mPinTypes_property.ebUndoManager = self.ebUndoManager
+    self.mPinTypes_property.undoManager = inUndoManager
   //--- Atomic property: versionString
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

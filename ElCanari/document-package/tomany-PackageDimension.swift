@@ -1594,7 +1594,7 @@ class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, EBSign
   //   Undo manager
   //····················································································································
 
-  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   // Model will change
@@ -1602,7 +1602,7 @@ class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, EBSign
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <PackageDimension>) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+    self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
@@ -1786,10 +1786,9 @@ final class PreferencesArrayOf_PackageDimension : StoredArrayOf_PackageDimension
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = EBReferenceArray <PackageDimension> ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackageDimension") as? PackageDimension {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
+        let object = newInstanceOfEntityNamed (self.undoManager, "PackageDimension") as! PackageDimension
+        object.setUpAtomicPropertiesWithDictionary (dictionary)
+        objectArray.append (object)
       }
       self.setProp (objectArray)
     }

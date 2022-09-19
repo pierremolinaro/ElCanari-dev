@@ -1180,7 +1180,7 @@ class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatureObser
   //   Undo manager
   //····················································································································
 
-  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   // Model will change
@@ -1188,7 +1188,7 @@ class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatureObser
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <PackageOval>) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+    self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
@@ -1372,10 +1372,9 @@ final class PreferencesArrayOf_PackageOval : StoredArrayOf_PackageOval {
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = EBReferenceArray <PackageOval> ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackageOval") as? PackageOval {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
+        let object = newInstanceOfEntityNamed (self.undoManager, "PackageOval") as! PackageOval
+        object.setUpAtomicPropertiesWithDictionary (dictionary)
+        objectArray.append (object)
       }
       self.setProp (objectArray)
     }

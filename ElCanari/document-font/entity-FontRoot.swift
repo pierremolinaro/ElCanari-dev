@@ -327,16 +327,16 @@ final class FontRoot : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.comments_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.nominalSize_property = EBStoredProperty_Int (defaultValue: 14, undoManager: ebUndoManager)
-    self.selectedTab_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.selectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.currentCharacterCodePoint_property = EBStoredProperty_Int (defaultValue: 32, undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.comments_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.nominalSize_property = EBStoredProperty_Int (defaultValue: 14, undoManager: inUndoManager)
+    self.selectedTab_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.selectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.currentCharacterCodePoint_property = EBStoredProperty_Int (defaultValue: 32, undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- To many property: characters (no option)
-    self.characters_property.ebUndoManager = self.ebUndoManager
+    self.characters_property.undoManager = inUndoManager
   //--- Atomic property: currentCharacterCodePointString
     self.currentCharacterCodePointString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -515,7 +515,7 @@ final class FontRoot : EBManagedObject,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
   //--- To many property: characters (Custom store)
-    self.characters_property.setProp (EBReferenceArray (customRead_FontCharacter_characters (from: inDictionary, with: self.ebUndoManager)))
+    self.characters_property.setProp (EBReferenceArray (customRead_FontCharacter_characters (from: inDictionary, with: self.undoManager)))
   }
 
   //····················································································································

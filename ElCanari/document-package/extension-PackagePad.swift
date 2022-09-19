@@ -197,9 +197,9 @@ extension PackagePad {
     s += " : "
     s += stringFrom (valueInCanariUnit: self.height, displayUnit : self.heightUnit)
     s += " shape "
-    s += self.padShape.descriptionForExplorer ()
+    s += self.padShape.descriptionString ()
     s += " style "
-    s += self.padStyle.descriptionForExplorer ()
+    s += self.padStyle.descriptionString ()
     s += " hole "
     s += stringFrom (valueInCanariUnit: self.holeWidth, displayUnit : self.holeWidthUnit)
     s += " : "

@@ -13,19 +13,6 @@ enum RastnetDisplay : Int, EnumPropertyProtocol, Hashable, CaseIterable {
   case componentNets = 3
   case selectedComponents = 4
 
-
-  //····················································································································
-
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .hidden : return "hidden" // 0
-      case .allNets : return "allNets" // 1
-      case .oneNet : return "oneNet" // 2
-      case .componentNets : return "componentNets" // 3
-      case .selectedComponents : return "selectedComponents" // 4
-    }
-  }
-
   //····················································································································
   // Function popupTitles
   //····················································································································

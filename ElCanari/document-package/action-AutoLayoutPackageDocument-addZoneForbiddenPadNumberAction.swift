@@ -115,7 +115,7 @@ extension AutoLayoutPackageDocument {
 //        intField.autoLayoutCleanUp ()
         if inResponse == .stop {
           let newForbiddenPadNumber = newFordiddenPadNumber_property.propval
-          let fpn = ForbiddenPadNumber (self.ebUndoManager)
+          let fpn = ForbiddenPadNumber (self.undoManager)
           fpn.padNumber = newForbiddenPadNumber
           selectedZone.forbiddenPadNumbers.append (fpn)
         //---- Adjust pad number

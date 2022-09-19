@@ -6,8 +6,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(AutoLayoutFontDocument) class AutoLayoutFontDocument : EBAutoLayoutManagedDocument, NSToolbarDelegate {
-
+@objc(AutoLayoutFontDocument) class AutoLayoutFontDocument : EBAutoLayoutManagedDocument {
+  
   //····················································································································
   //   Array controller: selectedCharacterController
   //····················································································································
@@ -648,7 +648,7 @@ import Cocoa
 
   final private func configureProperties () {
   //--- Array controller property: selectedCharacterController
-    self.selectedCharacterController.bind_model (self.rootObject.characters_property, self.ebUndoManager)
+    self.selectedCharacterController.bind_model (self.rootObject.characters_property, self.undoManager)
 
   //--- Selection controller property: characterSelection
     self.characterSelection.bind_selection (model: self.selectedCharacterController.selectedArray_property)

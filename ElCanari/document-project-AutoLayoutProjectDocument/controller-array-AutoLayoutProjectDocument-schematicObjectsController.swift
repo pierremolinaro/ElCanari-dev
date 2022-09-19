@@ -14,8 +14,8 @@ final class Controller_AutoLayoutProjectDocument_schematicObjectsController : Re
   //    Undo manager
   //····················································································································
 
-  private weak var mUndoManager : EBUndoManager? = nil // SHOULD BE WEAK
-  var ebUndoManager : EBUndoManager? { return self.mUndoManager }
+  private weak var mUndoManager : UndoManager? = nil // SHOULD BE WEAK
+  var undoManager : UndoManager? { return self.mUndoManager }
 
   //····················································································································
   // Model
@@ -164,7 +164,7 @@ final class Controller_AutoLayoutProjectDocument_schematicObjectsController : Re
 
   //····················································································································
 
-  final func bind_model (_ inModel : ReadWriteArrayOf_SchematicObject, _ inUndoManager : EBUndoManager?) {
+  final func bind_model (_ inModel : ReadWriteArrayOf_SchematicObject, _ inUndoManager : UndoManager?) {
     self.mModel = inModel
     self.mUndoManager = inUndoManager
     inModel.attachClient (self)
@@ -400,13 +400,6 @@ final class Controller_AutoLayoutProjectDocument_schematicObjectsController : Re
   } */
 
   //····················································································································
-  //    Explorer
-  //····················································································································
-
-  final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
-  }
-
-  //····················································································································
 
   func selectedObjectIndexSet () -> NSIndexSet {
     let modelObjects = self.objectArray
@@ -448,7 +441,7 @@ final class Controller_AutoLayoutProjectDocument_schematicObjectsController : Re
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = SchematicObject (self.ebUndoManager)
+        let newObject = SchematicObject (self.undoManager)
         var array = EBReferenceArray (v)
         array.append (newObject)
       //--- New object is the selection
@@ -650,7 +643,7 @@ final class Controller_AutoLayoutProjectDocument_schematicObjectsController : Re
       var errorMessage = ""
       for dictionary in dictionaryArray {
         idx += 1
-        if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? SchematicObject {
+        if let object = makeManagedObjectFromDictionary (self.undoManager, dictionary) as? SchematicObject {
           if errorMessage.isEmpty {
             errorMessage = object.operationAfterPasting (additionalDictionary: additionalDictionaryArray [idx],
                                                          optionalDocument: self.document,

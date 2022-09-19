@@ -6,38 +6,27 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum VerticalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
-  case above = 0
-  case base = 1
-  case center = 2
-  case below = 3
-
-
-  //····················································································································
-
-  func descriptionForExplorer () -> String {
-    switch self {
-      case .above : return "above" // 0
-      case .base : return "base" // 1
-      case .center : return "center" // 2
-      case .below : return "below" // 3
-    }
-  }
+enum AutoLayoutUserInterfaceStyle : Int, EnumPropertyProtocol, Hashable, CaseIterable {
+  case roundedBezel = 0
+  case roundRect = 1
+  case texturedRounded = 2
+  case texturedSquare = 3
+  case shadowlessSquare = 4
 
   //····················································································································
   // Function popupTitles
   //····················································································································
 
   static func popupTitles () -> [String] {
-    return ["above", "base", "center", "below"]
+    return ["Rounded Bezel", "Round Rect", "Textured Rounded", "Textured Square", "Shadowless Square"]
   }
 
   //····················································································································
   //  Enum generic bindings utility functions
   //····················································································································
 
-  static func buildfromRawValue (rawValue : Int) -> VerticalAlignment? {
-    if let v = VerticalAlignment (rawValue:rawValue) {
+  static func buildfromRawValue (rawValue : Int) -> AutoLayoutUserInterfaceStyle? {
+    if let v = AutoLayoutUserInterfaceStyle (rawValue:rawValue) {
       return v
     }else{
       return nil
@@ -46,9 +35,9 @@ enum VerticalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  func enumfromRawValue (rawValue : Int) -> VerticalAlignment {
+  func enumfromRawValue (rawValue : Int) -> AutoLayoutUserInterfaceStyle {
     var result = self
-    let v : VerticalAlignment? = VerticalAlignment (rawValue:rawValue) ;
+    let v : AutoLayoutUserInterfaceStyle? = AutoLayoutUserInterfaceStyle (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
@@ -71,9 +60,9 @@ enum VerticalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func convertFromNSObject (object : NSObject) -> VerticalAlignment {
-    var result = VerticalAlignment.above
-    if let number = object as? NSNumber, let v = VerticalAlignment (rawValue: number.intValue) {
+  static func convertFromNSObject (object : NSObject) -> AutoLayoutUserInterfaceStyle {
+    var result = AutoLayoutUserInterfaceStyle.roundedBezel
+    if let number = object as? NSNumber, let v = AutoLayoutUserInterfaceStyle (rawValue: number.intValue) {
       result = v
     }
     return result
@@ -81,8 +70,8 @@ enum VerticalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
   //····················································································································
 
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> VerticalAlignment? {
-    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = VerticalAlignment (rawValue: rawValue) {
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> AutoLayoutUserInterfaceStyle? {
+    if let rawValue = inData.base62EncodedInt (range: inRange), let enumValue = AutoLayoutUserInterfaceStyle (rawValue: rawValue) {
       return enumValue
     }else{
       return nil
@@ -101,11 +90,11 @@ enum VerticalAlignment : Int, EnumPropertyProtocol, Hashable, CaseIterable {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_VerticalAlignment = EBReadOnlyEnumProperty <VerticalAlignment>
-typealias EBTransientProperty_VerticalAlignment = EBTransientEnumProperty <VerticalAlignment>
-typealias EBReadWriteProperty_VerticalAlignment = EBReadWriteEnumProperty <VerticalAlignment>
-typealias EBStoredProperty_VerticalAlignment = EBStoredEnumProperty <VerticalAlignment>
-typealias EBPropertyProxy_VerticalAlignment = EBPropertyEnumProxy <VerticalAlignment>
-typealias EBPreferencesProperty_VerticalAlignment = EBStoredEnumProperty <VerticalAlignment>
+typealias EBReadOnlyProperty_AutoLayoutUserInterfaceStyle = EBReadOnlyEnumProperty <AutoLayoutUserInterfaceStyle>
+typealias EBTransientProperty_AutoLayoutUserInterfaceStyle = EBTransientEnumProperty <AutoLayoutUserInterfaceStyle>
+typealias EBReadWriteProperty_AutoLayoutUserInterfaceStyle = EBReadWriteEnumProperty <AutoLayoutUserInterfaceStyle>
+typealias EBStoredProperty_AutoLayoutUserInterfaceStyle = EBStoredEnumProperty <AutoLayoutUserInterfaceStyle>
+typealias EBPropertyProxy_AutoLayoutUserInterfaceStyle = EBPropertyEnumProxy <AutoLayoutUserInterfaceStyle>
+typealias EBPreferencesProperty_AutoLayoutUserInterfaceStyle = EBStoredEnumProperty <AutoLayoutUserInterfaceStyle>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

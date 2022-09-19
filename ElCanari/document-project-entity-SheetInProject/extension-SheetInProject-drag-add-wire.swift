@@ -25,15 +25,15 @@ extension SheetInProject {
     let pointsAtP2 = self.pointsInSchematics (at: p2)
   //---
     if (pointsAtP1.count == 1) && (pointsAtP2.count == 1) && (pointsAtP1 [0].mNet === pointsAtP2 [0].mNet) {
-      let wire = WireInSchematic (self.ebUndoManager)
+      let wire = WireInSchematic (self.undoManager)
       possibleWire = wire
       wire.mP1 = pointsAtP1 [0]
       wire.mP2 = pointsAtP2 [0]
     }else if (pointsAtP1.count == 1) && (pointsAtP2.count == 0) { // Use point at p1, create a point at p2
-      let wire = WireInSchematic (self.ebUndoManager)
+      let wire = WireInSchematic (self.undoManager)
       possibleWire = wire
       wire.mP1 = pointsAtP1 [0]
-      let point = PointInSchematic (self.ebUndoManager)
+      let point = PointInSchematic (self.undoManager)
       point.mX = p2.x
       point.mY = p2.y
       point.mNet = wire.mP1?.mNet
@@ -44,10 +44,10 @@ extension SheetInProject {
         point.propagateNetToAccessiblePointsThroughtWires ()
       }
     }else if (pointsAtP1.count == 0) && (pointsAtP2.count == 1) { // Use point at p2, create a point at p1
-      let wire = WireInSchematic (self.ebUndoManager)
+      let wire = WireInSchematic (self.undoManager)
       possibleWire = wire
       wire.mP2 = pointsAtP2 [0]
-      let point = PointInSchematic (self.ebUndoManager)
+      let point = PointInSchematic (self.undoManager)
       point.mX = p1.x
       point.mY = p1.y
       point.mNet = wire.mP2?.mNet
@@ -58,14 +58,14 @@ extension SheetInProject {
         point.propagateNetToAccessiblePointsThroughtWires ()
       }
     }else{ // Assign no net
-      let wire = WireInSchematic (self.ebUndoManager)
+      let wire = WireInSchematic (self.undoManager)
       possibleWire = wire
-      let point1 = PointInSchematic (self.ebUndoManager)
+      let point1 = PointInSchematic (self.undoManager)
       point1.mX = p1.x
       point1.mY = p1.y
       wire.mP1 = point1
       self.mPoints.append (point1)
-      let point2 = PointInSchematic (self.ebUndoManager)
+      let point2 = PointInSchematic (self.undoManager)
       point2.mX = p2.x
       point2.mY = p2.y
       wire.mP2 = point2

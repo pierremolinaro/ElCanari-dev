@@ -331,27 +331,27 @@ final class FontInProject : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.mNominalSize_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mFontName_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.mFontVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mDescriptiveString_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.mNominalSize_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mFontName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mFontVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mDescriptiveString_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    super.init (inUndoManager)
     // gInitSemaphore.wait ()
   //--- To many property: mTexts (has opposite relationship)
-    self.mTexts_property.ebUndoManager = self.ebUndoManager
+    self.mTexts_property.undoManager = inUndoManager
     self.mTexts_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mFont_property.setProp (me) } },
       resetter: { inObject in inObject.mFont_property.setProp (nil) }
     )
   //--- To many property: mComponentNames (has opposite relationship)
-    self.mComponentNames_property.ebUndoManager = self.ebUndoManager
+    self.mComponentNames_property.undoManager = inUndoManager
     self.mComponentNames_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNameFont_property.setProp (me) } },
       resetter: { inObject in inObject.mNameFont_property.setProp (nil) }
     )
   //--- To many property: mComponentValues (has opposite relationship)
-    self.mComponentValues_property.ebUndoManager = self.ebUndoManager
+    self.mComponentValues_property.undoManager = inUndoManager
     self.mComponentValues_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mValueFont_property.setProp (me) } },
       resetter: { inObject in inObject.mValueFont_property.setProp (nil) }

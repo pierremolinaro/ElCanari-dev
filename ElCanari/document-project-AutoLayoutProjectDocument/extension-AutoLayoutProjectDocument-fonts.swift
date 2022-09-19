@@ -34,7 +34,7 @@ extension AutoLayoutProjectDocument {
       documentData.documentRootObject.saveIntoDictionary (propertyDictionary)
       if let descriptiveString = propertyDictionary [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String,
          let nominalSize = propertyDictionary ["nominalSize"] as? Int  {
-        let addedFont = FontInProject (self.ebUndoManager)
+        let addedFont = FontInProject (self.undoManager)
         addedFont.mFontName = inName
         addedFont.mFontVersion = version
         addedFont.mNominalSize = nominalSize

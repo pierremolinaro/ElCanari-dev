@@ -57,7 +57,7 @@ typealias EBDocumentRootObjectDictionary = [String : Any]
 
 @MainActor func loadEasyBindingFile (fromData inData: Data,
                                       documentName inDocumentName : String,
-                                      undoManager inUndoManager : EBUndoManager?) throws -> EBDocumentData {
+                                      undoManager inUndoManager : UndoManager?) throws -> EBDocumentData {
 //---- Define input data scanner
   var dataScanner = EBDataScanner (data: inData)
 //--- Check Signature

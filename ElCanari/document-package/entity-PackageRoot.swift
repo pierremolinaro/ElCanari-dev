@@ -1586,49 +1586,49 @@ final class PackageRoot : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ ebUndoManager : EBUndoManager?) {
-    self.selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 1, undoManager: ebUndoManager)
-    self.selectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.comments_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.program_property = EBStoredProperty_String (defaultValue: "", undoManager: ebUndoManager)
-    self.horizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.verticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.gridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: ebUndoManager)
-    self.gridStep_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: ebUndoManager)
-    self.gridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.gridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4, undoManager: ebUndoManager)
-    self.zoom_property = EBStoredProperty_Int (defaultValue: 600, undoManager: ebUndoManager)
-    self.mModelImageOpacity_property = EBStoredProperty_Double (defaultValue: 0.5, undoManager: ebUndoManager)
-    self.mModelImagePageHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mModelImagePageVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.mModelImagePageGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.noGrid, undoManager: ebUndoManager)
-    self.mModelImagePageGridStep_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mModelImagePageGridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mModelImagePageGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 100, undoManager: ebUndoManager)
-    self.mModelImagePageZoom_property = EBStoredProperty_Int (defaultValue: 200, undoManager: ebUndoManager)
-    self.mModelImagePageXPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mModelImagePageYPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mModelImageSecondPointXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mModelImageSecondPointYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mModelImageFirstPointXOnLock_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mModelImageFirstPointYOnLock_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mModelImagePointsDxOnLock_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mModelImagePointsDyOnLock_property = EBStoredProperty_Int (defaultValue: 0, undoManager: ebUndoManager)
-    self.mModelImageScale_property = EBStoredProperty_Double (defaultValue: 1, undoManager: ebUndoManager)
-    self.mModelImageRotationInRadians_property = EBStoredProperty_Double (defaultValue: 0, undoManager: ebUndoManager)
-    self.mDimensionUnitFirstModelPointX_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mDimensionUnitFirstModelPointY_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mDimensionUnitSecondModelPointDx_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mDimensionUnitSecondModelPointDy_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mModelPointsCircleRadius_property = EBStoredProperty_Int (defaultValue: 10, undoManager: ebUndoManager)
-    self.mPointsAreLocked_property = EBStoredProperty_Bool (defaultValue: false, undoManager: ebUndoManager)
-    self.knobSizeMultpliedByTen_property = EBStoredProperty_Int (defaultValue: 20, undoManager: ebUndoManager)
-    self.padNumbering_property = EBStoredProperty_PadNumbering (defaultValue: PadNumbering.noNumbering, undoManager: ebUndoManager)
-    self.counterClockNumberingStartAngle_property = EBStoredProperty_Int (defaultValue: 90, undoManager: ebUndoManager)
-    self.xPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: ebUndoManager)
-    self.mModelImageData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: ebUndoManager)
-    super.init (ebUndoManager)
+  required init (_ inUndoManager : UndoManager?) {
+    self.selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 1, undoManager: inUndoManager)
+    self.selectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.comments_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.program_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.horizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.verticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.gridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: inUndoManager)
+    self.gridStep_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager)
+    self.gridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.gridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4, undoManager: inUndoManager)
+    self.zoom_property = EBStoredProperty_Int (defaultValue: 600, undoManager: inUndoManager)
+    self.mModelImageOpacity_property = EBStoredProperty_Double (defaultValue: 0.5, undoManager: inUndoManager)
+    self.mModelImagePageHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mModelImagePageVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mModelImagePageGridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.noGrid, undoManager: inUndoManager)
+    self.mModelImagePageGridStep_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mModelImagePageGridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mModelImagePageGridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 100, undoManager: inUndoManager)
+    self.mModelImagePageZoom_property = EBStoredProperty_Int (defaultValue: 200, undoManager: inUndoManager)
+    self.mModelImagePageXPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mModelImagePageYPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mModelImageSecondPointXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mModelImageSecondPointYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mModelImageFirstPointXOnLock_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mModelImageFirstPointYOnLock_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mModelImagePointsDxOnLock_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mModelImagePointsDyOnLock_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mModelImageScale_property = EBStoredProperty_Double (defaultValue: 1, undoManager: inUndoManager)
+    self.mModelImageRotationInRadians_property = EBStoredProperty_Double (defaultValue: 0, undoManager: inUndoManager)
+    self.mDimensionUnitFirstModelPointX_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mDimensionUnitFirstModelPointY_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mDimensionUnitSecondModelPointDx_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mDimensionUnitSecondModelPointDy_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mModelPointsCircleRadius_property = EBStoredProperty_Int (defaultValue: 10, undoManager: inUndoManager)
+    self.mPointsAreLocked_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.knobSizeMultpliedByTen_property = EBStoredProperty_Int (defaultValue: 20, undoManager: inUndoManager)
+    self.padNumbering_property = EBStoredProperty_PadNumbering (defaultValue: PadNumbering.noNumbering, undoManager: inUndoManager)
+    self.counterClockNumberingStartAngle_property = EBStoredProperty_Int (defaultValue: 90, undoManager: inUndoManager)
+    self.xPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mModelImageData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager)
+    super.init (inUndoManager)
     self.mModelImageDoublePoint_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mModelImageDoublePoint_property.propval == nil)
@@ -1639,13 +1639,13 @@ final class PackageRoot : EBManagedObject,
     self.mModelImageDoublePoint_property.addEBObserver (self.mModelImageDoublePoint_none)
     // gInitSemaphore.wait ()
   //--- To many property: mModelImageObjects (has opposite relationship)
-    self.mModelImageObjects_property.ebUndoManager = self.ebUndoManager
+    self.mModelImageObjects_property.undoManager = inUndoManager
     self.mModelImageObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
     )
   //--- To many property: packageObjects (has opposite relationship)
-    self.packageObjects_property.ebUndoManager = self.ebUndoManager
+    self.packageObjects_property.undoManager = inUndoManager
     self.packageObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }
@@ -1857,7 +1857,7 @@ final class PackageRoot : EBManagedObject,
     }
     self.mPointsAreLocked_property.addEBObserver (self.lockImageView_property)
   //--- To one property: mModelImageDoublePoint
-    self.mModelImageDoublePoint_property.ebUndoManager = self.ebUndoManager
+    self.mModelImageDoublePoint_property.undoManager = inUndoManager
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {

@@ -2326,7 +2326,7 @@ class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserve
   //   Undo manager
   //····················································································································
 
-  weak final var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
@@ -2349,7 +2349,7 @@ class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserve
 
   override func notifyModelDidChangeFrom (oldValue inOldValue : EBReferenceArray <PackagePad>) {
   //--- Register old value in undo manager
-    self.ebUndoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
+    self.undoManager?.registerUndo (withTarget: self) { $0.mInternalArrayValue = inOldValue }
   //---
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   }
@@ -2535,10 +2535,9 @@ final class PreferencesArrayOf_PackagePad : StoredArrayOf_PackagePad {
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = EBReferenceArray <PackagePad> ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackagePad") as? PackagePad {
-          object.setUpAtomicPropertiesWithDictionary (dictionary)
-          objectArray.append (object)
-        }
+        let object = newInstanceOfEntityNamed (self.undoManager, "PackagePad") as! PackagePad
+        object.setUpAtomicPropertiesWithDictionary (dictionary)
+        objectArray.append (object)
       }
       self.setProp (objectArray)
     }
