@@ -46,7 +46,7 @@ class AutoLayoutBase_NSButton : NSButton {
 
   //····················································································································
 
-  override final func updateAutoLayoutUserInterfaceStyle () {
+  override func updateAutoLayoutUserInterfaceStyle () {
     super.updateAutoLayoutUserInterfaceStyle ()
     self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
   }
