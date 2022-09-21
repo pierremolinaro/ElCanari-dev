@@ -89,7 +89,7 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
   //····················································································································
 
   override func draw (_ inDirtyRect : NSRect) {
-    let w = self.mTopTextField.frame.size.height / 2.0
+    let w = self.mTopTextField.frame.height / 2.0
     let r = self.bounds.insetBy (dx: w, dy: w)
     NSColor.black.setStroke ()
     let bp = NSBezierPath (rect: r)
@@ -193,7 +193,7 @@ final class AutoLayoutCanariBoardRectangleView : AutoLayoutBase_NSView {
   //····················································································································
 
   final func bind_right (_ inModel : EBReadOnlyProperty_String) -> Self {
-    self.mTopController = EBObservablePropertyController (
+    self.mRightController = EBObservablePropertyController (
       observedObjects: [inModel],
       callBack: { [weak self] in self?.updateRight (from: inModel) }
     )

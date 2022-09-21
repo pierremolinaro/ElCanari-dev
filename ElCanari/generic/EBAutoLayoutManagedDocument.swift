@@ -302,6 +302,7 @@ class EBAutoLayoutManagedDocument : NSDocument {
     }
     appendDocumentFileOperationInfo ("User Interface Built.")
     appendTotalDurationDocumentFileOperationInfo ()
+//    self.mManagedDocumentFileFormat = .textual
   }
 
   //····················································································································
