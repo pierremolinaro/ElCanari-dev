@@ -21,57 +21,62 @@ extension AutoLayoutDeviceDocument {
       if pathes.count == 0 {
         messages.append ("No file in Library for \(symbolType.mTypeName) symbol")
       }else if pathes.count == 1 {
-        if let data = fm.contents (atPath: pathes [0]),
-           let documentData = try? loadEasyBindingFile (fromData: data, documentName: pathes [0].lastPathComponent, undoManager: nil),
-           let symbolRoot = documentData.documentRootObject as? SymbolRoot,
-           let version = documentData.documentMetadataDictionary [PMSymbolVersion] as? Int {
-          if version <= symbolType.mVersion {
-            messages.append ("Symbol \(symbolType.mTypeName) is up-to-date.")
-          }else{
-            let strokeBezierPathes = NSBezierPath ()
-            let filledBezierPathes = NSBezierPath ()
-            var newSymbolPinTypes = EBReferenceArray <SymbolPinTypeInDevice> ()
-            symbolRoot.accumulate (
-              withUndoManager: self.undoManager,
-              strokeBezierPathes: strokeBezierPathes,
-              filledBezierPathes: filledBezierPathes,
-              symbolPins: &newSymbolPinTypes
-            )
-            strokeBezierPathes.lineCapStyle = .round
-            strokeBezierPathes.lineJoinStyle = .round
-//            symbolRoot.removeRecursivelyAllRelationsShips ()
-          //--- Check if symbol pin name set is the same
-            var currentPinNameSet = Set <String> ()
-            for pinType in symbolType.mPinTypes_property.propval.values {
-              currentPinNameSet.insert (pinType.mName)
+        if let data = fm.contents (atPath: pathes [0]) {
+          let documentReadData = loadEasyBindingFile (fromData: data, documentName: pathes [0].lastPathComponent, undoManager: nil)
+          switch documentReadData {
+          case .ok (let documentData) :
+            if let symbolRoot = documentData.documentRootObject as? SymbolRoot,
+               let version = documentData.documentMetadataDictionary [PMSymbolVersion] as? Int {
+              if version <= symbolType.mVersion {
+                messages.append ("Symbol \(symbolType.mTypeName) is up-to-date.")
+              }else{
+                let strokeBezierPathes = NSBezierPath ()
+                let filledBezierPathes = NSBezierPath ()
+                var newSymbolPinTypes = EBReferenceArray <SymbolPinTypeInDevice> ()
+                symbolRoot.accumulate (
+                  withUndoManager: self.undoManager,
+                  strokeBezierPathes: strokeBezierPathes,
+                  filledBezierPathes: filledBezierPathes,
+                  symbolPins: &newSymbolPinTypes
+                )
+                strokeBezierPathes.lineCapStyle = .round
+                strokeBezierPathes.lineJoinStyle = .round
+              //--- Check if symbol pin name set is the same
+                var currentPinNameSet = Set <String> ()
+                for pinType in symbolType.mPinTypes_property.propval.values {
+                  currentPinNameSet.insert (pinType.mName)
+                }
+                var newPinNameDictionary = [String : SymbolPinTypeInDevice] ()
+                for pinType in newSymbolPinTypes.values {
+                  newPinNameDictionary [pinType.mName] = pinType
+                }
+                if currentPinNameSet != Set (newPinNameDictionary.keys) {
+                  messages.append ("Cannot update \(symbolType.mTypeName) symbol: pin name set has changed.")
+                }else{ // Ok, make update
+                //-- Set properties
+                  symbolType.mVersion = version
+                  symbolType.mFileData = data
+                  symbolType.mStrokeBezierPath = strokeBezierPathes
+                  symbolType.mFilledBezierPath = filledBezierPathes
+                //--- Update pin types
+                  for pinType in symbolType.mPinTypes_property.propval.values {
+                    let newPinType = newPinNameDictionary [pinType.mName]!
+                    pinType.mXName = newPinType.mXName
+                    pinType.mYName = newPinType.mYName
+                    pinType.mName = newPinType.mName
+                    pinType.mNameHorizontalAlignment = newPinType.mNameHorizontalAlignment
+                    pinType.mPinNameIsDisplayedInSchematics = newPinType.mPinNameIsDisplayedInSchematics
+                    pinType.mXNumber = newPinType.mXNumber
+                    pinType.mYNumber = newPinType.mYNumber
+                    pinType.mNumberHorizontalAlignment = newPinType.mNumberHorizontalAlignment
+                 }
+                //---
+                  messages.append ("Symbol \(symbolType.mTypeName) has been updated to version \(version).")
+                }
+              }
             }
-            var newPinNameDictionary = [String : SymbolPinTypeInDevice] ()
-            for pinType in newSymbolPinTypes.values {
-              newPinNameDictionary [pinType.mName] = pinType
-            }
-            if currentPinNameSet != Set (newPinNameDictionary.keys) {
-              messages.append ("Cannot update \(symbolType.mTypeName) symbol: pin name set has changed.")
-            }else{ // Ok, make update
-            //-- Set properties
-              symbolType.mVersion = version
-              symbolType.mFileData = data
-              symbolType.mStrokeBezierPath = strokeBezierPathes
-              symbolType.mFilledBezierPath = filledBezierPathes
-            //--- Update pin types
-              for pinType in symbolType.mPinTypes_property.propval.values {
-                let newPinType = newPinNameDictionary [pinType.mName]!
-                pinType.mXName = newPinType.mXName
-                pinType.mYName = newPinType.mYName
-                pinType.mName = newPinType.mName
-                pinType.mNameHorizontalAlignment = newPinType.mNameHorizontalAlignment
-                pinType.mPinNameIsDisplayedInSchematics = newPinType.mPinNameIsDisplayedInSchematics
-                pinType.mXNumber = newPinType.mXNumber
-                pinType.mYNumber = newPinType.mYNumber
-                pinType.mNumberHorizontalAlignment = newPinType.mNumberHorizontalAlignment
-             }
-            //---
-              messages.append ("Symbol \(symbolType.mTypeName) has been updated to version \(version).")
-            }
+          case .readError (_) :
+            messages.append ("Invalid file at path \(pathes [0])")
           }
         }else{
           messages.append ("Invalid file at path \(pathes [0])")

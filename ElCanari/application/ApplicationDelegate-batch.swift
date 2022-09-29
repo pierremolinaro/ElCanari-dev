@@ -321,7 +321,9 @@ extension ApplicationDelegate {
     if self.mHandledFiles.count > 0 {
       let fullPath = self.mHandledFiles.remove (at: 0)
       let fileURL = URL (fileURLWithPath: fullPath)
-      if let documentData = try? loadEasyBindingFile (fromURL: fileURL) {
+      let documentReadData = loadEasyBindingFile (fromURL: fileURL)
+      switch documentReadData {
+      case .ok (let documentData) :
         if documentData.documentFileFormat != inFormat {
           let newDocumentData = EBDocumentData (
             documentMetadataStatus: documentData.documentMetadataStatus,
@@ -339,7 +341,7 @@ extension ApplicationDelegate {
           }
         }
         collectAndPrepareObjectsForDeletion (fromRoot: documentData.documentRootObject)
-      }else{
+      case .readError (_) :
         let message = "Cannot read \(fullPath)\n"
         self.mMaintenanceLogTextView.appendErrorString (message)
       }

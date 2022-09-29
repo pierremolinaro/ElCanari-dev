@@ -37,18 +37,26 @@ struct EBDocumentData {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//  EBDocumentRootObjectDictionary
+//  EBDocumentReadData
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBDocumentRootObjectDictionary = [String : Any]
+enum EBDocumentReadData {
+  case ok (documentData : EBDocumentData)
+  case readError (error : Error)
+}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //     loadEasyBindingFile fromURL
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func loadEasyBindingFile (fromURL inURL: URL) throws -> EBDocumentData {
-  let data = try Data (contentsOf: inURL)
-  return try loadEasyBindingFile (fromData: data, documentName: inURL.lastPathComponent, undoManager: nil)
+@MainActor func loadEasyBindingFile (fromURL inURL: URL) -> EBDocumentReadData {
+  do{
+    let data = try Data (contentsOf: inURL)
+    let documentReadData = loadEasyBindingFile (fromData: data, documentName: inURL.lastPathComponent, undoManager: nil)
+    return documentReadData
+  }catch{
+    return .readError (error: error)
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -56,21 +64,22 @@ typealias EBDocumentRootObjectDictionary = [String : Any]
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func loadEasyBindingFile (fromData inData: Data,
-                                      documentName inDocumentName : String,
-                                      undoManager inUndoManager : UndoManager?) throws -> EBDocumentData {
+                                     documentName inDocumentName : String,
+                                     undoManager inUndoManager : UndoManager?) -> EBDocumentReadData {
 //---- Define input data scanner
   var dataScanner = EBDataScanner (data: inData)
 //--- Check Signature
   if dataScanner.testString (string: PM_BINARY_FORMAT_SIGNATURE) {
-    return try loadEasyBindingBinaryFile (inUndoManager, documentName: inDocumentName, from: &dataScanner)
+    return loadEasyBindingBinaryFile (inUndoManager, documentName: inDocumentName, from: &dataScanner)
   }else if dataScanner.testString (string: PM_TEXTUAL_FORMAT_SIGNATURE) {
-    return try loadEasyBindingTextFile (inUndoManager, documentName: inDocumentName, from: &dataScanner)
+    return loadEasyBindingTextFile (inUndoManager, documentName: inDocumentName, from: &dataScanner)
   }else{
     let dictionary = [
       "Cannot Open Document" : NSLocalizedDescriptionKey,
       "The file has an invalid format" : NSLocalizedRecoverySuggestionErrorKey
     ]
-    throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
+    let error = NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
+    return .readError (error: error)
   }
 }
 

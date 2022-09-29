@@ -421,10 +421,16 @@ extension ApplicationDelegate {
  //····················································································································
 
  private func loadArtwork () {
-   if self.mArtworkRoot == nil,
-         let documentData = try? loadEasyBindingFile (fromURL: URL (fileURLWithPath: self.mFullPath)),
-         let root = documentData.documentRootObject as? ArtworkRoot {
-     self.mArtworkRoot = root
+   if self.mArtworkRoot == nil {
+     let documentReadData = loadEasyBindingFile (fromURL: URL (fileURLWithPath: self.mFullPath))
+     switch documentReadData {
+     case .ok (let documentData) :
+       if let root = documentData.documentRootObject as? ArtworkRoot {
+         self.mArtworkRoot = root
+       } // §
+     case .readError (_) :
+       () // §
+     }
    }
  }
 

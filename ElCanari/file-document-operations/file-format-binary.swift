@@ -8,60 +8,65 @@ import Cocoa
 
 @MainActor func loadEasyBindingBinaryFile (_ inUndoManager : UndoManager?,
                                            documentName inDocumentName : String,
-                                           from ioDataScanner: inout EBDataScanner) throws -> EBDocumentData {
+                                           from ioDataScanner: inout EBDataScanner) -> EBDocumentReadData {
   appendDocumentFileOperationInfo ("Read Binary Document file: \(inDocumentName)\n")
-  var operationStartDate = Date ()
-  let startDate = operationStartDate
-//--- Read Status
-  let metadataStatus = ioDataScanner.parseByte ()
-//--- if ok, check byte is 1
-  ioDataScanner.acceptRequired (byte: 1)
-//--- Read metadata dictionary
-  let dictionaryData = ioDataScanner.parseAutosizedData ()
-  let metadataDictionary = try PropertyListSerialization.propertyList (from: dictionaryData as Data,
-    options: [],
-    format: nil
-  ) as! [String : Any]
-//--- Read data
-  let dataFormat = ioDataScanner.parseByte ()
-  let fileData = ioDataScanner.parseAutosizedData ()
-  appendDocumentFileOperationInfo ("  Read file: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
-  operationStartDate = Date ()
-//--- if ok, check final byte (0)
-  ioDataScanner.acceptRequired (byte: 0)
-//--- Scanner error ?
-  if !ioDataScanner.ok () {
-    let dictionary = [
-      "Cannot Open Document" : NSLocalizedDescriptionKey,
-      "The file has an invalid format" : NSLocalizedRecoverySuggestionErrorKey
-    ]
-    throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
+  do{
+    var operationStartDate = Date ()
+    let startDate = operationStartDate
+  //--- Read Status
+    let metadataStatus = ioDataScanner.parseByte ()
+  //--- if ok, check byte is 1
+    ioDataScanner.acceptRequired (byte: 1)
+  //--- Read metadata dictionary
+    let dictionaryData = ioDataScanner.parseAutosizedData ()
+    let metadataDictionary = try PropertyListSerialization.propertyList (from: dictionaryData as Data,
+      options: [],
+      format: nil
+    ) as! [String : Any]
+  //--- Read data
+    let dataFormat = ioDataScanner.parseByte ()
+    let fileData = ioDataScanner.parseAutosizedData ()
+    appendDocumentFileOperationInfo ("  Read file: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
+    operationStartDate = Date ()
+  //--- if ok, check final byte (0)
+    ioDataScanner.acceptRequired (byte: 0)
+  //--- Scanner error ?
+    if !ioDataScanner.ok () {
+      let dictionary = [
+        "Cannot Open Document" : NSLocalizedDescriptionKey,
+        "The file has an invalid format" : NSLocalizedRecoverySuggestionErrorKey
+      ]
+      throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
+    }
+  //--- Analyze read data
+    var rootObject : EBManagedObject? = nil
+    if dataFormat == 0x06 {
+      rootObject = try readManagedObjectsFromBinaryData (inUndoManager, inData: fileData)
+    }else{
+      try raiseInvalidDataFormatError (dataFormat: dataFormat)
+    }
+    appendDocumentFileOperationInfo ("  Analyze read data: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
+    operationStartDate = Date ()
+  //---
+    if rootObject == nil {
+      let dictionary = [
+        "Cannot Open Document" :  NSLocalizedDescriptionKey,
+        "Root object cannot be read" :  NSLocalizedRecoverySuggestionErrorKey
+      ]
+      throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
+    }
+  //---
+    appendDocumentFileOperationInfo ("Total duration: \(Int (Date ().timeIntervalSince (startDate) * 1000.0)) ms\n\n")
+    let documentData = EBDocumentData (
+      documentMetadataStatus: metadataStatus,
+      documentMetadataDictionary: metadataDictionary,
+      documentRootObject: rootObject!,
+      documentFileFormat: .binary
+    )
+    return .ok (documentData: documentData)
+  }catch{
+    return .readError (error: error)
   }
-//--- Analyze read data
-  var rootObject : EBManagedObject? = nil
-  if dataFormat == 0x06 {
-    rootObject = try readManagedObjectsFromBinaryData (inUndoManager, inData: fileData)
-  }else{
-    try raiseInvalidDataFormatError (dataFormat: dataFormat)
-  }
-  appendDocumentFileOperationInfo ("  Analyze read data: \(Int (Date ().timeIntervalSince (operationStartDate) * 1000.0)) ms\n")
-  operationStartDate = Date ()
-//---
-  if rootObject == nil {
-    let dictionary = [
-      "Cannot Open Document" :  NSLocalizedDescriptionKey,
-      "Root object cannot be read" :  NSLocalizedRecoverySuggestionErrorKey
-    ]
-    throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
-  }
-//---
-  appendDocumentFileOperationInfo ("Total duration: \(Int (Date ().timeIntervalSince (startDate) * 1000.0)) ms\n\n")
-  return EBDocumentData (
-    documentMetadataStatus: metadataStatus,
-    documentMetadataDictionary: metadataDictionary,
-    documentRootObject: rootObject!,
-    documentFileFormat: .binary
-  )
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

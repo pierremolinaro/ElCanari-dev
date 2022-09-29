@@ -16,105 +16,110 @@ struct RawObject {
 
 @MainActor func loadEasyBindingTextFile (_ inUndoManager : UndoManager?,
                                          documentName inDocumentName : String,
-                                         from ioDataScanner: inout EBDataScanner) throws -> EBDocumentData {
+                                         from ioDataScanner: inout EBDataScanner) -> EBDocumentReadData {
   setStartOperationDateToNow ("Read Text Document file: \(inDocumentName)")
-//--- Check header ends with line feed
-  ioDataScanner.acceptRequired (byte: ASCII.lineFeed.rawValue)
-//--- Read Status
-  let metadataStatus = UInt8 (ioDataScanner.parseBase62EncodedInt ())
- // Swift.print ("metadataStatus \(metadataStatus)")
-//--- Read metadata dictionary
-  let metadataDictionary : [String : Any] = try ioDataScanner.parseJSON ()
- // Swift.print ("metadataDictionary \(metadataDictionary)")
-//--- Read classes
-  var classDefinition = [(String, [String])] ()
-  while ioDataScanner.testAccept (byte: ASCII.dollar.rawValue) {
-    let className = try ioDataScanner.parseString ()
-    var readPropertyNames = true
-    var propertyNameArray = [String] ()
-    while readPropertyNames, ioDataScanner.ok () {
-      if ioDataScanner.test (byte: ASCII.dollar.rawValue) {
-        readPropertyNames = false
-      }else if ioDataScanner.test (byte: ASCII.at.rawValue) {
-        readPropertyNames = false
-      }else{
-        let propertyName = try ioDataScanner.parseString ()
-        propertyNameArray.append (propertyName)
+  do{
+  //--- Check header ends with line feed
+    ioDataScanner.acceptRequired (byte: ASCII.lineFeed.rawValue)
+  //--- Read Status
+    let metadataStatus = UInt8 (ioDataScanner.parseBase62EncodedInt ())
+   // Swift.print ("metadataStatus \(metadataStatus)")
+  //--- Read metadata dictionary
+    let metadataDictionary : [String : Any] = try ioDataScanner.parseJSON ()
+   // Swift.print ("metadataDictionary \(metadataDictionary)")
+  //--- Read classes
+    var classDefinition = [(String, [String])] ()
+    while ioDataScanner.testAccept (byte: ASCII.dollar.rawValue) {
+      let className = try ioDataScanner.parseString ()
+      var readPropertyNames = true
+      var propertyNameArray = [String] ()
+      while readPropertyNames, ioDataScanner.ok () {
+        if ioDataScanner.test (byte: ASCII.dollar.rawValue) {
+          readPropertyNames = false
+        }else if ioDataScanner.test (byte: ASCII.at.rawValue) {
+          readPropertyNames = false
+        }else{
+          let propertyName = try ioDataScanner.parseString ()
+          propertyNameArray.append (propertyName)
+        }
       }
+      classDefinition.append ((className, propertyNameArray))
     }
-    classDefinition.append ((className, propertyNameArray))
-  }
-  appendDocumentFileOperationInfo ("read \(classDefinition.count) classes done")
-//--- Read objects
-//  let operationQueue = OperationQueue ()
-//  let mutex = DispatchSemaphore (value: 1)
-  var rawObjectArray = [RawObject] ()
-//  var idx = 0
-  let data = ioDataScanner.data
-  while !ioDataScanner.eof (), ioDataScanner.testAccept (byte: ASCII.at.rawValue) {
-//    let index = idx
-//    idx += 1
-    let classIndex = ioDataScanner.parseBase62EncodedInt ()
-    let propertyNameArray = classDefinition [classIndex].1
-    let className = classDefinition [classIndex].0
-    var propertyValueDictionary = [String : NSRange] ()
-//    propertyValueDictionary.reserveCapacity (propertyNameArray.count)
-    for propertyName in propertyNameArray {
-      let propertyRange = ioDataScanner.getLineRangeAndAdvance ()
-      propertyValueDictionary [propertyName] = propertyRange
+    appendDocumentFileOperationInfo ("read \(classDefinition.count) classes done")
+  //--- Read objects
+  //  let operationQueue = OperationQueue ()
+  //  let mutex = DispatchSemaphore (value: 1)
+    var rawObjectArray = [RawObject] ()
+  //  var idx = 0
+    let data = ioDataScanner.data
+    while !ioDataScanner.eof (), ioDataScanner.testAccept (byte: ASCII.at.rawValue) {
+  //    let index = idx
+  //    idx += 1
+      let classIndex = ioDataScanner.parseBase62EncodedInt ()
+      let propertyNameArray = classDefinition [classIndex].1
+      let className = classDefinition [classIndex].0
+      var propertyValueDictionary = [String : NSRange] ()
+  //    propertyValueDictionary.reserveCapacity (propertyNameArray.count)
+      for propertyName in propertyNameArray {
+        let propertyRange = ioDataScanner.getLineRangeAndAdvance ()
+        propertyValueDictionary [propertyName] = propertyRange
+      }
+  //    operationQueue.addOperation {
+        let managedObject = newInstanceOfEntityNamed (inUndoManager, className)
+        managedObject.setUpPropertiesWithTextDictionary (propertyValueDictionary, data)
+        let rawObject = RawObject (/* index: index, */ object: managedObject, propertyDictionary: propertyValueDictionary)
+  //      mutex.wait ()
+        rawObjectArray.append (rawObject)
+  //      mutex.signal ()
+  //    }
     }
-//    operationQueue.addOperation {
-      let managedObject = newInstanceOfEntityNamed (inUndoManager, className)
-      managedObject.setUpPropertiesWithTextDictionary (propertyValueDictionary, data)
-      let rawObject = RawObject (/* index: index, */ object: managedObject, propertyDictionary: propertyValueDictionary)
-//      mutex.wait ()
-      rawObjectArray.append (rawObject)
-//      mutex.signal ()
-//    }
-  }
-//  let pendingOperationCount = operationQueue.operationCount
-//  operationQueue.waitUntilAllOperationsAreFinished ()
-//  rawObjectArray.sort { $0.index < $1.index }
-//  appendDocumentFileOperationInfo ("read \(rawObjectArray.count) objects done with \(pendingOperationCount) pending ops")
-  appendDocumentFileOperationInfo ("read \(rawObjectArray.count) objects done")
-//--- Setup toOne
-  let scannerData = ioDataScanner.data
-  for rawObject in rawObjectArray {
-    let valueDictionary = rawObject.propertyDictionary
-    let managedObject = rawObject.object
-    managedObject.setUpToOneRelationshipsWithTextDictionary (valueDictionary, rawObjectArray, scannerData)
-  }
-  appendDocumentFileOperationInfo ("setup toOne done")
-//--- Setup toMany
-  for rawObject in rawObjectArray {
-    let valueDictionary = rawObject.propertyDictionary
-    let managedObject = rawObject.object
-    managedObject.setUpToManyRelationshipsWithTextDictionary (valueDictionary, rawObjectArray, scannerData)
-  }
-  appendDocumentFileOperationInfo ("setup toMany done")
-//--- Scanner error ?
-  if !ioDataScanner.ok () {
-    let dictionary = [
-      "Cannot Open Document" : NSLocalizedDescriptionKey,
-      "The file has an invalid format" : NSLocalizedRecoverySuggestionErrorKey
-    ]
-    throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
-  }
-//--- Analyze read data
-  if ioDataScanner.ok (), rawObjectArray.count > 0 {
-    let rootObject = rawObjectArray [0].object
-    return EBDocumentData (
-      documentMetadataStatus: metadataStatus,
-      documentMetadataDictionary: metadataDictionary,
-      documentRootObject: rootObject,
-      documentFileFormat: .textual
-    )
-  }else{
-    let dictionary = [
-      "Cannot Open Document" :  NSLocalizedDescriptionKey,
-      "Root object cannot be read" :  NSLocalizedRecoverySuggestionErrorKey
-    ]
-    throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
+  //  let pendingOperationCount = operationQueue.operationCount
+  //  operationQueue.waitUntilAllOperationsAreFinished ()
+  //  rawObjectArray.sort { $0.index < $1.index }
+  //  appendDocumentFileOperationInfo ("read \(rawObjectArray.count) objects done with \(pendingOperationCount) pending ops")
+    appendDocumentFileOperationInfo ("read \(rawObjectArray.count) objects done")
+  //--- Setup toOne
+    let scannerData = ioDataScanner.data
+    for rawObject in rawObjectArray {
+      let valueDictionary = rawObject.propertyDictionary
+      let managedObject = rawObject.object
+      managedObject.setUpToOneRelationshipsWithTextDictionary (valueDictionary, rawObjectArray, scannerData)
+    }
+    appendDocumentFileOperationInfo ("setup toOne done")
+  //--- Setup toMany
+    for rawObject in rawObjectArray {
+      let valueDictionary = rawObject.propertyDictionary
+      let managedObject = rawObject.object
+      managedObject.setUpToManyRelationshipsWithTextDictionary (valueDictionary, rawObjectArray, scannerData)
+    }
+    appendDocumentFileOperationInfo ("setup toMany done")
+  //--- Scanner error ?
+    if !ioDataScanner.ok () {
+      let dictionary = [
+        "Cannot Open Document" : NSLocalizedDescriptionKey,
+        "The file has an invalid format" : NSLocalizedRecoverySuggestionErrorKey
+      ]
+      throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
+    }
+  //--- Analyze read data
+    if ioDataScanner.ok (), rawObjectArray.count > 0 {
+      let rootObject = rawObjectArray [0].object
+      let documentData = EBDocumentData (
+        documentMetadataStatus: metadataStatus,
+        documentMetadataDictionary: metadataDictionary,
+        documentRootObject: rootObject,
+        documentFileFormat: .textual
+      )
+      return .ok (documentData: documentData)
+    }else{
+      let dictionary = [
+        "Cannot Open Document" :  NSLocalizedDescriptionKey,
+        "Root object cannot be read" :  NSLocalizedRecoverySuggestionErrorKey
+      ]
+      throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo: dictionary)
+    }
+  }catch{
+    return .readError (error: error)
   }
 }
 

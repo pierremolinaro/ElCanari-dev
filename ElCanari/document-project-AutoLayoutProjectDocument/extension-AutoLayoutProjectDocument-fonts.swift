@@ -28,21 +28,27 @@ extension AutoLayoutProjectDocument {
 
   final func addFontFromLoadFontDialog (_ inData : Data, _ inName : String) -> Bool {
     var ok = false
-    if let documentData : EBDocumentData = try? loadEasyBindingFile (fromData: inData, documentName: inName, undoManager: nil),
-       let version = documentData.documentMetadataDictionary [PMFontVersion] as? Int {
-      let propertyDictionary = NSMutableDictionary ()
-      documentData.documentRootObject.saveIntoDictionary (propertyDictionary)
-      if let descriptiveString = propertyDictionary [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String,
-         let nominalSize = propertyDictionary ["nominalSize"] as? Int  {
-        let addedFont = FontInProject (self.undoManager)
-        addedFont.mFontName = inName
-        addedFont.mFontVersion = version
-        addedFont.mNominalSize = nominalSize
-        addedFont.mDescriptiveString = descriptiveString
-        self.rootObject.mFonts.append (addedFont)
-        ok = true
+    let documentReadData = loadEasyBindingFile (fromData: inData, documentName: inName, undoManager: nil)
+    switch documentReadData {
+    case .ok (let documentData) :
+      if let version = documentData.documentMetadataDictionary [PMFontVersion] as? Int {
+        let propertyDictionary = NSMutableDictionary ()
+        documentData.documentRootObject.saveIntoDictionary (propertyDictionary)
+        if let descriptiveString = propertyDictionary [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String,
+           let nominalSize = propertyDictionary ["nominalSize"] as? Int  {
+          let addedFont = FontInProject (self.undoManager)
+          addedFont.mFontName = inName
+          addedFont.mFontVersion = version
+          addedFont.mNominalSize = nominalSize
+          addedFont.mDescriptiveString = descriptiveString
+          self.rootObject.mFonts.append (addedFont)
+          ok = true
+        }
       }
+    case .readError (_) :
+      ()
     }
+  //---
     if !ok, let window = self.windowForSheet {
       let alert = NSAlert ()
       alert.messageText = "Internal error: cannot add font."
@@ -61,19 +67,25 @@ extension AutoLayoutProjectDocument {
         ioMessages.append ("No file for \(font.mFontName) font in Library")
       }else if pathes.count == 1 {
         var ok = false
-        if let data = try? Data (contentsOf: URL (fileURLWithPath: pathes [0])),
-           let documentData : EBDocumentData = try? loadEasyBindingFile (fromData: data, documentName: pathes [0].lastPathComponent, undoManager: nil),
-           let version = documentData.documentMetadataDictionary [PMFontVersion] as? Int {
-          let propertyDictionary = NSMutableDictionary ()
-          documentData.documentRootObject.saveIntoDictionary (propertyDictionary)
-          if let descriptiveString = propertyDictionary [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String,
-            let nominalSize = propertyDictionary ["nominalSize"] as? Int  {
-            ok = true
-            if font.mFontVersion < version {
-              font.mFontVersion = version
-              font.mNominalSize = nominalSize
-              font.mDescriptiveString = descriptiveString
+        if let data = try? Data (contentsOf: URL (fileURLWithPath: pathes [0])) {
+          let documentReadData = loadEasyBindingFile (fromData: data, documentName: pathes [0].lastPathComponent, undoManager: nil)
+          switch documentReadData {
+          case .ok (let documentData) :
+            if let version = documentData.documentMetadataDictionary [PMFontVersion] as? Int {
+              let propertyDictionary = NSMutableDictionary ()
+              documentData.documentRootObject.saveIntoDictionary (propertyDictionary)
+              if let descriptiveString = propertyDictionary [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String,
+                let nominalSize = propertyDictionary ["nominalSize"] as? Int {
+                ok = true
+                if font.mFontVersion < version {
+                  font.mFontVersion = version
+                  font.mNominalSize = nominalSize
+                  font.mDescriptiveString = descriptiveString
+                }
+              }
             }
+          case .readError (_) :
+            ()
           }
         }
         if !ok {

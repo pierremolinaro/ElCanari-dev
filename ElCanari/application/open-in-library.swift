@@ -468,10 +468,11 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
     var image : NSImage? = nil
     let fm = FileManager ()
     if let data = fm.contents (atPath: self.mFullPath) {
-      do{
-        let documentData = try loadEasyBindingFile (fromData: data, documentName: self.mFullPath.lastPathComponent, undoManager: nil)
+      let documentReadData = loadEasyBindingFile (fromData: data, documentName: self.mFullPath.lastPathComponent, undoManager: nil)
+      switch documentReadData {
+      case .ok (let documentData) :
         image = self.mBuildPreviewShapeFunction (documentData.documentRootObject)
-      }catch let error {
+      case .readError (let error) :
         let alert = NSAlert (error: error)
         _ = alert.runModal ()
       }

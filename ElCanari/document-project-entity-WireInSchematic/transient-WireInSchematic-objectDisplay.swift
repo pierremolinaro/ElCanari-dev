@@ -29,7 +29,7 @@ import Cocoa
           bp.line (to: p2.cocoaPoint)
           bp.lineCapStyle = .round
           bp.lineJoinStyle = .round
-          bp.lineWidth = lineWidth + 1.0
+          bp.lineWidth = lineWidth + 2.0
           shape.add (stroke: [bp], prefs_schematicBackColor)
           bp.lineWidth = lineWidth
           shape.add (stroke: [bp], self_mP1_wireColor ?? .black)

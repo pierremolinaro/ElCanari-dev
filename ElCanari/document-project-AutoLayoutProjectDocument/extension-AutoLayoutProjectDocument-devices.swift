@@ -13,18 +13,21 @@ extension AutoLayoutProjectDocument {
 
   func appendDevice (_ inData : Data, _ inName : String) -> DeviceInProject? {
     var device : DeviceInProject? = nil
-    if let documentData = try? loadEasyBindingFile (fromData: inData, documentName: inName, undoManager: nil),
-      let deviceRoot = documentData.documentRootObject as? DeviceRoot,
-      let version = documentData.documentMetadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY] as? Int {
-    //--- Create device
-      let newDevice = DeviceInProject (self.undoManager)
-      device = newDevice
-      newDevice.mDeviceName = inName
-      self.performUpdateDevice (newDevice, from: deviceRoot, version, inData)
-    //--- Add to device list
-      self.rootObject.mDevices.append (newDevice)
-    //--- Free imported root object
-//      deviceRoot.removeRecursivelyAllRelationsShips ()
+    let documentReadData = loadEasyBindingFile (fromData: inData, documentName: inName, undoManager: nil)
+    switch documentReadData {
+    case .ok (let documentData) :
+      if let deviceRoot = documentData.documentRootObject as? DeviceRoot,
+        let version = documentData.documentMetadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY] as? Int {
+      //--- Create device
+        let newDevice = DeviceInProject (self.undoManager)
+        device = newDevice
+        newDevice.mDeviceName = inName
+        self.performUpdateDevice (newDevice, from: deviceRoot, version, inData)
+      //--- Add to device list
+        self.rootObject.mDevices.append (newDevice)
+      }
+    case .readError (_) :
+      ()
     }
     return device
   }
@@ -37,18 +40,25 @@ extension AutoLayoutProjectDocument {
       if pathes.count == 0 {
         ioMessages.append ("No file for \(deviceInProject.mDeviceName) device in Library")
       }else if pathes.count == 1 {
-        if let data = try? Data (contentsOf: URL (fileURLWithPath: pathes [0])),
-           let documentData = try? loadEasyBindingFile (fromData: data, documentName: pathes [0].lastPathComponent, undoManager: nil),
-           let version = documentData.documentMetadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY] as? Int,
-           let deviceRoot = documentData.documentRootObject as? DeviceRoot {
-          if deviceInProject.mDeviceVersion < version {
-            let errorMessage = self.testAndUpdateDevice (deviceInProject, from: deviceRoot, version, data)
-            if errorMessage != "" {
-              ioMessages.append ("Cannot update '\(deviceInProject.mDeviceName)'; new device is incompatible: \(errorMessage)\n")
+        if let data = try? Data (contentsOf: URL (fileURLWithPath: pathes [0])) {
+          let documentReadData = loadEasyBindingFile (fromData: data, documentName: pathes [0].lastPathComponent, undoManager: nil)
+          switch documentReadData {
+          case .ok (let documentData) :
+            if let version = documentData.documentMetadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY] as? Int,
+               let deviceRoot = documentData.documentRootObject as? DeviceRoot {
+              if deviceInProject.mDeviceVersion < version {
+                let errorMessage = self.testAndUpdateDevice (deviceInProject, from: deviceRoot, version, data)
+                if errorMessage != "" {
+                  ioMessages.append ("Cannot update '\(deviceInProject.mDeviceName)'; new device is incompatible: \(errorMessage)\n")
+                }
+              }
+            }else{
+              ioMessages.append ("Cannot read \(pathes [0]) file.")
             }
+          case .readError (_) :
+            ioMessages.append ("Cannot read \(pathes [0]) file.")
           }
-//          deviceRoot.removeRecursivelyAllRelationsShips ()
-         }else{
+        }else{
           ioMessages.append ("Cannot read \(pathes [0]) file.")
         }
       }else{ // pathes.count > 1
