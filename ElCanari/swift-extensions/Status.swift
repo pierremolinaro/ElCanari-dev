@@ -20,11 +20,12 @@ enum Status : UInt, Hashable {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   StatusString
+//   NetStatusEntry
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct StatusString : Hashable {
+struct NetStatusEntry : Hashable {
   let status : Status
+  let isSubnetDescription : Bool
   let string : String
 }
 
@@ -32,7 +33,7 @@ struct StatusString : Hashable {
 //   StatusStringArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias StatusStringArray = [StatusString]
+typealias NetStatusEntryArray = [NetStatusEntry]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   StringArray

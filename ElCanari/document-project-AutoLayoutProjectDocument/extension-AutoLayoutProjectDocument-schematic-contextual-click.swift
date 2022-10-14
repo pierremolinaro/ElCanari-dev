@@ -632,15 +632,15 @@ extension AutoLayoutProjectDocument {
   //····················································································································
 
   func canCreateLabels (points inPoints : [PointInSchematic]) -> Bool {
-  //--- Check points have no label
-    var pointsHaveLabel = false
+  //--- Check points have no label, and are not "nc"
+    var canCreate = true
     for p in inPoints {
-      if p.mLabels.count > 0 {
-        pointsHaveLabel = true
+      if (p.mLabels.count > 0) || (p.mNC != nil) {
+        canCreate = false
         break
       }
     }
-    return !pointsHaveLabel
+    return canCreate
   }
 
   //····················································································································

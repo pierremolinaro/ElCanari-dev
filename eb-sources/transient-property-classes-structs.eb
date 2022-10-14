@@ -8,7 +8,7 @@ transient property struct BoardFontDescriptor ;
 transient property struct BorderCurveDescriptor ;
 transient property struct NetInfoPoint ;
 transient property struct NetInfoPointArray ;
-transient property struct StatusStringArray ;
+transient property struct NetStatusEntryArray ;
 transient property struct NetInfo ;
 transient property struct SchematicSheetDescriptor ;
 transient property struct SchematicSheetGeometry ;

@@ -538,11 +538,11 @@ typealias EBReadOnlyProperty_NetInfoPointArray    = EBObservableProperty <NetInf
 typealias EBTransientProperty_NetInfoPointArray   = EBGenericTransientProperty <NetInfoPointArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Scalar property StatusStringArray
+//   Scalar property NetStatusEntryArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_StatusStringArray    = EBObservableProperty <StatusStringArray>
-typealias EBTransientProperty_StatusStringArray   = EBGenericTransientProperty <StatusStringArray>
+typealias EBReadOnlyProperty_NetStatusEntryArray    = EBObservableProperty <NetStatusEntryArray>
+typealias EBTransientProperty_NetStatusEntryArray   = EBGenericTransientProperty <NetStatusEntryArray>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property NetInfo

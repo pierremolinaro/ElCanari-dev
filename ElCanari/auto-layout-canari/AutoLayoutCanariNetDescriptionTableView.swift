@@ -118,7 +118,13 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
     )
     self.mTableView.addColumn_NSImage_Int (
       valueGetterDelegate: { [weak self] in
-        let n = self?.mDataSource [$0].subnets.count
+        var n = 0
+        for subnet in self?.mDataSource [$0].subnets ?? [] {
+          if subnet.isSubnetDescription {
+            n += 1
+          }
+        }
+    //    let n = self?.mDataSource [$0].subnets.count
         let image : NSImage?
         if let uwSelf = self, let warningImage = NSImage (named: warningStatusImageName) {
           image = uwSelf.mDataSource [$0].subnetsHaveWarning ? NSImage (named: warningStatusImageName) : NSImage (size: warningImage.size)
@@ -235,13 +241,6 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
 
   //····················································································································
 
-//  final func unbind_netInfo () {
-//    self.mController?.unregister ()
-//    self.mController = nil
-//  }
-
-  //····················································································································
-
   func updateUnconnectedPadList (from inModel : EBReadOnlyProperty_NetInfoArray) {
     switch inModel.selection {
     case .empty, .multiple :
@@ -287,9 +286,6 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
         return (optN, image)
       },
       sortDelegate: nil,
-//      sortDelegate: { [weak self] (ascending) in
-//        self?.mDataSource.sort { return ascending ? ($0.pinCount < $1.pinCount) : ($0.pinCount > $1.pinCount) }
-//      },
       title: "Subnets",
       minWidth: 60,
       maxWidth: 600,

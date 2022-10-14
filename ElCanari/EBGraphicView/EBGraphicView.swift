@@ -121,7 +121,7 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
   // MARK: -
   //····················································································································
 
-  final var mStartOptionMouseDownCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Void > = nil
+  final var mStartOptionMouseDownCallback : Optional < (_ inUnalignedMouseLocation : NSPoint) -> Bool > = nil
   final var mContinueOptionMouseDraggedCallback : Optional < (_ inUnalignedMouseLocation : NSPoint, _ inModifierFlags : NSEvent.ModifierFlags) -> Void > = nil
   final var mAbortOptionMouseOperationCallback : Optional < () -> Void > = nil
   final var mHelperStringOptionMouseOperationCallback : Optional < (_ inModifierFlags : NSEvent.ModifierFlags) -> String? > = nil
@@ -129,7 +129,7 @@ final class EBGraphicView : NSView, EBGraphicViewScaleProvider {
 
   //····················································································································
 
-  final func setOptionMouseCallbacks (start inStartCallback : @escaping (_ inUnalignedMouseLocation : NSPoint) -> Void,
+  final func setOptionMouseCallbacks (start inStartCallback : @escaping (_ inUnalignedMouseLocation : NSPoint) -> Bool,
                                       continue inContinueCallback : @escaping (_ inUnalignedMouseLocation : NSPoint, _ inModifierFlags : NSEvent.ModifierFlags) -> Void,
                                       abort inAbortCallback : @escaping () -> Void,
                                       helper inHelperCallback : @escaping (_ inModifierFlags : NSEvent.ModifierFlags) -> String?,

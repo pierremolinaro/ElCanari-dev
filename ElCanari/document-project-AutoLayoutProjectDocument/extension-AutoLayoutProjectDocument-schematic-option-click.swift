@@ -14,14 +14,26 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  func startWireCreationOnOptionMouseDown (at inUnalignedMousePoint : NSPoint) {
+  func startWireCreationOnOptionMouseDown (at inUnalignedMousePoint : NSPoint) -> Bool {
      if let selectedSheet = self.rootObject.mSelectedSheet {
        _ = selectedSheet.addPointToWire (at: inUnalignedMousePoint.canariPoint)
        let p = inUnalignedMousePoint.canariPointAligned (onCanariGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
-    //--- Find points at p1 and p2
+    //--- Find points at p
       let pointsAtP = selectedSheet.pointsInSchematics (at: p)
+    //--- Check all points are not "nc"
+      var allPointsAreNC = true
+      for p in pointsAtP {
+        if p.mNC != nil {
+          allPointsAreNC = false
+          break
+        }
+      }
     //---
-      if pointsAtP.count == 1 { // Use point at p1, create a point at p2
+      if !allPointsAreNC {
+        let alert = NSAlert ()
+        alert.messageText = "Cannot create a wire from a NC point"
+        _ = alert.runModal ()
+      }else if pointsAtP.count == 1 { // Use point at p1, create a point at p2
         let wire = WireInSchematic (self.undoManager)
         self.mWireCreatedByOptionClick = wire
         wire.mP1 = pointsAtP [0]
@@ -50,6 +62,7 @@ extension AutoLayoutProjectDocument {
         selectedSheet.mObjects.append (wire)
       }
     }
+    return self.mWireCreatedByOptionClick != nil
   }
 
   //····················································································································

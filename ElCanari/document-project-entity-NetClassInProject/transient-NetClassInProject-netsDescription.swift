@@ -9,7 +9,7 @@ import Cocoa
 //--- START OF USER ZONE 1
 
 fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
-                                 _ inPointArray : NetInfoPointArray) -> (StatusStringArray, Bool) { // ( ..., has warning)
+                                 _ inPointArray : NetInfoPointArray) -> (NetStatusEntryArray, Bool) { // ( ..., has warning)
 //--- Wire dictionary (for compute subnet accessibility)
   var wireDictionary = [Int : NetInfoPointArray] ()
   for point in inPointArray {
@@ -90,24 +90,24 @@ fileprivate func computeSubnets (_ inWarnsExactlyOneLabel : Bool,
   }
 //--- Several subnets ?
   var hasWarning = false
-  var statusStringArray = [StatusString] ()
+  var netStatusEntryArray = [NetStatusEntry] ()
   if subnetDescriptionStrings.count == 1 {
-    statusStringArray.append (StatusString (status: .ok, string: subnetDescriptionStrings [0].1))
+    netStatusEntryArray.append (NetStatusEntry (status: .ok, isSubnetDescription: true, string: subnetDescriptionStrings [0].1))
   }else if subnetDescriptionStrings.count > 1 {
     for (severalLabels, descriptionString) in subnetDescriptionStrings {
       if !severalLabels {
         hasWarning = true
       }
-      statusStringArray.append (StatusString (status: severalLabels ? .ok : .warning, string: descriptionString))
+      netStatusEntryArray.append (NetStatusEntry (status: severalLabels ? .ok : .warning, isSubnetDescription: true, string: descriptionString))
     }
   }
 //--- Exactly one label ?
   if inWarnsExactlyOneLabel && (netLabelCount == 1) {
     hasWarning = true
-    statusStringArray.append (StatusString (status: .warning, string: "Exactly one label"))
+    netStatusEntryArray.append (NetStatusEntry (status: .warning, isSubnetDescription: false, string: "Exactly one label"))
   }
 //---
-  return (statusStringArray, hasWarning)
+  return (netStatusEntryArray, hasWarning)
 }
 
 //--- END OF USER ZONE 1

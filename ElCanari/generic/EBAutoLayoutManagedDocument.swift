@@ -198,12 +198,6 @@ class EBAutoLayoutManagedDocument : NSDocument {
   //····················································································································
 
   override final func read (from inData : Data, ofType typeName : String) throws {
-    try self.nonIsolatedRead (from: inData)
-  }
-
-  //····················································································································
-
-  private final func nonIsolatedRead (from inData : Data) throws {
   //--- Show "Opening xxx…" splash window ?
     if inData.count > 300_000 {
       let window = CanariWindow (
@@ -233,25 +227,28 @@ class EBAutoLayoutManagedDocument : NSDocument {
 //      }
       RunLoop.current.run (until: Date ())
     }
-    self.undoManager?.disableUndoRegistration ()
-  //--- Load file
-    let documentReadData = loadEasyBindingFile (fromData: inData, documentName: self.displayName, undoManager: self.undoManager)
-    switch documentReadData {
-    case .ok (let documentData) :
-      self.mManagedDocumentFileFormat = documentData.documentFileFormat
-    //--- Store Status
-      self.mReadMetadataStatus = documentData.documentMetadataStatus
-    //--- Store metadata dictionary
-      self.mMetadataDictionary = documentData.documentMetadataDictionary
-    //--- Read version from file
-      self.mVersion.setProp (self.readVersionFromMetadataDictionary (documentData.documentMetadataDictionary))
-    //--- Store root object
-      self.mRootObject = documentData.documentRootObject
-    //---
-      self.undoManager?.enableUndoRegistration ()
-    case .readError (let error) :
-      throw error
-    }
+//    DispatchQueue.main.async {
+      self.undoManager?.disableUndoRegistration ()
+    //--- Load file
+      let documentReadData = loadEasyBindingFile (fromData: inData, documentName: self.displayName, undoManager: self.undoManager)
+      switch documentReadData {
+      case .ok (let documentData) :
+        self.mManagedDocumentFileFormat = documentData.documentFileFormat
+      //--- Store Status
+        self.mReadMetadataStatus = documentData.documentMetadataStatus
+      //--- Store metadata dictionary
+        self.mMetadataDictionary = documentData.documentMetadataDictionary
+      //--- Read version from file
+        self.mVersion.setProp (self.readVersionFromMetadataDictionary (documentData.documentMetadataDictionary))
+      //--- Store root object
+        self.mRootObject = documentData.documentRootObject
+      //---
+        self.undoManager?.enableUndoRegistration ()
+      case .readError (let error) :
+        let alert = NSAlert (error: error)
+        _ = alert.runModal ()
+      }
+ //   }
   }
 
   //····················································································································

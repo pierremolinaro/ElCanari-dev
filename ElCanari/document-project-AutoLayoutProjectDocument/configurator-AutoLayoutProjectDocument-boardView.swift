@@ -29,7 +29,7 @@ extension AutoLayoutProjectDocument {
   //--- Option click for creating track
      inOutlet.mGraphicView.mHelperStringForOptionModifier = "SHIFT: mouse down starts a new track"
      inOutlet.mGraphicView.setOptionMouseCallbacks (
-       start: { [weak self] (inUnalignedMouseLocation) in self?.startTrackCreationOnOptionMouseDown (at: inUnalignedMouseLocation) },
+       start: { [weak self] (inUnalignedMouseLocation) in return self?.startTrackCreationOnOptionMouseDown (at: inUnalignedMouseLocation) ?? false },
        continue: { [weak self] (inUnalignedMouseLocation, inModifierFlags) in self?.continueTrackCreationOnOptionMouseDragged (at: inUnalignedMouseLocation, inModifierFlags) },
        abort: { [weak self] in self?.abortTrackCreationOnOptionMouseUp () },
        helper: { [weak self] (inModifierFlags) in self?.helperStringForTrackCreation (inModifierFlags) },

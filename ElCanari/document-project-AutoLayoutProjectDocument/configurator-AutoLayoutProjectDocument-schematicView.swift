@@ -35,7 +35,7 @@ extension AutoLayoutProjectDocument {
     inOutlet.mGraphicView.mHelperStringForOptionModifier = "SHIFT: mouse down starts a new wire"
 
     inOutlet.mGraphicView.setOptionMouseCallbacks (
-      start: { [weak self] (inUnalignedMouseLocation) in self?.startWireCreationOnOptionMouseDown (at: inUnalignedMouseLocation) },
+      start: { [weak self] (inUnalignedMouseLocation) in return self?.startWireCreationOnOptionMouseDown (at: inUnalignedMouseLocation) ?? false },
       continue: { [weak self] (inUnalignedMouseLocation, inModifierFlags) in self?.continueWireCreationOnOptionMouseDragged (at: inUnalignedMouseLocation, inModifierFlags) },
       abort: { [weak self] in self?.abortWireCreationOnOptionMouseUp () },
       helper: { [weak self] (inModifierFlags) in self?.helperStringForWireCreation (inModifierFlags) },

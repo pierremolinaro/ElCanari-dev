@@ -69,7 +69,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  func startTrackCreationOnOptionMouseDown (at inUnalignedMousePoint : NSPoint) {
+  func startTrackCreationOnOptionMouseDown (at inUnalignedMousePoint : NSPoint) -> Bool {
     let side = self.rootObject.mBoardSideForNewTrack
     let p1 = inUnalignedMousePoint.canariPoint
     let connectorsAtP1 = self.rootObject.connectors (at: p1, trackSide: side)
@@ -97,6 +97,7 @@ extension AutoLayoutProjectDocument {
     self.rootObject.mBoardObjects.append (track)
     self.boardObjectsController.setSelection ([track])
     self.mTrackCreatedByOptionClick = track
+    return true
   }
 
   //····················································································································

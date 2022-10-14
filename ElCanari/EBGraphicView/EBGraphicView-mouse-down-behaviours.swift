@@ -230,9 +230,12 @@ final class OptionMouseDownBehaviour : DefaultBehaviourOnMouseDown { // Mouse do
   init (_ inUnalignedLocation : NSPoint,
         _ inGraphicView : EBGraphicView,
         _ inViewController : EBGraphicViewControllerProtocol) {
-    self.mOperationInProgress = true
     inViewController.undoManager?.beginUndoGrouping ()
-    inGraphicView.mStartOptionMouseDownCallback? (inUnalignedLocation)
+    self.mOperationInProgress = inGraphicView.mStartOptionMouseDownCallback? (inUnalignedLocation) ?? false
+    if !self.mOperationInProgress {
+      inViewController.undoManager?.endUndoGrouping ()
+      inViewController.undoManager?.undo ()
+    }
   }
 
   //····················································································································

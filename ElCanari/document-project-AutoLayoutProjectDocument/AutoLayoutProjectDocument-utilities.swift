@@ -149,7 +149,7 @@ struct NetInfo : Hashable {
   let netName : String
   let netClassName : String
   let points : NetInfoPointArray
-  let subnets : StatusStringArray
+  let subnets : NetStatusEntryArray
   let subnetsHaveWarning : Bool
   let pinCount : Int
   let labelCount : Int
