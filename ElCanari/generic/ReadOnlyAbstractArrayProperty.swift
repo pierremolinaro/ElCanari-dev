@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func update <T : AnyObject> (currentSet ioCurrentSet : inout EBReferenceSet <T>,
+@MainActor fileprivate func update <T : AnyObject> (currentSet ioCurrentSet : inout EBReferenceSet <T>,
                                          fromNewArray inNewArray : EBReferenceArray <T>,
                                          oldArray inOldArray : EBReferenceArray <T>) -> (Bool, EBReferenceSet <T>, EBReferenceSet <T>) {
   var addedSet = EBReferenceSet <T> ()

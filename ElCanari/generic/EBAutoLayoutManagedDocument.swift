@@ -198,6 +198,7 @@ class EBAutoLayoutManagedDocument : NSDocument {
   //····················································································································
 
   override final func read (from inData : Data, ofType typeName : String) throws {
+    DispatchQueue.main.async {
   //--- Show "Opening xxx…" splash window ?
     if inData.count > 300_000 {
       let window = CanariWindow (
@@ -227,7 +228,6 @@ class EBAutoLayoutManagedDocument : NSDocument {
 //      }
       RunLoop.current.run (until: Date ())
     }
-//    DispatchQueue.main.async {
       self.undoManager?.disableUndoRegistration ()
     //--- Load file
       let documentReadData = loadEasyBindingFile (fromData: inData, documentName: self.displayName, undoManager: self.undoManager)
@@ -239,7 +239,9 @@ class EBAutoLayoutManagedDocument : NSDocument {
       //--- Store metadata dictionary
         self.mMetadataDictionary = documentData.documentMetadataDictionary
       //--- Read version from file
-        self.mVersion.setProp (self.readVersionFromMetadataDictionary (documentData.documentMetadataDictionary))
+//        DispatchQueue.main.async {
+          self.mVersion.setProp (self.readVersionFromMetadataDictionary (documentData.documentMetadataDictionary))
+ //       }
       //--- Store root object
         self.mRootObject = documentData.documentRootObject
       //---
@@ -248,7 +250,7 @@ class EBAutoLayoutManagedDocument : NSDocument {
         let alert = NSAlert (error: error)
         _ = alert.runModal ()
       }
- //   }
+    }
   }
 
   //····················································································································
@@ -274,6 +276,7 @@ class EBAutoLayoutManagedDocument : NSDocument {
   //····················································································································
 
   override func makeWindowControllers () {
+    DispatchQueue.main.async {
   //--- Signature observer
     self.mRootObject.setSignatureObserver (observer: self.mSignatureObserver)
     self.mSignatureObserver.setRootObject (self.mRootObject)
@@ -311,6 +314,7 @@ class EBAutoLayoutManagedDocument : NSDocument {
     appendDocumentFileOperationInfo ("User Interface Built.")
     appendTotalDurationDocumentFileOperationInfo ()
 //    self.mManagedDocumentFileFormat = .textual
+    }
   }
 
   //····················································································································
@@ -557,5 +561,7 @@ final class EBSignatureObserverEvent : EBGenericTransientProperty <UInt32>, EBSi
   //····················································································································
 
 }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

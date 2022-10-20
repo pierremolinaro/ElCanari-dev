@@ -7,12 +7,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol ObjectIndexProtocol : AnyObject {
-  var objectIndex : Int { get }
+  @MainActor var objectIndex : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor fileprivate var gEasyBindingsObjectIndex = 0
+@MainActor fileprivate var gEasyBindingsObjectIndex : Int = 0
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    EBObjcBaseObject class
@@ -22,13 +22,20 @@ protocol ObjectIndexProtocol : AnyObject {
 
   //····················································································································
 
-  final let objectIndex : Int
+  final private var mPrivateObjectIndex : Int = 0
+  @MainActor final var objectIndex : Int {
+    if self.mPrivateObjectIndex == 0 {
+      gEasyBindingsObjectIndex += 1
+      self.mPrivateObjectIndex = gEasyBindingsObjectIndex
+    }
+    return self.mPrivateObjectIndex
+  }
 
   //····················································································································
 
   override init () {
-    self.objectIndex = gEasyBindingsObjectIndex
-    gEasyBindingsObjectIndex += 1
+//    self.objectIndex = gEasyBindingsObjectIndex
+//    gEasyBindingsObjectIndex += 1
     super.init ()
     noteObjectAllocation (self)
   }
@@ -51,13 +58,20 @@ protocol ObjectIndexProtocol : AnyObject {
 
   //····················································································································
 
-  final let objectIndex : Int
+  final private var mPrivateObjectIndex : Int = 0
+  @MainActor final var objectIndex : Int {
+    if self.mPrivateObjectIndex == 0 {
+      gEasyBindingsObjectIndex += 1
+      self.mPrivateObjectIndex = gEasyBindingsObjectIndex
+    }
+    return self.mPrivateObjectIndex
+  }
 
   //····················································································································
 
   init () {
-    self.objectIndex = gEasyBindingsObjectIndex
-    gEasyBindingsObjectIndex += 1
+//    self.objectIndex = gEasyBindingsObjectIndex
+//    gEasyBindingsObjectIndex += 1
     noteObjectAllocation (self)
   }
 
@@ -70,27 +84,5 @@ protocol ObjectIndexProtocol : AnyObject {
   //····················································································································
 
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//private let explorerLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L",
-//                               "M", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-//
-//func explorerObjectIndexString (_ idx : Int) -> String {
-//  var result = String (idx % 10)
-//  var n = idx / 10
-//  result += "\(n % 10)"
-//  n /= 10
-//  result += explorerLetters [n % explorerLetters.count]
-//  n /= explorerLetters.count
-//  result += explorerLetters [n % explorerLetters.count]
-//  n /= explorerLetters.count
-//  result += explorerLetters [n % explorerLetters.count]
-//  n /= explorerLetters.count
-//  if n > 0 {
-//    result += "\(n)"
-//  }
-//  return result
-//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

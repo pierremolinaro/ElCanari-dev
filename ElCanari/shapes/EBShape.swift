@@ -294,7 +294,7 @@ struct EBShape : Hashable {
 
   //····················································································································
 
-  func installToolTips (toView inView : EBGraphicView) {
+  @MainActor func installToolTips (toView inView : EBGraphicView) {
     self.mSharedObject?.installToolTips (toView: inView)
   }
 
@@ -559,7 +559,7 @@ fileprivate final class EBShapeObject {
 
   //····················································································································
 
-  func installToolTips (toView inView : EBGraphicView) {
+  @MainActor func installToolTips (toView inView : EBGraphicView) {
     for tooltip in self.mToolTips {
       _ = inView.addToolTip (tooltip.path.bounds, owner: tooltip.string, userData: nil)
     }
