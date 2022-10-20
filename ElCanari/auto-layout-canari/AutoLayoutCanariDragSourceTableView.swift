@@ -202,9 +202,42 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
   // Drag source
   //····················································································································
 
-  @MainActor func tableView (_ aTableView: NSTableView,
-                             writeRowsWith rowIndexes: IndexSet,
-                             to pboard : NSPasteboard) -> Bool {
+//  func tableView (_ tableView : NSTableView,
+//                  pasteboardWriterForRow inRow : Int) -> NSPasteboardWriting? {
+//    if let draggedType = self.mDraggedType {
+//      let rowIndexes = IndexSet (integer: inRow)
+//      self.mTableView.selectRowIndexes (rowIndexes, byExtendingSelection: false)
+//      let cellName : String = self.mModelArray [inRow].string
+//      let data = cellName.data (using: .ascii)!
+//      let pasteboardItem = NSPasteboardItem ()
+//      pasteboardItem.setData (data, forType: draggedType)
+//      Swift.print ("pasteboardWriterForRow")
+//      return pasteboardItem
+//    }else{
+//      return nil
+//    }
+//
+//  }
+
+//  @MainActor func tableView (_ tableView : NSTableView,
+//                             draggingSession inSession : NSDraggingSession,
+//                             willBeginAt screenPoint : NSPoint,
+//                             forRowIndexes rowIndexes : IndexSet) {
+//    Swift.print ("willBeginAt")
+//    let pboard = inSession.draggingPasteboard //.addTypes ([self.mDraggedType!], owner:self)
+//    if let draggedType = self.mDraggedType, rowIndexes.count == 1 {
+//      pboard.declareTypes ([draggedType], owner:self)
+//      self.mTableView.selectRowIndexes (rowIndexes, byExtendingSelection: false)
+//      let cellName : String = self.mModelArray [rowIndexes.first!].string
+//      let data = cellName.data (using: .ascii)!
+//      pboard.setData (data, forType: draggedType)
+//    }
+//
+//  }
+
+  func tableView (_ aTableView: NSTableView, // NSTableViewDataSource
+                  writeRowsWith rowIndexes: IndexSet,
+                  to pboard : NSPasteboard) -> Bool {
     if let draggedType = self.mDraggedType, rowIndexes.count == 1 {
       self.mTableView.selectRowIndexes (rowIndexes, byExtendingSelection: false)
       let cellName : String = self.mModelArray [rowIndexes.first!].string

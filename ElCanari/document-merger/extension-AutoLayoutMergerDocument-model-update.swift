@@ -166,7 +166,7 @@ extension AutoLayoutMergerDocument {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate var gPanel : OpenPanelDelegateForUpdatingBoardModels? = nil
+@MainActor fileprivate var gPanel : OpenPanelDelegateForUpdatingBoardModels? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

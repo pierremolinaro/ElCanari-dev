@@ -50,7 +50,6 @@ func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN TH
 
 @globalActor actor PendingAllocationBufferActor {
   static var shared = PendingAllocationBufferActor ()
-//  typealias ActorType = PendingAllocationBufferActor
 
   private var mPendingAllocatedObjectClasses = [AnyObject.Type] ()
   private var mPendingDeallocatedObjectClasses = [AnyObject.Type] ()

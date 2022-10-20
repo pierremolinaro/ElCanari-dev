@@ -29,7 +29,7 @@ enum EBTextVerticalAlignment {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate var gBezierPathIndex = 0
+//fileprivate var gBezierPathIndex = 0
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // EBBezierPath
@@ -40,7 +40,7 @@ struct EBBezierPath : Hashable {
   //····················································································································
 
   private var mPath : NSBezierPath
-  private let mBezierPathIndex : Int
+//  private let mBezierPathIndex : Int
 
   //····················································································································
 
@@ -58,8 +58,8 @@ struct EBBezierPath : Hashable {
 
   init () {
     self.mPath = NSBezierPath ()
-    self.mBezierPathIndex = gBezierPathIndex
-    gBezierPathIndex += 1
+//    self.mBezierPathIndex = gBezierPathIndex
+//    gBezierPathIndex += 1
   }
 
   //····················································································································
@@ -67,8 +67,8 @@ struct EBBezierPath : Hashable {
   init (rect inRect : NSRect) {
     self.mPath = NSBezierPath ()
     self.mPath.appendRect (inRect)
-    self.mBezierPathIndex = gBezierPathIndex
-    gBezierPathIndex += 1
+//    self.mBezierPathIndex = gBezierPathIndex
+//    gBezierPathIndex += 1
   }
 
   //····················································································································
@@ -76,8 +76,8 @@ struct EBBezierPath : Hashable {
   init (ovalIn inRect : NSRect) {
     self.mPath = NSBezierPath ()
     self.mPath.appendOval (in: inRect)
-    self.mBezierPathIndex = gBezierPathIndex
-    gBezierPathIndex += 1
+//    self.mBezierPathIndex = gBezierPathIndex
+//    gBezierPathIndex += 1
   }
 
   //····················································································································
@@ -85,8 +85,8 @@ struct EBBezierPath : Hashable {
   init (roundedRect rect : NSRect, xRadius : CGFloat, yRadius : CGFloat) {
     self.mPath = NSBezierPath ()
     self.mPath.appendRoundedRect (rect, xRadius: xRadius, yRadius: yRadius)
-    self.mBezierPathIndex = gBezierPathIndex
-    gBezierPathIndex += 1
+//    self.mBezierPathIndex = gBezierPathIndex
+//    gBezierPathIndex += 1
   }
 
   //····················································································································
@@ -97,8 +97,8 @@ struct EBBezierPath : Hashable {
     self.mPath.lineWidth = inBezierPath.lineWidth
     self.mPath.lineCapStyle = inBezierPath.lineCapStyle
     self.mPath.lineJoinStyle = inBezierPath.lineJoinStyle
-    self.mBezierPathIndex = gBezierPathIndex
-    gBezierPathIndex += 1
+//    self.mBezierPathIndex = gBezierPathIndex
+//    gBezierPathIndex += 1
   }
 
   //····················································································································
@@ -109,8 +109,8 @@ struct EBBezierPath : Hashable {
         _ inVerticalAlignment : EBTextVerticalAlignment,
         withAttributes inTextAttributes : [NSAttributedString.Key : Any]) {
     self.mPath = NSBezierPath ()
-    self.mBezierPathIndex = gBezierPathIndex
-    gBezierPathIndex += 1
+//    self.mBezierPathIndex = gBezierPathIndex
+//    gBezierPathIndex += 1
     if inString != "" {
     //--- Font
       let font : NSFont
@@ -167,19 +167,20 @@ struct EBBezierPath : Hashable {
   //····················································································································
 
   nonisolated static func == (lhs : EBBezierPath, rhs : EBBezierPath) -> Bool {
-    return lhs.mBezierPathIndex == rhs.mBezierPathIndex
+   // return lhs.mPath === rhs.mPath
+    return ObjectIdentifier (lhs.mPath) == ObjectIdentifier (rhs.mPath)
   }
 
   //····················································································································
 
   static func < (lhs : EBBezierPath, rhs : EBBezierPath) -> Bool {
-    return lhs.mBezierPathIndex < rhs.mBezierPathIndex
+    return ObjectIdentifier (lhs.mPath) < ObjectIdentifier (rhs.mPath)
   }
 
   //····················································································································
 
   static func >= (lhs : EBBezierPath, rhs : EBBezierPath) -> Bool {
-    return lhs.mBezierPathIndex >= rhs.mBezierPathIndex
+    return ObjectIdentifier (lhs.mPath) >= ObjectIdentifier (rhs.mPath)
   }
 
   //····················································································································
@@ -187,7 +188,7 @@ struct EBBezierPath : Hashable {
   //····················································································································
 
   nonisolated func hash (into hasher: inout Hasher) {
-    self.mBezierPathIndex.hash (into: &hasher)
+    ObjectIdentifier (self.mPath).hash (into: &hasher)
   }
 
   //····················································································································

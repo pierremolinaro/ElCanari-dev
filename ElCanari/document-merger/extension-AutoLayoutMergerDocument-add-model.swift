@@ -56,7 +56,7 @@ extension AutoLayoutMergerDocument {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate var gPanel : OpenPanelDelegateForFilteringBoardModels?
+@MainActor fileprivate var gPanel : OpenPanelDelegateForFilteringBoardModels?
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

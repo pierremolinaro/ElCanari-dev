@@ -13,13 +13,13 @@ protocol EBObservableObjectProtocol : AnyObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol EBReadObservableEnumProtocol : EBObservableObjectProtocol {
+@MainActor protocol EBReadObservableEnumProtocol : EBObservableObjectProtocol {
   func rawValue () -> Int?
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol EBReadWriteObservableEnumProtocol : EBReadObservableEnumProtocol {
+@MainActor protocol EBReadWriteObservableEnumProtocol : EBReadObservableEnumProtocol {
   func setFrom (rawValue : Int)
 }
 
