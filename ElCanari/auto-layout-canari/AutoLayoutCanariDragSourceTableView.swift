@@ -202,9 +202,9 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
   // Drag source
   //····················································································································
 
-  func tableView (_ aTableView: NSTableView,
-                  writeRowsWith rowIndexes: IndexSet,
-                  to pboard : NSPasteboard) -> Bool {
+  @MainActor func tableView (_ aTableView: NSTableView,
+                             writeRowsWith rowIndexes: IndexSet,
+                             to pboard : NSPasteboard) -> Bool {
     if let draggedType = self.mDraggedType, rowIndexes.count == 1 {
       self.mTableView.selectRowIndexes (rowIndexes, byExtendingSelection: false)
       let cellName : String = self.mModelArray [rowIndexes.first!].string

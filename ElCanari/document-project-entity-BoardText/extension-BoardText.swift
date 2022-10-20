@@ -253,7 +253,7 @@ extension BoardText {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func boardText_displayInfos (
+@MainActor func boardText_displayInfos (
        x self_mX : Int,
        y self_mY : Int,
        string self_mText : String,

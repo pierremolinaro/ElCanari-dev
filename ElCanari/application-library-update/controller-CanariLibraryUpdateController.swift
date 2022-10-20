@@ -153,20 +153,27 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
   //   elementActionDidEnd (runs in main thread)
   //····················································································································
 
-  func elementActionDidEnd (_ inElement : LibraryOperationElement, _ inErrorCode : Int32) {
-    if !Thread.isMainThread {
-      Swift.print ("\(#file),\(#line): Not in main thread!")
-    }
+  @MainActor func elementActionDidEnd (_ inElement : LibraryOperationElement, _ inErrorCode : Int32) {
     if (self.mErrorCode == 0) && (inErrorCode != 0) {
-       mErrorCode = inErrorCode
+       self.mErrorCode = inErrorCode
     }
   //--- Decrement parallel action count
     self.mCurrentParallelActionCount -= 1
   //--- Remove corresponding entry in table view
-    if let idx = self.mCurrentActionArray.firstIndex (of: inElement) {
-      self.mCurrentActionArray.remove (at: idx)
-      self.mTableView.sortAndReloadData ()
+    var found = false
+    var idx = 0
+    while !found && (idx < self.mCurrentActionArray.count) {
+      found = inElement === self.mCurrentActionArray [idx]
+      if found {
+        self.mCurrentActionArray.remove (at: idx)
+        self.mTableView.sortAndReloadData ()
+      }
+      idx += 1
     }
+//    if let idx = self.mCurrentActionArray.firstIndex (of: inElement) {
+//      self.mCurrentActionArray.remove (at: idx)
+//      self.mTableView.sortAndReloadData ()
+//    }
   //--- Update progress indicator
     self.updateProgressIndicator ()
   //--- Update remaining operation count

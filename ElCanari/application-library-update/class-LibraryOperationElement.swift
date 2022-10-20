@@ -26,15 +26,7 @@ enum LibraryOperation {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class LibraryOperationElement : EBSwiftBaseObject, Equatable {
-
-  //····················································································································
-  //   Equatable protocol
-  //····················································································································
-
-  nonisolated static func == (lhs: LibraryOperationElement, rhs: LibraryOperationElement) -> Bool {
-    return ObjectIdentifier (lhs) == ObjectIdentifier (rhs)
-  }
+final class LibraryOperationElement : EBSwiftBaseObject {
 
   //····················································································································
   //   Properties
@@ -115,9 +107,9 @@ final class LibraryOperationElement : EBSwiftBaseObject, Equatable {
       switch mOperation {
       case .download, .update :
         self.mOperation = .downloading (0)
-        let task = Process ()
-        let concurrentQueue = DispatchQueue (label: "Queue \(self.mRelativePath)", attributes: .concurrent)
-        concurrentQueue.async {
+//        let concurrentQueue = DispatchQueue (label: "Queue \(self.mRelativePath)", attributes: .concurrent)
+//        concurrentQueue.async {
+        Task {
           let arguments = [
             "-s", // Silent mode, do not show download progress
             "-k", // Turn off curl's verification of certificate
@@ -128,6 +120,7 @@ final class LibraryOperationElement : EBSwiftBaseObject, Equatable {
             self.mLogTextView.appendMessageString ("  Download arguments: \(arguments)\n")
           }
         //--- Define task
+          let task = Process ()
           task.launchPath = CURL
           task.arguments = arguments
           let pipe = Pipe ()
@@ -143,8 +136,9 @@ final class LibraryOperationElement : EBSwiftBaseObject, Equatable {
             let newData = fileHandle.availableData
             hasData = newData.count > 0
             data.append (newData)
+            let dataCount = data.count
             DispatchQueue.main.async {
-              self.mOperation = .downloading (data.count * 100 / self.mSizeInRepository)
+              self.mOperation = .downloading (dataCount * 100 / self.mSizeInRepository)
               inController.updateProgressIndicator ()
             }
             if SLOW_DOWNLOAD {
