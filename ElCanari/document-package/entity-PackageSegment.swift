@@ -328,7 +328,7 @@ final class PackageSegment : PackageObject,
     self.lengthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
     self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
     super.init (inUndoManager)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -474,7 +474,7 @@ final class PackageSegment : PackageObject,
     self.y1_property.addEBObserver (self.lengthInCanariUnit_property)
     self.x2_property.addEBObserver (self.lengthInCanariUnit_property)
     self.y2_property.addEBObserver (self.lengthInCanariUnit_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.lengthUnit_property.setSignatureObserver (observer: self)
@@ -526,8 +526,8 @@ final class PackageSegment : PackageObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   }
 
   //····················································································································

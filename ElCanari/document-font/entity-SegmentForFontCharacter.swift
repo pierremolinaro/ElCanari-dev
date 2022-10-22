@@ -138,7 +138,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
     self.x2_property = EBStoredProperty_Int (defaultValue: 9, undoManager: inUndoManager)
     self.y2_property = EBStoredProperty_Int (defaultValue: 8, undoManager: inUndoManager)
     super.init (inUndoManager)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -197,7 +197,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
     self.y1_property.addEBObserver (self.objectDisplay_property)
     self.x2_property.addEBObserver (self.objectDisplay_property)
     self.y2_property.addEBObserver (self.objectDisplay_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.x1_property.setSignatureObserver (observer: self)
@@ -234,8 +234,8 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   }
 
   //····················································································································

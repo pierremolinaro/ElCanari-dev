@@ -277,7 +277,7 @@ final class SymbolTypeInDevice : EBManagedObject,
     self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager)
     self.mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager)
     super.init (inUndoManager)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: mInstances (has opposite relationship)
     self.mInstances_property.undoManager = inUndoManager
     self.mInstances_property.setOppositeRelationShipFunctions (
@@ -354,7 +354,7 @@ final class SymbolTypeInDevice : EBManagedObject,
       }
     }
     self.mPinTypes_property.addEBObserverOf_nameShape (self.pinNameShape_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mType_property.setProp (me) } },
@@ -411,14 +411,14 @@ final class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mInstances
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mInstances",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SymbolInstanceInDevice]
       self.mInstances_property.setProp (EBReferenceArray (array))
     }
@@ -427,7 +427,7 @@ final class SymbolTypeInDevice : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mPinTypes",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SymbolPinTypeInDevice]
       self.mPinTypes_property.setProp (EBReferenceArray (array))
     }

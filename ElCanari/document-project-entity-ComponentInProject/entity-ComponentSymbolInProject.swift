@@ -529,7 +529,7 @@ final class ComponentSymbolInProject : SchematicObject,
       }
     }
     self.mComponent_property.addEBObserver (self.mComponent_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.undoManager = inUndoManager
     self.mPoints_property.setOppositeRelationShipFunctions (
@@ -820,7 +820,7 @@ final class ComponentSymbolInProject : SchematicObject,
       }
     }
     self.isPlacedInSchematic_property.addEBObserver (self.symbolInSchematic_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSymbol_property.setProp (me) } },
@@ -877,14 +877,14 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mPoints
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mPoints",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [PointInSchematic]
       self.mPoints_property.setProp (EBReferenceArray (array))
     }
@@ -893,7 +893,7 @@ final class ComponentSymbolInProject : SchematicObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mComponent",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? ComponentInProject {
         self.mComponent_property.setProp (entity)

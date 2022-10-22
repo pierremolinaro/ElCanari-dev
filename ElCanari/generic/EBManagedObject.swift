@@ -18,7 +18,7 @@ import Cocoa
 //  Moins volumineux avec EBSwiftBaseObject, mais plus long à l'ouverture
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-// var gInitSemaphore = DispatchSemaphore (value: 1) // Sémaphore d'exclusion mutuelle utilisé lors de l'init
+let gInitSemaphore = DispatchSemaphore (value: 1) // Sémaphore d'exclusion mutuelle utilisé lors de l'init
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -50,7 +50,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   //····················································································································
 
   func setUpWithDictionary (_ inDictionary : NSDictionary,
-                            managedObjectArray : inout [EBManagedObject]) {
+                            managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     self.setUpAtomicPropertiesWithDictionary (inDictionary)
   }
 
@@ -155,7 +155,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
 
   final func readEntityFromDictionary (inRelationshipName : String,
                                        inDictionary : NSDictionary,
-                                       managedObjectArray : inout [EBManagedObject]) -> EBManagedObject? {
+                                       managedObjectArray : [EBManagedObject]) -> EBManagedObject? {
     let opValue : Int? = inDictionary.value (forKey: inRelationshipName) as? Int
     var result : EBManagedObject? = nil
     if let value = opValue {
@@ -170,7 +170,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
 
   final func readEntityArrayFromDictionary (inRelationshipName : String,
                                             inDictionary : NSDictionary,
-                                            managedObjectArray : inout [EBManagedObject]) -> [EBManagedObject] {
+                                            managedObjectArray : [EBManagedObject]) -> [EBManagedObject] {
     let opIndexArray : [Int]? = inDictionary.value (forKey: inRelationshipName) as? [Int]
     var result = [EBManagedObject] ()
     if let indexArray = opIndexArray {

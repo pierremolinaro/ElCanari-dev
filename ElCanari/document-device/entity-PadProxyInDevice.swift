@@ -181,7 +181,7 @@ final class PadProxyInDevice : EBManagedObject,
       }
     }
     self.mPinInstance_property.addEBObserver (self.mPinInstance_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To one property: mPinInstance (has opposite to one relationship: mPadProxy)
     self.mPinInstance_property.undoManager = inUndoManager
     self.mPinInstance_property.setOppositeRelationShipFunctions (
@@ -226,7 +226,7 @@ final class PadProxyInDevice : EBManagedObject,
       }
     }
     self.mPinInstance_property.symbolName_property.addEBObserver (self.symbolName_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mIsNC_property.setSignatureObserver (observer: self)
@@ -264,14 +264,14 @@ final class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mPinInstance
     do{
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mPinInstance",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? SymbolPinInstanceInDevice {
         self.mPinInstance_property.setProp (entity)

@@ -721,7 +721,7 @@ final class NetClassInProject : EBManagedObject,
     self.mAllowTracksOnInner3Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
     self.mAllowTracksOnInner4Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
     super.init (inUndoManager)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: mNets (has opposite relationship)
     self.mNets_property.undoManager = inUndoManager
     self.mNets_property.setOppositeRelationShipFunctions (
@@ -981,7 +981,7 @@ final class NetClassInProject : EBManagedObject,
       }
     }
     self.netsDescription_property.addEBObserver (self.netWarningCount_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mNets_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNetClass_property.setProp (me) } },
@@ -1044,14 +1044,14 @@ final class NetClassInProject : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mNets
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mNets",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [NetInProject]
       self.mNets_property.setProp (EBReferenceArray (array))
     }

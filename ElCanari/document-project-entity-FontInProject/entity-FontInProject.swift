@@ -337,7 +337,7 @@ final class FontInProject : EBManagedObject,
     self.mFontVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
     self.mDescriptiveString_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
     super.init (inUndoManager)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: mTexts (has opposite relationship)
     self.mTexts_property.undoManager = inUndoManager
     self.mTexts_property.setOppositeRelationShipFunctions (
@@ -483,7 +483,7 @@ final class FontInProject : EBManagedObject,
       }
     }
     self.mComponentValues_property.addEBObserver (self.componentValuesCount_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mTexts_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mFont_property.setProp (me) } },
@@ -546,14 +546,14 @@ final class FontInProject : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mTexts
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mTexts",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [BoardText]
       self.mTexts_property.setProp (EBReferenceArray (array))
     }
@@ -562,7 +562,7 @@ final class FontInProject : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mComponentNames",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [ComponentInProject]
       self.mComponentNames_property.setProp (EBReferenceArray (array))
     }
@@ -571,7 +571,7 @@ final class FontInProject : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mComponentValues",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [ComponentInProject]
       self.mComponentValues_property.setProp (EBReferenceArray (array))
     }

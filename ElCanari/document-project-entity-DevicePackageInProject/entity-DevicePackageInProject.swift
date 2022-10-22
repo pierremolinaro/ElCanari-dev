@@ -109,7 +109,7 @@ final class DevicePackageInProject : EBManagedObject,
     self.mPackageName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
     self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager)
     super.init (inUndoManager)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.undoManager = inUndoManager
   //--- Atomic property: packagePadDictionary
@@ -129,7 +129,7 @@ final class DevicePackageInProject : EBManagedObject,
       }
     }
     self.mMasterPads_property.addEBObserverOf_descriptor (self.packagePadDictionary_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -164,14 +164,14 @@ final class DevicePackageInProject : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mMasterPads
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mMasterPads",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [DeviceMasterPadInProject]
       self.mMasterPads_property.setProp (EBReferenceArray (array))
     }

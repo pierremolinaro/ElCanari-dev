@@ -175,7 +175,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
       }
     }
     self.mSymbolType_property.addEBObserver (self.mSymbolType_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To one property: mSymbolType
     self.mSymbolType_property.undoManager = inUndoManager
   //--- Atomic property: symbolAndTypeName
@@ -254,7 +254,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
     }
     self.mSymbolType_property.mStrokeBezierPath_property.addEBObserver (self.strokeBezierPath_property)
     preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.strokeBezierPath_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -285,14 +285,14 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mSymbolType
     do{
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mSymbolType",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? DeviceSymbolTypeInProject {
         self.mSymbolType_property.setProp (entity)

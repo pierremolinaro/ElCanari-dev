@@ -4451,7 +4451,7 @@ final class ProjectRoot : EBManagedObject,
       }
     }
     self.mSelectedSheet_property.addEBObserver (self.mSelectedSheet_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: mSheets (has opposite relationship)
     self.mSheets_property.undoManager = inUndoManager
     self.mSheets_property.setOppositeRelationShipFunctions (
@@ -5965,7 +5965,7 @@ final class ProjectRoot : EBManagedObject,
     self.netWarningCount_property.addEBObserver (self.schematicStatusImage_property)
     self.mSheets_property.addEBObserverOf_connexionWarnings (self.schematicStatusImage_property)
     self.mSheets_property.addEBObserverOf_connexionErrors (self.schematicStatusImage_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mSheets_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
@@ -6238,14 +6238,14 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mSheets
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mSheets",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SheetInProject]
       self.mSheets_property.setProp (EBReferenceArray (array))
     }
@@ -6254,7 +6254,7 @@ final class ProjectRoot : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mFonts",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [FontInProject]
       self.mFonts_property.setProp (EBReferenceArray (array))
     }
@@ -6263,7 +6263,7 @@ final class ProjectRoot : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mDevices",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [DeviceInProject]
       self.mDevices_property.setProp (EBReferenceArray (array))
     }
@@ -6272,7 +6272,7 @@ final class ProjectRoot : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mNetClasses",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [NetClassInProject]
       self.mNetClasses_property.setProp (EBReferenceArray (array))
     }
@@ -6281,7 +6281,7 @@ final class ProjectRoot : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mBorderCurves",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [BorderCurve]
       self.mBorderCurves_property.setProp (EBReferenceArray (array))
     }
@@ -6290,7 +6290,7 @@ final class ProjectRoot : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mBoardObjects",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [BoardObject]
       self.mBoardObjects_property.setProp (EBReferenceArray (array))
     }
@@ -6299,7 +6299,7 @@ final class ProjectRoot : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mComponents",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [ComponentInProject]
       self.mComponents_property.setProp (EBReferenceArray (array))
     }
@@ -6308,7 +6308,7 @@ final class ProjectRoot : EBManagedObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mArtwork",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? ArtworkRoot {
         self.mArtwork_property.setProp (entity)
@@ -6319,7 +6319,7 @@ final class ProjectRoot : EBManagedObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mSelectedSheet",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? SheetInProject {
         self.mSelectedSheet_property.setProp (entity)

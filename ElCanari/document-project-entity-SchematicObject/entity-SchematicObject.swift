@@ -162,7 +162,7 @@ class SchematicObject : EBGraphicManagedObject,
       }
     }
     self.mSheet_property.addEBObserver (self.mSheet_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To one property: mSheet (has opposite to many relationship: mObjects)
     self.mSheet_property.undoManager = inUndoManager
     self.mSheet_property.setOppositeRelationShipFunctions (
@@ -203,7 +203,7 @@ class SchematicObject : EBGraphicManagedObject,
       }
     }
     self.mSheet_property.addEBObserver (self.isPlacedInSchematic_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -228,14 +228,14 @@ class SchematicObject : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mSheet
     do{
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mSheet",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? SheetInProject {
         self.mSheet_property.setProp (entity)

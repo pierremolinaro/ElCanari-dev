@@ -114,7 +114,7 @@ class PackageObject : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.addEBObserver (self.mRoot_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To one property: mRoot (has opposite to many relationship: packageObjects)
     self.mRoot_property.undoManager = inUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
@@ -138,7 +138,7 @@ class PackageObject : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.knobSizeMultpliedByTen_property.addEBObserver (self.knobSize_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -163,14 +163,14 @@ class PackageObject : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mRoot
     do{
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mRoot",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? PackageRoot {
         self.mRoot_property.setProp (entity)

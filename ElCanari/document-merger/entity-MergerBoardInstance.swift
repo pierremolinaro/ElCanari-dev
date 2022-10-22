@@ -255,7 +255,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       }
     }
     self.myRoot_property.addEBObserver (self.myRoot_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To one property: myModel (has opposite to many relationship: myInstances)
     self.myModel_property.undoManager = inUndoManager
     self.myModel_property.setOppositeRelationShipFunctions (
@@ -389,7 +389,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.remove (me) } }
     )
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -420,14 +420,14 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: myModel
     do{
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "myModel",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? BoardModel {
         self.myModel_property.setProp (entity)
@@ -438,7 +438,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "myRoot",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? MergerRoot {
         self.myRoot_property.setProp (entity)

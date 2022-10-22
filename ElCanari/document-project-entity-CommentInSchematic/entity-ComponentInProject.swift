@@ -1206,7 +1206,7 @@ final class ComponentInProject : BoardObject,
       }
     }
     self.mValueFont_property.addEBObserver (self.mValueFont_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: mConnectors (has opposite relationship)
     self.mConnectors_property.undoManager = inUndoManager
     self.mConnectors_property.setOppositeRelationShipFunctions (
@@ -1923,7 +1923,7 @@ final class ComponentInProject : BoardObject,
     self.mValueRotation_property.addEBObserver (self.objectDisplay_property)
     self.mComponentValue_property.addEBObserver (self.objectDisplay_property)
     self.mDevice_property.pinPadAssignments_property.addEBObserver (self.objectDisplay_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mConnectors_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
@@ -2014,14 +2014,14 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mConnectors
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mConnectors",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [BoardConnector]
       self.mConnectors_property.setProp (EBReferenceArray (array))
     }
@@ -2030,7 +2030,7 @@ final class ComponentInProject : BoardObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mSymbols",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [ComponentSymbolInProject]
       self.mSymbols_property.setProp (EBReferenceArray (array))
     }
@@ -2039,7 +2039,7 @@ final class ComponentInProject : BoardObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mDevice",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? DeviceInProject {
         self.mDevice_property.setProp (entity)
@@ -2050,7 +2050,7 @@ final class ComponentInProject : BoardObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mSelectedPackage",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? DevicePackageInProject {
         self.mSelectedPackage_property.setProp (entity)
@@ -2061,7 +2061,7 @@ final class ComponentInProject : BoardObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mNameFont",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? FontInProject {
         self.mNameFont_property.setProp (entity)
@@ -2072,7 +2072,7 @@ final class ComponentInProject : BoardObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mValueFont",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? FontInProject {
         self.mValueFont_property.setProp (entity)

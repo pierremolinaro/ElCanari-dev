@@ -298,7 +298,7 @@ final class DeviceMasterPadInProject : EBManagedObject,
     self.mStyle_property = EBStoredProperty_PadStyle (defaultValue: PadStyle.traversing, undoManager: inUndoManager)
     self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
     super.init (inUndoManager)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: mSlavePads (no option)
     self.mSlavePads_property.undoManager = inUndoManager
   //--- Atomic property: descriptor
@@ -354,7 +354,7 @@ final class DeviceMasterPadInProject : EBManagedObject,
     self.mShape_property.addEBObserver (self.descriptor_property)
     self.mStyle_property.addEBObserver (self.descriptor_property)
     self.mSlavePads_property.addEBObserverOf_descriptor (self.descriptor_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -403,14 +403,14 @@ final class DeviceMasterPadInProject : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mSlavePads
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mSlavePads",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [DeviceSlavePadInProject]
       self.mSlavePads_property.setProp (EBReferenceArray (array))
     }

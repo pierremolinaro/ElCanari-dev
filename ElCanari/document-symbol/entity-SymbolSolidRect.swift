@@ -169,7 +169,7 @@ final class SymbolSolidRect : SymbolObject,
     self.height_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager)
     self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
     super.init (inUndoManager)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- Atomic property: filledBezierPath
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -294,7 +294,7 @@ final class SymbolSolidRect : SymbolObject,
     self.y_property.addEBObserver (self.issues_property)
     self.width_property.addEBObserver (self.issues_property)
     self.height_property.addEBObserver (self.issues_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.height_property.setSignatureObserver (observer: self)
@@ -331,8 +331,8 @@ final class SymbolSolidRect : SymbolObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   }
 
   //····················································································································

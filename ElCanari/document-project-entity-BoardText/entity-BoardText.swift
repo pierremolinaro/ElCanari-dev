@@ -367,7 +367,7 @@ final class BoardText : BoardObject,
       }
     }
     self.mFont_property.addEBObserver (self.mFont_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To one property: mFont (has opposite to many relationship: mTexts)
     self.mFont_property.undoManager = inUndoManager
     self.mFont_property.setOppositeRelationShipFunctions (
@@ -642,7 +642,7 @@ final class BoardText : BoardObject,
     self.mRotation_property.addEBObserver (self.signatureForERCChecking_property)
     self.mWeight_property.addEBObserver (self.signatureForERCChecking_property)
     self.mOblique_property.addEBObserver (self.signatureForERCChecking_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -687,14 +687,14 @@ final class BoardText : BoardObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mFont
     do{
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mFont",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? FontInProject {
         self.mFont_property.setProp (entity)

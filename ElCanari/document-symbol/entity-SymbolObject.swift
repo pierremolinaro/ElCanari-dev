@@ -54,8 +54,8 @@ class SymbolObject : EBGraphicManagedObject,
 
   required init (_ inUndoManager : UndoManager?) {
     super.init (inUndoManager)
-    // gInitSemaphore.wait ()
-    // gInitSemaphore.signal ()
+    gInitSemaphore.wait ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -80,8 +80,8 @@ class SymbolObject : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   }
 
   //····················································································································

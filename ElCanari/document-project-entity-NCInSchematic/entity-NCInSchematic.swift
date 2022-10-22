@@ -93,7 +93,7 @@ final class NCInSchematic : SchematicObject,
       }
     }
     self.mPoint_property.addEBObserver (self.mPoint_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To one property: mPoint (has opposite to one relationship: mNC)
     self.mPoint_property.undoManager = inUndoManager
     self.mPoint_property.setOppositeRelationShipFunctions (
@@ -158,7 +158,7 @@ final class NCInSchematic : SchematicObject,
     self.mOrientation_property.addEBObserver (self.selectionDisplay_property)
     self.mPoint_property.symbolRotation_property.addEBObserver (self.selectionDisplay_property)
     preferences_pinNameFont_property.addEBObserver (self.selectionDisplay_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -189,14 +189,14 @@ final class NCInSchematic : SchematicObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mPoint
     do{
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mPoint",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? PointInSchematic {
         self.mPoint_property.setProp (entity)

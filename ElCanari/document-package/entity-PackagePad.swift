@@ -760,7 +760,7 @@ final class PackagePad : PackageObject,
       }
     }
     self.zone_property.addEBObserver (self.zone_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: slaves (has opposite relationship)
     self.slaves_property.undoManager = inUndoManager
     self.slaves_property.setOppositeRelationShipFunctions (
@@ -1109,7 +1109,7 @@ final class PackagePad : PackageObject,
     preferences_padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
     preferences_padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
     self.padNameForDisplay_property.addEBObserver (self.padNumberDisplay_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.slaves_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.master_property.setProp (me) } },
@@ -1197,14 +1197,14 @@ final class PackagePad : PackageObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: slaves
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "slaves",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [PackageSlavePad]
       self.slaves_property.setProp (EBReferenceArray (array))
     }
@@ -1213,7 +1213,7 @@ final class PackagePad : PackageObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "zone",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? PackageZone {
         self.zone_property.setProp (entity)

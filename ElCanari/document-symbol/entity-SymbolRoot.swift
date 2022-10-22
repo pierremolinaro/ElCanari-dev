@@ -337,7 +337,7 @@ final class SymbolRoot : EBManagedObject,
     self.yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
     self.selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
     super.init (inUndoManager)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: symbolObjects (no option)
     self.symbolObjects_property.undoManager = inUndoManager
   //--- Atomic property: issues
@@ -373,7 +373,7 @@ final class SymbolRoot : EBManagedObject,
     self.symbolPins_property.addEBObserverOf_nameRect (self.issues_property)
     self.symbolPins_property.addEBObserverOf_xPin (self.issues_property)
     self.symbolPins_property.addEBObserverOf_yPin (self.issues_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.symbolPins_property.setDataProvider (self.symbolObjects_property)
   //--- Register properties for handling signature
@@ -429,14 +429,14 @@ final class SymbolRoot : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: symbolObjects
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "symbolObjects",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SymbolObject]
       self.symbolObjects_property.setProp (EBReferenceArray (array))
     }

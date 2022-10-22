@@ -89,18 +89,11 @@ private func raiseInvalidDataFormatError (dataFormat : UInt8) throws {
       let className = d.object (forKey: ENTITY_KEY) as! String
       let object = newInstanceOfEntityNamed (inUndoManager, className)
       objectArray.append (object)
-//      }else{
-//        let dictionary = [
-//          "Cannot Open Document" :  NSLocalizedDescriptionKey,
-//          "Root object cannot be read" :  NSLocalizedRecoverySuggestionErrorKey
-//        ]
-//        throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo:dictionary)
-//      }
     }
     var idx = 0
     for d in dictionaryArray {
       let object = objectArray [idx]
-      object.setUpWithDictionary (d, managedObjectArray: &objectArray)
+      object.setUpWithDictionary (d, managedObjectArray: objectArray)
       idx += 1
     }
     resultRootObject = objectArray [0] // Set root object

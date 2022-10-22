@@ -485,7 +485,7 @@ final class BorderCurve : EBGraphicManagedObject,
       }
     }
     self.mPrevious_property.addEBObserver (self.mPrevious_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- Atomic proxy property: mNextX
     self.mNextX_property.mReadModelFunction = { [weak self] in
       if let object = self?.mNext_property {
@@ -772,7 +772,7 @@ final class BorderCurve : EBGraphicManagedObject,
     self.mCPY2_property.addEBObserver (self.selectionDisplay_property)
     self.mShape_property.addEBObserver (self.selectionDisplay_property)
     self.mRoot_property.mBoardShape_property.addEBObserver (self.selectionDisplay_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -819,14 +819,14 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mRoot
     do{
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mRoot",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? ProjectRoot {
         self.mRoot_property.setProp (entity)
@@ -837,7 +837,7 @@ final class BorderCurve : EBGraphicManagedObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mNext",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? BorderCurve {
         self.mNext_property.setProp (entity)
@@ -848,7 +848,7 @@ final class BorderCurve : EBGraphicManagedObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mPrevious",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? BorderCurve {
         self.mPrevious_property.setProp (entity)

@@ -574,7 +574,7 @@ final class PointInSchematic : EBManagedObject,
       }
     }
     self.mSheet_property.addEBObserver (self.mSheet_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: mLabels (has opposite relationship)
     self.mLabels_property.undoManager = inUndoManager
     self.mLabels_property.setOppositeRelationShipFunctions (
@@ -901,7 +901,7 @@ final class PointInSchematic : EBManagedObject,
     self.mWiresP2s_property.addEBObserver (self.netInfoForPoint_property)
     self.location_property.addEBObserver (self.netInfoForPoint_property)
     self.mSheet_property.sheetDescriptor_property.addEBObserver (self.netInfoForPoint_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mLabels_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
@@ -966,14 +966,14 @@ final class PointInSchematic : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mLabels
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mLabels",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [LabelInSchematic]
       self.mLabels_property.setProp (EBReferenceArray (array))
     }
@@ -982,7 +982,7 @@ final class PointInSchematic : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mWiresP2s",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [WireInSchematic]
       self.mWiresP2s_property.setProp (EBReferenceArray (array))
     }
@@ -991,7 +991,7 @@ final class PointInSchematic : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mWiresP1s",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [WireInSchematic]
       self.mWiresP1s_property.setProp (EBReferenceArray (array))
     }
@@ -1000,7 +1000,7 @@ final class PointInSchematic : EBManagedObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mSymbol",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? ComponentSymbolInProject {
         self.mSymbol_property.setProp (entity)
@@ -1011,7 +1011,7 @@ final class PointInSchematic : EBManagedObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mNet",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? NetInProject {
         self.mNet_property.setProp (entity)
@@ -1022,7 +1022,7 @@ final class PointInSchematic : EBManagedObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mNC",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? NCInSchematic {
         self.mNC_property.setProp (entity)
@@ -1033,7 +1033,7 @@ final class PointInSchematic : EBManagedObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mSheet",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? SheetInProject {
         self.mSheet_property.setProp (entity)

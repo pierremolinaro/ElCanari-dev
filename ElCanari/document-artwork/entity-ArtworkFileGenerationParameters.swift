@@ -880,7 +880,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       }
     }
     self.mArtwork_property.addEBObserver (self.mArtwork_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To one property: mArtwork (has opposite to many relationship: fileGenerationParameterArray)
     self.mArtwork_property.undoManager = inUndoManager
     self.mArtwork_property.setOppositeRelationShipFunctions (
@@ -1038,7 +1038,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       }
     }
     self.fileExtension_property.addEBObserver (self.emptyFileExtensionImage_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.drawBoardLimits_property.setSignatureObserver (observer: self)
@@ -1147,14 +1147,14 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mArtwork
     do{
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mArtwork",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? ArtworkRoot {
         self.mArtwork_property.setProp (entity)

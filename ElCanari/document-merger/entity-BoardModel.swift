@@ -1933,7 +1933,7 @@ final class BoardModel : EBManagedObject,
     self.modelLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
     self.artworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
     super.init (inUndoManager)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: frontLegendLines (no option)
     self.frontLegendLines_property.undoManager = inUndoManager
   //--- To many property: backLegendLines (no option)
@@ -3885,7 +3885,7 @@ final class BoardModel : EBManagedObject,
     self.backPackagesBezierPaths_property.addEBObserver (self.imageForInstances_property)
     preferences_mergerBoardViewDisplayBackPackages_property.addEBObserver (self.imageForInstances_property)
     preferences_mergerColorBackPackages_property.addEBObserver (self.imageForInstances_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.myInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.myModel_property.setProp (me) } },
@@ -4084,14 +4084,14 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: frontLegendLines
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "frontLegendLines",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentEntity]
       self.frontLegendLines_property.setProp (EBReferenceArray (array))
     }
@@ -4100,7 +4100,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "backLegendLines",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentEntity]
       self.backLegendLines_property.setProp (EBReferenceArray (array))
     }
@@ -4109,7 +4109,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "frontLegendTexts",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentEntity]
       self.frontLegendTexts_property.setProp (EBReferenceArray (array))
     }
@@ -4118,7 +4118,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "frontLayoutTexts",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentEntity]
       self.frontLayoutTexts_property.setProp (EBReferenceArray (array))
     }
@@ -4127,7 +4127,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "backLegendTexts",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentEntity]
       self.backLegendTexts_property.setProp (EBReferenceArray (array))
     }
@@ -4136,7 +4136,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "backLayoutTexts",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentEntity]
       self.backLayoutTexts_property.setProp (EBReferenceArray (array))
     }
@@ -4145,7 +4145,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "internalBoardsLimits",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentEntity]
       self.internalBoardsLimits_property.setProp (EBReferenceArray (array))
     }
@@ -4154,7 +4154,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "drills",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentEntity]
       self.drills_property.setProp (EBReferenceArray (array))
     }
@@ -4163,7 +4163,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "vias",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [BoardModelVia]
       self.vias_property.setProp (EBReferenceArray (array))
     }
@@ -4172,7 +4172,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "frontPads",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [BoardModelPad]
       self.frontPads_property.setProp (EBReferenceArray (array))
     }
@@ -4181,7 +4181,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "backPads",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [BoardModelPad]
       self.backPads_property.setProp (EBReferenceArray (array))
     }
@@ -4190,7 +4190,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "traversingPads",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [BoardModelPad]
       self.traversingPads_property.setProp (EBReferenceArray (array))
     }
@@ -4199,7 +4199,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "backComponentNames",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentEntity]
       self.backComponentNames_property.setProp (EBReferenceArray (array))
     }
@@ -4208,7 +4208,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "frontComponentNames",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentEntity]
       self.frontComponentNames_property.setProp (EBReferenceArray (array))
     }
@@ -4217,7 +4217,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "frontComponentValues",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentEntity]
       self.frontComponentValues_property.setProp (EBReferenceArray (array))
     }
@@ -4226,7 +4226,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "backComponentValues",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentEntity]
       self.backComponentValues_property.setProp (EBReferenceArray (array))
     }
@@ -4235,7 +4235,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "backTracks",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentEntity]
       self.backTracks_property.setProp (EBReferenceArray (array))
     }
@@ -4244,7 +4244,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "frontTracks",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentEntity]
       self.frontTracks_property.setProp (EBReferenceArray (array))
     }
@@ -4253,7 +4253,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "inner1Tracks",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentEntity]
       self.inner1Tracks_property.setProp (EBReferenceArray (array))
     }
@@ -4262,7 +4262,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "inner2Tracks",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentEntity]
       self.inner2Tracks_property.setProp (EBReferenceArray (array))
     }
@@ -4271,7 +4271,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "inner3Tracks",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentEntity]
       self.inner3Tracks_property.setProp (EBReferenceArray (array))
     }
@@ -4280,7 +4280,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "inner4Tracks",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentEntity]
       self.inner4Tracks_property.setProp (EBReferenceArray (array))
     }
@@ -4289,7 +4289,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "frontPackages",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentEntity]
       self.frontPackages_property.setProp (EBReferenceArray (array))
     }
@@ -4298,7 +4298,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "backPackages",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentEntity]
       self.backPackages_property.setProp (EBReferenceArray (array))
     }
@@ -4307,7 +4307,7 @@ final class BoardModel : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "myInstances",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [MergerBoardInstance]
       self.myInstances_property.setProp (EBReferenceArray (array))
     }

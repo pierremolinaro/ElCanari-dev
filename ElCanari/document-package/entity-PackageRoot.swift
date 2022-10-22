@@ -1637,7 +1637,7 @@ final class PackageRoot : EBManagedObject,
       }
     }
     self.mModelImageDoublePoint_property.addEBObserver (self.mModelImageDoublePoint_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: mModelImageObjects (has opposite relationship)
     self.mModelImageObjects_property.undoManager = inUndoManager
     self.mModelImageObjects_property.setOppositeRelationShipFunctions (
@@ -1992,7 +1992,7 @@ final class PackageRoot : EBManagedObject,
     self.packageZones_property.addEBObserverOf_xName (self.issues_property)
     self.packageZones_property.addEBObserverOf_yName (self.issues_property)
     preferences_padZoneFont_property.addEBObserver (self.issues_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mModelImageObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
@@ -2132,14 +2132,14 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mModelImageObjects
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mModelImageObjects",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [PackageModelImageDoublePoint]
       self.mModelImageObjects_property.setProp (EBReferenceArray (array))
     }
@@ -2148,7 +2148,7 @@ final class PackageRoot : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "packageObjects",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [PackageObject]
       self.packageObjects_property.setProp (EBReferenceArray (array))
     }
@@ -2157,7 +2157,7 @@ final class PackageRoot : EBManagedObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mModelImageDoublePoint",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? PackageModelImageDoublePoint {
         self.mModelImageDoublePoint_property.setProp (entity)

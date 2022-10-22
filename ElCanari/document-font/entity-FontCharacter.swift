@@ -235,7 +235,7 @@ final class FontCharacter : EBManagedObject,
     self.mWarnsWhenNoSegment_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
     self.mWarnsWhenAdvanceIsZero_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
     super.init (inUndoManager)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: segments (no option)
     self.segments_property.undoManager = inUndoManager
   //--- Atomic property: segmentArrayForDrawing
@@ -334,7 +334,7 @@ final class FontCharacter : EBManagedObject,
     self.mWarnsWhenNoSegment_property.addEBObserver (self.issues_property)
     self.mWarnsWhenAdvanceIsZero_property.addEBObserver (self.issues_property)
     self.segments_property.addEBObserver (self.issues_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.advance_property.setSignatureObserver (observer: self)
@@ -378,14 +378,14 @@ final class FontCharacter : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: segments
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "segments",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SegmentForFontCharacter]
       self.segments_property.setProp (EBReferenceArray (array))
     }

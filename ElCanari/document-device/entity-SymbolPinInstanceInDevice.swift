@@ -244,7 +244,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       }
     }
     self.mPadProxy_property.addEBObserver (self.mPadProxy_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To one property: mSymbolInstance (has opposite to many relationship: mPinInstances)
     self.mSymbolInstance_property.undoManager = inUndoManager
     self.mSymbolInstance_property.setOppositeRelationShipFunctions (
@@ -368,7 +368,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
     self.mType_property.mNumberHorizontalAlignment_property.addEBObserver (self.numberShape_property)
     self.mPadProxy_property.mPadName_property.addEBObserver (self.numberShape_property)
     preferences_pinNameFont_property.addEBObserver (self.numberShape_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -397,14 +397,14 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mSymbolInstance
     do{
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mSymbolInstance",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? SymbolInstanceInDevice {
         self.mSymbolInstance_property.setProp (entity)
@@ -415,7 +415,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mType",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? SymbolPinTypeInDevice {
         self.mType_property.setProp (entity)
@@ -426,7 +426,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mPadProxy",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? PadProxyInDevice {
         self.mPadProxy_property.setProp (entity)

@@ -556,7 +556,7 @@ final class PackageZone : PackageObject,
     self.yNameUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
     self.zoneNumbering_property = EBStoredProperty_PadNumbering (defaultValue: PadNumbering.noNumbering, undoManager: inUndoManager)
     super.init (inUndoManager)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: forbiddenPadNumbers (no option)
     self.forbiddenPadNumbers_property.undoManager = inUndoManager
   //--- Atomic property: objectDisplay
@@ -777,7 +777,7 @@ final class PackageZone : PackageObject,
       }
     }
     self.forbiddenPadNumbers_property.addEBObserver (self.emptyForbiddenPadArray_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.forbiddenPadNumbers_property.setSignatureObserver (observer: self)
@@ -855,14 +855,14 @@ final class PackageZone : PackageObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: forbiddenPadNumbers
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "forbiddenPadNumbers",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [ForbiddenPadNumber]
       self.forbiddenPadNumbers_property.setProp (EBReferenceArray (array))
     }

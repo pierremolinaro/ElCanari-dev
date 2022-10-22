@@ -502,7 +502,7 @@ final class ArtworkRoot : EBManagedObject,
     self.title_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
     self.drillDataFileExtension_property = EBStoredProperty_String (defaultValue: "DRF", undoManager: inUndoManager)
     super.init (inUndoManager)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: fileGenerationParameterArray (has opposite relationship)
     self.fileGenerationParameterArray_property.undoManager = inUndoManager
     self.fileGenerationParameterArray_property.setOppositeRelationShipFunctions (
@@ -606,7 +606,7 @@ final class ArtworkRoot : EBManagedObject,
     self.minValueForOARinEBUnit_property.addEBObserver (self.signatureForERCChecking_property)
     self.minValueForBoardLimitWidth_property.addEBObserver (self.signatureForERCChecking_property)
     self.minValueForPHDinEBUnit_property.addEBObserver (self.signatureForERCChecking_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.fileGenerationParameterArray_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mArtwork_property.setProp (me) } },
@@ -676,14 +676,14 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: fileGenerationParameterArray
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "fileGenerationParameterArray",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [ArtworkFileGenerationParameters]
       self.fileGenerationParameterArray_property.setProp (EBReferenceArray (array))
     }

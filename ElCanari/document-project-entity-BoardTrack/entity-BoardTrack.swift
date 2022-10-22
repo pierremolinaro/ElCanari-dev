@@ -859,7 +859,7 @@ final class BoardTrack : BoardObject,
       }
     }
     self.mNet_property.addEBObserver (self.mNet_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To one property: mConnectorP1 (has opposite to many relationship: mTracksP1)
     self.mConnectorP1_property.undoManager = inUndoManager
     self.mConnectorP1_property.setOppositeRelationShipFunctions (
@@ -1412,7 +1412,7 @@ final class BoardTrack : BoardObject,
     preferences_backSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     self.mSide_property.addEBObserver (self.selectionDisplay_property)
     self.actualTrackWidth_property.addEBObserver (self.selectionDisplay_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -1463,14 +1463,14 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mConnectorP1
     do{
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mConnectorP1",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? BoardConnector {
         self.mConnectorP1_property.setProp (entity)
@@ -1481,7 +1481,7 @@ final class BoardTrack : BoardObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mConnectorP2",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? BoardConnector {
         self.mConnectorP2_property.setProp (entity)
@@ -1492,7 +1492,7 @@ final class BoardTrack : BoardObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mNet",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? NetInProject {
         self.mNet_property.setProp (entity)

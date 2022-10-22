@@ -43,8 +43,8 @@ final class ForbiddenPadNumber : EBManagedObject,
   required init (_ inUndoManager : UndoManager?) {
     self.padNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
     super.init (inUndoManager)
-    // gInitSemaphore.wait ()
-    // gInitSemaphore.signal ()
+    gInitSemaphore.wait ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.padNumber_property.setSignatureObserver (observer: self)
@@ -72,8 +72,8 @@ final class ForbiddenPadNumber : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   }
 
   //····················································································································

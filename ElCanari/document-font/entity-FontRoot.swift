@@ -334,7 +334,7 @@ final class FontRoot : EBManagedObject,
     self.selectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
     self.currentCharacterCodePoint_property = EBStoredProperty_Int (defaultValue: 32, undoManager: inUndoManager)
     super.init (inUndoManager)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: characters (no option)
     self.characters_property.undoManager = inUndoManager
   //--- Atomic property: currentCharacterCodePointString
@@ -472,7 +472,7 @@ final class FontRoot : EBManagedObject,
       }
     }
     self.characters_property.addEBObserverOf_issues (self.issues_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.characters_property.setSignatureObserver (observer: self)
@@ -512,8 +512,8 @@ final class FontRoot : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: characters (Custom store)
     self.characters_property.setProp (EBReferenceArray (customRead_FontCharacter_characters (from: inDictionary, with: self.undoManager)))
   }

@@ -1264,7 +1264,7 @@ final class MergerRoot : EBManagedObject,
       }
     }
     self.mArtwork_property.addEBObserver (self.mArtwork_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: boardModels (no option)
     self.boardModels_property.undoManager = inUndoManager
   //--- To many property: boardInstances (has opposite relationship)
@@ -1760,7 +1760,7 @@ final class MergerRoot : EBManagedObject,
     self.boardLimitWidth_property.addEBObserver (self.boardOutlineRectDisplay_property)
     preferences_mergerBoardViewDisplayBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
     preferences_mergerColorBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.boardInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.myRoot_property.setProp (me) } },
@@ -1847,14 +1847,14 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: boardModels
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "boardModels",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [BoardModel]
       self.boardModels_property.setProp (EBReferenceArray (array))
     }
@@ -1863,7 +1863,7 @@ final class MergerRoot : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "boardInstances",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [MergerBoardInstance]
       self.boardInstances_property.setProp (EBReferenceArray (array))
     }
@@ -1872,7 +1872,7 @@ final class MergerRoot : EBManagedObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mArtwork",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? ArtworkRoot {
         self.mArtwork_property.setProp (entity)

@@ -304,7 +304,7 @@ final class NetInProject : EBManagedObject,
       }
     }
     self.mNetClass_property.addEBObserver (self.mNetClass_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.undoManager = inUndoManager
     self.mPoints_property.setOppositeRelationShipFunctions (
@@ -442,7 +442,7 @@ final class NetInProject : EBManagedObject,
       }
     }
     self.mTracks_property.addEBObserver (self.trackCount_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },
@@ -491,14 +491,14 @@ final class NetInProject : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mPoints
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mPoints",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [PointInSchematic]
       self.mPoints_property.setProp (EBReferenceArray (array))
     }
@@ -507,7 +507,7 @@ final class NetInProject : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mTracks",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [BoardTrack]
       self.mTracks_property.setProp (EBReferenceArray (array))
     }
@@ -516,7 +516,7 @@ final class NetInProject : EBManagedObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mNetClass",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? NetClassInProject {
         self.mNetClass_property.setProp (entity)

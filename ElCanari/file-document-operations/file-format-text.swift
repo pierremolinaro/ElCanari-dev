@@ -5,7 +5,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct RawObject {
-//  let index : Int
+  let index : Int
   let object : EBManagedObject
   let propertyDictionary : [String : NSRange]
 }
@@ -44,38 +44,37 @@ struct RawObject {
       classDefinition.append ((className, propertyNameArray))
     }
     appendDocumentFileOperationInfo ("read \(classDefinition.count) classes done")
+  //---
+    let operationQueue = OperationQueue ()
+    let mutex = DispatchSemaphore (value: 1)
   //--- Read objects
-  //  let operationQueue = OperationQueue ()
-  //  let mutex = DispatchSemaphore (value: 1)
     var rawObjectArray = [RawObject] ()
-  //  var idx = 0
+    var idx = 0
     let data = ioDataScanner.data
     while !ioDataScanner.eof (), ioDataScanner.testAccept (byte: ASCII.at.rawValue) {
-  //    let index = idx
-  //    idx += 1
+      let index = idx
+      idx += 1
       let classIndex = ioDataScanner.parseBase62EncodedInt ()
       let propertyNameArray = classDefinition [classIndex].1
       let className = classDefinition [classIndex].0
       var propertyValueDictionary = [String : NSRange] ()
-  //    propertyValueDictionary.reserveCapacity (propertyNameArray.count)
       for propertyName in propertyNameArray {
         let propertyRange = ioDataScanner.getLineRangeAndAdvance ()
         propertyValueDictionary [propertyName] = propertyRange
       }
-  //    operationQueue.addOperation {
+      operationQueue.addOperation {
         let managedObject = newInstanceOfEntityNamed (inUndoManager, className)
         managedObject.setUpPropertiesWithTextDictionary (propertyValueDictionary, data)
-        let rawObject = RawObject (/* index: index, */ object: managedObject, propertyDictionary: propertyValueDictionary)
-  //      mutex.wait ()
+        let rawObject = RawObject (index: index, object: managedObject, propertyDictionary: propertyValueDictionary)
+        mutex.wait ()
         rawObjectArray.append (rawObject)
-  //      mutex.signal ()
-  //    }
+        mutex.signal ()
+      }
     }
-  //  let pendingOperationCount = operationQueue.operationCount
-  //  operationQueue.waitUntilAllOperationsAreFinished ()
-  //  rawObjectArray.sort { $0.index < $1.index }
-  //  appendDocumentFileOperationInfo ("read \(rawObjectArray.count) objects done with \(pendingOperationCount) pending ops")
-    appendDocumentFileOperationInfo ("read \(rawObjectArray.count) objects done")
+    appendDocumentFileOperationInfo ("read objects done, \(operationQueue.operationCount) pending operations")
+    operationQueue.waitUntilAllOperationsAreFinished ()
+    rawObjectArray.sort { $0.index < $1.index }
+    appendDocumentFileOperationInfo ("parsed \(rawObjectArray.count) objects done")
   //--- Setup toOne
     let scannerData = ioDataScanner.data
     for rawObject in rawObjectArray {
@@ -120,6 +119,49 @@ struct RawObject {
     return .readError (error: error)
   }
 }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+//actor OpenDocumentActor {
+//
+//  //····················································································································
+//
+//  var mRawObjectArray = [RawObject] ()
+//  var mObjectCount = 0
+//  var mEpilogCallBack : Optional < () -> Void > = nil
+//
+//  //····················································································································
+//
+//  func append (_ inIndex : Int,
+//               _ inObject : EBManagedObject,
+//               _ inPropertyValueDictionary : [String : NSRange],
+//               _ inData : Data) {
+//
+//    let rawObject = RawObject (index: inIndex, object: inObject, propertyDictionary: inPropertyValueDictionary)
+//    self.mRawObjectArray.append (rawObject)
+//    self.runEpilog ()
+//  }
+//
+//  //····················································································································
+//
+//  func epilog (_ inObjectCount : Int, _ inCallBack : @escaping () -> Void) {
+//    self.mObjectCount = inObjectCount
+//    self.mEpilogCallBack = inCallBack
+//    self.runEpilog ()
+//  }
+//
+//  //····················································································································
+//
+//  private func runEpilog () {
+//    if self.mObjectCount == self.mRawObjectArray.count {
+//      self.mRawObjectArray.sort { $0.index < $1.index }
+//      self.mEpilogCallBack? ()
+//    }
+//  }
+//
+//  //····················································································································
+//
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

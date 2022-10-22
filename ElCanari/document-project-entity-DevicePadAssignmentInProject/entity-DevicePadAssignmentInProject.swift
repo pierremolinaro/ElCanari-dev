@@ -127,7 +127,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
       }
     }
     self.mPin_property.addEBObserver (self.mPin_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To one property: mPin
     self.mPin_property.undoManager = inUndoManager
   //--- Atomic property: pinPadAssignment
@@ -176,7 +176,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
     }
     self.mPadName_property.addEBObserver (self.descriptor_property)
     self.mPin_property.descriptor_property.addEBObserver (self.descriptor_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -207,14 +207,14 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mPin
     do{
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mPin",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? DevicePinInProject {
         self.mPin_property.setProp (entity)

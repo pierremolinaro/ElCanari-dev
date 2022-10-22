@@ -340,7 +340,7 @@ final class SlavePadInDevice : EBManagedObject,
       }
     }
     self.mMasterPad_property.addEBObserver (self.mMasterPad_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To one property: mMasterPad (has opposite to many relationship: mSlavePads)
     self.mMasterPad_property.undoManager = inUndoManager
     self.mMasterPad_property.setOppositeRelationShipFunctions (
@@ -470,7 +470,7 @@ final class SlavePadInDevice : EBManagedObject,
     preferences_padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
     preferences_padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
     self.mMasterPad_property.mName_property.addEBObserver (self.padNumberDisplay_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mCenterX_property.setSignatureObserver (observer: self)
@@ -519,14 +519,14 @@ final class SlavePadInDevice : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mMasterPad
     do{
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mMasterPad",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? MasterPadInDevice {
         self.mMasterPad_property.setProp (entity)

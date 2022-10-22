@@ -258,7 +258,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
       }
     }
     self.mType_property.addEBObserver (self.mType_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: mPinInstances (has opposite relationship)
     self.mPinInstances_property.undoManager = inUndoManager
     self.mPinInstances_property.setOppositeRelationShipFunctions (
@@ -449,7 +449,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mY_property.addEBObserver (self.objectDisplay_property)
     preferences_symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
     preferences_symbolColor_property.addEBObserver (self.objectDisplay_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mPinInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSymbolInstance_property.setProp (me) } },
@@ -492,14 +492,14 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mPinInstances
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mPinInstances",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SymbolPinInstanceInDevice]
       self.mPinInstances_property.setProp (EBReferenceArray (array))
     }
@@ -508,7 +508,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mType",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? SymbolTypeInDevice {
         self.mType_property.setProp (entity)

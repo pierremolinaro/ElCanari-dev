@@ -174,7 +174,7 @@ final class WireInSchematic : SchematicObject,
       }
     }
     self.mP2_property.addEBObserver (self.mP2_none)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To one property: mP1 (has opposite to many relationship: mWiresP1s)
     self.mP1_property.undoManager = inUndoManager
     self.mP1_property.setOppositeRelationShipFunctions (
@@ -300,7 +300,7 @@ final class WireInSchematic : SchematicObject,
       }
     }
     self.mP1_property.hasNet_property.addEBObserver (self.hasNet_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -325,14 +325,14 @@ final class WireInSchematic : SchematicObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mP1
     do{
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mP1",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? PointInSchematic {
         self.mP1_property.setProp (entity)
@@ -343,7 +343,7 @@ final class WireInSchematic : SchematicObject,
       let possibleEntity = readEntityFromDictionary (
         inRelationshipName: "mP2",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? PointInSchematic {
         self.mP2_property.setProp (entity)

@@ -736,7 +736,7 @@ final class DeviceRoot : EBManagedObject,
     self.mShowPackageBackPads_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
     self.mSymbolDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400, undoManager: inUndoManager)
     super.init (inUndoManager)
-    // gInitSemaphore.wait ()
+    gInitSemaphore.wait ()
   //--- To many property: mDocs (no option)
     self.mDocs_property.undoManager = inUndoManager
   //--- To many property: mSymbolInstances (no option)
@@ -985,7 +985,7 @@ final class DeviceRoot : EBManagedObject,
     self.mSymbolTypes_property.addEBObserverOf_mVersion (self.issues_property)
     self.mSymbolTypes_property.addEBObserverOf_mTypeName (self.issues_property)
     self.mSymbolTypes_property.addEBObserverOf_instanceCount (self.issues_property)
-    // gInitSemaphore.signal ()
+    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mPackages_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
@@ -1083,14 +1083,14 @@ final class DeviceRoot : EBManagedObject,
   //····················································································································
 
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
-                                     managedObjectArray : inout [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: &managedObjectArray)
+                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mDocs
     do{
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mDocs",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [DeviceDocumentation]
       self.mDocs_property.setProp (EBReferenceArray (array))
     }
@@ -1099,7 +1099,7 @@ final class DeviceRoot : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mSymbolInstances",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SymbolInstanceInDevice]
       self.mSymbolInstances_property.setProp (EBReferenceArray (array))
     }
@@ -1108,7 +1108,7 @@ final class DeviceRoot : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mPackages",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [PackageInDevice]
       self.mPackages_property.setProp (EBReferenceArray (array))
     }
@@ -1117,7 +1117,7 @@ final class DeviceRoot : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mSymbolTypes",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [SymbolTypeInDevice]
       self.mSymbolTypes_property.setProp (EBReferenceArray (array))
     }
@@ -1126,7 +1126,7 @@ final class DeviceRoot : EBManagedObject,
       let array = readEntityArrayFromDictionary (
         inRelationshipName: "mPadProxies",
         inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
+        managedObjectArray: inManagedObjectArray
       ) as! [PadProxyInDevice]
       self.mPadProxies_property.setProp (EBReferenceArray (array))
     }
