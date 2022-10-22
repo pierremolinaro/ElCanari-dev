@@ -635,6 +635,7 @@ import Cocoa
   weak final var mProductPageSegmentedControl : AutoLayoutSegmentedControlWithPages? = nil
   weak final var mRemoveWirePointSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
   weak final var mSchematicsView : AutoLayoutGraphicView? = nil
+  weak final var mShowHideSymbolValueSchematicHotKeyTextField : AutoLayoutStaticLabel? = nil
   weak final var mUnplacedPackageTableView : AutoLayoutCanariDragSourceTableView? = nil
   weak final var mUnplacedSymbolsTableView : AutoLayoutCanariDragSourceTableView? = nil
 
@@ -1334,12 +1335,15 @@ import Cocoa
     let view_12 = AutoLayoutStaticLabel (title: "[T] Add Top Label", bold: false, size: .small, alignment: .left)
     self.mAddTopLabelSchematicHotKeyTextField = view_12 // Outlet
     _ = vStackView.appendView (view_12)
-    let view_13 = AutoLayoutStaticLabel (title: "[X] Exchange Symbol…", bold: false, size: .small, alignment: .left)
-    self.mExchangeSymbolSchematicHotKeyTextField = view_13 // Outlet
+    let view_13 = AutoLayoutStaticLabel (title: "[V] Show / Hide Component Value", bold: false, size: .small, alignment: .left)
+    self.mShowHideSymbolValueSchematicHotKeyTextField = view_13 // Outlet
     _ = vStackView.appendView (view_13)
-    let view_14 = AutoLayoutStaticLabel (title: "[W] Insert Wire Point", bold: false, size: .small, alignment: .left)
-    self.mAddWirePointSchematicHotKeyTextField = view_14 // Outlet
+    let view_14 = AutoLayoutStaticLabel (title: "[X] Exchange Symbol…", bold: false, size: .small, alignment: .left)
+    self.mExchangeSymbolSchematicHotKeyTextField = view_14 // Outlet
     _ = vStackView.appendView (view_14)
+    let view_15 = AutoLayoutStaticLabel (title: "[W] Insert Wire Point", bold: false, size: .small, alignment: .left)
+    self.mAddWirePointSchematicHotKeyTextField = view_15 // Outlet
+    _ = vStackView.appendView (view_15)
     return vStackView
   } ()
 

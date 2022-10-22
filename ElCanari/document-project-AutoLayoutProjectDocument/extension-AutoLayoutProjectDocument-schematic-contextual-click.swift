@@ -314,7 +314,7 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  private func schematicSymbols (at inUnalignedMouseDownPoint : CanariPoint) -> [ComponentSymbolInProject] {
+  func schematicSymbols (at inUnalignedMouseDownPoint : CanariPoint) -> [ComponentSymbolInProject] {
     var result = [ComponentSymbolInProject] ()
     if let selectedSheet = self.rootObject.mSelectedSheet {
       for object in selectedSheet.mObjects.values {

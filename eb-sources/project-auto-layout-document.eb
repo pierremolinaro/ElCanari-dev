@@ -481,6 +481,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     StaticLabel (title: "[P] Remove Wire Point", bold: no, size: .small, alignment: .left) [outlet mRemoveWirePointSchematicHotKeyTextField]
     StaticLabel (title: "[R] Add Right Label", bold: no, size: .small, alignment: .left) [outlet mAddRightLabelSchematicHotKeyTextField]
     StaticLabel (title: "[T] Add Top Label", bold: no, size: .small, alignment: .left) [outlet mAddTopLabelSchematicHotKeyTextField]
+    StaticLabel (title: "[V] Show / Hide Component Value", bold: no, size: .small, alignment: .left) [outlet mShowHideSymbolValueSchematicHotKeyTextField]
     StaticLabel (title: "[X] Exchange Symbol…", bold: no, size: .small, alignment: .left) [outlet mExchangeSymbolSchematicHotKeyTextField]
     StaticLabel (title: "[W] Insert Wire Point", bold: no, size: .small, alignment: .left) [outlet mAddWirePointSchematicHotKeyTextField]
   }  

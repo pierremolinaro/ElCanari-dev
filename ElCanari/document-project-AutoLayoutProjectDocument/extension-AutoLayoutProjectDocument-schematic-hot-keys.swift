@@ -42,6 +42,9 @@ extension AutoLayoutProjectDocument {
       self.mAddRightLabelSchematicHotKeyTextField?.textColor = createLabelTextColor
       self.mAddTopLabelSchematicHotKeyTextField?.textColor = createLabelTextColor
       self.mAddBottomSchematicHotKeyTextField?.textColor = createLabelTextColor
+    //--- Show / Hide symbol value
+      let symbolsUnderMouse = self.schematicSymbols (at: canariUnalignedMouseDownLocation)
+      self.mShowHideSymbolValueSchematicHotKeyTextField?.textColor = self.color (forEnabledState: symbolsUnderMouse.count > 0)
     //--- Create NC
       self.mAddNCSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canCreateNC (points: points))
     //--- Create NC to all symbol pins
@@ -150,10 +153,16 @@ extension AutoLayoutProjectDocument {
        if self.canCreateLabels (points: points) {
           self.addLabelInSchematic (at: canariAlignedMouseDownLocation, orientation: .rotation90)
         }
+      case UnicodeScalar ("V"), UnicodeScalar ("v") :
+        let symbolsUnderMouse = self.schematicSymbols (at: canariUnalignedMouseDownLocation)
+        for symbol in symbolsUnderMouse {
+          symbol.mDisplayComponentValue = !symbol.mDisplayComponentValue
+        }
       case UnicodeScalar ("X"), UnicodeScalar ("x") :
         if let symbol = self.canExchangeSymbol (at: canariUnalignedMouseDownLocation) {
           self.runExchangeDialog (forSymbol: symbol)
         }
+
       case UnicodeScalar ("W"), UnicodeScalar ("w") :
         let wires = selectedSheet.wiresStrictlyContaining (point: canariUnalignedMouseDownLocation)
         if self.canCreateWirePoint (wires: wires) {
