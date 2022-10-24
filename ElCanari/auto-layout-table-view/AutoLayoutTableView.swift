@@ -31,6 +31,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 
     self.setContentHuggingPriority (.defaultLow, for: .horizontal)
     self.mTableView.setContentHuggingPriority (.defaultLow, for: .horizontal)
+    self.mTableView.setContentCompressionResistancePriority (.defaultHigh, for: .vertical)
 
   //--- Configure table view
     self.mTableView.controlSize = inSize.cocoaControlSize
