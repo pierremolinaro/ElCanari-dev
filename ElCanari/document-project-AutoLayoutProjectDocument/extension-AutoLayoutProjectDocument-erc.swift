@@ -359,7 +359,7 @@ extension AutoLayoutProjectDocument {
         let af = component.affineTransformFromPackage ()
         for (_, padDescriptor) in component.packagePadDictionary! {
           let padGeometry = PadGeometryForERC (
-            id: ioPadID,
+            padId: ioPadID,
             centerX: padDescriptor.center.x,
             centerY: padDescriptor.center.y,
             width: padDescriptor.padSize.width,
@@ -367,7 +367,7 @@ extension AutoLayoutProjectDocument {
             clearance: inArtworkClearance,
             shape: padDescriptor.shape
           )
-          ioPadID += 1
+ //         ioPadID += 1 // Ligne supprimée le 7 novembre 2022
           var optionalComponentSidePadGeometry : PadGeometryForERC? = nil
           var optionalOppositeSidePadGeometry : PadGeometryForERC? = nil
           var optionalInnerLayersPadGeometry  : PadGeometryForERC? = nil
@@ -384,7 +384,7 @@ extension AutoLayoutProjectDocument {
           var innerLayersSlavePadGeometryArray  = [PadGeometryForERC] ()
           for slavePad in padDescriptor.slavePads {
             let slavePadGeometry = PadGeometryForERC (
-              id: ioPadID,
+              padId: ioPadID,
               centerX: slavePad.center.x,
               centerY: slavePad.center.y,
               width: slavePad.padSize.width,
@@ -416,7 +416,7 @@ extension AutoLayoutProjectDocument {
               ioPadNetDictionary [key] = ioPadNetDictionary [key, default: []] + [componentSideTransformedGeometry]
             }
           }
-          if let oppositeSidePadGeometry = optionalOppositeSidePadGeometry{
+          if let oppositeSidePadGeometry = optionalOppositeSidePadGeometry {
             let oppositeSideTransformedGeometry = oppositeSidePadGeometry.transformed (by: af)
             switch component.mSide {
             case .front :
@@ -484,7 +484,7 @@ extension AutoLayoutProjectDocument {
         for idx in 0 ..< padArray.count {
           let netNameX = padArray [idx].0
           let frontPadX = padArray [idx].1
-          if self.rootObject.mCheckClearanceBetweenPadsOfSameNet || (netNameX.isEmpty) {
+          if self.rootObject.mCheckClearanceBetweenPadsOfSameNet || netNameX.isEmpty {
             self.checkPadInsulation (inArray: frontPadX, side.string, &ioIssues, &collisionCount)
           }
           for idy in idx+1 ..< padArray.count {

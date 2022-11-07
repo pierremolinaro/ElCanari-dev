@@ -256,7 +256,7 @@ final class PadGeometryForERC {
 
   //····················································································································
 
-  init (id inID : Int,
+  init (padId inID : Int,
         centerX inCenterX : Int,
         centerY inCenterY : Int,
         width inWidth : Int,
