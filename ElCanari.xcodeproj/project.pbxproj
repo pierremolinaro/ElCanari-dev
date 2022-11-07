@@ -2476,8 +2476,6 @@
 		CF9ABEA325C5B40800AE2EA9 /* transient-PackagePad-masterPadObjectIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9ABE9F25C5B40700AE2EA9 /* transient-PackagePad-masterPadObjectIndex.swift */; };
 		CF9ABEA525C5CD0800AE2EA9 /* transient-PackageSlavePad-masterPadNameWithZoneName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9ABEA425C5CD0800AE2EA9 /* transient-PackageSlavePad-masterPadNameWithZoneName.swift */; };
 		CF9ABEA625C5CD0800AE2EA9 /* transient-PackageSlavePad-masterPadNameWithZoneName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9ABEA425C5CD0800AE2EA9 /* transient-PackageSlavePad-masterPadNameWithZoneName.swift */; };
-		CF9BB56E23ACDAB4006A5EC3 /* ElCanari-user-manual.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF9BB56D23ACDAB4006A5EC3 /* ElCanari-user-manual.pdf */; };
-		CF9BB56F23ACDAB4006A5EC3 /* ElCanari-user-manual.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF9BB56D23ACDAB4006A5EC3 /* ElCanari-user-manual.pdf */; };
 		CF9C1C15279C48170018CCDB /* extension-AutoLayoutProjectDocument-schematic-hot-keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C1C14279C48160018CCDB /* extension-AutoLayoutProjectDocument-schematic-hot-keys.swift */; };
 		CF9C1C17279C48B80018CCDB /* extension-AutoLayoutProjectDocument-schematic-contextual-click.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C1C16279C48B80018CCDB /* extension-AutoLayoutProjectDocument-schematic-contextual-click.swift */; };
 		CF9C1C19279C4C3A0018CCDB /* action-AutoLayoutProjectDocument-selectAllConnectedElementsInSchematicsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C1C18279C4C3A0018CCDB /* action-AutoLayoutProjectDocument-selectAllConnectedElementsInSchematicsAction.swift */; };
@@ -2538,7 +2536,6 @@
 		CF9C607F25CABE5C00A00D5C /* symbolAnd.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B01B3C4CD600F3CA82 /* symbolAnd.pdf */; };
 		CF9C608025CABE5C00A00D5C /* alignmentBaseline.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7034BF2353ABD100F4D2C7 /* alignmentBaseline.png */; };
 		CF9C608125CABE5C00A00D5C /* track-in-board.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B21B3C4CD600F3CA82 /* track-in-board.png */; };
-		CF9C608425CABE5C00A00D5C /* ElCanari-user-manual.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF9BB56D23ACDAB4006A5EC3 /* ElCanari-user-manual.pdf */; };
 		CF9C608625CABE5C00A00D5C /* rotationCursor.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7B7E3524F2B98E00A12A46 /* rotationCursor.png */; };
 		CF9C608725CABE5C00A00D5C /* NextToolbarImage.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172971B3C4CD600F3CA82 /* NextToolbarImage.tif */; };
 		CF9C608925CABE5C00A00D5C /* zone.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172BA1B3C4CD600F3CA82 /* zone.pdf */; };
@@ -5522,7 +5519,6 @@
 		CF9ABE9E25C5B40700AE2EA9 /* transient-PackageRoot-masterPadObjectIndexArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageRoot-masterPadObjectIndexArray.swift"; sourceTree = "<group>"; };
 		CF9ABE9F25C5B40700AE2EA9 /* transient-PackagePad-masterPadObjectIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackagePad-masterPadObjectIndex.swift"; sourceTree = "<group>"; };
 		CF9ABEA425C5CD0800AE2EA9 /* transient-PackageSlavePad-masterPadNameWithZoneName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageSlavePad-masterPadNameWithZoneName.swift"; sourceTree = "<group>"; };
-		CF9BB56D23ACDAB4006A5EC3 /* ElCanari-user-manual.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "ElCanari-user-manual.pdf"; sourceTree = "<group>"; };
 		CF9C1C14279C48160018CCDB /* extension-AutoLayoutProjectDocument-schematic-hot-keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-AutoLayoutProjectDocument-schematic-hot-keys.swift"; sourceTree = "<group>"; };
 		CF9C1C16279C48B80018CCDB /* extension-AutoLayoutProjectDocument-schematic-contextual-click.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-AutoLayoutProjectDocument-schematic-contextual-click.swift"; sourceTree = "<group>"; };
 		CF9C1C18279C4C3A0018CCDB /* action-AutoLayoutProjectDocument-selectAllConnectedElementsInSchematicsAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-selectAllConnectedElementsInSchematicsAction.swift"; sourceTree = "<group>"; };
@@ -6863,7 +6859,6 @@
 				CF6172831B3C4CD600F3CA82 /* circuit-imprime.png */,
 				CFA9F51328D5FA3D0031FD35 /* Credits.rtf */,
 				CF1C8F4B2364DB4800A36E44 /* danger.png */,
-				CF9BB56D23ACDAB4006A5EC3 /* ElCanari-user-manual.pdf */,
 				CF6172891B3C4CD600F3CA82 /* exclamation.tif */,
 				CF61728B1B3C4CD600F3CA82 /* freeRoutingLogo.png */,
 				CF6172921B3C4CD600F3CA82 /* library.png */,
@@ -8581,7 +8576,6 @@
 				CF6172FE1B3C4CD600F3CA82 /* symbolAnd.pdf in Resources */,
 				CF7034C82353ABD100F4D2C7 /* alignmentBaseline.png in Resources */,
 				CF6173001B3C4CD600F3CA82 /* track-in-board.png in Resources */,
-				CF9BB56E23ACDAB4006A5EC3 /* ElCanari-user-manual.pdf in Resources */,
 				CF7B7E3624F2B98E00A12A46 /* rotationCursor.png in Resources */,
 				CF6172E51B3C4CD600F3CA82 /* NextToolbarImage.tif in Resources */,
 				CF6173081B3C4CD600F3CA82 /* zone.pdf in Resources */,
@@ -8629,7 +8623,6 @@
 				CF5C4CA8219F04D600EAC52A /* symbolAnd.pdf in Resources */,
 				CF7034C92353ABD100F4D2C7 /* alignmentBaseline.png in Resources */,
 				CF5C4CA9219F04D600EAC52A /* track-in-board.png in Resources */,
-				CF9BB56F23ACDAB4006A5EC3 /* ElCanari-user-manual.pdf in Resources */,
 				CF7B7E3724F2B98E00A12A46 /* rotationCursor.png in Resources */,
 				CF5C4CAF219F04D600EAC52A /* NextToolbarImage.tif in Resources */,
 				CF5C4CB6219F04D600EAC52A /* zone.pdf in Resources */,
@@ -8677,7 +8670,6 @@
 				CF9C608025CABE5C00A00D5C /* alignmentBaseline.png in Resources */,
 				CF9C608125CABE5C00A00D5C /* track-in-board.png in Resources */,
 				CF888D4D2682250400D97523 /* settings.png in Resources */,
-				CF9C608425CABE5C00A00D5C /* ElCanari-user-manual.pdf in Resources */,
 				CF9C608625CABE5C00A00D5C /* rotationCursor.png in Resources */,
 				CF9C608725CABE5C00A00D5C /* NextToolbarImage.tif in Resources */,
 				CF9C608925CABE5C00A00D5C /* zone.pdf in Resources */,

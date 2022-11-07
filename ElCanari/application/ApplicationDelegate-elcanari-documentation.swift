@@ -21,10 +21,12 @@ extension ApplicationDelegate {
   //····················································································································
 
   @IBAction func openElCanariDocumentationAction (_ inSender : Any?) {
-    if gWindow == nil,
-       let docPath = Bundle.main.path (forResource: "ElCanari-user-manual", ofType: "pdf"),
-       let data = FileManager ().contents (atPath: docPath) {
-      gWindow = CanariPDFWindow (fileName: docPath.lastPathComponent, pdfData: data)
+    if gWindow == nil {
+      let docPath = systemLibraryPath () + "/pdf/ElCanari-user-manual.pdf"
+//       let docPath = Bundle.main.path (forResource: "ElCanari-user-manual", ofType: "pdf"),
+      if let data = FileManager ().contents (atPath: docPath) {
+        gWindow = CanariPDFWindow (fileName: docPath.lastPathComponent, pdfData: data)
+      }
     }
     gWindow?.makeKeyAndOrderFront (nil)
   }
