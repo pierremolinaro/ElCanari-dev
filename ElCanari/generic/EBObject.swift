@@ -6,8 +6,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ObjectIndexProtocol : AnyObject {
-  @MainActor var objectIndex : Int { get }
+@MainActor protocol ObjectIndexProtocol : AnyObject {
+  var objectIndex : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
