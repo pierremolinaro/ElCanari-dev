@@ -1516,46 +1516,7 @@ class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObserverP
 //    Stand alone Array: SymbolPin
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StandAloneArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin {
-
-  //····················································································································
-
-  override var selection : EBSelection < [SymbolPin] > { return .single (self.mInternalArrayValue.values) }
-
-  //····················································································································
-
-  override func setProp (_ inValue : EBReferenceArray <SymbolPin>) { self.mInternalArrayValue = inValue }
-
-  //····················································································································
-
-  override var propval : EBReferenceArray <SymbolPin> { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    self.observedObjectDidChange ()
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  func remove (_ object : SymbolPin) {
-    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      self.mInternalArrayValue.remove (at: idx)
-    }
-  }
-
-  //····················································································································
-
-  func add (_ object : SymbolPin) {
-    if !self.internalSetValue.contains (object) {
-      self.mInternalArrayValue.append (object)
-    }
-  }
-
-  //····················································································································
-
-}
+// StandAloneArrayOf_SymbolPin is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Preferences array: SymbolPin

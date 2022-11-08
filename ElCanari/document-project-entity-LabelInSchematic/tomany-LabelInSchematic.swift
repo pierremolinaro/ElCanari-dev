@@ -912,46 +912,7 @@ class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSign
 //    Stand alone Array: LabelInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StandAloneArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic {
-
-  //····················································································································
-
-  override var selection : EBSelection < [LabelInSchematic] > { return .single (self.mInternalArrayValue.values) }
-
-  //····················································································································
-
-  override func setProp (_ inValue : EBReferenceArray <LabelInSchematic>) { self.mInternalArrayValue = inValue }
-
-  //····················································································································
-
-  override var propval : EBReferenceArray <LabelInSchematic> { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    self.observedObjectDidChange ()
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  func remove (_ object : LabelInSchematic) {
-    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      self.mInternalArrayValue.remove (at: idx)
-    }
-  }
-
-  //····················································································································
-
-  func add (_ object : LabelInSchematic) {
-    if !self.internalSetValue.contains (object) {
-      self.mInternalArrayValue.append (object)
-    }
-  }
-
-  //····················································································································
-
-}
+// StandAloneArrayOf_LabelInSchematic is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Preferences array: LabelInSchematic

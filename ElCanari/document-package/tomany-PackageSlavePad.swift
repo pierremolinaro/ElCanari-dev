@@ -2142,46 +2142,7 @@ class StoredArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad, EBSignat
 //    Stand alone Array: PackageSlavePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StandAloneArrayOf_PackageSlavePad : ReadWriteArrayOf_PackageSlavePad {
-
-  //····················································································································
-
-  override var selection : EBSelection < [PackageSlavePad] > { return .single (self.mInternalArrayValue.values) }
-
-  //····················································································································
-
-  override func setProp (_ inValue : EBReferenceArray <PackageSlavePad>) { self.mInternalArrayValue = inValue }
-
-  //····················································································································
-
-  override var propval : EBReferenceArray <PackageSlavePad> { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    self.observedObjectDidChange ()
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  func remove (_ object : PackageSlavePad) {
-    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      self.mInternalArrayValue.remove (at: idx)
-    }
-  }
-
-  //····················································································································
-
-  func add (_ object : PackageSlavePad) {
-    if !self.internalSetValue.contains (object) {
-      self.mInternalArrayValue.append (object)
-    }
-  }
-
-  //····················································································································
-
-}
+// StandAloneArrayOf_PackageSlavePad is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Preferences array: PackageSlavePad

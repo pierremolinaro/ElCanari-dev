@@ -700,6 +700,7 @@ class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation, 
 //    Stand alone Array: DeviceDocumentation
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+
 final class StandAloneArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation {
 
   //····················································································································

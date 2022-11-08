@@ -703,46 +703,7 @@ class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureO
 //    Stand alone Array: BoardModelVia
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StandAloneArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia {
-
-  //····················································································································
-
-  override var selection : EBSelection < [BoardModelVia] > { return .single (self.mInternalArrayValue.values) }
-
-  //····················································································································
-
-  override func setProp (_ inValue : EBReferenceArray <BoardModelVia>) { self.mInternalArrayValue = inValue }
-
-  //····················································································································
-
-  override var propval : EBReferenceArray <BoardModelVia> { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    self.observedObjectDidChange ()
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  func remove (_ object : BoardModelVia) {
-    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      self.mInternalArrayValue.remove (at: idx)
-    }
-  }
-
-  //····················································································································
-
-  func add (_ object : BoardModelVia) {
-    if !self.internalSetValue.contains (object) {
-      self.mInternalArrayValue.append (object)
-    }
-  }
-
-  //····················································································································
-
-}
+// StandAloneArrayOf_BoardModelVia is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Preferences array: BoardModelVia

@@ -1383,6 +1383,7 @@ class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EBSignat
 //    Stand alone Array: DeviceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+
 final class StandAloneArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject {
 
   //····················································································································

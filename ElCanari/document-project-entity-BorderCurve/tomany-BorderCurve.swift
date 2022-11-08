@@ -1522,6 +1522,7 @@ class StoredArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve, EBSignatureObser
 //    Stand alone Array: BorderCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+
 final class StandAloneArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve {
 
   //····················································································································

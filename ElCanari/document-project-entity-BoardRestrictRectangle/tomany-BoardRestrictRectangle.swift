@@ -1384,46 +1384,7 @@ class StoredArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestrictRecta
 //    Stand alone Array: BoardRestrictRectangle
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StandAloneArrayOf_BoardRestrictRectangle : ReadWriteArrayOf_BoardRestrictRectangle {
-
-  //····················································································································
-
-  override var selection : EBSelection < [BoardRestrictRectangle] > { return .single (self.mInternalArrayValue.values) }
-
-  //····················································································································
-
-  override func setProp (_ inValue : EBReferenceArray <BoardRestrictRectangle>) { self.mInternalArrayValue = inValue }
-
-  //····················································································································
-
-  override var propval : EBReferenceArray <BoardRestrictRectangle> { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    self.observedObjectDidChange ()
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  func remove (_ object : BoardRestrictRectangle) {
-    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      self.mInternalArrayValue.remove (at: idx)
-    }
-  }
-
-  //····················································································································
-
-  func add (_ object : BoardRestrictRectangle) {
-    if !self.internalSetValue.contains (object) {
-      self.mInternalArrayValue.append (object)
-    }
-  }
-
-  //····················································································································
-
-}
+// StandAloneArrayOf_BoardRestrictRectangle is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Preferences array: BoardRestrictRectangle

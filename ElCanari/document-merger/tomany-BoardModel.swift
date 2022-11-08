@@ -4701,6 +4701,7 @@ class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureObserve
 //    Stand alone Array: BoardModel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+
 final class StandAloneArrayOf_BoardModel : ReadWriteArrayOf_BoardModel {
 
   //····················································································································

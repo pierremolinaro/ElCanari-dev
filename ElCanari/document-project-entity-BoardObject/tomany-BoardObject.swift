@@ -2427,6 +2427,7 @@ class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObser
 //    Stand alone Array: BoardObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+
 final class StandAloneArrayOf_BoardObject : ReadWriteArrayOf_BoardObject {
 
   //····················································································································

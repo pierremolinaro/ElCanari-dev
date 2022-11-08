@@ -2337,6 +2337,7 @@ class StoredArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject, EBSi
 //    Stand alone Array: NetClassInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+
 final class StandAloneArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInProject {
 
   //····················································································································

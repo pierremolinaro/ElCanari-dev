@@ -1050,6 +1050,7 @@ class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, 
 //    Stand alone Array: MergerBoardInstance
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+
 final class StandAloneArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance {
 
   //····················································································································
