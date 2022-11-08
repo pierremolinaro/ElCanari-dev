@@ -729,7 +729,7 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
 //   TransientObject PackagePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_PackagePad : ReadOnlyObject_PackagePad {
+/* final class TransientObject_PackagePad : ReadOnlyObject_PackagePad {
 
   //····················································································································
   //   Data provider
@@ -795,7 +795,7 @@ final class TransientObject_PackagePad : ReadOnlyObject_PackagePad {
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_PackagePad
@@ -815,7 +815,7 @@ class ReadWriteObject_PackagePad : ReadOnlyObject_PackagePad {
 //    Proxy: ProxyObject_PackagePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_PackagePad : ReadWriteObject_PackagePad {
+/* final class ProxyObject_PackagePad : ReadWriteObject_PackagePad {
 
   //····················································································································
 
@@ -884,8 +884,8 @@ final class ProxyObject_PackagePad : ReadWriteObject_PackagePad {
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_PackagePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -107,7 +107,7 @@ class ReadOnlyObject_NCInSchematic : ReadOnlyAbstractObjectProperty <NCInSchemat
 //   TransientObject NCInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_NCInSchematic : ReadOnlyObject_NCInSchematic {
+/* final class TransientObject_NCInSchematic : ReadOnlyObject_NCInSchematic {
 
   //····················································································································
   //   Data provider
@@ -173,7 +173,7 @@ final class TransientObject_NCInSchematic : ReadOnlyObject_NCInSchematic {
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_NCInSchematic
@@ -193,7 +193,7 @@ class ReadWriteObject_NCInSchematic : ReadOnlyObject_NCInSchematic {
 //    Proxy: ProxyObject_NCInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_NCInSchematic : ReadWriteObject_NCInSchematic {
+/* final class ProxyObject_NCInSchematic : ReadWriteObject_NCInSchematic {
 
   //····················································································································
 
@@ -262,8 +262,8 @@ final class ProxyObject_NCInSchematic : ReadWriteObject_NCInSchematic {
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_NCInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

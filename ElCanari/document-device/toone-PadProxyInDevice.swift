@@ -153,7 +153,7 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
 //   TransientObject PadProxyInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice {
+/* final class TransientObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice {
 
   //····················································································································
   //   Data provider
@@ -219,7 +219,7 @@ final class TransientObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice {
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_PadProxyInDevice
@@ -239,7 +239,7 @@ class ReadWriteObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice {
 //    Proxy: ProxyObject_PadProxyInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice {
+/* final class ProxyObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice {
 
   //····················································································································
 
@@ -308,8 +308,8 @@ final class ProxyObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice {
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_PadProxyInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

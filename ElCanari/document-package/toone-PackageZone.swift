@@ -568,7 +568,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
 //   TransientObject PackageZone
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_PackageZone : ReadOnlyObject_PackageZone {
+/* final class TransientObject_PackageZone : ReadOnlyObject_PackageZone {
 
   //····················································································································
   //   Data provider
@@ -634,7 +634,7 @@ final class TransientObject_PackageZone : ReadOnlyObject_PackageZone {
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_PackageZone
@@ -654,7 +654,7 @@ class ReadWriteObject_PackageZone : ReadOnlyObject_PackageZone {
 //    Proxy: ProxyObject_PackageZone
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_PackageZone : ReadWriteObject_PackageZone {
+/* final class ProxyObject_PackageZone : ReadWriteObject_PackageZone {
 
   //····················································································································
 
@@ -723,8 +723,8 @@ final class ProxyObject_PackageZone : ReadWriteObject_PackageZone {
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_PackageZone
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

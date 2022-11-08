@@ -683,7 +683,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 //   TransientObject NetClassInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_NetClassInProject : ReadOnlyObject_NetClassInProject {
+/* final class TransientObject_NetClassInProject : ReadOnlyObject_NetClassInProject {
 
   //····················································································································
   //   Data provider
@@ -749,7 +749,7 @@ final class TransientObject_NetClassInProject : ReadOnlyObject_NetClassInProject
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_NetClassInProject
@@ -769,7 +769,7 @@ class ReadWriteObject_NetClassInProject : ReadOnlyObject_NetClassInProject {
 //    Proxy: ProxyObject_NetClassInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_NetClassInProject : ReadWriteObject_NetClassInProject {
+/* final class ProxyObject_NetClassInProject : ReadWriteObject_NetClassInProject {
 
   //····················································································································
 
@@ -838,8 +838,8 @@ final class ProxyObject_NetClassInProject : ReadWriteObject_NetClassInProject {
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_NetClassInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -868,7 +868,7 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 //   TransientObject MergerRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_MergerRoot : ReadOnlyObject_MergerRoot {
+/* final class TransientObject_MergerRoot : ReadOnlyObject_MergerRoot {
 
   //····················································································································
   //   Data provider
@@ -934,7 +934,7 @@ final class TransientObject_MergerRoot : ReadOnlyObject_MergerRoot {
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_MergerRoot
@@ -954,7 +954,7 @@ class ReadWriteObject_MergerRoot : ReadOnlyObject_MergerRoot {
 //    Proxy: ProxyObject_MergerRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_MergerRoot : ReadWriteObject_MergerRoot {
+/* final class ProxyObject_MergerRoot : ReadWriteObject_MergerRoot {
 
   //····················································································································
 
@@ -1023,8 +1023,8 @@ final class ProxyObject_MergerRoot : ReadWriteObject_MergerRoot {
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_MergerRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

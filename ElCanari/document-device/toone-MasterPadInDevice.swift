@@ -338,7 +338,7 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
 //   TransientObject MasterPadInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_MasterPadInDevice : ReadOnlyObject_MasterPadInDevice {
+/* final class TransientObject_MasterPadInDevice : ReadOnlyObject_MasterPadInDevice {
 
   //····················································································································
   //   Data provider
@@ -404,7 +404,7 @@ final class TransientObject_MasterPadInDevice : ReadOnlyObject_MasterPadInDevice
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_MasterPadInDevice
@@ -424,7 +424,7 @@ class ReadWriteObject_MasterPadInDevice : ReadOnlyObject_MasterPadInDevice {
 //    Proxy: ProxyObject_MasterPadInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_MasterPadInDevice : ReadWriteObject_MasterPadInDevice {
+/* final class ProxyObject_MasterPadInDevice : ReadWriteObject_MasterPadInDevice {
 
   //····················································································································
 
@@ -493,8 +493,8 @@ final class ProxyObject_MasterPadInDevice : ReadWriteObject_MasterPadInDevice {
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_MasterPadInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

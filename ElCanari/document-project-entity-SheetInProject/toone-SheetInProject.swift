@@ -224,7 +224,7 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 //   TransientObject SheetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_SheetInProject : ReadOnlyObject_SheetInProject {
+/* final class TransientObject_SheetInProject : ReadOnlyObject_SheetInProject {
 
   //····················································································································
   //   Data provider
@@ -290,7 +290,7 @@ final class TransientObject_SheetInProject : ReadOnlyObject_SheetInProject {
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_SheetInProject
@@ -310,7 +310,7 @@ class ReadWriteObject_SheetInProject : ReadOnlyObject_SheetInProject {
 //    Proxy: ProxyObject_SheetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_SheetInProject : ReadWriteObject_SheetInProject {
+/* final class ProxyObject_SheetInProject : ReadWriteObject_SheetInProject {
 
   //····················································································································
 
@@ -379,8 +379,8 @@ final class ProxyObject_SheetInProject : ReadWriteObject_SheetInProject {
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_SheetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

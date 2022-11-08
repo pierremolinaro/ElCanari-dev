@@ -360,7 +360,7 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
 //   TransientObject DevicePinInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_DevicePinInProject : ReadOnlyObject_DevicePinInProject {
+/* final class TransientObject_DevicePinInProject : ReadOnlyObject_DevicePinInProject {
 
   //····················································································································
   //   Data provider
@@ -426,7 +426,7 @@ final class TransientObject_DevicePinInProject : ReadOnlyObject_DevicePinInProje
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_DevicePinInProject
@@ -446,7 +446,7 @@ class ReadWriteObject_DevicePinInProject : ReadOnlyObject_DevicePinInProject {
 //    Proxy: ProxyObject_DevicePinInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_DevicePinInProject : ReadWriteObject_DevicePinInProject {
+/* final class ProxyObject_DevicePinInProject : ReadWriteObject_DevicePinInProject {
 
   //····················································································································
 
@@ -515,8 +515,8 @@ final class ProxyObject_DevicePinInProject : ReadWriteObject_DevicePinInProject 
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_DevicePinInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

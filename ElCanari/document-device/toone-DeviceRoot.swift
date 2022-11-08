@@ -733,7 +733,7 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 //   TransientObject DeviceRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_DeviceRoot : ReadOnlyObject_DeviceRoot {
+/* final class TransientObject_DeviceRoot : ReadOnlyObject_DeviceRoot {
 
   //····················································································································
   //   Data provider
@@ -799,7 +799,7 @@ final class TransientObject_DeviceRoot : ReadOnlyObject_DeviceRoot {
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_DeviceRoot
@@ -819,7 +819,7 @@ class ReadWriteObject_DeviceRoot : ReadOnlyObject_DeviceRoot {
 //    Proxy: ProxyObject_DeviceRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_DeviceRoot : ReadWriteObject_DeviceRoot {
+/* final class ProxyObject_DeviceRoot : ReadWriteObject_DeviceRoot {
 
   //····················································································································
 
@@ -888,8 +888,8 @@ final class ProxyObject_DeviceRoot : ReadWriteObject_DeviceRoot {
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_DeviceRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

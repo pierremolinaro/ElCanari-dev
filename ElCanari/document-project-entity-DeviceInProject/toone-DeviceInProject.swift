@@ -433,7 +433,7 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 //   TransientObject DeviceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_DeviceInProject : ReadOnlyObject_DeviceInProject {
+/* final class TransientObject_DeviceInProject : ReadOnlyObject_DeviceInProject {
 
   //····················································································································
   //   Data provider
@@ -499,7 +499,7 @@ final class TransientObject_DeviceInProject : ReadOnlyObject_DeviceInProject {
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_DeviceInProject
@@ -519,7 +519,7 @@ class ReadWriteObject_DeviceInProject : ReadOnlyObject_DeviceInProject {
 //    Proxy: ProxyObject_DeviceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_DeviceInProject : ReadWriteObject_DeviceInProject {
+/* final class ProxyObject_DeviceInProject : ReadWriteObject_DeviceInProject {
 
   //····················································································································
 
@@ -588,8 +588,8 @@ final class ProxyObject_DeviceInProject : ReadWriteObject_DeviceInProject {
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_DeviceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

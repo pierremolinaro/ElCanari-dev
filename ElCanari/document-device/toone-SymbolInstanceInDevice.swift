@@ -269,7 +269,7 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
 //   TransientObject SymbolInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_SymbolInstanceInDevice : ReadOnlyObject_SymbolInstanceInDevice {
+/* final class TransientObject_SymbolInstanceInDevice : ReadOnlyObject_SymbolInstanceInDevice {
 
   //····················································································································
   //   Data provider
@@ -335,7 +335,7 @@ final class TransientObject_SymbolInstanceInDevice : ReadOnlyObject_SymbolInstan
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_SymbolInstanceInDevice
@@ -355,7 +355,7 @@ class ReadWriteObject_SymbolInstanceInDevice : ReadOnlyObject_SymbolInstanceInDe
 //    Proxy: ProxyObject_SymbolInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstanceInDevice {
+/* final class ProxyObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstanceInDevice {
 
   //····················································································································
 
@@ -424,8 +424,8 @@ final class ProxyObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstanceI
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_SymbolInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

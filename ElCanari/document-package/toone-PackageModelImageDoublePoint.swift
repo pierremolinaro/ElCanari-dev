@@ -222,7 +222,7 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
 //   TransientObject PackageModelImageDoublePoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_PackageModelImageDoublePoint : ReadOnlyObject_PackageModelImageDoublePoint {
+/* final class TransientObject_PackageModelImageDoublePoint : ReadOnlyObject_PackageModelImageDoublePoint {
 
   //····················································································································
   //   Data provider
@@ -288,7 +288,7 @@ final class TransientObject_PackageModelImageDoublePoint : ReadOnlyObject_Packag
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_PackageModelImageDoublePoint
@@ -308,7 +308,7 @@ class ReadWriteObject_PackageModelImageDoublePoint : ReadOnlyObject_PackageModel
 //    Proxy: ProxyObject_PackageModelImageDoublePoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_PackageModelImageDoublePoint : ReadWriteObject_PackageModelImageDoublePoint {
+/* final class ProxyObject_PackageModelImageDoublePoint : ReadWriteObject_PackageModelImageDoublePoint {
 
   //····················································································································
 
@@ -377,8 +377,8 @@ final class ProxyObject_PackageModelImageDoublePoint : ReadWriteObject_PackageMo
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_PackageModelImageDoublePoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

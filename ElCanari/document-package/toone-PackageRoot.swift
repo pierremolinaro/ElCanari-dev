@@ -1377,7 +1377,7 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 //   TransientObject PackageRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_PackageRoot : ReadOnlyObject_PackageRoot {
+/* final class TransientObject_PackageRoot : ReadOnlyObject_PackageRoot {
 
   //····················································································································
   //   Data provider
@@ -1443,7 +1443,7 @@ final class TransientObject_PackageRoot : ReadOnlyObject_PackageRoot {
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_PackageRoot
@@ -1463,7 +1463,7 @@ class ReadWriteObject_PackageRoot : ReadOnlyObject_PackageRoot {
 //    Proxy: ProxyObject_PackageRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_PackageRoot : ReadWriteObject_PackageRoot {
+/* final class ProxyObject_PackageRoot : ReadWriteObject_PackageRoot {
 
   //····················································································································
 
@@ -1532,8 +1532,8 @@ final class ProxyObject_PackageRoot : ReadWriteObject_PackageRoot {
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_PackageRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

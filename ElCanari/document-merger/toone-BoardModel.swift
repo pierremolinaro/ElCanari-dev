@@ -2087,7 +2087,7 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 //   TransientObject BoardModel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_BoardModel : ReadOnlyObject_BoardModel {
+/* final class TransientObject_BoardModel : ReadOnlyObject_BoardModel {
 
   //····················································································································
   //   Data provider
@@ -2153,7 +2153,7 @@ final class TransientObject_BoardModel : ReadOnlyObject_BoardModel {
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_BoardModel
@@ -2173,7 +2173,7 @@ class ReadWriteObject_BoardModel : ReadOnlyObject_BoardModel {
 //    Proxy: ProxyObject_BoardModel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_BoardModel : ReadWriteObject_BoardModel {
+/* final class ProxyObject_BoardModel : ReadWriteObject_BoardModel {
 
   //····················································································································
 
@@ -2242,8 +2242,8 @@ final class ProxyObject_BoardModel : ReadWriteObject_BoardModel {
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_BoardModel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

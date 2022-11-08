@@ -476,7 +476,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 //   TransientObject ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_ComponentSymbolInProject : ReadOnlyObject_ComponentSymbolInProject {
+/* final class TransientObject_ComponentSymbolInProject : ReadOnlyObject_ComponentSymbolInProject {
 
   //····················································································································
   //   Data provider
@@ -542,7 +542,7 @@ final class TransientObject_ComponentSymbolInProject : ReadOnlyObject_ComponentS
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_ComponentSymbolInProject
@@ -562,7 +562,7 @@ class ReadWriteObject_ComponentSymbolInProject : ReadOnlyObject_ComponentSymbolI
 //    Proxy: ProxyObject_ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_ComponentSymbolInProject : ReadWriteObject_ComponentSymbolInProject {
+/* final class ProxyObject_ComponentSymbolInProject : ReadWriteObject_ComponentSymbolInProject {
 
   //····················································································································
 
@@ -631,8 +631,8 @@ final class ProxyObject_ComponentSymbolInProject : ReadWriteObject_ComponentSymb
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

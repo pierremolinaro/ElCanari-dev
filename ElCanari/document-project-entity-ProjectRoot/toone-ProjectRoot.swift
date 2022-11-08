@@ -3587,7 +3587,7 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 //   TransientObject ProjectRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_ProjectRoot : ReadOnlyObject_ProjectRoot {
+/* final class TransientObject_ProjectRoot : ReadOnlyObject_ProjectRoot {
 
   //····················································································································
   //   Data provider
@@ -3653,7 +3653,7 @@ final class TransientObject_ProjectRoot : ReadOnlyObject_ProjectRoot {
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_ProjectRoot
@@ -3673,7 +3673,7 @@ class ReadWriteObject_ProjectRoot : ReadOnlyObject_ProjectRoot {
 //    Proxy: ProxyObject_ProjectRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_ProjectRoot : ReadWriteObject_ProjectRoot {
+/* final class ProxyObject_ProjectRoot : ReadWriteObject_ProjectRoot {
 
   //····················································································································
 
@@ -3742,8 +3742,8 @@ final class ProxyObject_ProjectRoot : ReadWriteObject_ProjectRoot {
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_ProjectRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

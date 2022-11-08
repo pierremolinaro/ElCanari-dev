@@ -455,7 +455,7 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 //   TransientObject PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_PointInSchematic : ReadOnlyObject_PointInSchematic {
+/* final class TransientObject_PointInSchematic : ReadOnlyObject_PointInSchematic {
 
   //····················································································································
   //   Data provider
@@ -521,7 +521,7 @@ final class TransientObject_PointInSchematic : ReadOnlyObject_PointInSchematic {
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_PointInSchematic
@@ -541,7 +541,7 @@ class ReadWriteObject_PointInSchematic : ReadOnlyObject_PointInSchematic {
 //    Proxy: ProxyObject_PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_PointInSchematic : ReadWriteObject_PointInSchematic {
+/* final class ProxyObject_PointInSchematic : ReadWriteObject_PointInSchematic {
 
   //····················································································································
 
@@ -610,8 +610,8 @@ final class ProxyObject_PointInSchematic : ReadWriteObject_PointInSchematic {
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -363,7 +363,7 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 //   TransientObject FontInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_FontInProject : ReadOnlyObject_FontInProject {
+/* final class TransientObject_FontInProject : ReadOnlyObject_FontInProject {
 
   //····················································································································
   //   Data provider
@@ -429,7 +429,7 @@ final class TransientObject_FontInProject : ReadOnlyObject_FontInProject {
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_FontInProject
@@ -449,7 +449,7 @@ class ReadWriteObject_FontInProject : ReadOnlyObject_FontInProject {
 //    Proxy: ProxyObject_FontInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_FontInProject : ReadWriteObject_FontInProject {
+/* final class ProxyObject_FontInProject : ReadWriteObject_FontInProject {
 
   //····················································································································
 
@@ -518,8 +518,8 @@ final class ProxyObject_FontInProject : ReadWriteObject_FontInProject {
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_FontInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

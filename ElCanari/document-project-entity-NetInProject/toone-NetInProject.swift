@@ -293,7 +293,7 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 //   TransientObject NetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_NetInProject : ReadOnlyObject_NetInProject {
+/* final class TransientObject_NetInProject : ReadOnlyObject_NetInProject {
 
   //····················································································································
   //   Data provider
@@ -359,7 +359,7 @@ final class TransientObject_NetInProject : ReadOnlyObject_NetInProject {
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_NetInProject
@@ -379,7 +379,7 @@ class ReadWriteObject_NetInProject : ReadOnlyObject_NetInProject {
 //    Proxy: ProxyObject_NetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_NetInProject : ReadWriteObject_NetInProject {
+/* final class ProxyObject_NetInProject : ReadWriteObject_NetInProject {
 
   //····················································································································
 
@@ -448,8 +448,8 @@ final class ProxyObject_NetInProject : ReadWriteObject_NetInProject {
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_NetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

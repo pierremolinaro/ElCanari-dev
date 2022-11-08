@@ -476,7 +476,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
 //   TransientObject ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_ArtworkRoot : ReadOnlyObject_ArtworkRoot {
+/* final class TransientObject_ArtworkRoot : ReadOnlyObject_ArtworkRoot {
 
   //····················································································································
   //   Data provider
@@ -542,7 +542,7 @@ final class TransientObject_ArtworkRoot : ReadOnlyObject_ArtworkRoot {
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_ArtworkRoot
@@ -562,7 +562,7 @@ class ReadWriteObject_ArtworkRoot : ReadOnlyObject_ArtworkRoot {
 //    Proxy: ProxyObject_ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_ArtworkRoot : ReadWriteObject_ArtworkRoot {
+/* final class ProxyObject_ArtworkRoot : ReadWriteObject_ArtworkRoot {
 
   //····················································································································
 
@@ -631,8 +631,8 @@ final class ProxyObject_ArtworkRoot : ReadWriteObject_ArtworkRoot {
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

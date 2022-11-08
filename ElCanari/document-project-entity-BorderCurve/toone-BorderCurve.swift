@@ -337,7 +337,7 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
 //   TransientObject BorderCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_BorderCurve : ReadOnlyObject_BorderCurve {
+/* final class TransientObject_BorderCurve : ReadOnlyObject_BorderCurve {
 
   //····················································································································
   //   Data provider
@@ -403,7 +403,7 @@ final class TransientObject_BorderCurve : ReadOnlyObject_BorderCurve {
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_BorderCurve
@@ -423,7 +423,7 @@ class ReadWriteObject_BorderCurve : ReadOnlyObject_BorderCurve {
 //    Proxy: ProxyObject_BorderCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_BorderCurve : ReadWriteObject_BorderCurve {
+/* final class ProxyObject_BorderCurve : ReadWriteObject_BorderCurve {
 
   //····················································································································
 
@@ -492,8 +492,8 @@ final class ProxyObject_BorderCurve : ReadWriteObject_BorderCurve {
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_BorderCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

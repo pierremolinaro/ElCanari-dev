@@ -753,7 +753,7 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 //   TransientObject BoardConnector
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientObject_BoardConnector : ReadOnlyObject_BoardConnector {
+/* final class TransientObject_BoardConnector : ReadOnlyObject_BoardConnector {
 
   //····················································································································
   //   Data provider
@@ -819,7 +819,7 @@ final class TransientObject_BoardConnector : ReadOnlyObject_BoardConnector {
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_BoardConnector
@@ -839,7 +839,7 @@ class ReadWriteObject_BoardConnector : ReadOnlyObject_BoardConnector {
 //    Proxy: ProxyObject_BoardConnector
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyObject_BoardConnector : ReadWriteObject_BoardConnector {
+/* final class ProxyObject_BoardConnector : ReadWriteObject_BoardConnector {
 
   //····················································································································
 
@@ -908,8 +908,8 @@ final class ProxyObject_BoardConnector : ReadWriteObject_BoardConnector {
 
   //····················································································································
 
-}
-
+} */
+ 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_BoardConnector
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
