@@ -2520,62 +2520,7 @@ final class StandAloneArrayOf_PackagePad : ReadWriteArrayOf_PackagePad {
 //    Preferences array: PackagePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_PackagePad : StoredArrayOf_PackagePad {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <PackagePad> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "PackagePad") as! PackagePad
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_xCenter (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_yCenter (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_width (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_height (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_holeWidth (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_holeHeight (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_padShape (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_padStyle (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_padNumber (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_xCenterUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_yCenterUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_widthUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_heightUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_holeWidthUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_holeHeightUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_annularRingUnit (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_PackagePad is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

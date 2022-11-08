@@ -745,48 +745,7 @@ final class StandAloneArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocum
 //    Preferences array: DeviceDocumentation
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_DeviceDocumentation : StoredArrayOf_DeviceDocumentation {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <DeviceDocumentation> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "DeviceDocumentation") as! DeviceDocumentation
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_mFileName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mFileData (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_DeviceDocumentation is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

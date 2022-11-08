@@ -1159,54 +1159,7 @@ final class StandAloneArrayOf_DeviceSlavePadInProject : ReadWriteArrayOf_DeviceS
 //    Preferences array: DeviceSlavePadInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_DeviceSlavePadInProject : StoredArrayOf_DeviceSlavePadInProject {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <DeviceSlavePadInProject> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "DeviceSlavePadInProject") as! DeviceSlavePadInProject
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_mCenterX (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mCenterY (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mWidth (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mHeight (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mHoleWidth (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mHoleHeight (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mShape (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mStyle (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_DeviceSlavePadInProject is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -2508,58 +2508,7 @@ final class StandAloneArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector {
 //    Preferences array: BoardConnector
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_BoardConnector : StoredArrayOf_BoardConnector {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <BoardConnector> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "BoardConnector") as! BoardConnector
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_mComponentPadName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mPadIndex (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mX (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mY (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDefaultHoleDiameterUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mCustomHoleDiameter (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mCustomHoleDiameterUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mUsesCustomHoleDiameter (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDefaultPadDiameterUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mCustomPadDiameter (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mCustomPadDiameterUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mUsesCustomPadDiameter (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_BoardConnector is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

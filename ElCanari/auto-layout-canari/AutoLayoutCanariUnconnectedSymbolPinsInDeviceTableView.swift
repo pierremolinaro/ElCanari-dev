@@ -91,13 +91,6 @@ final class AutoLayoutCanariUnconnectedSymbolPinsInDeviceTableView : AutoLayoutV
 
   //····················································································································
 
-//  final func unbind_assignedPadProxies () {
-//    self.mController?.unregister ()
-//    self.mController = nil
-//  }
-
-  //····················································································································
-
   func updateUnconnectedPinList (from inModel : EBReadOnlyProperty_UnconnectedSymbolPinsInDevice) {
     switch inModel.selection {
     case .empty, .multiple :

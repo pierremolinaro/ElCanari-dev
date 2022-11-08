@@ -1702,59 +1702,7 @@ final class StandAloneArrayOf_PackageArc : ReadWriteArrayOf_PackageArc {
 //    Preferences array: PackageArc
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_PackageArc : StoredArrayOf_PackageArc {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <PackageArc> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "PackageArc") as! PackageArc
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_yCenter (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_radius (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_startAngle (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_arcAngle (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_startTangent (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_endTangent (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_pathIsClosed (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_xCenterUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_yCenterUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_radiusUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_startTangentUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_endTangentUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_xCenter (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_PackageArc is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

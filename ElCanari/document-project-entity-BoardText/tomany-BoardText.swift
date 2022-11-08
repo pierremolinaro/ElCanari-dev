@@ -1512,56 +1512,7 @@ final class StandAloneArrayOf_BoardText : ReadWriteArrayOf_BoardText {
 //    Preferences array: BoardText
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_BoardText : StoredArrayOf_BoardText {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <BoardText> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "BoardText") as! BoardText
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_mX (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mY (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mFontSize (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mLayer (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mText (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mHorizontalAlignment (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mVerticalAlignment (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mRotation (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mWeight (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mOblique (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_BoardText is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

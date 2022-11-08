@@ -1844,57 +1844,7 @@ final class StandAloneArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_Compon
 //    Preferences array: ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_ComponentSymbolInProject : StoredArrayOf_ComponentSymbolInProject {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <ComponentSymbolInProject> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "ComponentSymbolInProject") as! ComponentSymbolInProject
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_mCenterX (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mCenterY (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mRotation (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mMirror (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSymbolInstanceName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSymbolTypeName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDisplayComponentNameOffsetX (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDisplayComponentNameOffsetY (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDisplayComponentValue (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDisplayComponentValueOffsetX (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDisplayComponentValueOffsetY (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_ComponentSymbolInProject is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -883,6 +883,7 @@ final class StandAloneArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibrar
 //    Preferences array: CanariLibraryEntry
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+
 final class PreferencesArrayOf_CanariLibraryEntry : StoredArrayOf_CanariLibraryEntry {
 
   //····················································································································

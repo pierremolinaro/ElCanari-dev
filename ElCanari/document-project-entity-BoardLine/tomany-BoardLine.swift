@@ -1432,57 +1432,7 @@ final class StandAloneArrayOf_BoardLine : ReadWriteArrayOf_BoardLine {
 //    Preferences array: BoardLine
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_BoardLine : StoredArrayOf_BoardLine {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <BoardLine> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "BoardLine") as! BoardLine
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_mWidthUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mX1 (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mX1Unit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mY1 (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mY1Unit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mX2 (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mX2Unit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mY2 (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mY2Unit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mLayer (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mWidth (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_BoardLine is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

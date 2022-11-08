@@ -2041,62 +2041,7 @@ final class StandAloneArrayOf_PackageZone : ReadWriteArrayOf_PackageZone {
 //    Preferences array: PackageZone
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_PackageZone : StoredArrayOf_PackageZone {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <PackageZone> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "PackageZone") as! PackageZone
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_x (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_y (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_width (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_height (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_xUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_yUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_widthUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_heightUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_zoneName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_displayZoneName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_displayZoneNameWithPadNumbers (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_xName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_yName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_xNameUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_yNameUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_zoneNumbering (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_PackageZone is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

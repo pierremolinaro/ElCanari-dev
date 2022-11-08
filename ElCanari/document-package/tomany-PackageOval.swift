@@ -1357,54 +1357,7 @@ final class StandAloneArrayOf_PackageOval : ReadWriteArrayOf_PackageOval {
 //    Preferences array: PackageOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_PackageOval : StoredArrayOf_PackageOval {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <PackageOval> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "PackageOval") as! PackageOval
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_y (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_width (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_height (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_xUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_yUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_widthUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_heightUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_x (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_PackageOval is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

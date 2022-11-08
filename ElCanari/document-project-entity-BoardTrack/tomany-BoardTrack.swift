@@ -2841,59 +2841,7 @@ final class StandAloneArrayOf_BoardTrack : ReadWriteArrayOf_BoardTrack {
 //    Preferences array: BoardTrack
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_BoardTrack : StoredArrayOf_BoardTrack {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <BoardTrack> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "BoardTrack") as! BoardTrack
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_mSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDefaultTrackWidthUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mCustomTrackWidth (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mCustomTrackWidthUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mUsesCustomTrackWidth (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mIsPreservedByAutoRouter (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mP1XUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mP1YUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mP2XUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mP2YUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mManualLockP1 (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mManualLockP2 (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDirectionLockOnKnobDragging (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_BoardTrack is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

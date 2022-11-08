@@ -1081,50 +1081,7 @@ final class StandAloneArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter {
 //    Preferences array: FontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_FontCharacter : StoredArrayOf_FontCharacter {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <FontCharacter> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "FontCharacter") as! FontCharacter
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_codePoint (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_advance (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mWarnsWhenNoSegment (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mWarnsWhenAdvanceIsZero (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_FontCharacter is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

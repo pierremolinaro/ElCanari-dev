@@ -955,52 +955,7 @@ final class StandAloneArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad {
 //    Preferences array: BoardModelPad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_BoardModelPad : StoredArrayOf_BoardModelPad {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <BoardModelPad> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "BoardModelPad") as! BoardModelPad
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_y (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_width (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_height (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_shape (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_rotation (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_x (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_BoardModelPad is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

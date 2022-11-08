@@ -1161,49 +1161,7 @@ final class StandAloneArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolIn
 //    Preferences array: SymbolInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_SymbolInstanceInDevice : StoredArrayOf_SymbolInstanceInDevice {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <SymbolInstanceInDevice> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "SymbolInstanceInDevice") as! SymbolInstanceInDevice
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_mInstanceName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mX (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mY (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_SymbolInstanceInDevice is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

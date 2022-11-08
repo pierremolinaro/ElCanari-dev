@@ -1296,50 +1296,7 @@ final class StandAloneArrayOf_FontInProject : ReadWriteArrayOf_FontInProject {
 //    Preferences array: FontInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_FontInProject : StoredArrayOf_FontInProject {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <FontInProject> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "FontInProject") as! FontInProject
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_mNominalSize (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mFontName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mFontVersion (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDescriptiveString (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_FontInProject is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

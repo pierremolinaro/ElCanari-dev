@@ -1567,53 +1567,7 @@ final class StandAloneArrayOf_BorderCurve : ReadWriteArrayOf_BorderCurve {
 //    Preferences array: BorderCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_BorderCurve : StoredArrayOf_BorderCurve {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <BorderCurve> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "BorderCurve") as! BorderCurve
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_mX (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mY (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mCPX1 (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mCPY1 (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mCPX2 (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mCPY2 (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mShape (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_BorderCurve is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

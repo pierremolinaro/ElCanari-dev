@@ -2688,74 +2688,7 @@ final class StandAloneArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf
 //    Preferences array: ArtworkFileGenerationParameters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_ArtworkFileGenerationParameters : StoredArrayOf_ArtworkFileGenerationParameters {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <ArtworkFileGenerationParameters> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "ArtworkFileGenerationParameters") as! ArtworkFileGenerationParameters
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_drawBoardLimits (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawInternalBoardLimits (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawComponentNamesTopSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawComponentNamesBottomSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawComponentValuesTopSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawComponentValuesBottomSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawPackageLegendTopSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawPackageLegendBottomSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawPadHolesInPDF (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawPadsTopSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawPadsBottomSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawTextsLayoutTopSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawTextsLayoutBottomSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawTextsLegendTopSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawTextsLegendBottomSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawTracksTopSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawTracksInner1Layer (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawTracksInner2Layer (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawTracksInner3Layer (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawTracksInner4Layer (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawTracksBottomSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawTraversingPads (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_drawVias (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_fileExtension (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_horizontalMirror (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_name (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_measurementUnitForPadHoleInPDF (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_padHoleDiameterInPDF (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_ArtworkFileGenerationParameters is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

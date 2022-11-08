@@ -1428,50 +1428,7 @@ final class StandAloneArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject
 //    Preferences array: DeviceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_DeviceInProject : StoredArrayOf_DeviceInProject {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <DeviceInProject> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "DeviceInProject") as! DeviceInProject
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_mDeviceName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mPrefix (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDeviceVersion (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDeviceFileData (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_DeviceInProject is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

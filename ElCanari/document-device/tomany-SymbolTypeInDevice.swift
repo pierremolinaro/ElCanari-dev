@@ -1167,51 +1167,7 @@ final class StandAloneArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeIn
 //    Preferences array: SymbolTypeInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_SymbolTypeInDevice : StoredArrayOf_SymbolTypeInDevice {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <SymbolTypeInDevice> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "SymbolTypeInDevice") as! SymbolTypeInDevice
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_mTypeName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mVersion (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mFileData (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mStrokeBezierPath (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mFilledBezierPath (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_SymbolTypeInDevice is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

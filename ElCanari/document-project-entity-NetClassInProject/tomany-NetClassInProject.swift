@@ -2382,60 +2382,7 @@ final class StandAloneArrayOf_NetClassInProject : ReadWriteArrayOf_NetClassInPro
 //    Preferences array: NetClassInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_NetClassInProject : StoredArrayOf_NetClassInProject {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <NetClassInProject> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "NetClassInProject") as! NetClassInProject
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_mNetClassName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mNetClassColor (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mTrackWidth (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mTrackWidthUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mViaHoleDiameter (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mViaHoleDiameterUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mViaPadDiameter (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mViaPadDiameterUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mAllowTracksOnFrontSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mAllowTracksOnBackSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mAllowTracksOnInner1Layer (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mAllowTracksOnInner2Layer (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mAllowTracksOnInner3Layer (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mAllowTracksOnInner4Layer (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_NetClassInProject is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

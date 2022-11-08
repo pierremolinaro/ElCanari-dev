@@ -241,7 +241,7 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
     if let draggedType = self.mDraggedType, rowIndexes.count == 1 {
       self.mTableView.selectRowIndexes (rowIndexes, byExtendingSelection: false)
       let cellName : String = self.mModelArray [rowIndexes.first!].string
-      pboard.declareTypes ([draggedType], owner:self)
+      pboard.declareTypes ([draggedType], owner: self)
     //--- Associated data is cell name
       let data = cellName.data (using: .ascii)
       pboard.setData (data, forType: draggedType)

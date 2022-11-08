@@ -1314,56 +1314,7 @@ final class StandAloneArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPin
 //    Preferences array: SymbolPinTypeInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_SymbolPinTypeInDevice : StoredArrayOf_SymbolPinTypeInDevice {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <SymbolPinTypeInDevice> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "SymbolPinTypeInDevice") as! SymbolPinTypeInDevice
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_mPinX (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mPinY (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mXName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mYName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mNameHorizontalAlignment (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mPinNameIsDisplayedInSchematics (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mXNumber (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mYNumber (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mNumberHorizontalAlignment (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_SymbolPinTypeInDevice is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

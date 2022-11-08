@@ -1,6 +1,5 @@
 //
 //  AutoLayoutCanariTrackLockView.swift
-//  ElCanari-Debug-temporary
 //
 //  Created by Pierre Molinaro on 15/01/2022.
 //
@@ -309,13 +308,6 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-//  final func unbind_angle () {
-//    self.mAngleController?.unregister ()
-//    self.mAngleController = nil
-//  }
-
-  //····················································································································
-
   fileprivate func updateAngle (_ inObject : EBReadOnlyProperty_Int) {
     switch inObject.selection {
     case .empty, .multiple :
@@ -340,13 +332,6 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
     )
     return self
   }
-
-  //····················································································································
-
-//  final func unbind_manualLockP1 () {
-//    self.mManualLockP1Controller?.unregister ()
-//    self.mManualLockP1Controller = nil
-//  }
 
   //····················································································································
 
@@ -377,13 +362,6 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-//  final func unbind_manualLockP2 () {
-//    self.mManualLockP2Controller?.unregister ()
-//    self.mManualLockP2Controller = nil
-//  }
-
-  //····················································································································
-
   fileprivate func updateLockP2 (_ inObject : EBReadWriteProperty_Bool) {
     switch inObject.selection {
     case .empty, .multiple :
@@ -411,13 +389,6 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
 
   //····················································································································
 
-//  final func unbind_p1ConnectedToSomePad () {
-//    self.mP1ConnectedToPadController?.unregister ()
-//    self.mP1ConnectedToPadController = nil
-//  }
-
-  //····················································································································
-
   fileprivate func updateP1ConnectedToSomePad (_ inObject : EBReadOnlyProperty_Bool) {
     switch inObject.selection {
     case .empty, .multiple :
@@ -442,13 +413,6 @@ final class AutoLayoutCanariTrackLockView : AutoLayoutBase_NSView {
     )
     return self
   }
-
-  //····················································································································
-
-//  final func unbind_p2ConnectedToSomePad () {
-//    self.mP2ConnectedToPadController?.unregister ()
-//    self.mP2ConnectedToPadController = nil
-//  }
 
   //····················································································································
 

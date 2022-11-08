@@ -4746,56 +4746,7 @@ final class StandAloneArrayOf_BoardModel : ReadWriteArrayOf_BoardModel {
 //    Preferences array: BoardModel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_BoardModel : StoredArrayOf_BoardModel {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <BoardModel> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "BoardModel") as! BoardModel
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_name (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_modelWidth (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_modelWidthUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_modelHeight (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_modelHeightUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_zoom (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_layerConfiguration (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_modelLimitWidth (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_modelLimitWidthUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_artworkName (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_BoardModel is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

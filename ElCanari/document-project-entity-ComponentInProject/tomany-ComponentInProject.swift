@@ -3460,67 +3460,7 @@ final class StandAloneArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInP
 //    Preferences array: ComponentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_ComponentInProject : StoredArrayOf_ComponentInProject {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <ComponentInProject> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "ComponentInProject") as! ComponentInProject
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_mSlavePadsShouldBeRouted (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mX (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mY (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mRotation (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSide (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mDisplayLegend (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mNameIsVisibleInBoard (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mXName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mYName (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mNameFontSize (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mNameRotation (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mValueIsVisibleInBoard (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mXValue (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mYValue (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mValueFontSize (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mValueRotation (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mComponentValue (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mNamePrefix (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mNameIndex (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mXUnit (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mYUnit (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_ComponentInProject is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

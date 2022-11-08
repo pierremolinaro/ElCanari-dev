@@ -1156,53 +1156,7 @@ final class StandAloneArrayOf_CommentInSchematic : ReadWriteArrayOf_CommentInSch
 //    Preferences array: CommentInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_CommentInSchematic : StoredArrayOf_CommentInSchematic {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <CommentInSchematic> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "CommentInSchematic") as! CommentInSchematic
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_mColor (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSize (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mHorizontalAlignment (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mVerticalAlignment (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mX (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mY (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mComment (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_CommentInSchematic is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

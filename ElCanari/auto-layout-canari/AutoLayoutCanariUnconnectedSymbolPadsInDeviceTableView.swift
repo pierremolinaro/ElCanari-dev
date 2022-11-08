@@ -79,13 +79,6 @@ final class AutoLayoutCanariUnconnectedSymbolPadsInDeviceTableView : AutoLayoutV
 
   //····················································································································
 
-//  final func unbind_assignedPadProxies () {
-//    self.mController?.unregister ()
-//    self.mController = nil
-//  }
-
-  //····················································································································
-
   func updateUnconnectedPadList (from inModel : EBReadOnlyProperty_StringArray) {
     switch inModel.selection {
     case .empty, .multiple :

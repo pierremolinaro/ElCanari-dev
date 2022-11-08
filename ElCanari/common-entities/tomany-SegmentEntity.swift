@@ -886,51 +886,7 @@ final class StandAloneArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity {
 //    Preferences array: SegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_SegmentEntity : StoredArrayOf_SegmentEntity {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <SegmentEntity> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "SegmentEntity") as! SegmentEntity
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_y1 (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_x2 (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_y2 (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_width (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_x1 (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_SegmentEntity is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

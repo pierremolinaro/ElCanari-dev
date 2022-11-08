@@ -1104,52 +1104,7 @@ final class StandAloneArrayOf_PackageModelImageDoublePoint : ReadWriteArrayOf_Pa
 //    Preferences array: PackageModelImageDoublePoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class PreferencesArrayOf_PackageModelImageDoublePoint : StoredArrayOf_PackageModelImageDoublePoint {
-
-  //····················································································································
-
-  private let mPrefKey : String
-  private let mObserverForWritingPreferences = EBOutletEvent ()
-
-  //····················································································································
-
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
-    super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = EBReferenceArray <PackageModelImageDoublePoint> ()
-      for dictionary in array {
-        let object = newInstanceOfEntityNamed (self.undoManager, "PackageModelImageDoublePoint") as! PackageModelImageDoublePoint
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
-        objectArray.append (object)
-      }
-      self.setProp (objectArray)
-    }
-    self.addEBObserverOf_mFirstX (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mFirstY (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mFirstColor (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSecondDx (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSecondDy (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mSecondColor (self.mObserverForWritingPreferences)
-    self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
- }
-
-  //····················································································································
-
-  private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
-    for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
-      d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
-      dictionaryArray.append (d)
-    }
-    UserDefaults.standard.set (dictionaryArray, forKey: self.mPrefKey)
-  }
-
-  //····················································································································
-
-}
+// PreferencesArrayOf_PackageModelImageDoublePoint is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
