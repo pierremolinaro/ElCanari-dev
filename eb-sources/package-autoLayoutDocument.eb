@@ -753,51 +753,51 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .center),
+        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
         right: CanariDimensionAndPopUp(size : .small) {
           $dimensionAndUnit #mPackagePadSelectionController.yCenter, #mPackagePadSelectionController.yCenterUnit
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Width", bold: no, size : .small, alignment: .center),
+        left: StaticLabel (title: "Width", bold: no, size : .small, alignment: .right),
         right: CanariDimensionAndPopUp(size : .small) {
           $dimensionAndUnit #mPackagePadSelectionController.width, #mPackagePadSelectionController.widthUnit
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Height", bold: no, size : .small, alignment: .center),
+        left: StaticLabel (title: "Height", bold: no, size : .small, alignment: .right),
         right: CanariDimensionAndPopUp(size : .small) {
           $dimensionAndUnit #mPackagePadSelectionController.height, #mPackagePadSelectionController.heightUnit
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Shape", bold: no, size : .small, alignment: .center),
+        left: StaticLabel (title: "Shape", bold: no, size : .small, alignment: .right),
         right: EnumPopUpButton (titles: enum PadShape.popupTitles, size: .small) {
           $selectedIndex #mPackagePadSelectionController.padShape
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Style", bold: no, size : .small, alignment: .center),
+        left: StaticLabel (title: "Style", bold: no, size : .small, alignment: .right),
         right: EnumPopUpButton (titles: enum PadStyle.popupTitles, size: .small) {
           $selectedIndex #mPackagePadSelectionController.padStyle
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Hole Width", bold: no, size : .small, alignment: .center) { $hidden !#mPackagePadSelectionController.padIsTraversing },
+        left: StaticLabel (title: "Hole Width", bold: no, size : .small, alignment: .right) { $hidden !#mPackagePadSelectionController.padIsTraversing },
         right: CanariDimensionAndPopUp(size : .small) {
           $dimensionAndUnit #mPackagePadSelectionController.holeWidth, #mPackagePadSelectionController.holeWidthUnit
           $hidden !#mPackagePadSelectionController.padIsTraversing
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Hole Height", bold: no, size : .small, alignment: .center) { $hidden !#mPackagePadSelectionController.padIsTraversing },
+        left: StaticLabel (title: "Hole Height", bold: no, size : .small, alignment: .right) { $hidden !#mPackagePadSelectionController.padIsTraversing },
         right: CanariDimensionAndPopUp(size : .small) {
           $dimensionAndUnit #mPackagePadSelectionController.holeHeight, #mPackagePadSelectionController.holeHeightUnit
           $hidden !#mPackagePadSelectionController.padIsTraversing
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Annular Ring", bold: no, size : .small, alignment: .center) { $hidden !#mPackagePadSelectionController.padIsTraversing },
+        left: StaticLabel (title: "Annular Ring", bold: no, size : .small, alignment: .right) { $hidden !#mPackagePadSelectionController.padIsTraversing },
         right: CanariObservedDimensionAndPopUp(size : .small) {
           $dimensionAndUnit #mPackagePadSelectionController.annularRing, #mPackagePadSelectionController.annularRingUnit
           $hidden !#mPackagePadSelectionController.padIsTraversing
@@ -805,16 +805,16 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       )
       addSeparator ()
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Zone", bold: no, size : .small, alignment: .center),
+        left: StaticLabel (title: "Zone", bold: no, size : .small, alignment: .right),
         right: Label (bold: yes, size : .small) { $title #mPackagePadSelectionController.zoneName }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Pad Number", bold: no, size : .small, alignment: .center),
+        left: StaticLabel (title: "Pad Number", bold: no, size : .small, alignment: .right),
         right: IntObserverField (bold: yes, size : .small) { $observedValue #mPackagePadSelectionController.padNumber }
       )
       addSeparator ()
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Slave Pads", bold: no, size : .small, alignment: .center),
+        left: StaticLabel (title: "Slave Pads", bold: no, size : .small, alignment: .right),
         right: IntObserverField (bold: yes, size : .small) { $observedValue #mPackagePadSelectionController.slavePadCount }
       )
       add (
@@ -848,51 +848,51 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .center),
+        left: StaticLabel (title: "Y", bold: no, size : .small, alignment: .right),
         right: CanariDimensionAndPopUp (size : .small) {
           $dimensionAndUnit #mPackageSlavePadSelectionController.yCenter, #mPackageSlavePadSelectionController.yCenterUnit
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Width", bold: no, size : .small, alignment: .center),
+        left: StaticLabel (title: "Width", bold: no, size : .small, alignment: .right),
         right: CanariDimensionAndPopUp (size : .small) {
           $dimensionAndUnit #mPackageSlavePadSelectionController.width, #mPackageSlavePadSelectionController.widthUnit
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Height", bold: no, size : .small, alignment: .center),
+        left: StaticLabel (title: "Height", bold: no, size : .small, alignment: .right),
         right: CanariDimensionAndPopUp (size : .small) {
           $dimensionAndUnit #mPackageSlavePadSelectionController.height, #mPackageSlavePadSelectionController.heightUnit
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Shape", bold: no, size : .small, alignment: .center),
+        left: StaticLabel (title: "Shape", bold: no, size : .small, alignment: .right),
         right: EnumPopUpButton (titles: enum PadShape.popupTitles, size: .small) {
           $selectedIndex #mPackageSlavePadSelectionController.padShape
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Style", bold: no, size : .small, alignment: .center),
+        left: StaticLabel (title: "Style", bold: no, size : .small, alignment: .right),
         right: EnumPopUpButton (titles: enum SlavePadStyle.popupTitles, size: .small) {
           $selectedIndex #mPackageSlavePadSelectionController.padStyle
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Hole Width", bold: no, size : .small, alignment: .center) { $hidden !#mPackageSlavePadSelectionController.padIsTraversing },
+        left: StaticLabel (title: "Hole Width", bold: no, size : .small, alignment: .right) { $hidden !#mPackageSlavePadSelectionController.padIsTraversing },
         right: CanariDimensionAndPopUp (size : .small) {
           $dimensionAndUnit #mPackageSlavePadSelectionController.holeWidth, #mPackageSlavePadSelectionController.holeWidthUnit
           $hidden !#mPackageSlavePadSelectionController.padIsTraversing
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Hole Height", bold: no, size : .small, alignment: .center) { $hidden !#mPackageSlavePadSelectionController.padIsTraversing },
+        left: StaticLabel (title: "Hole Height", bold: no, size : .small, alignment: .right) { $hidden !#mPackageSlavePadSelectionController.padIsTraversing },
         right: CanariDimensionAndPopUp (size : .small) {
           $dimensionAndUnit #mPackageSlavePadSelectionController.holeHeight, #mPackageSlavePadSelectionController.holeHeightUnit
           $hidden !#mPackageSlavePadSelectionController.padIsTraversing
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Annular Ring", bold: no, size : .small, alignment: .center) { $hidden !#mPackageSlavePadSelectionController.padIsTraversing },
+        left: StaticLabel (title: "Annular Ring", bold: no, size : .small, alignment: .right) { $hidden !#mPackageSlavePadSelectionController.padIsTraversing },
         right: CanariObservedDimensionAndPopUp (size : .small) {
           $dimensionAndUnit #mPackageSlavePadSelectionController.annularRing, #mPackageSlavePadSelectionController.annularRingUnit
           $hidden !#mPackageSlavePadSelectionController.padIsTraversing
@@ -900,7 +900,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       )
       addSeparator ()
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Linked to Pad", bold: no, size : .small, alignment: .center),
+        left: StaticLabel (title: "Linked to Pad", bold: no, size : .small, alignment: .right),
         right: CanariSlavePadAssignPopUpButton [configurator configureSlavePadAssignPopUpButton] {
           $masterPadName #mPackageSlavePadSelectionController.masterPadNameWithZoneName
           $masterPadObjectIndexArray root.masterPadObjectIndexArray
