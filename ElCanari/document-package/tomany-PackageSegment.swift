@@ -1221,76 +1221,7 @@ class ReadWriteArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
 //    Proxy: ProxyArrayOf_PackageSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment {
-
-  //····················································································································
-
-  private weak var mModel : ReadWriteArrayOf_PackageSegment? = nil // SHOULD BE WEAK
-
-  //····················································································································
-
-  func setModel (_ inModel : ReadWriteArrayOf_PackageSegment?) {
-    if self.mModel !== inModel {
-      self.mModel?.detachClient (self)
-      self.mModel = inModel
-      self.mModel?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    let newModelArray : EBReferenceArray <PackageSegment>
-    if let model = self.mModel {
-      switch model.selection {
-      case .empty :
-        newModelArray = EBReferenceArray ()
-      case .single (let v) :
-        newModelArray = EBReferenceArray <PackageSegment> (v)
-      case .multiple :
-        newModelArray = EBReferenceArray ()
-      }
-    }else{
-      newModelArray = EBReferenceArray ()
-    }
-    self.mInternalArrayValue = newModelArray
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  override func setProp (_ inArrayValue : EBReferenceArray <PackageSegment>) {
-    self.mModel?.setProp (inArrayValue)
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < [PackageSegment] > {
-    if let model = self.mModel {
-      return model.selection
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
-  override var propval : EBReferenceArray <PackageSegment> {
-    if let model = self.mModel {
-      switch model.selection {
-      case .empty, .multiple :
-        return EBReferenceArray ()
-      case .single (let v) :
-        return EBReferenceArray (v)
-      }
-    }else{
-      return EBReferenceArray ()
-    }
-  }
-
-  //····················································································································
-
-}
+// ProxyArrayOf_PackageSegment is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Stored Array: PackageSegment

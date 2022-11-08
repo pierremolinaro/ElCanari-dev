@@ -1224,76 +1224,7 @@ class ReadWriteArrayOf_BoardText : ReadOnlyArrayOf_BoardText {
 //    Proxy: ProxyArrayOf_BoardText
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyArrayOf_BoardText : ReadWriteArrayOf_BoardText {
-
-  //····················································································································
-
-  private weak var mModel : ReadWriteArrayOf_BoardText? = nil // SHOULD BE WEAK
-
-  //····················································································································
-
-  func setModel (_ inModel : ReadWriteArrayOf_BoardText?) {
-    if self.mModel !== inModel {
-      self.mModel?.detachClient (self)
-      self.mModel = inModel
-      self.mModel?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    let newModelArray : EBReferenceArray <BoardText>
-    if let model = self.mModel {
-      switch model.selection {
-      case .empty :
-        newModelArray = EBReferenceArray ()
-      case .single (let v) :
-        newModelArray = EBReferenceArray <BoardText> (v)
-      case .multiple :
-        newModelArray = EBReferenceArray ()
-      }
-    }else{
-      newModelArray = EBReferenceArray ()
-    }
-    self.mInternalArrayValue = newModelArray
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  override func setProp (_ inArrayValue : EBReferenceArray <BoardText>) {
-    self.mModel?.setProp (inArrayValue)
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < [BoardText] > {
-    if let model = self.mModel {
-      return model.selection
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
-  override var propval : EBReferenceArray <BoardText> {
-    if let model = self.mModel {
-      switch model.selection {
-      case .empty, .multiple :
-        return EBReferenceArray ()
-      case .single (let v) :
-        return EBReferenceArray (v)
-      }
-    }else{
-      return EBReferenceArray ()
-    }
-  }
-
-  //····················································································································
-
-}
+// ProxyArrayOf_BoardText is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Stored Array: BoardText

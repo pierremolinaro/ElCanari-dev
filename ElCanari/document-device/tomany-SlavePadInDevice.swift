@@ -1020,76 +1020,7 @@ class ReadWriteArrayOf_SlavePadInDevice : ReadOnlyArrayOf_SlavePadInDevice {
 //    Proxy: ProxyArrayOf_SlavePadInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice {
-
-  //····················································································································
-
-  private weak var mModel : ReadWriteArrayOf_SlavePadInDevice? = nil // SHOULD BE WEAK
-
-  //····················································································································
-
-  func setModel (_ inModel : ReadWriteArrayOf_SlavePadInDevice?) {
-    if self.mModel !== inModel {
-      self.mModel?.detachClient (self)
-      self.mModel = inModel
-      self.mModel?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    let newModelArray : EBReferenceArray <SlavePadInDevice>
-    if let model = self.mModel {
-      switch model.selection {
-      case .empty :
-        newModelArray = EBReferenceArray ()
-      case .single (let v) :
-        newModelArray = EBReferenceArray <SlavePadInDevice> (v)
-      case .multiple :
-        newModelArray = EBReferenceArray ()
-      }
-    }else{
-      newModelArray = EBReferenceArray ()
-    }
-    self.mInternalArrayValue = newModelArray
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  override func setProp (_ inArrayValue : EBReferenceArray <SlavePadInDevice>) {
-    self.mModel?.setProp (inArrayValue)
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < [SlavePadInDevice] > {
-    if let model = self.mModel {
-      return model.selection
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
-  override var propval : EBReferenceArray <SlavePadInDevice> {
-    if let model = self.mModel {
-      switch model.selection {
-      case .empty, .multiple :
-        return EBReferenceArray ()
-      case .single (let v) :
-        return EBReferenceArray (v)
-      }
-    }else{
-      return EBReferenceArray ()
-    }
-  }
-
-  //····················································································································
-
-}
+// ProxyArrayOf_SlavePadInDevice is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Stored Array: SlavePadInDevice

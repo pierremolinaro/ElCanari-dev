@@ -1638,76 +1638,7 @@ class ReadWriteArrayOf_PackageBezier : ReadOnlyArrayOf_PackageBezier {
 //    Proxy: ProxyArrayOf_PackageBezier
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier {
-
-  //····················································································································
-
-  private weak var mModel : ReadWriteArrayOf_PackageBezier? = nil // SHOULD BE WEAK
-
-  //····················································································································
-
-  func setModel (_ inModel : ReadWriteArrayOf_PackageBezier?) {
-    if self.mModel !== inModel {
-      self.mModel?.detachClient (self)
-      self.mModel = inModel
-      self.mModel?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    let newModelArray : EBReferenceArray <PackageBezier>
-    if let model = self.mModel {
-      switch model.selection {
-      case .empty :
-        newModelArray = EBReferenceArray ()
-      case .single (let v) :
-        newModelArray = EBReferenceArray <PackageBezier> (v)
-      case .multiple :
-        newModelArray = EBReferenceArray ()
-      }
-    }else{
-      newModelArray = EBReferenceArray ()
-    }
-    self.mInternalArrayValue = newModelArray
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  override func setProp (_ inArrayValue : EBReferenceArray <PackageBezier>) {
-    self.mModel?.setProp (inArrayValue)
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < [PackageBezier] > {
-    if let model = self.mModel {
-      return model.selection
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
-  override var propval : EBReferenceArray <PackageBezier> {
-    if let model = self.mModel {
-      switch model.selection {
-      case .empty, .multiple :
-        return EBReferenceArray ()
-      case .single (let v) :
-        return EBReferenceArray (v)
-      }
-    }else{
-      return EBReferenceArray ()
-    }
-  }
-
-  //····················································································································
-
-}
+// ProxyArrayOf_PackageBezier is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Stored Array: PackageBezier

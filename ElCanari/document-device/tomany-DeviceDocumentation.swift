@@ -474,76 +474,7 @@ class ReadWriteArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumentation
 //    Proxy: ProxyArrayOf_DeviceDocumentation
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class ProxyArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation {
-
-  //····················································································································
-
-  private weak var mModel : ReadWriteArrayOf_DeviceDocumentation? = nil // SHOULD BE WEAK
-
-  //····················································································································
-
-  func setModel (_ inModel : ReadWriteArrayOf_DeviceDocumentation?) {
-    if self.mModel !== inModel {
-      self.mModel?.detachClient (self)
-      self.mModel = inModel
-      self.mModel?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    let newModelArray : EBReferenceArray <DeviceDocumentation>
-    if let model = self.mModel {
-      switch model.selection {
-      case .empty :
-        newModelArray = EBReferenceArray ()
-      case .single (let v) :
-        newModelArray = EBReferenceArray <DeviceDocumentation> (v)
-      case .multiple :
-        newModelArray = EBReferenceArray ()
-      }
-    }else{
-      newModelArray = EBReferenceArray ()
-    }
-    self.mInternalArrayValue = newModelArray
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  override func setProp (_ inArrayValue : EBReferenceArray <DeviceDocumentation>) {
-    self.mModel?.setProp (inArrayValue)
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < [DeviceDocumentation] > {
-    if let model = self.mModel {
-      return model.selection
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
-  override var propval : EBReferenceArray <DeviceDocumentation> {
-    if let model = self.mModel {
-      switch model.selection {
-      case .empty, .multiple :
-        return EBReferenceArray ()
-      case .single (let v) :
-        return EBReferenceArray (v)
-      }
-    }else{
-      return EBReferenceArray ()
-    }
-  }
-
-  //····················································································································
-
-}
+// ProxyArrayOf_DeviceDocumentation is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Stored Array: DeviceDocumentation

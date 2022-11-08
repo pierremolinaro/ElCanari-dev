@@ -2400,6 +2400,7 @@ class ReadWriteArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
 //    Proxy: ProxyArrayOf_ArtworkFileGenerationParameters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+
 final class ProxyArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFileGenerationParameters {
 
   //····················································································································

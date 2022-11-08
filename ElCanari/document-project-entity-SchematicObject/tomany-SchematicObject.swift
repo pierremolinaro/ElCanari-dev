@@ -666,6 +666,7 @@ class ReadWriteArrayOf_SchematicObject : ReadOnlyArrayOf_SchematicObject {
 //    Proxy: ProxyArrayOf_SchematicObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+
 final class ProxyArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject {
 
   //····················································································································
