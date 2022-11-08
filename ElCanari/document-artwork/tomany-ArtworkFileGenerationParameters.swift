@@ -2289,98 +2289,7 @@ final class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_A
 //    TransientArrayOfSuperOf ArtworkFileGenerationParameters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientArrayOfSuperOf_ArtworkFileGenerationParameters <SUPER : EBManagedObject> : ReadOnlyArrayOf_ArtworkFileGenerationParameters {
-
-  //····················································································································
-  //   Data provider
-  //····················································································································
-
-  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
-  private var mTransientKind : PropertyKind = .empty
-  private var mModelArrayShouldBeComputed = true
-  private var mModelEvent = EBModelEvent ()
-
-  //····················································································································
-
-  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  }
-
-  //····················································································································
-
-  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
-    if self.mDataProvider !== inProvider {
-      self.mDataProvider?.detachClient (self)
-      self.mDataProvider = inProvider
-      self.mDataProvider?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    self.mModelEvent.observedObjectDidChange ()
-    self.mModelArrayShouldBeComputed = true
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  private final func computeModelArray () {
-    if self.mModelArrayShouldBeComputed {
-      self.mModelArrayShouldBeComputed = false
-      var newModelArray : EBReferenceArray <SUPER>
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.selection {
-        case .empty :
-          newModelArray = EBReferenceArray ()
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = EBReferenceArray (v)
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = EBReferenceArray ()
-          self.mTransientKind = .multiple
-        }
-      }else{
-        newModelArray = EBReferenceArray ()
-        self.mTransientKind = .empty
-      }
-      var newArray = EBReferenceArray <ArtworkFileGenerationParameters> ()
-      for superObject in newModelArray.values {
-        if let object = superObject as? ArtworkFileGenerationParameters {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
-    }
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < [ArtworkFileGenerationParameters] > {
-    self.computeModelArray ()
-    switch self.mTransientKind {
-    case .empty :
-      return .empty
-    case .single :
-      return .single (self.mInternalArrayValue.values)
-    case .multiple :
-      return .multiple
-    }
-  }
-
-  //····················································································································
-
-  override var propval : EBReferenceArray <ArtworkFileGenerationParameters> {
-    self.computeModelArray ()
-    return self.mInternalArrayValue
-  }
-
-  //····················································································································
-
-}
+// TransientArrayOfSuperOf_ArtworkFileGenerationParameters is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To many relationship read write: ArtworkFileGenerationParameters
@@ -2399,7 +2308,6 @@ class ReadWriteArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Proxy: ProxyArrayOf_ArtworkFileGenerationParameters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 
 final class ProxyArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFileGenerationParameters {
 
@@ -2643,7 +2551,6 @@ class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFi
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Stand alone Array: ArtworkFileGenerationParameters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 
 final class StandAloneArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFileGenerationParameters {
 

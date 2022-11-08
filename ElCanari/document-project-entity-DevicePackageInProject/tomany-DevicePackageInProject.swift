@@ -235,226 +235,13 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
 //    TransientArrayOf DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInProject {
-
-  //····················································································································
-  //   Sort
-  //····················································································································
-
-  private var mIsOrderedBefore : Optional < (_ left : DevicePackageInProject, _ right : DevicePackageInProject) -> Bool > = nil
-  private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelEvent = EBModelEvent ()
-
-  //····················································································································
-
-  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  }
-
-  //····················································································································
-  //   Data provider
-  //····················································································································
-
-  private weak var mDataProvider : ReadOnlyArrayOf_DevicePackageInProject? = nil // SHOULD BE WEAK
-  private var mTransientKind : PropertyKind = .empty
-  private var mModelArrayShouldBeComputed = true
-
-  //····················································································································
-
-  func setDataProvider (_ inProvider : ReadOnlyArrayOf_DevicePackageInProject,
-                        sortCallback inSortCallBack : Optional < (_ left : DevicePackageInProject, _ right : DevicePackageInProject) -> Bool >,
-                        addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
-                        removeSortObserversCallback inRemoveSortObserversCallback : @escaping (EBModelNotifierEvent) -> Void) {
-    if self.mDataProvider !== inProvider {
-      self.mSortObserver?.removeSortObservers ()
-      self.mSortObserver = nil
-      self.mDataProvider?.detachClient (self)
-      self.mDataProvider = inProvider
-      self.mIsOrderedBefore = inSortCallBack
-      self.mDataProvider?.attachClient (self)
-      if inSortCallBack != nil {
-        self.mSortObserver = EBModelNotifierEvent (
-          self,
-          addSortObserversCallback: inAddSortObserversCallback,
-          removeSortObserversCallback: inRemoveSortObserversCallback
-        )
-      }else{
-        self.mInternalArrayValue = EBReferenceArray ()
-      }
-    }
-  }
-
-  //····················································································································
-
-  func resetDataProvider () {
-    if self.mDataProvider != nil {
-      self.mSortObserver = nil
-      self.mDataProvider?.detachClient (self)
-      self.mDataProvider = nil
-      self.mIsOrderedBefore = nil
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    self.mModelEvent.observedObjectDidChange ()
-    self.mModelArrayShouldBeComputed = true
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  private final func computeModelArray () {
-    if self.mModelArrayShouldBeComputed {
-      self.mModelArrayShouldBeComputed = false
-      let newArray : EBReferenceArray <DevicePackageInProject>
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.selection {
-        case .empty :
-          newArray = EBReferenceArray ()
-          self.mTransientKind = .empty
-        case .single (let v) :
-          if let sortFunction = self.mIsOrderedBefore {
-            newArray = EBReferenceArray (v.sorted { sortFunction ($0, $1) })
-          }else{
-            newArray = EBReferenceArray (v)
-          }
-          self.mTransientKind = .single
-        case .multiple :
-          newArray = EBReferenceArray ()
-          self.mTransientKind = .multiple
-        }
-      }else{
-        newArray = EBReferenceArray ()
-        self.mTransientKind = .empty
-      }
-      self.mInternalArrayValue = newArray
-    }
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < [DevicePackageInProject] > {
-    self.computeModelArray ()
-    switch self.mTransientKind {
-    case .empty :
-      return .empty
-    case .single :
-      return .single (self.mInternalArrayValue.values)
-    case .multiple :
-      return .multiple
-    }
-  }
-
-  //····················································································································
-
-  override var propval : EBReferenceArray <DevicePackageInProject> {
-    self.computeModelArray ()
-    return self.mInternalArrayValue
-  }
-
-  //····················································································································
-
-}
+// TransientArrayOf_DevicePackageInProject is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    TransientArrayOfSuperOf DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientArrayOfSuperOf_DevicePackageInProject <SUPER : EBManagedObject> : ReadOnlyArrayOf_DevicePackageInProject {
-
-  //····················································································································
-  //   Data provider
-  //····················································································································
-
-  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
-  private var mTransientKind : PropertyKind = .empty
-  private var mModelArrayShouldBeComputed = true
-  private var mModelEvent = EBModelEvent ()
-
-  //····················································································································
-
-  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  }
-
-  //····················································································································
-
-  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
-    if self.mDataProvider !== inProvider {
-      self.mDataProvider?.detachClient (self)
-      self.mDataProvider = inProvider
-      self.mDataProvider?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    self.mModelEvent.observedObjectDidChange ()
-    self.mModelArrayShouldBeComputed = true
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  private final func computeModelArray () {
-    if self.mModelArrayShouldBeComputed {
-      self.mModelArrayShouldBeComputed = false
-      var newModelArray : EBReferenceArray <SUPER>
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.selection {
-        case .empty :
-          newModelArray = EBReferenceArray ()
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = EBReferenceArray (v)
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = EBReferenceArray ()
-          self.mTransientKind = .multiple
-        }
-      }else{
-        newModelArray = EBReferenceArray ()
-        self.mTransientKind = .empty
-      }
-      var newArray = EBReferenceArray <DevicePackageInProject> ()
-      for superObject in newModelArray.values {
-        if let object = superObject as? DevicePackageInProject {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
-    }
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < [DevicePackageInProject] > {
-    self.computeModelArray ()
-    switch self.mTransientKind {
-    case .empty :
-      return .empty
-    case .single :
-      return .single (self.mInternalArrayValue.values)
-    case .multiple :
-      return .multiple
-    }
-  }
-
-  //····················································································································
-
-  override var propval : EBReferenceArray <DevicePackageInProject> {
-    self.computeModelArray ()
-    return self.mInternalArrayValue
-  }
-
-  //····················································································································
-
-}
+// TransientArrayOfSuperOf_DevicePackageInProject is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To many relationship read write: DevicePackageInProject
@@ -473,7 +260,6 @@ class ReadWriteArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInP
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Proxy: ProxyArrayOf_DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 
 final class ProxyArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInProject {
 
@@ -700,7 +486,6 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Stand alone Array: DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 
 final class StandAloneArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInProject {
 

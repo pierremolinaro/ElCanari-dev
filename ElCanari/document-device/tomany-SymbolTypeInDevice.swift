@@ -768,98 +768,7 @@ final class TransientArrayOf_SymbolTypeInDevice : ReadOnlyArrayOf_SymbolTypeInDe
 //    TransientArrayOfSuperOf SymbolTypeInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientArrayOfSuperOf_SymbolTypeInDevice <SUPER : EBManagedObject> : ReadOnlyArrayOf_SymbolTypeInDevice {
-
-  //····················································································································
-  //   Data provider
-  //····················································································································
-
-  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
-  private var mTransientKind : PropertyKind = .empty
-  private var mModelArrayShouldBeComputed = true
-  private var mModelEvent = EBModelEvent ()
-
-  //····················································································································
-
-  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  }
-
-  //····················································································································
-
-  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
-    if self.mDataProvider !== inProvider {
-      self.mDataProvider?.detachClient (self)
-      self.mDataProvider = inProvider
-      self.mDataProvider?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    self.mModelEvent.observedObjectDidChange ()
-    self.mModelArrayShouldBeComputed = true
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  private final func computeModelArray () {
-    if self.mModelArrayShouldBeComputed {
-      self.mModelArrayShouldBeComputed = false
-      var newModelArray : EBReferenceArray <SUPER>
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.selection {
-        case .empty :
-          newModelArray = EBReferenceArray ()
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = EBReferenceArray (v)
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = EBReferenceArray ()
-          self.mTransientKind = .multiple
-        }
-      }else{
-        newModelArray = EBReferenceArray ()
-        self.mTransientKind = .empty
-      }
-      var newArray = EBReferenceArray <SymbolTypeInDevice> ()
-      for superObject in newModelArray.values {
-        if let object = superObject as? SymbolTypeInDevice {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
-    }
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < [SymbolTypeInDevice] > {
-    self.computeModelArray ()
-    switch self.mTransientKind {
-    case .empty :
-      return .empty
-    case .single :
-      return .single (self.mInternalArrayValue.values)
-    case .multiple :
-      return .multiple
-    }
-  }
-
-  //····················································································································
-
-  override var propval : EBReferenceArray <SymbolTypeInDevice> {
-    self.computeModelArray ()
-    return self.mInternalArrayValue
-  }
-
-  //····················································································································
-
-}
+// TransientArrayOfSuperOf_SymbolTypeInDevice is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To many relationship read write: SymbolTypeInDevice
@@ -1052,7 +961,6 @@ class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevice, EB
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Stand alone Array: SymbolTypeInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 
 final class StandAloneArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevice {
 

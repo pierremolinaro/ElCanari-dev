@@ -363,98 +363,7 @@ final class TransientArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumen
 //    TransientArrayOfSuperOf DeviceDocumentation
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientArrayOfSuperOf_DeviceDocumentation <SUPER : EBManagedObject> : ReadOnlyArrayOf_DeviceDocumentation {
-
-  //····················································································································
-  //   Data provider
-  //····················································································································
-
-  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
-  private var mTransientKind : PropertyKind = .empty
-  private var mModelArrayShouldBeComputed = true
-  private var mModelEvent = EBModelEvent ()
-
-  //····················································································································
-
-  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  }
-
-  //····················································································································
-
-  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
-    if self.mDataProvider !== inProvider {
-      self.mDataProvider?.detachClient (self)
-      self.mDataProvider = inProvider
-      self.mDataProvider?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    self.mModelEvent.observedObjectDidChange ()
-    self.mModelArrayShouldBeComputed = true
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  private final func computeModelArray () {
-    if self.mModelArrayShouldBeComputed {
-      self.mModelArrayShouldBeComputed = false
-      var newModelArray : EBReferenceArray <SUPER>
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.selection {
-        case .empty :
-          newModelArray = EBReferenceArray ()
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = EBReferenceArray (v)
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = EBReferenceArray ()
-          self.mTransientKind = .multiple
-        }
-      }else{
-        newModelArray = EBReferenceArray ()
-        self.mTransientKind = .empty
-      }
-      var newArray = EBReferenceArray <DeviceDocumentation> ()
-      for superObject in newModelArray.values {
-        if let object = superObject as? DeviceDocumentation {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
-    }
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < [DeviceDocumentation] > {
-    self.computeModelArray ()
-    switch self.mTransientKind {
-    case .empty :
-      return .empty
-    case .single :
-      return .single (self.mInternalArrayValue.values)
-    case .multiple :
-      return .multiple
-    }
-  }
-
-  //····················································································································
-
-  override var propval : EBReferenceArray <DeviceDocumentation> {
-    self.computeModelArray ()
-    return self.mInternalArrayValue
-  }
-
-  //····················································································································
-
-}
+// TransientArrayOfSuperOf_DeviceDocumentation is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To many relationship read write: DeviceDocumentation
@@ -630,7 +539,6 @@ class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation, 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Stand alone Array: DeviceDocumentation
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 
 final class StandAloneArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation {
 

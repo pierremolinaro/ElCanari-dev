@@ -15,6 +15,7 @@ final class SelectionController_AutoLayoutProjectDocument_schematicLabelSelectio
   //····················································································································
 
   let mOrientation_property = EBPropertyProxy_QuadrantRotation ()
+
   //····················································································································
   //   Selection observable property: location
   //····················································································································

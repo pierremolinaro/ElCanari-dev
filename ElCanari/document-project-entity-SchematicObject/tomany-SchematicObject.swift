@@ -427,226 +427,13 @@ class ReadOnlyArrayOf_SchematicObject : ReadOnlyAbstractArrayProperty <Schematic
 //    TransientArrayOf SchematicObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientArrayOf_SchematicObject : ReadOnlyArrayOf_SchematicObject {
-
-  //····················································································································
-  //   Sort
-  //····················································································································
-
-  private var mIsOrderedBefore : Optional < (_ left : SchematicObject, _ right : SchematicObject) -> Bool > = nil
-  private var mSortObserver : EBModelNotifierEvent? = nil
-  private var mModelEvent = EBModelEvent ()
-
-  //····················································································································
-
-  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  }
-
-  //····················································································································
-  //   Data provider
-  //····················································································································
-
-  private weak var mDataProvider : ReadOnlyArrayOf_SchematicObject? = nil // SHOULD BE WEAK
-  private var mTransientKind : PropertyKind = .empty
-  private var mModelArrayShouldBeComputed = true
-
-  //····················································································································
-
-  func setDataProvider (_ inProvider : ReadOnlyArrayOf_SchematicObject,
-                        sortCallback inSortCallBack : Optional < (_ left : SchematicObject, _ right : SchematicObject) -> Bool >,
-                        addSortObserversCallback inAddSortObserversCallback : (EBModelNotifierEvent) -> Void,
-                        removeSortObserversCallback inRemoveSortObserversCallback : @escaping (EBModelNotifierEvent) -> Void) {
-    if self.mDataProvider !== inProvider {
-      self.mSortObserver?.removeSortObservers ()
-      self.mSortObserver = nil
-      self.mDataProvider?.detachClient (self)
-      self.mDataProvider = inProvider
-      self.mIsOrderedBefore = inSortCallBack
-      self.mDataProvider?.attachClient (self)
-      if inSortCallBack != nil {
-        self.mSortObserver = EBModelNotifierEvent (
-          self,
-          addSortObserversCallback: inAddSortObserversCallback,
-          removeSortObserversCallback: inRemoveSortObserversCallback
-        )
-      }else{
-        self.mInternalArrayValue = EBReferenceArray ()
-      }
-    }
-  }
-
-  //····················································································································
-
-  func resetDataProvider () {
-    if self.mDataProvider != nil {
-      self.mSortObserver = nil
-      self.mDataProvider?.detachClient (self)
-      self.mDataProvider = nil
-      self.mIsOrderedBefore = nil
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    self.mModelEvent.observedObjectDidChange ()
-    self.mModelArrayShouldBeComputed = true
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  private final func computeModelArray () {
-    if self.mModelArrayShouldBeComputed {
-      self.mModelArrayShouldBeComputed = false
-      let newArray : EBReferenceArray <SchematicObject>
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.selection {
-        case .empty :
-          newArray = EBReferenceArray ()
-          self.mTransientKind = .empty
-        case .single (let v) :
-          if let sortFunction = self.mIsOrderedBefore {
-            newArray = EBReferenceArray (v.sorted { sortFunction ($0, $1) })
-          }else{
-            newArray = EBReferenceArray (v)
-          }
-          self.mTransientKind = .single
-        case .multiple :
-          newArray = EBReferenceArray ()
-          self.mTransientKind = .multiple
-        }
-      }else{
-        newArray = EBReferenceArray ()
-        self.mTransientKind = .empty
-      }
-      self.mInternalArrayValue = newArray
-    }
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < [SchematicObject] > {
-    self.computeModelArray ()
-    switch self.mTransientKind {
-    case .empty :
-      return .empty
-    case .single :
-      return .single (self.mInternalArrayValue.values)
-    case .multiple :
-      return .multiple
-    }
-  }
-
-  //····················································································································
-
-  override var propval : EBReferenceArray <SchematicObject> {
-    self.computeModelArray ()
-    return self.mInternalArrayValue
-  }
-
-  //····················································································································
-
-}
+// TransientArrayOf_SchematicObject is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    TransientArrayOfSuperOf SchematicObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class TransientArrayOfSuperOf_SchematicObject <SUPER : EBManagedObject> : ReadOnlyArrayOf_SchematicObject {
-
-  //····················································································································
-  //   Data provider
-  //····················································································································
-
-  private weak var mDataProvider : ReadOnlyAbstractArrayProperty <SUPER>? = nil // SHOULD BE WEAK
-  private var mTransientKind : PropertyKind = .empty
-  private var mModelArrayShouldBeComputed = true
-  private var mModelEvent = EBModelEvent ()
-
-  //····················································································································
-
-  override init () {
-    super.init ()
-    self.mModelEvent.mEventCallBack = { [weak self] in self?.computeModelArray () }
-  }
-
-  //····················································································································
-
-  func setDataProvider (_ inProvider : ReadOnlyAbstractArrayProperty <SUPER>?) {
-    if self.mDataProvider !== inProvider {
-      self.mDataProvider?.detachClient (self)
-      self.mDataProvider = inProvider
-      self.mDataProvider?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    self.mModelEvent.observedObjectDidChange ()
-    self.mModelArrayShouldBeComputed = true
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  private final func computeModelArray () {
-    if self.mModelArrayShouldBeComputed {
-      self.mModelArrayShouldBeComputed = false
-      var newModelArray : EBReferenceArray <SUPER>
-      if let dataProvider = self.mDataProvider {
-        switch dataProvider.selection {
-        case .empty :
-          newModelArray = EBReferenceArray ()
-          self.mTransientKind = .empty
-        case .single (let v) :
-          newModelArray = EBReferenceArray (v)
-          self.mTransientKind = .single
-         case .multiple :
-          newModelArray = EBReferenceArray ()
-          self.mTransientKind = .multiple
-        }
-      }else{
-        newModelArray = EBReferenceArray ()
-        self.mTransientKind = .empty
-      }
-      var newArray = EBReferenceArray <SchematicObject> ()
-      for superObject in newModelArray.values {
-        if let object = superObject as? SchematicObject {
-          newArray.append (object)
-        }
-      }
-      self.mInternalArrayValue = newArray
-    }
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < [SchematicObject] > {
-    self.computeModelArray ()
-    switch self.mTransientKind {
-    case .empty :
-      return .empty
-    case .single :
-      return .single (self.mInternalArrayValue.values)
-    case .multiple :
-      return .multiple
-    }
-  }
-
-  //····················································································································
-
-  override var propval : EBReferenceArray <SchematicObject> {
-    self.computeModelArray ()
-    return self.mInternalArrayValue
-  }
-
-  //····················································································································
-
-}
+// TransientArrayOfSuperOf_SchematicObject is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    To many relationship read write: SchematicObject
@@ -665,7 +452,6 @@ class ReadWriteArrayOf_SchematicObject : ReadOnlyArrayOf_SchematicObject {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Proxy: ProxyArrayOf_SchematicObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 
 final class ProxyArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject {
 
@@ -909,7 +695,6 @@ class StoredArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject, EBSignat
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Stand alone Array: SchematicObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 
 final class StandAloneArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject {
 
