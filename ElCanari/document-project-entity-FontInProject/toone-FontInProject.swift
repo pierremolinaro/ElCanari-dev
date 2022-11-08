@@ -530,7 +530,7 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
-    self.mStrongReference = inStrongReference
+    self.mIsStrongReference = inStrongReference
     super.init ()
   }
 
@@ -544,7 +544,7 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
   //   Undo manager
   //····················································································································
 
-  weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
+  weak var undoManager : UndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   //   Opposite relationship management
@@ -616,14 +616,14 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
   //   setProp
   //····················································································································
 
-  private let mStrongReference : Bool
-  private final var mStrongInternalValue : FontInProject? = nil
+  private let mIsStrongReference : Bool
+  private var mStrongInternalValue : FontInProject? = nil
 
   //····················································································································
 
   override func setProp (_ inValue : FontInProject?) {
     self.mWeakInternalValue = inValue
-    if self.mStrongReference {
+    if self.mIsStrongReference {
       self.mStrongInternalValue = inValue
     }
   }
@@ -640,7 +640,7 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
 
   //····················································································································
 
-  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()
@@ -649,7 +649,7 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
 
   //····················································································································
 
-  final func signature () -> UInt32 {
+  func signature () -> UInt32 {
     let computedSignature : UInt32
     if let s = self.mSignatureCache {
       computedSignature = s
@@ -672,7 +672,7 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
 
   //····················································································································
 
-  final func clearSignatureCache () {
+  func clearSignatureCache () {
     if self.mSignatureCache != nil {
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()

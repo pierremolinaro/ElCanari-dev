@@ -298,7 +298,7 @@ final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageI
 
   init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
     self.mUsedForSignature = inUsedForSignature
-    self.mStrongReference = inStrongReference
+    self.mIsStrongReference = inStrongReference
     super.init ()
   }
 
@@ -312,7 +312,7 @@ final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageI
   //   Undo manager
   //····················································································································
 
-  weak final var undoManager : UndoManager? = nil // SOULD BE WEAK
+  weak var undoManager : UndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
   // Model will change
@@ -367,14 +367,14 @@ final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageI
   //   setProp
   //····················································································································
 
-  private let mStrongReference : Bool
-  private final var mStrongInternalValue : DevicePackageInProject? = nil
+  private let mIsStrongReference : Bool
+  private var mStrongInternalValue : DevicePackageInProject? = nil
 
   //····················································································································
 
   override func setProp (_ inValue : DevicePackageInProject?) {
     self.mWeakInternalValue = inValue
-    if self.mStrongReference {
+    if self.mIsStrongReference {
       self.mStrongInternalValue = inValue
     }
   }
@@ -391,7 +391,7 @@ final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageI
 
   //····················································································································
 
-  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
+  func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
     self.mSignatureObserver = inObserver
     inObserver?.clearSignatureCache ()
@@ -400,7 +400,7 @@ final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageI
 
   //····················································································································
 
-  final func signature () -> UInt32 {
+  func signature () -> UInt32 {
     let computedSignature : UInt32
     if let s = self.mSignatureCache {
       computedSignature = s
@@ -423,7 +423,7 @@ final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageI
 
   //····················································································································
 
-  final func clearSignatureCache () {
+  func clearSignatureCache () {
     if self.mSignatureCache != nil {
       self.mSignatureCache = nil
       self.mSignatureObserver?.clearSignatureCache ()
