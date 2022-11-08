@@ -342,7 +342,7 @@ import Cocoa
       .set (alignment: .left)
       .bind_value (self.rootObject.mTitle_property, sendContinously:true)
     _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
+    let view_1 = AutoLayoutHorizontalSplitView ()
     do{
       let view_1_0 = AutoLayoutCanariDeviceDroppableImageView (width: 240)
         .bind_imageData (self.rootObject.mImageData_property)
@@ -352,6 +352,7 @@ import Cocoa
         let view_1_1_0 = AutoLayoutStaticLabel (title: "PDF Documentation", bold: false, size: .regular, alignment: .center)
         _ = view_1_1.appendView (view_1_1_0)
         let view_1_1_1 = AutoLayoutTableView (size: .regular, addControlButtons: false)
+          .expandableWidth ()
         self.documentationController.bind_tableView (view_1_1_1)
         self.configure_documentationTableView (view_1_1_1) // Configurator
         _ = view_1_1.appendView (view_1_1_1)

@@ -10,9 +10,9 @@ import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol EBObserverProtocol : AnyObject {
+ @MainActor protocol EBObserverProtocol : AnyObject {
   var objectIndex : Int { get }
-  @MainActor func observedObjectDidChange ()
+ func observedObjectDidChange ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

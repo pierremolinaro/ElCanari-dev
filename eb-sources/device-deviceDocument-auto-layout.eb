@@ -57,11 +57,12 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
       set (alignment: .left)
       $value root.mTitle (sendContinously: yes)
     }
-    hStack {
+    hSplit {
       CanariDeviceDroppableImageView (width: 240) { $imageData root.mImageData }
       vStack {
         StaticLabel (title: "PDF Documentation", bold: no, size : .regular, alignment: .center)
         TableView (size : .regular, addControlButtons: no) [configurator documentationTableView] {
+          expandableWidth ()
           $tableValue #documentationController
         }
         hStack {

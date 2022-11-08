@@ -22,20 +22,22 @@ import Cocoa
 
   //····················································································································
 
-  final private var mPrivateObjectIndex : Int = 0
-  @MainActor final var objectIndex : Int {
-    if self.mPrivateObjectIndex == 0 {
-      gEasyBindingsObjectIndex += 1
-      self.mPrivateObjectIndex = gEasyBindingsObjectIndex
-    }
-    return self.mPrivateObjectIndex
-  }
+  final let objectIndex : Int
+
+//  final private var mPrivateObjectIndex : Int = 0
+//  @MainActor final var objectIndex : Int {
+//    if self.mPrivateObjectIndex == 0 {
+//      gEasyBindingsObjectIndex += 1
+//      self.mPrivateObjectIndex = gEasyBindingsObjectIndex
+//    }
+//    return self.mPrivateObjectIndex
+//  }
 
   //····················································································································
 
   override init () {
-//    self.objectIndex = gEasyBindingsObjectIndex
-//    gEasyBindingsObjectIndex += 1
+    self.objectIndex = gEasyBindingsObjectIndex
+    gEasyBindingsObjectIndex += 1
     super.init ()
     noteObjectAllocation (self)
   }
@@ -58,20 +60,22 @@ import Cocoa
 
   //····················································································································
 
-  final private var mPrivateObjectIndex : Int = 0
-  @MainActor final var objectIndex : Int {
-    if self.mPrivateObjectIndex == 0 {
-      gEasyBindingsObjectIndex += 1
-      self.mPrivateObjectIndex = gEasyBindingsObjectIndex
-    }
-    return self.mPrivateObjectIndex
-  }
+  final let objectIndex : Int
+
+//  final private var mPrivateObjectIndex : Int = 0
+//  final var objectIndex : Int {
+//    if self.mPrivateObjectIndex == 0 {
+//      gEasyBindingsObjectIndex += 1
+//      self.mPrivateObjectIndex = gEasyBindingsObjectIndex
+//    }
+//    return self.mPrivateObjectIndex
+//  }
 
   //····················································································································
 
   init () {
-//    self.objectIndex = gEasyBindingsObjectIndex
-//    gEasyBindingsObjectIndex += 1
+    self.objectIndex = gEasyBindingsObjectIndex
+    gEasyBindingsObjectIndex += 1
     noteObjectAllocation (self)
   }
 
