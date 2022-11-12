@@ -299,7 +299,7 @@ import Cocoa
   //    VIEW mPageMasterView
   //····················································································································
 
-  lazy final var mPageMasterView : AutoLayoutVerticalStackView = {
+  lazy final private var mPageMasterView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     return vStackView
   } ()
@@ -308,7 +308,7 @@ import Cocoa
   //    VIEW mDocumentMainView
   //····················································································································
 
-  lazy final var mDocumentMainView : AutoLayoutVerticalStackView = {
+  lazy final private var mDocumentMainView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -364,7 +364,7 @@ import Cocoa
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
     _ = vStackView.appendView (view_1)
-    let view_2 = mPageMasterView
+    let view_2 = self.mPageMasterView
     _ = vStackView.appendView (view_2)
     return vStackView
   } ()
@@ -373,7 +373,7 @@ import Cocoa
   //    VIEW mModelPage
   //····················································································································
 
-  lazy final var mModelPage : AutoLayoutHorizontalStackView = {
+  lazy final private var mModelPage : AutoLayoutHorizontalStackView = {
     let hStackView = AutoLayoutHorizontalStackView ()
     let view_0 = AutoLayoutVerticalStackView ()
       .set (bottomMargin: 8)
@@ -484,7 +484,7 @@ import Cocoa
   //    VIEW mBoardBaseInspectorView
   //····················································································································
 
-  lazy final var mBoardBaseInspectorView : AutoLayoutVerticalStackView = {
+  lazy final private var mBoardBaseInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     return vStackView
   } ()
@@ -493,7 +493,7 @@ import Cocoa
   //    VIEW mBoardPage
   //····················································································································
 
-  lazy final var mBoardPage : AutoLayoutHorizontalStackView = {
+  lazy final private var mBoardPage : AutoLayoutHorizontalStackView = {
     let hStackView = AutoLayoutHorizontalStackView ()
     let view_0 = AutoLayoutVerticalStackView ()
       .set (bottomMargin: 8)
@@ -533,7 +533,7 @@ import Cocoa
       self.mBoardInspectorSegmentedControl = view_1_0 // Outlet
       self.configure_boardPageSegmentedControl (view_1_0) // Configurator
       _ = view_1.appendView (view_1_0)
-      let view_1_1 = mBoardBaseInspectorView
+      let view_1_1 = self.mBoardBaseInspectorView
       _ = view_1.appendView (view_1_1)
     }
     _ = hStackView.appendView (view_1)
@@ -559,7 +559,7 @@ import Cocoa
   //    VIEW mBoardSettingsPage
   //····················································································································
 
-  lazy final var mBoardSettingsPage : AutoLayoutVerticalStackView = {
+  lazy final private var mBoardSettingsPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
@@ -756,7 +756,7 @@ import Cocoa
   //    VIEW mBoardIssuesPage
   //····················································································································
 
-  lazy final var mBoardIssuesPage : AutoLayoutVerticalStackView = {
+  lazy final private var mBoardIssuesPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutLabel (bold: true, size: .small)
       .expandableWidth ()
@@ -773,7 +773,7 @@ import Cocoa
   //    VIEW mProductPage
   //····················································································································
 
-  lazy final var mProductPage : AutoLayoutVerticalStackView = {
+  lazy final private var mProductPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -869,7 +869,7 @@ import Cocoa
         _ = view_2_0.appendView (view_2_0_2)
       }
       _ = view_2.appendView (view_2_0)
-      let view_2_1 = mProductMasterView
+      let view_2_1 = self.mProductMasterView
       _ = view_2.appendView (view_2_1)
     }
     _ = vStackView.appendView (view_2)
@@ -880,7 +880,7 @@ import Cocoa
   //    VIEW mProductMasterView
   //····················································································································
 
-  lazy final var mProductMasterView : AutoLayoutVerticalStackView = {
+  lazy final private var mProductMasterView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     return vStackView
   } ()
@@ -889,7 +889,7 @@ import Cocoa
   //    VIEW mArtworkDescriptionPage
   //····················································································································
 
-  lazy final var mArtworkDescriptionPage : AutoLayoutVerticalStackView = {
+  lazy final private var mArtworkDescriptionPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutGridView2 ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_164 (), right: self.computeImplicitView_165 ())
@@ -903,7 +903,7 @@ import Cocoa
   //    VIEW mArtworkDataPage
   //····················································································································
 
-  lazy final var mArtworkDataPage : AutoLayoutVerticalStackView = {
+  lazy final private var mArtworkDataPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -1132,7 +1132,7 @@ import Cocoa
   //    VIEW mArtworkMinimaPage
   //····················································································································
 
-  lazy final var mArtworkMinimaPage : AutoLayoutVerticalStackView = {
+  lazy final private var mArtworkMinimaPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_0)
@@ -1198,7 +1198,7 @@ import Cocoa
   //    VIEW mPDFSettingsPage
   //····················································································································
 
-  lazy final var mPDFSettingsPage : AutoLayoutVerticalStackView = {
+  lazy final private var mPDFSettingsPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 20)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -1224,7 +1224,7 @@ import Cocoa
   //    VIEW mGenerationLogPage
   //····················································································································
 
-  lazy final var mGenerationLogPage : AutoLayoutVerticalStackView = {
+  lazy final private var mGenerationLogPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutTextObserverView ()
     self.mLogTextView = view_0 // Outlet

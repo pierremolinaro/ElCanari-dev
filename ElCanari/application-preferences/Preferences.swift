@@ -48,7 +48,7 @@ import Cocoa
   //    VIEW mPrefsMainView
   //····················································································································
 
-  lazy final var mPrefsMainView : AutoLayoutVerticalStackView = {
+  lazy final private var mPrefsMainView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
       .set (topMargin: 12)
@@ -66,7 +66,7 @@ import Cocoa
       _ = view_0.appendView (view_0_2)
     }
     _ = vStackView.appendView (view_0)
-    let view_1 = mPrefsPageView
+    let view_1 = self.mPrefsPageView
     _ = vStackView.appendView (view_1)
     return vStackView
   } ()
@@ -75,7 +75,7 @@ import Cocoa
   //    VIEW mPrefsPageView
   //····················································································································
 
-  lazy final var mPrefsPageView : AutoLayoutVerticalStackView = {
+  lazy final private var mPrefsPageView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
     return vStackView
@@ -85,7 +85,7 @@ import Cocoa
   //    VIEW mPrefsAppUpdatePage
   //····················································································································
 
-  lazy final var mPrefsAppUpdatePage : AutoLayoutVerticalStackView = {
+  lazy final private var mPrefsAppUpdatePage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 12)
     let view_0 = AutoLayoutStaticLabel (title: "Application Update", bold: true, size: .regular, alignment: .center)
@@ -138,7 +138,7 @@ import Cocoa
   //    VIEW mPrefsUserInterfacePage
   //····················································································································
 
-  lazy final var mPrefsUserInterfacePage : AutoLayoutVerticalStackView = {
+  lazy final private var mPrefsUserInterfacePage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 12)
     let view_0 = AutoLayoutStaticLabel (title: "User Interface", bold: true, size: .regular, alignment: .center)
@@ -156,7 +156,7 @@ import Cocoa
   //    VIEW mPrefsLibraryPage
   //····················································································································
 
-  lazy final var mPrefsLibraryPage : AutoLayoutVerticalStackView = {
+  lazy final private var mPrefsLibraryPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 12)
     let view_0 = AutoLayoutStaticLabel (title: "System Library", bold: true, size: .regular, alignment: .left)

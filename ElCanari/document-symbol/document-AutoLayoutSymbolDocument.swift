@@ -329,7 +329,7 @@ import Cocoa
   //    VIEW mPageMasterView
   //····················································································································
 
-  lazy final var mPageMasterView : AutoLayoutVerticalStackView = {
+  lazy final private var mPageMasterView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     return vStackView
   } ()
@@ -338,7 +338,7 @@ import Cocoa
   //    VIEW mDocumentMainView
   //····················································································································
 
-  lazy final var mDocumentMainView : AutoLayoutVerticalStackView = {
+  lazy final private var mDocumentMainView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -398,7 +398,7 @@ import Cocoa
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
     _ = vStackView.appendView (view_1)
-    let view_2 = mPageMasterView
+    let view_2 = self.mPageMasterView
     _ = vStackView.appendView (view_2)
     return vStackView
   } ()
@@ -413,7 +413,7 @@ import Cocoa
   //    VIEW mSymbolPage
   //····················································································································
 
-  lazy final var mSymbolPage : AutoLayoutHorizontalStackView = {
+  lazy final private var mSymbolPage : AutoLayoutHorizontalStackView = {
     let hStackView = AutoLayoutHorizontalStackView ()
       .set (margins: 0)
       .set (spacing: 0)
@@ -529,7 +529,7 @@ import Cocoa
   //    VIEW mSelectedObjectsInspectorView
   //····················································································································
 
-  lazy final var mSelectedObjectsInspectorView : AutoLayoutVerticalStackView = {
+  lazy final private var mSelectedObjectsInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutObjectInspectorView ()
       .addObjectInspector (forEntity: SymbolText.self, inspectorView: self.mSymbolTextInspectorView)
@@ -545,7 +545,7 @@ import Cocoa
   //    VIEW mSymbolTextInspectorView
   //····················································································································
 
-  lazy final var mSymbolTextInspectorView : AutoLayoutVerticalStackView = {
+  lazy final private var mSymbolTextInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Text Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -560,7 +560,7 @@ import Cocoa
   //    VIEW mSymbolPinInspectorView
   //····················································································································
 
-  lazy final var mSymbolPinInspectorView : AutoLayoutVerticalStackView = {
+  lazy final private var mSymbolPinInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Pin Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -577,7 +577,7 @@ import Cocoa
   //    VIEW mGridZoomInspectorView
   //····················································································································
 
-  lazy final var mGridZoomInspectorView : AutoLayoutVerticalStackView = {
+  lazy final private var mGridZoomInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "(Stored in Document Preferences)", bold: false, size: .mini, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -599,7 +599,7 @@ import Cocoa
   //    VIEW mDisplayInspectorView
   //····················································································································
 
-  lazy final var mDisplayInspectorView : AutoLayoutVerticalStackView = {
+  lazy final private var mDisplayInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "(Stored in Application Preferences)", bold: false, size: .mini, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -620,7 +620,7 @@ import Cocoa
   //    VIEW mIssuesInspectorView
   //····················································································································
 
-  lazy final var mIssuesInspectorView : AutoLayoutVerticalStackView = {
+  lazy final private var mIssuesInspectorView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
@@ -644,7 +644,7 @@ import Cocoa
   //    VIEW mInfosPage
   //····················································································································
 
-  lazy final var mInfosPage : AutoLayoutVerticalStackView = {
+  lazy final private var mInfosPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (leftMargin: 20)
       .set (rightMargin: 20)

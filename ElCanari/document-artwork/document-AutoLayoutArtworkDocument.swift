@@ -167,7 +167,7 @@ import Cocoa
   //    VIEW mPageMasterView
   //····················································································································
 
-  lazy final var mPageMasterView : AutoLayoutVerticalStackView = {
+  lazy final private var mPageMasterView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
     return vStackView
   } ()
@@ -176,7 +176,7 @@ import Cocoa
   //    VIEW mDocumentMainView
   //····················································································································
 
-  lazy final var mDocumentMainView : AutoLayoutVerticalStackView = {
+  lazy final private var mDocumentMainView : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -238,7 +238,7 @@ import Cocoa
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
     _ = vStackView.appendView (view_1)
-    let view_2 = mPageMasterView
+    let view_2 = self.mPageMasterView
     _ = vStackView.appendView (view_2)
     return vStackView
   } ()
@@ -247,7 +247,7 @@ import Cocoa
   //    VIEW mDescriptionPage
   //····················································································································
 
-  lazy final var mDescriptionPage : AutoLayoutVerticalStackView = {
+  lazy final private var mDescriptionPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutTextField (minWidth: 56, size: .regular)
@@ -290,7 +290,7 @@ import Cocoa
   //    VIEW mMinimaPage
   //····················································································································
 
-  lazy final var mMinimaPage : AutoLayoutVerticalStackView = {
+  lazy final private var mMinimaPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutFlexibleSpace ()
@@ -357,7 +357,7 @@ import Cocoa
   //    VIEW mDataPage
   //····················································································································
 
-  lazy final var mDataPage : AutoLayoutVerticalStackView = {
+  lazy final private var mDataPage : AutoLayoutVerticalStackView = {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
     let view_0 = AutoLayoutHorizontalStackView ()

@@ -12,7 +12,7 @@ import Foundation
 
  @MainActor protocol EBObserverProtocol : AnyObject {
   var objectIndex : Int { get }
- func observedObjectDidChange ()
+  func observedObjectDidChange ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
