@@ -340,7 +340,7 @@ extension ApplicationDelegate {
             self.mMaintenanceLogTextView.appendErrorString (message)
           }
         }
-        collectAndPrepareObjectsForDeletion (fromRoot: documentData.documentRootObject)
+//        collectAndPrepareObjectsForDeletion (fromRoot: documentData.documentRootObject)
       case .readError (_) :
         let message = "Cannot read \(fullPath)\n"
         self.mMaintenanceLogTextView.appendErrorString (message)

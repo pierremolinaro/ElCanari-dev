@@ -33,23 +33,23 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func collectAndPrepareObjectsForDeletion (fromRoot inRootObject : EBManagedObject) { // §
-  var reachableObjectArray = [inRootObject]
-  var reachableObjectSet = EBReferenceSet (inRootObject)
-  var objectsToExploreArray = [inRootObject]
-  while let objectToExplore = objectsToExploreArray.last {
-    objectsToExploreArray.removeLast ()
-    var accessible = [EBManagedObject] ()
-    objectToExplore.accessibleObjectsForSaveOperation (objects: &accessible)
-    for managedObject in accessible {
-      if !reachableObjectSet.contains (managedObject) {
-        reachableObjectSet.insert (managedObject)
-        reachableObjectArray.append (managedObject)
-        objectsToExploreArray.append (managedObject)
-      }
-    }
-  }
-}
+//@MainActor func collectAndPrepareObjectsForDeletion (fromRoot inRootObject : EBManagedObject) { // §
+//  var reachableObjectArray = [inRootObject]
+//  var reachableObjectSet = EBReferenceSet (inRootObject)
+//  var objectsToExploreArray = [inRootObject]
+//  while let objectToExplore = objectsToExploreArray.last {
+//    objectsToExploreArray.removeLast ()
+//    var accessible = [EBManagedObject] ()
+//    objectToExplore.accessibleObjectsForSaveOperation (objects: &accessible)
+//    for managedObject in accessible {
+//      if !reachableObjectSet.contains (managedObject) {
+//        reachableObjectSet.insert (managedObject)
+//        reachableObjectArray.append (managedObject)
+//        objectsToExploreArray.append (managedObject)
+//      }
+//    }
+//  }
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
