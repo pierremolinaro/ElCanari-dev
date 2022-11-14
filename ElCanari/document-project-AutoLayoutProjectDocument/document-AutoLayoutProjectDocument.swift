@@ -676,35 +676,44 @@ import Cocoa
   final var rootObject : ProjectRoot { return self.mRootObject as! ProjectRoot }
 
   //····················································································································
-  //    VIEW mPageMasterView
+  //    VIEW PageMasterView
   //····················································································································
 
-  lazy final private var mPageMasterView : AutoLayoutVerticalStackView = {
+  final private func PageMasterView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mDocumentMainView
+  //    VIEW DocumentMainView
   //····················································································································
 
-  lazy final private var mDocumentMainView : AutoLayoutVerticalStackView = {
+  final private func DocumentMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
+    let pageMasterView = self.PageMasterView ()
+    let componentsPage = self.ComponentsPage ()
+    let libraryPage = self.LibraryPage ()
+    let schematicPage = self.SchematicPage ()
+    let netClassesPage = self.NetClassesPage ()
+    let netListPage = self.NetListPage ()
+    let boardOutlinePage = self.BoardOutlinePage ()
+    let boardContentsPage = self.BoardContentsPage ()
+    let productPage = self.ProductPage ()
     let view_0 = AutoLayoutHorizontalStackView ()
       .set (margins: 8)
     do{
       let view_0_0 = AutoLayoutVerticalStackView ()
       do{
-        let view_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView, equalWidth: false, size: .regular)
-          .addPage (title: "Components", tooltip: "", pageView: self.mComponentsPage)
-          .addPage (title: "Library", tooltip: "", pageView: self.mLibraryPage)
-          .addPage (title: "Schematic", tooltip: "", pageView: self.mSchematicPage)
-          .addPage (title: "Net Classes", tooltip: "", pageView: self.mNetClassesPage)
-          .addPage (title: "Net List", tooltip: "", pageView: self.mNetListPage)
-          .addPage (title: "Board Outline", tooltip: "", pageView: self.mBoardOutlinePage)
-          .addPage (title: "Board Contents", tooltip: "", pageView: self.mBoardContentsPage)
-          .addPage (title: "Product", tooltip: "", pageView: self.mProductPage)
+        let view_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: pageMasterView, equalWidth: false, size: .regular)
+          .addPage (title: "Components", tooltip: "", pageView: componentsPage)
+          .addPage (title: "Library", tooltip: "", pageView: libraryPage)
+          .addPage (title: "Schematic", tooltip: "", pageView: schematicPage)
+          .addPage (title: "Net Classes", tooltip: "", pageView: netClassesPage)
+          .addPage (title: "Net List", tooltip: "", pageView: netListPage)
+          .addPage (title: "Board Outline", tooltip: "", pageView: boardOutlinePage)
+          .addPage (title: "Board Contents", tooltip: "", pageView: boardContentsPage)
+          .addPage (title: "Product", tooltip: "", pageView: productPage)
           .bind_selectedPage (self.rootObject.mSelectedPageIndex_property)
         _ = view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutStaticLabel (title: "Page", bold: false, size: .small, alignment: .center)
@@ -771,16 +780,16 @@ import Cocoa
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
     _ = vStackView.appendView (view_1)
-    let view_2 = self.mPageMasterView
+    let view_2 = pageMasterView
     _ = vStackView.appendView (view_2)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mComponentsPage
+  //    VIEW ComponentsPage
   //····················································································································
 
-  lazy final private var mComponentsPage : AutoLayoutHorizontalStackView = {
+  final private func ComponentsPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutVerticalStackView ()
@@ -877,15 +886,18 @@ import Cocoa
     self.componentController.bind_tableView (view_1)
     _ = hStackView.appendView (view_1)
     return hStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mLibraryPage
+  //    VIEW LibraryPage
   //····················································································································
 
-  lazy final private var mLibraryPage : AutoLayoutVerticalStackView = {
+  final private func LibraryPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
+    let libraryContentView = self.LibraryContentView ()
+    let devicesInLibraryPage = self.DevicesInLibraryPage ()
+    let fontsInLibraryPage = self.FontsInLibraryPage ()
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutButton (title: "Remove Embedded Devices", size: .regular)
@@ -920,33 +932,33 @@ import Cocoa
     do{
       let view_1_0 = AutoLayoutFlexibleSpace ()
       _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutSegmentedControlWithPages (documentView: self.mLibraryContentView, equalWidth: false, size: .regular)
-        .addPage (title: "Devices", tooltip: "", pageView: self.mDevicesInLibraryPage)
-        .addPage (title: "Fonts", tooltip: "", pageView: self.mFontsInLibraryPage)
+      let view_1_1 = AutoLayoutSegmentedControlWithPages (documentView: libraryContentView, equalWidth: false, size: .regular)
+        .addPage (title: "Devices", tooltip: "", pageView: devicesInLibraryPage)
+        .addPage (title: "Fonts", tooltip: "", pageView: fontsInLibraryPage)
       _ = view_1.appendView (view_1_1)
       let view_1_2 = AutoLayoutFlexibleSpace ()
       _ = view_1.appendView (view_1_2)
     }
     _ = vStackView.appendView (view_1)
-    let view_2 = self.mLibraryContentView
+    let view_2 = libraryContentView
     _ = vStackView.appendView (view_2)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mLibraryContentView
+  //    VIEW LibraryContentView
   //····················································································································
 
-  lazy final private var mLibraryContentView : AutoLayoutVerticalStackView = {
+  final private func LibraryContentView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mDevicesInLibraryPage
+  //    VIEW DevicesInLibraryPage
   //····················································································································
 
-  lazy final private var mDevicesInLibraryPage : AutoLayoutVerticalStackView = {
+  final private func DevicesInLibraryPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
       .expandableWidth ()
@@ -1037,13 +1049,13 @@ import Cocoa
     }
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mFontsInLibraryPage
+  //    VIEW FontsInLibraryPage
   //····················································································································
 
-  lazy final private var mFontsInLibraryPage : AutoLayoutVerticalStackView = {
+  final private func FontsInLibraryPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -1095,13 +1107,13 @@ import Cocoa
     self.projectFontController.bind_tableView (view_1)
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mNetClassesPage
+  //    VIEW NetClassesPage
   //····················································································································
 
-  lazy final private var mNetClassesPage : AutoLayoutVerticalStackView = {
+  final private func NetClassesPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -1135,13 +1147,13 @@ import Cocoa
     self.netClassController.bind_tableView (view_1)
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mNetListPage
+  //    VIEW NetListPage
   //····················································································································
 
-  lazy final private var mNetListPage : AutoLayoutVerticalStackView = {
+  final private func NetListPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -1196,14 +1208,20 @@ import Cocoa
     }
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mSchematicPage
+  //    VIEW SchematicPage
   //····················································································································
 
-  lazy final private var mSchematicPage : AutoLayoutHorizontalStackView = {
+  final private func SchematicPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
+    let schematicsInspectorView = self.SchematicsInspectorView ()
+    let selectedSchematicElementInspectorView = self.SelectedSchematicElementInspectorView ()
+    let schematicHotKeysInspectorView = self.SchematicHotKeysInspectorView ()
+    let insertSymbolInSchematicView = self.InsertSymbolInSchematicView ()
+    let schematicsGridAndFlipInspectorView = self.SchematicsGridAndFlipInspectorView ()
+    let schematicsSheetInspectorView = self.SchematicsSheetInspectorView ()
     let view_0 = AutoLayoutVerticalStackView ()
       .set (width: 250)
       .set (spacing: 0)
@@ -1239,20 +1257,20 @@ import Cocoa
           .set (leftMargin: 8)
           .set (rightMargin: 8)
         do{
-          let view_0_1_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mSchematicsInspectorView, equalWidth: true, size: .small)
+          let view_0_1_0_0 = AutoLayoutSegmentedControlWithPages (documentView: schematicsInspectorView, equalWidth: true, size: .small)
             .expandableWidth ()
-            .addPage (title: "", tooltip: "Selected Element Inspector", pageView: self.mSelectedSchematicElementInspectorView)
-            .addPage (title: "", tooltip: "Hot Keys", pageView: self.mSchematicHotKeysInspectorView)
-            .addPage (title: "", tooltip: "Insert Symbol in Schematic", pageView: self.mInsertSymbolInSchematicView)
-            .addPage (image: "", tooltip: "Grid and Flip Inspector", pageView: self.mSchematicsGridAndFlipInspectorView)
-            .addPage (title: "", tooltip: "Sheet Inspector", pageView: self.mSchematicsSheetInspectorView)
+            .addPage (title: "", tooltip: "Selected Element Inspector", pageView: selectedSchematicElementInspectorView)
+            .addPage (title: "", tooltip: "Hot Keys", pageView: schematicHotKeysInspectorView)
+            .addPage (title: "", tooltip: "Insert Symbol in Schematic", pageView: insertSymbolInSchematicView)
+            .addPage (image: "", tooltip: "Grid and Flip Inspector", pageView: schematicsGridAndFlipInspectorView)
+            .addPage (title: "", tooltip: "Sheet Inspector", pageView: schematicsSheetInspectorView)
             .bind_selectedPage (self.rootObject.mSelectedSchematicInspector_property)
             .bind_segmentTitle (self.unplacedSymbolsCountString_property, segmentIndex:2)
           self.configure_schematicInspectorConfigurator (view_0_1_0_0) // Configurator
           _ = view_0_1_0.appendView (view_0_1_0_0)
         }
         _ = view_0_1.appendView (view_0_1_0)
-        let view_0_1_1 = self.mSchematicsInspectorView
+        let view_0_1_1 = schematicsInspectorView
         _ = view_0_1.appendView (view_0_1_1)
         let view_0_1_2 = AutoLayoutFlexibleSpace ()
         _ = view_0_1.appendView (view_0_1_2)
@@ -1278,23 +1296,23 @@ import Cocoa
     self.configure_schematicView (view_2) // Configurator
     _ = hStackView.appendView (view_2)
     return hStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mSchematicsInspectorView
+  //    VIEW SchematicsInspectorView
   //····················································································································
 
-  lazy final private var mSchematicsInspectorView : AutoLayoutVerticalStackView = {
+  final private func SchematicsInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mSchematicHotKeysInspectorView
+  //    VIEW SchematicHotKeysInspectorView
   //····················································································································
 
-  lazy final private var mSchematicHotKeysInspectorView : AutoLayoutVerticalStackView = {
+  final private func SchematicHotKeysInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutStaticLabel (title: "Hot Keys", bold: true, size: .small, alignment: .center)
@@ -1345,13 +1363,13 @@ import Cocoa
     self.mAddWirePointSchematicHotKeyTextField = view_15 // Outlet
     _ = vStackView.appendView (view_15)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mInsertSymbolInSchematicView
+  //    VIEW InsertSymbolInSchematicView
   //····················································································································
 
-  lazy final private var mInsertSymbolInSchematicView : AutoLayoutVerticalStackView = {
+  final private func InsertSymbolInSchematicView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutCanariDragSourceTableView ()
@@ -1360,13 +1378,13 @@ import Cocoa
     self.configure_symbolDragSourceTableViewConfigurator (view_0) // Configurator
     _ = vStackView.appendView (view_0)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mSchematicsGridAndFlipInspectorView
+  //    VIEW SchematicsGridAndFlipInspectorView
   //····················································································································
 
-  lazy final private var mSchematicsGridAndFlipInspectorView : AutoLayoutVerticalStackView = {
+  final private func SchematicsGridAndFlipInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutTabView (equalWidth: true, size: .small)
@@ -1374,13 +1392,13 @@ import Cocoa
       .addTab (title: "Colors and Font", tooltip: "Colors and Font", contentView: self.computeImplicitView_38 ())
     _ = vStackView.appendView (view_0)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mSchematicsSheetInspectorView
+  //    VIEW SchematicsSheetInspectorView
   //····················································································································
 
-  lazy final private var mSchematicsSheetInspectorView : AutoLayoutVerticalStackView = {
+  final private func SchematicsSheetInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutStaticLabel (title: "Sheet Inspector", bold: true, size: .small, alignment: .center)
@@ -1447,33 +1465,38 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_49 (), right: self.computeImplicitView_50 ())
     _ = vStackView.appendView (view_6)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mSelectedSchematicElementInspectorView
+  //    VIEW SelectedSchematicElementInspectorView
   //····················································································································
 
-  lazy final private var mSelectedSchematicElementInspectorView : AutoLayoutVerticalStackView = {
+  final private func SelectedSchematicElementInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
+    let schematicsWireInspectorView = self.SchematicsWireInspectorView ()
+    let ncInSchematicsInspectorView = self.NCInSchematicsInspectorView ()
+    let schematicsLabelInspectorView = self.SchematicsLabelInspectorView ()
+    let commentInSchematicsInspectorView = self.CommentInSchematicsInspectorView ()
+    let componentSymbolInspectorView = self.ComponentSymbolInspectorView ()
     let view_0 = AutoLayoutObjectInspectorView ()
-      .addObjectInspector (forEntity: WireInSchematic.self, inspectorView: self.mSchematicsWireInspectorView)
-      .addObjectInspector (forEntity: NCInSchematic.self, inspectorView: self.mNCInSchematicsInspectorView)
-      .addObjectInspector (forEntity: LabelInSchematic.self, inspectorView: self.mSchematicsLabelInspectorView)
-      .addObjectInspector (forEntity: CommentInSchematic.self, inspectorView: self.mCommentInSchematicsInspectorView)
-      .addObjectInspector (forEntity: ComponentSymbolInProject.self, inspectorView: self.mComponentSymbolInspectorView)
+      .addObjectInspector (forEntity: WireInSchematic.self, inspectorView: schematicsWireInspectorView)
+      .addObjectInspector (forEntity: NCInSchematic.self, inspectorView: ncInSchematicsInspectorView)
+      .addObjectInspector (forEntity: LabelInSchematic.self, inspectorView: schematicsLabelInspectorView)
+      .addObjectInspector (forEntity: CommentInSchematic.self, inspectorView: commentInSchematicsInspectorView)
+      .addObjectInspector (forEntity: ComponentSymbolInProject.self, inspectorView: componentSymbolInspectorView)
       .bind_graphic_controller (self.schematicObjectsController)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mSchematicsWireInspectorView
+  //    VIEW SchematicsWireInspectorView
   //····················································································································
 
-  lazy final private var mSchematicsWireInspectorView : AutoLayoutVerticalStackView = {
+  final private func SchematicsWireInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Wire Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -1535,13 +1558,13 @@ import Cocoa
       )
     _ = vStackView.appendView (view_7)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mNCInSchematicsInspectorView
+  //    VIEW NCInSchematicsInspectorView
   //····················································································································
 
-  lazy final private var mNCInSchematicsInspectorView : AutoLayoutVerticalStackView = {
+  final private func NCInSchematicsInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "NC Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -1549,13 +1572,13 @@ import Cocoa
       .bind_selectedSegment (self.ncInSchematicSelectionController.mOrientation_property)
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mSchematicsLabelInspectorView
+  //    VIEW SchematicsLabelInspectorView
   //····················································································································
 
-  lazy final private var mSchematicsLabelInspectorView : AutoLayoutVerticalStackView = {
+  final private func SchematicsLabelInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Label Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -1621,13 +1644,13 @@ import Cocoa
       )
     _ = vStackView.appendView (view_8)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mCommentInSchematicsInspectorView
+  //    VIEW CommentInSchematicsInspectorView
   //····················································································································
 
-  lazy final private var mCommentInSchematicsInspectorView : AutoLayoutVerticalStackView = {
+  final private func CommentInSchematicsInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Comment Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -1657,13 +1680,13 @@ import Cocoa
     self.configure_labelVAlignmentSegmendControlConfigurator (view_7) // Configurator
     _ = vStackView.appendView (view_7)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mComponentSymbolInspectorView
+  //    VIEW ComponentSymbolInspectorView
   //····················································································································
 
-  lazy final private var mComponentSymbolInspectorView : AutoLayoutVerticalStackView = {
+  final private func ComponentSymbolInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Symbol Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -1736,25 +1759,28 @@ import Cocoa
       .bind_title (self.componentSymbolSelectionController.deviceName_property)
     _ = vStackView.appendView (view_16)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mBoardOutlinePage
+  //    VIEW BoardOutlinePage
   //····················································································································
 
-  lazy final private var mBoardOutlinePage : AutoLayoutHorizontalStackView = {
+  final private func BoardOutlinePage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
+    let boardOutlineBaseView = self.BoardOutlineBaseView ()
+    let boardOutlineInspectorView = self.BoardOutlineInspectorView ()
+    let boardOutlineGridAndFlipView = self.BoardOutlineGridAndFlipView ()
     let view_0 = AutoLayoutVerticalStackView ()
       .set (width: 250)
       .set (margins: 8)
     do{
-      let view_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mBoardOutlineBaseView, equalWidth: true, size: .small)
-        .addPage (title: "", tooltip: "", pageView: self.mBoardOutlineInspectorView)
-        .addPage (title: "", tooltip: "", pageView: self.mBoardOutlineGridAndFlipView)
+      let view_0_0 = AutoLayoutSegmentedControlWithPages (documentView: boardOutlineBaseView, equalWidth: true, size: .small)
+        .addPage (title: "", tooltip: "", pageView: boardOutlineInspectorView)
+        .addPage (title: "", tooltip: "", pageView: boardOutlineGridAndFlipView)
         .bind_selectedPage (self.rootObject.mBoardLimitsSelectedInspector_property)
       self.configure_boardOutlineBaseConfigurator (view_0_0) // Configurator
       _ = view_0.appendView (view_0_0)
-      let view_0_1 = self.mBoardOutlineBaseView
+      let view_0_1 = boardOutlineBaseView
       _ = view_0.appendView (view_0_1)
     }
     _ = hStackView.appendView (view_0)
@@ -1780,24 +1806,24 @@ import Cocoa
     self.configure_boardOutlineView (view_2) // Configurator
     _ = hStackView.appendView (view_2)
     return hStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mBoardOutlineBaseView
+  //    VIEW BoardOutlineBaseView
   //····················································································································
 
-  lazy final private var mBoardOutlineBaseView : AutoLayoutVerticalStackView = {
+  final private func BoardOutlineBaseView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_0)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mBoardOutlineGridAndFlipView
+  //    VIEW BoardOutlineGridAndFlipView
   //····················································································································
 
-  lazy final private var mBoardOutlineGridAndFlipView : AutoLayoutVerticalStackView = {
+  final private func BoardOutlineGridAndFlipView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Grid and Flip Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -1811,14 +1837,17 @@ import Cocoa
     let view_2 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_2)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mBoardOutlineInspectorView
+  //    VIEW BoardOutlineInspectorView
   //····················································································································
 
-  lazy final private var mBoardOutlineInspectorView : AutoLayoutVerticalStackView = {
+  final private func BoardOutlineInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
+    let boardShapeBaseView = self.BoardShapeBaseView ()
+    let boardRectangularOutlineView = self.BoardRectangularOutlineView ()
+    let boardBezierPathOutlineView = self.BoardBezierPathOutlineView ()
     let view_0 = AutoLayoutStaticLabel (title: "Outlines", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutGridView2 ()
@@ -1851,45 +1880,45 @@ import Cocoa
     _ = vStackView.appendView (view_8)
     let view_9 = AutoLayoutStaticLabel (title: "Board Shape", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_9)
-    let view_10 = AutoLayoutSegmentedControlWithPages (documentView: self.mBoardShapeBaseView, equalWidth: true, size: .small)
-      .addPage (title: "Rectangular", tooltip: "", pageView: self.mBoardRectangularOutlineView)
-      .addPage (title: "Bezier Pathes", tooltip: "", pageView: self.mBoardBezierPathOutlineView)
+    let view_10 = AutoLayoutSegmentedControlWithPages (documentView: boardShapeBaseView, equalWidth: true, size: .small)
+      .addPage (title: "Rectangular", tooltip: "", pageView: boardRectangularOutlineView)
+      .addPage (title: "Bezier Pathes", tooltip: "", pageView: boardBezierPathOutlineView)
       .bind_selectedSegment (self.rootObject.mBoardShape_property)
     _ = vStackView.appendView (view_10)
-    let view_11 = self.mBoardShapeBaseView
+    let view_11 = boardShapeBaseView
     _ = vStackView.appendView (view_11)
     let view_12 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_12)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mBoardShapeBaseView
+  //    VIEW BoardShapeBaseView
   //····················································································································
 
-  lazy final private var mBoardShapeBaseView : AutoLayoutVerticalStackView = {
+  final private func BoardShapeBaseView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mBoardRectangularOutlineView
+  //    VIEW BoardRectangularOutlineView
   //····················································································································
 
-  lazy final private var mBoardRectangularOutlineView : AutoLayoutVerticalStackView = {
+  final private func BoardRectangularOutlineView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutGridView2 ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_73 (), right: self.computeImplicitView_74 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_75 (), right: self.computeImplicitView_76 ())
     _ = vStackView.appendView (view_0)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mBoardBezierPathOutlineView
+  //    VIEW BoardBezierPathOutlineView
   //····················································································································
 
-  lazy final private var mBoardBezierPathOutlineView : AutoLayoutVerticalStackView = {
+  final private func BoardBezierPathOutlineView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutLabel (bold: true, size: .small)
       .bind_title (self.rootObject.borderElementCountString_property)
@@ -1909,15 +1938,21 @@ import Cocoa
       .bind_hidden (.intcmp (.prop (self.boardCurveObjectsController.selectedArray_property.count_property), .eq, .literalInt (0)))
     _ = vStackView.appendView (view_2)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mBoardContentsPage
+  //    VIEW BoardContentsPage
   //····················································································································
 
-  lazy final private var mBoardContentsPage : AutoLayoutHorizontalStackView = {
+  final private func BoardContentsPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
       .set (spacing: 0)
+    let boardInspectorView = self.BoardInspectorView ()
+    let selectedElementInspectorView = self.SelectedElementInspectorView ()
+    let insertComponentInBoardView = self.InsertComponentInBoardView ()
+    let boardDisplayInspectorView = self.BoardDisplayInspectorView ()
+    let boardRouterInspectorView = self.BoardRouterInspectorView ()
+    let boardERCInspectorView = self.BoardERCInspectorView ()
     let view_0 = AutoLayoutVerticalStackView ()
       .set (width: 250)
       .set (spacing: 0)
@@ -1957,20 +1992,20 @@ import Cocoa
           .set (leftMargin: 8)
           .set (rightMargin: 8)
         do{
-          let view_0_1_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mBoardInspectorView, equalWidth: true, size: .small)
+          let view_0_1_0_0 = AutoLayoutSegmentedControlWithPages (documentView: boardInspectorView, equalWidth: true, size: .small)
             .expandableWidth ()
-            .addPage (title: "", tooltip: "Selected Element Inspector", pageView: self.mSelectedElementInspectorView)
-            .addPage (title: "", tooltip: "Insert Component in Board", pageView: self.mInsertComponentInBoardView)
-            .addPage (title: "", tooltip: "Display Inspector", pageView: self.mBoardDisplayInspectorView)
-            .addPage (image: "autorouter", tooltip: "Router Inspector", pageView: self.mBoardRouterInspectorView)
-            .addPage (title: "ERC", tooltip: "Electric Rule Check Inspector", pageView: self.mBoardERCInspectorView)
+            .addPage (title: "", tooltip: "Selected Element Inspector", pageView: selectedElementInspectorView)
+            .addPage (title: "", tooltip: "Insert Component in Board", pageView: insertComponentInBoardView)
+            .addPage (title: "", tooltip: "Display Inspector", pageView: boardDisplayInspectorView)
+            .addPage (image: "autorouter", tooltip: "Router Inspector", pageView: boardRouterInspectorView)
+            .addPage (title: "ERC", tooltip: "Electric Rule Check Inspector", pageView: boardERCInspectorView)
             .bind_selectedPage (self.rootObject.mBoardSelectedInspector_property)
             .bind_segmentTitle (self.unplacedPackagesCountString_property, segmentIndex:1)
           self.configure_boardInspectorConfigurator (view_0_1_0_0) // Configurator
           _ = view_0_1_0.appendView (view_0_1_0_0)
         }
         _ = view_0_1.appendView (view_0_1_0)
-        let view_0_1_1 = self.mBoardInspectorView
+        let view_0_1_1 = boardInspectorView
         _ = view_0_1.appendView (view_0_1_1)
       }
       _ = view_0.appendView (view_0_1)
@@ -2000,19 +2035,21 @@ import Cocoa
     self.configure_boardView (view_2) // Configurator
     _ = hStackView.appendView (view_2)
     return hStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mBoardInspectorView
+  //    VIEW BoardInspectorView
   //····················································································································
 
-  let mBoardInspectorView : AutoLayoutBase_NSStackView = AutoLayoutVerticalStackView ()
+  final private func BoardInspectorView () -> AutoLayoutBase_NSStackView {
+    return AutoLayoutVerticalStackView ()
+  }
 
   //····················································································································
-  //    VIEW mInsertComponentInBoardView
+  //    VIEW InsertComponentInBoardView
   //····················································································································
 
-  lazy final private var mInsertComponentInBoardView : AutoLayoutVerticalStackView = {
+  final private func InsertComponentInBoardView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -2032,13 +2069,13 @@ import Cocoa
     self.configure_packageDragSourceTableViewConfigurator (view_1) // Configurator
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mBoardDisplayInspectorView
+  //    VIEW BoardDisplayInspectorView
   //····················································································································
 
-  lazy final private var mBoardDisplayInspectorView : AutoLayoutVerticalStackView = {
+  final private func BoardDisplayInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
       .set (rightMargin: 0)
@@ -2047,13 +2084,13 @@ import Cocoa
     let view_1 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mBoardRouterInspectorView
+  //    VIEW BoardRouterInspectorView
   //····················································································································
 
-  lazy final private var mBoardRouterInspectorView : AutoLayoutVerticalStackView = {
+  final private func BoardRouterInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutGridView2 ()
@@ -2080,13 +2117,13 @@ import Cocoa
     let view_1 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mBoardERCInspectorView
+  //    VIEW BoardERCInspectorView
   //····················································································································
 
-  lazy final private var mBoardERCInspectorView : AutoLayoutVerticalStackView = {
+  final private func BoardERCInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutStaticLabel (title: "ERC Checking", bold: true, size: .small, alignment: .center)
@@ -2113,34 +2150,40 @@ import Cocoa
     }
     _ = vStackView.appendView (view_3)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mSelectedElementInspectorView
+  //    VIEW SelectedElementInspectorView
   //····················································································································
 
-  lazy final private var mSelectedElementInspectorView : AutoLayoutVerticalStackView = {
+  final private func SelectedElementInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
+    let boardTrackInspectorView = self.BoardTrackInspectorView ()
+    let boardConnectorInspectorView = self.BoardConnectorInspectorView ()
+    let boardLineInspectorView = self.BoardLineInspectorView ()
+    let restrictRectangleInspectorView = self.RestrictRectangleInspectorView ()
+    let boardTextInspectorView = self.BoardTextInspectorView ()
+    let componentInBoardInspectorView = self.ComponentInBoardInspectorView ()
     let view_0 = AutoLayoutObjectInspectorView ()
-      .addObjectInspector (forEntity: BoardTrack.self, inspectorView: self.mBoardTrackInspectorView)
-      .addObjectInspector (forEntity: BoardConnector.self, inspectorView: self.mBoardConnectorInspectorView)
-      .addObjectInspector (forEntity: BoardLine.self, inspectorView: self.mBoardLineInspectorView)
-      .addObjectInspector (forEntity: BoardRestrictRectangle.self, inspectorView: self.mRestrictRectangleInspectorView)
-      .addObjectInspector (forEntity: BoardText.self, inspectorView: self.mBoardTextInspectorView)
-      .addObjectInspector (forEntity: ComponentInProject.self, inspectorView: self.mComponentInBoardInspectorView)
+      .addObjectInspector (forEntity: BoardTrack.self, inspectorView: boardTrackInspectorView)
+      .addObjectInspector (forEntity: BoardConnector.self, inspectorView: boardConnectorInspectorView)
+      .addObjectInspector (forEntity: BoardLine.self, inspectorView: boardLineInspectorView)
+      .addObjectInspector (forEntity: BoardRestrictRectangle.self, inspectorView: restrictRectangleInspectorView)
+      .addObjectInspector (forEntity: BoardText.self, inspectorView: boardTextInspectorView)
+      .addObjectInspector (forEntity: ComponentInProject.self, inspectorView: componentInBoardInspectorView)
       .bind_graphic_controller (self.boardObjectsController)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mBoardTrackInspectorView
+  //    VIEW BoardTrackInspectorView
   //····················································································································
 
-  lazy final private var mBoardTrackInspectorView : AutoLayoutVerticalStackView = {
+  final private func BoardTrackInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Board Track", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -2166,13 +2209,13 @@ import Cocoa
     let view_2 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_2)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mBoardConnectorInspectorView
+  //    VIEW BoardConnectorInspectorView
   //····················································································································
 
-  lazy final private var mBoardConnectorInspectorView : AutoLayoutVerticalStackView = {
+  final private func BoardConnectorInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Via Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -2189,13 +2232,13 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_237 (), right: self.computeImplicitView_238 ())
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mBoardLineInspectorView
+  //    VIEW BoardLineInspectorView
   //····················································································································
 
-  lazy final private var mBoardLineInspectorView : AutoLayoutVerticalStackView = {
+  final private func BoardLineInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Line Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -2209,13 +2252,13 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_249 (), right: self.computeImplicitView_250 ())
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mRestrictRectangleInspectorView
+  //    VIEW RestrictRectangleInspectorView
   //····················································································································
 
-  lazy final private var mRestrictRectangleInspectorView : AutoLayoutVerticalStackView = {
+  final private func RestrictRectangleInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Restrict Rectangle Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -2228,13 +2271,13 @@ import Cocoa
       .bind_inner4 (self.restrictRectangleSelectionController.mIsInInner4Layer_property)
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mBoardTextInspectorView
+  //    VIEW BoardTextInspectorView
   //····················································································································
 
-  lazy final private var mBoardTextInspectorView : AutoLayoutVerticalStackView = {
+  final private func BoardTextInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Text Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -2254,13 +2297,13 @@ import Cocoa
       .add (single: self.computeImplicitView_269 ())
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mComponentInBoardInspectorView
+  //    VIEW ComponentInBoardInspectorView
   //····················································································································
 
-  lazy final private var mComponentInBoardInspectorView : AutoLayoutVerticalStackView = {
+  final private func ComponentInBoardInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Component Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -2294,15 +2337,21 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_308 (), right: self.computeImplicitView_309 ())
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mProductPage
+  //    VIEW ProductPage
   //····················································································································
 
-  lazy final private var mProductPage : AutoLayoutVerticalStackView = {
+  final private func ProductPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
+    let productMasterView = self.ProductMasterView ()
+    let artworkDescriptionPage = self.ArtworkDescriptionPage ()
+    let artworkMinimaPage = self.ArtworkMinimaPage ()
+    let artworkDataPage = self.ArtworkDataPage ()
+    let pdfSettingsPage = self.PDFSettingsPage ()
+    let generationLogPage = self.GenerationLogPage ()
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutVerticalStackView ()
@@ -2384,39 +2433,39 @@ import Cocoa
       do{
         let view_2_0_0 = AutoLayoutFlexibleSpace ()
         _ = view_2_0.appendView (view_2_0_0)
-        let view_2_0_1 = AutoLayoutSegmentedControlWithPages (documentView: self.mProductMasterView, equalWidth: true, size: .regular)
-          .addPage (title: "Artwork Description", tooltip: "", pageView: self.mArtworkDescriptionPage)
-          .addPage (title: "Artwork Minima", tooltip: "", pageView: self.mArtworkMinimaPage)
-          .addPage (title: "Artwork Data", tooltip: "", pageView: self.mArtworkDataPage)
-          .addPage (title: "PDF Settings", tooltip: "", pageView: self.mPDFSettingsPage)
-          .addPage (title: "Generation Log", tooltip: "", pageView: self.mGenerationLogPage)
+        let view_2_0_1 = AutoLayoutSegmentedControlWithPages (documentView: productMasterView, equalWidth: true, size: .regular)
+          .addPage (title: "Artwork Description", tooltip: "", pageView: artworkDescriptionPage)
+          .addPage (title: "Artwork Minima", tooltip: "", pageView: artworkMinimaPage)
+          .addPage (title: "Artwork Data", tooltip: "", pageView: artworkDataPage)
+          .addPage (title: "PDF Settings", tooltip: "", pageView: pdfSettingsPage)
+          .addPage (title: "Generation Log", tooltip: "", pageView: generationLogPage)
         self.mProductPageSegmentedControl = view_2_0_1 // Outlet
         _ = view_2_0.appendView (view_2_0_1)
         let view_2_0_2 = AutoLayoutFlexibleSpace ()
         _ = view_2_0.appendView (view_2_0_2)
       }
       _ = view_2.appendView (view_2_0)
-      let view_2_1 = self.mProductMasterView
+      let view_2_1 = productMasterView
       _ = view_2.appendView (view_2_1)
     }
     _ = vStackView.appendView (view_2)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mProductMasterView
+  //    VIEW ProductMasterView
   //····················································································································
 
-  lazy final private var mProductMasterView : AutoLayoutVerticalStackView = {
+  final private func ProductMasterView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mArtworkDescriptionPage
+  //    VIEW ArtworkDescriptionPage
   //····················································································································
 
-  lazy final private var mArtworkDescriptionPage : AutoLayoutVerticalStackView = {
+  final private func ArtworkDescriptionPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutGridView2 ()
       .addFirstBaseLineAligned (left: self.computeImplicitView_310 (), right: self.computeImplicitView_311 ())
@@ -2424,13 +2473,13 @@ import Cocoa
       .addCenterYAligned (left: self.computeImplicitView_314 (), right: self.computeImplicitView_315 ())
     _ = vStackView.appendView (view_0)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mArtworkDataPage
+  //    VIEW ArtworkDataPage
   //····················································································································
 
-  lazy final private var mArtworkDataPage : AutoLayoutVerticalStackView = {
+  final private func ArtworkDataPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 20)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -2655,13 +2704,13 @@ import Cocoa
     let view_2 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_2)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mArtworkMinimaPage
+  //    VIEW ArtworkMinimaPage
   //····················································································································
 
-  lazy final private var mArtworkMinimaPage : AutoLayoutVerticalStackView = {
+  final private func ArtworkMinimaPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 20)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -2716,13 +2765,13 @@ import Cocoa
     let view_2 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_2)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mPDFSettingsPage
+  //    VIEW PDFSettingsPage
   //····················································································································
 
-  lazy final private var mPDFSettingsPage : AutoLayoutVerticalStackView = {
+  final private func PDFSettingsPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 20)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -2742,20 +2791,20 @@ import Cocoa
     let view_1 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mGenerationLogPage
+  //    VIEW GenerationLogPage
   //····················································································································
 
-  lazy final private var mGenerationLogPage : AutoLayoutVerticalStackView = {
+  final private func GenerationLogPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 20)
     let view_0 = AutoLayoutTextObserverView ()
     self.mProductFileGenerationLogTextView = view_0 // Outlet
     _ = vStackView.appendView (view_0)
     return vStackView
-  } ()
+  }
 
   //····················································································································
   //    IMPLICIT VIEW 0
@@ -6688,7 +6737,7 @@ import Cocoa
     }
   //--- Build window content view
     self.configureProperties ()
-    let mainView = self.mDocumentMainView
+    let mainView = self.DocumentMainView ()
   //--- Call outlet linkers
   //--- Assign main view to window
     self.windowForSheet?.contentView = AutoLayoutWindowContentView (view: mainView)

@@ -2,22 +2,27 @@
 //     P A C K A G E    D O C U M E N T
 //----------------------------------------------------------------------------------------------------------------------
 
-autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumentMainView {
+autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView \DocumentMainView {
 
 //----------------------------------------------------------------------------------------------------------------------
 //   MAIN VIEW
 //----------------------------------------------------------------------------------------------------------------------
  
-  stackView mPageMasterView vStack { }
+  stackView \PageMasterView vStack { }
  
-  stackView mDocumentMainView vStack set (spacing: 0) {
+  stackView \DocumentMainView vStack set (spacing: 0) {
+    newView pageMasterView = \PageMasterView ()
+    newView modelImagePage = \ModelImagePage ()
+    newView packagePage = \PackagePage ()
+    newView programPage = \ProgramPage ()
+    newView infosPage = \InfosPage ()
     hStack set (margins: 8) {
       vStack {
-        SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no, size: .regular) {
-          addPage (title: "Model Image", tooltip: "Model Image Editor", pageView: stackView mModelImagePage)
-          addPage (title: "Package", tooltip: "Package Editor", pageView: stackView mPackagePage)
-          addPage (title: "Program", tooltip: "Program Editor", pageView: stackView mProgramPage)
-          addPage (title: "Infos", tooltip: "Package Informations", pageView: stackView mInfosPage)
+        SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size: .regular) {
+          addPage (title: "Model Image", tooltip: "Model Image Editor", pageView: view modelImagePage)
+          addPage (title: "Package", tooltip: "Package Editor", pageView: view packagePage)
+          addPage (title: "Program", tooltip: "Program Editor", pageView: view programPage)
+          addPage (title: "Infos", tooltip: "Package Informations", pageView: view infosPage)
           $selectedPage root.selectedPageIndex
         }
         StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
@@ -37,7 +42,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       }
     }
     separator
-    stackViewRef mPageMasterView
+    view pageMasterView
   }
 
   transient NSImage statusImage dependsFrom self.issues ;
@@ -56,7 +61,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
   action resetModelImagePointsAction ;
   arrayController #mModelImageObjectsController : root.mModelImageObjects ;
 
-  stackView mModelImagePage hStack set (spacing: 0) {
+  stackView \ModelImagePage hStack set (spacing: 0) {
     vStack {
       GridView2 {
         set (width: 250) 
@@ -216,9 +221,15 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
   transient NSImage addGuideButtonImage dependsFrom prefs.packageGuideColor ;
   transient NSImage addDimensionButtonImage dependsFrom prefs.packageDimensionColor ;
   transient NSImage addZoneButtonImage dependsFrom prefs.padZoneColor ;
-  stackView mPackagePageInspectorMasterView : vStack ;
+
+  stackView \PackagePageInspectorMasterView : vStack ;
   
-  stackView mPackagePage hStack set (margins: 0) set (spacing: 0) {
+  stackView \PackagePage hStack set (margins: 0) set (spacing: 0) {
+    newView packagePageInspectorMasterView = \PackagePageInspectorMasterView ()
+    newView selectedObjectsInspectorView = \SelectedObjectsInspectorView ()
+    newView gridZoomInspectorView = \GridZoomInspectorView ()
+    newView displayInspectorView = \DisplayInspectorView ()
+    newView issuesInspectorView = \IssuesInspectorView ()
     vStack set (width: 250) {
       vStack set (leftMargin: 20) set (rightMargin: 20) set (topMargin: 8) set (spacing: 12) {
         hStack set (spacing: 0) {
@@ -269,20 +280,20 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
       }
       separator
       vStack set (leftMargin: 20) set (rightMargin: 20) {
-       SegmentedControlWithPages (documentView: stackView mPackagePageInspectorMasterView, equalWidth: yes, size : .small)
+       SegmentedControlWithPages (documentView: view packagePageInspectorMasterView, equalWidth: yes, size : .small)
           [configurator packagePageSegmentedControl] {
           expandableWidth ()
-          addPage (title: "", tooltip: "Selected Object Inspector", pageView: stackView mSelectedObjectsInspectorView)
-          addPage (title: "", tooltip: "Grid / Zoom Inspector", pageView: stackView mGridZoomInspectorView)
-          addPage (title: "", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: stackView mDisplayInspectorView)
-          addPage (title: "", tooltip: "Issue Inspector", pageView: stackView mIssuesInspectorView)
+          addPage (title: "", tooltip: "Selected Object Inspector", pageView: view selectedObjectsInspectorView)
+          addPage (title: "", tooltip: "Grid / Zoom Inspector", pageView: view gridZoomInspectorView)
+          addPage (title: "", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: view displayInspectorView)
+          addPage (title: "", tooltip: "Issue Inspector", pageView: view issuesInspectorView)
           $selectedPage root.selectedInspector
           $segmentImage self.segmentedControlSegmentIssueImage (segmentIndex : 3)
           $segmentTitle self.segmentedControlSegmentIssueString (segmentIndex : 3)
         }
       }
       vStack set (leftMargin: 20) set (rightMargin: 20) set (spacing: 12) {
-        view mPackagePageInspectorMasterView
+        view packagePageInspectorMasterView
       }
     }
     separator
@@ -312,7 +323,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 //   Issues
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mIssuesInspectorView vStack {
+  stackView \IssuesInspectorView vStack {
     hStack { space Label (bold: no, size : .small) { $title self.statusMessage} space }
     CanariIssueTableView (hasHideIssueButton: yes) [outlet mPackageIssueTableView] { $issues self.issues }
   }
@@ -328,17 +339,26 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 //   Object inspector
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mSelectedObjectsInspectorView vStack {
+  stackView \SelectedObjectsInspectorView vStack {
+    newView segmentInspectorView = \SegmentInspectorView ()
+    newView bezierCurveInspectorView = \BezierCurveInspectorView ()
+    newView ovalInspectorView = \OvalInspectorView ()
+    newView arcInspectorView = \ArcInspectorView ()
+    newView masterPadInspectorView = \MasterPadInspectorView ()
+    newView slavePadInspectorView = \SlavePadInspectorView ()
+    newView guideInspectorView = \GuideInspectorView ()
+    newView dimensionInspectorView = \DimensionInspectorView ()
+    newView zoneInspectorView = \ZoneInspectorView ()
     ObjectInspectorView {
-      addObjectInspector (forEntity: entity PackageSegment, inspectorView: stackView mSegmentInspectorView)
-      addObjectInspector (forEntity: entity PackageBezier, inspectorView: stackView mBezierCurveInspectorView)
-      addObjectInspector (forEntity: entity PackageOval, inspectorView: stackView mOvalInspectorView)
-      addObjectInspector (forEntity: entity PackageArc, inspectorView: stackView mArcInspectorView)
-      addObjectInspector (forEntity: entity PackagePad, inspectorView: stackView mMasterPadInspectorView)
-      addObjectInspector (forEntity: entity PackageSlavePad, inspectorView: stackView mSlavePadInspectorView)
-      addObjectInspector (forEntity: entity PackageGuide, inspectorView: stackView mGuideInspectorView)
-      addObjectInspector (forEntity: entity PackageDimension, inspectorView: stackView mDimensionInspectorView)
-      addObjectInspector (forEntity: entity PackageZone, inspectorView: stackView mZoneInspectorView)
+      addObjectInspector (forEntity: entity PackageSegment, inspectorView: view segmentInspectorView)
+      addObjectInspector (forEntity: entity PackageBezier, inspectorView: view bezierCurveInspectorView)
+      addObjectInspector (forEntity: entity PackageOval, inspectorView: view ovalInspectorView)
+      addObjectInspector (forEntity: entity PackageArc, inspectorView: view arcInspectorView)
+      addObjectInspector (forEntity: entity PackagePad, inspectorView: view masterPadInspectorView)
+      addObjectInspector (forEntity: entity PackageSlavePad, inspectorView: view slavePadInspectorView)
+      addObjectInspector (forEntity: entity PackageGuide, inspectorView: view guideInspectorView)
+      addObjectInspector (forEntity: entity PackageDimension, inspectorView: view dimensionInspectorView)
+      addObjectInspector (forEntity: entity PackageZone, inspectorView: view zoneInspectorView)
       $graphicController #mPackageObjectsController
     }
     space
@@ -347,7 +367,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 //--- Segment inspector
   selectionController PackageSegment #mPackageSegmentSelectionController : #mPackageObjectsController.selectedArray ;
 
-  stackView mSegmentInspectorView vStack {
+  stackView \SegmentInspectorView vStack {
     StaticLabel (title: "Segment Inspector", bold: yes, size : .small, alignment: .center)
     GridView2 {
       add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter5
@@ -384,7 +404,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 //--- Bezier Curve inspector
   selectionController PackageBezier #mPackageBezierCurveSelectionController : #mPackageObjectsController.selectedArray ;
 
-  stackView mBezierCurveInspectorView vStack {
+  stackView \BezierCurveInspectorView vStack {
     StaticLabel (title: "Bezier Curve Inspector", bold: yes, size : .small, alignment: .center)
     GridView2 {
       add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter8
@@ -448,7 +468,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 //------- Oval inspector
   selectionController PackageOval #mPackageOvalSelectionController : #mPackageObjectsController.selectedArray ;
 
-  stackView mOvalInspectorView vStack {
+  stackView \OvalInspectorView vStack {
     StaticLabel (title: "Oval Inspector", bold: yes, size : .small, alignment: .center)
     GridView2 {
       add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter4
@@ -486,7 +506,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 //------- Arc inspector
   selectionController PackageArc #mPackageArcSelectionController : #mPackageObjectsController.selectedArray ;
 
-  stackView mArcInspectorView vStack {
+  stackView \ArcInspectorView vStack {
     StaticLabel (title: "Arc Inspector", bold: yes, size : .small, alignment: .center)
     GridView2 {
       add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter5
@@ -545,7 +565,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 //------- Guide inspector
   selectionController PackageGuide #mPackageGuideSelectionController : #mPackageObjectsController.selectedArray ;
 
-  stackView mGuideInspectorView vStack {
+  stackView \GuideInspectorView vStack {
     StaticLabel (title: "Guide Inspector", bold: yes, size : .small, alignment: .center)
     GridView2 {
       add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter4
@@ -574,7 +594,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 //------- Dimension inspector
   selectionController PackageDimension #mPackageDimensionSelectionController : #mPackageObjectsController.selectedArray ;
 
-  stackView mDimensionInspectorView vStack {
+  stackView \DimensionInspectorView vStack {
     StaticLabel (title: "Dimension Inspector", bold: yes, size : .small, alignment: .center)
     GridView2 {
       add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter7
@@ -643,7 +663,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 //------- Zone inspector
   selectionController PackageZone #mPackageZoneSelectionController : #mPackageObjectsController.selectedArray ;
 
-  stackView mZoneInspectorView vStack {
+  stackView \ZoneInspectorView vStack {
     StaticLabel (title: "Zone Inspector", bold: yes, size : .small, alignment: .center)
     GridView2 {
       add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter6
@@ -736,7 +756,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 //------- Pad inspector
   selectionController PackagePad #mPackagePadSelectionController : #mPackageObjectsController.selectedArray ;
 
-  stackView mMasterPadInspectorView vStack {
+  stackView \MasterPadInspectorView vStack {
     StaticLabel (title: "Master Pad Inspector", bold: yes, size : .small, alignment: .center)
     GridView2 {
       add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter7
@@ -831,7 +851,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 //------- Slave Pad inspector
   selectionController PackageSlavePad #mPackageSlavePadSelectionController : #mPackageObjectsController.selectedArray ;
 
-  stackView mSlavePadInspectorView vStack {
+  stackView \SlavePadInspectorView vStack {
     StaticLabel (title: "Slave Pad Inspector", bold: yes, size : .small, alignment: .center)
     GridView2 {
       add (single: CanariDimensionUnitSetterPullDownButton (size : .small) { $setter7
@@ -913,7 +933,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 //   Zoom and flip inspector
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mGridZoomInspectorView vStack {
+  stackView \GridZoomInspectorView vStack {
     StaticLabel (title: "(Stored in Document Preferences)", bold: no, size: .mini, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (
@@ -964,7 +984,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 
 //--- Display inspector
 
-  stackView mDisplayInspectorView vStack {
+  stackView \DisplayInspectorView vStack {
     StaticLabel (title: "(Stored in Application Preferences)", bold: no, size: .mini, alignment: .center)
     GridView2 {
       addCenterYAligned (
@@ -1049,7 +1069,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 //   PAGE   PROGRAM
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mProgramPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
+  stackView \ProgramPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
     hStack {
       Button (title: "Load from Design", size : .small) { $run loadFromDesignAction }
       Button (title: "Run", size : .small) { $run runProgramAction }
@@ -1070,7 +1090,7 @@ autoLayoutDocument AutoLayoutPackageDocument root PackageRoot stackView mDocumen
 //   PAGE   INFOS
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mInfosPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
+  stackView \InfosPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
     hStack {
       Button (title: "Reset Version and Signature", size : .small) { $run resetVersionAction }
       space

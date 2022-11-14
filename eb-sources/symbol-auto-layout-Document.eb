@@ -1,19 +1,22 @@
 //——————————————————————————————————————————————————————————————————————————————
 
-autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentMainView {
+autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView \DocumentMainView {
 
 //----------------------------------------------------------------------------------------------------------------------
 //   MAIN VIEW
 //----------------------------------------------------------------------------------------------------------------------
  
-  stackView mPageMasterView vStack { }
+  stackView \PageMasterView vStack { }
  
-  stackView mDocumentMainView vStack set (spacing: 0) {
+  stackView \DocumentMainView vStack set (spacing: 0) {
+    newView pageMasterView = \PageMasterView ()
+    newView symbolPage = \SymbolPage ()
+    newView infosPage = \InfosPage ()
     hStack set (margins: 8) {
       vStack {
-        SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no, size: .regular) {
-          addPage (title: "Symbol", tooltip: "Symbol Editor", pageView: stackView mSymbolPage)
-          addPage (title: "Infos", tooltip: "Symbol Informations", pageView: stackView mInfosPage)
+        SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size: .regular) {
+          addPage (title: "Symbol", tooltip: "Symbol Editor", pageView: view symbolPage)
+          addPage (title: "Infos", tooltip: "Symbol Informations", pageView: view infosPage)
           $selectedPage root.selectedPageIndex
         }
         StaticLabel (title: "Page", bold: no, size: .small, alignment: .center)
@@ -33,7 +36,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
       }
     }
     separator
-    stackViewRef mPageMasterView
+    view pageMasterView
   }
 
   transient CanariIssueArray issues dependsFrom root.issues, self.documentFileName ;
@@ -59,9 +62,14 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
   transient NSImage addTextButtonImage dependsFrom prefs.symbolColor ;
   transient NSImage addPinButtonImage dependsFrom prefs.symbolColor ;
 
-  stackView mSymbolPageInspectorMasterView : vStack ;
+  stackView \SymbolPageInspectorMasterView : vStack ;
 
-  stackView mSymbolPage hStack set (margins: 0) set (spacing: 0) {
+  stackView \SymbolPage hStack set (margins: 0) set (spacing: 0) {
+    newView symbolPageInspectorMasterView = \SymbolPageInspectorMasterView ()
+    newView selectedObjectsInspectorView = \SelectedObjectsInspectorView ()
+    newView gridZoomInspectorView = \GridZoomInspectorView ()
+    newView displayInspectorView = \DisplayInspectorView ()
+    newView issuesInspectorView = \IssuesInspectorView ()
     vStack set (width: 250) {
       vStack set (leftMargin: 20) set (rightMargin: 20) set (topMargin: 8) set (spacing: 12) {
         hStack set (spacing: 0) {
@@ -82,20 +90,20 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
      }
      separator
      vStack set (leftMargin: 20) set (rightMargin: 20) {
-       SegmentedControlWithPages (documentView: stackView mSymbolPageInspectorMasterView, equalWidth: yes, size: .small)
+       SegmentedControlWithPages (documentView: view symbolPageInspectorMasterView, equalWidth: yes, size: .small)
           [outlet mSymbolInspectorSegmentedControl configurator symbolPageSegmentedControl] {
           expandableWidth ()
-          addPage (title: "", tooltip: "Selected Object Inspector", pageView: stackView mSelectedObjectsInspectorView)
-          addPage (title: "", tooltip: "Grid / Zoom Inspector", pageView: stackView mGridZoomInspectorView)
-          addPage (title: "", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: stackView mDisplayInspectorView)
-          addPage (title: "", tooltip: "Issue Inspector", pageView: stackView mIssuesInspectorView)
+          addPage (title: "", tooltip: "Selected Object Inspector", pageView: view selectedObjectsInspectorView)
+          addPage (title: "", tooltip: "Grid / Zoom Inspector", pageView: view gridZoomInspectorView)
+          addPage (title: "", tooltip: "Display Inspector (values stored in Application Preferences)", pageView: view displayInspectorView)
+          addPage (title: "", tooltip: "Issue Inspector", pageView: view issuesInspectorView)
           $selectedPage root.selectedInspector
           $segmentImage self.segmentedControlSegmentIssueImage (segmentIndex : 3)
           $segmentTitle self.segmentedControlSegmentIssueString (segmentIndex : 3)
          }
       }
       vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
-        view mSymbolPageInspectorMasterView
+        view symbolPageInspectorMasterView
       }
     }
     separator
@@ -118,10 +126,12 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
 //   Selected objects inspector
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mSelectedObjectsInspectorView vStack {
+  stackView \SelectedObjectsInspectorView vStack {
+    newView symbolTextInspectorView = \SymbolTextInspectorView ()
+    newView symbolPinInspectorView = \SymbolPinInspectorView ()
     ObjectInspectorView {
-      addObjectInspector (forEntity: entity SymbolText, inspectorView: stackView mSymbolTextInspectorView)
-      addObjectInspector (forEntity: entity SymbolPin, inspectorView: stackView mSymbolPinInspectorView)
+      addObjectInspector (forEntity: entity SymbolText, inspectorView: view symbolTextInspectorView)
+      addObjectInspector (forEntity: entity SymbolPin, inspectorView: view symbolPinInspectorView)
       $graphicController #mSymbolObjectsController
     }
     space
@@ -130,7 +140,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
 //--- Symbol Text inspector
   selectionController SymbolText #mSymbolTextSelectionController : #mSymbolObjectsController.selectedArray ;
 
-  stackView mSymbolTextInspectorView vStack {
+  stackView \SymbolTextInspectorView vStack {
     StaticLabel (title: "Text Inspector", bold: yes, size: .small, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (
@@ -148,7 +158,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
 //--- Symbol Pin inspector
   selectionController SymbolPin #mSymbolPinSelectionController : #mSymbolObjectsController.selectedArray ;
 
-  stackView mSymbolPinInspectorView vStack {
+  stackView \SymbolPinInspectorView vStack {
     StaticLabel (title: "Pin Inspector", bold: yes, size: .small, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (
@@ -184,7 +194,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
 //   Zoom and flip inspector
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mGridZoomInspectorView vStack {
+  stackView \GridZoomInspectorView vStack {
     StaticLabel (title: "(Stored in Document Preferences)", bold: no, size: .mini, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (
@@ -231,7 +241,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
 //   Display inspector
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mDisplayInspectorView vStack {
+  stackView \DisplayInspectorView vStack {
     StaticLabel (title: "(Stored in Application Preferences)", bold: no, size: .mini, alignment: .center)
     GridView2 {
       addCenterYAligned (
@@ -273,7 +283,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
 //   Issue inspector
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mIssuesInspectorView vStack {
+  stackView \IssuesInspectorView vStack {
    hStack { space Label (bold: no, size: .small) { $title self.statusMessage } space }
    CanariIssueTableView (hasHideIssueButton: yes) [outlet mSymbolIssueTableView] { $issues self.issues }
   }
@@ -284,7 +294,7 @@ autoLayoutDocument AutoLayoutSymbolDocument root SymbolRoot stackView mDocumentM
 //   PAGE   INFOS
 //----------------------------------------------------------------------------------------------------------------------
 
- stackView mInfosPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
+ stackView \InfosPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
     hStack {
       Button (title: "Reset Version and Signature", size: .small) { $run resetVersionAction }
       space

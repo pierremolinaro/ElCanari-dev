@@ -166,29 +166,32 @@ import Cocoa
   final var rootObject : FontRoot { return self.mRootObject as! FontRoot }
 
   //····················································································································
-  //    VIEW mPageMasterView
+  //    VIEW PageMasterView
   //····················································································································
 
-  lazy final private var mPageMasterView : AutoLayoutVerticalStackView = {
+  final private func PageMasterView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mDocumentMainView
+  //    VIEW DocumentMainView
   //····················································································································
 
-  lazy final private var mDocumentMainView : AutoLayoutVerticalStackView = {
+  final private func DocumentMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
+    let pageMasterView = self.PageMasterView ()
+    let fontPage = self.FontPage ()
+    let infoPage = self.InfoPage ()
     let view_0 = AutoLayoutHorizontalStackView ()
       .set (margins: 8)
     do{
       let view_0_0 = AutoLayoutVerticalStackView ()
       do{
-        let view_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView, equalWidth: false, size: .regular)
-          .addPage (title: "Font", tooltip: "Characters Definition", pageView: self.mFontPage)
-          .addPage (title: "Infos", tooltip: "Document Infos", pageView: self.mInfoPage)
+        let view_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: pageMasterView, equalWidth: false, size: .regular)
+          .addPage (title: "Font", tooltip: "Characters Definition", pageView: fontPage)
+          .addPage (title: "Infos", tooltip: "Document Infos", pageView: infoPage)
           .bind_selectedPage (self.rootObject.selectedTab_property)
         _ = view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutStaticLabel (title: "Page", bold: false, size: .small, alignment: .center)
@@ -238,24 +241,30 @@ import Cocoa
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
     _ = vStackView.appendView (view_1)
-    let view_2 = self.mPageMasterView
+    let view_2 = pageMasterView
     _ = vStackView.appendView (view_2)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mFontPageInspectorMasterView
+  //    VIEW FontPageInspectorMasterView
   //····················································································································
 
-  let mFontPageInspectorMasterView : AutoLayoutBase_NSStackView = AutoLayoutVerticalStackView ()
+  final private func FontPageInspectorMasterView () -> AutoLayoutBase_NSStackView {
+    return AutoLayoutVerticalStackView ()
+  }
 
   //····················································································································
-  //    VIEW mFontPage
+  //    VIEW FontPage
   //····················································································································
 
-  lazy final private var mFontPage : AutoLayoutVerticalStackView = {
+  final private func FontPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
+    let fontPageInspectorMasterView = self.FontPageInspectorMasterView ()
+    let selectedCharacterInspectorView = self.SelectedCharacterInspectorView ()
+    let sampleStringInspectorView = self.SampleStringInspectorView ()
+    let issuesInspectorView = self.IssuesInspectorView ()
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutTextField (minWidth: 200, size: .small)
@@ -274,11 +283,11 @@ import Cocoa
     do{
       let view_2_0 = AutoLayoutVerticalStackView ()
       do{
-        let view_2_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mFontPageInspectorMasterView, equalWidth: true, size: .small)
+        let view_2_0_0 = AutoLayoutSegmentedControlWithPages (documentView: fontPageInspectorMasterView, equalWidth: true, size: .small)
           .expandableWidth ()
-          .addPage (title: "", tooltip: "Selected Character Inspector", pageView: self.mSelectedCharacterInspectorView)
-          .addPage (title: "", tooltip: "Sample String Inspector", pageView: self.mSampleStringInspectorView)
-          .addPage (title: "", tooltip: "Issue Inspector", pageView: self.mIssuesInspectorView)
+          .addPage (title: "", tooltip: "Selected Character Inspector", pageView: selectedCharacterInspectorView)
+          .addPage (title: "", tooltip: "Sample String Inspector", pageView: sampleStringInspectorView)
+          .addPage (title: "", tooltip: "Issue Inspector", pageView: issuesInspectorView)
           .bind_selectedPage (self.rootObject.selectedInspector_property)
           .bind_segmentImage (self.statusImage_property, segmentIndex:2)
           .bind_segmentTitle (self.statusTitle_property, segmentIndex:2)
@@ -291,7 +300,7 @@ import Cocoa
           .set (bottomMargin: 20)
           .set (spacing: 12)
         do{
-          let view_2_0_1_0 = self.mFontPageInspectorMasterView
+          let view_2_0_1_0 = fontPageInspectorMasterView
           _ = view_2_0_1.appendView (view_2_0_1_0)
         }
         _ = view_2_0.appendView (view_2_0_1)
@@ -309,13 +318,13 @@ import Cocoa
     }
     _ = vStackView.appendView (view_2)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mIssuesInspectorView
+  //    VIEW IssuesInspectorView
   //····················································································································
 
-  lazy final private var mIssuesInspectorView : AutoLayoutVerticalStackView = {
+  final private func IssuesInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
@@ -332,13 +341,13 @@ import Cocoa
       .bind_issues (self.rootObject.issues_property)
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mSampleStringInspectorView
+  //    VIEW SampleStringInspectorView
   //····················································································································
 
-  lazy final private var mSampleStringInspectorView : AutoLayoutVerticalStackView = {
+  final private func SampleStringInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Sample String", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -362,13 +371,13 @@ import Cocoa
     }
     _ = vStackView.appendView (view_3)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mSelectedCharacterInspectorView
+  //    VIEW SelectedCharacterInspectorView
   //····················································································································
 
-  lazy final private var mSelectedCharacterInspectorView : AutoLayoutVerticalStackView = {
+  final private func SelectedCharacterInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
@@ -511,13 +520,13 @@ import Cocoa
       .bind_characterGerberCode (self.characterSelection.gerberCode_property)
     _ = vStackView.appendView (view_13)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mInfoPage
+  //    VIEW InfoPage
   //····················································································································
 
-  lazy final private var mInfoPage : AutoLayoutVerticalStackView = {
+  final private func InfoPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -543,7 +552,7 @@ import Cocoa
     }
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
   //    IMPLICIT VIEW 0
@@ -636,7 +645,7 @@ import Cocoa
     }
   //--- Build window content view
     self.configureProperties ()
-    let mainView = self.mDocumentMainView
+    let mainView = self.DocumentMainView ()
   //--- Call outlet linkers
   //--- Assign main view to window
     self.windowForSheet?.contentView = AutoLayoutWindowContentView (view: mainView)

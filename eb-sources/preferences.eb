@@ -2,21 +2,25 @@
 //! Main View
 
 prefs {
-  stackView mPrefsMainView vStack set (spacing: 0) set (topMargin: 12) {
+  stackView \mPrefsMainView vStack set (spacing: 0) set (topMargin: 12) {
+    newView prefsPageView = \PrefsPageView ()
+    newView prefsUserInterfacePage = \PrefsUserInterfacePage ()
+    newView prefsAppUpdatePage = \PrefsAppUpdatePage ()
+    newView prefsLibraryPage = \PrefsLibraryPage ()
     hStack {
       space
-      SegmentedControlWithPages (documentView: stackView mPrefsPageView, equalWidth: no, size : .regular) {
-        addPage (image: "settings", tooltip: "User Interface", pageView: stackView mPrefsUserInterfacePage)
-        addPage (image: "update", tooltip: "Application Update", pageView: stackView mPrefsAppUpdatePage)
-        addPage (image: "library", tooltip: "Library", pageView: stackView mPrefsLibraryPage)
+      SegmentedControlWithPages (documentView: view prefsPageView, equalWidth: no, size : .regular) {
+        addPage (image: "settings", tooltip: "User Interface", pageView: view prefsUserInterfacePage)
+        addPage (image: "update", tooltip: "Application Update", pageView: view prefsAppUpdatePage)
+        addPage (image: "library", tooltip: "Library", pageView: view prefsLibraryPage)
         $selectedPage prefs.mSelectedPrefsPage
       }
       space
     }
-    stackViewRef mPrefsPageView
+    view prefsPageView
   }
   
-  stackView mPrefsPageView vStack set (spacing: 0) {
+  stackView \PrefsPageView vStack set (spacing: 0) {
   }
 
   property Int mSelectedPrefsPage default 0 ;
@@ -34,7 +38,7 @@ prefs {
 //! Application Update
 
 prefs {
-  stackView mPrefsAppUpdatePage vStack set (margins: 12) {
+  stackView \PrefsAppUpdatePage vStack set (margins: 12) {
     StaticLabel (title: "Application Update", bold: yes, size: .regular, alignment: .center)
     hStack {
       Button (title: "Check for Application Updates…", size: .regular) { $run checkForAppUpdateAction }
@@ -66,7 +70,7 @@ prefs {
   property NSColor selectionHiliteColor default cyan;
   property Int hiliteWidthMultipliedByTen default 15 ; // 1,5 pt
   
-  stackView mPrefsUserInterfacePage vStack set (margins: 12) {
+  stackView \PrefsUserInterfacePage vStack set (margins: 12) {
     StaticLabel (title: "User Interface", bold: yes, size: .regular, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (
@@ -352,7 +356,7 @@ prefs {
 //! Library
 
 prefs {
-  stackView mPrefsLibraryPage vStack set (margins: 12) {
+  stackView \PrefsLibraryPage vStack set (margins: 12) {
     StaticLabel (title: "System Library", bold: yes, size: .regular, alignment: .left)
     hStack {
       Button (title: "", size: .regular) [

@@ -248,33 +248,40 @@ import Cocoa
   final var rootObject : DeviceRoot { return self.mRootObject as! DeviceRoot }
 
   //····················································································································
-  //    VIEW mPageMasterView
+  //    VIEW PageMasterView
   //····················································································································
 
-  lazy final private var mPageMasterView : AutoLayoutVerticalStackView = {
+  final private func PageMasterView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mDocumentMainView
+  //    VIEW DocumentMainView
   //····················································································································
 
-  lazy final private var mDocumentMainView : AutoLayoutVerticalStackView = {
+  final private func DocumentMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
+    let pageMasterView = self.PageMasterView ()
+    let descriptionPage = self.DescriptionPage ()
+    let symbolsPage = self.SymbolsPage ()
+    let packagesPage = self.PackagesPage ()
+    let assignmentsPage = self.AssignmentsPage ()
+    let libraryPage = self.LibraryPage ()
+    let infosPage = self.InfosPage ()
     let view_0 = AutoLayoutHorizontalStackView ()
       .set (margins: 8)
     do{
       let view_0_0 = AutoLayoutVerticalStackView ()
       do{
-        let view_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView, equalWidth: false, size: .regular)
-          .addPage (title: "Description", tooltip: "Device Description", pageView: self.mDescriptionPage)
-          .addPage (title: "Symbols", tooltip: "Device Symbols", pageView: self.mSymbolsPage)
-          .addPage (title: "Packages", tooltip: "Device Available Packages", pageView: self.mPackagesPage)
-          .addPage (title: "Assignments", tooltip: "Pin / Pad Assignments", pageView: self.mAssignmentsPage)
-          .addPage (title: "Library", tooltip: "Device Embedded Library", pageView: self.mLibraryPage)
-          .addPage (title: "Infos", tooltip: "Device Informations", pageView: self.mInfosPage)
+        let view_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: pageMasterView, equalWidth: false, size: .regular)
+          .addPage (title: "Description", tooltip: "Device Description", pageView: descriptionPage)
+          .addPage (title: "Symbols", tooltip: "Device Symbols", pageView: symbolsPage)
+          .addPage (title: "Packages", tooltip: "Device Available Packages", pageView: packagesPage)
+          .addPage (title: "Assignments", tooltip: "Pin / Pad Assignments", pageView: assignmentsPage)
+          .addPage (title: "Library", tooltip: "Device Embedded Library", pageView: libraryPage)
+          .addPage (title: "Infos", tooltip: "Device Informations", pageView: infosPage)
           .bind_selectedPage (self.rootObject.mSelectedPageIndex_property)
         _ = view_0_0.appendView (view_0_0_0)
         let view_0_0_1 = AutoLayoutStaticLabel (title: "Page", bold: false, size: .small, alignment: .center)
@@ -324,16 +331,16 @@ import Cocoa
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
     _ = vStackView.appendView (view_1)
-    let view_2 = self.mPageMasterView
+    let view_2 = pageMasterView
     _ = vStackView.appendView (view_2)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mDescriptionPage
+  //    VIEW DescriptionPage
   //····················································································································
 
-  lazy final private var mDescriptionPage : AutoLayoutVerticalStackView = {
+  final private func DescriptionPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 16)
       .set (spacing: 12)
@@ -388,22 +395,25 @@ import Cocoa
     }
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mSymbolsPage
+  //    VIEW SymbolsPage
   //····················································································································
 
-  lazy final private var mSymbolsPage : AutoLayoutHorizontalStackView = {
+  final private func SymbolsPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
+    let symbolPageInspectorView = self.SymbolPageInspectorView ()
+    let symbolPageOperationView = self.SymbolPageOperationView ()
+    let symbolGridZoomInspectorView = self.SymbolGridZoomInspectorView ()
     let view_0 = AutoLayoutVerticalStackView ()
       .set (width: 250)
       .set (margins: 8)
     do{
-      let view_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mSymbolPageInspectorView, equalWidth: true, size: .small)
+      let view_0_0 = AutoLayoutSegmentedControlWithPages (documentView: symbolPageInspectorView, equalWidth: true, size: .small)
         .expandableWidth ()
-        .addPage (title: "", tooltip: "", pageView: self.mSymbolPageOperationView)
-        .addPage (title: "", tooltip: "Grid, Zoom and Display Inspector", pageView: self.mSymbolGridZoomInspectorView)
+        .addPage (title: "", tooltip: "", pageView: symbolPageOperationView)
+        .addPage (title: "", tooltip: "Grid, Zoom and Display Inspector", pageView: symbolGridZoomInspectorView)
         .bind_selectedPage (self.rootObject.mSelectedSymbolInspectorIndex_property)
       self.configure_symbolInspectorSegmentedControl (view_0_0) // Configurator
       _ = view_0.appendView (view_0_0)
@@ -413,7 +423,7 @@ import Cocoa
         .set (bottomMargin: 20)
         .set (spacing: 12)
       do{
-        let view_0_1_0 = self.mSymbolPageInspectorView
+        let view_0_1_0 = symbolPageInspectorView
         _ = view_0_1.appendView (view_0_1_0)
       }
       _ = view_0.appendView (view_0_1)
@@ -431,22 +441,22 @@ import Cocoa
       .bind_graphic_controller (self.symbolDisplayController)
     _ = hStackView.appendView (view_2)
     return hStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mSymbolPageInspectorView
+  //    VIEW SymbolPageInspectorView
   //····················································································································
 
-  lazy final private var mSymbolPageInspectorView : AutoLayoutHorizontalStackView = {
+  final private func SymbolPageInspectorView () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
     return hStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mSymbolPageOperationView
+  //    VIEW SymbolPageOperationView
   //····················································································································
 
-  lazy final private var mSymbolPageOperationView : AutoLayoutVerticalStackView = {
+  final private func SymbolPageOperationView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 0)
     let view_0 = AutoLayoutStaticLabel (title: "Add Symbol From", bold: true, size: .small, alignment: .center)
@@ -487,13 +497,13 @@ import Cocoa
     let view_9 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_9)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mSymbolGridZoomInspectorView
+  //    VIEW SymbolGridZoomInspectorView
   //····················································································································
 
-  lazy final private var mSymbolGridZoomInspectorView : AutoLayoutVerticalStackView = {
+  final private func SymbolGridZoomInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 0)
     let view_0 = AutoLayoutStaticLabel (title: "Display Inspector", bold: true, size: .small, alignment: .center)
@@ -511,22 +521,25 @@ import Cocoa
       .add (single: self.computeImplicitView_13 ())
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mPackagesPage
+  //    VIEW PackagesPage
   //····················································································································
 
-  lazy final private var mPackagesPage : AutoLayoutHorizontalStackView = {
+  final private func PackagesPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
+    let packagePageInspectorView = self.PackagePageInspectorView ()
+    let packagePageOperationView = self.PackagePageOperationView ()
+    let packageGridZoomInspectorView = self.PackageGridZoomInspectorView ()
     let view_0 = AutoLayoutVerticalStackView ()
       .set (width: 250)
       .set (margins: 8)
     do{
-      let view_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPackagePageInspectorView, equalWidth: true, size: .small)
+      let view_0_0 = AutoLayoutSegmentedControlWithPages (documentView: packagePageInspectorView, equalWidth: true, size: .small)
         .expandableWidth ()
-        .addPage (title: "", tooltip: "", pageView: self.mPackagePageOperationView)
-        .addPage (title: "", tooltip: "Grid, Zoom and Display Inspector", pageView: self.mPackageGridZoomInspectorView)
+        .addPage (title: "", tooltip: "", pageView: packagePageOperationView)
+        .addPage (title: "", tooltip: "Grid, Zoom and Display Inspector", pageView: packageGridZoomInspectorView)
         .bind_selectedPage (self.rootObject.mSelectedPackageInspectorIndex_property)
       self.configure_packageInspectorSegmentedControl (view_0_0) // Configurator
       _ = view_0.appendView (view_0_0)
@@ -536,7 +549,7 @@ import Cocoa
         .set (bottomMargin: 20)
         .set (spacing: 12)
       do{
-        let view_0_1_0 = self.mPackagePageInspectorView
+        let view_0_1_0 = packagePageInspectorView
         _ = view_0_1.appendView (view_0_1_0)
       }
       _ = view_0.appendView (view_0_1)
@@ -554,22 +567,22 @@ import Cocoa
       .bind_graphic_controller (self.packageDisplayController)
     _ = hStackView.appendView (view_2)
     return hStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mPackagePageInspectorView
+  //    VIEW PackagePageInspectorView
   //····················································································································
 
-  lazy final private var mPackagePageInspectorView : AutoLayoutHorizontalStackView = {
+  final private func PackagePageInspectorView () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
     return hStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mPackageGridZoomInspectorView
+  //    VIEW PackageGridZoomInspectorView
   //····················································································································
 
-  lazy final private var mPackageGridZoomInspectorView : AutoLayoutVerticalStackView = {
+  final private func PackageGridZoomInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Display Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -588,13 +601,13 @@ import Cocoa
       .add (single: self.computeImplicitView_33 ())
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mPackagePageOperationView
+  //    VIEW PackagePageOperationView
   //····················································································································
 
-  lazy final private var mPackagePageOperationView : AutoLayoutVerticalStackView = {
+  final private func PackagePageOperationView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 0)
     let view_0 = AutoLayoutButton (title: "Add Package From File Library…", size: .small)
@@ -619,13 +632,13 @@ import Cocoa
       .addCenterYAligned (left: self.computeImplicitView_40 (), right: self.computeImplicitView_41 ())
     _ = vStackView.appendView (view_3)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mLibraryPage
+  //    VIEW LibraryPage
   //····················································································································
 
-  lazy final private var mLibraryPage : AutoLayoutVerticalStackView = {
+  final private func LibraryPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 20)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -764,13 +777,13 @@ import Cocoa
     }
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mAssignmentsPage
+  //    VIEW AssignmentsPage
   //····················································································································
 
-  lazy final private var mAssignmentsPage : AutoLayoutHorizontalStackView = {
+  final private func AssignmentsPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutHorizontalSplitView ()
@@ -880,13 +893,13 @@ import Cocoa
     }
     _ = hStackView.appendView (view_1)
     return hStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mInfosPage
+  //    VIEW InfosPage
   //····················································································································
 
-  lazy final private var mInfosPage : AutoLayoutVerticalStackView = {
+  final private func InfosPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (leftMargin: 20)
       .set (rightMargin: 20)
@@ -951,7 +964,7 @@ import Cocoa
     }
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
   //    IMPLICIT VIEW 0
@@ -1443,7 +1456,7 @@ import Cocoa
     }
   //--- Build window content view
     self.configureProperties ()
-    let mainView = self.mDocumentMainView
+    let mainView = self.DocumentMainView ()
   //--- Call outlet linkers
   //--- Assign main view to window
     self.windowForSheet?.contentView = AutoLayoutWindowContentView (view: mainView)

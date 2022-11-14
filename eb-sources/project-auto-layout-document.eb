@@ -2,22 +2,31 @@
 //     P R O J E C T    D O C U M E N T
 //------------------------------------------------------------------------------
 
-autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperClass root ProjectRoot stackView mDocumentMainView {
+autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperClass root ProjectRoot stackView \DocumentMainView {
 
-  stackView mPageMasterView vStack { }
+  stackView \PageMasterView vStack { }
 
-  stackView mDocumentMainView vStack set (spacing: 0) {
+  stackView \DocumentMainView vStack set (spacing: 0) {
+    newView pageMasterView = \PageMasterView ()
+    newView componentsPage = \ComponentsPage ()
+    newView libraryPage = \LibraryPage ()
+    newView schematicPage = \SchematicPage ()
+    newView netClassesPage = \NetClassesPage ()
+    newView netListPage = \NetListPage ()
+    newView boardOutlinePage = \BoardOutlinePage ()
+    newView boardContentsPage = \BoardContentsPage ()
+    newView productPage = \ProductPage ()
     hStack set (margins: 8) {
       vStack {
-        SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no, size : .regular) {
-          addPage (title: "Components", tooltip: "", pageView: stackView mComponentsPage)
-          addPage (title: "Library", tooltip: "", pageView: stackView mLibraryPage)
-          addPage (title: "Schematic", tooltip: "", pageView: stackView mSchematicPage)
-          addPage (title: "Net Classes", tooltip: "", pageView: stackView mNetClassesPage)
-          addPage (title: "Net List", tooltip: "", pageView: stackView mNetListPage)
-          addPage (title: "Board Outline", tooltip: "", pageView: stackView mBoardOutlinePage)
-          addPage (title: "Board Contents", tooltip: "", pageView: stackView mBoardContentsPage)
-          addPage (title: "Product", tooltip: "", pageView: stackView mProductPage)
+        SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
+          addPage (title: "Components", tooltip: "", pageView: view componentsPage)
+          addPage (title: "Library", tooltip: "", pageView: view libraryPage)
+          addPage (title: "Schematic", tooltip: "", pageView: view schematicPage)
+          addPage (title: "Net Classes", tooltip: "", pageView: view netClassesPage)
+          addPage (title: "Net List", tooltip: "", pageView: view netListPage)
+          addPage (title: "Board Outline", tooltip: "", pageView: view boardOutlinePage)
+          addPage (title: "Board Contents", tooltip: "", pageView: view boardContentsPage)
+          addPage (title: "Product", tooltip: "", pageView: view productPage)
           $selectedPage root.mSelectedPageIndex
         }
         StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
@@ -55,12 +64,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       }
     }
     separator
-    stackViewRef mPageMasterView
+    view pageMasterView
   }
   
 //---------------------- Components Tab
 
-  stackView mComponentsPage hStack set (margins: 8) {
+  stackView \ComponentsPage hStack set (margins: 8) {
     vStack {
       Label (bold: yes, size : .small) { expandableWidth () set (alignment: .center) $title self.componentCount }
       separator
@@ -142,7 +151,10 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
 //---------------------- Library Tab
 
-  stackView mLibraryPage vStack set (margins: 8) {
+  stackView \LibraryPage vStack set (margins: 8) {
+    newView libraryContentView = \LibraryContentView ()
+    newView devicesInLibraryPage = \DevicesInLibraryPage ()
+    newView fontsInLibraryPage = \FontsInLibraryPage ()
     hStack {
       Button (title: "Remove Embedded Devices", size: .regular) {
         set (controlCommandKeyEquivalent: "r")
@@ -163,18 +175,18 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     hStack {
       space
-      SegmentedControlWithPages (documentView: stackView mLibraryContentView, equalWidth: no, size : .regular) {
-        addPage (title: "Devices", tooltip: "", pageView: stackView mDevicesInLibraryPage)
-        addPage (title: "Fonts", tooltip: "", pageView: stackView mFontsInLibraryPage)
+      SegmentedControlWithPages (documentView: view libraryContentView, equalWidth: no, size : .regular) {
+        addPage (title: "Devices", tooltip: "", pageView: view devicesInLibraryPage)
+        addPage (title: "Fonts", tooltip: "", pageView: view fontsInLibraryPage)
       }
       space
     }
-    stackViewRef mLibraryContentView
+    view libraryContentView
   }
   
-  stackView mLibraryContentView vStack { }
+  stackView \LibraryContentView vStack { }
   
-  stackView mDevicesInLibraryPage vStack set (margins: 8) expandableWidth () {
+  stackView \DevicesInLibraryPage vStack set (margins: 8) expandableWidth () {
      hStack {
       Button (title: "Edit Selected Device", size: .regular) {
         set (shiftCommandKeyEquivalent: "e")
@@ -236,7 +248,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
   }
 
-  stackView mFontsInLibraryPage vStack set (margins: 8) {
+  stackView \FontsInLibraryPage vStack set (margins: 8) {
     hStack {
       Button (title: "Add Font…", size: .regular) {
         set (shiftCommandKeyEquivalent: "a")
@@ -320,7 +332,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
 //---------------------- Net Class Tab
 
-  stackView mNetClassesPage vStack set (margins: 8) {
+  stackView \NetClassesPage vStack set (margins: 8) {
     hStack {
       Button (title: "New Net Class", size: .regular) {
         $run addNetClassAction
@@ -372,7 +384,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
 //---------------------- Net Tab
 
-  stackView mNetListPage vStack set (margins: 8) {
+  stackView \NetListPage vStack set (margins: 8) {
     hStack {
       Label (bold: yes, size: .regular) { $title self.netCountString }
       Button (title: "Rename Net…", size: .regular) {
@@ -412,7 +424,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action selectAllConnectedElementsInSchematicsAction ;
   action moveSelectedToSheetInSchematicsAction ;
 
-  stackView mSchematicPage hStack {
+  stackView \SchematicPage hStack {
+    newView schematicsInspectorView = \SchematicsInspectorView ()
+    newView selectedSchematicElementInspectorView = \SelectedSchematicElementInspectorView ()
+    newView schematicHotKeysInspectorView = \SchematicHotKeysInspectorView ()
+    newView insertSymbolInSchematicView = \InsertSymbolInSchematicView ()
+    newView schematicsGridAndFlipInspectorView = \SchematicsGridAndFlipInspectorView ()
+    newView schematicsSheetInspectorView = \SchematicsSheetInspectorView ()
     vStack set (width: 250) set (spacing: 0) {
       hStack set (spacing: 0) set (margins: 8) {
         space
@@ -428,19 +446,19 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       }
       vStack {
         hStack set (leftMargin: 8) set (rightMargin: 8) {
-          SegmentedControlWithPages (documentView: stackView mSchematicsInspectorView, equalWidth: yes, size : .small) 
+          SegmentedControlWithPages (documentView: view schematicsInspectorView, equalWidth: yes, size : .small) 
             [configurator schematicInspectorConfigurator] {
             expandableWidth ()
-            addPage (title: "", tooltip: "Selected Element Inspector", pageView: stackView mSelectedSchematicElementInspectorView)
-            addPage (title: "", tooltip: "Hot Keys", pageView: stackView mSchematicHotKeysInspectorView)
-            addPage (title: "", tooltip: "Insert Symbol in Schematic", pageView: stackView mInsertSymbolInSchematicView)
-            addPage (image: "", tooltip: "Grid and Flip Inspector", pageView: stackView mSchematicsGridAndFlipInspectorView)
-            addPage (title: "", tooltip: "Sheet Inspector", pageView: stackView mSchematicsSheetInspectorView)
+            addPage (title: "", tooltip: "Selected Element Inspector", pageView: view selectedSchematicElementInspectorView)
+            addPage (title: "", tooltip: "Hot Keys", pageView: view schematicHotKeysInspectorView)
+            addPage (title: "", tooltip: "Insert Symbol in Schematic", pageView: view insertSymbolInSchematicView)
+            addPage (image: "", tooltip: "Grid and Flip Inspector", pageView: view schematicsGridAndFlipInspectorView)
+            addPage (title: "", tooltip: "Sheet Inspector", pageView: view schematicsSheetInspectorView)
             $selectedPage root. mSelectedSchematicInspector
             $segmentTitle self.unplacedSymbolsCountString (segmentIndex : 2)
           }
         }
-        stackViewRef mSchematicsInspectorView
+        view schematicsInspectorView
         space
       }
     }
@@ -463,11 +481,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   transient Int unplacedSymbolsCount dependsFrom root.unplacedSymbols ;
   transient String unplacedSymbolsCountString dependsFrom self.unplacedSymbolsCount ;
 
-  stackView mSchematicsInspectorView vStack set (margins: 8) {
+  stackView \SchematicsInspectorView vStack set (margins: 8) {
   }  
 
 //--- Hot keys inspector
-  stackView mSchematicHotKeysInspectorView vStack set (margins: 8) {
+  stackView \SchematicHotKeysInspectorView vStack set (margins: 8) {
     StaticLabel (title: "Hot Keys", bold: yes, size: .small, alignment: .center)
     StaticLabel (title: "[A] Connect all Symbol Pins", bold: no, size: .small, alignment: .left) [outlet mConnectAllSymbolPinsSchematicHotKeyTextField]
     StaticLabel (title: "[B] Add Bottom Label", bold: no, size: .small, alignment: .left) [outlet mAddBottomSchematicHotKeyTextField]
@@ -487,7 +505,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   }  
 
 //--- Unplaced symbols inspector
-  stackView mInsertSymbolInSchematicView vStack set (margins: 8) {
+  stackView \InsertSymbolInSchematicView vStack set (margins: 8) {
     CanariDragSourceTableView 
     [outlet mUnplacedSymbolsTableView configurator symbolDragSourceTableViewConfigurator] {
       $models root.unplacedSymbols
@@ -495,7 +513,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   }  
   
 //--- Grid and Flip inspector
-  stackView mSchematicsGridAndFlipInspectorView vStack set (margins: 8) {
+  stackView \SchematicsGridAndFlipInspectorView vStack set (margins: 8) {
     TabView (equalWidth: yes, size: .small) {
       addTab (title: "Grid and Flip", tooltip: "Grid and Flip", contentView : 
         GridView2 {
@@ -607,7 +625,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   }  
 
 //--- Sheet inspector
-  stackView mSchematicsSheetInspectorView  vStack set (margins: 8) {
+  stackView \SchematicsSheetInspectorView  vStack set (margins: 8) {
     StaticLabel (title: "Sheet Inspector", bold: yes, size: .small, alignment: .center)
     hStack {
       PopUpButton (size: .small) [configurator sheetPopUpButtonConfigurator]
@@ -676,13 +694,18 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 //   Schematic selected objects inspector
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mSelectedSchematicElementInspectorView vStack set (margins: 8) {
+  stackView \SelectedSchematicElementInspectorView vStack set (margins: 8) {
+    newView schematicsWireInspectorView = \SchematicsWireInspectorView ()
+    newView ncInSchematicsInspectorView = \NCInSchematicsInspectorView ()
+    newView schematicsLabelInspectorView = \SchematicsLabelInspectorView ()
+    newView commentInSchematicsInspectorView = \CommentInSchematicsInspectorView ()
+    newView componentSymbolInspectorView = \ComponentSymbolInspectorView ()
     ObjectInspectorView {
-      addObjectInspector (forEntity: entity WireInSchematic, inspectorView: stackView mSchematicsWireInspectorView)
-      addObjectInspector (forEntity: entity NCInSchematic, inspectorView: stackView mNCInSchematicsInspectorView)
-      addObjectInspector (forEntity: entity LabelInSchematic, inspectorView: stackView mSchematicsLabelInspectorView)
-      addObjectInspector (forEntity: entity CommentInSchematic, inspectorView: stackView mCommentInSchematicsInspectorView)
-      addObjectInspector (forEntity: entity ComponentSymbolInProject, inspectorView: stackView mComponentSymbolInspectorView)
+      addObjectInspector (forEntity: entity WireInSchematic, inspectorView: view schematicsWireInspectorView)
+      addObjectInspector (forEntity: entity NCInSchematic, inspectorView: view ncInSchematicsInspectorView)
+      addObjectInspector (forEntity: entity LabelInSchematic, inspectorView: view schematicsLabelInspectorView)
+      addObjectInspector (forEntity: entity CommentInSchematic, inspectorView: view commentInSchematicsInspectorView)
+      addObjectInspector (forEntity: entity ComponentSymbolInProject, inspectorView: view componentSymbolInspectorView)
       $graphicController #schematicObjectsController
     }
     space
@@ -693,7 +716,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     #schematicObjectsController.selectedArray
   ;
   
-  stackView mSchematicsWireInspectorView vStack {
+  stackView \SchematicsWireInspectorView vStack {
     StaticLabel (title: "Wire Inspector", bold: yes, size: .small, alignment: .center)
     hStack {
       StaticLabel (title: "Net", bold: no, size: .small, alignment: .right)
@@ -738,7 +761,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     #schematicObjectsController.selectedArray
   ;
 
-  stackView mNCInSchematicsInspectorView vStack {
+  stackView \NCInSchematicsInspectorView vStack {
     StaticLabel (title: "NC Inspector", bold: yes, size: .small, alignment: .center)
     EnumSegmentedControl (titles: enum QuadrantRotation.directionTitles, equalWidth: yes, size: .small) {
       $selectedSegment #ncInSchematicSelectionController.mOrientation
@@ -750,7 +773,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     #schematicObjectsController.selectedArray
   ;
 
-  stackView mSchematicsLabelInspectorView vStack {
+  stackView \SchematicsLabelInspectorView vStack {
     StaticLabel (title: "Label Inspector", bold: yes, size: .small, alignment: .center)
     EnumSegmentedControl (titles: enum QuadrantRotation.directionTitles, equalWidth: yes, size: .small) {
       $selectedSegment #schematicLabelSelectionController.mOrientation
@@ -798,7 +821,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     #schematicObjectsController.selectedArray
   ;
 
-  stackView mCommentInSchematicsInspectorView vStack {
+  stackView \CommentInSchematicsInspectorView vStack {
     StaticLabel (title: "Comment Inspector", bold: yes, size: .small, alignment: .center)
     TextField (minWidth: 210, size: .small) {
       automaticallyAdjustHeight (maxWidth: 210)
@@ -830,7 +853,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   selectionController ComponentSymbolInProject #componentSymbolSelectionController :
     #schematicObjectsController.selectedArray
   ;
-  stackView mComponentSymbolInspectorView vStack {
+  stackView \ComponentSymbolInspectorView vStack {
     StaticLabel (title: "Symbol Inspector", bold: yes, size: .small, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (
@@ -889,15 +912,18 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action renameComponentFromSelectedSymbolAction ;
 
 //----------------- Board limits tab
-  stackView mBoardOutlinePage hStack {
+  stackView \BoardOutlinePage hStack {
+    newView boardOutlineBaseView = \BoardOutlineBaseView ()
+    newView boardOutlineInspectorView = \BoardOutlineInspectorView ()
+    newView boardOutlineGridAndFlipView = \BoardOutlineGridAndFlipView ()
     vStack set (width: 250) set (margins: 8) {
-      SegmentedControlWithPages (documentView: stackView mBoardOutlineBaseView, equalWidth: yes, size : .small)
+      SegmentedControlWithPages (documentView: view boardOutlineBaseView, equalWidth: yes, size : .small)
         [configurator boardOutlineBaseConfigurator]  {
-        addPage (title: "", tooltip: "", pageView: stackView mBoardOutlineInspectorView)
-        addPage (title: "", tooltip: "", pageView: stackView mBoardOutlineGridAndFlipView)
+        addPage (title: "", tooltip: "", pageView: view boardOutlineInspectorView)
+        addPage (title: "", tooltip: "", pageView: view boardOutlineGridAndFlipView)
         $selectedPage root.mBoardLimitsSelectedInspector
       }
-      stackViewRef mBoardOutlineBaseView
+      view boardOutlineBaseView
     }
     separator
     GraphicView (minZoom: 10, maxZoom: 20_000) [configurator boardOutlineView]{
@@ -925,11 +951,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     #boardCurveObjectsController.selectedArray
   ;
 
-  stackView mBoardOutlineBaseView vStack {
+  stackView \BoardOutlineBaseView vStack {
     space
   }
 
-  stackView mBoardOutlineGridAndFlipView vStack {
+  stackView \BoardOutlineGridAndFlipView vStack {
     StaticLabel (title: "Grid and Flip Inspector", bold: yes, size: .small, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (
@@ -967,7 +993,10 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     space
   }
 
-  stackView mBoardOutlineInspectorView vStack {
+  stackView \BoardOutlineInspectorView vStack {
+    newView boardShapeBaseView = \BoardShapeBaseView ()
+    newView boardRectangularOutlineView = \BoardRectangularOutlineView ()
+    newView boardBezierPathOutlineView = \BoardBezierPathOutlineView ()
     StaticLabel (title: "Outlines", bold: yes, size : .small, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (
@@ -1003,19 +1032,19 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
     separator
     StaticLabel (title: "Board Shape", bold: yes, size : .small, alignment: .center)
-    SegmentedControlWithPages (documentView: stackView mBoardShapeBaseView, equalWidth: yes, size : .small) {
-      addPage (title: "Rectangular", tooltip: "", pageView: stackView mBoardRectangularOutlineView)
-      addPage (title: "Bezier Pathes", tooltip: "", pageView: stackView mBoardBezierPathOutlineView)
+    SegmentedControlWithPages (documentView: view boardShapeBaseView, equalWidth: yes, size : .small) {
+      addPage (title: "Rectangular", tooltip: "", pageView: view boardRectangularOutlineView)
+      addPage (title: "Bezier Pathes", tooltip: "", pageView: view boardBezierPathOutlineView)
       $selectedSegment root.mBoardShape
     }
-    stackViewRef mBoardShapeBaseView
+    view boardShapeBaseView
     space
   }
 
-  stackView mBoardShapeBaseView vStack {
+  stackView \BoardShapeBaseView vStack {
   }
   
-  stackView mBoardRectangularOutlineView vStack {
+  stackView \BoardRectangularOutlineView vStack {
     GridView2 {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Board Width", bold: no, size : .small, alignment: .center),
@@ -1032,7 +1061,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
   }
   
-  stackView mBoardBezierPathOutlineView vStack {
+  stackView \BoardBezierPathOutlineView vStack {
     Label (bold: yes, size : .small) { $title root.borderElementCountString }
     StaticLabel (title: "For editing Board limits, click on a line, use contextual click on a line.", 
                  bold: no,
@@ -1150,7 +1179,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   transient String unplacedPackagesCountString dependsFrom self.unplacedPackageCount ;
   transient String unplacedPackagesMessageString dependsFrom self.unplacedPackageCount ;
 
-  stackView mBoardContentsPage hStack set (spacing: 0) {
+  stackView \BoardContentsPage hStack set (spacing: 0) {
+    newView boardInspectorView = \BoardInspectorView ()
+    newView selectedElementInspectorView = \SelectedElementInspectorView ()
+    newView insertComponentInBoardView = \InsertComponentInBoardView ()
+    newView boardDisplayInspectorView = \BoardDisplayInspectorView ()
+    newView boardRouterInspectorView = \BoardRouterInspectorView ()
+    newView boardERCInspectorView = \BoardERCInspectorView ()
     vStack set (width: 250) set (spacing: 0) {
       hStack set (spacing: 0) set (margins: 8) {
         CanariBoardOperationPullDownButton [configurator boardOperationPullDownButtonConfigurator]
@@ -1165,19 +1200,19 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       }
       vStack {
         hStack set (leftMargin: 8) set (rightMargin: 8) {
-          SegmentedControlWithPages (documentView: stackView mBoardInspectorView, equalWidth: yes, size : .small) 
+          SegmentedControlWithPages (documentView: view boardInspectorView, equalWidth: yes, size : .small) 
             [configurator boardInspectorConfigurator] {
             expandableWidth ()
-            addPage (title: "", tooltip: "Selected Element Inspector", pageView: stackView mSelectedElementInspectorView)
-            addPage (title: "", tooltip: "Insert Component in Board", pageView: stackView mInsertComponentInBoardView)
-            addPage (title: "", tooltip: "Display Inspector", pageView: stackView mBoardDisplayInspectorView)
-            addPage (image: "autorouter", tooltip: "Router Inspector", pageView: stackView mBoardRouterInspectorView)
-            addPage (title: "ERC", tooltip: "Electric Rule Check Inspector", pageView: stackView mBoardERCInspectorView)
+            addPage (title: "", tooltip: "Selected Element Inspector", pageView: view selectedElementInspectorView)
+            addPage (title: "", tooltip: "Insert Component in Board", pageView: view insertComponentInBoardView)
+            addPage (title: "", tooltip: "Display Inspector", pageView: view boardDisplayInspectorView)
+            addPage (image: "autorouter", tooltip: "Router Inspector", pageView: view boardRouterInspectorView)
+            addPage (title: "ERC", tooltip: "Electric Rule Check Inspector", pageView: view boardERCInspectorView)
             $selectedPage root.mBoardSelectedInspector
             $segmentTitle self.unplacedPackagesCountString (segmentIndex : 1)
           }
         }
-        stackViewRef mBoardInspectorView
+        view boardInspectorView
       }
     }
     separator
@@ -1202,9 +1237,9 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
   }
 
-  stackView mBoardInspectorView : vStack ;
+  stackView \BoardInspectorView : vStack ;
 
-  stackView mInsertComponentInBoardView vStack set (margins: 8) {
+  stackView \InsertComponentInBoardView vStack set (margins: 8) {
     hStack {
       space
       Label (bold: yes, size: .small) { $title self.unplacedPackagesMessageString }
@@ -1219,7 +1254,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   transient Bool rastnetDisplayOneNet dependsFrom root.mRastnetDisplay ;
   transient Bool rastnetDisplayComponentNet dependsFrom root.mRastnetDisplay ;
 
-  stackView mBoardDisplayInspectorView vStack set (margins: 8) set (rightMargin: 0) {
+  stackView \BoardDisplayInspectorView vStack set (margins: 8) set (rightMargin: 0) {
     VerticalScrollView (content:
       GridView2 {
         add (
@@ -1393,7 +1428,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     space 
   }
 
-  stackView mBoardRouterInspectorView vStack set (margins: 8) {
+  stackView \BoardRouterInspectorView vStack set (margins: 8) {
     GridView2 {
       add (
         single: StaticLabel (title: "Board Settings", bold: yes, size: .small, alignment: .center)
@@ -1545,7 +1580,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action launchFreeRouterWithoutAnyDocument ;
   action exportDSNFileAction ;
 
-  stackView mBoardERCInspectorView vStack set (margins: 8) {
+  stackView \BoardERCInspectorView vStack set (margins: 8) {
     StaticLabel (title: "ERC Checking", bold: yes, size: .small, alignment: .center)
     Checkbox (title: "Check Clearance\nbetween Pads of the same Net", size: .small) {
       set (width: 200, multiline: yes)
@@ -1564,14 +1599,20 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 //   Board selected objects inspector
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mSelectedElementInspectorView vStack set (margins: 8) {
+  stackView \SelectedElementInspectorView vStack set (margins: 8) {
+    newView boardTrackInspectorView = \BoardTrackInspectorView ()
+    newView boardConnectorInspectorView = \BoardConnectorInspectorView ()
+    newView boardLineInspectorView = \BoardLineInspectorView ()
+    newView restrictRectangleInspectorView = \RestrictRectangleInspectorView ()
+    newView boardTextInspectorView = \BoardTextInspectorView ()
+    newView componentInBoardInspectorView = \ComponentInBoardInspectorView ()
     ObjectInspectorView {
-      addObjectInspector (forEntity: entity BoardTrack, inspectorView: stackView mBoardTrackInspectorView)
-      addObjectInspector (forEntity: entity BoardConnector, inspectorView: stackView mBoardConnectorInspectorView)
-      addObjectInspector (forEntity: entity BoardLine, inspectorView: stackView mBoardLineInspectorView)
-      addObjectInspector (forEntity: entity BoardRestrictRectangle, inspectorView: stackView mRestrictRectangleInspectorView)
-      addObjectInspector (forEntity: entity BoardText, inspectorView: stackView mBoardTextInspectorView)
-      addObjectInspector (forEntity: entity ComponentInProject, inspectorView: stackView mComponentInBoardInspectorView)
+      addObjectInspector (forEntity: entity BoardTrack, inspectorView: view boardTrackInspectorView)
+      addObjectInspector (forEntity: entity BoardConnector, inspectorView: view boardConnectorInspectorView)
+      addObjectInspector (forEntity: entity BoardLine, inspectorView: view boardLineInspectorView)
+      addObjectInspector (forEntity: entity BoardRestrictRectangle, inspectorView: view restrictRectangleInspectorView)
+      addObjectInspector (forEntity: entity BoardText, inspectorView: view boardTextInspectorView)
+      addObjectInspector (forEntity: entity ComponentInProject, inspectorView: view componentInBoardInspectorView)
       $graphicController #boardObjectsController
     }
     space
@@ -1582,7 +1623,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     #boardObjectsController.selectedArray
   ;
 
-  stackView mBoardTrackInspectorView vStack {
+  stackView \BoardTrackInspectorView vStack {
     StaticLabel (title: "Board Track", bold: yes, size: .small, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (
@@ -1690,7 +1731,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     #boardObjectsController.selectedArray
   ;
 
-  stackView mBoardConnectorInspectorView vStack {
+  stackView \BoardConnectorInspectorView vStack {
     StaticLabel (title: "Via Inspector", bold: yes, size: .small, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (
@@ -1755,7 +1796,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     #boardObjectsController.selectedArray
   ;
 
-  stackView mBoardLineInspectorView vStack {
+  stackView \BoardLineInspectorView vStack {
     StaticLabel (title: "Line Inspector", bold: yes, size: .small, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (
@@ -1801,7 +1842,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     #boardObjectsController.selectedArray
   ;
 
-  stackView mRestrictRectangleInspectorView vStack {
+  stackView \RestrictRectangleInspectorView vStack {
     StaticLabel (title: "Restrict Rectangle Inspector", bold: yes, size: .small, alignment: .center)
     CanariRestrictRectangleView {
       $front #restrictRectangleSelectionController.mIsInFrontLayer
@@ -1818,7 +1859,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     #boardObjectsController.selectedArray
   ;
 
-  stackView mBoardTextInspectorView vStack {
+  stackView \BoardTextInspectorView vStack {
     StaticLabel (title: "Text Inspector", bold: yes, size: .small, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (
@@ -1885,7 +1926,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     #boardObjectsController.selectedArray
   ;
 
-  stackView mComponentInBoardInspectorView vStack {
+  stackView \ComponentInBoardInspectorView vStack {
     StaticLabel (title: "Component Inspector", bold: yes, size: .small, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (
@@ -2015,7 +2056,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   //     Product Page
   //············································································
 
-  stackView mProductPage vStack set (margins: 8) {
+  stackView \ProductPage vStack set (margins: 8) {
+    newView productMasterView = \ProductMasterView ()
+    newView artworkDescriptionPage = \ArtworkDescriptionPage ()
+    newView artworkMinimaPage = \ArtworkMinimaPage ()
+    newView artworkDataPage = \ArtworkDataPage ()
+    newView pdfSettingsPage = \PDFSettingsPage ()
+    newView generationLogPage = \GenerationLogPage ()
     hStack {
       vStack {
         Button (title: "Import Artwork…", size : .regular) {
@@ -2059,17 +2106,17 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     vStack $hidden root.mArtwork.none {
       hStack {
         space
-        SegmentedControlWithPages (documentView: stackView mProductMasterView, equalWidth: yes, size : .regular)
+        SegmentedControlWithPages (documentView: view productMasterView, equalWidth: yes, size : .regular)
           [outlet mProductPageSegmentedControl] { 
-          addPage (title: "Artwork Description", tooltip: "", pageView: stackView mArtworkDescriptionPage)
-          addPage (title: "Artwork Minima", tooltip: "", pageView: stackView mArtworkMinimaPage)
-          addPage (title: "Artwork Data", tooltip: "", pageView: stackView mArtworkDataPage)
-          addPage (title: "PDF Settings", tooltip: "", pageView: stackView mPDFSettingsPage)
-          addPage (title: "Generation Log", tooltip: "", pageView: stackView mGenerationLogPage)
+          addPage (title: "Artwork Description", tooltip: "", pageView: view artworkDescriptionPage)
+          addPage (title: "Artwork Minima", tooltip: "", pageView: view artworkMinimaPage)
+          addPage (title: "Artwork Data", tooltip: "", pageView: view artworkDataPage)
+          addPage (title: "PDF Settings", tooltip: "", pageView: view pdfSettingsPage)
+          addPage (title: "Generation Log", tooltip: "", pageView: view generationLogPage)
         }
         space
       }
-      stackViewRef mProductMasterView
+      view productMasterView
     }
  }
 
@@ -2082,11 +2129,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   //············································································
 
-  stackView mProductMasterView vStack { }
+  stackView \ProductMasterView vStack { }
 
   //············································································
 
-  stackView mArtworkDescriptionPage vStack {
+  stackView \ArtworkDescriptionPage vStack {
     GridView2 {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Layer Description", bold: no, size: .regular, alignment: .center),
@@ -2113,7 +2160,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   //············································································
 
-  stackView mArtworkDataPage vStack set (margins: 20) {
+  stackView \ArtworkDataPage vStack set (margins: 20) {
     hStack set (margins: 8) {
       space
       hStack setFirstBaselineAlignment ()  {
@@ -2241,7 +2288,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   //············································································
 
-  stackView mArtworkMinimaPage vStack set (margins: 20) {
+  stackView \ArtworkMinimaPage vStack set (margins: 20) {
     hStack {
       space
       vStack {
@@ -2288,7 +2335,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   //············································································
 
-  stackView mPDFSettingsPage vStack set (margins: 20) {
+  stackView \PDFSettingsPage vStack set (margins: 20) {
     hStack setFirstBaselineAlignment () {
       space
       ColorWell { $color root.mPDFBoardBackgroundColor (sendContinously : no) }
@@ -2300,7 +2347,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   //············································································
 
-  stackView mGenerationLogPage vStack set (margins: 20) {
+  stackView \GenerationLogPage vStack set (margins: 20) {
     TextObserverView () [outlet mProductFileGenerationLogTextView]
   }
 

@@ -2,24 +2,31 @@
 //     D E V I C E    D O C U M E N T
 //----------------------------------------------------------------------------------------------------------------------
 
-autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentMainView {
+autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentMainView {
 
 //······················································································································
 //   MAIN VIEW
 //······················································································································
 
-  stackView mPageMasterView vStack { }
+  stackView \PageMasterView vStack { }
  
-  stackView mDocumentMainView vStack set (spacing: 0) {
+  stackView \DocumentMainView vStack set (spacing: 0) {
+    newView pageMasterView = \PageMasterView ()
+    newView descriptionPage = \DescriptionPage ()
+    newView symbolsPage = \SymbolsPage ()
+    newView packagesPage = \PackagesPage ()
+    newView assignmentsPage = \AssignmentsPage ()
+    newView libraryPage = \LibraryPage ()
+    newView infosPage = \InfosPage ()
     hStack set (margins: 8) {
       vStack {
-        SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no, size : .regular) {
-          addPage (title: "Description", tooltip: "Device Description", pageView: stackView mDescriptionPage)
-          addPage (title: "Symbols", tooltip: "Device Symbols", pageView: stackView mSymbolsPage)
-          addPage (title: "Packages", tooltip: "Device Available Packages", pageView: stackView mPackagesPage)
-          addPage (title: "Assignments", tooltip: "Pin / Pad Assignments", pageView: stackView mAssignmentsPage)
-          addPage (title: "Library", tooltip: "Device Embedded Library", pageView: stackView mLibraryPage)
-          addPage (title: "Infos", tooltip: "Device Informations", pageView: stackView mInfosPage)
+        SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
+          addPage (title: "Description", tooltip: "Device Description", pageView: view descriptionPage)
+          addPage (title: "Symbols", tooltip: "Device Symbols", pageView: view symbolsPage)
+          addPage (title: "Packages", tooltip: "Device Available Packages", pageView: view packagesPage)
+          addPage (title: "Assignments", tooltip: "Pin / Pad Assignments", pageView: view assignmentsPage)
+          addPage (title: "Library", tooltip: "Device Embedded Library", pageView: view libraryPage)
+          addPage (title: "Infos", tooltip: "Device Informations", pageView: view infosPage)
           $selectedPage root.mSelectedPageIndex
         }
         StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
@@ -39,7 +46,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
       }
     }
     separator
-    stackViewRef mPageMasterView
+    view pageMasterView
   }
 
   transient CanariIssueArray issues dependsFrom root.issues, self.documentFileName ;
@@ -51,7 +58,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 //   DESCRIPTION
 //······················································································································
 
-  stackView mDescriptionPage vStack set (margins: 16) set (spacing: 12) {
+  stackView \DescriptionPage vStack set (margins: 16) set (spacing: 12) {
     TextField (minWidth: 70, size : .regular) {
       expandableWidth ()
       set (alignment: .left)
@@ -97,17 +104,20 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 //   SYMBOLS
 //······················································································································
 
-  stackView mSymbolsPage hStack {
+  stackView \SymbolsPage hStack {
+    newView symbolPageInspectorView = \SymbolPageInspectorView ()
+    newView symbolPageOperationView = \SymbolPageOperationView ()
+    newView symbolGridZoomInspectorView = \SymbolGridZoomInspectorView ()
     vStack set (width: 250) set (margins: 8) {
-      SegmentedControlWithPages (documentView: stackView mSymbolPageInspectorView, equalWidth: yes, size: .small)
+      SegmentedControlWithPages (documentView: view symbolPageInspectorView, equalWidth: yes, size: .small)
         [configurator symbolInspectorSegmentedControl] {
         expandableWidth ()
-        addPage (title: "", tooltip: "", pageView: stackView mSymbolPageOperationView)
-        addPage (title: "", tooltip: "Grid, Zoom and Display Inspector", pageView: stackView mSymbolGridZoomInspectorView)
+        addPage (title: "", tooltip: "", pageView: view symbolPageOperationView)
+        addPage (title: "", tooltip: "Grid, Zoom and Display Inspector", pageView: view symbolGridZoomInspectorView)
         $selectedPage root. mSelectedSymbolInspectorIndex
       }
       vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
-        stackViewRef mSymbolPageInspectorView
+        view symbolPageInspectorView
       }
       space
     }
@@ -121,10 +131,9 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
     }
   }
   
-  stackView mSymbolPageInspectorView hStack {
-  }
+  stackView \SymbolPageInspectorView hStack { }
   
-  stackView mSymbolPageOperationView vStack set (margins: 0) {
+  stackView \SymbolPageOperationView vStack set (margins: 0) {
     StaticLabel (title: "Add Symbol From", bold: yes, size : .small, alignment: .center)
     Button (title: "File Library…", size : .small) { expandableWidth () $run addSymbolFromLibraryAction }
     CanariAddSymbolInstancePullDownButton [configurator addSymbolInstancePullDownButton] {
@@ -154,7 +163,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
   action addSymbolFromLibraryAction ;
 
   
-  stackView mSymbolGridZoomInspectorView vStack set (margins: 0) {
+  stackView \SymbolGridZoomInspectorView vStack set (margins: 0) {
     StaticLabel (title: "Display Inspector", bold: yes, size : .small, alignment: .center)
     GridView2 {
       addCenterYAligned (
@@ -195,17 +204,20 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 //   PACKAGES
 //······················································································································
 
-  stackView mPackagesPage hStack {
+  stackView \PackagesPage hStack {
+    newView packagePageInspectorView = \PackagePageInspectorView ()
+    newView packagePageOperationView = \PackagePageOperationView ()
+    newView packageGridZoomInspectorView = \PackageGridZoomInspectorView ()
     vStack set (width: 250) set (margins: 8) {
-      SegmentedControlWithPages (documentView: stackView mPackagePageInspectorView, equalWidth: yes, size: .small)
+      SegmentedControlWithPages (documentView: view packagePageInspectorView, equalWidth: yes, size: .small)
         [configurator packageInspectorSegmentedControl] {
         expandableWidth ()
-        addPage (title: "", tooltip: "", pageView: stackView mPackagePageOperationView)
-        addPage (title: "", tooltip: "Grid, Zoom and Display Inspector", pageView: stackView mPackageGridZoomInspectorView)
+        addPage (title: "", tooltip: "", pageView: view packagePageOperationView)
+        addPage (title: "", tooltip: "Grid, Zoom and Display Inspector", pageView: view packageGridZoomInspectorView)
         $selectedPage root. mSelectedPackageInspectorIndex
       }
       vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
-        stackViewRef mPackagePageInspectorView
+        view packagePageInspectorView
       }
       space
     }
@@ -219,10 +231,9 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
     }
   }
 
-  stackView mPackagePageInspectorView hStack {
-  }
+  stackView \PackagePageInspectorView hStack { }
 
-  stackView mPackageGridZoomInspectorView vStack {
+  stackView \PackageGridZoomInspectorView vStack {
     StaticLabel (title: "Display Inspector", bold: yes, size : .small, alignment: .center)
     GridView2 {
       addCenterYAligned (
@@ -271,7 +282,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
     }
   }
 
-  stackView mPackagePageOperationView vStack set (margins: 0) {
+  stackView \PackagePageOperationView vStack set (margins: 0) {
     Button (title: "Add Package From File Library…", size : .small) {
       expandableWidth ()
       $run addPackageFromLibraryAction
@@ -365,7 +376,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
     column documentSize (title: "Size (bytes)", minWidth: 100, maxWidth: 100, headerAlignment: .center, contentAlignment: .right) sortkey documentSize
   }
 
-  stackView mLibraryPage vStack set (margins: 20) {
+  stackView \LibraryPage vStack set (margins: 20) {
     hStack {
       Button (title: "Reset Symbols and Packages Version and Signature", size : .small) {
         $run resetSymbolsAndPackagesVersion
@@ -461,7 +472,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 //   ASSIGNMENTS
 //······················································································································
 
-  stackView mAssignmentsPage hStack set (margins: 8) {
+  stackView \AssignmentsPage hStack set (margins: 8) {
     hSplit $hidden !root.packagePadNameSetsAreConsistent | !root.symbolNameAreConsistent {
       vStack set (minWidth: 100) {
         StaticLabel (title: "Unassigned Pads", bold: yes, size : .regular, alignment: .center)
@@ -539,7 +550,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView mDocumentM
 //   INFOS
 //······················································································································
 
-  stackView mInfosPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
+  stackView \InfosPage vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (topMargin: 8) {
     hStack setFirstBaselineAlignment () {
       StaticLabel (title: "Device Prefix", bold: no, size : .small, alignment: .center) { set (minWidth: 84) }
       TextField (minWidth: 56, size : .small) { $value root.mPrefix (sendContinously : yes) }

@@ -164,30 +164,34 @@ import Cocoa
   final var rootObject : ArtworkRoot { return self.mRootObject as! ArtworkRoot }
 
   //····················································································································
-  //    VIEW mPageMasterView
+  //    VIEW PageMasterView
   //····················································································································
 
-  lazy final private var mPageMasterView : AutoLayoutVerticalStackView = {
+  final private func PageMasterView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mDocumentMainView
+  //    VIEW DocumentMainView
   //····················································································································
 
-  lazy final private var mDocumentMainView : AutoLayoutVerticalStackView = {
+  final private func DocumentMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
+    let pageMasterView = self.PageMasterView ()
+    let descriptionPage = self.DescriptionPage ()
+    let minimaPage = self.MinimaPage ()
+    let dataPage = self.DataPage ()
     let view_0 = AutoLayoutHorizontalStackView ()
       .set (margins: 8)
     do{
       let view_0_0 = AutoLayoutVerticalStackView ()
       do{
-        let view_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: self.mPageMasterView, equalWidth: false, size: .regular)
-          .addPage (title: "Description", tooltip: "Artwork Description", pageView: self.mDescriptionPage)
-          .addPage (title: "Minima", tooltip: "Minima Editor", pageView: self.mMinimaPage)
-          .addPage (title: "Data", tooltip: "Data Editor", pageView: self.mDataPage)
+        let view_0_0_0 = AutoLayoutSegmentedControlWithPages (documentView: pageMasterView, equalWidth: false, size: .regular)
+          .addPage (title: "Description", tooltip: "Artwork Description", pageView: descriptionPage)
+          .addPage (title: "Minima", tooltip: "Minima Editor", pageView: minimaPage)
+          .addPage (title: "Data", tooltip: "Data Editor", pageView: dataPage)
           .bind_selectedPage (self.rootObject.selectedTab_property)
           .bind_segmentImage (self.segmentedControlDataIssueImage_property, segmentIndex:2)
         _ = view_0_0.appendView (view_0_0_0)
@@ -238,16 +242,16 @@ import Cocoa
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView.HorizontalSeparator ()
     _ = vStackView.appendView (view_1)
-    let view_2 = self.mPageMasterView
+    let view_2 = pageMasterView
     _ = vStackView.appendView (view_2)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mDescriptionPage
+  //    VIEW DescriptionPage
   //····················································································································
 
-  lazy final private var mDescriptionPage : AutoLayoutVerticalStackView = {
+  final private func DescriptionPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutTextField (minWidth: 56, size: .regular)
@@ -284,13 +288,13 @@ import Cocoa
     }
     _ = vStackView.appendView (view_3)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mMinimaPage
+  //    VIEW MinimaPage
   //····················································································································
 
-  lazy final private var mMinimaPage : AutoLayoutVerticalStackView = {
+  final private func MinimaPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutFlexibleSpace ()
@@ -351,13 +355,13 @@ import Cocoa
     let view_4 = AutoLayoutFlexibleSpace ()
     _ = vStackView.appendView (view_4)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mDataPage
+  //    VIEW DataPage
   //····················································································································
 
-  lazy final private var mDataPage : AutoLayoutVerticalStackView = {
+  final private func DataPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -586,7 +590,7 @@ import Cocoa
     }
     _ = vStackView.appendView (view_2)
     return vStackView
-  } ()
+  }
 
   //····················································································································
   //    IMPLICIT VIEW 0
@@ -887,7 +891,7 @@ import Cocoa
     }
   //--- Build window content view
     self.configureProperties ()
-    let mainView = self.mDocumentMainView
+    let mainView = self.DocumentMainView ()
   //--- Call outlet linkers
   //--- Assign main view to window
     self.windowForSheet?.contentView = AutoLayoutWindowContentView (view: mainView)

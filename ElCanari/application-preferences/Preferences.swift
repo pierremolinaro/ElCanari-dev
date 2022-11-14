@@ -35,7 +35,7 @@ import Cocoa
       window.setFrameAutosaveName ("PrefsWindowSettings")
       window.title = "Preferences"
       window.isReleasedWhenClosed = false
-      window.contentView = AutoLayoutWindowContentView (view: self.mPrefsMainView)
+      window.contentView = AutoLayoutWindowContentView (view: self.mPrefsMainView ())
     //--- Contrôler le comportement en plein écran
       window.collectionBehavior = [.fullScreenAuxiliary, .fullScreenNone]
       let zoomButton = window.standardWindowButton (.zoomButton)
@@ -48,44 +48,48 @@ import Cocoa
   //    VIEW mPrefsMainView
   //····················································································································
 
-  lazy final private var mPrefsMainView : AutoLayoutVerticalStackView = {
+  final private func mPrefsMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
       .set (topMargin: 12)
+    let prefsPageView = self.PrefsPageView ()
+    let prefsUserInterfacePage = self.PrefsUserInterfacePage ()
+    let prefsAppUpdatePage = self.PrefsAppUpdatePage ()
+    let prefsLibraryPage = self.PrefsLibraryPage ()
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
       let view_0_0 = AutoLayoutFlexibleSpace ()
       _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutSegmentedControlWithPages (documentView: self.mPrefsPageView, equalWidth: false, size: .regular)
-        .addPage (image: "settings", tooltip: "User Interface", pageView: self.mPrefsUserInterfacePage)
-        .addPage (image: "update", tooltip: "Application Update", pageView: self.mPrefsAppUpdatePage)
-        .addPage (image: "library", tooltip: "Library", pageView: self.mPrefsLibraryPage)
+      let view_0_1 = AutoLayoutSegmentedControlWithPages (documentView: prefsPageView, equalWidth: false, size: .regular)
+        .addPage (image: "settings", tooltip: "User Interface", pageView: prefsUserInterfacePage)
+        .addPage (image: "update", tooltip: "Application Update", pageView: prefsAppUpdatePage)
+        .addPage (image: "library", tooltip: "Library", pageView: prefsLibraryPage)
         .bind_selectedPage (preferences_mSelectedPrefsPage_property)
       _ = view_0.appendView (view_0_1)
       let view_0_2 = AutoLayoutFlexibleSpace ()
       _ = view_0.appendView (view_0_2)
     }
     _ = vStackView.appendView (view_0)
-    let view_1 = self.mPrefsPageView
+    let view_1 = prefsPageView
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mPrefsPageView
+  //    VIEW PrefsPageView
   //····················································································································
 
-  lazy final private var mPrefsPageView : AutoLayoutVerticalStackView = {
+  final private func PrefsPageView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mPrefsAppUpdatePage
+  //    VIEW PrefsAppUpdatePage
   //····················································································································
 
-  lazy final private var mPrefsAppUpdatePage : AutoLayoutVerticalStackView = {
+  final private func PrefsAppUpdatePage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 12)
     let view_0 = AutoLayoutStaticLabel (title: "Application Update", bold: true, size: .regular, alignment: .center)
@@ -132,13 +136,13 @@ import Cocoa
       .set (minHeight: 500)
     _ = vStackView.appendView (view_4)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mPrefsUserInterfacePage
+  //    VIEW PrefsUserInterfacePage
   //····················································································································
 
-  lazy final private var mPrefsUserInterfacePage : AutoLayoutVerticalStackView = {
+  final private func PrefsUserInterfacePage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 12)
     let view_0 = AutoLayoutStaticLabel (title: "User Interface", bold: true, size: .regular, alignment: .center)
@@ -150,13 +154,13 @@ import Cocoa
       .addFirstBaseLineAligned (left: self.computeImplicitView_6 (), right: self.computeImplicitView_7 ())
     _ = vStackView.appendView (view_1)
     return vStackView
-  } ()
+  }
 
   //····················································································································
-  //    VIEW mPrefsLibraryPage
+  //    VIEW PrefsLibraryPage
   //····················································································································
 
-  lazy final private var mPrefsLibraryPage : AutoLayoutVerticalStackView = {
+  final private func PrefsLibraryPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 12)
     let view_0 = AutoLayoutStaticLabel (title: "System Library", bold: true, size: .regular, alignment: .left)
@@ -269,7 +273,7 @@ import Cocoa
     }
     _ = vStackView.appendView (view_8)
     return vStackView
-  } ()
+  }
 
   //····················································································································
   //    IMPLICIT VIEW 0

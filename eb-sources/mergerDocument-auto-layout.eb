@@ -2,17 +2,21 @@
 //     M E R G E R    D O C U M E N T
 //------------------------------------------------------------------------------
 
-autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentMainView {
+autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView \DocumentMainView {
 
-  stackView mPageMasterView vStack { }
+  stackView \PageMasterView vStack { }
 
-  stackView mDocumentMainView vStack set (spacing: 0) {
+  stackView \DocumentMainView vStack set (spacing: 0) {
+    newView pageMasterView = \PageMasterView ()
+    newView modelPage = \ModelPage ()
+    newView boardPage = \BoardPage ()
+    newView productPage = \ProductPage ()
     hStack set (margins: 8) {
       vStack {
-        SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no, size : .regular) {
-          addPage (title: "Model", tooltip: "Model Description", pageView: stackView mModelPage)
-          addPage (title: "Board", tooltip: "Board Description", pageView: stackView mBoardPage)
-          addPage (title: "Product", tooltip: "Product Description", pageView: stackView mProductPage)
+        SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
+          addPage (title: "Model", tooltip: "Model Description", pageView: view modelPage)
+          addPage (title: "Board", tooltip: "Board Description", pageView: view boardPage)
+          addPage (title: "Product", tooltip: "Product Description", pageView: view productPage)
           $selectedPage root.selectedPageIndex
         }
         StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
@@ -31,7 +35,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
       }
     }
     separator
-    stackViewRef mPageMasterView
+    view pageMasterView
   }
 
   transient NSImage statusImage dependsFrom self.issues, root.boardLimitWidthOk ;
@@ -53,7 +57,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   //     Model Page
   //············································································
 
-  stackView mModelPage hStack {
+  stackView \ModelPage hStack {
     vStack set (bottomMargin: 8) set (width: 250) $hidden !root.showDisplaySettingView {
       VerticalScrollView (content: 
         GridView2 {
@@ -396,9 +400,12 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   //     Board Page
   //············································································
 
-  stackView mBoardBaseInspectorView vStack { }
+  stackView \BoardBaseInspectorView vStack { }
 
-  stackView mBoardPage hStack {
+  stackView \BoardPage hStack {
+    newView boardBaseInspectorView = \BoardBaseInspectorView ()
+    newView boardSettingsPage = \BoardSettingsPage ()
+    newView boardIssuesPage = \BoardIssuesPage ()
     vStack set (bottomMargin: 8) set (width: 250) $hidden !root.showDisplaySettingView {
       VerticalScrollView (content: 
         GridView2 {
@@ -649,16 +656,16 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
       hStack { space Button (title: "Done", size : .regular) { $run dismissDisplaySettingView } }
     }
     vStack set (margins: 8) set (width: 250) $hidden root.showDisplaySettingView {
-      SegmentedControlWithPages (documentView: stackView mBoardBaseInspectorView, equalWidth: yes, size : .regular)
+      SegmentedControlWithPages (documentView: view boardBaseInspectorView, equalWidth: yes, size : .regular)
         [outlet mBoardInspectorSegmentedControl configurator boardPageSegmentedControl] {
         expandableWidth ()
-        addPage (title: "", tooltip: "Model Description", pageView: stackView mBoardSettingsPage)
-        addPage (title: "", tooltip: "Issue Inspector", pageView: stackView mBoardIssuesPage)
+        addPage (title: "", tooltip: "Model Description", pageView: view boardSettingsPage)
+        addPage (title: "", tooltip: "Issue Inspector", pageView: view boardIssuesPage)
         $segmentImage self.boardLimitWidthStatusImage (segmentIndex : 0)
         $segmentImage self.statusImage (segmentIndex : 1)
         $segmentTitle self.boardDispositionStatusTitle (segmentIndex : 1)
       }
-      stackViewRef mBoardBaseInspectorView
+      view boardBaseInspectorView
     }
     separator
     GraphicView (minZoom: 10, maxZoom: 4000) [outlet mComposedBoardGraphicView configurator boardGraphicView] {
@@ -681,7 +688,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   //     Board Settings Page
   //············································································
 
-  stackView mBoardSettingsPage vStack {
+  stackView \BoardSettingsPage vStack {
     hStack {
       vStack {
         StaticLabel (title: "Add Model", bold: yes, size : .small, alignment: .left)
@@ -872,7 +879,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   //     Board Issues Page
   //············································································
 
-  stackView mBoardIssuesPage vStack {
+  stackView \BoardIssuesPage vStack {
     Label (bold: yes, size: .small) { expandableWidth () $title self.statusMessage }
     CanariIssueTableView (hasHideIssueButton: yes) [outlet mBoardIssueTableView] { $issues self.issues }
   }
@@ -883,7 +890,13 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
   //     Product Page
   //············································································
 
-  stackView mProductPage vStack set (margins: 8) {
+  stackView \ProductPage vStack set (margins: 8) {
+    newView productMasterView = \ProductMasterView ()
+    newView artworkDescriptionPage = \ArtworkDescriptionPage ()
+    newView artworkMinimaPage = \ArtworkMinimaPage ()
+    newView artworkDataPage = \ArtworkDataPage ()
+    newView pdfSettingsPage = \PDFSettingsPage ()
+    newView generationLogPage = \GenerationLogPage ()
     hStack {
       vStack {
         Button (title: "Import Artwork…", size : .regular) {
@@ -927,17 +940,17 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
     vStack $hidden root.mArtwork.none {
       hStack {
         space
-        SegmentedControlWithPages (documentView: stackView mProductMasterView, equalWidth: yes, size : .regular)
+        SegmentedControlWithPages (documentView: view productMasterView, equalWidth: yes, size : .regular)
           [outlet mProductPageSegmentedControl] {
-          addPage (title: "Artwork Description", tooltip: "", pageView: stackView mArtworkDescriptionPage)
-          addPage (title: "Artwork Minima", tooltip: "", pageView: stackView mArtworkMinimaPage)
-          addPage (title: "Artwork Data", tooltip: "", pageView: stackView mArtworkDataPage)
-          addPage (title: "PDF Settings", tooltip: "", pageView: stackView mPDFSettingsPage)
-          addPage (title: "Generation Log", tooltip: "", pageView: stackView mGenerationLogPage)
+          addPage (title: "Artwork Description", tooltip: "", pageView: view artworkDescriptionPage)
+          addPage (title: "Artwork Minima", tooltip: "", pageView: view artworkMinimaPage)
+          addPage (title: "Artwork Data", tooltip: "", pageView: view artworkDataPage)
+          addPage (title: "PDF Settings", tooltip: "", pageView: view pdfSettingsPage)
+          addPage (title: "Generation Log", tooltip: "", pageView: view generationLogPage)
         }
         space
       }
-      stackViewRef mProductMasterView
+      view productMasterView
     }
  }
 
@@ -950,11 +963,11 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
 
   //············································································
 
-  stackView mProductMasterView vStack { }
+  stackView \ProductMasterView vStack { }
 
   //············································································
 
-  stackView mArtworkDescriptionPage vStack {
+  stackView \ArtworkDescriptionPage vStack {
     GridView2 {
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Layer Description", bold: no, size: .regular, alignment: .right),
@@ -981,7 +994,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
 
   //············································································
 
-  stackView mArtworkDataPage vStack set (spacing: 0) {
+  stackView \ArtworkDataPage vStack set (spacing: 0) {
     hStack set (margins: 8) {
       hStack setFirstBaselineAlignment ()  {
         StaticLabel (title: "Drill File Extension", bold: no, size : .small, alignment: .center)
@@ -1105,7 +1118,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
 
   //············································································
 
-  stackView mArtworkMinimaPage vStack {
+  stackView \ArtworkMinimaPage vStack {
     space
     hStack {
       space
@@ -1153,7 +1166,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
 
   //············································································
 
-  stackView mPDFSettingsPage vStack set (margins: 20) {
+  stackView \PDFSettingsPage vStack set (margins: 20) {
     hStack setFirstBaselineAlignment () {
       space
       ColorWell { $color root.mPDFBoardBackgroundColor (sendContinously : no) }
@@ -1165,7 +1178,7 @@ autoLayoutDocument AutoLayoutMergerDocument root MergerRoot stackView mDocumentM
 
   //············································································
 
-  stackView mGenerationLogPage vStack {
+  stackView \GenerationLogPage vStack {
     TextObserverView () [outlet mLogTextView]
   }
 

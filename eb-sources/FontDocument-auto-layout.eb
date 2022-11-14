@@ -7,16 +7,19 @@ transient property struct CharacterSegmentList ;
 
 //——————————————————————————————————————————————————————————————————————————————
 
-autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainView {
+autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView \DocumentMainView {
 
-  stackView mPageMasterView vStack { }
+  stackView \PageMasterView vStack { }
 
-  stackView mDocumentMainView vStack set (spacing: 0) {
+  stackView \DocumentMainView vStack set (spacing: 0) {
+    newView pageMasterView = \PageMasterView ()
+    newView fontPage = \FontPage ()
+    newView infoPage = \InfoPage ()
     hStack set (margins: 8) {
       vStack {
-        SegmentedControlWithPages (documentView: stackView mPageMasterView, equalWidth: no, size : .regular) {
-          addPage (title: "Font", tooltip: "Characters Definition", pageView: stackView mFontPage)
-          addPage (title: "Infos", tooltip: "Document Infos", pageView: stackView mInfoPage)
+        SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
+          addPage (title: "Font", tooltip: "Characters Definition", pageView: view fontPage)
+          addPage (title: "Infos", tooltip: "Document Infos", pageView: view infoPage)
           $selectedPage root.selectedTab
         }
         StaticLabel (title: "Page", bold: no, size : .small, alignment: .center)
@@ -36,7 +39,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
       }
     }
     separator
-    stackViewRef mPageMasterView
+    view pageMasterView
   }
 
   transient NSImage statusImage dependsFrom root.issues ;
@@ -52,9 +55,13 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
      (allowsEmptySelection: no, allowsMultipleSelection: no) root.characters ;
   selectionController FontCharacter #characterSelection : #selectedCharacterController.selectedArray ;
 
-  stackView mFontPageInspectorMasterView : vStack ;
+  stackView \FontPageInspectorMasterView : vStack ;
 
-  stackView mFontPage vStack set (margins: 8) {
+  stackView \FontPage vStack set (margins: 8) {
+    newView fontPageInspectorMasterView = \FontPageInspectorMasterView ()
+    newView selectedCharacterInspectorView = \SelectedCharacterInspectorView ()
+    newView sampleStringInspectorView = \SampleStringInspectorView ()
+    newView issuesInspectorView = \IssuesInspectorView ()
   //--- Sample string display
     hStack {
      TextField (minWidth: 200, size: .small) { expandableWidth () $value prefs.sampleString (sendContinously:yes) }
@@ -65,18 +72,18 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
     CanariSampleFontStringView { $bezierPath root.sampleStringBezierPath }
     hStack {
       vStack {
-        SegmentedControlWithPages (documentView: stackView mFontPageInspectorMasterView, equalWidth: yes, size: .small)
+        SegmentedControlWithPages (documentView: view fontPageInspectorMasterView, equalWidth: yes, size: .small)
           [outlet mFontInspectorSegmentedControl configurator fontPageSegmentedControl] {
           expandableWidth ()
-          addPage (title: "", tooltip: "Selected Character Inspector", pageView: stackView mSelectedCharacterInspectorView)
-          addPage (title: "", tooltip: "Sample String Inspector", pageView: stackView mSampleStringInspectorView)
-          addPage (title: "", tooltip: "Issue Inspector", pageView: stackView mIssuesInspectorView)
+          addPage (title: "", tooltip: "Selected Character Inspector", pageView: view selectedCharacterInspectorView)
+          addPage (title: "", tooltip: "Sample String Inspector", pageView: view sampleStringInspectorView)
+          addPage (title: "", tooltip: "Issue Inspector", pageView: view issuesInspectorView)
           $selectedPage root.selectedInspector
           $segmentImage self.statusImage (segmentIndex : 2)
           $segmentTitle self.statusTitle (segmentIndex : 2)
         }
         vStack set (leftMargin: 20) set (rightMargin: 20) set (bottomMargin: 20) set (spacing: 12) {
-          view mFontPageInspectorMasterView
+          view fontPageInspectorMasterView
         }
       }
       CanariFontCharacterView [outlet mFontGraphicView configurator fontGraphicView] {
@@ -93,7 +100,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
 //   Issues inspector
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mIssuesInspectorView vStack {
+  stackView \IssuesInspectorView vStack {
     hStack { space Label (bold: no, size: .small) { $title self.statusMessage } space }
     CanariIssueTableView (hasHideIssueButton: no) { $issues root.issues }
   }
@@ -102,7 +109,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
 //   Display inspector
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mSampleStringInspectorView vStack {
+  stackView \SampleStringInspectorView vStack {
     StaticLabel (title: "Sample String", bold: yes, size: .small, alignment: .center)
     TextView { $value prefs.sampleString }
     StaticLabel (title: "Sample String Metrics", bold: yes, size: .small, alignment: .center)
@@ -134,7 +141,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
 //   Selected objects inspector
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView mSelectedCharacterInspectorView vStack {
+  stackView \SelectedCharacterInspectorView vStack {
     hStack {
       StaticLabel (title: "Font Nominal Size", bold: yes, size: .small, alignment: .center)
       IntField (minWidth: 56, size: .small) { $value root.nominalSize (sendContinously:no) }
@@ -207,7 +214,7 @@ autoLayoutDocument AutoLayoutFontDocument root FontRoot stackView mDocumentMainV
 
   action resetVersionAndSignatureAction ;
 
-  stackView mInfoPage vStack set (margins: 8) {
+  stackView \InfoPage vStack set (margins: 8) {
     hStack setTopAlignment () {
       StaticLabel (title: "Description", bold: no, size : .regular, alignment: .center)
       TextView { $value root.comments }
