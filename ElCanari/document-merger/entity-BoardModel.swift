@@ -5199,42 +5199,38 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["name"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.name = value
-      }
-      if let range = inDictionary ["modelWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.modelWidth = value
-      }
-      if let range = inDictionary ["modelWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.modelWidthUnit = value
-      }
-      if let range = inDictionary ["modelHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.modelHeight = value
-      }
-      if let range = inDictionary ["modelHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.modelHeightUnit = value
-      }
-      if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.zoom = value
-      }
-      if let range = inDictionary ["layerConfiguration"], let value = LayerConfiguration.unarchiveFromDataRange (inData, range) {
-        self.layerConfiguration = value
-      }
-      if let range = inDictionary ["modelLimitWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.modelLimitWidth = value
-      }
-      if let range = inDictionary ["modelLimitWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.modelLimitWidthUnit = value
-      }
-      if let range = inDictionary ["artworkName"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.artworkName = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["name"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.name = value
+    }
+    if let range = inDictionary ["modelWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.modelWidth = value
+    }
+    if let range = inDictionary ["modelWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.modelWidthUnit = value
+    }
+    if let range = inDictionary ["modelHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.modelHeight = value
+    }
+    if let range = inDictionary ["modelHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.modelHeightUnit = value
+    }
+    if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.zoom = value
+    }
+    if let range = inDictionary ["layerConfiguration"], let value = LayerConfiguration.unarchiveFromDataRange (inData, range) {
+      self.layerConfiguration = value
+    }
+    if let range = inDictionary ["modelLimitWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.modelLimitWidth = value
+    }
+    if let range = inDictionary ["modelLimitWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.modelLimitWidthUnit = value
+    }
+    if let range = inDictionary ["artworkName"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.artworkName = value
+    }
   }
 
   //····················································································································
@@ -5451,107 +5447,107 @@ final class BoardModel : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: frontLegendLines
     for managedObject in self.frontLegendLines.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: backLegendLines
     for managedObject in self.backLegendLines.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: frontLegendTexts
     for managedObject in self.frontLegendTexts.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: frontLayoutTexts
     for managedObject in self.frontLayoutTexts.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: backLegendTexts
     for managedObject in self.backLegendTexts.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: backLayoutTexts
     for managedObject in self.backLayoutTexts.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: internalBoardsLimits
     for managedObject in self.internalBoardsLimits.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: drills
     for managedObject in self.drills.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: vias
     for managedObject in self.vias.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: frontPads
     for managedObject in self.frontPads.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: backPads
     for managedObject in self.backPads.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: traversingPads
     for managedObject in self.traversingPads.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: backComponentNames
     for managedObject in self.backComponentNames.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: frontComponentNames
     for managedObject in self.frontComponentNames.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: frontComponentValues
     for managedObject in self.frontComponentValues.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: backComponentValues
     for managedObject in self.backComponentValues.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: backTracks
     for managedObject in self.backTracks.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: frontTracks
     for managedObject in self.frontTracks.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: inner1Tracks
     for managedObject in self.inner1Tracks.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: inner2Tracks
     for managedObject in self.inner2Tracks.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: inner3Tracks
     for managedObject in self.inner3Tracks.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: inner4Tracks
     for managedObject in self.inner4Tracks.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: frontPackages
     for managedObject in self.frontPackages.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: backPackages
     for managedObject in self.backPackages.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: myInstances
     for managedObject in self.myInstances.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   }
 

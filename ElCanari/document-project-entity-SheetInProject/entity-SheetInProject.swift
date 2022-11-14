@@ -534,15 +534,11 @@ final class SheetInProject : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mSheetTitle"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mSheetTitle = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mSheetTitle"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mSheetTitle = value
+    }
   }
 
   //····················································································································
@@ -589,19 +585,19 @@ final class SheetInProject : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mObjects
     for managedObject in self.mObjects.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: mPoints
     for managedObject in self.mPoints.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To one property: mRoot
     if let object = self.mRoot {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   }
 

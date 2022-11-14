@@ -297,11 +297,11 @@ class SchematicObject : EBGraphicManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To one property: mSheet
     if let object = self.mSheet {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   }
 

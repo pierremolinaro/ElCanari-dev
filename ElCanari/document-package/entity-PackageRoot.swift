@@ -2478,135 +2478,131 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.selectedPageIndex = value
-      }
-      if let range = inDictionary ["selectedInspector"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.selectedInspector = value
-      }
-      if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.comments = value
-      }
-      if let range = inDictionary ["program"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.program = value
-      }
-      if let range = inDictionary ["horizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.horizontalFlip = value
-      }
-      if let range = inDictionary ["verticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.verticalFlip = value
-      }
-      if let range = inDictionary ["gridStyle"], let value = GridStyle.unarchiveFromDataRange (inData, range) {
-        self.gridStyle = value
-      }
-      if let range = inDictionary ["gridStep"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.gridStep = value
-      }
-      if let range = inDictionary ["gridStepUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.gridStepUnit = value
-      }
-      if let range = inDictionary ["gridDisplayFactor"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.gridDisplayFactor = value
-      }
-      if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.zoom = value
-      }
-      if let range = inDictionary ["mModelImageOpacity"], let value = Double.unarchiveFromDataRange (inData, range) {
-        self.mModelImageOpacity = value
-      }
-      if let range = inDictionary ["mModelImagePageHorizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mModelImagePageHorizontalFlip = value
-      }
-      if let range = inDictionary ["mModelImagePageVerticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mModelImagePageVerticalFlip = value
-      }
-      if let range = inDictionary ["mModelImagePageGridStyle"], let value = GridStyle.unarchiveFromDataRange (inData, range) {
-        self.mModelImagePageGridStyle = value
-      }
-      if let range = inDictionary ["mModelImagePageGridStep"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mModelImagePageGridStep = value
-      }
-      if let range = inDictionary ["mModelImagePageGridStepUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mModelImagePageGridStepUnit = value
-      }
-      if let range = inDictionary ["mModelImagePageGridDisplayFactor"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mModelImagePageGridDisplayFactor = value
-      }
-      if let range = inDictionary ["mModelImagePageZoom"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mModelImagePageZoom = value
-      }
-      if let range = inDictionary ["mModelImagePageXPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mModelImagePageXPlacardUnit = value
-      }
-      if let range = inDictionary ["mModelImagePageYPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mModelImagePageYPlacardUnit = value
-      }
-      if let range = inDictionary ["mModelImageSecondPointXUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mModelImageSecondPointXUnit = value
-      }
-      if let range = inDictionary ["mModelImageSecondPointYUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mModelImageSecondPointYUnit = value
-      }
-      if let range = inDictionary ["mModelImageFirstPointXOnLock"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mModelImageFirstPointXOnLock = value
-      }
-      if let range = inDictionary ["mModelImageFirstPointYOnLock"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mModelImageFirstPointYOnLock = value
-      }
-      if let range = inDictionary ["mModelImagePointsDxOnLock"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mModelImagePointsDxOnLock = value
-      }
-      if let range = inDictionary ["mModelImagePointsDyOnLock"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mModelImagePointsDyOnLock = value
-      }
-      if let range = inDictionary ["mModelImageScale"], let value = Double.unarchiveFromDataRange (inData, range) {
-        self.mModelImageScale = value
-      }
-      if let range = inDictionary ["mModelImageRotationInRadians"], let value = Double.unarchiveFromDataRange (inData, range) {
-        self.mModelImageRotationInRadians = value
-      }
-      if let range = inDictionary ["mDimensionUnitFirstModelPointX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mDimensionUnitFirstModelPointX = value
-      }
-      if let range = inDictionary ["mDimensionUnitFirstModelPointY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mDimensionUnitFirstModelPointY = value
-      }
-      if let range = inDictionary ["mDimensionUnitSecondModelPointDx"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mDimensionUnitSecondModelPointDx = value
-      }
-      if let range = inDictionary ["mDimensionUnitSecondModelPointDy"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mDimensionUnitSecondModelPointDy = value
-      }
-      if let range = inDictionary ["mModelPointsCircleRadius"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mModelPointsCircleRadius = value
-      }
-      if let range = inDictionary ["mPointsAreLocked"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mPointsAreLocked = value
-      }
-      if let range = inDictionary ["knobSizeMultpliedByTen"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.knobSizeMultpliedByTen = value
-      }
-      if let range = inDictionary ["padNumbering"], let value = PadNumbering.unarchiveFromDataRange (inData, range) {
-        self.padNumbering = value
-      }
-      if let range = inDictionary ["counterClockNumberingStartAngle"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.counterClockNumberingStartAngle = value
-      }
-      if let range = inDictionary ["xPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.xPlacardUnit = value
-      }
-      if let range = inDictionary ["yPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.yPlacardUnit = value
-      }
-      if let range = inDictionary ["mModelImageData"], let value = Data.unarchiveFromDataRange (inData, range) {
-        self.mModelImageData = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.selectedPageIndex = value
+    }
+    if let range = inDictionary ["selectedInspector"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.selectedInspector = value
+    }
+    if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.comments = value
+    }
+    if let range = inDictionary ["program"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.program = value
+    }
+    if let range = inDictionary ["horizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.horizontalFlip = value
+    }
+    if let range = inDictionary ["verticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.verticalFlip = value
+    }
+    if let range = inDictionary ["gridStyle"], let value = GridStyle.unarchiveFromDataRange (inData, range) {
+      self.gridStyle = value
+    }
+    if let range = inDictionary ["gridStep"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.gridStep = value
+    }
+    if let range = inDictionary ["gridStepUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.gridStepUnit = value
+    }
+    if let range = inDictionary ["gridDisplayFactor"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.gridDisplayFactor = value
+    }
+    if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.zoom = value
+    }
+    if let range = inDictionary ["mModelImageOpacity"], let value = Double.unarchiveFromDataRange (inData, range) {
+      self.mModelImageOpacity = value
+    }
+    if let range = inDictionary ["mModelImagePageHorizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mModelImagePageHorizontalFlip = value
+    }
+    if let range = inDictionary ["mModelImagePageVerticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mModelImagePageVerticalFlip = value
+    }
+    if let range = inDictionary ["mModelImagePageGridStyle"], let value = GridStyle.unarchiveFromDataRange (inData, range) {
+      self.mModelImagePageGridStyle = value
+    }
+    if let range = inDictionary ["mModelImagePageGridStep"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mModelImagePageGridStep = value
+    }
+    if let range = inDictionary ["mModelImagePageGridStepUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mModelImagePageGridStepUnit = value
+    }
+    if let range = inDictionary ["mModelImagePageGridDisplayFactor"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mModelImagePageGridDisplayFactor = value
+    }
+    if let range = inDictionary ["mModelImagePageZoom"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mModelImagePageZoom = value
+    }
+    if let range = inDictionary ["mModelImagePageXPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mModelImagePageXPlacardUnit = value
+    }
+    if let range = inDictionary ["mModelImagePageYPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mModelImagePageYPlacardUnit = value
+    }
+    if let range = inDictionary ["mModelImageSecondPointXUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mModelImageSecondPointXUnit = value
+    }
+    if let range = inDictionary ["mModelImageSecondPointYUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mModelImageSecondPointYUnit = value
+    }
+    if let range = inDictionary ["mModelImageFirstPointXOnLock"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mModelImageFirstPointXOnLock = value
+    }
+    if let range = inDictionary ["mModelImageFirstPointYOnLock"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mModelImageFirstPointYOnLock = value
+    }
+    if let range = inDictionary ["mModelImagePointsDxOnLock"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mModelImagePointsDxOnLock = value
+    }
+    if let range = inDictionary ["mModelImagePointsDyOnLock"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mModelImagePointsDyOnLock = value
+    }
+    if let range = inDictionary ["mModelImageScale"], let value = Double.unarchiveFromDataRange (inData, range) {
+      self.mModelImageScale = value
+    }
+    if let range = inDictionary ["mModelImageRotationInRadians"], let value = Double.unarchiveFromDataRange (inData, range) {
+      self.mModelImageRotationInRadians = value
+    }
+    if let range = inDictionary ["mDimensionUnitFirstModelPointX"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mDimensionUnitFirstModelPointX = value
+    }
+    if let range = inDictionary ["mDimensionUnitFirstModelPointY"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mDimensionUnitFirstModelPointY = value
+    }
+    if let range = inDictionary ["mDimensionUnitSecondModelPointDx"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mDimensionUnitSecondModelPointDx = value
+    }
+    if let range = inDictionary ["mDimensionUnitSecondModelPointDy"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mDimensionUnitSecondModelPointDy = value
+    }
+    if let range = inDictionary ["mModelPointsCircleRadius"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mModelPointsCircleRadius = value
+    }
+    if let range = inDictionary ["mPointsAreLocked"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mPointsAreLocked = value
+    }
+    if let range = inDictionary ["knobSizeMultpliedByTen"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.knobSizeMultpliedByTen = value
+    }
+    if let range = inDictionary ["padNumbering"], let value = PadNumbering.unarchiveFromDataRange (inData, range) {
+      self.padNumbering = value
+    }
+    if let range = inDictionary ["counterClockNumberingStartAngle"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.counterClockNumberingStartAngle = value
+    }
+    if let range = inDictionary ["xPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.xPlacardUnit = value
+    }
+    if let range = inDictionary ["yPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.yPlacardUnit = value
+    }
+    if let range = inDictionary ["mModelImageData"], let value = Data.unarchiveFromDataRange (inData, range) {
+      self.mModelImageData = value
+    }
   }
 
   //····················································································································
@@ -2653,31 +2649,31 @@ final class PackageRoot : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mModelImageObjects
     for managedObject in self.mModelImageObjects.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: packageObjects
     for managedObject in self.packageObjects.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: packagePads
     for managedObject in self.packagePads.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: packageSlavePads
     for managedObject in self.packageSlavePads.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: packageZones
     for managedObject in self.packageZones.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To one property: mModelImageDoublePoint
     if let object = self.mModelImageDoublePoint {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   }
 

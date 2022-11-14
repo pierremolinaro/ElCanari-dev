@@ -1374,60 +1374,56 @@ final class PackagePad : PackageObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["xCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.xCenter = value
-      }
-      if let range = inDictionary ["yCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.yCenter = value
-      }
-      if let range = inDictionary ["width"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.width = value
-      }
-      if let range = inDictionary ["height"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.height = value
-      }
-      if let range = inDictionary ["holeWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.holeWidth = value
-      }
-      if let range = inDictionary ["holeHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.holeHeight = value
-      }
-      if let range = inDictionary ["padShape"], let value = PadShape.unarchiveFromDataRange (inData, range) {
-        self.padShape = value
-      }
-      if let range = inDictionary ["padStyle"], let value = PadStyle.unarchiveFromDataRange (inData, range) {
-        self.padStyle = value
-      }
-      if let range = inDictionary ["padNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.padNumber = value
-      }
-      if let range = inDictionary ["xCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.xCenterUnit = value
-      }
-      if let range = inDictionary ["yCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.yCenterUnit = value
-      }
-      if let range = inDictionary ["widthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.widthUnit = value
-      }
-      if let range = inDictionary ["heightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.heightUnit = value
-      }
-      if let range = inDictionary ["holeWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.holeWidthUnit = value
-      }
-      if let range = inDictionary ["holeHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.holeHeightUnit = value
-      }
-      if let range = inDictionary ["annularRingUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.annularRingUnit = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["xCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.xCenter = value
+    }
+    if let range = inDictionary ["yCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.yCenter = value
+    }
+    if let range = inDictionary ["width"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.width = value
+    }
+    if let range = inDictionary ["height"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.height = value
+    }
+    if let range = inDictionary ["holeWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.holeWidth = value
+    }
+    if let range = inDictionary ["holeHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.holeHeight = value
+    }
+    if let range = inDictionary ["padShape"], let value = PadShape.unarchiveFromDataRange (inData, range) {
+      self.padShape = value
+    }
+    if let range = inDictionary ["padStyle"], let value = PadStyle.unarchiveFromDataRange (inData, range) {
+      self.padStyle = value
+    }
+    if let range = inDictionary ["padNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.padNumber = value
+    }
+    if let range = inDictionary ["xCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.xCenterUnit = value
+    }
+    if let range = inDictionary ["yCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.yCenterUnit = value
+    }
+    if let range = inDictionary ["widthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.widthUnit = value
+    }
+    if let range = inDictionary ["heightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.heightUnit = value
+    }
+    if let range = inDictionary ["holeWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.holeWidthUnit = value
+    }
+    if let range = inDictionary ["holeHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.holeHeightUnit = value
+    }
+    if let range = inDictionary ["annularRingUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.annularRingUnit = value
+    }
   }
 
   //····················································································································
@@ -1466,15 +1462,15 @@ final class PackagePad : PackageObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: slaves
     for managedObject in self.slaves.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To one property: zone
     if let object = self.zone {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   }
 

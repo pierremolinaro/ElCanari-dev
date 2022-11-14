@@ -479,24 +479,20 @@ final class FontCharacter : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["codePoint"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.codePoint = value
-      }
-      if let range = inDictionary ["advance"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.advance = value
-      }
-      if let range = inDictionary ["mWarnsWhenNoSegment"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mWarnsWhenNoSegment = value
-      }
-      if let range = inDictionary ["mWarnsWhenAdvanceIsZero"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mWarnsWhenAdvanceIsZero = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["codePoint"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.codePoint = value
+    }
+    if let range = inDictionary ["advance"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.advance = value
+    }
+    if let range = inDictionary ["mWarnsWhenNoSegment"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mWarnsWhenNoSegment = value
+    }
+    if let range = inDictionary ["mWarnsWhenAdvanceIsZero"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mWarnsWhenAdvanceIsZero = value
+    }
   }
 
   //····················································································································
@@ -521,11 +517,11 @@ final class FontCharacter : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: segments
     for managedObject in self.segments.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   }
 

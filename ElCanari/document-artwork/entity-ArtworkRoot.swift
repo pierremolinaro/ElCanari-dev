@@ -822,51 +822,47 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["layerConfiguration"], let value = LayerConfiguration.unarchiveFromDataRange (inData, range) {
-        self.layerConfiguration = value
-      }
-      if let range = inDictionary ["selectedTab"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.selectedTab = value
-      }
-      if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.comments = value
-      }
-      if let range = inDictionary ["minPPTPTTTWdisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.minPPTPTTTWdisplayUnit = value
-      }
-      if let range = inDictionary ["minPPTPTTTW"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.minPPTPTTTW = value
-      }
-      if let range = inDictionary ["minValueForOARdisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.minValueForOARdisplayUnit = value
-      }
-      if let range = inDictionary ["minValueForOARinEBUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.minValueForOARinEBUnit = value
-      }
-      if let range = inDictionary ["minValueForPHDdisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.minValueForPHDdisplayUnit = value
-      }
-      if let range = inDictionary ["minValueForPHDinEBUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.minValueForPHDinEBUnit = value
-      }
-      if let range = inDictionary ["minValueForBoardLimitWidthDisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.minValueForBoardLimitWidthDisplayUnit = value
-      }
-      if let range = inDictionary ["minValueForBoardLimitWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.minValueForBoardLimitWidth = value
-      }
-      if let range = inDictionary ["title"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.title = value
-      }
-      if let range = inDictionary ["drillDataFileExtension"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.drillDataFileExtension = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["layerConfiguration"], let value = LayerConfiguration.unarchiveFromDataRange (inData, range) {
+      self.layerConfiguration = value
+    }
+    if let range = inDictionary ["selectedTab"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.selectedTab = value
+    }
+    if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.comments = value
+    }
+    if let range = inDictionary ["minPPTPTTTWdisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.minPPTPTTTWdisplayUnit = value
+    }
+    if let range = inDictionary ["minPPTPTTTW"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.minPPTPTTTW = value
+    }
+    if let range = inDictionary ["minValueForOARdisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.minValueForOARdisplayUnit = value
+    }
+    if let range = inDictionary ["minValueForOARinEBUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.minValueForOARinEBUnit = value
+    }
+    if let range = inDictionary ["minValueForPHDdisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.minValueForPHDdisplayUnit = value
+    }
+    if let range = inDictionary ["minValueForPHDinEBUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.minValueForPHDinEBUnit = value
+    }
+    if let range = inDictionary ["minValueForBoardLimitWidthDisplayUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.minValueForBoardLimitWidthDisplayUnit = value
+    }
+    if let range = inDictionary ["minValueForBoardLimitWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.minValueForBoardLimitWidth = value
+    }
+    if let range = inDictionary ["title"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.title = value
+    }
+    if let range = inDictionary ["drillDataFileExtension"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.drillDataFileExtension = value
+    }
   }
 
   //····················································································································
@@ -891,11 +887,11 @@ final class ArtworkRoot : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: fileGenerationParameterArray
     for managedObject in self.fileGenerationParameterArray.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   }
 

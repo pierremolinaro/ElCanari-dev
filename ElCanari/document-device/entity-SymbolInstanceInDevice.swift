@@ -604,21 +604,17 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mInstanceName = value
-      }
-      if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mX = value
-      }
-      if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mY = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mInstanceName = value
+    }
+    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mX = value
+    }
+    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mY = value
+    }
   }
 
   //····················································································································
@@ -657,15 +653,15 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mPinInstances
     for managedObject in self.mPinInstances.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To one property: mType
     if let object = self.mType {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   }
 

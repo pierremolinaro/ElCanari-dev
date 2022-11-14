@@ -1195,54 +1195,50 @@ final class NetClassInProject : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mNetClassName"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mNetClassName = value
-      }
-      if let range = inDictionary ["mNetClassColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
-        self.mNetClassColor = value
-      }
-      if let range = inDictionary ["mTrackWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mTrackWidth = value
-      }
-      if let range = inDictionary ["mTrackWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mTrackWidthUnit = value
-      }
-      if let range = inDictionary ["mViaHoleDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mViaHoleDiameter = value
-      }
-      if let range = inDictionary ["mViaHoleDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mViaHoleDiameterUnit = value
-      }
-      if let range = inDictionary ["mViaPadDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mViaPadDiameter = value
-      }
-      if let range = inDictionary ["mViaPadDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mViaPadDiameterUnit = value
-      }
-      if let range = inDictionary ["mAllowTracksOnFrontSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mAllowTracksOnFrontSide = value
-      }
-      if let range = inDictionary ["mAllowTracksOnBackSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mAllowTracksOnBackSide = value
-      }
-      if let range = inDictionary ["mAllowTracksOnInner1Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mAllowTracksOnInner1Layer = value
-      }
-      if let range = inDictionary ["mAllowTracksOnInner2Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mAllowTracksOnInner2Layer = value
-      }
-      if let range = inDictionary ["mAllowTracksOnInner3Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mAllowTracksOnInner3Layer = value
-      }
-      if let range = inDictionary ["mAllowTracksOnInner4Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mAllowTracksOnInner4Layer = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mNetClassName"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mNetClassName = value
+    }
+    if let range = inDictionary ["mNetClassColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
+      self.mNetClassColor = value
+    }
+    if let range = inDictionary ["mTrackWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mTrackWidth = value
+    }
+    if let range = inDictionary ["mTrackWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mTrackWidthUnit = value
+    }
+    if let range = inDictionary ["mViaHoleDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mViaHoleDiameter = value
+    }
+    if let range = inDictionary ["mViaHoleDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mViaHoleDiameterUnit = value
+    }
+    if let range = inDictionary ["mViaPadDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mViaPadDiameter = value
+    }
+    if let range = inDictionary ["mViaPadDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mViaPadDiameterUnit = value
+    }
+    if let range = inDictionary ["mAllowTracksOnFrontSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mAllowTracksOnFrontSide = value
+    }
+    if let range = inDictionary ["mAllowTracksOnBackSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mAllowTracksOnBackSide = value
+    }
+    if let range = inDictionary ["mAllowTracksOnInner1Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mAllowTracksOnInner1Layer = value
+    }
+    if let range = inDictionary ["mAllowTracksOnInner2Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mAllowTracksOnInner2Layer = value
+    }
+    if let range = inDictionary ["mAllowTracksOnInner3Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mAllowTracksOnInner3Layer = value
+    }
+    if let range = inDictionary ["mAllowTracksOnInner4Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mAllowTracksOnInner4Layer = value
+    }
   }
 
   //····················································································································
@@ -1267,11 +1263,11 @@ final class NetClassInProject : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mNets
     for managedObject in self.mNets.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   }
 

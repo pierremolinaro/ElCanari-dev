@@ -666,50 +666,46 @@ final class BoardRestrictRectangle : BoardObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mY = value
-      }
-      if let range = inDictionary ["mWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mWidth = value
-      }
-      if let range = inDictionary ["mHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mHeight = value
-      }
-      if let range = inDictionary ["mIsInFrontLayer"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mIsInFrontLayer = value
-      }
-      if let range = inDictionary ["mIsInBackLayer"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mIsInBackLayer = value
-      }
-      if let range = inDictionary ["mIsInInner1Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mIsInInner1Layer = value
-      }
-      if let range = inDictionary ["mIsInInner2Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mIsInInner2Layer = value
-      }
-      if let range = inDictionary ["mIsInInner3Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mIsInInner3Layer = value
-      }
-      if let range = inDictionary ["mIsInInner4Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mIsInInner4Layer = value
-      }
-      if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mX = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mY = value
+    }
+    if let range = inDictionary ["mWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mWidth = value
+    }
+    if let range = inDictionary ["mHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mHeight = value
+    }
+    if let range = inDictionary ["mIsInFrontLayer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mIsInFrontLayer = value
+    }
+    if let range = inDictionary ["mIsInBackLayer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mIsInBackLayer = value
+    }
+    if let range = inDictionary ["mIsInInner1Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mIsInInner1Layer = value
+    }
+    if let range = inDictionary ["mIsInInner2Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mIsInInner2Layer = value
+    }
+    if let range = inDictionary ["mIsInInner3Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mIsInInner3Layer = value
+    }
+    if let range = inDictionary ["mIsInInner4Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mIsInInner4Layer = value
+    }
+    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mX = value
+    }
   }
 
   //····················································································································
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   }
 
   //····················································································································

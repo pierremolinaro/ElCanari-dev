@@ -1435,48 +1435,44 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mComponentPadName"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mComponentPadName = value
-      }
-      if let range = inDictionary ["mPadIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mPadIndex = value
-      }
-      if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mX = value
-      }
-      if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mY = value
-      }
-      if let range = inDictionary ["mDefaultHoleDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mDefaultHoleDiameterUnit = value
-      }
-      if let range = inDictionary ["mCustomHoleDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mCustomHoleDiameter = value
-      }
-      if let range = inDictionary ["mCustomHoleDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mCustomHoleDiameterUnit = value
-      }
-      if let range = inDictionary ["mUsesCustomHoleDiameter"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mUsesCustomHoleDiameter = value
-      }
-      if let range = inDictionary ["mDefaultPadDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mDefaultPadDiameterUnit = value
-      }
-      if let range = inDictionary ["mCustomPadDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mCustomPadDiameter = value
-      }
-      if let range = inDictionary ["mCustomPadDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mCustomPadDiameterUnit = value
-      }
-      if let range = inDictionary ["mUsesCustomPadDiameter"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mUsesCustomPadDiameter = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mComponentPadName"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mComponentPadName = value
+    }
+    if let range = inDictionary ["mPadIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mPadIndex = value
+    }
+    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mX = value
+    }
+    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mY = value
+    }
+    if let range = inDictionary ["mDefaultHoleDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mDefaultHoleDiameterUnit = value
+    }
+    if let range = inDictionary ["mCustomHoleDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mCustomHoleDiameter = value
+    }
+    if let range = inDictionary ["mCustomHoleDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mCustomHoleDiameterUnit = value
+    }
+    if let range = inDictionary ["mUsesCustomHoleDiameter"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mUsesCustomHoleDiameter = value
+    }
+    if let range = inDictionary ["mDefaultPadDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mDefaultPadDiameterUnit = value
+    }
+    if let range = inDictionary ["mCustomPadDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mCustomPadDiameter = value
+    }
+    if let range = inDictionary ["mCustomPadDiameterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mCustomPadDiameterUnit = value
+    }
+    if let range = inDictionary ["mUsesCustomPadDiameter"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mUsesCustomPadDiameter = value
+    }
   }
 
   //····················································································································
@@ -1523,19 +1519,19 @@ final class BoardConnector : BoardObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mTracksP2
     for managedObject in self.mTracksP2.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: mTracksP1
     for managedObject in self.mTracksP1.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To one property: mComponent
     if let object = self.mComponent {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   }
 

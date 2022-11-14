@@ -556,53 +556,49 @@ final class BoardLine : BoardObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mWidthUnit = value
-      }
-      if let range = inDictionary ["mX1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mX1 = value
-      }
-      if let range = inDictionary ["mX1Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mX1Unit = value
-      }
-      if let range = inDictionary ["mY1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mY1 = value
-      }
-      if let range = inDictionary ["mY1Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mY1Unit = value
-      }
-      if let range = inDictionary ["mX2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mX2 = value
-      }
-      if let range = inDictionary ["mX2Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mX2Unit = value
-      }
-      if let range = inDictionary ["mY2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mY2 = value
-      }
-      if let range = inDictionary ["mY2Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mY2Unit = value
-      }
-      if let range = inDictionary ["mLayer"], let value = BoardLineLayer.unarchiveFromDataRange (inData, range) {
-        self.mLayer = value
-      }
-      if let range = inDictionary ["mWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mWidth = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mWidthUnit = value
+    }
+    if let range = inDictionary ["mX1"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mX1 = value
+    }
+    if let range = inDictionary ["mX1Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mX1Unit = value
+    }
+    if let range = inDictionary ["mY1"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mY1 = value
+    }
+    if let range = inDictionary ["mY1Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mY1Unit = value
+    }
+    if let range = inDictionary ["mX2"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mX2 = value
+    }
+    if let range = inDictionary ["mX2Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mX2Unit = value
+    }
+    if let range = inDictionary ["mY2"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mY2 = value
+    }
+    if let range = inDictionary ["mY2Unit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mY2Unit = value
+    }
+    if let range = inDictionary ["mLayer"], let value = BoardLineLayer.unarchiveFromDataRange (inData, range) {
+      self.mLayer = value
+    }
+    if let range = inDictionary ["mWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mWidth = value
+    }
   }
 
   //····················································································································
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   }
 
   //····················································································································

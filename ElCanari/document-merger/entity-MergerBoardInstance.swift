@@ -507,21 +507,17 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.x = value
-      }
-      if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.y = value
-      }
-      if let range = inDictionary ["instanceRotation"], let value = QuadrantRotation.unarchiveFromDataRange (inData, range) {
-        self.instanceRotation = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.x = value
+    }
+    if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.y = value
+    }
+    if let range = inDictionary ["instanceRotation"], let value = QuadrantRotation.unarchiveFromDataRange (inData, range) {
+      self.instanceRotation = value
+    }
   }
 
   //····················································································································
@@ -546,15 +542,15 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To one property: myModel
     if let object = self.myModel {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   //--- To one property: myRoot
     if let object = self.myRoot {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   }
 

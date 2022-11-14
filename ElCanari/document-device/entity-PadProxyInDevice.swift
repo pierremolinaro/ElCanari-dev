@@ -335,21 +335,17 @@ final class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mPinInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mPinInstanceName = value
-      }
-      if let range = inDictionary ["mPadName"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mPadName = value
-      }
-      if let range = inDictionary ["mIsNC"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mIsNC = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mPinInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mPinInstanceName = value
+    }
+    if let range = inDictionary ["mPadName"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mPadName = value
+    }
+    if let range = inDictionary ["mIsNC"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mIsNC = value
+    }
   }
 
   //····················································································································
@@ -370,11 +366,11 @@ final class PadProxyInDevice : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To one property: mPinInstance
     if let object = self.mPinInstance {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   }
 

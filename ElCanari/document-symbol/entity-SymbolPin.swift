@@ -702,50 +702,46 @@ final class SymbolPin : SymbolObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["yPin"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.yPin = value
-      }
-      if let range = inDictionary ["xName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.xName = value
-      }
-      if let range = inDictionary ["yName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.yName = value
-      }
-      if let range = inDictionary ["xNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.xNumber = value
-      }
-      if let range = inDictionary ["yNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.yNumber = value
-      }
-      if let range = inDictionary ["name"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.name = value
-      }
-      if let range = inDictionary ["nameHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
-        self.nameHorizontalAlignment = value
-      }
-      if let range = inDictionary ["numberHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
-        self.numberHorizontalAlignment = value
-      }
-      if let range = inDictionary ["pinNameIsDisplayedInSchematics"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.pinNameIsDisplayedInSchematics = value
-      }
-      if let range = inDictionary ["xPin"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.xPin = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["yPin"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.yPin = value
+    }
+    if let range = inDictionary ["xName"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.xName = value
+    }
+    if let range = inDictionary ["yName"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.yName = value
+    }
+    if let range = inDictionary ["xNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.xNumber = value
+    }
+    if let range = inDictionary ["yNumber"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.yNumber = value
+    }
+    if let range = inDictionary ["name"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.name = value
+    }
+    if let range = inDictionary ["nameHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
+      self.nameHorizontalAlignment = value
+    }
+    if let range = inDictionary ["numberHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
+      self.numberHorizontalAlignment = value
+    }
+    if let range = inDictionary ["pinNameIsDisplayedInSchematics"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.pinNameIsDisplayedInSchematics = value
+    }
+    if let range = inDictionary ["xPin"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.xPin = value
+    }
   }
 
   //····················································································································
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   }
 
   //····················································································································

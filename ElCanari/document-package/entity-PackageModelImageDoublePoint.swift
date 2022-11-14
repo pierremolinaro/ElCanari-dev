@@ -436,30 +436,26 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mFirstX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mFirstX = value
-      }
-      if let range = inDictionary ["mFirstY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mFirstY = value
-      }
-      if let range = inDictionary ["mFirstColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
-        self.mFirstColor = value
-      }
-      if let range = inDictionary ["mSecondDx"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mSecondDx = value
-      }
-      if let range = inDictionary ["mSecondDy"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mSecondDy = value
-      }
-      if let range = inDictionary ["mSecondColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
-        self.mSecondColor = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mFirstX"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mFirstX = value
+    }
+    if let range = inDictionary ["mFirstY"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mFirstY = value
+    }
+    if let range = inDictionary ["mFirstColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
+      self.mFirstColor = value
+    }
+    if let range = inDictionary ["mSecondDx"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mSecondDx = value
+    }
+    if let range = inDictionary ["mSecondDy"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mSecondDy = value
+    }
+    if let range = inDictionary ["mSecondColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
+      self.mSecondColor = value
+    }
   }
 
   //····················································································································
@@ -480,11 +476,11 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To one property: mRoot
     if let object = self.mRoot {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   }
 

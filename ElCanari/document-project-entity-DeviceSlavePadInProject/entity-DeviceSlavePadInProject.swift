@@ -423,44 +423,40 @@ final class DeviceSlavePadInProject : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mCenterX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mCenterX = value
-      }
-      if let range = inDictionary ["mCenterY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mCenterY = value
-      }
-      if let range = inDictionary ["mWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mWidth = value
-      }
-      if let range = inDictionary ["mHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mHeight = value
-      }
-      if let range = inDictionary ["mHoleWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mHoleWidth = value
-      }
-      if let range = inDictionary ["mHoleHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mHoleHeight = value
-      }
-      if let range = inDictionary ["mShape"], let value = PadShape.unarchiveFromDataRange (inData, range) {
-        self.mShape = value
-      }
-      if let range = inDictionary ["mStyle"], let value = SlavePadStyle.unarchiveFromDataRange (inData, range) {
-        self.mStyle = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mCenterX"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mCenterX = value
+    }
+    if let range = inDictionary ["mCenterY"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mCenterY = value
+    }
+    if let range = inDictionary ["mWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mWidth = value
+    }
+    if let range = inDictionary ["mHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mHeight = value
+    }
+    if let range = inDictionary ["mHoleWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mHoleWidth = value
+    }
+    if let range = inDictionary ["mHoleHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mHoleHeight = value
+    }
+    if let range = inDictionary ["mShape"], let value = PadShape.unarchiveFromDataRange (inData, range) {
+      self.mShape = value
+    }
+    if let range = inDictionary ["mStyle"], let value = SlavePadStyle.unarchiveFromDataRange (inData, range) {
+      self.mStyle = value
+    }
   }
 
   //····················································································································
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   }
 
   //····················································································································

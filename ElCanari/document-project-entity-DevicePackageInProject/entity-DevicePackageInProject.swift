@@ -255,18 +255,14 @@ final class DevicePackageInProject : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mPackageName"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mPackageName = value
-      }
-      if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
-        self.mStrokeBezierPath = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mPackageName"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mPackageName = value
+    }
+    if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
+      self.mStrokeBezierPath = value
+    }
   }
 
   //····················································································································
@@ -291,11 +287,11 @@ final class DevicePackageInProject : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mMasterPads
     for managedObject in self.mMasterPads.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   }
 

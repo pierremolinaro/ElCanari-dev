@@ -1016,60 +1016,56 @@ final class PackageZone : PackageObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.x = value
-      }
-      if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.y = value
-      }
-      if let range = inDictionary ["width"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.width = value
-      }
-      if let range = inDictionary ["height"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.height = value
-      }
-      if let range = inDictionary ["xUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.xUnit = value
-      }
-      if let range = inDictionary ["yUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.yUnit = value
-      }
-      if let range = inDictionary ["widthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.widthUnit = value
-      }
-      if let range = inDictionary ["heightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.heightUnit = value
-      }
-      if let range = inDictionary ["zoneName"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.zoneName = value
-      }
-      if let range = inDictionary ["displayZoneName"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.displayZoneName = value
-      }
-      if let range = inDictionary ["displayZoneNameWithPadNumbers"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.displayZoneNameWithPadNumbers = value
-      }
-      if let range = inDictionary ["xName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.xName = value
-      }
-      if let range = inDictionary ["yName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.yName = value
-      }
-      if let range = inDictionary ["xNameUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.xNameUnit = value
-      }
-      if let range = inDictionary ["yNameUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.yNameUnit = value
-      }
-      if let range = inDictionary ["zoneNumbering"], let value = PadNumbering.unarchiveFromDataRange (inData, range) {
-        self.zoneNumbering = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.x = value
+    }
+    if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.y = value
+    }
+    if let range = inDictionary ["width"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.width = value
+    }
+    if let range = inDictionary ["height"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.height = value
+    }
+    if let range = inDictionary ["xUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.xUnit = value
+    }
+    if let range = inDictionary ["yUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.yUnit = value
+    }
+    if let range = inDictionary ["widthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.widthUnit = value
+    }
+    if let range = inDictionary ["heightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.heightUnit = value
+    }
+    if let range = inDictionary ["zoneName"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.zoneName = value
+    }
+    if let range = inDictionary ["displayZoneName"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.displayZoneName = value
+    }
+    if let range = inDictionary ["displayZoneNameWithPadNumbers"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.displayZoneNameWithPadNumbers = value
+    }
+    if let range = inDictionary ["xName"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.xName = value
+    }
+    if let range = inDictionary ["yName"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.yName = value
+    }
+    if let range = inDictionary ["xNameUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.xNameUnit = value
+    }
+    if let range = inDictionary ["yNameUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.yNameUnit = value
+    }
+    if let range = inDictionary ["zoneNumbering"], let value = PadNumbering.unarchiveFromDataRange (inData, range) {
+      self.zoneNumbering = value
+    }
   }
 
   //····················································································································
@@ -1094,11 +1090,11 @@ final class PackageZone : PackageObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: forbiddenPadNumbers
     for managedObject in self.forbiddenPadNumbers.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   }
 

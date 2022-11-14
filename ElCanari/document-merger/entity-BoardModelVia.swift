@@ -184,29 +184,25 @@ final class BoardModelVia : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.y = value
-      }
-      if let range = inDictionary ["padDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.padDiameter = value
-      }
-      if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.x = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["y"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.y = value
+    }
+    if let range = inDictionary ["padDiameter"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.padDiameter = value
+    }
+    if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.x = value
+    }
   }
 
   //····················································································································
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   }
 
   //····················································································································

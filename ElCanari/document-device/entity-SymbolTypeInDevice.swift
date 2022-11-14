@@ -558,27 +558,23 @@ final class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mTypeName"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mTypeName = value
-      }
-      if let range = inDictionary ["mVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mVersion = value
-      }
-      if let range = inDictionary ["mFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
-        self.mFileData = value
-      }
-      if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
-        self.mStrokeBezierPath = value
-      }
-      if let range = inDictionary ["mFilledBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
-        self.mFilledBezierPath = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mTypeName"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mTypeName = value
+    }
+    if let range = inDictionary ["mVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mVersion = value
+    }
+    if let range = inDictionary ["mFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
+      self.mFileData = value
+    }
+    if let range = inDictionary ["mStrokeBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
+      self.mStrokeBezierPath = value
+    }
+    if let range = inDictionary ["mFilledBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
+      self.mFilledBezierPath = value
+    }
   }
 
   //····················································································································
@@ -611,15 +607,15 @@ final class SymbolTypeInDevice : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mInstances
     for managedObject in self.mInstances.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: mPinTypes
     for managedObject in self.mPinTypes.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   }
 

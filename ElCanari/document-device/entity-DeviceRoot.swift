@@ -1403,57 +1403,53 @@ final class DeviceRoot : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mSelectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mSelectedPageIndex = value
-      }
-      if let range = inDictionary ["mSelectedSymbolInspectorIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mSelectedSymbolInspectorIndex = value
-      }
-      if let range = inDictionary ["mSelectedPackageInspectorIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mSelectedPackageInspectorIndex = value
-      }
-      if let range = inDictionary ["mTitle"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mTitle = value
-      }
-      if let range = inDictionary ["mImageData"], let value = Data.unarchiveFromDataRange (inData, range) {
-        self.mImageData = value
-      }
-      if let range = inDictionary ["mPrefix"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mPrefix = value
-      }
-      if let range = inDictionary ["mComments"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mComments = value
-      }
-      if let range = inDictionary ["mPackageDisplayZoom"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mPackageDisplayZoom = value
-      }
-      if let range = inDictionary ["mPackageDisplayHorizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mPackageDisplayHorizontalFlip = value
-      }
-      if let range = inDictionary ["mPackageDisplayVerticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mPackageDisplayVerticalFlip = value
-      }
-      if let range = inDictionary ["mShowPackages"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mShowPackages = value
-      }
-      if let range = inDictionary ["mShowPackagePadNumbers"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mShowPackagePadNumbers = value
-      }
-      if let range = inDictionary ["mShowPackageFrontPads"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mShowPackageFrontPads = value
-      }
-      if let range = inDictionary ["mShowPackageBackPads"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mShowPackageBackPads = value
-      }
-      if let range = inDictionary ["mSymbolDisplayZoom"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mSymbolDisplayZoom = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mSelectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mSelectedPageIndex = value
+    }
+    if let range = inDictionary ["mSelectedSymbolInspectorIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mSelectedSymbolInspectorIndex = value
+    }
+    if let range = inDictionary ["mSelectedPackageInspectorIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mSelectedPackageInspectorIndex = value
+    }
+    if let range = inDictionary ["mTitle"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mTitle = value
+    }
+    if let range = inDictionary ["mImageData"], let value = Data.unarchiveFromDataRange (inData, range) {
+      self.mImageData = value
+    }
+    if let range = inDictionary ["mPrefix"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mPrefix = value
+    }
+    if let range = inDictionary ["mComments"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mComments = value
+    }
+    if let range = inDictionary ["mPackageDisplayZoom"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mPackageDisplayZoom = value
+    }
+    if let range = inDictionary ["mPackageDisplayHorizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mPackageDisplayHorizontalFlip = value
+    }
+    if let range = inDictionary ["mPackageDisplayVerticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mPackageDisplayVerticalFlip = value
+    }
+    if let range = inDictionary ["mShowPackages"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mShowPackages = value
+    }
+    if let range = inDictionary ["mShowPackagePadNumbers"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mShowPackagePadNumbers = value
+    }
+    if let range = inDictionary ["mShowPackageFrontPads"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mShowPackageFrontPads = value
+    }
+    if let range = inDictionary ["mShowPackageBackPads"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mShowPackageBackPads = value
+    }
+    if let range = inDictionary ["mSymbolDisplayZoom"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mSymbolDisplayZoom = value
+    }
   }
 
   //····················································································································
@@ -1510,27 +1506,27 @@ final class DeviceRoot : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mDocs
     for managedObject in self.mDocs.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: mSymbolInstances
     for managedObject in self.mSymbolInstances.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: mPackages
     for managedObject in self.mPackages.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: mSymbolTypes
     for managedObject in self.mSymbolTypes.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: mPadProxies
     for managedObject in self.mPadProxies.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   }
 

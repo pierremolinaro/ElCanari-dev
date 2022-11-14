@@ -1343,96 +1343,92 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["drawBoardLimits"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawBoardLimits = value
-      }
-      if let range = inDictionary ["drawInternalBoardLimits"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawInternalBoardLimits = value
-      }
-      if let range = inDictionary ["drawComponentNamesTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawComponentNamesTopSide = value
-      }
-      if let range = inDictionary ["drawComponentNamesBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawComponentNamesBottomSide = value
-      }
-      if let range = inDictionary ["drawComponentValuesTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawComponentValuesTopSide = value
-      }
-      if let range = inDictionary ["drawComponentValuesBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawComponentValuesBottomSide = value
-      }
-      if let range = inDictionary ["drawPackageLegendTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawPackageLegendTopSide = value
-      }
-      if let range = inDictionary ["drawPackageLegendBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawPackageLegendBottomSide = value
-      }
-      if let range = inDictionary ["drawPadHolesInPDF"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawPadHolesInPDF = value
-      }
-      if let range = inDictionary ["drawPadsTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawPadsTopSide = value
-      }
-      if let range = inDictionary ["drawPadsBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawPadsBottomSide = value
-      }
-      if let range = inDictionary ["drawTextsLayoutTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawTextsLayoutTopSide = value
-      }
-      if let range = inDictionary ["drawTextsLayoutBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawTextsLayoutBottomSide = value
-      }
-      if let range = inDictionary ["drawTextsLegendTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawTextsLegendTopSide = value
-      }
-      if let range = inDictionary ["drawTextsLegendBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawTextsLegendBottomSide = value
-      }
-      if let range = inDictionary ["drawTracksTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawTracksTopSide = value
-      }
-      if let range = inDictionary ["drawTracksInner1Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawTracksInner1Layer = value
-      }
-      if let range = inDictionary ["drawTracksInner2Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawTracksInner2Layer = value
-      }
-      if let range = inDictionary ["drawTracksInner3Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawTracksInner3Layer = value
-      }
-      if let range = inDictionary ["drawTracksInner4Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawTracksInner4Layer = value
-      }
-      if let range = inDictionary ["drawTracksBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawTracksBottomSide = value
-      }
-      if let range = inDictionary ["drawTraversingPads"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawTraversingPads = value
-      }
-      if let range = inDictionary ["drawVias"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.drawVias = value
-      }
-      if let range = inDictionary ["fileExtension"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.fileExtension = value
-      }
-      if let range = inDictionary ["horizontalMirror"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.horizontalMirror = value
-      }
-      if let range = inDictionary ["name"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.name = value
-      }
-      if let range = inDictionary ["measurementUnitForPadHoleInPDF"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.measurementUnitForPadHoleInPDF = value
-      }
-      if let range = inDictionary ["padHoleDiameterInPDF"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.padHoleDiameterInPDF = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["drawBoardLimits"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawBoardLimits = value
+    }
+    if let range = inDictionary ["drawInternalBoardLimits"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawInternalBoardLimits = value
+    }
+    if let range = inDictionary ["drawComponentNamesTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawComponentNamesTopSide = value
+    }
+    if let range = inDictionary ["drawComponentNamesBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawComponentNamesBottomSide = value
+    }
+    if let range = inDictionary ["drawComponentValuesTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawComponentValuesTopSide = value
+    }
+    if let range = inDictionary ["drawComponentValuesBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawComponentValuesBottomSide = value
+    }
+    if let range = inDictionary ["drawPackageLegendTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawPackageLegendTopSide = value
+    }
+    if let range = inDictionary ["drawPackageLegendBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawPackageLegendBottomSide = value
+    }
+    if let range = inDictionary ["drawPadHolesInPDF"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawPadHolesInPDF = value
+    }
+    if let range = inDictionary ["drawPadsTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawPadsTopSide = value
+    }
+    if let range = inDictionary ["drawPadsBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawPadsBottomSide = value
+    }
+    if let range = inDictionary ["drawTextsLayoutTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawTextsLayoutTopSide = value
+    }
+    if let range = inDictionary ["drawTextsLayoutBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawTextsLayoutBottomSide = value
+    }
+    if let range = inDictionary ["drawTextsLegendTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawTextsLegendTopSide = value
+    }
+    if let range = inDictionary ["drawTextsLegendBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawTextsLegendBottomSide = value
+    }
+    if let range = inDictionary ["drawTracksTopSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawTracksTopSide = value
+    }
+    if let range = inDictionary ["drawTracksInner1Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawTracksInner1Layer = value
+    }
+    if let range = inDictionary ["drawTracksInner2Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawTracksInner2Layer = value
+    }
+    if let range = inDictionary ["drawTracksInner3Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawTracksInner3Layer = value
+    }
+    if let range = inDictionary ["drawTracksInner4Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawTracksInner4Layer = value
+    }
+    if let range = inDictionary ["drawTracksBottomSide"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawTracksBottomSide = value
+    }
+    if let range = inDictionary ["drawTraversingPads"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawTraversingPads = value
+    }
+    if let range = inDictionary ["drawVias"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.drawVias = value
+    }
+    if let range = inDictionary ["fileExtension"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.fileExtension = value
+    }
+    if let range = inDictionary ["horizontalMirror"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.horizontalMirror = value
+    }
+    if let range = inDictionary ["name"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.name = value
+    }
+    if let range = inDictionary ["measurementUnitForPadHoleInPDF"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.measurementUnitForPadHoleInPDF = value
+    }
+    if let range = inDictionary ["padHoleDiameterInPDF"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.padHoleDiameterInPDF = value
+    }
   }
 
   //····················································································································
@@ -1453,11 +1449,11 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To one property: mArtwork
     if let object = self.mArtwork {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   }
 

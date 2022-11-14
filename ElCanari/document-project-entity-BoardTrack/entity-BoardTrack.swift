@@ -1616,51 +1616,47 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mSide"], let value = TrackSide.unarchiveFromDataRange (inData, range) {
-        self.mSide = value
-      }
-      if let range = inDictionary ["mDefaultTrackWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mDefaultTrackWidthUnit = value
-      }
-      if let range = inDictionary ["mCustomTrackWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mCustomTrackWidth = value
-      }
-      if let range = inDictionary ["mCustomTrackWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mCustomTrackWidthUnit = value
-      }
-      if let range = inDictionary ["mUsesCustomTrackWidth"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mUsesCustomTrackWidth = value
-      }
-      if let range = inDictionary ["mIsPreservedByAutoRouter"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mIsPreservedByAutoRouter = value
-      }
-      if let range = inDictionary ["mP1XUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mP1XUnit = value
-      }
-      if let range = inDictionary ["mP1YUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mP1YUnit = value
-      }
-      if let range = inDictionary ["mP2XUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mP2XUnit = value
-      }
-      if let range = inDictionary ["mP2YUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mP2YUnit = value
-      }
-      if let range = inDictionary ["mManualLockP1"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mManualLockP1 = value
-      }
-      if let range = inDictionary ["mManualLockP2"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mManualLockP2 = value
-      }
-      if let range = inDictionary ["mDirectionLockOnKnobDragging"], let value = TrackLockDirection.unarchiveFromDataRange (inData, range) {
-        self.mDirectionLockOnKnobDragging = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mSide"], let value = TrackSide.unarchiveFromDataRange (inData, range) {
+      self.mSide = value
+    }
+    if let range = inDictionary ["mDefaultTrackWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mDefaultTrackWidthUnit = value
+    }
+    if let range = inDictionary ["mCustomTrackWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mCustomTrackWidth = value
+    }
+    if let range = inDictionary ["mCustomTrackWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mCustomTrackWidthUnit = value
+    }
+    if let range = inDictionary ["mUsesCustomTrackWidth"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mUsesCustomTrackWidth = value
+    }
+    if let range = inDictionary ["mIsPreservedByAutoRouter"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mIsPreservedByAutoRouter = value
+    }
+    if let range = inDictionary ["mP1XUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mP1XUnit = value
+    }
+    if let range = inDictionary ["mP1YUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mP1YUnit = value
+    }
+    if let range = inDictionary ["mP2XUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mP2XUnit = value
+    }
+    if let range = inDictionary ["mP2YUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mP2YUnit = value
+    }
+    if let range = inDictionary ["mManualLockP1"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mManualLockP1 = value
+    }
+    if let range = inDictionary ["mManualLockP2"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mManualLockP2 = value
+    }
+    if let range = inDictionary ["mDirectionLockOnKnobDragging"], let value = TrackLockDirection.unarchiveFromDataRange (inData, range) {
+      self.mDirectionLockOnKnobDragging = value
+    }
   }
 
   //····················································································································
@@ -1689,19 +1685,19 @@ final class BoardTrack : BoardObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To one property: mConnectorP1
     if let object = self.mConnectorP1 {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   //--- To one property: mConnectorP2
     if let object = self.mConnectorP2 {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   //--- To one property: mNet
     if let object = self.mNet {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   }
 

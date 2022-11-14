@@ -561,42 +561,38 @@ final class SymbolRoot : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["selectedInspector"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.selectedInspector = value
-      }
-      if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.comments = value
-      }
-      if let range = inDictionary ["horizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.horizontalFlip = value
-      }
-      if let range = inDictionary ["verticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.verticalFlip = value
-      }
-      if let range = inDictionary ["gridStyle"], let value = GridStyle.unarchiveFromDataRange (inData, range) {
-        self.gridStyle = value
-      }
-      if let range = inDictionary ["gridDisplay"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.gridDisplay = value
-      }
-      if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.zoom = value
-      }
-      if let range = inDictionary ["xPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.xPlacardUnit = value
-      }
-      if let range = inDictionary ["yPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.yPlacardUnit = value
-      }
-      if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.selectedPageIndex = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["selectedInspector"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.selectedInspector = value
+    }
+    if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.comments = value
+    }
+    if let range = inDictionary ["horizontalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.horizontalFlip = value
+    }
+    if let range = inDictionary ["verticalFlip"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.verticalFlip = value
+    }
+    if let range = inDictionary ["gridStyle"], let value = GridStyle.unarchiveFromDataRange (inData, range) {
+      self.gridStyle = value
+    }
+    if let range = inDictionary ["gridDisplay"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.gridDisplay = value
+    }
+    if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.zoom = value
+    }
+    if let range = inDictionary ["xPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.xPlacardUnit = value
+    }
+    if let range = inDictionary ["yPlacardUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.yPlacardUnit = value
+    }
+    if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.selectedPageIndex = value
+    }
   }
 
   //····················································································································
@@ -621,15 +617,15 @@ final class SymbolRoot : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: symbolObjects
     for managedObject in self.symbolObjects.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: symbolPins
     for managedObject in self.symbolPins.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   }
 

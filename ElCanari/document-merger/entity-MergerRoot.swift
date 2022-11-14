@@ -2090,75 +2090,71 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.selectedPageIndex = value
-      }
-      if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.zoom = value
-      }
-      if let range = inDictionary ["showDisplaySettingView"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.showDisplaySettingView = value
-      }
-      if let range = inDictionary ["modelInsertionRotation"], let value = QuadrantRotation.unarchiveFromDataRange (inData, range) {
-        self.modelInsertionRotation = value
-      }
-      if let range = inDictionary ["automaticBoardSize"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.automaticBoardSize = value
-      }
-      if let range = inDictionary ["boardManualWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.boardManualWidth = value
-      }
-      if let range = inDictionary ["boardManualHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.boardManualHeight = value
-      }
-      if let range = inDictionary ["boardWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.boardWidthUnit = value
-      }
-      if let range = inDictionary ["boardHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.boardHeightUnit = value
-      }
-      if let range = inDictionary ["overlapingArrangment"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.overlapingArrangment = value
-      }
-      if let range = inDictionary ["selectedBoardXUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.selectedBoardXUnit = value
-      }
-      if let range = inDictionary ["selectedBoardYUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.selectedBoardYUnit = value
-      }
-      if let range = inDictionary ["boardLimitWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.boardLimitWidth = value
-      }
-      if let range = inDictionary ["boardLimitWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.boardLimitWidthUnit = value
-      }
-      if let range = inDictionary ["arrowMagnitude"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.arrowMagnitude = value
-      }
-      if let range = inDictionary ["arrowMagnitudeUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.arrowMagnitudeUnit = value
-      }
-      if let range = inDictionary ["shiftArrowMagnitude"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.shiftArrowMagnitude = value
-      }
-      if let range = inDictionary ["shiftArrowMagnitudeUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.shiftArrowMagnitudeUnit = value
-      }
-      if let range = inDictionary ["mPDFBoardBackgroundColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
-        self.mPDFBoardBackgroundColor = value
-      }
-      if let range = inDictionary ["mArtworkName"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mArtworkName = value
-      }
-      if let range = inDictionary ["mArtworkVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mArtworkVersion = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.selectedPageIndex = value
+    }
+    if let range = inDictionary ["zoom"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.zoom = value
+    }
+    if let range = inDictionary ["showDisplaySettingView"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.showDisplaySettingView = value
+    }
+    if let range = inDictionary ["modelInsertionRotation"], let value = QuadrantRotation.unarchiveFromDataRange (inData, range) {
+      self.modelInsertionRotation = value
+    }
+    if let range = inDictionary ["automaticBoardSize"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.automaticBoardSize = value
+    }
+    if let range = inDictionary ["boardManualWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.boardManualWidth = value
+    }
+    if let range = inDictionary ["boardManualHeight"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.boardManualHeight = value
+    }
+    if let range = inDictionary ["boardWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.boardWidthUnit = value
+    }
+    if let range = inDictionary ["boardHeightUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.boardHeightUnit = value
+    }
+    if let range = inDictionary ["overlapingArrangment"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.overlapingArrangment = value
+    }
+    if let range = inDictionary ["selectedBoardXUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.selectedBoardXUnit = value
+    }
+    if let range = inDictionary ["selectedBoardYUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.selectedBoardYUnit = value
+    }
+    if let range = inDictionary ["boardLimitWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.boardLimitWidth = value
+    }
+    if let range = inDictionary ["boardLimitWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.boardLimitWidthUnit = value
+    }
+    if let range = inDictionary ["arrowMagnitude"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.arrowMagnitude = value
+    }
+    if let range = inDictionary ["arrowMagnitudeUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.arrowMagnitudeUnit = value
+    }
+    if let range = inDictionary ["shiftArrowMagnitude"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.shiftArrowMagnitude = value
+    }
+    if let range = inDictionary ["shiftArrowMagnitudeUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.shiftArrowMagnitudeUnit = value
+    }
+    if let range = inDictionary ["mPDFBoardBackgroundColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
+      self.mPDFBoardBackgroundColor = value
+    }
+    if let range = inDictionary ["mArtworkName"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mArtworkName = value
+    }
+    if let range = inDictionary ["mArtworkVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mArtworkVersion = value
+    }
   }
 
   //····················································································································
@@ -2205,19 +2201,19 @@ final class MergerRoot : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: boardModels
     for managedObject in self.boardModels.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: boardInstances
     for managedObject in self.boardInstances.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To one property: mArtwork
     if let object = self.mArtwork {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   }
 

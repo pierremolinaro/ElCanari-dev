@@ -729,24 +729,20 @@ final class FontInProject : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mNominalSize"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mNominalSize = value
-      }
-      if let range = inDictionary ["mFontName"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mFontName = value
-      }
-      if let range = inDictionary ["mFontVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mFontVersion = value
-      }
-      if let range = inDictionary ["mDescriptiveString"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mDescriptiveString = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mNominalSize"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mNominalSize = value
+    }
+    if let range = inDictionary ["mFontName"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mFontName = value
+    }
+    if let range = inDictionary ["mFontVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mFontVersion = value
+    }
+    if let range = inDictionary ["mDescriptiveString"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mDescriptiveString = value
+    }
   }
 
   //····················································································································
@@ -787,19 +783,19 @@ final class FontInProject : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mTexts
     for managedObject in self.mTexts.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: mComponentNames
     for managedObject in self.mComponentNames.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: mComponentValues
     for managedObject in self.mComponentValues.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   }
 

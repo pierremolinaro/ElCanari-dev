@@ -2305,75 +2305,71 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mSlavePadsShouldBeRouted"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mSlavePadsShouldBeRouted = value
-      }
-      if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mX = value
-      }
-      if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mY = value
-      }
-      if let range = inDictionary ["mRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mRotation = value
-      }
-      if let range = inDictionary ["mSide"], let value = ComponentSide.unarchiveFromDataRange (inData, range) {
-        self.mSide = value
-      }
-      if let range = inDictionary ["mDisplayLegend"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mDisplayLegend = value
-      }
-      if let range = inDictionary ["mNameIsVisibleInBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mNameIsVisibleInBoard = value
-      }
-      if let range = inDictionary ["mXName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mXName = value
-      }
-      if let range = inDictionary ["mYName"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mYName = value
-      }
-      if let range = inDictionary ["mNameFontSize"], let value = Double.unarchiveFromDataRange (inData, range) {
-        self.mNameFontSize = value
-      }
-      if let range = inDictionary ["mNameRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mNameRotation = value
-      }
-      if let range = inDictionary ["mValueIsVisibleInBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mValueIsVisibleInBoard = value
-      }
-      if let range = inDictionary ["mXValue"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mXValue = value
-      }
-      if let range = inDictionary ["mYValue"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mYValue = value
-      }
-      if let range = inDictionary ["mValueFontSize"], let value = Double.unarchiveFromDataRange (inData, range) {
-        self.mValueFontSize = value
-      }
-      if let range = inDictionary ["mValueRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mValueRotation = value
-      }
-      if let range = inDictionary ["mComponentValue"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mComponentValue = value
-      }
-      if let range = inDictionary ["mNamePrefix"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mNamePrefix = value
-      }
-      if let range = inDictionary ["mNameIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mNameIndex = value
-      }
-      if let range = inDictionary ["mXUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mXUnit = value
-      }
-      if let range = inDictionary ["mYUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mYUnit = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mSlavePadsShouldBeRouted"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mSlavePadsShouldBeRouted = value
+    }
+    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mX = value
+    }
+    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mY = value
+    }
+    if let range = inDictionary ["mRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mRotation = value
+    }
+    if let range = inDictionary ["mSide"], let value = ComponentSide.unarchiveFromDataRange (inData, range) {
+      self.mSide = value
+    }
+    if let range = inDictionary ["mDisplayLegend"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mDisplayLegend = value
+    }
+    if let range = inDictionary ["mNameIsVisibleInBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mNameIsVisibleInBoard = value
+    }
+    if let range = inDictionary ["mXName"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mXName = value
+    }
+    if let range = inDictionary ["mYName"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mYName = value
+    }
+    if let range = inDictionary ["mNameFontSize"], let value = Double.unarchiveFromDataRange (inData, range) {
+      self.mNameFontSize = value
+    }
+    if let range = inDictionary ["mNameRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mNameRotation = value
+    }
+    if let range = inDictionary ["mValueIsVisibleInBoard"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mValueIsVisibleInBoard = value
+    }
+    if let range = inDictionary ["mXValue"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mXValue = value
+    }
+    if let range = inDictionary ["mYValue"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mYValue = value
+    }
+    if let range = inDictionary ["mValueFontSize"], let value = Double.unarchiveFromDataRange (inData, range) {
+      self.mValueFontSize = value
+    }
+    if let range = inDictionary ["mValueRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mValueRotation = value
+    }
+    if let range = inDictionary ["mComponentValue"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mComponentValue = value
+    }
+    if let range = inDictionary ["mNamePrefix"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mNamePrefix = value
+    }
+    if let range = inDictionary ["mNameIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mNameIndex = value
+    }
+    if let range = inDictionary ["mXUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mXUnit = value
+    }
+    if let range = inDictionary ["mYUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mYUnit = value
+    }
   }
 
   //····················································································································
@@ -2432,31 +2428,31 @@ final class ComponentInProject : BoardObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mConnectors
     for managedObject in self.mConnectors.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: mSymbols
     for managedObject in self.mSymbols.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To one property: mDevice
     if let object = self.mDevice {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   //--- To one property: mSelectedPackage
     if let object = self.mSelectedPackage {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   //--- To one property: mNameFont
     if let object = self.mNameFont {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   //--- To one property: mValueFont
     if let object = self.mValueFont {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   }
 

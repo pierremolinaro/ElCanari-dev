@@ -793,42 +793,38 @@ final class BoardText : BoardObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mX = value
-      }
-      if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mY = value
-      }
-      if let range = inDictionary ["mFontSize"], let value = Double.unarchiveFromDataRange (inData, range) {
-        self.mFontSize = value
-      }
-      if let range = inDictionary ["mLayer"], let value = BoardTextLayer.unarchiveFromDataRange (inData, range) {
-        self.mLayer = value
-      }
-      if let range = inDictionary ["mText"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mText = value
-      }
-      if let range = inDictionary ["mHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
-        self.mHorizontalAlignment = value
-      }
-      if let range = inDictionary ["mVerticalAlignment"], let value = BoardTextVerticalAlignment.unarchiveFromDataRange (inData, range) {
-        self.mVerticalAlignment = value
-      }
-      if let range = inDictionary ["mRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mRotation = value
-      }
-      if let range = inDictionary ["mWeight"], let value = Double.unarchiveFromDataRange (inData, range) {
-        self.mWeight = value
-      }
-      if let range = inDictionary ["mOblique"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mOblique = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mX = value
+    }
+    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mY = value
+    }
+    if let range = inDictionary ["mFontSize"], let value = Double.unarchiveFromDataRange (inData, range) {
+      self.mFontSize = value
+    }
+    if let range = inDictionary ["mLayer"], let value = BoardTextLayer.unarchiveFromDataRange (inData, range) {
+      self.mLayer = value
+    }
+    if let range = inDictionary ["mText"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mText = value
+    }
+    if let range = inDictionary ["mHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
+      self.mHorizontalAlignment = value
+    }
+    if let range = inDictionary ["mVerticalAlignment"], let value = BoardTextVerticalAlignment.unarchiveFromDataRange (inData, range) {
+      self.mVerticalAlignment = value
+    }
+    if let range = inDictionary ["mRotation"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mRotation = value
+    }
+    if let range = inDictionary ["mWeight"], let value = Double.unarchiveFromDataRange (inData, range) {
+      self.mWeight = value
+    }
+    if let range = inDictionary ["mOblique"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mOblique = value
+    }
   }
 
   //····················································································································
@@ -849,11 +845,11 @@ final class BoardText : BoardObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To one property: mFont
     if let object = self.mFont {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   }
 

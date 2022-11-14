@@ -557,6 +557,7 @@ extension AutoLayoutProjectDocument {
         let slavePadsShouldBeRouted = component.mSlavePadsShouldBeRouted
         for connector in component.mConnectors.values {
           let masterPadName = connector.mComponentPadName
+          // Swift.print ("Component \(component.componentName), masterPadName \(masterPadName)")
           let padDescriptor = component.packagePadDictionary! [masterPadName]!
           let padShouldBeConnected = (connector.mPadIndex == 0) || slavePadsShouldBeRouted
           if let netName = padNetDictionary [masterPadName], padShouldBeConnected {  // Pad should be connected

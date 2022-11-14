@@ -5,7 +5,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct RawObject {
-  let index : Int
+//  let index : Int
   let object : EBManagedObject
   let propertyDictionary : [String : NSRange]
 }
@@ -45,14 +45,14 @@ struct RawObject {
     }
     appendDocumentFileOperationInfo ("read \(classDefinition.count) classes done")
   //---
-    let operationQueue = OperationQueue ()
-    let mutex = DispatchSemaphore (value: 1)
+//    let operationQueue = OperationQueue ()
+//    let mutex = DispatchSemaphore (value: 1)
   //--- Read objects
     var rawObjectArray = [RawObject] ()
     var idx = 0
     let data = ioDataScanner.data
     while !ioDataScanner.eof (), ioDataScanner.testAccept (byte: ASCII.at.rawValue) {
-      let index = idx
+  //    let index = idx
       idx += 1
       let classIndex = ioDataScanner.parseBase62EncodedInt ()
       let propertyNameArray = classDefinition [classIndex].1
@@ -62,18 +62,19 @@ struct RawObject {
         let propertyRange = ioDataScanner.getLineRangeAndAdvance ()
         propertyValueDictionary [propertyName] = propertyRange
       }
-      operationQueue.addOperation {
+ //     operationQueue.addOperation {
+     // Swift.print ("\(index) : \(className)")
         let managedObject = newInstanceOfEntityNamed (inUndoManager, className)
         managedObject.setUpPropertiesWithTextDictionary (propertyValueDictionary, data)
-        let rawObject = RawObject (index: index, object: managedObject, propertyDictionary: propertyValueDictionary)
-        mutex.wait ()
+        let rawObject = RawObject (/* index: index, */ object: managedObject, propertyDictionary: propertyValueDictionary)
+ //       mutex.wait ()
         rawObjectArray.append (rawObject)
-        mutex.signal ()
-      }
+ //       mutex.signal ()
+//      }
     }
-    appendDocumentFileOperationInfo ("read objects done, \(operationQueue.operationCount) pending operations")
-    operationQueue.waitUntilAllOperationsAreFinished ()
-    rawObjectArray.sort { $0.index < $1.index }
+//    appendDocumentFileOperationInfo ("read objects done, \(operationQueue.operationCount) pending operations")
+//    operationQueue.waitUntilAllOperationsAreFinished ()
+//    rawObjectArray.sort { $0.index < $1.index }
     appendDocumentFileOperationInfo ("parsed \(rawObjectArray.count) objects done")
   //--- Setup toOne
     let scannerData = ioDataScanner.data

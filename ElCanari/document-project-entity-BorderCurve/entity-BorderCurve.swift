@@ -942,33 +942,29 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mX = value
-      }
-      if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mY = value
-      }
-      if let range = inDictionary ["mCPX1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mCPX1 = value
-      }
-      if let range = inDictionary ["mCPY1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mCPY1 = value
-      }
-      if let range = inDictionary ["mCPX2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mCPX2 = value
-      }
-      if let range = inDictionary ["mCPY2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mCPY2 = value
-      }
-      if let range = inDictionary ["mShape"], let value = BorderCurveShape.unarchiveFromDataRange (inData, range) {
-        self.mShape = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mX = value
+    }
+    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mY = value
+    }
+    if let range = inDictionary ["mCPX1"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mCPX1 = value
+    }
+    if let range = inDictionary ["mCPY1"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mCPY1 = value
+    }
+    if let range = inDictionary ["mCPX2"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mCPX2 = value
+    }
+    if let range = inDictionary ["mCPY2"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mCPY2 = value
+    }
+    if let range = inDictionary ["mShape"], let value = BorderCurveShape.unarchiveFromDataRange (inData, range) {
+      self.mShape = value
+    }
   }
 
   //····················································································································
@@ -997,19 +993,19 @@ final class BorderCurve : EBGraphicManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To one property: mRoot
     if let object = self.mRoot {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   //--- To one property: mNext
     if let object = self.mNext {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   //--- To one property: mPrevious
     if let object = self.mPrevious {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   }
 

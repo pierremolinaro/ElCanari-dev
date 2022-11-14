@@ -1029,45 +1029,41 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mCenterX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mCenterX = value
-      }
-      if let range = inDictionary ["mCenterY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mCenterY = value
-      }
-      if let range = inDictionary ["mRotation"], let value = QuadrantRotation.unarchiveFromDataRange (inData, range) {
-        self.mRotation = value
-      }
-      if let range = inDictionary ["mMirror"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mMirror = value
-      }
-      if let range = inDictionary ["mSymbolInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mSymbolInstanceName = value
-      }
-      if let range = inDictionary ["mSymbolTypeName"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mSymbolTypeName = value
-      }
-      if let range = inDictionary ["mDisplayComponentNameOffsetX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mDisplayComponentNameOffsetX = value
-      }
-      if let range = inDictionary ["mDisplayComponentNameOffsetY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mDisplayComponentNameOffsetY = value
-      }
-      if let range = inDictionary ["mDisplayComponentValue"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mDisplayComponentValue = value
-      }
-      if let range = inDictionary ["mDisplayComponentValueOffsetX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mDisplayComponentValueOffsetX = value
-      }
-      if let range = inDictionary ["mDisplayComponentValueOffsetY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mDisplayComponentValueOffsetY = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mCenterX"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mCenterX = value
+    }
+    if let range = inDictionary ["mCenterY"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mCenterY = value
+    }
+    if let range = inDictionary ["mRotation"], let value = QuadrantRotation.unarchiveFromDataRange (inData, range) {
+      self.mRotation = value
+    }
+    if let range = inDictionary ["mMirror"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mMirror = value
+    }
+    if let range = inDictionary ["mSymbolInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mSymbolInstanceName = value
+    }
+    if let range = inDictionary ["mSymbolTypeName"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mSymbolTypeName = value
+    }
+    if let range = inDictionary ["mDisplayComponentNameOffsetX"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mDisplayComponentNameOffsetX = value
+    }
+    if let range = inDictionary ["mDisplayComponentNameOffsetY"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mDisplayComponentNameOffsetY = value
+    }
+    if let range = inDictionary ["mDisplayComponentValue"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mDisplayComponentValue = value
+    }
+    if let range = inDictionary ["mDisplayComponentValueOffsetX"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mDisplayComponentValueOffsetX = value
+    }
+    if let range = inDictionary ["mDisplayComponentValueOffsetY"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mDisplayComponentValueOffsetY = value
+    }
   }
 
   //····················································································································
@@ -1106,15 +1102,15 @@ final class ComponentSymbolInProject : SchematicObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mPoints
     for managedObject in self.mPoints.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To one property: mComponent
     if let object = self.mComponent {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   }
 

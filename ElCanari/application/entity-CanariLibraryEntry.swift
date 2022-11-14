@@ -261,32 +261,28 @@ final class CanariLibraryEntry : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mPath"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mPath = value
-      }
-      if let range = inDictionary ["mUses"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mUses = value
-      }
-      if let range = inDictionary ["mLibraryRepositoryURL"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mLibraryRepositoryURL = value
-      }
-      if let range = inDictionary ["mUserAndPasswordTag"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mUserAndPasswordTag = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mPath"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mPath = value
+    }
+    if let range = inDictionary ["mUses"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mUses = value
+    }
+    if let range = inDictionary ["mLibraryRepositoryURL"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mLibraryRepositoryURL = value
+    }
+    if let range = inDictionary ["mUserAndPasswordTag"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mUserAndPasswordTag = value
+    }
   }
 
   //····················································································································
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   }
 
   //····················································································································

@@ -193,26 +193,22 @@ final class DeviceDocumentation : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mFileName"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mFileName = value
-      }
-      if let range = inDictionary ["mFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
-        self.mFileData = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mFileName"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mFileName = value
+    }
+    if let range = inDictionary ["mFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
+      self.mFileData = value
+    }
   }
 
   //····················································································································
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   }
 
   //····················································································································

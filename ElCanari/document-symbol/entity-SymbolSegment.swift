@@ -391,32 +391,28 @@ final class SymbolSegment : SymbolObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["y1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.y1 = value
-      }
-      if let range = inDictionary ["x2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.x2 = value
-      }
-      if let range = inDictionary ["y2"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.y2 = value
-      }
-      if let range = inDictionary ["x1"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.x1 = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["y1"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.y1 = value
+    }
+    if let range = inDictionary ["x2"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.x2 = value
+    }
+    if let range = inDictionary ["y2"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.y2 = value
+    }
+    if let range = inDictionary ["x1"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.x1 = value
+    }
   }
 
   //····················································································································
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   }
 
   //····················································································································

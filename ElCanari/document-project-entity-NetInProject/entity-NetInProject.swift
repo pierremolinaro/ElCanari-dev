@@ -639,18 +639,14 @@ final class NetInProject : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mNetName"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mNetName = value
-      }
-      if let range = inDictionary ["mWarnsExactlyOneLabel"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.mWarnsExactlyOneLabel = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mNetName"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mNetName = value
+    }
+    if let range = inDictionary ["mWarnsExactlyOneLabel"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.mWarnsExactlyOneLabel = value
+    }
   }
 
   //····················································································································
@@ -697,19 +693,19 @@ final class NetInProject : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mPoints
     for managedObject in self.mPoints.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: mTracks
     for managedObject in self.mTracks.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To one property: mNetClass
     if let object = self.mNetClass {
-      objects.append (object)
+      ioObjectArray.append (object)
     }
   }
 

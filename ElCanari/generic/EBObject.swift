@@ -24,15 +24,6 @@ import Cocoa
 
   final let objectIndex : Int
 
-//  final private var mPrivateObjectIndex : Int = 0
-//  @MainActor final var objectIndex : Int {
-//    if self.mPrivateObjectIndex == 0 {
-//      gEasyBindingsObjectIndex += 1
-//      self.mPrivateObjectIndex = gEasyBindingsObjectIndex
-//    }
-//    return self.mPrivateObjectIndex
-//  }
-
   //····················································································································
 
   override init () {
@@ -61,15 +52,6 @@ import Cocoa
   //····················································································································
 
   final let objectIndex : Int
-
-//  final private var mPrivateObjectIndex : Int = 0
-//  final var objectIndex : Int {
-//    if self.mPrivateObjectIndex == 0 {
-//      gEasyBindingsObjectIndex += 1
-//      self.mPrivateObjectIndex = gEasyBindingsObjectIndex
-//    }
-//    return self.mPrivateObjectIndex
-//  }
 
   //····················································································································
 

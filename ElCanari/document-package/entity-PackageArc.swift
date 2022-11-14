@@ -738,59 +738,55 @@ final class PackageArc : PackageObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["yCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.yCenter = value
-      }
-      if let range = inDictionary ["radius"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.radius = value
-      }
-      if let range = inDictionary ["startAngle"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.startAngle = value
-      }
-      if let range = inDictionary ["arcAngle"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.arcAngle = value
-      }
-      if let range = inDictionary ["startTangent"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.startTangent = value
-      }
-      if let range = inDictionary ["endTangent"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.endTangent = value
-      }
-      if let range = inDictionary ["pathIsClosed"], let value = Bool.unarchiveFromDataRange (inData, range) {
-        self.pathIsClosed = value
-      }
-      if let range = inDictionary ["xCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.xCenterUnit = value
-      }
-      if let range = inDictionary ["yCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.yCenterUnit = value
-      }
-      if let range = inDictionary ["radiusUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.radiusUnit = value
-      }
-      if let range = inDictionary ["startTangentUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.startTangentUnit = value
-      }
-      if let range = inDictionary ["endTangentUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.endTangentUnit = value
-      }
-      if let range = inDictionary ["xCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.xCenter = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["yCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.yCenter = value
+    }
+    if let range = inDictionary ["radius"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.radius = value
+    }
+    if let range = inDictionary ["startAngle"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.startAngle = value
+    }
+    if let range = inDictionary ["arcAngle"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.arcAngle = value
+    }
+    if let range = inDictionary ["startTangent"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.startTangent = value
+    }
+    if let range = inDictionary ["endTangent"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.endTangent = value
+    }
+    if let range = inDictionary ["pathIsClosed"], let value = Bool.unarchiveFromDataRange (inData, range) {
+      self.pathIsClosed = value
+    }
+    if let range = inDictionary ["xCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.xCenterUnit = value
+    }
+    if let range = inDictionary ["yCenterUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.yCenterUnit = value
+    }
+    if let range = inDictionary ["radiusUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.radiusUnit = value
+    }
+    if let range = inDictionary ["startTangentUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.startTangentUnit = value
+    }
+    if let range = inDictionary ["endTangentUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.endTangentUnit = value
+    }
+    if let range = inDictionary ["xCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.xCenter = value
+    }
   }
 
   //····················································································································
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   }
 
   //····················································································································

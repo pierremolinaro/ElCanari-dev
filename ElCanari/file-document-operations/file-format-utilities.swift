@@ -25,7 +25,7 @@ import Cocoa
 //--- Set savingIndex for each object
   var idx = 0
   for object in reachableObjectArray {
-    object.savingIndex = idx
+    object.setSavingIndex (idx)
     idx += 1
   }
   return reachableObjectArray

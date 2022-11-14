@@ -34,7 +34,13 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  final var savingIndex = 0
+  final var savingIndex : Int { return self.mSavingIndex }
+
+  final private var mSavingIndex = 0
+
+  final func setSavingIndex (_ inIndex : Int) {
+    self.mSavingIndex = inIndex
+  }
 
   //····················································································································
   //  init

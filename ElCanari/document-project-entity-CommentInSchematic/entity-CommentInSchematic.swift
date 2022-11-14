@@ -420,41 +420,37 @@ final class CommentInSchematic : SchematicObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
-        self.mColor = value
-      }
-      if let range = inDictionary ["mSize"], let value = Double.unarchiveFromDataRange (inData, range) {
-        self.mSize = value
-      }
-      if let range = inDictionary ["mHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
-        self.mHorizontalAlignment = value
-      }
-      if let range = inDictionary ["mVerticalAlignment"], let value = VerticalAlignment.unarchiveFromDataRange (inData, range) {
-        self.mVerticalAlignment = value
-      }
-      if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mX = value
-      }
-      if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mY = value
-      }
-      if let range = inDictionary ["mComment"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mComment = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
+      self.mColor = value
+    }
+    if let range = inDictionary ["mSize"], let value = Double.unarchiveFromDataRange (inData, range) {
+      self.mSize = value
+    }
+    if let range = inDictionary ["mHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
+      self.mHorizontalAlignment = value
+    }
+    if let range = inDictionary ["mVerticalAlignment"], let value = VerticalAlignment.unarchiveFromDataRange (inData, range) {
+      self.mVerticalAlignment = value
+    }
+    if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mX = value
+    }
+    if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mY = value
+    }
+    if let range = inDictionary ["mComment"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mComment = value
+    }
   }
 
   //····················································································································
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   }
 
   //····················································································································

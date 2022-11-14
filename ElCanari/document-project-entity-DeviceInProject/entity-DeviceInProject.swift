@@ -863,24 +863,20 @@ final class DeviceInProject : EBManagedObject,
   //····················································································································
 
   override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inData : Data /* ,
-                                                   _ ioParallelObjectSetupContext : inout ParallelObjectSetupContext */) {
-    super.setUpPropertiesWithTextDictionary (inDictionary, inData) //, &ioParallelObjectSetupContext)
- //   ioParallelObjectSetupContext.addOperation {
-      if let range = inDictionary ["mDeviceName"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mDeviceName = value
-      }
-      if let range = inDictionary ["mPrefix"], let value = String.unarchiveFromDataRange (inData, range) {
-        self.mPrefix = value
-      }
-      if let range = inDictionary ["mDeviceVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
-        self.mDeviceVersion = value
-      }
-      if let range = inDictionary ["mDeviceFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
-        self.mDeviceFileData = value
-      }
- //   }
-  //--- End of addOperation
+                                                   _ inData : Data) {
+    super.setUpPropertiesWithTextDictionary (inDictionary, inData)
+    if let range = inDictionary ["mDeviceName"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mDeviceName = value
+    }
+    if let range = inDictionary ["mPrefix"], let value = String.unarchiveFromDataRange (inData, range) {
+      self.mPrefix = value
+    }
+    if let range = inDictionary ["mDeviceVersion"], let value = Int.unarchiveFromDataRange (inData, range) {
+      self.mDeviceVersion = value
+    }
+    if let range = inDictionary ["mDeviceFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
+      self.mDeviceFileData = value
+    }
   }
 
   //····················································································································
@@ -929,23 +925,23 @@ final class DeviceInProject : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &objects)
+  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mPackages
     for managedObject in self.mPackages.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: mSymbols
     for managedObject in self.mSymbols.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: mComponents
     for managedObject in self.mComponents.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   //--- To many property: mPadAssignments
     for managedObject in self.mPadAssignments.values {
-      objects.append (managedObject)
+      ioObjectArray.append (managedObject)
     }
   }
 
