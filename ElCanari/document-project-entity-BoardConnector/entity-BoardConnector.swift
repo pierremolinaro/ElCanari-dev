@@ -1367,69 +1367,7 @@ final class BoardConnector : BoardObject,
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
     enterToManyRelationshipObjectIndexes (from: self.mTracksP2.values, into: &ioData)
-    /* do{
-      var optionalFirstIndex : Int? = nil
-      var rangeCount = 0
-      for object in self.mTracksP2.values {
-        if let firstIndex = optionalFirstIndex {
-          if object.savingIndex == (firstIndex + 1) {
-            rangeCount += 1
-            optionalFirstIndex = object.savingIndex
-          }else if rangeCount > 0 {
-            ioData.append (ascii: .colon)
-            ioData.append (base62Encoded: rangeCount)
-            ioData.append (ascii: .space)
-            ioData.append (base62Encoded: object.savingIndex)
-            rangeCount = 0
-            optionalFirstIndex = object.savingIndex
-          }else{
-            ioData.append (ascii: .space)
-            ioData.append (base62Encoded: object.savingIndex)
-            optionalFirstIndex = object.savingIndex
-          }
-        }else{
-          ioData.append (base62Encoded: object.savingIndex)
-          optionalFirstIndex = object.savingIndex
-        }
-      }
-      if optionalFirstIndex != nil, rangeCount > 0 {
-        ioData.append (ascii: .colon)
-        ioData.append (base62Encoded: rangeCount)
-      }
-      ioData.append (ascii: .lineFeed)
-    } */
     enterToManyRelationshipObjectIndexes (from: self.mTracksP1.values, into: &ioData)
-    /* do{
-      var optionalFirstIndex : Int? = nil
-      var rangeCount = 0
-      for object in self.mTracksP1.values {
-        if let firstIndex = optionalFirstIndex {
-          if object.savingIndex == (firstIndex + 1) {
-            rangeCount += 1
-            optionalFirstIndex = object.savingIndex
-          }else if rangeCount > 0 {
-            ioData.append (ascii: .colon)
-            ioData.append (base62Encoded: rangeCount)
-            ioData.append (ascii: .space)
-            ioData.append (base62Encoded: object.savingIndex)
-            rangeCount = 0
-            optionalFirstIndex = object.savingIndex
-          }else{
-            ioData.append (ascii: .space)
-            ioData.append (base62Encoded: object.savingIndex)
-            optionalFirstIndex = object.savingIndex
-          }
-        }else{
-          ioData.append (base62Encoded: object.savingIndex)
-          optionalFirstIndex = object.savingIndex
-        }
-      }
-      if optionalFirstIndex != nil, rangeCount > 0 {
-        ioData.append (ascii: .colon)
-        ioData.append (base62Encoded: rangeCount)
-      }
-      ioData.append (ascii: .lineFeed)
-    } */
   }
 
   //····················································································································

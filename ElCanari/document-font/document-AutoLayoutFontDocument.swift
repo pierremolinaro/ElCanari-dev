@@ -144,7 +144,9 @@ import Cocoa
   //····················································································································
 
   override var displayName : String? {
-    get { return super.displayName }
+    get {
+      return super.displayName
+    }
     set {
       super.displayName = newValue
       self.documentFileName_property.observedObjectDidChange ()

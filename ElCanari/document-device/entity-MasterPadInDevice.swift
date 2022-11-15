@@ -636,37 +636,6 @@ final class MasterPadInDevice : EBManagedObject,
   //--- To one relationships
   //--- To many relationships
     enterToManyRelationshipObjectIndexes (from: self.mSlavePads.values, into: &ioData)
-    /* do{
-      var optionalFirstIndex : Int? = nil
-      var rangeCount = 0
-      for object in self.mSlavePads.values {
-        if let firstIndex = optionalFirstIndex {
-          if object.savingIndex == (firstIndex + 1) {
-            rangeCount += 1
-            optionalFirstIndex = object.savingIndex
-          }else if rangeCount > 0 {
-            ioData.append (ascii: .colon)
-            ioData.append (base62Encoded: rangeCount)
-            ioData.append (ascii: .space)
-            ioData.append (base62Encoded: object.savingIndex)
-            rangeCount = 0
-            optionalFirstIndex = object.savingIndex
-          }else{
-            ioData.append (ascii: .space)
-            ioData.append (base62Encoded: object.savingIndex)
-            optionalFirstIndex = object.savingIndex
-          }
-        }else{
-          ioData.append (base62Encoded: object.savingIndex)
-          optionalFirstIndex = object.savingIndex
-        }
-      }
-      if optionalFirstIndex != nil, rangeCount > 0 {
-        ioData.append (ascii: .colon)
-        ioData.append (base62Encoded: rangeCount)
-      }
-      ioData.append (ascii: .lineFeed)
-    } */
   }
 
   //····················································································································
