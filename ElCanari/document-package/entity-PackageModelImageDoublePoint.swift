@@ -487,7 +487,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_PackageModelImageDoublePoint (knob: inKnobIndex)
+    return self.cursorForKnob_PackageModelImageDoublePoint (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -495,20 +495,20 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_PackageModelImageDoublePoint (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_PackageModelImageDoublePoint (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_PackageModelImageDoublePoint (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_PackageModelImageDoublePoint (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_PackageModelImageDoublePoint (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_PackageModelImageDoublePoint (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -520,7 +520,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_PackageModelImageDoublePoint (
+    return self.canMove_PackageModelImageDoublePoint (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -539,7 +539,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_PackageModelImageDoublePoint (
+    self.move_PackageModelImageDoublePoint (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -556,13 +556,13 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_PackageModelImageDoublePoint (inGrid)
+    self.snapToGrid_PackageModelImageDoublePoint (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_PackageModelImageDoublePoint (inGrid)
+    return self.canSnapToGrid_PackageModelImageDoublePoint (inGrid)
   }
 
   //····················································································································
@@ -570,13 +570,13 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_PackageModelImageDoublePoint ()
+    self.flipHorizontally_PackageModelImageDoublePoint ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_PackageModelImageDoublePoint ()
+    return self.canFlipHorizontally_PackageModelImageDoublePoint ()
   }
 
   //····················································································································
@@ -584,13 +584,13 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_PackageModelImageDoublePoint ()
+    self.flipVertically_PackageModelImageDoublePoint ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_PackageModelImageDoublePoint ()
+    return self.canFlipVertically_PackageModelImageDoublePoint ()
   }
 
   //····················································································································
@@ -598,21 +598,21 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_PackageModelImageDoublePoint (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_PackageModelImageDoublePoint (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_PackageModelImageDoublePoint (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_PackageModelImageDoublePoint (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_PackageModelImageDoublePoint (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_PackageModelImageDoublePoint (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -620,7 +620,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_PackageModelImageDoublePoint (ioDictionary)
+    self.saveIntoAdditionalDictionary_PackageModelImageDoublePoint (ioDictionary)
   }
 
   //····················································································································
@@ -630,9 +630,9 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_PackageModelImageDoublePoint (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_PackageModelImageDoublePoint (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -640,7 +640,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_PackageModelImageDoublePoint ()
+    return self.alignmentPoints_PackageModelImageDoublePoint ()
   }
 
   //····················································································································
@@ -648,7 +648,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_PackageModelImageDoublePoint ()
+    self.operationBeforeRemoving_PackageModelImageDoublePoint ()
   }
 
   //····················································································································

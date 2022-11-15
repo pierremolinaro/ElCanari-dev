@@ -429,7 +429,7 @@ final class WireInSchematic : SchematicObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_WireInSchematic (knob: inKnobIndex)
+    return self.cursorForKnob_WireInSchematic (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -437,20 +437,20 @@ final class WireInSchematic : SchematicObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_WireInSchematic (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_WireInSchematic (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_WireInSchematic (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_WireInSchematic (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_WireInSchematic (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_WireInSchematic (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -462,7 +462,7 @@ final class WireInSchematic : SchematicObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_WireInSchematic (
+    return self.canMove_WireInSchematic (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -481,7 +481,7 @@ final class WireInSchematic : SchematicObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_WireInSchematic (
+    self.move_WireInSchematic (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -498,13 +498,13 @@ final class WireInSchematic : SchematicObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_WireInSchematic (inGrid)
+    self.snapToGrid_WireInSchematic (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_WireInSchematic (inGrid)
+    return self.canSnapToGrid_WireInSchematic (inGrid)
   }
 
   //····················································································································
@@ -512,13 +512,13 @@ final class WireInSchematic : SchematicObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_WireInSchematic ()
+    self.flipHorizontally_WireInSchematic ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_WireInSchematic ()
+    return self.canFlipHorizontally_WireInSchematic ()
   }
 
   //····················································································································
@@ -526,13 +526,13 @@ final class WireInSchematic : SchematicObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_WireInSchematic ()
+    self.flipVertically_WireInSchematic ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_WireInSchematic ()
+    return self.canFlipVertically_WireInSchematic ()
   }
 
   //····················································································································
@@ -540,21 +540,21 @@ final class WireInSchematic : SchematicObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_WireInSchematic (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_WireInSchematic (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_WireInSchematic (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_WireInSchematic (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_WireInSchematic (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_WireInSchematic (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -562,7 +562,7 @@ final class WireInSchematic : SchematicObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_WireInSchematic (ioDictionary)
+    self.saveIntoAdditionalDictionary_WireInSchematic (ioDictionary)
   }
 
   //····················································································································
@@ -572,9 +572,9 @@ final class WireInSchematic : SchematicObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_WireInSchematic (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_WireInSchematic (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -582,7 +582,7 @@ final class WireInSchematic : SchematicObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_WireInSchematic ()
+    return self.alignmentPoints_WireInSchematic ()
   }
 
   //····················································································································
@@ -590,7 +590,7 @@ final class WireInSchematic : SchematicObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_WireInSchematic ()
+    self.operationBeforeRemoving_WireInSchematic ()
   }
 
   //····················································································································

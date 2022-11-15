@@ -1126,7 +1126,7 @@ final class PackageZone : PackageObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_PackageZone (knob: inKnobIndex)
+    return self.cursorForKnob_PackageZone (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -1134,20 +1134,20 @@ final class PackageZone : PackageObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_PackageZone (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_PackageZone (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_PackageZone (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_PackageZone (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_PackageZone (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_PackageZone (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -1159,7 +1159,7 @@ final class PackageZone : PackageObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_PackageZone (
+    return self.canMove_PackageZone (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -1178,7 +1178,7 @@ final class PackageZone : PackageObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_PackageZone (
+    self.move_PackageZone (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -1195,13 +1195,13 @@ final class PackageZone : PackageObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_PackageZone (inGrid)
+    self.snapToGrid_PackageZone (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_PackageZone (inGrid)
+    return self.canSnapToGrid_PackageZone (inGrid)
   }
 
   //····················································································································
@@ -1209,13 +1209,13 @@ final class PackageZone : PackageObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_PackageZone ()
+    self.flipHorizontally_PackageZone ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_PackageZone ()
+    return self.canFlipHorizontally_PackageZone ()
   }
 
   //····················································································································
@@ -1223,13 +1223,13 @@ final class PackageZone : PackageObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_PackageZone ()
+    self.flipVertically_PackageZone ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_PackageZone ()
+    return self.canFlipVertically_PackageZone ()
   }
 
   //····················································································································
@@ -1237,21 +1237,21 @@ final class PackageZone : PackageObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_PackageZone (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_PackageZone (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_PackageZone (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_PackageZone (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_PackageZone (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_PackageZone (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -1259,7 +1259,7 @@ final class PackageZone : PackageObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_PackageZone (ioDictionary)
+    self.saveIntoAdditionalDictionary_PackageZone (ioDictionary)
   }
 
   //····················································································································
@@ -1269,9 +1269,9 @@ final class PackageZone : PackageObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_PackageZone (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_PackageZone (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -1279,7 +1279,7 @@ final class PackageZone : PackageObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_PackageZone ()
+    return self.alignmentPoints_PackageZone ()
   }
 
   //····················································································································
@@ -1287,7 +1287,7 @@ final class PackageZone : PackageObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_PackageZone ()
+    self.operationBeforeRemoving_PackageZone ()
   }
 
   //····················································································································

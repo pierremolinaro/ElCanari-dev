@@ -557,7 +557,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_MergerBoardInstance (knob: inKnobIndex)
+    return self.cursorForKnob_MergerBoardInstance (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -565,20 +565,20 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_MergerBoardInstance (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_MergerBoardInstance (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_MergerBoardInstance (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_MergerBoardInstance (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_MergerBoardInstance (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_MergerBoardInstance (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -590,7 +590,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_MergerBoardInstance (
+    return self.canMove_MergerBoardInstance (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -609,7 +609,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_MergerBoardInstance (
+    self.move_MergerBoardInstance (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -626,13 +626,13 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_MergerBoardInstance (inGrid)
+    self.snapToGrid_MergerBoardInstance (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_MergerBoardInstance (inGrid)
+    return self.canSnapToGrid_MergerBoardInstance (inGrid)
   }
 
   //····················································································································
@@ -640,13 +640,13 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_MergerBoardInstance ()
+    self.flipHorizontally_MergerBoardInstance ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_MergerBoardInstance ()
+    return self.canFlipHorizontally_MergerBoardInstance ()
   }
 
   //····················································································································
@@ -654,13 +654,13 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_MergerBoardInstance ()
+    self.flipVertically_MergerBoardInstance ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_MergerBoardInstance ()
+    return self.canFlipVertically_MergerBoardInstance ()
   }
 
   //····················································································································
@@ -668,21 +668,21 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_MergerBoardInstance (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_MergerBoardInstance (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_MergerBoardInstance (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_MergerBoardInstance (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_MergerBoardInstance (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_MergerBoardInstance (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -690,7 +690,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_MergerBoardInstance (ioDictionary)
+    self.saveIntoAdditionalDictionary_MergerBoardInstance (ioDictionary)
   }
 
   //····················································································································
@@ -700,9 +700,9 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_MergerBoardInstance (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_MergerBoardInstance (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -710,7 +710,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_MergerBoardInstance ()
+    return self.alignmentPoints_MergerBoardInstance ()
   }
 
   //····················································································································
@@ -718,7 +718,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_MergerBoardInstance ()
+    self.operationBeforeRemoving_MergerBoardInstance ()
   }
 
   //····················································································································

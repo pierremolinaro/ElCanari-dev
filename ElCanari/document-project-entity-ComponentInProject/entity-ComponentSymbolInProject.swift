@@ -1118,7 +1118,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_ComponentSymbolInProject (knob: inKnobIndex)
+    return self.cursorForKnob_ComponentSymbolInProject (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -1126,20 +1126,20 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_ComponentSymbolInProject (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_ComponentSymbolInProject (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_ComponentSymbolInProject (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_ComponentSymbolInProject (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_ComponentSymbolInProject (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_ComponentSymbolInProject (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -1151,7 +1151,7 @@ final class ComponentSymbolInProject : SchematicObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_ComponentSymbolInProject (
+    return self.canMove_ComponentSymbolInProject (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -1170,7 +1170,7 @@ final class ComponentSymbolInProject : SchematicObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_ComponentSymbolInProject (
+    self.move_ComponentSymbolInProject (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -1187,13 +1187,13 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_ComponentSymbolInProject (inGrid)
+    self.snapToGrid_ComponentSymbolInProject (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_ComponentSymbolInProject (inGrid)
+    return self.canSnapToGrid_ComponentSymbolInProject (inGrid)
   }
 
   //····················································································································
@@ -1201,13 +1201,13 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_ComponentSymbolInProject ()
+    self.flipHorizontally_ComponentSymbolInProject ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_ComponentSymbolInProject ()
+    return self.canFlipHorizontally_ComponentSymbolInProject ()
   }
 
   //····················································································································
@@ -1215,13 +1215,13 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_ComponentSymbolInProject ()
+    self.flipVertically_ComponentSymbolInProject ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_ComponentSymbolInProject ()
+    return self.canFlipVertically_ComponentSymbolInProject ()
   }
 
   //····················································································································
@@ -1229,21 +1229,21 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_ComponentSymbolInProject (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_ComponentSymbolInProject (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_ComponentSymbolInProject (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_ComponentSymbolInProject (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_ComponentSymbolInProject (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_ComponentSymbolInProject (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -1251,7 +1251,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_ComponentSymbolInProject (ioDictionary)
+    self.saveIntoAdditionalDictionary_ComponentSymbolInProject (ioDictionary)
   }
 
   //····················································································································
@@ -1261,9 +1261,9 @@ final class ComponentSymbolInProject : SchematicObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_ComponentSymbolInProject (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_ComponentSymbolInProject (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -1271,7 +1271,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_ComponentSymbolInProject ()
+    return self.alignmentPoints_ComponentSymbolInProject ()
   }
 
   //····················································································································
@@ -1279,7 +1279,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_ComponentSymbolInProject ()
+    self.operationBeforeRemoving_ComponentSymbolInProject ()
   }
 
   //····················································································································

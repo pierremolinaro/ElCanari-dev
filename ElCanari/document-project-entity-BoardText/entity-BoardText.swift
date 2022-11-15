@@ -856,7 +856,7 @@ final class BoardText : BoardObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_BoardText (knob: inKnobIndex)
+    return self.cursorForKnob_BoardText (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -864,20 +864,20 @@ final class BoardText : BoardObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_BoardText (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_BoardText (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_BoardText (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_BoardText (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_BoardText (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_BoardText (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -889,7 +889,7 @@ final class BoardText : BoardObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_BoardText (
+    return self.canMove_BoardText (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -908,7 +908,7 @@ final class BoardText : BoardObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_BoardText (
+    self.move_BoardText (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -925,13 +925,13 @@ final class BoardText : BoardObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_BoardText (inGrid)
+    self.snapToGrid_BoardText (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_BoardText (inGrid)
+    return self.canSnapToGrid_BoardText (inGrid)
   }
 
   //····················································································································
@@ -939,13 +939,13 @@ final class BoardText : BoardObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_BoardText ()
+    self.flipHorizontally_BoardText ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_BoardText ()
+    return self.canFlipHorizontally_BoardText ()
   }
 
   //····················································································································
@@ -953,13 +953,13 @@ final class BoardText : BoardObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_BoardText ()
+    self.flipVertically_BoardText ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_BoardText ()
+    return self.canFlipVertically_BoardText ()
   }
 
   //····················································································································
@@ -967,21 +967,21 @@ final class BoardText : BoardObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_BoardText (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_BoardText (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_BoardText (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_BoardText (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_BoardText (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_BoardText (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -989,7 +989,7 @@ final class BoardText : BoardObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_BoardText (ioDictionary)
+    self.saveIntoAdditionalDictionary_BoardText (ioDictionary)
   }
 
   //····················································································································
@@ -999,9 +999,9 @@ final class BoardText : BoardObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_BoardText (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_BoardText (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -1009,7 +1009,7 @@ final class BoardText : BoardObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_BoardText ()
+    return self.alignmentPoints_BoardText ()
   }
 
   //····················································································································
@@ -1017,7 +1017,7 @@ final class BoardText : BoardObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_BoardText ()
+    self.operationBeforeRemoving_BoardText ()
   }
 
   //····················································································································

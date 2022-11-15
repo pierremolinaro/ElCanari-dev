@@ -431,7 +431,7 @@ final class SymbolSegment : SymbolObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_SymbolSegment (knob: inKnobIndex)
+    return self.cursorForKnob_SymbolSegment (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -439,20 +439,20 @@ final class SymbolSegment : SymbolObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_SymbolSegment (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_SymbolSegment (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_SymbolSegment (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_SymbolSegment (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_SymbolSegment (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_SymbolSegment (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -464,7 +464,7 @@ final class SymbolSegment : SymbolObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_SymbolSegment (
+    return self.canMove_SymbolSegment (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -483,7 +483,7 @@ final class SymbolSegment : SymbolObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_SymbolSegment (
+    self.move_SymbolSegment (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -500,13 +500,13 @@ final class SymbolSegment : SymbolObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_SymbolSegment (inGrid)
+    self.snapToGrid_SymbolSegment (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_SymbolSegment (inGrid)
+    return self.canSnapToGrid_SymbolSegment (inGrid)
   }
 
   //····················································································································
@@ -514,13 +514,13 @@ final class SymbolSegment : SymbolObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_SymbolSegment ()
+    self.flipHorizontally_SymbolSegment ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_SymbolSegment ()
+    return self.canFlipHorizontally_SymbolSegment ()
   }
 
   //····················································································································
@@ -528,13 +528,13 @@ final class SymbolSegment : SymbolObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_SymbolSegment ()
+    self.flipVertically_SymbolSegment ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_SymbolSegment ()
+    return self.canFlipVertically_SymbolSegment ()
   }
 
   //····················································································································
@@ -542,21 +542,21 @@ final class SymbolSegment : SymbolObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_SymbolSegment (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_SymbolSegment (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_SymbolSegment (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_SymbolSegment (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_SymbolSegment (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_SymbolSegment (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -564,7 +564,7 @@ final class SymbolSegment : SymbolObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_SymbolSegment (ioDictionary)
+    self.saveIntoAdditionalDictionary_SymbolSegment (ioDictionary)
   }
 
   //····················································································································
@@ -574,9 +574,9 @@ final class SymbolSegment : SymbolObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_SymbolSegment (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_SymbolSegment (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -584,7 +584,7 @@ final class SymbolSegment : SymbolObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_SymbolSegment ()
+    return self.alignmentPoints_SymbolSegment ()
   }
 
   //····················································································································
@@ -592,7 +592,7 @@ final class SymbolSegment : SymbolObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_SymbolSegment ()
+    self.operationBeforeRemoving_SymbolSegment ()
   }
 
   //····················································································································

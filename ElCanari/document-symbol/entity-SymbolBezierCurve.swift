@@ -651,7 +651,7 @@ final class SymbolBezierCurve : SymbolObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_SymbolBezierCurve (knob: inKnobIndex)
+    return self.cursorForKnob_SymbolBezierCurve (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -659,20 +659,20 @@ final class SymbolBezierCurve : SymbolObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_SymbolBezierCurve (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_SymbolBezierCurve (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_SymbolBezierCurve (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_SymbolBezierCurve (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_SymbolBezierCurve (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_SymbolBezierCurve (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -684,7 +684,7 @@ final class SymbolBezierCurve : SymbolObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_SymbolBezierCurve (
+    return self.canMove_SymbolBezierCurve (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -703,7 +703,7 @@ final class SymbolBezierCurve : SymbolObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_SymbolBezierCurve (
+    self.move_SymbolBezierCurve (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -720,13 +720,13 @@ final class SymbolBezierCurve : SymbolObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_SymbolBezierCurve (inGrid)
+    self.snapToGrid_SymbolBezierCurve (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_SymbolBezierCurve (inGrid)
+    return self.canSnapToGrid_SymbolBezierCurve (inGrid)
   }
 
   //····················································································································
@@ -734,13 +734,13 @@ final class SymbolBezierCurve : SymbolObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_SymbolBezierCurve ()
+    self.flipHorizontally_SymbolBezierCurve ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_SymbolBezierCurve ()
+    return self.canFlipHorizontally_SymbolBezierCurve ()
   }
 
   //····················································································································
@@ -748,13 +748,13 @@ final class SymbolBezierCurve : SymbolObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_SymbolBezierCurve ()
+    self.flipVertically_SymbolBezierCurve ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_SymbolBezierCurve ()
+    return self.canFlipVertically_SymbolBezierCurve ()
   }
 
   //····················································································································
@@ -762,21 +762,21 @@ final class SymbolBezierCurve : SymbolObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_SymbolBezierCurve (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_SymbolBezierCurve (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_SymbolBezierCurve (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_SymbolBezierCurve (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_SymbolBezierCurve (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_SymbolBezierCurve (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -784,7 +784,7 @@ final class SymbolBezierCurve : SymbolObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_SymbolBezierCurve (ioDictionary)
+    self.saveIntoAdditionalDictionary_SymbolBezierCurve (ioDictionary)
   }
 
   //····················································································································
@@ -794,9 +794,9 @@ final class SymbolBezierCurve : SymbolObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_SymbolBezierCurve (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_SymbolBezierCurve (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -804,7 +804,7 @@ final class SymbolBezierCurve : SymbolObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_SymbolBezierCurve ()
+    return self.alignmentPoints_SymbolBezierCurve ()
   }
 
   //····················································································································
@@ -812,7 +812,7 @@ final class SymbolBezierCurve : SymbolObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_SymbolBezierCurve ()
+    self.operationBeforeRemoving_SymbolBezierCurve ()
   }
 
   //····················································································································

@@ -431,7 +431,7 @@ final class SymbolOval : SymbolObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_SymbolOval (knob: inKnobIndex)
+    return self.cursorForKnob_SymbolOval (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -439,20 +439,20 @@ final class SymbolOval : SymbolObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_SymbolOval (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_SymbolOval (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_SymbolOval (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_SymbolOval (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_SymbolOval (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_SymbolOval (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -464,7 +464,7 @@ final class SymbolOval : SymbolObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_SymbolOval (
+    return self.canMove_SymbolOval (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -483,7 +483,7 @@ final class SymbolOval : SymbolObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_SymbolOval (
+    self.move_SymbolOval (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -500,13 +500,13 @@ final class SymbolOval : SymbolObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_SymbolOval (inGrid)
+    self.snapToGrid_SymbolOval (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_SymbolOval (inGrid)
+    return self.canSnapToGrid_SymbolOval (inGrid)
   }
 
   //····················································································································
@@ -514,13 +514,13 @@ final class SymbolOval : SymbolObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_SymbolOval ()
+    self.flipHorizontally_SymbolOval ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_SymbolOval ()
+    return self.canFlipHorizontally_SymbolOval ()
   }
 
   //····················································································································
@@ -528,13 +528,13 @@ final class SymbolOval : SymbolObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_SymbolOval ()
+    self.flipVertically_SymbolOval ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_SymbolOval ()
+    return self.canFlipVertically_SymbolOval ()
   }
 
   //····················································································································
@@ -542,21 +542,21 @@ final class SymbolOval : SymbolObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_SymbolOval (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_SymbolOval (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_SymbolOval (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_SymbolOval (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_SymbolOval (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_SymbolOval (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -564,7 +564,7 @@ final class SymbolOval : SymbolObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_SymbolOval (ioDictionary)
+    self.saveIntoAdditionalDictionary_SymbolOval (ioDictionary)
   }
 
   //····················································································································
@@ -574,9 +574,9 @@ final class SymbolOval : SymbolObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_SymbolOval (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_SymbolOval (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -584,7 +584,7 @@ final class SymbolOval : SymbolObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_SymbolOval ()
+    return self.alignmentPoints_SymbolOval ()
   }
 
   //····················································································································
@@ -592,7 +592,7 @@ final class SymbolOval : SymbolObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_SymbolOval ()
+    self.operationBeforeRemoving_SymbolOval ()
   }
 
   //····················································································································

@@ -1193,7 +1193,7 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_PackageSlavePad (knob: inKnobIndex)
+    return self.cursorForKnob_PackageSlavePad (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -1201,20 +1201,20 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_PackageSlavePad (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_PackageSlavePad (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_PackageSlavePad (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_PackageSlavePad (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_PackageSlavePad (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_PackageSlavePad (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -1226,7 +1226,7 @@ final class PackageSlavePad : PackageObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_PackageSlavePad (
+    return self.canMove_PackageSlavePad (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -1245,7 +1245,7 @@ final class PackageSlavePad : PackageObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_PackageSlavePad (
+    self.move_PackageSlavePad (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -1262,13 +1262,13 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_PackageSlavePad (inGrid)
+    self.snapToGrid_PackageSlavePad (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_PackageSlavePad (inGrid)
+    return self.canSnapToGrid_PackageSlavePad (inGrid)
   }
 
   //····················································································································
@@ -1276,13 +1276,13 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_PackageSlavePad ()
+    self.flipHorizontally_PackageSlavePad ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_PackageSlavePad ()
+    return self.canFlipHorizontally_PackageSlavePad ()
   }
 
   //····················································································································
@@ -1290,13 +1290,13 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_PackageSlavePad ()
+    self.flipVertically_PackageSlavePad ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_PackageSlavePad ()
+    return self.canFlipVertically_PackageSlavePad ()
   }
 
   //····················································································································
@@ -1304,21 +1304,21 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_PackageSlavePad (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_PackageSlavePad (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_PackageSlavePad (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_PackageSlavePad (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_PackageSlavePad (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_PackageSlavePad (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -1326,7 +1326,7 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_PackageSlavePad (ioDictionary)
+    self.saveIntoAdditionalDictionary_PackageSlavePad (ioDictionary)
   }
 
   //····················································································································
@@ -1336,9 +1336,9 @@ final class PackageSlavePad : PackageObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_PackageSlavePad (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_PackageSlavePad (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -1346,7 +1346,7 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_PackageSlavePad ()
+    return self.alignmentPoints_PackageSlavePad ()
   }
 
   //····················································································································
@@ -1354,7 +1354,7 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_PackageSlavePad ()
+    self.operationBeforeRemoving_PackageSlavePad ()
   }
 
   //····················································································································

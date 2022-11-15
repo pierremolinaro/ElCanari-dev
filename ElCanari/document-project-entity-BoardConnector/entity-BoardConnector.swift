@@ -1540,7 +1540,7 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_BoardConnector (knob: inKnobIndex)
+    return self.cursorForKnob_BoardConnector (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -1548,20 +1548,20 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_BoardConnector (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_BoardConnector (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_BoardConnector (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_BoardConnector (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_BoardConnector (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_BoardConnector (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -1573,7 +1573,7 @@ final class BoardConnector : BoardObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_BoardConnector (
+    return self.canMove_BoardConnector (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -1592,7 +1592,7 @@ final class BoardConnector : BoardObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_BoardConnector (
+    self.move_BoardConnector (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -1609,13 +1609,13 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_BoardConnector (inGrid)
+    self.snapToGrid_BoardConnector (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_BoardConnector (inGrid)
+    return self.canSnapToGrid_BoardConnector (inGrid)
   }
 
   //····················································································································
@@ -1623,13 +1623,13 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_BoardConnector ()
+    self.flipHorizontally_BoardConnector ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_BoardConnector ()
+    return self.canFlipHorizontally_BoardConnector ()
   }
 
   //····················································································································
@@ -1637,13 +1637,13 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_BoardConnector ()
+    self.flipVertically_BoardConnector ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_BoardConnector ()
+    return self.canFlipVertically_BoardConnector ()
   }
 
   //····················································································································
@@ -1651,21 +1651,21 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_BoardConnector (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_BoardConnector (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_BoardConnector (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_BoardConnector (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_BoardConnector (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_BoardConnector (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -1673,7 +1673,7 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_BoardConnector (ioDictionary)
+    self.saveIntoAdditionalDictionary_BoardConnector (ioDictionary)
   }
 
   //····················································································································
@@ -1683,9 +1683,9 @@ final class BoardConnector : BoardObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_BoardConnector (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_BoardConnector (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -1693,7 +1693,7 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_BoardConnector ()
+    return self.alignmentPoints_BoardConnector ()
   }
 
   //····················································································································
@@ -1701,7 +1701,7 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_BoardConnector ()
+    self.operationBeforeRemoving_BoardConnector ()
   }
 
   //····················································································································

@@ -711,7 +711,7 @@ final class BoardRestrictRectangle : BoardObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_BoardRestrictRectangle (knob: inKnobIndex)
+    return self.cursorForKnob_BoardRestrictRectangle (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -719,20 +719,20 @@ final class BoardRestrictRectangle : BoardObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_BoardRestrictRectangle (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_BoardRestrictRectangle (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_BoardRestrictRectangle (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_BoardRestrictRectangle (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_BoardRestrictRectangle (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_BoardRestrictRectangle (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -744,7 +744,7 @@ final class BoardRestrictRectangle : BoardObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_BoardRestrictRectangle (
+    return self.canMove_BoardRestrictRectangle (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -763,7 +763,7 @@ final class BoardRestrictRectangle : BoardObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_BoardRestrictRectangle (
+    self.move_BoardRestrictRectangle (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -780,13 +780,13 @@ final class BoardRestrictRectangle : BoardObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_BoardRestrictRectangle (inGrid)
+    self.snapToGrid_BoardRestrictRectangle (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_BoardRestrictRectangle (inGrid)
+    return self.canSnapToGrid_BoardRestrictRectangle (inGrid)
   }
 
   //····················································································································
@@ -794,13 +794,13 @@ final class BoardRestrictRectangle : BoardObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_BoardRestrictRectangle ()
+    self.flipHorizontally_BoardRestrictRectangle ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_BoardRestrictRectangle ()
+    return self.canFlipHorizontally_BoardRestrictRectangle ()
   }
 
   //····················································································································
@@ -808,13 +808,13 @@ final class BoardRestrictRectangle : BoardObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_BoardRestrictRectangle ()
+    self.flipVertically_BoardRestrictRectangle ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_BoardRestrictRectangle ()
+    return self.canFlipVertically_BoardRestrictRectangle ()
   }
 
   //····················································································································
@@ -822,21 +822,21 @@ final class BoardRestrictRectangle : BoardObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_BoardRestrictRectangle (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_BoardRestrictRectangle (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_BoardRestrictRectangle (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_BoardRestrictRectangle (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_BoardRestrictRectangle (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_BoardRestrictRectangle (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -844,7 +844,7 @@ final class BoardRestrictRectangle : BoardObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_BoardRestrictRectangle (ioDictionary)
+    self.saveIntoAdditionalDictionary_BoardRestrictRectangle (ioDictionary)
   }
 
   //····················································································································
@@ -854,9 +854,9 @@ final class BoardRestrictRectangle : BoardObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_BoardRestrictRectangle (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_BoardRestrictRectangle (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -864,7 +864,7 @@ final class BoardRestrictRectangle : BoardObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_BoardRestrictRectangle ()
+    return self.alignmentPoints_BoardRestrictRectangle ()
   }
 
   //····················································································································
@@ -872,7 +872,7 @@ final class BoardRestrictRectangle : BoardObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_BoardRestrictRectangle ()
+    self.operationBeforeRemoving_BoardRestrictRectangle ()
   }
 
   //····················································································································

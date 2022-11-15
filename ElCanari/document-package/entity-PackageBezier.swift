@@ -939,7 +939,7 @@ final class PackageBezier : PackageObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_PackageBezier (knob: inKnobIndex)
+    return self.cursorForKnob_PackageBezier (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -947,20 +947,20 @@ final class PackageBezier : PackageObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_PackageBezier (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_PackageBezier (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_PackageBezier (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_PackageBezier (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_PackageBezier (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_PackageBezier (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -972,7 +972,7 @@ final class PackageBezier : PackageObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_PackageBezier (
+    return self.canMove_PackageBezier (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -991,7 +991,7 @@ final class PackageBezier : PackageObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_PackageBezier (
+    self.move_PackageBezier (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -1008,13 +1008,13 @@ final class PackageBezier : PackageObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_PackageBezier (inGrid)
+    self.snapToGrid_PackageBezier (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_PackageBezier (inGrid)
+    return self.canSnapToGrid_PackageBezier (inGrid)
   }
 
   //····················································································································
@@ -1022,13 +1022,13 @@ final class PackageBezier : PackageObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_PackageBezier ()
+    self.flipHorizontally_PackageBezier ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_PackageBezier ()
+    return self.canFlipHorizontally_PackageBezier ()
   }
 
   //····················································································································
@@ -1036,13 +1036,13 @@ final class PackageBezier : PackageObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_PackageBezier ()
+    self.flipVertically_PackageBezier ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_PackageBezier ()
+    return self.canFlipVertically_PackageBezier ()
   }
 
   //····················································································································
@@ -1050,21 +1050,21 @@ final class PackageBezier : PackageObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_PackageBezier (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_PackageBezier (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_PackageBezier (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_PackageBezier (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_PackageBezier (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_PackageBezier (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -1072,7 +1072,7 @@ final class PackageBezier : PackageObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_PackageBezier (ioDictionary)
+    self.saveIntoAdditionalDictionary_PackageBezier (ioDictionary)
   }
 
   //····················································································································
@@ -1082,9 +1082,9 @@ final class PackageBezier : PackageObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_PackageBezier (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_PackageBezier (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -1092,7 +1092,7 @@ final class PackageBezier : PackageObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_PackageBezier ()
+    return self.alignmentPoints_PackageBezier ()
   }
 
   //····················································································································
@@ -1100,7 +1100,7 @@ final class PackageBezier : PackageObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_PackageBezier ()
+    self.operationBeforeRemoving_PackageBezier ()
   }
 
   //····················································································································

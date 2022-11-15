@@ -456,7 +456,7 @@ final class CommentInSchematic : SchematicObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_CommentInSchematic (knob: inKnobIndex)
+    return self.cursorForKnob_CommentInSchematic (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -464,20 +464,20 @@ final class CommentInSchematic : SchematicObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_CommentInSchematic (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_CommentInSchematic (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_CommentInSchematic (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_CommentInSchematic (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_CommentInSchematic (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_CommentInSchematic (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -489,7 +489,7 @@ final class CommentInSchematic : SchematicObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_CommentInSchematic (
+    return self.canMove_CommentInSchematic (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -508,7 +508,7 @@ final class CommentInSchematic : SchematicObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_CommentInSchematic (
+    self.move_CommentInSchematic (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -525,13 +525,13 @@ final class CommentInSchematic : SchematicObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_CommentInSchematic (inGrid)
+    self.snapToGrid_CommentInSchematic (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_CommentInSchematic (inGrid)
+    return self.canSnapToGrid_CommentInSchematic (inGrid)
   }
 
   //····················································································································
@@ -539,13 +539,13 @@ final class CommentInSchematic : SchematicObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_CommentInSchematic ()
+    self.flipHorizontally_CommentInSchematic ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_CommentInSchematic ()
+    return self.canFlipHorizontally_CommentInSchematic ()
   }
 
   //····················································································································
@@ -553,13 +553,13 @@ final class CommentInSchematic : SchematicObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_CommentInSchematic ()
+    self.flipVertically_CommentInSchematic ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_CommentInSchematic ()
+    return self.canFlipVertically_CommentInSchematic ()
   }
 
   //····················································································································
@@ -567,21 +567,21 @@ final class CommentInSchematic : SchematicObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_CommentInSchematic (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_CommentInSchematic (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_CommentInSchematic (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_CommentInSchematic (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_CommentInSchematic (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_CommentInSchematic (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -589,7 +589,7 @@ final class CommentInSchematic : SchematicObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_CommentInSchematic (ioDictionary)
+    self.saveIntoAdditionalDictionary_CommentInSchematic (ioDictionary)
   }
 
   //····················································································································
@@ -599,9 +599,9 @@ final class CommentInSchematic : SchematicObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_CommentInSchematic (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_CommentInSchematic (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -609,7 +609,7 @@ final class CommentInSchematic : SchematicObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_CommentInSchematic ()
+    return self.alignmentPoints_CommentInSchematic ()
   }
 
   //····················································································································
@@ -617,7 +617,7 @@ final class CommentInSchematic : SchematicObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_CommentInSchematic ()
+    self.operationBeforeRemoving_CommentInSchematic ()
   }
 
   //····················································································································

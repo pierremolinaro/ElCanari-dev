@@ -671,7 +671,7 @@ final class PackageSegment : PackageObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_PackageSegment (knob: inKnobIndex)
+    return self.cursorForKnob_PackageSegment (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -679,20 +679,20 @@ final class PackageSegment : PackageObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_PackageSegment (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_PackageSegment (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_PackageSegment (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_PackageSegment (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_PackageSegment (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_PackageSegment (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -704,7 +704,7 @@ final class PackageSegment : PackageObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_PackageSegment (
+    return self.canMove_PackageSegment (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -723,7 +723,7 @@ final class PackageSegment : PackageObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_PackageSegment (
+    self.move_PackageSegment (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -740,13 +740,13 @@ final class PackageSegment : PackageObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_PackageSegment (inGrid)
+    self.snapToGrid_PackageSegment (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_PackageSegment (inGrid)
+    return self.canSnapToGrid_PackageSegment (inGrid)
   }
 
   //····················································································································
@@ -754,13 +754,13 @@ final class PackageSegment : PackageObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_PackageSegment ()
+    self.flipHorizontally_PackageSegment ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_PackageSegment ()
+    return self.canFlipHorizontally_PackageSegment ()
   }
 
   //····················································································································
@@ -768,13 +768,13 @@ final class PackageSegment : PackageObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_PackageSegment ()
+    self.flipVertically_PackageSegment ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_PackageSegment ()
+    return self.canFlipVertically_PackageSegment ()
   }
 
   //····················································································································
@@ -782,21 +782,21 @@ final class PackageSegment : PackageObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_PackageSegment (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_PackageSegment (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_PackageSegment (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_PackageSegment (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_PackageSegment (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_PackageSegment (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -804,7 +804,7 @@ final class PackageSegment : PackageObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_PackageSegment (ioDictionary)
+    self.saveIntoAdditionalDictionary_PackageSegment (ioDictionary)
   }
 
   //····················································································································
@@ -814,9 +814,9 @@ final class PackageSegment : PackageObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_PackageSegment (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_PackageSegment (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -824,7 +824,7 @@ final class PackageSegment : PackageObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_PackageSegment ()
+    return self.alignmentPoints_PackageSegment ()
   }
 
   //····················································································································
@@ -832,7 +832,7 @@ final class PackageSegment : PackageObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_PackageSegment ()
+    self.operationBeforeRemoving_PackageSegment ()
   }
 
   //····················································································································

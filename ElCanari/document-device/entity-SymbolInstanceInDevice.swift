@@ -680,7 +680,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_SymbolInstanceInDevice (knob: inKnobIndex)
+    return self.cursorForKnob_SymbolInstanceInDevice (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -688,20 +688,20 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_SymbolInstanceInDevice (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_SymbolInstanceInDevice (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_SymbolInstanceInDevice (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_SymbolInstanceInDevice (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_SymbolInstanceInDevice (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_SymbolInstanceInDevice (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -713,7 +713,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_SymbolInstanceInDevice (
+    return self.canMove_SymbolInstanceInDevice (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -732,7 +732,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_SymbolInstanceInDevice (
+    self.move_SymbolInstanceInDevice (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -749,13 +749,13 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_SymbolInstanceInDevice (inGrid)
+    self.snapToGrid_SymbolInstanceInDevice (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_SymbolInstanceInDevice (inGrid)
+    return self.canSnapToGrid_SymbolInstanceInDevice (inGrid)
   }
 
   //····················································································································
@@ -763,13 +763,13 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_SymbolInstanceInDevice ()
+    self.flipHorizontally_SymbolInstanceInDevice ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_SymbolInstanceInDevice ()
+    return self.canFlipHorizontally_SymbolInstanceInDevice ()
   }
 
   //····················································································································
@@ -777,13 +777,13 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_SymbolInstanceInDevice ()
+    self.flipVertically_SymbolInstanceInDevice ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_SymbolInstanceInDevice ()
+    return self.canFlipVertically_SymbolInstanceInDevice ()
   }
 
   //····················································································································
@@ -791,21 +791,21 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_SymbolInstanceInDevice (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_SymbolInstanceInDevice (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_SymbolInstanceInDevice (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_SymbolInstanceInDevice (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_SymbolInstanceInDevice (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_SymbolInstanceInDevice (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -813,7 +813,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_SymbolInstanceInDevice (ioDictionary)
+    self.saveIntoAdditionalDictionary_SymbolInstanceInDevice (ioDictionary)
   }
 
   //····················································································································
@@ -823,9 +823,9 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_SymbolInstanceInDevice (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_SymbolInstanceInDevice (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -833,7 +833,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_SymbolInstanceInDevice ()
+    return self.alignmentPoints_SymbolInstanceInDevice ()
   }
 
   //····················································································································
@@ -841,7 +841,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_SymbolInstanceInDevice ()
+    self.operationBeforeRemoving_SymbolInstanceInDevice ()
   }
 
   //····················································································································

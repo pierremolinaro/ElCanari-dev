@@ -1704,7 +1704,7 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_BoardTrack (knob: inKnobIndex)
+    return self.cursorForKnob_BoardTrack (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -1712,20 +1712,20 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_BoardTrack (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_BoardTrack (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_BoardTrack (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_BoardTrack (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_BoardTrack (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_BoardTrack (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -1737,7 +1737,7 @@ final class BoardTrack : BoardObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_BoardTrack (
+    return self.canMove_BoardTrack (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -1756,7 +1756,7 @@ final class BoardTrack : BoardObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_BoardTrack (
+    self.move_BoardTrack (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -1773,13 +1773,13 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_BoardTrack (inGrid)
+    self.snapToGrid_BoardTrack (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_BoardTrack (inGrid)
+    return self.canSnapToGrid_BoardTrack (inGrid)
   }
 
   //····················································································································
@@ -1787,13 +1787,13 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_BoardTrack ()
+    self.flipHorizontally_BoardTrack ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_BoardTrack ()
+    return self.canFlipHorizontally_BoardTrack ()
   }
 
   //····················································································································
@@ -1801,13 +1801,13 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_BoardTrack ()
+    self.flipVertically_BoardTrack ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_BoardTrack ()
+    return self.canFlipVertically_BoardTrack ()
   }
 
   //····················································································································
@@ -1815,21 +1815,21 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_BoardTrack (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_BoardTrack (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_BoardTrack (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_BoardTrack (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_BoardTrack (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_BoardTrack (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -1837,7 +1837,7 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_BoardTrack (ioDictionary)
+    self.saveIntoAdditionalDictionary_BoardTrack (ioDictionary)
   }
 
   //····················································································································
@@ -1847,9 +1847,9 @@ final class BoardTrack : BoardObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_BoardTrack (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_BoardTrack (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -1857,7 +1857,7 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_BoardTrack ()
+    return self.alignmentPoints_BoardTrack ()
   }
 
   //····················································································································
@@ -1865,7 +1865,7 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_BoardTrack ()
+    self.operationBeforeRemoving_BoardTrack ()
   }
 
   //····················································································································

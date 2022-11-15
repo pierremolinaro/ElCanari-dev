@@ -579,7 +579,7 @@ final class PackageOval : PackageObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_PackageOval (knob: inKnobIndex)
+    return self.cursorForKnob_PackageOval (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -587,20 +587,20 @@ final class PackageOval : PackageObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_PackageOval (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_PackageOval (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_PackageOval (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_PackageOval (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_PackageOval (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_PackageOval (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -612,7 +612,7 @@ final class PackageOval : PackageObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_PackageOval (
+    return self.canMove_PackageOval (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -631,7 +631,7 @@ final class PackageOval : PackageObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_PackageOval (
+    self.move_PackageOval (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -648,13 +648,13 @@ final class PackageOval : PackageObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_PackageOval (inGrid)
+    self.snapToGrid_PackageOval (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_PackageOval (inGrid)
+    return self.canSnapToGrid_PackageOval (inGrid)
   }
 
   //····················································································································
@@ -662,13 +662,13 @@ final class PackageOval : PackageObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_PackageOval ()
+    self.flipHorizontally_PackageOval ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_PackageOval ()
+    return self.canFlipHorizontally_PackageOval ()
   }
 
   //····················································································································
@@ -676,13 +676,13 @@ final class PackageOval : PackageObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_PackageOval ()
+    self.flipVertically_PackageOval ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_PackageOval ()
+    return self.canFlipVertically_PackageOval ()
   }
 
   //····················································································································
@@ -690,21 +690,21 @@ final class PackageOval : PackageObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_PackageOval (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_PackageOval (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_PackageOval (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_PackageOval (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_PackageOval (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_PackageOval (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -712,7 +712,7 @@ final class PackageOval : PackageObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_PackageOval (ioDictionary)
+    self.saveIntoAdditionalDictionary_PackageOval (ioDictionary)
   }
 
   //····················································································································
@@ -722,9 +722,9 @@ final class PackageOval : PackageObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_PackageOval (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_PackageOval (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -732,7 +732,7 @@ final class PackageOval : PackageObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_PackageOval ()
+    return self.alignmentPoints_PackageOval ()
   }
 
   //····················································································································
@@ -740,7 +740,7 @@ final class PackageOval : PackageObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_PackageOval ()
+    self.operationBeforeRemoving_PackageOval ()
   }
 
   //····················································································································

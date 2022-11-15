@@ -854,7 +854,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_PackageInDevice (knob: inKnobIndex)
+    return self.cursorForKnob_PackageInDevice (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -862,20 +862,20 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_PackageInDevice (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_PackageInDevice (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_PackageInDevice (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_PackageInDevice (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_PackageInDevice (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_PackageInDevice (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -887,7 +887,7 @@ final class PackageInDevice : EBGraphicManagedObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_PackageInDevice (
+    return self.canMove_PackageInDevice (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -906,7 +906,7 @@ final class PackageInDevice : EBGraphicManagedObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_PackageInDevice (
+    self.move_PackageInDevice (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -923,13 +923,13 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_PackageInDevice (inGrid)
+    self.snapToGrid_PackageInDevice (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_PackageInDevice (inGrid)
+    return self.canSnapToGrid_PackageInDevice (inGrid)
   }
 
   //····················································································································
@@ -937,13 +937,13 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_PackageInDevice ()
+    self.flipHorizontally_PackageInDevice ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_PackageInDevice ()
+    return self.canFlipHorizontally_PackageInDevice ()
   }
 
   //····················································································································
@@ -951,13 +951,13 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_PackageInDevice ()
+    self.flipVertically_PackageInDevice ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_PackageInDevice ()
+    return self.canFlipVertically_PackageInDevice ()
   }
 
   //····················································································································
@@ -965,21 +965,21 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_PackageInDevice (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_PackageInDevice (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_PackageInDevice (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_PackageInDevice (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_PackageInDevice (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_PackageInDevice (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -987,7 +987,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_PackageInDevice (ioDictionary)
+    self.saveIntoAdditionalDictionary_PackageInDevice (ioDictionary)
   }
 
   //····················································································································
@@ -997,9 +997,9 @@ final class PackageInDevice : EBGraphicManagedObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_PackageInDevice (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_PackageInDevice (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -1007,7 +1007,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_PackageInDevice ()
+    return self.alignmentPoints_PackageInDevice ()
   }
 
   //····················································································································
@@ -1015,7 +1015,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_PackageInDevice ()
+    self.operationBeforeRemoving_PackageInDevice ()
   }
 
   //····················································································································

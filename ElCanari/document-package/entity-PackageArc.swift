@@ -814,7 +814,7 @@ final class PackageArc : PackageObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_PackageArc (knob: inKnobIndex)
+    return self.cursorForKnob_PackageArc (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -822,20 +822,20 @@ final class PackageArc : PackageObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_PackageArc (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_PackageArc (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_PackageArc (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_PackageArc (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_PackageArc (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_PackageArc (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -847,7 +847,7 @@ final class PackageArc : PackageObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_PackageArc (
+    return self.canMove_PackageArc (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -866,7 +866,7 @@ final class PackageArc : PackageObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_PackageArc (
+    self.move_PackageArc (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -883,13 +883,13 @@ final class PackageArc : PackageObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_PackageArc (inGrid)
+    self.snapToGrid_PackageArc (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_PackageArc (inGrid)
+    return self.canSnapToGrid_PackageArc (inGrid)
   }
 
   //····················································································································
@@ -897,13 +897,13 @@ final class PackageArc : PackageObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_PackageArc ()
+    self.flipHorizontally_PackageArc ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_PackageArc ()
+    return self.canFlipHorizontally_PackageArc ()
   }
 
   //····················································································································
@@ -911,13 +911,13 @@ final class PackageArc : PackageObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_PackageArc ()
+    self.flipVertically_PackageArc ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_PackageArc ()
+    return self.canFlipVertically_PackageArc ()
   }
 
   //····················································································································
@@ -925,21 +925,21 @@ final class PackageArc : PackageObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_PackageArc (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_PackageArc (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_PackageArc (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_PackageArc (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_PackageArc (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_PackageArc (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -947,7 +947,7 @@ final class PackageArc : PackageObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_PackageArc (ioDictionary)
+    self.saveIntoAdditionalDictionary_PackageArc (ioDictionary)
   }
 
   //····················································································································
@@ -957,9 +957,9 @@ final class PackageArc : PackageObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_PackageArc (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_PackageArc (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -967,7 +967,7 @@ final class PackageArc : PackageObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_PackageArc ()
+    return self.alignmentPoints_PackageArc ()
   }
 
   //····················································································································
@@ -975,7 +975,7 @@ final class PackageArc : PackageObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_PackageArc ()
+    self.operationBeforeRemoving_PackageArc ()
   }
 
   //····················································································································

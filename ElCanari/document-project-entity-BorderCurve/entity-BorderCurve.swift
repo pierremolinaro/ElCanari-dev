@@ -1012,7 +1012,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_BorderCurve (knob: inKnobIndex)
+    return self.cursorForKnob_BorderCurve (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -1020,20 +1020,20 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_BorderCurve (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_BorderCurve (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_BorderCurve (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_BorderCurve (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_BorderCurve (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_BorderCurve (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -1045,7 +1045,7 @@ final class BorderCurve : EBGraphicManagedObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_BorderCurve (
+    return self.canMove_BorderCurve (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -1064,7 +1064,7 @@ final class BorderCurve : EBGraphicManagedObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_BorderCurve (
+    self.move_BorderCurve (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -1081,13 +1081,13 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_BorderCurve (inGrid)
+    self.snapToGrid_BorderCurve (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_BorderCurve (inGrid)
+    return self.canSnapToGrid_BorderCurve (inGrid)
   }
 
   //····················································································································
@@ -1095,13 +1095,13 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_BorderCurve ()
+    self.flipHorizontally_BorderCurve ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_BorderCurve ()
+    return self.canFlipHorizontally_BorderCurve ()
   }
 
   //····················································································································
@@ -1109,13 +1109,13 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_BorderCurve ()
+    self.flipVertically_BorderCurve ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_BorderCurve ()
+    return self.canFlipVertically_BorderCurve ()
   }
 
   //····················································································································
@@ -1123,21 +1123,21 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_BorderCurve (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_BorderCurve (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_BorderCurve (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_BorderCurve (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_BorderCurve (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_BorderCurve (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -1145,7 +1145,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_BorderCurve (ioDictionary)
+    self.saveIntoAdditionalDictionary_BorderCurve (ioDictionary)
   }
 
   //····················································································································
@@ -1155,9 +1155,9 @@ final class BorderCurve : EBGraphicManagedObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_BorderCurve (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_BorderCurve (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -1165,7 +1165,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_BorderCurve ()
+    return self.alignmentPoints_BorderCurve ()
   }
 
   //····················································································································
@@ -1173,7 +1173,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_BorderCurve ()
+    self.operationBeforeRemoving_BorderCurve ()
   }
 
   //····················································································································

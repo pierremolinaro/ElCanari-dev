@@ -378,7 +378,7 @@ final class SymbolText : SymbolObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_SymbolText (knob: inKnobIndex)
+    return self.cursorForKnob_SymbolText (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -386,20 +386,20 @@ final class SymbolText : SymbolObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_SymbolText (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_SymbolText (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_SymbolText (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_SymbolText (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_SymbolText (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_SymbolText (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -411,7 +411,7 @@ final class SymbolText : SymbolObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_SymbolText (
+    return self.canMove_SymbolText (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -430,7 +430,7 @@ final class SymbolText : SymbolObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_SymbolText (
+    self.move_SymbolText (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -447,13 +447,13 @@ final class SymbolText : SymbolObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_SymbolText (inGrid)
+    self.snapToGrid_SymbolText (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_SymbolText (inGrid)
+    return self.canSnapToGrid_SymbolText (inGrid)
   }
 
   //····················································································································
@@ -461,13 +461,13 @@ final class SymbolText : SymbolObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_SymbolText ()
+    self.flipHorizontally_SymbolText ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_SymbolText ()
+    return self.canFlipHorizontally_SymbolText ()
   }
 
   //····················································································································
@@ -475,13 +475,13 @@ final class SymbolText : SymbolObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_SymbolText ()
+    self.flipVertically_SymbolText ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_SymbolText ()
+    return self.canFlipVertically_SymbolText ()
   }
 
   //····················································································································
@@ -489,21 +489,21 @@ final class SymbolText : SymbolObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_SymbolText (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_SymbolText (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_SymbolText (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_SymbolText (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_SymbolText (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_SymbolText (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -511,7 +511,7 @@ final class SymbolText : SymbolObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_SymbolText (ioDictionary)
+    self.saveIntoAdditionalDictionary_SymbolText (ioDictionary)
   }
 
   //····················································································································
@@ -521,9 +521,9 @@ final class SymbolText : SymbolObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_SymbolText (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_SymbolText (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -531,7 +531,7 @@ final class SymbolText : SymbolObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_SymbolText ()
+    return self.alignmentPoints_SymbolText ()
   }
 
   //····················································································································
@@ -539,7 +539,7 @@ final class SymbolText : SymbolObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_SymbolText ()
+    self.operationBeforeRemoving_SymbolText ()
   }
 
   //····················································································································

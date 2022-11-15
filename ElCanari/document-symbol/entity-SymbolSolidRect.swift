@@ -431,7 +431,7 @@ final class SymbolSolidRect : SymbolObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_SymbolSolidRect (knob: inKnobIndex)
+    return self.cursorForKnob_SymbolSolidRect (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -439,20 +439,20 @@ final class SymbolSolidRect : SymbolObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_SymbolSolidRect (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_SymbolSolidRect (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_SymbolSolidRect (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_SymbolSolidRect (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_SymbolSolidRect (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_SymbolSolidRect (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -464,7 +464,7 @@ final class SymbolSolidRect : SymbolObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_SymbolSolidRect (
+    return self.canMove_SymbolSolidRect (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -483,7 +483,7 @@ final class SymbolSolidRect : SymbolObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_SymbolSolidRect (
+    self.move_SymbolSolidRect (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -500,13 +500,13 @@ final class SymbolSolidRect : SymbolObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_SymbolSolidRect (inGrid)
+    self.snapToGrid_SymbolSolidRect (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_SymbolSolidRect (inGrid)
+    return self.canSnapToGrid_SymbolSolidRect (inGrid)
   }
 
   //····················································································································
@@ -514,13 +514,13 @@ final class SymbolSolidRect : SymbolObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_SymbolSolidRect ()
+    self.flipHorizontally_SymbolSolidRect ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_SymbolSolidRect ()
+    return self.canFlipHorizontally_SymbolSolidRect ()
   }
 
   //····················································································································
@@ -528,13 +528,13 @@ final class SymbolSolidRect : SymbolObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_SymbolSolidRect ()
+    self.flipVertically_SymbolSolidRect ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_SymbolSolidRect ()
+    return self.canFlipVertically_SymbolSolidRect ()
   }
 
   //····················································································································
@@ -542,21 +542,21 @@ final class SymbolSolidRect : SymbolObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_SymbolSolidRect (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_SymbolSolidRect (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_SymbolSolidRect (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_SymbolSolidRect (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_SymbolSolidRect (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_SymbolSolidRect (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -564,7 +564,7 @@ final class SymbolSolidRect : SymbolObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_SymbolSolidRect (ioDictionary)
+    self.saveIntoAdditionalDictionary_SymbolSolidRect (ioDictionary)
   }
 
   //····················································································································
@@ -574,9 +574,9 @@ final class SymbolSolidRect : SymbolObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_SymbolSolidRect (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_SymbolSolidRect (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -584,7 +584,7 @@ final class SymbolSolidRect : SymbolObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_SymbolSolidRect ()
+    return self.alignmentPoints_SymbolSolidRect ()
   }
 
   //····················································································································
@@ -592,7 +592,7 @@ final class SymbolSolidRect : SymbolObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_SymbolSolidRect ()
+    self.operationBeforeRemoving_SymbolSolidRect ()
   }
 
   //····················································································································

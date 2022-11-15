@@ -286,7 +286,7 @@ final class NCInSchematic : SchematicObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_NCInSchematic (knob: inKnobIndex)
+    return self.cursorForKnob_NCInSchematic (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -294,20 +294,20 @@ final class NCInSchematic : SchematicObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_NCInSchematic (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_NCInSchematic (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_NCInSchematic (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_NCInSchematic (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_NCInSchematic (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_NCInSchematic (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -319,7 +319,7 @@ final class NCInSchematic : SchematicObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_NCInSchematic (
+    return self.canMove_NCInSchematic (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -338,7 +338,7 @@ final class NCInSchematic : SchematicObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_NCInSchematic (
+    self.move_NCInSchematic (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -355,13 +355,13 @@ final class NCInSchematic : SchematicObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_NCInSchematic (inGrid)
+    self.snapToGrid_NCInSchematic (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_NCInSchematic (inGrid)
+    return self.canSnapToGrid_NCInSchematic (inGrid)
   }
 
   //····················································································································
@@ -369,13 +369,13 @@ final class NCInSchematic : SchematicObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_NCInSchematic ()
+    self.flipHorizontally_NCInSchematic ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_NCInSchematic ()
+    return self.canFlipHorizontally_NCInSchematic ()
   }
 
   //····················································································································
@@ -383,13 +383,13 @@ final class NCInSchematic : SchematicObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_NCInSchematic ()
+    self.flipVertically_NCInSchematic ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_NCInSchematic ()
+    return self.canFlipVertically_NCInSchematic ()
   }
 
   //····················································································································
@@ -397,21 +397,21 @@ final class NCInSchematic : SchematicObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_NCInSchematic (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_NCInSchematic (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_NCInSchematic (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_NCInSchematic (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_NCInSchematic (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_NCInSchematic (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -419,7 +419,7 @@ final class NCInSchematic : SchematicObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_NCInSchematic (ioDictionary)
+    self.saveIntoAdditionalDictionary_NCInSchematic (ioDictionary)
   }
 
   //····················································································································
@@ -429,9 +429,9 @@ final class NCInSchematic : SchematicObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_NCInSchematic (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_NCInSchematic (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -439,7 +439,7 @@ final class NCInSchematic : SchematicObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_NCInSchematic ()
+    return self.alignmentPoints_NCInSchematic ()
   }
 
   //····················································································································
@@ -447,7 +447,7 @@ final class NCInSchematic : SchematicObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_NCInSchematic ()
+    self.operationBeforeRemoving_NCInSchematic ()
   }
 
   //····················································································································

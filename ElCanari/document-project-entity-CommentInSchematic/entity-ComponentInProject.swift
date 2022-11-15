@@ -2461,7 +2461,7 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_ComponentInProject (knob: inKnobIndex)
+    return self.cursorForKnob_ComponentInProject (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -2469,20 +2469,20 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_ComponentInProject (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_ComponentInProject (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_ComponentInProject (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_ComponentInProject (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_ComponentInProject (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_ComponentInProject (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -2494,7 +2494,7 @@ final class ComponentInProject : BoardObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_ComponentInProject (
+    return self.canMove_ComponentInProject (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -2513,7 +2513,7 @@ final class ComponentInProject : BoardObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_ComponentInProject (
+    self.move_ComponentInProject (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -2530,13 +2530,13 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_ComponentInProject (inGrid)
+    self.snapToGrid_ComponentInProject (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_ComponentInProject (inGrid)
+    return self.canSnapToGrid_ComponentInProject (inGrid)
   }
 
   //····················································································································
@@ -2544,13 +2544,13 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_ComponentInProject ()
+    self.flipHorizontally_ComponentInProject ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_ComponentInProject ()
+    return self.canFlipHorizontally_ComponentInProject ()
   }
 
   //····················································································································
@@ -2558,13 +2558,13 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_ComponentInProject ()
+    self.flipVertically_ComponentInProject ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_ComponentInProject ()
+    return self.canFlipVertically_ComponentInProject ()
   }
 
   //····················································································································
@@ -2572,21 +2572,21 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_ComponentInProject (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_ComponentInProject (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_ComponentInProject (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_ComponentInProject (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_ComponentInProject (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_ComponentInProject (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -2594,7 +2594,7 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_ComponentInProject (ioDictionary)
+    self.saveIntoAdditionalDictionary_ComponentInProject (ioDictionary)
   }
 
   //····················································································································
@@ -2604,9 +2604,9 @@ final class ComponentInProject : BoardObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_ComponentInProject (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_ComponentInProject (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -2614,7 +2614,7 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_ComponentInProject ()
+    return self.alignmentPoints_ComponentInProject ()
   }
 
   //····················································································································
@@ -2622,7 +2622,7 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_ComponentInProject ()
+    self.operationBeforeRemoving_ComponentInProject ()
   }
 
   //····················································································································

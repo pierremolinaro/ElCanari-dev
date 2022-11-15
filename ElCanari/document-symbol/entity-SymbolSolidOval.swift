@@ -427,7 +427,7 @@ final class SymbolSolidOval : SymbolObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_SymbolSolidOval (knob: inKnobIndex)
+    return self.cursorForKnob_SymbolSolidOval (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -435,20 +435,20 @@ final class SymbolSolidOval : SymbolObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_SymbolSolidOval (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_SymbolSolidOval (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_SymbolSolidOval (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_SymbolSolidOval (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_SymbolSolidOval (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_SymbolSolidOval (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -460,7 +460,7 @@ final class SymbolSolidOval : SymbolObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_SymbolSolidOval (
+    return self.canMove_SymbolSolidOval (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -479,7 +479,7 @@ final class SymbolSolidOval : SymbolObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_SymbolSolidOval (
+    self.move_SymbolSolidOval (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -496,13 +496,13 @@ final class SymbolSolidOval : SymbolObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_SymbolSolidOval (inGrid)
+    self.snapToGrid_SymbolSolidOval (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_SymbolSolidOval (inGrid)
+    return self.canSnapToGrid_SymbolSolidOval (inGrid)
   }
 
   //····················································································································
@@ -510,13 +510,13 @@ final class SymbolSolidOval : SymbolObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_SymbolSolidOval ()
+    self.flipHorizontally_SymbolSolidOval ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_SymbolSolidOval ()
+    return self.canFlipHorizontally_SymbolSolidOval ()
   }
 
   //····················································································································
@@ -524,13 +524,13 @@ final class SymbolSolidOval : SymbolObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_SymbolSolidOval ()
+    self.flipVertically_SymbolSolidOval ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_SymbolSolidOval ()
+    return self.canFlipVertically_SymbolSolidOval ()
   }
 
   //····················································································································
@@ -538,21 +538,21 @@ final class SymbolSolidOval : SymbolObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_SymbolSolidOval (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_SymbolSolidOval (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_SymbolSolidOval (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_SymbolSolidOval (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_SymbolSolidOval (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_SymbolSolidOval (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -560,7 +560,7 @@ final class SymbolSolidOval : SymbolObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_SymbolSolidOval (ioDictionary)
+    self.saveIntoAdditionalDictionary_SymbolSolidOval (ioDictionary)
   }
 
   //····················································································································
@@ -570,9 +570,9 @@ final class SymbolSolidOval : SymbolObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_SymbolSolidOval (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_SymbolSolidOval (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -580,7 +580,7 @@ final class SymbolSolidOval : SymbolObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_SymbolSolidOval ()
+    return self.alignmentPoints_SymbolSolidOval ()
   }
 
   //····················································································································
@@ -588,7 +588,7 @@ final class SymbolSolidOval : SymbolObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_SymbolSolidOval ()
+    self.operationBeforeRemoving_SymbolSolidOval ()
   }
 
   //····················································································································

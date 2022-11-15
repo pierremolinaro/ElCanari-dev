@@ -766,7 +766,7 @@ final class SymbolPin : SymbolObject,
   //····················································································································
 
   override func cursorForKnob (knob inKnobIndex: Int) -> NSCursor? {
-    return cursorForKnob_SymbolPin (knob: inKnobIndex)
+    return self.cursorForKnob_SymbolPin (knob: inKnobIndex)
   }
 
   //····················································································································
@@ -774,20 +774,20 @@ final class SymbolPin : SymbolObject,
   //····················································································································
 
   override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return acceptedTranslation_SymbolPin (xBy: inDx, yBy: inDy)
+    return self.acceptedTranslation_SymbolPin (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return acceptToTranslate_SymbolPin (xBy: inDx, yBy: inDy)
+    return self.acceptToTranslate_SymbolPin (xBy: inDx, yBy: inDy)
   }
 
   //····················································································································
 
   override func translate (xBy inDx: Int, yBy inDy: Int,
                            userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    translate_SymbolPin (xBy: inDx, yBy: inDy, userSet: &ioSet)
+    self.translate_SymbolPin (xBy: inDx, yBy: inDy, userSet: &ioSet)
   }
 
   //····················································································································
@@ -799,7 +799,7 @@ final class SymbolPin : SymbolObject,
                          proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                          unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
                          shift inShift : Bool) -> CanariPoint {
-    return canMove_SymbolPin (
+    return self.canMove_SymbolPin (
       knob: inKnobIndex,
       proposedUnalignedAlignedTranslation: inProposedUnalignedTranslation,
       proposedAlignedTranslation: inProposedAlignedTranslation,
@@ -818,7 +818,7 @@ final class SymbolPin : SymbolObject,
                       alignedMouseLocationX inAlignedMouseLocationX : Int,
                       alignedMouseLocationY inAlignedMouseLocationY : Int,
                       shift inShift : Bool) {
-    move_SymbolPin (
+    self.move_SymbolPin (
       knob: inKnobIndex,
       proposedDx: inDx,
       proposedDy: inDy,
@@ -835,13 +835,13 @@ final class SymbolPin : SymbolObject,
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-    snapToGrid_SymbolPin (inGrid)
+    self.snapToGrid_SymbolPin (inGrid)
   }
 
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-    return canSnapToGrid_SymbolPin (inGrid)
+    return self.canSnapToGrid_SymbolPin (inGrid)
   }
 
   //····················································································································
@@ -849,13 +849,13 @@ final class SymbolPin : SymbolObject,
   //····················································································································
 
   override func flipHorizontally () {
-    flipHorizontally_SymbolPin ()
+    self.flipHorizontally_SymbolPin ()
   }
 
   //····················································································································
 
   override func canFlipHorizontally () -> Bool {
-    return canFlipHorizontally_SymbolPin ()
+    return self.canFlipHorizontally_SymbolPin ()
   }
 
   //····················································································································
@@ -863,13 +863,13 @@ final class SymbolPin : SymbolObject,
   //····················································································································
 
   override func flipVertically () {
-    flipVertically_SymbolPin ()
+    self.flipVertically_SymbolPin ()
   }
 
   //····················································································································
 
   override func canFlipVertically () -> Bool {
-    return canFlipVertically_SymbolPin ()
+    return self.canFlipVertically_SymbolPin ()
   }
 
   //····················································································································
@@ -877,21 +877,21 @@ final class SymbolPin : SymbolObject,
   //····················································································································
 
   override func canRotate90 (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
-    return canRotate90_SymbolPin (accumulatedPoints: &accumulatedPoints)
+    return self.canRotate90_SymbolPin (accumulatedPoints: &accumulatedPoints)
   }
 
   //····················································································································
 
   override func rotate90Clockwise (from inRotationCenter : CanariPoint,
                                    userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90Clockwise_SymbolPin (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90Clockwise_SymbolPin (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
 
   override func rotate90CounterClockwise (from inRotationCenter : CanariPoint,
                                           userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
-    rotate90CounterClockwise_SymbolPin (from: inRotationCenter, userSet: &ioSet)
+    self.rotate90CounterClockwise_SymbolPin (from: inRotationCenter, userSet: &ioSet)
   }
 
   //····················································································································
@@ -899,7 +899,7 @@ final class SymbolPin : SymbolObject,
   //····················································································································
 
   override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    saveIntoAdditionalDictionary_SymbolPin (ioDictionary)
+    self.saveIntoAdditionalDictionary_SymbolPin (ioDictionary)
   }
 
   //····················································································································
@@ -909,9 +909,9 @@ final class SymbolPin : SymbolObject,
   override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
-    return operationAfterPasting_SymbolPin (additionalDictionary: inDictionary,
-                                                 optionalDocument: inOptionalDocument,
-                                                 objectArray: inObjectArray)
+    return self.operationAfterPasting_SymbolPin (additionalDictionary: inDictionary,
+                                                      optionalDocument: inOptionalDocument,
+                                                      objectArray: inObjectArray)
   }
 
   //····················································································································
@@ -919,7 +919,7 @@ final class SymbolPin : SymbolObject,
   //····················································································································
 
   override func alignmentPoints () -> Set <CanariPoint> {
-    return alignmentPoints_SymbolPin ()
+    return self.alignmentPoints_SymbolPin ()
   }
 
   //····················································································································
@@ -927,7 +927,7 @@ final class SymbolPin : SymbolObject,
   //····················································································································
 
   override func operationBeforeRemoving () {
-    operationBeforeRemoving_SymbolPin ()
+    self.operationBeforeRemoving_SymbolPin ()
   }
 
   //····················································································································
