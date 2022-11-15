@@ -69,7 +69,7 @@ import Cocoa
         if fm.fileExists (atPath: baseDirectory, isDirectory: &isDirectory), isDirectory.boolValue {
           let files = try? fm.subpathsOfDirectory (atPath: baseDirectory)
           for f in files ?? [] {
-            if f.pathExtension.lowercased() == ElCanariArtwork_EXTENSION {
+            if f.pathExtension.lowercased () == ElCanariArtwork_EXTENSION {
               let baseName = f.lastPathComponent.deletingPathExtension
               partCountDictionary [baseName] = partCountDictionary [baseName, default: 0] + 1
             }
@@ -116,29 +116,31 @@ import Cocoa
     )
     noteObjectAllocation (self)
   //--- Search field delegate
-    self.mSearchField.setDelegate { (_ inFilterString : String) in
-      if inFilterString.isEmpty {
-        self.mFilteredTableViewSource = self.mTableViewSource
-      }else{
-        self.mFilteredTableViewSource.removeAll ()
-        let filter = inFilterString.uppercased ()
-        // Swift.print ("Filter \(filter)")
-        var currentSelectionFound = false
-        for entry in self.mTableViewSource {
-          let testedName = entry.mPartName.uppercased ()
-          if testedName.contains (filter) {
-            self.mFilteredTableViewSource.append (entry)
-            if entry === self.mSelectedEntry {
-              currentSelectionFound = true
+    self.mSearchField.setDelegate { [weak self] (_ inFilterString : String) in
+      if let uwSelf = self {
+        if inFilterString.isEmpty {
+          uwSelf.mFilteredTableViewSource = uwSelf.mTableViewSource
+        }else{
+          uwSelf.mFilteredTableViewSource.removeAll ()
+          let filter = inFilterString.uppercased ()
+          // Swift.print ("Filter \(filter)")
+          var currentSelectionFound = false
+          for entry in uwSelf.mTableViewSource {
+            let testedName = entry.mPartName.uppercased ()
+            if testedName.contains (filter) {
+              uwSelf.mFilteredTableViewSource.append (entry)
+              if entry === uwSelf.mSelectedEntry {
+                currentSelectionFound = true
+              }
             }
+            // Swift.print ("  Entry \(entry.mPartName) -> \(testedName) : \(testedName.contains (filter))")
           }
-          // Swift.print ("  Entry \(entry.mPartName) -> \(testedName) : \(testedName.contains (filter))")
+          if !currentSelectionFound {
+            uwSelf.mSelectedEntry = nil
+          }
         }
-        if !currentSelectionFound {
-          self.mSelectedEntry = nil
-        }
+        uwSelf.mTableView.sortAndReloadData ()
       }
-      self.mTableView.sortAndReloadData ()
     }
   //--- Configure table view
     self.mTableView.addColumn_NSImage (
