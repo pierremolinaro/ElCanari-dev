@@ -32,9 +32,10 @@ final class OpenSymbolInLibrary : OpenInLibrary {
           }
         }
       }
-//      inRootObject?.removeRecursivelyAllRelationsShips ()
       let box = partShape.boundingBox
-      return box.isEmpty ? nil : buildPDFimage (frame: box, shape: partShape, backgroundColor: preferences_symbolBackgroundColor)
+      return box.isEmpty
+        ? nil
+        : buildPDFimage (frame: box, shape: partShape, backgroundColor: preferences_symbolBackgroundColor)
     }
   }
 

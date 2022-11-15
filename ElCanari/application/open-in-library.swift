@@ -357,7 +357,7 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
   let mFullPath : String
   private var mPartStatus : MetadataStatus? = nil
   private var mObjectImage : NSImage? = nil
-  private var mBuildPreviewShapeFunction : (_ inRootObject : EBManagedObject?) -> NSImage?
+  private let mBuildPreviewShapeFunction : (_ inRootObject : EBManagedObject?) -> NSImage?
 
   //····················································································································
 
