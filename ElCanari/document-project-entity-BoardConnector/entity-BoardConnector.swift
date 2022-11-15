@@ -712,7 +712,7 @@ final class BoardConnector : BoardObject,
       }
     }
     self.mComponent_property.addEBObserver (self.mComponent_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To many property: mTracksP2 (has opposite relationship)
     self.mTracksP2_property.undoManager = inUndoManager
     self.mTracksP2_property.setOppositeRelationShipFunctions (
@@ -1168,7 +1168,7 @@ final class BoardConnector : BoardObject,
     self.location_property.addEBObserver (self.signatureForERCChecking_property)
     self.isVia_property.addEBObserver (self.signatureForERCChecking_property)
     self.actualPadDiameter_property.addEBObserver (self.signatureForERCChecking_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mTracksP2_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mConnectorP2_property.setProp (me) } },
@@ -1366,7 +1366,8 @@ final class BoardConnector : BoardObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-    do{
+    enterToManyRelationshipObjectIndexes (from: self.mTracksP2.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mTracksP2.values {
@@ -1396,8 +1397,9 @@ final class BoardConnector : BoardObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
-    do{
+    } */
+    enterToManyRelationshipObjectIndexes (from: self.mTracksP1.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mTracksP1.values {
@@ -1427,7 +1429,7 @@ final class BoardConnector : BoardObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
+    } */
   }
 
   //····················································································································
@@ -1483,8 +1485,8 @@ final class BoardConnector : BoardObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["mComponent"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! ComponentInProject
+    if let range = inDictionary ["mComponent"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! ComponentInProject
       self.mComponent = object
     }
   }

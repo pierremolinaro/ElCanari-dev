@@ -175,7 +175,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
       }
     }
     self.mSymbolType_property.addEBObserver (self.mSymbolType_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To one property: mSymbolType
     self.mSymbolType_property.undoManager = inUndoManager
   //--- Atomic property: symbolAndTypeName
@@ -254,7 +254,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
     }
     self.mSymbolType_property.mStrokeBezierPath_property.addEBObserver (self.strokeBezierPath_property)
     preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.strokeBezierPath_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -361,8 +361,8 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["mSymbolType"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! DeviceSymbolTypeInProject
+    if let range = inDictionary ["mSymbolType"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! DeviceSymbolTypeInProject
       self.mSymbolType = object
     }
   }

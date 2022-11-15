@@ -363,7 +363,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.addEBObserver (self.mRoot_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.undoManager = inUndoManager
   //--- To one property: mRoot (has opposite to many relationship: mPackages)
@@ -591,7 +591,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       }
     }
     self.mMasterPads_property.addEBObserverOf_mName (self.padNameSet_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: self)
@@ -728,7 +728,8 @@ final class PackageInDevice : EBGraphicManagedObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-    do{
+    enterToManyRelationshipObjectIndexes (from: self.mMasterPads.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mMasterPads.values {
@@ -758,7 +759,7 @@ final class PackageInDevice : EBGraphicManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
+    } */
   }
 
   //····················································································································
@@ -796,8 +797,8 @@ final class PackageInDevice : EBGraphicManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! DeviceRoot
+    if let range = inDictionary ["mRoot"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! DeviceRoot
       self.mRoot = object
     }
   }

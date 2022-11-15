@@ -337,7 +337,7 @@ final class FontInProject : EBManagedObject,
     self.mFontVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
     self.mDescriptiveString_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
     super.init (inUndoManager)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To many property: mTexts (has opposite relationship)
     self.mTexts_property.undoManager = inUndoManager
     self.mTexts_property.setOppositeRelationShipFunctions (
@@ -483,7 +483,7 @@ final class FontInProject : EBManagedObject,
       }
     }
     self.mComponentValues_property.addEBObserver (self.componentValuesCount_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mTexts_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mFont_property.setProp (me) } },
@@ -629,7 +629,8 @@ final class FontInProject : EBManagedObject,
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
-    do{
+    enterToManyRelationshipObjectIndexes (from: self.mTexts.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mTexts.values {
@@ -659,8 +660,9 @@ final class FontInProject : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
-    do{
+    } */
+    enterToManyRelationshipObjectIndexes (from: self.mComponentNames.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mComponentNames.values {
@@ -690,8 +692,9 @@ final class FontInProject : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
-    do{
+    } */
+    enterToManyRelationshipObjectIndexes (from: self.mComponentValues.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mComponentValues.values {
@@ -721,7 +724,7 @@ final class FontInProject : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
+    } */
   }
 
   //····················································································································

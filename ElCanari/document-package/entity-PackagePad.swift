@@ -760,7 +760,7 @@ final class PackagePad : PackageObject,
       }
     }
     self.zone_property.addEBObserver (self.zone_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To many property: slaves (has opposite relationship)
     self.slaves_property.undoManager = inUndoManager
     self.slaves_property.setOppositeRelationShipFunctions (
@@ -1109,7 +1109,7 @@ final class PackagePad : PackageObject,
     preferences_padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
     preferences_padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
     self.padNameForDisplay_property.addEBObserver (self.padNumberDisplay_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.slaves_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.master_property.setProp (me) } },
@@ -1336,7 +1336,8 @@ final class PackagePad : PackageObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-    do{
+    enterToManyRelationshipObjectIndexes (from: self.slaves.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.slaves.values {
@@ -1366,7 +1367,7 @@ final class PackagePad : PackageObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
+    } */
   }
 
   //····················································································································
@@ -1434,8 +1435,8 @@ final class PackagePad : PackageObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["zone"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! PackageZone
+    if let range = inDictionary ["zone"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! PackageZone
       self.zone = object
     }
   }

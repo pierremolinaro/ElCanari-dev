@@ -127,7 +127,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
       }
     }
     self.mPin_property.addEBObserver (self.mPin_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To one property: mPin
     self.mPin_property.undoManager = inUndoManager
   //--- Atomic property: pinPadAssignment
@@ -176,7 +176,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
     }
     self.mPadName_property.addEBObserver (self.descriptor_property)
     self.mPin_property.descriptor_property.addEBObserver (self.descriptor_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -283,8 +283,8 @@ final class DevicePadAssignmentInProject : EBManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["mPin"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! DevicePinInProject
+    if let range = inDictionary ["mPin"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! DevicePinInProject
       self.mPin = object
     }
   }

@@ -355,7 +355,7 @@ final class SymbolPin : SymbolObject,
     self.pinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
     self.xPin_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
     super.init (inUndoManager)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- Atomic property: filledBezierPath
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -557,7 +557,7 @@ final class SymbolPin : SymbolObject,
     self.name_property.addEBObserver (self.nameRect_property)
     self.nameHorizontalAlignment_property.addEBObserver (self.nameRect_property)
     preferences_pinNameFont_property.addEBObserver (self.nameRect_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.name_property.setSignatureObserver (observer: self)

@@ -174,7 +174,7 @@ final class WireInSchematic : SchematicObject,
       }
     }
     self.mP2_property.addEBObserver (self.mP2_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To one property: mP1 (has opposite to many relationship: mWiresP1s)
     self.mP1_property.undoManager = inUndoManager
     self.mP1_property.setOppositeRelationShipFunctions (
@@ -300,7 +300,7 @@ final class WireInSchematic : SchematicObject,
       }
     }
     self.mP1_property.hasNet_property.addEBObserver (self.hasNet_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -400,12 +400,12 @@ final class WireInSchematic : SchematicObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["mP1"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! PointInSchematic
+    if let range = inDictionary ["mP1"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! PointInSchematic
       self.mP1 = object
     }
-    if let range = inDictionary ["mP2"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! PointInSchematic
+    if let range = inDictionary ["mP2"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! PointInSchematic
       self.mP2 = object
     }
   }

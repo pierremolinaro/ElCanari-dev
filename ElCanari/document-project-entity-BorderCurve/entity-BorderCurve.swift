@@ -485,7 +485,7 @@ final class BorderCurve : EBGraphicManagedObject,
       }
     }
     self.mPrevious_property.addEBObserver (self.mPrevious_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- Atomic proxy property: mNextX
     self.mNextX_property.mReadModelFunction = { [weak self] in
       if let object = self?.mNext_property {
@@ -772,7 +772,7 @@ final class BorderCurve : EBGraphicManagedObject,
     self.mCPY2_property.addEBObserver (self.selectionDisplay_property)
     self.mShape_property.addEBObserver (self.selectionDisplay_property)
     self.mRoot_property.mBoardShape_property.addEBObserver (self.selectionDisplay_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -975,16 +975,16 @@ final class BorderCurve : EBGraphicManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! ProjectRoot
+    if let range = inDictionary ["mRoot"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! ProjectRoot
       self.mRoot = object
     }
-    if let range = inDictionary ["mNext"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! BorderCurve
+    if let range = inDictionary ["mNext"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! BorderCurve
       self.mNext = object
     }
-    if let range = inDictionary ["mPrevious"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! BorderCurve
+    if let range = inDictionary ["mPrevious"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! BorderCurve
       self.mPrevious = object
     }
   }

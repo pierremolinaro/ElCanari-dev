@@ -109,7 +109,7 @@ final class DevicePackageInProject : EBManagedObject,
     self.mPackageName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
     self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager)
     super.init (inUndoManager)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.undoManager = inUndoManager
   //--- Atomic property: packagePadDictionary
@@ -129,7 +129,7 @@ final class DevicePackageInProject : EBManagedObject,
       }
     }
     self.mMasterPads_property.addEBObserverOf_descriptor (self.packagePadDictionary_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -217,7 +217,8 @@ final class DevicePackageInProject : EBManagedObject,
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
-    do{
+    enterToManyRelationshipObjectIndexes (from: self.mMasterPads.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mMasterPads.values {
@@ -247,7 +248,7 @@ final class DevicePackageInProject : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
+    } */
   }
 
   //····················································································································

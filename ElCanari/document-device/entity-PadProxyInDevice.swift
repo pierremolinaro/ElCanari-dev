@@ -181,7 +181,7 @@ final class PadProxyInDevice : EBManagedObject,
       }
     }
     self.mPinInstance_property.addEBObserver (self.mPinInstance_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To one property: mPinInstance (has opposite to one relationship: mPadProxy)
     self.mPinInstance_property.undoManager = inUndoManager
     self.mPinInstance_property.setOppositeRelationShipFunctions (
@@ -226,7 +226,7 @@ final class PadProxyInDevice : EBManagedObject,
       }
     }
     self.mPinInstance_property.symbolName_property.addEBObserver (self.symbolName_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mIsNC_property.setSignatureObserver (observer: self)
@@ -356,8 +356,8 @@ final class PadProxyInDevice : EBManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["mPinInstance"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! SymbolPinInstanceInDevice
+    if let range = inDictionary ["mPinInstance"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! SymbolPinInstanceInDevice
       self.mPinInstance = object
     }
   }

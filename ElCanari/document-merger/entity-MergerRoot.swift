@@ -1264,7 +1264,7 @@ final class MergerRoot : EBManagedObject,
       }
     }
     self.mArtwork_property.addEBObserver (self.mArtwork_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To many property: boardModels (no option)
     self.boardModels_property.undoManager = inUndoManager
   //--- To many property: boardInstances (has opposite relationship)
@@ -1760,7 +1760,7 @@ final class MergerRoot : EBManagedObject,
     self.boardLimitWidth_property.addEBObserver (self.boardOutlineRectDisplay_property)
     preferences_mergerBoardViewDisplayBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
     preferences_mergerColorBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.boardInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.myRoot_property.setProp (me) } },
@@ -2021,7 +2021,8 @@ final class MergerRoot : EBManagedObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-    do{
+    enterToManyRelationshipObjectIndexes (from: self.boardModels.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.boardModels.values {
@@ -2051,8 +2052,9 @@ final class MergerRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
-    do{
+    } */
+    enterToManyRelationshipObjectIndexes (from: self.boardInstances.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.boardInstances.values {
@@ -2082,7 +2084,7 @@ final class MergerRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
+    } */
   }
 
   //····················································································································
@@ -2165,8 +2167,8 @@ final class MergerRoot : EBManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! ArtworkRoot
+    if let range = inDictionary ["mArtwork"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! ArtworkRoot
       self.mArtwork = object
     }
   }

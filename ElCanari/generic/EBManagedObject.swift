@@ -18,7 +18,7 @@ import Cocoa
 //  Moins volumineux avec EBSwiftBaseObject, mais plus long à l'ouverture
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let gInitSemaphore = DispatchSemaphore (value: 1) // Sémaphore d'exclusion mutuelle utilisé lors de l'init
+// let gInitSemaphore = DispatchSemaphore (value: 1) // Sémaphore d'exclusion mutuelle utilisé lors de l'init
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

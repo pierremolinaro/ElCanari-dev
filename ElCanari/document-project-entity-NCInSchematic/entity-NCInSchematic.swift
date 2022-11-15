@@ -93,7 +93,7 @@ final class NCInSchematic : SchematicObject,
       }
     }
     self.mPoint_property.addEBObserver (self.mPoint_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To one property: mPoint (has opposite to one relationship: mNC)
     self.mPoint_property.undoManager = inUndoManager
     self.mPoint_property.setOppositeRelationShipFunctions (
@@ -158,7 +158,7 @@ final class NCInSchematic : SchematicObject,
     self.mOrientation_property.addEBObserver (self.selectionDisplay_property)
     self.mPoint_property.symbolRotation_property.addEBObserver (self.selectionDisplay_property)
     preferences_pinNameFont_property.addEBObserver (self.selectionDisplay_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -265,8 +265,8 @@ final class NCInSchematic : SchematicObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["mPoint"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! PointInSchematic
+    if let range = inDictionary ["mPoint"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! PointInSchematic
       self.mPoint = object
     }
   }

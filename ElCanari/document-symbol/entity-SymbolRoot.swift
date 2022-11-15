@@ -337,7 +337,7 @@ final class SymbolRoot : EBManagedObject,
     self.yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
     self.selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
     super.init (inUndoManager)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To many property: symbolObjects (no option)
     self.symbolObjects_property.undoManager = inUndoManager
   //--- Atomic property: issues
@@ -373,7 +373,7 @@ final class SymbolRoot : EBManagedObject,
     self.symbolPins_property.addEBObserverOf_nameRect (self.issues_property)
     self.symbolPins_property.addEBObserverOf_xPin (self.issues_property)
     self.symbolPins_property.addEBObserverOf_yPin (self.issues_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.symbolPins_property.setDataProvider (self.symbolObjects_property)
   //--- Register properties for handling signature
@@ -523,7 +523,8 @@ final class SymbolRoot : EBManagedObject,
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
-    do{
+    enterToManyRelationshipObjectIndexes (from: self.symbolObjects.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.symbolObjects.values {
@@ -553,7 +554,7 @@ final class SymbolRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
+    } */
   }
 
   //····················································································································

@@ -880,7 +880,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       }
     }
     self.mArtwork_property.addEBObserver (self.mArtwork_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To one property: mArtwork (has opposite to many relationship: fileGenerationParameterArray)
     self.mArtwork_property.undoManager = inUndoManager
     self.mArtwork_property.setOppositeRelationShipFunctions (
@@ -1038,7 +1038,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       }
     }
     self.fileExtension_property.addEBObserver (self.emptyFileExtensionImage_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.drawBoardLimits_property.setSignatureObserver (observer: self)
@@ -1439,8 +1439,8 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! ArtworkRoot
+    if let range = inDictionary ["mArtwork"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! ArtworkRoot
       self.mArtwork = object
     }
   }

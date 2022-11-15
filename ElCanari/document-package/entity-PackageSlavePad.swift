@@ -622,7 +622,7 @@ final class PackageSlavePad : PackageObject,
       }
     }
     self.master_property.addEBObserver (self.master_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To one property: master (has opposite to many relationship: slaves)
     self.master_property.undoManager = inUndoManager
     self.master_property.setOppositeRelationShipFunctions (
@@ -890,7 +890,7 @@ final class PackageSlavePad : PackageObject,
     preferences_padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
     preferences_padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
     self.padNameForDisplay_property.addEBObserver (self.padNumberDisplay_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.annularRingUnit_property.setSignatureObserver (observer: self)
@@ -1148,8 +1148,8 @@ final class PackageSlavePad : PackageObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["master"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! PackagePad
+    if let range = inDictionary ["master"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! PackagePad
       self.master = object
     }
   }

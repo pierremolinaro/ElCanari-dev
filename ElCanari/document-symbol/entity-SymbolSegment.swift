@@ -169,7 +169,7 @@ final class SymbolSegment : SymbolObject,
     self.y2_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager)
     self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
     super.init (inUndoManager)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -294,7 +294,7 @@ final class SymbolSegment : SymbolObject,
     self.y1_property.addEBObserver (self.issues_property)
     self.x2_property.addEBObserver (self.issues_property)
     self.y2_property.addEBObserver (self.issues_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.x1_property.setSignatureObserver (observer: self)

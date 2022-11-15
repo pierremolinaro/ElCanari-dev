@@ -556,7 +556,7 @@ final class PackageZone : PackageObject,
     self.yNameUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
     self.zoneNumbering_property = EBStoredProperty_PadNumbering (defaultValue: PadNumbering.noNumbering, undoManager: inUndoManager)
     super.init (inUndoManager)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To many property: forbiddenPadNumbers (no option)
     self.forbiddenPadNumbers_property.undoManager = inUndoManager
   //--- Atomic property: objectDisplay
@@ -777,7 +777,7 @@ final class PackageZone : PackageObject,
       }
     }
     self.forbiddenPadNumbers_property.addEBObserver (self.emptyForbiddenPadArray_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.forbiddenPadNumbers_property.setSignatureObserver (observer: self)
@@ -978,7 +978,8 @@ final class PackageZone : PackageObject,
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
-    do{
+    enterToManyRelationshipObjectIndexes (from: self.forbiddenPadNumbers.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.forbiddenPadNumbers.values {
@@ -1008,7 +1009,7 @@ final class PackageZone : PackageObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
+    } */
   }
 
   //····················································································································

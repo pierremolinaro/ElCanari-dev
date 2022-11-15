@@ -1206,7 +1206,7 @@ final class ComponentInProject : BoardObject,
       }
     }
     self.mValueFont_property.addEBObserver (self.mValueFont_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To many property: mConnectors (has opposite relationship)
     self.mConnectors_property.undoManager = inUndoManager
     self.mConnectors_property.setOppositeRelationShipFunctions (
@@ -1923,7 +1923,7 @@ final class ComponentInProject : BoardObject,
     self.mValueRotation_property.addEBObserver (self.objectDisplay_property)
     self.mComponentValue_property.addEBObserver (self.objectDisplay_property)
     self.mDevice_property.pinPadAssignments_property.addEBObserver (self.objectDisplay_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mConnectors_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mComponent_property.setProp (me) } },
@@ -2236,7 +2236,8 @@ final class ComponentInProject : BoardObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-    do{
+    enterToManyRelationshipObjectIndexes (from: self.mConnectors.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mConnectors.values {
@@ -2266,8 +2267,9 @@ final class ComponentInProject : BoardObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
-    do{
+    } */
+    enterToManyRelationshipObjectIndexes (from: self.mSymbols.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mSymbols.values {
@@ -2297,7 +2299,7 @@ final class ComponentInProject : BoardObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
+    } */
   }
 
   //····················································································································
@@ -2380,20 +2382,20 @@ final class ComponentInProject : BoardObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["mDevice"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! DeviceInProject
+    if let range = inDictionary ["mDevice"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! DeviceInProject
       self.mDevice = object
     }
-    if let range = inDictionary ["mSelectedPackage"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! DevicePackageInProject
+    if let range = inDictionary ["mSelectedPackage"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! DevicePackageInProject
       self.mSelectedPackage = object
     }
-    if let range = inDictionary ["mNameFont"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! FontInProject
+    if let range = inDictionary ["mNameFont"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! FontInProject
       self.mNameFont = object
     }
-    if let range = inDictionary ["mValueFont"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! FontInProject
+    if let range = inDictionary ["mValueFont"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! FontInProject
       self.mValueFont = object
     }
   }

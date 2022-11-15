@@ -367,7 +367,7 @@ final class BoardText : BoardObject,
       }
     }
     self.mFont_property.addEBObserver (self.mFont_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To one property: mFont (has opposite to many relationship: mTexts)
     self.mFont_property.undoManager = inUndoManager
     self.mFont_property.setOppositeRelationShipFunctions (
@@ -642,7 +642,7 @@ final class BoardText : BoardObject,
     self.mRotation_property.addEBObserver (self.signatureForERCChecking_property)
     self.mWeight_property.addEBObserver (self.signatureForERCChecking_property)
     self.mOblique_property.addEBObserver (self.signatureForERCChecking_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -835,8 +835,8 @@ final class BoardText : BoardObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["mFont"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! FontInProject
+    if let range = inDictionary ["mFont"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! FontInProject
       self.mFont = object
     }
   }

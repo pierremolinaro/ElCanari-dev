@@ -228,7 +228,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.addEBObserver (self.mRoot_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To one property: mRoot (has opposite to many relationship: mModelImageObjects)
     self.mRoot_property.undoManager = inUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
@@ -313,7 +313,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
     self.mSecondDx_property.addEBObserver (self.selectionDisplay_property)
     self.mSecondDy_property.addEBObserver (self.selectionDisplay_property)
     self.mRoot_property.mModelPointsCircleRadius_property.addEBObserver (self.selectionDisplay_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -466,8 +466,8 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! PackageRoot
+    if let range = inDictionary ["mRoot"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! PackageRoot
       self.mRoot = object
     }
   }

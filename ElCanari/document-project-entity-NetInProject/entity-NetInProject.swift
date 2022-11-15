@@ -304,7 +304,7 @@ final class NetInProject : EBManagedObject,
       }
     }
     self.mNetClass_property.addEBObserver (self.mNetClass_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.undoManager = inUndoManager
     self.mPoints_property.setOppositeRelationShipFunctions (
@@ -442,7 +442,7 @@ final class NetInProject : EBManagedObject,
       }
     }
     self.mTracks_property.addEBObserver (self.trackCount_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mPoints_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNet_property.setProp (me) } },
@@ -570,7 +570,8 @@ final class NetInProject : EBManagedObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-    do{
+    enterToManyRelationshipObjectIndexes (from: self.mPoints.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mPoints.values {
@@ -600,8 +601,9 @@ final class NetInProject : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
-    do{
+    } */
+    enterToManyRelationshipObjectIndexes (from: self.mTracks.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mTracks.values {
@@ -631,7 +633,7 @@ final class NetInProject : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
+    } */
   }
 
   //····················································································································
@@ -657,8 +659,8 @@ final class NetInProject : EBManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["mNetClass"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! NetClassInProject
+    if let range = inDictionary ["mNetClass"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! NetClassInProject
       self.mNetClass = object
     }
   }

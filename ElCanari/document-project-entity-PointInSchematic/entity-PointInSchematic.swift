@@ -574,7 +574,7 @@ final class PointInSchematic : EBManagedObject,
       }
     }
     self.mSheet_property.addEBObserver (self.mSheet_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To many property: mLabels (has opposite relationship)
     self.mLabels_property.undoManager = inUndoManager
     self.mLabels_property.setOppositeRelationShipFunctions (
@@ -901,7 +901,7 @@ final class PointInSchematic : EBManagedObject,
     self.mWiresP2s_property.addEBObserver (self.netInfoForPoint_property)
     self.location_property.addEBObserver (self.netInfoForPoint_property)
     self.mSheet_property.sheetDescriptor_property.addEBObserver (self.netInfoForPoint_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mLabels_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mPoint_property.setProp (me) } },
@@ -1108,7 +1108,8 @@ final class PointInSchematic : EBManagedObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-    do{
+    enterToManyRelationshipObjectIndexes (from: self.mLabels.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mLabels.values {
@@ -1138,8 +1139,9 @@ final class PointInSchematic : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
-    do{
+    } */
+    enterToManyRelationshipObjectIndexes (from: self.mWiresP2s.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mWiresP2s.values {
@@ -1169,8 +1171,9 @@ final class PointInSchematic : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
-    do{
+    } */
+    enterToManyRelationshipObjectIndexes (from: self.mWiresP1s.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mWiresP1s.values {
@@ -1200,7 +1203,7 @@ final class PointInSchematic : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
+    } */
   }
 
   //····················································································································
@@ -1229,20 +1232,20 @@ final class PointInSchematic : EBManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["mSymbol"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! ComponentSymbolInProject
+    if let range = inDictionary ["mSymbol"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! ComponentSymbolInProject
       self.mSymbol = object
     }
-    if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! NetInProject
+    if let range = inDictionary ["mNet"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! NetInProject
       self.mNet = object
     }
-    if let range = inDictionary ["mNC"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! NCInSchematic
+    if let range = inDictionary ["mNC"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! NCInSchematic
       self.mNC = object
     }
-    if let range = inDictionary ["mSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! SheetInProject
+    if let range = inDictionary ["mSheet"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! SheetInProject
       self.mSheet = object
     }
   }

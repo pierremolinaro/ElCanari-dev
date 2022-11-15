@@ -859,7 +859,7 @@ final class BoardTrack : BoardObject,
       }
     }
     self.mNet_property.addEBObserver (self.mNet_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To one property: mConnectorP1 (has opposite to many relationship: mTracksP1)
     self.mConnectorP1_property.undoManager = inUndoManager
     self.mConnectorP1_property.setOppositeRelationShipFunctions (
@@ -1412,7 +1412,7 @@ final class BoardTrack : BoardObject,
     preferences_backSideLayoutColorForBoard_property.addEBObserver (self.selectionDisplay_property)
     self.mSide_property.addEBObserver (self.selectionDisplay_property)
     self.actualTrackWidth_property.addEBObserver (self.selectionDisplay_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -1667,16 +1667,16 @@ final class BoardTrack : BoardObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["mConnectorP1"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! BoardConnector
+    if let range = inDictionary ["mConnectorP1"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! BoardConnector
       self.mConnectorP1 = object
     }
-    if let range = inDictionary ["mConnectorP2"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! BoardConnector
+    if let range = inDictionary ["mConnectorP2"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! BoardConnector
       self.mConnectorP2 = object
     }
-    if let range = inDictionary ["mNet"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! NetInProject
+    if let range = inDictionary ["mNet"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! NetInProject
       self.mNet = object
     }
   }

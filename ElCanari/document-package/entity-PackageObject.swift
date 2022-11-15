@@ -114,7 +114,7 @@ class PackageObject : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.addEBObserver (self.mRoot_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To one property: mRoot (has opposite to many relationship: packageObjects)
     self.mRoot_property.undoManager = inUndoManager
     self.mRoot_property.setOppositeRelationShipFunctions (
@@ -138,7 +138,7 @@ class PackageObject : EBGraphicManagedObject,
       }
     }
     self.mRoot_property.knobSizeMultpliedByTen_property.addEBObserver (self.knobSize_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -222,8 +222,8 @@ class PackageObject : EBGraphicManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! PackageRoot
+    if let range = inDictionary ["mRoot"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! PackageRoot
       self.mRoot = object
     }
   }

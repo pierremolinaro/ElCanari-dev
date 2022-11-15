@@ -229,7 +229,7 @@ final class SheetInProject : EBManagedObject,
       }
     }
     self.mRoot_property.addEBObserver (self.mRoot_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To many property: mObjects (has opposite relationship)
     self.mObjects_property.undoManager = inUndoManager
     self.mObjects_property.setOppositeRelationShipFunctions (
@@ -344,7 +344,7 @@ final class SheetInProject : EBManagedObject,
     }
     self.mRoot_property.sheetGeometry_property.addEBObserver (self.sheetDescriptor_property)
     self.mRoot_property.sheetIndexes_property.addEBObserver (self.sheetDescriptor_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSheet_property.setProp (me) } },
@@ -465,7 +465,8 @@ final class SheetInProject : EBManagedObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-    do{
+    enterToManyRelationshipObjectIndexes (from: self.mObjects.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mObjects.values {
@@ -495,8 +496,9 @@ final class SheetInProject : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
-    do{
+    } */
+    enterToManyRelationshipObjectIndexes (from: self.mPoints.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mPoints.values {
@@ -526,7 +528,7 @@ final class SheetInProject : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
+    } */
   }
 
   //····················································································································
@@ -549,8 +551,8 @@ final class SheetInProject : EBManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["mRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! ProjectRoot
+    if let range = inDictionary ["mRoot"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! ProjectRoot
       self.mRoot = object
     }
   }

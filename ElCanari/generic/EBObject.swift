@@ -12,7 +12,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor fileprivate var gEasyBindingsObjectIndex : Int = 0
+//@MainActor fileprivate var gEasyBindingsObjectIndex : Int = 0
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    EBObjcBaseObject class
@@ -22,13 +22,15 @@ import Cocoa
 
   //····················································································································
 
-  final let objectIndex : Int
+//  final let objectIndex : Int
+  final var objectIndex : Int { return Int (bitPattern: ObjectIdentifier(self)) }
+//  final var objectIndex : Int { return ObjectIdentifier(self).hashValue }
 
   //····················································································································
 
   override init () {
-    self.objectIndex = gEasyBindingsObjectIndex
-    gEasyBindingsObjectIndex += 1
+//    self.objectIndex = gEasyBindingsObjectIndex
+//    gEasyBindingsObjectIndex += 1
     super.init ()
     noteObjectAllocation (self)
   }
@@ -51,13 +53,16 @@ import Cocoa
 
   //····················································································································
 
-  final let objectIndex : Int
+ // final var objectIndex : Int { return Int (Builtin.ptrtoint_Word (Builtin.bridgeToRawPointer (self))) }
+
+  final var objectIndex : Int { return Int (bitPattern: ObjectIdentifier(self)) }
+//  final var objectIndex : Int { return ObjectIdentifier(self).hashValue }
 
   //····················································································································
 
   init () {
-    self.objectIndex = gEasyBindingsObjectIndex
-    gEasyBindingsObjectIndex += 1
+//    self.objectIndex = gEasyBindingsObjectIndex
+//    gEasyBindingsObjectIndex += 1
     noteObjectAllocation (self)
   }
 

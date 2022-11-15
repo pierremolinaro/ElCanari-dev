@@ -736,7 +736,7 @@ final class DeviceRoot : EBManagedObject,
     self.mShowPackageBackPads_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
     self.mSymbolDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400, undoManager: inUndoManager)
     super.init (inUndoManager)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To many property: mDocs (no option)
     self.mDocs_property.undoManager = inUndoManager
   //--- To many property: mSymbolInstances (no option)
@@ -985,7 +985,7 @@ final class DeviceRoot : EBManagedObject,
     self.mSymbolTypes_property.addEBObserverOf_mVersion (self.issues_property)
     self.mSymbolTypes_property.addEBObserverOf_mTypeName (self.issues_property)
     self.mSymbolTypes_property.addEBObserverOf_instanceCount (self.issues_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mPackages_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
@@ -1241,7 +1241,8 @@ final class DeviceRoot : EBManagedObject,
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
-    do{
+    enterToManyRelationshipObjectIndexes (from: self.mDocs.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mDocs.values {
@@ -1271,8 +1272,9 @@ final class DeviceRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
-    do{
+    } */
+    enterToManyRelationshipObjectIndexes (from: self.mSymbolInstances.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mSymbolInstances.values {
@@ -1302,8 +1304,9 @@ final class DeviceRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
-    do{
+    } */
+    enterToManyRelationshipObjectIndexes (from: self.mPackages.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mPackages.values {
@@ -1333,8 +1336,9 @@ final class DeviceRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
-    do{
+    } */
+    enterToManyRelationshipObjectIndexes (from: self.mSymbolTypes.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mSymbolTypes.values {
@@ -1364,8 +1368,9 @@ final class DeviceRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
-    do{
+    } */
+    enterToManyRelationshipObjectIndexes (from: self.mPadProxies.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mPadProxies.values {
@@ -1395,7 +1400,7 @@ final class DeviceRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
+    } */
   }
 
   //····················································································································

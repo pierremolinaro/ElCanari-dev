@@ -325,7 +325,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
     self.mYNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
     self.mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager)
     super.init (inUndoManager)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To many property: mInstances (has opposite relationship)
     self.mInstances_property.undoManager = inUndoManager
     self.mInstances_property.setOppositeRelationShipFunctions (
@@ -369,7 +369,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
     self.mNameHorizontalAlignment_property.addEBObserver (self.nameShape_property)
     self.mPinNameIsDisplayedInSchematics_property.addEBObserver (self.nameShape_property)
     preferences_pinNameFont_property.addEBObserver (self.nameShape_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mType_property.setProp (me) } },
@@ -527,7 +527,8 @@ final class SymbolPinTypeInDevice : EBManagedObject,
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
-    do{
+    enterToManyRelationshipObjectIndexes (from: self.mInstances.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mInstances.values {
@@ -557,7 +558,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
+    } */
   }
 
   //····················································································································

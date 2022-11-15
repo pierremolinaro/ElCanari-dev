@@ -721,7 +721,7 @@ final class NetClassInProject : EBManagedObject,
     self.mAllowTracksOnInner3Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
     self.mAllowTracksOnInner4Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
     super.init (inUndoManager)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To many property: mNets (has opposite relationship)
     self.mNets_property.undoManager = inUndoManager
     self.mNets_property.setOppositeRelationShipFunctions (
@@ -981,7 +981,7 @@ final class NetClassInProject : EBManagedObject,
       }
     }
     self.netsDescription_property.addEBObserver (self.netWarningCount_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mNets_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mNetClass_property.setProp (me) } },
@@ -1157,7 +1157,8 @@ final class NetClassInProject : EBManagedObject,
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
-    do{
+    enterToManyRelationshipObjectIndexes (from: self.mNets.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mNets.values {
@@ -1187,7 +1188,7 @@ final class NetClassInProject : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
+    } */
   }
 
   //····················································································································

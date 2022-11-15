@@ -1637,7 +1637,7 @@ final class PackageRoot : EBManagedObject,
       }
     }
     self.mModelImageDoublePoint_property.addEBObserver (self.mModelImageDoublePoint_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To many property: mModelImageObjects (has opposite relationship)
     self.mModelImageObjects_property.undoManager = inUndoManager
     self.mModelImageObjects_property.setOppositeRelationShipFunctions (
@@ -1992,7 +1992,7 @@ final class PackageRoot : EBManagedObject,
     self.packageZones_property.addEBObserverOf_xName (self.issues_property)
     self.packageZones_property.addEBObserverOf_yName (self.issues_property)
     preferences_padZoneFont_property.addEBObserver (self.issues_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mModelImageObjects_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
@@ -2409,7 +2409,8 @@ final class PackageRoot : EBManagedObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-    do{
+    enterToManyRelationshipObjectIndexes (from: self.mModelImageObjects.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mModelImageObjects.values {
@@ -2439,8 +2440,9 @@ final class PackageRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
-    do{
+    } */
+    enterToManyRelationshipObjectIndexes (from: self.packageObjects.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.packageObjects.values {
@@ -2470,7 +2472,7 @@ final class PackageRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
+    } */
   }
 
   //····················································································································
@@ -2613,8 +2615,8 @@ final class PackageRoot : EBManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["mModelImageDoublePoint"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! PackageModelImageDoublePoint
+    if let range = inDictionary ["mModelImageDoublePoint"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! PackageModelImageDoublePoint
       self.mModelImageDoublePoint = object
     }
   }

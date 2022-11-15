@@ -4,28 +4,28 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor struct EBReferenceSet <T : ObjectIndexProtocol> {
+@MainActor struct EBReferenceSet <T : AnyObject> {
 
   //····················································································································
 
-  private var mDictionary : [Int : T]
+  private var mDictionary : [ObjectIdentifier : T]
 
   //····················································································································
 
   init () {
-    self.mDictionary = [Int : T] ()
+    self.mDictionary = [ObjectIdentifier : T] ()
   }
 
   //····················································································································
 
   init (minimumCapacity inMinimumCapacity : Int) {
-    self.mDictionary = [Int : T] (minimumCapacity: inMinimumCapacity)
+    self.mDictionary = [ObjectIdentifier : T] (minimumCapacity: inMinimumCapacity)
   }
 
   //····················································································································
 
   init (_ inObjects : [T]) {
-    self.mDictionary = [Int : T] (minimumCapacity: inObjects.count)
+    self.mDictionary = [ObjectIdentifier : T] (minimumCapacity: inObjects.count)
     for object in inObjects {
       self.insert (object)
     }
@@ -34,28 +34,28 @@ import Cocoa
   //····················································································································
 
   init (_ inObject : T) {
-    self.mDictionary = [Int : T] ()
+    self.mDictionary = [ObjectIdentifier : T] ()
     self.insert (inObject)
   }
 
   //····················································································································
 
   mutating func insert (_ inObject : T) {
-    let address = inObject.objectIndex
+    let address = ObjectIdentifier (inObject)
     _ = self.mDictionary.updateValue (inObject, forKey: address)
   }
 
   //····················································································································
 
   mutating func remove (_ inObject : T) {
-    let address = inObject.objectIndex
+    let address = ObjectIdentifier (inObject)
     _ = self.mDictionary.removeValue (forKey: address)
   }
 
   //····················································································································
 
   func contains (_ inObject : T) -> Bool {
-    let address = inObject.objectIndex
+    let address = ObjectIdentifier (inObject)
     return self.mDictionary [address] != nil
   }
 
@@ -98,7 +98,7 @@ import Cocoa
   //····················································································································
 
   mutating func removeFirst () -> T {
-    let address = self.first!.objectIndex
+    let address = ObjectIdentifier (self.first!)
     let result = self.mDictionary [address]!
     self.mDictionary [address] = nil
     return result
@@ -114,7 +114,7 @@ import Cocoa
 
   //····················································································································
 
-  var values : Dictionary <Int, T>.Values { return self.mDictionary.values }
+  var values : Dictionary <ObjectIdentifier, T>.Values { return self.mDictionary.values }
 
   //····················································································································
 

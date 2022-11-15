@@ -219,7 +219,7 @@ final class CommentInSchematic : SchematicObject,
     self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
     self.mComment_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
     super.init (inUndoManager)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -306,7 +306,7 @@ final class CommentInSchematic : SchematicObject,
     preferences_schematicBackColor_property.addEBObserver (self.selectionDisplay_property)
     self.mX_property.addEBObserver (self.selectionDisplay_property)
     self.mY_property.addEBObserver (self.selectionDisplay_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates

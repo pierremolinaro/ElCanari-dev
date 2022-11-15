@@ -4451,7 +4451,7 @@ final class ProjectRoot : EBManagedObject,
       }
     }
     self.mSelectedSheet_property.addEBObserver (self.mSelectedSheet_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To many property: mSheets (has opposite relationship)
     self.mSheets_property.undoManager = inUndoManager
     self.mSheets_property.setOppositeRelationShipFunctions (
@@ -5965,7 +5965,7 @@ final class ProjectRoot : EBManagedObject,
     self.netWarningCount_property.addEBObserver (self.schematicStatusImage_property)
     self.mSheets_property.addEBObserverOf_connexionWarnings (self.schematicStatusImage_property)
     self.mSheets_property.addEBObserverOf_connexionErrors (self.schematicStatusImage_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mSheets_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
@@ -6838,7 +6838,8 @@ final class ProjectRoot : EBManagedObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-    do{
+    enterToManyRelationshipObjectIndexes (from: self.mSheets.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mSheets.values {
@@ -6868,8 +6869,9 @@ final class ProjectRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
-    do{
+    } */
+    enterToManyRelationshipObjectIndexes (from: self.mFonts.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mFonts.values {
@@ -6899,8 +6901,9 @@ final class ProjectRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
-    do{
+    } */
+    enterToManyRelationshipObjectIndexes (from: self.mDevices.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mDevices.values {
@@ -6930,8 +6933,9 @@ final class ProjectRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
-    do{
+    } */
+    enterToManyRelationshipObjectIndexes (from: self.mNetClasses.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mNetClasses.values {
@@ -6961,8 +6965,9 @@ final class ProjectRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
-    do{
+    } */
+    enterToManyRelationshipObjectIndexes (from: self.mBorderCurves.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mBorderCurves.values {
@@ -6992,8 +6997,9 @@ final class ProjectRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
-    do{
+    } */
+    enterToManyRelationshipObjectIndexes (from: self.mBoardObjects.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mBoardObjects.values {
@@ -7023,8 +7029,9 @@ final class ProjectRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
-    do{
+    } */
+    enterToManyRelationshipObjectIndexes (from: self.mComponents.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.mComponents.values {
@@ -7054,7 +7061,7 @@ final class ProjectRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
+    } */
   }
 
   //····················································································································
@@ -7353,12 +7360,12 @@ final class ProjectRoot : EBManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["mArtwork"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! ArtworkRoot
+    if let range = inDictionary ["mArtwork"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! ArtworkRoot
       self.mArtwork = object
     }
-    if let range = inDictionary ["mSelectedSheet"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! SheetInProject
+    if let range = inDictionary ["mSelectedSheet"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! SheetInProject
       self.mSelectedSheet = object
     }
   }

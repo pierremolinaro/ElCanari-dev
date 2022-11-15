@@ -255,7 +255,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       }
     }
     self.myRoot_property.addEBObserver (self.myRoot_none)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To one property: myModel (has opposite to many relationship: myInstances)
     self.myModel_property.undoManager = inUndoManager
     self.myModel_property.setOppositeRelationShipFunctions (
@@ -389,7 +389,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       setter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.add (me) } },
       resetter: { [weak self] inObject in if let me = self { inObject.boardInstances_property.remove (me) } }
     )
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -528,12 +528,12 @@ final class MergerBoardInstance : EBGraphicManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-    if let range = inDictionary ["myModel"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! BoardModel
+    if let range = inDictionary ["myModel"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! BoardModel
       self.myModel = object
     }
-    if let range = inDictionary ["myRoot"], let objectIndex = inData.base62EncodedInt (range: range) {
-      let object = inRawObjectArray [objectIndex].object as! MergerRoot
+    if let range = inDictionary ["myRoot"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! MergerRoot
       self.myRoot = object
     }
   }

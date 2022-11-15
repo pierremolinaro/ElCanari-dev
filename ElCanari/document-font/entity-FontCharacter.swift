@@ -235,7 +235,7 @@ final class FontCharacter : EBManagedObject,
     self.mWarnsWhenNoSegment_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
     self.mWarnsWhenAdvanceIsZero_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
     super.init (inUndoManager)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To many property: segments (no option)
     self.segments_property.undoManager = inUndoManager
   //--- Atomic property: segmentArrayForDrawing
@@ -334,7 +334,7 @@ final class FontCharacter : EBManagedObject,
     self.mWarnsWhenNoSegment_property.addEBObserver (self.issues_property)
     self.mWarnsWhenAdvanceIsZero_property.addEBObserver (self.issues_property)
     self.segments_property.addEBObserver (self.issues_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.advance_property.setSignatureObserver (observer: self)
@@ -441,7 +441,8 @@ final class FontCharacter : EBManagedObject,
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
-    do{
+    enterToManyRelationshipObjectIndexes (from: self.segments.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.segments.values {
@@ -471,7 +472,7 @@ final class FontCharacter : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
+    } */
   }
 
   //····················································································································

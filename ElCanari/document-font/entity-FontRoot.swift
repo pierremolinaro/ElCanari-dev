@@ -334,7 +334,7 @@ final class FontRoot : EBManagedObject,
     self.selectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
     self.currentCharacterCodePoint_property = EBStoredProperty_Int (defaultValue: 32, undoManager: inUndoManager)
     super.init (inUndoManager)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- To many property: characters (no option)
     self.characters_property.undoManager = inUndoManager
   //--- Atomic property: currentCharacterCodePointString
@@ -472,7 +472,7 @@ final class FontRoot : EBManagedObject,
       }
     }
     self.characters_property.addEBObserverOf_issues (self.issues_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.characters_property.setSignatureObserver (observer: self)
@@ -573,7 +573,8 @@ final class FontRoot : EBManagedObject,
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
-    do{
+    enterToManyRelationshipObjectIndexes (from: self.characters.values, into: &ioData)
+    /* do{
       var optionalFirstIndex : Int? = nil
       var rangeCount = 0
       for object in self.characters.values {
@@ -603,7 +604,7 @@ final class FontRoot : EBManagedObject,
         ioData.append (base62Encoded: rangeCount)
       }
       ioData.append (ascii: .lineFeed)
-    }
+    } */
   }
 
   //····················································································································

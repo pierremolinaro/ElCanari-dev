@@ -94,7 +94,7 @@ final class DeviceDocumentation : EBManagedObject,
     self.mFileName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
     self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager)
     super.init (inUndoManager)
-    gInitSemaphore.wait ()
+//    gInitSemaphore.wait ()
   //--- Atomic property: fileSize
     self.fileSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -112,7 +112,7 @@ final class DeviceDocumentation : EBManagedObject,
       }
     }
     self.mFileData_property.addEBObserver (self.fileSize_property)
-    gInitSemaphore.signal ()
+//    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: self)
