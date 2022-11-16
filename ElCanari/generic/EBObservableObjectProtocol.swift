@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol EBObservableObjectProtocol : AnyObject {
+@MainActor protocol EBObservableObjectProtocol : AnyObject {
   func addEBObserver (_ inObserver : EBObserverProtocol)
   func removeEBObserver (_ inObserver : EBObserverProtocol)
 }
