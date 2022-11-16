@@ -136,8 +136,7 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
       }
     }else{
       return NSImage (named: NSImage.Name ("exclamation"))!
-   }
-//    return NSImage (named: NSImage.Name ("exclamation"))!
+    }
   }
 
   //····················································································································

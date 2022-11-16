@@ -20,7 +20,10 @@ import Cocoa
 extension AutoLayoutMergerDocument {
   final func configure_boardGraphicView (_ inOutlet : AutoLayoutGraphicView) {
 //--- START OF USER ZONE 2
-          inOutlet.mScrollView?.register (document: self, draggedTypes: [kDragAndDropMergerModelType])
+    inOutlet.mScrollView?.register (document: self, draggedTypes: [kDragAndDropMergerModelType])
+//    inOutlet.mScrollView?.registerContextualMenuBuilder { [weak self] (inMouseDownLocation : CanariPoint) in
+//      return self.buildInsertModelInBoardMenuBuilder (inMouseDownLocation) ?? NSMenu ()
+//    }
 //--- END OF USER ZONE 2
   }
 }

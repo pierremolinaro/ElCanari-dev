@@ -19,6 +19,7 @@ import Cocoa
 
 extension AutoLayoutProjectDocument {
   final func configure_schematicView (_ inOutlet : AutoLayoutGraphicView) {
+ //   Swift.print ("configure \(inOutlet)")
 //--- START OF USER ZONE 2
     inOutlet.mScrollView?.register (document: self)
     inOutlet.mGraphicView.register (
@@ -50,7 +51,14 @@ extension AutoLayoutProjectDocument {
     self.mouseExitInSchematic ()
     inOutlet.mGraphicView.setKeyDownCallback { [weak self] (mouseLocation, key) in self?.keyDownInSchematic (mouseLocation, key) }
 
-    self.boardObjectsController.mAfterObjectRemovingCallback = { [weak self] in self?.updateBoardConnectors () }
+//    self.mSchematicsView?.mGraphicView.setMouseMovedOrFlagsChangedCallback { [weak self] (unalignedMouseLocation) in
+//      self?.mouseMovedOrFlagsChangedInSchematic (unalignedMouseLocation)
+//    }
+//    self.mSchematicsView?.mGraphicView.setMouseExitCallback { [weak self] in self?.mouseExitInSchematic () }
+//    self.mouseExitInSchematic ()
+//    self.mSchematicsView?.mGraphicView.setKeyDownCallback { [weak self] (mouseLocation, key) in self?.keyDownInSchematic (mouseLocation, key) }
+
+//    self.boardObjectsController.mAfterObjectRemovingCallback = { [weak self] in self?.updateBoardConnectors () }
 
 //--- END OF USER ZONE 2
   }
