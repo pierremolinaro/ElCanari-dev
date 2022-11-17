@@ -19,7 +19,6 @@ import Cocoa
 
 extension AutoLayoutProjectDocument {
   final func configure_schematicView (_ inOutlet : AutoLayoutGraphicView) {
- //   Swift.print ("configure \(inOutlet)")
 //--- START OF USER ZONE 2
     inOutlet.mScrollView?.register (document: self)
     inOutlet.mGraphicView.register (

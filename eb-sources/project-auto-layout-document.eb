@@ -123,7 +123,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   }
 
   transient String componentCount dependsFrom root.mComponents.count ;
-//  transient Bool selectedComponentsArePlacedInBoard dependsFrom #componentController.selectedArray.all.isPlacedInBoard ;
   action addComponentFromFileLibraryAction ;
   action addComponentFromEmbeddedLibraryAction ;
   action duplicateSelectedComponentsAction ;
@@ -425,43 +424,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action moveSelectedToSheetInSchematicsAction ;
 
   stackView \SchematicPage hStack {
-    newView schematicsInspectorView = \SchematicsInspectorView ()
-    newView selectedSchematicElementInspectorView = \SelectedSchematicElementInspectorView ()
-    newView schematicHotKeysInspectorView = \SchematicHotKeysInspectorView ()
-    newView insertSymbolInSchematicView = \InsertSymbolInSchematicView ()
-    newView schematicsGridAndFlipInspectorView = \SchematicsGridAndFlipInspectorView ()
-    newView schematicsSheetInspectorView = \SchematicsSheetInspectorView ()
-    vStack set (width: 250) set (spacing: 0) {
-      hStack set (spacing: 0) set (margins: 8) {
-        space
-        PullDownButton (title: "", size: .regular) [configurator schematicPullDownButtonConfigurator] {
-          add (item: menuItem "Select all Connected Elements" $run selectAllConnectedElementsInSchematicsAction )
-          add (item: menuItem "Move Selected Elements to Sheet…" $run moveSelectedToSheetInSchematicsAction )
-        }
-        space
-        DragSourceButtonWithMenus (tooltip: "Add Wire; hint: option click starts a new wire.") [configurator addWireInschematicsButton]
-        space
-        DragSourceButtonWithMenus (tooltip: "Add Comment") [configurator addCommentInSchematicsButton]
-        space
-      }
-      vStack {
-        hStack set (leftMargin: 8) set (rightMargin: 8) {
-          SegmentedControlWithPages (documentView: view schematicsInspectorView, equalWidth: yes, size : .small) 
-            [configurator schematicInspectorConfigurator] {
-            expandableWidth ()
-            addPage (title: "", tooltip: "Selected Element Inspector", pageView: view selectedSchematicElementInspectorView)
-            addPage (title: "", tooltip: "Hot Keys", pageView: view schematicHotKeysInspectorView)
-            addPage (title: "", tooltip: "Insert Symbol in Schematic", pageView: view insertSymbolInSchematicView)
-            addPage (image: "", tooltip: "Grid and Flip Inspector", pageView: view schematicsGridAndFlipInspectorView)
-            addPage (title: "", tooltip: "Sheet Inspector", pageView: view schematicsSheetInspectorView)
-            $selectedPage root. mSelectedSchematicInspector
-            $segmentTitle self.unplacedSymbolsCountString (segmentIndex : 2)
-          }
-        }
-        view schematicsInspectorView
-        space
-      }
-    }
+    newView schematicLateralBar = \SchematicLateralBar ()
+    view schematicLateralBar
     separator
     GraphicView (minZoom: 50, maxZoom: 1_000) [outlet mSchematicsView configurator schematicView] {
       $underObjectsDisplay root.schematicBackgroundDisplay
@@ -475,6 +439,47 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       $gridCrossColor prefs.dotColorGridForSchematic
       $zoom root.mSchematicZoom
       $backColor prefs.schematicBackColor
+    }
+  }
+
+//  action newSchematicLateralBarAction ;
+  
+  stackView \SchematicLateralBar vStack set (width: 250) set (spacing: 0) {
+    newView selectedSchematicElementInspectorView = \SelectedSchematicElementInspectorView ()
+    newView schematicsInspectorView = \SchematicsInspectorView ()
+    newView schematicHotKeysInspectorView = \SchematicHotKeysInspectorView ()
+    newView insertSymbolInSchematicView = \InsertSymbolInSchematicView ()
+    newView schematicsGridAndFlipInspectorView = \SchematicsGridAndFlipInspectorView ()
+    newView schematicsSheetInspectorView = \SchematicsSheetInspectorView ()
+    hStack set (spacing: 0) set (margins: 8) {
+//      Button (title: "+", size: .regular) { expandableHeight () $run newSchematicLateralBarAction }
+      space
+      PullDownButton (title: "", size: .regular) [configurator schematicPullDownButtonConfigurator] {
+        add (item: menuItem "Select all Connected Elements" $run selectAllConnectedElementsInSchematicsAction )
+        add (item: menuItem "Move Selected Elements to Sheet…" $run moveSelectedToSheetInSchematicsAction )
+      }
+      space
+      DragSourceButtonWithMenus (tooltip: "Add Wire; hint: option click starts a new wire.") [configurator addWireInschematicsButton]
+      space
+      DragSourceButtonWithMenus (tooltip: "Add Comment") [configurator addCommentInSchematicsButton]
+      space
+    }
+    vStack {
+      hStack set (leftMargin: 8) set (rightMargin: 8) {
+        SegmentedControlWithPages (documentView: view schematicsInspectorView, equalWidth: yes, size : .small) 
+          [configurator schematicInspectorConfigurator] {
+          expandableWidth ()
+          addPage (title: "", tooltip: "Selected Element Inspector", pageView: view selectedSchematicElementInspectorView)
+          addPage (title: "", tooltip: "Hot Keys", pageView: view schematicHotKeysInspectorView)
+          addPage (title: "", tooltip: "Insert Symbol in Schematic", pageView: view insertSymbolInSchematicView)
+          addPage (image: "", tooltip: "Grid and Flip Inspector", pageView: view schematicsGridAndFlipInspectorView)
+          addPage (title: "", tooltip: "Sheet Inspector", pageView: view schematicsSheetInspectorView)
+          $selectedPage root. mSelectedSchematicInspector
+          $segmentTitle self.unplacedSymbolsCountString (segmentIndex : 2)
+        }
+      }
+      view schematicsInspectorView
+      space
     }
   }
 
