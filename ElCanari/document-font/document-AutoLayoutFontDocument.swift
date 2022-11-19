@@ -171,7 +171,7 @@ import Cocoa
   //    VIEW PageMasterView
   //····················································································································
 
-  final private func PageMasterView () -> AutoLayoutVerticalStackView {
+  final func PageMasterView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     return vStackView
   }
@@ -180,7 +180,7 @@ import Cocoa
   //    VIEW DocumentMainView
   //····················································································································
 
-  final private func DocumentMainView () -> AutoLayoutVerticalStackView {
+  final func DocumentMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
     let pageMasterView = self.PageMasterView ()
@@ -252,7 +252,7 @@ import Cocoa
   //    VIEW FontPageInspectorMasterView
   //····················································································································
 
-  final private func FontPageInspectorMasterView () -> AutoLayoutBase_NSStackView {
+  final func FontPageInspectorMasterView () -> AutoLayoutBase_NSStackView {
     return AutoLayoutVerticalStackView ()
   }
 
@@ -260,7 +260,7 @@ import Cocoa
   //    VIEW FontPage
   //····················································································································
 
-  final private func FontPage () -> AutoLayoutVerticalStackView {
+  final func FontPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let fontPageInspectorMasterView = self.FontPageInspectorMasterView ()
@@ -326,7 +326,7 @@ import Cocoa
   //    VIEW IssuesInspectorView
   //····················································································································
 
-  final private func IssuesInspectorView () -> AutoLayoutVerticalStackView {
+  final func IssuesInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
@@ -349,7 +349,7 @@ import Cocoa
   //    VIEW SampleStringInspectorView
   //····················································································································
 
-  final private func SampleStringInspectorView () -> AutoLayoutVerticalStackView {
+  final func SampleStringInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Sample String", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -379,7 +379,7 @@ import Cocoa
   //    VIEW SelectedCharacterInspectorView
   //····················································································································
 
-  final private func SelectedCharacterInspectorView () -> AutoLayoutVerticalStackView {
+  final func SelectedCharacterInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutHorizontalStackView ()
     do{
@@ -528,7 +528,7 @@ import Cocoa
   //    VIEW InfoPage
   //····················································································································
 
-  final private func InfoPage () -> AutoLayoutVerticalStackView {
+  final func InfoPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -560,7 +560,7 @@ import Cocoa
   //    IMPLICIT VIEW 0
   //····················································································································
 
-  fileprivate final func computeImplicitView_0 () -> NSView {
+  private final func computeImplicitView_0 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Size", bold: false, size: .small, alignment: .center)
     return view
   }
@@ -569,7 +569,7 @@ import Cocoa
   //    IMPLICIT VIEW 1
   //····················································································································
 
-  fileprivate final func computeImplicitView_1 () -> NSView {
+  private final func computeImplicitView_1 () -> NSView {
     let view = AutoLayoutDoubleField (width: 64, size: .small)
       .bind_value (preferences_sampleStringSize_property, sendContinously:true)
     return view
@@ -579,7 +579,7 @@ import Cocoa
   //    IMPLICIT VIEW 2
   //····················································································································
 
-  fileprivate final func computeImplicitView_2 () -> NSView {
+  private final func computeImplicitView_2 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Width", bold: false, size: .small, alignment: .center)
     return view
   }
@@ -588,7 +588,7 @@ import Cocoa
   //    IMPLICIT VIEW 3
   //····················································································································
 
-  fileprivate final func computeImplicitView_3 () -> NSView {
+  private final func computeImplicitView_3 () -> NSView {
     let view = AutoLayoutLabel (bold: true, size: .small)
       .bind_title (self.rootObject.sampleStringBezierPathWidth_property)
     return view
@@ -598,7 +598,7 @@ import Cocoa
   //    IMPLICIT VIEW 4
   //····················································································································
 
-  fileprivate final func computeImplicitView_4 () -> NSView {
+  private final func computeImplicitView_4 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Ascenders", bold: false, size: .small, alignment: .center)
     return view
   }
@@ -607,7 +607,7 @@ import Cocoa
   //    IMPLICIT VIEW 5
   //····················································································································
 
-  fileprivate final func computeImplicitView_5 () -> NSView {
+  private final func computeImplicitView_5 () -> NSView {
     let view = AutoLayoutLabel (bold: true, size: .small)
       .bind_title (self.rootObject.sampleStringBezierPathAscent_property)
     return view
@@ -617,7 +617,7 @@ import Cocoa
   //    IMPLICIT VIEW 6
   //····················································································································
 
-  fileprivate final func computeImplicitView_6 () -> NSView {
+  private final func computeImplicitView_6 () -> NSView {
     let view = AutoLayoutStaticLabel (title: "Descenders", bold: false, size: .small, alignment: .center)
     return view
   }
@@ -626,7 +626,7 @@ import Cocoa
   //    IMPLICIT VIEW 7
   //····················································································································
 
-  fileprivate final func computeImplicitView_7 () -> NSView {
+  private final func computeImplicitView_7 () -> NSView {
     let view = AutoLayoutLabel (bold: true, size: .small)
       .bind_title (self.rootObject.sampleStringBezierPathDescent_property)
     return view

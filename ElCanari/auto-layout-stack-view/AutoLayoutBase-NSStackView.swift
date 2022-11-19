@@ -43,7 +43,7 @@ class AutoLayoutBase_NSStackView : NSStackView {
   //····················································································································
 
   final func prependView (_ inView : NSView) -> Self {
-    self.addView (inView, in: .trailing)
+    self.insertView (inView, at: 0, in: .leading)
     return self
   }
 

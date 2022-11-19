@@ -48,7 +48,7 @@ import Cocoa
   //    VIEW mPrefsMainView
   //····················································································································
 
-  final private func mPrefsMainView () -> AutoLayoutVerticalStackView {
+  final func mPrefsMainView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
       .set (topMargin: 12)
@@ -79,7 +79,7 @@ import Cocoa
   //    VIEW PrefsPageView
   //····················································································································
 
-  final private func PrefsPageView () -> AutoLayoutVerticalStackView {
+  final func PrefsPageView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (spacing: 0)
     return vStackView
@@ -89,7 +89,7 @@ import Cocoa
   //    VIEW PrefsAppUpdatePage
   //····················································································································
 
-  final private func PrefsAppUpdatePage () -> AutoLayoutVerticalStackView {
+  final func PrefsAppUpdatePage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 12)
     let view_0 = AutoLayoutStaticLabel (title: "Application Update", bold: true, size: .regular, alignment: .center)
@@ -142,7 +142,7 @@ import Cocoa
   //    VIEW PrefsUserInterfacePage
   //····················································································································
 
-  final private func PrefsUserInterfacePage () -> AutoLayoutVerticalStackView {
+  final func PrefsUserInterfacePage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 12)
     let view_0 = AutoLayoutStaticLabel (title: "User Interface", bold: true, size: .regular, alignment: .center)
@@ -160,7 +160,7 @@ import Cocoa
   //    VIEW PrefsLibraryPage
   //····················································································································
 
-  final private func PrefsLibraryPage () -> AutoLayoutVerticalStackView {
+  final func PrefsLibraryPage () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 12)
     let view_0 = AutoLayoutStaticLabel (title: "System Library", bold: true, size: .regular, alignment: .left)

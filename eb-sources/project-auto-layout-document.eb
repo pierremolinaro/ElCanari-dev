@@ -452,7 +452,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     newView schematicsGridAndFlipInspectorView = \SchematicsGridAndFlipInspectorView ()
     newView schematicsSheetInspectorView = \SchematicsSheetInspectorView ()
     hStack set (spacing: 0) set (margins: 8) {
-//      Button (title: "+", size: .regular) { expandableHeight () $run newSchematicLateralBarAction }
       space
       PullDownButton (title: "", size: .regular) [configurator schematicPullDownButtonConfigurator] {
         add (item: menuItem "Select all Connected Elements" $run selectAllConnectedElementsInSchematicsAction )
@@ -489,8 +488,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   stackView \SchematicsInspectorView vStack set (margins: 8) {
   }  
 
+//  action newSchematicHotKeysInspectorAction ;
+  
 //--- Hot keys inspector
   stackView \SchematicHotKeysInspectorView vStack set (margins: 8) {
+//    Button (title: "⥆", size: .regular) { $run newSchematicHotKeysInspectorAction }
     StaticLabel (title: "Hot Keys", bold: yes, size: .small, alignment: .center)
     StaticLabel (title: "[A] Connect all Symbol Pins", bold: no, size: .small, alignment: .left) [outlet mConnectAllSymbolPinsSchematicHotKeyTextField]
     StaticLabel (title: "[B] Add Bottom Label", bold: no, size: .small, alignment: .left) [outlet mAddBottomSchematicHotKeyTextField]

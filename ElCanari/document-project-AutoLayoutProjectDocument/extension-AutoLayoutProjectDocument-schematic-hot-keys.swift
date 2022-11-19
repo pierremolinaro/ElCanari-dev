@@ -41,6 +41,9 @@ extension AutoLayoutProjectDocument {
       self.mAddLeftLabelSchematicHotKeyTextField?.textColor = createLabelTextColor
       self.mAddRightLabelSchematicHotKeyTextField?.textColor = createLabelTextColor
       self.mAddTopLabelSchematicHotKeyTextField?.textColor = createLabelTextColor
+//      for outlet in self.mAddBottomSchematicHotKeyTextField.values {
+//        outlet.textColor = createLabelTextColor
+//      }
       self.mAddBottomSchematicHotKeyTextField?.textColor = createLabelTextColor
     //--- Show / Hide symbol value
       let symbolsUnderMouse = self.schematicSymbols (at: canariUnalignedMouseDownLocation)
@@ -75,6 +78,9 @@ extension AutoLayoutProjectDocument {
     self.mAddLeftLabelSchematicHotKeyTextField?.textColor = .disabledControlTextColor
     self.mAddRightLabelSchematicHotKeyTextField?.textColor = .disabledControlTextColor
     self.mAddTopLabelSchematicHotKeyTextField?.textColor = .disabledControlTextColor
+//    for outlet in self.mAddBottomSchematicHotKeyTextField.values {
+//      outlet.textColor = .disabledControlTextColor
+//    }
     self.mAddBottomSchematicHotKeyTextField?.textColor = .disabledControlTextColor
   //--- Create NC
     self.mAddNCSchematicHotKeyTextField?.textColor = .disabledControlTextColor
@@ -83,6 +89,8 @@ extension AutoLayoutProjectDocument {
     self.mAddLabelToAllSymbolPinsSchematicHotKeyTextField?.textColor = .disabledControlTextColor
   //--- Exchange symbol
     self.mExchangeSymbolSchematicHotKeyTextField?.textColor = .disabledControlTextColor
+  //--- Show / Hide component value
+    self.mShowHideSymbolValueSchematicHotKeyTextField?.textColor = .disabledControlTextColor
   }
 
   //····················································································································
@@ -162,7 +170,6 @@ extension AutoLayoutProjectDocument {
         if let symbol = self.canExchangeSymbol (at: canariUnalignedMouseDownLocation) {
           self.runExchangeDialog (forSymbol: symbol)
         }
-
       case UnicodeScalar ("W"), UnicodeScalar ("w") :
         let wires = selectedSheet.wiresStrictlyContaining (point: canariUnalignedMouseDownLocation)
         if self.canCreateWirePoint (wires: wires) {
