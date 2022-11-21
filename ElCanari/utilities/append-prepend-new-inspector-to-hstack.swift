@@ -10,6 +10,31 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+@MainActor func append (inspector inInspector : NSView,
+                        toHStack inBaseHorizontalStack : AutoLayoutHorizontalStackView) {
+  let closeButton = AutoLayoutButton (title: "✖︎", size: .regular)
+  closeButton.bezelStyle = .circular
+  let header = AutoLayoutHorizontalStackView ()
+    .set (margins: 8)
+    .appendView (closeButton)
+    .appendFlexibleSpace ()
+  let verticalSeparator = AutoLayoutHorizontalStackView.VerticalSeparator ()
+  let vStack = AutoLayoutVerticalStackView ()
+    .appendView (header)
+    .appendView (inInspector)
+    .appendFlexibleSpace ()
+  _ = inBaseHorizontalStack.appendView (verticalSeparator)
+  _ = inBaseHorizontalStack.appendView (vStack)
+  closeButton.setClosureAction { [weak inBaseHorizontalStack, weak vStack] in
+    if let s = vStack {
+      inBaseHorizontalStack?.removeView (s)
+    }
+    inBaseHorizontalStack?.removeView (verticalSeparator)
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @MainActor func prepend (inspector inInspector : NSView,
                          toHStack inBaseHorizontalStack : AutoLayoutHorizontalStackView) {
   let closeButton = AutoLayoutButton (title: "✖︎", size: .regular)

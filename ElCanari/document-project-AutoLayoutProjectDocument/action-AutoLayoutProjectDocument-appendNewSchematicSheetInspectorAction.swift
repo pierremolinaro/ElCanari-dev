@@ -11,10 +11,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func newSchematicSheetInspectorAction (_ sender : NSObject?) {
+  @objc func appendNewSchematicSheetInspectorAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
         if let hBaseStack = self.mSchematicsView?.superview as? AutoLayoutHorizontalStackView {
-          prepend (inspector: self.SchematicsSheetInspectorView (), toHStack: hBaseStack)
+          append (inspector: self.schematicsSheetInspectorView (), toHStack: hBaseStack)
         }
 //--- END OF USER ZONE 2
   }

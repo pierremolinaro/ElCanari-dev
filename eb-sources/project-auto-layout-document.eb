@@ -10,7 +10,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     newView pageMasterView = \PageMasterView ()
     newView componentsPage = \ComponentsPage ()
     newView libraryPage = \LibraryPage ()
-    newView schematicPage = \SchematicPage ()
+    newView schematicPage = \schematicsPage ()
     newView netClassesPage = \NetClassesPage ()
     newView netListPage = \NetListPage ()
     newView boardOutlinePage = \BoardOutlinePage ()
@@ -423,8 +423,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action selectAllConnectedElementsInSchematicsAction ;
   action moveSelectedToSheetInSchematicsAction ;
 
-  stackView \SchematicPage hStack {
-    newView schematicLateralBar = \SchematicLateralBar ()
+  stackView \schematicsPage hStack {
+    newView schematicLateralBar = \schematicsLateralBar ()
     view schematicLateralBar
     separator
     GraphicView (minZoom: 50, maxZoom: 1_000) [outlet mSchematicsView configurator schematicView] {
@@ -442,24 +442,28 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     }
   }
   
-  action newSchematicHotKeysInspectorAction ;
-  action newSchematicInsertSymbolInspectorAction ;
-  action newSchematicDisplayInspectorAction ;
-  action newSchematicSheetInspectorAction ;
+  action prependNewSchematicHotKeysInspectorAction ;
+  action prependNewSchematicInsertSymbolInspectorAction ;
+  action prependNewSchematicDisplayInspectorAction ;
+  action prependNewSchematicSheetInspectorAction ;
+  action appendNewSchematicHotKeysInspectorAction ;
+  action appendNewSchematicInsertSymbolInspectorAction ;
+  action appendNewSchematicDisplayInspectorAction ;
+  action appendNewSchematicSheetInspectorAction ;
   
-  stackView \SchematicLateralBar vStack set (width: 250) set (spacing: 0) {
-    newView selectedSchematicElementInspectorView = \SelectedSchematicElementInspectorView ()
-    newView schematicsInspectorView = \SchematicsInspectorView ()
-    newView schematicHotKeysInspectorView = \SchematicHotKeysInspectorView ()
-    newView insertSymbolInSchematicView = \SchematicsInsertSymbolInSchematicView ()
+  stackView \schematicsLateralBar vStack set (width: 250) set (spacing: 0) {
+    newView selectedSchematicElementInspectorView = \selectedSchematicElementInspectorView ()
+    newView schematicsInspectorView = \schematicsInspectorView ()
+    newView schematicHotKeysInspectorView = \schematicsHotKeysInspectorView ()
+    newView insertSymbolInSchematicView = \schematicsInsertSymbolInSchematicView ()
     newView schematicsDisplayInspectorView = \schematicsDisplayInspectorView ()
-    newView schematicsSheetInspectorView = \SchematicsSheetInspectorView ()
+    newView schematicsSheetInspectorView = \schematicsSheetInspectorView ()
     hStack set (spacing: 0) set (margins: 8) {
 //      PullDownButton (title: "◀︎+", size: .regular) {
-//        add (item: menuItem "New Hot Keys Inspector" $run newSchematicHotKeysInspectorAction )
-//        add (item: menuItem "New Insert Symbol Inspector" $run newSchematicInsertSymbolInspectorAction )
-//        add (item: menuItem "New Display Inspector" $run newSchematicDisplayInspectorAction )
-//        add (item: menuItem "New Sheet Inspector" $run newSchematicSheetInspectorAction )
+//        add (item: menuItem "New Hot Keys Inspector" $run prependNewSchematicHotKeysInspectorAction )
+//        add (item: menuItem "New Insert Symbol Inspector" $run prependNewSchematicInsertSymbolInspectorAction )
+//        add (item: menuItem "New Display Inspector" $run prependNewSchematicDisplayInspectorAction )
+//        add (item: menuItem "New Sheet Inspector" $run prependNewSchematicSheetInspectorAction )
 //      }
       space
       PullDownButton (title: "", size: .regular) [configurator schematicPullDownButtonConfigurator] {
@@ -496,16 +500,17 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   transient Int unplacedSymbolsCount dependsFrom root.unplacedSymbols ;
   transient String unplacedSymbolsCountString dependsFrom self.unplacedSymbolsCount ;
 
-  stackView \SchematicsInspectorView vStack set (margins: 8) {
+  stackView \schematicsInspectorView vStack set (margins: 8) {
   }  
   
 //--- Hot keys inspector
-  stackView \SchematicHotKeysInspectorView vStack set (margins: 8) {
+  stackView \schematicsHotKeysInspectorView vStack set (margins: 8) {
     hStack {
-      Button (title: "◀︎+", size: .regular) { $run newSchematicHotKeysInspectorAction }
+      Button (title: "◀︎+", size: .regular) { $run prependNewSchematicHotKeysInspectorAction }
       space
       StaticLabel (title: "Hot Keys", bold: yes, size: .small, alignment: .center)
       space
+      Button (title: "+▶︎", size: .regular) { $run appendNewSchematicHotKeysInspectorAction }
     }
     StaticLabel (title: "[A] Connect all Symbol Pins", bold: no, size: .small, alignment: .left)
       [outletArray mConnectAllSymbolPinsSchematicHotKeyTextField]
@@ -540,12 +545,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   }  
 
 //--- Unplaced symbols inspector
-  stackView \SchematicsInsertSymbolInSchematicView vStack set (margins: 8) {
+  stackView \schematicsInsertSymbolInSchematicView vStack set (margins: 8) {
     hStack {
-      Button (title: "◀︎+", size: .regular) { $run newSchematicInsertSymbolInspectorAction }
+      Button (title: "◀︎+", size: .regular) { $run prependNewSchematicInsertSymbolInspectorAction }
       space
       StaticLabel (title: "Insert Symbol Inspector", bold: yes, size: .small, alignment: .center)
       space
+      Button (title: "+▶︎", size: .regular) { $run appendNewSchematicInsertSymbolInspectorAction }
     }
     CanariDragSourceTableView 
     [outletArray mUnplacedSymbolsTableViewArray configurator symbolDragSourceTableViewConfigurator] {
@@ -556,10 +562,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 //--- Grid and Flip inspector
   stackView \schematicsDisplayInspectorView vStack set (margins: 8) {
     hStack {
-      Button (title: "◀︎+", size: .regular) { $run newSchematicDisplayInspectorAction }
+      Button (title: "◀︎+", size: .regular) { $run prependNewSchematicDisplayInspectorAction }
       space
       StaticLabel (title: "Display Inspector", bold: yes, size: .small, alignment: .center)
       space
+      Button (title: "+▶︎", size: .regular) { $run appendNewSchematicDisplayInspectorAction }
     }
     TabView (equalWidth: yes, size: .small) {
       addTab (title: "Grid and Flip", tooltip: "Grid and Flip", contentView : 
@@ -672,12 +679,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   }  
 
 //--- Sheet inspector
-  stackView \SchematicsSheetInspectorView  vStack set (margins: 8) {
+  stackView \schematicsSheetInspectorView  vStack set (margins: 8) {
     hStack {
-      Button (title: "◀︎+", size: .regular) { $run newSchematicSheetInspectorAction }
+      Button (title: "◀︎+", size: .regular) { $run prependNewSchematicSheetInspectorAction }
       space
       StaticLabel (title: "Sheet Inspector", bold: yes, size: .small, alignment: .center)
       space
+      Button (title: "+▶︎", size: .regular) { $run appendNewSchematicSheetInspectorAction }
     }
     hStack {
       PopUpButton (size: .small) [configurator sheetPopUpButtonConfigurator]
@@ -691,15 +699,19 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         Button (title: "Down", size: .small) [configurator moveSheetDown]
       }
       space
-      Button (title: "Delete Sheet", size: .small) { expandableHeight () $run deleteSheetAction $enabled root.mSheets.count > 1 }
+      Button (title: "Delete Sheet", size: .small)
+        { expandableHeight () $run deleteSheetAction $enabled root.mSheets.count > 1 }
     }
     StaticLabel (title: "Selected Sheet Name", bold: no, size: .small, alignment: .left)
-    TextField (minWidth: 150, size: .small) { automaticallyAdjustHeight (maxWidth: 150) $value root.selectedSheetTitle (sendContinously : yes) }
+    TextField (minWidth: 150, size: .small)
+      { automaticallyAdjustHeight (maxWidth: 150) $value root.selectedSheetTitle (sendContinously : yes) }
     separator
     GridView2 {
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Title", bold: no, size: .small, alignment: .right) { expandableHeight () },
-        right: TextField (minWidth: 150, size: .small) { automaticallyAdjustHeight (maxWidth: 150) $value root.mSchematicTitle (sendContinously : yes) }
+        left: StaticLabel (title: "Title", bold: no, size: .small, alignment: .right)
+          { expandableHeight () },
+        right: TextField (minWidth: 150, size: .small)
+          { automaticallyAdjustHeight (maxWidth: 150) $value root.mSchematicTitle (sendContinously : yes) }
       )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Version", bold: no, size: .small, alignment: .right),
@@ -720,14 +732,16 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         [configurator sheetOrientationSegmentedControlConfigurator] { $selectedSegment root.mSchematicSheetOrientation }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Width", bold: no, size: .small, alignment: .center) { $hidden !self.schematicSheetOrientationIsCustom },
+        left: StaticLabel (title: "Width", bold: no, size: .small, alignment: .center)
+          { $hidden !self.schematicSheetOrientationIsCustom },
         right: CanariDimensionAndPopUp (size : .small) {
           $dimensionAndUnit root.mSchematicCustomWidth, root.mSchematicCustomWidthUnit
           $hidden !self.schematicSheetOrientationIsCustom
         }
       )
       addFirstBaseLineAligned (
-        left: StaticLabel (title: "Height", bold: no, size: .small, alignment: .center) { $hidden !self.schematicSheetOrientationIsCustom },
+        left: StaticLabel (title: "Height", bold: no, size: .small, alignment: .center)
+          { $hidden !self.schematicSheetOrientationIsCustom },
         right: CanariDimensionAndPopUp (size : .small) {
           $dimensionAndUnit root.mSchematicCustomHeight, root.mSchematicCustomHeightUnit
           $hidden !self.schematicSheetOrientationIsCustom
@@ -746,12 +760,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 //   Schematic selected objects inspector
 //----------------------------------------------------------------------------------------------------------------------
 
-  stackView \SelectedSchematicElementInspectorView vStack set (margins: 8) {
-    newView schematicsWireInspectorView = \SchematicsWireInspectorView ()
-    newView ncInSchematicsInspectorView = \NCInSchematicsInspectorView ()
-    newView schematicsLabelInspectorView = \SchematicsLabelInspectorView ()
-    newView commentInSchematicsInspectorView = \CommentInSchematicsInspectorView ()
-    newView componentSymbolInspectorView = \ComponentSymbolInspectorView ()
+  stackView \selectedSchematicElementInspectorView vStack set (margins: 8) {
+    newView schematicsWireInspectorView = \schematicsWireInspectorView ()
+    newView ncInSchematicsInspectorView = \ncInSchematicsInspectorView ()
+    newView schematicsLabelInspectorView = \schematicsLabelInspectorView ()
+    newView commentInSchematicsInspectorView = \commentInSchematicsInspectorView ()
+    newView componentSymbolInspectorView = \componentSymbolInspectorView ()
     ObjectInspectorView {
       addObjectInspector (forEntity: entity WireInSchematic, inspectorView: view schematicsWireInspectorView)
       addObjectInspector (forEntity: entity NCInSchematic, inspectorView: view ncInSchematicsInspectorView)
@@ -768,7 +782,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     #schematicObjectsController.selectedArray
   ;
   
-  stackView \SchematicsWireInspectorView vStack {
+  stackView \schematicsWireInspectorView vStack {
     StaticLabel (title: "Wire Inspector", bold: yes, size: .small, alignment: .center)
     hStack {
       StaticLabel (title: "Net", bold: no, size: .small, alignment: .right)
@@ -813,7 +827,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     #schematicObjectsController.selectedArray
   ;
 
-  stackView \NCInSchematicsInspectorView vStack {
+  stackView \ncInSchematicsInspectorView vStack {
     StaticLabel (title: "NC Inspector", bold: yes, size: .small, alignment: .center)
     EnumSegmentedControl (titles: enum QuadrantRotation.directionTitles, equalWidth: yes, size: .small) {
       $selectedSegment #ncInSchematicSelectionController.mOrientation
@@ -825,7 +839,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     #schematicObjectsController.selectedArray
   ;
 
-  stackView \SchematicsLabelInspectorView vStack {
+  stackView \schematicsLabelInspectorView vStack {
     StaticLabel (title: "Label Inspector", bold: yes, size: .small, alignment: .center)
     EnumSegmentedControl (titles: enum QuadrantRotation.directionTitles, equalWidth: yes, size: .small) {
       $selectedSegment #schematicLabelSelectionController.mOrientation
@@ -873,7 +887,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     #schematicObjectsController.selectedArray
   ;
 
-  stackView \CommentInSchematicsInspectorView vStack {
+  stackView \commentInSchematicsInspectorView vStack {
     StaticLabel (title: "Comment Inspector", bold: yes, size: .small, alignment: .center)
     TextField (minWidth: 210, size: .small) {
       automaticallyAdjustHeight (maxWidth: 210)
@@ -905,7 +919,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   selectionController ComponentSymbolInProject #componentSymbolSelectionController :
     #schematicObjectsController.selectedArray
   ;
-  stackView \ComponentSymbolInspectorView vStack {
+  stackView \componentSymbolInspectorView vStack {
     StaticLabel (title: "Symbol Inspector", bold: yes, size: .small, alignment: .center)
     GridView2 {
       addFirstBaseLineAligned (

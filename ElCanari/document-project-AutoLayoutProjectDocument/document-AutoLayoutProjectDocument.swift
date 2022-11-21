@@ -696,7 +696,7 @@ import Cocoa
     let pageMasterView = self.PageMasterView ()
     let componentsPage = self.ComponentsPage ()
     let libraryPage = self.LibraryPage ()
-    let schematicPage = self.SchematicPage ()
+    let schematicPage = self.schematicsPage ()
     let netClassesPage = self.NetClassesPage ()
     let netListPage = self.NetListPage ()
     let boardOutlinePage = self.BoardOutlinePage ()
@@ -1213,12 +1213,12 @@ import Cocoa
   }
 
   //····················································································································
-  //    VIEW SchematicPage
+  //    VIEW schematicsPage
   //····················································································································
 
-  final func SchematicPage () -> AutoLayoutHorizontalStackView {
+  final func schematicsPage () -> AutoLayoutHorizontalStackView {
     let hStackView = AutoLayoutHorizontalStackView ()
-    let schematicLateralBar = self.SchematicLateralBar ()
+    let schematicLateralBar = self.schematicsLateralBar ()
     let view_0 = schematicLateralBar
     _ = hStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView.VerticalSeparator ()
@@ -1242,19 +1242,19 @@ import Cocoa
   }
 
   //····················································································································
-  //    VIEW SchematicLateralBar
+  //    VIEW schematicsLateralBar
   //····················································································································
 
-  final func SchematicLateralBar () -> AutoLayoutVerticalStackView {
+  final func schematicsLateralBar () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (width: 250)
       .set (spacing: 0)
-    let selectedSchematicElementInspectorView = self.SelectedSchematicElementInspectorView ()
-    let schematicsInspectorView = self.SchematicsInspectorView ()
-    let schematicHotKeysInspectorView = self.SchematicHotKeysInspectorView ()
-    let insertSymbolInSchematicView = self.SchematicsInsertSymbolInSchematicView ()
+    let selectedSchematicElementInspectorView = self.selectedSchematicElementInspectorView ()
+    let schematicsInspectorView = self.schematicsInspectorView ()
+    let schematicHotKeysInspectorView = self.schematicsHotKeysInspectorView ()
+    let insertSymbolInSchematicView = self.schematicsInsertSymbolInSchematicView ()
     let schematicsDisplayInspectorView = self.schematicsDisplayInspectorView ()
-    let schematicsSheetInspectorView = self.SchematicsSheetInspectorView ()
+    let schematicsSheetInspectorView = self.schematicsSheetInspectorView ()
     let view_0 = AutoLayoutHorizontalStackView ()
       .set (spacing: 0)
       .set (margins: 8)
@@ -1309,20 +1309,20 @@ import Cocoa
   }
 
   //····················································································································
-  //    VIEW SchematicsInspectorView
+  //    VIEW schematicsInspectorView
   //····················································································································
 
-  final func SchematicsInspectorView () -> AutoLayoutVerticalStackView {
+  final func schematicsInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     return vStackView
   }
 
   //····················································································································
-  //    VIEW SchematicHotKeysInspectorView
+  //    VIEW schematicsHotKeysInspectorView
   //····················································································································
 
-  final func SchematicHotKeysInspectorView () -> AutoLayoutVerticalStackView {
+  final func schematicsHotKeysInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -1330,7 +1330,7 @@ import Cocoa
       let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
         .bind_run (
           target: self,
-          selector: #selector (AutoLayoutProjectDocument.newSchematicHotKeysInspectorAction (_:))
+          selector: #selector (AutoLayoutProjectDocument.prependNewSchematicHotKeysInspectorAction (_:))
         )
       _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutFlexibleSpace ()
@@ -1339,6 +1339,12 @@ import Cocoa
       _ = view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutFlexibleSpace ()
       _ = view_0.appendView (view_0_3)
+      let view_0_4 = AutoLayoutButton (title: "+▶︎", size: .regular)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.appendNewSchematicHotKeysInspectorAction (_:))
+        )
+      _ = view_0.appendView (view_0_4)
     }
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutStaticLabel (title: "[A] Connect all Symbol Pins", bold: false, size: .small, alignment: .left)
@@ -1390,10 +1396,10 @@ import Cocoa
   }
 
   //····················································································································
-  //    VIEW SchematicsInsertSymbolInSchematicView
+  //    VIEW schematicsInsertSymbolInSchematicView
   //····················································································································
 
-  final func SchematicsInsertSymbolInSchematicView () -> AutoLayoutVerticalStackView {
+  final func schematicsInsertSymbolInSchematicView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -1401,7 +1407,7 @@ import Cocoa
       let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
         .bind_run (
           target: self,
-          selector: #selector (AutoLayoutProjectDocument.newSchematicInsertSymbolInspectorAction (_:))
+          selector: #selector (AutoLayoutProjectDocument.prependNewSchematicInsertSymbolInspectorAction (_:))
         )
       _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutFlexibleSpace ()
@@ -1410,6 +1416,12 @@ import Cocoa
       _ = view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutFlexibleSpace ()
       _ = view_0.appendView (view_0_3)
+      let view_0_4 = AutoLayoutButton (title: "+▶︎", size: .regular)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.appendNewSchematicInsertSymbolInspectorAction (_:))
+        )
+      _ = view_0.appendView (view_0_4)
     }
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutCanariDragSourceTableView ()
@@ -1432,7 +1444,7 @@ import Cocoa
       let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
         .bind_run (
           target: self,
-          selector: #selector (AutoLayoutProjectDocument.newSchematicDisplayInspectorAction (_:))
+          selector: #selector (AutoLayoutProjectDocument.prependNewSchematicDisplayInspectorAction (_:))
         )
       _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutFlexibleSpace ()
@@ -1441,6 +1453,12 @@ import Cocoa
       _ = view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutFlexibleSpace ()
       _ = view_0.appendView (view_0_3)
+      let view_0_4 = AutoLayoutButton (title: "+▶︎", size: .regular)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.appendNewSchematicDisplayInspectorAction (_:))
+        )
+      _ = view_0.appendView (view_0_4)
     }
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutTabView (equalWidth: true, size: .small)
@@ -1451,10 +1469,10 @@ import Cocoa
   }
 
   //····················································································································
-  //    VIEW SchematicsSheetInspectorView
+  //    VIEW schematicsSheetInspectorView
   //····················································································································
 
-  final func SchematicsSheetInspectorView () -> AutoLayoutVerticalStackView {
+  final func schematicsSheetInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
     let view_0 = AutoLayoutHorizontalStackView ()
@@ -1462,7 +1480,7 @@ import Cocoa
       let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
         .bind_run (
           target: self,
-          selector: #selector (AutoLayoutProjectDocument.newSchematicSheetInspectorAction (_:))
+          selector: #selector (AutoLayoutProjectDocument.prependNewSchematicSheetInspectorAction (_:))
         )
       _ = view_0.appendView (view_0_0)
       let view_0_1 = AutoLayoutFlexibleSpace ()
@@ -1471,6 +1489,12 @@ import Cocoa
       _ = view_0.appendView (view_0_2)
       let view_0_3 = AutoLayoutFlexibleSpace ()
       _ = view_0.appendView (view_0_3)
+      let view_0_4 = AutoLayoutButton (title: "+▶︎", size: .regular)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.appendNewSchematicSheetInspectorAction (_:))
+        )
+      _ = view_0.appendView (view_0_4)
     }
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
@@ -1538,17 +1562,17 @@ import Cocoa
   }
 
   //····················································································································
-  //    VIEW SelectedSchematicElementInspectorView
+  //    VIEW selectedSchematicElementInspectorView
   //····················································································································
 
-  final func SelectedSchematicElementInspectorView () -> AutoLayoutVerticalStackView {
+  final func selectedSchematicElementInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
-    let schematicsWireInspectorView = self.SchematicsWireInspectorView ()
-    let ncInSchematicsInspectorView = self.NCInSchematicsInspectorView ()
-    let schematicsLabelInspectorView = self.SchematicsLabelInspectorView ()
-    let commentInSchematicsInspectorView = self.CommentInSchematicsInspectorView ()
-    let componentSymbolInspectorView = self.ComponentSymbolInspectorView ()
+    let schematicsWireInspectorView = self.schematicsWireInspectorView ()
+    let ncInSchematicsInspectorView = self.ncInSchematicsInspectorView ()
+    let schematicsLabelInspectorView = self.schematicsLabelInspectorView ()
+    let commentInSchematicsInspectorView = self.commentInSchematicsInspectorView ()
+    let componentSymbolInspectorView = self.componentSymbolInspectorView ()
     let view_0 = AutoLayoutObjectInspectorView ()
       .addObjectInspector (forEntity: WireInSchematic.self, inspectorView: schematicsWireInspectorView)
       .addObjectInspector (forEntity: NCInSchematic.self, inspectorView: ncInSchematicsInspectorView)
@@ -1563,10 +1587,10 @@ import Cocoa
   }
 
   //····················································································································
-  //    VIEW SchematicsWireInspectorView
+  //    VIEW schematicsWireInspectorView
   //····················································································································
 
-  final func SchematicsWireInspectorView () -> AutoLayoutVerticalStackView {
+  final func schematicsWireInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Wire Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -1631,10 +1655,10 @@ import Cocoa
   }
 
   //····················································································································
-  //    VIEW NCInSchematicsInspectorView
+  //    VIEW ncInSchematicsInspectorView
   //····················································································································
 
-  final func NCInSchematicsInspectorView () -> AutoLayoutVerticalStackView {
+  final func ncInSchematicsInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "NC Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -1645,10 +1669,10 @@ import Cocoa
   }
 
   //····················································································································
-  //    VIEW SchematicsLabelInspectorView
+  //    VIEW schematicsLabelInspectorView
   //····················································································································
 
-  final func SchematicsLabelInspectorView () -> AutoLayoutVerticalStackView {
+  final func schematicsLabelInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Label Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -1717,10 +1741,10 @@ import Cocoa
   }
 
   //····················································································································
-  //    VIEW CommentInSchematicsInspectorView
+  //    VIEW commentInSchematicsInspectorView
   //····················································································································
 
-  final func CommentInSchematicsInspectorView () -> AutoLayoutVerticalStackView {
+  final func commentInSchematicsInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Comment Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
@@ -1753,10 +1777,10 @@ import Cocoa
   }
 
   //····················································································································
-  //    VIEW ComponentSymbolInspectorView
+  //    VIEW componentSymbolInspectorView
   //····················································································································
 
-  final func ComponentSymbolInspectorView () -> AutoLayoutVerticalStackView {
+  final func componentSymbolInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
     let view_0 = AutoLayoutStaticLabel (title: "Symbol Inspector", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)

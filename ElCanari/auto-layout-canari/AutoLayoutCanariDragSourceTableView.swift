@@ -53,6 +53,9 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
     leftColumn.resizingMask = .autoresizingMask
     self.mTableView.addTableColumn (leftColumn)
 
+    let c = NSLayoutConstraint (item: self, attribute: .width, relatedBy: .lessThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 250.0)
+    self.addConstraint (c)
+    
   //--- Set sort descriptor
     let tableColumns = self.mTableView.tableColumns
     if tableColumns.count == 1 {

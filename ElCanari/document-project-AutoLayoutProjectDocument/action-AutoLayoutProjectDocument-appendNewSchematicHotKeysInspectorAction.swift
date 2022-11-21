@@ -11,10 +11,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func newSchematicInsertSymbolInspectorAction (_ sender : NSObject?) {
+  @objc func appendNewSchematicHotKeysInspectorAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
         if let hBaseStack = self.mSchematicsView?.superview as? AutoLayoutHorizontalStackView {
-          prepend (inspector: self.SchematicsInsertSymbolInSchematicView (), toHStack: hBaseStack)
+          append (inspector: self.schematicsHotKeysInspectorView (), toHStack: hBaseStack)
         }
 //--- END OF USER ZONE 2
   }
