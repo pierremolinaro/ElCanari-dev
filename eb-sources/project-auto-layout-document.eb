@@ -441,21 +441,32 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       $backColor prefs.schematicBackColor
     }
   }
-
-//  action newSchematicLateralBarAction ;
+  
+  action newSchematicHotKeysInspectorAction ;
+  action newSchematicInsertSymbolInspectorAction ;
+  action newSchematicGridAndFlipInspectorAction ;
+  action newSchematicSheetInspectorAction ;
   
   stackView \SchematicLateralBar vStack set (width: 250) set (spacing: 0) {
     newView selectedSchematicElementInspectorView = \SelectedSchematicElementInspectorView ()
     newView schematicsInspectorView = \SchematicsInspectorView ()
     newView schematicHotKeysInspectorView = \SchematicHotKeysInspectorView ()
-    newView insertSymbolInSchematicView = \InsertSymbolInSchematicView ()
+    newView insertSymbolInSchematicView = \SchematicsInsertSymbolInSchematicView ()
     newView schematicsGridAndFlipInspectorView = \SchematicsGridAndFlipInspectorView ()
     newView schematicsSheetInspectorView = \SchematicsSheetInspectorView ()
     hStack set (spacing: 0) set (margins: 8) {
+      PullDownButton (title: "◀︎+", size: .regular) {
+        add (item: menuItem "New Hot Keys Inspector" $run newSchematicHotKeysInspectorAction )
+        add (item: menuItem "New Insert Symbol Inspector" $run newSchematicInsertSymbolInspectorAction )
+        add (item: menuItem "New Grid and Flip Inspector" $run newSchematicGridAndFlipInspectorAction )
+        add (item: menuItem "New Sheet Inspector" $run newSchematicSheetInspectorAction )
+      }
       space
       PullDownButton (title: "", size: .regular) [configurator schematicPullDownButtonConfigurator] {
-        add (item: menuItem "Select all Connected Elements" $run selectAllConnectedElementsInSchematicsAction )
-        add (item: menuItem "Move Selected Elements to Sheet…" $run moveSelectedToSheetInSchematicsAction )
+        add (item: menuItem "Select all Connected Elements"
+             $run selectAllConnectedElementsInSchematicsAction )
+        add (item: menuItem "Move Selected Elements to Sheet…"
+             $run moveSelectedToSheetInSchematicsAction )
       }
       space
       DragSourceButtonWithMenus (tooltip: "Add Wire; hint: option click starts a new wire.") [configurator addWireInschematicsButton]
@@ -487,34 +498,47 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   stackView \SchematicsInspectorView vStack set (margins: 8) {
   }  
-
-//  action newSchematicHotKeysInspectorAction ;
   
 //--- Hot keys inspector
   stackView \SchematicHotKeysInspectorView vStack set (margins: 8) {
-//    Button (title: "⥆", size: .regular) { $run newSchematicHotKeysInspectorAction }
     StaticLabel (title: "Hot Keys", bold: yes, size: .small, alignment: .center)
-    StaticLabel (title: "[A] Connect all Symbol Pins", bold: no, size: .small, alignment: .left) [outlet mConnectAllSymbolPinsSchematicHotKeyTextField]
-    StaticLabel (title: "[B] Add Bottom Label", bold: no, size: .small, alignment: .left) [outlet mAddBottomSchematicHotKeyTextField]
-    StaticLabel (title: "[C] Connect", bold: no, size: .small, alignment: .left) [outlet mConnectSchematicHotKeyTextField]
-    StaticLabel (title: "[D] Disconnect", bold: no, size: .small, alignment: .left) [outlet mDisconnectSchematicHotKeyTextField]
-    StaticLabel (title: "[E] Disconnect All Symbol Pins", bold: no, size: .small, alignment: .left) [outlet mDisconnectAllSymbolPinsSchematicHotKeyTextField]      
-    StaticLabel (title: "[F] Add Label to Symbol Pins", bold: no, size: .small, alignment: .left) [outlet mAddLabelToAllSymbolPinsSchematicHotKeyTextField]
-    StaticLabel (title: "[L] Add Left Label", bold: no, size: .small, alignment: .left) [outlet mAddLeftLabelSchematicHotKeyTextField]
-    StaticLabel (title: "[M] Set NC to Symbol Pins", bold: no, size: .small, alignment: .left) [outlet mAddNCToAllSymbolPinsSchematicHotKeyTextField]
-    StaticLabel (title: "[N] Set NC", bold: no, size: .small, alignment: .left) [outlet mAddNCSchematicHotKeyTextField]
-    StaticLabel (title: "[P] Remove Wire Point", bold: no, size: .small, alignment: .left) [outlet mRemoveWirePointSchematicHotKeyTextField]
-    StaticLabel (title: "[R] Add Right Label", bold: no, size: .small, alignment: .left) [outlet mAddRightLabelSchematicHotKeyTextField]
-    StaticLabel (title: "[T] Add Top Label", bold: no, size: .small, alignment: .left) [outlet mAddTopLabelSchematicHotKeyTextField]
-    StaticLabel (title: "[V] Show / Hide Component Value", bold: no, size: .small, alignment: .left) [outlet mShowHideSymbolValueSchematicHotKeyTextField]
-    StaticLabel (title: "[X] Exchange Symbol…", bold: no, size: .small, alignment: .left) [outlet mExchangeSymbolSchematicHotKeyTextField]
-    StaticLabel (title: "[W] Insert Wire Point", bold: no, size: .small, alignment: .left) [outlet mAddWirePointSchematicHotKeyTextField]
+    StaticLabel (title: "[A] Connect all Symbol Pins", bold: no, size: .small, alignment: .left)
+      [outletArray mConnectAllSymbolPinsSchematicHotKeyTextField]
+    StaticLabel (title: "[B] Add Bottom Label", bold: no, size: .small, alignment: .left)
+      [outletArray mAddBottomSchematicHotKeyTextField]
+    StaticLabel (title: "[C] Connect", bold: no, size: .small, alignment: .left)
+      [outletArray mConnectSchematicHotKeyTextField]
+    StaticLabel (title: "[D] Disconnect", bold: no, size: .small, alignment: .left)
+      [outletArray mDisconnectSchematicHotKeyTextField]
+    StaticLabel (title: "[E] Disconnect All Symbol Pins", bold: no, size: .small, alignment: .left)
+      [outletArray mDisconnectAllSymbolPinsSchematicHotKeyTextField]      
+    StaticLabel (title: "[F] Add Label to Symbol Pins", bold: no, size: .small, alignment: .left)
+      [outletArray mAddLabelToAllSymbolPinsSchematicHotKeyTextField]
+    StaticLabel (title: "[L] Add Left Label", bold: no, size: .small, alignment: .left)
+      [outletArray mAddLeftLabelSchematicHotKeyTextField]
+    StaticLabel (title: "[M] Set NC to Symbol Pins", bold: no, size: .small, alignment: .left)
+      [outletArray mAddNCToAllSymbolPinsSchematicHotKeyTextField]
+    StaticLabel (title: "[N] Set NC", bold: no, size: .small, alignment: .left)
+      [outletArray mAddNCSchematicHotKeyTextField]
+    StaticLabel (title: "[P] Remove Wire Point", bold: no, size: .small, alignment: .left)
+      [outletArray mRemoveWirePointSchematicHotKeyTextField]
+    StaticLabel (title: "[R] Add Right Label", bold: no, size: .small, alignment: .left)
+      [outletArray mAddRightLabelSchematicHotKeyTextField]
+    StaticLabel (title: "[T] Add Top Label", bold: no, size: .small, alignment: .left)
+      [outletArray mAddTopLabelSchematicHotKeyTextField]
+    StaticLabel (title: "[V] Show / Hide Component Value", bold: no, size: .small, alignment: .left)
+      [outletArray mShowHideSymbolValueSchematicHotKeyTextField]
+    StaticLabel (title: "[X] Exchange Symbol…", bold: no, size: .small, alignment: .left)
+      [outletArray mExchangeSymbolSchematicHotKeyTextField]
+    StaticLabel (title: "[W] Insert Wire Point", bold: no, size: .small, alignment: .left)
+      [outletArray mAddWirePointSchematicHotKeyTextField]
   }  
 
 //--- Unplaced symbols inspector
-  stackView \InsertSymbolInSchematicView vStack set (margins: 8) {
+  stackView \SchematicsInsertSymbolInSchematicView vStack set (margins: 8) {
+    StaticLabel (title: "Insert Symbol Inspector", bold: yes, size: .small, alignment: .center)
     CanariDragSourceTableView 
-    [outlet mUnplacedSymbolsTableView configurator symbolDragSourceTableViewConfigurator] {
+    [outletArray mUnplacedSymbolsTableViewArray configurator symbolDragSourceTableViewConfigurator] {
       $models root.unplacedSymbols
     }
   }  

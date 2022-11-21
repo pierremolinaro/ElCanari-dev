@@ -367,8 +367,8 @@ import Cocoa
   //    Outlets
   //····················································································································
 
-  var mCheckForLibraryUpdatesButton : AutoLayoutButton? = nil
-  var mRevealInFinderSystemLibraryButton : AutoLayoutButton? = nil
+  weak final var mCheckForLibraryUpdatesButton : AutoLayoutButton? = nil
+  weak final var mRevealInFinderSystemLibraryButton : AutoLayoutButton? = nil
 
   //····················································································································
   //    Outlets (EX)

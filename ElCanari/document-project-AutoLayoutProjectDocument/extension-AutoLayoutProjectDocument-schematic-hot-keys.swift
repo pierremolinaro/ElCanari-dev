@@ -20,78 +20,84 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  func mouseMovedOrFlagsChangedInSchematic (_ inUnalignedMouseLocation : NSPoint) {
-    if let selectedSheet = self.rootObject.mSelectedSheet {
-      let canariUnalignedMouseDownLocation = inUnalignedMouseLocation.canariPoint
-      let canariAlignedMouseDownLocation = canariUnalignedMouseDownLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
-      let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
-      let wires = selectedSheet.wiresStrictlyContaining (point: canariUnalignedMouseDownLocation)
-    //--- Connect
-      self.mConnectSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canConnect (points: points, wires: wires))
-      self.mConnectAllSymbolPinsSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canConnectSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
-    //--- Disconnect
-      self.mDisconnectSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canDisconnect (points: points))
-      self.mDisconnectAllSymbolPinsSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canDisconnectAllSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
-    //--- Add Point to wire
-      self.mAddWirePointSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canCreateWirePoint (wires: wires))
-    //--- Remove Point from wire
-      self.mRemoveWirePointSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canRemovePointFromWire (points: points))
-    //--- Create label
-      let createLabelTextColor = self.color (forEnabledState: self.canCreateLabels (points: points))
-      self.mAddLeftLabelSchematicHotKeyTextField?.textColor = createLabelTextColor
-      self.mAddRightLabelSchematicHotKeyTextField?.textColor = createLabelTextColor
-      self.mAddTopLabelSchematicHotKeyTextField?.textColor = createLabelTextColor
-//      for outlet in self.mAddBottomSchematicHotKeyTextField.values {
-//        outlet.textColor = createLabelTextColor
+//  func mouseMovedOrFlagsChangedInSchematic (_ inUnalignedMouseLocation : NSPoint) {
+//    if let selectedSheet = self.rootObject.mSelectedSheet {
+//      let canariUnalignedMouseDownLocation = inUnalignedMouseLocation.canariPoint
+//      let canariAlignedMouseDownLocation = canariUnalignedMouseDownLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
+//      let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
+//      let wires = selectedSheet.wiresStrictlyContaining (point: canariUnalignedMouseDownLocation)
+//    //--- Connect
+//      self.mConnectSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canConnect (points: points, wires: wires))
+//      self.mConnectAllSymbolPinsSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canConnectSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
+//    //--- Disconnect
+//      self.mDisconnectSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canDisconnect (points: points))
+//      self.mDisconnectAllSymbolPinsSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canDisconnectAllSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
+//    //--- Add Point to wire
+//      self.mAddWirePointSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canCreateWirePoint (wires: wires))
+//    //--- Remove Point from wire
+//      self.mRemoveWirePointSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canRemovePointFromWire (points: points))
+//    //--- Create label
+//      let createLabelTextColor = self.color (forEnabledState: self.canCreateLabels (points: points))
+//      self.mAddLeftLabelSchematicHotKeyTextField?.textColor = createLabelTextColor
+//      self.mAddRightLabelSchematicHotKeyTextField?.textColor = createLabelTextColor
+//      self.mAddTopLabelSchematicHotKeyTextField?.textColor = createLabelTextColor
+////      for outlet in self.mAddBottomSchematicHotKeyTextField.values {
+////        outlet.textColor = createLabelTextColor
+////      }
+//      self.mAddBottomSchematicHotKeyTextField?.textColor = createLabelTextColor
+//    //--- Show / Hide symbol value
+//      let symbolsUnderMouse = self.schematicSymbols (at: canariUnalignedMouseDownLocation)
+//      self.mShowHideSymbolValueSchematicHotKeyTextField?.textColor = self.color (forEnabledState: symbolsUnderMouse.count > 0)
+//    //--- Create NC
+//      self.mAddNCSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canCreateNC (points: points))
+//    //--- Create NC to all symbol pins
+//      for outlet in self.mAddNCToAllSymbolPinsSchematicHotKeyTextField.values {
+//        outlet.textColor = self.color (forEnabledState: self.canAddNCToSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
 //      }
-      self.mAddBottomSchematicHotKeyTextField?.textColor = createLabelTextColor
-    //--- Show / Hide symbol value
-      let symbolsUnderMouse = self.schematicSymbols (at: canariUnalignedMouseDownLocation)
-      self.mShowHideSymbolValueSchematicHotKeyTextField?.textColor = self.color (forEnabledState: symbolsUnderMouse.count > 0)
-    //--- Create NC
-      self.mAddNCSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canCreateNC (points: points))
-    //--- Create NC to all symbol pins
-      self.mAddNCToAllSymbolPinsSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canAddNCToSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
-    //--- Create Label to all symbol pins
-      self.mAddLabelToAllSymbolPinsSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canAddNCToSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
-    //--- Exchange symbol
-      self.mExchangeSymbolSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canExchangeSymbol (at: canariUnalignedMouseDownLocation) != nil)
-    }
-  //---
-    self.mBoardView?.mGraphicView.mOptionalFrontShape = nil
-  }
+////      self.mAddNCToAllSymbolPinsSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canAddNCToSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
+//    //--- Create Label to all symbol pins
+//      self.mAddLabelToAllSymbolPinsSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canAddNCToSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
+//    //--- Exchange symbol
+//      self.mExchangeSymbolSchematicHotKeyTextField?.textColor = self.color (forEnabledState: self.canExchangeSymbol (at: canariUnalignedMouseDownLocation) != nil)
+//    }
+//  //---
+//    self.mBoardView?.mGraphicView.mOptionalFrontShape = nil
+//  }
 
   //····················································································································
 
-  func mouseExitInSchematic () {
-  //--- Connect
-    self.mConnectSchematicHotKeyTextField?.textColor = .disabledControlTextColor
-    self.mConnectAllSymbolPinsSchematicHotKeyTextField?.textColor = .disabledControlTextColor
-  //--- Disconnect
-    self.mDisconnectSchematicHotKeyTextField?.textColor = .disabledControlTextColor
-    self.mDisconnectAllSymbolPinsSchematicHotKeyTextField?.textColor = .disabledControlTextColor
-  //--- Add Point to wire
-    self.mAddWirePointSchematicHotKeyTextField?.textColor = .disabledControlTextColor
-  //--- Remove Point from wire
-    self.mRemoveWirePointSchematicHotKeyTextField?.textColor = .disabledControlTextColor
-  //--- Create label
-    self.mAddLeftLabelSchematicHotKeyTextField?.textColor = .disabledControlTextColor
-    self.mAddRightLabelSchematicHotKeyTextField?.textColor = .disabledControlTextColor
-    self.mAddTopLabelSchematicHotKeyTextField?.textColor = .disabledControlTextColor
-//    for outlet in self.mAddBottomSchematicHotKeyTextField.values {
+//  func mouseExitInSchematic () {
+//  //--- Connect
+//    self.mConnectSchematicHotKeyTextField?.textColor = .disabledControlTextColor
+//    self.mConnectAllSymbolPinsSchematicHotKeyTextField?.textColor = .disabledControlTextColor
+//  //--- Disconnect
+//    self.mDisconnectSchematicHotKeyTextField?.textColor = .disabledControlTextColor
+//    self.mDisconnectAllSymbolPinsSchematicHotKeyTextField?.textColor = .disabledControlTextColor
+//  //--- Add Point to wire
+//    self.mAddWirePointSchematicHotKeyTextField?.textColor = .disabledControlTextColor
+//  //--- Remove Point from wire
+//    self.mRemoveWirePointSchematicHotKeyTextField?.textColor = .disabledControlTextColor
+//  //--- Create label
+//    self.mAddLeftLabelSchematicHotKeyTextField?.textColor = .disabledControlTextColor
+//    self.mAddRightLabelSchematicHotKeyTextField?.textColor = .disabledControlTextColor
+//    self.mAddTopLabelSchematicHotKeyTextField?.textColor = .disabledControlTextColor
+////    for outlet in self.mAddBottomSchematicHotKeyTextField.values {
+////      outlet.textColor = .disabledControlTextColor
+////    }
+//    self.mAddBottomSchematicHotKeyTextField?.textColor = .disabledControlTextColor
+//  //--- Create NC
+//    self.mAddNCSchematicHotKeyTextField?.textColor = .disabledControlTextColor
+//    for outlet in self.mAddNCToAllSymbolPinsSchematicHotKeyTextField.values {
 //      outlet.textColor = .disabledControlTextColor
 //    }
-    self.mAddBottomSchematicHotKeyTextField?.textColor = .disabledControlTextColor
-  //--- Create NC
-    self.mAddNCSchematicHotKeyTextField?.textColor = .disabledControlTextColor
-    self.mAddNCToAllSymbolPinsSchematicHotKeyTextField?.textColor = .disabledControlTextColor
-  //--- Create Label to all symbol pins
-    self.mAddLabelToAllSymbolPinsSchematicHotKeyTextField?.textColor = .disabledControlTextColor
-  //--- Exchange symbol
-    self.mExchangeSymbolSchematicHotKeyTextField?.textColor = .disabledControlTextColor
-  //--- Show / Hide component value
-    self.mShowHideSymbolValueSchematicHotKeyTextField?.textColor = .disabledControlTextColor
-  }
+////    self.mAddNCToAllSymbolPinsSchematicHotKeyTextField?.textColor = .disabledControlTextColor
+//  //--- Create Label to all symbol pins
+//    self.mAddLabelToAllSymbolPinsSchematicHotKeyTextField?.textColor = .disabledControlTextColor
+//  //--- Exchange symbol
+//    self.mExchangeSymbolSchematicHotKeyTextField?.textColor = .disabledControlTextColor
+//  //--- Show / Hide component value
+//    self.mShowHideSymbolValueSchematicHotKeyTextField?.textColor = .disabledControlTextColor
+//  }
 
   //····················································································································
 
@@ -181,6 +187,138 @@ extension AutoLayoutProjectDocument {
     }
   //--- For updating hot key labels
     self.mouseMovedOrFlagsChangedInSchematic (inUnalignedMouseLocation)
+  }
+
+  //····················································································································
+
+  func mouseMovedOrFlagsChangedInSchematic (_ inUnalignedMouseLocation : NSPoint) {
+    if let selectedSheet = self.rootObject.mSelectedSheet {
+      let canariUnalignedMouseDownLocation = inUnalignedMouseLocation.canariPoint
+      let canariAlignedMouseDownLocation = canariUnalignedMouseDownLocation.point (alignedOnGrid: SCHEMATIC_GRID_IN_CANARI_UNIT)
+      let points = selectedSheet.pointsInSchematics (at: canariAlignedMouseDownLocation)
+      let wires = selectedSheet.wiresStrictlyContaining (point: canariUnalignedMouseDownLocation)
+    //--- Connect
+      for outlet in self.mConnectSchematicHotKeyTextField.values {
+        outlet.textColor = self.color (forEnabledState: self.canConnect (points: points, wires: wires))
+      }
+      for outlet in self.mConnectAllSymbolPinsSchematicHotKeyTextField.values {
+        outlet.textColor = self.color (forEnabledState: self.canConnectSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
+      }
+    //--- Disconnect
+      for outlet in self.mDisconnectSchematicHotKeyTextField.values {
+        outlet.textColor = self.color (forEnabledState: self.canDisconnect (points: points))
+      }
+      for outlet in self.mDisconnectAllSymbolPinsSchematicHotKeyTextField.values {
+        outlet.textColor = self.color (forEnabledState: self.canDisconnectAllSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
+      }
+    //--- Add Point to wire
+      for outlet in self.mAddWirePointSchematicHotKeyTextField.values {
+        outlet.textColor = self.color (forEnabledState: self.canCreateWirePoint (wires: wires))
+      }
+    //--- Remove Point from wire
+      for outlet in self.mRemoveWirePointSchematicHotKeyTextField.values {
+        outlet.textColor = self.color (forEnabledState: self.canRemovePointFromWire (points: points))
+      }
+    //--- Create label
+      let createLabelTextColor = self.color (forEnabledState: self.canCreateLabels (points: points))
+      for outlet in self.mAddLeftLabelSchematicHotKeyTextField.values {
+        outlet.textColor = createLabelTextColor
+      }
+      for outlet in self.mAddRightLabelSchematicHotKeyTextField.values {
+        outlet.textColor = createLabelTextColor
+      }
+      for outlet in self.mAddTopLabelSchematicHotKeyTextField.values {
+        outlet.textColor = createLabelTextColor
+      }
+      for outlet in self.mAddBottomSchematicHotKeyTextField.values {
+        outlet.textColor = createLabelTextColor
+      }
+    //--- Show / Hide symbol value
+      let symbolsUnderMouse = self.schematicSymbols (at: canariUnalignedMouseDownLocation)
+      for outlet in self.mShowHideSymbolValueSchematicHotKeyTextField.values {
+        outlet.textColor = self.color (forEnabledState: symbolsUnderMouse.count > 0)
+      }
+    //--- Create NC
+      for outlet in self.mAddNCSchematicHotKeyTextField.values {
+        outlet.textColor = self.color (forEnabledState: self.canCreateNC (points: points))
+      }
+    //--- Create NC to all symbol pins
+      for outlet in self.mAddNCToAllSymbolPinsSchematicHotKeyTextField.values {
+        outlet.textColor = self.color (forEnabledState: self.canAddNCToSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
+      }
+    //--- Create Label to all symbol pins
+      for outlet in self.mAddLabelToAllSymbolPinsSchematicHotKeyTextField.values {
+        outlet.textColor = self.color (forEnabledState: self.canAddNCToSymbolPins (at: canariUnalignedMouseDownLocation).count > 0)
+      }
+    //--- Exchange symbol
+      for outlet in self.mExchangeSymbolSchematicHotKeyTextField.values {
+        outlet.textColor = self.color (forEnabledState: self.canExchangeSymbol (at: canariUnalignedMouseDownLocation) != nil)
+      }
+    }
+  //---
+    self.mBoardView?.mGraphicView.mOptionalFrontShape = nil
+//    for outlet in self.mBoardView.values {
+//      outlet.mGraphicView.mOptionalFrontShape = nil
+//    }
+  }
+
+  //····················································································································
+
+  func mouseExitInSchematic () {
+  //--- Connect
+    for outlet in self.mConnectSchematicHotKeyTextField.values {
+      outlet.textColor = .disabledControlTextColor
+    }
+    for outlet in self.mConnectAllSymbolPinsSchematicHotKeyTextField.values {
+      outlet.textColor = .disabledControlTextColor
+    }
+  //--- Disconnect
+    for outlet in self.mDisconnectSchematicHotKeyTextField.values {
+      outlet.textColor = .disabledControlTextColor
+    }
+    for outlet in self.mDisconnectAllSymbolPinsSchematicHotKeyTextField.values {
+      outlet.textColor = .disabledControlTextColor
+    }
+  //--- Add Point to wire
+    for outlet in self.mAddWirePointSchematicHotKeyTextField.values {
+      outlet.textColor = .disabledControlTextColor
+    }
+  //--- Remove Point from wire
+    for outlet in self.mRemoveWirePointSchematicHotKeyTextField.values {
+      outlet.textColor = .disabledControlTextColor
+    }
+  //--- Create label
+    for outlet in self.mAddLeftLabelSchematicHotKeyTextField.values {
+      outlet.textColor = .disabledControlTextColor
+    }
+    for outlet in self.mAddRightLabelSchematicHotKeyTextField.values {
+      outlet.textColor = .disabledControlTextColor
+    }
+    for outlet in self.mAddTopLabelSchematicHotKeyTextField.values {
+      outlet.textColor = .disabledControlTextColor
+    }
+    for outlet in self.mAddBottomSchematicHotKeyTextField.values {
+      outlet.textColor = .disabledControlTextColor
+    }
+  //--- Create NC
+    for outlet in self.mAddNCSchematicHotKeyTextField.values {
+      outlet.textColor = .disabledControlTextColor
+    }
+    for outlet in self.mAddNCToAllSymbolPinsSchematicHotKeyTextField.values {
+      outlet.textColor = .disabledControlTextColor
+    }
+  //--- Create Label to all symbol pins
+    for outlet in self.mAddLabelToAllSymbolPinsSchematicHotKeyTextField.values {
+      outlet.textColor = .disabledControlTextColor
+    }
+  //--- Exchange symbol
+    for outlet in self.mExchangeSymbolSchematicHotKeyTextField.values {
+      outlet.textColor = .disabledControlTextColor
+    }
+  //--- Show / Hide component value
+    for outlet in self.mShowHideSymbolValueSchematicHotKeyTextField.values {
+      outlet.textColor = .disabledControlTextColor
+    }
   }
 
   //····················································································································

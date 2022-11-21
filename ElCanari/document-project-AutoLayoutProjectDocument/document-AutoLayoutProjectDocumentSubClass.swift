@@ -105,7 +105,7 @@ import Cocoa
                                   event dragEvent: NSEvent,
                                   offset dragImageOffset: NSPointPointer) -> NSImage {
     var resultImage = NSImage (named: NSImage.Name ("exclamation"))!
-    if inSourceTableView == self.mUnplacedSymbolsTableView,
+    if self.mUnplacedSymbolsTableViewArray.contains (inSourceTableView),
       let schematicsView = self.mSchematicsView?.mGraphicView,
       dragRows.count == 1,
       let idx = dragRows.first {

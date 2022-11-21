@@ -14,6 +14,10 @@ class AutoLayoutBase_NSButton : NSButton {
 
   //····················································································································
 
+  final private var mClosureAction : Optional < () -> Void > = nil
+
+  //····················································································································
+
   init (title inTitle : String, size inSize : EBControlSize) {
     super.init (frame: .zero)
     noteObjectAllocation (self)
@@ -49,6 +53,22 @@ class AutoLayoutBase_NSButton : NSButton {
   override func updateAutoLayoutUserInterfaceStyle () {
     super.updateAutoLayoutUserInterfaceStyle ()
     self.bezelStyle = autoLayoutCurrentStyle ().buttonStyle
+  }
+
+  //····················································································································
+  //  Closure action
+  //····················································································································
+
+  final func setClosureAction (_ inClosureAction : @escaping () -> Void) {
+    self.mClosureAction = inClosureAction
+    self.target = self
+    self.action = #selector (Self.runClosureAction (_:))
+  }
+
+  //····················································································································
+
+   @objc private final func runClosureAction (_ inUnused : Any?) {
+    self.mClosureAction? ()
   }
 
   //····················································································································
