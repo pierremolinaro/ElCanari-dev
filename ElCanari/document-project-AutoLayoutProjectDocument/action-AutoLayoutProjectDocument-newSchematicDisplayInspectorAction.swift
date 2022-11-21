@@ -11,10 +11,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func newSchematicGridAndFlipInspectorAction (_ sender : NSObject?) {
+  @objc func newSchematicDisplayInspectorAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
         if let hBaseStack = self.mSchematicsView?.superview as? AutoLayoutHorizontalStackView {
-          prepend (inspector: self.SchematicsGridAndFlipInspectorView (), toHStack: hBaseStack)
+          prepend (inspector: self.schematicsDisplayInspectorView (), toHStack: hBaseStack)
         }
 //--- END OF USER ZONE 2
   }

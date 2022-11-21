@@ -444,7 +444,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   
   action newSchematicHotKeysInspectorAction ;
   action newSchematicInsertSymbolInspectorAction ;
-  action newSchematicGridAndFlipInspectorAction ;
+  action newSchematicDisplayInspectorAction ;
   action newSchematicSheetInspectorAction ;
   
   stackView \SchematicLateralBar vStack set (width: 250) set (spacing: 0) {
@@ -452,15 +452,15 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     newView schematicsInspectorView = \SchematicsInspectorView ()
     newView schematicHotKeysInspectorView = \SchematicHotKeysInspectorView ()
     newView insertSymbolInSchematicView = \SchematicsInsertSymbolInSchematicView ()
-    newView schematicsGridAndFlipInspectorView = \SchematicsGridAndFlipInspectorView ()
+    newView schematicsDisplayInspectorView = \schematicsDisplayInspectorView ()
     newView schematicsSheetInspectorView = \SchematicsSheetInspectorView ()
     hStack set (spacing: 0) set (margins: 8) {
-      PullDownButton (title: "◀︎+", size: .regular) {
-        add (item: menuItem "New Hot Keys Inspector" $run newSchematicHotKeysInspectorAction )
-        add (item: menuItem "New Insert Symbol Inspector" $run newSchematicInsertSymbolInspectorAction )
-        add (item: menuItem "New Grid and Flip Inspector" $run newSchematicGridAndFlipInspectorAction )
-        add (item: menuItem "New Sheet Inspector" $run newSchematicSheetInspectorAction )
-      }
+//      PullDownButton (title: "◀︎+", size: .regular) {
+//        add (item: menuItem "New Hot Keys Inspector" $run newSchematicHotKeysInspectorAction )
+//        add (item: menuItem "New Insert Symbol Inspector" $run newSchematicInsertSymbolInspectorAction )
+//        add (item: menuItem "New Display Inspector" $run newSchematicDisplayInspectorAction )
+//        add (item: menuItem "New Sheet Inspector" $run newSchematicSheetInspectorAction )
+//      }
       space
       PullDownButton (title: "", size: .regular) [configurator schematicPullDownButtonConfigurator] {
         add (item: menuItem "Select all Connected Elements"
@@ -482,7 +482,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
           addPage (title: "", tooltip: "Selected Element Inspector", pageView: view selectedSchematicElementInspectorView)
           addPage (title: "", tooltip: "Hot Keys", pageView: view schematicHotKeysInspectorView)
           addPage (title: "", tooltip: "Insert Symbol in Schematic", pageView: view insertSymbolInSchematicView)
-          addPage (image: "", tooltip: "Grid and Flip Inspector", pageView: view schematicsGridAndFlipInspectorView)
+          addPage (image: "", tooltip: "Display Inspector", pageView: view schematicsDisplayInspectorView)
           addPage (title: "", tooltip: "Sheet Inspector", pageView: view schematicsSheetInspectorView)
           $selectedPage root. mSelectedSchematicInspector
           $segmentTitle self.unplacedSymbolsCountString (segmentIndex : 2)
@@ -501,7 +501,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   
 //--- Hot keys inspector
   stackView \SchematicHotKeysInspectorView vStack set (margins: 8) {
-    StaticLabel (title: "Hot Keys", bold: yes, size: .small, alignment: .center)
+    hStack {
+      Button (title: "◀︎+", size: .regular) { $run newSchematicHotKeysInspectorAction }
+      space
+      StaticLabel (title: "Hot Keys", bold: yes, size: .small, alignment: .center)
+      space
+    }
     StaticLabel (title: "[A] Connect all Symbol Pins", bold: no, size: .small, alignment: .left)
       [outletArray mConnectAllSymbolPinsSchematicHotKeyTextField]
     StaticLabel (title: "[B] Add Bottom Label", bold: no, size: .small, alignment: .left)
@@ -536,7 +541,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
 //--- Unplaced symbols inspector
   stackView \SchematicsInsertSymbolInSchematicView vStack set (margins: 8) {
-    StaticLabel (title: "Insert Symbol Inspector", bold: yes, size: .small, alignment: .center)
+    hStack {
+      Button (title: "◀︎+", size: .regular) { $run newSchematicInsertSymbolInspectorAction }
+      space
+      StaticLabel (title: "Insert Symbol Inspector", bold: yes, size: .small, alignment: .center)
+      space
+    }
     CanariDragSourceTableView 
     [outletArray mUnplacedSymbolsTableViewArray configurator symbolDragSourceTableViewConfigurator] {
       $models root.unplacedSymbols
@@ -544,7 +554,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   }  
   
 //--- Grid and Flip inspector
-  stackView \SchematicsGridAndFlipInspectorView vStack set (margins: 8) {
+  stackView \schematicsDisplayInspectorView vStack set (margins: 8) {
+    hStack {
+      Button (title: "◀︎+", size: .regular) { $run newSchematicDisplayInspectorAction }
+      space
+      StaticLabel (title: "Display Inspector", bold: yes, size: .small, alignment: .center)
+      space
+    }
     TabView (equalWidth: yes, size: .small) {
       addTab (title: "Grid and Flip", tooltip: "Grid and Flip", contentView : 
         GridView2 {
@@ -657,7 +673,12 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
 //--- Sheet inspector
   stackView \SchematicsSheetInspectorView  vStack set (margins: 8) {
-    StaticLabel (title: "Sheet Inspector", bold: yes, size: .small, alignment: .center)
+    hStack {
+      Button (title: "◀︎+", size: .regular) { $run newSchematicSheetInspectorAction }
+      space
+      StaticLabel (title: "Sheet Inspector", bold: yes, size: .small, alignment: .center)
+      space
+    }
     hStack {
       PopUpButton (size: .small) [configurator sheetPopUpButtonConfigurator]
       Stepper [configurator sheetStepperConfigurator]

@@ -1253,37 +1253,31 @@ import Cocoa
     let schematicsInspectorView = self.SchematicsInspectorView ()
     let schematicHotKeysInspectorView = self.SchematicHotKeysInspectorView ()
     let insertSymbolInSchematicView = self.SchematicsInsertSymbolInSchematicView ()
-    let schematicsGridAndFlipInspectorView = self.SchematicsGridAndFlipInspectorView ()
+    let schematicsDisplayInspectorView = self.schematicsDisplayInspectorView ()
     let schematicsSheetInspectorView = self.SchematicsSheetInspectorView ()
     let view_0 = AutoLayoutHorizontalStackView ()
       .set (spacing: 0)
       .set (margins: 8)
     do{
-      let view_0_0 = AutoLayoutPullDownButton (title: "◀︎+", size: .regular)
-        .add (item: AutoLayoutMenuItemDescriptor (title: "New Hot Keys Inspector", target: self, selector: #selector (AutoLayoutProjectDocument.newSchematicHotKeysInspectorAction (_:)), enableBinding: .alwaysTrue))
-        .add (item: AutoLayoutMenuItemDescriptor (title: "New Insert Symbol Inspector", target: self, selector: #selector (AutoLayoutProjectDocument.newSchematicInsertSymbolInspectorAction (_:)), enableBinding: .alwaysTrue))
-        .add (item: AutoLayoutMenuItemDescriptor (title: "New Grid and Flip Inspector", target: self, selector: #selector (AutoLayoutProjectDocument.newSchematicGridAndFlipInspectorAction (_:)), enableBinding: .alwaysTrue))
-        .add (item: AutoLayoutMenuItemDescriptor (title: "New Sheet Inspector", target: self, selector: #selector (AutoLayoutProjectDocument.newSchematicSheetInspectorAction (_:)), enableBinding: .alwaysTrue))
+      let view_0_0 = AutoLayoutFlexibleSpace ()
       _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutPullDownButton (title: "", size: .regular)
+      let view_0_1 = AutoLayoutPullDownButton (title: "", size: .regular)
         .add (item: AutoLayoutMenuItemDescriptor (title: "Select all Connected Elements", target: self, selector: #selector (AutoLayoutProjectDocument.selectAllConnectedElementsInSchematicsAction (_:)), enableBinding: .alwaysTrue))
         .add (item: AutoLayoutMenuItemDescriptor (title: "Move Selected Elements to Sheet…", target: self, selector: #selector (AutoLayoutProjectDocument.moveSelectedToSheetInSchematicsAction (_:)), enableBinding: .alwaysTrue))
-      self.configure_schematicPullDownButtonConfigurator (view_0_2) // Configurator
+      self.configure_schematicPullDownButtonConfigurator (view_0_1) // Configurator
+      _ = view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutFlexibleSpace ()
       _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutFlexibleSpace ()
+      let view_0_3 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Wire; hint: option click starts a new wire.")
+      self.configure_addWireInschematicsButton (view_0_3) // Configurator
       _ = view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Wire; hint: option click starts a new wire.")
-      self.configure_addWireInschematicsButton (view_0_4) // Configurator
+      let view_0_4 = AutoLayoutFlexibleSpace ()
       _ = view_0.appendView (view_0_4)
-      let view_0_5 = AutoLayoutFlexibleSpace ()
+      let view_0_5 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Comment")
+      self.configure_addCommentInSchematicsButton (view_0_5) // Configurator
       _ = view_0.appendView (view_0_5)
-      let view_0_6 = AutoLayoutDragSourceButtonWithMenus (tooltip: "Add Comment")
-      self.configure_addCommentInSchematicsButton (view_0_6) // Configurator
+      let view_0_6 = AutoLayoutFlexibleSpace ()
       _ = view_0.appendView (view_0_6)
-      let view_0_7 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_7)
     }
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutVerticalStackView ()
@@ -1297,7 +1291,7 @@ import Cocoa
           .addPage (title: "", tooltip: "Selected Element Inspector", pageView: selectedSchematicElementInspectorView)
           .addPage (title: "", tooltip: "Hot Keys", pageView: schematicHotKeysInspectorView)
           .addPage (title: "", tooltip: "Insert Symbol in Schematic", pageView: insertSymbolInSchematicView)
-          .addPage (image: "", tooltip: "Grid and Flip Inspector", pageView: schematicsGridAndFlipInspectorView)
+          .addPage (image: "", tooltip: "Display Inspector", pageView: schematicsDisplayInspectorView)
           .addPage (title: "", tooltip: "Sheet Inspector", pageView: schematicsSheetInspectorView)
           .bind_selectedPage (self.rootObject.mSelectedSchematicInspector_property)
           .bind_segmentTitle (self.unplacedSymbolsCountString_property, segmentIndex:2)
@@ -1331,7 +1325,21 @@ import Cocoa
   final func SchematicHotKeysInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
-    let view_0 = AutoLayoutStaticLabel (title: "Hot Keys", bold: true, size: .small, alignment: .center)
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.newSchematicHotKeysInspectorAction (_:))
+        )
+      _ = view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutFlexibleSpace ()
+      _ = view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutStaticLabel (title: "Hot Keys", bold: true, size: .small, alignment: .center)
+      _ = view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutFlexibleSpace ()
+      _ = view_0.appendView (view_0_3)
+    }
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutStaticLabel (title: "[A] Connect all Symbol Pins", bold: false, size: .small, alignment: .left)
     self.mConnectAllSymbolPinsSchematicHotKeyTextField.append (view_1) // Outlet Array
@@ -1388,7 +1396,21 @@ import Cocoa
   final func SchematicsInsertSymbolInSchematicView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
-    let view_0 = AutoLayoutStaticLabel (title: "Insert Symbol Inspector", bold: true, size: .small, alignment: .center)
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.newSchematicInsertSymbolInspectorAction (_:))
+        )
+      _ = view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutFlexibleSpace ()
+      _ = view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutStaticLabel (title: "Insert Symbol Inspector", bold: true, size: .small, alignment: .center)
+      _ = view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutFlexibleSpace ()
+      _ = view_0.appendView (view_0_3)
+    }
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutCanariDragSourceTableView ()
       .bind_models (self.rootObject.unplacedSymbols_property)
@@ -1399,16 +1421,32 @@ import Cocoa
   }
 
   //····················································································································
-  //    VIEW SchematicsGridAndFlipInspectorView
+  //    VIEW schematicsDisplayInspectorView
   //····················································································································
 
-  final func SchematicsGridAndFlipInspectorView () -> AutoLayoutVerticalStackView {
+  final func schematicsDisplayInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
-    let view_0 = AutoLayoutTabView (equalWidth: true, size: .small)
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.newSchematicDisplayInspectorAction (_:))
+        )
+      _ = view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutFlexibleSpace ()
+      _ = view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutStaticLabel (title: "Display Inspector", bold: true, size: .small, alignment: .center)
+      _ = view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutFlexibleSpace ()
+      _ = view_0.appendView (view_0_3)
+    }
+    _ = vStackView.appendView (view_0)
+    let view_1 = AutoLayoutTabView (equalWidth: true, size: .small)
       .addTab (title: "Grid and Flip", tooltip: "Grid and Flip", contentView: self.computeImplicitView_14 ())
       .addTab (title: "Colors and Font", tooltip: "Colors and Font", contentView: self.computeImplicitView_38 ())
-    _ = vStackView.appendView (view_0)
+    _ = vStackView.appendView (view_1)
     return vStackView
   }
 
@@ -1419,7 +1457,21 @@ import Cocoa
   final func SchematicsSheetInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
-    let view_0 = AutoLayoutStaticLabel (title: "Sheet Inspector", bold: true, size: .small, alignment: .center)
+    let view_0 = AutoLayoutHorizontalStackView ()
+    do{
+      let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
+        .bind_run (
+          target: self,
+          selector: #selector (AutoLayoutProjectDocument.newSchematicSheetInspectorAction (_:))
+        )
+      _ = view_0.appendView (view_0_0)
+      let view_0_1 = AutoLayoutFlexibleSpace ()
+      _ = view_0.appendView (view_0_1)
+      let view_0_2 = AutoLayoutStaticLabel (title: "Sheet Inspector", bold: true, size: .small, alignment: .center)
+      _ = view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutFlexibleSpace ()
+      _ = view_0.appendView (view_0_3)
+    }
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalStackView ()
     do{

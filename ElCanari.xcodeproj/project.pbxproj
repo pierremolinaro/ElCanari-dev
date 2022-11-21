@@ -4087,9 +4087,9 @@
 		CFE04E56292BA13A000358EF /* prepend-new-inspector-to-hstack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE04E55292BA13A000358EF /* prepend-new-inspector-to-hstack.swift */; };
 		CFE04E57292BA13A000358EF /* prepend-new-inspector-to-hstack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE04E55292BA13A000358EF /* prepend-new-inspector-to-hstack.swift */; };
 		CFE04E58292BA13A000358EF /* prepend-new-inspector-to-hstack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE04E55292BA13A000358EF /* prepend-new-inspector-to-hstack.swift */; };
-		CFE04E5C292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicGridAndFlipInspectorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE04E59292BA62C000358EF /* action-AutoLayoutProjectDocument-newSchematicGridAndFlipInspectorAction.swift */; };
-		CFE04E5D292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicGridAndFlipInspectorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE04E59292BA62C000358EF /* action-AutoLayoutProjectDocument-newSchematicGridAndFlipInspectorAction.swift */; };
-		CFE04E5E292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicGridAndFlipInspectorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE04E59292BA62C000358EF /* action-AutoLayoutProjectDocument-newSchematicGridAndFlipInspectorAction.swift */; };
+		CFE04E5C292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicDisplayInspectorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE04E59292BA62C000358EF /* action-AutoLayoutProjectDocument-newSchematicDisplayInspectorAction.swift */; };
+		CFE04E5D292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicDisplayInspectorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE04E59292BA62C000358EF /* action-AutoLayoutProjectDocument-newSchematicDisplayInspectorAction.swift */; };
+		CFE04E5E292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicDisplayInspectorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE04E59292BA62C000358EF /* action-AutoLayoutProjectDocument-newSchematicDisplayInspectorAction.swift */; };
 		CFE04E5F292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicInsertSymbolInspectorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE04E5A292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicInsertSymbolInspectorAction.swift */; };
 		CFE04E60292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicInsertSymbolInspectorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE04E5A292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicInsertSymbolInspectorAction.swift */; };
 		CFE04E61292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicInsertSymbolInspectorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE04E5A292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicInsertSymbolInspectorAction.swift */; };
@@ -5990,7 +5990,7 @@
 		CFDE7C452766654800762C03 /* controller-array-AutoLayoutProjectDocument-boardObjectsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "controller-array-AutoLayoutProjectDocument-boardObjectsController.swift"; sourceTree = "<group>"; };
 		CFE04E49292B9A8E000358EF /* action-AutoLayoutProjectDocument-newSchematicHotKeysInspectorAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-newSchematicHotKeysInspectorAction.swift"; sourceTree = "<group>"; };
 		CFE04E55292BA13A000358EF /* prepend-new-inspector-to-hstack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "prepend-new-inspector-to-hstack.swift"; sourceTree = "<group>"; };
-		CFE04E59292BA62C000358EF /* action-AutoLayoutProjectDocument-newSchematicGridAndFlipInspectorAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-newSchematicGridAndFlipInspectorAction.swift"; sourceTree = "<group>"; };
+		CFE04E59292BA62C000358EF /* action-AutoLayoutProjectDocument-newSchematicDisplayInspectorAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-newSchematicDisplayInspectorAction.swift"; sourceTree = "<group>"; };
 		CFE04E5A292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicInsertSymbolInspectorAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-newSchematicInsertSymbolInspectorAction.swift"; sourceTree = "<group>"; };
 		CFE04E5B292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicSheetInspectorAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-newSchematicSheetInspectorAction.swift"; sourceTree = "<group>"; };
 		CFE533BF1B4307BA00F2E13A /* check-libraries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "check-libraries.swift"; sourceTree = "<group>"; };
@@ -7024,7 +7024,7 @@
 		CF784E41275E2914001BC885 /* project — ProjectDocument - autolayout */ = {
 			isa = PBXGroup;
 			children = (
-				CFE04E59292BA62C000358EF /* action-AutoLayoutProjectDocument-newSchematicGridAndFlipInspectorAction.swift */,
+				CFE04E59292BA62C000358EF /* action-AutoLayoutProjectDocument-newSchematicDisplayInspectorAction.swift */,
 				CFE04E5A292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicInsertSymbolInspectorAction.swift */,
 				CFE04E5B292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicSheetInspectorAction.swift */,
 				CFE04E49292B9A8E000358EF /* action-AutoLayoutProjectDocument-newSchematicHotKeysInspectorAction.swift */,
@@ -9810,7 +9810,7 @@
 				CFA430CC229AED07000AA8C8 /* tomany-CanariLibraryEntry.swift in Sources */,
 				CFB7D77F26839B90007B9D3B /* transient-AutoLayoutSymbolDocument-addOvalButtonImage.swift in Sources */,
 				CF56027727933B0400479AB6 /* AutoLayout+NSView+expandableHeight.swift in Sources */,
-				CFE04E5C292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicGridAndFlipInspectorAction.swift in Sources */,
+				CFE04E5C292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicDisplayInspectorAction.swift in Sources */,
 				CF355A47279D9F8D000BFC9B /* AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView.swift in Sources */,
 				CFEB7B84233A26330060A97A /* transient-DeviceInProject-deviceSymbolDictionary.swift in Sources */,
 				CF4A6C0D21C6BF0F00997A19 /* transient-PackageRoot-gridStepMultipliedByDisplayFactor.swift in Sources */,
@@ -11333,7 +11333,7 @@
 				CFB7D84E2683A61C007B9D3B /* document-AutoLayoutPackageDocument-make-slave-pad.swift in Sources */,
 				CF53C46521C662C2001502F4 /* outlet-events.swift in Sources */,
 				CFB7D85A2683A61C007B9D3B /* selectionController-AutoLayoutPackageDocument-mPackageOvalSelectionController.swift in Sources */,
-				CFE04E5D292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicGridAndFlipInspectorAction.swift in Sources */,
+				CFE04E5D292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicDisplayInspectorAction.swift in Sources */,
 				CFF858962687C201001B868C /* transient-AutoLayoutArtworkDocument-generatedFileCountString.swift in Sources */,
 				CF56027827933B0400479AB6 /* AutoLayout+NSView+expandableHeight.swift in Sources */,
 				CF4A6C0E21C6BF0F00997A19 /* transient-PackageRoot-gridStepMultipliedByDisplayFactor.swift in Sources */,
@@ -12856,7 +12856,7 @@
 				CFDD6D5126A1B0F20050CB78 /* AutoLayoutCanariDeviceDroppableImageView.swift in Sources */,
 				CF9C642C25CABE5C00A00D5C /* transient-ProjectRoot-sheetIndexes.swift in Sources */,
 				CFB82B1D276B71CD00BAD56E /* configurator-AutoLayoutProjectDocument-pinsOfSelectedNetTableViewConfigurator.swift in Sources */,
-				CFE04E5E292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicGridAndFlipInspectorAction.swift in Sources */,
+				CFE04E5E292BA62D000358EF /* action-AutoLayoutProjectDocument-newSchematicDisplayInspectorAction.swift in Sources */,
 				CF9C642F25CABE5C00A00D5C /* transient-PackagePad-displayedPadName.swift in Sources */,
 				CFA0B7822779B9FC006E9309 /* AutoLayoutCanariSelectionPopUpButton.swift in Sources */,
 				CF514052276BB867008DB542 /* extension-AutoLayoutProjectDocument-generate-product-gerber-files.swift in Sources */,
