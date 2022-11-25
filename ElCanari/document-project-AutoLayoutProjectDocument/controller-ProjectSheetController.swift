@@ -18,18 +18,18 @@ final class ProjectSheetController : EBOutletEvent {
   // Properties
   //····················································································································
 
-  private var mSheetPopUpButton : AutoLayoutPopUpButton? = nil
-  private var mMoveSheetUpButton : AutoLayoutButton? = nil
-  private var mMoveSheetDownButton : AutoLayoutButton? = nil
-  private var mStepper : AutoLayoutStepper? = nil
-  private weak var mDocument : AutoLayoutProjectDocument? = nil
+  private var mSheetPopUpButtonArray = EBWeakReferenceArray <AutoLayoutPopUpButton> ()
+  private var mMoveSheetUpButtonArray = EBWeakReferenceArray <AutoLayoutButton> ()
+  private var mMoveSheetDownButtonArray = EBWeakReferenceArray <AutoLayoutButton> ()
+  private var mStepperArray = EBWeakReferenceArray <AutoLayoutStepper> ()
+  private weak var mDocument : AutoLayoutProjectDocument? = nil // SHOULD BE WEAK
 
   //····················································································································
 
   func register (document inDocument : AutoLayoutProjectDocument,
                  popup inPopUpButton : AutoLayoutPopUpButton) {
     self.mDocument = inDocument
-    self.mSheetPopUpButton = inPopUpButton
+    self.mSheetPopUpButtonArray.append (inPopUpButton)
   //--- Add sheet titles observer
     self.mEventCallBack = { [weak self] in self?.updatePopUpButton () }
     inDocument.rootObject.mSheets_property.addEBObserverOf_connexionWarnings (self)
@@ -41,7 +41,7 @@ final class ProjectSheetController : EBOutletEvent {
  //····················································································································
 
   func register (stepper inStepper : AutoLayoutStepper) {
-    self.mStepper = inStepper
+    self.mStepperArray.append (inStepper)
     inStepper.minValue = 0.0
  //   inStepper.maxValue = 0.0
     inStepper.increment = 1.0
@@ -53,7 +53,7 @@ final class ProjectSheetController : EBOutletEvent {
  //····················································································································
 
   func register (moveSheetUpButton inButton : AutoLayoutButton) {
-    self.mMoveSheetUpButton = inButton
+    self.mMoveSheetUpButtonArray.append (inButton)
     inButton.title = UP_ARROW_STRING
     inButton.target = self
     inButton.action = #selector (Self.moveUpAction (_:))
@@ -62,7 +62,7 @@ final class ProjectSheetController : EBOutletEvent {
  //····················································································································
 
   func register (moveSheetDownButton inButton : AutoLayoutButton) {
-    self.mMoveSheetDownButton = inButton
+    self.mMoveSheetDownButtonArray.append (inButton)
     inButton.title = DOWN_ARROW_STRING
     inButton.target = self
     inButton.action = #selector (Self.moveDownAction (_:))
@@ -73,42 +73,48 @@ final class ProjectSheetController : EBOutletEvent {
   //····················································································································
 
   private func updatePopUpButton () {
-    self.mSheetPopUpButton?.removeAllItems ()
-    let selectedSheet = self.mDocument?.rootObject.mSelectedSheet
-    let sheets = self.mDocument?.rootObject.mSheets.values ?? []
-    self.mStepper?.maxValue = Double (sheets.count - 1)
-    var idx = 0
-    for sheet in sheets {
-    //--- Build title
-      let attributedString = NSMutableAttributedString ()
-      var attributes : [NSAttributedString.Key : Any] = [
-        NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
-      ]
-      attributedString.append (NSAttributedString (string: "\(idx + 1)/\(sheets.count)", attributes: attributes))
-      if sheet.mSheetTitle != "" {
-        attributedString.append (NSAttributedString (string: ": \(sheet.mSheetTitle)", attributes: attributes))
+    for popUpButton in self.mSheetPopUpButtonArray.values {
+      popUpButton.removeAllItems ()
+      let selectedSheet = self.mDocument?.rootObject.mSelectedSheet
+      let sheets = self.mDocument?.rootObject.mSheets.values ?? []
+      for stepper in self.mStepperArray.values {
+        stepper.maxValue = Double (sheets.count - 1)
       }
-      if let errorCount = sheet.connexionErrors, errorCount > 0 {
-        attributes [NSAttributedString.Key.foregroundColor] = NSColor.red
-        attributedString.append (NSAttributedString (string: " — \(errorCount)", attributes: attributes))
+      var idx = 0
+      for sheet in sheets {
+      //--- Build title
+        let attributedString = NSMutableAttributedString ()
+        var attributes : [NSAttributedString.Key : Any] = [
+          NSAttributedString.Key.font : NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+        ]
+        attributedString.append (NSAttributedString (string: "\(idx + 1)/\(sheets.count)", attributes: attributes))
+        if sheet.mSheetTitle != "" {
+          attributedString.append (NSAttributedString (string: ": \(sheet.mSheetTitle)", attributes: attributes))
+        }
+        if let errorCount = sheet.connexionErrors, errorCount > 0 {
+          attributes [NSAttributedString.Key.foregroundColor] = NSColor.red
+          attributedString.append (NSAttributedString (string: " — \(errorCount)", attributes: attributes))
+        }
+        if let warningCount = sheet.connexionWarnings, warningCount > 0 {
+          attributes [NSAttributedString.Key.foregroundColor] = NSColor.orange
+          attributedString.append (NSAttributedString (string: " — \(warningCount)", attributes: attributes))
+        }
+      //---
+        popUpButton.addItem (withTitle: "")
+        popUpButton.lastItem?.attributedTitle = attributedString
+        popUpButton.lastItem?.tag = idx
+        popUpButton.lastItem?.target = self
+        popUpButton.lastItem?.action = #selector (Self.selectionDidChangeAction (_:))
+        popUpButton.lastItem?.isEnabled = true
+        if sheet === selectedSheet {
+          popUpButton.selectItem (at: idx)
+          for stepper in self.mStepperArray.values {
+            stepper.doubleValue = Double (sheets.count - 1 - idx)
+          }
+          self.configureMoveButtons (withIndex: idx, sheetCount: sheets.count)
+        }
+        idx += 1
       }
-      if let warningCount = sheet.connexionWarnings, warningCount > 0 {
-        attributes [NSAttributedString.Key.foregroundColor] = NSColor.orange
-        attributedString.append (NSAttributedString (string: " — \(warningCount)", attributes: attributes))
-      }
-    //---
-      self.mSheetPopUpButton?.addItem (withTitle: "")
-      self.mSheetPopUpButton?.lastItem?.attributedTitle = attributedString
-      self.mSheetPopUpButton?.lastItem?.tag = idx
-      self.mSheetPopUpButton?.lastItem?.target = self
-      self.mSheetPopUpButton?.lastItem?.action = #selector (Self.selectionDidChangeAction (_:))
-      self.mSheetPopUpButton?.lastItem?.isEnabled = true
-      if sheet === selectedSheet {
-        self.mSheetPopUpButton?.selectItem (at: idx)
-        self.mStepper?.doubleValue = Double (sheets.count - 1 - idx)
-        self.configureMoveButtons (withIndex: idx, sheetCount: sheets.count)
-      }
-      idx += 1
     }
   }
 
@@ -125,16 +131,20 @@ final class ProjectSheetController : EBOutletEvent {
   //····················································································································
 
   private func configureMoveButtons (withIndex inIndex : Int, sheetCount inSheetCount : Int) {
-    self.mMoveSheetUpButton?.isEnabled = inIndex > 0
-    self.mMoveSheetUpButton?.tag = inIndex
-    self.mMoveSheetUpButton?.toolTip = (inIndex > 0)
-      ? "Move sheet to \(inIndex)/\(inSheetCount)"
-      : "Disabled, selected sheet is the first one"
-    self.mMoveSheetDownButton?.isEnabled = inIndex < (inSheetCount - 1)
-    self.mMoveSheetDownButton?.tag = inIndex
-    self.mMoveSheetDownButton?.toolTip = (inIndex < (inSheetCount - 1))
-      ? "Move sheet to \(inIndex + 2)/\(inSheetCount)"
-      : "Disabled, selected sheet is the last one"
+    for button in self.mMoveSheetUpButtonArray.values {
+      button.isEnabled = inIndex > 0
+      button.tag = inIndex
+      button.toolTip = (inIndex > 0)
+        ? "Move sheet to \(inIndex)/\(inSheetCount)"
+        : "Disabled, selected sheet is the first one"
+    }
+    for button in  self.mMoveSheetDownButtonArray.values {
+      button.isEnabled = inIndex < (inSheetCount - 1)
+      button.tag = inIndex
+      button.toolTip = (inIndex < (inSheetCount - 1))
+        ? "Move sheet to \(inIndex + 2)/\(inSheetCount)"
+        : "Disabled, selected sheet is the last one"
+      }
   }
 
   //····················································································································
