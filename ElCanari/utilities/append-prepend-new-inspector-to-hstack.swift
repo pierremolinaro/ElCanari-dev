@@ -12,6 +12,8 @@ import Cocoa
 
 @MainActor func append (inspector inInspector : NSView,
                         toHStack inBaseHorizontalStack : AutoLayoutHorizontalStackView) {
+  let c = NSLayoutConstraint (item: inInspector, attribute: .width, relatedBy: .lessThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 250.0)
+  inInspector.addConstraint (c)
   let closeButton = AutoLayoutButton (title: "✖︎", size: .regular)
   closeButton.bezelStyle = .circular
   let header = AutoLayoutHorizontalStackView ()
@@ -37,6 +39,8 @@ import Cocoa
 
 @MainActor func prepend (inspector inInspector : NSView,
                          toHStack inBaseHorizontalStack : AutoLayoutHorizontalStackView) {
+  let c = NSLayoutConstraint (item: inInspector, attribute: .width, relatedBy: .lessThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 250.0)
+  inInspector.addConstraint (c)
   let closeButton = AutoLayoutButton (title: "✖︎", size: .regular)
   closeButton.bezelStyle = .circular
   let header = AutoLayoutHorizontalStackView ()

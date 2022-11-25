@@ -28,19 +28,16 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.6.3"
+let VERSION_CANARI = "1.6.4"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Correction de la vérification de l'isolation des pads esclaves sans net",
-  "Schéma : essayer d'établir une piste à partir d'un point de connexion marqué nc d'un symbol est maintenant correctement inhibé"
 ]
 let CHANGES : [String] = [
-  "Le manuel d'utilisation est maintenant dans la librairie système",
-  "Sparkle 2.3.0"
 ]
 let NEWS : [String] = [
+  "Duplication des inspecteurs dans la saisie du schéma d'un projet"
 ]
 
 //--------------------------------------------------------------------------------------------------
