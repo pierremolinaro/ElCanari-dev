@@ -31,7 +31,7 @@ final class ProjectSheetController : EBOutletEvent {
     self.mDocument = inDocument
     self.mSheetPopUpButtonArray.append (inPopUpButton)
   //--- Add sheet titles observer
-    self.mEventCallBack = { [weak self] in self?.updatePopUpButton () }
+    self.mEventCallBack = { [weak self] in self?.updatePopUpButtonAndSteppers () }
     inDocument.rootObject.mSheets_property.addEBObserverOf_connexionWarnings (self)
     inDocument.rootObject.mSheets_property.addEBObserverOf_connexionErrors (self)
     inDocument.rootObject.mSheets_property.addEBObserverOf_mSheetTitle (self)
@@ -47,7 +47,7 @@ final class ProjectSheetController : EBOutletEvent {
     inStepper.increment = 1.0
     inStepper.target = self
     inStepper.action = #selector (Self.stepperAction (_:))
-    self.updatePopUpButton ()
+    self.updatePopUpButtonAndSteppers ()
   }
 
  //····················································································································
@@ -72,11 +72,11 @@ final class ProjectSheetController : EBOutletEvent {
   // MARK: -
   //····················································································································
 
-  private func updatePopUpButton () {
+  private func updatePopUpButtonAndSteppers () {
+    let selectedSheet = self.mDocument?.rootObject.mSelectedSheet
+    let sheets = self.mDocument?.rootObject.mSheets.values ?? []
     for popUpButton in self.mSheetPopUpButtonArray.values {
       popUpButton.removeAllItems ()
-      let selectedSheet = self.mDocument?.rootObject.mSelectedSheet
-      let sheets = self.mDocument?.rootObject.mSheets.values ?? []
       for stepper in self.mStepperArray.values {
         stepper.maxValue = Double (sheets.count - 1)
       }
@@ -174,7 +174,7 @@ final class ProjectSheetController : EBOutletEvent {
       sheets [selectedIndex] = previousSheet
       sheets [selectedIndex - 1] = selectedSheet
       rootObject.mSheets = EBReferenceArray (sheets)
-      self.updatePopUpButton ()
+      self.updatePopUpButtonAndSteppers ()
     }
   }
 
@@ -189,7 +189,7 @@ final class ProjectSheetController : EBOutletEvent {
       sheets [selectedIndex] = nextSheet
       sheets [selectedIndex + 1] = selectedSheet
       rootObject.mSheets = EBReferenceArray (sheets)
-      self.updatePopUpButton ()
+      self.updatePopUpButtonAndSteppers ()
     }
   }
 
