@@ -13,7 +13,7 @@ fileprivate let RIGHT_COLUMN_IDENTIFIER = NSUserInterfaceItemIdentifier (rawValu
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-import Cocoa
+import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   AutoLayoutCanariIssueTableView
