@@ -43,7 +43,7 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
     self.mTableView.gridStyleMask = [.solidHorizontalGridLineMask, .solidVerticalGridLineMask]
     self.mTableView.usesAlternatingRowBackgroundColors = true
     self.mTableView.columnAutoresizingStyle = .uniformColumnAutoresizingStyle
-    self.mTableView.usesAutomaticRowHeights = true // #available macOS 10.13
+    self.mTableView.usesAutomaticRowHeights = true
     _ = self.setIntercellSpacing (horizontal: 5, vertical: 5)
   //--- Configure scroll view
     self.mScrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -200,7 +200,6 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
   //--- Ensure selection non empty ?
     let ensureNonEmpty = (currentSelectedRow >= 0) || !self.mTableView.allowsEmptySelection
     // Swift.print ("self.mTableView.selectedRow \(self.mTableView.selectedRow), \(self.mTableView.allowsEmptySelection)")
- //   if self.mTableView.selectedRow < 0, !self.mTableView.allowsEmptySelection, let rowCount = self.mRowCountCallBack? (), rowCount > 0 {
     if ensureNonEmpty, self.mTableView.selectedRow < 0, let rowCount = self.mRowCountCallBack? (), rowCount > 0 {
       if currentSelectedRow >= 0 {
         if currentSelectedRow < rowCount {
@@ -281,12 +280,12 @@ class AutoLayoutTableView : AutoLayoutVerticalStackView, NSTableViewDataSource, 
 // InternalAutoLayoutTableView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class InternalAutoLayoutTableView : NSTableView {
+fileprivate final class InternalAutoLayoutTableView : NSTableView {
 
   //····················································································································
 
-  private final var mDragConcludeCallBack : Optional < ([URL]) -> Void > = nil
-  private final var mDragFilterCallBack : Optional < ([URL]) -> Bool > = nil
+  private var mDragConcludeCallBack : Optional < ([URL]) -> Void > = nil
+  private var mDragFilterCallBack : Optional < ([URL]) -> Bool > = nil
 
   //····················································································································
   // INIT
@@ -317,9 +316,9 @@ class InternalAutoLayoutTableView : NSTableView {
   // MARK: Drag
   //····················································································································
 
-  final func set (draggedTypes inDraggedTypes : [NSPasteboard.PasteboardType],
-                  dragFilterCallBack inFilterCallBack : @escaping ([URL]) -> Bool,
-                  dragConcludeCallBack inConcludeCallBack : @escaping ([URL]) -> Void) {
+  func set (draggedTypes inDraggedTypes : [NSPasteboard.PasteboardType],
+            dragFilterCallBack inFilterCallBack : @escaping ([URL]) -> Bool,
+            dragConcludeCallBack inConcludeCallBack : @escaping ([URL]) -> Void) {
     self.registerForDraggedTypes (inDraggedTypes)
     self.mDragConcludeCallBack = inConcludeCallBack
     self.mDragFilterCallBack = inFilterCallBack
@@ -327,7 +326,7 @@ class InternalAutoLayoutTableView : NSTableView {
 
   //····················································································································
 
-  override final func draggingEntered (_ inSender : NSDraggingInfo) -> NSDragOperation {
+  override func draggingEntered (_ inSender : NSDraggingInfo) -> NSDragOperation {
     var dragOperation : NSDragOperation = []
     if let array = inSender.draggingPasteboard.readObjects (forClasses: [NSURL.self]) as? [URL],
       let ok = self.mDragFilterCallBack? (array) {
@@ -338,30 +337,30 @@ class InternalAutoLayoutTableView : NSTableView {
 
   //····················································································································
 
-  override final func draggingUpdated (_ inSender : NSDraggingInfo) -> NSDragOperation {
+  override func draggingUpdated (_ inSender : NSDraggingInfo) -> NSDragOperation {
     return self.draggingEntered (inSender)
   }
 
   //····················································································································
 
-  override final func draggingExited (_ inSender : NSDraggingInfo?) {
+  override func draggingExited (_ inSender : NSDraggingInfo?) {
   }
 
   //····················································································································
 
-  override final func prepareForDragOperation (_ inSender : NSDraggingInfo) -> Bool {
+  override func prepareForDragOperation (_ inSender : NSDraggingInfo) -> Bool {
     return true
   }
 
   //····················································································································
 
-  override final func performDragOperation (_ inSender : NSDraggingInfo) -> Bool {
+  override func performDragOperation (_ inSender : NSDraggingInfo) -> Bool {
     return self.draggingEntered (inSender) == .copy
   }
 
   //····················································································································
 
-  override final func concludeDragOperation (_ inSender : NSDraggingInfo?) {
+  override func concludeDragOperation (_ inSender : NSDraggingInfo?) {
     if let array = inSender?.draggingPasteboard.readObjects (forClasses: [NSURL.self]) as? [URL] {
       self.mDragConcludeCallBack? (array)
     }
@@ -371,12 +370,12 @@ class InternalAutoLayoutTableView : NSTableView {
   //MARK:  $enabled binding
   //····················································································································
 
-  private final var mEnabledBindingController : EnabledBindingController? = nil
-  final var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
+  private var mEnabledBindingController : EnabledBindingController? = nil
+  var enabledBindingController : EnabledBindingController? { return self.mEnabledBindingController }
 
   //····················································································································
 
-  final func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
+  func bind_enabled (_ inExpression : EBMultipleBindingBooleanExpression) -> Self {
     self.mEnabledBindingController = EnabledBindingController (inExpression, self)
     return self
   }
