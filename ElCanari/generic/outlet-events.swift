@@ -8,7 +8,7 @@ import AppKit
 //    EBOutletEvent class
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor var gPendingOutletEvents = [EBOutletEvent] ()
+@MainActor fileprivate var gPendingOutletEvents = [EBOutletEvent] ()
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
