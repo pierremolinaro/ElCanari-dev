@@ -32,11 +32,23 @@ final class AutoLayoutEnumSegmentedControl : AutoLayoutBase_NSSegmentedControl {
 
   //····················································································································
 
-  func updateIndex (_ object : EBReadWriteObservableEnumProtocol) {
-    if let v = object.rawValue () {
+  func updateIndex (fromEnumeration inObject : EBReadWriteObservableEnumProtocol) {
+    if let v = inObject.rawValue () {
       self.enable (fromValueBinding: true, self.enabledBindingController)
       self.setSelectedSegment (atIndex: v)
     }else{
+      self.enable (fromValueBinding: false, self.enabledBindingController)
+    }
+  }
+
+  //····················································································································
+
+  func updateIndex (fromInteger inObject : EBReadWriteProperty_Int) {
+    switch inObject.selection {
+    case .single (let v) :
+      self.enable (fromValueBinding: true, self.enabledBindingController)
+      self.setSelectedSegment (atIndex: v)
+    case .empty, .multiple :
       self.enable (fromValueBinding: false, self.enabledBindingController)
     }
   }
@@ -66,6 +78,7 @@ final class AutoLayoutEnumSegmentedControl : AutoLayoutBase_NSSegmentedControl {
   //····················································································································
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
+    self.mSelectedSegmentController?.updateModel (self.indexOfSelectedItem)
     self.mSelectedIndexController?.updateModel (self.indexOfSelectedItem)
     return super.sendAction (action, to:to)
   }
@@ -74,12 +87,28 @@ final class AutoLayoutEnumSegmentedControl : AutoLayoutBase_NSSegmentedControl {
   //  $selectedSegment binding
   //····················································································································
 
-  private var mSelectedIndexController : Controller_AutoLayoutEnumSegmentedControl_Index? = nil
+  private var mSelectedSegmentController : Controller_AutoLayoutEnumSegmentedControl_Index? = nil
 
   //····················································································································
 
   final func bind_selectedSegment (_ inObject : EBReadWriteObservableEnumProtocol) -> Self {
-    self.mSelectedIndexController = Controller_AutoLayoutEnumSegmentedControl_Index (
+    self.mSelectedSegmentController = Controller_AutoLayoutEnumSegmentedControl_Index (
+      object: inObject,
+      outlet: self
+    )
+    return self
+  }
+
+  //····················································································································
+  //  $selectedIndex binding
+  //····················································································································
+
+  private var mSelectedIndexController : Controller_AutoLayoutSegmentedControl_Index? = nil
+
+  //····················································································································
+
+  final func bind_selectedIndex (_ inObject : EBReadWriteProperty_Int) -> Self {
+    self.mSelectedIndexController = Controller_AutoLayoutSegmentedControl_Index (
       object: inObject,
       outlet: self
     )
@@ -91,7 +120,7 @@ final class AutoLayoutEnumSegmentedControl : AutoLayoutBase_NSSegmentedControl {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_EBPopUpButton_Index
+//   Controller_AutoLayoutEnumSegmentedControl_Index
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate final class Controller_AutoLayoutEnumSegmentedControl_Index : EBObservablePropertyController {
@@ -102,9 +131,12 @@ fileprivate final class Controller_AutoLayoutEnumSegmentedControl_Index : EBObse
 
   //····················································································································
 
-  init (object : EBReadWriteObservableEnumProtocol, outlet inOutlet : AutoLayoutEnumSegmentedControl) {
-    self.mObject = object
-    super.init (observedObjects: [object], callBack: { [weak inOutlet] in inOutlet?.updateIndex (object) } )
+  init (object inObject : EBReadWriteObservableEnumProtocol, outlet inOutlet : AutoLayoutEnumSegmentedControl) {
+    self.mObject = inObject
+    super.init (
+      observedObjects: [inObject],
+      callBack: { [weak inOutlet] in inOutlet?.updateIndex (fromEnumeration: inObject) }
+    )
   }
 
   //····················································································································
@@ -114,6 +146,34 @@ fileprivate final class Controller_AutoLayoutEnumSegmentedControl_Index : EBObse
   }
 
   //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Controller_AutoLayoutSegmentedControl_Index
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate final class Controller_AutoLayoutSegmentedControl_Index : EBObservablePropertyController {
+
+  //····················································································································
+
+  private let mObject : EBReadWriteProperty_Int
+
+  //····················································································································
+
+  init (object inObject : EBReadWriteProperty_Int, outlet inOutlet : AutoLayoutEnumSegmentedControl) {
+    self.mObject = inObject
+    super.init (observedObjects: [inObject], callBack: { [weak inOutlet] in inOutlet?.updateIndex (fromInteger: inObject) } )
+  }
+
+  //····················································································································
+
+  func updateModel (_ inValue : Int) {
+    self.mObject.setProp (inValue)
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

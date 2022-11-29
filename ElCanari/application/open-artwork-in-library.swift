@@ -233,7 +233,7 @@ import AppKit
   // AutoLayoutTableViewDelegate delegate implementation
   //····················································································································
 
-  func tableViewSelectionDidChange (selectedRows inSelectedRows: IndexSet) {
+  func tableViewDelegate_selectionDidChange (selectedRows inSelectedRows: IndexSet) {
     if let entryIndex = inSelectedRows.first, inSelectedRows.count == 1 {
       let selectedEntry = self.mFilteredTableViewSource [entryIndex]
       self.mArtworkStatus.stringValue = selectedEntry.statusString ()
@@ -258,7 +258,7 @@ import AppKit
 
   //····················································································································
 
-  func indexesOfSelectedObjects () -> IndexSet {
+  func tableViewDelegate_indexesOfSelectedObjects () -> IndexSet {
     var indexSet = IndexSet ()
     var idx = 0
     for object in self.mFilteredTableViewSource {
@@ -272,22 +272,22 @@ import AppKit
 
   //····················································································································
 
-  func addEntry () {
+  func tableViewDelegate_addEntry () {
   }
 
   //····················································································································
 
-  func removeSelectedEntries () {
+  func tableViewDelegate_removeSelectedEntries () {
   }
 
   //····················································································································
 
-  func beginSorting () {
+  func tableViewDelegate_beginSorting () {
   }
 
   //····················································································································
 
-  func endSorting () {
+  func tableViewDelegate_endSorting () {
   }
 
   //····················································································································

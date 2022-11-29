@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
+class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate, AutoLayoutOutlineViewDelegate {
 
   //····················································································································
 
@@ -18,12 +18,19 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
   private final let mOpenButton : AutoLayoutSheetDefaultOkButton
   private final let mCancelButton : AutoLayoutSheetCancelButton
   private final let mTableView = AutoLayoutTableView (size: .regular, addControlButtons: false)
+  private final let mOutlineView = AutoLayoutOutlineView (size: .regular, addControlButtons: false)
   private final let mStatusTextField = AutoLayoutStaticLabel (title: "", bold: false, size: .regular, alignment: .left)
   private final let mFullPathTextField = AutoLayoutStaticLabel (title: "", bold: false, size: .regular, alignment: .left)
   private final var mPartImage = AutoLayoutImageObserverView (size: .regular)
   private final let mNoSelectedPartTextField = AutoLayoutStaticLabel (title: "", bold: true, size: .regular, alignment: .center)
   private final let mNoSelectedPartView = AutoLayoutVerticalStackView ()
   private final let mSearchField = AutoLayoutSearchField (width: 300, size: .regular)
+
+  //····················································································································
+
+  private final let mSegmentedControl = AutoLayoutEnumSegmentedControl (titles: ["Flat", "Hierarchical"], equalWidth: true, size: .regular)
+  private final let mSegmentedControlIndex = EBStoredProperty_Int (defaultValue: 0, undoManager: nil)
+  private final var mSegmentedControlIndexObserver : EBOutletEvent? = nil
 
   //····················································································································
 
@@ -40,20 +47,25 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
       backing: .buffered,
       defer: false
     )
+    _ = self.mSegmentedControl.bind_selectedIndex (self.mSegmentedControlIndex)
     let mainView = AutoLayoutVerticalStackView ().set (margins: 20)
-    let topView = AutoLayoutHorizontalStackView ()
   //--- First column
+    let tableHStack = AutoLayoutHorizontalStackView ()
+          .appendView (self.mTableView)
+          .appendView (self.mOutlineView)
     let firstColumn = AutoLayoutVerticalStackView ()
-    _ = firstColumn.appendView (self.mSearchField)
-    _ = firstColumn.appendView (self.mTableView)
-    _ = topView.appendView (firstColumn)
- //--- Second Column
+          .appendView (self.mSearchField)
+          .appendView (self.mSegmentedControl)
+          .appendView (tableHStack)
+  //--- Second Column
     _ = self.mNoSelectedPartView.appendFlexibleSpace ()
     _ = self.mNoSelectedPartView.appendViewSurroundedByFlexibleSpaces (self.mNoSelectedPartTextField)
     _ = self.mNoSelectedPartView.appendFlexibleSpace ()
-    _ = topView.appendView (self.mNoSelectedPartView)
   //---
-    _ = topView.appendView (self.mPartImage)
+    let topView = AutoLayoutHorizontalStackView ()
+          .appendView (firstColumn)
+          .appendView (self.mNoSelectedPartView)
+          .appendView (self.mPartImage)
   //--- Add view
     _ = mainView.appendView (topView)
   //--- Grid view: status and path
@@ -108,6 +120,33 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
       headerAlignment: .left,
       contentAlignment: .left
     )
+  //--- Configure outline view
+    self.mOutlineView.configure (
+      allowsEmptySelection: false,
+      allowsMultipleSelection: false,
+      rowCountCallBack: { [weak self] in self?.mTableViewFilteredDataSource.count ?? 0 },
+      delegate: self
+    )
+//    self.mOutlineView.addColumn_NSImage (
+//      valueGetterDelegate: { [weak self] in self?.mTableViewFilteredDataSource [$0].statusImage () },
+//      valueSetterDelegate: nil,
+//      sortDelegate: nil,
+//      title: "Status",
+//      minWidth: 50,
+//      maxWidth: 50,
+//      headerAlignment: .left,
+//      contentAlignment: .center
+//    )
+    self.mOutlineView.addColumn_String (
+      valueGetterDelegate: { [weak self] in self?.mTableViewFilteredDataSource [$0].mPartName },
+      valueSetterDelegate: nil,
+      sortDelegate: nil,
+      title: "Name",
+      minWidth: 250,
+      maxWidth: 2_000,
+      headerAlignment: .left,
+      contentAlignment: .left
+    )
   }
 
   //····················································································································
@@ -120,6 +159,7 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
     self.mNoSelectedPartView.isHidden = false
     self.buildDataSource (alreadyLoadedDocuments: inNames)
     self.mTableView.sortAndReloadData ()
+    self.mOutlineView.sortAndReloadData ()
   }
 
   //····················································································································
@@ -157,6 +197,25 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
   //····················································································································
 
   final func openDocumentInLibrary (windowTitle inTitle : String) {
+  //--- Configure table view and outline view visibility
+    let displayBoth = NSEvent.modifierFlags.contains (.option)
+    if displayBoth {
+      self.mSegmentedControl.isHidden = true
+      self.mSegmentedControlIndexObserver = nil
+      self.mTableView.isHidden = false
+      self.mOutlineView.isHidden = false
+    }else{
+      let observer = EBOutletEvent ()
+      self.mSegmentedControlIndexObserver = observer
+      self.mSegmentedControlIndex.addEBObserver (observer)
+      observer.mEventCallBack = { [weak self] in
+        if let uwSelf = self {
+          uwSelf.mTableView.isHidden = uwSelf.mSegmentedControlIndex.propval == 1
+          uwSelf.mOutlineView.isHidden = uwSelf.mSegmentedControlIndex.propval == 0
+        }
+      }
+      self.mSegmentedControl.isHidden = false
+    }
   //--- Configure
     self.mDialog.title = inTitle
     self.configureWith (alreadyLoadedDocuments: [])
@@ -171,6 +230,7 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
     self.mTableViewDataSource = []
     self.mTableViewFilteredDataSource = []
     self.mTableView.sortAndReloadData ()
+    self.mOutlineView.sortAndReloadData ()
   }
 
   //····················································································································
@@ -237,12 +297,12 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
         if fm.fileExists (atPath: baseDirectory, isDirectory: &isDirectory), isDirectory.boolValue {
           let files = try fm.subpathsOfDirectory (atPath: baseDirectory)
           for f in files {
-            if f.pathExtension.lowercased() == inFileExtension {
+            if f.pathExtension.lowercased () == inFileExtension {
               let fullpath = baseDirectory + "/" + f
               let baseName = f.lastPathComponent.deletingPathExtension
-              let isDuplicated : Bool = (partCountDictionary [baseName] ?? 0) > 1
+              let isDuplicated : Bool = partCountDictionary [baseName, default: 0] > 1
               let pathAsArray = f.deletingPathExtension.components (separatedBy: "/")
-              enterPart (&tableViewDataSource, pathAsArray, fullpath, isDuplicated, inNames.contains (baseName), inBuildPreviewShapeFunction)
+              tableViewDataSource.enterPart (pathAsArray, fullpath, isDuplicated, inNames.contains (baseName), inBuildPreviewShapeFunction)
             }
           }
         }
@@ -256,10 +316,60 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
   }
 
   //····················································································································
+  //   AutoLayoutOutlineViewDelegate protocol methods
+  //····················································································································
+
+  final func outlineViewDelegate_selectionDidChange (selectedRows inSelectedRows : IndexSet) {
+    let selectedRow = self.mOutlineView.selectedRow
+    if selectedRow >= 0 {
+      let selectedPart = self.mTableViewFilteredDataSource [selectedRow]
+      self.mStatusTextField.stringValue = selectedPart.statusString ()
+      self.mFullPathTextField.stringValue = selectedPart.mFullPath
+      self.mOpenButton.isEnabled = true
+      self.mPartImage.image = selectedPart.image
+      self.mPartImage.isHidden = false
+      self.mNoSelectedPartView.isHidden = true
+    }else{
+      self.mStatusTextField.stringValue = "—"
+      self.mFullPathTextField.stringValue = "—"
+      self.mOpenButton.isEnabled = false
+      self.mPartImage.image = nil
+      self.mPartImage.isHidden = true
+      self.mNoSelectedPartView.isHidden = false
+    }
+  }
+
+  //····················································································································
+
+  final func outlineViewDelegate_indexesOfSelectedObjects () -> IndexSet {
+    return .init ()
+  }
+
+  //····················································································································
+
+  final func outlineViewDelegate_addEntry () {
+  }
+
+  //····················································································································
+
+  final func outlineViewDelegate_removeSelectedEntries () {
+  }
+
+  //····················································································································
+
+  final func outlineViewDelegate_beginSorting () {
+  }
+
+  //····················································································································
+
+  final func outlineViewDelegate_endSorting () {
+  }
+
+  //····················································································································
   //   AutoLayoutTableViewDelegate protocol methods
   //····················································································································
 
-  final func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet) {
+  final func tableViewDelegate_selectionDidChange (selectedRows inSelectedRows : IndexSet) {
     let selectedRow = self.mTableView.selectedRow
     if selectedRow >= 0 {
       let selectedPart = self.mTableViewFilteredDataSource [selectedRow]
@@ -281,28 +391,28 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
 
   //····················································································································
 
-  final func indexesOfSelectedObjects () -> IndexSet {
+  final func tableViewDelegate_indexesOfSelectedObjects () -> IndexSet {
     return .init ()
   }
 
   //····················································································································
 
-  final func addEntry () {
+  final func tableViewDelegate_addEntry () {
   }
 
   //····················································································································
 
-  final func removeSelectedEntries () {
+  final func tableViewDelegate_removeSelectedEntries () {
   }
 
   //····················································································································
 
-  final func beginSorting () {
+  final func tableViewDelegate_beginSorting () {
   }
 
   //····················································································································
 
-  final func endSorting () {
+  final func tableViewDelegate_endSorting () {
   }
 
   //····················································································································
@@ -324,6 +434,7 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
     }
     self.mTableViewFilteredDataSource.sort { $0.mPartName < $1.mPartName }
     self.mTableView.sortAndReloadData ()
+    self.mOutlineView.sortAndReloadData ()
   }
 
   //····················································································································
@@ -332,19 +443,27 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor fileprivate func enterPart (_ tableViewDataSource : inout [OpenInLibraryDialogItem],
-                                       _ inPathAsArray : [String],
-                                       _ inFullpath : String,
-                                       _ inIsDuplicated : Bool,
-                                       _ inIsAlreadyLoaded : Bool,
-        _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> NSImage?) {
-  if inPathAsArray.count == 1 {
-    tableViewDataSource.append (OpenInLibraryDialogItem (inPathAsArray [0], inFullpath, inIsDuplicated, inIsAlreadyLoaded, inBuildPreviewShapeFunction))
-  }else{
-    var pathAsArray = inPathAsArray
-    pathAsArray.remove (at: 0)
-    enterPart (&tableViewDataSource, pathAsArray, inFullpath, inIsDuplicated, inIsAlreadyLoaded, inBuildPreviewShapeFunction)
+extension Array where Element == OpenInLibraryDialogItem {
+
+  //····················································································································
+
+  @MainActor fileprivate mutating func enterPart (
+         _ inPathAsArray : [String],
+         _ inFullpath : String,
+         _ inIsDuplicated : Bool,
+         _ inIsAlreadyLoaded : Bool,
+         _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> NSImage?) {
+    if inPathAsArray.count == 1 {
+      self.append (OpenInLibraryDialogItem (inPathAsArray [0], inFullpath, inIsDuplicated, inIsAlreadyLoaded, inBuildPreviewShapeFunction))
+    }else{
+      var pathAsArray = inPathAsArray
+      pathAsArray.remove (at: 0)
+      self.enterPart (pathAsArray, inFullpath, inIsDuplicated, inIsAlreadyLoaded, inBuildPreviewShapeFunction)
+    }
   }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

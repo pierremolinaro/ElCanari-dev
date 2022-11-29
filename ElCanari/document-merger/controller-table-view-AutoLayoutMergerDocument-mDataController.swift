@@ -279,7 +279,7 @@ final class Controller_AutoLayoutMergerDocument_mDataController : EBObjcBaseObje
   // IMPLEMENTATION OF AutoLayoutTableViewDelegate
   //····················································································································
 
-  final func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet) {
+  final func tableViewDelegate_selectionDidChange (selectedRows inSelectedRows : IndexSet) {
     switch self.sortedArray_property.selection {
     case .empty, .multiple :
       ()
@@ -294,7 +294,7 @@ final class Controller_AutoLayoutMergerDocument_mDataController : EBObjcBaseObje
 
   //····················································································································
 
-  final func indexesOfSelectedObjects () -> IndexSet {
+  final func tableViewDelegate_indexesOfSelectedObjects () -> IndexSet {
     var indexSet = IndexSet ()
     var idx = 0
     let selectedObjectSet = EBReferenceSet (self.selectedArray_property.propval.values)
@@ -309,7 +309,7 @@ final class Controller_AutoLayoutMergerDocument_mDataController : EBObjcBaseObje
 
   //····················································································································
 
-  final func addEntry () {
+  final func tableViewDelegate_addEntry () {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
@@ -327,7 +327,7 @@ final class Controller_AutoLayoutMergerDocument_mDataController : EBObjcBaseObje
 
   //····················································································································
 
-  final func removeSelectedEntries () {
+  final func tableViewDelegate_removeSelectedEntries () {
     if let model = self.mModel {
       switch model.selection {
       case .empty, .multiple :
@@ -401,13 +401,13 @@ final class Controller_AutoLayoutMergerDocument_mDataController : EBObjcBaseObje
 
   //····················································································································
 
-  final func beginSorting () {
+  final func tableViewDelegate_beginSorting () {
     self.mSortDescriptorArray.removeAll ()
   }
 
   //····················································································································
 
-  final func endSorting () {
+  final func tableViewDelegate_endSorting () {
     self.sortedArray_property.notifyModelDidChange ()
   }
 

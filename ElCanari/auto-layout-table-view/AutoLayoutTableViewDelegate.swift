@@ -12,13 +12,13 @@ import AppKit
 
 @MainActor protocol AutoLayoutTableViewDelegate : AnyObject {
 
-  func tableViewSelectionDidChange (selectedRows inSelectedRows : IndexSet)
-  func indexesOfSelectedObjects () -> IndexSet
-  func addEntry ()
-  func removeSelectedEntries ()
+  func tableViewDelegate_selectionDidChange (selectedRows inSelectedRows : IndexSet)
+  func tableViewDelegate_indexesOfSelectedObjects () -> IndexSet
+  func tableViewDelegate_addEntry ()
+  func tableViewDelegate_removeSelectedEntries ()
 
-  func beginSorting ()
-  func endSorting ()
+  func tableViewDelegate_beginSorting ()
+  func tableViewDelegate_endSorting ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

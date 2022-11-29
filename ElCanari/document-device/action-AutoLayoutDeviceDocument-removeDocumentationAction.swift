@@ -13,7 +13,7 @@ import AppKit
 extension AutoLayoutDeviceDocument {
   @objc func removeDocumentationAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-        self.documentationController.removeSelectedEntries ()
+        self.documentationController.tableViewDelegate_removeSelectedEntries ()
 //--- END OF USER ZONE 2
   }
 }

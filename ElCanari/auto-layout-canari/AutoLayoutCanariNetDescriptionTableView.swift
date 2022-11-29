@@ -193,34 +193,34 @@ final class AutoLayoutCanariNetDescriptionTableView : AutoLayoutVerticalStackVie
   //  AutoLayoutTableViewDelegate functions
   //····················································································································
 
-  func tableViewSelectionDidChange (selectedRows inSelectedRows: IndexSet) {
+  func tableViewDelegate_selectionDidChange (selectedRows inSelectedRows: IndexSet) {
     self.mPinsOfSelectedNetTableView?.sortAndReloadData ()
   }
 
   //····················································································································
 
-  func indexesOfSelectedObjects() -> IndexSet {
+  func tableViewDelegate_indexesOfSelectedObjects() -> IndexSet {
     return IndexSet ()
   }
 
   //····················································································································
 
-  func addEntry () {
+  func tableViewDelegate_addEntry () {
   }
 
   //····················································································································
 
-  func removeSelectedEntries () {
+  func tableViewDelegate_removeSelectedEntries () {
   }
 
   //····················································································································
 
-  func beginSorting () {
+  func tableViewDelegate_beginSorting () {
   }
 
   //····················································································································
 
-  func endSorting () {
+  func tableViewDelegate_endSorting () {
   }
 
   //····················································································································

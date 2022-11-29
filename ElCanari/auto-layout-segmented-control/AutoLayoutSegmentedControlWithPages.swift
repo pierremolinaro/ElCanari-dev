@@ -25,7 +25,7 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
 
   //····················································································································
 
-  required init?(coder inCoder: NSCoder) {
+  required init? (coder inCoder: NSCoder) {
     fatalError ("init(coder:) has not been implemented")
   }
 
