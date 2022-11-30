@@ -225,33 +225,61 @@ class AutoLayoutOutlineView : AutoLayoutVerticalStackView, NSOutlineViewDataSour
   //   NSOutlineViewDataSource protocol
   //····················································································································
 
-  @MainActor final func numberOfRows (in tableView: NSTableView) -> Int {
-    return self.mRowCountCallBack? () ?? 0
+//  @MainActor final func numberOfRows (in tableView: NSTableView) -> Int {
+//    return self.mRowCountCallBack? () ?? 0
+//  }
+
+  @MainActor final func outlineView (_ outlineView: NSOutlineView,
+                                     child index: Int,
+                                     ofItem item: Any?) -> Any {
+    return 0
+  }
+
+  //····················································································································
+
+  @MainActor final func outlineView (_ outlineView: NSOutlineView,
+                                     numberOfChildrenOfItem item: Any?) -> Int {
+    return 0
+  }
+
+  //····················································································································
+
+  @MainActor final func outlineView (_ outlineView: NSOutlineView,
+                                     isItemExpandable item: Any) -> Bool {
+    return false
+  }
+
+  //····················································································································
+
+  @MainActor final func outlineView (_ outlineView: NSOutlineView,
+                                     objectValueFor tableColumn: NSTableColumn?,
+                                     byItem item: Any?) -> Any? {
+    return nil
   }
 
   //····················································································································
   //   NSTableViewDelegate protocol
   //····················································································································
 
-  @MainActor final func tableView (_ tableView : NSTableView,
-                        viewFor inTableColumn : NSTableColumn?,
-                        row inRowIndex : Int) -> NSView? {
-    if let tableColumn = inTableColumn as? AutoLayoutTableColumn {
-      let view = tableColumn.configureTableCellView (forRowIndex: inRowIndex)
-      return view
-    }else{
-      return nil
-    }
-  }
+//  @MainActor final func tableView (_ tableView : NSTableView,
+//                        viewFor inTableColumn : NSTableColumn?,
+//                        row inRowIndex : Int) -> NSView? {
+//    if let tableColumn = inTableColumn as? AutoLayoutTableColumn {
+//      let view = tableColumn.configureTableCellView (forRowIndex: inRowIndex)
+//      return view
+//    }else{
+//      return nil
+//    }
+//  }
 
   //····················································································································
   //    outlineView:sortDescriptorsDidChange: NSOutlineViewDataSource delegate
   //····················································································································
 
-  final func outlineView (_ outlineView : NSOutlineView,
-                          sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
-    self.sortAndReloadData ()
-  }
+//  final func outlineView (_ outlineView : NSOutlineView,
+//                          sortDescriptorsDidChange oldDescriptors : [NSSortDescriptor]) {
+//    self.sortAndReloadData ()
+//  }
 
   //····················································································································
   //    T A B L E V I E W    D E L E G A T E : outlineViewSelectionDidChange:

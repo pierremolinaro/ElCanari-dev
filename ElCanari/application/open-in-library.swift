@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate, AutoLayoutOutlineViewDelegate {
+class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate { //, AutoLayoutOutlineViewDelegate {
 
   //····················································································································
 
@@ -18,7 +18,7 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate, AutoLayoutOutlineVi
   private final let mOpenButton : AutoLayoutSheetDefaultOkButton
   private final let mCancelButton : AutoLayoutSheetCancelButton
   private final let mTableView = AutoLayoutTableView (size: .regular, addControlButtons: false)
-  private final let mOutlineView = AutoLayoutOutlineView (size: .regular, addControlButtons: false)
+//  private final let mOutlineView = AutoLayoutOutlineView (size: .regular, addControlButtons: false)
   private final let mStatusTextField = AutoLayoutStaticLabel (title: "", bold: false, size: .regular, alignment: .left)
   private final let mFullPathTextField = AutoLayoutStaticLabel (title: "", bold: false, size: .regular, alignment: .left)
   private final var mPartImage = AutoLayoutImageObserverView (size: .regular)
@@ -28,14 +28,17 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate, AutoLayoutOutlineVi
 
   //····················································································································
 
-  private final let mSegmentedControl = AutoLayoutEnumSegmentedControl (titles: ["Flat", "Hierarchical"], equalWidth: true, size: .regular)
-  private final let mSegmentedControlIndex = EBStoredProperty_Int (defaultValue: 0, undoManager: nil)
-  private final var mSegmentedControlIndexObserver : EBOutletEvent? = nil
+//  private final let mSegmentedControl = AutoLayoutEnumSegmentedControl (titles: ["Flat", "Hierarchical"], equalWidth: true, size: .regular)
+//  private final let mSegmentedControlIndex = EBStoredProperty_Int (defaultValue: 0, undoManager: nil)
+//  private final var mSegmentedControlIndexObserver : EBOutletEvent? = nil
 
   //····················································································································
 
-  private final var mTableViewDataSource = [OpenInLibraryDialogItem] ()
-  private final var mTableViewFilteredDataSource = [OpenInLibraryDialogItem] ()
+  private final var mTableViewDataSource = [OpenInLibraryDialogFlatItem] ()
+  private final var mTableViewFilteredDataSource = [OpenInLibraryDialogFlatItem] ()
+
+//  private final var mOutlineViewDataSource = [OpenInLibraryDialogHierarchicalItem] ()
+//  private final var mOutlineViewFilteredDataSource = [OpenInLibraryDialogHierarchicalItem] ()
 
   //····················································································································
 
@@ -47,16 +50,17 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate, AutoLayoutOutlineVi
       backing: .buffered,
       defer: false
     )
-    _ = self.mSegmentedControl.bind_selectedIndex (self.mSegmentedControlIndex)
+//    _ = self.mSegmentedControl.bind_selectedIndex (self.mSegmentedControlIndex)
     let mainView = AutoLayoutVerticalStackView ().set (margins: 20)
   //--- First column
-    let tableHStack = AutoLayoutHorizontalStackView ()
-          .appendView (self.mTableView)
-          .appendView (self.mOutlineView)
+//    let tableHStack = AutoLayoutHorizontalStackView ()
+//          .appendView (self.mTableView)
+//          .appendView (self.mOutlineView)
     let firstColumn = AutoLayoutVerticalStackView ()
           .appendView (self.mSearchField)
-          .appendView (self.mSegmentedControl)
-          .appendView (tableHStack)
+          .appendView (self.mTableView)
+//          .appendView (self.mSegmentedControl)
+//          .appendView (tableHStack)
   //--- Second Column
     _ = self.mNoSelectedPartView.appendFlexibleSpace ()
     _ = self.mNoSelectedPartView.appendViewSurroundedByFlexibleSpaces (self.mNoSelectedPartTextField)
@@ -121,12 +125,12 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate, AutoLayoutOutlineVi
       contentAlignment: .left
     )
   //--- Configure outline view
-    self.mOutlineView.configure (
-      allowsEmptySelection: false,
-      allowsMultipleSelection: false,
-      rowCountCallBack: { [weak self] in self?.mTableViewFilteredDataSource.count ?? 0 },
-      delegate: self
-    )
+//    self.mOutlineView.configure (
+//      allowsEmptySelection: false,
+//      allowsMultipleSelection: false,
+//      rowCountCallBack: { [weak self] in self?.mTableViewFilteredDataSource.count ?? 0 },
+//      delegate: self
+//    )
 //    self.mOutlineView.addColumn_NSImage (
 //      valueGetterDelegate: { [weak self] in self?.mTableViewFilteredDataSource [$0].statusImage () },
 //      valueSetterDelegate: nil,
@@ -137,16 +141,16 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate, AutoLayoutOutlineVi
 //      headerAlignment: .left,
 //      contentAlignment: .center
 //    )
-    self.mOutlineView.addColumn_String (
-      valueGetterDelegate: { [weak self] in self?.mTableViewFilteredDataSource [$0].mPartName },
-      valueSetterDelegate: nil,
-      sortDelegate: nil,
-      title: "Name",
-      minWidth: 250,
-      maxWidth: 2_000,
-      headerAlignment: .left,
-      contentAlignment: .left
-    )
+//    self.mOutlineView.addColumn_String (
+//      valueGetterDelegate: { [weak self] in self?.mTableViewFilteredDataSource [$0].mPartName },
+//      valueSetterDelegate: nil,
+//      sortDelegate: nil,
+//      title: "Name",
+//      minWidth: 250,
+//      maxWidth: 2_000,
+//      headerAlignment: .left,
+//      contentAlignment: .left
+//    )
   }
 
   //····················································································································
@@ -159,7 +163,7 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate, AutoLayoutOutlineVi
     self.mNoSelectedPartView.isHidden = false
     self.buildDataSource (alreadyLoadedDocuments: inNames)
     self.mTableView.sortAndReloadData ()
-    self.mOutlineView.sortAndReloadData ()
+//    self.mOutlineView.sortAndReloadData ()
   }
 
   //····················································································································
@@ -198,24 +202,24 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate, AutoLayoutOutlineVi
 
   final func openDocumentInLibrary (windowTitle inTitle : String) {
   //--- Configure table view and outline view visibility
-    let displayBoth = NSEvent.modifierFlags.contains (.option)
-    if displayBoth {
-      self.mSegmentedControl.isHidden = true
-      self.mSegmentedControlIndexObserver = nil
-      self.mTableView.isHidden = false
-      self.mOutlineView.isHidden = false
-    }else{
-      let observer = EBOutletEvent ()
-      self.mSegmentedControlIndexObserver = observer
-      self.mSegmentedControlIndex.addEBObserver (observer)
-      observer.mEventCallBack = { [weak self] in
-        if let uwSelf = self {
-          uwSelf.mTableView.isHidden = uwSelf.mSegmentedControlIndex.propval == 1
-          uwSelf.mOutlineView.isHidden = uwSelf.mSegmentedControlIndex.propval == 0
-        }
-      }
-      self.mSegmentedControl.isHidden = false
-    }
+//    let displayBoth = NSEvent.modifierFlags.contains (.option)
+//    if displayBoth {
+//      self.mSegmentedControl.isHidden = true
+//      self.mSegmentedControlIndexObserver = nil
+//      self.mTableView.isHidden = false
+//      self.mOutlineView.isHidden = false
+//    }else{
+//      let observer = EBOutletEvent ()
+//      self.mSegmentedControlIndexObserver = observer
+//      self.mSegmentedControlIndex.addEBObserver (observer)
+//      observer.mEventCallBack = { [weak self] in
+//        if let uwSelf = self {
+//          uwSelf.mTableView.isHidden = uwSelf.mSegmentedControlIndex.propval == 1
+//          uwSelf.mOutlineView.isHidden = uwSelf.mSegmentedControlIndex.propval == 0
+//        }
+//      }
+//      self.mSegmentedControl.isHidden = false
+//    }
   //--- Configure
     self.mDialog.title = inTitle
     self.configureWith (alreadyLoadedDocuments: [])
@@ -230,7 +234,7 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate, AutoLayoutOutlineVi
     self.mTableViewDataSource = []
     self.mTableViewFilteredDataSource = []
     self.mTableView.sortAndReloadData ()
-    self.mOutlineView.sortAndReloadData ()
+//    self.mOutlineView.sortAndReloadData ()
   }
 
   //····················································································································
@@ -290,7 +294,7 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate, AutoLayoutOutlineVi
         }
       }
     //--- Build data source arraies
-      var tableViewDataSource = [OpenInLibraryDialogItem] ()
+      var tableViewDataSource = [OpenInLibraryDialogFlatItem] ()
       for path in existingLibraryPathArray () {
         let baseDirectory = self.partLibraryPathForPath (path)
         var isDirectory : ObjCBool = false
@@ -319,51 +323,51 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate, AutoLayoutOutlineVi
   //   AutoLayoutOutlineViewDelegate protocol methods
   //····················································································································
 
-  final func outlineViewDelegate_selectionDidChange (selectedRows inSelectedRows : IndexSet) {
-    let selectedRow = self.mOutlineView.selectedRow
-    if selectedRow >= 0 {
-      let selectedPart = self.mTableViewFilteredDataSource [selectedRow]
-      self.mStatusTextField.stringValue = selectedPart.statusString ()
-      self.mFullPathTextField.stringValue = selectedPart.mFullPath
-      self.mOpenButton.isEnabled = true
-      self.mPartImage.image = selectedPart.image
-      self.mPartImage.isHidden = false
-      self.mNoSelectedPartView.isHidden = true
-    }else{
-      self.mStatusTextField.stringValue = "—"
-      self.mFullPathTextField.stringValue = "—"
-      self.mOpenButton.isEnabled = false
-      self.mPartImage.image = nil
-      self.mPartImage.isHidden = true
-      self.mNoSelectedPartView.isHidden = false
-    }
-  }
+//  final func outlineViewDelegate_selectionDidChange (selectedRows inSelectedRows : IndexSet) {
+//    let selectedRow = self.mOutlineView.selectedRow
+//    if selectedRow >= 0 {
+//      let selectedPart = self.mTableViewFilteredDataSource [selectedRow]
+//      self.mStatusTextField.stringValue = selectedPart.statusString ()
+//      self.mFullPathTextField.stringValue = selectedPart.mFullPath
+//      self.mOpenButton.isEnabled = true
+//      self.mPartImage.image = selectedPart.image
+//      self.mPartImage.isHidden = false
+//      self.mNoSelectedPartView.isHidden = true
+//    }else{
+//      self.mStatusTextField.stringValue = "—"
+//      self.mFullPathTextField.stringValue = "—"
+//      self.mOpenButton.isEnabled = false
+//      self.mPartImage.image = nil
+//      self.mPartImage.isHidden = true
+//      self.mNoSelectedPartView.isHidden = false
+//    }
+//  }
 
   //····················································································································
 
-  final func outlineViewDelegate_indexesOfSelectedObjects () -> IndexSet {
-    return .init ()
-  }
+//  final func outlineViewDelegate_indexesOfSelectedObjects () -> IndexSet {
+//    return .init ()
+//  }
 
   //····················································································································
 
-  final func outlineViewDelegate_addEntry () {
-  }
+//  final func outlineViewDelegate_addEntry () {
+//  }
 
   //····················································································································
 
-  final func outlineViewDelegate_removeSelectedEntries () {
-  }
+//  final func outlineViewDelegate_removeSelectedEntries () {
+//  }
 
   //····················································································································
 
-  final func outlineViewDelegate_beginSorting () {
-  }
+//  final func outlineViewDelegate_beginSorting () {
+//  }
 
   //····················································································································
 
-  final func outlineViewDelegate_endSorting () {
-  }
+//  final func outlineViewDelegate_endSorting () {
+//  }
 
   //····················································································································
   //   AutoLayoutTableViewDelegate protocol methods
@@ -434,7 +438,7 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate, AutoLayoutOutlineVi
     }
     self.mTableViewFilteredDataSource.sort { $0.mPartName < $1.mPartName }
     self.mTableView.sortAndReloadData ()
-    self.mOutlineView.sortAndReloadData ()
+//    self.mOutlineView.sortAndReloadData ()
   }
 
   //····················································································································
@@ -443,32 +447,9 @@ class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate, AutoLayoutOutlineVi
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension Array where Element == OpenInLibraryDialogItem {
+@MainActor fileprivate final class OpenInLibraryDialogFlatItem : EBSwiftBaseObject {
 
   //····················································································································
-
-  @MainActor fileprivate mutating func enterPart (
-         _ inPathAsArray : [String],
-         _ inFullpath : String,
-         _ inIsDuplicated : Bool,
-         _ inIsAlreadyLoaded : Bool,
-         _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> NSImage?) {
-    if inPathAsArray.count == 1 {
-      self.append (OpenInLibraryDialogItem (inPathAsArray [0], inFullpath, inIsDuplicated, inIsAlreadyLoaded, inBuildPreviewShapeFunction))
-    }else{
-      var pathAsArray = inPathAsArray
-      pathAsArray.remove (at: 0)
-      self.enterPart (pathAsArray, inFullpath, inIsDuplicated, inIsAlreadyLoaded, inBuildPreviewShapeFunction)
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor fileprivate final class OpenInLibraryDialogItem : EBSwiftBaseObject {
 
   let mPartName : String
   let mIsDuplicated : Bool
@@ -602,5 +583,194 @@ extension Array where Element == OpenInLibraryDialogItem {
   //····················································································································
 
 }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension Array where Element == OpenInLibraryDialogFlatItem {
+
+  //····················································································································
+
+  @MainActor fileprivate mutating func enterPart (
+         _ inPathAsArray : [String],
+         _ inFullpath : String,
+         _ inIsDuplicated : Bool,
+         _ inIsAlreadyLoaded : Bool,
+         _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> NSImage?) {
+    if inPathAsArray.count == 1 {
+      self.append (OpenInLibraryDialogFlatItem (inPathAsArray [0], inFullpath, inIsDuplicated, inIsAlreadyLoaded, inBuildPreviewShapeFunction))
+    }else{
+      var pathAsArray = inPathAsArray
+      pathAsArray.remove (at: 0)
+      self.enterPart (pathAsArray, inFullpath, inIsDuplicated, inIsAlreadyLoaded, inBuildPreviewShapeFunction)
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+//@MainActor fileprivate final class OpenInLibraryDialogHierarchicalItem : EBSwiftBaseObject {
+//
+//  //····················································································································
+//
+//  let mPartName : String
+//  let mIsDuplicated : Bool
+//  let mIsAlreadyLoaded : Bool
+//  let mFullPath : String
+//  private var mPartStatus : MetadataStatus? = nil
+//  private var mObjectImage : NSImage? = nil
+//  private let mBuildPreviewShapeFunction : (_ inRootObject : EBManagedObject?) -> NSImage?
+//
+//  //····················································································································
+//
+//  init (_ inPartName : String,
+//        _ inFullPath : String,
+//        _ inIsDuplicated : Bool,
+//        _ inIsAlreadyLoaded : Bool,
+//        _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> NSImage?) {
+//    self.mPartName = inPartName
+//    self.mFullPath = inFullPath
+//    self.mIsDuplicated = inIsDuplicated
+//    self.mIsAlreadyLoaded = inIsAlreadyLoaded
+//    self.mBuildPreviewShapeFunction = inBuildPreviewShapeFunction
+//  }
+//
+//  //····················································································································
+//
+//  func statusString () -> String {
+//    if self.mFullPath.isEmpty {
+//      return ""
+//    }else if self.mIsAlreadyLoaded {
+//      return "Already loaded"
+//    }else if self.mIsDuplicated {
+//      return "Duplicated"
+//    }else{
+//      do{
+//        switch try self.partStatus () {
+//        case .unknown :
+//          return "Unknown"
+//        case .ok :
+//          return "Ok"
+//        case .error :
+//          return "This part has error(s)"
+//        case .warning :
+//          return "This part has warning(s)"
+//        }
+//      }catch _ {
+//        return "This part cannot be read"
+//      }
+//    }
+//  }
+//
+//  //····················································································································
+//
+//  func statusImage () -> NSImage? {
+//    if self.mFullPath.isEmpty {
+//      return nil
+//    }else if self.mIsDuplicated || self.mIsAlreadyLoaded {
+//      return NSImage.statusError
+//    }else{
+//      do{
+//      switch try self.partStatus () {
+//        case .unknown :
+//          return NSImage.statusNone
+//        case .ok :
+//          return NSImage.statusSuccess
+//        case .error :
+//          return NSImage.statusError
+//        case .warning :
+//          return NSImage.statusWarning
+//        }
+//      }catch _ {
+//        return NSImage (named: NSImage.Name ("exclamation"))
+//      }
+//    }
+//  }
+//
+//  //····················································································································
+//
+//  func partStatus () throws -> MetadataStatus {
+//    if let s = self.mPartStatus {
+//      return s
+//    }else if self.mFullPath != "" {
+//      self.mPartStatus = .error
+//      let metadata = try getFileMetadata (atPath: self.mFullPath)
+//      self.mPartStatus = metadata.metadataStatus
+//      return metadata.metadataStatus
+//    }else{
+//      return .error
+//    }
+//  }
+//
+//  //····················································································································
+//
+//  func partStatusOk () -> Bool {
+//    if let s = try? self.partStatus () {
+//      return s == .ok
+//    }else{
+//      return false
+//    }
+//  }
+//
+// //····················································································································
+//
+//  var image : NSImage {
+//    if let image = self.mObjectImage {
+//      return image
+//    }else{
+//      let image = self.buildImage ()
+//      self.mObjectImage = image
+//      return image
+//    }
+//  }
+//
+//  //····················································································································
+//
+//  private func buildImage () -> NSImage {
+//    var image : NSImage? = nil
+//    let fm = FileManager ()
+//    if let data = fm.contents (atPath: self.mFullPath) {
+//      let documentReadData = loadEasyBindingFile (fromData: data, documentName: self.mFullPath.lastPathComponent, undoManager: nil)
+//      switch documentReadData {
+//      case .ok (let documentData) :
+//        image = self.mBuildPreviewShapeFunction (documentData.documentRootObject)
+//      case .readError (let error) :
+//        let alert = NSAlert (error: error)
+//        _ = alert.runModal ()
+//      }
+//    }
+//    return image ?? NSImage ()
+//  }
+//
+//  //····················································································································
+//
+//}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+//extension Array where Element == OpenInLibraryDialogHierarchicalItem {
+//
+//  //····················································································································
+//
+//  @MainActor fileprivate mutating func enterPart (
+//         _ inPathAsArray : [String],
+//         _ inFullpath : String,
+//         _ inIsDuplicated : Bool,
+//         _ inIsAlreadyLoaded : Bool,
+//         _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> NSImage?) {
+//    if inPathAsArray.count == 1 {
+//      self.append (OpenInLibraryDialogHierarchicalItem (inPathAsArray [0], inFullpath, inIsDuplicated, inIsAlreadyLoaded, inBuildPreviewShapeFunction))
+//    }else{
+//      var pathAsArray = inPathAsArray
+//      pathAsArray.remove (at: 0)
+//      self.enterPart (pathAsArray, inFullpath, inIsDuplicated, inIsAlreadyLoaded, inBuildPreviewShapeFunction)
+//    }
+//  }
+//
+//  //····················································································································
+//
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
