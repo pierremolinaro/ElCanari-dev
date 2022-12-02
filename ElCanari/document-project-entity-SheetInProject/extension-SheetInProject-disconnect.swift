@@ -46,10 +46,14 @@ extension SheetInProject {
       }
     //--- Reassign nets
       var usedNets = EBReferenceSet <NetInProject> ()
+      // Swift.print ("subnetsWithSymbolPin \(subnetsWithSymbolPin.count)")
       for subnet in subnetsWithSymbolPin {
+        // Swift.print ("subnet \(subnet.count)")
         let point = subnet.first!
         let noConnection = (point.mLabels.count + point.mWiresP1s.count + point.mWiresP2s.count) == 0
+        // Swift.print ("noConnection \(noConnection)")
         if noConnection { // Remove from net
+          // Swift.print ("netName \(point.mNet?.mNetName)")
           point.mNet = nil
         }else{
           var net = point.mNet!
@@ -58,8 +62,8 @@ extension SheetInProject {
           }else{
             usedNets.insert (net)
           }
-          for point in subnet.values {
-            point.mNet = net
+          for p in subnet.values {
+            p.mNet = net
           }
         }
       }
