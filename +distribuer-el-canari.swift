@@ -33,6 +33,7 @@ let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
+  "Correction de l'observation de la suppression d'un objet"
 ]
 let CHANGES : [String] = [
 ]
