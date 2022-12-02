@@ -60,43 +60,31 @@ class EBObservedObject : EBSwiftBaseObject {
   //····················································································································
 
   private final var mObservers = EBWeakEventSet ()
-//  private final var mMutex = DispatchSemaphore (value: 1)
 
   //····················································································································
 
   final func addEBObserver (_ inObserver : EBObserverProtocol) {
-//    self.mMutex.wait ()
-//    Task {
-      self.mObservers.insert (inObserver)
-//    }
+    self.mObservers.insert (inObserver)
     inObserver.observedObjectDidChange ()
-//    self.mMutex.signal ()
   }
 
   //····················································································································
 
   final func removeEBObserver (_ inObserver : EBObserverProtocol) {
-//    self.mMutex.wait ()
-//    Task {
-      self.mObservers.remove (inObserver)
-//    }
-//    self.mMutex.signal ()
+    self.mObservers.remove (inObserver)
+    inObserver.observedObjectDidChange ()
   }
 
   //····················································································································
 
   func observedObjectDidChange () {
-//    self.mMutex.wait ()
-//    Task {
-      for (_, entry) in self.mObservers.dictionary {
-        if let observer = entry.possibleObserver {
-          observer.observedObjectDidChange ()
-        }else{
-          self.mObservers.triggerPacking ()
-        }
+    for (_, entry) in self.mObservers.dictionary {
+      if let observer = entry.possibleObserver {
+        observer.observedObjectDidChange ()
+      }else{
+        self.mObservers.triggerPacking ()
       }
-//    }
-//    self.mMutex.signal ()
+    }
   }
 
   //····················································································································
