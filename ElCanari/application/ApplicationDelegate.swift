@@ -48,7 +48,7 @@ let SU_LAST_CHECK_TIME = "SULastCheckTime"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor @objc (ApplicationDelegate) final class ApplicationDelegate : NSObject, NSApplicationDelegate, NSMenuItemValidation {
+@main @MainActor final class ApplicationDelegate : NSObject, NSApplicationDelegate, NSMenuItemValidation {
 
   //····················································································································
   //  init

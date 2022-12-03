@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="EBApplication">
@@ -463,7 +463,7 @@
             </items>
             <point key="canvasLocation" x="-730" y="-1938"/>
         </menu>
-        <customObject id="212" userLabel="Application Delegate" customClass="ApplicationDelegate">
+        <customObject id="212" userLabel="Application Delegate" customClass="ApplicationDelegate" customModule="ElCanari" customModuleProvider="target">
             <connections>
                 <outlet property="mCheckNowForUpdateMenuItem" destination="1186" id="yVp-G6-p2r"/>
                 <outlet property="mOpenDeviceInLibraryMenuItem" destination="1323" id="mQ2-0a-dRS"/>
@@ -473,7 +473,7 @@
                 <outlet property="mUpDateLibraryMenuItemInCanariMenu" destination="tfP-CB-tqy" id="JtM-EN-e4x"/>
             </connections>
         </customObject>
-        <customObject id="lAs-GB-mIJ" userLabel="Preferences" customClass="Preferences">
+        <customObject id="lAs-GB-mIJ" userLabel="Preferences" customClass="Preferences" customModule="ElCanari" customModuleProvider="target">
             <connections>
                 <outlet property="mMenuRevealInFinder_artworks" destination="1469" id="0Ra-8e-L6n"/>
                 <outlet property="mMenuRevealInFinder_devices" destination="1462" id="sbT-Ii-sGw"/>

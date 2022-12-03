@@ -28,17 +28,16 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.6.4"
+let VERSION_CANARI = "1.6.5"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Correction de l'observation de la suppression d'un objet"
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-  "Duplication des inspecteurs dans la saisie du schéma d'un projet"
+//  "Duplication des inspecteurs dans la saisie du schéma d'un projet"
 ]
 
 //--------------------------------------------------------------------------------------------------

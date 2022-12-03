@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Preferences) final class Preferences : Preferences_SuperClass, NSWindowDelegate {
+final class Preferences : Preferences_SuperClass, NSWindowDelegate {
 
   //····················································································································
 
