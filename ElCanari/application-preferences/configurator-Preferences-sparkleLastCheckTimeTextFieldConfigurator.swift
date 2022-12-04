@@ -23,7 +23,7 @@ extension Preferences {
         inOutlet.bind (
           NSBindingName.value,
           to: UserDefaults.standard,
-          withKeyPath: SU_LAST_CHECK_TIME,
+          withKeyPath: "SULastCheckTime",
           options: nil
         )
 //--- END OF USER ZONE 2
