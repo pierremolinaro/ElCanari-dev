@@ -11,10 +11,10 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func addComponentFromEmbeddedLibraryAction (_ sender : NSObject?) {
+  @objc func addComponentFromEmbeddedLibraryAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
        // NSLog ("sender \(sender)")
-       if let pullDownButton = sender as? NSPopUpButton, let menuItem = pullDownButton.selectedItem {
+       if let pullDownButton = inSender as? NSPopUpButton, let menuItem = pullDownButton.selectedItem {
          let deviceName = menuItem.title
         //Swift.print ("deviceName \(deviceName)")
          self.addComponent (fromEmbeddedLibraryDeviceName: deviceName)

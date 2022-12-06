@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutPackageDocument {
-  @objc func removeModelImageAction (_ sender : NSObject?) {
+  @objc func removeModelImageAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     self.rootObject.mModelImageData = Data ()
     self.rootObject.reset_mModelImageFirstPointXOnLock_toDefaultValue ()

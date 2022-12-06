@@ -11,9 +11,9 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func changeLayerConfigurationAction (_ sender : NSObject?) {
+  @objc func changeLayerConfigurationAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let popupButton = sender as? NSPopUpButton,
+    if let popupButton = inSender as? NSPopUpButton,
        let newLayerConfiguration = LayerConfiguration (rawValue: popupButton.indexOfSelectedItem) {
     //--- Current layer configuration
        let currentLayerConfiguration = self.rootObject.mLayerConfiguration

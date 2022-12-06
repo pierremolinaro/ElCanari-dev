@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func appendNewSchematicHotKeysInspectorAction (_ sender : NSObject?) {
+  @objc func appendNewSchematicHotKeysInspectorAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         if let hBaseStack = self.mSchematicsView?.superview as? AutoLayoutHorizontalStackView {
           append (inspector: self.schematicsHotKeysInspectorView (), toHStack: hBaseStack)

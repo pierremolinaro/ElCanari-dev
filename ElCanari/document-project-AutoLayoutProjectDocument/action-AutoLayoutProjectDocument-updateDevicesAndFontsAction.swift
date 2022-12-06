@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func updateDevicesAndFontsAction (_ sender : NSObject?) {
+  @objc func updateDevicesAndFontsAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         var messages = [String] ()
         self.updateDevices (self.rootObject.mDevices, &messages)

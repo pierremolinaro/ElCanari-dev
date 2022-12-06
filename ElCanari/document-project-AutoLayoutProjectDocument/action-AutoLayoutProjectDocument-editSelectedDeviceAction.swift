@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func editSelectedDeviceAction (_ sender : NSObject?) {
+  @objc func editSelectedDeviceAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         let selectedDevices = self.projectDeviceController.selectedArray
         let dc = NSDocumentController.shared

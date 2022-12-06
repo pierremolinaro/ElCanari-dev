@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutDeviceDocument {
-  @objc func exportSelectedPackages (_ sender : NSObject?) {
+  @objc func exportSelectedPackages (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     let selectedPackages = self.packageController.selectedArray
     for package in selectedPackages.values {

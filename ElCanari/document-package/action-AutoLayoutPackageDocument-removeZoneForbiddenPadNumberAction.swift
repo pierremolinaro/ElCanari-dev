@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutPackageDocument {
-  @objc func removeZoneForbiddenPadNumberAction (_ sender : NSObject?) {
+  @objc func removeZoneForbiddenPadNumberAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     if self.mPackageZoneSelectionController.selectedArray.count == 1,
            let selectedItemTitle = self.mZoneForbiddenPadNumberTableView?.selectedItemTitle {

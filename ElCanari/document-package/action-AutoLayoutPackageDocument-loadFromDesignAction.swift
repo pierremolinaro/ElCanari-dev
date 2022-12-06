@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutPackageDocument {
-  @objc func loadFromDesignAction (_ sender : NSObject?) {
+  @objc func loadFromDesignAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     var program = ""
     for object in self.rootObject.packageObjects.values {

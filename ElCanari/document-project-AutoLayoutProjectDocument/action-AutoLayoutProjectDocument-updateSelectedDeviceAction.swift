@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func updateSelectedDeviceAction (_ sender : NSObject?) {
+  @objc func updateSelectedDeviceAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
           self.updateDeviceAction ()
 //--- END OF USER ZONE 2

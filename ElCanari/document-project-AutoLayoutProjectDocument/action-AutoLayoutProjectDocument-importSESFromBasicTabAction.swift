@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func importSESFromBasicTabAction (_ sender : NSObject?) {
+  @objc func importSESFromBasicTabAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     // This method is overriden in AutoLayoutProjectDocumentSubClass
 //--- END OF USER ZONE 2

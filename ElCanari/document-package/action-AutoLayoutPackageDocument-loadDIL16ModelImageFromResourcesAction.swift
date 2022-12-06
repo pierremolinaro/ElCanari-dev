@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutPackageDocument {
-  @objc func loadDIL16ModelImageFromResourcesAction (_ sender : NSObject?) {
+  @objc func loadDIL16ModelImageFromResourcesAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     if let tiffData = NSImage (named: "model-image-dil16")?.tiffRepresentation {
       self.mModelImageObjectsController.setBackgroundImageAffineTransform (NSAffineTransform ())

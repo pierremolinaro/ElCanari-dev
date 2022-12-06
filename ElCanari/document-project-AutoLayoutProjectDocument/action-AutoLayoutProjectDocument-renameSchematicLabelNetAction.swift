@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func renameSchematicLabelNetAction (_ sender : NSObject?) {
+  @objc func renameSchematicLabelNetAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
      let selectedLabels = self.schematicLabelSelectionController.selectedArray
      if selectedLabels.count == 1, let net = selectedLabels.values [0].mPoint?.mNet {

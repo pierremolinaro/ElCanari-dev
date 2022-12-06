@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func launchFreeRouterWithoutAnyDocument (_ sender : NSObject?) {
+  @objc func launchFreeRouterWithoutAnyDocument (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     self.checkSchematicsAndBeforeAndLaunchFreeRouteur {
       if let freeRouterApplication : URL = Bundle.main.url (forResource: "Freerouting", withExtension: "app") {

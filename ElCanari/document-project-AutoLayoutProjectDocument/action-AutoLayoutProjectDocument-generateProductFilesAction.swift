@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func generateProductFilesAction (_ sender : NSObject?) {
+  @objc func generateProductFilesAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         self.generateProductFiles ()
 //--- END OF USER ZONE 2

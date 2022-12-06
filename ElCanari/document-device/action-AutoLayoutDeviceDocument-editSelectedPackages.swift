@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutDeviceDocument {
-  @objc func editSelectedPackages (_ sender : NSObject?) {
+  @objc func editSelectedPackages (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     let selectedPackages = self.packageController.selectedArray
     let dc = NSDocumentController.shared

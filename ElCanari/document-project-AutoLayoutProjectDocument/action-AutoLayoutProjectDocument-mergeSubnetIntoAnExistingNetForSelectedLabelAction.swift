@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func mergeSubnetIntoAnExistingNetForSelectedLabelAction (_ sender : NSObject?) {
+  @objc func mergeSubnetIntoAnExistingNetForSelectedLabelAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     let selectedLabels = self.schematicLabelSelectionController.selectedArray
     if selectedLabels.count == 1 {

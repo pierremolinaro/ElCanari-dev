@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutDeviceDocument {
-  @objc func updateSelectedPackages (_ sender : NSObject?) {
+  @objc func updateSelectedPackages (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     let selectedPackages = self.packageController.selectedArray_property.propval
     var okMessages = [String] ()

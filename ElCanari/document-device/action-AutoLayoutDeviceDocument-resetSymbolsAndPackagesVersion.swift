@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutDeviceDocument {
-  @objc func resetSymbolsAndPackagesVersion (_ sender : NSObject?) {
+  @objc func resetSymbolsAndPackagesVersion (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     for package in self.rootObject.mPackages_property.propval.values {
       package.mVersion = 0

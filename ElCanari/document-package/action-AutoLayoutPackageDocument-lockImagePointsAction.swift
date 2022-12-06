@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutPackageDocument {
-  @objc func lockImagePointsAction (_ sender : NSObject?) {
+  @objc func lockImagePointsAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         self.rootObject.mPointsAreLocked = true
 //--- END OF USER ZONE 2

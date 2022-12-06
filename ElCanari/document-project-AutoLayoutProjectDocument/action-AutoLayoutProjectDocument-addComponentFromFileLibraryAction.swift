@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func addComponentFromFileLibraryAction (_ sender : NSObject?) {
+  @objc func addComponentFromFileLibraryAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         if self.rootObject.mFonts.count == 0 {
           let alert = NSAlert ()

@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func importArtworkAction (_ sender : NSObject?) {
+  @objc func importArtworkAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         if let window = self.windowForSheet {
           openArtworkPanelInLibrary (

@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Preferences {
-  @objc func showSystemLibraryLogAction (_ sender : NSObject?) {
+  @objc func showSystemLibraryLogAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     let window = self.setUpLibraryUpdateLogWindow ()
     window.makeKeyAndOrderFront (nil)

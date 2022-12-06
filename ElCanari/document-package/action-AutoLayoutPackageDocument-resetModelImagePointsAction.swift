@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutPackageDocument {
-  @objc func resetModelImagePointsAction (_ sender : NSObject?) {
+  @objc func resetModelImagePointsAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     //--- Reset point image
       self.rootObject.mPointsAreLocked = false

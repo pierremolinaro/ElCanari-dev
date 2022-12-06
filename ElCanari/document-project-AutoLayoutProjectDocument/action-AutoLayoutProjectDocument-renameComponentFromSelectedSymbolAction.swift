@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func renameComponentFromSelectedSymbolAction (_ sender : NSObject?) {
+  @objc func renameComponentFromSelectedSymbolAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     let selectedObjects = self.schematicObjectsController.selectedArray_property.propval
     if selectedObjects.count == 1,

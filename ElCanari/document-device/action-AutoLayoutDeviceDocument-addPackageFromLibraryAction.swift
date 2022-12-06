@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutDeviceDocument {
-  @objc func addPackageFromLibraryAction (_ sender : NSObject?) {
+  @objc func addPackageFromLibraryAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
    var currentPackageNames = Set <String> ()
    for package in self.rootObject.mPackages.values {

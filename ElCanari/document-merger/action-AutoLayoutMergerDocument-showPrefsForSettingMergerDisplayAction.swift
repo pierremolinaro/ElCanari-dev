@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutMergerDocument {
-  @objc func showPrefsForSettingMergerDisplayAction (_ sender : NSObject?) {
+  @objc func showPrefsForSettingMergerDisplayAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
             self.rootObject.showDisplaySettingView = !self.rootObject.showDisplaySettingView
 //--- END OF USER ZONE 2

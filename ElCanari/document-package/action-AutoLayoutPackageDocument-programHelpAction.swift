@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutPackageDocument {
-  @objc func programHelpAction (_ sender : NSObject?) {
+  @objc func programHelpAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     if let window = self.windowForSheet {
       let sheet = NSPanel ()

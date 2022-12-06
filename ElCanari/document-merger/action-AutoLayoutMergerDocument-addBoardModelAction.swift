@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutMergerDocument {
-  @objc func addBoardModelAction (_ sender : NSObject?) {
+  @objc func addBoardModelAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         self.addBoardModel ()
 //--- END OF USER ZONE 2

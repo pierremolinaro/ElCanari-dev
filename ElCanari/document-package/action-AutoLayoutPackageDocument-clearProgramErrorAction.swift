@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutPackageDocument {
-  @objc func clearProgramErrorAction (_ sender : NSObject?) {
+  @objc func clearProgramErrorAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     self.clearError ()
 //--- END OF USER ZONE 2

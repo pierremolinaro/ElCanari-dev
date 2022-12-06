@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutArtworkDocument {
-  @objc func resetVersionAndSignatureAction (_ sender : NSObject?) {
+  @objc func resetVersionAndSignatureAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
           self.resetVersionAndSignature ()
 //--- END OF USER ZONE 2

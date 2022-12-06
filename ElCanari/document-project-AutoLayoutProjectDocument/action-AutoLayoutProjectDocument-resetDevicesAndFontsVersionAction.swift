@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func resetDevicesAndFontsVersionAction (_ sender : NSObject?) {
+  @objc func resetDevicesAndFontsVersionAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
        for device in self.rootObject.mDevices.values {
          device.mDeviceVersion = 0

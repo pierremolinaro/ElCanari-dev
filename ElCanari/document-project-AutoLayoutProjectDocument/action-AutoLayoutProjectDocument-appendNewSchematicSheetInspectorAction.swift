@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func appendNewSchematicSheetInspectorAction (_ sender : NSObject?) {
+  @objc func appendNewSchematicSheetInspectorAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         if let hBaseStack = self.mSchematicsView?.superview as? AutoLayoutHorizontalStackView {
           append (inspector: self.schematicsSheetInspectorView (), toHStack: hBaseStack)

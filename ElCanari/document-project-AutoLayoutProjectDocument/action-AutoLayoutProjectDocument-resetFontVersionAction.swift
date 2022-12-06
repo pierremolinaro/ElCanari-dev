@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func resetFontVersionAction (_ sender : NSObject?) {
+  @objc func resetFontVersionAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         let selectedFonts = self.projectFontController.selectedArray_property.propval
         for font in selectedFonts.values {

@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func selectAllConnectedElementsInSchematicsAction (_ sender : NSObject?) {
+  @objc func selectAllConnectedElementsInSchematicsAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     _ = self.selectAllConnectedElementsInSchematics ()
 //--- END OF USER ZONE 2

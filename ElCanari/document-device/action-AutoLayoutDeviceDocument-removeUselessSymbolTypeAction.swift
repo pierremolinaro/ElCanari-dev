@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutDeviceDocument {
-  @objc func removeUselessSymbolTypeAction (_ sender : NSObject?) {
+  @objc func removeUselessSymbolTypeAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     if self.symbolTypeController.selectedArray.count == 1 {
       let selectedSymbolType = self.symbolTypeController.selectedArray [0]

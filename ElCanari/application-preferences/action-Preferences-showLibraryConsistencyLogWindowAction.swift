@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Preferences {
-  @objc func showLibraryConsistencyLogWindowAction (_ sender : NSObject?) {
+  @objc func showLibraryConsistencyLogWindowAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     let window = self.buildLibraryConsistencyLogWindow ()
 //    if inFlag {

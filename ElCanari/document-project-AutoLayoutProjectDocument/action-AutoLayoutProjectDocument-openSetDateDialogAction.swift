@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func openSetDateDialogAction (_ sender : NSObject?) {
+  @objc func openSetDateDialogAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     if let window = self.windowForSheet {
       let panel = NSPanel (

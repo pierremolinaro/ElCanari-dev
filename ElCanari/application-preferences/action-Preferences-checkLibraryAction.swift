@@ -11,10 +11,10 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Preferences {
-  @objc func checkLibraryAction (_ sender : NSObject?) {
+  @objc func checkLibraryAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     _ = self.buildLibraryConsistencyLogWindow ()
-    if let button = sender as? NSButton,
+    if let button = inSender as? NSButton,
        let myWindow = button.window,
        let logView = self.mLibraryConsistencyLogTextView {
       checkLibrary (myWindow, logView: logView)

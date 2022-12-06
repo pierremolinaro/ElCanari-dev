@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func deleteSheetAction (_ sender : NSObject?) {
+  @objc func deleteSheetAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
       if self.rootObject.mSheets.count > 1,
          let selectedSheet = self.rootObject.mSelectedSheet,

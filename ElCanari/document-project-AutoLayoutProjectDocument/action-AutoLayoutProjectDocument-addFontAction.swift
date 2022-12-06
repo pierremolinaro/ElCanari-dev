@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func addFontAction (_ sender : NSObject?) {
+  @objc func addFontAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
          self.addFont (postAction: nil)
 //--- END OF USER ZONE 2

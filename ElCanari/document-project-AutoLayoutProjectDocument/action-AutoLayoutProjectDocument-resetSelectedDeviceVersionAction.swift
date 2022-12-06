@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func resetSelectedDeviceVersionAction (_ sender : NSObject?) {
+  @objc func resetSelectedDeviceVersionAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         for device in self.projectDeviceController.selectedArray.values {
           device.mDeviceVersion = 0

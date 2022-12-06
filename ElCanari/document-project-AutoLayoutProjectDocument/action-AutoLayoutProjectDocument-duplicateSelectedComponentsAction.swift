@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func duplicateSelectedComponentsAction (_ sender : NSObject?) {
+  @objc func duplicateSelectedComponentsAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         var newComponents = [ComponentInProject] ()
         for selectedComponent in self.componentController.selectedArray_property.propval.values {

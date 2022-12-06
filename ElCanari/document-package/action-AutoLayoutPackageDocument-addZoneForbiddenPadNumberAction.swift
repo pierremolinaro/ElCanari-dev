@@ -32,7 +32,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutPackageDocument {
-  @objc func addZoneForbiddenPadNumberAction (_ sender : NSObject?) {
+  @objc func addZoneForbiddenPadNumberAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     if self.mPackageZoneSelectionController.selectedArray.count == 1, let window = self.windowForSheet {
       let selectedZone = self.mPackageZoneSelectionController.selectedArray [0]

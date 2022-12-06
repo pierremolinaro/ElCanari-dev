@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutDeviceDocument {
-  @objc func exportSelectedSymbols (_ sender : NSObject?) {
+  @objc func exportSelectedSymbols (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     let selectedSymbolTypes = self.symbolTypeController.selectedArray
     for symbolType in selectedSymbolTypes.values {

@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func performERCCheckingAction (_ sender : NSObject?) {
+  @objc func performERCCheckingAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     let ok = self.performERCChecking ()
     if !ok && (self.rootObject.mBoardSelectedInspector != 5) {

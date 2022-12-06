@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func renameWireNetWithNewAutomaticNameAction (_ sender : NSObject?) {
+  @objc func renameWireNetWithNewAutomaticNameAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
      var netSet = EBReferenceSet <NetInProject> ()
      for wire in self.wireInSchematicSelectionController.selectedArray.values {

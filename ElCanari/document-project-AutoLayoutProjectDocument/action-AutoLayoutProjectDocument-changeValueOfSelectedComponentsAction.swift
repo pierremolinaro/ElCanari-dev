@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func changeValueOfSelectedComponentsAction (_ sender : NSObject?) {
+  @objc func changeValueOfSelectedComponentsAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
          var possibleValues = Set <String> ()
          var componentNames = [String] ()

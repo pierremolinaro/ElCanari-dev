@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Preferences {
-  @objc func checkSystemLibraryUpdateAction (_ sender : NSObject?) {
+  @objc func checkSystemLibraryUpdateAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     if let logTextView = g_Preferences?.mLibraryUpdateLogTextView {
       let optionKey : Bool = NSApplication.shared.currentEvent?.modifierFlags.contains (.option) ?? false

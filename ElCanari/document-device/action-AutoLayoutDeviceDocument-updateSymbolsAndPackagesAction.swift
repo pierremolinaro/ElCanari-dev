@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutDeviceDocument {
-  @objc func updateSymbolsAndPackagesAction (_ sender : NSObject?) {
+  @objc func updateSymbolsAndPackagesAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     var okMessages = [String] ()
     var errorMessages = [String] ()

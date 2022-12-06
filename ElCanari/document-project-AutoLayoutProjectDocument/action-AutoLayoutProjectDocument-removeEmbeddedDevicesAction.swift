@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func removeEmbeddedDevicesAction (_ sender : NSObject?) {
+  @objc func removeEmbeddedDevicesAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
        for device in self.rootObject.mDevices.values {
          device.mDeviceFileData = Data ()

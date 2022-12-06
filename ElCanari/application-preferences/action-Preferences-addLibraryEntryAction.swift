@@ -11,14 +11,14 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Preferences {
-  @objc func addLibraryEntryAction (_ sender : NSObject?) {
+  @objc func addLibraryEntryAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     let op = NSOpenPanel ()
     op.allowsMultipleSelection = false
     op.canChooseDirectories = true
     op.canChooseFiles = false
     op.beginSheetModal (
-      for: (sender as! NSButton).window!,
+      for: (inSender as! NSButton).window!,
       completionHandler: { (inReturnCode : NSApplication.ModalResponse) in
         if inReturnCode == .OK {
           let URLToAdd : URL = op.urls [0]

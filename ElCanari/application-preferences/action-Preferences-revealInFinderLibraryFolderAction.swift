@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Preferences {
-  @objc func revealInFinderLibraryFolderAction (_ sender : NSObject?) {
+  @objc func revealInFinderLibraryFolderAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         let array = preferences_userLibraryArrayController.selectedArray_property.propval
         if array.count == 1 {

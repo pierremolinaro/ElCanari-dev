@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutDeviceDocument {
-  @objc func updateSelectedSymbols (_ sender : NSObject?) {
+  @objc func updateSelectedSymbols (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     let selectedSymbols = self.symbolTypeController.selectedArray
     let fm = FileManager ()

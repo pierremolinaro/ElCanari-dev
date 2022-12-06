@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func removeSelectedComponentsAction (_ sender : NSObject?) {
+  @objc func removeSelectedComponentsAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         self.removeSelectedComponents ()
 //--- END OF USER ZONE 2

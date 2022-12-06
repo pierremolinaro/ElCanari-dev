@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func removeSelectedDeviceAction (_ sender : NSObject?) {
+  @objc func removeSelectedDeviceAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         let selectedDevices = self.projectDeviceController.selectedArray_property.propval
         var allDevices = self.rootObject.mDevices_property.propval

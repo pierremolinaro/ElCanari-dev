@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func renameSelectedComponentsAction (_ sender : NSObject?) {
+  @objc func renameSelectedComponentsAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         let selectedComponents = self.componentController.selectedArray_property.propval
         if selectedComponents.count == 1 {

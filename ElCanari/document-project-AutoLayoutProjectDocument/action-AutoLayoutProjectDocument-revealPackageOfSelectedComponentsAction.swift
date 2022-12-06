@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func revealPackageOfSelectedComponentsAction (_ sender : NSObject?) {
+  @objc func revealPackageOfSelectedComponentsAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     var componentToSelect = [BoardObject] ()
     var r = NSRect.null

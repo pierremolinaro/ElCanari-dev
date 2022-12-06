@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutFontDocument {
-  @objc func addSegmentAction (_ sender : NSObject?) {
+  @objc func addSegmentAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
           self.mFontGraphicView?.appendSegment ()
 //--- END OF USER ZONE 2

@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func insulateSubnetFromCurrentNetForSelectedLabelAction (_ sender : NSObject?) {
+  @objc func insulateSubnetFromCurrentNetForSelectedLabelAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     let selectedLabels = self.schematicLabelSelectionController.selectedArray
     if selectedLabels.count == 1 {

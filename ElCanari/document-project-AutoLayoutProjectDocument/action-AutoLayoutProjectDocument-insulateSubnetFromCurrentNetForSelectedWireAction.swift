@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func insulateSubnetFromCurrentNetForSelectedWireAction (_ sender : NSObject?) {
+  @objc func insulateSubnetFromCurrentNetForSelectedWireAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     let selectedWires = self.wireInSchematicSelectionController.selectedArray
     if selectedWires.count == 1, let point = selectedWires [0].mP1 {

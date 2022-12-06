@@ -11,9 +11,9 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func setComponentValueFontAction (_ sender : NSObject?) {
+  @objc func setComponentValueFontAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-        if let popUpButton = sender as? NSPopUpButton, let fontName = popUpButton.selectedItem?.title {
+        if let popUpButton = inSender as? NSPopUpButton, let fontName = popUpButton.selectedItem?.title {
           var boardFont : FontInProject? = nil
           for font in self.rootObject.mFonts.values {
             if font.mFontName == fontName {

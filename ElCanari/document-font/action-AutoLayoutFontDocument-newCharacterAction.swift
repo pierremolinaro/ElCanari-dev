@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutFontDocument {
-  @objc func newCharacterAction (_ sender : NSObject?) {
+  @objc func newCharacterAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     if let window = self.windowForSheet {
       let panel = NSPanel (

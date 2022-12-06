@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutDeviceDocument {
-  @objc func saveDocAction (_ sender : NSObject?) {
+  @objc func saveDocAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     let selectedDocArray = self.documentationController.selectedArray_property.propval
     if selectedDocArray.count == 1 {

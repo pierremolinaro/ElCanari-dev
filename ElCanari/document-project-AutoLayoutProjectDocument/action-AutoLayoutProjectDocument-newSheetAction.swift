@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func newSheetAction (_ sender : NSObject?) {
+  @objc func newSheetAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         if let selectedSheet = self.rootObject.mSelectedSheet {
           let sheets = self.rootObject.mSheets

@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutPackageDocument {
-  @objc func setDimensionTextOriginAtMidYAction (_ sender : NSObject?) {
+  @objc func setDimensionTextOriginAtMidYAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     for object in self.mPackageObjectsController.selectedGraphicObjectSet.values {
       if let dim = object as? PackageDimension {

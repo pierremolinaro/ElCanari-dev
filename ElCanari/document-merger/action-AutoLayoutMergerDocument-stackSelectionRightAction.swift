@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutMergerDocument {
-  @objc func stackSelectionRightAction (_ sender : NSObject?) {
+  @objc func stackSelectionRightAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         self.stackRight (overlap: self.rootObject.overlapingArrangment, objectSet: self.mBoardInstanceController.selectedSet)
 //--- END OF USER ZONE 2

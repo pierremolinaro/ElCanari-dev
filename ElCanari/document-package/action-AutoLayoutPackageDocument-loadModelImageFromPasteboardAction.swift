@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutPackageDocument {
-  @objc func loadModelImageFromPasteboardAction (_ sender : NSObject?) {
+  @objc func loadModelImageFromPasteboardAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     func buildFrom (data inData : Data) {
       self.mModelImageObjectsController.setBackgroundImageAffineTransform (NSAffineTransform ())

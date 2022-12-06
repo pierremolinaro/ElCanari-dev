@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutFontDocument {
-  @objc func deleteCurrentCharacterAction (_ sender : NSObject?) {
+  @objc func deleteCurrentCharacterAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
       //--- Search character
         var charArray = self.rootObject.characters_property.propval

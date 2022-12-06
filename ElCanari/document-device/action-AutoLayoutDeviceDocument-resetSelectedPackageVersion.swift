@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutDeviceDocument {
-  @objc func resetSelectedPackageVersion (_ sender : NSObject?) {
+  @objc func resetSelectedPackageVersion (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     let selectedPackages = self.packageController.selectedArray_property.propval
     for package in selectedPackages.values {

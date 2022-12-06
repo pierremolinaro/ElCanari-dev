@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func removeFontAction (_ sender : NSObject?) {
+  @objc func removeFontAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         let selectedFonts = self.projectFontController.selectedArray_property.propval
         var allFonts = self.rootObject.mFonts_property.propval

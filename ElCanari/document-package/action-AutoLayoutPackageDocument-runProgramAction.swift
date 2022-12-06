@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutPackageDocument {
-  @objc func runProgramAction (_ sender : NSObject?) {
+  @objc func runProgramAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     self.runProgram ()
 //--- END OF USER ZONE 2

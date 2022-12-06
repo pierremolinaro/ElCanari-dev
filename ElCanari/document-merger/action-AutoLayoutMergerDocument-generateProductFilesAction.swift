@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutMergerDocument {
-  @objc func generateProductFilesAction (_ sender : NSObject?) {
+  @objc func generateProductFilesAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     switch self.issues_property.selection {
     case .multiple, .empty :

@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutMergerDocument {
-  @objc func dismissDisplaySettingView (_ sender : NSObject?) {
+  @objc func dismissDisplaySettingView (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
           self.rootObject.showDisplaySettingView = false
 //--- END OF USER ZONE 2

@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func changePackageOfSelectedComponentsAction (_ sender : NSObject?) {
+  @objc func changePackageOfSelectedComponentsAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
          self.changePackageOfSelectedComponents ()
 //--- END OF USER ZONE 2

@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func exportSelectedDeviceAction (_ sender : NSObject?) {
+  @objc func exportSelectedDeviceAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         let selectedDevices = self.projectDeviceController.selectedArray_property.propval
         var messages = [String] ()

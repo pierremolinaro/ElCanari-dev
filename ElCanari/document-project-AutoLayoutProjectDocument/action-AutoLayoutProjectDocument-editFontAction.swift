@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func editFontAction (_ sender : NSObject?) {
+  @objc func editFontAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         let selectedFonts = self.projectFontController.selectedArray_property.propval
         let dc = NSDocumentController.shared

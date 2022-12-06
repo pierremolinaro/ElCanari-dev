@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func renameSchematicWireNetAction (_ sender : NSObject?) {
+  @objc func renameSchematicWireNetAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
      let selectedWires = self.wireInSchematicSelectionController.selectedArray
      if selectedWires.count == 1, let net = selectedWires [0].mP1?.mNet {

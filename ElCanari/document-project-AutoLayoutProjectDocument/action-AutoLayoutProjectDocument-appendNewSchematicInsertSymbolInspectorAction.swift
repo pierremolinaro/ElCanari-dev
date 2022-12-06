@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func appendNewSchematicInsertSymbolInspectorAction (_ sender : NSObject?) {
+  @objc func appendNewSchematicInsertSymbolInspectorAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         if let hBaseStack = self.mSchematicsView?.superview as? AutoLayoutHorizontalStackView {
           append (inspector: self.schematicsInsertSymbolInSchematicView (), toHStack: hBaseStack)

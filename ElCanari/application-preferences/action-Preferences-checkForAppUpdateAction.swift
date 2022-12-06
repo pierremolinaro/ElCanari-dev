@@ -11,9 +11,9 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Preferences {
-  @objc func checkForAppUpdateAction (_ sender : NSObject?) {
+  @objc func checkForAppUpdateAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-        gApplicationDelegate?.checkForUpdatesAction (sender)
+        gApplicationDelegate?.checkForUpdatesAction (inSender)
 //--- END OF USER ZONE 2
   }
 }

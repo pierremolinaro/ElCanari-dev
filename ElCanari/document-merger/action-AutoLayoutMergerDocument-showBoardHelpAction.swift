@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutMergerDocument {
-  @objc func showBoardHelpAction (_ sender : NSObject?) {
+  @objc func showBoardHelpAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     let panel = NSPanel (
       contentRect: NSRect (x: 0, y: 0, width: 460, height: 180),

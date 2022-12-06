@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func exportDSNFileAction (_ sender : NSObject?) {
+  @objc func exportDSNFileAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     // This method is overriden in AutoLayoutProjectDocumentSubClass
 //--- END OF USER ZONE 2

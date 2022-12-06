@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func mergeSubnetIntoAnExistingNetForSelectedWireAction (_ sender : NSObject?) {
+  @objc func mergeSubnetIntoAnExistingNetForSelectedWireAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
       let selectedWires = self.wireInSchematicSelectionController.selectedArray
       if selectedWires.count == 1, let point = selectedWires [0].mP1 {

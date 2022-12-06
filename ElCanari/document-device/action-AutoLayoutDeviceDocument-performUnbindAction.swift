@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutDeviceDocument {
-  @objc func performUnbindAction (_ sender : NSObject?) {
+  @objc func performUnbindAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     if let selectedPadProxy = self.mAssignedPadProxyTableView?.selectedPadProxy {
       for padProxy in self.rootObject.mPadProxies.values {

@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Preferences {
-  @objc func removeLibraryEntryAction (_ sender : NSObject?) {
+  @objc func removeLibraryEntryAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         preferences_userLibraryArrayController.tableViewDelegate_removeSelectedEntries ()
 //--- END OF USER ZONE 2

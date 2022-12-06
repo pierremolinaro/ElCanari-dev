@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func selectNetClassAction (_ sender : NSObject?) {
+  @objc func selectNetClassAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     if let netInfo = self.mNetInfoTableView?.selectedNet {
       let netName = netInfo.netName

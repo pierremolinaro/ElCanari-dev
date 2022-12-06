@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutDeviceDocument {
-  @objc func performNCAction (_ sender : NSObject?) {
+  @objc func performNCAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         if let selectedName = self.mUnconnectedPadsInDeviceTableView?.selectedPadName {
           for padProxy in self.rootObject.mPadProxies.values {

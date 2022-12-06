@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func renameLabelNetWithNewAutomaticNameAction (_ sender : NSObject?) {
+  @objc func renameLabelNetWithNewAutomaticNameAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
      var netSet = EBReferenceSet <NetInProject> ()
      for label in self.schematicLabelSelectionController.selectedArray.values {

@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func setDateToNowAction (_ sender : NSObject?) {
+  @objc func setDateToNowAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         self.rootObject.mSchematicDate = Date ()
 //--- END OF USER ZONE 2

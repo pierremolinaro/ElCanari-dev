@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutPackageDocument {
-  @objc func copyModelImageAction (_ sender : NSObject?) {
+  @objc func copyModelImageAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     let imageData = self.rootObject.mModelImageData
     if !imageData.isEmpty {

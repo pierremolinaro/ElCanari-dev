@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func addNetClassAction (_ sender : NSObject?) {
+  @objc func addNetClassAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     self.performAddNetClass ()
 //--- END OF USER ZONE 2

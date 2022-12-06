@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Preferences {
-  @objc func revealUserLibraryInFinderAction (_ sender : NSObject?) {
+  @objc func revealUserLibraryInFinderAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     let ws = NSWorkspace.shared
     ws.open (URL (fileURLWithPath: userLibraryPath ()))

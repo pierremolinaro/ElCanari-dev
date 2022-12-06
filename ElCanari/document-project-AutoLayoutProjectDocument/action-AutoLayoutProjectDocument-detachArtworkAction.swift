@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func detachArtworkAction (_ sender : NSObject?) {
+  @objc func detachArtworkAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
             self.rootObject.mArtwork = nil
             self.rootObject.mArtworkName = ""

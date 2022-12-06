@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func removeNetClassAction (_ sender : NSObject?) {
+  @objc func removeNetClassAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         for netClass in self.netClassController.selectedArray.values {
           if let idx = self.rootObject.mNetClasses.firstIndex (of: netClass) {

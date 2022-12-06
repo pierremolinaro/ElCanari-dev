@@ -11,7 +11,7 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension AutoLayoutProjectDocument {
-  @objc func updateFontAction (_ sender : NSObject?) {
+  @objc func updateFontAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
         let selectedFonts = self.projectFontController.selectedArray
         var messages = [String] ()
