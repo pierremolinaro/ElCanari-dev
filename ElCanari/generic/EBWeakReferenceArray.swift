@@ -10,21 +10,21 @@ import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct EBWeakReferenceArray <T : AnyObject> {
+struct EBWeakReferenceArray <Element : AnyObject> {
 
   //····················································································································
 
-  private var mArray : [EBWeakArrayElement <T>]
+  private var mArray : [EBWeakArrayElement <Element>]
 
   //····················································································································
 
   init () {
-    self.mArray = [EBWeakArrayElement <T>] ()
+    self.mArray = [EBWeakArrayElement <Element>] ()
   }
 
   //····················································································································
 
-  mutating func append (_ inObject : T) {
+  mutating func append (_ inObject : Element) {
   //--- Remove nil elements
     let array = self.mArray
     self.mArray.removeAll ()
@@ -39,8 +39,8 @@ struct EBWeakReferenceArray <T : AnyObject> {
 
   //····················································································································
 
-  var values : [T] {
-    var result = [T] ()
+  var values : [Element] {
+    var result = [Element] ()
     for weakElement in self.mArray {
       if let element = weakElement.possibleElement {
         result.append (element)
@@ -51,7 +51,7 @@ struct EBWeakReferenceArray <T : AnyObject> {
 
   //····················································································································
 
-  func contains (_ inElement : T) -> Bool {
+  func contains (_ inElement : Element) -> Bool {
     for weakElement in self.mArray {
       if let element = weakElement.possibleElement, element === inElement {
         return true
@@ -66,21 +66,21 @@ struct EBWeakReferenceArray <T : AnyObject> {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate struct EBWeakArrayElement <T : AnyObject> {
+fileprivate struct EBWeakArrayElement <Element : AnyObject> {
 
   //····················································································································
 
-  private weak var mWeakElement : T?
+  private weak var mWeakElement : Element?
 
   //····················································································································
 
-  init (_ inElement : T) {
+  init (_ inElement : Element) {
     self.mWeakElement = inElement
   }
 
   //····················································································································
 
-  var possibleElement : T?  { return self.mWeakElement }
+  var possibleElement : Element?  { return self.mWeakElement }
 
   //····················································································································
 

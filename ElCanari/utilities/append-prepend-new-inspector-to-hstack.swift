@@ -24,7 +24,7 @@ import AppKit
   let vStack = AutoLayoutVerticalStackView ()
     .appendView (header)
     .appendView (inInspector)
-    .appendFlexibleSpace ()
+//    .appendFlexibleSpace ()
   _ = inBaseHorizontalStack.appendView (verticalSeparator)
   _ = inBaseHorizontalStack.appendView (vStack)
   closeButton.setClosureAction { [weak inBaseHorizontalStack, weak vStack] in
@@ -51,7 +51,7 @@ import AppKit
   let vStack = AutoLayoutVerticalStackView ()
     .appendView (header)
     .appendView (inInspector)
-    .appendFlexibleSpace ()
+ //   .appendFlexibleSpace ()
   _ = inBaseHorizontalStack.prependView (verticalSeparator)
   _ = inBaseHorizontalStack.prependView (vStack)
   closeButton.setClosureAction { [weak inBaseHorizontalStack, weak vStack] in

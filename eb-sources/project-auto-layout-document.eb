@@ -4,18 +4,18 @@
 
 autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperClass root ProjectRoot stackView \DocumentMainView {
 
-  stackView \PageMasterView vStack { }
+  stackView \pageMasterView vStack { }
 
   stackView \DocumentMainView vStack set (spacing: 0) {
-    newView pageMasterView = \PageMasterView ()
-    newView componentsPage = \ComponentsPage ()
-    newView libraryPage = \LibraryPage ()
+    newView pageMasterView = \pageMasterView ()
+    newView componentsPage = \componentsPage ()
+    newView libraryPage = \libraryPage ()
     newView schematicPage = \schematicsPage ()
-    newView netClassesPage = \NetClassesPage ()
-    newView netListPage = \NetListPage ()
-    newView boardOutlinePage = \BoardOutlinePage ()
-    newView boardContentsPage = \BoardContentsPage ()
-    newView productPage = \ProductPage ()
+    newView netClassesPage = \netClassesPage ()
+    newView netListPage = \netListPage ()
+    newView boardOutlinePage = \boardOutlinePage ()
+    newView boardContentsPage = \boardContentsPage ()
+    newView productPage = \productPage ()
     hStack set (margins: 8) {
       vStack {
         SegmentedControlWithPages (documentView: view pageMasterView, equalWidth: no, size : .regular) {
@@ -69,7 +69,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   
 //---------------------- Components Tab
 
-  stackView \ComponentsPage hStack set (margins: 8) {
+  stackView \componentsPage hStack set (margins: 8) {
     vStack {
       Label (bold: yes, size : .small) { expandableWidth () set (alignment: .center) $title self.componentCount }
       separator
@@ -150,7 +150,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
 //---------------------- Library Tab
 
-  stackView \LibraryPage vStack set (margins: 8) {
+  stackView \libraryPage vStack set (margins: 8) {
     newView libraryContentView = \LibraryContentView ()
     newView devicesInLibraryPage = \DevicesInLibraryPage ()
     newView fontsInLibraryPage = \FontsInLibraryPage ()
@@ -331,7 +331,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
 //---------------------- Net Class Tab
 
-  stackView \NetClassesPage vStack set (margins: 8) {
+  stackView \netClassesPage vStack set (margins: 8) {
     hStack {
       Button (title: "New Net Class", size: .regular) {
         $run addNetClassAction
@@ -383,7 +383,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
 //---------------------- Net Tab
 
-  stackView \NetListPage vStack set (margins: 8) {
+  stackView \netListPage vStack set (margins: 8) {
     hStack {
       Label (bold: yes, size: .regular) { $title self.netCountString }
       Button (title: "Rename Net…", size: .regular) {
@@ -459,12 +459,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     newView schematicsDisplayInspectorView = \schematicsDisplayInspectorView ()
     newView schematicsSheetInspectorView = \schematicsSheetInspectorView ()
     hStack set (spacing: 0) set (margins: 8) {
-//      PullDownButton (title: "◀︎+", size: .regular) {
-//        add (item: menuItem "New Hot Keys Inspector" $run prependNewSchematicHotKeysInspectorAction )
-//        add (item: menuItem "New Insert Symbol Inspector" $run prependNewSchematicInsertSymbolInspectorAction )
-//        add (item: menuItem "New Display Inspector" $run prependNewSchematicDisplayInspectorAction )
-//        add (item: menuItem "New Sheet Inspector" $run prependNewSchematicSheetInspectorAction )
-//      }
       space
       PullDownButton (title: "", size: .regular) [configurator schematicPullDownButtonConfigurator] {
         add (item: menuItem "Select all Connected Elements"
@@ -980,7 +974,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action renameComponentFromSelectedSymbolAction ;
 
 //----------------- Board limits tab
-  stackView \BoardOutlinePage hStack {
+  stackView \boardOutlinePage hStack {
     newView boardOutlineBaseView = \BoardOutlineBaseView ()
     newView boardOutlineInspectorView = \BoardOutlineInspectorView ()
     newView boardOutlineGridAndFlipView = \BoardOutlineGridAndFlipView ()
@@ -1247,13 +1241,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   transient String unplacedPackagesCountString dependsFrom self.unplacedPackageCount ;
   transient String unplacedPackagesMessageString dependsFrom self.unplacedPackageCount ;
 
-  stackView \BoardContentsPage hStack set (spacing: 0) {
+  stackView \boardContentsPage hStack set (spacing: 0) {
     newView boardInspectorView = \BoardInspectorView ()
     newView selectedElementInspectorView = \SelectedElementInspectorView ()
-    newView insertComponentInBoardView = \InsertComponentInBoardView ()
-    newView boardDisplayInspectorView = \BoardDisplayInspectorView ()
-    newView boardRouterInspectorView = \BoardRouterInspectorView ()
-    newView boardERCInspectorView = \BoardERCInspectorView ()
+    newView insertComponentInBoardView = \insertComponentInBoardView ()
+    newView boardDisplayInspectorView = \boardDisplayInspectorView ()
+    newView boardRouterInspectorView = \boardRouterInspectorView ()
+    newView boardERCInspectorView = \boardERCInspectorView ()
     vStack set (width: 250) set (spacing: 0) {
       hStack set (spacing: 0) set (margins: 8) {
         CanariBoardOperationPullDownButton [configurator boardOperationPullDownButtonConfigurator]
@@ -1307,7 +1301,17 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
 
   stackView \BoardInspectorView : vStack ;
 
-  stackView \InsertComponentInBoardView vStack set (margins: 8) {
+  action appendNewInsertComponentInBoardInspectorAction ;
+  action prependNewInsertComponentInBoardInspectorAction ;
+  
+  stackView \insertComponentInBoardView vStack set (margins: 8) {
+    hStack {
+      Button (title: "◀︎+", size: .regular) { $run prependNewInsertComponentInBoardInspectorAction }
+      space
+      Label (bold: yes, size: .small) { $title self.unplacedPackagesMessageString }
+      space
+      Button (title: "+▶︎", size: .regular) { $run appendNewInsertComponentInBoardInspectorAction }
+    }
     hStack {
       space
       Label (bold: yes, size: .small) { $title self.unplacedPackagesMessageString }
@@ -1321,8 +1325,17 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   
   transient Bool rastnetDisplayOneNet dependsFrom root.mRastnetDisplay ;
   transient Bool rastnetDisplayComponentNet dependsFrom root.mRastnetDisplay ;
+  action prependNewBoardDisplayInspectorAction ;
+  action appendNewBoardDisplayInspectorAction ;
 
-  stackView \BoardDisplayInspectorView vStack set (margins: 8) set (rightMargin: 0) {
+  stackView \boardDisplayInspectorView vStack set (margins: 8) set (rightMargin: 0) {
+    hStack {
+      Button (title: "◀︎+", size: .regular) { $run prependNewBoardDisplayInspectorAction }
+      space
+      StaticLabel (title: "Board Display", bold: yes, size: .small, alignment: .center)
+      space
+      Button (title: "+▶︎", size: .regular) { $run appendNewBoardDisplayInspectorAction }
+    }
     VerticalScrollView (content:
       GridView2 {
         add (
@@ -1496,11 +1509,18 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     space 
   }
 
-  stackView \BoardRouterInspectorView vStack set (margins: 8) {
+  action prependNewBoardSettingsInspectorAction ;
+  action appendNewBoardSettingsInspectorAction ;
+  
+  stackView \boardRouterInspectorView vStack set (margins: 8) {
+    hStack {
+      Button (title: "◀︎+", size: .regular) { $run prependNewBoardSettingsInspectorAction }
+      space
+      StaticLabel (title: "Board Settings", bold: yes, size: .small, alignment: .center)
+      space
+      Button (title: "+▶︎", size: .regular) { $run appendNewBoardSettingsInspectorAction }
+    }
     GridView2 {
-      add (
-        single: StaticLabel (title: "Board Settings", bold: yes, size: .small, alignment: .center)
-      )
       addFirstBaseLineAligned (
         left: StaticLabel (title: "Layers", bold: no, size: .small, alignment: .right),
         right: EnumPopUpButton (titles: enum LayerConfiguration.popupTitles, size: .small) {
@@ -1647,17 +1667,25 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action importSESFromExtendedTabAction ;
   action launchFreeRouterWithoutAnyDocument ;
   action exportDSNFileAction ;
-
-  stackView \BoardERCInspectorView vStack set (margins: 8) {
-    StaticLabel (title: "ERC Checking", bold: yes, size: .small, alignment: .center)
+  action prependNewBoardERCCheckingInspectorAction ;
+  action appendNewBoardERCCheckingInspectorAction ;
+  
+  stackView \boardERCInspectorView vStack set (margins: 8) {
+    hStack {
+      Button (title: "◀︎+", size: .regular) { $run prependNewBoardERCCheckingInspectorAction }
+      space
+      StaticLabel (title: "ERC Checking", bold: yes, size: .small, alignment: .center)
+      space
+      Button (title: "+▶︎", size: .regular) { $run appendNewBoardERCCheckingInspectorAction }
+    }
     Checkbox (title: "Check Clearance\nbetween Pads of the same Net", size: .small) {
       set (width: 200, multiline: yes)
       $value root.mCheckClearanceBetweenPadsOfSameNet
     }
     Button (title: "Design Rule Check", size: .small) { $run performERCCheckingAction }
     vSplit {
-      TextObserverView [outlet mERCLogTextView]
-      CanariIssueTableView (hasHideIssueButton : yes) [outlet mERCIssueTableView configurator ercIssueTableViewConfigurator]
+      TextObserverView [outletArray mERCLogTextViewArray]
+      CanariIssueTableView (hasHideIssueButton : yes) [outletArray mERCIssueTableViewArray configurator ercIssueTableViewConfigurator]
     }
   }
 
@@ -2124,7 +2152,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   //     Product Page
   //············································································
 
-  stackView \ProductPage vStack set (margins: 8) {
+  stackView \productPage vStack set (margins: 8) {
     newView productMasterView = \ProductMasterView ()
     newView artworkDescriptionPage = \ArtworkDescriptionPage ()
     newView artworkMinimaPage = \ArtworkMinimaPage ()

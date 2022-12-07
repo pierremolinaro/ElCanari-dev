@@ -40,8 +40,10 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
   init (hasHideIssueButton inHasHideIssueButton : Bool) {
     super.init ()
     self.translatesAutoresizingMaskIntoConstraints = false
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .horizontal)
-    self.setContentHuggingPriority (.init (rawValue: 1.0), for: .vertical)
+    self.setContentHuggingPriority (.defaultLow, for: .horizontal)
+    self.setContentHuggingPriority (.defaultLow, for: .vertical)
+//    self.setContentCompressionResistancePriority (.defaultLow, for: .horizontal)
+//    self.setContentCompressionResistancePriority (.defaultLow, for: .vertical)
 
     if inHasHideIssueButton {
       let button = AutoLayoutButton (title: "Hide Issue", size: .small).expandableWidth ()

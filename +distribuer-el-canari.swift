@@ -207,6 +207,8 @@ do{
 //-------------------- Construction package
   let packageFile = PRODUCT_NAME + "-" + VERSION_CANARI + ".pkg"
   runCommand ("/usr/bin/productbuild", ["--component-compression", "auto", "--component", "build/" + BUILD_KIND.string + "/" + PRODUCT_NAME + ".app", "/Applications", packageFile])
+  runCommand ("/usr/sbin/pkgutil", ["--check-signature", packageFile])
+  // /usr/bin/productsign --sign "Developer ID Installer: pierre@pcmolinaro.name (U399CP39LD)" /Users/pierremolinaro/Desktop/ElCanari-1.6.4.pkg /Users/pierremolinaro/Desktop/ElCanari-1.6.4-sign.pkg
   runCommand ("/bin/cp", [packageFile, DISTRIBUTION_DIR])
 //-------------------- Créer l'archive de Cocoa canari
   let nomArchive = PRODUCT_NAME + "-" + VERSION_CANARI
