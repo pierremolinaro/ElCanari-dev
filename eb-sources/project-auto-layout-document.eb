@@ -936,7 +936,9 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     separator
     hStack {
       StaticLabel (title: "Component Name", bold: no, size: .small, alignment: .center) { notExpandableWidth () }
-      Label (bold: yes, size: .small) { expandableWidth () set (alignment: .left) $title #componentSymbolSelectionController.componentName }
+      Label (bold: yes, size: .small) {
+        expandableWidth () set (alignment: .left) $title #componentSymbolSelectionController.componentName
+      }
     }
     Button (title: "Rename Component…", size: .small) {
       expandableWidth ()
@@ -944,13 +946,13 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       $run renameComponentFromSelectedSymbolAction
     }
     separator
-    Checkbox (title: "Show Component Value", size : .small) { $value #componentSymbolSelectionController.mDisplayComponentValue }
-    hStack {
-      StaticLabel (title: "Component Value", bold: no, size: .small, alignment: .center)
-      TextField (minWidth: 100, size: .small) {
-        expandableWidth ()
-        $value #componentSymbolSelectionController.componentValueProxy (sendContinously: yes)
-      }
+    StaticLabel (title: "Component Value", bold: no, size: .small, alignment: .center)
+    Checkbox (title: "Show Component Value", size : .small) {
+       $value #componentSymbolSelectionController.mDisplayComponentValue
+     }
+    TextField (minWidth: 100, size: .small) {
+      expandableWidth ()
+      $value #componentSymbolSelectionController.componentValueProxy (sendContinously: yes)
     }
     separator
     StaticLabel (title: "Symbol Instance Name", bold: no, size: .small, alignment: .center)
