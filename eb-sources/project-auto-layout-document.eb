@@ -1312,13 +1312,8 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       space
       Button (title: "+▶︎", size: .regular) { $run appendNewInsertComponentInBoardInspectorAction }
     }
-    hStack {
-      space
-      Label (bold: yes, size: .small) { $title self.unplacedPackagesMessageString }
-      space
-    }
     CanariDragSourceTableView 
-    [outlet mUnplacedPackageTableView configurator packageDragSourceTableViewConfigurator] {
+    [outletArray mUnplacedPackageTableViewArray configurator packageDragSourceTableViewConfigurator] {
       $models root.unplacedPackages
     }
   }

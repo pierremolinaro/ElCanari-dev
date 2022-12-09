@@ -151,7 +151,7 @@ import AppKit
         var scaledP = af.transform (p)
         dragImageOffset.initialize (from: &scaledP, count: 1)
       }
-    }else if inSourceTableView == self.mUnplacedPackageTableView,
+    }else if self.mUnplacedPackageTableViewArray.contains (inSourceTableView),
            let boardView = self.mBoardView?.mGraphicView,
            dragRows.count == 1,
            let idx = dragRows.first {

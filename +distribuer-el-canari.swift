@@ -126,6 +126,7 @@ struct VersionDescriptor : Codable {
   var news = [String] ()
   var changes = [String] ()
   var date = ""
+  var contents = ""
   var osmin = ""
 }
 
@@ -207,17 +208,19 @@ do{
 //-------------------- Construction package
   let packageFile = PRODUCT_NAME + "-" + VERSION_CANARI + ".pkg"
   runCommand ("/usr/bin/productbuild", ["--component-compression", "auto", "--component", "build/" + BUILD_KIND.string + "/" + PRODUCT_NAME + ".app", "/Applications", packageFile])
-  runCommand ("/usr/sbin/pkgutil", ["--check-signature", packageFile])
+  // runCommand ("/usr/sbin/pkgutil", ["--check-signature", packageFile])
   // /usr/bin/productsign --sign "Developer ID Installer: pierre@pcmolinaro.name (U399CP39LD)" /Users/pierremolinaro/Desktop/ElCanari-1.6.4.pkg /Users/pierremolinaro/Desktop/ElCanari-1.6.4-sign.pkg
   runCommand ("/bin/cp", [packageFile, DISTRIBUTION_DIR])
 //-------------------- Créer l'archive de Cocoa canari
   let nomArchive = PRODUCT_NAME + "-" + VERSION_CANARI
   runCommand ("/bin/mkdir", [nomArchive])
-  runCommand ("/bin/cp", [packageFile, nomArchive])
-  runCommand ("/usr/bin/hdiutil", ["create", "-srcfolder", nomArchive, nomArchive + ".dmg", "-fs", "HFS+"])
-  runCommand ("/bin/mv", [nomArchive + ".dmg", "../" + nomArchive + ".dmg"])
+//  runCommand ("/bin/cp", [packageFile, nomArchive])
+  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/" + PRODUCT_NAME + ".app", nomArchive])
+  runCommand ("/bin/ln", ["-s", "/Applications", nomArchive + "/Applications"])
+  runCommand ("/usr/bin/hdiutil", ["create", "-srcfolder", nomArchive, "../" + nomArchive + ".dmg", "-format", "ULMO"]) // , "-fs", "HFS+"
+//  runCommand ("/bin/mv", [nomArchive + ".dmg", "../" + nomArchive + ".dmg"]
 //-------------------- Supprimer le fichier .pkg
-  runCommand ("/bin/rm", [DISTRIBUTION_DIR + "/" + packageFile])
+//  runCommand ("/bin/rm", [DISTRIBUTION_DIR + "/" + packageFile])
 //-------------------- Calculer la clé de la somme de contrôle de l'archive DMG pour Sparkle
   let signature = runHiddenCommand ("./distribution-el-canari/sign_update", ["../" + nomArchive + ".dmg"])
   // print ("cleArchive '\(signature)'")
@@ -253,6 +256,7 @@ do{
   versionDescriptor.news = NEWS
   versionDescriptor.date = ISO8601DateFormatter ().string (from: dateConstruction)
   versionDescriptor.osmin = MAC_OS_MINIMUM_VERSION
+  versionDescriptor.contents = "application"
   let encoder = JSONEncoder ()
   encoder.outputFormatting = .prettyPrinted
   let jsonData = try encoder.encode (versionDescriptor)

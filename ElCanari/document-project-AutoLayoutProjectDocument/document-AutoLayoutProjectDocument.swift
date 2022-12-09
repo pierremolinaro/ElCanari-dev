@@ -636,7 +636,7 @@ import AppKit
   final var mRemoveWirePointSchematicHotKeyTextField = EBWeakReferenceArray <AutoLayoutStaticLabel> ()
   weak final var mSchematicsView : AutoLayoutGraphicView? = nil
   final var mShowHideSymbolValueSchematicHotKeyTextField = EBWeakReferenceArray <AutoLayoutStaticLabel> ()
-  weak final var mUnplacedPackageTableView : AutoLayoutCanariDragSourceTableView? = nil
+  final var mUnplacedPackageTableViewArray = EBWeakReferenceArray <AutoLayoutCanariDragSourceTableView> ()
   final var mUnplacedSymbolsTableViewArray = EBWeakReferenceArray <AutoLayoutCanariDragSourceTableView> ()
 
   //····················································································································
@@ -2165,22 +2165,11 @@ import AppKit
       _ = view_0.appendView (view_0_4)
     }
     _ = vStackView.appendView (view_0)
-    let view_1 = AutoLayoutHorizontalStackView ()
-    do{
-      let view_1_0 = AutoLayoutFlexibleSpace ()
-      _ = view_1.appendView (view_1_0)
-      let view_1_1 = AutoLayoutLabel (bold: true, size: .small)
-        .bind_title (self.unplacedPackagesMessageString_property)
-      _ = view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutFlexibleSpace ()
-      _ = view_1.appendView (view_1_2)
-    }
-    _ = vStackView.appendView (view_1)
-    let view_2 = AutoLayoutCanariDragSourceTableView ()
+    let view_1 = AutoLayoutCanariDragSourceTableView ()
       .bind_models (self.rootObject.unplacedPackages_property)
-    self.mUnplacedPackageTableView = view_2 // Outlet
-    self.configure_packageDragSourceTableViewConfigurator (view_2) // Configurator
-    _ = vStackView.appendView (view_2)
+    self.mUnplacedPackageTableViewArray.append (view_1) // Outlet Array
+    self.configure_packageDragSourceTableViewConfigurator (view_1) // Configurator
+    _ = vStackView.appendView (view_1)
     return vStackView
   }
 
