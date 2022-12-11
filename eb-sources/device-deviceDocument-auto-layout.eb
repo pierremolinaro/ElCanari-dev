@@ -404,11 +404,11 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
               $run editSelectedSymbols
               $enabled #symbolTypeController.selectedArray.count > 0
             }
-            Button (title: "Remove", size : .small) {
-              expandableWidth ()
-              $run removeUselessSymbolTypeAction
-              $enabled (#symbolTypeController.selectedArray.count == 1) & (#symbolTypeSelection.instanceCount == 0)
-            }
+//            Button (title: "Remove", size : .small) {
+//              expandableWidth ()
+//              $run removeUselessSymbolTypeAction
+//              $enabled (#symbolTypeController.selectedArray.count == 1) & (#symbolTypeSelection.instanceCount == 0)
+//            }
             space
           }
         }
@@ -450,7 +450,7 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
   action editSelectedSymbols ;
   action exportSelectedSymbols ;
   action updateSelectedSymbols ;
-  action removeUselessSymbolTypeAction ;
+//  action removeUselessSymbolTypeAction ;
 
 //--- Packages
   action resetSelectedPackageVersion ;

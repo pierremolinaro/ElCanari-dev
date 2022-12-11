@@ -709,16 +709,8 @@ import AppKit
                 selector: #selector (AutoLayoutDeviceDocument.editSelectedSymbols (_:))
               )
             _ = view_1_0_1_1.appendView (view_1_0_1_1_3)
-            let view_1_0_1_1_4 = AutoLayoutButton (title: "Remove", size: .small)
-              .expandableWidth ()
-              .bind_enabled (.boolcmp (.intcmp (.prop (self.symbolTypeController.selectedArray_property.count_property), .eq, .literalInt (1)), .and, .intcmp (.prop (self.symbolTypeSelection.instanceCount_property), .eq, .literalInt (0))))
-              .bind_run (
-                target: self,
-                selector: #selector (AutoLayoutDeviceDocument.removeUselessSymbolTypeAction (_:))
-              )
+            let view_1_0_1_1_4 = AutoLayoutFlexibleSpace ()
             _ = view_1_0_1_1.appendView (view_1_0_1_1_4)
-            let view_1_0_1_1_5 = AutoLayoutFlexibleSpace ()
-            _ = view_1_0_1_1.appendView (view_1_0_1_1_5)
           }
           _ = view_1_0_1.appendView (view_1_0_1_1)
         }

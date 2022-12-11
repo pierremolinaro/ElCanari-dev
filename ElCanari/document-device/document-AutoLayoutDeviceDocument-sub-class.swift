@@ -30,6 +30,12 @@ let DEVICE_PACKAGE_METADATA_DICTIONARY_KEY = "DevicePackages"
     self.packageDisplayController.mAfterObjectRemovingCallback = { [weak self] in
       self?.rootObject.updatePadProxies ()
     }
+  //--- Remove unused symbol types
+    for symbolType in self.rootObject.mSymbolTypes.values {
+      if symbolType.mInstances.count == 0 {
+        self.rootObject.mSymbolTypes_property.remove (symbolType)
+      }
+    }
   }
 
  //····················································································································

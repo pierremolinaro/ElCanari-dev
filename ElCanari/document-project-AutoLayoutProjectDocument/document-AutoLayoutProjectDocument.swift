@@ -982,32 +982,24 @@ import AppKit
           selector: #selector (AutoLayoutProjectDocument.resetSelectedDeviceVersionAction (_:))
         )
       _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutButton (title: "Remove Selected Device", size: .regular)
-        .setDeleteKeyAsKeyEquivalent ()
-        .bind_enabled (.prop (self.canRemoveSelectedDevices_property))
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.removeSelectedDeviceAction (_:))
-        )
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutButton (title: "Export Selected Device", size: .regular)
+      let view_0_2 = AutoLayoutButton (title: "Export Selected Device", size: .regular)
         .set (shiftCommandKeyEquivalent: "x")
         .bind_enabled (.intcmp (.prop (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.exportSelectedDeviceAction (_:))
         )
-      _ = view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutButton (title: "Update Selected Device…", size: .regular)
+      _ = view_0.appendView (view_0_2)
+      let view_0_3 = AutoLayoutButton (title: "Update Selected Device…", size: .regular)
         .set (shiftCommandKeyEquivalent: "u")
         .bind_enabled (.intcmp (.prop (self.projectDeviceController.selectedArray_property.count_property), .gt, .literalInt (0)))
         .bind_run (
           target: self,
           selector: #selector (AutoLayoutProjectDocument.updateSelectedDeviceAction (_:))
         )
+      _ = view_0.appendView (view_0_3)
+      let view_0_4 = AutoLayoutFlexibleSpace ()
       _ = view_0.appendView (view_0_4)
-      let view_0_5 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_5)
     }
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutHorizontalSplitView ()

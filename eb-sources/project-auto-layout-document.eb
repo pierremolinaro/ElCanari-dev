@@ -197,11 +197,11 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         $run resetSelectedDeviceVersionAction
         $enabled #projectDeviceController.selectedArray.count > 0
       }
-      Button (title: "Remove Selected Device", size: .regular) {
-        setDeleteKeyAsKeyEquivalent ()
-        $run removeSelectedDeviceAction
-        $enabled self.canRemoveSelectedDevices
-      }
+//      Button (title: "Remove Selected Device", size: .regular) {
+//        setDeleteKeyAsKeyEquivalent ()
+//        $run removeSelectedDeviceAction
+//        $enabled self.canRemoveSelectedDevices
+//      }
       Button (title: "Export Selected Device", size: .regular) {
         set (shiftCommandKeyEquivalent: "x")
         $run exportSelectedDeviceAction
@@ -290,7 +290,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
     dependsFrom #projectFontController.selectedArray.all.canRemoveFont ;
   action editSelectedDeviceAction ;
   action resetSelectedDeviceVersionAction ;
-  action removeSelectedDeviceAction ;
+//  action removeSelectedDeviceAction ;
   transient Bool canRemoveSelectedDevices
     dependsFrom #projectDeviceController.selectedArray.all.canRemove ;
   action exportSelectedDeviceAction ;
