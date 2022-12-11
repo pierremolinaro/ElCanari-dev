@@ -184,7 +184,7 @@ extension AutoLayoutDeviceDocument {
         package.mStrokeBezierPath = strokeBezierPathes.nsBezierPath
         package.mMasterPads = masterPads
         self.rootObject.mPackages_property.add (package)
-        self.updatePadProxies ()
+        self.rootObject.updatePadProxies ()
       }
     case .readError (_) :
       ()
@@ -252,39 +252,38 @@ extension AutoLayoutDeviceDocument {
         }
       }
     }
-    self.updatePadProxies ()
+    self.rootObject.updatePadProxies ()
   }
 
   //····················································································································
 
-  func updatePadProxies () {
-  //--- Inventory of current pad names
-    var currentPackagePadNameSet = Set <String> ()
-    for package in self.rootObject.mPackages.values {
-      for masterPad in package.mMasterPads.values {
-        currentPackagePadNameSet.insert (masterPad.mName)
-      }
-    }
-  //--- Inventory of current pad proxies
-    var currentProxyPadNameSet = Set <String> ()
-    var padProxyDictionary = [String : PadProxyInDevice] ()
-    for padProxy in self.rootObject.mPadProxies.values {
-      padProxyDictionary [padProxy.mPadName] = padProxy
-      currentProxyPadNameSet.insert (padProxy.mPadName)
-    }
-  //--- Remove pad proxies without corresponding pad
-    for padName in currentProxyPadNameSet.subtracting (currentPackagePadNameSet) {
-      let padProxy = padProxyDictionary [padName]!
- //     padProxy.cleanUpRelationshipsAndRemoveAllObservers ()
-      self.rootObject.mPadProxies_property.remove (padProxy)
-    }
-  //--- Add missing pad proxies
-    for padName in currentPackagePadNameSet.subtracting (currentProxyPadNameSet) {
-      let newPadProxy = PadProxyInDevice (self.undoManager)
-      newPadProxy.mPadName = padName
-      self.rootObject.mPadProxies_property.add (newPadProxy)
-    }
-  }
+//  func updatePadProxies () {
+//  //--- Inventory of current pad names
+//    var currentPackagePadNameSet = Set <String> ()
+//    for package in self.rootObject.mPackages.values {
+//      for masterPad in package.mMasterPads.values {
+//        currentPackagePadNameSet.insert (masterPad.mName)
+//      }
+//    }
+//  //--- Inventory of current pad proxies
+//    var currentProxyPadNameSet = Set <String> ()
+//    var padProxyDictionary = [String : PadProxyInDevice] ()
+//    for padProxy in self.rootObject.mPadProxies.values {
+//      padProxyDictionary [padProxy.mPadName] = padProxy
+//      currentProxyPadNameSet.insert (padProxy.mPadName)
+//    }
+//  //--- Remove pad proxies without corresponding pad
+//    for padName in currentProxyPadNameSet.subtracting (currentPackagePadNameSet) {
+//      let padProxy = padProxyDictionary [padName]!
+//      self.rootObject.mPadProxies_property.remove (padProxy)
+//    }
+//  //--- Add missing pad proxies
+//    for padName in currentPackagePadNameSet.subtracting (currentProxyPadNameSet) {
+//      let newPadProxy = PadProxyInDevice (self.undoManager)
+//      newPadProxy.mPadName = padName
+//      self.rootObject.mPadProxies_property.add (newPadProxy)
+//    }
+//  }
 
   //····················································································································
 

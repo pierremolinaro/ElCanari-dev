@@ -338,16 +338,6 @@ autoLayoutDocument AutoLayoutDeviceDocument root DeviceRoot stackView \DocumentM
         }
       )
     }
-//    hStack setCenterYAlignment () {
-//      ColorWell { expandableHeight () set (toolTip: "Stored in Preferences") $color prefs.frontSidePadColor (sendContinously: no) }
-//      Checkbox (title: "Display Front Side Pads", size : .small) { $value root.mShowPackageFrontPads }
-//      space
-//    }
-//    hStack setCenterYAlignment () {
-//      ColorWell { expandableHeight () set (toolTip: "Stored in Preferences") $color prefs.backSidePadColor (sendContinously: no) }
-//      Checkbox (title: "Display Back Side Pads", size : .small) { $value root.mShowPackageBackPads }
-//      space
-//    }
   }    
 
 

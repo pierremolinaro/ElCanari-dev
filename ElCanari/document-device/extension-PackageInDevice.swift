@@ -1,24 +1,24 @@
 //
-//  extension-SymbolInstanceInDevice.swift
+//  extension-PackageInDevice.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 07/03/2019.
+//  Created by Pierre Molinaro on 02/03/2019.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EXTENSION SymbolInstanceInDevice
+//   EXTENSION PackageInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension SymbolInstanceInDevice {
+extension PackageInDevice {
 
   //····················································································································
   //  Cursor
   //····················································································································
 
-  func cursorForKnob_SymbolInstanceInDevice (knob inKnobIndex: Int) -> NSCursor? {
+  func cursorForKnob_PackageInDevice (knob inKnobIndex: Int) -> NSCursor? {
     return nil // Uses default cursor
   }
 
@@ -26,9 +26,9 @@ extension SymbolInstanceInDevice {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_SymbolInstanceInDevice (additionalDictionary inDictionary : NSDictionary,
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_PackageInDevice (additionalDictionary inDictionary : NSDictionary,
+                                              optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
+                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }
 
@@ -36,31 +36,38 @@ extension SymbolInstanceInDevice {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_SymbolInstanceInDevice (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_PackageInDevice (_ ioDictionary : NSMutableDictionary) {
+  }
+
+  //····················································································································
+  //  Translation
+  //····················································································································
+
+  func acceptedTranslation_PackageInDevice  (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
+    return CanariPoint (x: inDx, y: inDy)
   }
 
   //····················································································································
 
-  func acceptToTranslate_SymbolInstanceInDevice (xBy inDx: Int, yBy inDy: Int) -> Bool {
+  func acceptToTranslate_PackageInDevice (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return ((self.mX + inDx) >= 0) && ((self.mY + inDy) >= 0)
   }
 
   //····················································································································
 
-  func translate_SymbolInstanceInDevice (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func translate_PackageInDevice (xBy inDx: Int, yBy inDy: Int, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
     self.mX += inDx
     self.mY += inDy
   }
 
   //····················································································································
 
-  func operationBeforeRemoving_SymbolInstanceInDevice () {
-    for pinInstance in self.mPinInstances.values {
-      pinInstance.mSymbolInstance = nil
-      pinInstance.mType = nil
-      pinInstance.mPadProxy = nil
+  func operationBeforeRemoving_PackageInDevice () {
+    for masterPad in self.mMasterPads.values {
+      for slavePad in masterPad.mSlavePads.values {
+        slavePad.mMasterPad = nil
+      }
     }
-    self.mType = nil
     super.operationBeforeRemoving ()
   }
 
@@ -68,7 +75,7 @@ extension SymbolInstanceInDevice {
   //  Alignment Points
   //····················································································································
 
-  func alignmentPoints_SymbolInstanceInDevice () -> Set <CanariPoint> {
+  func alignmentPoints_PackageInDevice () -> Set <CanariPoint> {
     return Set <CanariPoint> ()
   }
 
@@ -76,12 +83,12 @@ extension SymbolInstanceInDevice {
   //  HORIZONTAL FLIP
   //····················································································································
 
-  func flipHorizontally_SymbolInstanceInDevice () {
+  func flipHorizontally_PackageInDevice () {
   }
 
   //····················································································································
 
-  func canFlipHorizontally_SymbolInstanceInDevice () -> Bool {
+  func canFlipHorizontally_PackageInDevice () -> Bool {
     return false
   }
 
@@ -89,12 +96,12 @@ extension SymbolInstanceInDevice {
   //  VERTICAL FLIP
   //····················································································································
 
-  func flipVertically_SymbolInstanceInDevice () {
+  func flipVertically_PackageInDevice () {
   }
 
   //····················································································································
 
-  func canFlipVertically_SymbolInstanceInDevice () -> Bool {
+  func canFlipVertically_PackageInDevice () -> Bool {
     return false
   }
 
@@ -102,38 +109,30 @@ extension SymbolInstanceInDevice {
   //  ROTATE 90
   //····················································································································
 
-  func canRotate90_SymbolInstanceInDevice (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
+  func canRotate90_PackageInDevice (accumulatedPoints : inout Set <CanariPoint>) -> Bool {
     return false
   }
 
  //····················································································································
 
-  func rotate90Clockwise_SymbolInstanceInDevice (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90Clockwise_PackageInDevice (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
   }
 
  //····················································································································
 
-  func rotate90CounterClockwise_SymbolInstanceInDevice (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
+  func rotate90CounterClockwise_PackageInDevice (from inRotationCenter : CanariPoint, userSet ioSet : inout EBReferenceSet <EBManagedObject>) {
   }
 
   //····················································································································
   //  Snap to grid
   //····················································································································
 
-  func snapToGrid_SymbolInstanceInDevice (_ inGrid : Int) {
+  func snapToGrid_PackageInDevice (_ inGrid : Int) {
   }
 
   //····················································································································
-  //  Translation
-  //····················································································································
 
-  func acceptedTranslation_SymbolInstanceInDevice (xBy inDx: Int, yBy inDy: Int) -> CanariPoint {
-    return CanariPoint (x: inDx, y: inDy)
-  }
-  
-  //····················································································································
-
-  func canSnapToGrid_SymbolInstanceInDevice (_ inGrid : Int) -> Bool {
+  func canSnapToGrid_PackageInDevice (_ inGrid : Int) -> Bool {
     return false
   }
 
@@ -141,7 +140,7 @@ extension SymbolInstanceInDevice {
   //  Move
   //····················································································································
 
-  func canMove_SymbolInstanceInDevice (knob inKnobIndex : Int,
+  func canMove_PackageInDevice (knob inKnobIndex : Int,
                 proposedUnalignedAlignedTranslation inProposedUnalignedTranslation : CanariPoint,
                 proposedAlignedTranslation inProposedAlignedTranslation : CanariPoint,
                 unalignedMouseDraggedLocation inUnalignedMouseDraggedLocation : CanariPoint,
@@ -151,7 +150,7 @@ extension SymbolInstanceInDevice {
 
   //····················································································································
 
-  func move_SymbolInstanceInDevice (knob inKnobIndex: Int,
+  func move_PackageInDevice (knob inKnobIndex: Int,
                       proposedDx inDx: Int,
                       proposedDy inDy: Int,
                       unalignedMouseLocationX inUnlignedMouseLocationX : Int,

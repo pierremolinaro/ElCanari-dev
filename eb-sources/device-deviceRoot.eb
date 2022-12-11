@@ -57,11 +57,9 @@ handlingOpposite entity DeviceRoot {
 
 //--- Symbols
   toMany @signature SymbolTypeInDevice mSymbolTypes ;
-  toMany @signature SymbolInstanceInDevice mSymbolInstances ;
+  toMany @signature SymbolInstanceInDevice mSymbolInstances inverse toOne mDeviceRoot ;
 
   property Int mSymbolDisplayZoom default 400 ;
-//  property Bool mSymbolDisplayHorizontalFlip default no ;
-//  property Bool mSymbolDisplayVerticalFlip default no ;
 
   transient StringArray symbolTypeNames dependsFrom self.mSymbolTypes.all.mTypeName ;
 
@@ -264,6 +262,7 @@ handlingOpposite entity SymbolPinTypeInDevice {
 //——————————————————————————————————————————————————————————————————————————————
 
 graphic handlingOpposite entity SymbolInstanceInDevice {
+  toOne @weak DeviceRoot mDeviceRoot inverse toMany mSymbolInstances ;
   toOne @weak SymbolTypeInDevice mType inverse toMany mInstances ;
   toMany @signature SymbolPinInstanceInDevice mPinInstances inverse toOne mSymbolInstance ;
 

@@ -146,6 +146,34 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   To one property: mDeviceRoot
+  //····················································································································
+
+  final let mDeviceRoot_property = StoredObject_DeviceRoot (usedForSignature: false, strongRef: false)
+
+  //····················································································································
+
+  final var mDeviceRoot : DeviceRoot? {
+    get {
+      return self.mDeviceRoot_property.propval
+    }
+    set {
+      if self.mDeviceRoot_property.propval !== newValue {
+        if self.mDeviceRoot_property.propval != nil {
+          self.mDeviceRoot_property.setProp (nil)
+        }
+        if newValue != nil {
+          self.mDeviceRoot_property.setProp (newValue)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  final let mDeviceRoot_none = EBGenericTransientProperty <Bool> ()
+
+  //····················································································································
   //   To one property: mType
   //····················································································································
 
@@ -250,6 +278,14 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
     self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
     super.init (inUndoManager)
+    self.mDeviceRoot_none.mReadModelFunction = { [weak self] in
+      if let uwSelf = self {
+        return .single (uwSelf.mDeviceRoot_property.propval == nil)
+      }else{
+        return .empty
+      }
+    }
+    self.mDeviceRoot_property.addEBObserver (self.mDeviceRoot_none)
     self.mType_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mType_property.propval == nil)
@@ -264,6 +300,12 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mPinInstances_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mSymbolInstance_property.setProp (me) } },
       resetter: { inObject in inObject.mSymbolInstance_property.setProp (nil) }
+    )
+  //--- To one property: mDeviceRoot (has opposite to many relationship: mSymbolInstances)
+    self.mDeviceRoot_property.undoManager = inUndoManager
+    self.mDeviceRoot_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mSymbolInstances_property.add (me) } },
+      resetter: { [weak self] inObject in if let me = self { inObject.mSymbolInstances_property.remove (me) } }
     )
   //--- To one property: mType (has opposite to many relationship: mInstances)
     self.mType_property.undoManager = inUndoManager
@@ -503,6 +545,17 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
       ) as! [SymbolPinInstanceInDevice]
       self.mPinInstances_property.setProp (EBReferenceArray (array))
     }
+  //--- To one property: mDeviceRoot
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mDeviceRoot",
+        inDictionary: inDictionary,
+        managedObjectArray: inManagedObjectArray
+      )
+      if let entity = possibleEntity as? DeviceRoot {
+        self.mDeviceRoot_property.setProp (entity)
+      }
+    }
   //--- To one property: mType
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -542,6 +595,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     ioString += "mX\n"
     ioString += "mY\n"
   //--- To one relationships
+    ioString += "mDeviceRoot\n"
     ioString += "mType\n"
   //--- To many relationships
     ioString += "mPinInstances\n"
@@ -561,6 +615,10 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mY.appendPropertyValueTo (&ioData)
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
+    if let object = self.mDeviceRoot {
+      ioData.append (base62Encoded: object.savingIndex)
+    }
+    ioData.append (ascii: .lineFeed)
     if let object = self.mType {
       ioData.append (base62Encoded: object.savingIndex)
     }
@@ -595,6 +653,10 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
+    if let range = inDictionary ["mDeviceRoot"], let idx = inData.base62EncodedInt (range: range) {
+      let object = inRawObjectArray [idx].object as! DeviceRoot
+      self.mDeviceRoot = object
+    }
     if let range = inDictionary ["mType"], let idx = inData.base62EncodedInt (range: range) {
       let object = inRawObjectArray [idx].object as! SymbolTypeInDevice
       self.mType = object
@@ -628,6 +690,10 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //--- To many property: mPinInstances
     for managedObject in self.mPinInstances.values {
       ioObjectArray.append (managedObject)
+    }
+  //--- To one property: mDeviceRoot
+    if let object = self.mDeviceRoot {
+      ioObjectArray.append (object)
     }
   //--- To one property: mType
     if let object = self.mType {

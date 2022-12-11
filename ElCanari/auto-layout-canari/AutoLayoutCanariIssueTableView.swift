@@ -198,7 +198,7 @@ final class AutoLayoutCanariIssueTableView : AutoLayoutVerticalStackView, NSTabl
   //    Table view delegate
   //····················································································································
 
-  func tableViewSelectionDidChange (_ notification : Notification) {
+  func tableViewSelectionDidChange (_ inNotification : Notification) {
     self.updateIssueDisplay ()
   }
 

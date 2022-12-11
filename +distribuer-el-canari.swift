@@ -33,11 +33,12 @@ let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
+  "Correction divers bugs dans le document Device"
 ]
 let CHANGES : [String] = [
 ]
 let NEWS : [String] = [
-//  "Duplication des inspecteurs dans la saisie du schéma d'un projet"
+  "Duplication des inspecteurs dans la page « Board » d'un projet"
 ]
 
 //--------------------------------------------------------------------------------------------------

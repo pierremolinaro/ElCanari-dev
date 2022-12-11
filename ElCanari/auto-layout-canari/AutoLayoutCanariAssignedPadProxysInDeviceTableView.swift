@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariAssignedPadProxysInDeviceTableView : AutoLayoutVerticalStackView { // , AutoLayoutTableViewDelegate {
+final class AutoLayoutCanariAssignedPadProxysInDeviceTableView : AutoLayoutVerticalStackView {
 
   //····················································································································
 
@@ -93,10 +93,10 @@ final class AutoLayoutCanariAssignedPadProxysInDeviceTableView : AutoLayoutVerti
 
   //····················································································································
 
-  final func bind_assignedPadProxies (_ model : EBReadOnlyProperty_AssignedPadProxiesInDevice) -> Self {
+  final func bind_assignedPadProxies (_ inModel : EBReadOnlyProperty_AssignedPadProxiesInDevice) -> Self {
     self.mController = EBObservablePropertyController (
-      observedObjects: [model],
-      callBack: { [weak self] in self?.updateUnconnectedPadList (from: model) }
+      observedObjects: [inModel],
+      callBack: { [weak self] in self?.updateUnconnectedPadList (from: inModel) }
     )
     return self
   }

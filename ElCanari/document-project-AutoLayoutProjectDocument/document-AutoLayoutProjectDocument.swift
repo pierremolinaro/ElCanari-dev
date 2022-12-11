@@ -1301,8 +1301,6 @@ import AppKit
       _ = view_1.appendView (view_1_0)
       let view_1_1 = schematicsInspectorView
       _ = view_1.appendView (view_1_1)
-      let view_1_2 = AutoLayoutFlexibleSpace ()
-      _ = view_1.appendView (view_1_2)
     }
     _ = vStackView.appendView (view_1)
     return vStackView
@@ -1392,6 +1390,8 @@ import AppKit
     let view_15 = AutoLayoutStaticLabel (title: "[W] Insert Wire Point", bold: false, size: .small, alignment: .left)
     self.mAddWirePointSchematicHotKeyTextField.append (view_15) // Outlet Array
     _ = vStackView.appendView (view_15)
+    let view_16 = AutoLayoutFlexibleSpace ()
+    _ = vStackView.appendView (view_16)
     return vStackView
   }
 
@@ -1465,6 +1465,8 @@ import AppKit
       .addTab (title: "Grid and Flip", tooltip: "Grid and Flip", contentView: self.computeImplicitView_14 ())
       .addTab (title: "Colors and Font", tooltip: "Colors and Font", contentView: self.computeImplicitView_38 ())
     _ = vStackView.appendView (view_1)
+    let view_2 = AutoLayoutFlexibleSpace ()
+    _ = vStackView.appendView (view_2)
     return vStackView
   }
 
@@ -1558,6 +1560,8 @@ import AppKit
       .addFirstBaseLineAligned (left: self.computeImplicitView_47 (), right: self.computeImplicitView_48 ())
       .addFirstBaseLineAligned (left: self.computeImplicitView_49 (), right: self.computeImplicitView_50 ())
     _ = vStackView.appendView (view_6)
+    let view_7 = AutoLayoutFlexibleSpace ()
+    _ = vStackView.appendView (view_7)
     return vStackView
   }
 

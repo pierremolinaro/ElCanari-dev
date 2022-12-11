@@ -75,7 +75,7 @@ import AppKit
        }
      //--- Check symbol type instance count
        idx = 0
-       while idx < self_mSymbolTypes_mVersion.count {
+       while idx < self_mSymbolTypes_instanceCount.count {
          if let instanceCount = self_mSymbolTypes_instanceCount [idx].instanceCount, instanceCount == 0 {
            let typeName = self_mSymbolTypes_mTypeName [idx].mTypeName
            issues.append (CanariIssue (kind: .warning, message: "Symbol \(typeName) has no instance."))

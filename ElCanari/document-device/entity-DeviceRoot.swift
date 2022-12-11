@@ -739,8 +739,12 @@ final class DeviceRoot : EBManagedObject,
 //    gInitSemaphore.wait ()
   //--- To many property: mDocs (no option)
     self.mDocs_property.undoManager = inUndoManager
-  //--- To many property: mSymbolInstances (no option)
+  //--- To many property: mSymbolInstances (has opposite relationship)
     self.mSymbolInstances_property.undoManager = inUndoManager
+    self.mSymbolInstances_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mDeviceRoot_property.setProp (me) } },
+      resetter: { inObject in inObject.mDeviceRoot_property.setProp (nil) }
+    )
   //--- To many property: mPackages (has opposite relationship)
     self.mPackages_property.undoManager = inUndoManager
     self.mPackages_property.setOppositeRelationShipFunctions (
@@ -987,6 +991,10 @@ final class DeviceRoot : EBManagedObject,
     self.mSymbolTypes_property.addEBObserverOf_instanceCount (self.issues_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
+    self.mSymbolInstances_property.setOppositeRelationShipFunctions (
+      setter: { [weak self] inObject in if let me = self { inObject.mDeviceRoot_property.setProp (me) } },
+      resetter: { inObject in inObject.mDeviceRoot_property.setProp (nil) }
+    )
     self.mPackages_property.setOppositeRelationShipFunctions (
       setter: { [weak self] inObject in if let me = self { inObject.mRoot_property.setProp (me) } },
       resetter: { inObject in inObject.mRoot_property.setProp (nil) }

@@ -25,6 +25,15 @@ let DEVICE_PACKAGE_METADATA_DICTIONARY_KEY = "DevicePackages"
 
  //····················································································································
 
+  override func ebBuildUserInterface () {
+    super.ebBuildUserInterface ()
+    self.packageDisplayController.mAfterObjectRemovingCallback = { [weak self] in
+      self?.rootObject.updatePadProxies ()
+    }
+  }
+
+ //····················································································································
+
   override func metadataStatusForSaving () -> UInt8 {
     return UInt8 (self.mMetadataStatus?.rawValue ?? 0)
   }

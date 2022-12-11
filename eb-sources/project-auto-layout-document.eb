@@ -487,7 +487,6 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       }
       view schematicsInspectorView
-      space
     }
   }
 
@@ -536,6 +535,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
       [outletArray mExchangeSymbolSchematicHotKeyTextField]
     StaticLabel (title: "[W] Insert Wire Point", bold: no, size: .small, alignment: .left)
       [outletArray mAddWirePointSchematicHotKeyTextField]
+    space
   }  
 
 //--- Unplaced symbols inspector
@@ -670,6 +670,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
     }
+    space
   }  
 
 //--- Sheet inspector
@@ -742,6 +743,7 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
         }
       )
     }
+    space
   }  
  
   transient Bool schematicSheetOrientationIsCustom dependsFrom root.mSchematicSheetOrientation ; 
