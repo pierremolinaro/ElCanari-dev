@@ -51,69 +51,8 @@ enum DocumentFormat {
   //····················································································································
 
   override init () {
-  //--- Build Batch Window
-    self.mBatchWindow = NSWindow (
-      contentRect: NSRect (x: 0, y: 0, width: 600, height: 400),
-      styleMask: [.titled, .resizable, .closable],
-      backing: .buffered,
-      defer: false
-    )
-    self.mBatchWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
-    self.mBatchWindow.title = "Batch Operations"
-    self.mBatchWindow.hasShadow = true
-  //--- Main view
-    let mainView = AutoLayoutHorizontalStackView ().set (margins: 20)
-  //--- First Column
-    let firstColumn = AutoLayoutVerticalStackView ()
-    _ = firstColumn.appendView (AutoLayoutStaticLabel (title: "Open All…", bold: true, size: .regular, alignment: .left))
-    let openAllSymbolsInDirectory = AutoLayoutButton (title: "Symbols in directory…", size: .regular)
-    _ = firstColumn.appendView (openAllSymbolsInDirectory)
-    let openAllPackagesInDirectory = AutoLayoutButton (title: "Packages in directory…", size: .regular)
-    _ = firstColumn.appendView (openAllPackagesInDirectory)
-    let openAllDevicesInDirectory = AutoLayoutButton (title: "Devices in directory…", size: .regular)
-    _ = firstColumn.appendView (openAllDevicesInDirectory)
-    let openAllFontsInDirectory = AutoLayoutButton (title: "Fonts in directory…", size: .regular)
-    _ = firstColumn.appendView (openAllFontsInDirectory)
-//    let openAllProjectsInDirectory = AutoLayoutButton (title: "Projects in directory…", size: .regular)
-//    firstColumn.appendView (openAllProjectsInDirectory)
-    let openAllDocumentsInDirectory = AutoLayoutButton (title: "Documents in directory…", size: .regular)
-    _ = firstColumn.appendView (openAllDocumentsInDirectory)
-    _ = firstColumn.appendView (AutoLayoutStaticLabel (title: "Update All…", bold: true, size: .regular, alignment: .left))
-    let updateAllDevicesInDirectory = AutoLayoutButton (title: "Devices in directory…", size: .regular)
-    _ = firstColumn.appendView (updateAllDevicesInDirectory)
-    let updateAllProjectsInDirectory = AutoLayoutButton (title: "Projects in directory…", size: .regular)
-    _ = firstColumn.appendView (updateAllProjectsInDirectory)
-    _ = firstColumn.appendView (AutoLayoutStaticLabel (title: "Convert to Textual Format…", bold: true, size: .regular, alignment: .left))
-    let convertToTextualDocumentsInDirectory = AutoLayoutButton (title: "Documents in directory…", size: .regular)
-    _ = firstColumn.appendView (convertToTextualDocumentsInDirectory)
-    _ = firstColumn.appendView (AutoLayoutStaticLabel (title: "Convert to Binary Format…", bold: true, size: .regular, alignment: .left))
-    let convertToBinaryDocumentsInDirectory = AutoLayoutButton (title: "Documents in directory…", size: .regular)
-    _ = firstColumn.appendView (convertToBinaryDocumentsInDirectory)
-    _ = mainView.appendView (firstColumn)
-  //--- Second Column
-    let secondColumn = AutoLayoutVerticalStackView ()
-    let logTitleLabel = AutoLayoutStaticLabel (title: "Log", bold: true, size: .regular, alignment: .center)
-    _ = secondColumn.appendView (logTitleLabel)
-    self.mMaintenanceLogTextView = AutoLayoutStaticTextView (drawsBackground: true, horizontalScroller: false, verticalScroller: true)
-    _ = secondColumn.appendView (self.mMaintenanceLogTextView)
-    self.mMaintenanceLogTextField = AutoLayoutLabel (bold: false, size: .regular).set (alignment: .left).expandableWidth ()
-    _ = secondColumn.appendView (self.mMaintenanceLogTextField)
-    _ = mainView.appendView (secondColumn)
-  //--- Set autolayout view to window
-    self.mBatchWindow.contentView = AutoLayoutWindowContentView (view: mainView)
-  //---
     super.init ()
     gApplicationDelegate = self
-  //---
-    _ = openAllSymbolsInDirectory.bind_run (target: self, selector: #selector (Self.actionOpenAllSymbolsInDirectory (_:)))
-    _ = openAllPackagesInDirectory.bind_run (target: self, selector: #selector (Self.actionOpenAllPackagesInDirectory (_:)))
-    _ = openAllDevicesInDirectory.bind_run (target: self, selector: #selector (Self.actionOpenAllDevicesInDirectory (_:)))
-    _ = openAllFontsInDirectory.bind_run (target: self, selector: #selector (Self.actionOpenAllFontsInDirectory (_:)))
-    _ = openAllDocumentsInDirectory.bind_run (target: self, selector: #selector (Self.actionOpenAllDocumentsInDirectory (_:)))
-    _ = updateAllDevicesInDirectory.bind_run (target: self, selector: #selector (Self.updateAllDevicesInDirectory (_:)))
-    _ = updateAllProjectsInDirectory.bind_run (target: self, selector: #selector (Self.updateAllProjectsInDirectory (_:)))
-    _ = convertToTextualDocumentsInDirectory.bind_run (target: self, selector: #selector (Self.actionConvertToTextualFormatAllDocumentsInDirectory (_:)))
-    _ = convertToBinaryDocumentsInDirectory.bind_run (target: self, selector: #selector (Self.actionConvertToBinaryFormatAllDocumentsInDirectory (_:)))
   }
 
   //····················································································································
@@ -127,15 +66,87 @@ enum DocumentFormat {
   //  Batch Window
   //····················································································································
 
-  let mBatchWindow : NSWindow
-  let mMaintenanceLogTextView : AutoLayoutStaticTextView
-  let mMaintenanceLogTextField : AutoLayoutLabel
+  var mBatchWindow : NSWindow? = nil
+  var mMaintenanceLogTextView : AutoLayoutStaticTextView? = nil
+  var mMaintenanceLogTextField : AutoLayoutLabel? = nil
 
   var mCount = 0
   var mHandledFiles = [String] ()
   var mTotalFileCount = 0
   var mHandledFileCount = 0
   var mStartDate = Date ()
+
+  //····················································································································
+  //  Instanciate Batch Window
+  //····················································································································
+
+  func instanciatedBatchWindow () {
+    if self.mBatchWindow == nil {
+      let batchWindow = NSWindow (
+        contentRect: NSRect (x: 0, y: 0, width: 600, height: 400),
+        styleMask: [.titled, .resizable, .closable],
+        backing: .buffered,
+        defer: false
+      )
+      batchWindow.isReleasedWhenClosed = false // Close button just hides the window, but do not release it
+      batchWindow.title = "Batch Operations"
+      batchWindow.hasShadow = true
+    //--- Main view
+      let mainView = AutoLayoutHorizontalStackView ().set (margins: 20)
+    //--- First Column
+      let firstColumn = AutoLayoutVerticalStackView ()
+      _ = firstColumn.appendView (AutoLayoutStaticLabel (title: "Open All…", bold: true, size: .regular, alignment: .left))
+      let openAllSymbolsInDirectory = AutoLayoutButton (title: "Symbols in directory…", size: .regular)
+      _ = firstColumn.appendView (openAllSymbolsInDirectory)
+      let openAllPackagesInDirectory = AutoLayoutButton (title: "Packages in directory…", size: .regular)
+      _ = firstColumn.appendView (openAllPackagesInDirectory)
+      let openAllDevicesInDirectory = AutoLayoutButton (title: "Devices in directory…", size: .regular)
+      _ = firstColumn.appendView (openAllDevicesInDirectory)
+      let openAllFontsInDirectory = AutoLayoutButton (title: "Fonts in directory…", size: .regular)
+      _ = firstColumn.appendView (openAllFontsInDirectory)
+  //    let openAllProjectsInDirectory = AutoLayoutButton (title: "Projects in directory…", size: .regular)
+  //    firstColumn.appendView (openAllProjectsInDirectory)
+      let openAllDocumentsInDirectory = AutoLayoutButton (title: "Documents in directory…", size: .regular)
+      _ = firstColumn.appendView (openAllDocumentsInDirectory)
+      _ = firstColumn.appendView (AutoLayoutStaticLabel (title: "Update All…", bold: true, size: .regular, alignment: .left))
+      let updateAllDevicesInDirectory = AutoLayoutButton (title: "Devices in directory…", size: .regular)
+      _ = firstColumn.appendView (updateAllDevicesInDirectory)
+      let updateAllProjectsInDirectory = AutoLayoutButton (title: "Projects in directory…", size: .regular)
+      _ = firstColumn.appendView (updateAllProjectsInDirectory)
+      _ = firstColumn.appendView (AutoLayoutStaticLabel (title: "Convert to Textual Format…", bold: true, size: .regular, alignment: .left))
+      let convertToTextualDocumentsInDirectory = AutoLayoutButton (title: "Documents in directory…", size: .regular)
+      _ = firstColumn.appendView (convertToTextualDocumentsInDirectory)
+      _ = firstColumn.appendView (AutoLayoutStaticLabel (title: "Convert to Binary Format…", bold: true, size: .regular, alignment: .left))
+      let convertToBinaryDocumentsInDirectory = AutoLayoutButton (title: "Documents in directory…", size: .regular)
+      _ = firstColumn.appendView (convertToBinaryDocumentsInDirectory)
+      _ = mainView.appendView (firstColumn)
+    //--- Second Column
+      let secondColumn = AutoLayoutVerticalStackView ()
+      let logTitleLabel = AutoLayoutStaticLabel (title: "Log", bold: true, size: .regular, alignment: .center)
+      _ = secondColumn.appendView (logTitleLabel)
+      let maintenanceLogTextView = AutoLayoutStaticTextView (drawsBackground: true, horizontalScroller: false, verticalScroller: true)
+      _ = secondColumn.appendView (maintenanceLogTextView)
+      self.mMaintenanceLogTextView = maintenanceLogTextView
+      let maintenanceLogTextField = AutoLayoutLabel (bold: false, size: .regular).set (alignment: .left).expandableWidth ()
+      _ = secondColumn.appendView (maintenanceLogTextField)
+      self.mMaintenanceLogTextField = maintenanceLogTextField
+      _ = mainView.appendView (secondColumn)
+    //--- Set autolayout view to window
+      batchWindow.contentView = AutoLayoutWindowContentView (view: mainView)
+    //---
+      _ = openAllSymbolsInDirectory.bind_run (target: self, selector: #selector (Self.actionOpenAllSymbolsInDirectory (_:)))
+      _ = openAllPackagesInDirectory.bind_run (target: self, selector: #selector (Self.actionOpenAllPackagesInDirectory (_:)))
+      _ = openAllDevicesInDirectory.bind_run (target: self, selector: #selector (Self.actionOpenAllDevicesInDirectory (_:)))
+      _ = openAllFontsInDirectory.bind_run (target: self, selector: #selector (Self.actionOpenAllFontsInDirectory (_:)))
+      _ = openAllDocumentsInDirectory.bind_run (target: self, selector: #selector (Self.actionOpenAllDocumentsInDirectory (_:)))
+      _ = updateAllDevicesInDirectory.bind_run (target: self, selector: #selector (Self.updateAllDevicesInDirectory (_:)))
+      _ = updateAllProjectsInDirectory.bind_run (target: self, selector: #selector (Self.updateAllProjectsInDirectory (_:)))
+      _ = convertToTextualDocumentsInDirectory.bind_run (target: self, selector: #selector (Self.actionConvertToTextualFormatAllDocumentsInDirectory (_:)))
+      _ = convertToBinaryDocumentsInDirectory.bind_run (target: self, selector: #selector (Self.actionConvertToBinaryFormatAllDocumentsInDirectory (_:)))
+    //---
+      self.mBatchWindow = batchWindow
+    }
+  }
 
   //····················································································································
   //   Sparkle 2.x
