@@ -225,6 +225,16 @@ extension ComponentInProject {
         connector.mRoot = nil // Remove from board objects
       }
     }
+  //--- Remove unused devices
+    if let rootObject = self.mRoot {
+      DispatchQueue.main.async {
+        for device in rootObject.mDevices.values {
+          if device.mComponents.count == 0 {
+            rootObject.mDevices_property.remove (device)
+          }
+        }
+      }
+    }
   }
 
   //····················································································································

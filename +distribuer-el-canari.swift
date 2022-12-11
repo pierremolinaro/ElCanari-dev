@@ -33,9 +33,11 @@ let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Correction divers bugs dans le document Device"
+  "Correction divers (petits) bugs dans le document Device"
 ]
 let CHANGES : [String] = [
+  "Dans un document projet, les devices inutilisés sont automatiquement supprimés",
+  "Dans un document Device, les symboles inutilisés sont automatiquement supprimés"
 ]
 let NEWS : [String] = [
   "Duplication des inspecteurs dans la page « Board » d'un projet"
