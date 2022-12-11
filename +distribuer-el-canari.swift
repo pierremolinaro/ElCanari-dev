@@ -147,7 +147,6 @@ runCommand ("/bin/mkdir", [DISTRIBUTION_DIR])
 fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
 //-------------------- Importer ElCanari
 let CANARI_DIR = "ElCanari-dev"
-//runCommand ("/bin/rm", ["-f", "archive.zip"])
 runCommand ("/bin/rm", ["-fr", CANARI_DIR])
 runCommand ("/usr/local/bin/git", ["clone", "https://github.com/pierremolinaro/ElCanari-dev.git"])
 //runCommand ("/usr/bin/curl", ["--fail", "-L", "https://github.com/pierremolinaro/ElCanari-dev/archive/master.tar.gz", "-o", "archive.tar.gz"])
@@ -185,7 +184,7 @@ do{
   dateFormatter.locale = Locale(identifier: "en_US")
   dateFormatter.setLocalizedDateFormatFromTemplate("MMMMdYYYY") // set template after setting locale
 //--- Mettre à jour les numéros de version dans la plist
-  plistDictionary ["CFBundleVersion"] = VERSION_CANARI + ", " + dateFormatter.string (from: dateConstruction)// + ", build " + buildString
+  plistDictionary ["CFBundleVersion"] = VERSION_CANARI + ", " + dateFormatter.string (from: dateConstruction)
   plistDictionary ["CFBundleShortVersionString"] = VERSION_CANARI
   let plistNewData = try PropertyListSerialization.data (fromPropertyList: plistDictionary, format: .binary, options: 0)
   try plistNewData.write (to: URL (fileURLWithPath: plistFileFullPath), options: .atomic)
