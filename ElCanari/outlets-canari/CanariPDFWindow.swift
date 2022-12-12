@@ -27,21 +27,21 @@ final class CanariPDFWindow : CanariWindow, NSToolbarDelegate {
 
   //····················································································································
 
-  init (fileName : String, pdfData : Data) {
-    self.mData = pdfData
+  init (fileName inFileName : String, pdfData inPDFData : Data) {
+    self.mData = inPDFData
   //--- Create window
     super.init (
-      contentRect: NSRect (x: 0.0, y: 0.0, width: 800.0, height: 600.0),
+      contentRect: NSRect (x: 0, y: 0, width: 800, height: 600),
       styleMask: [.titled, .closable, .resizable],
       backing: .buffered,
       defer: false
     )
     self.isReleasedWhenClosed = false
   //--- Title
-    self.title = fileName
+    self.title = inFileName
   //--- Set PDF view
     self.mPDFView.frame = self.contentView!.frame
-    self.mPDFView.document = PDFDocument (data: pdfData)
+    self.mPDFView.document = PDFDocument (data: inPDFData)
     self.contentView = self.mPDFView
 //--- Build toolbar
     let toolbar = NSToolbar (identifier: "PMPDFDocViewToolbar")
@@ -131,7 +131,6 @@ final class CanariPDFWindow : CanariWindow, NSToolbarDelegate {
   @objc func saveDocumentAs (_ inSender : Any?) {
     let savePanel = NSSavePanel ()
     savePanel.allowedFileTypes = ["pdf"]
-//    savePanel.allowedContentTypes = ["pdf"]
     savePanel.allowsOtherFileTypes = false
     savePanel.nameFieldStringValue = self.title
     savePanel.beginSheetModal (for: self) { inResponse in
