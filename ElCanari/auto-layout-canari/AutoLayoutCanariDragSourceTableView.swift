@@ -52,7 +52,7 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
     leftColumn.isEditable = false
     leftColumn.resizingMask = .autoresizingMask
     self.mTableView.addTableColumn (leftColumn)
-    
+
   //--- Set sort descriptor
     let tableColumns = self.mTableView.tableColumns
     if tableColumns.count == 1 {
@@ -90,9 +90,10 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
 
   //····················································································································
 
-  func register (document : EBAutoLayoutManagedDocument, draggedType : NSPasteboard.PasteboardType) {
-    self.mDraggedType = draggedType
-    self.mTableView.mDocument = document
+  func register (document inDocument : EBAutoLayoutManagedDocument,
+                 draggedType inDraggedType : NSPasteboard.PasteboardType) {
+    self.mDraggedType = inDraggedType
+    self.mTableView.mDocument = inDocument
     self.mTableView.mSource = self
   }
 
@@ -100,7 +101,7 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
   //    T A B L E V I E W    D A T A S O U R C E : numberOfRows (in:)
   //····················································································································
 
-  func numberOfRows (in _ : NSTableView) -> Int {
+  func numberOfRows (in inTableView : NSTableView) -> Int {
     // Swift.print ("numberOfRows \(self.mModelArray.count)")
     return self.mModelArray.count
   }
@@ -109,7 +110,7 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
   //    T A B L E V I E W    D E L E G A T E : tableView:viewForTableColumn:row:
   //····················································································································
 
-  func tableView (_ tableView : NSTableView,
+  func tableView (_ inTableView : NSTableView,
                   viewFor inTableColumn : NSTableColumn?,
                   row inRowIndex : Int) -> NSView? {
     let text = NSTextField ()
@@ -177,10 +178,10 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
   }
 
   //····················································································································
-  //    T A B L E V I E W    D E L E G A T E : tableView:viewForTableColumn:mouseDownInHeaderOfTableColumn:
+  //    TABLEVIEW DELEGATE : tableView:viewForTableColumn:mouseDownInHeaderOfTableColumn:
   //····················································································································
 
-  func tableView (_ tableView : NSTableView, mouseDownInHeaderOf inTableColumn : NSTableColumn) {
+  func tableView (_ inTableView : NSTableView, mouseDownInHeaderOf inTableColumn : NSTableColumn) {
     self.setModel (self.mModelArray)
   }
 
@@ -201,53 +202,73 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
   //····················································································································
   // Drag source
   //····················································································································
+  // The following method is obsolete,
+  // use tableView (_:pasteboardWriterForRow:) and tableView (_:draggingSession:willBeginAt:forRowIndexes:)
+  //····················································································································
 
-//  func tableView (_ tableView : NSTableView,
-//                  pasteboardWriterForRow inRow : Int) -> NSPasteboardWriting? {
-//    if let draggedType = self.mDraggedType {
-//      let rowIndexes = IndexSet (integer: inRow)
-//      self.mTableView.selectRowIndexes (rowIndexes, byExtendingSelection: false)
-//      let cellName : String = self.mModelArray [inRow].string
-//      let data = cellName.data (using: .ascii)!
-//      let pasteboardItem = NSPasteboardItem ()
-//      pasteboardItem.setData (data, forType: draggedType)
-//      Swift.print ("pasteboardWriterForRow")
-//      return pasteboardItem
+//  func tableView (_ inTableView : NSTableView, // NSTableViewDataSource
+//                  writeRowsWith inRowIndexes : IndexSet,
+//                  to inPasteboard : NSPasteboard) -> Bool {
+//    if DEBUG_DRAG_AND_DROP {
+//      Swift.print (self.className + "." + #function)
+//    }
+//    if let draggedType = self.mDraggedType, inRowIndexes.count == 1 {
+//      self.mTableView.selectRowIndexes (inRowIndexes, byExtendingSelection: false)
+//      let cellName : String = self.mModelArray [inRowIndexes.first!].string
+//      inPasteboard.declareTypes ([draggedType], owner: self)
+//    //--- Associated data is cell name
+//      let data = cellName.data (using: .ascii)
+//      inPasteboard.setData (data, forType: draggedType)
+//      return true
 //    }else{
-//      return nil
+//      return false
 //    }
-//
 //  }
 
-//  @MainActor func tableView (_ tableView : NSTableView,
-//                             draggingSession inSession : NSDraggingSession,
-//                             willBeginAt screenPoint : NSPoint,
-//                             forRowIndexes rowIndexes : IndexSet) {
-//    Swift.print ("willBeginAt")
-//    let pboard = inSession.draggingPasteboard //.addTypes ([self.mDraggedType!], owner:self)
-//    if let draggedType = self.mDraggedType, rowIndexes.count == 1 {
-//      pboard.declareTypes ([draggedType], owner:self)
-//      self.mTableView.selectRowIndexes (rowIndexes, byExtendingSelection: false)
-//      let cellName : String = self.mModelArray [rowIndexes.first!].string
-//      let data = cellName.data (using: .ascii)!
-//      pboard.setData (data, forType: draggedType)
-//    }
-//
-//  }
+  //····················································································································
 
-  func tableView (_ aTableView: NSTableView, // NSTableViewDataSource
-                  writeRowsWith rowIndexes: IndexSet,
-                  to pboard : NSPasteboard) -> Bool {
-    if let draggedType = self.mDraggedType, rowIndexes.count == 1 {
-      self.mTableView.selectRowIndexes (rowIndexes, byExtendingSelection: false)
-      let cellName : String = self.mModelArray [rowIndexes.first!].string
-      pboard.declareTypes ([draggedType], owner: self)
-    //--- Associated data is cell name
-      let data = cellName.data (using: .ascii)
-      pboard.setData (data, forType: draggedType)
-      return true
+  func tableView (_ inTableView : NSTableView,
+                  pasteboardWriterForRow inRowIndex : Int) -> NSPasteboardWriting? {
+    if DEBUG_DRAG_AND_DROP {
+      Swift.print (self.className + "." + #function)
+    }
+    if let draggedType = self.mDraggedType {
+      self.mTableView.selectRowIndexes (IndexSet (integer: inRowIndex), byExtendingSelection: false)
+      let pasteboardItem = NSPasteboardItem ()
+      let cellName : String = self.mModelArray [inRowIndex].string
+      pasteboardItem.setString (cellName, forType: draggedType)
+      return pasteboardItem
     }else{
-      return false
+      return nil
+    }
+  }
+
+  //····················································································································
+
+  func tableView (_ inTableView : NSTableView,
+                  draggingSession inSession : NSDraggingSession,
+                  willBeginAt _ : NSPoint,
+                  forRowIndexes inRowIndexes : IndexSet) {
+    if DEBUG_DRAG_AND_DROP {
+      Swift.print (self.className + "." + #function)
+    }
+    if let document = self.mTableView.mDocument, inRowIndexes.count == 1, let rowIndex = inRowIndexes.first {
+      let (image, imageOffset) = document.image (forDragSource: self, forDragRowIndex: rowIndex)
+      inSession.enumerateDraggingItems (
+        options: .concurrent,
+        for: nil,
+        classes: [NSPasteboardItem.self],
+        searchOptions: [:],
+        using: { (draggingItem : NSDraggingItem, index, stop) in
+          let r = NSRect (
+            x: inSession.draggingLocation.x + imageOffset.x - image.size.width / 2.0,
+            y: inSession.draggingLocation.y + imageOffset.y - image.size.height / 2.0,
+            width: image.size.width,
+            height: image.size.height
+          )
+          draggingItem.setDraggingFrame (r, contents: image)
+        }
+      )
     }
   }
 
@@ -257,10 +278,10 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
 
   private var mModelsController : EBObservablePropertyController? = nil
 
-  final func bind_models (_ model : EBReadOnlyProperty_StringTagArray) -> Self {
+  final func bind_models (_ inModel : EBReadOnlyProperty_StringTagArray) -> Self {
     self.mModelsController = EBObservablePropertyController (
-      observedObjects: [model],
-      callBack: { [weak self] in self?.update (from: model) }
+      observedObjects: [inModel],
+      callBack: { [weak self] in self?.update (from: inModel) }
     )
     return self
   }
@@ -293,8 +314,8 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
 
 fileprivate final class InternalDragSourceTableView : NSTableView {
 
-  weak var mDocument : EBAutoLayoutManagedDocument? = nil
-  weak var mSource : AutoLayoutCanariDragSourceTableView? = nil
+  weak var mDocument : EBAutoLayoutManagedDocument? = nil // SHOULD BE WEAK
+  weak var mSource : AutoLayoutCanariDragSourceTableView? = nil // SHOULD BE WEAK
 
   //····················································································································
   // INIT
@@ -321,22 +342,22 @@ fileprivate final class InternalDragSourceTableView : NSTableView {
   // Providing the drag image
   //····················································································································
 
-  override func dragImageForRows (with dragRows: IndexSet,
-                                  tableColumns: [NSTableColumn],
-                                  event dragEvent: NSEvent,
-                                  offset dragImageOffset: NSPointPointer) -> NSImage {
-    if let document = self.mDocument, let source = self.mSource {
-      return document.dragImageForRows (
-        source: source,
-        with: dragRows,
-        tableColumns: tableColumns,
-        event: dragEvent,
-        offset: dragImageOffset
-      )
-    }else{
-      return NSImage (named: NSImage.Name ("exclamation"))!
-    }
-  }
+//  override func dragImageForRows (with inDragRows : IndexSet,
+//                                  tableColumns inTableColumns : [NSTableColumn],
+//                                  event inDragEvent : NSEvent,
+//                                  offset inDragImageOffset : NSPointPointer) -> NSImage {
+//    if let document = self.mDocument, let source = self.mSource {
+//      return document.dragImageForRows (
+//        source: source,
+//        with: inDragRows,
+//        tableColumns: inTableColumns,
+//        event: inDragEvent,
+//        offset: inDragImageOffset
+//      )
+//    }else{
+//      return NSImage (named: NSImage.Name ("exclamation"))!
+//    }
+//  }
 
   //····················································································································
 

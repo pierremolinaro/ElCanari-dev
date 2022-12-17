@@ -94,18 +94,17 @@ import AppKit
   // Providing the drag image, called by a source drag table view (CanariDragSourceTableView)
   //····················································································································
 
-  override func dragImageForRows (source inSourceTableView : AutoLayoutCanariDragSourceTableView,
-                                  with dragRows: IndexSet,
-                                  tableColumns: [NSTableColumn],
-                                  event dragEvent: NSEvent,
-                                  offset dragImageOffset: NSPointPointer) -> NSImage {
+  override func image (forDragSource inSourceTableView : AutoLayoutCanariDragSourceTableView,
+                       forDragRowIndex inDragRow : Int) -> (NSImage, NSPoint) {
+    if DEBUG_DRAG_AND_DROP {
+      Swift.print (self.className + "." + #function)
+    }
     var resultImage = NSImage (named: NSImage.Name ("exclamation"))!
+    var resultOffset = NSPoint ()
     if self.mUnplacedSymbolsTableViewArray.contains (inSourceTableView),
-      let schematicsView = self.mSchematicsView?.mGraphicView,
-      dragRows.count == 1,
-      let idx = dragRows.first {
+      let schematicsView = self.mSchematicsView?.mGraphicView {
     //--- Find symbol to insert in schematics
-      let symbolTag = inSourceTableView.tag (atIndex: idx)
+      let symbolTag = inSourceTableView.tag (atIndex: inDragRow)
       self.mPossibleDraggedSymbol = nil
       for component in self.rootObject.mComponents.values {
         for s in component.mSymbols.values {
@@ -139,18 +138,13 @@ import AppKit
         }
         let pinCenterX = (minX + maxX) / 2.0
         let pinCenterY = (minY + maxY) / 2.0
-        let p = NSPoint (
-          x: symbolShape.boundingBox.midX - pinCenterX,
-          y: symbolShape.boundingBox.midY - pinCenterY
-        )
-        var scaledP = af.transform (p)
-        dragImageOffset.initialize (from: &scaledP, count: 1)
+        resultOffset.x = symbolShape.boundingBox.midX - pinCenterX
+        resultOffset.y = symbolShape.boundingBox.midY - pinCenterY
+        resultOffset = af.transform (resultOffset)
       }
     }else if self.mUnplacedPackageTableViewArray.contains (inSourceTableView),
-           let boardView = self.mBoardView?.mGraphicView,
-           dragRows.count == 1,
-           let idx = dragRows.first {
-      let componentTag = inSourceTableView.tag (atIndex: idx)
+           let boardView = self.mBoardView?.mGraphicView {
+      let componentTag = inSourceTableView.tag (atIndex: inDragRow)
       self.mPossibleDraggedComponent = nil
       for component in self.rootObject.mComponents.values {
         if component.objectIndex == componentTag {
@@ -172,29 +166,132 @@ import AppKit
         var maxY = CGFloat.leastNormalMagnitude
         for padDescriptor in component.componentPadDictionary!.values {
           for pad in padDescriptor.pads {
-          let padCenter = pad.location
-          minX = min (minX, padCenter.x)
-          maxX = max (maxX, padCenter.x)
-          minY = min (minY, padCenter.y)
-          maxY = max (maxY, padCenter.y)
+            let padCenter = pad.location
+            minX = min (minX, padCenter.x)
+            maxX = max (maxX, padCenter.x)
+            minY = min (minY, padCenter.y)
+            maxY = max (maxY, padCenter.y)
           }
         }
         let centerX = (minX + maxX) / 2.0
         let centerY = (minY + maxY) / 2.0
-        let p = NSPoint (
-          x: packageShape.boundingBox.midX - centerX,
-          y: packageShape.boundingBox.midY - centerY
-        )
-        var scaledP = af.transform (p)
-        dragImageOffset.initialize (from: &scaledP, count: 1)
+        resultOffset.x = packageShape.boundingBox.midX - centerX
+        resultOffset.y = packageShape.boundingBox.midY - centerY
+        resultOffset = af.transform (resultOffset)
       }
     }
-    return resultImage
+    return (resultImage, resultOffset)
   }
+
+  //····················································································································
+
+//  override func dragImageForRows (source inSourceTableView : AutoLayoutCanariDragSourceTableView,
+//                                  with inDragRows : IndexSet,
+//                                  tableColumns _ : [NSTableColumn],
+//                                  event _ : NSEvent,
+//                                  offset inDragImageOffsetPointer : NSPointPointer) -> NSImage {
+//    if DEBUG_DRAG_AND_DROP {
+//      Swift.print (self.className + "." + #function)
+//    }
+//    var resultImage = NSImage (named: NSImage.Name ("exclamation"))!
+//    if self.mUnplacedSymbolsTableViewArray.contains (inSourceTableView),
+//      let schematicsView = self.mSchematicsView?.mGraphicView,
+//      inDragRows.count == 1,
+//      let idx = inDragRows.first {
+//    //--- Find symbol to insert in schematics
+//      let symbolTag = inSourceTableView.tag (atIndex: idx)
+//      self.mPossibleDraggedSymbol = nil
+//      for component in self.rootObject.mComponents.values {
+//        for s in component.mSymbols.values {
+//           if s.objectIndex == symbolTag {
+//             self.mPossibleDraggedSymbol = s
+//           }
+//        }
+//      }
+//      if let symbolInfo = self.mPossibleDraggedSymbol?.symbolInfo {
+//        let scale : CGFloat = schematicsView.actualScale
+//        let horizontalFlip : CGFloat = schematicsView.horizontalFlip ? -scale : scale
+//        let verticalFlip   : CGFloat = schematicsView.verticalFlip   ? -scale : scale
+//        var af = AffineTransform ()
+//        af.scale (x: horizontalFlip, y: verticalFlip)
+//        var symbolShape = EBShape ()
+//        symbolShape.add (filled: [EBBezierPath (symbolInfo.filledBezierPath)], preferences_symbolColorForSchematic)
+//        symbolShape.add (stroke: [EBBezierPath (symbolInfo.strokeBezierPath)], preferences_symbolColorForSchematic)
+//        let scaledSymbolShape = symbolShape.transformed (by: af)
+//        resultImage = buildPDFimage (frame: scaledSymbolShape.boundingBox, shape: scaledSymbolShape)
+//      //--- Move image rect origin to mouse click location
+//        var minX = CGFloat.greatestFiniteMagnitude
+//        var maxX = CGFloat.leastNormalMagnitude
+//        var minY = CGFloat.greatestFiniteMagnitude
+//        var maxY = CGFloat.leastNormalMagnitude
+//        for pin in symbolInfo.pins {
+//          let p = pin.pinLocation.cocoaPoint
+//          minX = min (minX, p.x)
+//          maxX = max (maxX, p.x)
+//          minY = min (minY, p.y)
+//          maxY = max (maxY, p.y)
+//        }
+//        let pinCenterX = (minX + maxX) / 2.0
+//        let pinCenterY = (minY + maxY) / 2.0
+//        let p = NSPoint (
+//          x: symbolShape.boundingBox.midX - pinCenterX,
+//          y: symbolShape.boundingBox.midY - pinCenterY
+//        )
+//        var scaledP = af.transform (p)
+//        inDragImageOffsetPointer.initialize (from: &scaledP, count: 1)
+//      }
+//    }else if self.mUnplacedPackageTableViewArray.contains (inSourceTableView),
+//           let boardView = self.mBoardView?.mGraphicView,
+//           inDragRows.count == 1,
+//           let idx = inDragRows.first {
+//      let componentTag = inSourceTableView.tag (atIndex: idx)
+//      self.mPossibleDraggedComponent = nil
+//      for component in self.rootObject.mComponents.values {
+//        if component.objectIndex == componentTag {
+//          self.mPossibleDraggedComponent = component
+//        }
+//      }
+//      if let component = self.mPossibleDraggedComponent, let packageShape = component.objectDisplay {
+//        let scale : CGFloat = boardView.actualScale
+//        let horizontalFlip : CGFloat = boardView.horizontalFlip ? -scale : scale
+//        let verticalFlip   : CGFloat = boardView.verticalFlip   ? -scale : scale
+//        var af = AffineTransform ()
+//        af.scale (x: horizontalFlip, y: verticalFlip)
+//        let scaledPackageShape = packageShape.transformed (by: af)
+//        resultImage = buildPDFimage (frame: scaledPackageShape.boundingBox, shape: scaledPackageShape)
+//      //--- Move image rect origin to mouse click location
+//        var minX = CGFloat.greatestFiniteMagnitude
+//        var maxX = CGFloat.leastNormalMagnitude
+//        var minY = CGFloat.greatestFiniteMagnitude
+//        var maxY = CGFloat.leastNormalMagnitude
+//        for padDescriptor in component.componentPadDictionary!.values {
+//          for pad in padDescriptor.pads {
+//          let padCenter = pad.location
+//          minX = min (minX, padCenter.x)
+//          maxX = max (maxX, padCenter.x)
+//          minY = min (minY, padCenter.y)
+//          maxY = max (maxY, padCenter.y)
+//          }
+//        }
+//        let centerX = (minX + maxX) / 2.0
+//        let centerY = (minY + maxY) / 2.0
+//        let p = NSPoint (
+//          x: packageShape.boundingBox.midX - centerX,
+//          y: packageShape.boundingBox.midY - centerY
+//        )
+//        var scaledP = af.transform (p)
+//        inDragImageOffsetPointer.initialize (from: &scaledP, count: 1)
+//      }
+//    }
+//    return resultImage
+//  }
 
  //····················································································································
 
   override func performDragOperation (_ sender : NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
+    if DEBUG_DRAG_AND_DROP {
+      Swift.print (self.className + "." + #function)
+    }
     let pasteboard = sender.draggingPasteboard
     var ok = false
     if let documentView = destinationScrollView.documentView, let selectedSheet = self.rootObject.mSelectedSheet {

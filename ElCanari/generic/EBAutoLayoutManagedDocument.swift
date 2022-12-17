@@ -8,7 +8,14 @@ import AppKit
 //  EBAutoLayoutManagedDocument
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBAutoLayoutManagedDocument : NSDocument {
+class EBAutoLayoutManagedDocument : NSDocument { // , NSPasteboardItemDataProvider {
+
+//  func pasteboard (_ pasteboard: NSPasteboard?,
+//                   item: NSPasteboardItem,
+//                   provideDataForType type: NSPasteboard.PasteboardType) {
+//    Swift.print ("provideDataForType")
+//  }
+
 
   //····················································································································
 
@@ -56,13 +63,18 @@ class EBAutoLayoutManagedDocument : NSDocument {
   // Providing the drag image, called by a source drag table view (CanariDragSourceTableView)
   //····················································································································
 
-  func dragImageForRows (source inSourceTableView : AutoLayoutCanariDragSourceTableView,
-                         with dragRows : IndexSet,
-                         tableColumns : [NSTableColumn],
-                         event dragEvent : NSEvent,
-                         offset dragImageOffset : NSPointPointer) -> NSImage {
-    return NSImage (named: NSImage.Name ("exclamation"))!
+  func image (forDragSource inSourceTableView : AutoLayoutCanariDragSourceTableView,
+              forDragRowIndex inDragRow : Int) -> (NSImage, NSPoint) {
+    return (NSImage (named: NSImage.Name ("exclamation"))!, NSPoint ())
   }
+
+//  func dragImageForRows (source inSourceTableView : AutoLayoutCanariDragSourceTableView,
+//                         with dragRows : IndexSet,
+//                         tableColumns : [NSTableColumn],
+//                         event dragEvent : NSEvent,
+//                         offset dragImageOffset : NSPointPointer) -> NSImage {
+//    return NSImage (named: NSImage.Name ("exclamation"))!
+//  }
 
   //····················································································································
   //   Drag destination
