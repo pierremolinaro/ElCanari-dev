@@ -87,14 +87,14 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
   //····················································································································
 
   fileprivate var mDraggedType : NSPasteboard.PasteboardType? = nil
+  fileprivate weak var mDocument : EBAutoLayoutManagedDocument? = nil // SHOULD BE WEAK
 
   //····················································································································
 
   func register (document inDocument : EBAutoLayoutManagedDocument,
                  draggedType inDraggedType : NSPasteboard.PasteboardType) {
     self.mDraggedType = inDraggedType
-    self.mTableView.mDocument = inDocument
-    self.mTableView.mSource = self
+    self.mDocument = inDocument
   }
 
   //····················································································································
@@ -244,6 +244,7 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
   }
 
   //····················································································································
+  // https://stackoverflow.com/questions/51360662/how-do-i-stop-nstableview-drag-images-shrinking-when-leaving-the-table
 
   func tableView (_ inTableView : NSTableView,
                   draggingSession inSession : NSDraggingSession,
@@ -252,7 +253,7 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
     if DEBUG_DRAG_AND_DROP {
       Swift.print (self.className + "." + #function)
     }
-    if let document = self.mTableView.mDocument, inRowIndexes.count == 1, let rowIndex = inRowIndexes.first {
+    if let document = self.mDocument, inRowIndexes.count == 1, let rowIndex = inRowIndexes.first {
       let (image, imageOffset) = document.image (forDragSource: self, forDragRowIndex: rowIndex)
       inSession.enumerateDraggingItems (
         options: .concurrent,
@@ -314,11 +315,6 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
 
 fileprivate final class InternalDragSourceTableView : NSTableView {
 
-  weak var mDocument : EBAutoLayoutManagedDocument? = nil // SHOULD BE WEAK
-  weak var mSource : AutoLayoutCanariDragSourceTableView? = nil // SHOULD BE WEAK
-
-  //····················································································································
-  // INIT
   //····················································································································
 
   required init? (coder : NSCoder) {
@@ -337,27 +333,6 @@ fileprivate final class InternalDragSourceTableView : NSTableView {
   deinit {
     noteObjectDeallocation (self)
   }
-
-  //····················································································································
-  // Providing the drag image
-  //····················································································································
-
-//  override func dragImageForRows (with inDragRows : IndexSet,
-//                                  tableColumns inTableColumns : [NSTableColumn],
-//                                  event inDragEvent : NSEvent,
-//                                  offset inDragImageOffset : NSPointPointer) -> NSImage {
-//    if let document = self.mDocument, let source = self.mSource {
-//      return document.dragImageForRows (
-//        source: source,
-//        with: inDragRows,
-//        tableColumns: inTableColumns,
-//        event: inDragEvent,
-//        offset: inDragImageOffset
-//      )
-//    }else{
-//      return NSImage (named: NSImage.Name ("exclamation"))!
-//    }
-//  }
 
   //····················································································································
 
