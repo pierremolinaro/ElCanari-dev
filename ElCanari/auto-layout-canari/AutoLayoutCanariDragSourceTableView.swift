@@ -9,27 +9,12 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   StringTag
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-struct StringTag : Hashable {
-  let string : String
-  let tag : Int
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   StringTagArray
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias StringTagArray = [StringTag]
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   AutoLayoutCanariDragSourceTableView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariDragSourceTableView : NSTableView, NSTableViewDataSource, NSTableViewDelegate {
+final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataSource, NSTableViewDelegate {
 
-//  private let mTableView = InternalDragSourceTableView ()
+  private let mTableView = InternalDragSourceTableView ()
 
   //····················································································································
   // INIT
@@ -45,35 +30,34 @@ final class AutoLayoutCanariDragSourceTableView : NSTableView, NSTableViewDataSo
     super.init (frame: .zero)
     noteObjectAllocation (self)
 //    self.translatesAutoresizingMaskIntoConstraints = false // DO NOT UNCOMMENT
-
     let leftColumn = NSTableColumn ()
     leftColumn.minWidth = 20.0
     leftColumn.maxWidth = 400.0
     leftColumn.isEditable = false
     leftColumn.resizingMask = .autoresizingMask
-    self.addTableColumn (leftColumn)
+    self.mTableView.addTableColumn (leftColumn)
 
   //--- Set sort descriptor
-    let tableColumns = self.tableColumns
+    let tableColumns = self.mTableView.tableColumns
     if tableColumns.count == 1 {
       let column = tableColumns [0]
       let sortDescriptor = NSSortDescriptor (key: column.identifier.rawValue, ascending: true)
       column.sortDescriptorPrototype = sortDescriptor
-      self.sortDescriptors = [sortDescriptor] // This shows the sort indicator
+      self.mTableView.sortDescriptors = [sortDescriptor] // This shows the sort indicator
     }
-    self.dataSource = self
-    self.delegate = self
-    self.headerView = nil
-    self.cornerView = nil
-    self.columnAutoresizingStyle = .lastColumnOnlyAutoresizingStyle
-    self.usesAutomaticRowHeights = true
+    self.mTableView.dataSource = self
+    self.mTableView.delegate = self
+    self.mTableView.headerView = nil
+    self.mTableView.cornerView = nil
+    self.mTableView.columnAutoresizingStyle = .lastColumnOnlyAutoresizingStyle
+    self.mTableView.usesAutomaticRowHeights = true
 
-//    self.drawsBackground = false
-//    self.documentView = self.mTableView
-//    self.hasHorizontalScroller = false
-//    self.hasVerticalScroller = true
+    self.drawsBackground = false
+    self.documentView = self.mTableView
+    self.hasHorizontalScroller = false
+    self.hasVerticalScroller = true
 //    Swift.print ("self.automaticallyAdjustsContentInsets \(self.automaticallyAdjustsContentInsets)")
-//    self.automaticallyAdjustsContentInsets = true
+    self.automaticallyAdjustsContentInsets = true
   }
 
   //····················································································································
@@ -135,7 +119,7 @@ final class AutoLayoutCanariDragSourceTableView : NSTableView, NSTableViewDataSo
   private func setModel (_ inModel : [StringTag]) {
   //--- Note selected rows
     var selectedRowContents = Set <String> ()
-    let currentSelectedRowIndexes = self.selectedRowIndexes
+    let currentSelectedRowIndexes = self.mTableView.selectedRowIndexes
     for idx in currentSelectedRowIndexes {
       if idx < self.mModelArray.count {
         selectedRowContents.insert (self.mModelArray [idx].string)
@@ -144,8 +128,8 @@ final class AutoLayoutCanariDragSourceTableView : NSTableView, NSTableViewDataSo
   //--- Assignment
     self.mModelArray = inModel
   //-- Sort
-    if self.sortDescriptors.count == 1 {
-      let sortDescriptor = self.sortDescriptors [0]
+    if self.mTableView.sortDescriptors.count == 1 {
+      let sortDescriptor = self.mTableView.sortDescriptors [0]
       if sortDescriptor.ascending {
         self.mModelArray.sort (by: { $0.string.localizedStandardCompare ($1.string) == .orderedAscending } )
       }else{
@@ -153,7 +137,7 @@ final class AutoLayoutCanariDragSourceTableView : NSTableView, NSTableViewDataSo
       }
     }
   //--- Tell Table view to reload
-    self.reloadData ()
+    self.mTableView.reloadData ()
   //--- Restore selection
     var newSelectedRowIndexes = IndexSet ()
     var idx = 0
@@ -174,7 +158,7 @@ final class AutoLayoutCanariDragSourceTableView : NSTableView, NSTableViewDataSo
         newSelectedRowIndexes.insert (0)
       }
     }
-    self.selectRowIndexes (newSelectedRowIndexes, byExtendingSelection: false)
+    self.mTableView.selectRowIndexes (newSelectedRowIndexes, byExtendingSelection: false)
   }
 
   //····················································································································
@@ -233,7 +217,7 @@ final class AutoLayoutCanariDragSourceTableView : NSTableView, NSTableViewDataSo
       Swift.print (self.className + "." + #function)
     }
     if let draggedType = self.mDraggedType {
-      self.selectRowIndexes (IndexSet (integer: inRowIndex), byExtendingSelection: false)
+      self.mTableView.selectRowIndexes (IndexSet (integer: inRowIndex), byExtendingSelection: false)
       let pasteboardItem = NSPasteboardItem ()
       let cellName : String = self.mModelArray [inRowIndex].string
       pasteboardItem.setString (cellName, forType: draggedType)
@@ -245,6 +229,7 @@ final class AutoLayoutCanariDragSourceTableView : NSTableView, NSTableViewDataSo
 
   //····················································································································
   // https://stackoverflow.com/questions/51360662/how-do-i-stop-nstableview-drag-images-shrinking-when-leaving-the-table
+  //····················································································································
 
   func tableView (_ inTableView : NSTableView,
                   draggingSession inSession : NSDraggingSession,
