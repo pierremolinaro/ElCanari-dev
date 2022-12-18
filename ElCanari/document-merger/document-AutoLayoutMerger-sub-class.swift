@@ -41,42 +41,46 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
   //    Drag and drop destination
   //····················································································································
 
-  override func prepareForDragOperation (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
+  override func prepareForDragOperation (_ inSender : NSDraggingInfo,
+                                         _ inDestinationScrollView : NSScrollView) -> Bool {
+    if DEBUG_DRAG_AND_DROP {
+      Swift.print (self.className + "." + #function)
+    }
     return true
   }
 
   //····················································································································
 
-  override func performDragOperation (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
+  override func performDragOperation (_ inSender : NSDraggingInfo,
+                                      _ inDestinationScrollView : NSScrollView) -> Bool {
+    if DEBUG_DRAG_AND_DROP {
+      Swift.print (self.className + "." + #function)
+    }
     var ok = false
-    if let documentView = destinationScrollView.documentView {
-      let draggingLocationInWindow = sender.draggingLocation
-      let draggingLocationInDestinationView = documentView.convert (draggingLocationInWindow, from:nil)
-      // NSLog ("concludeDragOperation at \(draggingLocationInWindow), \(documentView) \(draggingLocationInDestinationView)")
-      let pasteboard = sender.draggingPasteboard
-      if let data = pasteboard.data (forType: kDragAndDropMergerModelType), let boardModelName = String (data: data, encoding: .ascii) {
-        NSLog ("\(boardModelName)")
-        var possibleBoardModel : BoardModel? = nil
-        for boardModel in self.rootObject.boardModels_property.propval.values {
-          if boardModel.name == boardModelName {
-            possibleBoardModel = boardModel
-            break
-          }
+    if let documentView = inDestinationScrollView.documentView,
+       let boardModelName = inSender.draggingPasteboard.string (forType: kDragAndDropMergerModelType) {
+      let draggingLocationInWindow = inSender.draggingLocation
+      let draggingLocationInDestinationView = documentView.convert (draggingLocationInWindow, from: nil)
+      var possibleBoardModel : BoardModel? = nil
+      for boardModel in self.rootObject.boardModels.values {
+        if boardModel.name == boardModelName {
+          possibleBoardModel = boardModel
+          break
         }
-        if  let boardModel = possibleBoardModel {
-         // NSLog ("x \(mouseLocation.x), y \(mouseLocation.y)")
-          let rotation = self.rootObject.modelInsertionRotation
-          let newBoard = MergerBoardInstance (self.undoManager)
-          newBoard.myModel_property.setProp (boardModel)
-          newBoard.x = cocoaToCanariUnit (draggingLocationInDestinationView.x)
-          newBoard.y = cocoaToCanariUnit (draggingLocationInDestinationView.y)
-          newBoard.instanceRotation = rotation
-          self.rootObject.boardInstances_property.add (newBoard)
-          self.mBoardInstanceController.setSelection ([newBoard])
-          ok = true
-        }else{
-          NSLog ("Cannot find '\(boardModelName)' board model")
-        }
+      }
+      if let boardModel = possibleBoardModel {
+       // NSLog ("x \(mouseLocation.x), y \(mouseLocation.y)")
+        let rotation = self.rootObject.modelInsertionRotation
+        let newBoard = MergerBoardInstance (self.undoManager)
+        newBoard.myModel = boardModel
+        newBoard.x = cocoaToCanariUnit (draggingLocationInDestinationView.x)
+        newBoard.y = cocoaToCanariUnit (draggingLocationInDestinationView.y)
+        newBoard.instanceRotation = rotation
+        self.rootObject.boardInstances_property.add (newBoard)
+        self.mBoardInstanceController.setSelection ([newBoard])
+        ok = true
+      }else{
+        NSLog ("Cannot find '\(boardModelName)' board model")
       }
     }
     return ok
@@ -117,9 +121,7 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
       //--- Orientation
         let rotation = self.rootObject.modelInsertionRotation
         if (rotation == .rotation90) || (rotation == .rotation270) {
-          let temp = width
-          width = height
-          height = temp
+          (width, height) = (height, width)
         }
       //--- By default, image is centered
         resultOffset = NSPoint (x: horizontalFlip * width / 2.0, y: verticalFlip * height / 2.0)
@@ -129,7 +131,7 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
         bp.lineWidth = 1.0
         var shape = EBShape ()
         shape.add (stroke: [bp], NSColor.gray)
-        resultImage = buildPDFimage (frame: r, shape: shape, backgroundColor:NSColor.gray.withAlphaComponent (0.25))
+        resultImage = buildPDFimage (frame: r, shape: shape, backgroundColor: .gray.withAlphaComponent (0.25))
       }
     }
     return (resultImage, resultOffset)

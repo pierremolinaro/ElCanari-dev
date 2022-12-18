@@ -24,11 +24,12 @@ private let gEnableObjectAllocationDebug = UserDefaults.standard.bool (forKey: p
 //    Public routines
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func noteObjectAllocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
+nonisolated func noteObjectAllocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
   if gEnableObjectAllocationDebug {
     let objectType : AnyObject.Type = type (of: inObject)
     Task {
-      await PendingAllocationBufferActor.shared.noteObjectAllocation (ofType: objectType)
+     // await gPendingAllocationBufferActorClass.serializedNoteObjectAllocation (ofType: objectType)
+      await serializedNoteObjectAllocation (ofType: objectType)
     }
   }
 }
@@ -37,70 +38,87 @@ func noteObjectAllocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THRE
 //    pmNoteObjectDeallocation
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
+nonisolated func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
   if gEnableObjectAllocationDebug {
     let objectType : AnyObject.Type = type (of: inObject)
     Task {
-      await PendingAllocationBufferActor.shared.noteObjectDeallocation (ofType: objectType)
+//      await gPendingAllocationBufferActorClass.serializedNoteObjectDeallocation (ofType: objectType)
+      await serializedNoteObjectDeallocation (ofType: objectType)
     }
   }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@globalActor actor PendingAllocationBufferActor {
+@globalActor fileprivate final actor PendingAllocationBufferActor {
   static var shared = PendingAllocationBufferActor ()
+}
 
-  private var mPendingAllocatedObjectClasses = [AnyObject.Type] ()
-  private var mPendingDeallocatedObjectClasses = [AnyObject.Type] ()
-  private var mTransmitEventTriggered = false ;
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+//@PendingAllocationBufferActor fileprivate var gPendingAllocationBufferActorClass = PendingAllocationBufferActorClass ()
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+// @PendingAllocationBufferActor final fileprivate class PendingAllocationBufferActorClass {
+  @PendingAllocationBufferActor fileprivate var mPendingAllocatedObjectClasses = [AnyObject.Type] ()
+  @PendingAllocationBufferActor fileprivate var mPendingDeallocatedObjectClasses = [AnyObject.Type] ()
+  @PendingAllocationBufferActor fileprivate var mTransmitEventTriggered = false ;
 
   //····················································································································
 
-  func noteObjectAllocation (ofType inType : AnyObject.Type) {
-    self.mPendingAllocatedObjectClasses.append (inType)
-    self.triggerTransmit ()
+  @PendingAllocationBufferActor fileprivate func serializedNoteObjectAllocation (ofType inType : AnyObject.Type) {
+    mPendingAllocatedObjectClasses.append (inType)
+    triggerTransmit ()
   }
 
   //····················································································································
 
-  func noteObjectDeallocation (ofType inType : AnyObject.Type) {
-    self.mPendingDeallocatedObjectClasses.append (inType)
-    self.triggerTransmit ()
+  @PendingAllocationBufferActor fileprivate func serializedNoteObjectDeallocation (ofType inType : AnyObject.Type) {
+    mPendingDeallocatedObjectClasses.append (inType)
+    triggerTransmit ()
   }
 
   //····················································································································
 
-  private func triggerTransmit () {
-    if (!self.mTransmitEventTriggered) {
-      self.mTransmitEventTriggered = true
+  @PendingAllocationBufferActor fileprivate func triggerTransmit () {
+    if (!mTransmitEventTriggered) {
+      mTransmitEventTriggered = true
       Task.detached {
         try? await Task.sleep (nanoseconds: 100_000_000)
-        let (pendingAllocations, pendingDeallocations) = await self.getPendingAllocation ()
-        await AllocationDebugActor.shared.transmitPendingAllocations (pendingAllocations, pendingDeallocations)
+        let (pendingAllocations, pendingDeallocations) = await getPendingAllocation ()
+        await gAllocationDebugActorClass.transmitPendingAllocations (pendingAllocations, pendingDeallocations)
       }
     }
   }
 
   //····················································································································
 
-  func getPendingAllocation () -> ([AnyObject.Type], [AnyObject.Type]) {
-    self.mTransmitEventTriggered = false
-    let result = (self.mPendingAllocatedObjectClasses, self.mPendingDeallocatedObjectClasses)
-    self.mPendingAllocatedObjectClasses.removeAll (keepingCapacity: true)
-    self.mPendingDeallocatedObjectClasses.removeAll (keepingCapacity: true)
+  @PendingAllocationBufferActor fileprivate func getPendingAllocation () -> ([AnyObject.Type], [AnyObject.Type]) {
+    mTransmitEventTriggered = false
+    let result = (mPendingAllocatedObjectClasses, mPendingDeallocatedObjectClasses)
+    mPendingAllocatedObjectClasses.removeAll (keepingCapacity: true)
+    mPendingDeallocatedObjectClasses.removeAll (keepingCapacity: true)
     return result
   }
 
   //····················································································································
 
+// }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@globalActor fileprivate final actor AllocationDebugActor {
+  static var shared = AllocationDebugActor ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@globalActor actor AllocationDebugActor {
-  static var shared = AllocationDebugActor ()
-//  typealias ActorType = AllocationDebugActor
+@AllocationDebugActor fileprivate var gAllocationDebugActorClass = AllocationDebugActorClass ()
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@AllocationDebugActor final fileprivate class AllocationDebugActorClass {
 
   private var mTotalAllocatedObjectCountByClass = [String : Int] ()
   private var mLiveObjectCountByClass = [String : Int] ()

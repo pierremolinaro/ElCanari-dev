@@ -27,9 +27,9 @@ typealias StringTagArray = [StringTag]
 //   AutoLayoutCanariDragSourceTableView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataSource, NSTableViewDelegate {
+final class AutoLayoutCanariDragSourceTableView : NSTableView, NSTableViewDataSource, NSTableViewDelegate {
 
-  private let mTableView = InternalDragSourceTableView ()
+//  private let mTableView = InternalDragSourceTableView ()
 
   //····················································································································
   // INIT
@@ -51,29 +51,29 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
     leftColumn.maxWidth = 400.0
     leftColumn.isEditable = false
     leftColumn.resizingMask = .autoresizingMask
-    self.mTableView.addTableColumn (leftColumn)
+    self.addTableColumn (leftColumn)
 
   //--- Set sort descriptor
-    let tableColumns = self.mTableView.tableColumns
+    let tableColumns = self.tableColumns
     if tableColumns.count == 1 {
       let column = tableColumns [0]
       let sortDescriptor = NSSortDescriptor (key: column.identifier.rawValue, ascending: true)
       column.sortDescriptorPrototype = sortDescriptor
-      self.mTableView.sortDescriptors = [sortDescriptor] // This shows the sort indicator
+      self.sortDescriptors = [sortDescriptor] // This shows the sort indicator
     }
-    self.mTableView.dataSource = self
-    self.mTableView.delegate = self
-    self.mTableView.headerView = nil
-    self.mTableView.cornerView = nil
-    self.mTableView.columnAutoresizingStyle = .lastColumnOnlyAutoresizingStyle
-    self.mTableView.usesAutomaticRowHeights = true
+    self.dataSource = self
+    self.delegate = self
+    self.headerView = nil
+    self.cornerView = nil
+    self.columnAutoresizingStyle = .lastColumnOnlyAutoresizingStyle
+    self.usesAutomaticRowHeights = true
 
-    self.drawsBackground = false
-    self.documentView = self.mTableView
-    self.hasHorizontalScroller = false
-    self.hasVerticalScroller = true
+//    self.drawsBackground = false
+//    self.documentView = self.mTableView
+//    self.hasHorizontalScroller = false
+//    self.hasVerticalScroller = true
 //    Swift.print ("self.automaticallyAdjustsContentInsets \(self.automaticallyAdjustsContentInsets)")
-    self.automaticallyAdjustsContentInsets = true
+//    self.automaticallyAdjustsContentInsets = true
   }
 
   //····················································································································
@@ -135,7 +135,7 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
   private func setModel (_ inModel : [StringTag]) {
   //--- Note selected rows
     var selectedRowContents = Set <String> ()
-    let currentSelectedRowIndexes = self.mTableView.selectedRowIndexes
+    let currentSelectedRowIndexes = self.selectedRowIndexes
     for idx in currentSelectedRowIndexes {
       if idx < self.mModelArray.count {
         selectedRowContents.insert (self.mModelArray [idx].string)
@@ -144,8 +144,8 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
   //--- Assignment
     self.mModelArray = inModel
   //-- Sort
-    if self.mTableView.sortDescriptors.count == 1 {
-      let sortDescriptor = self.mTableView.sortDescriptors [0]
+    if self.sortDescriptors.count == 1 {
+      let sortDescriptor = self.sortDescriptors [0]
       if sortDescriptor.ascending {
         self.mModelArray.sort (by: { $0.string.localizedStandardCompare ($1.string) == .orderedAscending } )
       }else{
@@ -153,7 +153,7 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
       }
     }
   //--- Tell Table view to reload
-    self.mTableView.reloadData ()
+    self.reloadData ()
   //--- Restore selection
     var newSelectedRowIndexes = IndexSet ()
     var idx = 0
@@ -174,7 +174,7 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
         newSelectedRowIndexes.insert (0)
       }
     }
-    self.mTableView.selectRowIndexes (newSelectedRowIndexes, byExtendingSelection: false)
+    self.selectRowIndexes (newSelectedRowIndexes, byExtendingSelection: false)
   }
 
   //····················································································································
@@ -233,7 +233,7 @@ final class AutoLayoutCanariDragSourceTableView : NSScrollView, NSTableViewDataS
       Swift.print (self.className + "." + #function)
     }
     if let draggedType = self.mDraggedType {
-      self.mTableView.selectRowIndexes (IndexSet (integer: inRowIndex), byExtendingSelection: false)
+      self.selectRowIndexes (IndexSet (integer: inRowIndex), byExtendingSelection: false)
       let pasteboardItem = NSPasteboardItem ()
       let cellName : String = self.mModelArray [inRowIndex].string
       pasteboardItem.setString (cellName, forType: draggedType)

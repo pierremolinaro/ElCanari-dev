@@ -8,17 +8,17 @@ import AppKit
 //    Public routines
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func noteObjectAllocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
+nonisolated func noteObjectAllocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
+nonisolated func noteObjectDeallocation (_ inObject : AnyObject) {  // NOT ALWAYS IN MAIN THREAD
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func appendAllocationDebugMenuItems (_ inMenu : NSMenu) {
+@MainActor func appendAllocationDebugMenuItems (_ inMenu : NSMenu) {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
