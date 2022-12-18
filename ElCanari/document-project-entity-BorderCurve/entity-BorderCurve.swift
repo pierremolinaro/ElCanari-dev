@@ -252,7 +252,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //   Atomic proxy property: mNextX
   //····················································································································
 
-  let mNextX_property = EBPropertyProxy_Int ()
+  final let mNextX_property = EBComputedProperty_Int ()
 
   //····················································································································
 
@@ -276,7 +276,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //   Atomic proxy property: mNextY
   //····················································································································
 
-  let mNextY_property = EBPropertyProxy_Int ()
+  final let mNextY_property = EBComputedProperty_Int ()
 
   //····················································································································
 

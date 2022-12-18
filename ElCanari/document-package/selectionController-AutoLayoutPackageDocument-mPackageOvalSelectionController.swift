@@ -14,73 +14,73 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageOvalSelectionC
   //   Selection observable property: y
   //····················································································································
 
-  let y_property = EBPropertyProxy_Int ()
+  final let y_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: width
   //····················································································································
 
-  let width_property = EBPropertyProxy_Int ()
+  final let width_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: height
   //····················································································································
 
-  let height_property = EBPropertyProxy_Int ()
+  final let height_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: xUnit
   //····················································································································
 
-  let xUnit_property = EBPropertyProxy_Int ()
+  final let xUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: yUnit
   //····················································································································
 
-  let yUnit_property = EBPropertyProxy_Int ()
+  final let yUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: widthUnit
   //····················································································································
 
-  let widthUnit_property = EBPropertyProxy_Int ()
+  final let widthUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: heightUnit
   //····················································································································
 
-  let heightUnit_property = EBPropertyProxy_Int ()
+  final let heightUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: x
   //····················································································································
 
-  let x_property = EBPropertyProxy_Int ()
+  final let x_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: strokeBezierPath
   //····················································································································
 
-  let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+  final let strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selection observable property: issues
   //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
   //   Selected array (not observable)

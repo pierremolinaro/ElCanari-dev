@@ -14,115 +14,115 @@ final class SelectionController_AutoLayoutProjectDocument_componentSymbolSelecti
   //   Selection observable property: mCenterX
   //····················································································································
 
-  let mCenterX_property = EBPropertyProxy_Int ()
+  final let mCenterX_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mCenterY
   //····················································································································
 
-  let mCenterY_property = EBPropertyProxy_Int ()
+  final let mCenterY_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mRotation
   //····················································································································
 
-  let mRotation_property = EBPropertyProxy_QuadrantRotation ()
+  final let mRotation_property = EBComputedProperty_QuadrantRotation ()
 
   //····················································································································
   //   Selection observable property: mMirror
   //····················································································································
 
-  let mMirror_property = EBPropertyProxy_Bool ()
+  final let mMirror_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: mSymbolInstanceName
   //····················································································································
 
-  let mSymbolInstanceName_property = EBPropertyProxy_String ()
+  final let mSymbolInstanceName_property = EBComputedProperty_String ()
 
   //····················································································································
   //   Selection observable property: mSymbolTypeName
   //····················································································································
 
-  let mSymbolTypeName_property = EBPropertyProxy_String ()
+  final let mSymbolTypeName_property = EBComputedProperty_String ()
 
   //····················································································································
   //   Selection observable property: mDisplayComponentNameOffsetX
   //····················································································································
 
-  let mDisplayComponentNameOffsetX_property = EBPropertyProxy_Int ()
+  final let mDisplayComponentNameOffsetX_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mDisplayComponentNameOffsetY
   //····················································································································
 
-  let mDisplayComponentNameOffsetY_property = EBPropertyProxy_Int ()
+  final let mDisplayComponentNameOffsetY_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mDisplayComponentValue
   //····················································································································
 
-  let mDisplayComponentValue_property = EBPropertyProxy_Bool ()
+  final let mDisplayComponentValue_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: mDisplayComponentValueOffsetX
   //····················································································································
 
-  let mDisplayComponentValueOffsetX_property = EBPropertyProxy_Int ()
+  final let mDisplayComponentValueOffsetX_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mDisplayComponentValueOffsetY
   //····················································································································
 
-  let mDisplayComponentValueOffsetY_property = EBPropertyProxy_Int ()
+  final let mDisplayComponentValueOffsetY_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Atomic proxy property: componentValueProxy
   //····················································································································
 
-  let componentValueProxy_property = EBPropertyProxy_String ()
+  final let componentValueProxy_property = EBComputedProperty_String ()
 
   //····················································································································
   //   Selection observable property: componentName
   //····················································································································
 
-  let componentName_property = EBTransientProperty_String ()
+  final let componentName_property = EBTransientProperty_String ()
 
   //····················································································································
   //   Selection observable property: deviceName
   //····················································································································
 
-  let deviceName_property = EBTransientProperty_String ()
+  final let deviceName_property = EBTransientProperty_String ()
 
   //····················································································································
   //   Selection observable property: symbolInfo
   //····················································································································
 
-  let symbolInfo_property = EBTransientProperty_ComponentSymbolInfo ()
+  final let symbolInfo_property = EBTransientProperty_ComponentSymbolInfo ()
 
   //····················································································································
   //   Selection observable property: pinPadAssignments
   //····················································································································
 
-  let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
+  final let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
 
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selection observable property: symbolInSchematic
   //····················································································································
 
-  let symbolInSchematic_property = EBTransientProperty_Bool ()
+  final let symbolInSchematic_property = EBTransientProperty_Bool ()
 
   //····················································································································
   //   Selected array (not observable)

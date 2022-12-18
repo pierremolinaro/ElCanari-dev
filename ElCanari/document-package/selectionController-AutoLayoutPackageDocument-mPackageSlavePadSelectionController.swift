@@ -14,145 +14,145 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //   Selection observable property: xCenter
   //····················································································································
 
-  let xCenter_property = EBPropertyProxy_Int ()
+  final let xCenter_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: yCenter
   //····················································································································
 
-  let yCenter_property = EBPropertyProxy_Int ()
+  final let yCenter_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: width
   //····················································································································
 
-  let width_property = EBPropertyProxy_Int ()
+  final let width_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: height
   //····················································································································
 
-  let height_property = EBPropertyProxy_Int ()
+  final let height_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: holeWidth
   //····················································································································
 
-  let holeWidth_property = EBPropertyProxy_Int ()
+  final let holeWidth_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: holeHeight
   //····················································································································
 
-  let holeHeight_property = EBPropertyProxy_Int ()
+  final let holeHeight_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: padShape
   //····················································································································
 
-  let padShape_property = EBPropertyProxy_PadShape ()
+  final let padShape_property = EBComputedProperty_PadShape ()
 
   //····················································································································
   //   Selection observable property: padStyle
   //····················································································································
 
-  let padStyle_property = EBPropertyProxy_SlavePadStyle ()
+  final let padStyle_property = EBComputedProperty_SlavePadStyle ()
 
   //····················································································································
   //   Selection observable property: xCenterUnit
   //····················································································································
 
-  let xCenterUnit_property = EBPropertyProxy_Int ()
+  final let xCenterUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: yCenterUnit
   //····················································································································
 
-  let yCenterUnit_property = EBPropertyProxy_Int ()
+  final let yCenterUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: widthUnit
   //····················································································································
 
-  let widthUnit_property = EBPropertyProxy_Int ()
+  final let widthUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: heightUnit
   //····················································································································
 
-  let heightUnit_property = EBPropertyProxy_Int ()
+  final let heightUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: holeWidthUnit
   //····················································································································
 
-  let holeWidthUnit_property = EBPropertyProxy_Int ()
+  final let holeWidthUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: holeHeightUnit
   //····················································································································
 
-  let holeHeightUnit_property = EBPropertyProxy_Int ()
+  final let holeHeightUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: annularRingUnit
   //····················································································································
 
-  let annularRingUnit_property = EBPropertyProxy_Int ()
+  final let annularRingUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selection observable property: issues
   //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
   //   Selection observable property: padIsTraversing
   //····················································································································
 
-  let padIsTraversing_property = EBTransientProperty_Bool ()
+  final let padIsTraversing_property = EBTransientProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: annularRing
   //····················································································································
 
-  let annularRing_property = EBTransientProperty_Int ()
+  final let annularRing_property = EBTransientProperty_Int ()
 
   //····················································································································
   //   Selection observable property: padNameWithZoneName
   //····················································································································
 
-  let padNameWithZoneName_property = EBTransientProperty_String ()
+  final let padNameWithZoneName_property = EBTransientProperty_String ()
 
   //····················································································································
   //   Selection observable property: masterPadNameWithZoneName
   //····················································································································
 
-  let masterPadNameWithZoneName_property = EBTransientProperty_String ()
+  final let masterPadNameWithZoneName_property = EBTransientProperty_String ()
 
   //····················································································································
   //   Selection observable property: padNameForDisplay
   //····················································································································
 
-  let padNameForDisplay_property = EBTransientProperty_String ()
+  final let padNameForDisplay_property = EBTransientProperty_String ()
 
   //····················································································································
   //   Selection observable property: padNumberDisplay
   //····················································································································
 
-  let padNumberDisplay_property = EBTransientProperty_EBShape ()
+  final let padNumberDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selected array (not observable)

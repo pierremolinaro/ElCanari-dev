@@ -42,19 +42,19 @@ final class SelectionController_AutoLayoutProjectDocument_mDeviceSelectionContro
   //   Selection observable property: mDeviceFileData
   //····················································································································
 
-  var mDeviceFileData_property = EBPropertyProxy_Data ()
+  var mDeviceFileData_property = EBComputedProperty_Data ()
 
   //····················································································································
   //   Selection observable property: mDeviceName
   //····················································································································
 
-  var mDeviceName_property = EBPropertyProxy_String ()
+  var mDeviceName_property = EBComputedProperty_String ()
 
   //····················································································································
   //   Selection observable property: mDeviceVersion
   //····················································································································
 
-  var mDeviceVersion_property = EBPropertyProxy_Int ()
+  var mDeviceVersion_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mPackages
@@ -68,7 +68,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDeviceSelectionContro
   //   Selection observable property: mPrefix
   //····················································································································
 
-  var mPrefix_property = EBPropertyProxy_String ()
+  var mPrefix_property = EBComputedProperty_String ()
 
   //····················································································································
   //   Selection observable property: mSymbols

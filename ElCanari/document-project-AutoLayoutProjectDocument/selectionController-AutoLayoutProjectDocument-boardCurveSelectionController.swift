@@ -26,25 +26,25 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //   Selection observable property: mCPX1
   //····················································································································
 
-  var mCPX1_property = EBPropertyProxy_Int ()
+  var mCPX1_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mCPX2
   //····················································································································
 
-  var mCPX2_property = EBPropertyProxy_Int ()
+  var mCPX2_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mCPY1
   //····················································································································
 
-  var mCPY1_property = EBPropertyProxy_Int ()
+  var mCPY1_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mCPY2
   //····················································································································
 
-  var mCPY2_property = EBPropertyProxy_Int ()
+  var mCPY2_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mNext
@@ -54,13 +54,13 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //   Selection observable property: mNextX
   //····················································································································
 
-  var mNextX_property = EBPropertyProxy_Int ()
+  var mNextX_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mNextY
   //····················································································································
 
-  var mNextY_property = EBPropertyProxy_Int ()
+  var mNextY_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mPrevious
@@ -74,19 +74,19 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //   Selection observable property: mShape
   //····················································································································
 
-  var mShape_property = EBPropertyProxy_BorderCurveShape ()
+  var mShape_property = EBComputedProperty_BorderCurveShape ()
 
   //····················································································································
   //   Selection observable property: mX
   //····················································································································
 
-  var mX_property = EBPropertyProxy_Int ()
+  var mX_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mY
   //····················································································································
 
-  var mY_property = EBPropertyProxy_Int ()
+  var mY_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: objectDisplay

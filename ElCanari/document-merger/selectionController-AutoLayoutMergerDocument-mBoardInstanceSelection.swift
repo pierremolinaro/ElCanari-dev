@@ -26,7 +26,7 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection
   //   Selection observable property: instanceRotation
   //····················································································································
 
-  var instanceRotation_property = EBPropertyProxy_QuadrantRotation ()
+  var instanceRotation_property = EBComputedProperty_QuadrantRotation ()
 
   //····················································································································
   //   Selection observable property: modelName
@@ -58,13 +58,13 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection
   //   Selection observable property: x
   //····················································································································
 
-  var x_property = EBPropertyProxy_Int ()
+  var x_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: y
   //····················································································································
 
-  var y_property = EBPropertyProxy_Int ()
+  var y_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   BIND SELECTION

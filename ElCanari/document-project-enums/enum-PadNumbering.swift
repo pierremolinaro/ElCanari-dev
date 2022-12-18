@@ -99,7 +99,7 @@ typealias EBReadOnlyProperty_PadNumbering = EBReadOnlyEnumProperty <PadNumbering
 typealias EBTransientProperty_PadNumbering = EBTransientEnumProperty <PadNumbering>
 typealias EBReadWriteProperty_PadNumbering = EBReadWriteEnumProperty <PadNumbering>
 typealias EBStoredProperty_PadNumbering = EBStoredEnumProperty <PadNumbering>
-typealias EBPropertyProxy_PadNumbering = EBPropertyEnumProxy <PadNumbering>
+typealias EBComputedProperty_PadNumbering = EBGenericEnumProperty <PadNumbering>
 typealias EBPreferencesProperty_PadNumbering = EBStoredEnumProperty <PadNumbering>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

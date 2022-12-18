@@ -14,31 +14,31 @@ final class SelectionController_AutoLayoutProjectDocument_wireInSchematicSelecti
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selection observable property: netName
   //····················································································································
 
-  let netName_property = EBTransientProperty_String ()
+  final let netName_property = EBTransientProperty_String ()
 
   //····················································································································
   //   Selection observable property: netClassName
   //····················································································································
 
-  let netClassName_property = EBTransientProperty_String ()
+  final let netClassName_property = EBTransientProperty_String ()
 
   //····················································································································
   //   Selection observable property: hasNet
   //····················································································································
 
-  let hasNet_property = EBTransientProperty_Bool ()
+  final let hasNet_property = EBTransientProperty_Bool ()
 
   //····················································································································
   //   Selected array (not observable)

@@ -1258,7 +1258,7 @@ final class PackageRoot : EBManagedObject,
   //   Atomic proxy property: mModelImageFirstPointX
   //····················································································································
 
-  let mModelImageFirstPointX_property = EBPropertyProxy_Int ()
+  final let mModelImageFirstPointX_property = EBComputedProperty_Int ()
 
   //····················································································································
 
@@ -1282,7 +1282,7 @@ final class PackageRoot : EBManagedObject,
   //   Atomic proxy property: mModelImageFirstPointY
   //····················································································································
 
-  let mModelImageFirstPointY_property = EBPropertyProxy_Int ()
+  final let mModelImageFirstPointY_property = EBComputedProperty_Int ()
 
   //····················································································································
 
@@ -1306,7 +1306,7 @@ final class PackageRoot : EBManagedObject,
   //   Atomic proxy property: mModelImageSecondPointDx
   //····················································································································
 
-  let mModelImageSecondPointDx_property = EBPropertyProxy_Int ()
+  final let mModelImageSecondPointDx_property = EBComputedProperty_Int ()
 
   //····················································································································
 
@@ -1330,7 +1330,7 @@ final class PackageRoot : EBManagedObject,
   //   Atomic proxy property: mModelImageSecondPointDy
   //····················································································································
 
-  let mModelImageSecondPointDy_property = EBPropertyProxy_Int ()
+  final let mModelImageSecondPointDy_property = EBComputedProperty_Int ()
 
   //····················································································································
 

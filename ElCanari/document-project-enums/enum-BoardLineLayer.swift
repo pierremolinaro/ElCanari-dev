@@ -91,7 +91,7 @@ typealias EBReadOnlyProperty_BoardLineLayer = EBReadOnlyEnumProperty <BoardLineL
 typealias EBTransientProperty_BoardLineLayer = EBTransientEnumProperty <BoardLineLayer>
 typealias EBReadWriteProperty_BoardLineLayer = EBReadWriteEnumProperty <BoardLineLayer>
 typealias EBStoredProperty_BoardLineLayer = EBStoredEnumProperty <BoardLineLayer>
-typealias EBPropertyProxy_BoardLineLayer = EBPropertyEnumProxy <BoardLineLayer>
+typealias EBComputedProperty_BoardLineLayer = EBGenericEnumProperty <BoardLineLayer>
 typealias EBPreferencesProperty_BoardLineLayer = EBStoredEnumProperty <BoardLineLayer>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

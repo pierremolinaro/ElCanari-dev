@@ -26,13 +26,13 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
   //   Selection observable property: mFileData
   //····················································································································
 
-  var mFileData_property = EBPropertyProxy_Data ()
+  var mFileData_property = EBComputedProperty_Data ()
 
   //····················································································································
   //   Selection observable property: mFilledBezierPath
   //····················································································································
 
-  var mFilledBezierPath_property = EBPropertyProxy_NSBezierPath ()
+  var mFilledBezierPath_property = EBComputedProperty_NSBezierPath ()
 
   //····················································································································
   //   Selection observable property: mInstances
@@ -46,19 +46,19 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
   //   Selection observable property: mStrokeBezierPath
   //····················································································································
 
-  var mStrokeBezierPath_property = EBPropertyProxy_NSBezierPath ()
+  var mStrokeBezierPath_property = EBComputedProperty_NSBezierPath ()
 
   //····················································································································
   //   Selection observable property: mTypeName
   //····················································································································
 
-  var mTypeName_property = EBPropertyProxy_String ()
+  var mTypeName_property = EBComputedProperty_String ()
 
   //····················································································································
   //   Selection observable property: mVersion
   //····················································································································
 
-  var mVersion_property = EBPropertyProxy_Int ()
+  var mVersion_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: pinNameShape

@@ -14,37 +14,37 @@ final class SelectionController_AutoLayoutProjectDocument_schematicLabelSelectio
   //   Selection observable property: mOrientation
   //····················································································································
 
-  let mOrientation_property = EBPropertyProxy_QuadrantRotation ()
+  final let mOrientation_property = EBComputedProperty_QuadrantRotation ()
 
   //····················································································································
   //   Selection observable property: location
   //····················································································································
 
-  let location_property = EBTransientProperty_CanariPoint ()
+  final let location_property = EBTransientProperty_CanariPoint ()
 
   //····················································································································
   //   Selection observable property: netName
   //····················································································································
 
-  let netName_property = EBTransientProperty_String ()
+  final let netName_property = EBTransientProperty_String ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selection observable property: netClassName
   //····················································································································
 
-  let netClassName_property = EBTransientProperty_String ()
+  final let netClassName_property = EBTransientProperty_String ()
 
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selected array (not observable)

@@ -5,16 +5,16 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBGenericPropertyProxy <T>
+//   EBGenericEnumProperty <T : EnumPropertyProtocol>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBGenericPropertyProxy <T> : EBObservableMutableProperty <T>, EBObserverProtocol {
+final class EBGenericEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumProperty <T>, EBObserverProtocol {
 
   //····················································································································
 
   var mReadModelFunction : Optional < () -> EBSelection <T> > = nil
   var mWriteModelFunction : Optional < (T) -> Void > = nil
-  private var mCachedValue : EBSelection <T>? = nil
+  private var mCachedValue : Optional < EBSelection <T> > = nil
 
   //····················································································································
 
@@ -35,17 +35,17 @@ final class EBGenericPropertyProxy <T> : EBObservableMutableProperty <T>, EBObse
   override var selection : EBSelection <T> {
     if self.mCachedValue == nil {
       self.mCachedValue = self.mReadModelFunction? ()
-      if self.mCachedValue == nil {
-        self.mCachedValue = .empty
-      }
+    }
+    if self.mCachedValue == nil {
+      self.mCachedValue = .empty
     }
     return self.mCachedValue!
   }
 
   //····················································································································
 
-  override func setProp (_ inValue : T) {
-    self.mWriteModelFunction? (inValue)
+  override func setProp (_ value : T) {
+    self.mWriteModelFunction? (value)
   }
 
   //····················································································································

@@ -14,13 +14,13 @@ final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSw
   //   Selection observable property: advance
   //····················································································································
 
-  var advance_property = EBPropertyProxy_Int ()
+  var advance_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: codePoint
   //····················································································································
 
-  var codePoint_property = EBPropertyProxy_Int ()
+  var codePoint_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: gerberCode
@@ -44,13 +44,13 @@ final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSw
   //   Selection observable property: mWarnsWhenAdvanceIsZero
   //····················································································································
 
-  var mWarnsWhenAdvanceIsZero_property = EBPropertyProxy_Bool ()
+  var mWarnsWhenAdvanceIsZero_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: mWarnsWhenNoSegment
   //····················································································································
 
-  var mWarnsWhenNoSegment_property = EBPropertyProxy_Bool ()
+  var mWarnsWhenNoSegment_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: segmentArrayForDrawing

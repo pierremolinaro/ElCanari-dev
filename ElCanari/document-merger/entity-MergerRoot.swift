@@ -744,7 +744,7 @@ final class MergerRoot : EBManagedObject,
   //   Atomic proxy property: minPPTPTTTWdisplayUnit
   //····················································································································
 
-  let minPPTPTTTWdisplayUnit_property = EBPropertyProxy_Int ()
+  final let minPPTPTTTWdisplayUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
 
@@ -768,7 +768,7 @@ final class MergerRoot : EBManagedObject,
   //   Atomic proxy property: minPPTPTTTW
   //····················································································································
 
-  let minPPTPTTTW_property = EBPropertyProxy_Int ()
+  final let minPPTPTTTW_property = EBComputedProperty_Int ()
 
   //····················································································································
 
@@ -792,7 +792,7 @@ final class MergerRoot : EBManagedObject,
   //   Atomic proxy property: minValueForOARdisplayUnit
   //····················································································································
 
-  let minValueForOARdisplayUnit_property = EBPropertyProxy_Int ()
+  final let minValueForOARdisplayUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
 
@@ -816,7 +816,7 @@ final class MergerRoot : EBManagedObject,
   //   Atomic proxy property: minValueForOARinEBUnit
   //····················································································································
 
-  let minValueForOARinEBUnit_property = EBPropertyProxy_Int ()
+  final let minValueForOARinEBUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
 
@@ -840,7 +840,7 @@ final class MergerRoot : EBManagedObject,
   //   Atomic proxy property: minValueForPHDdisplayUnit
   //····················································································································
 
-  let minValueForPHDdisplayUnit_property = EBPropertyProxy_Int ()
+  final let minValueForPHDdisplayUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
 
@@ -864,7 +864,7 @@ final class MergerRoot : EBManagedObject,
   //   Atomic proxy property: minValueForPHDinEBUnit
   //····················································································································
 
-  let minValueForPHDinEBUnit_property = EBPropertyProxy_Int ()
+  final let minValueForPHDinEBUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
 
@@ -888,7 +888,7 @@ final class MergerRoot : EBManagedObject,
   //   Atomic proxy property: minValueForBoardLimitWidth
   //····················································································································
 
-  let minValueForBoardLimitWidth_property = EBPropertyProxy_Int ()
+  final let minValueForBoardLimitWidth_property = EBComputedProperty_Int ()
 
   //····················································································································
 
@@ -912,7 +912,7 @@ final class MergerRoot : EBManagedObject,
   //   Atomic proxy property: minValueForBoardLimitWidthDisplayUnit
   //····················································································································
 
-  let minValueForBoardLimitWidthDisplayUnit_property = EBPropertyProxy_Int ()
+  final let minValueForBoardLimitWidthDisplayUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
 
@@ -936,7 +936,7 @@ final class MergerRoot : EBManagedObject,
   //   Atomic proxy property: drillDataFileExtension
   //····················································································································
 
-  let drillDataFileExtension_property = EBPropertyProxy_String ()
+  final let drillDataFileExtension_property = EBComputedProperty_String ()
 
   //····················································································································
 
@@ -962,7 +962,7 @@ final class MergerRoot : EBManagedObject,
 
   var fileGenerationParameterArray_modelDidChangeController : EBObservablePropertyController? = nil
   // var fileGenerationParameterArray_boundObjectDidChangeController : EBObservablePropertyController? = nil
-  let fileGenerationParameterArray_property = ProxyArrayOf_ArtworkFileGenerationParameters ()
+  final let fileGenerationParameterArray_property = ProxyArrayOf_ArtworkFileGenerationParameters ()
 
   //····················································································································
 

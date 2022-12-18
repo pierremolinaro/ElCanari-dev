@@ -745,7 +745,7 @@ final class ComponentInProject : BoardObject,
 
   var mPackages_modelDidChangeController : EBObservablePropertyController? = nil
   // var mPackages_boundObjectDidChangeController : EBObservablePropertyController? = nil
-  let mPackages_property = ProxyArrayOf_DevicePackageInProject ()
+  final let mPackages_property = ProxyArrayOf_DevicePackageInProject ()
 
   //····················································································································
 

@@ -84,7 +84,7 @@ typealias EBReadOnlyProperty_TextAlignment = EBReadOnlyEnumProperty <TextAlignme
 typealias EBTransientProperty_TextAlignment = EBTransientEnumProperty <TextAlignment>
 typealias EBReadWriteProperty_TextAlignment = EBReadWriteEnumProperty <TextAlignment>
 typealias EBStoredProperty_TextAlignment = EBStoredEnumProperty <TextAlignment>
-typealias EBPropertyProxy_TextAlignment = EBPropertyEnumProxy <TextAlignment>
+typealias EBComputedProperty_TextAlignment = EBGenericEnumProperty <TextAlignment>
 typealias EBPreferencesProperty_TextAlignment = EBStoredEnumProperty <TextAlignment>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

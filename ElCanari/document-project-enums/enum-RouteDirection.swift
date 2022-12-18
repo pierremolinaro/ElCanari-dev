@@ -91,7 +91,7 @@ typealias EBReadOnlyProperty_RouteDirection = EBReadOnlyEnumProperty <RouteDirec
 typealias EBTransientProperty_RouteDirection = EBTransientEnumProperty <RouteDirection>
 typealias EBReadWriteProperty_RouteDirection = EBReadWriteEnumProperty <RouteDirection>
 typealias EBStoredProperty_RouteDirection = EBStoredEnumProperty <RouteDirection>
-typealias EBPropertyProxy_RouteDirection = EBPropertyEnumProxy <RouteDirection>
+typealias EBComputedProperty_RouteDirection = EBGenericEnumProperty <RouteDirection>
 typealias EBPreferencesProperty_RouteDirection = EBStoredEnumProperty <RouteDirection>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

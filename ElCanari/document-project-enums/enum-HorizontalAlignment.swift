@@ -92,7 +92,7 @@ typealias EBReadOnlyProperty_HorizontalAlignment = EBReadOnlyEnumProperty <Horiz
 typealias EBTransientProperty_HorizontalAlignment = EBTransientEnumProperty <HorizontalAlignment>
 typealias EBReadWriteProperty_HorizontalAlignment = EBReadWriteEnumProperty <HorizontalAlignment>
 typealias EBStoredProperty_HorizontalAlignment = EBStoredEnumProperty <HorizontalAlignment>
-typealias EBPropertyProxy_HorizontalAlignment = EBPropertyEnumProxy <HorizontalAlignment>
+typealias EBComputedProperty_HorizontalAlignment = EBGenericEnumProperty <HorizontalAlignment>
 typealias EBPreferencesProperty_HorizontalAlignment = EBStoredEnumProperty <HorizontalAlignment>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

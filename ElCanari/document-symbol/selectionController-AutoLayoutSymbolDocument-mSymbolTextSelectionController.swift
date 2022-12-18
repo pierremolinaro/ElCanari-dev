@@ -14,43 +14,43 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolTextSelectionCon
   //   Selection observable property: y
   //····················································································································
 
-  let y_property = EBPropertyProxy_Int ()
+  final let y_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: text
   //····················································································································
 
-  let text_property = EBPropertyProxy_String ()
+  final let text_property = EBComputedProperty_String ()
 
   //····················································································································
   //   Selection observable property: horizontalAlignment
   //····················································································································
 
-  let horizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
+  final let horizontalAlignment_property = EBComputedProperty_HorizontalAlignment ()
 
   //····················································································································
   //   Selection observable property: x
   //····················································································································
 
-  let x_property = EBPropertyProxy_Int ()
+  final let x_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selection observable property: issues
   //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
   //   Selected array (not observable)

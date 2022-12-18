@@ -14,7 +14,7 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
   //   Selection observable property: artworkName
   //····················································································································
 
-  var artworkName_property = EBPropertyProxy_String ()
+  var artworkName_property = EBComputedProperty_String ()
 
   //····················································································································
   //   Selection observable property: backComponentNameSegments
@@ -396,7 +396,7 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
   //   Selection observable property: layerConfiguration
   //····················································································································
 
-  var layerConfiguration_property = EBPropertyProxy_LayerConfiguration ()
+  var layerConfiguration_property = EBComputedProperty_LayerConfiguration ()
 
   //····················································································································
   //   Selection observable property: layerConfigurationString
@@ -408,37 +408,37 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
   //   Selection observable property: modelHeight
   //····················································································································
 
-  var modelHeight_property = EBPropertyProxy_Int ()
+  var modelHeight_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: modelHeightUnit
   //····················································································································
 
-  var modelHeightUnit_property = EBPropertyProxy_Int ()
+  var modelHeightUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: modelLimitWidth
   //····················································································································
 
-  var modelLimitWidth_property = EBPropertyProxy_Int ()
+  var modelLimitWidth_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: modelLimitWidthUnit
   //····················································································································
 
-  var modelLimitWidthUnit_property = EBPropertyProxy_Int ()
+  var modelLimitWidthUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: modelWidth
   //····················································································································
 
-  var modelWidth_property = EBPropertyProxy_Int ()
+  var modelWidth_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: modelWidthUnit
   //····················································································································
 
-  var modelWidthUnit_property = EBPropertyProxy_Int ()
+  var modelWidthUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: myInstances
@@ -448,7 +448,7 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
   //   Selection observable property: name
   //····················································································································
 
-  var name_property = EBPropertyProxy_String ()
+  var name_property = EBComputedProperty_String ()
 
   //····················································································································
   //   Selection observable property: traversingPadArray
@@ -486,7 +486,7 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardModelSelection : 
   //   Selection observable property: zoom
   //····················································································································
 
-  var zoom_property = EBPropertyProxy_Int ()
+  var zoom_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   BIND SELECTION

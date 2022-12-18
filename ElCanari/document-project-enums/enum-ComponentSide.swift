@@ -91,7 +91,7 @@ typealias EBReadOnlyProperty_ComponentSide = EBReadOnlyEnumProperty <ComponentSi
 typealias EBTransientProperty_ComponentSide = EBTransientEnumProperty <ComponentSide>
 typealias EBReadWriteProperty_ComponentSide = EBReadWriteEnumProperty <ComponentSide>
 typealias EBStoredProperty_ComponentSide = EBStoredEnumProperty <ComponentSide>
-typealias EBPropertyProxy_ComponentSide = EBPropertyEnumProxy <ComponentSide>
+typealias EBComputedProperty_ComponentSide = EBGenericEnumProperty <ComponentSide>
 typealias EBPreferencesProperty_ComponentSide = EBStoredEnumProperty <ComponentSide>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

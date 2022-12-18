@@ -98,7 +98,7 @@ typealias EBReadOnlyProperty_RouteOrigin = EBReadOnlyEnumProperty <RouteOrigin>
 typealias EBTransientProperty_RouteOrigin = EBTransientEnumProperty <RouteOrigin>
 typealias EBReadWriteProperty_RouteOrigin = EBReadWriteEnumProperty <RouteOrigin>
 typealias EBStoredProperty_RouteOrigin = EBStoredEnumProperty <RouteOrigin>
-typealias EBPropertyProxy_RouteOrigin = EBPropertyEnumProxy <RouteOrigin>
+typealias EBComputedProperty_RouteOrigin = EBGenericEnumProperty <RouteOrigin>
 typealias EBPreferencesProperty_RouteOrigin = EBStoredEnumProperty <RouteOrigin>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -14,55 +14,55 @@ final class SelectionController_AutoLayoutProjectDocument_commentInSchematicSele
   //   Selection observable property: mColor
   //····················································································································
 
-  let mColor_property = EBPropertyProxy_NSColor ()
+  final let mColor_property = EBComputedProperty_NSColor ()
 
   //····················································································································
   //   Selection observable property: mSize
   //····················································································································
 
-  let mSize_property = EBPropertyProxy_Double ()
+  final let mSize_property = EBComputedProperty_Double ()
 
   //····················································································································
   //   Selection observable property: mHorizontalAlignment
   //····················································································································
 
-  let mHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
+  final let mHorizontalAlignment_property = EBComputedProperty_HorizontalAlignment ()
 
   //····················································································································
   //   Selection observable property: mVerticalAlignment
   //····················································································································
 
-  let mVerticalAlignment_property = EBPropertyProxy_VerticalAlignment ()
+  final let mVerticalAlignment_property = EBComputedProperty_VerticalAlignment ()
 
   //····················································································································
   //   Selection observable property: mX
   //····················································································································
 
-  let mX_property = EBPropertyProxy_Int ()
+  final let mX_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mY
   //····················································································································
 
-  let mY_property = EBPropertyProxy_Int ()
+  final let mY_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mComment
   //····················································································································
 
-  let mComment_property = EBPropertyProxy_String ()
+  final let mComment_property = EBComputedProperty_String ()
 
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selected array (not observable)

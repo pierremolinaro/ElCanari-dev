@@ -14,259 +14,259 @@ final class SelectionController_AutoLayoutProjectDocument_componentInBoardSelect
   //   Selection observable property: mSlavePadsShouldBeRouted
   //····················································································································
 
-  let mSlavePadsShouldBeRouted_property = EBPropertyProxy_Bool ()
+  final let mSlavePadsShouldBeRouted_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: mX
   //····················································································································
 
-  let mX_property = EBPropertyProxy_Int ()
+  final let mX_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mY
   //····················································································································
 
-  let mY_property = EBPropertyProxy_Int ()
+  final let mY_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mRotation
   //····················································································································
 
-  let mRotation_property = EBPropertyProxy_Int ()
+  final let mRotation_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mSide
   //····················································································································
 
-  let mSide_property = EBPropertyProxy_ComponentSide ()
+  final let mSide_property = EBComputedProperty_ComponentSide ()
 
   //····················································································································
   //   Selection observable property: mDisplayLegend
   //····················································································································
 
-  let mDisplayLegend_property = EBPropertyProxy_Bool ()
+  final let mDisplayLegend_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: mNameIsVisibleInBoard
   //····················································································································
 
-  let mNameIsVisibleInBoard_property = EBPropertyProxy_Bool ()
+  final let mNameIsVisibleInBoard_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: mXName
   //····················································································································
 
-  let mXName_property = EBPropertyProxy_Int ()
+  final let mXName_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mYName
   //····················································································································
 
-  let mYName_property = EBPropertyProxy_Int ()
+  final let mYName_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mNameFontSize
   //····················································································································
 
-  let mNameFontSize_property = EBPropertyProxy_Double ()
+  final let mNameFontSize_property = EBComputedProperty_Double ()
 
   //····················································································································
   //   Selection observable property: mNameRotation
   //····················································································································
 
-  let mNameRotation_property = EBPropertyProxy_Int ()
+  final let mNameRotation_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mValueIsVisibleInBoard
   //····················································································································
 
-  let mValueIsVisibleInBoard_property = EBPropertyProxy_Bool ()
+  final let mValueIsVisibleInBoard_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: mXValue
   //····················································································································
 
-  let mXValue_property = EBPropertyProxy_Int ()
+  final let mXValue_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mYValue
   //····················································································································
 
-  let mYValue_property = EBPropertyProxy_Int ()
+  final let mYValue_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mValueFontSize
   //····················································································································
 
-  let mValueFontSize_property = EBPropertyProxy_Double ()
+  final let mValueFontSize_property = EBComputedProperty_Double ()
 
   //····················································································································
   //   Selection observable property: mValueRotation
   //····················································································································
 
-  let mValueRotation_property = EBPropertyProxy_Int ()
+  final let mValueRotation_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mComponentValue
   //····················································································································
 
-  let mComponentValue_property = EBPropertyProxy_String ()
+  final let mComponentValue_property = EBComputedProperty_String ()
 
   //····················································································································
   //   Selection observable property: mNamePrefix
   //····················································································································
 
-  let mNamePrefix_property = EBPropertyProxy_String ()
+  final let mNamePrefix_property = EBComputedProperty_String ()
 
   //····················································································································
   //   Selection observable property: mNameIndex
   //····················································································································
 
-  let mNameIndex_property = EBPropertyProxy_Int ()
+  final let mNameIndex_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mXUnit
   //····················································································································
 
-  let mXUnit_property = EBPropertyProxy_Int ()
+  final let mXUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mYUnit
   //····················································································································
 
-  let mYUnit_property = EBPropertyProxy_Int ()
+  final let mYUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   ToMany proxy: mPackages
   //····················································································································
 
-  let mPackages_property = ProxyArrayOf_DevicePackageInProject ()
+  final let mPackages_property = ProxyArrayOf_DevicePackageInProject ()
 
   //····················································································································
   //   Selection observable property: deviceName
   //····················································································································
 
-  let deviceName_property = EBTransientProperty_String ()
+  final let deviceName_property = EBTransientProperty_String ()
 
   //····················································································································
   //   Selection observable property: signatureForERCChecking
   //····················································································································
 
-  let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
+  final let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
 
   //····················································································································
   //   Selection observable property: packagePadDictionary
   //····················································································································
 
-  let packagePadDictionary_property = EBTransientProperty_PackageMasterPadDictionary ()
+  final let packagePadDictionary_property = EBTransientProperty_PackageMasterPadDictionary ()
 
   //····················································································································
   //   Selection observable property: selectedPackageName
   //····················································································································
 
-  let selectedPackageName_property = EBTransientProperty_String ()
+  final let selectedPackageName_property = EBTransientProperty_String ()
 
   //····················································································································
   //   Selection observable property: availablePackages
   //····················································································································
 
-  let availablePackages_property = EBTransientProperty_StringArray ()
+  final let availablePackages_property = EBTransientProperty_StringArray ()
 
   //····················································································································
   //   Selection observable property: issues
   //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
   //   Selection observable property: componentIsPlacedInBoard
   //····················································································································
 
-  let componentIsPlacedInBoard_property = EBTransientProperty_Bool ()
+  final let componentIsPlacedInBoard_property = EBTransientProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: componentIsPlacedInBoardString
   //····················································································································
 
-  let componentIsPlacedInBoardString_property = EBTransientProperty_String ()
+  final let componentIsPlacedInBoardString_property = EBTransientProperty_String ()
 
   //····················································································································
   //   Selection observable property: strokeBezierPath
   //····················································································································
 
-  let strokeBezierPath_property = EBTransientProperty_EBBezierPath ()
+  final let strokeBezierPath_property = EBTransientProperty_EBBezierPath ()
 
   //····················································································································
   //   Selection observable property: pinPadAssignments
   //····················································································································
 
-  let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
+  final let pinPadAssignments_property = EBTransientProperty_ThreeStringArray ()
 
   //····················································································································
   //   Selection observable property: hasSlavePads
   //····················································································································
 
-  let hasSlavePads_property = EBTransientProperty_Bool ()
+  final let hasSlavePads_property = EBTransientProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: placementInSchematic
   //····················································································································
 
-  let placementInSchematic_property = EBTransientProperty_String ()
+  final let placementInSchematic_property = EBTransientProperty_String ()
 
   //····················································································································
   //   Selection observable property: deviceSymbolDictionary
   //····················································································································
 
-  let deviceSymbolDictionary_property = EBTransientProperty_DeviceSymbolDictionary ()
+  final let deviceSymbolDictionary_property = EBTransientProperty_DeviceSymbolDictionary ()
 
   //····················································································································
   //   Selection observable property: componentNameFontName
   //····················································································································
 
-  let componentNameFontName_property = EBTransientProperty_String ()
+  final let componentNameFontName_property = EBTransientProperty_String ()
 
   //····················································································································
   //   Selection observable property: componentValueFontName
   //····················································································································
 
-  let componentValueFontName_property = EBTransientProperty_String ()
+  final let componentValueFontName_property = EBTransientProperty_String ()
 
   //····················································································································
   //   Selection observable property: componentPadDictionary
   //····················································································································
 
-  let componentPadDictionary_property = EBTransientProperty_ComponentPadDescriptorDictionary ()
+  final let componentPadDictionary_property = EBTransientProperty_ComponentPadDescriptorDictionary ()
 
   //····················································································································
   //   Selection observable property: padNetDictionary
   //····················································································································
 
-  let padNetDictionary_property = EBTransientProperty_PadNetDictionary ()
+  final let padNetDictionary_property = EBTransientProperty_PadNetDictionary ()
 
   //····················································································································
   //   Selection observable property: componentName
   //····················································································································
 
-  let componentName_property = EBTransientProperty_String ()
+  final let componentName_property = EBTransientProperty_String ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selection observable property: unplacedSymbols
   //····················································································································
 
-  let unplacedSymbols_property = EBTransientProperty_StringTagArray ()
+  final let unplacedSymbols_property = EBTransientProperty_StringTagArray ()
 
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selected array (not observable)

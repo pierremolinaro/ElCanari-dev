@@ -14,109 +14,109 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageDimensionSelec
   //   Selection observable property: y1
   //····················································································································
 
-  let y1_property = EBPropertyProxy_Int ()
+  final let y1_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: x2
   //····················································································································
 
-  let x2_property = EBPropertyProxy_Int ()
+  final let x2_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: y2
   //····················································································································
 
-  let y2_property = EBPropertyProxy_Int ()
+  final let y2_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: xDimension
   //····················································································································
 
-  let xDimension_property = EBPropertyProxy_Int ()
+  final let xDimension_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: yDimension
   //····················································································································
 
-  let yDimension_property = EBPropertyProxy_Int ()
+  final let yDimension_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: x1Unit
   //····················································································································
 
-  let x1Unit_property = EBPropertyProxy_Int ()
+  final let x1Unit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: y1Unit
   //····················································································································
 
-  let y1Unit_property = EBPropertyProxy_Int ()
+  final let y1Unit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: x2Unit
   //····················································································································
 
-  let x2Unit_property = EBPropertyProxy_Int ()
+  final let x2Unit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: y2Unit
   //····················································································································
 
-  let y2Unit_property = EBPropertyProxy_Int ()
+  final let y2Unit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: xDimensionUnit
   //····················································································································
 
-  let xDimensionUnit_property = EBPropertyProxy_Int ()
+  final let xDimensionUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: yDimensionUnit
   //····················································································································
 
-  let yDimensionUnit_property = EBPropertyProxy_Int ()
+  final let yDimensionUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: distanceUnit
   //····················································································································
 
-  let distanceUnit_property = EBPropertyProxy_Int ()
+  final let distanceUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: drawDimensionBackground
   //····················································································································
 
-  let drawDimensionBackground_property = EBPropertyProxy_Bool ()
+  final let drawDimensionBackground_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: x1
   //····················································································································
 
-  let x1_property = EBPropertyProxy_Int ()
+  final let x1_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: distanceInCanariUnit
   //····················································································································
 
-  let distanceInCanariUnit_property = EBTransientProperty_Int ()
+  final let distanceInCanariUnit_property = EBTransientProperty_Int ()
 
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selection observable property: issues
   //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
   //   Selected array (not observable)

@@ -1100,7 +1100,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.trackDirectionInDegrees_property.mStoreFunction = { [weak self] in self?.compute_trackDirectionInDegrees_property ($0) }
+    self.trackDirectionInDegrees_property.mWriteModelFunction = { [weak self] in self?.compute_trackDirectionInDegrees_property ($0) }
     self.mConnectorP1_property.location_property.addEBObserver (self.trackDirectionInDegrees_property)
     self.mConnectorP2_property.location_property.addEBObserver (self.trackDirectionInDegrees_property)
   //--- Computed property: computedP1X
@@ -1119,7 +1119,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.computedP1X_property.mStoreFunction = { [weak self] in self?.compute_computedP1X_property ($0) }
+    self.computedP1X_property.mWriteModelFunction = { [weak self] in self?.compute_computedP1X_property ($0) }
     self.mConnectorP1_property.location_property.addEBObserver (self.computedP1X_property)
   //--- Computed property: computedP1Y
     self.computedP1Y_property.mReadModelFunction = { [weak self] in
@@ -1137,7 +1137,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.computedP1Y_property.mStoreFunction = { [weak self] in self?.compute_computedP1Y_property ($0) }
+    self.computedP1Y_property.mWriteModelFunction = { [weak self] in self?.compute_computedP1Y_property ($0) }
     self.mConnectorP1_property.location_property.addEBObserver (self.computedP1Y_property)
   //--- Computed property: computedP2X
     self.computedP2X_property.mReadModelFunction = { [weak self] in
@@ -1155,7 +1155,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.computedP2X_property.mStoreFunction = { [weak self] in self?.compute_computedP2X_property ($0) }
+    self.computedP2X_property.mWriteModelFunction = { [weak self] in self?.compute_computedP2X_property ($0) }
     self.mConnectorP2_property.location_property.addEBObserver (self.computedP2X_property)
   //--- Computed property: computedP2Y
     self.computedP2Y_property.mReadModelFunction = { [weak self] in
@@ -1173,7 +1173,7 @@ final class BoardTrack : BoardObject,
         return .empty
       }
     }
-    self.computedP2Y_property.mStoreFunction = { [weak self] in self?.compute_computedP2Y_property ($0) }
+    self.computedP2Y_property.mWriteModelFunction = { [weak self] in self?.compute_computedP2Y_property ($0) }
     self.mConnectorP2_property.location_property.addEBObserver (self.computedP2Y_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in

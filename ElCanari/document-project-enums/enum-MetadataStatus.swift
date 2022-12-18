@@ -85,7 +85,7 @@ typealias EBReadOnlyProperty_MetadataStatus = EBReadOnlyEnumProperty <MetadataSt
 typealias EBTransientProperty_MetadataStatus = EBTransientEnumProperty <MetadataStatus>
 typealias EBReadWriteProperty_MetadataStatus = EBReadWriteEnumProperty <MetadataStatus>
 typealias EBStoredProperty_MetadataStatus = EBStoredEnumProperty <MetadataStatus>
-typealias EBPropertyProxy_MetadataStatus = EBPropertyEnumProxy <MetadataStatus>
+typealias EBComputedProperty_MetadataStatus = EBGenericEnumProperty <MetadataStatus>
 typealias EBPreferencesProperty_MetadataStatus = EBStoredEnumProperty <MetadataStatus>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -14,85 +14,85 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
   //   Selection observable property: mX
   //····················································································································
 
-  let mX_property = EBPropertyProxy_Int ()
+  final let mX_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mY
   //····················································································································
 
-  let mY_property = EBPropertyProxy_Int ()
+  final let mY_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mFontSize
   //····················································································································
 
-  let mFontSize_property = EBPropertyProxy_Double ()
+  final let mFontSize_property = EBComputedProperty_Double ()
 
   //····················································································································
   //   Selection observable property: mLayer
   //····················································································································
 
-  let mLayer_property = EBPropertyProxy_BoardTextLayer ()
+  final let mLayer_property = EBComputedProperty_BoardTextLayer ()
 
   //····················································································································
   //   Selection observable property: mText
   //····················································································································
 
-  let mText_property = EBPropertyProxy_String ()
+  final let mText_property = EBComputedProperty_String ()
 
   //····················································································································
   //   Selection observable property: mHorizontalAlignment
   //····················································································································
 
-  let mHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
+  final let mHorizontalAlignment_property = EBComputedProperty_HorizontalAlignment ()
 
   //····················································································································
   //   Selection observable property: mVerticalAlignment
   //····················································································································
 
-  let mVerticalAlignment_property = EBPropertyProxy_BoardTextVerticalAlignment ()
+  final let mVerticalAlignment_property = EBComputedProperty_BoardTextVerticalAlignment ()
 
   //····················································································································
   //   Selection observable property: mRotation
   //····················································································································
 
-  let mRotation_property = EBPropertyProxy_Int ()
+  final let mRotation_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mWeight
   //····················································································································
 
-  let mWeight_property = EBPropertyProxy_Double ()
+  final let mWeight_property = EBComputedProperty_Double ()
 
   //····················································································································
   //   Selection observable property: mOblique
   //····················································································································
 
-  let mOblique_property = EBPropertyProxy_Bool ()
+  final let mOblique_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selection observable property: fontName
   //····················································································································
 
-  let fontName_property = EBTransientProperty_String ()
+  final let fontName_property = EBTransientProperty_String ()
 
   //····················································································································
   //   Selection observable property: signatureForERCChecking
   //····················································································································
 
-  let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
+  final let signatureForERCChecking_property = EBTransientProperty_UInt32 ()
 
   //····················································································································
   //   Selected array (not observable)

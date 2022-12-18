@@ -18,7 +18,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolInstanceSelection
   //   Selection observable property: mInstanceName
   //····················································································································
 
-  var mInstanceName_property = EBPropertyProxy_String ()
+  var mInstanceName_property = EBComputedProperty_String ()
 
   //····················································································································
   //   Selection observable property: mPinInstances
@@ -32,13 +32,13 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolInstanceSelection
   //   Selection observable property: mX
   //····················································································································
 
-  var mX_property = EBPropertyProxy_Int ()
+  var mX_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mY
   //····················································································································
 
-  var mY_property = EBPropertyProxy_Int ()
+  var mY_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: objectDisplay

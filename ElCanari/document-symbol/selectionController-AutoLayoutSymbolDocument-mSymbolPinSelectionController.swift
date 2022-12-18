@@ -14,91 +14,91 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //   Selection observable property: yPin
   //····················································································································
 
-  let yPin_property = EBPropertyProxy_Int ()
+  final let yPin_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: xName
   //····················································································································
 
-  let xName_property = EBPropertyProxy_Int ()
+  final let xName_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: yName
   //····················································································································
 
-  let yName_property = EBPropertyProxy_Int ()
+  final let yName_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: xNumber
   //····················································································································
 
-  let xNumber_property = EBPropertyProxy_Int ()
+  final let xNumber_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: yNumber
   //····················································································································
 
-  let yNumber_property = EBPropertyProxy_Int ()
+  final let yNumber_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: name
   //····················································································································
 
-  let name_property = EBPropertyProxy_String ()
+  final let name_property = EBComputedProperty_String ()
 
   //····················································································································
   //   Selection observable property: nameHorizontalAlignment
   //····················································································································
 
-  let nameHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
+  final let nameHorizontalAlignment_property = EBComputedProperty_HorizontalAlignment ()
 
   //····················································································································
   //   Selection observable property: numberHorizontalAlignment
   //····················································································································
 
-  let numberHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
+  final let numberHorizontalAlignment_property = EBComputedProperty_HorizontalAlignment ()
 
   //····················································································································
   //   Selection observable property: pinNameIsDisplayedInSchematics
   //····················································································································
 
-  let pinNameIsDisplayedInSchematics_property = EBPropertyProxy_Bool ()
+  final let pinNameIsDisplayedInSchematics_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: xPin
   //····················································································································
 
-  let xPin_property = EBPropertyProxy_Int ()
+  final let xPin_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: filledBezierPath
   //····················································································································
 
-  let filledBezierPath_property = EBTransientProperty_NSBezierPath ()
+  final let filledBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selection observable property: issues
   //····················································································································
 
-  let issues_property = EBTransientProperty_CanariIssueArray ()
+  final let issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
   //   Selection observable property: nameRect
   //····················································································································
 
-  let nameRect_property = EBTransientProperty_NSRect ()
+  final let nameRect_property = EBTransientProperty_NSRect ()
 
   //····················································································································
   //   Selected array (not observable)

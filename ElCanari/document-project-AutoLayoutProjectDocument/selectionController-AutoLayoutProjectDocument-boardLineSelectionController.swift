@@ -14,79 +14,79 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
   //   Selection observable property: mWidthUnit
   //····················································································································
 
-  let mWidthUnit_property = EBPropertyProxy_Int ()
+  final let mWidthUnit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mX1
   //····················································································································
 
-  let mX1_property = EBPropertyProxy_Int ()
+  final let mX1_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mX1Unit
   //····················································································································
 
-  let mX1Unit_property = EBPropertyProxy_Int ()
+  final let mX1Unit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mY1
   //····················································································································
 
-  let mY1_property = EBPropertyProxy_Int ()
+  final let mY1_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mY1Unit
   //····················································································································
 
-  let mY1Unit_property = EBPropertyProxy_Int ()
+  final let mY1Unit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mX2
   //····················································································································
 
-  let mX2_property = EBPropertyProxy_Int ()
+  final let mX2_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mX2Unit
   //····················································································································
 
-  let mX2Unit_property = EBPropertyProxy_Int ()
+  final let mX2Unit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mY2
   //····················································································································
 
-  let mY2_property = EBPropertyProxy_Int ()
+  final let mY2_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mY2Unit
   //····················································································································
 
-  let mY2Unit_property = EBPropertyProxy_Int ()
+  final let mY2Unit_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: mLayer
   //····················································································································
 
-  let mLayer_property = EBPropertyProxy_BoardLineLayer ()
+  final let mLayer_property = EBComputedProperty_BoardLineLayer ()
 
   //····················································································································
   //   Selection observable property: mWidth
   //····················································································································
 
-  let mWidth_property = EBPropertyProxy_Int ()
+  final let mWidth_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
-  let objectDisplay_property = EBTransientProperty_EBShape ()
+  final let objectDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selection observable property: selectionDisplay
   //····················································································································
 
-  let selectionDisplay_property = EBTransientProperty_EBShape ()
+  final let selectionDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
   //   Selected array (not observable)

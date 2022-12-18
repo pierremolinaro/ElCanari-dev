@@ -84,7 +84,7 @@ typealias EBReadOnlyProperty_TrackCreationDirection = EBReadOnlyEnumProperty <Tr
 typealias EBTransientProperty_TrackCreationDirection = EBTransientEnumProperty <TrackCreationDirection>
 typealias EBReadWriteProperty_TrackCreationDirection = EBReadWriteEnumProperty <TrackCreationDirection>
 typealias EBStoredProperty_TrackCreationDirection = EBStoredEnumProperty <TrackCreationDirection>
-typealias EBPropertyProxy_TrackCreationDirection = EBPropertyEnumProxy <TrackCreationDirection>
+typealias EBComputedProperty_TrackCreationDirection = EBGenericEnumProperty <TrackCreationDirection>
 typealias EBPreferencesProperty_TrackCreationDirection = EBStoredEnumProperty <TrackCreationDirection>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

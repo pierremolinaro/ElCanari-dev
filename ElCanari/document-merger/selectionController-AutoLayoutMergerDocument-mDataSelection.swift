@@ -14,139 +14,139 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
   //   Selection observable property: drawBoardLimits
   //····················································································································
 
-  var drawBoardLimits_property = EBPropertyProxy_Bool ()
+  var drawBoardLimits_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawComponentNamesBottomSide
   //····················································································································
 
-  var drawComponentNamesBottomSide_property = EBPropertyProxy_Bool ()
+  var drawComponentNamesBottomSide_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawComponentNamesTopSide
   //····················································································································
 
-  var drawComponentNamesTopSide_property = EBPropertyProxy_Bool ()
+  var drawComponentNamesTopSide_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawComponentValuesBottomSide
   //····················································································································
 
-  var drawComponentValuesBottomSide_property = EBPropertyProxy_Bool ()
+  var drawComponentValuesBottomSide_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawComponentValuesTopSide
   //····················································································································
 
-  var drawComponentValuesTopSide_property = EBPropertyProxy_Bool ()
+  var drawComponentValuesTopSide_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawInternalBoardLimits
   //····················································································································
 
-  var drawInternalBoardLimits_property = EBPropertyProxy_Bool ()
+  var drawInternalBoardLimits_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawPackageLegendBottomSide
   //····················································································································
 
-  var drawPackageLegendBottomSide_property = EBPropertyProxy_Bool ()
+  var drawPackageLegendBottomSide_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawPackageLegendTopSide
   //····················································································································
 
-  var drawPackageLegendTopSide_property = EBPropertyProxy_Bool ()
+  var drawPackageLegendTopSide_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawPadHolesInPDF
   //····················································································································
 
-  var drawPadHolesInPDF_property = EBPropertyProxy_Bool ()
+  var drawPadHolesInPDF_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawPadsBottomSide
   //····················································································································
 
-  var drawPadsBottomSide_property = EBPropertyProxy_Bool ()
+  var drawPadsBottomSide_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawPadsTopSide
   //····················································································································
 
-  var drawPadsTopSide_property = EBPropertyProxy_Bool ()
+  var drawPadsTopSide_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawTextsLayoutBottomSide
   //····················································································································
 
-  var drawTextsLayoutBottomSide_property = EBPropertyProxy_Bool ()
+  var drawTextsLayoutBottomSide_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawTextsLayoutTopSide
   //····················································································································
 
-  var drawTextsLayoutTopSide_property = EBPropertyProxy_Bool ()
+  var drawTextsLayoutTopSide_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawTextsLegendBottomSide
   //····················································································································
 
-  var drawTextsLegendBottomSide_property = EBPropertyProxy_Bool ()
+  var drawTextsLegendBottomSide_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawTextsLegendTopSide
   //····················································································································
 
-  var drawTextsLegendTopSide_property = EBPropertyProxy_Bool ()
+  var drawTextsLegendTopSide_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawTracksBottomSide
   //····················································································································
 
-  var drawTracksBottomSide_property = EBPropertyProxy_Bool ()
+  var drawTracksBottomSide_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawTracksInner1Layer
   //····················································································································
 
-  var drawTracksInner1Layer_property = EBPropertyProxy_Bool ()
+  var drawTracksInner1Layer_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawTracksInner2Layer
   //····················································································································
 
-  var drawTracksInner2Layer_property = EBPropertyProxy_Bool ()
+  var drawTracksInner2Layer_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawTracksInner3Layer
   //····················································································································
 
-  var drawTracksInner3Layer_property = EBPropertyProxy_Bool ()
+  var drawTracksInner3Layer_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawTracksInner4Layer
   //····················································································································
 
-  var drawTracksInner4Layer_property = EBPropertyProxy_Bool ()
+  var drawTracksInner4Layer_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawTracksTopSide
   //····················································································································
 
-  var drawTracksTopSide_property = EBPropertyProxy_Bool ()
+  var drawTracksTopSide_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawTraversingPads
   //····················································································································
 
-  var drawTraversingPads_property = EBPropertyProxy_Bool ()
+  var drawTraversingPads_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: drawVias
   //····················································································································
 
-  var drawVias_property = EBPropertyProxy_Bool ()
+  var drawVias_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: emptyFileExtensionImage
@@ -158,7 +158,7 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
   //   Selection observable property: fileExtension
   //····················································································································
 
-  var fileExtension_property = EBPropertyProxy_String ()
+  var fileExtension_property = EBComputedProperty_String ()
 
   //····················································································································
   //   Selection observable property: hasNoData
@@ -170,7 +170,7 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
   //   Selection observable property: horizontalMirror
   //····················································································································
 
-  var horizontalMirror_property = EBPropertyProxy_Bool ()
+  var horizontalMirror_property = EBComputedProperty_Bool ()
 
   //····················································································································
   //   Selection observable property: mArtwork
@@ -180,19 +180,19 @@ final class SelectionController_AutoLayoutMergerDocument_mDataSelection : EBSwif
   //   Selection observable property: measurementUnitForPadHoleInPDF
   //····················································································································
 
-  var measurementUnitForPadHoleInPDF_property = EBPropertyProxy_Int ()
+  var measurementUnitForPadHoleInPDF_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: name
   //····················································································································
 
-  var name_property = EBPropertyProxy_String ()
+  var name_property = EBComputedProperty_String ()
 
   //····················································································································
   //   Selection observable property: padHoleDiameterInPDF
   //····················································································································
 
-  var padHoleDiameterInPDF_property = EBPropertyProxy_Int ()
+  var padHoleDiameterInPDF_property = EBComputedProperty_Int ()
 
   //····················································································································
   //   Selection observable property: parameterStatusImage

@@ -371,7 +371,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //   Atomic proxy property: componentValueProxy
   //····················································································································
 
-  let componentValueProxy_property = EBPropertyProxy_String ()
+  final let componentValueProxy_property = EBComputedProperty_String ()
 
   //····················································································································
 

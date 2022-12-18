@@ -92,7 +92,7 @@ typealias EBReadOnlyProperty_SlavePadStyle = EBReadOnlyEnumProperty <SlavePadSty
 typealias EBTransientProperty_SlavePadStyle = EBTransientEnumProperty <SlavePadStyle>
 typealias EBReadWriteProperty_SlavePadStyle = EBReadWriteEnumProperty <SlavePadStyle>
 typealias EBStoredProperty_SlavePadStyle = EBStoredEnumProperty <SlavePadStyle>
-typealias EBPropertyProxy_SlavePadStyle = EBPropertyEnumProxy <SlavePadStyle>
+typealias EBComputedProperty_SlavePadStyle = EBGenericEnumProperty <SlavePadStyle>
 typealias EBPreferencesProperty_SlavePadStyle = EBStoredEnumProperty <SlavePadStyle>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

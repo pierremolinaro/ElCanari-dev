@@ -101,7 +101,7 @@ typealias EBReadOnlyProperty_QuadrantRotation = EBReadOnlyEnumProperty <Quadrant
 typealias EBTransientProperty_QuadrantRotation = EBTransientEnumProperty <QuadrantRotation>
 typealias EBReadWriteProperty_QuadrantRotation = EBReadWriteEnumProperty <QuadrantRotation>
 typealias EBStoredProperty_QuadrantRotation = EBStoredEnumProperty <QuadrantRotation>
-typealias EBPropertyProxy_QuadrantRotation = EBPropertyEnumProxy <QuadrantRotation>
+typealias EBComputedProperty_QuadrantRotation = EBGenericEnumProperty <QuadrantRotation>
 typealias EBPreferencesProperty_QuadrantRotation = EBStoredEnumProperty <QuadrantRotation>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

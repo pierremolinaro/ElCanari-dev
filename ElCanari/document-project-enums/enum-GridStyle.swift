@@ -92,7 +92,7 @@ typealias EBReadOnlyProperty_GridStyle = EBReadOnlyEnumProperty <GridStyle>
 typealias EBTransientProperty_GridStyle = EBTransientEnumProperty <GridStyle>
 typealias EBReadWriteProperty_GridStyle = EBReadWriteEnumProperty <GridStyle>
 typealias EBStoredProperty_GridStyle = EBStoredEnumProperty <GridStyle>
-typealias EBPropertyProxy_GridStyle = EBPropertyEnumProxy <GridStyle>
+typealias EBComputedProperty_GridStyle = EBGenericEnumProperty <GridStyle>
 typealias EBPreferencesProperty_GridStyle = EBStoredEnumProperty <GridStyle>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
