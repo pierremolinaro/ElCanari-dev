@@ -16,13 +16,14 @@ class EBObservablePropertyController : EBOutletEvent {
 
   //····················································································································
 
-  init (observedObjects : [EBObservableObjectProtocol], callBack inCallBack : Optional <() -> Void>) {
-    for object in observedObjects {
+  init (observedObjects inObservedObjects : [EBObservableObjectProtocol],
+        callBack inCallBack : Optional <() -> Void>) {
+    for object in inObservedObjects {
       self.mPrivateObservedObjects.append (WeakObservedObject (object))
     }
     super.init ()
     self.mEventCallBack = inCallBack
-    for object in observedObjects {
+    for object in inObservedObjects {
       object.addEBObserver (self)
     }
   }

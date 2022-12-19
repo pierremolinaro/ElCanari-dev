@@ -16,7 +16,6 @@ import SystemConfiguration
 @MainActor func getSystemProxy (_ inLogTextView : AutoLayoutStaticTextView) -> [String] {
   var proxyOption = [String] ()
   if let proxies : NSDictionary = SCDynamicStoreCopyProxies (nil) {
-//    inLogTextView.appendMessageString("  SCDynamicStoreCopyProxies returns \(proxies)\n")
     let possibleHTTPSProxy = proxies ["HTTPSProxy"]
     let possibleHTTPSEnable = proxies ["HTTPSEnable"]
     let possibleHTTPSPort = proxies ["HTTPSPort"]

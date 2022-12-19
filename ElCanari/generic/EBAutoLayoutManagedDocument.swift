@@ -197,7 +197,7 @@ class EBAutoLayoutManagedDocument : NSDocument { // , NSPasteboardItemDataProvid
   //    READ DOCUMENT FROM FILE
   //····················································································································
 
-  override final func read (from inData : Data, ofType typeName : String) throws {
+  override final func read (from inData : Data, ofType inTypeName : String) throws {
     DispatchQueue.main.async {
   //--- Show "Opening xxx…" splash window ?
     if inData.count > 300_000 {
@@ -223,12 +223,9 @@ class EBAutoLayoutManagedDocument : NSDocument { // , NSPasteboardItemDataProvid
       window.isReleasedWhenClosed = false
       window.makeKeyAndOrderFront (nil)
       window.center ()
-//      if let screen = window.screen {
-//        window.setFrameOrigin (NSPoint (x:100, y: 100))
-//      }
       RunLoop.current.run (until: Date ())
     }
-      self.undoManager?.disableUndoRegistration ()
+    self.undoManager?.disableUndoRegistration ()
     //--- Load file
       let documentReadData = loadEasyBindingFile (fromData: inData, documentName: self.displayName, undoManager: self.undoManager)
       switch documentReadData {
@@ -239,9 +236,7 @@ class EBAutoLayoutManagedDocument : NSDocument { // , NSPasteboardItemDataProvid
       //--- Store metadata dictionary
         self.mMetadataDictionary = documentData.documentMetadataDictionary
       //--- Read version from file
-//        DispatchQueue.main.async {
-          self.mVersion.setProp (self.readVersionFromMetadataDictionary (documentData.documentMetadataDictionary))
- //       }
+        self.mVersion.setProp (self.readVersionFromMetadataDictionary (documentData.documentMetadataDictionary))
       //--- Store root object
         self.mRootObject = documentData.documentRootObject
       //---

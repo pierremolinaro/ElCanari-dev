@@ -421,10 +421,10 @@ final class SymbolOval : SymbolObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.height_property.signature ())
-    crc.accumulateUInt32 (self.width_property.signature ())
-    crc.accumulateUInt32 (self.x_property.signature ())
-    crc.accumulateUInt32 (self.y_property.signature ())
+    crc.accumulate (u32: self.height_property.signature ())
+    crc.accumulate (u32: self.width_property.signature ())
+    crc.accumulate (u32: self.x_property.signature ())
+    crc.accumulate (u32: self.y_property.signature ())
     return crc
   }
 

@@ -750,16 +750,16 @@ final class SymbolPin : SymbolObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.name_property.signature ())
-    crc.accumulateUInt32 (self.nameHorizontalAlignment_property.signature ())
-    crc.accumulateUInt32 (self.numberHorizontalAlignment_property.signature ())
-    crc.accumulateUInt32 (self.pinNameIsDisplayedInSchematics_property.signature ())
-    crc.accumulateUInt32 (self.xName_property.signature ())
-    crc.accumulateUInt32 (self.xNumber_property.signature ())
-    crc.accumulateUInt32 (self.xPin_property.signature ())
-    crc.accumulateUInt32 (self.yName_property.signature ())
-    crc.accumulateUInt32 (self.yNumber_property.signature ())
-    crc.accumulateUInt32 (self.yPin_property.signature ())
+    crc.accumulate (u32: self.name_property.signature ())
+    crc.accumulate (u32: self.nameHorizontalAlignment_property.signature ())
+    crc.accumulate (u32: self.numberHorizontalAlignment_property.signature ())
+    crc.accumulate (u32: self.pinNameIsDisplayedInSchematics_property.signature ())
+    crc.accumulate (u32: self.xName_property.signature ())
+    crc.accumulate (u32: self.xNumber_property.signature ())
+    crc.accumulate (u32: self.xPin_property.signature ())
+    crc.accumulate (u32: self.yName_property.signature ())
+    crc.accumulate (u32: self.yNumber_property.signature ())
+    crc.accumulate (u32: self.yPin_property.signature ())
     return crc
   }
 

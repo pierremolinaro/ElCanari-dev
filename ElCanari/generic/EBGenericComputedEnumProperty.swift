@@ -5,10 +5,10 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBGenericEnumProperty <T : EnumPropertyProtocol>
+//   EBGenericComputedEnumProperty <T : EnumPropertyProtocol>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBGenericEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumProperty <T>, EBObserverProtocol {
+final class EBGenericComputedEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumProperty <T>, EBObserverProtocol {
 
   //····················································································································
 
@@ -44,8 +44,8 @@ final class EBGenericEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPr
 
   //····················································································································
 
-  override func setProp (_ value : T) {
-    self.mWriteModelFunction? (value)
+  override func setProp (_ inValue : T) {
+    self.mWriteModelFunction? (inValue)
   }
 
   //····················································································································

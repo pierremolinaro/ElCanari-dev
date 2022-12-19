@@ -19,7 +19,7 @@ import AppKit
        _ self_mPin_mPinName : String?
 ) -> ThreeStrings {
 //--- START OF USER ZONE 2
-       return ThreeStrings (self_mPadName, self_mPin_mSymbolInstanceName ?? "", self_mPin_mPinName ?? "")
+       return ThreeStrings (left: self_mPadName, center: self_mPin_mSymbolInstanceName ?? "", right: self_mPin_mPinName ?? "")
 //--- END OF USER ZONE 2
 }
 

@@ -15,7 +15,7 @@ extension Data : EBStoredPropertyProtocol {
   func ebHashValue () -> UInt32 {
     var crc : UInt32 = 0
     for i in 0 ..< self.count {
-      crc.accumulateUInt8 (self [i])
+      crc.accumulate (u8: self [i])
     }
     return crc
   }

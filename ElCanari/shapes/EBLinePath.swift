@@ -4,6 +4,7 @@
 //
 //  Created by Pierre Molinaro on 22/06/2019.
 //
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import AppKit
 
@@ -29,7 +30,8 @@ struct EBLinePath {
 
   //····················································································································
 
-  func appendToBezierPath (_ ioBezierPath : inout EBBezierPath, _ inAffineTransform : AffineTransform) {
+  func appendToBezierPath (_ ioBezierPath : inout EBBezierPath,
+                           transformedBy inAffineTransform : AffineTransform) {
     ioBezierPath.move (to: inAffineTransform.transform (self.origin))
     for p in self.lines {
       ioBezierPath.line (to: inAffineTransform.transform (p))

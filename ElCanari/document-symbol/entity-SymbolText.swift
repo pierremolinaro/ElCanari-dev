@@ -368,10 +368,10 @@ final class SymbolText : SymbolObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.horizontalAlignment_property.signature ())
-    crc.accumulateUInt32 (self.text_property.signature ())
-    crc.accumulateUInt32 (self.x_property.signature ())
-    crc.accumulateUInt32 (self.y_property.signature ())
+    crc.accumulate (u32: self.horizontalAlignment_property.signature ())
+    crc.accumulate (u32: self.text_property.signature ())
+    crc.accumulate (u32: self.x_property.signature ())
+    crc.accumulate (u32: self.y_property.signature ())
     return crc
   }
 

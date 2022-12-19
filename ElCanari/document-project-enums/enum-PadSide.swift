@@ -84,7 +84,7 @@ typealias EBReadOnlyProperty_PadSide = EBReadOnlyEnumProperty <PadSide>
 typealias EBTransientProperty_PadSide = EBTransientEnumProperty <PadSide>
 typealias EBReadWriteProperty_PadSide = EBReadWriteEnumProperty <PadSide>
 typealias EBStoredProperty_PadSide = EBStoredEnumProperty <PadSide>
-typealias EBComputedProperty_PadSide = EBGenericEnumProperty <PadSide>
+typealias EBComputedProperty_PadSide = EBGenericComputedEnumProperty <PadSide>
 typealias EBPreferencesProperty_PadSide = EBStoredEnumProperty <PadSide>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -12,7 +12,7 @@ class EBReadOnlyEnumProperty <T : EBEnumProtocol> : EBObservableProperty <T>, EB
 
   //····················································································································
 
-  func setFrom (rawValue : Int) {}  // Abstract method
+  func setFrom (rawValue inRawValue : Int) {}  // Abstract method
 
   //····················································································································
 

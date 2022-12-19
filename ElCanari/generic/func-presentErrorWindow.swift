@@ -11,11 +11,11 @@ import AppKit
 @MainActor func presentErrorWindow (_ file : String,
                                     _ line : Int,
                                     _ errorMessage : String) {
-  if Thread.isMainThread {
+//  if Thread.isMainThread {
     presentErrorWindowInMainThread (file, line, errorMessage)
-  }else{
-    DispatchQueue.main.async { presentErrorWindowInMainThread (file, line, errorMessage) }
-  }
+//  }else{
+//    DispatchQueue.main.async { presentErrorWindowInMainThread (file, line, errorMessage) }
+//  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

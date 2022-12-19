@@ -18,7 +18,7 @@ import AppKit
        _ self_netName : String
 ) -> TwoStrings {
 //--- START OF USER ZONE 2
-        return TwoStrings (self_mSymbolPinName, self_netName)
+        return TwoStrings (left: self_mSymbolPinName, right: self_netName)
 //--- END OF USER ZONE 2
 }
 

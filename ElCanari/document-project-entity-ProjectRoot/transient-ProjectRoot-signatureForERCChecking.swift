@@ -21,11 +21,11 @@ import AppKit
        var crc : UInt32 = 0
        for object in self_mBoardObjects_signatureForERCChecking {
          if let signature = object.signatureForERCChecking {
-           crc.accumulateUInt32 (signature)
+           crc.accumulate (u32: signature)
          }
        }
        if let s = self_mArtwork_signatureForERCChecking {
-        crc.accumulateUInt32 (s)
+         crc.accumulate (u32: s)
        }
        return crc
 //--- END OF USER ZONE 2

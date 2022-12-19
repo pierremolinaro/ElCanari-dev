@@ -12,12 +12,12 @@ class EBReadWriteEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T>,
 
   //····················································································································
 
-  func setProp (_ value : T) { } // Abstract method
+  func setProp (_ inValue : T) { } // Abstract method
 
   //····················································································································
 
-  override final func setFrom (rawValue : Int) {
-    if let v = T.buildfromRawValue (rawValue: rawValue) {
+  override final func setFrom (rawValue inRawValue : Int) {
+    if let v = T.buildfromRawValue (rawValue: inRawValue) {
       self.setProp (v)
     }
   }

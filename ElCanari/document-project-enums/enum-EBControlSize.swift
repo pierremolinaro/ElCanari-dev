@@ -84,7 +84,7 @@ typealias EBReadOnlyProperty_EBControlSize = EBReadOnlyEnumProperty <EBControlSi
 typealias EBTransientProperty_EBControlSize = EBTransientEnumProperty <EBControlSize>
 typealias EBReadWriteProperty_EBControlSize = EBReadWriteEnumProperty <EBControlSize>
 typealias EBStoredProperty_EBControlSize = EBStoredEnumProperty <EBControlSize>
-typealias EBComputedProperty_EBControlSize = EBGenericEnumProperty <EBControlSize>
+typealias EBComputedProperty_EBControlSize = EBGenericComputedEnumProperty <EBControlSize>
 typealias EBPreferencesProperty_EBControlSize = EBStoredEnumProperty <EBControlSize>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

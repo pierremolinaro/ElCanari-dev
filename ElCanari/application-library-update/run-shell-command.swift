@@ -47,11 +47,11 @@ enum ShellCommandStatus {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func runShellCommandAndGetDataOutput (_ command : String,
-                                                 _ arguments : [String],
+@MainActor func runShellCommandAndGetDataOutput (_ inCommand : String,
+                                                 _ inArguments : [String],
                                                  logTextView inLogTextView : AutoLayoutStaticTextView?) -> ShellCommandStatus {
-  var commandString = command
-  for s in arguments {
+  var commandString = inCommand
+  for s in inArguments {
     if s.contains ("'") {
      commandString += " '" + s + "'"
     }else{
@@ -63,8 +63,8 @@ enum ShellCommandStatus {
   inLogTextView?.appendMessageString ("\n")
 //--- Define task
   let task = Process ()
-  task.launchPath = command
-  task.arguments = arguments
+  task.launchPath = inCommand
+  task.arguments = inArguments
   let pipe = Pipe ()
   task.standardOutput = pipe
   task.standardError = pipe

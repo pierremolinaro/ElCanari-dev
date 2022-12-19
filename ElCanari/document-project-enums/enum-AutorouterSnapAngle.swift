@@ -92,7 +92,7 @@ typealias EBReadOnlyProperty_AutorouterSnapAngle = EBReadOnlyEnumProperty <Autor
 typealias EBTransientProperty_AutorouterSnapAngle = EBTransientEnumProperty <AutorouterSnapAngle>
 typealias EBReadWriteProperty_AutorouterSnapAngle = EBReadWriteEnumProperty <AutorouterSnapAngle>
 typealias EBStoredProperty_AutorouterSnapAngle = EBStoredEnumProperty <AutorouterSnapAngle>
-typealias EBComputedProperty_AutorouterSnapAngle = EBGenericEnumProperty <AutorouterSnapAngle>
+typealias EBComputedProperty_AutorouterSnapAngle = EBGenericComputedEnumProperty <AutorouterSnapAngle>
 typealias EBPreferencesProperty_AutorouterSnapAngle = EBStoredEnumProperty <AutorouterSnapAngle>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

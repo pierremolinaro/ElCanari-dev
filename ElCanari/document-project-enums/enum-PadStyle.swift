@@ -91,7 +91,7 @@ typealias EBReadOnlyProperty_PadStyle = EBReadOnlyEnumProperty <PadStyle>
 typealias EBTransientProperty_PadStyle = EBTransientEnumProperty <PadStyle>
 typealias EBReadWriteProperty_PadStyle = EBReadWriteEnumProperty <PadStyle>
 typealias EBStoredProperty_PadStyle = EBStoredEnumProperty <PadStyle>
-typealias EBComputedProperty_PadStyle = EBGenericEnumProperty <PadStyle>
+typealias EBComputedProperty_PadStyle = EBGenericComputedEnumProperty <PadStyle>
 typealias EBPreferencesProperty_PadStyle = EBStoredEnumProperty <PadStyle>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

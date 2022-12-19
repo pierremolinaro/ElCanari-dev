@@ -795,19 +795,19 @@ final class PackageArc : PackageObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.arcAngle_property.signature ())
-    crc.accumulateUInt32 (self.endTangent_property.signature ())
-    crc.accumulateUInt32 (self.endTangentUnit_property.signature ())
-    crc.accumulateUInt32 (self.pathIsClosed_property.signature ())
-    crc.accumulateUInt32 (self.radius_property.signature ())
-    crc.accumulateUInt32 (self.radiusUnit_property.signature ())
-    crc.accumulateUInt32 (self.startAngle_property.signature ())
-    crc.accumulateUInt32 (self.startTangent_property.signature ())
-    crc.accumulateUInt32 (self.startTangentUnit_property.signature ())
-    crc.accumulateUInt32 (self.xCenter_property.signature ())
-    crc.accumulateUInt32 (self.xCenterUnit_property.signature ())
-    crc.accumulateUInt32 (self.yCenter_property.signature ())
-    crc.accumulateUInt32 (self.yCenterUnit_property.signature ())
+    crc.accumulate (u32: self.arcAngle_property.signature ())
+    crc.accumulate (u32: self.endTangent_property.signature ())
+    crc.accumulate (u32: self.endTangentUnit_property.signature ())
+    crc.accumulate (u32: self.pathIsClosed_property.signature ())
+    crc.accumulate (u32: self.radius_property.signature ())
+    crc.accumulate (u32: self.radiusUnit_property.signature ())
+    crc.accumulate (u32: self.startAngle_property.signature ())
+    crc.accumulate (u32: self.startTangent_property.signature ())
+    crc.accumulate (u32: self.startTangentUnit_property.signature ())
+    crc.accumulate (u32: self.xCenter_property.signature ())
+    crc.accumulate (u32: self.xCenterUnit_property.signature ())
+    crc.accumulate (u32: self.yCenter_property.signature ())
+    crc.accumulate (u32: self.yCenterUnit_property.signature ())
     return crc
   }
 

@@ -13,6 +13,5 @@ digraph G {
   EBGenericStoredPropertyT -> EBObservableMutablePropertyT ;
   EBReadWriteEnumPropertyT -> EBReadOnlyEnumPropertyT ;
   EBTransientEnumPropertyT -> EBReadOnlyEnumPropertyT ;
-  EBPropertyEnumProxyT -> EBReadWriteEnumPropertyT ;
   EBStoredEnumProxyT -> EBReadWriteEnumPropertyT ;
  }

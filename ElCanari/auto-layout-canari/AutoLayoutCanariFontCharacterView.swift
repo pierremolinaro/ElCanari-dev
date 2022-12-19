@@ -201,12 +201,12 @@ final class AutoLayoutCanariFontCharacterView : NSView {
         if (segment.x1 != currentX) || (segment.y1 != currentY) {
           currentX = segment.x1
           currentY = segment.y1
-          strokePath.addArrow (fillPath: fillPath, to: NSPoint (x: xForX (currentX), y: yForY (currentY)), arrowSize: GERBER_FLOW_ARROW_SIZE)
+          strokePath.addArrow (withFilledPath: fillPath, to: NSPoint (x: xForX (currentX), y: yForY (currentY)), arrowSize: GERBER_FLOW_ARROW_SIZE)
         }
         if (segment.x2 != currentX) || (segment.y2 != currentY) {
           currentX = segment.x2
           currentY = segment.y2
-          strokePath.addArrow (fillPath: fillPath, to: NSPoint (x: xForX (currentX), y: yForY (currentY)), arrowSize: GERBER_FLOW_ARROW_SIZE)
+          strokePath.addArrow (withFilledPath: fillPath, to: NSPoint (x: xForX (currentX), y: yForY (currentY)), arrowSize: GERBER_FLOW_ARROW_SIZE)
         }
       }
       NSColor.orange.setFill ()

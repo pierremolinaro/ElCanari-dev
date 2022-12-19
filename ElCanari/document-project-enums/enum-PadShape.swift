@@ -92,7 +92,7 @@ typealias EBReadOnlyProperty_PadShape = EBReadOnlyEnumProperty <PadShape>
 typealias EBTransientProperty_PadShape = EBTransientEnumProperty <PadShape>
 typealias EBReadWriteProperty_PadShape = EBReadWriteEnumProperty <PadShape>
 typealias EBStoredProperty_PadShape = EBStoredEnumProperty <PadShape>
-typealias EBComputedProperty_PadShape = EBGenericEnumProperty <PadShape>
+typealias EBComputedProperty_PadShape = EBGenericComputedEnumProperty <PadShape>
 typealias EBPreferencesProperty_PadShape = EBStoredEnumProperty <PadShape>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

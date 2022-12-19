@@ -450,7 +450,7 @@ fileprivate final class EBShapeObject {
       }
     //--- Transform text into filled bezier path
       let filledBezierPath = EBBezierPath (
-        with: inString,
+        withString: inString,
         at: inOrigin,
         inHorizontalAlignment,
         inVerticalAlignment,
@@ -494,7 +494,7 @@ fileprivate final class EBShapeObject {
     ]
   //--- Transform text into filled bezier path
     let filledBezierPath = EBBezierPath (
-      with: string,
+      withString: string,
       at: inOrigin,
       inHorizontalAlignment,
       inVerticalAlignment,

@@ -92,7 +92,7 @@ typealias EBReadOnlyProperty_LayerConfiguration = EBReadOnlyEnumProperty <LayerC
 typealias EBTransientProperty_LayerConfiguration = EBTransientEnumProperty <LayerConfiguration>
 typealias EBReadWriteProperty_LayerConfiguration = EBReadWriteEnumProperty <LayerConfiguration>
 typealias EBStoredProperty_LayerConfiguration = EBStoredEnumProperty <LayerConfiguration>
-typealias EBComputedProperty_LayerConfiguration = EBGenericEnumProperty <LayerConfiguration>
+typealias EBComputedProperty_LayerConfiguration = EBGenericComputedEnumProperty <LayerConfiguration>
 typealias EBPreferencesProperty_LayerConfiguration = EBStoredEnumProperty <LayerConfiguration>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

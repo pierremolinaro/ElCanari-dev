@@ -94,7 +94,7 @@ typealias EBReadOnlyProperty_AutoLayoutUserInterfaceStyle = EBReadOnlyEnumProper
 typealias EBTransientProperty_AutoLayoutUserInterfaceStyle = EBTransientEnumProperty <AutoLayoutUserInterfaceStyle>
 typealias EBReadWriteProperty_AutoLayoutUserInterfaceStyle = EBReadWriteEnumProperty <AutoLayoutUserInterfaceStyle>
 typealias EBStoredProperty_AutoLayoutUserInterfaceStyle = EBStoredEnumProperty <AutoLayoutUserInterfaceStyle>
-typealias EBComputedProperty_AutoLayoutUserInterfaceStyle = EBGenericEnumProperty <AutoLayoutUserInterfaceStyle>
+typealias EBComputedProperty_AutoLayoutUserInterfaceStyle = EBGenericComputedEnumProperty <AutoLayoutUserInterfaceStyle>
 typealias EBPreferencesProperty_AutoLayoutUserInterfaceStyle = EBStoredEnumProperty <AutoLayoutUserInterfaceStyle>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

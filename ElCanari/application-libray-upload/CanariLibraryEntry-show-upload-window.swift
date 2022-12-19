@@ -222,7 +222,7 @@ extension CanariLibraryEntry {
     if let currentCommit = possibleCurrentCommit {
       var needsToWriteCommitFile = false
       for op in operations {
-        switch op.mOperation {
+        switch op.operation {
         case .nop :
           ()
         case .remove, .upgrade, .upload :
@@ -254,16 +254,16 @@ extension CanariLibraryEntry {
     //--- Upload files
       if ok {
         for op in operations {
-          switch op.mOperation {
+          switch op.operation {
           case .remove :
-            inLogTextView.appendMessageString ("Remove \(op.mRelativePath)\n")
+            inLogTextView.appendMessageString ("Remove \(op.relativePath)\n")
           case .nop :
             ()
-            // inLogTextView.appendMessageString ("No change for \(op.mRelativePath)\n")
+            // inLogTextView.appendMessageString ("No change for \(op.relativePath)\n")
           case .upload :
-            inLogTextView.appendMessageString ("Upload \(op.mRelativePath) (\(op.mLength.stringWithSeparators) bytes)... ")
-            let localFullPath = self.mPath + "/" + op.mRelativePath
-            let remoteRelativePath = "files/\(op.mCommit)/" + op.mRelativePath
+            inLogTextView.appendMessageString ("Upload \(op.relativePath) (\(op.length.stringWithSeparators) bytes)... ")
+            let localFullPath = self.mPath + "/" + op.relativePath
+            let remoteRelativePath = "files/\(op.commit)/" + op.relativePath
             let r = writeRemoteFile (remoteRelativePath, url: self.mLibraryRepositoryURL, userPwd: self.mUserAndPasswordTag, localFullPath)
             switch r {
             case .error (let status) :
@@ -273,9 +273,9 @@ extension CanariLibraryEntry {
               inLogTextView.appendSuccessString ("ok\n")
             }
           case .upgrade :
-            inLogTextView.appendMessageString ("Upgrade \(op.mRelativePath) (\(op.mLength.stringWithSeparators) bytes)... ")
-            let localFullPath = self.mPath + "/" + op.mRelativePath
-            let remoteRelativePath = "files/\(op.mCommit)/" + op.mRelativePath
+            inLogTextView.appendMessageString ("Upgrade \(op.relativePath) (\(op.length.stringWithSeparators) bytes)... ")
+            let localFullPath = self.mPath + "/" + op.relativePath
+            let remoteRelativePath = "files/\(op.commit)/" + op.relativePath
             let r = writeRemoteFile (remoteRelativePath, url: self.mLibraryRepositoryURL, userPwd: self.mUserAndPasswordTag, localFullPath)
             switch r {
             case .error (let status) :
@@ -292,7 +292,7 @@ extension CanariLibraryEntry {
         var commitDictionaryArray = [[String : Any]] ()
         var needsToWriteCommitFile = false
         for op in operations {
-          switch op.mOperation {
+          switch op.operation {
           case .nop :
             commitDictionaryArray.append (op.dictionary ())
           case .remove :

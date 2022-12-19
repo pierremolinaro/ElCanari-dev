@@ -51,25 +51,25 @@ extension UInt32 {
 
   //····················································································································
 
-  mutating func accumulateUInt8 (_ inByte : UInt8) {
-    let idx = Int ((self ^ UInt32 (inByte)) & 0xff)
+  mutating func accumulate (u8 inByte : UInt8) {
+    let idx = Int ((self ^ UInt32 (inByte)) & 0xFF)
     self = (self >> 8) ^ kTableCRC [idx]
   }
 
   //····················································································································
 
-  mutating func accumulateUInt32 (_ inValue : UInt32) {
-    self.accumulateUInt8 (UInt8 (inValue & 0xFF))
-    self.accumulateUInt8 (UInt8 ((inValue >>  8) & 0xFF))
-    self.accumulateUInt8 (UInt8 ((inValue >> 16) & 0xFF))
-    self.accumulateUInt8 (UInt8 (inValue >> 24))
+  mutating func accumulate (u32 inValue : UInt32) {
+    self.accumulate (u8: UInt8 (inValue & 0xFF))
+    self.accumulate (u8: UInt8 ((inValue >>  8) & 0xFF))
+    self.accumulate (u8: UInt8 ((inValue >> 16) & 0xFF))
+    self.accumulate (u8: UInt8 (inValue >> 24))
   }
 
   //····················································································································
 
-  mutating func accumulateInt8 (_ inValue : Int8) {
+  mutating func accumulate (s8 inValue : Int8) {
     let v = UInt8 (bitPattern: inValue)
-    self.accumulateUInt8 (v)
+    self.accumulate (u8: v)
   }
 
   //····················································································································
@@ -85,7 +85,7 @@ extension Array where Element == UInt8 {
   func ebHashValue () -> UInt32 {
     var crc : UInt32 = 0
     for i in 0 ..< self.count {
-      crc.accumulateUInt8 (self [i])
+      crc.accumulate (u8: self [i])
     }
     return crc
   }

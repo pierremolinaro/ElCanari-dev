@@ -49,7 +49,7 @@ extension SymbolRoot {
         ]
         let origin = CanariPoint (x: object.x, y: object.y).cocoaPoint
         let bp = EBBezierPath (
-          with: object.text,
+          withString: object.text,
           at: origin,
           object.horizontalAlignment.ebTextShapeHorizontalAlignment,
           .center,

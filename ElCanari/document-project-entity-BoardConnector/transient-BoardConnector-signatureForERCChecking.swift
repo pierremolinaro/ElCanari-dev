@@ -20,11 +20,11 @@ import AppKit
 ) -> UInt32 {
 //--- START OF USER ZONE 2
         var crc : UInt32 = 0
-        crc.accumulateUInt32 (self_location.x.ebHashValue ())
-        crc.accumulateUInt32 (self_location.y.ebHashValue ())
-        crc.accumulateUInt32 (self_isVia.ebHashValue ())
+        crc.accumulate (u32: self_location.x.ebHashValue ())
+        crc.accumulate (u32: self_location.y.ebHashValue ())
+        crc.accumulate (u32: self_isVia.ebHashValue ())
         if self_isVia {
-          crc.accumulateUInt32 (self_actualPadDiameter.ebHashValue ())
+          crc.accumulate (u32: self_actualPadDiameter.ebHashValue ())
         }
         return crc
 //--- END OF USER ZONE 2

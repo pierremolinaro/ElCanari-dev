@@ -21,7 +21,7 @@ import AppKit
         if self_projectDeviceController_selectedArray_all_symbolAndTypesNames.count == 1 {
           if let a = self_projectDeviceController_selectedArray_all_symbolAndTypesNames [0].symbolAndTypesNames {
             for symbolDescriptor in a {
-              result.append (TwoStrings (symbolDescriptor.symbolInstanceName, symbolDescriptor.symbolTypeName))
+              result.append (TwoStrings (left: symbolDescriptor.symbolInstanceName, right: symbolDescriptor.symbolTypeName))
             }
           }
         }

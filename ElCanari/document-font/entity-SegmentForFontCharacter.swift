@@ -324,10 +324,10 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.x1_property.signature ())
-    crc.accumulateUInt32 (self.x2_property.signature ())
-    crc.accumulateUInt32 (self.y1_property.signature ())
-    crc.accumulateUInt32 (self.y2_property.signature ())
+    crc.accumulate (u32: self.x1_property.signature ())
+    crc.accumulate (u32: self.x2_property.signature ())
+    crc.accumulate (u32: self.y1_property.signature ())
+    crc.accumulate (u32: self.y2_property.signature ())
     return crc
   }
 

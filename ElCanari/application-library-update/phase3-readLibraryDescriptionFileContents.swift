@@ -29,7 +29,7 @@ import AppKit
 //--- Print
   inLogTextView.appendMessageString ("  Local contents, from description file [path — commit — size — sha]:\n")
   for (path, value) in libraryFileDictionary {
-    inLogTextView.appendMessageString ("    [\(path) — \(value.mCommit) — \(value.mSize) — \(value.mSHA)]\n")
+    inLogTextView.appendMessageString ("    [\(path) — \(value.commit) — \(value.size) — \(value.sha)]\n")
   }
   return libraryFileDictionary
 }
@@ -40,7 +40,7 @@ import AppKit
                                                   _ inLogTextView : AutoLayoutStaticTextView) throws {
   inLogTextView.appendMessageString ("  Write Library Description Plist File [path — repositorySHA — size]\n")
   for (path, value) in inRepositoryFileDictionary {
-    inLogTextView.appendMessageString ("    [\(path) — \(value.mSHA) — \(value.mSize)]\n")
+    inLogTextView.appendMessageString ("    [\(path) — \(value.sha) — \(value.size)]\n")
   }
 //--- Write plist file
   var dictionaryArray = [[String : Any]] ()
@@ -48,11 +48,11 @@ import AppKit
   for (path, descriptor) in inRepositoryFileDictionary {
     let dictionary : [String : Any] = [
       "path" : path,
-      "commit" : descriptor.mCommit,
-      "size" : descriptor.mSize,
-      "sha" : descriptor.mSHA
+      "commit" : descriptor.commit,
+      "size" : descriptor.size,
+      "sha" : descriptor.sha
     ]
-    lastCommit = max (lastCommit, descriptor.mCommit)
+    lastCommit = max (lastCommit, descriptor.commit)
     dictionaryArray.append (dictionary)
   }
   let data : Data = try PropertyListSerialization.data (fromPropertyList: dictionaryArray, format: .binary, options: 0)
@@ -66,25 +66,9 @@ import AppKit
 
 struct CanariLibraryFileDescriptor {
 
-  //····················································································································
-  //   Properties
-  //····················································································································
-
-  let mSize : Int
-  let mSHA : String
-  let mCommit : Int
-
-  //····················································································································
-
-  init (size inSize : Int,
-        sha inSHA : String,
-        commit inCommit : Int) {
-    mSize = inSize
-    mSHA = inSHA
-    mCommit = inCommit
-  }
-
-  //····················································································································
+  let size : Int
+  let sha : String
+  let commit : Int
 
 }
 

@@ -92,7 +92,7 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
       delegate: nil
     )
     self.mTableView.addColumn_String (
-      valueGetterDelegate: { [weak self] in self?.mCurrentActionArray [$0].mRelativePath },
+      valueGetterDelegate: { [weak self] in self?.mCurrentActionArray [$0].relativePath },
       valueSetterDelegate: nil,
       sortDelegate: nil,
       title: "Name",
@@ -133,7 +133,7 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
 
   //····················································································································
 
-  func cancel () {
+  @MainActor func cancel () {
     self.mErrorCode = -1
   }
 
@@ -141,7 +141,7 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
   //   launchElementDownload
   //····················································································································
 
-  func launchElementDownload () {
+  @MainActor func launchElementDownload () {
     if self.mNextActionIndex < self.mActionArray.count {
       self.mNextActionIndex += 1
       self.mCurrentParallelActionCount += 1
@@ -170,10 +170,6 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
       }
       idx += 1
     }
-//    if let idx = self.mCurrentActionArray.firstIndex (of: inElement) {
-//      self.mCurrentActionArray.remove (at: idx)
-//      self.mTableView.sortAndReloadData ()
-//    }
   //--- Update progress indicator
     self.updateProgressIndicator ()
   //--- Update remaining operation count
@@ -197,10 +193,7 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
 
   //····················································································································
 
-  func updateProgressIndicator () {
-    if !Thread.isMainThread {
-      Swift.print ("\(#file),\(#line): Not in main thread!")
-    }
+  @MainActor func updateProgressIndicator () {
     var progressCurrentValue = 0.0
     for action in self.mActionArray {
       progressCurrentValue += action.currentIndicatorValue

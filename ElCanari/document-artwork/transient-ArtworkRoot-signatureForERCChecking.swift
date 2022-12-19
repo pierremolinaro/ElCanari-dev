@@ -21,10 +21,10 @@ import AppKit
 ) -> UInt32 {
 //--- START OF USER ZONE 2
         var crc : UInt32 = 0
-        crc.accumulateUInt32 (self_minPPTPTTTW.ebHashValue ())
-        crc.accumulateUInt32 (self_minValueForOARinEBUnit.ebHashValue ())
-        crc.accumulateUInt32 (self_minValueForBoardLimitWidth.ebHashValue ())
-        crc.accumulateUInt32 (self_minValueForPHDinEBUnit.ebHashValue ())
+        crc.accumulate (u32: self_minPPTPTTTW.ebHashValue ())
+        crc.accumulate (u32: self_minValueForOARinEBUnit.ebHashValue ())
+        crc.accumulate (u32: self_minValueForBoardLimitWidth.ebHashValue ())
+        crc.accumulate (u32: self_minValueForPHDinEBUnit.ebHashValue ())
         return crc
 //--- END OF USER ZONE 2
 }

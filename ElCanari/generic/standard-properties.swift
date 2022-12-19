@@ -10,7 +10,7 @@ import AppKit
 
 typealias EBReadOnlyProperty_UInt32    = EBObservableProperty <UInt32>
 typealias EBTransientProperty_UInt32   = EBGenericTransientProperty <UInt32>
-typealias EBReadWriteProperty_UInt32  = EBObservableMutableProperty <UInt32>
+typealias EBReadWriteProperty_UInt32   = EBObservableMutableProperty <UInt32>
 typealias EBComputedProperty_UInt32    = EBGenericComputedProperty <UInt32>
 typealias EBStoredProperty_UInt32      = EBGenericStoredProperty <UInt32>
 typealias EBPreferencesProperty_UInt32 = EBGenericPreferenceProperty <UInt32>
@@ -68,7 +68,7 @@ func values_UInt32_are_ordered (_ inLeft : UInt32, _ inAscending : Bool, _ inRig
 
 typealias EBReadOnlyProperty_Int    = EBObservableProperty <Int>
 typealias EBTransientProperty_Int   = EBGenericTransientProperty <Int>
-typealias EBReadWriteProperty_Int  = EBObservableMutableProperty <Int>
+typealias EBReadWriteProperty_Int   = EBObservableMutableProperty <Int>
 typealias EBComputedProperty_Int    = EBGenericComputedProperty <Int>
 typealias EBStoredProperty_Int      = EBGenericStoredProperty <Int>
 typealias EBPreferencesProperty_Int = EBGenericPreferenceProperty <Int>
@@ -126,7 +126,7 @@ func values_Int_are_ordered (_ inLeft : Int, _ inAscending : Bool, _ inRight : I
 
 typealias EBReadOnlyProperty_Bool    = EBObservableProperty <Bool>
 typealias EBTransientProperty_Bool   = EBGenericTransientProperty <Bool>
-typealias EBReadWriteProperty_Bool  = EBObservableMutableProperty <Bool>
+typealias EBReadWriteProperty_Bool   = EBObservableMutableProperty <Bool>
 typealias EBComputedProperty_Bool    = EBGenericComputedProperty <Bool>
 typealias EBStoredProperty_Bool      = EBGenericStoredProperty <Bool>
 typealias EBPreferencesProperty_Bool = EBGenericPreferenceProperty <Bool>
@@ -184,7 +184,7 @@ func values_Bool_are_ordered (_ inLeft : Bool, _ inAscending : Bool, _ inRight :
 
 typealias EBReadOnlyProperty_Double    = EBObservableProperty <Double>
 typealias EBTransientProperty_Double   = EBGenericTransientProperty <Double>
-typealias EBReadWriteProperty_Double  = EBObservableMutableProperty <Double>
+typealias EBReadWriteProperty_Double   = EBObservableMutableProperty <Double>
 typealias EBComputedProperty_Double    = EBGenericComputedProperty <Double>
 typealias EBStoredProperty_Double      = EBGenericStoredProperty <Double>
 typealias EBPreferencesProperty_Double = EBGenericPreferenceProperty <Double>
@@ -242,7 +242,7 @@ func values_Double_are_ordered (_ inLeft : Double, _ inAscending : Bool, _ inRig
 
 typealias EBReadOnlyProperty_String    = EBObservableProperty <String>
 typealias EBTransientProperty_String   = EBGenericTransientProperty <String>
-typealias EBReadWriteProperty_String  = EBObservableMutableProperty <String>
+typealias EBReadWriteProperty_String   = EBObservableMutableProperty <String>
 typealias EBComputedProperty_String    = EBGenericComputedProperty <String>
 typealias EBStoredProperty_String      = EBGenericStoredProperty <String>
 typealias EBPreferencesProperty_String = EBGenericPreferenceProperty <String>
@@ -294,7 +294,7 @@ func values_String_are_ordered (_ inLeft : String, _ inAscending : Bool, _ inRig
 
 typealias EBReadOnlyProperty_Data    = EBObservableProperty <Data>
 typealias EBTransientProperty_Data   = EBGenericTransientProperty <Data>
-typealias EBReadWriteProperty_Data  = EBObservableMutableProperty <Data>
+typealias EBReadWriteProperty_Data   = EBObservableMutableProperty <Data>
 typealias EBComputedProperty_Data    = EBGenericComputedProperty <Data>
 typealias EBStoredProperty_Data      = EBGenericStoredProperty <Data>
 typealias EBPreferencesProperty_Data = EBGenericPreferenceProperty <Data>
@@ -352,7 +352,7 @@ func values_Data_are_ordered (_ inLeft : Data, _ inAscending : Bool, _ inRight :
 
 typealias EBReadOnlyProperty_Date    = EBObservableProperty <Date>
 typealias EBTransientProperty_Date   = EBGenericTransientProperty <Date>
-typealias EBReadWriteProperty_Date  = EBObservableMutableProperty <Date>
+typealias EBReadWriteProperty_Date   = EBObservableMutableProperty <Date>
 typealias EBComputedProperty_Date    = EBGenericComputedProperty <Date>
 typealias EBStoredProperty_Date      = EBGenericStoredProperty <Date>
 typealias EBPreferencesProperty_Date = EBGenericPreferenceProperty <Date>
@@ -410,7 +410,7 @@ func values_Date_are_ordered (_ inLeft : Date, _ inAscending : Bool, _ inRight :
 
 typealias EBReadOnlyProperty_BezierPathArray    = EBObservableProperty <BezierPathArray>
 typealias EBTransientProperty_BezierPathArray   = EBGenericTransientProperty <BezierPathArray>
-typealias EBReadWriteProperty_BezierPathArray  = EBObservableMutableProperty <BezierPathArray>
+typealias EBReadWriteProperty_BezierPathArray   = EBObservableMutableProperty <BezierPathArray>
 typealias EBComputedProperty_BezierPathArray    = EBGenericComputedProperty <BezierPathArray>
 typealias EBStoredProperty_BezierPathArray      = EBGenericStoredProperty <BezierPathArray>
 typealias EBPreferencesProperty_BezierPathArray = EBGenericPreferenceProperty <BezierPathArray>

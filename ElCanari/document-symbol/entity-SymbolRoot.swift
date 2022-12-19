@@ -605,10 +605,10 @@ final class SymbolRoot : EBManagedObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.comments_property.signature ())
-    crc.accumulateUInt32 (self.symbolObjects_property.signature ())
-    crc.accumulateUInt32 (self.xPlacardUnit_property.signature ())
-    crc.accumulateUInt32 (self.yPlacardUnit_property.signature ())
+    crc.accumulate (u32: self.comments_property.signature ())
+    crc.accumulate (u32: self.symbolObjects_property.signature ())
+    crc.accumulate (u32: self.xPlacardUnit_property.signature ())
+    crc.accumulate (u32: self.yPlacardUnit_property.signature ())
     return crc
   }
 

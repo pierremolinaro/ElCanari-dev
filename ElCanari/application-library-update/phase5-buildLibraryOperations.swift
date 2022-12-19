@@ -36,7 +36,7 @@ import AppKit
         relativePath: path,
         commit: repositoryDescriptor.mCommit,
         sizeInRepository: repositoryDescriptor.mSize,
-        fileSHA: repositoryDescriptor.mSHA,
+//        fileSHA: repositoryDescriptor.mSHA,
         operation: .download,
         logTextView: inLogTextView,
         proxy: inProxy
@@ -47,7 +47,7 @@ import AppKit
         relativePath: path,
         commit: repositoryDescriptor.mCommit,
         sizeInRepository: repositoryDescriptor.mSize,
-        fileSHA: repositoryDescriptor.mSHA,
+//        fileSHA: repositoryDescriptor.mSHA,
         operation: .update,
         logTextView: inLogTextView,
         proxy: inProxy
@@ -58,22 +58,22 @@ import AppKit
         relativePath: path,
         commit: 0,
         sizeInRepository: 0,
-        fileSHA: "",
+//        fileSHA: "",
         operation: .delete,
         logTextView: inLogTextView,
         proxy: inProxy
       )
       operations.append (element)
     }else if let repositoryDescriptor = possibleRepositoryDescriptor, let localDescription = possibleLocalDescription { // Update ?
-      var upToDate = repositoryDescriptor.mSize == localDescription.mSize
+      var upToDate = repositoryDescriptor.mSize == localDescription.size
       if upToDate {
-        upToDate = repositoryDescriptor.mSHA == localDescription.mSHA
+        upToDate = repositoryDescriptor.mSHA == localDescription.sha
       }
       if upToDate {
         if let data = try? Data (contentsOf: URL (fileURLWithPath: systemLibraryPath () + "/" + path)) {
-           upToDate = data.count == localDescription.mSize
+           upToDate = data.count == localDescription.size
            if upToDate {
-             upToDate = sha1 (data: data) == localDescription.mSHA
+             upToDate = sha1 (data: data) == localDescription.sha
            }
         }else{
            upToDate = false
@@ -86,7 +86,7 @@ import AppKit
           relativePath: path,
           commit: repositoryDescriptor.mCommit,
           sizeInRepository: repositoryDescriptor.mSize,
-          fileSHA: repositoryDescriptor.mSHA,
+//          fileSHA: repositoryDescriptor.mSHA,
           operation: .update,
           logTextView: inLogTextView,
           proxy: inProxy
@@ -100,7 +100,7 @@ import AppKit
   }else{
     inLogTextView.appendMessageString ("  Library operations [operation — file path — size in repository)\n")
     for op in operations {
-      inLogTextView.appendMessageString ("    [\(op.mOperation) — \(op.mRelativePath) — \(op.mSizeInRepository)]\n")
+      inLogTextView.appendMessageString ("    [\(op.operation) — \(op.relativePath) — \(op.sizeInRepository)]\n")
     }
   }
   return (operations, newRepositoryFileDictionary)

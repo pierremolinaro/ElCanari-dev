@@ -34,7 +34,7 @@ import AppKit
         var pinNetNameDictionary = [String : String] ()
         for entry in self_mPoints_symbolNameNetName {
           if let x = entry.symbolNameNetName {
-            pinNetNameDictionary [x.mLeft] = x.mRight
+            pinNetNameDictionary [x.left] = x.right
           }
         }
       //--- Device info

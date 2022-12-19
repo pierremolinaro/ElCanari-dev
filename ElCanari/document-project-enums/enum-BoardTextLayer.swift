@@ -93,7 +93,7 @@ typealias EBReadOnlyProperty_BoardTextLayer = EBReadOnlyEnumProperty <BoardTextL
 typealias EBTransientProperty_BoardTextLayer = EBTransientEnumProperty <BoardTextLayer>
 typealias EBReadWriteProperty_BoardTextLayer = EBReadWriteEnumProperty <BoardTextLayer>
 typealias EBStoredProperty_BoardTextLayer = EBStoredEnumProperty <BoardTextLayer>
-typealias EBComputedProperty_BoardTextLayer = EBGenericEnumProperty <BoardTextLayer>
+typealias EBComputedProperty_BoardTextLayer = EBGenericComputedEnumProperty <BoardTextLayer>
 typealias EBPreferencesProperty_BoardTextLayer = EBStoredEnumProperty <BoardTextLayer>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

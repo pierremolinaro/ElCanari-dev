@@ -605,16 +605,16 @@ final class SymbolPinTypeInDevice : EBManagedObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.mName_property.signature ())
-    crc.accumulateUInt32 (self.mNameHorizontalAlignment_property.signature ())
-    crc.accumulateUInt32 (self.mNumberHorizontalAlignment_property.signature ())
-    crc.accumulateUInt32 (self.mPinNameIsDisplayedInSchematics_property.signature ())
-    crc.accumulateUInt32 (self.mPinX_property.signature ())
-    crc.accumulateUInt32 (self.mPinY_property.signature ())
-    crc.accumulateUInt32 (self.mXName_property.signature ())
-    crc.accumulateUInt32 (self.mXNumber_property.signature ())
-    crc.accumulateUInt32 (self.mYName_property.signature ())
-    crc.accumulateUInt32 (self.mYNumber_property.signature ())
+    crc.accumulate (u32: self.mName_property.signature ())
+    crc.accumulate (u32: self.mNameHorizontalAlignment_property.signature ())
+    crc.accumulate (u32: self.mNumberHorizontalAlignment_property.signature ())
+    crc.accumulate (u32: self.mPinNameIsDisplayedInSchematics_property.signature ())
+    crc.accumulate (u32: self.mPinX_property.signature ())
+    crc.accumulate (u32: self.mPinY_property.signature ())
+    crc.accumulate (u32: self.mXName_property.signature ())
+    crc.accumulate (u32: self.mXNumber_property.signature ())
+    crc.accumulate (u32: self.mYName_property.signature ())
+    crc.accumulate (u32: self.mYNumber_property.signature ())
     return crc
   }
 

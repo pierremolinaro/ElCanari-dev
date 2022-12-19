@@ -51,75 +51,75 @@ extension AutoLayoutProjectDocument {
     var strokePathes = [EBBezierPath] ()
     var filledPathes = [EBBezierPath] ()
     if inDescriptor.drawBoardLimits {
-      strokePathes.append ([inProductData.boardLimitWidth : [inProductData.boardLimitPath]], af)
+      strokePathes.append (apertureDictionary: [inProductData.boardLimitWidth : [inProductData.boardLimitPath]], transformedBy: af)
     }
     if inDescriptor.drawPackageLegendTopSide {
-      strokePathes.append (inProductData.frontPackageLegend, af)
+      strokePathes.append (apertureDictionary: inProductData.frontPackageLegend, transformedBy: af)
     }
     if inDescriptor.drawPackageLegendBottomSide {
-      strokePathes.append (inProductData.backPackageLegend, af)
+      strokePathes.append (apertureDictionary: inProductData.backPackageLegend, transformedBy: af)
     }
     if inDescriptor.drawComponentNamesTopSide {
-      strokePathes.append (inProductData.frontComponentNames, af)
+      strokePathes.append (apertureDictionary: inProductData.frontComponentNames, transformedBy: af)
     }
     if inDescriptor.drawComponentNamesBottomSide {
-      strokePathes.append (inProductData.backComponentNames, af)
+      strokePathes.append (apertureDictionary: inProductData.backComponentNames, transformedBy: af)
     }
     if inDescriptor.drawComponentValuesTopSide {
-      strokePathes.append (inProductData.frontComponentValues, af)
+      strokePathes.append (apertureDictionary: inProductData.frontComponentValues, transformedBy: af)
     }
     if inDescriptor.drawComponentValuesBottomSide {
-      strokePathes.append (inProductData.backComponentValues, af)
+      strokePathes.append (apertureDictionary: inProductData.backComponentValues, transformedBy: af)
     }
     if inDescriptor.drawTextsLegendTopSide {
-      strokePathes.append (inProductData.legendFrontTexts, af)
-      strokePathes.append (oblongs: inProductData.frontLines, af)
+      strokePathes.append (apertureDictionary: inProductData.legendFrontTexts, transformedBy: af)
+      strokePathes.append (oblongs: inProductData.frontLines, transformedBy: af)
     }
     if inDescriptor.drawTextsLayoutTopSide {
-      strokePathes.append (inProductData.layoutFrontTexts, af)
+      strokePathes.append (apertureDictionary: inProductData.layoutFrontTexts, transformedBy: af)
     }
     if inDescriptor.drawTextsLayoutBottomSide {
-      strokePathes.append (inProductData.layoutBackTexts, af)
+      strokePathes.append (apertureDictionary: inProductData.layoutBackTexts, transformedBy: af)
     }
     if inDescriptor.drawTextsLegendBottomSide {
-      strokePathes.append (inProductData.legendBackTexts, af)
-      strokePathes.append (oblongs: inProductData.backLines, af)
+      strokePathes.append (apertureDictionary: inProductData.legendBackTexts, transformedBy: af)
+      strokePathes.append (oblongs: inProductData.backLines, transformedBy: af)
     }
     if inDescriptor.drawVias {
-      strokePathes.append (circles: inProductData.viaPads, af)
+      strokePathes.append (circles: inProductData.viaPads, transformedBy: af)
     }
     if inDescriptor.drawTracksTopSide {
-      strokePathes.append (oblongs: inProductData.tracks [.front] ?? [], af)
+      strokePathes.append (oblongs: inProductData.tracks [.front], transformedBy: af)
     }
     if inDescriptor.drawTracksInner1Layer && (inLayerConfiguration != .twoLayers) {
-      strokePathes.append (oblongs: inProductData.tracks [.inner1] ?? [], af)
+      strokePathes.append (oblongs: inProductData.tracks [.inner1], transformedBy: af)
     }
     if inDescriptor.drawTracksInner2Layer && (inLayerConfiguration != .twoLayers) {
-      strokePathes.append (oblongs: inProductData.tracks [.inner2] ?? [], af)
+      strokePathes.append (oblongs: inProductData.tracks [.inner2], transformedBy: af)
     }
     if inDescriptor.drawTracksInner3Layer && (inLayerConfiguration == .sixLayers) {
-      strokePathes.append (oblongs: inProductData.tracks [.inner3] ?? [], af)
+      strokePathes.append (oblongs: inProductData.tracks [.inner3], transformedBy: af)
     }
     if inDescriptor.drawTracksInner4Layer && (inLayerConfiguration == .sixLayers) {
-      strokePathes.append (oblongs: inProductData.tracks [.inner4] ?? [], af)
+      strokePathes.append (oblongs: inProductData.tracks [.inner4], transformedBy: af)
     }
     if inDescriptor.drawTracksBottomSide {
-      strokePathes.append (oblongs: inProductData.tracks [.back] ?? [], af)
+      strokePathes.append (oblongs: inProductData.tracks [.back], transformedBy: af)
     }
     if inDescriptor.drawPadsTopSide {
-      strokePathes.append (circles: inProductData.circularPads [.frontLayer], af)
-      strokePathes.append (oblongs: inProductData.oblongPads [.frontLayer], af)
-      filledPathes.append (polygons: inProductData.polygonPads [.frontLayer], af)
+      strokePathes.append (circles: inProductData.circularPads [.frontLayer], transformedBy: af)
+      strokePathes.append (oblongs: inProductData.oblongPads [.frontLayer], transformedBy: af)
+      filledPathes.append (polygons: inProductData.polygonPads [.frontLayer], transformedBy: af)
     }
     if inDescriptor.drawPadsBottomSide {
-      strokePathes.append (circles: inProductData.circularPads [.backLayer], af)
-      strokePathes.append (oblongs: inProductData.oblongPads [.backLayer], af)
-      filledPathes.append (polygons: inProductData.polygonPads [.backLayer], af)
+      strokePathes.append (circles: inProductData.circularPads [.backLayer], transformedBy: af)
+      strokePathes.append (oblongs: inProductData.oblongPads [.backLayer], transformedBy: af)
+      filledPathes.append (polygons: inProductData.polygonPads [.backLayer], transformedBy: af)
     }
     if inDescriptor.drawTraversingPads {
-      strokePathes.append (circles: inProductData.circularPads [.innerLayer], af)
-      strokePathes.append (oblongs: inProductData.oblongPads [.innerLayer], af)
-      filledPathes.append (polygons: inProductData.polygonPads [.innerLayer], af)
+      strokePathes.append (circles: inProductData.circularPads [.innerLayer], transformedBy: af)
+      strokePathes.append (oblongs: inProductData.oblongPads [.innerLayer], transformedBy: af)
+      filledPathes.append (polygons: inProductData.polygonPads [.innerLayer], transformedBy: af)
     }
     var shape = EBShape (stroke: strokePathes, .black)
     shape.add (filled: filledPathes, .black)
@@ -138,14 +138,15 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  mutating func append (_ inApertureDictionary : [CGFloat : [EBLinePath]], _ inAffineTransform : AffineTransform) {
+  mutating func append (apertureDictionary inApertureDictionary : [CGFloat : [EBLinePath]],
+                        transformedBy inAffineTransform : AffineTransform) {
     for (aperture, pathArray) in inApertureDictionary {
       var bp = EBBezierPath ()
       bp.lineCapStyle = .round
       bp.lineJoinStyle = .round
       bp.lineWidth = aperture
       for path in pathArray {
-        path.appendToBezierPath (&bp, inAffineTransform)
+        path.appendToBezierPath (&bp, transformedBy: inAffineTransform)
       }
       self.append (bp)
     }
@@ -153,7 +154,8 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  mutating func append (oblongs inLines : [ProductOblong]?, _ inAffineTransform : AffineTransform) {
+  mutating func append (oblongs inLines : [ProductOblong]?,
+                        transformedBy inAffineTransform : AffineTransform) {
     if let lines = inLines {
       for segment in lines {
         var bp = EBBezierPath ()
@@ -169,7 +171,8 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  mutating func append (circles inCircles : [ProductCircle]?, _ inAffineTransform : AffineTransform) {
+  mutating func append (circles inCircles : [ProductCircle]?,
+                        transformedBy inAffineTransform : AffineTransform) {
     if let circles = inCircles {
       for circle in circles {
         var bp = EBBezierPath ()
@@ -185,7 +188,8 @@ extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  mutating func append (polygons inPolygons : [ProductPolygon]?, _ inAffineTransform : AffineTransform) {
+  mutating func append (polygons inPolygons : [ProductPolygon]?,
+                        transformedBy inAffineTransform : AffineTransform) {
     if let polygons = inPolygons {
       for polygon in polygons {
         var bp = EBBezierPath ()

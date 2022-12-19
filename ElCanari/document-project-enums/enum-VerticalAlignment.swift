@@ -93,7 +93,7 @@ typealias EBReadOnlyProperty_VerticalAlignment = EBReadOnlyEnumProperty <Vertica
 typealias EBTransientProperty_VerticalAlignment = EBTransientEnumProperty <VerticalAlignment>
 typealias EBReadWriteProperty_VerticalAlignment = EBReadWriteEnumProperty <VerticalAlignment>
 typealias EBStoredProperty_VerticalAlignment = EBStoredEnumProperty <VerticalAlignment>
-typealias EBComputedProperty_VerticalAlignment = EBGenericEnumProperty <VerticalAlignment>
+typealias EBComputedProperty_VerticalAlignment = EBGenericComputedEnumProperty <VerticalAlignment>
 typealias EBPreferencesProperty_VerticalAlignment = EBStoredEnumProperty <VerticalAlignment>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

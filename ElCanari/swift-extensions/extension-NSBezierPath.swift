@@ -12,26 +12,30 @@ extension NSBezierPath {
 
   //····················································································································
 
-  func addArrow (fillPath : NSBezierPath, to endPoint : NSPoint, arrowSize : CGFloat) {
-    if endPoint != self.currentPoint {
+  func addArrow (withFilledPath fillPath : NSBezierPath,
+                 to inEndPoint : NSPoint,
+                 arrowSize inArrowSize : CGFloat) {
+    if inEndPoint != self.currentPoint {
    //--- Compute angle
-      let angle = NSPoint.angleInRadian (self.currentPoint, endPoint)
+      let angle = NSPoint.angleInRadian (self.currentPoint, inEndPoint)
     //--- Affine transform
       let tr = NSAffineTransform ()
-      tr.translateX (by: endPoint.x, yBy:endPoint.y)
+      tr.translateX (by: inEndPoint.x, yBy: inEndPoint.y)
       tr.rotate (byRadians:angle)
     //--- Draw path
       let path = NSBezierPath ()
       path.move (to: NSPoint (x: 0.0, y: 0.0))
-      path.line (to: NSPoint (x: -2.0 * arrowSize, y:  arrowSize))
-      path.curve (to: NSPoint (x: -2.0 * arrowSize, y: -arrowSize),
-                  controlPoint1: NSPoint (x: -arrowSize, y: -arrowSize),
-                  controlPoint2: NSPoint (x: -arrowSize, y:  arrowSize))
+      path.line (to: NSPoint (x: -2.0 * inArrowSize, y:  inArrowSize))
+      path.curve (
+        to: NSPoint (x: -2.0 * inArrowSize, y: -inArrowSize),
+        controlPoint1: NSPoint (x: -inArrowSize, y: -inArrowSize),
+        controlPoint2: NSPoint (x: -inArrowSize, y:  inArrowSize)
+      )
       path.close ()
     //--- Add path
       fillPath.append (tr.transform (path))
     //--- Draw line
-      self.line (to:endPoint)
+      self.line (to: inEndPoint)
     }
   }
 

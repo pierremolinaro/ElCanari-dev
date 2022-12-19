@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor private var gCanariLibraryUpdateController : CanariLibraryUpdateController? = nil
+@MainActor fileprivate var gCanariLibraryUpdateController : CanariLibraryUpdateController? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -53,7 +53,7 @@ import AppKit
   var newRepositoryFileDictionary = inNewRepositoryFileDictionary
   var performCommit = true
   for action in inActionArray {
-    switch action.mOperation {
+    switch action.operation {
     case .download, .update, .downloadError, .downloading, .delete :
       performCommit = false
     case .deleteRegistered :
@@ -62,9 +62,9 @@ import AppKit
       let newDescriptor = CanariLibraryFileDescriptor (
         size: data.count,
         sha: sha1 (data: data),
-        commit: action.mCommit
+        commit: action.commit
       )
-      newRepositoryFileDictionary [action.mRelativePath] = newDescriptor
+      newRepositoryFileDictionary [action.relativePath] = newDescriptor
     }
   }
 //--- Perform commit
@@ -74,7 +74,7 @@ import AppKit
   }else if let window = gCanariLibraryUpdateController?.panelForSheet () {
     do{
       for action in inActionArray {
-        try action.commit ()
+        try action.performCommit ()
       }
     //--- Delete orphean directories
       try deleteOrphanDirectories (inLogTextView)

@@ -871,15 +871,15 @@ final class ArtworkRoot : EBManagedObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.comments_property.signature ())
-    crc.accumulateUInt32 (self.drillDataFileExtension_property.signature ())
-    crc.accumulateUInt32 (self.fileGenerationParameterArray_property.signature ())
-    crc.accumulateUInt32 (self.layerConfiguration_property.signature ())
-    crc.accumulateUInt32 (self.minPPTPTTTW_property.signature ())
-    crc.accumulateUInt32 (self.minValueForBoardLimitWidth_property.signature ())
-    crc.accumulateUInt32 (self.minValueForOARinEBUnit_property.signature ())
-    crc.accumulateUInt32 (self.minValueForPHDinEBUnit_property.signature ())
-    crc.accumulateUInt32 (self.title_property.signature ())
+    crc.accumulate (u32: self.comments_property.signature ())
+    crc.accumulate (u32: self.drillDataFileExtension_property.signature ())
+    crc.accumulate (u32: self.fileGenerationParameterArray_property.signature ())
+    crc.accumulate (u32: self.layerConfiguration_property.signature ())
+    crc.accumulate (u32: self.minPPTPTTTW_property.signature ())
+    crc.accumulate (u32: self.minValueForBoardLimitWidth_property.signature ())
+    crc.accumulate (u32: self.minValueForOARinEBUnit_property.signature ())
+    crc.accumulate (u32: self.minValueForPHDinEBUnit_property.signature ())
+    crc.accumulate (u32: self.title_property.signature ())
     return crc
   }
 

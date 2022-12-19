@@ -14,7 +14,7 @@ final class EBGenericComputedProperty <T> : EBObservableMutableProperty <T>, EBO
 
   private var mValueCache : EBSelection <T>? = nil
   var mReadModelFunction : Optional < () -> EBSelection <T> > = nil
-  var mWriteModelFunction : Optional < (_ candidateValue : T) -> Void > = nil
+  var mWriteModelFunction : Optional < (_ inCandidateValue : T) -> Void > = nil
 
   //····················································································································
 

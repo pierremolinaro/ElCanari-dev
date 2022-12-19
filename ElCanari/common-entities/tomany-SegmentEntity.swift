@@ -537,7 +537,7 @@ class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureO
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     for object in self.mInternalArrayValue.values {
-      crc.accumulateUInt32 (object.signature ())
+      crc.accumulate (u32: object.signature ())
     }
     return crc
   }

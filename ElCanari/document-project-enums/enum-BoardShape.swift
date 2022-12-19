@@ -83,7 +83,7 @@ typealias EBReadOnlyProperty_BoardShape = EBReadOnlyEnumProperty <BoardShape>
 typealias EBTransientProperty_BoardShape = EBTransientEnumProperty <BoardShape>
 typealias EBReadWriteProperty_BoardShape = EBReadWriteEnumProperty <BoardShape>
 typealias EBStoredProperty_BoardShape = EBStoredEnumProperty <BoardShape>
-typealias EBComputedProperty_BoardShape = EBGenericEnumProperty <BoardShape>
+typealias EBComputedProperty_BoardShape = EBGenericComputedEnumProperty <BoardShape>
 typealias EBPreferencesProperty_BoardShape = EBStoredEnumProperty <BoardShape>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

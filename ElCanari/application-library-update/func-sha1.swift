@@ -22,7 +22,7 @@ func sha1 (data inData : Data) -> String {
   }
   var s = ""
   for byte in shaValue {
-    s += "\(String (byte, radix:16, uppercase: false))"
+    s += "\(String (byte, radix: 16, uppercase: false))"
   }
   return s
 }

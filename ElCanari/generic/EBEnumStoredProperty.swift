@@ -91,10 +91,10 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   //····················································································································
 
-  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
-    self.mSignatureObserver = observer
-    observer?.clearSignatureCache ()
+    self.mSignatureObserver = inObserver
+    inObserver?.clearSignatureCache ()
     self.clearSignatureCache ()
   }
 
@@ -114,13 +114,14 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
     if let s = self.mSignatureCache {
       computedSignature = s
     }else{
-      computedSignature = propval.ebHashValue ()
+      computedSignature = self.propval.ebHashValue ()
       self.mSignatureCache = computedSignature
     }
     return computedSignature
   }
 
   //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

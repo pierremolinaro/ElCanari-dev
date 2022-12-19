@@ -91,7 +91,7 @@ typealias EBReadOnlyProperty_AutorouterPreferredDirections = EBReadOnlyEnumPrope
 typealias EBTransientProperty_AutorouterPreferredDirections = EBTransientEnumProperty <AutorouterPreferredDirections>
 typealias EBReadWriteProperty_AutorouterPreferredDirections = EBReadWriteEnumProperty <AutorouterPreferredDirections>
 typealias EBStoredProperty_AutorouterPreferredDirections = EBStoredEnumProperty <AutorouterPreferredDirections>
-typealias EBComputedProperty_AutorouterPreferredDirections = EBGenericEnumProperty <AutorouterPreferredDirections>
+typealias EBComputedProperty_AutorouterPreferredDirections = EBGenericComputedEnumProperty <AutorouterPreferredDirections>
 typealias EBPreferencesProperty_AutorouterPreferredDirections = EBStoredEnumProperty <AutorouterPreferredDirections>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

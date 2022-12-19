@@ -51,10 +51,11 @@ func temporaryDownloadDirectory () -> String {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func userLibraryPath () -> String {
-  let a = NSSearchPathForDirectoriesInDomains (FileManager.SearchPathDirectory.applicationSupportDirectory,
-                                               FileManager.SearchPathDomainMask.userDomainMask,
-                                               true) ;
-  // NSLog (@"%@", a) ;
+  let a = NSSearchPathForDirectoriesInDomains (
+    FileManager.SearchPathDirectory.applicationSupportDirectory,
+    FileManager.SearchPathDomainMask.userDomainMask,
+    true
+  ) ;
   if a.count != 1 {
     presentErrorWindow (#file, #line, "\(a.count) entries for NSSearchPathForDirectoriesInDomains")
   }

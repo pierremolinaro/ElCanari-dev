@@ -1394,15 +1394,15 @@ final class DeviceRoot : EBManagedObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.mComments_property.signature ())
-    crc.accumulateUInt32 (self.mDocs_property.signature ())
-    crc.accumulateUInt32 (self.mImageData_property.signature ())
-    crc.accumulateUInt32 (self.mPackages_property.signature ())
-    crc.accumulateUInt32 (self.mPadProxies_property.signature ())
-    crc.accumulateUInt32 (self.mPrefix_property.signature ())
-    crc.accumulateUInt32 (self.mSymbolInstances_property.signature ())
-    crc.accumulateUInt32 (self.mSymbolTypes_property.signature ())
-    crc.accumulateUInt32 (self.mTitle_property.signature ())
+    crc.accumulate (u32: self.mComments_property.signature ())
+    crc.accumulate (u32: self.mDocs_property.signature ())
+    crc.accumulate (u32: self.mImageData_property.signature ())
+    crc.accumulate (u32: self.mPackages_property.signature ())
+    crc.accumulate (u32: self.mPadProxies_property.signature ())
+    crc.accumulate (u32: self.mPrefix_property.signature ())
+    crc.accumulate (u32: self.mSymbolInstances_property.signature ())
+    crc.accumulate (u32: self.mSymbolTypes_property.signature ())
+    crc.accumulate (u32: self.mTitle_property.signature ())
     return crc
   }
 

@@ -47,15 +47,15 @@ fileprivate final class EBOffscreenView : NSView {
 
   //····················································································································
 
-  override init (frame frameRect: NSRect) {
-    super.init (frame: frameRect)
+  override init (frame inFrameRect : NSRect) {
+    super.init (frame: inFrameRect)
     noteObjectAllocation (self)
   }
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder: coder)
+  required init? (coder inCoder : NSCoder) {
+    super.init (coder: inCoder)
     noteObjectAllocation (self)
   }
 

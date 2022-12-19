@@ -501,11 +501,11 @@ final class FontCharacter : EBManagedObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.advance_property.signature ())
-    crc.accumulateUInt32 (self.codePoint_property.signature ())
-    crc.accumulateUInt32 (self.mWarnsWhenAdvanceIsZero_property.signature ())
-    crc.accumulateUInt32 (self.mWarnsWhenNoSegment_property.signature ())
-    crc.accumulateUInt32 (self.segments_property.signature ())
+    crc.accumulate (u32: self.advance_property.signature ())
+    crc.accumulate (u32: self.codePoint_property.signature ())
+    crc.accumulate (u32: self.mWarnsWhenAdvanceIsZero_property.signature ())
+    crc.accumulate (u32: self.mWarnsWhenNoSegment_property.signature ())
+    crc.accumulate (u32: self.segments_property.signature ())
     return crc
   }
 

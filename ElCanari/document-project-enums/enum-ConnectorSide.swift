@@ -88,7 +88,7 @@ typealias EBReadOnlyProperty_ConnectorSide = EBReadOnlyEnumProperty <ConnectorSi
 typealias EBTransientProperty_ConnectorSide = EBTransientEnumProperty <ConnectorSide>
 typealias EBReadWriteProperty_ConnectorSide = EBReadWriteEnumProperty <ConnectorSide>
 typealias EBStoredProperty_ConnectorSide = EBStoredEnumProperty <ConnectorSide>
-typealias EBComputedProperty_ConnectorSide = EBGenericEnumProperty <ConnectorSide>
+typealias EBComputedProperty_ConnectorSide = EBGenericComputedEnumProperty <ConnectorSide>
 typealias EBPreferencesProperty_ConnectorSide = EBStoredEnumProperty <ConnectorSide>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -103,7 +103,7 @@ struct EBBezierPath : Hashable {
 
   //····················································································································
 
-  init (with inString : String,
+  init (withString inString : String,
         at inOrigin : NSPoint,
         _ inHorizontalAlignment : EBTextHorizontalAlignment,
         _ inVerticalAlignment : EBTextVerticalAlignment,

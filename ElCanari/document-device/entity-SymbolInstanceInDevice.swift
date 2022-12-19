@@ -707,8 +707,8 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.mInstanceName_property.signature ())
-    crc.accumulateUInt32 (self.mPinInstances_property.signature ())
+    crc.accumulate (u32: self.mInstanceName_property.signature ())
+    crc.accumulate (u32: self.mPinInstances_property.signature ())
     return crc
   }
 

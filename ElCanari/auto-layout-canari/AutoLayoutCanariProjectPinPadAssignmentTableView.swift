@@ -33,10 +33,10 @@ final class AutoLayoutCanariProjectPinPadAssignmentTableView : AutoLayoutTableVi
       delegate: nil
     )
     self.addColumn_String (
-      valueGetterDelegate: { [weak self] (_ inRow : Int) in return self?.mModelArray [inRow].mLeft },
+      valueGetterDelegate: { [weak self] (_ inRow : Int) in return self?.mModelArray [inRow].left },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (inAscending : Bool) in
-        self?.mModelArray.sort { String.numericCompare ($0.mLeft, inAscending, $1.mLeft) }
+        self?.mModelArray.sort { String.numericCompare ($0.left, inAscending, $1.left) }
       },
       title: "Pad",
       minWidth: 30,
@@ -45,10 +45,10 @@ final class AutoLayoutCanariProjectPinPadAssignmentTableView : AutoLayoutTableVi
       contentAlignment: .right
     )
     self.addColumn_String (
-      valueGetterDelegate: { [weak self] (_ inRow : Int) in return self?.mModelArray [inRow].mCenter },
+      valueGetterDelegate: { [weak self] (_ inRow : Int) in return self?.mModelArray [inRow].center },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (inAscending : Bool) in
-        self?.mModelArray.sort { inAscending ? ($0.mCenter < $1.mCenter) : ($0.mCenter > $1.mCenter) }
+        self?.mModelArray.sort { inAscending ? ($0.center < $1.center) : ($0.center > $1.center) }
       },
       title: "Symbol",
       minWidth: 30,
@@ -57,10 +57,10 @@ final class AutoLayoutCanariProjectPinPadAssignmentTableView : AutoLayoutTableVi
       contentAlignment: .center
     )
     self.addColumn_String (
-      valueGetterDelegate: { [weak self] (_ inRow : Int) in return self?.mModelArray [inRow].mRight },
+      valueGetterDelegate: { [weak self] (_ inRow : Int) in return self?.mModelArray [inRow].right },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (inAscending : Bool) in
-        self?.mModelArray.sort { inAscending ? ($0.mRight < $1.mRight) : ($0.mRight > $1.mRight) }
+        self?.mModelArray.sort { inAscending ? ($0.right < $1.right) : ($0.right > $1.right) }
       },
       title: "Pin",
       minWidth: 30,

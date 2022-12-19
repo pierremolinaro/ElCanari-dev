@@ -46,13 +46,8 @@ typealias StringArray = [String]
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct TwoStrings : Hashable {
-  let mLeft : String
-  let mRight : String
-
-  init (_ inLeft : String, _ inRight : String) {
-    self.mLeft = inLeft
-    self.mRight = inRight
-  }
+  let left : String
+  let right : String
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -66,15 +61,9 @@ typealias TwoStringArray = [TwoStrings]
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct ThreeStrings : Hashable {
-  let mLeft : String
-  let mCenter : String
-  let mRight : String
-
-  init (_ inLeft : String, _ inCenter : String, _ inRight : String) {
-    self.mLeft = inLeft
-    self.mCenter = inCenter
-    self.mRight = inRight
-  }
+  let left : String
+  let center : String
+  let right : String
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -11,6 +11,18 @@ import Foundation
 extension NSPoint : Hashable {
 
   //····················································································································
+  /// The hash value.
+  ///
+  /// Hash values are not guaranteed to be equal across different executions of
+  /// your program. Do not save hash values to use during a future execution.
+  //····················································································································
+
+  public func hash (into hasher: inout Hasher) {
+    self.x.hash (into: &hasher)
+    self.y.hash (into: &hasher)
+  }
+
+  //····················································································································
 
   static func center (_ p1 : NSPoint, _ p2 : NSPoint) -> NSPoint {
     return NSPoint (x: (p1.x + p2.x) / 2.0, y: (p1.y + p2.y) / 2.0)
@@ -82,18 +94,6 @@ extension NSPoint : Hashable {
   static func point (fromCenter inCenter : NSPoint, atDistance inDistance : CGFloat, angleInDegrees inRotationInDegrees : CGFloat) -> NSPoint {
     let angleInRadian = inRotationInDegrees * .pi / 180.0
     return NSPoint (x: inCenter.x + inDistance * cos (angleInRadian), y: inCenter.y + inDistance * sin (angleInRadian))
-  }
-
-  //····················································································································
-  /// The hash value.
-  ///
-  /// Hash values are not guaranteed to be equal across different executions of
-  /// your program. Do not save hash values to use during a future execution.
-  //····················································································································
-
-  public func hash (into hasher: inout Hasher) {
-    self.x.hash (into: &hasher)
-    self.y.hash (into: &hasher)
   }
 
   //····················································································································

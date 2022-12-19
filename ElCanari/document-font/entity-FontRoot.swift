@@ -636,9 +636,9 @@ final class FontRoot : EBManagedObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.characters_property.signature ())
-    crc.accumulateUInt32 (self.comments_property.signature ())
-    crc.accumulateUInt32 (self.nominalSize_property.signature ())
+    crc.accumulate (u32: self.characters_property.signature ())
+    crc.accumulate (u32: self.comments_property.signature ())
+    crc.accumulate (u32: self.nominalSize_property.signature ())
     return crc
   }
 

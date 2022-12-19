@@ -1035,7 +1035,7 @@ final class StoredObject_DeviceRoot : ReadWriteObject_DeviceRoot, EBSignatureObs
   final private func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
     if let object = self.mWeakInternalValue {
-      crc.accumulateUInt32 (object.signature ())
+      crc.accumulate (u32: object.signature ())
     }
     return crc
   }

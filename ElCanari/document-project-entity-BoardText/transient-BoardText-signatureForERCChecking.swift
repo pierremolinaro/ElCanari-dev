@@ -29,16 +29,16 @@ import AppKit
 //--- START OF USER ZONE 2
         var crc : UInt32 = 0
         if (self_mLayer == .layoutBack) || (self_mLayer == .layoutFront) {
-          crc.accumulateUInt32 (self_mX.ebHashValue ())
-          crc.accumulateUInt32 (self_mY.ebHashValue ())
-          crc.accumulateUInt32 (self_mText.ebHashValue ())
-          crc.accumulateUInt32 (self_mFontSize.ebHashValue ())
-          crc.accumulateUInt32 (self_mFont_descriptor?.ebHashValue () ?? 0)
-          crc.accumulateUInt32 (self_mHorizontalAlignment.ebHashValue ())
-          crc.accumulateUInt32 (self_mVerticalAlignment.ebHashValue ())
-          crc.accumulateUInt32 (self_mRotation.ebHashValue ())
-          crc.accumulateUInt32 (self_mWeight.ebHashValue ())
-          crc.accumulateUInt32 (self_mOblique.ebHashValue ())
+          crc.accumulate (u32: self_mX.ebHashValue ())
+          crc.accumulate (u32: self_mY.ebHashValue ())
+          crc.accumulate (u32: self_mText.ebHashValue ())
+          crc.accumulate (u32: self_mFontSize.ebHashValue ())
+          crc.accumulate (u32: self_mFont_descriptor?.ebHashValue () ?? 0)
+          crc.accumulate (u32: self_mHorizontalAlignment.ebHashValue ())
+          crc.accumulate (u32: self_mVerticalAlignment.ebHashValue ())
+          crc.accumulate (u32: self_mRotation.ebHashValue ())
+          crc.accumulate (u32: self_mWeight.ebHashValue ())
+          crc.accumulate (u32: self_mOblique.ebHashValue ())
         }
         return crc
 //--- END OF USER ZONE 2

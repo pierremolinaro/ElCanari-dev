@@ -812,11 +812,11 @@ final class PackageInDevice : EBGraphicManagedObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.mFileData_property.signature ())
-    crc.accumulateUInt32 (self.mMasterPads_property.signature ())
-    crc.accumulateUInt32 (self.mName_property.signature ())
-    crc.accumulateUInt32 (self.mStrokeBezierPath_property.signature ())
-    crc.accumulateUInt32 (self.mVersion_property.signature ())
+    crc.accumulate (u32: self.mFileData_property.signature ())
+    crc.accumulate (u32: self.mMasterPads_property.signature ())
+    crc.accumulate (u32: self.mName_property.signature ())
+    crc.accumulate (u32: self.mStrokeBezierPath_property.signature ())
+    crc.accumulate (u32: self.mVersion_property.signature ())
     return crc
   }
 

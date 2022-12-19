@@ -91,7 +91,7 @@ typealias EBReadOnlyProperty_BorderCurveShape = EBReadOnlyEnumProperty <BorderCu
 typealias EBTransientProperty_BorderCurveShape = EBTransientEnumProperty <BorderCurveShape>
 typealias EBReadWriteProperty_BorderCurveShape = EBReadWriteEnumProperty <BorderCurveShape>
 typealias EBStoredProperty_BorderCurveShape = EBStoredEnumProperty <BorderCurveShape>
-typealias EBComputedProperty_BorderCurveShape = EBGenericEnumProperty <BorderCurveShape>
+typealias EBComputedProperty_BorderCurveShape = EBGenericComputedEnumProperty <BorderCurveShape>
 typealias EBPreferencesProperty_BorderCurveShape = EBStoredEnumProperty <BorderCurveShape>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

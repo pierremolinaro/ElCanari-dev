@@ -565,12 +565,12 @@ final class SymbolTypeInDevice : EBManagedObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.mFileData_property.signature ())
-    crc.accumulateUInt32 (self.mFilledBezierPath_property.signature ())
-    crc.accumulateUInt32 (self.mPinTypes_property.signature ())
-    crc.accumulateUInt32 (self.mStrokeBezierPath_property.signature ())
-    crc.accumulateUInt32 (self.mTypeName_property.signature ())
-    crc.accumulateUInt32 (self.mVersion_property.signature ())
+    crc.accumulate (u32: self.mFileData_property.signature ())
+    crc.accumulate (u32: self.mFilledBezierPath_property.signature ())
+    crc.accumulate (u32: self.mPinTypes_property.signature ())
+    crc.accumulate (u32: self.mStrokeBezierPath_property.signature ())
+    crc.accumulate (u32: self.mTypeName_property.signature ())
+    crc.accumulate (u32: self.mVersion_property.signature ())
     return crc
   }
 

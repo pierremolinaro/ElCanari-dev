@@ -186,7 +186,7 @@ fileprivate final class HiliteView : NSView {
         if let nextResponder = optionalNextResponder {
           strokeBP.move (to: responder.convert (responder.bounds.center, to: nil))
           let p = nextResponder.convert (nextResponder.bounds.center, to: nil)
-          strokeBP.addArrow (fillPath: filledBP, to: p, arrowSize: 6.0)
+          strokeBP.addArrow (withFilledPath: filledBP, to: p, arrowSize: 6.0)
         }
         optionalResponder = optionalNextResponder
         loop = optionalResponder !== self.window?.initialFirstResponder

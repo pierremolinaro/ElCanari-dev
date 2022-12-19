@@ -32,29 +32,35 @@ final class LibraryOperationElement : EBSwiftBaseObject {
   //   Properties
   //····················································································································
 
-  let mRelativePath : String
-  let mCommit : Int
-  let mSizeInRepository : Int
-  private let mFileSHA : String
+  let relativePath : String
+  let commit : Int
+  let sizeInRepository : Int
+
+  //····················································································································
+
+//  private let mFileSHA : String
   private let mLogTextView : AutoLayoutStaticTextView
   private let mProxy : [String]
 
-  var mOperation : LibraryOperation
+  //····················································································································
+
+  private var mOperation : LibraryOperation
+  var operation : LibraryOperation { return self.mOperation }
 
   //····················································································································
 
   init (relativePath inRelativePath : String,
         commit : Int,
         sizeInRepository inSizeInRepository : Int,
-        fileSHA inFileSHA : String,
+//        fileSHA inFileSHA : String,
         operation inOperation : LibraryOperation,
         logTextView inLogTextView: AutoLayoutStaticTextView,
         proxy inProxy: [String]) {
-    self.mRelativePath = inRelativePath
-    self.mCommit = commit
+    self.relativePath = inRelativePath
+    self.commit = commit
     self.mOperation = inOperation
-    self.mSizeInRepository = inSizeInRepository
-    self.mFileSHA = inFileSHA
+    self.sizeInRepository = inSizeInRepository
+//    self.mFileSHA = inFileSHA
     self.mLogTextView = inLogTextView
     self.mProxy = inProxy
     super.init ()
@@ -64,10 +70,10 @@ final class LibraryOperationElement : EBSwiftBaseObject {
   // Values for progress indicator
   //····················································································································
 
-  var maxIndicatorValue : Double { return Double (self.mSizeInRepository + 10_000) }
+  var maxIndicatorValue : Double { return Double (self.sizeInRepository + 10_000) }
 
   var currentIndicatorValue : Double {
-    switch self.mOperation {
+    switch self.operation {
     case .download, .update, .delete, .downloadError :
       return 0.0
     case .downloading (let progress) :
@@ -80,11 +86,11 @@ final class LibraryOperationElement : EBSwiftBaseObject {
   //····················································································································
 
   var actionName : String {
-    switch self.mOperation {
+    switch self.operation {
     case .download :
-      return "Download (\(self.mSizeInRepository.stringWithSeparators) bytes)"
+      return "Download (\(self.sizeInRepository.stringWithSeparators) bytes)"
     case .update :
-      return "Update (\(self.mSizeInRepository.stringWithSeparators) bytes)"
+      return "Update (\(self.sizeInRepository.stringWithSeparators) bytes)"
     case .delete :
       return "Delete"
     case .deleteRegistered :
@@ -104,17 +110,15 @@ final class LibraryOperationElement : EBSwiftBaseObject {
     if inController.shouldCancel {
       DispatchQueue.main.async { inController.elementActionDidEnd (self, 0) }
     }else{
-      switch mOperation {
+      switch operation {
       case .download, .update :
         self.mOperation = .downloading (0)
-//        let concurrentQueue = DispatchQueue (label: "Queue \(self.mRelativePath)", attributes: .concurrent)
-//        concurrentQueue.async {
         Task {
           let arguments = [
             "-s", // Silent mode, do not show download progress
             "-k", // Turn off curl's verification of certificate
             "-L", // Follow redirections
-            "https://www.pcmolinaro.name/CanariLibrary/files/\(self.mCommit)/\(self.mRelativePath)",
+            "https://www.pcmolinaro.name/CanariLibrary/files/\(self.commit)/\(self.relativePath)",
           ] + self.mProxy
           DispatchQueue.main.async {
             self.mLogTextView.appendMessageString ("  Download arguments: \(arguments)\n")
@@ -138,7 +142,7 @@ final class LibraryOperationElement : EBSwiftBaseObject {
             data.append (newData)
             let dataCount = data.count
             DispatchQueue.main.async {
-              self.mOperation = .downloading (dataCount * 100 / self.mSizeInRepository)
+              self.mOperation = .downloading (dataCount * 100 / self.sizeInRepository)
               inController.updateProgressIndicator ()
             }
             if SLOW_DOWNLOAD {
@@ -174,17 +178,17 @@ final class LibraryOperationElement : EBSwiftBaseObject {
 
   //····················································································································
 
-  func commit () throws {
-    switch self.mOperation {
+  func performCommit () throws {
+    switch self.operation {
     case .download, .update, .downloadError, .downloading, .delete :
       ()
     case .deleteRegistered :
-      let fullFilePath = systemLibraryPath () + "/" + self.mRelativePath
+      let fullFilePath = systemLibraryPath () + "/" + self.relativePath
       let fm = FileManager ()
       self.mLogTextView.appendMessageString ("  Delete file '\(fullFilePath)'\n")
       try fm.removeItem (atPath: fullFilePath)
     case .downloaded (let data) :
-      let fullFilePath = systemLibraryPath() + "/" + self.mRelativePath
+      let fullFilePath = systemLibraryPath() + "/" + self.relativePath
       let fm = FileManager ()
     //--- Create directory
       let destinationDirectory = fullFilePath.deletingLastPathComponent
@@ -201,6 +205,7 @@ final class LibraryOperationElement : EBSwiftBaseObject {
   }
 
   //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -92,7 +92,7 @@ typealias EBReadOnlyProperty_SchematicSheetOrientation = EBReadOnlyEnumProperty 
 typealias EBTransientProperty_SchematicSheetOrientation = EBTransientEnumProperty <SchematicSheetOrientation>
 typealias EBReadWriteProperty_SchematicSheetOrientation = EBReadWriteEnumProperty <SchematicSheetOrientation>
 typealias EBStoredProperty_SchematicSheetOrientation = EBStoredEnumProperty <SchematicSheetOrientation>
-typealias EBComputedProperty_SchematicSheetOrientation = EBGenericEnumProperty <SchematicSheetOrientation>
+typealias EBComputedProperty_SchematicSheetOrientation = EBGenericComputedEnumProperty <SchematicSheetOrientation>
 typealias EBPreferencesProperty_SchematicSheetOrientation = EBStoredEnumProperty <SchematicSheetOrientation>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

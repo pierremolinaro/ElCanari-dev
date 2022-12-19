@@ -138,7 +138,7 @@ final class ForbiddenPadNumber : EBManagedObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.padNumber_property.signature ())
+    crc.accumulate (u32: self.padNumber_property.signature ())
     return crc
   }
 

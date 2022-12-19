@@ -83,19 +83,19 @@ extension CanariLibraryEntry {
       inLogTextView.appendMessageString ("Operations:\n")
       var operationCount : UInt = 0
       for entry in operations {
-        switch entry.mOperation {
+        switch entry.operation {
         case .nop :
           ()
           // inLogTextView.appendMessageString ("  No change for \(entry.mRelativePath)\n")
         case .remove :
           operationCount += 1
-          inLogTextView.appendMessageString ("  Remove \(entry.mRelativePath)\n")
+          inLogTextView.appendMessageString ("  Remove \(entry.relativePath)\n")
         case .upload :
           operationCount += 1
-          inLogTextView.appendMessageString ("  Upload \(entry.mRelativePath)\n")
+          inLogTextView.appendMessageString ("  Upload \(entry.relativePath)\n")
         case .upgrade :
           operationCount += 1
-          inLogTextView.appendMessageString ("  UpGrade \(entry.mRelativePath)\n")
+          inLogTextView.appendMessageString ("  UpGrade \(entry.relativePath)\n")
         }
       }
       if operationCount == 0 {
@@ -199,11 +199,13 @@ struct LibraryContentsDescriptor {
   //   Init
   //····················································································································
 
-  init (relativePath: String, commit : Int, contents : Data) {
-    mRelativePath = relativePath
-    mCommit = commit
-    mSize = contents.count
-    mSHA = sha1 (data: contents)
+  init (relativePath inRelativePath : String,
+        commit inCommit : Int,
+        contents inContents : Data) {
+    self.mRelativePath = inRelativePath
+    self.mCommit = inCommit
+    self.mSize = inContents.count
+    self.mSHA = sha1 (data: inContents)
   }
 
   //····················································································································
@@ -213,10 +215,10 @@ struct LibraryContentsDescriptor {
        let commit = inDictionary ["commit"] as? Int,
        let length = inDictionary ["length"] as? Int,
        let sha = inDictionary ["sha"] as? String {
-      mRelativePath = relativePath
-      mCommit = commit
-      mSize = length
-      mSHA = sha
+      self.mRelativePath = relativePath
+      self.mCommit = commit
+      self.mSize = length
+      self.mSHA = sha
     }else{
       return nil
     }
@@ -255,32 +257,20 @@ struct LibraryOperationDescriptor {
   //   Properties
   //····················································································································
 
-  let mRelativePath : String
-  let mCommit : Int
-  let mLength : Int
-  let mSHA : String
-  let mOperation : LibraryOperationDescriptor.Operation
-
-  //····················································································································
-  //   Init
-  //····················································································································
-
-  init (relativePath: String, commit : Int, length : Int, sha : String, operation : LibraryOperationDescriptor.Operation) {
-    mRelativePath = relativePath
-    mCommit = commit
-    mLength = length
-    mSHA = sha
-    mOperation = operation
-  }
+  let relativePath : String
+  let commit : Int
+  let length : Int
+  let sha : String
+  let operation : LibraryOperationDescriptor.Operation
 
   //····················································································································
 
   func dictionary () -> [String : Any] {
     let dict : [String : Any] = [
-      "path" : self.mRelativePath,
-      "commit" : self.mCommit,
-      "length" : self.mLength,
-      "sha" : self.mSHA
+      "path" : self.relativePath,
+      "commit" : self.commit,
+      "length" : self.length,
+      "sha" : self.sha
     ]
     return dict
   }

@@ -52,8 +52,8 @@ import AppKit
           var s = componentName + ":"
           for threeStrings in self_mSymbol_pinPadAssignments ?? [] {
             // Swift.print ("left '\(threeStrings.mLeft)', center '\(threeStrings.mCenter)' right '\(threeStrings.mRight)'")
-            if (threeStrings.mRight == self_mSymbolPinName) && (threeStrings.mCenter == symbolInstanceName) {
-              s += threeStrings.mLeft
+            if (threeStrings.right == self_mSymbolPinName) && (threeStrings.center == symbolInstanceName) {
+              s += threeStrings.left
             }
           }
           s += " at " + locationInSheetString

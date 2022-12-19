@@ -27,16 +27,16 @@ import AppKit
 ) -> UInt32 {
 //--- START OF USER ZONE 2
         var crc : UInt32 = 0
-        crc.accumulateUInt32 (self_mX.ebHashValue ())
-        crc.accumulateUInt32 (self_mY.ebHashValue ())
-        crc.accumulateUInt32 (self_mWidth.ebHashValue ())
-        crc.accumulateUInt32 (self_mHeight.ebHashValue ())
-        crc.accumulateUInt32 (self_mIsInFrontLayer.ebHashValue ())
-        crc.accumulateUInt32 (self_mIsInBackLayer.ebHashValue ())
-        crc.accumulateUInt32 (self_mIsInInner1Layer.ebHashValue ())
-        crc.accumulateUInt32 (self_mIsInInner2Layer.ebHashValue ())
-        crc.accumulateUInt32 (self_mIsInInner3Layer.ebHashValue ())
-        crc.accumulateUInt32 (self_mIsInInner4Layer.ebHashValue ())
+        crc.accumulate (u32: self_mX.ebHashValue ())
+        crc.accumulate (u32: self_mY.ebHashValue ())
+        crc.accumulate (u32: self_mWidth.ebHashValue ())
+        crc.accumulate (u32: self_mHeight.ebHashValue ())
+        crc.accumulate (u32: self_mIsInFrontLayer.ebHashValue ())
+        crc.accumulate (u32: self_mIsInBackLayer.ebHashValue ())
+        crc.accumulate (u32: self_mIsInInner1Layer.ebHashValue ())
+        crc.accumulate (u32: self_mIsInInner2Layer.ebHashValue ())
+        crc.accumulate (u32: self_mIsInInner3Layer.ebHashValue ())
+        crc.accumulate (u32: self_mIsInInner4Layer.ebHashValue ())
         return crc
 //--- END OF USER ZONE 2
 }

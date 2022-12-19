@@ -675,14 +675,14 @@ final class SlavePadInDevice : EBManagedObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.mCenterX_property.signature ())
-    crc.accumulateUInt32 (self.mCenterY_property.signature ())
-    crc.accumulateUInt32 (self.mHeight_property.signature ())
-    crc.accumulateUInt32 (self.mHoleHeight_property.signature ())
-    crc.accumulateUInt32 (self.mHoleWidth_property.signature ())
-    crc.accumulateUInt32 (self.mShape_property.signature ())
-    crc.accumulateUInt32 (self.mStyle_property.signature ())
-    crc.accumulateUInt32 (self.mWidth_property.signature ())
+    crc.accumulate (u32: self.mCenterX_property.signature ())
+    crc.accumulate (u32: self.mCenterY_property.signature ())
+    crc.accumulate (u32: self.mHeight_property.signature ())
+    crc.accumulate (u32: self.mHoleHeight_property.signature ())
+    crc.accumulate (u32: self.mHoleWidth_property.signature ())
+    crc.accumulate (u32: self.mShape_property.signature ())
+    crc.accumulate (u32: self.mStyle_property.signature ())
+    crc.accumulate (u32: self.mWidth_property.signature ())
     return crc
   }
 

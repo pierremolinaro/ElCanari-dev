@@ -33,10 +33,10 @@ final class AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView : AutoLayout
       delegate: nil
     )
     self.addColumn_String (
-      valueGetterDelegate: { [weak self] (_ inRow : Int) in return self?.mModelArray [inRow].mLeft },
+      valueGetterDelegate: { [weak self] (_ inRow : Int) in return self?.mModelArray [inRow].left },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (inAscending : Bool) in
-        self?.mModelArray.sort { String.numericCompare ($0.mLeft, inAscending, $1.mLeft) }
+        self?.mModelArray.sort { String.numericCompare ($0.left, inAscending, $1.left) }
       },
       title: "Symbol Name",
       minWidth: 30,
@@ -45,10 +45,10 @@ final class AutoLayoutCanariProjectDeviceSymbolTypeAndNameTableView : AutoLayout
       contentAlignment: .right
     )
     self.addColumn_String (
-      valueGetterDelegate: { [weak self] (_ inRow : Int) in return self?.mModelArray [inRow].mRight },
+      valueGetterDelegate: { [weak self] (_ inRow : Int) in return self?.mModelArray [inRow].right },
       valueSetterDelegate: nil,
       sortDelegate: { [weak self] (inAscending : Bool) in
-        self?.mModelArray.sort { inAscending ? ($0.mRight < $1.mRight) : ($0.mRight > $1.mRight) }
+        self?.mModelArray.sort { inAscending ? ($0.right < $1.right) : ($0.right > $1.right) }
       },
       title: "Type",
       minWidth: 30,

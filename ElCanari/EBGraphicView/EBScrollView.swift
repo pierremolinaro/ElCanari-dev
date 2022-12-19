@@ -55,9 +55,10 @@ final class EBScrollView : NSScrollView {
 
   //····················································································································
 
-  func register (document inDocument : EBAutoLayoutManagedDocument, draggedTypes : [NSPasteboard.PasteboardType]) {
+  func register (document inDocument : EBAutoLayoutManagedDocument,
+                 draggedTypes inDraggedTypes : [NSPasteboard.PasteboardType]) {
     self.mDocument = inDocument
-    self.registerForDraggedTypes (draggedTypes)
+    self.registerForDraggedTypes (inDraggedTypes)
   }
 
   //····················································································································

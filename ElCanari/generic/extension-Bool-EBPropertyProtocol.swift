@@ -14,7 +14,7 @@ extension Bool : EBStoredPropertyProtocol {
 
   func ebHashValue () -> UInt32 {
     var crc : UInt32 = 0
-    crc.accumulateUInt8 (self ? 1 : 0)
+    crc.accumulate (u8: self ? 1 : 0)
     return crc
   }
 
