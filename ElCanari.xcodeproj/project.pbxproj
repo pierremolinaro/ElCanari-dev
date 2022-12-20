@@ -3268,9 +3268,6 @@
 		CFB1F9152940EDDB00C1E120 /* action-AutoLayoutProjectDocument-importSESFromExtendedTabAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1F89A2940EDD400C1E120 /* action-AutoLayoutProjectDocument-importSESFromExtendedTabAction.swift */; };
 		CFB1F9162940EDDB00C1E120 /* action-AutoLayoutProjectDocument-importSESFromExtendedTabAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1F89A2940EDD400C1E120 /* action-AutoLayoutProjectDocument-importSESFromExtendedTabAction.swift */; };
 		CFB1F9172940EDDB00C1E120 /* action-AutoLayoutProjectDocument-importSESFromExtendedTabAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1F89A2940EDD400C1E120 /* action-AutoLayoutProjectDocument-importSESFromExtendedTabAction.swift */; };
-		CFB1F9182940EDDB00C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithoutRouterDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1F89B2940EDD400C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithoutRouterDocument.swift */; };
-		CFB1F9192940EDDB00C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithoutRouterDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1F89B2940EDD400C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithoutRouterDocument.swift */; };
-		CFB1F91A2940EDDB00C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithoutRouterDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1F89B2940EDD400C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithoutRouterDocument.swift */; };
 		CFB1F91B2940EDDB00C1E120 /* action-AutoLayoutProjectDocument-renameSchematicWireNetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1F89C2940EDD500C1E120 /* action-AutoLayoutProjectDocument-renameSchematicWireNetAction.swift */; };
 		CFB1F91C2940EDDB00C1E120 /* action-AutoLayoutProjectDocument-renameSchematicWireNetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1F89C2940EDD500C1E120 /* action-AutoLayoutProjectDocument-renameSchematicWireNetAction.swift */; };
 		CFB1F91D2940EDDB00C1E120 /* action-AutoLayoutProjectDocument-renameSchematicWireNetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1F89C2940EDD500C1E120 /* action-AutoLayoutProjectDocument-renameSchematicWireNetAction.swift */; };
@@ -5720,7 +5717,6 @@
 		CFB1F8982940EDD400C1E120 /* action-AutoLayoutProjectDocument-renameComponentFromSelectedSymbolAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-renameComponentFromSelectedSymbolAction.swift"; sourceTree = "<group>"; };
 		CFB1F8992940EDD400C1E120 /* action-AutoLayoutProjectDocument-duplicateSelectedComponentsAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-duplicateSelectedComponentsAction.swift"; sourceTree = "<group>"; };
 		CFB1F89A2940EDD400C1E120 /* action-AutoLayoutProjectDocument-importSESFromExtendedTabAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-importSESFromExtendedTabAction.swift"; sourceTree = "<group>"; };
-		CFB1F89B2940EDD400C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithoutRouterDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-launchFreeRouterWithoutRouterDocument.swift"; sourceTree = "<group>"; };
 		CFB1F89C2940EDD500C1E120 /* action-AutoLayoutProjectDocument-renameSchematicWireNetAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-renameSchematicWireNetAction.swift"; sourceTree = "<group>"; };
 		CFB1F89D2940EDD500C1E120 /* action-AutoLayoutProjectDocument-editSelectedDeviceAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-editSelectedDeviceAction.swift"; sourceTree = "<group>"; };
 		CFB1F89E2940EDD500C1E120 /* action-AutoLayoutProjectDocument-appendNewSchematicDisplayInspectorAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-AutoLayoutProjectDocument-appendNewSchematicDisplayInspectorAction.swift"; sourceTree = "<group>"; };
@@ -7512,7 +7508,6 @@
 				CFB1F87E2940EDCE00C1E120 /* action-AutoLayoutProjectDocument-insulateSubnetFromCurrentNetForSelectedLabelAction.swift */,
 				CFB1F8812940EDCF00C1E120 /* action-AutoLayoutProjectDocument-insulateSubnetFromCurrentNetForSelectedWireAction.swift */,
 				CFB1F8902940EDD200C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithoutAnyDocument.swift */,
-				CFB1F89B2940EDD400C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithoutRouterDocument.swift */,
 				CFB1F8B22940EDD900C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithRouterDocument.swift */,
 				CFB1F8852940EDD000C1E120 /* action-AutoLayoutProjectDocument-mergeSubnetIntoAnExistingNetForSelectedLabelAction.swift */,
 				CFB1F8922940EDD200C1E120 /* action-AutoLayoutProjectDocument-mergeSubnetIntoAnExistingNetForSelectedWireAction.swift */,
@@ -9388,7 +9383,6 @@
 				CF67AB8C23E9B08B0099DE60 /* entity-ForbiddenPadNumber.swift in Sources */,
 				CFEB7B82233A26330060A97A /* transient-DeviceInProject-pinPadAssignments.swift in Sources */,
 				CFB1F98C2940F2C000C1E120 /* action-AutoLayoutProjectDocument-prependNewBoardSettingsInspectorAction.swift in Sources */,
-				CFB1F9182940EDDB00C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithoutRouterDocument.swift in Sources */,
 				CFE85A9B21A5C91300991A66 /* entity-SymbolSolidRect.swift in Sources */,
 				CFEB7BF2233A28130060A97A /* transient-NetClassInProject-allowTracksOnBackSideString.swift in Sources */,
 				CF900CA9222AFE7E0078B4DD /* transient-PackageInDevice-frontSidePadFilledBezierPathArray.swift in Sources */,
@@ -10923,7 +10917,6 @@
 				CFEB7BF3233A28130060A97A /* transient-NetClassInProject-allowTracksOnBackSideString.swift in Sources */,
 				CF711CF5275E1A7000280069 /* entity-CommentInSchematic.swift in Sources */,
 				CFB1F98D2940F2C000C1E120 /* action-AutoLayoutProjectDocument-prependNewBoardSettingsInspectorAction.swift in Sources */,
-				CFB1F9192940EDDB00C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithoutRouterDocument.swift in Sources */,
 				CF5C4D17219F04D600EAC52A /* entity-ArtworkRoot.swift in Sources */,
 				CFA42F54229AEA98000AA8C8 /* toone-SegmentEntity.swift in Sources */,
 				CFA42FF2229AEB68000AA8C8 /* toone-PackageOval.swift in Sources */,
@@ -12458,7 +12451,6 @@
 				CFDE7C36276641E600762C03 /* extension-AutoLayoutProjectDocument-rename-component.swift in Sources */,
 				CF39CCE6268CC0B4004971F9 /* action-AutoLayoutDeviceDocument-performUnbindAllAction.swift in Sources */,
 				CFB1F98E2940F2C000C1E120 /* action-AutoLayoutProjectDocument-prependNewBoardSettingsInspectorAction.swift in Sources */,
-				CFB1F91A2940EDDB00C1E120 /* action-AutoLayoutProjectDocument-launchFreeRouterWithoutRouterDocument.swift in Sources */,
 				CF22F281275A73EE009C6FAC /* transient-BoardModel-backLayoutTextsSegments.swift in Sources */,
 				CF9C627F25CABE5C00A00D5C /* EBGraphicViewControllerProtocol.swift in Sources */,
 				CF9C628425CABE5C00A00D5C /* transient-NetClassInProject-canRemove.swift in Sources */,
@@ -13505,7 +13497,6 @@
 				SWIFT_ENABLE_BARE_SLASH_REGEX = NO;
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_STRICT_CONCURRENCY = complete;
@@ -13720,7 +13711,6 @@
 				SWIFT_ENABLE_BARE_SLASH_REGEX = NO;
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_STRICT_CONCURRENCY = complete;
@@ -13753,7 +13743,6 @@
 				PRODUCT_NAME = "ElCanari-Debug";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};

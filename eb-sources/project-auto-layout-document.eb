@@ -1659,10 +1659,9 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   
   action changeLayerConfigurationAction ;
   action launchFreeRouterWithRouterDocument ;
-  action launchFreeRouterWithoutRouterDocument ;
+  action launchFreeRouterWithoutAnyDocument ;
   action importSESFromBasicTabAction ;
   action importSESFromExtendedTabAction ;
-  action launchFreeRouterWithoutAnyDocument ;
   action exportDSNFileAction ;
   action prependNewBoardERCCheckingInspectorAction ;
   action appendNewBoardERCCheckingInspectorAction ;
