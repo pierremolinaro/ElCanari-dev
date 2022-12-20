@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate { //, AutoLayoutOutlineViewDelegate {
+@MainActor class OpenInLibrary : NSObject, AutoLayoutTableViewDelegate { //, AutoLayoutOutlineViewDelegate {
 
   //····················································································································
 

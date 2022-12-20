@@ -473,14 +473,15 @@ final class FontCharacter : EBManagedObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["segments"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentForFontCharacter> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentForFontCharacter)
-        }
-        self.segments = relationshipArray
+  //--- To many segments
+    if let range = inDictionary ["segments"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentForFontCharacter> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentForFontCharacter)
       }
+      self.segments = relationshipArray
+    }
   }
 
   //····················································································································

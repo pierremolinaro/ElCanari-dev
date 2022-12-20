@@ -1418,14 +1418,15 @@ final class PackagePad : PackageObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["slaves"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <PackageSlavePad> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! PackageSlavePad)
-        }
-        self.slaves = relationshipArray
+  //--- To many slaves
+    if let range = inDictionary ["slaves"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <PackageSlavePad> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! PackageSlavePad)
       }
+      self.slaves = relationshipArray
+    }
   }
 
   //····················································································································

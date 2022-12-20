@@ -1219,14 +1219,15 @@ final class NetClassInProject : EBManagedObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mNets"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <NetInProject> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! NetInProject)
-        }
-        self.mNets = relationshipArray
+  //--- To many mNets
+    if let range = inDictionary ["mNets"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <NetInProject> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! NetInProject)
       }
+      self.mNets = relationshipArray
+    }
   }
 
   //····················································································································

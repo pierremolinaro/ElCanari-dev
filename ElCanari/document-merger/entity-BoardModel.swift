@@ -4491,206 +4491,231 @@ final class BoardModel : EBManagedObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["frontLegendLines"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentEntity> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
-        }
-        self.frontLegendLines = relationshipArray
+  //--- To many frontLegendLines
+    if let range = inDictionary ["frontLegendLines"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentEntity> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
       }
-      if let range = inDictionary ["backLegendLines"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentEntity> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
-        }
-        self.backLegendLines = relationshipArray
+      self.frontLegendLines = relationshipArray
+    }
+  //--- To many backLegendLines
+    if let range = inDictionary ["backLegendLines"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentEntity> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
       }
-      if let range = inDictionary ["frontLegendTexts"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentEntity> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
-        }
-        self.frontLegendTexts = relationshipArray
+      self.backLegendLines = relationshipArray
+    }
+  //--- To many frontLegendTexts
+    if let range = inDictionary ["frontLegendTexts"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentEntity> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
       }
-      if let range = inDictionary ["frontLayoutTexts"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentEntity> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
-        }
-        self.frontLayoutTexts = relationshipArray
+      self.frontLegendTexts = relationshipArray
+    }
+  //--- To many frontLayoutTexts
+    if let range = inDictionary ["frontLayoutTexts"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentEntity> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
       }
-      if let range = inDictionary ["backLegendTexts"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentEntity> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
-        }
-        self.backLegendTexts = relationshipArray
+      self.frontLayoutTexts = relationshipArray
+    }
+  //--- To many backLegendTexts
+    if let range = inDictionary ["backLegendTexts"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentEntity> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
       }
-      if let range = inDictionary ["backLayoutTexts"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentEntity> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
-        }
-        self.backLayoutTexts = relationshipArray
+      self.backLegendTexts = relationshipArray
+    }
+  //--- To many backLayoutTexts
+    if let range = inDictionary ["backLayoutTexts"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentEntity> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
       }
-      if let range = inDictionary ["internalBoardsLimits"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentEntity> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
-        }
-        self.internalBoardsLimits = relationshipArray
+      self.backLayoutTexts = relationshipArray
+    }
+  //--- To many internalBoardsLimits
+    if let range = inDictionary ["internalBoardsLimits"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentEntity> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
       }
-      if let range = inDictionary ["drills"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentEntity> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
-        }
-        self.drills = relationshipArray
+      self.internalBoardsLimits = relationshipArray
+    }
+  //--- To many drills
+    if let range = inDictionary ["drills"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentEntity> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
       }
-      if let range = inDictionary ["vias"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <BoardModelVia> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! BoardModelVia)
-        }
-        self.vias = relationshipArray
+      self.drills = relationshipArray
+    }
+  //--- To many vias
+    if let range = inDictionary ["vias"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <BoardModelVia> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! BoardModelVia)
       }
-      if let range = inDictionary ["frontPads"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <BoardModelPad> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! BoardModelPad)
-        }
-        self.frontPads = relationshipArray
+      self.vias = relationshipArray
+    }
+  //--- To many frontPads
+    if let range = inDictionary ["frontPads"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <BoardModelPad> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! BoardModelPad)
       }
-      if let range = inDictionary ["backPads"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <BoardModelPad> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! BoardModelPad)
-        }
-        self.backPads = relationshipArray
+      self.frontPads = relationshipArray
+    }
+  //--- To many backPads
+    if let range = inDictionary ["backPads"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <BoardModelPad> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! BoardModelPad)
       }
-      if let range = inDictionary ["traversingPads"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <BoardModelPad> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! BoardModelPad)
-        }
-        self.traversingPads = relationshipArray
+      self.backPads = relationshipArray
+    }
+  //--- To many traversingPads
+    if let range = inDictionary ["traversingPads"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <BoardModelPad> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! BoardModelPad)
       }
-      if let range = inDictionary ["backComponentNames"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentEntity> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
-        }
-        self.backComponentNames = relationshipArray
+      self.traversingPads = relationshipArray
+    }
+  //--- To many backComponentNames
+    if let range = inDictionary ["backComponentNames"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentEntity> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
       }
-      if let range = inDictionary ["frontComponentNames"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentEntity> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
-        }
-        self.frontComponentNames = relationshipArray
+      self.backComponentNames = relationshipArray
+    }
+  //--- To many frontComponentNames
+    if let range = inDictionary ["frontComponentNames"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentEntity> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
       }
-      if let range = inDictionary ["frontComponentValues"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentEntity> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
-        }
-        self.frontComponentValues = relationshipArray
+      self.frontComponentNames = relationshipArray
+    }
+  //--- To many frontComponentValues
+    if let range = inDictionary ["frontComponentValues"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentEntity> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
       }
-      if let range = inDictionary ["backComponentValues"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentEntity> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
-        }
-        self.backComponentValues = relationshipArray
+      self.frontComponentValues = relationshipArray
+    }
+  //--- To many backComponentValues
+    if let range = inDictionary ["backComponentValues"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentEntity> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
       }
-      if let range = inDictionary ["backTracks"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentEntity> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
-        }
-        self.backTracks = relationshipArray
+      self.backComponentValues = relationshipArray
+    }
+  //--- To many backTracks
+    if let range = inDictionary ["backTracks"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentEntity> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
       }
-      if let range = inDictionary ["frontTracks"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentEntity> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
-        }
-        self.frontTracks = relationshipArray
+      self.backTracks = relationshipArray
+    }
+  //--- To many frontTracks
+    if let range = inDictionary ["frontTracks"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentEntity> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
       }
-      if let range = inDictionary ["inner1Tracks"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentEntity> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
-        }
-        self.inner1Tracks = relationshipArray
+      self.frontTracks = relationshipArray
+    }
+  //--- To many inner1Tracks
+    if let range = inDictionary ["inner1Tracks"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentEntity> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
       }
-      if let range = inDictionary ["inner2Tracks"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentEntity> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
-        }
-        self.inner2Tracks = relationshipArray
+      self.inner1Tracks = relationshipArray
+    }
+  //--- To many inner2Tracks
+    if let range = inDictionary ["inner2Tracks"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentEntity> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
       }
-      if let range = inDictionary ["inner3Tracks"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentEntity> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
-        }
-        self.inner3Tracks = relationshipArray
+      self.inner2Tracks = relationshipArray
+    }
+  //--- To many inner3Tracks
+    if let range = inDictionary ["inner3Tracks"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentEntity> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
       }
-      if let range = inDictionary ["inner4Tracks"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentEntity> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
-        }
-        self.inner4Tracks = relationshipArray
+      self.inner3Tracks = relationshipArray
+    }
+  //--- To many inner4Tracks
+    if let range = inDictionary ["inner4Tracks"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentEntity> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
       }
-      if let range = inDictionary ["frontPackages"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentEntity> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
-        }
-        self.frontPackages = relationshipArray
+      self.inner4Tracks = relationshipArray
+    }
+  //--- To many frontPackages
+    if let range = inDictionary ["frontPackages"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentEntity> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
       }
-      if let range = inDictionary ["backPackages"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SegmentEntity> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
-        }
-        self.backPackages = relationshipArray
+      self.frontPackages = relationshipArray
+    }
+  //--- To many backPackages
+    if let range = inDictionary ["backPackages"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SegmentEntity> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SegmentEntity)
       }
-      if let range = inDictionary ["myInstances"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <MergerBoardInstance> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! MergerBoardInstance)
-        }
-        self.myInstances = relationshipArray
+      self.backPackages = relationshipArray
+    }
+  //--- To many myInstances
+    if let range = inDictionary ["myInstances"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <MergerBoardInstance> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! MergerBoardInstance)
       }
+      self.myInstances = relationshipArray
+    }
   }
 
   //····················································································································

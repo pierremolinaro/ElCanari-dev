@@ -577,14 +577,15 @@ final class SymbolPinTypeInDevice : EBManagedObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mInstances"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SymbolPinInstanceInDevice> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SymbolPinInstanceInDevice)
-        }
-        self.mInstances = relationshipArray
+  //--- To many mInstances
+    if let range = inDictionary ["mInstances"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SymbolPinInstanceInDevice> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SymbolPinInstanceInDevice)
       }
+      self.mInstances = relationshipArray
+    }
   }
 
   //····················································································································

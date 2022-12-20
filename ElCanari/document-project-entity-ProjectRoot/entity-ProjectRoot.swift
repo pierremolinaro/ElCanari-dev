@@ -7161,62 +7161,69 @@ final class ProjectRoot : EBManagedObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mSheets"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SheetInProject> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SheetInProject)
-        }
-        self.mSheets = relationshipArray
+  //--- To many mSheets
+    if let range = inDictionary ["mSheets"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SheetInProject> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SheetInProject)
       }
-      if let range = inDictionary ["mFonts"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <FontInProject> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! FontInProject)
-        }
-        self.mFonts = relationshipArray
+      self.mSheets = relationshipArray
+    }
+  //--- To many mFonts
+    if let range = inDictionary ["mFonts"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <FontInProject> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! FontInProject)
       }
-      if let range = inDictionary ["mDevices"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <DeviceInProject> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! DeviceInProject)
-        }
-        self.mDevices = relationshipArray
+      self.mFonts = relationshipArray
+    }
+  //--- To many mDevices
+    if let range = inDictionary ["mDevices"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <DeviceInProject> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! DeviceInProject)
       }
-      if let range = inDictionary ["mNetClasses"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <NetClassInProject> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! NetClassInProject)
-        }
-        self.mNetClasses = relationshipArray
+      self.mDevices = relationshipArray
+    }
+  //--- To many mNetClasses
+    if let range = inDictionary ["mNetClasses"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <NetClassInProject> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! NetClassInProject)
       }
-      if let range = inDictionary ["mBorderCurves"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <BorderCurve> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! BorderCurve)
-        }
-        self.mBorderCurves = relationshipArray
+      self.mNetClasses = relationshipArray
+    }
+  //--- To many mBorderCurves
+    if let range = inDictionary ["mBorderCurves"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <BorderCurve> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! BorderCurve)
       }
-      if let range = inDictionary ["mBoardObjects"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <BoardObject> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! BoardObject)
-        }
-        self.mBoardObjects = relationshipArray
+      self.mBorderCurves = relationshipArray
+    }
+  //--- To many mBoardObjects
+    if let range = inDictionary ["mBoardObjects"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <BoardObject> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! BoardObject)
       }
-      if let range = inDictionary ["mComponents"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <ComponentInProject> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! ComponentInProject)
-        }
-        self.mComponents = relationshipArray
+      self.mBoardObjects = relationshipArray
+    }
+  //--- To many mComponents
+    if let range = inDictionary ["mComponents"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <ComponentInProject> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! ComponentInProject)
       }
+      self.mComponents = relationshipArray
+    }
   }
 
   //····················································································································

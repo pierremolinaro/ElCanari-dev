@@ -21,37 +21,39 @@ extension ApplicationDelegate {
 
   //····················································································································
 
-  @objc func actionOpenAllDocumentsInDirectory (_ inSender : AnyObject) {
+  @MainActor @objc func actionOpenAllDocumentsInDirectory (_ inSender : Any?) {
     self.actionOpenAllDocumentsInDirectory (ALL_ELCANARI_DOCUMENT_EXTENSIONS, "document", inSender)
   }
 
   //····················································································································
 
-  @objc func actionOpenAllSymbolsInDirectory (_ inSender : Any?) {
+  @MainActor @objc func actionOpenAllSymbolsInDirectory (_ inSender : Any?) {
     self.actionOpenAllDocumentsInDirectory ([ElCanariSymbol_EXTENSION], "symbol", inSender)
   }
 
   //····················································································································
 
-  @objc func actionOpenAllPackagesInDirectory (_ inSender : Any?) {
+  @MainActor @objc func actionOpenAllPackagesInDirectory (_ inSender : Any?) {
     self.actionOpenAllDocumentsInDirectory ([ElCanariPackage_EXTENSION], "package", inSender)
   }
 
   //····················································································································
 
-  @objc func actionOpenAllDevicesInDirectory (_ inSender : Any?) {
+  @MainActor @objc func actionOpenAllDevicesInDirectory (_ inSender : Any?) {
     self.actionOpenAllDocumentsInDirectory ([ElCanariDevice_EXTENSION], "device", inSender)
   }
 
   //····················································································································
 
-  @objc func actionOpenAllFontsInDirectory (_ inSender : Any?) {
+  @MainActor @objc func actionOpenAllFontsInDirectory (_ inSender : Any?) {
     self.actionOpenAllDocumentsInDirectory ([ElCanariFont_EXTENSION], "font", inSender)
   }
 
   //····················································································································
 
-  private func actionOpenAllDocumentsInDirectory (_ extensions : Set <String>, _ inTitle : String, _ inSender : Any?) {
+  @MainActor private func actionOpenAllDocumentsInDirectory (_ inExtensions : Set <String>,
+                                                             _ inTitle : String,
+                                                             _ inSender : Any?) {
     self.instanciatedBatchWindow ()
     if let button = inSender as? NSButton, let window = button.window {
       self.mMaintenanceLogTextView?.string = ""
@@ -71,7 +73,7 @@ extension ApplicationDelegate {
             for f in files {
               if f.first! != "." {
                 let fullPath = baseDirectory + "/" + f
-                if extensions.contains (fullPath.pathExtension.lowercased ()) {
+                if inExtensions.contains (fullPath.pathExtension.lowercased ()) {
                   retainedFiles.append (fullPath)
                 }
               }
@@ -118,7 +120,7 @@ extension ApplicationDelegate {
 
   //····················································································································
 
-  @objc func updateAllProjectsInDirectory (_ inSender : Any?) {
+  @MainActor @objc func updateAllProjectsInDirectory (_ inSender : Any?) {
     self.instanciatedBatchWindow ()
     if let button = inSender as? NSButton, let window = button.window {
       self.mMaintenanceLogTextView?.string = ""
@@ -177,7 +179,7 @@ extension ApplicationDelegate {
 
   //····················································································································
 
-  @objc func updateAllDevicesInDirectory (_ inSender : Any?) {
+  @MainActor @objc func updateAllDevicesInDirectory (_ inSender : Any?) {
     self.instanciatedBatchWindow ()
     if let button = inSender as? NSButton, let window = button.window {
       self.mMaintenanceLogTextView?.string = ""
@@ -254,21 +256,21 @@ extension ApplicationDelegate {
 
   //····················································································································
 
-  @objc func actionConvertToTextualFormatAllDocumentsInDirectory (_ inSender : AnyObject) {
+  @MainActor @objc func actionConvertToTextualFormatAllDocumentsInDirectory (_ inSender : AnyObject) {
     self.convertFiles (withExtensions: ALL_ELCANARI_DOCUMENT_EXTENSIONS, toFormat: .textual, sender: inSender)
   }
 
   //····················································································································
 
-  @objc func actionConvertToBinaryFormatAllDocumentsInDirectory (_ inSender : AnyObject) {
+  @MainActor @objc func actionConvertToBinaryFormatAllDocumentsInDirectory (_ inSender : AnyObject) {
     self.convertFiles (withExtensions: ALL_ELCANARI_DOCUMENT_EXTENSIONS, toFormat: .binary, sender: inSender)
   }
 
   //····················································································································
 
-  private func convertFiles (withExtensions inExtensionSet : Set <String>,
-                             toFormat inFormat : EBManagedDocumentFileFormat,
-                             sender inSender : AnyObject) {
+  @MainActor private func convertFiles (withExtensions inExtensionSet : Set <String>,
+                                        toFormat inFormat : EBManagedDocumentFileFormat,
+                                        sender inSender : AnyObject) {
     self.instanciatedBatchWindow ()
     if let button = inSender as? NSButton, let window = button.window {
       self.mMaintenanceLogTextView?.string = ""
@@ -322,7 +324,7 @@ extension ApplicationDelegate {
 
   //····················································································································
 
-  func examineAndConvertDocuments (toFormat inFormat : EBManagedDocumentFileFormat) {
+  @MainActor func examineAndConvertDocuments (toFormat inFormat : EBManagedDocumentFileFormat) {
     self.instanciatedBatchWindow ()
     if self.mHandledFiles.count > 0 {
       let fullPath = self.mHandledFiles.remove (at: 0)
@@ -346,7 +348,6 @@ extension ApplicationDelegate {
             self.mMaintenanceLogTextView?.appendErrorString (message)
           }
         }
-//        collectAndPrepareObjectsForDeletion (fromRoot: documentData.documentRootObject)
       case .readError (_) :
         let message = "Cannot read \(fullPath)\n"
         self.mMaintenanceLogTextView?.appendErrorString (message)

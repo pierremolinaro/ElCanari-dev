@@ -503,22 +503,24 @@ final class SheetInProject : EBManagedObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mObjects"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SchematicObject> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SchematicObject)
-        }
-        self.mObjects = relationshipArray
+  //--- To many mObjects
+    if let range = inDictionary ["mObjects"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SchematicObject> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SchematicObject)
       }
-      if let range = inDictionary ["mPoints"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <PointInSchematic> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! PointInSchematic)
-        }
-        self.mPoints = relationshipArray
+      self.mObjects = relationshipArray
+    }
+  //--- To many mPoints
+    if let range = inDictionary ["mPoints"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <PointInSchematic> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! PointInSchematic)
       }
+      self.mPoints = relationshipArray
+    }
   }
 
   //····················································································································

@@ -767,38 +767,42 @@ final class DeviceInProject : EBManagedObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mPackages"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <DevicePackageInProject> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! DevicePackageInProject)
-        }
-        self.mPackages = relationshipArray
+  //--- To many mPackages
+    if let range = inDictionary ["mPackages"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <DevicePackageInProject> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! DevicePackageInProject)
       }
-      if let range = inDictionary ["mSymbols"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <DeviceSymbolInstanceInProject> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! DeviceSymbolInstanceInProject)
-        }
-        self.mSymbols = relationshipArray
+      self.mPackages = relationshipArray
+    }
+  //--- To many mSymbols
+    if let range = inDictionary ["mSymbols"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <DeviceSymbolInstanceInProject> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! DeviceSymbolInstanceInProject)
       }
-      if let range = inDictionary ["mComponents"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <ComponentInProject> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! ComponentInProject)
-        }
-        self.mComponents = relationshipArray
+      self.mSymbols = relationshipArray
+    }
+  //--- To many mComponents
+    if let range = inDictionary ["mComponents"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <ComponentInProject> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! ComponentInProject)
       }
-      if let range = inDictionary ["mPadAssignments"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <DevicePadAssignmentInProject> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! DevicePadAssignmentInProject)
-        }
-        self.mPadAssignments = relationshipArray
+      self.mComponents = relationshipArray
+    }
+  //--- To many mPadAssignments
+    if let range = inDictionary ["mPadAssignments"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <DevicePadAssignmentInProject> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! DevicePadAssignmentInProject)
       }
+      self.mPadAssignments = relationshipArray
+    }
   }
 
   //····················································································································

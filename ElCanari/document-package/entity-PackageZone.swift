@@ -1046,14 +1046,15 @@ final class PackageZone : PackageObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["forbiddenPadNumbers"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <ForbiddenPadNumber> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! ForbiddenPadNumber)
-        }
-        self.forbiddenPadNumbers = relationshipArray
+  //--- To many forbiddenPadNumbers
+    if let range = inDictionary ["forbiddenPadNumbers"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <ForbiddenPadNumber> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! ForbiddenPadNumber)
       }
+      self.forbiddenPadNumbers = relationshipArray
+    }
   }
 
   //····················································································································

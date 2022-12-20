@@ -1165,30 +1165,33 @@ final class PointInSchematic : EBManagedObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mLabels"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <LabelInSchematic> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! LabelInSchematic)
-        }
-        self.mLabels = relationshipArray
+  //--- To many mLabels
+    if let range = inDictionary ["mLabels"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <LabelInSchematic> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! LabelInSchematic)
       }
-      if let range = inDictionary ["mWiresP2s"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <WireInSchematic> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! WireInSchematic)
-        }
-        self.mWiresP2s = relationshipArray
+      self.mLabels = relationshipArray
+    }
+  //--- To many mWiresP2s
+    if let range = inDictionary ["mWiresP2s"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <WireInSchematic> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! WireInSchematic)
       }
-      if let range = inDictionary ["mWiresP1s"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <WireInSchematic> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! WireInSchematic)
-        }
-        self.mWiresP1s = relationshipArray
+      self.mWiresP2s = relationshipArray
+    }
+  //--- To many mWiresP1s
+    if let range = inDictionary ["mWiresP1s"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <WireInSchematic> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! WireInSchematic)
       }
+      self.mWiresP1s = relationshipArray
+    }
   }
 
   //····················································································································

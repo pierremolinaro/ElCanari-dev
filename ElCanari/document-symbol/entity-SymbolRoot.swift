@@ -491,7 +491,6 @@ final class SymbolRoot : EBManagedObject,
   //--- To one relationships
   //--- To many relationships
     ioString += "symbolObjects\n"
-    ioString += "symbolPins\n"
   }
 
   //····················································································································
@@ -573,14 +572,15 @@ final class SymbolRoot : EBManagedObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["symbolObjects"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SymbolObject> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SymbolObject)
-        }
-        self.symbolObjects = relationshipArray
+  //--- To many symbolObjects
+    if let range = inDictionary ["symbolObjects"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SymbolObject> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SymbolObject)
       }
+      self.symbolObjects = relationshipArray
+    }
   }
 
   //····················································································································

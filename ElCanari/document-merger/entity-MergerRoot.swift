@@ -2119,22 +2119,24 @@ final class MergerRoot : EBManagedObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["boardModels"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <BoardModel> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! BoardModel)
-        }
-        self.boardModels = relationshipArray
+  //--- To many boardModels
+    if let range = inDictionary ["boardModels"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <BoardModel> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! BoardModel)
       }
-      if let range = inDictionary ["boardInstances"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <MergerBoardInstance> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! MergerBoardInstance)
-        }
-        self.boardInstances = relationshipArray
+      self.boardModels = relationshipArray
+    }
+  //--- To many boardInstances
+    if let range = inDictionary ["boardInstances"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <MergerBoardInstance> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! MergerBoardInstance)
       }
+      self.boardInstances = relationshipArray
+    }
   }
 
   //····················································································································

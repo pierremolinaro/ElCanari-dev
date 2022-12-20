@@ -44,13 +44,13 @@ enum DocumentFormat {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@main @MainActor final class ApplicationDelegate : NSObject, NSApplicationDelegate, NSMenuItemValidation {
+@main final class ApplicationDelegate : NSObject, NSApplicationDelegate, NSMenuItemValidation {
 
   //····················································································································
   //  init
   //····················································································································
 
-  override init () {
+  @MainActor override init () {
     super.init ()
     gApplicationDelegate = self
   }
@@ -80,7 +80,7 @@ enum DocumentFormat {
   //  Instanciate Batch Window
   //····················································································································
 
-  func instanciatedBatchWindow () {
+  @MainActor func instanciatedBatchWindow () {
     if self.mBatchWindow == nil {
       let batchWindow = NSWindow (
         contentRect: NSRect (x: 0, y: 0, width: 600, height: 400),
@@ -163,10 +163,10 @@ enum DocumentFormat {
   @IBOutlet var mOpenDeviceInLibraryMenuItem : NSMenuItem? = nil
   @IBOutlet var mOpenFontInLibraryMenuItem : NSMenuItem? = nil
 
-  let mOpenSymbolInLibrary = OpenSymbolInLibrary ()
-  let mOpenPackageInLibrary = OpenPackageInLibrary ()
-  let mOpenDeviceInLibrary = OpenDeviceInLibrary ()
-  let mOpenFontInLibrary = OpenFontInLibrary ()
+  @MainActor let mOpenSymbolInLibrary = OpenSymbolInLibrary ()
+  @MainActor let mOpenPackageInLibrary = OpenPackageInLibrary ()
+  @MainActor let mOpenDeviceInLibrary = OpenDeviceInLibrary ()
+  @MainActor let mOpenFontInLibrary = OpenFontInLibrary ()
 
   //····················································································································
   //  DO NOT OPEN A NEW DOCUMENT ON LAUNCH
@@ -180,7 +180,7 @@ enum DocumentFormat {
   //····················································································································
 
   nonisolated func applicationDidFinishLaunching (_ notification : Notification) {
-    DispatchQueue.main.async {
+    DispatchQueue.main.async { // @Sendable in
       self.mOpenSymbolInLibraryMenuItem?.target = self.mOpenSymbolInLibrary
       self.mOpenSymbolInLibraryMenuItem?.action = #selector (OpenSymbolInLibrary.openSymbolInLibrary (_:))
       self.mOpenPackageInLibraryMenuItem?.target = self.mOpenPackageInLibrary
@@ -266,7 +266,7 @@ enum DocumentFormat {
 
   //····················································································································
 
-  fileprivate func addAutoLayoutUserInterfaceStyleObserver () {
+  @MainActor fileprivate func addAutoLayoutUserInterfaceStyleObserver () {
     self.mUserInterfaceStyleObserver = EBObservablePropertyController (
       observedObjects: [preferences_mAutoLayoutStyle_property],
       callBack: {

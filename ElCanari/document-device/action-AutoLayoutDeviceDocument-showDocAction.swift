@@ -4,7 +4,7 @@
 
 extension ApplicationDelegate {
 
-  @objc func closeHelperWindow (_ inNotification : Notification) {
+  @MainActor @objc func closeHelperWindow (_ inNotification : Notification) {
     if let window = inNotification.object as? CanariPDFWindow {
       gDocWindowSet.remove (window)
       // Swift.print ("Object \(window)")

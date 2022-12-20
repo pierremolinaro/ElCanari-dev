@@ -504,7 +504,7 @@ final class FontRoot : EBManagedObject,
     //--- Atomic property: currentCharacterCodePoint
       self.currentCharacterCodePoint_property.storeIn (dictionary: ioDictionary, forKey: "currentCharacterCodePoint")
   //--- To many property: characters (Custom store)
-    customStore_FontCharacter_characters (self.characters_property.propval.values, intoDictionary: ioDictionary)
+    _ = customStore_FontCharacter_characters (self.characters_property.propval.values, intoDictionary: ioDictionary)
   }
 
   //····················································································································
@@ -515,7 +515,7 @@ final class FontRoot : EBManagedObject,
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: characters (Custom store)
-    self.characters_property.setProp (EBReferenceArray (customRead_FontCharacter_characters (from: inDictionary, with: self.undoManager)))
+    self.characters_property.setProp (EBReferenceArray (customRead_FontCharacter_characters (fromDictionary: inDictionary, with: self.undoManager)))
   }
 
   //····················································································································
@@ -573,7 +573,8 @@ final class FontRoot : EBManagedObject,
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
-    enterToManyRelationshipObjectIndexes (from: self.characters.values, into: &ioData)
+    ioData.append (customStore_FontCharacter_characters (self.characters_property.propval.values, intoDictionary: nil).data (using: .utf8)!)
+    ioData.append (ascii: .lineFeed)
   }
 
   //····················································································································
@@ -608,14 +609,11 @@ final class FontRoot : EBManagedObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["characters"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <FontCharacter> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! FontCharacter)
-        }
-        self.characters = relationshipArray
-      }
+  //--- To many characters (custom store)
+    if let range = inDictionary ["characters"], range.length > 0, let s = String (data: inData [range.location ..< range.location + range.length], encoding: .utf8) {
+      let array = customRead_FontCharacter_characters (fromString: s, with: self.undoManager)
+      self.characters = EBReferenceArray (array)
+    }
   }
 
   //····················································································································

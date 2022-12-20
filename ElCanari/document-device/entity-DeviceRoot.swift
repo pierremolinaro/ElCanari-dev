@@ -1318,46 +1318,51 @@ final class DeviceRoot : EBManagedObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mDocs"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <DeviceDocumentation> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! DeviceDocumentation)
-        }
-        self.mDocs = relationshipArray
+  //--- To many mDocs
+    if let range = inDictionary ["mDocs"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <DeviceDocumentation> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! DeviceDocumentation)
       }
-      if let range = inDictionary ["mSymbolInstances"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SymbolInstanceInDevice> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SymbolInstanceInDevice)
-        }
-        self.mSymbolInstances = relationshipArray
+      self.mDocs = relationshipArray
+    }
+  //--- To many mSymbolInstances
+    if let range = inDictionary ["mSymbolInstances"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SymbolInstanceInDevice> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SymbolInstanceInDevice)
       }
-      if let range = inDictionary ["mPackages"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <PackageInDevice> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! PackageInDevice)
-        }
-        self.mPackages = relationshipArray
+      self.mSymbolInstances = relationshipArray
+    }
+  //--- To many mPackages
+    if let range = inDictionary ["mPackages"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <PackageInDevice> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! PackageInDevice)
       }
-      if let range = inDictionary ["mSymbolTypes"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SymbolTypeInDevice> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SymbolTypeInDevice)
-        }
-        self.mSymbolTypes = relationshipArray
+      self.mPackages = relationshipArray
+    }
+  //--- To many mSymbolTypes
+    if let range = inDictionary ["mSymbolTypes"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SymbolTypeInDevice> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SymbolTypeInDevice)
       }
-      if let range = inDictionary ["mPadProxies"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <PadProxyInDevice> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! PadProxyInDevice)
-        }
-        self.mPadProxies = relationshipArray
+      self.mSymbolTypes = relationshipArray
+    }
+  //--- To many mPadProxies
+    if let range = inDictionary ["mPadProxies"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <PadProxyInDevice> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! PadProxyInDevice)
       }
+      self.mPadProxies = relationshipArray
+    }
   }
 
   //····················································································································

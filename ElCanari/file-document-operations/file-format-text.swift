@@ -26,6 +26,7 @@ struct RawObject {
     let metadataDictionary : [String : Any] = try ioDataScanner.parseJSON ()
    // Swift.print ("metadataDictionary \(metadataDictionary)")
   //--- Read classes
+//    Swift.print ("Read classes")
     var classDefinition = [(String, [String])] ()
     while ioDataScanner.testAccept (byte: ASCII.dollar.rawValue) {
       let className = try ioDataScanner.parseString ()
@@ -41,19 +42,19 @@ struct RawObject {
           propertyNameArray.append (propertyName)
         }
       }
+//      Swift.print ("  - \(classDefinition.count) : \(className), \(propertyNameArray.count) properties")
       classDefinition.append ((className, propertyNameArray))
     }
     appendDocumentFileOperationInfo ("read \(classDefinition.count) classes done")
-  //---
-//    let operationQueue = OperationQueue ()
-//    let mutex = DispatchSemaphore (value: 1)
   //--- Read objects
+//    Swift.print ("Read objects")
+//    var idx = 0
     var rawObjectArray = [RawObject] ()
-    var idx = 0
     let data = ioDataScanner.data
     while !ioDataScanner.eof (), ioDataScanner.testAccept (byte: ASCII.at.rawValue) {
   //    let index = idx
-      idx += 1
+//      Swift.print (" - \(idx)")
+//      idx += 1
       let classIndex = ioDataScanner.parseBase62EncodedInt ()
       let propertyNameArray = classDefinition [classIndex].1
       let className = classDefinition [classIndex].0
@@ -61,20 +62,18 @@ struct RawObject {
       for propertyName in propertyNameArray {
         let propertyRange = ioDataScanner.getLineRangeAndAdvance ()
         propertyValueDictionary [propertyName] = propertyRange
+//        var s = ""
+//        for i in propertyRange.location ..< (propertyRange.location + propertyRange.length) {
+//          s += " \(String (data [i], radix:16, uppercase: true))"
+//        }
+//        Swift.print ("    \(propertyName) -> \(propertyRange) :\(s)")
       }
- //     operationQueue.addOperation {
-     // Swift.print ("\(index) : \(className)")
-        let managedObject = newInstanceOfEntityNamed (inUndoManager, className)
-        managedObject.setUpPropertiesWithTextDictionary (propertyValueDictionary, data)
-        let rawObject = RawObject (/* index: index, */ object: managedObject, propertyDictionary: propertyValueDictionary)
- //       mutex.wait ()
-        rawObjectArray.append (rawObject)
- //       mutex.signal ()
-//      }
+      let managedObject = newInstanceOfEntityNamed (inUndoManager, className)
+      managedObject.setUpPropertiesWithTextDictionary (propertyValueDictionary, data)
+      let rawObject = RawObject (/* index: index, */ object: managedObject, propertyDictionary: propertyValueDictionary)
+      rawObjectArray.append (rawObject)
     }
-//    appendDocumentFileOperationInfo ("read objects done, \(operationQueue.operationCount) pending operations")
-//    operationQueue.waitUntilAllOperationsAreFinished ()
-//    rawObjectArray.sort { $0.index < $1.index }
+//    Swift.print ("Done")
     appendDocumentFileOperationInfo ("parsed \(rawObjectArray.count) objects done")
   //--- Setup toOne
     let scannerData = ioDataScanner.data
@@ -120,49 +119,6 @@ struct RawObject {
     return .readError (error: error)
   }
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//actor OpenDocumentActor {
-//
-//  //····················································································································
-//
-//  var mRawObjectArray = [RawObject] ()
-//  var mObjectCount = 0
-//  var mEpilogCallBack : Optional < () -> Void > = nil
-//
-//  //····················································································································
-//
-//  func append (_ inIndex : Int,
-//               _ inObject : EBManagedObject,
-//               _ inPropertyValueDictionary : [String : NSRange],
-//               _ inData : Data) {
-//
-//    let rawObject = RawObject (index: inIndex, object: inObject, propertyDictionary: inPropertyValueDictionary)
-//    self.mRawObjectArray.append (rawObject)
-//    self.runEpilog ()
-//  }
-//
-//  //····················································································································
-//
-//  func epilog (_ inObjectCount : Int, _ inCallBack : @escaping () -> Void) {
-//    self.mObjectCount = inObjectCount
-//    self.mEpilogCallBack = inCallBack
-//    self.runEpilog ()
-//  }
-//
-//  //····················································································································
-//
-//  private func runEpilog () {
-//    if self.mObjectCount == self.mRawObjectArray.count {
-//      self.mRawObjectArray.sort { $0.index < $1.index }
-//      self.mEpilogCallBack? ()
-//    }
-//  }
-//
-//  //····················································································································
-//
-//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -15,7 +15,7 @@ let FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY = "-characters-"
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func customStore_FontCharacter_characters (_ inCharacters : [FontCharacter],
-                                                      intoDictionary : NSMutableDictionary) {
+                                                      intoDictionary inDictionary : NSMutableDictionary?) -> String {
   var s = ""
   for char in inCharacters {
     s += "|"
@@ -37,63 +37,68 @@ let FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY = "-characters-"
       y = segment.y2
     }
   }
-//  NSLog ("LENGTH: \(s.utf8.count)")
-  intoDictionary.setValue (s, forKey: FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY)
+  // Swift.print ("STR: '\(s)'")
+  inDictionary?.setValue (s, forKey: FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY)
+  return s
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func customRead_FontCharacter_characters (from inDictionary : NSDictionary,
+@MainActor func customRead_FontCharacter_characters (fromString inString : String,
                                                      with inUndoManager : UndoManager?) -> [FontCharacter] {
-//  let start = Date ()
+  var result = [FontCharacter] ()
+  let scanner = Scanner (string: inString)
+  var ok = true
+  while ok && scanner.myTestString ("|") {
+    let newCharacter = FontCharacter (inUndoManager)
+    result.append (newCharacter)
+    newCharacter.codePoint = scanner.myScanInt (&ok)
+    scanner.myCheckString (":", &ok)
+    newCharacter.advance = scanner.myScanInt (&ok)
+    scanner.myCheckString (":", &ok)
+    newCharacter.mWarnsWhenAdvanceIsZero = scanner.myScanInt (&ok) != 0
+    scanner.myCheckString (":", &ok)
+    newCharacter.mWarnsWhenNoSegment = scanner.myScanInt (&ok) != 0
+  //--- Segments
+    var segments = EBReferenceArray <SegmentForFontCharacter> ()
+    while ok && scanner.myTestString (",") {
+      var x = scanner.myScanInt (&ok)
+      var y = scanner.myScanInt (&ok)
+      var singlePoint = true
+      while scanner.myTestString (">") {
+        singlePoint = false
+        let newSegment = SegmentForFontCharacter (inUndoManager)
+        segments.append (newSegment)
+        newSegment.x1 = x
+        newSegment.y1 = y
+        x = scanner.myScanInt (&ok)
+        y = scanner.myScanInt (&ok)
+        newSegment.x2 = x
+        newSegment.y2 = y
+      }
+      if singlePoint {
+        let newSegment = SegmentForFontCharacter (inUndoManager)
+        segments.append (newSegment)
+        newSegment.x1 = x
+        newSegment.y1 = y
+        newSegment.x2 = x
+        newSegment.y2 = y
+      }
+      // Swift.print ("Segment \(newSegment.x1) \(newSegment.y1) \(newSegment.x2) \(newSegment.y2) > \(ok)")
+    }
+    newCharacter.segments_property.setProp (segments)
+  }
+  return result
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor func customRead_FontCharacter_characters (fromDictionary inDictionary : NSDictionary,
+                                                     with inUndoManager : UndoManager?) -> [FontCharacter] {
   var result = [FontCharacter] ()
   if let s = inDictionary [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String {
-    // Swift.print (s)
-    let scanner = Scanner (string: s)
-    var ok = true
-    while ok && scanner.myTestString ("|") {
-      let newCharacter = FontCharacter (inUndoManager)
-      result.append (newCharacter)
-      newCharacter.codePoint = scanner.myScanInt (&ok)
-      scanner.myCheckString (":", &ok)
-      newCharacter.advance = scanner.myScanInt (&ok)
-      scanner.myCheckString (":", &ok)
-      newCharacter.mWarnsWhenAdvanceIsZero = scanner.myScanInt (&ok) != 0
-      scanner.myCheckString (":", &ok)
-      newCharacter.mWarnsWhenNoSegment = scanner.myScanInt (&ok) != 0
-    //--- Segments
-      var segments = EBReferenceArray <SegmentForFontCharacter> ()
-      while ok && scanner.myTestString (",") {
-        var x = scanner.myScanInt (&ok)
-        var y = scanner.myScanInt (&ok)
-        var singlePoint = true
-        while scanner.myTestString (">") {
-          singlePoint = false
-          let newSegment = SegmentForFontCharacter (inUndoManager)
-          segments.append (newSegment)
-          newSegment.x1 = x
-          newSegment.y1 = y
-          x = scanner.myScanInt (&ok)
-          y = scanner.myScanInt (&ok)
-          newSegment.x2 = x
-          newSegment.y2 = y
-        }
-        if singlePoint {
-          let newSegment = SegmentForFontCharacter (inUndoManager)
-          segments.append (newSegment)
-          newSegment.x1 = x
-          newSegment.y1 = y
-          newSegment.x2 = x
-          newSegment.y2 = y
-        }
-        // Swift.print ("Segment \(newSegment.x1) \(newSegment.y1) \(newSegment.x2) \(newSegment.y2) > \(ok)")
-      }
-      newCharacter.segments_property.setProp (segments)
-    }
-//    NSLog ("ok \(ok)")
+    result = customRead_FontCharacter_characters (fromString: s, with: inUndoManager)
   }
-//  let duration = Date ().timeIntervalSince (start)
-//  NSLog ("duration \(duration)")
   return result
 }
 

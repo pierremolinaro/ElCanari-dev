@@ -2309,9 +2309,6 @@ final class PackageRoot : EBManagedObject,
   //--- To many relationships
     ioString += "mModelImageObjects\n"
     ioString += "packageObjects\n"
-    ioString += "packagePads\n"
-    ioString += "packageSlavePads\n"
-    ioString += "packageZones\n"
   }
 
   //····················································································································
@@ -2567,22 +2564,24 @@ final class PackageRoot : EBManagedObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mModelImageObjects"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <PackageModelImageDoublePoint> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! PackageModelImageDoublePoint)
-        }
-        self.mModelImageObjects = relationshipArray
+  //--- To many mModelImageObjects
+    if let range = inDictionary ["mModelImageObjects"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <PackageModelImageDoublePoint> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! PackageModelImageDoublePoint)
       }
-      if let range = inDictionary ["packageObjects"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <PackageObject> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! PackageObject)
-        }
-        self.packageObjects = relationshipArray
+      self.mModelImageObjects = relationshipArray
+    }
+  //--- To many packageObjects
+    if let range = inDictionary ["packageObjects"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <PackageObject> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! PackageObject)
       }
+      self.packageObjects = relationshipArray
+    }
   }
 
   //····················································································································

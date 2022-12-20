@@ -243,14 +243,15 @@ final class DevicePackageInProject : EBManagedObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mMasterPads"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <DeviceMasterPadInProject> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! DeviceMasterPadInProject)
-        }
-        self.mMasterPads = relationshipArray
+  //--- To many mMasterPads
+    if let range = inDictionary ["mMasterPads"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <DeviceMasterPadInProject> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! DeviceMasterPadInProject)
       }
+      self.mMasterPads = relationshipArray
+    }
   }
 
   //····················································································································

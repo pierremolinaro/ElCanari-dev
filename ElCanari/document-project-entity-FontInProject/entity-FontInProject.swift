@@ -663,30 +663,33 @@ final class FontInProject : EBManagedObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mTexts"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <BoardText> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! BoardText)
-        }
-        self.mTexts = relationshipArray
+  //--- To many mTexts
+    if let range = inDictionary ["mTexts"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <BoardText> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! BoardText)
       }
-      if let range = inDictionary ["mComponentNames"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <ComponentInProject> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! ComponentInProject)
-        }
-        self.mComponentNames = relationshipArray
+      self.mTexts = relationshipArray
+    }
+  //--- To many mComponentNames
+    if let range = inDictionary ["mComponentNames"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <ComponentInProject> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! ComponentInProject)
       }
-      if let range = inDictionary ["mComponentValues"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <ComponentInProject> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! ComponentInProject)
-        }
-        self.mComponentValues = relationshipArray
+      self.mComponentNames = relationshipArray
+    }
+  //--- To many mComponentValues
+    if let range = inDictionary ["mComponentValues"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <ComponentInProject> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! ComponentInProject)
       }
+      self.mComponentValues = relationshipArray
+    }
   }
 
   //····················································································································

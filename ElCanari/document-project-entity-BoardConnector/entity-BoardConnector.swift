@@ -1437,22 +1437,24 @@ final class BoardConnector : BoardObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mTracksP2"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <BoardTrack> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! BoardTrack)
-        }
-        self.mTracksP2 = relationshipArray
+  //--- To many mTracksP2
+    if let range = inDictionary ["mTracksP2"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <BoardTrack> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! BoardTrack)
       }
-      if let range = inDictionary ["mTracksP1"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <BoardTrack> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! BoardTrack)
-        }
-        self.mTracksP1 = relationshipArray
+      self.mTracksP2 = relationshipArray
+    }
+  //--- To many mTracksP1
+    if let range = inDictionary ["mTracksP1"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <BoardTrack> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! BoardTrack)
       }
+      self.mTracksP1 = relationshipArray
+    }
   }
 
   //····················································································································

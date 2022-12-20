@@ -8,14 +8,7 @@ import AppKit
 //  EBAutoLayoutManagedDocument
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBAutoLayoutManagedDocument : NSDocument { // , NSPasteboardItemDataProvider {
-
-//  func pasteboard (_ pasteboard: NSPasteboard?,
-//                   item: NSPasteboardItem,
-//                   provideDataForType type: NSPasteboard.PasteboardType) {
-//    Swift.print ("provideDataForType")
-//  }
-
+class EBAutoLayoutManagedDocument : NSDocument {
 
   //····················································································································
 

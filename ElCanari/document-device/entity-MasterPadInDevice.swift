@@ -682,14 +682,15 @@ final class MasterPadInDevice : EBManagedObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mSlavePads"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SlavePadInDevice> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SlavePadInDevice)
-        }
-        self.mSlavePads = relationshipArray
+  //--- To many mSlavePads
+    if let range = inDictionary ["mSlavePads"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SlavePadInDevice> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SlavePadInDevice)
       }
+      self.mSlavePads = relationshipArray
+    }
   }
 
   //····················································································································

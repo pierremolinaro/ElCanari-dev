@@ -843,14 +843,15 @@ final class ArtworkRoot : EBManagedObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["fileGenerationParameterArray"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <ArtworkFileGenerationParameters> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! ArtworkFileGenerationParameters)
-        }
-        self.fileGenerationParameterArray = relationshipArray
+  //--- To many fileGenerationParameterArray
+    if let range = inDictionary ["fileGenerationParameterArray"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <ArtworkFileGenerationParameters> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! ArtworkFileGenerationParameters)
       }
+      self.fileGenerationParameterArray = relationshipArray
+    }
   }
 
   //····················································································································

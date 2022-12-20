@@ -2346,22 +2346,24 @@ final class ComponentInProject : BoardObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mConnectors"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <BoardConnector> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! BoardConnector)
-        }
-        self.mConnectors = relationshipArray
+  //--- To many mConnectors
+    if let range = inDictionary ["mConnectors"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <BoardConnector> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! BoardConnector)
       }
-      if let range = inDictionary ["mSymbols"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <ComponentSymbolInProject> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! ComponentSymbolInProject)
-        }
-        self.mSymbols = relationshipArray
+      self.mConnectors = relationshipArray
+    }
+  //--- To many mSymbols
+    if let range = inDictionary ["mSymbols"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <ComponentSymbolInProject> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! ComponentSymbolInProject)
       }
+      self.mSymbols = relationshipArray
+    }
   }
 
   //····················································································································

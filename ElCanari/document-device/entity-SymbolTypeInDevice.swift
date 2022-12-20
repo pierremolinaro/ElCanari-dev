@@ -525,22 +525,24 @@ final class SymbolTypeInDevice : EBManagedObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mInstances"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SymbolInstanceInDevice> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SymbolInstanceInDevice)
-        }
-        self.mInstances = relationshipArray
+  //--- To many mInstances
+    if let range = inDictionary ["mInstances"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SymbolInstanceInDevice> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SymbolInstanceInDevice)
       }
-      if let range = inDictionary ["mPinTypes"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SymbolPinTypeInDevice> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SymbolPinTypeInDevice)
-        }
-        self.mPinTypes = relationshipArray
+      self.mInstances = relationshipArray
+    }
+  //--- To many mPinTypes
+    if let range = inDictionary ["mPinTypes"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SymbolPinTypeInDevice> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SymbolPinTypeInDevice)
       }
+      self.mPinTypes = relationshipArray
+    }
   }
 
   //····················································································································

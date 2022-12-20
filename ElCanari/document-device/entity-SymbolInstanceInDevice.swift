@@ -671,14 +671,15 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mPinInstances"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <SymbolPinInstanceInDevice> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! SymbolPinInstanceInDevice)
-        }
-        self.mPinInstances = relationshipArray
+  //--- To many mPinInstances
+    if let range = inDictionary ["mPinInstances"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <SymbolPinInstanceInDevice> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! SymbolPinInstanceInDevice)
       }
+      self.mPinInstances = relationshipArray
+    }
   }
 
   //····················································································································

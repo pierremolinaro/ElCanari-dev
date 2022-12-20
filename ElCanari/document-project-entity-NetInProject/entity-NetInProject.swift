@@ -611,22 +611,24 @@ final class NetInProject : EBManagedObject,
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
-      if let range = inDictionary ["mPoints"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <PointInSchematic> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! PointInSchematic)
-        }
-        self.mPoints = relationshipArray
+  //--- To many mPoints
+    if let range = inDictionary ["mPoints"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <PointInSchematic> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! PointInSchematic)
       }
-      if let range = inDictionary ["mTracks"], range.length > 0 {
-        var relationshipArray = EBReferenceArray <BoardTrack> ()
-        let indexArray = inData.base62EncodedIntArray (fromRange: range)
-        for idx in indexArray {
-          relationshipArray.append (inRawObjectArray [idx].object as! BoardTrack)
-        }
-        self.mTracks = relationshipArray
+      self.mPoints = relationshipArray
+    }
+  //--- To many mTracks
+    if let range = inDictionary ["mTracks"], range.length > 0 {
+      var relationshipArray = EBReferenceArray <BoardTrack> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: range)
+      for idx in indexArray {
+        relationshipArray.append (inRawObjectArray [idx].object as! BoardTrack)
       }
+      self.mTracks = relationshipArray
+    }
   }
 
   //····················································································································
