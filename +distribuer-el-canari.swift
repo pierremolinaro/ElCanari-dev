@@ -151,10 +151,7 @@ fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
 //-------------------- Importer ElCanari
 let CANARI_DIR = "ElCanari-dev"
 runCommand ("/bin/rm", ["-fr", CANARI_DIR])
-runCommand ("/usr/local/bin/git", ["clone", "https://github.com/pierremolinaro/ElCanari-dev.git"])
-//runCommand ("/usr/bin/curl", ["--fail", "-L", "https://github.com/pierremolinaro/ElCanari-dev/archive/master.tar.gz", "-o", "archive.tar.gz"])
-//runCommand ("/usr/bin/tar", ["xvfz", "archive.tar.gz"])
-//runCommand ("/bin/rm", ["archive.tar.gz"])
+runCommand ("/usr/local/bin/git", ["clone", "--depth=1", "https://github.com/pierremolinaro/ElCanari-dev.git"])
 fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/" + CANARI_DIR)
 //-------------------- Obtenir l'année
 let ANNEE = Calendar.current.component (.year, from: Date ())

@@ -44,8 +44,8 @@ final class LibraryOperationElement : EBSwiftBaseObject {
 
   //····················································································································
 
-  private var mOperation : LibraryOperation
-  var operation : LibraryOperation { return self.mOperation }
+  @MainActor private var mOperation : LibraryOperation
+  @MainActor var operation : LibraryOperation { return self.mOperation }
 
   //····················································································································
 
@@ -141,9 +141,20 @@ final class LibraryOperationElement : EBSwiftBaseObject {
             hasData = newData.count > 0
             data.append (newData)
             let dataCount = data.count
-            DispatchQueue.main.async {
-              self.mOperation = .downloading (dataCount * 100 / self.sizeInRepository)
-              inController.updateProgressIndicator ()
+            let previousDownloadPerCent : Int
+            switch self.mOperation {
+            case .downloading (let v) :
+              previousDownloadPerCent = v
+            default :
+              previousDownloadPerCent = -1
+            }
+            let newDownloadPerCent = dataCount * 100 / self.sizeInRepository
+            self.mOperation = .downloading (newDownloadPerCent)
+            if (newDownloadPerCent / 10) != (previousDownloadPerCent / 10) {
+              DispatchQueue.main.async {
+                // Swift.print ("\(newDownloadPerCent)% of \(self.relativePath)")
+                inController.updateProgressIndicator ()
+              }
             }
             if SLOW_DOWNLOAD {
               sleep (1)

@@ -10,7 +10,7 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private let parallelDownloadCount = 4
+private let parallelDownloadCount = 3
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -68,13 +68,13 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
     _ = mainView.appendView (self.mTableView)
   //--- Last line
     let lastLine = AutoLayoutHorizontalStackView () //.expandableWidth ()
-    self.mProgressIndicator = AutoLayoutProgressIndicator ()
+    self.mProgressIndicator = AutoLayoutProgressIndicator ().expandableWidth ()
     self.mProgressIndicator.minValue = 0.0
     self.mProgressIndicator.maxValue = inProgressMaxValue
     self.mProgressIndicator.doubleValue = 0.0
     self.mProgressIndicator.isIndeterminate = false
     _ = lastLine.appendView (self.mProgressIndicator)
-    _ = lastLine.appendFlexibleSpace ()
+//    _ = lastLine.appendFlexibleSpace ()
     self.mCancelButton = AutoLayoutSheetCancelButton (title: "Cancel", size: .regular)
     _ = lastLine.appendView (self.mCancelButton)
     self.mUpDateButton = AutoLayoutButton (title: "Update All", size: .regular)
@@ -107,7 +107,7 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
       sortDelegate: nil,
       title: "Action",
       minWidth: 200,
-      maxWidth: 2_000,
+      maxWidth: 400,
       headerAlignment: .left,
       contentAlignment: .left
     )
@@ -166,7 +166,7 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
       found = inElement === self.mCurrentActionArray [idx]
       if found {
         self.mCurrentActionArray.remove (at: idx)
-        self.mTableView.sortAndReloadData ()
+ //       self.mTableView.sortAndReloadData ()
       }
       idx += 1
     }
@@ -199,6 +199,8 @@ final class CanariLibraryUpdateController : EBSwiftBaseObject {
       progressCurrentValue += action.currentIndicatorValue
     }
     self.mProgressIndicator.doubleValue = progressCurrentValue
+    self.mTableView.sortAndReloadData ()
+//    _ = RunLoop.main.run (mode: .default, before: Date ())
   }
 
   //····················································································································
