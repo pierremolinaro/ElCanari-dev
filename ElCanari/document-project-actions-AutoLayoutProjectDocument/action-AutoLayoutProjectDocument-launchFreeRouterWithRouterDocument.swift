@@ -13,7 +13,7 @@ import AppKit
 extension AutoLayoutProjectDocument {
   @objc func launchFreeRouterWithRouterDocument (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-    // This method is overriden in AutoLayoutProjectDocumentSubClass
+    self.checkSchematicsAndBeforeAndLaunchFreeRouteur { self.performLaunchFreeRouterWithRouterDocument () }
 //--- END OF USER ZONE 2
   }
 }

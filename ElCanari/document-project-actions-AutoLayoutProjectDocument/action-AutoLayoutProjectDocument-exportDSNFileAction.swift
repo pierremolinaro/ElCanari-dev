@@ -13,7 +13,18 @@ import AppKit
 extension AutoLayoutProjectDocument {
   @objc func exportDSNFileAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-    // This method is overriden in AutoLayoutProjectDocumentSubClass
+    if let b = self.rootObject.schematicHasErrorOrWarning, !b {
+      self.performGenerateDSNFile ()
+    }else if let window = self.windowForSheet {
+      let alert = NSAlert ()
+      alert.messageText = "Schematic has warning(s) and/or error(s). Continue?"
+      _ = alert.addButton (withTitle: "Cancel")
+      _ = alert.addButton (withTitle: "Continue")
+      alert.beginSheetModal (
+        for: window,
+        completionHandler: { if $0 == .alertSecondButtonReturn { self.performGenerateDSNFile () } }
+      )
+    }
 //--- END OF USER ZONE 2
   }
 }

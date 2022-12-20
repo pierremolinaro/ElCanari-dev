@@ -14,7 +14,7 @@ extension AutoLayoutProjectDocument {
   @objc func launchFreeRouterWithoutAnyDocument (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
     self.checkSchematicsAndBeforeAndLaunchFreeRouteur {
-      if let freeRouterApplication : URL = Bundle.main.url (forResource: "Freerouting", withExtension: "app") {
+      if let freeRouterApplication : URL = self.uncompressedFreeRouterURL () {
         let openConfiguration = NSWorkspace.OpenConfiguration ()
         NSWorkspace.shared.openApplication (at: freeRouterApplication, configuration: openConfiguration) { (optionalApplication, optionalError) in
           if optionalApplication == nil {
@@ -24,13 +24,6 @@ extension AutoLayoutProjectDocument {
             alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
           }
         }
-//        if let _ = try? NSWorkspace.shared.launchApplication (at: freeRouterApplication, configuration: [:]) {
-//        }else{
-//          let alert = NSAlert ()
-//          alert.messageText = "Cannot launch FreeRouting application"
-//          alert.informativeText = "FreeRouting application does not exist."
-//          alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
-//        }
       }
     }
 //--- END OF USER ZONE 2

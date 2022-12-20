@@ -35,6 +35,18 @@ class AutoLayoutProjectDocumentSuperClass : EBAutoLayoutManagedDocument {
   final var mTrackCreatedByOptionClick : BoardTrack? = nil
 
   //····················································································································
+  //  FREE ROUTER TEMPORARY APPLICATION DIRECTORY
+  //····················································································································
+
+  var mFreerouterTemporaryApplicationDirectory : String? = nil
+
+  //····················································································································
+  //  FREE ROUTER TEMPORARY DOCUMENT DIRECTORY
+  //····················································································································
+
+  var mFreerouterTemporaryDocumentDirectory : String? = nil
+
+  //····················································································································
 
 }
 

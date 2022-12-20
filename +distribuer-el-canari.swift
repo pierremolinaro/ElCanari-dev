@@ -37,7 +37,8 @@ let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
   "Dans un document projet, les devices inutilisés sont automatiquement supprimés",
-  "Dans un document Device, les symboles inutilisés sont automatiquement supprimés"
+  "Dans un document Device, les symboles inutilisés sont automatiquement supprimés",
+  "L'application FreeRouting est déplacée dans la librarie"
 ]
 let NEWS : [String] = [
   "Duplication des inspecteurs dans la page « Board » d'un projet"

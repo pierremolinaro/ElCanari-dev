@@ -13,7 +13,14 @@ import AppKit
 extension AutoLayoutProjectDocument {
   @objc func importSESFromBasicTabAction (_ inSender : NSObject?) {
 //--- START OF USER ZONE 2
-    // This method is overriden in AutoLayoutProjectDocumentSubClass
+    if let freerouterTemporaryBaseFilePath = self.mFreerouterTemporaryDocumentDirectory {
+      self.importGuiDefaultFile (fileBasePath: freerouterTemporaryBaseFilePath)
+    }else{
+      let alert = NSAlert ()
+      alert.messageText = "Cannot import SES file"
+      alert.informativeText = "The SES file does not exist"
+      alert.beginSheetModal (for: self.windowForSheet!) { (NSModalResponse) in }
+    }
 //--- END OF USER ZONE 2
   }
 }

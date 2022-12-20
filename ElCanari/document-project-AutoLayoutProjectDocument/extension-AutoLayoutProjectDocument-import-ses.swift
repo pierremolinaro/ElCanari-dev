@@ -10,31 +10,31 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension AutoLayoutProjectDocumentSubClass {
+extension AutoLayoutProjectDocument {
 
   //····················································································································
 
-  override func importSESFromExtendedTabAction (_ sender : NSObject?) {
-    let openPanel = NSOpenPanel ()
-  //--- Default directory
-    let savedDirectoryURL = openPanel.directoryURL
-    let ud = UserDefaults.standard
-    if let url = ud.url (forKey: DSN_SES_DIRECTORY_USER_DEFAULT_KEY) {
-      openPanel.directoryURL = url
-    }
-    openPanel.allowsMultipleSelection = false
-    openPanel.canChooseDirectories = false
-    openPanel.canChooseFiles = true
-    openPanel.allowedFileTypes = ["ses"]
-    openPanel.beginSheetModal (for: self.windowForSheet!) { (inReturnCode) in
-      openPanel.orderOut (nil)
-      if inReturnCode == .OK, let s = try? String (contentsOf: openPanel.urls [0]) {
-        ud.set (openPanel.directoryURL, forKey: DSN_SES_DIRECTORY_USER_DEFAULT_KEY)
-        self.handleSESFileContents (s)
-      }
-      openPanel.directoryURL = savedDirectoryURL
-    }
-  }
+//  override func importSESFromExtendedTabAction (_ sender : NSObject?) {
+//    let openPanel = NSOpenPanel ()
+//  //--- Default directory
+//    let savedDirectoryURL = openPanel.directoryURL
+//    let ud = UserDefaults.standard
+//    if let url = ud.url (forKey: DSN_SES_DIRECTORY_USER_DEFAULT_KEY) {
+//      openPanel.directoryURL = url
+//    }
+//    openPanel.allowsMultipleSelection = false
+//    openPanel.canChooseDirectories = false
+//    openPanel.canChooseFiles = true
+//    openPanel.allowedFileTypes = ["ses"]
+//    openPanel.beginSheetModal (for: self.windowForSheet!) { (inReturnCode) in
+//      openPanel.orderOut (nil)
+//      if inReturnCode == .OK, let s = try? String (contentsOf: openPanel.urls [0]) {
+//        ud.set (openPanel.directoryURL, forKey: DSN_SES_DIRECTORY_USER_DEFAULT_KEY)
+//        self.handleSESFileContents (s)
+//      }
+//      openPanel.directoryURL = savedDirectoryURL
+//    }
+//  }
 
   //····················································································································
 
