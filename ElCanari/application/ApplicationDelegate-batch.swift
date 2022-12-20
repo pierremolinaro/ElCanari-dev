@@ -224,7 +224,7 @@ extension ApplicationDelegate {
                     withContentsOf: URL (fileURLWithPath: fullPath),
                     display: true // animating,
                   ){ (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
-                    if let deviceDocument = document as? CustomizedDeviceDocument {
+                    if let deviceDocument = document as? AutoLayoutDeviceDocument {
 //                        deviceDocument.resetSymbolsVersion ()
 //                        deviceDocument.resetPackagesVersion ()
                       var okMessages = [String] ()

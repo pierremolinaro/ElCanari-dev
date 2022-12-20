@@ -24,14 +24,6 @@ struct AssignedPadProxy : Hashable {
 
   //····················································································································
 
-  init (padName inPadName : String, symbolInstanceName inSymbolInstanceName : String, pinName inPinName : String) {
-    padName = inPadName
-    symbolInstanceName = inSymbolInstanceName
-    pinName = inPinName
-  }
-
-  //····················································································································
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

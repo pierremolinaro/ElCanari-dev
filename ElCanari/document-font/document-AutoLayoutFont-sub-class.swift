@@ -126,8 +126,8 @@ let PMFontComment = "PMFontComment"
     super.ebBuildUserInterface ()
   //---
     let currentCharacterCodePointObserver = EBModelEvent ()
-    currentCharacterCodePointObserver.mEventCallBack = {
-      [weak self] in self?.updateCurrentCharacterSelection ()
+    currentCharacterCodePointObserver.mEventCallBack = { [weak self] in
+      self?.updateCurrentCharacterSelection ()
     }
     self.rootObject.currentCharacterCodePointString_property.addEBObserver (currentCharacterCodePointObserver)
     self.mCurrentCharacterCodePointObserver = currentCharacterCodePointObserver
@@ -135,13 +135,13 @@ let PMFontComment = "PMFontComment"
 
   //····················································································································
 
-/*  override func removeUserInterface () {
-    if let currentCharacterCodePointObserver = self.mCurrentCharacterCodePointObserver {
-      self.rootObject.currentCharacterCodePointString_property.removeEBObserver (currentCharacterCodePointObserver)
-      self.mCurrentCharacterCodePointObserver = nil
-    }
-    super.removeUserInterface ()
-  } */
+//  override func removeUserInterface () {
+//    if let currentCharacterCodePointObserver = self.mCurrentCharacterCodePointObserver {
+//      self.rootObject.currentCharacterCodePointString_property.removeEBObserver (currentCharacterCodePointObserver)
+//      self.mCurrentCharacterCodePointObserver = nil
+//    }
+//    super.removeUserInterface ()
+//  }
 
   //····················································································································
 

@@ -10,10 +10,6 @@ import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias CustomizedDeviceDocument = AutoLayoutDeviceDocument
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 let DEVICE_VERSION_METADATA_DICTIONARY_KEY = "DeviceVersion"
 let DEVICE_COMMENT_METADATA_DICTIONARY_KEY = "DeviceComment"
 let DEVICE_SYMBOL_METADATA_DICTIONARY_KEY  = "DeviceSymbols"
