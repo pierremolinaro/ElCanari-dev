@@ -1667,13 +1667,14 @@ autoLayoutDocument AutoLayoutProjectDocument : AutoLayoutProjectDocumentSuperCla
   action appendNewBoardERCCheckingInspectorAction ;
   
   stackView \boardERCInspectorView vStack set (margins: 8) {
-    hStack {
-      Button (title: "◀︎+", size: .regular) { $run prependNewBoardERCCheckingInspectorAction }
-      space
-      StaticLabel (title: "ERC Checking", bold: yes, size: .small, alignment: .center)
-      space
-      Button (title: "+▶︎", size: .regular) { $run appendNewBoardERCCheckingInspectorAction }
-    }
+    StaticLabel (title: "ERC Checking", bold: yes, size: .small, alignment: .center)
+//    hStack {
+//      Button (title: "◀︎+", size: .regular) { $run prependNewBoardERCCheckingInspectorAction }
+//      space
+//      StaticLabel (title: "ERC Checking", bold: yes, size: .small, alignment: .center)
+//      space
+//      Button (title: "+▶︎", size: .regular) { $run appendNewBoardERCCheckingInspectorAction }
+//    }
     Checkbox (title: "Check Clearance\nbetween Pads of the same Net", size: .small) {
       set (width: 200, multiline: yes)
       $value root.mCheckClearanceBetweenPadsOfSameNet

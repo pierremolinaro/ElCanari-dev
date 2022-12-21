@@ -2267,27 +2267,7 @@ import AppKit
   final func boardERCInspectorView () -> AutoLayoutVerticalStackView {
     let vStackView = AutoLayoutVerticalStackView ()
       .set (margins: 8)
-    let view_0 = AutoLayoutHorizontalStackView ()
-    do{
-      let view_0_0 = AutoLayoutButton (title: "◀︎+", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.prependNewBoardERCCheckingInspectorAction (_:))
-        )
-      _ = view_0.appendView (view_0_0)
-      let view_0_1 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_1)
-      let view_0_2 = AutoLayoutStaticLabel (title: "ERC Checking", bold: true, size: .small, alignment: .center)
-      _ = view_0.appendView (view_0_2)
-      let view_0_3 = AutoLayoutFlexibleSpace ()
-      _ = view_0.appendView (view_0_3)
-      let view_0_4 = AutoLayoutButton (title: "+▶︎", size: .regular)
-        .bind_run (
-          target: self,
-          selector: #selector (AutoLayoutProjectDocument.appendNewBoardERCCheckingInspectorAction (_:))
-        )
-      _ = view_0.appendView (view_0_4)
-    }
+    let view_0 = AutoLayoutStaticLabel (title: "ERC Checking", bold: true, size: .small, alignment: .center)
     _ = vStackView.appendView (view_0)
     let view_1 = AutoLayoutCheckbox (title: "Check Clearance\nbetween Pads of the same Net", size: .small)
       .set (width: 200, multiline: true)

@@ -28,11 +28,13 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.6.5"
+let VERSION_CANARI = "1.7.0"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
+  "Correction format texte des documents Package",
+  "Correction format texte des documents Font",
   "Correction divers (petits) bugs dans le document Device"
 ]
 let CHANGES : [String] = [
