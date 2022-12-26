@@ -37,7 +37,7 @@ extension PackageDimension {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_PackageDimension (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_PackageDimension (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

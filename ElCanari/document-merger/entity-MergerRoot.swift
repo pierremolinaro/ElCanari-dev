@@ -1780,66 +1780,67 @@ final class MergerRoot : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
   //--- To many property: boardModels
     self.store (
       managedObjectArray: self.boardModels_property.propval.values,
       relationshipName: "boardModels",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: boardInstances
     self.store (
       managedObjectArray: self.boardInstances_property.propval.values,
       relationshipName: "boardInstances",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
     //--- Atomic property: selectedPageIndex
-      self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
+      self.selectedPageIndex_property.storeIn (dictionary: &ioDictionary, forKey: "selectedPageIndex")
     //--- Atomic property: zoom
-      self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
+      self.zoom_property.storeIn (dictionary: &ioDictionary, forKey: "zoom")
     //--- Atomic property: showDisplaySettingView
-      self.showDisplaySettingView_property.storeIn (dictionary: ioDictionary, forKey: "showDisplaySettingView")
+      self.showDisplaySettingView_property.storeIn (dictionary: &ioDictionary, forKey: "showDisplaySettingView")
     //--- Atomic property: modelInsertionRotation
-      self.modelInsertionRotation_property.storeIn (dictionary: ioDictionary, forKey: "modelInsertionRotation")
+      self.modelInsertionRotation_property.storeIn (dictionary: &ioDictionary, forKey: "modelInsertionRotation")
     //--- Atomic property: automaticBoardSize
-      self.automaticBoardSize_property.storeIn (dictionary: ioDictionary, forKey: "automaticBoardSize")
+      self.automaticBoardSize_property.storeIn (dictionary: &ioDictionary, forKey: "automaticBoardSize")
     //--- Atomic property: boardManualWidth
-      self.boardManualWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardManualWidth")
+      self.boardManualWidth_property.storeIn (dictionary: &ioDictionary, forKey: "boardManualWidth")
     //--- Atomic property: boardManualHeight
-      self.boardManualHeight_property.storeIn (dictionary: ioDictionary, forKey: "boardManualHeight")
+      self.boardManualHeight_property.storeIn (dictionary: &ioDictionary, forKey: "boardManualHeight")
     //--- Atomic property: boardWidthUnit
-      self.boardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardWidthUnit")
+      self.boardWidthUnit_property.storeIn (dictionary: &ioDictionary, forKey: "boardWidthUnit")
     //--- Atomic property: boardHeightUnit
-      self.boardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardHeightUnit")
+      self.boardHeightUnit_property.storeIn (dictionary: &ioDictionary, forKey: "boardHeightUnit")
     //--- Atomic property: overlapingArrangment
-      self.overlapingArrangment_property.storeIn (dictionary: ioDictionary, forKey: "overlapingArrangment")
+      self.overlapingArrangment_property.storeIn (dictionary: &ioDictionary, forKey: "overlapingArrangment")
     //--- Atomic property: selectedBoardXUnit
-      self.selectedBoardXUnit_property.storeIn (dictionary: ioDictionary, forKey: "selectedBoardXUnit")
+      self.selectedBoardXUnit_property.storeIn (dictionary: &ioDictionary, forKey: "selectedBoardXUnit")
     //--- Atomic property: selectedBoardYUnit
-      self.selectedBoardYUnit_property.storeIn (dictionary: ioDictionary, forKey: "selectedBoardYUnit")
+      self.selectedBoardYUnit_property.storeIn (dictionary: &ioDictionary, forKey: "selectedBoardYUnit")
     //--- Atomic property: boardLimitWidth
-      self.boardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidth")
+      self.boardLimitWidth_property.storeIn (dictionary: &ioDictionary, forKey: "boardLimitWidth")
     //--- Atomic property: boardLimitWidthUnit
-      self.boardLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidthUnit")
+      self.boardLimitWidthUnit_property.storeIn (dictionary: &ioDictionary, forKey: "boardLimitWidthUnit")
     //--- Atomic property: arrowMagnitude
-      self.arrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey: "arrowMagnitude")
+      self.arrowMagnitude_property.storeIn (dictionary: &ioDictionary, forKey: "arrowMagnitude")
     //--- Atomic property: arrowMagnitudeUnit
-      self.arrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey: "arrowMagnitudeUnit")
+      self.arrowMagnitudeUnit_property.storeIn (dictionary: &ioDictionary, forKey: "arrowMagnitudeUnit")
     //--- Atomic property: shiftArrowMagnitude
-      self.shiftArrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey: "shiftArrowMagnitude")
+      self.shiftArrowMagnitude_property.storeIn (dictionary: &ioDictionary, forKey: "shiftArrowMagnitude")
     //--- Atomic property: shiftArrowMagnitudeUnit
-      self.shiftArrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey: "shiftArrowMagnitudeUnit")
+      self.shiftArrowMagnitudeUnit_property.storeIn (dictionary: &ioDictionary, forKey: "shiftArrowMagnitudeUnit")
     //--- Atomic property: mPDFBoardBackgroundColor
-      self.mPDFBoardBackgroundColor_property.storeIn (dictionary: ioDictionary, forKey: "mPDFBoardBackgroundColor")
+      self.mPDFBoardBackgroundColor_property.storeIn (dictionary: &ioDictionary, forKey: "mPDFBoardBackgroundColor")
     //--- Atomic property: mArtworkName
-      self.mArtworkName_property.storeIn (dictionary: ioDictionary, forKey: "mArtworkName")
+      self.mArtworkName_property.storeIn (dictionary: &ioDictionary, forKey: "mArtworkName")
     //--- Atomic property: mArtworkVersion
-      self.mArtworkVersion_property.storeIn (dictionary: ioDictionary, forKey: "mArtworkVersion")
+      self.mArtworkVersion_property.storeIn (dictionary: &ioDictionary, forKey: "mArtworkVersion")
   //--- To one property: mArtwork
-    self.store (managedObject:self.mArtwork_property.propval,
+    self.store (managedObject: self.mArtwork_property.propval,
       relationshipName: "mArtwork",
-      intoDictionary: ioDictionary)
+      intoDictionary: &ioDictionary
+    )
   }
 
   //····················································································································

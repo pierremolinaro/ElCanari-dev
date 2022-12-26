@@ -511,33 +511,33 @@ final class FontInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
   //--- To many property: mTexts
     self.store (
       managedObjectArray: self.mTexts_property.propval.values,
       relationshipName: "mTexts",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
     //--- Atomic property: mNominalSize
-      self.mNominalSize_property.storeIn (dictionary: ioDictionary, forKey: "mNominalSize")
+      self.mNominalSize_property.storeIn (dictionary: &ioDictionary, forKey: "mNominalSize")
     //--- Atomic property: mFontName
-      self.mFontName_property.storeIn (dictionary: ioDictionary, forKey: "mFontName")
+      self.mFontName_property.storeIn (dictionary: &ioDictionary, forKey: "mFontName")
     //--- Atomic property: mFontVersion
-      self.mFontVersion_property.storeIn (dictionary: ioDictionary, forKey: "mFontVersion")
+      self.mFontVersion_property.storeIn (dictionary: &ioDictionary, forKey: "mFontVersion")
     //--- Atomic property: mDescriptiveString
-      self.mDescriptiveString_property.storeIn (dictionary: ioDictionary, forKey: "mDescriptiveString")
+      self.mDescriptiveString_property.storeIn (dictionary: &ioDictionary, forKey: "mDescriptiveString")
   //--- To many property: mComponentNames
     self.store (
       managedObjectArray: self.mComponentNames_property.propval.values,
       relationshipName: "mComponentNames",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: mComponentValues
     self.store (
       managedObjectArray: self.mComponentValues_property.propval.values,
       relationshipName: "mComponentValues",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   }
 

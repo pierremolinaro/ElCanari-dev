@@ -114,14 +114,14 @@ final class BoardModelVia : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: y
-      self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
+      self.y_property.storeIn (dictionary: &ioDictionary, forKey: "y")
     //--- Atomic property: padDiameter
-      self.padDiameter_property.storeIn (dictionary: ioDictionary, forKey: "padDiameter")
+      self.padDiameter_property.storeIn (dictionary: &ioDictionary, forKey: "padDiameter")
     //--- Atomic property: x
-      self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
+      self.x_property.storeIn (dictionary: &ioDictionary, forKey: "x")
   }
 
   //····················································································································

@@ -76,7 +76,7 @@ extension BoardRestrictRectangle {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_BoardRestrictRectangle (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_BoardRestrictRectangle (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

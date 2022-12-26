@@ -85,7 +85,7 @@ extension BoardText {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_BoardText (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_BoardText (_ ioDictionary : inout [String : Any]) {
     ioDictionary [FONT_NAME_IN_DICTIONARY] = self.fontName
   }
 

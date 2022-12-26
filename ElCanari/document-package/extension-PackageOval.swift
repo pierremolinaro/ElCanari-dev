@@ -39,7 +39,7 @@ extension PackageOval {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_PackageOval (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_PackageOval (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

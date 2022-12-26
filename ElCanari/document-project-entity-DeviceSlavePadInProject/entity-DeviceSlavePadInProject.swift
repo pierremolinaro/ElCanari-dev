@@ -318,24 +318,24 @@ final class DeviceSlavePadInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mCenterX
-      self.mCenterX_property.storeIn (dictionary: ioDictionary, forKey: "mCenterX")
+      self.mCenterX_property.storeIn (dictionary: &ioDictionary, forKey: "mCenterX")
     //--- Atomic property: mCenterY
-      self.mCenterY_property.storeIn (dictionary: ioDictionary, forKey: "mCenterY")
+      self.mCenterY_property.storeIn (dictionary: &ioDictionary, forKey: "mCenterY")
     //--- Atomic property: mWidth
-      self.mWidth_property.storeIn (dictionary: ioDictionary, forKey: "mWidth")
+      self.mWidth_property.storeIn (dictionary: &ioDictionary, forKey: "mWidth")
     //--- Atomic property: mHeight
-      self.mHeight_property.storeIn (dictionary: ioDictionary, forKey: "mHeight")
+      self.mHeight_property.storeIn (dictionary: &ioDictionary, forKey: "mHeight")
     //--- Atomic property: mHoleWidth
-      self.mHoleWidth_property.storeIn (dictionary: ioDictionary, forKey: "mHoleWidth")
+      self.mHoleWidth_property.storeIn (dictionary: &ioDictionary, forKey: "mHoleWidth")
     //--- Atomic property: mHoleHeight
-      self.mHoleHeight_property.storeIn (dictionary: ioDictionary, forKey: "mHoleHeight")
+      self.mHoleHeight_property.storeIn (dictionary: &ioDictionary, forKey: "mHoleHeight")
     //--- Atomic property: mShape
-      self.mShape_property.storeIn (dictionary: ioDictionary, forKey: "mShape")
+      self.mShape_property.storeIn (dictionary: &ioDictionary, forKey: "mShape")
     //--- Atomic property: mStyle
-      self.mStyle_property.storeIn (dictionary: ioDictionary, forKey: "mStyle")
+      self.mStyle_property.storeIn (dictionary: &ioDictionary, forKey: "mStyle")
   }
 
   //····················································································································

@@ -31,7 +31,7 @@ extension PackageSegment {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_PackageSegment (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_PackageSegment (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

@@ -61,10 +61,10 @@ final class ForbiddenPadNumber : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: padNumber
-      self.padNumber_property.storeIn (dictionary: ioDictionary, forKey: "padNumber")
+      self.padNumber_property.storeIn (dictionary: &ioDictionary, forKey: "padNumber")
   }
 
   //····················································································································

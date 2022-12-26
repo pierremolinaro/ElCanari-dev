@@ -466,23 +466,23 @@ final class NetInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
   //--- To many property: mPoints
     self.store (
       managedObjectArray: self.mPoints_property.propval.values,
       relationshipName: "mPoints",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
     //--- Atomic property: mNetName
-      self.mNetName_property.storeIn (dictionary: ioDictionary, forKey: "mNetName")
+      self.mNetName_property.storeIn (dictionary: &ioDictionary, forKey: "mNetName")
     //--- Atomic property: mWarnsExactlyOneLabel
-      self.mWarnsExactlyOneLabel_property.storeIn (dictionary: ioDictionary, forKey: "mWarnsExactlyOneLabel")
+      self.mWarnsExactlyOneLabel_property.storeIn (dictionary: &ioDictionary, forKey: "mWarnsExactlyOneLabel")
   //--- To many property: mTracks
     self.store (
       managedObjectArray: self.mTracks_property.propval.values,
       relationshipName: "mTracks",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   }
 

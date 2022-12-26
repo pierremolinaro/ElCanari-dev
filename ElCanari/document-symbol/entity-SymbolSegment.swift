@@ -314,16 +314,16 @@ final class SymbolSegment : SymbolObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: y1
-      self.y1_property.storeIn (dictionary: ioDictionary, forKey: "y1")
+      self.y1_property.storeIn (dictionary: &ioDictionary, forKey: "y1")
     //--- Atomic property: x2
-      self.x2_property.storeIn (dictionary: ioDictionary, forKey: "x2")
+      self.x2_property.storeIn (dictionary: &ioDictionary, forKey: "x2")
     //--- Atomic property: y2
-      self.y2_property.storeIn (dictionary: ioDictionary, forKey: "y2")
+      self.y2_property.storeIn (dictionary: &ioDictionary, forKey: "y2")
     //--- Atomic property: x1
-      self.x1_property.storeIn (dictionary: ioDictionary, forKey: "x1")
+      self.x1_property.storeIn (dictionary: &ioDictionary, forKey: "x1")
   }
 
   //····················································································································
@@ -563,8 +563,8 @@ final class SymbolSegment : SymbolObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_SymbolSegment (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_SymbolSegment (&ioDictionary)
   }
 
   //····················································································································

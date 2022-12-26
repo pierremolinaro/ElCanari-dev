@@ -34,7 +34,7 @@ extension SegmentForFontCharacter {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_SegmentForFontCharacter (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_SegmentForFontCharacter (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

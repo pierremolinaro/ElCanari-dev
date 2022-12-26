@@ -394,34 +394,34 @@ final class SymbolRoot : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: selectedInspector
-      self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
+      self.selectedInspector_property.storeIn (dictionary: &ioDictionary, forKey: "selectedInspector")
     //--- Atomic property: comments
-      self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
+      self.comments_property.storeIn (dictionary: &ioDictionary, forKey: "comments")
     //--- Atomic property: horizontalFlip
-      self.horizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "horizontalFlip")
+      self.horizontalFlip_property.storeIn (dictionary: &ioDictionary, forKey: "horizontalFlip")
     //--- Atomic property: verticalFlip
-      self.verticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "verticalFlip")
+      self.verticalFlip_property.storeIn (dictionary: &ioDictionary, forKey: "verticalFlip")
     //--- Atomic property: gridStyle
-      self.gridStyle_property.storeIn (dictionary: ioDictionary, forKey: "gridStyle")
+      self.gridStyle_property.storeIn (dictionary: &ioDictionary, forKey: "gridStyle")
     //--- Atomic property: gridDisplay
-      self.gridDisplay_property.storeIn (dictionary: ioDictionary, forKey: "gridDisplay")
+      self.gridDisplay_property.storeIn (dictionary: &ioDictionary, forKey: "gridDisplay")
     //--- Atomic property: zoom
-      self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
+      self.zoom_property.storeIn (dictionary: &ioDictionary, forKey: "zoom")
     //--- Atomic property: xPlacardUnit
-      self.xPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "xPlacardUnit")
+      self.xPlacardUnit_property.storeIn (dictionary: &ioDictionary, forKey: "xPlacardUnit")
     //--- Atomic property: yPlacardUnit
-      self.yPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "yPlacardUnit")
+      self.yPlacardUnit_property.storeIn (dictionary: &ioDictionary, forKey: "yPlacardUnit")
   //--- To many property: symbolObjects
     self.store (
       managedObjectArray: self.symbolObjects_property.propval.values,
       relationshipName: "symbolObjects",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
     //--- Atomic property: selectedPageIndex
-      self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
+      self.selectedPageIndex_property.storeIn (dictionary: &ioDictionary, forKey: "selectedPageIndex")
   }
 
   //····················································································································

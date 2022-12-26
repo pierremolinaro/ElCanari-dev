@@ -368,22 +368,22 @@ final class SheetInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
   //--- To many property: mObjects
     self.store (
       managedObjectArray: self.mObjects_property.propval.values,
       relationshipName: "mObjects",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: mPoints
     self.store (
       managedObjectArray: self.mPoints_property.propval.values,
       relationshipName: "mPoints",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
     //--- Atomic property: mSheetTitle
-      self.mSheetTitle_property.storeIn (dictionary: ioDictionary, forKey: "mSheetTitle")
+      self.mSheetTitle_property.storeIn (dictionary: &ioDictionary, forKey: "mSheetTitle")
   }
 
   //····················································································································

@@ -1001,41 +1001,41 @@ final class NetClassInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mNetClassName
-      self.mNetClassName_property.storeIn (dictionary: ioDictionary, forKey: "mNetClassName")
+      self.mNetClassName_property.storeIn (dictionary: &ioDictionary, forKey: "mNetClassName")
     //--- Atomic property: mNetClassColor
-      self.mNetClassColor_property.storeIn (dictionary: ioDictionary, forKey: "mNetClassColor")
+      self.mNetClassColor_property.storeIn (dictionary: &ioDictionary, forKey: "mNetClassColor")
     //--- Atomic property: mTrackWidth
-      self.mTrackWidth_property.storeIn (dictionary: ioDictionary, forKey: "mTrackWidth")
+      self.mTrackWidth_property.storeIn (dictionary: &ioDictionary, forKey: "mTrackWidth")
     //--- Atomic property: mTrackWidthUnit
-      self.mTrackWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mTrackWidthUnit")
+      self.mTrackWidthUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mTrackWidthUnit")
     //--- Atomic property: mViaHoleDiameter
-      self.mViaHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mViaHoleDiameter")
+      self.mViaHoleDiameter_property.storeIn (dictionary: &ioDictionary, forKey: "mViaHoleDiameter")
     //--- Atomic property: mViaHoleDiameterUnit
-      self.mViaHoleDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mViaHoleDiameterUnit")
+      self.mViaHoleDiameterUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mViaHoleDiameterUnit")
     //--- Atomic property: mViaPadDiameter
-      self.mViaPadDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mViaPadDiameter")
+      self.mViaPadDiameter_property.storeIn (dictionary: &ioDictionary, forKey: "mViaPadDiameter")
     //--- Atomic property: mViaPadDiameterUnit
-      self.mViaPadDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mViaPadDiameterUnit")
+      self.mViaPadDiameterUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mViaPadDiameterUnit")
     //--- Atomic property: mAllowTracksOnFrontSide
-      self.mAllowTracksOnFrontSide_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnFrontSide")
+      self.mAllowTracksOnFrontSide_property.storeIn (dictionary: &ioDictionary, forKey: "mAllowTracksOnFrontSide")
     //--- Atomic property: mAllowTracksOnBackSide
-      self.mAllowTracksOnBackSide_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnBackSide")
+      self.mAllowTracksOnBackSide_property.storeIn (dictionary: &ioDictionary, forKey: "mAllowTracksOnBackSide")
     //--- Atomic property: mAllowTracksOnInner1Layer
-      self.mAllowTracksOnInner1Layer_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnInner1Layer")
+      self.mAllowTracksOnInner1Layer_property.storeIn (dictionary: &ioDictionary, forKey: "mAllowTracksOnInner1Layer")
     //--- Atomic property: mAllowTracksOnInner2Layer
-      self.mAllowTracksOnInner2Layer_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnInner2Layer")
+      self.mAllowTracksOnInner2Layer_property.storeIn (dictionary: &ioDictionary, forKey: "mAllowTracksOnInner2Layer")
     //--- Atomic property: mAllowTracksOnInner3Layer
-      self.mAllowTracksOnInner3Layer_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnInner3Layer")
+      self.mAllowTracksOnInner3Layer_property.storeIn (dictionary: &ioDictionary, forKey: "mAllowTracksOnInner3Layer")
     //--- Atomic property: mAllowTracksOnInner4Layer
-      self.mAllowTracksOnInner4Layer_property.storeIn (dictionary: ioDictionary, forKey: "mAllowTracksOnInner4Layer")
+      self.mAllowTracksOnInner4Layer_property.storeIn (dictionary: &ioDictionary, forKey: "mAllowTracksOnInner4Layer")
   //--- To many property: mNets
     self.store (
       managedObjectArray: self.mNets_property.propval.values,
       relationshipName: "mNets",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   }
 

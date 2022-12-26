@@ -547,28 +547,28 @@ final class BoardRestrictRectangle : BoardObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mY
-      self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
+      self.mY_property.storeIn (dictionary: &ioDictionary, forKey: "mY")
     //--- Atomic property: mWidth
-      self.mWidth_property.storeIn (dictionary: ioDictionary, forKey: "mWidth")
+      self.mWidth_property.storeIn (dictionary: &ioDictionary, forKey: "mWidth")
     //--- Atomic property: mHeight
-      self.mHeight_property.storeIn (dictionary: ioDictionary, forKey: "mHeight")
+      self.mHeight_property.storeIn (dictionary: &ioDictionary, forKey: "mHeight")
     //--- Atomic property: mIsInFrontLayer
-      self.mIsInFrontLayer_property.storeIn (dictionary: ioDictionary, forKey: "mIsInFrontLayer")
+      self.mIsInFrontLayer_property.storeIn (dictionary: &ioDictionary, forKey: "mIsInFrontLayer")
     //--- Atomic property: mIsInBackLayer
-      self.mIsInBackLayer_property.storeIn (dictionary: ioDictionary, forKey: "mIsInBackLayer")
+      self.mIsInBackLayer_property.storeIn (dictionary: &ioDictionary, forKey: "mIsInBackLayer")
     //--- Atomic property: mIsInInner1Layer
-      self.mIsInInner1Layer_property.storeIn (dictionary: ioDictionary, forKey: "mIsInInner1Layer")
+      self.mIsInInner1Layer_property.storeIn (dictionary: &ioDictionary, forKey: "mIsInInner1Layer")
     //--- Atomic property: mIsInInner2Layer
-      self.mIsInInner2Layer_property.storeIn (dictionary: ioDictionary, forKey: "mIsInInner2Layer")
+      self.mIsInInner2Layer_property.storeIn (dictionary: &ioDictionary, forKey: "mIsInInner2Layer")
     //--- Atomic property: mIsInInner3Layer
-      self.mIsInInner3Layer_property.storeIn (dictionary: ioDictionary, forKey: "mIsInInner3Layer")
+      self.mIsInInner3Layer_property.storeIn (dictionary: &ioDictionary, forKey: "mIsInInner3Layer")
     //--- Atomic property: mIsInInner4Layer
-      self.mIsInInner4Layer_property.storeIn (dictionary: ioDictionary, forKey: "mIsInInner4Layer")
+      self.mIsInInner4Layer_property.storeIn (dictionary: &ioDictionary, forKey: "mIsInInner4Layer")
     //--- Atomic property: mX
-      self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
+      self.mX_property.storeIn (dictionary: &ioDictionary, forKey: "mX")
   }
 
   //····················································································································
@@ -843,8 +843,8 @@ final class BoardRestrictRectangle : BoardObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_BoardRestrictRectangle (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_BoardRestrictRectangle (&ioDictionary)
   }
 
   //····················································································································

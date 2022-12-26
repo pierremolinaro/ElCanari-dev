@@ -192,14 +192,15 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mPadName
-      self.mPadName_property.storeIn (dictionary: ioDictionary, forKey: "mPadName")
+      self.mPadName_property.storeIn (dictionary: &ioDictionary, forKey: "mPadName")
   //--- To one property: mPin
-    self.store (managedObject:self.mPin_property.propval,
+    self.store (managedObject: self.mPin_property.propval,
       relationshipName: "mPin",
-      intoDictionary: ioDictionary)
+      intoDictionary: &ioDictionary
+    )
   }
 
   //····················································································································

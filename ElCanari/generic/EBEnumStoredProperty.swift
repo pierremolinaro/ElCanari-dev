@@ -69,8 +69,9 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   //····················································································································
 
-  func storeIn (dictionary : NSMutableDictionary, forKey inKey : String) {
-    dictionary.setValue (mValue.convertToNSObject (), forKey:inKey)
+  func storeIn (dictionary ioDictionary : inout [String : Any], forKey inKey : String) {
+    ioDictionary [inKey] = self.mValue.convertToNSObject ()
+//    dictionary.setValue (mValue.convertToNSObject (), forKey:inKey)
   }
 
   //····················································································································

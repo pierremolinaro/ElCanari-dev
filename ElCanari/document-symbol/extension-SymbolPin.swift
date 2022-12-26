@@ -36,7 +36,7 @@ extension SymbolPin {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_SymbolPin (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_SymbolPin (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

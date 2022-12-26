@@ -314,16 +314,16 @@ final class SymbolOval : SymbolObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: y
-      self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
+      self.y_property.storeIn (dictionary: &ioDictionary, forKey: "y")
     //--- Atomic property: width
-      self.width_property.storeIn (dictionary: ioDictionary, forKey: "width")
+      self.width_property.storeIn (dictionary: &ioDictionary, forKey: "width")
     //--- Atomic property: height
-      self.height_property.storeIn (dictionary: ioDictionary, forKey: "height")
+      self.height_property.storeIn (dictionary: &ioDictionary, forKey: "height")
     //--- Atomic property: x
-      self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
+      self.x_property.storeIn (dictionary: &ioDictionary, forKey: "x")
   }
 
   //····················································································································
@@ -563,8 +563,8 @@ final class SymbolOval : SymbolObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_SymbolOval (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_SymbolOval (&ioDictionary)
   }
 
   //····················································································································

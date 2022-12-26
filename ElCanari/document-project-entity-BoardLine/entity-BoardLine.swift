@@ -430,30 +430,30 @@ final class BoardLine : BoardObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mWidthUnit
-      self.mWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mWidthUnit")
+      self.mWidthUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mWidthUnit")
     //--- Atomic property: mX1
-      self.mX1_property.storeIn (dictionary: ioDictionary, forKey: "mX1")
+      self.mX1_property.storeIn (dictionary: &ioDictionary, forKey: "mX1")
     //--- Atomic property: mX1Unit
-      self.mX1Unit_property.storeIn (dictionary: ioDictionary, forKey: "mX1Unit")
+      self.mX1Unit_property.storeIn (dictionary: &ioDictionary, forKey: "mX1Unit")
     //--- Atomic property: mY1
-      self.mY1_property.storeIn (dictionary: ioDictionary, forKey: "mY1")
+      self.mY1_property.storeIn (dictionary: &ioDictionary, forKey: "mY1")
     //--- Atomic property: mY1Unit
-      self.mY1Unit_property.storeIn (dictionary: ioDictionary, forKey: "mY1Unit")
+      self.mY1Unit_property.storeIn (dictionary: &ioDictionary, forKey: "mY1Unit")
     //--- Atomic property: mX2
-      self.mX2_property.storeIn (dictionary: ioDictionary, forKey: "mX2")
+      self.mX2_property.storeIn (dictionary: &ioDictionary, forKey: "mX2")
     //--- Atomic property: mX2Unit
-      self.mX2Unit_property.storeIn (dictionary: ioDictionary, forKey: "mX2Unit")
+      self.mX2Unit_property.storeIn (dictionary: &ioDictionary, forKey: "mX2Unit")
     //--- Atomic property: mY2
-      self.mY2_property.storeIn (dictionary: ioDictionary, forKey: "mY2")
+      self.mY2_property.storeIn (dictionary: &ioDictionary, forKey: "mY2")
     //--- Atomic property: mY2Unit
-      self.mY2Unit_property.storeIn (dictionary: ioDictionary, forKey: "mY2Unit")
+      self.mY2Unit_property.storeIn (dictionary: &ioDictionary, forKey: "mY2Unit")
     //--- Atomic property: mLayer
-      self.mLayer_property.storeIn (dictionary: ioDictionary, forKey: "mLayer")
+      self.mLayer_property.storeIn (dictionary: &ioDictionary, forKey: "mLayer")
     //--- Atomic property: mWidth
-      self.mWidth_property.storeIn (dictionary: ioDictionary, forKey: "mWidth")
+      self.mWidth_property.storeIn (dictionary: &ioDictionary, forKey: "mWidth")
   }
 
   //····················································································································
@@ -736,8 +736,8 @@ final class BoardLine : BoardObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_BoardLine (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_BoardLine (&ioDictionary)
   }
 
   //····················································································································

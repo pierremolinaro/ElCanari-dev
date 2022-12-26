@@ -329,20 +329,20 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mFirstX
-      self.mFirstX_property.storeIn (dictionary: ioDictionary, forKey: "mFirstX")
+      self.mFirstX_property.storeIn (dictionary: &ioDictionary, forKey: "mFirstX")
     //--- Atomic property: mFirstY
-      self.mFirstY_property.storeIn (dictionary: ioDictionary, forKey: "mFirstY")
+      self.mFirstY_property.storeIn (dictionary: &ioDictionary, forKey: "mFirstY")
     //--- Atomic property: mFirstColor
-      self.mFirstColor_property.storeIn (dictionary: ioDictionary, forKey: "mFirstColor")
+      self.mFirstColor_property.storeIn (dictionary: &ioDictionary, forKey: "mFirstColor")
     //--- Atomic property: mSecondDx
-      self.mSecondDx_property.storeIn (dictionary: ioDictionary, forKey: "mSecondDx")
+      self.mSecondDx_property.storeIn (dictionary: &ioDictionary, forKey: "mSecondDx")
     //--- Atomic property: mSecondDy
-      self.mSecondDy_property.storeIn (dictionary: ioDictionary, forKey: "mSecondDy")
+      self.mSecondDy_property.storeIn (dictionary: &ioDictionary, forKey: "mSecondDy")
     //--- Atomic property: mSecondColor
-      self.mSecondColor_property.storeIn (dictionary: ioDictionary, forKey: "mSecondColor")
+      self.mSecondColor_property.storeIn (dictionary: &ioDictionary, forKey: "mSecondColor")
   }
 
   //····················································································································
@@ -619,8 +619,8 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_PackageModelImageDoublePoint (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_PackageModelImageDoublePoint (&ioDictionary)
   }
 
   //····················································································································

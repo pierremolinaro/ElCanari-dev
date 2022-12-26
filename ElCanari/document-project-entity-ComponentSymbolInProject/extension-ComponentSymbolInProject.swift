@@ -72,7 +72,7 @@ extension ComponentSymbolInProject {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_ComponentSymbolInProject (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_ComponentSymbolInProject (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

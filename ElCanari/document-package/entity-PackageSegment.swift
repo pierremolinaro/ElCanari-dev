@@ -499,26 +499,26 @@ final class PackageSegment : PackageObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: y1
-      self.y1_property.storeIn (dictionary: ioDictionary, forKey: "y1")
+      self.y1_property.storeIn (dictionary: &ioDictionary, forKey: "y1")
     //--- Atomic property: x2
-      self.x2_property.storeIn (dictionary: ioDictionary, forKey: "x2")
+      self.x2_property.storeIn (dictionary: &ioDictionary, forKey: "x2")
     //--- Atomic property: y2
-      self.y2_property.storeIn (dictionary: ioDictionary, forKey: "y2")
+      self.y2_property.storeIn (dictionary: &ioDictionary, forKey: "y2")
     //--- Atomic property: x1Unit
-      self.x1Unit_property.storeIn (dictionary: ioDictionary, forKey: "x1Unit")
+      self.x1Unit_property.storeIn (dictionary: &ioDictionary, forKey: "x1Unit")
     //--- Atomic property: y1Unit
-      self.y1Unit_property.storeIn (dictionary: ioDictionary, forKey: "y1Unit")
+      self.y1Unit_property.storeIn (dictionary: &ioDictionary, forKey: "y1Unit")
     //--- Atomic property: x2Unit
-      self.x2Unit_property.storeIn (dictionary: ioDictionary, forKey: "x2Unit")
+      self.x2Unit_property.storeIn (dictionary: &ioDictionary, forKey: "x2Unit")
     //--- Atomic property: y2Unit
-      self.y2Unit_property.storeIn (dictionary: ioDictionary, forKey: "y2Unit")
+      self.y2Unit_property.storeIn (dictionary: &ioDictionary, forKey: "y2Unit")
     //--- Atomic property: lengthUnit
-      self.lengthUnit_property.storeIn (dictionary: ioDictionary, forKey: "lengthUnit")
+      self.lengthUnit_property.storeIn (dictionary: &ioDictionary, forKey: "lengthUnit")
     //--- Atomic property: x1
-      self.x1_property.storeIn (dictionary: ioDictionary, forKey: "x1")
+      self.x1_property.storeIn (dictionary: &ioDictionary, forKey: "x1")
   }
 
   //····················································································································
@@ -803,8 +803,8 @@ final class PackageSegment : PackageObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_PackageSegment (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_PackageSegment (&ioDictionary)
   }
 
   //····················································································································

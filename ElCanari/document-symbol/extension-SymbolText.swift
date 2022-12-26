@@ -28,7 +28,7 @@ extension SymbolText {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_SymbolText (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_SymbolText (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

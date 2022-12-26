@@ -174,14 +174,15 @@ final class NCInSchematic : SchematicObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mOrientation
-      self.mOrientation_property.storeIn (dictionary: ioDictionary, forKey: "mOrientation")
+      self.mOrientation_property.storeIn (dictionary: &ioDictionary, forKey: "mOrientation")
   //--- To one property: mPoint // Opposite is toOne mNC
-    self.store (managedObject:self.mPoint_property.propval,
+    self.store (managedObject: self.mPoint_property.propval,
       relationshipName: "mPoint",
-      intoDictionary: ioDictionary)
+      intoDictionary: &ioDictionary
+    )
   }
 
   //····················································································································
@@ -418,8 +419,8 @@ final class NCInSchematic : SchematicObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_NCInSchematic (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_NCInSchematic (&ioDictionary)
   }
 
   //····················································································································

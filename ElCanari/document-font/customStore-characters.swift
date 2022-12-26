@@ -14,8 +14,7 @@ let FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY = "-characters-"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func customStore_FontCharacter_characters (_ inCharacters : [FontCharacter],
-                                                      intoDictionary inDictionary : NSMutableDictionary?) -> String {
+@MainActor func customStore_FontCharacter_characters (_ inCharacters : [FontCharacter]) -> String {
   var s = ""
   for char in inCharacters {
     s += "|"
@@ -38,8 +37,41 @@ let FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY = "-characters-"
     }
   }
   // Swift.print ("STR: '\(s)'")
-  inDictionary?.setValue (s, forKey: FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY)
+//  ioDictionary? [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] = s
+//  inDictionary?.setValue (s, forKey: FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY)
   return s
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor func customStore_FontCharacter_characters (_ inCharacters : [FontCharacter],
+                                                      intoDictionary ioDictionary : inout [String : Any]) {
+  let s = customStore_FontCharacter_characters (inCharacters)
+//  var s = ""
+//  for char in inCharacters {
+//    s += "|"
+//    s += "\(char.codePoint):"
+//    s += "\(char.advance):"
+//    s += char.mWarnsWhenAdvanceIsZero ? "1:" : "0:"
+//    s += char.mWarnsWhenNoSegment ? "1" : "0"
+//    var x = Int.min
+//    var y = Int.min
+//    for segment in char.segments_property.propval.values {
+//      if (segment.x1 == x) && (segment.y1 == y) {
+//        s += ">\(segment.x2) \(segment.y2)"
+//      }else if (segment.x1 == segment.x2) && (segment.y1 == segment.y2) {
+//        s += ",\(segment.x1) \(segment.y1)"
+//      }else{
+//        s += ",\(segment.x1) \(segment.y1)>\(segment.x2) \(segment.y2)"
+//      }
+//      x = segment.x2
+//      y = segment.y2
+//    }
+//  }
+  // Swift.print ("STR: '\(s)'")
+  ioDictionary [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] = s
+//  inDictionary?.setValue (s, forKey: FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY)
+//  return s
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

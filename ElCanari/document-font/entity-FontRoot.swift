@@ -491,20 +491,20 @@ final class FontRoot : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: comments
-      self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
+      self.comments_property.storeIn (dictionary: &ioDictionary, forKey: "comments")
     //--- Atomic property: nominalSize
-      self.nominalSize_property.storeIn (dictionary: ioDictionary, forKey: "nominalSize")
+      self.nominalSize_property.storeIn (dictionary: &ioDictionary, forKey: "nominalSize")
     //--- Atomic property: selectedTab
-      self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey: "selectedTab")
+      self.selectedTab_property.storeIn (dictionary: &ioDictionary, forKey: "selectedTab")
     //--- Atomic property: selectedInspector
-      self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
+      self.selectedInspector_property.storeIn (dictionary: &ioDictionary, forKey: "selectedInspector")
     //--- Atomic property: currentCharacterCodePoint
-      self.currentCharacterCodePoint_property.storeIn (dictionary: ioDictionary, forKey: "currentCharacterCodePoint")
+      self.currentCharacterCodePoint_property.storeIn (dictionary: &ioDictionary, forKey: "currentCharacterCodePoint")
   //--- To many property: characters (Custom store)
-    _ = customStore_FontCharacter_characters (self.characters_property.propval.values, intoDictionary: ioDictionary)
+    customStore_FontCharacter_characters (self.characters_property.propval.values, intoDictionary: &ioDictionary)
   }
 
   //····················································································································
@@ -573,7 +573,7 @@ final class FontRoot : EBManagedObject,
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
-    ioData.append (customStore_FontCharacter_characters (self.characters_property.propval.values, intoDictionary: nil).data (using: .utf8)!)
+    ioData.append (customStore_FontCharacter_characters (self.characters_property.propval.values).data (using: .utf8)!)
     ioData.append (ascii: .lineFeed)
   }
 

@@ -612,25 +612,25 @@ final class PackageInDevice : EBGraphicManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mFileData
-      self.mFileData_property.storeIn (dictionary: ioDictionary, forKey: "mFileData")
+      self.mFileData_property.storeIn (dictionary: &ioDictionary, forKey: "mFileData")
     //--- Atomic property: mName
-      self.mName_property.storeIn (dictionary: ioDictionary, forKey: "mName")
+      self.mName_property.storeIn (dictionary: &ioDictionary, forKey: "mName")
     //--- Atomic property: mVersion
-      self.mVersion_property.storeIn (dictionary: ioDictionary, forKey: "mVersion")
+      self.mVersion_property.storeIn (dictionary: &ioDictionary, forKey: "mVersion")
     //--- Atomic property: mStrokeBezierPath
-      self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mStrokeBezierPath")
+      self.mStrokeBezierPath_property.storeIn (dictionary: &ioDictionary, forKey: "mStrokeBezierPath")
     //--- Atomic property: mX
-      self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
+      self.mX_property.storeIn (dictionary: &ioDictionary, forKey: "mX")
     //--- Atomic property: mY
-      self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
+      self.mY_property.storeIn (dictionary: &ioDictionary, forKey: "mY")
   //--- To many property: mMasterPads
     self.store (
       managedObjectArray: self.mMasterPads_property.propval.values,
       relationshipName: "mMasterPads",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   }
 
@@ -956,8 +956,8 @@ final class PackageInDevice : EBGraphicManagedObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_PackageInDevice (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_PackageInDevice (&ioDictionary)
   }
 
   //····················································································································

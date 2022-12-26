@@ -1022,67 +1022,67 @@ final class DeviceRoot : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mSelectedPageIndex
-      self.mSelectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "mSelectedPageIndex")
+      self.mSelectedPageIndex_property.storeIn (dictionary: &ioDictionary, forKey: "mSelectedPageIndex")
     //--- Atomic property: mSelectedSymbolInspectorIndex
-      self.mSelectedSymbolInspectorIndex_property.storeIn (dictionary: ioDictionary, forKey: "mSelectedSymbolInspectorIndex")
+      self.mSelectedSymbolInspectorIndex_property.storeIn (dictionary: &ioDictionary, forKey: "mSelectedSymbolInspectorIndex")
     //--- Atomic property: mSelectedPackageInspectorIndex
-      self.mSelectedPackageInspectorIndex_property.storeIn (dictionary: ioDictionary, forKey: "mSelectedPackageInspectorIndex")
+      self.mSelectedPackageInspectorIndex_property.storeIn (dictionary: &ioDictionary, forKey: "mSelectedPackageInspectorIndex")
     //--- Atomic property: mTitle
-      self.mTitle_property.storeIn (dictionary: ioDictionary, forKey: "mTitle")
+      self.mTitle_property.storeIn (dictionary: &ioDictionary, forKey: "mTitle")
     //--- Atomic property: mImageData
-      self.mImageData_property.storeIn (dictionary: ioDictionary, forKey: "mImageData")
+      self.mImageData_property.storeIn (dictionary: &ioDictionary, forKey: "mImageData")
     //--- Atomic property: mPrefix
-      self.mPrefix_property.storeIn (dictionary: ioDictionary, forKey: "mPrefix")
+      self.mPrefix_property.storeIn (dictionary: &ioDictionary, forKey: "mPrefix")
     //--- Atomic property: mComments
-      self.mComments_property.storeIn (dictionary: ioDictionary, forKey: "mComments")
+      self.mComments_property.storeIn (dictionary: &ioDictionary, forKey: "mComments")
     //--- Atomic property: mPackageDisplayZoom
-      self.mPackageDisplayZoom_property.storeIn (dictionary: ioDictionary, forKey: "mPackageDisplayZoom")
+      self.mPackageDisplayZoom_property.storeIn (dictionary: &ioDictionary, forKey: "mPackageDisplayZoom")
     //--- Atomic property: mPackageDisplayHorizontalFlip
-      self.mPackageDisplayHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mPackageDisplayHorizontalFlip")
+      self.mPackageDisplayHorizontalFlip_property.storeIn (dictionary: &ioDictionary, forKey: "mPackageDisplayHorizontalFlip")
     //--- Atomic property: mPackageDisplayVerticalFlip
-      self.mPackageDisplayVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mPackageDisplayVerticalFlip")
+      self.mPackageDisplayVerticalFlip_property.storeIn (dictionary: &ioDictionary, forKey: "mPackageDisplayVerticalFlip")
     //--- Atomic property: mShowPackages
-      self.mShowPackages_property.storeIn (dictionary: ioDictionary, forKey: "mShowPackages")
+      self.mShowPackages_property.storeIn (dictionary: &ioDictionary, forKey: "mShowPackages")
     //--- Atomic property: mShowPackagePadNumbers
-      self.mShowPackagePadNumbers_property.storeIn (dictionary: ioDictionary, forKey: "mShowPackagePadNumbers")
+      self.mShowPackagePadNumbers_property.storeIn (dictionary: &ioDictionary, forKey: "mShowPackagePadNumbers")
     //--- Atomic property: mShowPackageFrontPads
-      self.mShowPackageFrontPads_property.storeIn (dictionary: ioDictionary, forKey: "mShowPackageFrontPads")
+      self.mShowPackageFrontPads_property.storeIn (dictionary: &ioDictionary, forKey: "mShowPackageFrontPads")
     //--- Atomic property: mShowPackageBackPads
-      self.mShowPackageBackPads_property.storeIn (dictionary: ioDictionary, forKey: "mShowPackageBackPads")
+      self.mShowPackageBackPads_property.storeIn (dictionary: &ioDictionary, forKey: "mShowPackageBackPads")
     //--- Atomic property: mSymbolDisplayZoom
-      self.mSymbolDisplayZoom_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolDisplayZoom")
+      self.mSymbolDisplayZoom_property.storeIn (dictionary: &ioDictionary, forKey: "mSymbolDisplayZoom")
   //--- To many property: mDocs
     self.store (
       managedObjectArray: self.mDocs_property.propval.values,
       relationshipName: "mDocs",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: mSymbolInstances
     self.store (
       managedObjectArray: self.mSymbolInstances_property.propval.values,
       relationshipName: "mSymbolInstances",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: mPackages
     self.store (
       managedObjectArray: self.mPackages_property.propval.values,
       relationshipName: "mPackages",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: mSymbolTypes
     self.store (
       managedObjectArray: self.mSymbolTypes_property.propval.values,
       relationshipName: "mSymbolTypes",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: mPadProxies
     self.store (
       managedObjectArray: self.mPadProxies_property.propval.values,
       relationshipName: "mPadProxies",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   }
 

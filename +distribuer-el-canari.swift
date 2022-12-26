@@ -217,10 +217,9 @@ do{
   let nomArchive = PRODUCT_NAME + "-" + VERSION_CANARI
   runCommand ("/bin/mkdir", [nomArchive])
 //  runCommand ("/bin/cp", [packageFile, nomArchive])
-  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/" + PRODUCT_NAME + ".app", nomArchive])
   runCommand ("/bin/ln", ["-s", "/Applications", nomArchive + "/Applications"])
+  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/" + PRODUCT_NAME + ".app", nomArchive])
   runCommand ("/usr/bin/hdiutil", ["create", "-srcfolder", nomArchive, "../" + nomArchive + ".dmg", "-format", "ULMO"]) // , "-fs", "HFS+"
-//  runCommand ("/bin/mv", [nomArchive + ".dmg", "../" + nomArchive + ".dmg"]
 //-------------------- Supprimer le fichier .pkg
 //  runCommand ("/bin/rm", [DISTRIBUTION_DIR + "/" + packageFile])
 //-------------------- Calculer la clé de la somme de contrôle de l'archive DMG pour Sparkle

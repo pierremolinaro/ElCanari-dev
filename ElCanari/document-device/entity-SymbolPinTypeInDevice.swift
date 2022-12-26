@@ -399,33 +399,33 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mPinX
-      self.mPinX_property.storeIn (dictionary: ioDictionary, forKey: "mPinX")
+      self.mPinX_property.storeIn (dictionary: &ioDictionary, forKey: "mPinX")
     //--- Atomic property: mPinY
-      self.mPinY_property.storeIn (dictionary: ioDictionary, forKey: "mPinY")
+      self.mPinY_property.storeIn (dictionary: &ioDictionary, forKey: "mPinY")
     //--- Atomic property: mXName
-      self.mXName_property.storeIn (dictionary: ioDictionary, forKey: "mXName")
+      self.mXName_property.storeIn (dictionary: &ioDictionary, forKey: "mXName")
     //--- Atomic property: mYName
-      self.mYName_property.storeIn (dictionary: ioDictionary, forKey: "mYName")
+      self.mYName_property.storeIn (dictionary: &ioDictionary, forKey: "mYName")
     //--- Atomic property: mName
-      self.mName_property.storeIn (dictionary: ioDictionary, forKey: "mName")
+      self.mName_property.storeIn (dictionary: &ioDictionary, forKey: "mName")
     //--- Atomic property: mNameHorizontalAlignment
-      self.mNameHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mNameHorizontalAlignment")
+      self.mNameHorizontalAlignment_property.storeIn (dictionary: &ioDictionary, forKey: "mNameHorizontalAlignment")
     //--- Atomic property: mPinNameIsDisplayedInSchematics
-      self.mPinNameIsDisplayedInSchematics_property.storeIn (dictionary: ioDictionary, forKey: "mPinNameIsDisplayedInSchematics")
+      self.mPinNameIsDisplayedInSchematics_property.storeIn (dictionary: &ioDictionary, forKey: "mPinNameIsDisplayedInSchematics")
     //--- Atomic property: mXNumber
-      self.mXNumber_property.storeIn (dictionary: ioDictionary, forKey: "mXNumber")
+      self.mXNumber_property.storeIn (dictionary: &ioDictionary, forKey: "mXNumber")
     //--- Atomic property: mYNumber
-      self.mYNumber_property.storeIn (dictionary: ioDictionary, forKey: "mYNumber")
+      self.mYNumber_property.storeIn (dictionary: &ioDictionary, forKey: "mYNumber")
     //--- Atomic property: mNumberHorizontalAlignment
-      self.mNumberHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mNumberHorizontalAlignment")
+      self.mNumberHorizontalAlignment_property.storeIn (dictionary: &ioDictionary, forKey: "mNumberHorizontalAlignment")
   //--- To many property: mInstances
     self.store (
       managedObjectArray: self.mInstances_property.propval.values,
       relationshipName: "mInstances",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   }
 

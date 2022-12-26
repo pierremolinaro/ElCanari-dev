@@ -95,7 +95,7 @@ extension LabelInSchematic {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_LabelInSchematic (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_LabelInSchematic (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

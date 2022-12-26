@@ -102,7 +102,7 @@ extension ComponentInProject {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_ComponentInProject (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_ComponentInProject (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

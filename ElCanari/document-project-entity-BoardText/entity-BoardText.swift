@@ -658,28 +658,28 @@ final class BoardText : BoardObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mX
-      self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
+      self.mX_property.storeIn (dictionary: &ioDictionary, forKey: "mX")
     //--- Atomic property: mY
-      self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
+      self.mY_property.storeIn (dictionary: &ioDictionary, forKey: "mY")
     //--- Atomic property: mFontSize
-      self.mFontSize_property.storeIn (dictionary: ioDictionary, forKey: "mFontSize")
+      self.mFontSize_property.storeIn (dictionary: &ioDictionary, forKey: "mFontSize")
     //--- Atomic property: mLayer
-      self.mLayer_property.storeIn (dictionary: ioDictionary, forKey: "mLayer")
+      self.mLayer_property.storeIn (dictionary: &ioDictionary, forKey: "mLayer")
     //--- Atomic property: mText
-      self.mText_property.storeIn (dictionary: ioDictionary, forKey: "mText")
+      self.mText_property.storeIn (dictionary: &ioDictionary, forKey: "mText")
     //--- Atomic property: mHorizontalAlignment
-      self.mHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mHorizontalAlignment")
+      self.mHorizontalAlignment_property.storeIn (dictionary: &ioDictionary, forKey: "mHorizontalAlignment")
     //--- Atomic property: mVerticalAlignment
-      self.mVerticalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mVerticalAlignment")
+      self.mVerticalAlignment_property.storeIn (dictionary: &ioDictionary, forKey: "mVerticalAlignment")
     //--- Atomic property: mRotation
-      self.mRotation_property.storeIn (dictionary: ioDictionary, forKey: "mRotation")
+      self.mRotation_property.storeIn (dictionary: &ioDictionary, forKey: "mRotation")
     //--- Atomic property: mWeight
-      self.mWeight_property.storeIn (dictionary: ioDictionary, forKey: "mWeight")
+      self.mWeight_property.storeIn (dictionary: &ioDictionary, forKey: "mWeight")
     //--- Atomic property: mOblique
-      self.mOblique_property.storeIn (dictionary: ioDictionary, forKey: "mOblique")
+      self.mOblique_property.storeIn (dictionary: &ioDictionary, forKey: "mOblique")
   }
 
   //····················································································································
@@ -988,8 +988,8 @@ final class BoardText : BoardObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_BoardText (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_BoardText (&ioDictionary)
   }
 
   //····················································································································

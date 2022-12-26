@@ -139,7 +139,7 @@ extension PackagePad {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_PackagePad (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_PackagePad (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

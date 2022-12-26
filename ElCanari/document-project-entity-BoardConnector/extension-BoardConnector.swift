@@ -40,7 +40,7 @@ extension BoardConnector {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_BoardConnector (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_BoardConnector (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

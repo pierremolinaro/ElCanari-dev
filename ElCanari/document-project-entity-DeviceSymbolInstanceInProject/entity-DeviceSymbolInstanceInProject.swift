@@ -270,14 +270,15 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mSymbolInstanceName
-      self.mSymbolInstanceName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolInstanceName")
+      self.mSymbolInstanceName_property.storeIn (dictionary: &ioDictionary, forKey: "mSymbolInstanceName")
   //--- To one property: mSymbolType
-    self.store (managedObject:self.mSymbolType_property.propval,
+    self.store (managedObject: self.mSymbolType_property.propval,
       relationshipName: "mSymbolType",
-      intoDictionary: ioDictionary)
+      intoDictionary: &ioDictionary
+    )
   }
 
   //····················································································································

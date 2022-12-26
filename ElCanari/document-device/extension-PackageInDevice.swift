@@ -36,7 +36,7 @@ extension PackageInDevice {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_PackageInDevice (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_PackageInDevice (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

@@ -40,7 +40,7 @@ extension BoardLine {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_BoardLine (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_BoardLine (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

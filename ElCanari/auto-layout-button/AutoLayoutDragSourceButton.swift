@@ -169,8 +169,8 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
           r.origin.x += mouseDownLocation.x
           r.origin.y += mouseDownLocation.y
         //--- Associated data
-          let dict = NSMutableDictionary ()
-          temporaryObject.saveIntoDictionary (dict)
+          var dict = [String : Any] ()
+          temporaryObject.saveIntoDictionary (&dict)
           let dataDictionary : NSDictionary = [
             OBJECT_DICTIONARY_KEY : [dict],
             OBJECT_ADDITIONAL_DICTIONARY_KEY : [additionalDict],

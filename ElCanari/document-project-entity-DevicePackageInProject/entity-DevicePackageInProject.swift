@@ -145,18 +145,18 @@ final class DevicePackageInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
   //--- To many property: mMasterPads
     self.store (
       managedObjectArray: self.mMasterPads_property.propval.values,
       relationshipName: "mMasterPads",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
     //--- Atomic property: mPackageName
-      self.mPackageName_property.storeIn (dictionary: ioDictionary, forKey: "mPackageName")
+      self.mPackageName_property.storeIn (dictionary: &ioDictionary, forKey: "mPackageName")
     //--- Atomic property: mStrokeBezierPath
-      self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mStrokeBezierPath")
+      self.mStrokeBezierPath_property.storeIn (dictionary: &ioDictionary, forKey: "mStrokeBezierPath")
   }
 
   //····················································································································

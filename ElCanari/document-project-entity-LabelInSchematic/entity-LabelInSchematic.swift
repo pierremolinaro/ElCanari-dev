@@ -309,10 +309,10 @@ final class LabelInSchematic : SchematicObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mOrientation
-      self.mOrientation_property.storeIn (dictionary: ioDictionary, forKey: "mOrientation")
+      self.mOrientation_property.storeIn (dictionary: &ioDictionary, forKey: "mOrientation")
   }
 
   //····················································································································
@@ -549,8 +549,8 @@ final class LabelInSchematic : SchematicObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_LabelInSchematic (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_LabelInSchematic (&ioDictionary)
   }
 
   //····················································································································

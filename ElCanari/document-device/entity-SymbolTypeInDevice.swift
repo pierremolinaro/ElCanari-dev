@@ -380,29 +380,29 @@ final class SymbolTypeInDevice : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
   //--- To many property: mInstances
     self.store (
       managedObjectArray: self.mInstances_property.propval.values,
       relationshipName: "mInstances",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
     //--- Atomic property: mTypeName
-      self.mTypeName_property.storeIn (dictionary: ioDictionary, forKey: "mTypeName")
+      self.mTypeName_property.storeIn (dictionary: &ioDictionary, forKey: "mTypeName")
     //--- Atomic property: mVersion
-      self.mVersion_property.storeIn (dictionary: ioDictionary, forKey: "mVersion")
+      self.mVersion_property.storeIn (dictionary: &ioDictionary, forKey: "mVersion")
     //--- Atomic property: mFileData
-      self.mFileData_property.storeIn (dictionary: ioDictionary, forKey: "mFileData")
+      self.mFileData_property.storeIn (dictionary: &ioDictionary, forKey: "mFileData")
     //--- Atomic property: mStrokeBezierPath
-      self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mStrokeBezierPath")
+      self.mStrokeBezierPath_property.storeIn (dictionary: &ioDictionary, forKey: "mStrokeBezierPath")
     //--- Atomic property: mFilledBezierPath
-      self.mFilledBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mFilledBezierPath")
+      self.mFilledBezierPath_property.storeIn (dictionary: &ioDictionary, forKey: "mFilledBezierPath")
   //--- To many property: mPinTypes
     self.store (
       managedObjectArray: self.mPinTypes_property.propval.values,
       relationshipName: "mPinTypes",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   }
 

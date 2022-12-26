@@ -36,7 +36,7 @@ extension SymbolInstanceInDevice {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_SymbolInstanceInDevice (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_SymbolInstanceInDevice (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

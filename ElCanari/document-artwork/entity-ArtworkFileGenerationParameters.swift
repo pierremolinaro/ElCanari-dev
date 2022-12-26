@@ -1082,64 +1082,64 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: drawBoardLimits
-      self.drawBoardLimits_property.storeIn (dictionary: ioDictionary, forKey: "drawBoardLimits")
+      self.drawBoardLimits_property.storeIn (dictionary: &ioDictionary, forKey: "drawBoardLimits")
     //--- Atomic property: drawInternalBoardLimits
-      self.drawInternalBoardLimits_property.storeIn (dictionary: ioDictionary, forKey: "drawInternalBoardLimits")
+      self.drawInternalBoardLimits_property.storeIn (dictionary: &ioDictionary, forKey: "drawInternalBoardLimits")
     //--- Atomic property: drawComponentNamesTopSide
-      self.drawComponentNamesTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentNamesTopSide")
+      self.drawComponentNamesTopSide_property.storeIn (dictionary: &ioDictionary, forKey: "drawComponentNamesTopSide")
     //--- Atomic property: drawComponentNamesBottomSide
-      self.drawComponentNamesBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentNamesBottomSide")
+      self.drawComponentNamesBottomSide_property.storeIn (dictionary: &ioDictionary, forKey: "drawComponentNamesBottomSide")
     //--- Atomic property: drawComponentValuesTopSide
-      self.drawComponentValuesTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentValuesTopSide")
+      self.drawComponentValuesTopSide_property.storeIn (dictionary: &ioDictionary, forKey: "drawComponentValuesTopSide")
     //--- Atomic property: drawComponentValuesBottomSide
-      self.drawComponentValuesBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawComponentValuesBottomSide")
+      self.drawComponentValuesBottomSide_property.storeIn (dictionary: &ioDictionary, forKey: "drawComponentValuesBottomSide")
     //--- Atomic property: drawPackageLegendTopSide
-      self.drawPackageLegendTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPackageLegendTopSide")
+      self.drawPackageLegendTopSide_property.storeIn (dictionary: &ioDictionary, forKey: "drawPackageLegendTopSide")
     //--- Atomic property: drawPackageLegendBottomSide
-      self.drawPackageLegendBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPackageLegendBottomSide")
+      self.drawPackageLegendBottomSide_property.storeIn (dictionary: &ioDictionary, forKey: "drawPackageLegendBottomSide")
     //--- Atomic property: drawPadHolesInPDF
-      self.drawPadHolesInPDF_property.storeIn (dictionary: ioDictionary, forKey: "drawPadHolesInPDF")
+      self.drawPadHolesInPDF_property.storeIn (dictionary: &ioDictionary, forKey: "drawPadHolesInPDF")
     //--- Atomic property: drawPadsTopSide
-      self.drawPadsTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPadsTopSide")
+      self.drawPadsTopSide_property.storeIn (dictionary: &ioDictionary, forKey: "drawPadsTopSide")
     //--- Atomic property: drawPadsBottomSide
-      self.drawPadsBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawPadsBottomSide")
+      self.drawPadsBottomSide_property.storeIn (dictionary: &ioDictionary, forKey: "drawPadsBottomSide")
     //--- Atomic property: drawTextsLayoutTopSide
-      self.drawTextsLayoutTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLayoutTopSide")
+      self.drawTextsLayoutTopSide_property.storeIn (dictionary: &ioDictionary, forKey: "drawTextsLayoutTopSide")
     //--- Atomic property: drawTextsLayoutBottomSide
-      self.drawTextsLayoutBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLayoutBottomSide")
+      self.drawTextsLayoutBottomSide_property.storeIn (dictionary: &ioDictionary, forKey: "drawTextsLayoutBottomSide")
     //--- Atomic property: drawTextsLegendTopSide
-      self.drawTextsLegendTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLegendTopSide")
+      self.drawTextsLegendTopSide_property.storeIn (dictionary: &ioDictionary, forKey: "drawTextsLegendTopSide")
     //--- Atomic property: drawTextsLegendBottomSide
-      self.drawTextsLegendBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTextsLegendBottomSide")
+      self.drawTextsLegendBottomSide_property.storeIn (dictionary: &ioDictionary, forKey: "drawTextsLegendBottomSide")
     //--- Atomic property: drawTracksTopSide
-      self.drawTracksTopSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksTopSide")
+      self.drawTracksTopSide_property.storeIn (dictionary: &ioDictionary, forKey: "drawTracksTopSide")
     //--- Atomic property: drawTracksInner1Layer
-      self.drawTracksInner1Layer_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksInner1Layer")
+      self.drawTracksInner1Layer_property.storeIn (dictionary: &ioDictionary, forKey: "drawTracksInner1Layer")
     //--- Atomic property: drawTracksInner2Layer
-      self.drawTracksInner2Layer_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksInner2Layer")
+      self.drawTracksInner2Layer_property.storeIn (dictionary: &ioDictionary, forKey: "drawTracksInner2Layer")
     //--- Atomic property: drawTracksInner3Layer
-      self.drawTracksInner3Layer_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksInner3Layer")
+      self.drawTracksInner3Layer_property.storeIn (dictionary: &ioDictionary, forKey: "drawTracksInner3Layer")
     //--- Atomic property: drawTracksInner4Layer
-      self.drawTracksInner4Layer_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksInner4Layer")
+      self.drawTracksInner4Layer_property.storeIn (dictionary: &ioDictionary, forKey: "drawTracksInner4Layer")
     //--- Atomic property: drawTracksBottomSide
-      self.drawTracksBottomSide_property.storeIn (dictionary: ioDictionary, forKey: "drawTracksBottomSide")
+      self.drawTracksBottomSide_property.storeIn (dictionary: &ioDictionary, forKey: "drawTracksBottomSide")
     //--- Atomic property: drawTraversingPads
-      self.drawTraversingPads_property.storeIn (dictionary: ioDictionary, forKey: "drawTraversingPads")
+      self.drawTraversingPads_property.storeIn (dictionary: &ioDictionary, forKey: "drawTraversingPads")
     //--- Atomic property: drawVias
-      self.drawVias_property.storeIn (dictionary: ioDictionary, forKey: "drawVias")
+      self.drawVias_property.storeIn (dictionary: &ioDictionary, forKey: "drawVias")
     //--- Atomic property: fileExtension
-      self.fileExtension_property.storeIn (dictionary: ioDictionary, forKey: "fileExtension")
+      self.fileExtension_property.storeIn (dictionary: &ioDictionary, forKey: "fileExtension")
     //--- Atomic property: horizontalMirror
-      self.horizontalMirror_property.storeIn (dictionary: ioDictionary, forKey: "horizontalMirror")
+      self.horizontalMirror_property.storeIn (dictionary: &ioDictionary, forKey: "horizontalMirror")
     //--- Atomic property: name
-      self.name_property.storeIn (dictionary: ioDictionary, forKey: "name")
+      self.name_property.storeIn (dictionary: &ioDictionary, forKey: "name")
     //--- Atomic property: measurementUnitForPadHoleInPDF
-      self.measurementUnitForPadHoleInPDF_property.storeIn (dictionary: ioDictionary, forKey: "measurementUnitForPadHoleInPDF")
+      self.measurementUnitForPadHoleInPDF_property.storeIn (dictionary: &ioDictionary, forKey: "measurementUnitForPadHoleInPDF")
     //--- Atomic property: padHoleDiameterInPDF
-      self.padHoleDiameterInPDF_property.storeIn (dictionary: ioDictionary, forKey: "padHoleDiameterInPDF")
+      self.padHoleDiameterInPDF_property.storeIn (dictionary: &ioDictionary, forKey: "padHoleDiameterInPDF")
   }
 
   //····················································································································

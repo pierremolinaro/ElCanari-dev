@@ -36,7 +36,7 @@ extension PackageGuide {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_PackageGuide (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_PackageGuide (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

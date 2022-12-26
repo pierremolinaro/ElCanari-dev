@@ -690,40 +690,40 @@ final class PackageBezier : PackageObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: y1
-      self.y1_property.storeIn (dictionary: ioDictionary, forKey: "y1")
+      self.y1_property.storeIn (dictionary: &ioDictionary, forKey: "y1")
     //--- Atomic property: x2
-      self.x2_property.storeIn (dictionary: ioDictionary, forKey: "x2")
+      self.x2_property.storeIn (dictionary: &ioDictionary, forKey: "x2")
     //--- Atomic property: y2
-      self.y2_property.storeIn (dictionary: ioDictionary, forKey: "y2")
+      self.y2_property.storeIn (dictionary: &ioDictionary, forKey: "y2")
     //--- Atomic property: cpx1
-      self.cpx1_property.storeIn (dictionary: ioDictionary, forKey: "cpx1")
+      self.cpx1_property.storeIn (dictionary: &ioDictionary, forKey: "cpx1")
     //--- Atomic property: cpy1
-      self.cpy1_property.storeIn (dictionary: ioDictionary, forKey: "cpy1")
+      self.cpy1_property.storeIn (dictionary: &ioDictionary, forKey: "cpy1")
     //--- Atomic property: cpx2
-      self.cpx2_property.storeIn (dictionary: ioDictionary, forKey: "cpx2")
+      self.cpx2_property.storeIn (dictionary: &ioDictionary, forKey: "cpx2")
     //--- Atomic property: cpy2
-      self.cpy2_property.storeIn (dictionary: ioDictionary, forKey: "cpy2")
+      self.cpy2_property.storeIn (dictionary: &ioDictionary, forKey: "cpy2")
     //--- Atomic property: x1Unit
-      self.x1Unit_property.storeIn (dictionary: ioDictionary, forKey: "x1Unit")
+      self.x1Unit_property.storeIn (dictionary: &ioDictionary, forKey: "x1Unit")
     //--- Atomic property: y1Unit
-      self.y1Unit_property.storeIn (dictionary: ioDictionary, forKey: "y1Unit")
+      self.y1Unit_property.storeIn (dictionary: &ioDictionary, forKey: "y1Unit")
     //--- Atomic property: x2Unit
-      self.x2Unit_property.storeIn (dictionary: ioDictionary, forKey: "x2Unit")
+      self.x2Unit_property.storeIn (dictionary: &ioDictionary, forKey: "x2Unit")
     //--- Atomic property: y2Unit
-      self.y2Unit_property.storeIn (dictionary: ioDictionary, forKey: "y2Unit")
+      self.y2Unit_property.storeIn (dictionary: &ioDictionary, forKey: "y2Unit")
     //--- Atomic property: cpx1Unit
-      self.cpx1Unit_property.storeIn (dictionary: ioDictionary, forKey: "cpx1Unit")
+      self.cpx1Unit_property.storeIn (dictionary: &ioDictionary, forKey: "cpx1Unit")
     //--- Atomic property: cpy1Unit
-      self.cpy1Unit_property.storeIn (dictionary: ioDictionary, forKey: "cpy1Unit")
+      self.cpy1Unit_property.storeIn (dictionary: &ioDictionary, forKey: "cpy1Unit")
     //--- Atomic property: cpx2Unit
-      self.cpx2Unit_property.storeIn (dictionary: ioDictionary, forKey: "cpx2Unit")
+      self.cpx2Unit_property.storeIn (dictionary: &ioDictionary, forKey: "cpx2Unit")
     //--- Atomic property: cpy2Unit
-      self.cpy2Unit_property.storeIn (dictionary: ioDictionary, forKey: "cpy2Unit")
+      self.cpy2Unit_property.storeIn (dictionary: &ioDictionary, forKey: "cpy2Unit")
     //--- Atomic property: x1
-      self.x1_property.storeIn (dictionary: ioDictionary, forKey: "x1")
+      self.x1_property.storeIn (dictionary: &ioDictionary, forKey: "x1")
   }
 
   //····················································································································
@@ -1071,8 +1071,8 @@ final class PackageBezier : PackageObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_PackageBezier (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_PackageBezier (&ioDictionary)
   }
 
   //····················································································································

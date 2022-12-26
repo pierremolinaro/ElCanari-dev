@@ -49,16 +49,16 @@ extension EBGraphicView : NSDraggingSource {
   //--- Buils image and data
     let objectArray = self.viewController?.graphicObjectArray ?? []
     var displayShape = EBShape ()
-    var objectDictionaryArray = [NSDictionary] ()
-    var objectAdditionalDictionaryArray = [NSDictionary] ()
+    var objectDictionaryArray = [[String : Any]] ()
+    var objectAdditionalDictionaryArray = [[String : Any]] ()
     for object in objectArray {
       if draggedObjectSet.contains (object), let objectShape = object.objectDisplay {
         displayShape.add (objectShape)
-        let dict = NSMutableDictionary ()
-        object.saveIntoDictionary (dict)
+        var dict = [String : Any] ()
+        object.saveIntoDictionary (&dict)
         objectDictionaryArray.append (dict)
-        let additionalDict = NSMutableDictionary ()
-        object.saveIntoAdditionalDictionary (additionalDict)
+        var additionalDict = [String : Any] ()
+        object.saveIntoAdditionalDictionary (&additionalDict)
         objectAdditionalDictionaryArray.append (additionalDict)
       }
     }

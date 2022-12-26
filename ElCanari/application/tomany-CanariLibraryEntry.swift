@@ -754,10 +754,10 @@ final class PreferencesArrayOf_CanariLibraryEntry : StoredArrayOf_CanariLibraryE
   //····················································································································
 
   private func writeInPreferences () {
-    var dictionaryArray = [NSDictionary] ()
+    var dictionaryArray = [[String  : Any]] ()
     for object in self.mInternalArrayValue.values {
-      let d = NSMutableDictionary ()
-      object.saveIntoDictionary (d)
+      var d = [String  : Any] ()
+      object.saveIntoDictionary (&d)
       d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
       dictionaryArray.append (d)
     }

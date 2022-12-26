@@ -1428,34 +1428,34 @@ final class BoardTrack : BoardObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mSide
-      self.mSide_property.storeIn (dictionary: ioDictionary, forKey: "mSide")
+      self.mSide_property.storeIn (dictionary: &ioDictionary, forKey: "mSide")
     //--- Atomic property: mDefaultTrackWidthUnit
-      self.mDefaultTrackWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mDefaultTrackWidthUnit")
+      self.mDefaultTrackWidthUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mDefaultTrackWidthUnit")
     //--- Atomic property: mCustomTrackWidth
-      self.mCustomTrackWidth_property.storeIn (dictionary: ioDictionary, forKey: "mCustomTrackWidth")
+      self.mCustomTrackWidth_property.storeIn (dictionary: &ioDictionary, forKey: "mCustomTrackWidth")
     //--- Atomic property: mCustomTrackWidthUnit
-      self.mCustomTrackWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mCustomTrackWidthUnit")
+      self.mCustomTrackWidthUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mCustomTrackWidthUnit")
     //--- Atomic property: mUsesCustomTrackWidth
-      self.mUsesCustomTrackWidth_property.storeIn (dictionary: ioDictionary, forKey: "mUsesCustomTrackWidth")
+      self.mUsesCustomTrackWidth_property.storeIn (dictionary: &ioDictionary, forKey: "mUsesCustomTrackWidth")
     //--- Atomic property: mIsPreservedByAutoRouter
-      self.mIsPreservedByAutoRouter_property.storeIn (dictionary: ioDictionary, forKey: "mIsPreservedByAutoRouter")
+      self.mIsPreservedByAutoRouter_property.storeIn (dictionary: &ioDictionary, forKey: "mIsPreservedByAutoRouter")
     //--- Atomic property: mP1XUnit
-      self.mP1XUnit_property.storeIn (dictionary: ioDictionary, forKey: "mP1XUnit")
+      self.mP1XUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mP1XUnit")
     //--- Atomic property: mP1YUnit
-      self.mP1YUnit_property.storeIn (dictionary: ioDictionary, forKey: "mP1YUnit")
+      self.mP1YUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mP1YUnit")
     //--- Atomic property: mP2XUnit
-      self.mP2XUnit_property.storeIn (dictionary: ioDictionary, forKey: "mP2XUnit")
+      self.mP2XUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mP2XUnit")
     //--- Atomic property: mP2YUnit
-      self.mP2YUnit_property.storeIn (dictionary: ioDictionary, forKey: "mP2YUnit")
+      self.mP2YUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mP2YUnit")
     //--- Atomic property: mManualLockP1
-      self.mManualLockP1_property.storeIn (dictionary: ioDictionary, forKey: "mManualLockP1")
+      self.mManualLockP1_property.storeIn (dictionary: &ioDictionary, forKey: "mManualLockP1")
     //--- Atomic property: mManualLockP2
-      self.mManualLockP2_property.storeIn (dictionary: ioDictionary, forKey: "mManualLockP2")
+      self.mManualLockP2_property.storeIn (dictionary: &ioDictionary, forKey: "mManualLockP2")
     //--- Atomic property: mDirectionLockOnKnobDragging
-      self.mDirectionLockOnKnobDragging_property.storeIn (dictionary: ioDictionary, forKey: "mDirectionLockOnKnobDragging")
+      self.mDirectionLockOnKnobDragging_property.storeIn (dictionary: &ioDictionary, forKey: "mDirectionLockOnKnobDragging")
   }
 
   //····················································································································
@@ -1836,8 +1836,8 @@ final class BoardTrack : BoardObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_BoardTrack (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_BoardTrack (&ioDictionary)
   }
 
   //····················································································································

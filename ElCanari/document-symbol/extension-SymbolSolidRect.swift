@@ -37,7 +37,7 @@ extension SymbolSolidRect {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_SymbolSolidRect (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_SymbolSolidRect (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

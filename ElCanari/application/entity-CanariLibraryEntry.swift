@@ -184,16 +184,16 @@ final class CanariLibraryEntry : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mPath
-      self.mPath_property.storeIn (dictionary: ioDictionary, forKey: "mPath")
+      self.mPath_property.storeIn (dictionary: &ioDictionary, forKey: "mPath")
     //--- Atomic property: mUses
-      self.mUses_property.storeIn (dictionary: ioDictionary, forKey: "mUses")
+      self.mUses_property.storeIn (dictionary: &ioDictionary, forKey: "mUses")
     //--- Atomic property: mLibraryRepositoryURL
-      self.mLibraryRepositoryURL_property.storeIn (dictionary: ioDictionary, forKey: "mLibraryRepositoryURL")
+      self.mLibraryRepositoryURL_property.storeIn (dictionary: &ioDictionary, forKey: "mLibraryRepositoryURL")
     //--- Atomic property: mUserAndPasswordTag
-      self.mUserAndPasswordTag_property.storeIn (dictionary: ioDictionary, forKey: "mUserAndPasswordTag")
+      self.mUserAndPasswordTag_property.storeIn (dictionary: &ioDictionary, forKey: "mUserAndPasswordTag")
   }
 
   //····················································································································

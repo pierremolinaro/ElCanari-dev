@@ -52,6 +52,18 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   }
 
   //····················································································································
+  //  Getters
+  //····················································································································
+
+  final var undoManager : UndoManager? {
+    return self.mUndoManager
+  }
+
+  //····················································································································
+
+  final var ebObjectIndex_selection : EBSelection <Int> { return .single (self.objectIndex) }
+
+  //····················································································································
   //  Setup
   //····················································································································
 
@@ -89,21 +101,10 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   //  Save
   //····················································································································
 
-  func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    ioDictionary.setValue (self.className.pathExtension, forKey: ENTITY_KEY)
+  func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    ioDictionary [ENTITY_KEY] = self.className.pathExtension
+//    ioDictionary.setValue (self.className.pathExtension, forKey: ENTITY_KEY)
   }
-
-  //····················································································································
-  //  Getters
-  //····················································································································
-
-  final var undoManager : UndoManager? {
-    return self.mUndoManager
-  }
-
-  //····················································································································
-
-  final var ebObjectIndex_selection : EBSelection <Int> { return .single (self.objectIndex) }
 
   //····················································································································
   //   accessibleObjectsForSaveOperation
@@ -130,16 +131,17 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   //   store (managedObjectArray:relationshipName:intoDictionary)
   //····················································································································
 
-  final func store (managedObjectArray : [EBManagedObject], // NSArray,
+  final func store (managedObjectArray : [EBManagedObject],
                     relationshipName : String,
-                    intoDictionary : NSMutableDictionary) {
+                    intoDictionary : inout [String : Any]) {
 
     if managedObjectArray.count > 0 {
       let indexArray = NSMutableArray ()
       for managedObject in managedObjectArray {
         indexArray.add (NSNumber (value:managedObject.savingIndex))
       }
-      intoDictionary.setObject (indexArray, forKey:relationshipName as NSCopying)
+      intoDictionary [relationshipName] = indexArray
+ //     intoDictionary.setObject (indexArray, forKey:relationshipName as NSCopying)
     }
   }
 
@@ -149,9 +151,10 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
 
   final func store (managedObject : EBManagedObject?,
                     relationshipName : String,
-                    intoDictionary : NSMutableDictionary) {
+                    intoDictionary : inout [String : Any]) {
     if let unwObject = managedObject {
-      intoDictionary.setObject (NSNumber (value: unwObject.savingIndex), forKey: relationshipName as NSCopying)
+      intoDictionary [relationshipName] = unwObject.savingIndex
+//      intoDictionary.setObject (NSNumber (value: unwObject.savingIndex), forKey: relationshipName as NSCopying)
     }
   }
 

@@ -71,7 +71,7 @@ extension BorderCurve {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_BorderCurve (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_BorderCurve (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

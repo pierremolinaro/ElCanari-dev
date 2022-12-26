@@ -42,7 +42,7 @@ extension PackageZone {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_PackageZone (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_PackageZone (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

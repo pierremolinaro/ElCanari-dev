@@ -33,7 +33,7 @@ extension PackageBezier {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_PackageBezier (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_PackageBezier (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

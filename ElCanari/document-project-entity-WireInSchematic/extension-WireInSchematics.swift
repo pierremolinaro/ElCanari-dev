@@ -66,7 +66,7 @@ extension WireInSchematic {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_WireInSchematic (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_WireInSchematic (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

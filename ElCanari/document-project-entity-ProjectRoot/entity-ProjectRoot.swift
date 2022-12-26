@@ -5993,244 +5993,246 @@ final class ProjectRoot : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mArtworkName
-      self.mArtworkName_property.storeIn (dictionary: ioDictionary, forKey: "mArtworkName")
+      self.mArtworkName_property.storeIn (dictionary: &ioDictionary, forKey: "mArtworkName")
     //--- Atomic property: mArtworkVersion
-      self.mArtworkVersion_property.storeIn (dictionary: ioDictionary, forKey: "mArtworkVersion")
+      self.mArtworkVersion_property.storeIn (dictionary: &ioDictionary, forKey: "mArtworkVersion")
     //--- Atomic property: mPDFBoardBackgroundColor
-      self.mPDFBoardBackgroundColor_property.storeIn (dictionary: ioDictionary, forKey: "mPDFBoardBackgroundColor")
+      self.mPDFBoardBackgroundColor_property.storeIn (dictionary: &ioDictionary, forKey: "mPDFBoardBackgroundColor")
     //--- Atomic property: mCheckClearanceBetweenPadsOfSameNet
-      self.mCheckClearanceBetweenPadsOfSameNet_property.storeIn (dictionary: ioDictionary, forKey: "mCheckClearanceBetweenPadsOfSameNet")
+      self.mCheckClearanceBetweenPadsOfSameNet_property.storeIn (dictionary: &ioDictionary, forKey: "mCheckClearanceBetweenPadsOfSameNet")
     //--- Atomic property: mLastERCCheckingIsSuccess
-      self.mLastERCCheckingIsSuccess_property.storeIn (dictionary: ioDictionary, forKey: "mLastERCCheckingIsSuccess")
+      self.mLastERCCheckingIsSuccess_property.storeIn (dictionary: &ioDictionary, forKey: "mLastERCCheckingIsSuccess")
     //--- Atomic property: mLastERCCheckingSignature
-      self.mLastERCCheckingSignature_property.storeIn (dictionary: ioDictionary, forKey: "mLastERCCheckingSignature")
+      self.mLastERCCheckingSignature_property.storeIn (dictionary: &ioDictionary, forKey: "mLastERCCheckingSignature")
     //--- Atomic property: mLayerConfiguration
-      self.mLayerConfiguration_property.storeIn (dictionary: ioDictionary, forKey: "mLayerConfiguration")
+      self.mLayerConfiguration_property.storeIn (dictionary: &ioDictionary, forKey: "mLayerConfiguration")
     //--- Atomic property: mBoardSideForNewTrack
-      self.mBoardSideForNewTrack_property.storeIn (dictionary: ioDictionary, forKey: "mBoardSideForNewTrack")
+      self.mBoardSideForNewTrack_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardSideForNewTrack")
     //--- Atomic property: mDirectionForNewTrack
-      self.mDirectionForNewTrack_property.storeIn (dictionary: ioDictionary, forKey: "mDirectionForNewTrack")
+      self.mDirectionForNewTrack_property.storeIn (dictionary: &ioDictionary, forKey: "mDirectionForNewTrack")
     //--- Atomic property: mBoardLayerForNewText
-      self.mBoardLayerForNewText_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLayerForNewText")
+      self.mBoardLayerForNewText_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardLayerForNewText")
     //--- Atomic property: mBoardLayerForNewLine
-      self.mBoardLayerForNewLine_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLayerForNewLine")
+      self.mBoardLayerForNewLine_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardLayerForNewLine")
     //--- Atomic property: mBoardSideForNewRestrictRectangle
-      self.mBoardSideForNewRestrictRectangle_property.storeIn (dictionary: ioDictionary, forKey: "mBoardSideForNewRestrictRectangle")
+      self.mBoardSideForNewRestrictRectangle_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardSideForNewRestrictRectangle")
     //--- Atomic property: mNewRestrictRectangleLayers
-      self.mNewRestrictRectangleLayers_property.storeIn (dictionary: ioDictionary, forKey: "mNewRestrictRectangleLayers")
+      self.mNewRestrictRectangleLayers_property.storeIn (dictionary: &ioDictionary, forKey: "mNewRestrictRectangleLayers")
     //--- Atomic property: mAutoRouterPreferredDirections
-      self.mAutoRouterPreferredDirections_property.storeIn (dictionary: ioDictionary, forKey: "mAutoRouterPreferredDirections")
+      self.mAutoRouterPreferredDirections_property.storeIn (dictionary: &ioDictionary, forKey: "mAutoRouterPreferredDirections")
     //--- Atomic property: mAutorouterSnapAngle
-      self.mAutorouterSnapAngle_property.storeIn (dictionary: ioDictionary, forKey: "mAutorouterSnapAngle")
+      self.mAutorouterSnapAngle_property.storeIn (dictionary: &ioDictionary, forKey: "mAutorouterSnapAngle")
     //--- Atomic property: mRouteDirection
-      self.mRouteDirection_property.storeIn (dictionary: ioDictionary, forKey: "mRouteDirection")
+      self.mRouteDirection_property.storeIn (dictionary: &ioDictionary, forKey: "mRouteDirection")
     //--- Atomic property: mRouteOrigin
-      self.mRouteOrigin_property.storeIn (dictionary: ioDictionary, forKey: "mRouteOrigin")
+      self.mRouteOrigin_property.storeIn (dictionary: &ioDictionary, forKey: "mRouteOrigin")
     //--- Atomic property: mAutorouterInterfaceMode
-      self.mAutorouterInterfaceMode_property.storeIn (dictionary: ioDictionary, forKey: "mAutorouterInterfaceMode")
+      self.mAutorouterInterfaceMode_property.storeIn (dictionary: &ioDictionary, forKey: "mAutorouterInterfaceMode")
     //--- Atomic property: mExportExistingTracksAndVias
-      self.mExportExistingTracksAndVias_property.storeIn (dictionary: ioDictionary, forKey: "mExportExistingTracksAndVias")
+      self.mExportExistingTracksAndVias_property.storeIn (dictionary: &ioDictionary, forKey: "mExportExistingTracksAndVias")
     //--- Atomic property: mExportExistingTracksAndVias2
-      self.mExportExistingTracksAndVias2_property.storeIn (dictionary: ioDictionary, forKey: "mExportExistingTracksAndVias2")
+      self.mExportExistingTracksAndVias2_property.storeIn (dictionary: &ioDictionary, forKey: "mExportExistingTracksAndVias2")
     //--- Atomic property: mTrackLengthUnit
-      self.mTrackLengthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mTrackLengthUnit")
+      self.mTrackLengthUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mTrackLengthUnit")
     //--- Atomic property: mLayoutClearance
-      self.mLayoutClearance_property.storeIn (dictionary: ioDictionary, forKey: "mLayoutClearance")
+      self.mLayoutClearance_property.storeIn (dictionary: &ioDictionary, forKey: "mLayoutClearance")
     //--- Atomic property: mLayoutClearanceUnit
-      self.mLayoutClearanceUnit_property.storeIn (dictionary: ioDictionary, forKey: "mLayoutClearanceUnit")
+      self.mLayoutClearanceUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mLayoutClearanceUnit")
     //--- Atomic property: mBoardSelectedInspector
-      self.mBoardSelectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "mBoardSelectedInspector")
+      self.mBoardSelectedInspector_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardSelectedInspector")
     //--- Atomic property: mBoardHorizontalFlip
-      self.mBoardHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mBoardHorizontalFlip")
+      self.mBoardHorizontalFlip_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardHorizontalFlip")
     //--- Atomic property: mBoardVerticalFlip
-      self.mBoardVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mBoardVerticalFlip")
+      self.mBoardVerticalFlip_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardVerticalFlip")
     //--- Atomic property: mBoardGridStyle
-      self.mBoardGridStyle_property.storeIn (dictionary: ioDictionary, forKey: "mBoardGridStyle")
+      self.mBoardGridStyle_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardGridStyle")
     //--- Atomic property: mBoardGridDisplayFactor
-      self.mBoardGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey: "mBoardGridDisplayFactor")
+      self.mBoardGridDisplayFactor_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardGridDisplayFactor")
     //--- Atomic property: mBoardZoom
-      self.mBoardZoom_property.storeIn (dictionary: ioDictionary, forKey: "mBoardZoom")
+      self.mBoardZoom_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardZoom")
     //--- Atomic property: mBoardGridStep
-      self.mBoardGridStep_property.storeIn (dictionary: ioDictionary, forKey: "mBoardGridStep")
+      self.mBoardGridStep_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardGridStep")
     //--- Atomic property: mBoardGridStepUnit
-      self.mBoardGridStepUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardGridStepUnit")
+      self.mBoardGridStepUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardGridStepUnit")
     //--- Atomic property: mErrorOrWarningIssueSize
-      self.mErrorOrWarningIssueSize_property.storeIn (dictionary: ioDictionary, forKey: "mErrorOrWarningIssueSize")
+      self.mErrorOrWarningIssueSize_property.storeIn (dictionary: &ioDictionary, forKey: "mErrorOrWarningIssueSize")
     //--- Atomic property: mControlKeyHiliteDiameter
-      self.mControlKeyHiliteDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mControlKeyHiliteDiameter")
+      self.mControlKeyHiliteDiameter_property.storeIn (dictionary: &ioDictionary, forKey: "mControlKeyHiliteDiameter")
     //--- Atomic property: mDSNFileProposedName
-      self.mDSNFileProposedName_property.storeIn (dictionary: ioDictionary, forKey: "mDSNFileProposedName")
+      self.mDSNFileProposedName_property.storeIn (dictionary: &ioDictionary, forKey: "mDSNFileProposedName")
     //--- Atomic property: mBoardLimitsWidth
-      self.mBoardLimitsWidth_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsWidth")
+      self.mBoardLimitsWidth_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardLimitsWidth")
     //--- Atomic property: mBoardLimitsWidthUnit
-      self.mBoardLimitsWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsWidthUnit")
+      self.mBoardLimitsWidthUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardLimitsWidthUnit")
     //--- Atomic property: mBoardClearance
-      self.mBoardClearance_property.storeIn (dictionary: ioDictionary, forKey: "mBoardClearance")
+      self.mBoardClearance_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardClearance")
     //--- Atomic property: mBoardClearanceUnit
-      self.mBoardClearanceUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardClearanceUnit")
+      self.mBoardClearanceUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardClearanceUnit")
     //--- Atomic property: mBoardLimitsSelectedInspector
-      self.mBoardLimitsSelectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsSelectedInspector")
+      self.mBoardLimitsSelectedInspector_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardLimitsSelectedInspector")
     //--- Atomic property: mBoardLimitsHorizontalFlip
-      self.mBoardLimitsHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsHorizontalFlip")
+      self.mBoardLimitsHorizontalFlip_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardLimitsHorizontalFlip")
     //--- Atomic property: mBoardLimitsVerticalFlip
-      self.mBoardLimitsVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsVerticalFlip")
+      self.mBoardLimitsVerticalFlip_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardLimitsVerticalFlip")
     //--- Atomic property: mBoardLimitsGridStyle
-      self.mBoardLimitsGridStyle_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsGridStyle")
+      self.mBoardLimitsGridStyle_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardLimitsGridStyle")
     //--- Atomic property: mBoardLimitsGridDisplayFactor
-      self.mBoardLimitsGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsGridDisplayFactor")
+      self.mBoardLimitsGridDisplayFactor_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardLimitsGridDisplayFactor")
     //--- Atomic property: mBoardLimitsZoom
-      self.mBoardLimitsZoom_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsZoom")
+      self.mBoardLimitsZoom_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardLimitsZoom")
     //--- Atomic property: mBoardLimitsGridStep
-      self.mBoardLimitsGridStep_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsGridStep")
+      self.mBoardLimitsGridStep_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardLimitsGridStep")
     //--- Atomic property: mBoardLimitsGridStepUnit
-      self.mBoardLimitsGridStepUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsGridStepUnit")
+      self.mBoardLimitsGridStepUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardLimitsGridStepUnit")
     //--- Atomic property: mBoardLimitsBoundingBoxUnit
-      self.mBoardLimitsBoundingBoxUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitsBoundingBoxUnit")
+      self.mBoardLimitsBoundingBoxUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardLimitsBoundingBoxUnit")
     //--- Atomic property: mBoardPointsBoundingBoxUnit
-      self.mBoardPointsBoundingBoxUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardPointsBoundingBoxUnit")
+      self.mBoardPointsBoundingBoxUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardPointsBoundingBoxUnit")
     //--- Atomic property: mBoardSelectedCurveDisplayUnit
-      self.mBoardSelectedCurveDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardSelectedCurveDisplayUnit")
+      self.mBoardSelectedCurveDisplayUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardSelectedCurveDisplayUnit")
     //--- Atomic property: mBoardLimitControlPointsDisplayUnit
-      self.mBoardLimitControlPointsDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "mBoardLimitControlPointsDisplayUnit")
+      self.mBoardLimitControlPointsDisplayUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardLimitControlPointsDisplayUnit")
     //--- Atomic property: mBoardShape
-      self.mBoardShape_property.storeIn (dictionary: ioDictionary, forKey: "mBoardShape")
+      self.mBoardShape_property.storeIn (dictionary: &ioDictionary, forKey: "mBoardShape")
     //--- Atomic property: mRectangularBoardWidth
-      self.mRectangularBoardWidth_property.storeIn (dictionary: ioDictionary, forKey: "mRectangularBoardWidth")
+      self.mRectangularBoardWidth_property.storeIn (dictionary: &ioDictionary, forKey: "mRectangularBoardWidth")
     //--- Atomic property: mRectangularBoardWidthUnit
-      self.mRectangularBoardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mRectangularBoardWidthUnit")
+      self.mRectangularBoardWidthUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mRectangularBoardWidthUnit")
     //--- Atomic property: mRectangularBoardHeight
-      self.mRectangularBoardHeight_property.storeIn (dictionary: ioDictionary, forKey: "mRectangularBoardHeight")
+      self.mRectangularBoardHeight_property.storeIn (dictionary: &ioDictionary, forKey: "mRectangularBoardHeight")
     //--- Atomic property: mRectangularBoardHeightUnit
-      self.mRectangularBoardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "mRectangularBoardHeightUnit")
+      self.mRectangularBoardHeightUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mRectangularBoardHeightUnit")
   //--- To many property: mSheets
     self.store (
       managedObjectArray: self.mSheets_property.propval.values,
       relationshipName: "mSheets",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
     //--- Atomic property: mDefaultNetClassName
-      self.mDefaultNetClassName_property.storeIn (dictionary: ioDictionary, forKey: "mDefaultNetClassName")
+      self.mDefaultNetClassName_property.storeIn (dictionary: &ioDictionary, forKey: "mDefaultNetClassName")
     //--- Atomic property: mSelectedPageIndex
-      self.mSelectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "mSelectedPageIndex")
+      self.mSelectedPageIndex_property.storeIn (dictionary: &ioDictionary, forKey: "mSelectedPageIndex")
     //--- Atomic property: mSelectedSchematicInspector
-      self.mSelectedSchematicInspector_property.storeIn (dictionary: ioDictionary, forKey: "mSelectedSchematicInspector")
+      self.mSelectedSchematicInspector_property.storeIn (dictionary: &ioDictionary, forKey: "mSelectedSchematicInspector")
     //--- Atomic property: mSchematicTitle
-      self.mSchematicTitle_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicTitle")
+      self.mSchematicTitle_property.storeIn (dictionary: &ioDictionary, forKey: "mSchematicTitle")
     //--- Atomic property: mSchematicVersion
-      self.mSchematicVersion_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicVersion")
+      self.mSchematicVersion_property.storeIn (dictionary: &ioDictionary, forKey: "mSchematicVersion")
     //--- Atomic property: mSchematicDate
-      self.mSchematicDate_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicDate")
+      self.mSchematicDate_property.storeIn (dictionary: &ioDictionary, forKey: "mSchematicDate")
     //--- Atomic property: mSchematicHorizontalFlip
-      self.mSchematicHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicHorizontalFlip")
+      self.mSchematicHorizontalFlip_property.storeIn (dictionary: &ioDictionary, forKey: "mSchematicHorizontalFlip")
     //--- Atomic property: mSchematicVerticalFlip
-      self.mSchematicVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicVerticalFlip")
+      self.mSchematicVerticalFlip_property.storeIn (dictionary: &ioDictionary, forKey: "mSchematicVerticalFlip")
     //--- Atomic property: mSchematicZoom
-      self.mSchematicZoom_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicZoom")
+      self.mSchematicZoom_property.storeIn (dictionary: &ioDictionary, forKey: "mSchematicZoom")
     //--- Atomic property: mSchematicGridStyle
-      self.mSchematicGridStyle_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicGridStyle")
+      self.mSchematicGridStyle_property.storeIn (dictionary: &ioDictionary, forKey: "mSchematicGridStyle")
     //--- Atomic property: mSchematicGridDisplayFactor
-      self.mSchematicGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicGridDisplayFactor")
+      self.mSchematicGridDisplayFactor_property.storeIn (dictionary: &ioDictionary, forKey: "mSchematicGridDisplayFactor")
     //--- Atomic property: mSchematicCustomWidth
-      self.mSchematicCustomWidth_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicCustomWidth")
+      self.mSchematicCustomWidth_property.storeIn (dictionary: &ioDictionary, forKey: "mSchematicCustomWidth")
     //--- Atomic property: mSchematicCustomWidthUnit
-      self.mSchematicCustomWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicCustomWidthUnit")
+      self.mSchematicCustomWidthUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mSchematicCustomWidthUnit")
     //--- Atomic property: mSchematicCustomHeight
-      self.mSchematicCustomHeight_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicCustomHeight")
+      self.mSchematicCustomHeight_property.storeIn (dictionary: &ioDictionary, forKey: "mSchematicCustomHeight")
     //--- Atomic property: mSchematicCustomHeightUnit
-      self.mSchematicCustomHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicCustomHeightUnit")
+      self.mSchematicCustomHeightUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mSchematicCustomHeightUnit")
     //--- Atomic property: drawErrorBackgroundForBoard
-      self.drawErrorBackgroundForBoard_property.storeIn (dictionary: ioDictionary, forKey: "drawErrorBackgroundForBoard")
+      self.drawErrorBackgroundForBoard_property.storeIn (dictionary: &ioDictionary, forKey: "drawErrorBackgroundForBoard")
     //--- Atomic property: displayFrontRestrictRectangles
-      self.displayFrontRestrictRectangles_property.storeIn (dictionary: ioDictionary, forKey: "displayFrontRestrictRectangles")
+      self.displayFrontRestrictRectangles_property.storeIn (dictionary: &ioDictionary, forKey: "displayFrontRestrictRectangles")
     //--- Atomic property: displayBackRestrictRectangles
-      self.displayBackRestrictRectangles_property.storeIn (dictionary: ioDictionary, forKey: "displayBackRestrictRectangles")
+      self.displayBackRestrictRectangles_property.storeIn (dictionary: &ioDictionary, forKey: "displayBackRestrictRectangles")
     //--- Atomic property: displayInner1RestrictRectangles
-      self.displayInner1RestrictRectangles_property.storeIn (dictionary: ioDictionary, forKey: "displayInner1RestrictRectangles")
+      self.displayInner1RestrictRectangles_property.storeIn (dictionary: &ioDictionary, forKey: "displayInner1RestrictRectangles")
     //--- Atomic property: displayInner2RestrictRectangles
-      self.displayInner2RestrictRectangles_property.storeIn (dictionary: ioDictionary, forKey: "displayInner2RestrictRectangles")
+      self.displayInner2RestrictRectangles_property.storeIn (dictionary: &ioDictionary, forKey: "displayInner2RestrictRectangles")
     //--- Atomic property: displayInner3RestrictRectangles
-      self.displayInner3RestrictRectangles_property.storeIn (dictionary: ioDictionary, forKey: "displayInner3RestrictRectangles")
+      self.displayInner3RestrictRectangles_property.storeIn (dictionary: &ioDictionary, forKey: "displayInner3RestrictRectangles")
     //--- Atomic property: displayInner4RestrictRectangles
-      self.displayInner4RestrictRectangles_property.storeIn (dictionary: ioDictionary, forKey: "displayInner4RestrictRectangles")
+      self.displayInner4RestrictRectangles_property.storeIn (dictionary: &ioDictionary, forKey: "displayInner4RestrictRectangles")
     //--- Atomic property: displayFrontLegendForBoard
-      self.displayFrontLegendForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayFrontLegendForBoard")
+      self.displayFrontLegendForBoard_property.storeIn (dictionary: &ioDictionary, forKey: "displayFrontLegendForBoard")
     //--- Atomic property: displayFrontLayoutForBoard
-      self.displayFrontLayoutForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayFrontLayoutForBoard")
+      self.displayFrontLayoutForBoard_property.storeIn (dictionary: &ioDictionary, forKey: "displayFrontLayoutForBoard")
     //--- Atomic property: displayBackLayoutForBoard
-      self.displayBackLayoutForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayBackLayoutForBoard")
+      self.displayBackLayoutForBoard_property.storeIn (dictionary: &ioDictionary, forKey: "displayBackLayoutForBoard")
     //--- Atomic property: displayInner1LayoutForBoard
-      self.displayInner1LayoutForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayInner1LayoutForBoard")
+      self.displayInner1LayoutForBoard_property.storeIn (dictionary: &ioDictionary, forKey: "displayInner1LayoutForBoard")
     //--- Atomic property: displayInner2LayoutForBoard
-      self.displayInner2LayoutForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayInner2LayoutForBoard")
+      self.displayInner2LayoutForBoard_property.storeIn (dictionary: &ioDictionary, forKey: "displayInner2LayoutForBoard")
     //--- Atomic property: displayInner3LayoutForBoard
-      self.displayInner3LayoutForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayInner3LayoutForBoard")
+      self.displayInner3LayoutForBoard_property.storeIn (dictionary: &ioDictionary, forKey: "displayInner3LayoutForBoard")
     //--- Atomic property: displayInner4LayoutForBoard
-      self.displayInner4LayoutForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayInner4LayoutForBoard")
+      self.displayInner4LayoutForBoard_property.storeIn (dictionary: &ioDictionary, forKey: "displayInner4LayoutForBoard")
     //--- Atomic property: displayBackLegendForBoard
-      self.displayBackLegendForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayBackLegendForBoard")
+      self.displayBackLegendForBoard_property.storeIn (dictionary: &ioDictionary, forKey: "displayBackLegendForBoard")
     //--- Atomic property: displayFrontPadsForBoard
-      self.displayFrontPadsForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayFrontPadsForBoard")
+      self.displayFrontPadsForBoard_property.storeIn (dictionary: &ioDictionary, forKey: "displayFrontPadsForBoard")
     //--- Atomic property: displayBackPadsForBoard
-      self.displayBackPadsForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayBackPadsForBoard")
+      self.displayBackPadsForBoard_property.storeIn (dictionary: &ioDictionary, forKey: "displayBackPadsForBoard")
     //--- Atomic property: displayPadNumbersForBoard
-      self.displayPadNumbersForBoard_property.storeIn (dictionary: ioDictionary, forKey: "displayPadNumbersForBoard")
+      self.displayPadNumbersForBoard_property.storeIn (dictionary: &ioDictionary, forKey: "displayPadNumbersForBoard")
     //--- Atomic property: packageDrawingWidthMultpliedByTenForBoard
-      self.packageDrawingWidthMultpliedByTenForBoard_property.storeIn (dictionary: ioDictionary, forKey: "packageDrawingWidthMultpliedByTenForBoard")
+      self.packageDrawingWidthMultpliedByTenForBoard_property.storeIn (dictionary: &ioDictionary, forKey: "packageDrawingWidthMultpliedByTenForBoard")
   //--- To many property: mFonts
     self.store (
       managedObjectArray: self.mFonts_property.propval.values,
       relationshipName: "mFonts",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: mDevices
     self.store (
       managedObjectArray: self.mDevices_property.propval.values,
       relationshipName: "mDevices",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: mNetClasses
     self.store (
       managedObjectArray: self.mNetClasses_property.propval.values,
       relationshipName: "mNetClasses",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
     //--- Atomic property: mSchematicSheetOrientation
-      self.mSchematicSheetOrientation_property.storeIn (dictionary: ioDictionary, forKey: "mSchematicSheetOrientation")
+      self.mSchematicSheetOrientation_property.storeIn (dictionary: &ioDictionary, forKey: "mSchematicSheetOrientation")
   //--- To many property: mBorderCurves
     self.store (
       managedObjectArray: self.mBorderCurves_property.propval.values,
       relationshipName: "mBorderCurves",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: mBoardObjects
     self.store (
       managedObjectArray: self.mBoardObjects_property.propval.values,
       relationshipName: "mBoardObjects",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
     //--- Atomic property: mRastnetDisplay
-      self.mRastnetDisplay_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplay")
+      self.mRastnetDisplay_property.storeIn (dictionary: &ioDictionary, forKey: "mRastnetDisplay")
     //--- Atomic property: mRastnetDisplayedNetName
-      self.mRastnetDisplayedNetName_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplayedNetName")
+      self.mRastnetDisplayedNetName_property.storeIn (dictionary: &ioDictionary, forKey: "mRastnetDisplayedNetName")
     //--- Atomic property: mRastnetDisplayedComponentName
-      self.mRastnetDisplayedComponentName_property.storeIn (dictionary: ioDictionary, forKey: "mRastnetDisplayedComponentName")
+      self.mRastnetDisplayedComponentName_property.storeIn (dictionary: &ioDictionary, forKey: "mRastnetDisplayedComponentName")
   //--- To many property: mComponents
     self.store (
       managedObjectArray: self.mComponents_property.propval.values,
       relationshipName: "mComponents",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To one property: mArtwork
-    self.store (managedObject:self.mArtwork_property.propval,
+    self.store (managedObject: self.mArtwork_property.propval,
       relationshipName: "mArtwork",
-      intoDictionary: ioDictionary)
+      intoDictionary: &ioDictionary
+    )
   //--- To one property: mSelectedSheet
-    self.store (managedObject:self.mSelectedSheet_property.propval,
+    self.store (managedObject: self.mSelectedSheet_property.propval,
       relationshipName: "mSelectedSheet",
-      intoDictionary: ioDictionary)
+      intoDictionary: &ioDictionary
+    )
   }
 
   //····················································································································

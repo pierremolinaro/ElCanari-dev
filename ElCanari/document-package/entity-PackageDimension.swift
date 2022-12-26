@@ -654,36 +654,36 @@ final class PackageDimension : PackageObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: y1
-      self.y1_property.storeIn (dictionary: ioDictionary, forKey: "y1")
+      self.y1_property.storeIn (dictionary: &ioDictionary, forKey: "y1")
     //--- Atomic property: x2
-      self.x2_property.storeIn (dictionary: ioDictionary, forKey: "x2")
+      self.x2_property.storeIn (dictionary: &ioDictionary, forKey: "x2")
     //--- Atomic property: y2
-      self.y2_property.storeIn (dictionary: ioDictionary, forKey: "y2")
+      self.y2_property.storeIn (dictionary: &ioDictionary, forKey: "y2")
     //--- Atomic property: xDimension
-      self.xDimension_property.storeIn (dictionary: ioDictionary, forKey: "xDimension")
+      self.xDimension_property.storeIn (dictionary: &ioDictionary, forKey: "xDimension")
     //--- Atomic property: yDimension
-      self.yDimension_property.storeIn (dictionary: ioDictionary, forKey: "yDimension")
+      self.yDimension_property.storeIn (dictionary: &ioDictionary, forKey: "yDimension")
     //--- Atomic property: x1Unit
-      self.x1Unit_property.storeIn (dictionary: ioDictionary, forKey: "x1Unit")
+      self.x1Unit_property.storeIn (dictionary: &ioDictionary, forKey: "x1Unit")
     //--- Atomic property: y1Unit
-      self.y1Unit_property.storeIn (dictionary: ioDictionary, forKey: "y1Unit")
+      self.y1Unit_property.storeIn (dictionary: &ioDictionary, forKey: "y1Unit")
     //--- Atomic property: x2Unit
-      self.x2Unit_property.storeIn (dictionary: ioDictionary, forKey: "x2Unit")
+      self.x2Unit_property.storeIn (dictionary: &ioDictionary, forKey: "x2Unit")
     //--- Atomic property: y2Unit
-      self.y2Unit_property.storeIn (dictionary: ioDictionary, forKey: "y2Unit")
+      self.y2Unit_property.storeIn (dictionary: &ioDictionary, forKey: "y2Unit")
     //--- Atomic property: xDimensionUnit
-      self.xDimensionUnit_property.storeIn (dictionary: ioDictionary, forKey: "xDimensionUnit")
+      self.xDimensionUnit_property.storeIn (dictionary: &ioDictionary, forKey: "xDimensionUnit")
     //--- Atomic property: yDimensionUnit
-      self.yDimensionUnit_property.storeIn (dictionary: ioDictionary, forKey: "yDimensionUnit")
+      self.yDimensionUnit_property.storeIn (dictionary: &ioDictionary, forKey: "yDimensionUnit")
     //--- Atomic property: distanceUnit
-      self.distanceUnit_property.storeIn (dictionary: ioDictionary, forKey: "distanceUnit")
+      self.distanceUnit_property.storeIn (dictionary: &ioDictionary, forKey: "distanceUnit")
     //--- Atomic property: drawDimensionBackground
-      self.drawDimensionBackground_property.storeIn (dictionary: ioDictionary, forKey: "drawDimensionBackground")
+      self.drawDimensionBackground_property.storeIn (dictionary: &ioDictionary, forKey: "drawDimensionBackground")
     //--- Atomic property: x1
-      self.x1_property.storeIn (dictionary: ioDictionary, forKey: "x1")
+      self.x1_property.storeIn (dictionary: &ioDictionary, forKey: "x1")
   }
 
   //····················································································································
@@ -1013,8 +1013,8 @@ final class PackageDimension : PackageObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_PackageDimension (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_PackageDimension (&ioDictionary)
   }
 
   //····················································································································

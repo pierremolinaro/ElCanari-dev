@@ -355,21 +355,21 @@ final class FontCharacter : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: codePoint
-      self.codePoint_property.storeIn (dictionary: ioDictionary, forKey: "codePoint")
+      self.codePoint_property.storeIn (dictionary: &ioDictionary, forKey: "codePoint")
     //--- Atomic property: advance
-      self.advance_property.storeIn (dictionary: ioDictionary, forKey: "advance")
+      self.advance_property.storeIn (dictionary: &ioDictionary, forKey: "advance")
     //--- Atomic property: mWarnsWhenNoSegment
-      self.mWarnsWhenNoSegment_property.storeIn (dictionary: ioDictionary, forKey: "mWarnsWhenNoSegment")
+      self.mWarnsWhenNoSegment_property.storeIn (dictionary: &ioDictionary, forKey: "mWarnsWhenNoSegment")
     //--- Atomic property: mWarnsWhenAdvanceIsZero
-      self.mWarnsWhenAdvanceIsZero_property.storeIn (dictionary: ioDictionary, forKey: "mWarnsWhenAdvanceIsZero")
+      self.mWarnsWhenAdvanceIsZero_property.storeIn (dictionary: &ioDictionary, forKey: "mWarnsWhenAdvanceIsZero")
   //--- To many property: segments
     self.store (
       managedObjectArray: self.segments_property.propval.values,
       relationshipName: "segments",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   }
 

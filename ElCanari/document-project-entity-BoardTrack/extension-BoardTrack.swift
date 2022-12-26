@@ -65,7 +65,7 @@ extension BoardTrack {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_BoardTrack (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_BoardTrack (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

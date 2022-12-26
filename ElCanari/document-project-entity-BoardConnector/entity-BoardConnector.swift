@@ -1192,43 +1192,43 @@ final class BoardConnector : BoardObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mComponentPadName
-      self.mComponentPadName_property.storeIn (dictionary: ioDictionary, forKey: "mComponentPadName")
+      self.mComponentPadName_property.storeIn (dictionary: &ioDictionary, forKey: "mComponentPadName")
     //--- Atomic property: mPadIndex
-      self.mPadIndex_property.storeIn (dictionary: ioDictionary, forKey: "mPadIndex")
+      self.mPadIndex_property.storeIn (dictionary: &ioDictionary, forKey: "mPadIndex")
     //--- Atomic property: mX
-      self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
+      self.mX_property.storeIn (dictionary: &ioDictionary, forKey: "mX")
     //--- Atomic property: mY
-      self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
+      self.mY_property.storeIn (dictionary: &ioDictionary, forKey: "mY")
   //--- To many property: mTracksP2
     self.store (
       managedObjectArray: self.mTracksP2_property.propval.values,
       relationshipName: "mTracksP2",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
     //--- Atomic property: mDefaultHoleDiameterUnit
-      self.mDefaultHoleDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mDefaultHoleDiameterUnit")
+      self.mDefaultHoleDiameterUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mDefaultHoleDiameterUnit")
     //--- Atomic property: mCustomHoleDiameter
-      self.mCustomHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mCustomHoleDiameter")
+      self.mCustomHoleDiameter_property.storeIn (dictionary: &ioDictionary, forKey: "mCustomHoleDiameter")
     //--- Atomic property: mCustomHoleDiameterUnit
-      self.mCustomHoleDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mCustomHoleDiameterUnit")
+      self.mCustomHoleDiameterUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mCustomHoleDiameterUnit")
     //--- Atomic property: mUsesCustomHoleDiameter
-      self.mUsesCustomHoleDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mUsesCustomHoleDiameter")
+      self.mUsesCustomHoleDiameter_property.storeIn (dictionary: &ioDictionary, forKey: "mUsesCustomHoleDiameter")
     //--- Atomic property: mDefaultPadDiameterUnit
-      self.mDefaultPadDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mDefaultPadDiameterUnit")
+      self.mDefaultPadDiameterUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mDefaultPadDiameterUnit")
     //--- Atomic property: mCustomPadDiameter
-      self.mCustomPadDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mCustomPadDiameter")
+      self.mCustomPadDiameter_property.storeIn (dictionary: &ioDictionary, forKey: "mCustomPadDiameter")
     //--- Atomic property: mCustomPadDiameterUnit
-      self.mCustomPadDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey: "mCustomPadDiameterUnit")
+      self.mCustomPadDiameterUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mCustomPadDiameterUnit")
     //--- Atomic property: mUsesCustomPadDiameter
-      self.mUsesCustomPadDiameter_property.storeIn (dictionary: ioDictionary, forKey: "mUsesCustomPadDiameter")
+      self.mUsesCustomPadDiameter_property.storeIn (dictionary: &ioDictionary, forKey: "mUsesCustomPadDiameter")
   //--- To many property: mTracksP1
     self.store (
       managedObjectArray: self.mTracksP1_property.propval.values,
       relationshipName: "mTracksP1",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   }
 
@@ -1612,8 +1612,8 @@ final class BoardConnector : BoardObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_BoardConnector (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_BoardConnector (&ioDictionary)
   }
 
   //····················································································································

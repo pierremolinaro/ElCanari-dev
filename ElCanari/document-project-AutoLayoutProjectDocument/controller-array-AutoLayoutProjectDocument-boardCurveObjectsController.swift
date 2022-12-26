@@ -591,15 +591,15 @@ final class Controller_AutoLayoutProjectDocument_boardCurveObjectsController : R
       let pdfData = buildPDFimageData (frame: shape.boundingBox, shape: shape)
       pb.setData (pdfData, forType: .pdf)
    //--- Build private representation
-      var objectDictionaryArray = [NSDictionary] ()
-      var objectAdditionalDictionaryArray = [NSDictionary] ()
+      var objectDictionaryArray = [[String : Any]] ()
+      var objectAdditionalDictionaryArray = [[String : Any]] ()
       for idx in indexArray {
         let object = objects [idx]
-        let dict = NSMutableDictionary ()
-        object.saveIntoDictionary (dict)
+        var dict = [String : Any] ()
+        object.saveIntoDictionary (&dict)
         objectDictionaryArray.append (dict)
-        let additionalDict = NSMutableDictionary ()
-        object.saveIntoAdditionalDictionary (additionalDict)
+        var additionalDict = [String : Any] ()
+        object.saveIntoAdditionalDictionary (&additionalDict)
         objectAdditionalDictionaryArray.append (additionalDict)
       }
     //--- Copy private representation(s)

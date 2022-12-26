@@ -37,7 +37,7 @@ extension SymbolSolidOval {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_SymbolSolidOval (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_SymbolSolidOval (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

@@ -598,34 +598,34 @@ final class PackageArc : PackageObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: yCenter
-      self.yCenter_property.storeIn (dictionary: ioDictionary, forKey: "yCenter")
+      self.yCenter_property.storeIn (dictionary: &ioDictionary, forKey: "yCenter")
     //--- Atomic property: radius
-      self.radius_property.storeIn (dictionary: ioDictionary, forKey: "radius")
+      self.radius_property.storeIn (dictionary: &ioDictionary, forKey: "radius")
     //--- Atomic property: startAngle
-      self.startAngle_property.storeIn (dictionary: ioDictionary, forKey: "startAngle")
+      self.startAngle_property.storeIn (dictionary: &ioDictionary, forKey: "startAngle")
     //--- Atomic property: arcAngle
-      self.arcAngle_property.storeIn (dictionary: ioDictionary, forKey: "arcAngle")
+      self.arcAngle_property.storeIn (dictionary: &ioDictionary, forKey: "arcAngle")
     //--- Atomic property: startTangent
-      self.startTangent_property.storeIn (dictionary: ioDictionary, forKey: "startTangent")
+      self.startTangent_property.storeIn (dictionary: &ioDictionary, forKey: "startTangent")
     //--- Atomic property: endTangent
-      self.endTangent_property.storeIn (dictionary: ioDictionary, forKey: "endTangent")
+      self.endTangent_property.storeIn (dictionary: &ioDictionary, forKey: "endTangent")
     //--- Atomic property: pathIsClosed
-      self.pathIsClosed_property.storeIn (dictionary: ioDictionary, forKey: "pathIsClosed")
+      self.pathIsClosed_property.storeIn (dictionary: &ioDictionary, forKey: "pathIsClosed")
     //--- Atomic property: xCenterUnit
-      self.xCenterUnit_property.storeIn (dictionary: ioDictionary, forKey: "xCenterUnit")
+      self.xCenterUnit_property.storeIn (dictionary: &ioDictionary, forKey: "xCenterUnit")
     //--- Atomic property: yCenterUnit
-      self.yCenterUnit_property.storeIn (dictionary: ioDictionary, forKey: "yCenterUnit")
+      self.yCenterUnit_property.storeIn (dictionary: &ioDictionary, forKey: "yCenterUnit")
     //--- Atomic property: radiusUnit
-      self.radiusUnit_property.storeIn (dictionary: ioDictionary, forKey: "radiusUnit")
+      self.radiusUnit_property.storeIn (dictionary: &ioDictionary, forKey: "radiusUnit")
     //--- Atomic property: startTangentUnit
-      self.startTangentUnit_property.storeIn (dictionary: ioDictionary, forKey: "startTangentUnit")
+      self.startTangentUnit_property.storeIn (dictionary: &ioDictionary, forKey: "startTangentUnit")
     //--- Atomic property: endTangentUnit
-      self.endTangentUnit_property.storeIn (dictionary: ioDictionary, forKey: "endTangentUnit")
+      self.endTangentUnit_property.storeIn (dictionary: &ioDictionary, forKey: "endTangentUnit")
     //--- Atomic property: xCenter
-      self.xCenter_property.storeIn (dictionary: ioDictionary, forKey: "xCenter")
+      self.xCenter_property.storeIn (dictionary: &ioDictionary, forKey: "xCenter")
   }
 
   //····················································································································
@@ -946,8 +946,8 @@ final class PackageArc : PackageObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_PackageArc (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_PackageArc (&ioDictionary)
   }
 
   //····················································································································

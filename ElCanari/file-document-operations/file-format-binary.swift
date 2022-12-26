@@ -116,10 +116,10 @@ private func raiseInvalidDataFormatError (dataFormat : UInt8) throws {
   fileBinaryData.appendAutosizedData (metaData)
 //--- Append document data
   let reachableObjectArray = collectAndPrepareObjectsForSaveOperation (fromRoot: inDocumentData.documentRootObject)
-  var saveDataArray : [NSDictionary] = []
+  var saveDataArray : [[String : Any]] = []
   for object in reachableObjectArray {
-    let d = NSMutableDictionary ()
-    object.saveIntoDictionary (d)
+    var d = [String : Any] ()
+    object.saveIntoDictionary (&d)
     saveDataArray.append (d)
   }
   let documentData = try PropertyListSerialization.data (fromPropertyList: saveDataArray, format: .binary, options: 0)

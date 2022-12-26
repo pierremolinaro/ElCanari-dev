@@ -2025,106 +2025,107 @@ final class PackageRoot : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: selectedPageIndex
-      self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
+      self.selectedPageIndex_property.storeIn (dictionary: &ioDictionary, forKey: "selectedPageIndex")
     //--- Atomic property: selectedInspector
-      self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
+      self.selectedInspector_property.storeIn (dictionary: &ioDictionary, forKey: "selectedInspector")
     //--- Atomic property: comments
-      self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
+      self.comments_property.storeIn (dictionary: &ioDictionary, forKey: "comments")
     //--- Atomic property: program
-      self.program_property.storeIn (dictionary: ioDictionary, forKey: "program")
+      self.program_property.storeIn (dictionary: &ioDictionary, forKey: "program")
     //--- Atomic property: horizontalFlip
-      self.horizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "horizontalFlip")
+      self.horizontalFlip_property.storeIn (dictionary: &ioDictionary, forKey: "horizontalFlip")
     //--- Atomic property: verticalFlip
-      self.verticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "verticalFlip")
+      self.verticalFlip_property.storeIn (dictionary: &ioDictionary, forKey: "verticalFlip")
     //--- Atomic property: gridStyle
-      self.gridStyle_property.storeIn (dictionary: ioDictionary, forKey: "gridStyle")
+      self.gridStyle_property.storeIn (dictionary: &ioDictionary, forKey: "gridStyle")
     //--- Atomic property: gridStep
-      self.gridStep_property.storeIn (dictionary: ioDictionary, forKey: "gridStep")
+      self.gridStep_property.storeIn (dictionary: &ioDictionary, forKey: "gridStep")
     //--- Atomic property: gridStepUnit
-      self.gridStepUnit_property.storeIn (dictionary: ioDictionary, forKey: "gridStepUnit")
+      self.gridStepUnit_property.storeIn (dictionary: &ioDictionary, forKey: "gridStepUnit")
     //--- Atomic property: gridDisplayFactor
-      self.gridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey: "gridDisplayFactor")
+      self.gridDisplayFactor_property.storeIn (dictionary: &ioDictionary, forKey: "gridDisplayFactor")
     //--- Atomic property: zoom
-      self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
+      self.zoom_property.storeIn (dictionary: &ioDictionary, forKey: "zoom")
     //--- Atomic property: mModelImageOpacity
-      self.mModelImageOpacity_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageOpacity")
+      self.mModelImageOpacity_property.storeIn (dictionary: &ioDictionary, forKey: "mModelImageOpacity")
     //--- Atomic property: mModelImagePageHorizontalFlip
-      self.mModelImagePageHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageHorizontalFlip")
+      self.mModelImagePageHorizontalFlip_property.storeIn (dictionary: &ioDictionary, forKey: "mModelImagePageHorizontalFlip")
     //--- Atomic property: mModelImagePageVerticalFlip
-      self.mModelImagePageVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageVerticalFlip")
+      self.mModelImagePageVerticalFlip_property.storeIn (dictionary: &ioDictionary, forKey: "mModelImagePageVerticalFlip")
     //--- Atomic property: mModelImagePageGridStyle
-      self.mModelImagePageGridStyle_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageGridStyle")
+      self.mModelImagePageGridStyle_property.storeIn (dictionary: &ioDictionary, forKey: "mModelImagePageGridStyle")
     //--- Atomic property: mModelImagePageGridStep
-      self.mModelImagePageGridStep_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageGridStep")
+      self.mModelImagePageGridStep_property.storeIn (dictionary: &ioDictionary, forKey: "mModelImagePageGridStep")
     //--- Atomic property: mModelImagePageGridStepUnit
-      self.mModelImagePageGridStepUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageGridStepUnit")
+      self.mModelImagePageGridStepUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mModelImagePageGridStepUnit")
     //--- Atomic property: mModelImagePageGridDisplayFactor
-      self.mModelImagePageGridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageGridDisplayFactor")
+      self.mModelImagePageGridDisplayFactor_property.storeIn (dictionary: &ioDictionary, forKey: "mModelImagePageGridDisplayFactor")
     //--- Atomic property: mModelImagePageZoom
-      self.mModelImagePageZoom_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageZoom")
+      self.mModelImagePageZoom_property.storeIn (dictionary: &ioDictionary, forKey: "mModelImagePageZoom")
     //--- Atomic property: mModelImagePageXPlacardUnit
-      self.mModelImagePageXPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageXPlacardUnit")
+      self.mModelImagePageXPlacardUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mModelImagePageXPlacardUnit")
     //--- Atomic property: mModelImagePageYPlacardUnit
-      self.mModelImagePageYPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePageYPlacardUnit")
+      self.mModelImagePageYPlacardUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mModelImagePageYPlacardUnit")
     //--- Atomic property: mModelImageSecondPointXUnit
-      self.mModelImageSecondPointXUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageSecondPointXUnit")
+      self.mModelImageSecondPointXUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mModelImageSecondPointXUnit")
     //--- Atomic property: mModelImageSecondPointYUnit
-      self.mModelImageSecondPointYUnit_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageSecondPointYUnit")
+      self.mModelImageSecondPointYUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mModelImageSecondPointYUnit")
     //--- Atomic property: mModelImageFirstPointXOnLock
-      self.mModelImageFirstPointXOnLock_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageFirstPointXOnLock")
+      self.mModelImageFirstPointXOnLock_property.storeIn (dictionary: &ioDictionary, forKey: "mModelImageFirstPointXOnLock")
     //--- Atomic property: mModelImageFirstPointYOnLock
-      self.mModelImageFirstPointYOnLock_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageFirstPointYOnLock")
+      self.mModelImageFirstPointYOnLock_property.storeIn (dictionary: &ioDictionary, forKey: "mModelImageFirstPointYOnLock")
     //--- Atomic property: mModelImagePointsDxOnLock
-      self.mModelImagePointsDxOnLock_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePointsDxOnLock")
+      self.mModelImagePointsDxOnLock_property.storeIn (dictionary: &ioDictionary, forKey: "mModelImagePointsDxOnLock")
     //--- Atomic property: mModelImagePointsDyOnLock
-      self.mModelImagePointsDyOnLock_property.storeIn (dictionary: ioDictionary, forKey: "mModelImagePointsDyOnLock")
+      self.mModelImagePointsDyOnLock_property.storeIn (dictionary: &ioDictionary, forKey: "mModelImagePointsDyOnLock")
     //--- Atomic property: mModelImageScale
-      self.mModelImageScale_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageScale")
+      self.mModelImageScale_property.storeIn (dictionary: &ioDictionary, forKey: "mModelImageScale")
     //--- Atomic property: mModelImageRotationInRadians
-      self.mModelImageRotationInRadians_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageRotationInRadians")
+      self.mModelImageRotationInRadians_property.storeIn (dictionary: &ioDictionary, forKey: "mModelImageRotationInRadians")
     //--- Atomic property: mDimensionUnitFirstModelPointX
-      self.mDimensionUnitFirstModelPointX_property.storeIn (dictionary: ioDictionary, forKey: "mDimensionUnitFirstModelPointX")
+      self.mDimensionUnitFirstModelPointX_property.storeIn (dictionary: &ioDictionary, forKey: "mDimensionUnitFirstModelPointX")
     //--- Atomic property: mDimensionUnitFirstModelPointY
-      self.mDimensionUnitFirstModelPointY_property.storeIn (dictionary: ioDictionary, forKey: "mDimensionUnitFirstModelPointY")
+      self.mDimensionUnitFirstModelPointY_property.storeIn (dictionary: &ioDictionary, forKey: "mDimensionUnitFirstModelPointY")
     //--- Atomic property: mDimensionUnitSecondModelPointDx
-      self.mDimensionUnitSecondModelPointDx_property.storeIn (dictionary: ioDictionary, forKey: "mDimensionUnitSecondModelPointDx")
+      self.mDimensionUnitSecondModelPointDx_property.storeIn (dictionary: &ioDictionary, forKey: "mDimensionUnitSecondModelPointDx")
     //--- Atomic property: mDimensionUnitSecondModelPointDy
-      self.mDimensionUnitSecondModelPointDy_property.storeIn (dictionary: ioDictionary, forKey: "mDimensionUnitSecondModelPointDy")
+      self.mDimensionUnitSecondModelPointDy_property.storeIn (dictionary: &ioDictionary, forKey: "mDimensionUnitSecondModelPointDy")
     //--- Atomic property: mModelPointsCircleRadius
-      self.mModelPointsCircleRadius_property.storeIn (dictionary: ioDictionary, forKey: "mModelPointsCircleRadius")
+      self.mModelPointsCircleRadius_property.storeIn (dictionary: &ioDictionary, forKey: "mModelPointsCircleRadius")
     //--- Atomic property: mPointsAreLocked
-      self.mPointsAreLocked_property.storeIn (dictionary: ioDictionary, forKey: "mPointsAreLocked")
+      self.mPointsAreLocked_property.storeIn (dictionary: &ioDictionary, forKey: "mPointsAreLocked")
     //--- Atomic property: knobSizeMultpliedByTen
-      self.knobSizeMultpliedByTen_property.storeIn (dictionary: ioDictionary, forKey: "knobSizeMultpliedByTen")
+      self.knobSizeMultpliedByTen_property.storeIn (dictionary: &ioDictionary, forKey: "knobSizeMultpliedByTen")
     //--- Atomic property: padNumbering
-      self.padNumbering_property.storeIn (dictionary: ioDictionary, forKey: "padNumbering")
+      self.padNumbering_property.storeIn (dictionary: &ioDictionary, forKey: "padNumbering")
     //--- Atomic property: counterClockNumberingStartAngle
-      self.counterClockNumberingStartAngle_property.storeIn (dictionary: ioDictionary, forKey: "counterClockNumberingStartAngle")
+      self.counterClockNumberingStartAngle_property.storeIn (dictionary: &ioDictionary, forKey: "counterClockNumberingStartAngle")
     //--- Atomic property: xPlacardUnit
-      self.xPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "xPlacardUnit")
+      self.xPlacardUnit_property.storeIn (dictionary: &ioDictionary, forKey: "xPlacardUnit")
     //--- Atomic property: yPlacardUnit
-      self.yPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey: "yPlacardUnit")
+      self.yPlacardUnit_property.storeIn (dictionary: &ioDictionary, forKey: "yPlacardUnit")
   //--- To many property: mModelImageObjects
     self.store (
       managedObjectArray: self.mModelImageObjects_property.propval.values,
       relationshipName: "mModelImageObjects",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: packageObjects
     self.store (
       managedObjectArray: self.packageObjects_property.propval.values,
       relationshipName: "packageObjects",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
     //--- Atomic property: mModelImageData
-      self.mModelImageData_property.storeIn (dictionary: ioDictionary, forKey: "mModelImageData")
+      self.mModelImageData_property.storeIn (dictionary: &ioDictionary, forKey: "mModelImageData")
   //--- To one property: mModelImageDoublePoint
-    self.store (managedObject:self.mModelImageDoublePoint_property.propval,
+    self.store (managedObject: self.mModelImageDoublePoint_property.propval,
       relationshipName: "mModelImageDoublePoint",
-      intoDictionary: ioDictionary)
+      intoDictionary: &ioDictionary
+    )
   }
 
   //····················································································································

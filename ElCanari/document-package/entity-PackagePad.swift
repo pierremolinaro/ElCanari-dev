@@ -1146,50 +1146,51 @@ final class PackagePad : PackageObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: xCenter
-      self.xCenter_property.storeIn (dictionary: ioDictionary, forKey: "xCenter")
+      self.xCenter_property.storeIn (dictionary: &ioDictionary, forKey: "xCenter")
     //--- Atomic property: yCenter
-      self.yCenter_property.storeIn (dictionary: ioDictionary, forKey: "yCenter")
+      self.yCenter_property.storeIn (dictionary: &ioDictionary, forKey: "yCenter")
     //--- Atomic property: width
-      self.width_property.storeIn (dictionary: ioDictionary, forKey: "width")
+      self.width_property.storeIn (dictionary: &ioDictionary, forKey: "width")
     //--- Atomic property: height
-      self.height_property.storeIn (dictionary: ioDictionary, forKey: "height")
+      self.height_property.storeIn (dictionary: &ioDictionary, forKey: "height")
     //--- Atomic property: holeWidth
-      self.holeWidth_property.storeIn (dictionary: ioDictionary, forKey: "holeWidth")
+      self.holeWidth_property.storeIn (dictionary: &ioDictionary, forKey: "holeWidth")
     //--- Atomic property: holeHeight
-      self.holeHeight_property.storeIn (dictionary: ioDictionary, forKey: "holeHeight")
+      self.holeHeight_property.storeIn (dictionary: &ioDictionary, forKey: "holeHeight")
     //--- Atomic property: padShape
-      self.padShape_property.storeIn (dictionary: ioDictionary, forKey: "padShape")
+      self.padShape_property.storeIn (dictionary: &ioDictionary, forKey: "padShape")
     //--- Atomic property: padStyle
-      self.padStyle_property.storeIn (dictionary: ioDictionary, forKey: "padStyle")
+      self.padStyle_property.storeIn (dictionary: &ioDictionary, forKey: "padStyle")
     //--- Atomic property: padNumber
-      self.padNumber_property.storeIn (dictionary: ioDictionary, forKey: "padNumber")
+      self.padNumber_property.storeIn (dictionary: &ioDictionary, forKey: "padNumber")
     //--- Atomic property: xCenterUnit
-      self.xCenterUnit_property.storeIn (dictionary: ioDictionary, forKey: "xCenterUnit")
+      self.xCenterUnit_property.storeIn (dictionary: &ioDictionary, forKey: "xCenterUnit")
     //--- Atomic property: yCenterUnit
-      self.yCenterUnit_property.storeIn (dictionary: ioDictionary, forKey: "yCenterUnit")
+      self.yCenterUnit_property.storeIn (dictionary: &ioDictionary, forKey: "yCenterUnit")
     //--- Atomic property: widthUnit
-      self.widthUnit_property.storeIn (dictionary: ioDictionary, forKey: "widthUnit")
+      self.widthUnit_property.storeIn (dictionary: &ioDictionary, forKey: "widthUnit")
     //--- Atomic property: heightUnit
-      self.heightUnit_property.storeIn (dictionary: ioDictionary, forKey: "heightUnit")
+      self.heightUnit_property.storeIn (dictionary: &ioDictionary, forKey: "heightUnit")
     //--- Atomic property: holeWidthUnit
-      self.holeWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "holeWidthUnit")
+      self.holeWidthUnit_property.storeIn (dictionary: &ioDictionary, forKey: "holeWidthUnit")
     //--- Atomic property: holeHeightUnit
-      self.holeHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "holeHeightUnit")
+      self.holeHeightUnit_property.storeIn (dictionary: &ioDictionary, forKey: "holeHeightUnit")
     //--- Atomic property: annularRingUnit
-      self.annularRingUnit_property.storeIn (dictionary: ioDictionary, forKey: "annularRingUnit")
+      self.annularRingUnit_property.storeIn (dictionary: &ioDictionary, forKey: "annularRingUnit")
   //--- To many property: slaves
     self.store (
       managedObjectArray: self.slaves_property.propval.values,
       relationshipName: "slaves",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To one property: zone
-    self.store (managedObject:self.zone_property.propval,
+    self.store (managedObject: self.zone_property.propval,
       relationshipName: "zone",
-      intoDictionary: ioDictionary)
+      intoDictionary: &ioDictionary
+    )
   }
 
   //····················································································································
@@ -1606,8 +1607,8 @@ final class PackagePad : PackageObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_PackagePad (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_PackagePad (&ioDictionary)
   }
 
   //····················································································································

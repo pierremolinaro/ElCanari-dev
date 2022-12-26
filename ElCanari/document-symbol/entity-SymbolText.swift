@@ -261,16 +261,16 @@ final class SymbolText : SymbolObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: y
-      self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
+      self.y_property.storeIn (dictionary: &ioDictionary, forKey: "y")
     //--- Atomic property: text
-      self.text_property.storeIn (dictionary: ioDictionary, forKey: "text")
+      self.text_property.storeIn (dictionary: &ioDictionary, forKey: "text")
     //--- Atomic property: horizontalAlignment
-      self.horizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "horizontalAlignment")
+      self.horizontalAlignment_property.storeIn (dictionary: &ioDictionary, forKey: "horizontalAlignment")
     //--- Atomic property: x
-      self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
+      self.x_property.storeIn (dictionary: &ioDictionary, forKey: "x")
   }
 
   //····················································································································
@@ -510,8 +510,8 @@ final class SymbolText : SymbolObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_SymbolText (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_SymbolText (&ioDictionary)
   }
 
   //····················································································································

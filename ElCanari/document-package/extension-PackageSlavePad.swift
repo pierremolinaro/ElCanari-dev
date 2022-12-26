@@ -163,7 +163,7 @@ extension PackageSlavePad {
 
   //····················································································································
 
-  func saveIntoAdditionalDictionary_PackageSlavePad (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_PackageSlavePad (_ ioDictionary : inout [String : Any]) {
     if let masterPadObjectIndex = self.master?.objectIndex {
       ioDictionary [ADDITIONAL_DICTIONARY_MASTER_PAD_ID_KEY] = masterPadObjectIndex
     }

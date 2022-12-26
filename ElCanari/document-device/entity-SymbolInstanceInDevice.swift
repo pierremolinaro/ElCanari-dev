@@ -513,20 +513,20 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
   //--- To many property: mPinInstances
     self.store (
       managedObjectArray: self.mPinInstances_property.propval.values,
       relationshipName: "mPinInstances",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
     //--- Atomic property: mInstanceName
-      self.mInstanceName_property.storeIn (dictionary: ioDictionary, forKey: "mInstanceName")
+      self.mInstanceName_property.storeIn (dictionary: &ioDictionary, forKey: "mInstanceName")
     //--- Atomic property: mX
-      self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
+      self.mX_property.storeIn (dictionary: &ioDictionary, forKey: "mX")
     //--- Atomic property: mY
-      self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
+      self.mY_property.storeIn (dictionary: &ioDictionary, forKey: "mY")
   }
 
   //····················································································································
@@ -848,8 +848,8 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_SymbolInstanceInDevice (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_SymbolInstanceInDevice (&ioDictionary)
   }
 
   //····················································································································

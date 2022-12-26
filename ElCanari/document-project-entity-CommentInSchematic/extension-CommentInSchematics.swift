@@ -62,7 +62,7 @@ extension CommentInSchematic {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_CommentInSchematic (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_CommentInSchematic (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

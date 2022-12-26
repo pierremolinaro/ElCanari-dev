@@ -788,30 +788,32 @@ final class BorderCurve : EBGraphicManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mX
-      self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
+      self.mX_property.storeIn (dictionary: &ioDictionary, forKey: "mX")
     //--- Atomic property: mY
-      self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
+      self.mY_property.storeIn (dictionary: &ioDictionary, forKey: "mY")
     //--- Atomic property: mCPX1
-      self.mCPX1_property.storeIn (dictionary: ioDictionary, forKey: "mCPX1")
+      self.mCPX1_property.storeIn (dictionary: &ioDictionary, forKey: "mCPX1")
     //--- Atomic property: mCPY1
-      self.mCPY1_property.storeIn (dictionary: ioDictionary, forKey: "mCPY1")
+      self.mCPY1_property.storeIn (dictionary: &ioDictionary, forKey: "mCPY1")
     //--- Atomic property: mCPX2
-      self.mCPX2_property.storeIn (dictionary: ioDictionary, forKey: "mCPX2")
+      self.mCPX2_property.storeIn (dictionary: &ioDictionary, forKey: "mCPX2")
     //--- Atomic property: mCPY2
-      self.mCPY2_property.storeIn (dictionary: ioDictionary, forKey: "mCPY2")
+      self.mCPY2_property.storeIn (dictionary: &ioDictionary, forKey: "mCPY2")
     //--- Atomic property: mShape
-      self.mShape_property.storeIn (dictionary: ioDictionary, forKey: "mShape")
+      self.mShape_property.storeIn (dictionary: &ioDictionary, forKey: "mShape")
   //--- To one property: mNext // Opposite is toOne mPrevious
-    self.store (managedObject:self.mNext_property.propval,
+    self.store (managedObject: self.mNext_property.propval,
       relationshipName: "mNext",
-      intoDictionary: ioDictionary)
+      intoDictionary: &ioDictionary
+    )
   //--- To one property: mPrevious // Opposite is toOne mNext
-    self.store (managedObject:self.mPrevious_property.propval,
+    self.store (managedObject: self.mPrevious_property.propval,
       relationshipName: "mPrevious",
-      intoDictionary: ioDictionary)
+      intoDictionary: &ioDictionary
+    )
   }
 
   //····················································································································
@@ -1144,8 +1146,8 @@ final class BorderCurve : EBGraphicManagedObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_BorderCurve (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_BorderCurve (&ioDictionary)
   }
 
   //····················································································································

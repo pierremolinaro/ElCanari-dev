@@ -840,35 +840,35 @@ final class ComponentSymbolInProject : SchematicObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mCenterX
-      self.mCenterX_property.storeIn (dictionary: ioDictionary, forKey: "mCenterX")
+      self.mCenterX_property.storeIn (dictionary: &ioDictionary, forKey: "mCenterX")
     //--- Atomic property: mCenterY
-      self.mCenterY_property.storeIn (dictionary: ioDictionary, forKey: "mCenterY")
+      self.mCenterY_property.storeIn (dictionary: &ioDictionary, forKey: "mCenterY")
     //--- Atomic property: mRotation
-      self.mRotation_property.storeIn (dictionary: ioDictionary, forKey: "mRotation")
+      self.mRotation_property.storeIn (dictionary: &ioDictionary, forKey: "mRotation")
     //--- Atomic property: mMirror
-      self.mMirror_property.storeIn (dictionary: ioDictionary, forKey: "mMirror")
+      self.mMirror_property.storeIn (dictionary: &ioDictionary, forKey: "mMirror")
     //--- Atomic property: mSymbolInstanceName
-      self.mSymbolInstanceName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolInstanceName")
+      self.mSymbolInstanceName_property.storeIn (dictionary: &ioDictionary, forKey: "mSymbolInstanceName")
     //--- Atomic property: mSymbolTypeName
-      self.mSymbolTypeName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolTypeName")
+      self.mSymbolTypeName_property.storeIn (dictionary: &ioDictionary, forKey: "mSymbolTypeName")
     //--- Atomic property: mDisplayComponentNameOffsetX
-      self.mDisplayComponentNameOffsetX_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentNameOffsetX")
+      self.mDisplayComponentNameOffsetX_property.storeIn (dictionary: &ioDictionary, forKey: "mDisplayComponentNameOffsetX")
     //--- Atomic property: mDisplayComponentNameOffsetY
-      self.mDisplayComponentNameOffsetY_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentNameOffsetY")
+      self.mDisplayComponentNameOffsetY_property.storeIn (dictionary: &ioDictionary, forKey: "mDisplayComponentNameOffsetY")
     //--- Atomic property: mDisplayComponentValue
-      self.mDisplayComponentValue_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentValue")
+      self.mDisplayComponentValue_property.storeIn (dictionary: &ioDictionary, forKey: "mDisplayComponentValue")
     //--- Atomic property: mDisplayComponentValueOffsetX
-      self.mDisplayComponentValueOffsetX_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentValueOffsetX")
+      self.mDisplayComponentValueOffsetX_property.storeIn (dictionary: &ioDictionary, forKey: "mDisplayComponentValueOffsetX")
     //--- Atomic property: mDisplayComponentValueOffsetY
-      self.mDisplayComponentValueOffsetY_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayComponentValueOffsetY")
+      self.mDisplayComponentValueOffsetY_property.storeIn (dictionary: &ioDictionary, forKey: "mDisplayComponentValueOffsetY")
   //--- To many property: mPoints
     self.store (
       managedObjectArray: self.mPoints_property.propval.values,
       relationshipName: "mPoints",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   }
 
@@ -1220,8 +1220,8 @@ final class ComponentSymbolInProject : SchematicObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_ComponentSymbolInProject (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_ComponentSymbolInProject (&ioDictionary)
   }
 
   //····················································································································

@@ -1947,66 +1947,67 @@ final class ComponentInProject : BoardObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mSlavePadsShouldBeRouted
-      self.mSlavePadsShouldBeRouted_property.storeIn (dictionary: ioDictionary, forKey: "mSlavePadsShouldBeRouted")
+      self.mSlavePadsShouldBeRouted_property.storeIn (dictionary: &ioDictionary, forKey: "mSlavePadsShouldBeRouted")
     //--- Atomic property: mX
-      self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
+      self.mX_property.storeIn (dictionary: &ioDictionary, forKey: "mX")
     //--- Atomic property: mY
-      self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
+      self.mY_property.storeIn (dictionary: &ioDictionary, forKey: "mY")
     //--- Atomic property: mRotation
-      self.mRotation_property.storeIn (dictionary: ioDictionary, forKey: "mRotation")
+      self.mRotation_property.storeIn (dictionary: &ioDictionary, forKey: "mRotation")
     //--- Atomic property: mSide
-      self.mSide_property.storeIn (dictionary: ioDictionary, forKey: "mSide")
+      self.mSide_property.storeIn (dictionary: &ioDictionary, forKey: "mSide")
     //--- Atomic property: mDisplayLegend
-      self.mDisplayLegend_property.storeIn (dictionary: ioDictionary, forKey: "mDisplayLegend")
+      self.mDisplayLegend_property.storeIn (dictionary: &ioDictionary, forKey: "mDisplayLegend")
   //--- To many property: mConnectors
     self.store (
       managedObjectArray: self.mConnectors_property.propval.values,
       relationshipName: "mConnectors",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: mSymbols
     self.store (
       managedObjectArray: self.mSymbols_property.propval.values,
       relationshipName: "mSymbols",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
     //--- Atomic property: mNameIsVisibleInBoard
-      self.mNameIsVisibleInBoard_property.storeIn (dictionary: ioDictionary, forKey: "mNameIsVisibleInBoard")
+      self.mNameIsVisibleInBoard_property.storeIn (dictionary: &ioDictionary, forKey: "mNameIsVisibleInBoard")
     //--- Atomic property: mXName
-      self.mXName_property.storeIn (dictionary: ioDictionary, forKey: "mXName")
+      self.mXName_property.storeIn (dictionary: &ioDictionary, forKey: "mXName")
     //--- Atomic property: mYName
-      self.mYName_property.storeIn (dictionary: ioDictionary, forKey: "mYName")
+      self.mYName_property.storeIn (dictionary: &ioDictionary, forKey: "mYName")
     //--- Atomic property: mNameFontSize
-      self.mNameFontSize_property.storeIn (dictionary: ioDictionary, forKey: "mNameFontSize")
+      self.mNameFontSize_property.storeIn (dictionary: &ioDictionary, forKey: "mNameFontSize")
     //--- Atomic property: mNameRotation
-      self.mNameRotation_property.storeIn (dictionary: ioDictionary, forKey: "mNameRotation")
+      self.mNameRotation_property.storeIn (dictionary: &ioDictionary, forKey: "mNameRotation")
     //--- Atomic property: mValueIsVisibleInBoard
-      self.mValueIsVisibleInBoard_property.storeIn (dictionary: ioDictionary, forKey: "mValueIsVisibleInBoard")
+      self.mValueIsVisibleInBoard_property.storeIn (dictionary: &ioDictionary, forKey: "mValueIsVisibleInBoard")
     //--- Atomic property: mXValue
-      self.mXValue_property.storeIn (dictionary: ioDictionary, forKey: "mXValue")
+      self.mXValue_property.storeIn (dictionary: &ioDictionary, forKey: "mXValue")
     //--- Atomic property: mYValue
-      self.mYValue_property.storeIn (dictionary: ioDictionary, forKey: "mYValue")
+      self.mYValue_property.storeIn (dictionary: &ioDictionary, forKey: "mYValue")
     //--- Atomic property: mValueFontSize
-      self.mValueFontSize_property.storeIn (dictionary: ioDictionary, forKey: "mValueFontSize")
+      self.mValueFontSize_property.storeIn (dictionary: &ioDictionary, forKey: "mValueFontSize")
     //--- Atomic property: mValueRotation
-      self.mValueRotation_property.storeIn (dictionary: ioDictionary, forKey: "mValueRotation")
+      self.mValueRotation_property.storeIn (dictionary: &ioDictionary, forKey: "mValueRotation")
     //--- Atomic property: mComponentValue
-      self.mComponentValue_property.storeIn (dictionary: ioDictionary, forKey: "mComponentValue")
+      self.mComponentValue_property.storeIn (dictionary: &ioDictionary, forKey: "mComponentValue")
     //--- Atomic property: mNamePrefix
-      self.mNamePrefix_property.storeIn (dictionary: ioDictionary, forKey: "mNamePrefix")
+      self.mNamePrefix_property.storeIn (dictionary: &ioDictionary, forKey: "mNamePrefix")
     //--- Atomic property: mNameIndex
-      self.mNameIndex_property.storeIn (dictionary: ioDictionary, forKey: "mNameIndex")
+      self.mNameIndex_property.storeIn (dictionary: &ioDictionary, forKey: "mNameIndex")
     //--- Atomic property: mXUnit
-      self.mXUnit_property.storeIn (dictionary: ioDictionary, forKey: "mXUnit")
+      self.mXUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mXUnit")
     //--- Atomic property: mYUnit
-      self.mYUnit_property.storeIn (dictionary: ioDictionary, forKey: "mYUnit")
+      self.mYUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mYUnit")
   //--- To one property: mSelectedPackage
-    self.store (managedObject:self.mSelectedPackage_property.propval,
+    self.store (managedObject: self.mSelectedPackage_property.propval,
       relationshipName: "mSelectedPackage",
-      intoDictionary: ioDictionary)
+      intoDictionary: &ioDictionary
+    )
   }
 
   //····················································································································
@@ -2533,8 +2534,8 @@ final class ComponentInProject : BoardObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_ComponentInProject (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_ComponentInProject (&ioDictionary)
   }
 
   //····················································································································

@@ -37,7 +37,7 @@ extension SymbolOval {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_SymbolOval (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_SymbolOval (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

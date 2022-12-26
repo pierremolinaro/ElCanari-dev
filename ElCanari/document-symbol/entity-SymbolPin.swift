@@ -583,28 +583,28 @@ final class SymbolPin : SymbolObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: yPin
-      self.yPin_property.storeIn (dictionary: ioDictionary, forKey: "yPin")
+      self.yPin_property.storeIn (dictionary: &ioDictionary, forKey: "yPin")
     //--- Atomic property: xName
-      self.xName_property.storeIn (dictionary: ioDictionary, forKey: "xName")
+      self.xName_property.storeIn (dictionary: &ioDictionary, forKey: "xName")
     //--- Atomic property: yName
-      self.yName_property.storeIn (dictionary: ioDictionary, forKey: "yName")
+      self.yName_property.storeIn (dictionary: &ioDictionary, forKey: "yName")
     //--- Atomic property: xNumber
-      self.xNumber_property.storeIn (dictionary: ioDictionary, forKey: "xNumber")
+      self.xNumber_property.storeIn (dictionary: &ioDictionary, forKey: "xNumber")
     //--- Atomic property: yNumber
-      self.yNumber_property.storeIn (dictionary: ioDictionary, forKey: "yNumber")
+      self.yNumber_property.storeIn (dictionary: &ioDictionary, forKey: "yNumber")
     //--- Atomic property: name
-      self.name_property.storeIn (dictionary: ioDictionary, forKey: "name")
+      self.name_property.storeIn (dictionary: &ioDictionary, forKey: "name")
     //--- Atomic property: nameHorizontalAlignment
-      self.nameHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "nameHorizontalAlignment")
+      self.nameHorizontalAlignment_property.storeIn (dictionary: &ioDictionary, forKey: "nameHorizontalAlignment")
     //--- Atomic property: numberHorizontalAlignment
-      self.numberHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "numberHorizontalAlignment")
+      self.numberHorizontalAlignment_property.storeIn (dictionary: &ioDictionary, forKey: "numberHorizontalAlignment")
     //--- Atomic property: pinNameIsDisplayedInSchematics
-      self.pinNameIsDisplayedInSchematics_property.storeIn (dictionary: ioDictionary, forKey: "pinNameIsDisplayedInSchematics")
+      self.pinNameIsDisplayedInSchematics_property.storeIn (dictionary: &ioDictionary, forKey: "pinNameIsDisplayedInSchematics")
     //--- Atomic property: xPin
-      self.xPin_property.storeIn (dictionary: ioDictionary, forKey: "xPin")
+      self.xPin_property.storeIn (dictionary: &ioDictionary, forKey: "xPin")
   }
 
   //····················································································································
@@ -898,8 +898,8 @@ final class SymbolPin : SymbolObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_SymbolPin (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_SymbolPin (&ioDictionary)
   }
 
   //····················································································································

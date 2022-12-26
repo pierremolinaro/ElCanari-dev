@@ -808,45 +808,45 @@ final class PackageZone : PackageObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: x
-      self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
+      self.x_property.storeIn (dictionary: &ioDictionary, forKey: "x")
     //--- Atomic property: y
-      self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
+      self.y_property.storeIn (dictionary: &ioDictionary, forKey: "y")
     //--- Atomic property: width
-      self.width_property.storeIn (dictionary: ioDictionary, forKey: "width")
+      self.width_property.storeIn (dictionary: &ioDictionary, forKey: "width")
     //--- Atomic property: height
-      self.height_property.storeIn (dictionary: ioDictionary, forKey: "height")
+      self.height_property.storeIn (dictionary: &ioDictionary, forKey: "height")
     //--- Atomic property: xUnit
-      self.xUnit_property.storeIn (dictionary: ioDictionary, forKey: "xUnit")
+      self.xUnit_property.storeIn (dictionary: &ioDictionary, forKey: "xUnit")
     //--- Atomic property: yUnit
-      self.yUnit_property.storeIn (dictionary: ioDictionary, forKey: "yUnit")
+      self.yUnit_property.storeIn (dictionary: &ioDictionary, forKey: "yUnit")
     //--- Atomic property: widthUnit
-      self.widthUnit_property.storeIn (dictionary: ioDictionary, forKey: "widthUnit")
+      self.widthUnit_property.storeIn (dictionary: &ioDictionary, forKey: "widthUnit")
     //--- Atomic property: heightUnit
-      self.heightUnit_property.storeIn (dictionary: ioDictionary, forKey: "heightUnit")
+      self.heightUnit_property.storeIn (dictionary: &ioDictionary, forKey: "heightUnit")
     //--- Atomic property: zoneName
-      self.zoneName_property.storeIn (dictionary: ioDictionary, forKey: "zoneName")
+      self.zoneName_property.storeIn (dictionary: &ioDictionary, forKey: "zoneName")
     //--- Atomic property: displayZoneName
-      self.displayZoneName_property.storeIn (dictionary: ioDictionary, forKey: "displayZoneName")
+      self.displayZoneName_property.storeIn (dictionary: &ioDictionary, forKey: "displayZoneName")
     //--- Atomic property: displayZoneNameWithPadNumbers
-      self.displayZoneNameWithPadNumbers_property.storeIn (dictionary: ioDictionary, forKey: "displayZoneNameWithPadNumbers")
+      self.displayZoneNameWithPadNumbers_property.storeIn (dictionary: &ioDictionary, forKey: "displayZoneNameWithPadNumbers")
     //--- Atomic property: xName
-      self.xName_property.storeIn (dictionary: ioDictionary, forKey: "xName")
+      self.xName_property.storeIn (dictionary: &ioDictionary, forKey: "xName")
     //--- Atomic property: yName
-      self.yName_property.storeIn (dictionary: ioDictionary, forKey: "yName")
+      self.yName_property.storeIn (dictionary: &ioDictionary, forKey: "yName")
     //--- Atomic property: xNameUnit
-      self.xNameUnit_property.storeIn (dictionary: ioDictionary, forKey: "xNameUnit")
+      self.xNameUnit_property.storeIn (dictionary: &ioDictionary, forKey: "xNameUnit")
     //--- Atomic property: yNameUnit
-      self.yNameUnit_property.storeIn (dictionary: ioDictionary, forKey: "yNameUnit")
+      self.yNameUnit_property.storeIn (dictionary: &ioDictionary, forKey: "yNameUnit")
     //--- Atomic property: zoneNumbering
-      self.zoneNumbering_property.storeIn (dictionary: ioDictionary, forKey: "zoneNumbering")
+      self.zoneNumbering_property.storeIn (dictionary: &ioDictionary, forKey: "zoneNumbering")
   //--- To many property: forbiddenPadNumbers
     self.store (
       managedObjectArray: self.forbiddenPadNumbers_property.propval.values,
       relationshipName: "forbiddenPadNumbers",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   }
 
@@ -1228,8 +1228,8 @@ final class PackageZone : PackageObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_PackageZone (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_PackageZone (&ioDictionary)
   }
 
   //····················································································································

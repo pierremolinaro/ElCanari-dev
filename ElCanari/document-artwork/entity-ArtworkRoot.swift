@@ -635,39 +635,39 @@ final class ArtworkRoot : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: layerConfiguration
-      self.layerConfiguration_property.storeIn (dictionary: ioDictionary, forKey: "layerConfiguration")
+      self.layerConfiguration_property.storeIn (dictionary: &ioDictionary, forKey: "layerConfiguration")
     //--- Atomic property: selectedTab
-      self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey: "selectedTab")
+      self.selectedTab_property.storeIn (dictionary: &ioDictionary, forKey: "selectedTab")
     //--- Atomic property: comments
-      self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
+      self.comments_property.storeIn (dictionary: &ioDictionary, forKey: "comments")
     //--- Atomic property: minPPTPTTTWdisplayUnit
-      self.minPPTPTTTWdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minPPTPTTTWdisplayUnit")
+      self.minPPTPTTTWdisplayUnit_property.storeIn (dictionary: &ioDictionary, forKey: "minPPTPTTTWdisplayUnit")
     //--- Atomic property: minPPTPTTTW
-      self.minPPTPTTTW_property.storeIn (dictionary: ioDictionary, forKey: "minPPTPTTTW")
+      self.minPPTPTTTW_property.storeIn (dictionary: &ioDictionary, forKey: "minPPTPTTTW")
     //--- Atomic property: minValueForOARdisplayUnit
-      self.minValueForOARdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForOARdisplayUnit")
+      self.minValueForOARdisplayUnit_property.storeIn (dictionary: &ioDictionary, forKey: "minValueForOARdisplayUnit")
     //--- Atomic property: minValueForOARinEBUnit
-      self.minValueForOARinEBUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForOARinEBUnit")
+      self.minValueForOARinEBUnit_property.storeIn (dictionary: &ioDictionary, forKey: "minValueForOARinEBUnit")
     //--- Atomic property: minValueForPHDdisplayUnit
-      self.minValueForPHDdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForPHDdisplayUnit")
+      self.minValueForPHDdisplayUnit_property.storeIn (dictionary: &ioDictionary, forKey: "minValueForPHDdisplayUnit")
     //--- Atomic property: minValueForPHDinEBUnit
-      self.minValueForPHDinEBUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForPHDinEBUnit")
+      self.minValueForPHDinEBUnit_property.storeIn (dictionary: &ioDictionary, forKey: "minValueForPHDinEBUnit")
     //--- Atomic property: minValueForBoardLimitWidthDisplayUnit
-      self.minValueForBoardLimitWidthDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForBoardLimitWidthDisplayUnit")
+      self.minValueForBoardLimitWidthDisplayUnit_property.storeIn (dictionary: &ioDictionary, forKey: "minValueForBoardLimitWidthDisplayUnit")
     //--- Atomic property: minValueForBoardLimitWidth
-      self.minValueForBoardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "minValueForBoardLimitWidth")
+      self.minValueForBoardLimitWidth_property.storeIn (dictionary: &ioDictionary, forKey: "minValueForBoardLimitWidth")
     //--- Atomic property: title
-      self.title_property.storeIn (dictionary: ioDictionary, forKey: "title")
+      self.title_property.storeIn (dictionary: &ioDictionary, forKey: "title")
     //--- Atomic property: drillDataFileExtension
-      self.drillDataFileExtension_property.storeIn (dictionary: ioDictionary, forKey: "drillDataFileExtension")
+      self.drillDataFileExtension_property.storeIn (dictionary: &ioDictionary, forKey: "drillDataFileExtension")
   //--- To many property: fileGenerationParameterArray
     self.store (
       managedObjectArray: self.fileGenerationParameterArray_property.propval.values,
       relationshipName: "fileGenerationParameterArray",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   }
 

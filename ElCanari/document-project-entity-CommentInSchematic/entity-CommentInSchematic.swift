@@ -322,22 +322,22 @@ final class CommentInSchematic : SchematicObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mColor
-      self.mColor_property.storeIn (dictionary: ioDictionary, forKey: "mColor")
+      self.mColor_property.storeIn (dictionary: &ioDictionary, forKey: "mColor")
     //--- Atomic property: mSize
-      self.mSize_property.storeIn (dictionary: ioDictionary, forKey: "mSize")
+      self.mSize_property.storeIn (dictionary: &ioDictionary, forKey: "mSize")
     //--- Atomic property: mHorizontalAlignment
-      self.mHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mHorizontalAlignment")
+      self.mHorizontalAlignment_property.storeIn (dictionary: &ioDictionary, forKey: "mHorizontalAlignment")
     //--- Atomic property: mVerticalAlignment
-      self.mVerticalAlignment_property.storeIn (dictionary: ioDictionary, forKey: "mVerticalAlignment")
+      self.mVerticalAlignment_property.storeIn (dictionary: &ioDictionary, forKey: "mVerticalAlignment")
     //--- Atomic property: mX
-      self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
+      self.mX_property.storeIn (dictionary: &ioDictionary, forKey: "mX")
     //--- Atomic property: mY
-      self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
+      self.mY_property.storeIn (dictionary: &ioDictionary, forKey: "mY")
     //--- Atomic property: mComment
-      self.mComment_property.storeIn (dictionary: ioDictionary, forKey: "mComment")
+      self.mComment_property.storeIn (dictionary: &ioDictionary, forKey: "mComment")
   }
 
   //····················································································································
@@ -588,8 +588,8 @@ final class CommentInSchematic : SchematicObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_CommentInSchematic (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_CommentInSchematic (&ioDictionary)
   }
 
   //····················································································································

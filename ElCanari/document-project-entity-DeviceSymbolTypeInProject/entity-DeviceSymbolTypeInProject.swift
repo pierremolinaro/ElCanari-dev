@@ -114,14 +114,14 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mSymbolTypeName
-      self.mSymbolTypeName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolTypeName")
+      self.mSymbolTypeName_property.storeIn (dictionary: &ioDictionary, forKey: "mSymbolTypeName")
     //--- Atomic property: mStrokeBezierPath
-      self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mStrokeBezierPath")
+      self.mStrokeBezierPath_property.storeIn (dictionary: &ioDictionary, forKey: "mStrokeBezierPath")
     //--- Atomic property: mFilledBezierPath
-      self.mFilledBezierPath_property.storeIn (dictionary: ioDictionary, forKey: "mFilledBezierPath")
+      self.mFilledBezierPath_property.storeIn (dictionary: &ioDictionary, forKey: "mFilledBezierPath")
   }
 
   //····················································································································

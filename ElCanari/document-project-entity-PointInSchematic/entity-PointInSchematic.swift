@@ -929,36 +929,37 @@ final class PointInSchematic : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mSymbolPinName
-      self.mSymbolPinName_property.storeIn (dictionary: ioDictionary, forKey: "mSymbolPinName")
+      self.mSymbolPinName_property.storeIn (dictionary: &ioDictionary, forKey: "mSymbolPinName")
   //--- To many property: mLabels
     self.store (
       managedObjectArray: self.mLabels_property.propval.values,
       relationshipName: "mLabels",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
     //--- Atomic property: mX
-      self.mX_property.storeIn (dictionary: ioDictionary, forKey: "mX")
+      self.mX_property.storeIn (dictionary: &ioDictionary, forKey: "mX")
     //--- Atomic property: mY
-      self.mY_property.storeIn (dictionary: ioDictionary, forKey: "mY")
+      self.mY_property.storeIn (dictionary: &ioDictionary, forKey: "mY")
   //--- To many property: mWiresP2s
     self.store (
       managedObjectArray: self.mWiresP2s_property.propval.values,
       relationshipName: "mWiresP2s",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: mWiresP1s
     self.store (
       managedObjectArray: self.mWiresP1s_property.propval.values,
       relationshipName: "mWiresP1s",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To one property: mNC // Opposite is toOne mPoint
-    self.store (managedObject:self.mNC_property.propval,
+    self.store (managedObject: self.mNC_property.propval,
       relationshipName: "mNC",
-      intoDictionary: ioDictionary)
+      intoDictionary: &ioDictionary
+    )
   }
 
   //····················································································································

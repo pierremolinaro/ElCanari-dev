@@ -405,14 +405,14 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: x
-      self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
+      self.x_property.storeIn (dictionary: &ioDictionary, forKey: "x")
     //--- Atomic property: y
-      self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
+      self.y_property.storeIn (dictionary: &ioDictionary, forKey: "y")
     //--- Atomic property: instanceRotation
-      self.instanceRotation_property.storeIn (dictionary: ioDictionary, forKey: "instanceRotation")
+      self.instanceRotation_property.storeIn (dictionary: &ioDictionary, forKey: "instanceRotation")
   }
 
   //····················································································································
@@ -689,8 +689,8 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //  Save into additional dictionary
   //····················································································································
 
-  override func saveIntoAdditionalDictionary (_ ioDictionary : NSMutableDictionary) {
-    self.saveIntoAdditionalDictionary_MergerBoardInstance (ioDictionary)
+  override func saveIntoAdditionalDictionary (_ ioDictionary : inout [String : Any]) {
+    self.saveIntoAdditionalDictionary_MergerBoardInstance (&ioDictionary)
   }
 
   //····················································································································

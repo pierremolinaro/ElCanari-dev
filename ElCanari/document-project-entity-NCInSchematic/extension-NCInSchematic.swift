@@ -36,7 +36,7 @@ extension NCInSchematic {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_NCInSchematic (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_NCInSchematic (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

@@ -70,7 +70,7 @@ extension PackageArc {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_PackageArc (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_PackageArc (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

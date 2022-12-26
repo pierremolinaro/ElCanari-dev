@@ -33,7 +33,7 @@ extension PackageModelImageDoublePoint {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_PackageModelImageDoublePoint (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_PackageModelImageDoublePoint (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

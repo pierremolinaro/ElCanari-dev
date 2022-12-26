@@ -245,18 +245,19 @@ final class PadProxyInDevice : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mPinInstanceName
-      self.mPinInstanceName_property.storeIn (dictionary: ioDictionary, forKey: "mPinInstanceName")
+      self.mPinInstanceName_property.storeIn (dictionary: &ioDictionary, forKey: "mPinInstanceName")
     //--- Atomic property: mPadName
-      self.mPadName_property.storeIn (dictionary: ioDictionary, forKey: "mPadName")
+      self.mPadName_property.storeIn (dictionary: &ioDictionary, forKey: "mPadName")
     //--- Atomic property: mIsNC
-      self.mIsNC_property.storeIn (dictionary: ioDictionary, forKey: "mIsNC")
+      self.mIsNC_property.storeIn (dictionary: &ioDictionary, forKey: "mIsNC")
   //--- To one property: mPinInstance // Opposite is toOne mPadProxy
-    self.store (managedObject:self.mPinInstance_property.propval,
+    self.store (managedObject: self.mPinInstance_property.propval,
       relationshipName: "mPinInstance",
-      intoDictionary: ioDictionary)
+      intoDictionary: &ioDictionary
+    )
   }
 
   //····················································································································

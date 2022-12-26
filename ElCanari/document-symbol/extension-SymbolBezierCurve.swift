@@ -33,7 +33,7 @@ extension SymbolBezierCurve {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_SymbolBezierCurve (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_SymbolBezierCurve (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

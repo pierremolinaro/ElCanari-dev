@@ -3905,177 +3905,177 @@ final class BoardModel : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: name
-      self.name_property.storeIn (dictionary: ioDictionary, forKey: "name")
+      self.name_property.storeIn (dictionary: &ioDictionary, forKey: "name")
     //--- Atomic property: modelWidth
-      self.modelWidth_property.storeIn (dictionary: ioDictionary, forKey: "modelWidth")
+      self.modelWidth_property.storeIn (dictionary: &ioDictionary, forKey: "modelWidth")
     //--- Atomic property: modelWidthUnit
-      self.modelWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelWidthUnit")
+      self.modelWidthUnit_property.storeIn (dictionary: &ioDictionary, forKey: "modelWidthUnit")
     //--- Atomic property: modelHeight
-      self.modelHeight_property.storeIn (dictionary: ioDictionary, forKey: "modelHeight")
+      self.modelHeight_property.storeIn (dictionary: &ioDictionary, forKey: "modelHeight")
     //--- Atomic property: modelHeightUnit
-      self.modelHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelHeightUnit")
+      self.modelHeightUnit_property.storeIn (dictionary: &ioDictionary, forKey: "modelHeightUnit")
     //--- Atomic property: zoom
-      self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
+      self.zoom_property.storeIn (dictionary: &ioDictionary, forKey: "zoom")
     //--- Atomic property: layerConfiguration
-      self.layerConfiguration_property.storeIn (dictionary: ioDictionary, forKey: "layerConfiguration")
+      self.layerConfiguration_property.storeIn (dictionary: &ioDictionary, forKey: "layerConfiguration")
   //--- To many property: frontLegendLines
     self.store (
       managedObjectArray: self.frontLegendLines_property.propval.values,
       relationshipName: "frontLegendLines",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: backLegendLines
     self.store (
       managedObjectArray: self.backLegendLines_property.propval.values,
       relationshipName: "backLegendLines",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: frontLegendTexts
     self.store (
       managedObjectArray: self.frontLegendTexts_property.propval.values,
       relationshipName: "frontLegendTexts",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: frontLayoutTexts
     self.store (
       managedObjectArray: self.frontLayoutTexts_property.propval.values,
       relationshipName: "frontLayoutTexts",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: backLegendTexts
     self.store (
       managedObjectArray: self.backLegendTexts_property.propval.values,
       relationshipName: "backLegendTexts",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: backLayoutTexts
     self.store (
       managedObjectArray: self.backLayoutTexts_property.propval.values,
       relationshipName: "backLayoutTexts",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: internalBoardsLimits
     self.store (
       managedObjectArray: self.internalBoardsLimits_property.propval.values,
       relationshipName: "internalBoardsLimits",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: drills
     self.store (
       managedObjectArray: self.drills_property.propval.values,
       relationshipName: "drills",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: vias
     self.store (
       managedObjectArray: self.vias_property.propval.values,
       relationshipName: "vias",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: frontPads
     self.store (
       managedObjectArray: self.frontPads_property.propval.values,
       relationshipName: "frontPads",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: backPads
     self.store (
       managedObjectArray: self.backPads_property.propval.values,
       relationshipName: "backPads",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: traversingPads
     self.store (
       managedObjectArray: self.traversingPads_property.propval.values,
       relationshipName: "traversingPads",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
     //--- Atomic property: modelLimitWidth
-      self.modelLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "modelLimitWidth")
+      self.modelLimitWidth_property.storeIn (dictionary: &ioDictionary, forKey: "modelLimitWidth")
     //--- Atomic property: modelLimitWidthUnit
-      self.modelLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelLimitWidthUnit")
+      self.modelLimitWidthUnit_property.storeIn (dictionary: &ioDictionary, forKey: "modelLimitWidthUnit")
   //--- To many property: backComponentNames
     self.store (
       managedObjectArray: self.backComponentNames_property.propval.values,
       relationshipName: "backComponentNames",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: frontComponentNames
     self.store (
       managedObjectArray: self.frontComponentNames_property.propval.values,
       relationshipName: "frontComponentNames",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: frontComponentValues
     self.store (
       managedObjectArray: self.frontComponentValues_property.propval.values,
       relationshipName: "frontComponentValues",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: backComponentValues
     self.store (
       managedObjectArray: self.backComponentValues_property.propval.values,
       relationshipName: "backComponentValues",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: backTracks
     self.store (
       managedObjectArray: self.backTracks_property.propval.values,
       relationshipName: "backTracks",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: frontTracks
     self.store (
       managedObjectArray: self.frontTracks_property.propval.values,
       relationshipName: "frontTracks",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: inner1Tracks
     self.store (
       managedObjectArray: self.inner1Tracks_property.propval.values,
       relationshipName: "inner1Tracks",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: inner2Tracks
     self.store (
       managedObjectArray: self.inner2Tracks_property.propval.values,
       relationshipName: "inner2Tracks",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: inner3Tracks
     self.store (
       managedObjectArray: self.inner3Tracks_property.propval.values,
       relationshipName: "inner3Tracks",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: inner4Tracks
     self.store (
       managedObjectArray: self.inner4Tracks_property.propval.values,
       relationshipName: "inner4Tracks",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: frontPackages
     self.store (
       managedObjectArray: self.frontPackages_property.propval.values,
       relationshipName: "frontPackages",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: backPackages
     self.store (
       managedObjectArray: self.backPackages_property.propval.values,
       relationshipName: "backPackages",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
     //--- Atomic property: artworkName
-      self.artworkName_property.storeIn (dictionary: ioDictionary, forKey: "artworkName")
+      self.artworkName_property.storeIn (dictionary: &ioDictionary, forKey: "artworkName")
   //--- To many property: myInstances
     self.store (
       managedObjectArray: self.myInstances_property.propval.values,
       relationshipName: "myInstances",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   }
 

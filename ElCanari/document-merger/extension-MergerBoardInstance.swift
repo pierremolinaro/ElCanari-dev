@@ -37,7 +37,7 @@ extension MergerBoardInstance {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_MergerBoardInstance (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_MergerBoardInstance (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

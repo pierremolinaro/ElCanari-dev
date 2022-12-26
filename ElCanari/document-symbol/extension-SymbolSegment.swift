@@ -31,7 +31,7 @@ extension SymbolSegment {
   //  Save into additional dictionary
   //····················································································································
 
-  func saveIntoAdditionalDictionary_SymbolSegment (_ ioDictionary : NSMutableDictionary) {
+  func saveIntoAdditionalDictionary_SymbolSegment (_ ioDictionary : inout [String : Any]) {
   }
 
   //····················································································································

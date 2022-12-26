@@ -598,39 +598,39 @@ final class DeviceInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    super.saveIntoDictionary (ioDictionary)
+  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+    super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mDeviceName
-      self.mDeviceName_property.storeIn (dictionary: ioDictionary, forKey: "mDeviceName")
+      self.mDeviceName_property.storeIn (dictionary: &ioDictionary, forKey: "mDeviceName")
     //--- Atomic property: mPrefix
-      self.mPrefix_property.storeIn (dictionary: ioDictionary, forKey: "mPrefix")
+      self.mPrefix_property.storeIn (dictionary: &ioDictionary, forKey: "mPrefix")
     //--- Atomic property: mDeviceVersion
-      self.mDeviceVersion_property.storeIn (dictionary: ioDictionary, forKey: "mDeviceVersion")
+      self.mDeviceVersion_property.storeIn (dictionary: &ioDictionary, forKey: "mDeviceVersion")
     //--- Atomic property: mDeviceFileData
-      self.mDeviceFileData_property.storeIn (dictionary: ioDictionary, forKey: "mDeviceFileData")
+      self.mDeviceFileData_property.storeIn (dictionary: &ioDictionary, forKey: "mDeviceFileData")
   //--- To many property: mPackages
     self.store (
       managedObjectArray: self.mPackages_property.propval.values,
       relationshipName: "mPackages",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: mSymbols
     self.store (
       managedObjectArray: self.mSymbols_property.propval.values,
       relationshipName: "mSymbols",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: mComponents
     self.store (
       managedObjectArray: self.mComponents_property.propval.values,
       relationshipName: "mComponents",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   //--- To many property: mPadAssignments
     self.store (
       managedObjectArray: self.mPadAssignments_property.propval.values,
       relationshipName: "mPadAssignments",
-      intoDictionary: ioDictionary
+      intoDictionary: &ioDictionary
     )
   }
 
