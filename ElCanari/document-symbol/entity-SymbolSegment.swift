@@ -164,10 +164,10 @@ final class SymbolSegment : SymbolObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.y1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.x2_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager)
-    self.y2_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager)
-    self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.y1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "y1")
+    self.x2_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager, key: "x2")
+    self.y2_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager, key: "y2")
+    self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x1")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- Atomic property: strokeBezierPath
@@ -314,7 +314,7 @@ final class SymbolSegment : SymbolObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: y1
       self.y1_property.storeIn (dictionary: &ioDictionary, forKey: "y1")
@@ -324,7 +324,7 @@ final class SymbolSegment : SymbolObject,
       self.y2_property.storeIn (dictionary: &ioDictionary, forKey: "y2")
     //--- Atomic property: x1
       self.x1_property.storeIn (dictionary: &ioDictionary, forKey: "x1")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

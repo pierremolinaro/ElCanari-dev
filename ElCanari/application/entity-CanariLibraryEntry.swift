@@ -143,10 +143,10 @@ final class CanariLibraryEntry : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mPath_property = EBStoredProperty_String (defaultValue: "Hello", undoManager: inUndoManager)
-    self.mUses_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.mLibraryRepositoryURL_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mUserAndPasswordTag_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mPath_property = EBStoredProperty_String (defaultValue: "Hello", undoManager: inUndoManager, key: "mPath")
+    self.mUses_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mUses")
+    self.mLibraryRepositoryURL_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mLibraryRepositoryURL")
+    self.mUserAndPasswordTag_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mUserAndPasswordTag")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- Atomic property: mStatusImage
@@ -184,7 +184,7 @@ final class CanariLibraryEntry : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mPath
       self.mPath_property.storeIn (dictionary: &ioDictionary, forKey: "mPath")
@@ -194,7 +194,7 @@ final class CanariLibraryEntry : EBManagedObject,
       self.mLibraryRepositoryURL_property.storeIn (dictionary: &ioDictionary, forKey: "mLibraryRepositoryURL")
     //--- Atomic property: mUserAndPasswordTag
       self.mUserAndPasswordTag_property.storeIn (dictionary: &ioDictionary, forKey: "mUserAndPasswordTag")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

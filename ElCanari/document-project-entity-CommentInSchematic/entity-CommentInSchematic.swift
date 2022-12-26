@@ -211,13 +211,13 @@ final class CommentInSchematic : SchematicObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.black, undoManager: inUndoManager)
-    self.mSize_property = EBStoredProperty_Double (defaultValue: 11, undoManager: inUndoManager)
-    self.mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager)
-    self.mVerticalAlignment_property = EBStoredProperty_VerticalAlignment (defaultValue: VerticalAlignment.center, undoManager: inUndoManager)
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mComment_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.black, undoManager: inUndoManager, key: "mColor")
+    self.mSize_property = EBStoredProperty_Double (defaultValue: 11, undoManager: inUndoManager, key: "mSize")
+    self.mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "mHorizontalAlignment")
+    self.mVerticalAlignment_property = EBStoredProperty_VerticalAlignment (defaultValue: VerticalAlignment.center, undoManager: inUndoManager, key: "mVerticalAlignment")
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mY")
+    self.mComment_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mComment")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- Atomic property: objectDisplay
@@ -322,7 +322,7 @@ final class CommentInSchematic : SchematicObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mColor
       self.mColor_property.storeIn (dictionary: &ioDictionary, forKey: "mColor")
@@ -338,7 +338,7 @@ final class CommentInSchematic : SchematicObject,
       self.mY_property.storeIn (dictionary: &ioDictionary, forKey: "mY")
     //--- Atomic property: mComment
       self.mComment_property.storeIn (dictionary: &ioDictionary, forKey: "mComment")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

@@ -77,7 +77,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   To many property: mPinInstances
   //····················································································································
 
-  final let mPinInstances_property = StoredArrayOf_SymbolPinInstanceInDevice (usedForSignature: true)
+  final let mPinInstances_property = StoredArrayOf_SymbolPinInstanceInDevice (usedForSignature: true, key: "mPinInstances")
 
   //····················································································································
 
@@ -149,7 +149,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   To one property: mDeviceRoot
   //····················································································································
 
-  final let mDeviceRoot_property = StoredObject_DeviceRoot (usedForSignature: false, strongRef: false)
+  final let mDeviceRoot_property = StoredObject_DeviceRoot (usedForSignature: false, strongRef: false, key: "mDeviceRoot")
 
   //····················································································································
 
@@ -177,7 +177,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   To one property: mType
   //····················································································································
 
-  final let mType_property = StoredObject_SymbolTypeInDevice (usedForSignature: false, strongRef: false)
+  final let mType_property = StoredObject_SymbolTypeInDevice (usedForSignature: false, strongRef: false, key: "mType")
 
   //····················································································································
 
@@ -274,9 +274,9 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mInstanceName")
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mY")
     super.init (inUndoManager)
     self.mDeviceRoot_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -513,7 +513,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
   //--- To many property: mPinInstances
     self.store (
@@ -527,7 +527,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
       self.mX_property.storeIn (dictionary: &ioDictionary, forKey: "mX")
     //--- Atomic property: mY
       self.mY_property.storeIn (dictionary: &ioDictionary, forKey: "mY")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

@@ -91,7 +91,7 @@ final class FontInProject : EBManagedObject,
   //   To many property: mTexts
   //····················································································································
 
-  final let mTexts_property = StoredArrayOf_BoardText (usedForSignature: false)
+  final let mTexts_property = StoredArrayOf_BoardText (usedForSignature: false, key: "mTexts")
 
   //····················································································································
 
@@ -182,7 +182,7 @@ final class FontInProject : EBManagedObject,
   //   To many property: mComponentNames
   //····················································································································
 
-  final let mComponentNames_property = StoredArrayOf_ComponentInProject (usedForSignature: false)
+  final let mComponentNames_property = StoredArrayOf_ComponentInProject (usedForSignature: false, key: "mComponentNames")
 
   //····················································································································
 
@@ -197,7 +197,7 @@ final class FontInProject : EBManagedObject,
   //   To many property: mComponentValues
   //····················································································································
 
-  final let mComponentValues_property = StoredArrayOf_ComponentInProject (usedForSignature: false)
+  final let mComponentValues_property = StoredArrayOf_ComponentInProject (usedForSignature: false, key: "mComponentValues")
 
   //····················································································································
 
@@ -332,10 +332,10 @@ final class FontInProject : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mNominalSize_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mFontName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mFontVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mDescriptiveString_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mNominalSize_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mNominalSize")
+    self.mFontName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mFontName")
+    self.mFontVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mFontVersion")
+    self.mDescriptiveString_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mDescriptiveString")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- To many property: mTexts (has opposite relationship)
@@ -511,7 +511,7 @@ final class FontInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
   //--- To many property: mTexts
     self.store (
@@ -539,7 +539,7 @@ final class FontInProject : EBManagedObject,
       relationshipName: "mComponentValues",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

@@ -54,7 +54,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //   To one property: mPin
   //····················································································································
 
-  final let mPin_property = StoredObject_DevicePinInProject (usedForSignature: false, strongRef: true)
+  final let mPin_property = StoredObject_DevicePinInProject (usedForSignature: false, strongRef: true, key: "mPin")
 
   //····················································································································
 
@@ -117,7 +117,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mPadName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mPadName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mPadName")
     super.init (inUndoManager)
     self.mPin_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -192,7 +192,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mPadName
       self.mPadName_property.storeIn (dictionary: &ioDictionary, forKey: "mPadName")
@@ -201,7 +201,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
       relationshipName: "mPin",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

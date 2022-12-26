@@ -356,7 +356,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //   To many property: mPoints
   //····················································································································
 
-  final let mPoints_property = StoredArrayOf_PointInSchematic (usedForSignature: false)
+  final let mPoints_property = StoredArrayOf_PointInSchematic (usedForSignature: false, key: "mPoints")
 
   //····················································································································
 
@@ -395,7 +395,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //   To one property: mComponent
   //····················································································································
 
-  final let mComponent_property = StoredObject_ComponentInProject (usedForSignature: false, strongRef: false)
+  final let mComponent_property = StoredObject_ComponentInProject (usedForSignature: false, strongRef: false, key: "mComponent")
 
   //····················································································································
 
@@ -509,17 +509,17 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mCenterX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mCenterY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: inUndoManager)
-    self.mMirror_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mDisplayComponentNameOffsetX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mDisplayComponentNameOffsetY_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager)
-    self.mDisplayComponentValue_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.mDisplayComponentValueOffsetX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mDisplayComponentValueOffsetY_property = EBStoredProperty_Int (defaultValue: -457200, undoManager: inUndoManager)
+    self.mCenterX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCenterX")
+    self.mCenterY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCenterY")
+    self.mRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: inUndoManager, key: "mRotation")
+    self.mMirror_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mMirror")
+    self.mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mSymbolInstanceName")
+    self.mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mSymbolTypeName")
+    self.mDisplayComponentNameOffsetX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mDisplayComponentNameOffsetX")
+    self.mDisplayComponentNameOffsetY_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager, key: "mDisplayComponentNameOffsetY")
+    self.mDisplayComponentValue_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mDisplayComponentValue")
+    self.mDisplayComponentValueOffsetX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mDisplayComponentValueOffsetX")
+    self.mDisplayComponentValueOffsetY_property = EBStoredProperty_Int (defaultValue: -457200, undoManager: inUndoManager, key: "mDisplayComponentValueOffsetY")
     super.init (inUndoManager)
     self.mComponent_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -840,7 +840,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mCenterX
       self.mCenterX_property.storeIn (dictionary: &ioDictionary, forKey: "mCenterX")
@@ -870,7 +870,7 @@ final class ComponentSymbolInProject : SchematicObject,
       relationshipName: "mPoints",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

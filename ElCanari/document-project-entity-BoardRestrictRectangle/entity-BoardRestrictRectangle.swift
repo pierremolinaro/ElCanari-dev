@@ -296,16 +296,16 @@ final class BoardRestrictRectangle : BoardObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mWidth_property = EBStoredProperty_Int (defaultValue: 2286000, undoManager: inUndoManager)
-    self.mHeight_property = EBStoredProperty_Int (defaultValue: 2286000, undoManager: inUndoManager)
-    self.mIsInFrontLayer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.mIsInBackLayer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.mIsInInner1Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.mIsInInner2Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.mIsInInner3Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.mIsInInner4Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mY")
+    self.mWidth_property = EBStoredProperty_Int (defaultValue: 2286000, undoManager: inUndoManager, key: "mWidth")
+    self.mHeight_property = EBStoredProperty_Int (defaultValue: 2286000, undoManager: inUndoManager, key: "mHeight")
+    self.mIsInFrontLayer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mIsInFrontLayer")
+    self.mIsInBackLayer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mIsInBackLayer")
+    self.mIsInInner1Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mIsInInner1Layer")
+    self.mIsInInner2Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mIsInInner2Layer")
+    self.mIsInInner3Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mIsInInner3Layer")
+    self.mIsInInner4Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mIsInInner4Layer")
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- Atomic property: objectDisplay
@@ -547,7 +547,7 @@ final class BoardRestrictRectangle : BoardObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mY
       self.mY_property.storeIn (dictionary: &ioDictionary, forKey: "mY")
@@ -569,7 +569,7 @@ final class BoardRestrictRectangle : BoardObject,
       self.mIsInInner4Layer_property.storeIn (dictionary: &ioDictionary, forKey: "mIsInInner4Layer")
     //--- Atomic property: mX
       self.mX_property.storeIn (dictionary: &ioDictionary, forKey: "mX")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

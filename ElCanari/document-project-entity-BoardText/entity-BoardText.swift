@@ -302,7 +302,7 @@ final class BoardText : BoardObject,
   //   To one property: mFont
   //····················································································································
 
-  final let mFont_property = StoredObject_FontInProject (usedForSignature: false, strongRef: false)
+  final let mFont_property = StoredObject_FontInProject (usedForSignature: false, strongRef: false, key: "mFont")
 
   //····················································································································
 
@@ -348,16 +348,16 @@ final class BoardText : BoardObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: inUndoManager)
-    self.mLayer_property = EBStoredProperty_BoardTextLayer (defaultValue: BoardTextLayer.legendFront, undoManager: inUndoManager)
-    self.mText_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager)
-    self.mVerticalAlignment_property = EBStoredProperty_BoardTextVerticalAlignment (defaultValue: BoardTextVerticalAlignment.base, undoManager: inUndoManager)
-    self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mWeight_property = EBStoredProperty_Double (defaultValue: 1, undoManager: inUndoManager)
-    self.mOblique_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mY")
+    self.mFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: inUndoManager, key: "mFontSize")
+    self.mLayer_property = EBStoredProperty_BoardTextLayer (defaultValue: BoardTextLayer.legendFront, undoManager: inUndoManager, key: "mLayer")
+    self.mText_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mText")
+    self.mHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "mHorizontalAlignment")
+    self.mVerticalAlignment_property = EBStoredProperty_BoardTextVerticalAlignment (defaultValue: BoardTextVerticalAlignment.base, undoManager: inUndoManager, key: "mVerticalAlignment")
+    self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mRotation")
+    self.mWeight_property = EBStoredProperty_Double (defaultValue: 1, undoManager: inUndoManager, key: "mWeight")
+    self.mOblique_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mOblique")
     super.init (inUndoManager)
     self.mFont_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -658,7 +658,7 @@ final class BoardText : BoardObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mX
       self.mX_property.storeIn (dictionary: &ioDictionary, forKey: "mX")
@@ -680,7 +680,7 @@ final class BoardText : BoardObject,
       self.mWeight_property.storeIn (dictionary: &ioDictionary, forKey: "mWeight")
     //--- Atomic property: mOblique
       self.mOblique_property.storeIn (dictionary: &ioDictionary, forKey: "mOblique")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

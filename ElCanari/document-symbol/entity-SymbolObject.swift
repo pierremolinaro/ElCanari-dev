@@ -71,9 +71,9 @@ class SymbolObject : EBGraphicManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

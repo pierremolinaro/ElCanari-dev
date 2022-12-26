@@ -1440,15 +1440,32 @@ class ReadWriteArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbo
 //    Stored Array: ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolInProject, EBSignatureObserverProtocol {
+class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolInProject, EBSignatureObserverProtocol, DocumentStorableProperty {
 
   //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature
+    self.mKey = inKey
     super.init ()
   }
 
+  //····················································································································
+  
+  private let mKey : String?
+  var key : String? { return self.mKey }
+  
+  //····················································································································
+
+  func store (inDictionary ioDictionary : inout [String : Any]) {
+    if let key = self.mKey, self.mInternalArrayValue.count > 0 {
+      var array = [Int] ()
+      for object in self.mInternalArrayValue.values {
+        array.append (object.savingIndex)
+      }
+      ioDictionary [key] = array
+    }
+  }
   //····················································································································
   //   Signature ?
   //····················································································································

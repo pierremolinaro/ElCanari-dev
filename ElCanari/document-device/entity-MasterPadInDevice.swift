@@ -269,7 +269,7 @@ final class MasterPadInDevice : EBManagedObject,
   //   To many property: mSlavePads
   //····················································································································
 
-  final let mSlavePads_property = StoredArrayOf_SlavePadInDevice (usedForSignature: true)
+  final let mSlavePads_property = StoredArrayOf_SlavePadInDevice (usedForSignature: true, key: "mSlavePads")
 
   //····················································································································
 
@@ -336,15 +336,15 @@ final class MasterPadInDevice : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mCenterX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mCenterY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mWidth_property = EBStoredProperty_Int (defaultValue: 114300, undoManager: inUndoManager)
-    self.mHeight_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: inUndoManager)
-    self.mHoleWidth_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager)
-    self.mHoleHeight_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager)
-    self.mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo, undoManager: inUndoManager)
-    self.mStyle_property = EBStoredProperty_PadStyle (defaultValue: PadStyle.traversing, undoManager: inUndoManager)
-    self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mCenterX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCenterX")
+    self.mCenterY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCenterY")
+    self.mWidth_property = EBStoredProperty_Int (defaultValue: 114300, undoManager: inUndoManager, key: "mWidth")
+    self.mHeight_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: inUndoManager, key: "mHeight")
+    self.mHoleWidth_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager, key: "mHoleWidth")
+    self.mHoleHeight_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager, key: "mHoleHeight")
+    self.mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo, undoManager: inUndoManager, key: "mShape")
+    self.mStyle_property = EBStoredProperty_PadStyle (defaultValue: PadStyle.traversing, undoManager: inUndoManager, key: "mStyle")
+    self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mName")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- To many property: mSlavePads (has opposite relationship)
@@ -514,7 +514,7 @@ final class MasterPadInDevice : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mCenterX
       self.mCenterX_property.storeIn (dictionary: &ioDictionary, forKey: "mCenterX")
@@ -540,7 +540,7 @@ final class MasterPadInDevice : EBManagedObject,
       relationshipName: "mSlavePads",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

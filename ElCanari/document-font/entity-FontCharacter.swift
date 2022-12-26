@@ -146,7 +146,7 @@ final class FontCharacter : EBManagedObject,
   //   To many property: segments
   //····················································································································
 
-  final let segments_property = StoredArrayOf_SegmentForFontCharacter (usedForSignature: true)
+  final let segments_property = StoredArrayOf_SegmentForFontCharacter (usedForSignature: true, key: "segments")
 
   //····················································································································
 
@@ -230,10 +230,10 @@ final class FontCharacter : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.codePoint_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.advance_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mWarnsWhenNoSegment_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.mWarnsWhenAdvanceIsZero_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.codePoint_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "codePoint")
+    self.advance_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "advance")
+    self.mWarnsWhenNoSegment_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mWarnsWhenNoSegment")
+    self.mWarnsWhenAdvanceIsZero_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mWarnsWhenAdvanceIsZero")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- To many property: segments (no option)
@@ -355,7 +355,7 @@ final class FontCharacter : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: codePoint
       self.codePoint_property.storeIn (dictionary: &ioDictionary, forKey: "codePoint")
@@ -371,7 +371,7 @@ final class FontCharacter : EBManagedObject,
       relationshipName: "segments",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

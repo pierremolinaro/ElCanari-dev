@@ -164,10 +164,10 @@ final class SymbolSolidRect : SymbolObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.width_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager)
-    self.height_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager)
-    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "y")
+    self.width_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager, key: "width")
+    self.height_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager, key: "height")
+    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- Atomic property: filledBezierPath
@@ -314,7 +314,7 @@ final class SymbolSolidRect : SymbolObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: y
       self.y_property.storeIn (dictionary: &ioDictionary, forKey: "y")
@@ -324,7 +324,7 @@ final class SymbolSolidRect : SymbolObject,
       self.height_property.storeIn (dictionary: &ioDictionary, forKey: "height")
     //--- Atomic property: x
       self.x_property.storeIn (dictionary: &ioDictionary, forKey: "x")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

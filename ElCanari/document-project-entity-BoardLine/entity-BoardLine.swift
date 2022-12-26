@@ -315,17 +315,17 @@ final class BoardLine : BoardObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.mX1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mX1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.mY1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mY1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.mX2_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager)
-    self.mX2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.mY2_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager)
-    self.mY2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.mLayer_property = EBStoredProperty_BoardLineLayer (defaultValue: BoardLineLayer.legendFront, undoManager: inUndoManager)
-    self.mWidth_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager)
+    self.mWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mWidthUnit")
+    self.mX1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX1")
+    self.mX1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mX1Unit")
+    self.mY1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mY1")
+    self.mY1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mY1Unit")
+    self.mX2_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager, key: "mX2")
+    self.mX2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mX2Unit")
+    self.mY2_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager, key: "mY2")
+    self.mY2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mY2Unit")
+    self.mLayer_property = EBStoredProperty_BoardLineLayer (defaultValue: BoardLineLayer.legendFront, undoManager: inUndoManager, key: "mLayer")
+    self.mWidth_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager, key: "mWidth")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- Atomic property: objectDisplay
@@ -430,7 +430,7 @@ final class BoardLine : BoardObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mWidthUnit
       self.mWidthUnit_property.storeIn (dictionary: &ioDictionary, forKey: "mWidthUnit")
@@ -454,7 +454,7 @@ final class BoardLine : BoardObject,
       self.mLayer_property.storeIn (dictionary: &ioDictionary, forKey: "mLayer")
     //--- Atomic property: mWidth
       self.mWidth_property.storeIn (dictionary: &ioDictionary, forKey: "mWidth")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

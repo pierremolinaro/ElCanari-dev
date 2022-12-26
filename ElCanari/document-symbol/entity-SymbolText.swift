@@ -140,10 +140,10 @@ final class SymbolText : SymbolObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.text_property = EBStoredProperty_String (defaultValue: "text", undoManager: inUndoManager)
-    self.horizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager)
-    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "y")
+    self.text_property = EBStoredProperty_String (defaultValue: "text", undoManager: inUndoManager, key: "text")
+    self.horizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "horizontalAlignment")
+    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- Atomic property: objectDisplay
@@ -261,7 +261,7 @@ final class SymbolText : SymbolObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: y
       self.y_property.storeIn (dictionary: &ioDictionary, forKey: "y")
@@ -271,7 +271,7 @@ final class SymbolText : SymbolObject,
       self.horizontalAlignment_property.storeIn (dictionary: &ioDictionary, forKey: "horizontalAlignment")
     //--- Atomic property: x
       self.x_property.storeIn (dictionary: &ioDictionary, forKey: "x")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

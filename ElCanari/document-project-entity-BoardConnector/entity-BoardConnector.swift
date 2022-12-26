@@ -293,7 +293,7 @@ final class BoardConnector : BoardObject,
   //   To many property: mTracksP2
   //····················································································································
 
-  final let mTracksP2_property = StoredArrayOf_BoardTrack (usedForSignature: false)
+  final let mTracksP2_property = StoredArrayOf_BoardTrack (usedForSignature: false, key: "mTracksP2")
 
   //····················································································································
 
@@ -460,7 +460,7 @@ final class BoardConnector : BoardObject,
   //   To many property: mTracksP1
   //····················································································································
 
-  final let mTracksP1_property = StoredArrayOf_BoardTrack (usedForSignature: false)
+  final let mTracksP1_property = StoredArrayOf_BoardTrack (usedForSignature: false, key: "mTracksP1")
 
   //····················································································································
 
@@ -492,7 +492,7 @@ final class BoardConnector : BoardObject,
   //   To one property: mComponent
   //····················································································································
 
-  final let mComponent_property = StoredObject_ComponentInProject (usedForSignature: false, strongRef: false)
+  final let mComponent_property = StoredObject_ComponentInProject (usedForSignature: false, strongRef: false, key: "mComponent")
 
   //····················································································································
 
@@ -691,18 +691,18 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mComponentPadName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mPadIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mDefaultHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.mCustomHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45720, undoManager: inUndoManager)
-    self.mCustomHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.mUsesCustomHoleDiameter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.mDefaultPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.mCustomPadDiameter_property = EBStoredProperty_Int (defaultValue: 91440, undoManager: inUndoManager)
-    self.mCustomPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.mUsesCustomPadDiameter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mComponentPadName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mComponentPadName")
+    self.mPadIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mPadIndex")
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mY")
+    self.mDefaultHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mDefaultHoleDiameterUnit")
+    self.mCustomHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45720, undoManager: inUndoManager, key: "mCustomHoleDiameter")
+    self.mCustomHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mCustomHoleDiameterUnit")
+    self.mUsesCustomHoleDiameter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mUsesCustomHoleDiameter")
+    self.mDefaultPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mDefaultPadDiameterUnit")
+    self.mCustomPadDiameter_property = EBStoredProperty_Int (defaultValue: 91440, undoManager: inUndoManager, key: "mCustomPadDiameter")
+    self.mCustomPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mCustomPadDiameterUnit")
+    self.mUsesCustomPadDiameter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mUsesCustomPadDiameter")
     super.init (inUndoManager)
     self.mComponent_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -1192,7 +1192,7 @@ final class BoardConnector : BoardObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mComponentPadName
       self.mComponentPadName_property.storeIn (dictionary: &ioDictionary, forKey: "mComponentPadName")
@@ -1230,7 +1230,7 @@ final class BoardConnector : BoardObject,
       relationshipName: "mTracksP1",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

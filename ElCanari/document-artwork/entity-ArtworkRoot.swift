@@ -387,7 +387,7 @@ final class ArtworkRoot : EBManagedObject,
   //   To many property: fileGenerationParameterArray
   //····················································································································
 
-  final let fileGenerationParameterArray_property = StoredArrayOf_ArtworkFileGenerationParameters (usedForSignature: true)
+  final let fileGenerationParameterArray_property = StoredArrayOf_ArtworkFileGenerationParameters (usedForSignature: true, key: "fileGenerationParameterArray")
 
   //····················································································································
 
@@ -488,19 +488,19 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.layerConfiguration_property = EBStoredProperty_LayerConfiguration (defaultValue: LayerConfiguration.twoLayers, undoManager: inUndoManager)
-    self.selectedTab_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.comments_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.minPPTPTTTWdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90, undoManager: inUndoManager)
-    self.minPPTPTTTW_property = EBStoredProperty_Int (defaultValue: 18000, undoManager: inUndoManager)
-    self.minValueForOARdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90, undoManager: inUndoManager)
-    self.minValueForOARinEBUnit_property = EBStoredProperty_Int (defaultValue: 18000, undoManager: inUndoManager)
-    self.minValueForPHDdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90, undoManager: inUndoManager)
-    self.minValueForPHDinEBUnit_property = EBStoredProperty_Int (defaultValue: 18000, undoManager: inUndoManager)
-    self.minValueForBoardLimitWidthDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
-    self.minValueForBoardLimitWidth_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
-    self.title_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.drillDataFileExtension_property = EBStoredProperty_String (defaultValue: "DRF", undoManager: inUndoManager)
+    self.layerConfiguration_property = EBStoredProperty_LayerConfiguration (defaultValue: LayerConfiguration.twoLayers, undoManager: inUndoManager, key: "layerConfiguration")
+    self.selectedTab_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "selectedTab")
+    self.comments_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "comments")
+    self.minPPTPTTTWdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90, undoManager: inUndoManager, key: "minPPTPTTTWdisplayUnit")
+    self.minPPTPTTTW_property = EBStoredProperty_Int (defaultValue: 18000, undoManager: inUndoManager, key: "minPPTPTTTW")
+    self.minValueForOARdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90, undoManager: inUndoManager, key: "minValueForOARdisplayUnit")
+    self.minValueForOARinEBUnit_property = EBStoredProperty_Int (defaultValue: 18000, undoManager: inUndoManager, key: "minValueForOARinEBUnit")
+    self.minValueForPHDdisplayUnit_property = EBStoredProperty_Int (defaultValue: 90, undoManager: inUndoManager, key: "minValueForPHDdisplayUnit")
+    self.minValueForPHDinEBUnit_property = EBStoredProperty_Int (defaultValue: 18000, undoManager: inUndoManager, key: "minValueForPHDinEBUnit")
+    self.minValueForBoardLimitWidthDisplayUnit_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "minValueForBoardLimitWidthDisplayUnit")
+    self.minValueForBoardLimitWidth_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "minValueForBoardLimitWidth")
+    self.title_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "title")
+    self.drillDataFileExtension_property = EBStoredProperty_String (defaultValue: "DRF", undoManager: inUndoManager, key: "drillDataFileExtension")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- To many property: fileGenerationParameterArray (has opposite relationship)
@@ -635,7 +635,7 @@ final class ArtworkRoot : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: layerConfiguration
       self.layerConfiguration_property.storeIn (dictionary: &ioDictionary, forKey: "layerConfiguration")
@@ -669,7 +669,7 @@ final class ArtworkRoot : EBManagedObject,
       relationshipName: "fileGenerationParameterArray",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

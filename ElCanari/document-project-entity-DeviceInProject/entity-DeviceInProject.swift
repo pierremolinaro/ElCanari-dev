@@ -181,7 +181,7 @@ final class DeviceInProject : EBManagedObject,
   //   To many property: mPackages
   //····················································································································
 
-  final let mPackages_property = StoredArrayOf_DevicePackageInProject (usedForSignature: false)
+  final let mPackages_property = StoredArrayOf_DevicePackageInProject (usedForSignature: false, key: "mPackages")
 
   //····················································································································
 
@@ -196,7 +196,7 @@ final class DeviceInProject : EBManagedObject,
   //   To many property: mSymbols
   //····················································································································
 
-  final let mSymbols_property = StoredArrayOf_DeviceSymbolInstanceInProject (usedForSignature: false)
+  final let mSymbols_property = StoredArrayOf_DeviceSymbolInstanceInProject (usedForSignature: false, key: "mSymbols")
 
   //····················································································································
 
@@ -211,7 +211,7 @@ final class DeviceInProject : EBManagedObject,
   //   To many property: mComponents
   //····················································································································
 
-  final let mComponents_property = StoredArrayOf_ComponentInProject (usedForSignature: false)
+  final let mComponents_property = StoredArrayOf_ComponentInProject (usedForSignature: false, key: "mComponents")
 
   //····················································································································
 
@@ -226,7 +226,7 @@ final class DeviceInProject : EBManagedObject,
   //   To many property: mPadAssignments
   //····················································································································
 
-  final let mPadAssignments_property = StoredArrayOf_DevicePadAssignmentInProject (usedForSignature: false)
+  final let mPadAssignments_property = StoredArrayOf_DevicePadAssignmentInProject (usedForSignature: false, key: "mPadAssignments")
 
   //····················································································································
 
@@ -395,10 +395,10 @@ final class DeviceInProject : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mDeviceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mPrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mDeviceVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mDeviceFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager)
+    self.mDeviceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mDeviceName")
+    self.mPrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mPrefix")
+    self.mDeviceVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mDeviceVersion")
+    self.mDeviceFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mDeviceFileData")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- To many property: mPackages (no option)
@@ -598,7 +598,7 @@ final class DeviceInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mDeviceName
       self.mDeviceName_property.storeIn (dictionary: &ioDictionary, forKey: "mDeviceName")
@@ -632,7 +632,7 @@ final class DeviceInProject : EBManagedObject,
       relationshipName: "mPadAssignments",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

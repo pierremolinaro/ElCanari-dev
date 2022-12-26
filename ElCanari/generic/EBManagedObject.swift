@@ -98,64 +98,6 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   }
 
   //····················································································································
-  //  Save
-  //····················································································································
-
-  func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
-    ioDictionary [ENTITY_KEY] = self.className.pathExtension
-  }
-
-  //····················································································································
-  //   accessibleObjectsForSaveOperation
-  //····················································································································
-
-  func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
-  }
-
-  //····················································································································
-  //   appendPropertyNamesTo
-  //····················································································································
-
-  func appendPropertyNamesTo (_ ioString : inout String) {
-  }
-
-  //····················································································································
-  //   appendPropertyValuesTo
-  //····················································································································
-
-  func appendPropertyValuesTo (_ ioString : inout Data) {
-  }
-
-  //····················································································································
-  //   store (managedObjectArray:relationshipName:intoDictionary)
-  //····················································································································
-
-  final func store (managedObjectArray inManagedObjectArray : [EBManagedObject],
-                    relationshipName inRelationshipName : String,
-                    intoDictionary ioDictionary : inout [String : Any]) {
-
-    if inManagedObjectArray.count > 0 {
-      var indexArray = [Int] ()
-      for managedObject in inManagedObjectArray {
-        indexArray.append (managedObject.savingIndex)
-      }
-      ioDictionary [inRelationshipName] = indexArray
-    }
-  }
-
-  //····················································································································
-  //   store (managedObject:relationshipName:intoDictionary)
-  //····················································································································
-
-  final func store (managedObject inPossibleManagedObject : EBManagedObject?,
-                    relationshipName inRelationshipName : String,
-                    intoDictionary ioDictionary : inout [String : Any]) {
-    if let unwObject = inPossibleManagedObject {
-      ioDictionary [inRelationshipName] = unwObject.savingIndex
-    }
-  }
-
-  //····················································································································
   //   readEntityFromDictionary
   //····················································································································
 
@@ -186,6 +128,72 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
     }
     return result
   }
+
+  //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+  }
+
+  //····················································································································
+  //  Save
+  //····················································································································
+
+  final func saveIntoDictionary (_ ioDictionary : inout [String : Any]) {
+    ioDictionary [ENTITY_KEY] = self.className.pathExtension
+    // Swift.print ("Object of class \(self.className.pathExtension)")
+    let mirror = Mirror (reflecting: self)
+    for property in mirror.children {
+      if let storedProperty = property.value as? DocumentStorableProperty {
+        storedProperty.store (inDictionary: &ioDictionary)
+        // Swift.print ("  \(key)")
+      }
+    }
+  }
+
+  //····················································································································
+  //   appendPropertyNamesTo
+  //····················································································································
+
+  func appendPropertyNamesTo (_ ioString : inout String) {
+  }
+
+  //····················································································································
+  //   appendPropertyValuesTo
+  //····················································································································
+
+  func appendPropertyValuesTo (_ ioString : inout Data) {
+  }
+
+  //····················································································································
+  //   store (managedObjectArray:relationshipName:intoDictionary)
+  //····················································································································
+
+//  final func store (managedObjectArray inManagedObjectArray : [EBManagedObject],
+//                    relationshipName inRelationshipName : String,
+//                    intoDictionary ioDictionary : inout [String : Any]) {
+//
+//    if inManagedObjectArray.count > 0 {
+//      var indexArray = [Int] ()
+//      for managedObject in inManagedObjectArray {
+//        indexArray.append (managedObject.savingIndex)
+//      }
+//      ioDictionary [inRelationshipName] = indexArray
+//    }
+//  }
+
+  //····················································································································
+  //   store (managedObject:relationshipName:intoDictionary)
+  //····················································································································
+
+//  final func store (managedObject inPossibleManagedObject : EBManagedObject?,
+//                    relationshipName inRelationshipName : String,
+//                    intoDictionary ioDictionary : inout [String : Any]) {
+//    if let unwObject = inPossibleManagedObject {
+//      ioDictionary [inRelationshipName] = unwObject.savingIndex
+//    }
+//  }
 
   //····················································································································
   //   setSignatureObserver

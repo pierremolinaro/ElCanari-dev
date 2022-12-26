@@ -43,55 +43,55 @@ extension AutoLayoutProjectDocument {
          .expandableWidth ().set (alignment: .right).setRedTextColor ()
       _ = gridView.add (single: netClassNameErrorLabel)
     //--- Color
-      let netColor_property = EBStoredProperty_NSColor (defaultValue: inNetClass.mNetClassColor, undoManager: nil)
+      let netColor_property = EBStoredProperty_NSColor (defaultValue: inNetClass.mNetClassColor, undoManager: nil, key: nil)
       let wireColorWell = AutoLayoutColorWell ().bind_color (netColor_property, sendContinously: false)
       do{
         let left = AutoLayoutStaticLabel (title: "Wire Color in Schematics", bold: false, size: .regular, alignment: .center)
         _ = gridView.addFirstBaseLineAligned (left: left, right: AutoLayoutHorizontalStackView.viewFollowedByFlexibleSpace (wireColorWell))
       }
     //---  Width
-      let width_property = EBStoredProperty_Int (defaultValue: inNetClass.mTrackWidth, undoManager: nil) // 20 mils
-      let widthUnit_property = EBStoredProperty_Int (defaultValue: inNetClass.mTrackWidthUnit, undoManager: nil) // mils
+      let width_property = EBStoredProperty_Int (defaultValue: inNetClass.mTrackWidth, undoManager: nil, key: nil) // 20 mils
+      let widthUnit_property = EBStoredProperty_Int (defaultValue: inNetClass.mTrackWidthUnit, undoManager: nil, key: nil) // mils
       let widthFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (width_property, widthUnit_property)
       do{
         let left = AutoLayoutStaticLabel (title: "Track Width", bold: false, size: .regular, alignment: .center)
         _ = gridView.addFirstBaseLineAligned (left: left, right: widthFields)
       }
     //---  Allow front track
-      let allowFrontTrack_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnFrontSide, undoManager: nil)
+      let allowFrontTrack_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnFrontSide, undoManager: nil, key: nil)
       let allowFrontTrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Front Layer", size: .regular).bind_value (allowFrontTrack_property).expandableWidth ()
       _ = gridView.addFirstBaseLineAligned (left: AutoLayoutHorizontalStackView (), right: allowFrontTrackCheckBox)
     //---  Allow Inner 1 Layer
-      let allowInner1Layer_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnInner1Layer, undoManager: nil)
+      let allowInner1Layer_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnInner1Layer, undoManager: nil, key: nil)
       let allowInner1TrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Inner 1 Layer", size: .regular).bind_value (allowInner1Layer_property).expandableWidth ()
       _ = gridView.addFirstBaseLineAligned (left: AutoLayoutHorizontalStackView (), right: allowInner1TrackCheckBox)
     //---  Allow Inner 2 Layer
-      let allowInner2Layer_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnInner2Layer, undoManager: nil)
+      let allowInner2Layer_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnInner2Layer, undoManager: nil, key: nil)
       let allowInner2TrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Inner 2 Layer", size: .regular).bind_value (allowInner2Layer_property).expandableWidth ()
       _ = gridView.addFirstBaseLineAligned (left: AutoLayoutHorizontalStackView (), right: allowInner2TrackCheckBox)
     //---  Allow Inner 3 Layer
-      let allowInner3Layer_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnInner3Layer, undoManager: nil)
+      let allowInner3Layer_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnInner3Layer, undoManager: nil, key: nil)
       let allowInner3TrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Inner 3 Layer", size: .regular).bind_value (allowInner3Layer_property).expandableWidth ()
       _ = gridView.addFirstBaseLineAligned (left: AutoLayoutHorizontalStackView (), right: allowInner3TrackCheckBox)
     //---  Allow Inner 4 Layer
-      let allowInner4Layer_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnInner4Layer, undoManager: nil)
+      let allowInner4Layer_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnInner4Layer, undoManager: nil, key: nil)
       let allowInner4TrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Inner 4 Layer", size: .regular).bind_value (allowInner4Layer_property).expandableWidth ()
       _ = gridView.addFirstBaseLineAligned (left: AutoLayoutHorizontalStackView (), right: allowInner4TrackCheckBox)
     //---  Allow Back track
-      let allowBackTrack_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnBackSide, undoManager: nil)
+      let allowBackTrack_property = EBStoredProperty_Bool (defaultValue: inNetClass.mAllowTracksOnBackSide, undoManager: nil, key: nil)
       let allowBackTrackCheckBox = AutoLayoutCheckbox (title: "Allow Tracks on Back Layer", size: .regular).bind_value (allowBackTrack_property).expandableWidth ()
       _ = gridView.addFirstBaseLineAligned (left: AutoLayoutHorizontalStackView (), right: allowBackTrackCheckBox)
     //--- Hole Diameter
-      let viaHoleDiameter_property = EBStoredProperty_Int (defaultValue: inNetClass.mViaHoleDiameter, undoManager: nil)
-      let viaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: inNetClass.mViaHoleDiameterUnit, undoManager: nil)
+      let viaHoleDiameter_property = EBStoredProperty_Int (defaultValue: inNetClass.mViaHoleDiameter, undoManager: nil, key: nil)
+      let viaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: inNetClass.mViaHoleDiameterUnit, undoManager: nil, key: nil)
       let holeDiameterFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (viaHoleDiameter_property, viaHoleDiameterUnit_property)
       do{
         let left = AutoLayoutStaticLabel (title: "Via Hole Diameter", bold: false, size: .regular, alignment: .center)
         _ = gridView.addFirstBaseLineAligned (left: left, right: holeDiameterFields)
       }
     //--- Pad Diameter
-      let viaPadDiameter_property = EBStoredProperty_Int (defaultValue: inNetClass.mViaPadDiameter, undoManager: nil)
-      let viaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: inNetClass.mViaPadDiameterUnit, undoManager: nil)
+      let viaPadDiameter_property = EBStoredProperty_Int (defaultValue: inNetClass.mViaPadDiameter, undoManager: nil, key: nil)
+      let viaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: inNetClass.mViaPadDiameterUnit, undoManager: nil, key: nil)
       let padDiameterFields = AutoLayoutCanariDimensionAndPopUp (size: .regular).bind_dimensionAndUnit (viaPadDiameter_property, viaPadDiameterUnit_property)
       do{
         let left = AutoLayoutStaticLabel (title: "Via Pad Diameter", bold: false, size: .regular, alignment: .center)

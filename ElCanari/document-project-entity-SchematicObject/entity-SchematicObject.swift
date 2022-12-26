@@ -56,7 +56,7 @@ class SchematicObject : EBGraphicManagedObject,
   //   To one property: mSheet
   //····················································································································
 
-  final let mSheet_property = StoredObject_SheetInProject (usedForSignature: false, strongRef: false)
+  final let mSheet_property = StoredObject_SheetInProject (usedForSignature: false, strongRef: false, key: "mSheet")
 
   //····················································································································
 
@@ -219,9 +219,9 @@ class SchematicObject : EBGraphicManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

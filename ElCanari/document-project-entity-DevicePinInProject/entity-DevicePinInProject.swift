@@ -375,18 +375,18 @@ final class DevicePinInProject : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mPinName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mPinX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mPinY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mXName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mYName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mNameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager)
-    self.mPinNameIsDisplayedInSchematic_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.mXNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mYNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager)
+    self.mPinName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mPinName")
+    self.mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mSymbolInstanceName")
+    self.mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mSymbolTypeName")
+    self.mPinX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mPinX")
+    self.mPinY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mPinY")
+    self.mXName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mXName")
+    self.mYName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mYName")
+    self.mNameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "mNameHorizontalAlignment")
+    self.mPinNameIsDisplayedInSchematic_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mPinNameIsDisplayedInSchematic")
+    self.mXNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mXNumber")
+    self.mYNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mYNumber")
+    self.mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "mNumberHorizontalAlignment")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- Atomic property: pinQualifiedName
@@ -487,7 +487,7 @@ final class DevicePinInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mPinName
       self.mPinName_property.storeIn (dictionary: &ioDictionary, forKey: "mPinName")
@@ -513,7 +513,7 @@ final class DevicePinInProject : EBManagedObject,
       self.mYNumber_property.storeIn (dictionary: &ioDictionary, forKey: "mYNumber")
     //--- Atomic property: mNumberHorizontalAlignment
       self.mNumberHorizontalAlignment_property.storeIn (dictionary: &ioDictionary, forKey: "mNumberHorizontalAlignment")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

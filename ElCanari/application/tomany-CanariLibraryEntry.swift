@@ -527,15 +527,32 @@ class ReadWriteArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 //    Stored Array: CanariLibraryEntry
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EBSignatureObserverProtocol {
+class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EBSignatureObserverProtocol, DocumentStorableProperty {
 
   //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature
+    self.mKey = inKey
     super.init ()
   }
 
+  //····················································································································
+  
+  private let mKey : String?
+  var key : String? { return self.mKey }
+  
+  //····················································································································
+
+  func store (inDictionary ioDictionary : inout [String : Any]) {
+    if let key = self.mKey, self.mInternalArrayValue.count > 0 {
+      var array = [Int] ()
+      for object in self.mInternalArrayValue.values {
+        array.append (object.savingIndex)
+      }
+      ioDictionary [key] = array
+    }
+  }
   //····················································································································
   //   Signature ?
   //····················································································································
@@ -734,7 +751,7 @@ final class PreferencesArrayOf_CanariLibraryEntry : StoredArrayOf_CanariLibraryE
 
   init (prefKey inPrefKey : String) {
     self.mPrefKey = inPrefKey
-    super.init (usedForSignature: false)
+    super.init (usedForSignature: false, key: nil)
     if let array = UserDefaults.standard.array (forKey: inPrefKey) as? [[String : Any]] {
       var objectArray = EBReferenceArray <CanariLibraryEntry> ()
       for dictionary in array {

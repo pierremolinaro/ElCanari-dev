@@ -588,7 +588,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: frontLegendLines
   //····················································································································
 
-  final let frontLegendLines_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let frontLegendLines_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "frontLegendLines")
 
   //····················································································································
 
@@ -603,7 +603,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: backLegendLines
   //····················································································································
 
-  final let backLegendLines_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let backLegendLines_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "backLegendLines")
 
   //····················································································································
 
@@ -618,7 +618,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: frontLegendTexts
   //····················································································································
 
-  final let frontLegendTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let frontLegendTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "frontLegendTexts")
 
   //····················································································································
 
@@ -633,7 +633,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: frontLayoutTexts
   //····················································································································
 
-  final let frontLayoutTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let frontLayoutTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "frontLayoutTexts")
 
   //····················································································································
 
@@ -648,7 +648,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: backLegendTexts
   //····················································································································
 
-  final let backLegendTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let backLegendTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "backLegendTexts")
 
   //····················································································································
 
@@ -663,7 +663,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: backLayoutTexts
   //····················································································································
 
-  final let backLayoutTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let backLayoutTexts_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "backLayoutTexts")
 
   //····················································································································
 
@@ -678,7 +678,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: internalBoardsLimits
   //····················································································································
 
-  final let internalBoardsLimits_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let internalBoardsLimits_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "internalBoardsLimits")
 
   //····················································································································
 
@@ -693,7 +693,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: drills
   //····················································································································
 
-  final let drills_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let drills_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "drills")
 
   //····················································································································
 
@@ -708,7 +708,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: vias
   //····················································································································
 
-  final let vias_property = StoredArrayOf_BoardModelVia (usedForSignature: false)
+  final let vias_property = StoredArrayOf_BoardModelVia (usedForSignature: false, key: "vias")
 
   //····················································································································
 
@@ -723,7 +723,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: frontPads
   //····················································································································
 
-  final let frontPads_property = StoredArrayOf_BoardModelPad (usedForSignature: false)
+  final let frontPads_property = StoredArrayOf_BoardModelPad (usedForSignature: false, key: "frontPads")
 
   //····················································································································
 
@@ -738,7 +738,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: backPads
   //····················································································································
 
-  final let backPads_property = StoredArrayOf_BoardModelPad (usedForSignature: false)
+  final let backPads_property = StoredArrayOf_BoardModelPad (usedForSignature: false, key: "backPads")
 
   //····················································································································
 
@@ -753,7 +753,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: traversingPads
   //····················································································································
 
-  final let traversingPads_property = StoredArrayOf_BoardModelPad (usedForSignature: false)
+  final let traversingPads_property = StoredArrayOf_BoardModelPad (usedForSignature: false, key: "traversingPads")
 
   //····················································································································
 
@@ -806,7 +806,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: backComponentNames
   //····················································································································
 
-  final let backComponentNames_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let backComponentNames_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "backComponentNames")
 
   //····················································································································
 
@@ -821,7 +821,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: frontComponentNames
   //····················································································································
 
-  final let frontComponentNames_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let frontComponentNames_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "frontComponentNames")
 
   //····················································································································
 
@@ -836,7 +836,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: frontComponentValues
   //····················································································································
 
-  final let frontComponentValues_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let frontComponentValues_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "frontComponentValues")
 
   //····················································································································
 
@@ -851,7 +851,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: backComponentValues
   //····················································································································
 
-  final let backComponentValues_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let backComponentValues_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "backComponentValues")
 
   //····················································································································
 
@@ -866,7 +866,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: backTracks
   //····················································································································
 
-  final let backTracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let backTracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "backTracks")
 
   //····················································································································
 
@@ -881,7 +881,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: frontTracks
   //····················································································································
 
-  final let frontTracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let frontTracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "frontTracks")
 
   //····················································································································
 
@@ -896,7 +896,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: inner1Tracks
   //····················································································································
 
-  final let inner1Tracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let inner1Tracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "inner1Tracks")
 
   //····················································································································
 
@@ -911,7 +911,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: inner2Tracks
   //····················································································································
 
-  final let inner2Tracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let inner2Tracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "inner2Tracks")
 
   //····················································································································
 
@@ -926,7 +926,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: inner3Tracks
   //····················································································································
 
-  final let inner3Tracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let inner3Tracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "inner3Tracks")
 
   //····················································································································
 
@@ -941,7 +941,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: inner4Tracks
   //····················································································································
 
-  final let inner4Tracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let inner4Tracks_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "inner4Tracks")
 
   //····················································································································
 
@@ -956,7 +956,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: frontPackages
   //····················································································································
 
-  final let frontPackages_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let frontPackages_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "frontPackages")
 
   //····················································································································
 
@@ -971,7 +971,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: backPackages
   //····················································································································
 
-  final let backPackages_property = StoredArrayOf_SegmentEntity (usedForSignature: false)
+  final let backPackages_property = StoredArrayOf_SegmentEntity (usedForSignature: false, key: "backPackages")
 
   //····················································································································
 
@@ -1005,7 +1005,7 @@ final class BoardModel : EBManagedObject,
   //   To many property: myInstances
   //····················································································································
 
-  final let myInstances_property = StoredArrayOf_MergerBoardInstance (usedForSignature: false)
+  final let myInstances_property = StoredArrayOf_MergerBoardInstance (usedForSignature: false, key: "myInstances")
 
   //····················································································································
 
@@ -1922,16 +1922,16 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.name_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.modelWidth_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.modelWidthUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.modelHeight_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.modelHeightUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.zoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.layerConfiguration_property = EBStoredProperty_LayerConfiguration (defaultValue: LayerConfiguration.twoLayers, undoManager: inUndoManager)
-    self.modelLimitWidth_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.modelLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.artworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.name_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "name")
+    self.modelWidth_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelWidth")
+    self.modelWidthUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelWidthUnit")
+    self.modelHeight_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelHeight")
+    self.modelHeightUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelHeightUnit")
+    self.zoom_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "zoom")
+    self.layerConfiguration_property = EBStoredProperty_LayerConfiguration (defaultValue: LayerConfiguration.twoLayers, undoManager: inUndoManager, key: "layerConfiguration")
+    self.modelLimitWidth_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelLimitWidth")
+    self.modelLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "modelLimitWidthUnit")
+    self.artworkName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "artworkName")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- To many property: frontLegendLines (no option)
@@ -3905,7 +3905,7 @@ final class BoardModel : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: name
       self.name_property.storeIn (dictionary: &ioDictionary, forKey: "name")
@@ -4077,7 +4077,7 @@ final class BoardModel : EBManagedObject,
       relationshipName: "myInstances",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

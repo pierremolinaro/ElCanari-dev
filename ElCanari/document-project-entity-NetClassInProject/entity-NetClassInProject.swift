@@ -469,7 +469,7 @@ final class NetClassInProject : EBManagedObject,
   //   To many property: mNets
   //····················································································································
 
-  final let mNets_property = StoredArrayOf_NetInProject (usedForSignature: false)
+  final let mNets_property = StoredArrayOf_NetInProject (usedForSignature: false, key: "mNets")
 
   //····················································································································
 
@@ -706,20 +706,20 @@ final class NetClassInProject : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mNetClassName_property = EBStoredProperty_String (defaultValue: "Default", undoManager: inUndoManager)
-    self.mNetClassColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.blue, undoManager: inUndoManager)
-    self.mTrackWidth_property = EBStoredProperty_Int (defaultValue: 45720, undoManager: inUndoManager)
-    self.mTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.mViaHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45720, undoManager: inUndoManager)
-    self.mViaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.mViaPadDiameter_property = EBStoredProperty_Int (defaultValue: 91440, undoManager: inUndoManager)
-    self.mViaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.mAllowTracksOnFrontSide_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.mAllowTracksOnBackSide_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.mAllowTracksOnInner1Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.mAllowTracksOnInner2Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.mAllowTracksOnInner3Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.mAllowTracksOnInner4Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.mNetClassName_property = EBStoredProperty_String (defaultValue: "Default", undoManager: inUndoManager, key: "mNetClassName")
+    self.mNetClassColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.blue, undoManager: inUndoManager, key: "mNetClassColor")
+    self.mTrackWidth_property = EBStoredProperty_Int (defaultValue: 45720, undoManager: inUndoManager, key: "mTrackWidth")
+    self.mTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mTrackWidthUnit")
+    self.mViaHoleDiameter_property = EBStoredProperty_Int (defaultValue: 45720, undoManager: inUndoManager, key: "mViaHoleDiameter")
+    self.mViaHoleDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mViaHoleDiameterUnit")
+    self.mViaPadDiameter_property = EBStoredProperty_Int (defaultValue: 91440, undoManager: inUndoManager, key: "mViaPadDiameter")
+    self.mViaPadDiameterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mViaPadDiameterUnit")
+    self.mAllowTracksOnFrontSide_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mAllowTracksOnFrontSide")
+    self.mAllowTracksOnBackSide_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mAllowTracksOnBackSide")
+    self.mAllowTracksOnInner1Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mAllowTracksOnInner1Layer")
+    self.mAllowTracksOnInner2Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mAllowTracksOnInner2Layer")
+    self.mAllowTracksOnInner3Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mAllowTracksOnInner3Layer")
+    self.mAllowTracksOnInner4Layer_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mAllowTracksOnInner4Layer")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- To many property: mNets (has opposite relationship)
@@ -1001,7 +1001,7 @@ final class NetClassInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mNetClassName
       self.mNetClassName_property.storeIn (dictionary: &ioDictionary, forKey: "mNetClassName")
@@ -1037,7 +1037,7 @@ final class NetClassInProject : EBManagedObject,
       relationshipName: "mNets",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

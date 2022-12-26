@@ -8,7 +8,7 @@ import AppKit
 //   EBStoredEnumProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumProperty <T> {
+final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumProperty <T>, DocumentStorableProperty {
 
   //····················································································································
 
@@ -17,9 +17,15 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   //····················································································································
 
-  init (defaultValue inValue : T, undoManager inEBUndoManager : UndoManager?) {
+  fileprivate var mKey : String?
+  var key : String? { return self.mKey }
+
+  //····················································································································
+
+  init (defaultValue inValue : T, undoManager inEBUndoManager : UndoManager?, key inKey : String?) {
     self.mValue = inValue
     self.mPreferenceKey = nil
+    self.mKey = inKey
     self.mUndoManager = inEBUndoManager
     super.init ()
   }
@@ -29,6 +35,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
   init (defaultValue inValue : T, prefKey inPreferenceKey : String) {
     self.mValue = inValue
     self.mPreferenceKey = inPreferenceKey
+    self.mKey = inPreferenceKey
     super.init ()
   //--- Read from preferences
     let possibleValue = UserDefaults.standard.object (forKey: inPreferenceKey)
@@ -69,10 +76,17 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   //····················································································································
 
-  func storeIn (dictionary ioDictionary : inout [String : Any], forKey inKey : String) {
-    ioDictionary [inKey] = self.mValue.convertToNSObject ()
-//    dictionary.setValue (mValue.convertToNSObject (), forKey:inKey)
+  func store (inDictionary ioDictionary : inout [String : Any]) {
+    if let key = self.mKey {
+      ioDictionary [key] = self.mValue.convertToNSObject ()
+    }
   }
+
+  //····················································································································
+
+//  func storeIn (dictionary ioDictionary : inout [String : Any], forKey inKey : String) {
+//    ioDictionary [inKey] = self.mValue.convertToNSObject ()
+//  }
 
   //····················································································································
 

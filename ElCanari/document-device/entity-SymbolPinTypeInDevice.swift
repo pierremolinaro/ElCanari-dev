@@ -281,7 +281,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   //   To many property: mInstances
   //····················································································································
 
-  final let mInstances_property = StoredArrayOf_SymbolPinInstanceInDevice (usedForSignature: false)
+  final let mInstances_property = StoredArrayOf_SymbolPinInstanceInDevice (usedForSignature: false, key: "mInstances")
 
   //····················································································································
 
@@ -314,16 +314,16 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mPinX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mPinY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mXName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mYName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mNameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager)
-    self.mPinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.mXNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mYNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager)
+    self.mPinX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mPinX")
+    self.mPinY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mPinY")
+    self.mXName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mXName")
+    self.mYName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mYName")
+    self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mName")
+    self.mNameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "mNameHorizontalAlignment")
+    self.mPinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mPinNameIsDisplayedInSchematics")
+    self.mXNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mXNumber")
+    self.mYNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mYNumber")
+    self.mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "mNumberHorizontalAlignment")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- To many property: mInstances (has opposite relationship)
@@ -399,7 +399,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mPinX
       self.mPinX_property.storeIn (dictionary: &ioDictionary, forKey: "mPinX")
@@ -427,7 +427,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
       relationshipName: "mInstances",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

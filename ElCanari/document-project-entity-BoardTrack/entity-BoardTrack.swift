@@ -464,7 +464,7 @@ final class BoardTrack : BoardObject,
   //   To one property: mConnectorP1
   //····················································································································
 
-  final let mConnectorP1_property = StoredObject_BoardConnector (usedForSignature: false, strongRef: false)
+  final let mConnectorP1_property = StoredObject_BoardConnector (usedForSignature: false, strongRef: false, key: "mConnectorP1")
 
   //····················································································································
 
@@ -492,7 +492,7 @@ final class BoardTrack : BoardObject,
   //   To one property: mConnectorP2
   //····················································································································
 
-  final let mConnectorP2_property = StoredObject_BoardConnector (usedForSignature: false, strongRef: false)
+  final let mConnectorP2_property = StoredObject_BoardConnector (usedForSignature: false, strongRef: false, key: "mConnectorP2")
 
   //····················································································································
 
@@ -520,7 +520,7 @@ final class BoardTrack : BoardObject,
   //   To one property: mNet
   //····················································································································
 
-  final let mNet_property = StoredObject_NetInProject (usedForSignature: false, strongRef: false)
+  final let mNet_property = StoredObject_NetInProject (usedForSignature: false, strongRef: false, key: "mNet")
 
   //····················································································································
 
@@ -821,19 +821,19 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mSide_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front, undoManager: inUndoManager)
-    self.mDefaultTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.mCustomTrackWidth_property = EBStoredProperty_Int (defaultValue: 45720, undoManager: inUndoManager)
-    self.mCustomTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.mUsesCustomTrackWidth_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.mIsPreservedByAutoRouter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.mP1XUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.mP1YUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.mP2XUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.mP2YUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.mManualLockP1_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.mManualLockP2_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.mDirectionLockOnKnobDragging_property = EBStoredProperty_TrackLockDirection (defaultValue: TrackLockDirection.unlocked, undoManager: inUndoManager)
+    self.mSide_property = EBStoredProperty_TrackSide (defaultValue: TrackSide.front, undoManager: inUndoManager, key: "mSide")
+    self.mDefaultTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mDefaultTrackWidthUnit")
+    self.mCustomTrackWidth_property = EBStoredProperty_Int (defaultValue: 45720, undoManager: inUndoManager, key: "mCustomTrackWidth")
+    self.mCustomTrackWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mCustomTrackWidthUnit")
+    self.mUsesCustomTrackWidth_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mUsesCustomTrackWidth")
+    self.mIsPreservedByAutoRouter_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mIsPreservedByAutoRouter")
+    self.mP1XUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mP1XUnit")
+    self.mP1YUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mP1YUnit")
+    self.mP2XUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mP2XUnit")
+    self.mP2YUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mP2YUnit")
+    self.mManualLockP1_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mManualLockP1")
+    self.mManualLockP2_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mManualLockP2")
+    self.mDirectionLockOnKnobDragging_property = EBStoredProperty_TrackLockDirection (defaultValue: TrackLockDirection.unlocked, undoManager: inUndoManager, key: "mDirectionLockOnKnobDragging")
     super.init (inUndoManager)
     self.mConnectorP1_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -1428,7 +1428,7 @@ final class BoardTrack : BoardObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mSide
       self.mSide_property.storeIn (dictionary: &ioDictionary, forKey: "mSide")
@@ -1456,7 +1456,7 @@ final class BoardTrack : BoardObject,
       self.mManualLockP2_property.storeIn (dictionary: &ioDictionary, forKey: "mManualLockP2")
     //--- Atomic property: mDirectionLockOnKnobDragging
       self.mDirectionLockOnKnobDragging_property.storeIn (dictionary: &ioDictionary, forKey: "mDirectionLockOnKnobDragging")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

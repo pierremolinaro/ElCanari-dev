@@ -729,14 +729,28 @@ class ReadWriteObject_PackageZone : ReadOnlyObject_PackageZone {
 //    StoredObject_PackageZone
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_PackageZone : ReadWriteObject_PackageZone, EBSignatureObserverProtocol, EBObservableObjectProtocol {
+final class StoredObject_PackageZone : ReadWriteObject_PackageZone, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature
     self.mIsStrongReference = inStrongReference
+    self.mKey = inKey
     super.init ()
+  }
+
+  //····················································································································
+
+  private let mKey : String?
+  var key : String? { return self.mKey }
+  
+  //····················································································································
+
+  func store (inDictionary ioDictionary : inout [String : Any]) {
+    if let key = self.mKey, let idx = self.mWeakInternalValue?.savingIndex {
+      ioDictionary [key] = idx
+    }
   }
 
   //····················································································································

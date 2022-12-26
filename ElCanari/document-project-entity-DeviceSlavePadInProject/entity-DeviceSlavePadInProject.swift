@@ -247,14 +247,14 @@ final class DeviceSlavePadInProject : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mCenterX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mCenterY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mWidth_property = EBStoredProperty_Int (defaultValue: 114300, undoManager: inUndoManager)
-    self.mHeight_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: inUndoManager)
-    self.mHoleWidth_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager)
-    self.mHoleHeight_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager)
-    self.mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo, undoManager: inUndoManager)
-    self.mStyle_property = EBStoredProperty_SlavePadStyle (defaultValue: SlavePadStyle.traversing, undoManager: inUndoManager)
+    self.mCenterX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCenterX")
+    self.mCenterY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCenterY")
+    self.mWidth_property = EBStoredProperty_Int (defaultValue: 114300, undoManager: inUndoManager, key: "mWidth")
+    self.mHeight_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: inUndoManager, key: "mHeight")
+    self.mHoleWidth_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager, key: "mHoleWidth")
+    self.mHoleHeight_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager, key: "mHoleHeight")
+    self.mShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo, undoManager: inUndoManager, key: "mShape")
+    self.mStyle_property = EBStoredProperty_SlavePadStyle (defaultValue: SlavePadStyle.traversing, undoManager: inUndoManager, key: "mStyle")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- Atomic property: descriptor
@@ -318,7 +318,7 @@ final class DeviceSlavePadInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mCenterX
       self.mCenterX_property.storeIn (dictionary: &ioDictionary, forKey: "mCenterX")
@@ -336,7 +336,7 @@ final class DeviceSlavePadInProject : EBManagedObject,
       self.mShape_property.storeIn (dictionary: &ioDictionary, forKey: "mShape")
     //--- Atomic property: mStyle
       self.mStyle_property.storeIn (dictionary: &ioDictionary, forKey: "mStyle")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

@@ -474,7 +474,7 @@ final class DeviceRoot : EBManagedObject,
   //   To many property: mDocs
   //····················································································································
 
-  final let mDocs_property = StoredArrayOf_DeviceDocumentation (usedForSignature: true)
+  final let mDocs_property = StoredArrayOf_DeviceDocumentation (usedForSignature: true, key: "mDocs")
 
   //····················································································································
 
@@ -489,7 +489,7 @@ final class DeviceRoot : EBManagedObject,
   //   To many property: mSymbolInstances
   //····················································································································
 
-  final let mSymbolInstances_property = StoredArrayOf_SymbolInstanceInDevice (usedForSignature: true)
+  final let mSymbolInstances_property = StoredArrayOf_SymbolInstanceInDevice (usedForSignature: true, key: "mSymbolInstances")
 
   //····················································································································
 
@@ -504,7 +504,7 @@ final class DeviceRoot : EBManagedObject,
   //   To many property: mPackages
   //····················································································································
 
-  final let mPackages_property = StoredArrayOf_PackageInDevice (usedForSignature: true)
+  final let mPackages_property = StoredArrayOf_PackageInDevice (usedForSignature: true, key: "mPackages")
 
   //····················································································································
 
@@ -519,7 +519,7 @@ final class DeviceRoot : EBManagedObject,
   //   To many property: mSymbolTypes
   //····················································································································
 
-  final let mSymbolTypes_property = StoredArrayOf_SymbolTypeInDevice (usedForSignature: true)
+  final let mSymbolTypes_property = StoredArrayOf_SymbolTypeInDevice (usedForSignature: true, key: "mSymbolTypes")
 
   //····················································································································
 
@@ -534,7 +534,7 @@ final class DeviceRoot : EBManagedObject,
   //   To many property: mPadProxies
   //····················································································································
 
-  final let mPadProxies_property = StoredArrayOf_PadProxyInDevice (usedForSignature: true)
+  final let mPadProxies_property = StoredArrayOf_PadProxyInDevice (usedForSignature: true, key: "mPadProxies")
 
   //····················································································································
 
@@ -720,21 +720,21 @@ final class DeviceRoot : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mSelectedSymbolInspectorIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mSelectedPackageInspectorIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mTitle_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mImageData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager)
-    self.mPrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mComments_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mPackageDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400, undoManager: inUndoManager)
-    self.mPackageDisplayHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.mPackageDisplayVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.mShowPackages_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.mShowPackagePadNumbers_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.mShowPackageFrontPads_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.mShowPackageBackPads_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.mSymbolDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400, undoManager: inUndoManager)
+    self.mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mSelectedPageIndex")
+    self.mSelectedSymbolInspectorIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mSelectedSymbolInspectorIndex")
+    self.mSelectedPackageInspectorIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mSelectedPackageInspectorIndex")
+    self.mTitle_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mTitle")
+    self.mImageData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mImageData")
+    self.mPrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mPrefix")
+    self.mComments_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mComments")
+    self.mPackageDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400, undoManager: inUndoManager, key: "mPackageDisplayZoom")
+    self.mPackageDisplayHorizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mPackageDisplayHorizontalFlip")
+    self.mPackageDisplayVerticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mPackageDisplayVerticalFlip")
+    self.mShowPackages_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mShowPackages")
+    self.mShowPackagePadNumbers_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mShowPackagePadNumbers")
+    self.mShowPackageFrontPads_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mShowPackageFrontPads")
+    self.mShowPackageBackPads_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mShowPackageBackPads")
+    self.mSymbolDisplayZoom_property = EBStoredProperty_Int (defaultValue: 400, undoManager: inUndoManager, key: "mSymbolDisplayZoom")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- To many property: mDocs (no option)
@@ -1022,7 +1022,7 @@ final class DeviceRoot : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mSelectedPageIndex
       self.mSelectedPageIndex_property.storeIn (dictionary: &ioDictionary, forKey: "mSelectedPageIndex")
@@ -1084,7 +1084,7 @@ final class DeviceRoot : EBManagedObject,
       relationshipName: "mPadProxies",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

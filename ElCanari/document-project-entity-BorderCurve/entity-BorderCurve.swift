@@ -300,7 +300,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-  final let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false, strongRef: false)
+  final let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false, strongRef: false, key: "mRoot")
 
   //····················································································································
 
@@ -328,7 +328,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //   To one property: mNext
   //····················································································································
 
-  final let mNext_property = StoredObject_BorderCurve (usedForSignature: false, strongRef: false)
+  final let mNext_property = StoredObject_BorderCurve (usedForSignature: false, strongRef: false, key: "mNext")
 
   //····················································································································
 
@@ -356,7 +356,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //   To one property: mPrevious
   //····················································································································
 
-  final let mPrevious_property = StoredObject_BorderCurve (usedForSignature: false, strongRef: false)
+  final let mPrevious_property = StoredObject_BorderCurve (usedForSignature: false, strongRef: false, key: "mPrevious")
 
   //····················································································································
 
@@ -453,13 +453,13 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mCPX1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mCPY1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mCPX2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mCPY2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mShape_property = EBStoredProperty_BorderCurveShape (defaultValue: BorderCurveShape.line, undoManager: inUndoManager)
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mY")
+    self.mCPX1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCPX1")
+    self.mCPY1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCPY1")
+    self.mCPX2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCPX2")
+    self.mCPY2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mCPY2")
+    self.mShape_property = EBStoredProperty_BorderCurveShape (defaultValue: BorderCurveShape.line, undoManager: inUndoManager, key: "mShape")
     super.init (inUndoManager)
     self.mRoot_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -788,7 +788,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mX
       self.mX_property.storeIn (dictionary: &ioDictionary, forKey: "mX")
@@ -814,7 +814,7 @@ final class BorderCurve : EBGraphicManagedObject,
       relationshipName: "mPrevious",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

@@ -5,10 +5,17 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor protocol DocumentStorableProperty : AnyObject {
+  var key : String? { get }
+  func store (inDictionary ioDictionary : inout [String : Any])
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EBGenericStoredProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservableMutableProperty <T> {
+final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservableMutableProperty <T>, DocumentStorableProperty {
 
   //····················································································································
 
@@ -16,9 +23,15 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
 
   //····················································································································
 
-  init (defaultValue inValue : T, undoManager inUndoManager : UndoManager?) {
+  private let mKey : String?
+  var key : String? { return self.mKey }
+
+  //····················································································································
+
+  init (defaultValue inValue : T, undoManager inUndoManager : UndoManager?, key inKey : String?) {
     self.mValue = inValue
     self.mUndoManager = inUndoManager
+    self.mKey = inKey
     super.init ()
   }
 
@@ -51,10 +64,17 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
 
   //····················································································································
 
-  func storeIn (dictionary ioDictionary : inout [String : Any], forKey inKey : String) {
-    ioDictionary [inKey] = self.mValue.convertToNSObject ()
-//    dictionary.setValue (self.mValue.convertToNSObject (), forKey: inKey)
+  func store (inDictionary ioDictionary : inout [String : Any]) {
+    if let key = self.mKey {
+      ioDictionary [key] = self.mValue.convertToNSObject ()
+    }
   }
+
+  //····················································································································
+
+//  func storeIn (dictionary ioDictionary : inout [String : Any], forKey inKey : String) {
+//    ioDictionary [inKey] = self.mValue.convertToNSObject ()
+//  }
 
   //····················································································································
 

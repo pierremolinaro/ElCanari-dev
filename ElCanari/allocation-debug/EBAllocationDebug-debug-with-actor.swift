@@ -229,9 +229,9 @@ fileprivate struct EBAllocationItemDisplay {
     prefKey: prefsEnableObjectAllocationDebugString
   )
 
-  private var mTotalAllocated = EBStoredProperty_Int (defaultValue: 0, undoManager: nil)
+  private var mTotalAllocated = EBStoredProperty_Int (defaultValue: 0, undoManager: nil, key: nil)
 
-  private var mCurrentlyAllocated = EBStoredProperty_Int (defaultValue: 0, undoManager: nil)
+  private var mCurrentlyAllocated = EBStoredProperty_Int (defaultValue: 0, undoManager: nil, key: nil)
 
   fileprivate var mAllocationStatsWindow = NSWindow (
     contentRect: NSRect(x: 0.0, y: 0.0, width: 600.0, height: 400.0),

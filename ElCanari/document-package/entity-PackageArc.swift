@@ -398,19 +398,19 @@ final class PackageArc : PackageObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.yCenter_property = EBStoredProperty_Int (defaultValue: 342900, undoManager: inUndoManager)
-    self.radius_property = EBStoredProperty_Int (defaultValue: 342900, undoManager: inUndoManager)
-    self.startAngle_property = EBStoredProperty_Int (defaultValue: 45000, undoManager: inUndoManager)
-    self.arcAngle_property = EBStoredProperty_Int (defaultValue: 270000, undoManager: inUndoManager)
-    self.startTangent_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.endTangent_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.pathIsClosed_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.xCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.yCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.radiusUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.startTangentUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.endTangentUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.xCenter_property = EBStoredProperty_Int (defaultValue: 342900, undoManager: inUndoManager)
+    self.yCenter_property = EBStoredProperty_Int (defaultValue: 342900, undoManager: inUndoManager, key: "yCenter")
+    self.radius_property = EBStoredProperty_Int (defaultValue: 342900, undoManager: inUndoManager, key: "radius")
+    self.startAngle_property = EBStoredProperty_Int (defaultValue: 45000, undoManager: inUndoManager, key: "startAngle")
+    self.arcAngle_property = EBStoredProperty_Int (defaultValue: 270000, undoManager: inUndoManager, key: "arcAngle")
+    self.startTangent_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "startTangent")
+    self.endTangent_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "endTangent")
+    self.pathIsClosed_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "pathIsClosed")
+    self.xCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "xCenterUnit")
+    self.yCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "yCenterUnit")
+    self.radiusUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "radiusUnit")
+    self.startTangentUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "startTangentUnit")
+    self.endTangentUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "endTangentUnit")
+    self.xCenter_property = EBStoredProperty_Int (defaultValue: 342900, undoManager: inUndoManager, key: "xCenter")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- Atomic property: strokeBezierPath
@@ -598,7 +598,7 @@ final class PackageArc : PackageObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: yCenter
       self.yCenter_property.storeIn (dictionary: &ioDictionary, forKey: "yCenter")
@@ -626,7 +626,7 @@ final class PackageArc : PackageObject,
       self.endTangentUnit_property.storeIn (dictionary: &ioDictionary, forKey: "endTangentUnit")
     //--- Atomic property: xCenter
       self.xCenter_property.storeIn (dictionary: &ioDictionary, forKey: "xCenter")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

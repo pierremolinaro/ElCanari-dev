@@ -763,7 +763,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //   To one property: mArtwork
   //····················································································································
 
-  final let mArtwork_property = StoredObject_ArtworkRoot (usedForSignature: false, strongRef: false)
+  final let mArtwork_property = StoredObject_ArtworkRoot (usedForSignature: false, strongRef: false, key: "mArtwork")
 
   //····················································································································
 
@@ -843,34 +843,34 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.drawBoardLimits_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawInternalBoardLimits_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawComponentNamesTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawComponentNamesBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawComponentValuesTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawComponentValuesBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawPackageLegendTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawPackageLegendBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawPadHolesInPDF_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawPadsTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawPadsBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawTextsLayoutTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawTextsLayoutBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawTextsLegendTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawTextsLegendBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawTracksTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawTracksInner1Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawTracksInner2Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawTracksInner3Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawTracksInner4Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawTracksBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawTraversingPads_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.drawVias_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.fileExtension_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.horizontalMirror_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.name_property = EBStoredProperty_String (defaultValue: "Unnamed", undoManager: inUndoManager)
-    self.measurementUnitForPadHoleInPDF_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
-    self.padHoleDiameterInPDF_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager)
+    self.drawBoardLimits_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawBoardLimits")
+    self.drawInternalBoardLimits_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawInternalBoardLimits")
+    self.drawComponentNamesTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawComponentNamesTopSide")
+    self.drawComponentNamesBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawComponentNamesBottomSide")
+    self.drawComponentValuesTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawComponentValuesTopSide")
+    self.drawComponentValuesBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawComponentValuesBottomSide")
+    self.drawPackageLegendTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawPackageLegendTopSide")
+    self.drawPackageLegendBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawPackageLegendBottomSide")
+    self.drawPadHolesInPDF_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawPadHolesInPDF")
+    self.drawPadsTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawPadsTopSide")
+    self.drawPadsBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawPadsBottomSide")
+    self.drawTextsLayoutTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawTextsLayoutTopSide")
+    self.drawTextsLayoutBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawTextsLayoutBottomSide")
+    self.drawTextsLegendTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawTextsLegendTopSide")
+    self.drawTextsLegendBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawTextsLegendBottomSide")
+    self.drawTracksTopSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawTracksTopSide")
+    self.drawTracksInner1Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawTracksInner1Layer")
+    self.drawTracksInner2Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawTracksInner2Layer")
+    self.drawTracksInner3Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawTracksInner3Layer")
+    self.drawTracksInner4Layer_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawTracksInner4Layer")
+    self.drawTracksBottomSide_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawTracksBottomSide")
+    self.drawTraversingPads_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawTraversingPads")
+    self.drawVias_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "drawVias")
+    self.fileExtension_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "fileExtension")
+    self.horizontalMirror_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "horizontalMirror")
+    self.name_property = EBStoredProperty_String (defaultValue: "Unnamed", undoManager: inUndoManager, key: "name")
+    self.measurementUnitForPadHoleInPDF_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "measurementUnitForPadHoleInPDF")
+    self.padHoleDiameterInPDF_property = EBStoredProperty_Int (defaultValue: 90000, undoManager: inUndoManager, key: "padHoleDiameterInPDF")
     super.init (inUndoManager)
     self.mArtwork_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -1082,7 +1082,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: drawBoardLimits
       self.drawBoardLimits_property.storeIn (dictionary: &ioDictionary, forKey: "drawBoardLimits")
@@ -1140,7 +1140,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       self.measurementUnitForPadHoleInPDF_property.storeIn (dictionary: &ioDictionary, forKey: "measurementUnitForPadHoleInPDF")
     //--- Atomic property: padHoleDiameterInPDF
       self.padHoleDiameterInPDF_property.storeIn (dictionary: &ioDictionary, forKey: "padHoleDiameterInPDF")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

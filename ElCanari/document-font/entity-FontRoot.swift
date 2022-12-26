@@ -193,7 +193,7 @@ final class FontRoot : EBManagedObject,
   //   To many property: characters
   //····················································································································
 
-  final let characters_property = StoredArrayOf_FontCharacter (usedForSignature: true)
+  final let characters_property = StoredArrayOf_FontCharacter (usedForSignature: true, key: "characters")
 
   //····················································································································
 
@@ -328,11 +328,11 @@ final class FontRoot : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.comments_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.nominalSize_property = EBStoredProperty_Int (defaultValue: 14, undoManager: inUndoManager)
-    self.selectedTab_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.selectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.currentCharacterCodePoint_property = EBStoredProperty_Int (defaultValue: 32, undoManager: inUndoManager)
+    self.comments_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "comments")
+    self.nominalSize_property = EBStoredProperty_Int (defaultValue: 14, undoManager: inUndoManager, key: "nominalSize")
+    self.selectedTab_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "selectedTab")
+    self.selectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "selectedInspector")
+    self.currentCharacterCodePoint_property = EBStoredProperty_Int (defaultValue: 32, undoManager: inUndoManager, key: "currentCharacterCodePoint")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- To many property: characters (no option)
@@ -491,7 +491,7 @@ final class FontRoot : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: comments
       self.comments_property.storeIn (dictionary: &ioDictionary, forKey: "comments")
@@ -505,7 +505,7 @@ final class FontRoot : EBManagedObject,
       self.currentCharacterCodePoint_property.storeIn (dictionary: &ioDictionary, forKey: "currentCharacterCodePoint")
   //--- To many property: characters (Custom store)
     customStore_FontCharacter_characters (self.characters_property.propval.values, intoDictionary: &ioDictionary)
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

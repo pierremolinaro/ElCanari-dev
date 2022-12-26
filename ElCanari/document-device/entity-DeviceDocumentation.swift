@@ -91,8 +91,8 @@ final class DeviceDocumentation : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mFileName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager)
+    self.mFileName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mFileName")
+    self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mFileData")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- Atomic property: fileSize
@@ -130,13 +130,13 @@ final class DeviceDocumentation : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mFileName
       self.mFileName_property.storeIn (dictionary: &ioDictionary, forKey: "mFileName")
     //--- Atomic property: mFileData
       self.mFileData_property.storeIn (dictionary: &ioDictionary, forKey: "mFileData")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

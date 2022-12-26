@@ -219,7 +219,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //   To many property: mMasterPads
   //····················································································································
 
-  final let mMasterPads_property = StoredArrayOf_MasterPadInDevice (usedForSignature: true)
+  final let mMasterPads_property = StoredArrayOf_MasterPadInDevice (usedForSignature: true, key: "mMasterPads")
 
   //····················································································································
 
@@ -234,7 +234,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-  final let mRoot_property = StoredObject_DeviceRoot (usedForSignature: false, strongRef: false)
+  final let mRoot_property = StoredObject_DeviceRoot (usedForSignature: false, strongRef: false, key: "mRoot")
 
   //····················································································································
 
@@ -348,12 +348,12 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager)
-    self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager)
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mFileData")
+    self.mName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mName")
+    self.mVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mVersion")
+    self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager, key: "mStrokeBezierPath")
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mY")
     super.init (inUndoManager)
     self.mRoot_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -612,7 +612,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mFileData
       self.mFileData_property.storeIn (dictionary: &ioDictionary, forKey: "mFileData")
@@ -632,7 +632,7 @@ final class PackageInDevice : EBGraphicManagedObject,
       relationshipName: "mMasterPads",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

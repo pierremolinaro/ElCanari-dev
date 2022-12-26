@@ -68,7 +68,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //   To one property: mSymbolType
   //····················································································································
 
-  final let mSymbolType_property = StoredObject_DeviceSymbolTypeInProject (usedForSignature: false, strongRef: true)
+  final let mSymbolType_property = StoredObject_DeviceSymbolTypeInProject (usedForSignature: false, strongRef: true, key: "mSymbolType")
 
   //····················································································································
 
@@ -165,7 +165,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mSymbolInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mSymbolInstanceName")
     super.init (inUndoManager)
     self.mSymbolType_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -270,7 +270,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mSymbolInstanceName
       self.mSymbolInstanceName_property.storeIn (dictionary: &ioDictionary, forKey: "mSymbolInstanceName")
@@ -279,7 +279,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
       relationshipName: "mSymbolType",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

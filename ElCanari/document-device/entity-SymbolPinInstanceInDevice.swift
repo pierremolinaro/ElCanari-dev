@@ -49,7 +49,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //   To one property: mSymbolInstance
   //····················································································································
 
-  final let mSymbolInstance_property = StoredObject_SymbolInstanceInDevice (usedForSignature: false, strongRef: false)
+  final let mSymbolInstance_property = StoredObject_SymbolInstanceInDevice (usedForSignature: false, strongRef: false, key: "mSymbolInstance")
 
   //····················································································································
 
@@ -77,7 +77,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //   To one property: mType
   //····················································································································
 
-  final let mType_property = StoredObject_SymbolPinTypeInDevice (usedForSignature: false, strongRef: false)
+  final let mType_property = StoredObject_SymbolPinTypeInDevice (usedForSignature: false, strongRef: false, key: "mType")
 
   //····················································································································
 
@@ -105,7 +105,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //   To one property: mPadProxy
   //····················································································································
 
-  final let mPadProxy_property = StoredObject_PadProxyInDevice (usedForSignature: false, strongRef: false)
+  final let mPadProxy_property = StoredObject_PadProxyInDevice (usedForSignature: false, strongRef: false, key: "mPadProxy")
 
   //····················································································································
 
@@ -384,14 +384,14 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
   //--- To one property: mPadProxy // Opposite is toOne mPinInstance
     self.store (managedObject: self.mPadProxy_property.propval,
       relationshipName: "mPadProxy",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

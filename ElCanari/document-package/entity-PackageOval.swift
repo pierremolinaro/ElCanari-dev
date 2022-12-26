@@ -268,14 +268,14 @@ final class PackageOval : PackageObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.width_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager)
-    self.height_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager)
-    self.xUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.yUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.widthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.heightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "y")
+    self.width_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager, key: "width")
+    self.height_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager, key: "height")
+    self.xUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "xUnit")
+    self.yUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "yUnit")
+    self.widthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "widthUnit")
+    self.heightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "heightUnit")
+    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- Atomic property: strokeBezierPath
@@ -418,7 +418,7 @@ final class PackageOval : PackageObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: y
       self.y_property.storeIn (dictionary: &ioDictionary, forKey: "y")
@@ -436,7 +436,7 @@ final class PackageOval : PackageObject,
       self.heightUnit_property.storeIn (dictionary: &ioDictionary, forKey: "heightUnit")
     //--- Atomic property: x
       self.x_property.storeIn (dictionary: &ioDictionary, forKey: "x")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

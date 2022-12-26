@@ -524,14 +524,28 @@ class ReadWriteObject_FontInProject : ReadOnlyObject_FontInProject {
 //    StoredObject_FontInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol {
+final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
 
  //····················································································································
 
-  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool) {
+  init (usedForSignature inUsedForSignature : Bool, strongRef inStrongReference : Bool, key inKey : String?) {
     self.mUsedForSignature = inUsedForSignature
     self.mIsStrongReference = inStrongReference
+    self.mKey = inKey
     super.init ()
+  }
+
+  //····················································································································
+
+  private let mKey : String?
+  var key : String? { return self.mKey }
+  
+  //····················································································································
+
+  func store (inDictionary ioDictionary : inout [String : Any]) {
+    if let key = self.mKey, let idx = self.mWeakInternalValue?.savingIndex {
+      ioDictionary [key] = idx
+    }
   }
 
   //····················································································································

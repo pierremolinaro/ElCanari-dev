@@ -59,7 +59,7 @@ class PackageObject : EBGraphicManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-  final let mRoot_property = StoredObject_PackageRoot (usedForSignature: false, strongRef: false)
+  final let mRoot_property = StoredObject_PackageRoot (usedForSignature: false, strongRef: false, key: "mRoot")
 
   //····················································································································
 
@@ -154,9 +154,9 @@ class PackageObject : EBGraphicManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

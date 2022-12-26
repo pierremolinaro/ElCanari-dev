@@ -106,7 +106,7 @@ final class PadProxyInDevice : EBManagedObject,
   //   To one property: mPinInstance
   //····················································································································
 
-  final let mPinInstance_property = StoredObject_SymbolPinInstanceInDevice (usedForSignature: false, strongRef: true)
+  final let mPinInstance_property = StoredObject_SymbolPinInstanceInDevice (usedForSignature: false, strongRef: true, key: "mPinInstance")
 
   //····················································································································
 
@@ -169,9 +169,9 @@ final class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mPinInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mPadName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mIsNC_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
+    self.mPinInstanceName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mPinInstanceName")
+    self.mPadName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mPadName")
+    self.mIsNC_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "mIsNC")
     super.init (inUndoManager)
     self.mPinInstance_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -245,7 +245,7 @@ final class PadProxyInDevice : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mPinInstanceName
       self.mPinInstanceName_property.storeIn (dictionary: &ioDictionary, forKey: "mPinInstanceName")
@@ -258,7 +258,7 @@ final class PadProxyInDevice : EBManagedObject,
       relationshipName: "mPinInstance",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

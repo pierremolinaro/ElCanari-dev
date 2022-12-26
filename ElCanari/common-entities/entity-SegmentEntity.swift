@@ -145,11 +145,11 @@ final class SegmentEntity : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.y1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.x2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.y2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.width_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.y1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "y1")
+    self.x2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x2")
+    self.y2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "y2")
+    self.width_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "width")
+    self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x1")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
 //    gInitSemaphore.signal ()
@@ -168,7 +168,7 @@ final class SegmentEntity : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: y1
       self.y1_property.storeIn (dictionary: &ioDictionary, forKey: "y1")
@@ -180,7 +180,7 @@ final class SegmentEntity : EBManagedObject,
       self.width_property.storeIn (dictionary: &ioDictionary, forKey: "width")
     //--- Atomic property: x1
       self.x1_property.storeIn (dictionary: &ioDictionary, forKey: "x1")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

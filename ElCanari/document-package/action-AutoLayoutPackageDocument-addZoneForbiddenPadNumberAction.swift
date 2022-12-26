@@ -47,8 +47,8 @@ extension AutoLayoutPackageDocument {
         initialValue += 1
       }
     //-------------------------- Models
-      let newFordiddenPadNumber_property = EBGenericStoredProperty <Int> (defaultValue: initialValue, undoManager: nil)
-      let errorMessage_property = EBGenericStoredProperty <String> (defaultValue: "", undoManager: nil)
+      let newFordiddenPadNumber_property = EBGenericStoredProperty <Int> (defaultValue: initialValue, undoManager: nil, key: nil)
+      let errorMessage_property = EBGenericStoredProperty <String> (defaultValue: "", undoManager: nil, key: nil)
     //-------------------------- Build Panel
       let panel = NSPanel ()
       let okButton = AutoLayoutSheetDefaultOkButton (title: "Add", size: .small, sheet: panel)

@@ -138,7 +138,7 @@ final class PointInSchematic : EBManagedObject,
   //   To many property: mLabels
   //····················································································································
 
-  final let mLabels_property = StoredArrayOf_LabelInSchematic (usedForSignature: false)
+  final let mLabels_property = StoredArrayOf_LabelInSchematic (usedForSignature: false, key: "mLabels")
 
   //····················································································································
 
@@ -191,7 +191,7 @@ final class PointInSchematic : EBManagedObject,
   //   To many property: mWiresP2s
   //····················································································································
 
-  final let mWiresP2s_property = StoredArrayOf_WireInSchematic (usedForSignature: false)
+  final let mWiresP2s_property = StoredArrayOf_WireInSchematic (usedForSignature: false, key: "mWiresP2s")
 
   //····················································································································
 
@@ -206,7 +206,7 @@ final class PointInSchematic : EBManagedObject,
   //   To many property: mWiresP1s
   //····················································································································
 
-  final let mWiresP1s_property = StoredArrayOf_WireInSchematic (usedForSignature: false)
+  final let mWiresP1s_property = StoredArrayOf_WireInSchematic (usedForSignature: false, key: "mWiresP1s")
 
   //····················································································································
 
@@ -221,7 +221,7 @@ final class PointInSchematic : EBManagedObject,
   //   To one property: mSymbol
   //····················································································································
 
-  final let mSymbol_property = StoredObject_ComponentSymbolInProject (usedForSignature: false, strongRef: false)
+  final let mSymbol_property = StoredObject_ComponentSymbolInProject (usedForSignature: false, strongRef: false, key: "mSymbol")
 
   //····················································································································
 
@@ -249,7 +249,7 @@ final class PointInSchematic : EBManagedObject,
   //   To one property: mNet
   //····················································································································
 
-  final let mNet_property = StoredObject_NetInProject (usedForSignature: false, strongRef: false)
+  final let mNet_property = StoredObject_NetInProject (usedForSignature: false, strongRef: false, key: "mNet")
 
   //····················································································································
 
@@ -277,7 +277,7 @@ final class PointInSchematic : EBManagedObject,
   //   To one property: mNC
   //····················································································································
 
-  final let mNC_property = StoredObject_NCInSchematic (usedForSignature: false, strongRef: true)
+  final let mNC_property = StoredObject_NCInSchematic (usedForSignature: false, strongRef: true, key: "mNC")
 
   //····················································································································
 
@@ -424,7 +424,7 @@ final class PointInSchematic : EBManagedObject,
   //   To one property: mSheet
   //····················································································································
 
-  final let mSheet_property = StoredObject_SheetInProject (usedForSignature: false, strongRef: false)
+  final let mSheet_property = StoredObject_SheetInProject (usedForSignature: false, strongRef: false, key: "mSheet")
 
   //····················································································································
 
@@ -538,9 +538,9 @@ final class PointInSchematic : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mSymbolPinName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.mSymbolPinName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mSymbolPinName")
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mY")
     super.init (inUndoManager)
     self.mSymbol_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -929,7 +929,7 @@ final class PointInSchematic : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mSymbolPinName
       self.mSymbolPinName_property.storeIn (dictionary: &ioDictionary, forKey: "mSymbolPinName")
@@ -960,7 +960,7 @@ final class PointInSchematic : EBManagedObject,
       relationshipName: "mNC",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

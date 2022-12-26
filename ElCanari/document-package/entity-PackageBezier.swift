@@ -476,22 +476,22 @@ final class PackageBezier : PackageObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.y1_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager)
-    self.x2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.y2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.cpx1_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager)
-    self.cpy1_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager)
-    self.cpx2_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager)
-    self.cpy2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.x1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.y1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.x2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.y2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.cpx1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.cpy1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.cpx2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.cpy2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.y1_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager, key: "y1")
+    self.x2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x2")
+    self.y2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "y2")
+    self.cpx1_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager, key: "cpx1")
+    self.cpy1_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager, key: "cpy1")
+    self.cpx2_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager, key: "cpx2")
+    self.cpy2_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "cpy2")
+    self.x1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "x1Unit")
+    self.y1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "y1Unit")
+    self.x2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "x2Unit")
+    self.y2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "y2Unit")
+    self.cpx1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "cpx1Unit")
+    self.cpy1Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "cpy1Unit")
+    self.cpx2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "cpx2Unit")
+    self.cpy2Unit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "cpy2Unit")
+    self.x1_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x1")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- Atomic property: strokeBezierPath
@@ -690,7 +690,7 @@ final class PackageBezier : PackageObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: y1
       self.y1_property.storeIn (dictionary: &ioDictionary, forKey: "y1")
@@ -724,7 +724,7 @@ final class PackageBezier : PackageObject,
       self.cpy2Unit_property.storeIn (dictionary: &ioDictionary, forKey: "cpy2Unit")
     //--- Atomic property: x1
       self.x1_property.storeIn (dictionary: &ioDictionary, forKey: "x1")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

@@ -133,10 +133,10 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.x1_property = EBStoredProperty_Int (defaultValue: 2, undoManager: inUndoManager)
-    self.y1_property = EBStoredProperty_Int (defaultValue: 1, undoManager: inUndoManager)
-    self.x2_property = EBStoredProperty_Int (defaultValue: 9, undoManager: inUndoManager)
-    self.y2_property = EBStoredProperty_Int (defaultValue: 8, undoManager: inUndoManager)
+    self.x1_property = EBStoredProperty_Int (defaultValue: 2, undoManager: inUndoManager, key: "x1")
+    self.y1_property = EBStoredProperty_Int (defaultValue: 1, undoManager: inUndoManager, key: "y1")
+    self.x2_property = EBStoredProperty_Int (defaultValue: 9, undoManager: inUndoManager, key: "x2")
+    self.y2_property = EBStoredProperty_Int (defaultValue: 8, undoManager: inUndoManager, key: "y2")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- Atomic property: selectionDisplay
@@ -217,7 +217,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: x1
       self.x1_property.storeIn (dictionary: &ioDictionary, forKey: "x1")
@@ -227,7 +227,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
       self.x2_property.storeIn (dictionary: &ioDictionary, forKey: "x2")
     //--- Atomic property: y2
       self.y2_property.storeIn (dictionary: &ioDictionary, forKey: "y2")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

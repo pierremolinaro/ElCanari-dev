@@ -35,7 +35,7 @@ final class DevicePackageInProject : EBManagedObject,
   //   To many property: mMasterPads
   //····················································································································
 
-  final let mMasterPads_property = StoredArrayOf_DeviceMasterPadInProject (usedForSignature: false)
+  final let mMasterPads_property = StoredArrayOf_DeviceMasterPadInProject (usedForSignature: false, key: "mMasterPads")
 
   //····················································································································
 
@@ -106,8 +106,8 @@ final class DevicePackageInProject : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mPackageName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager)
+    self.mPackageName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mPackageName")
+    self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager, key: "mStrokeBezierPath")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- To many property: mMasterPads (no option)
@@ -145,7 +145,7 @@ final class DevicePackageInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
   //--- To many property: mMasterPads
     self.store (
@@ -157,7 +157,7 @@ final class DevicePackageInProject : EBManagedObject,
       self.mPackageName_property.storeIn (dictionary: &ioDictionary, forKey: "mPackageName")
     //--- Atomic property: mStrokeBezierPath
       self.mStrokeBezierPath_property.storeIn (dictionary: &ioDictionary, forKey: "mStrokeBezierPath")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

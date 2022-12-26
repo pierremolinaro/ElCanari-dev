@@ -422,7 +422,7 @@ final class ComponentInProject : BoardObject,
   //   To many property: mConnectors
   //····················································································································
 
-  final let mConnectors_property = StoredArrayOf_BoardConnector (usedForSignature: false)
+  final let mConnectors_property = StoredArrayOf_BoardConnector (usedForSignature: false, key: "mConnectors")
 
   //····················································································································
 
@@ -437,7 +437,7 @@ final class ComponentInProject : BoardObject,
   //   To many property: mSymbols
   //····················································································································
 
-  final let mSymbols_property = StoredArrayOf_ComponentSymbolInProject (usedForSignature: false)
+  final let mSymbols_property = StoredArrayOf_ComponentSymbolInProject (usedForSignature: false, key: "mSymbols")
 
   //····················································································································
 
@@ -767,7 +767,7 @@ final class ComponentInProject : BoardObject,
   //   To one property: mDevice
   //····················································································································
 
-  final let mDevice_property = StoredObject_DeviceInProject (usedForSignature: false, strongRef: false)
+  final let mDevice_property = StoredObject_DeviceInProject (usedForSignature: false, strongRef: false, key: "mDevice")
 
   //····················································································································
 
@@ -812,7 +812,7 @@ final class ComponentInProject : BoardObject,
   //   To one property: mSelectedPackage
   //····················································································································
 
-  final let mSelectedPackage_property = StoredObject_DevicePackageInProject (usedForSignature: false, strongRef: true)
+  final let mSelectedPackage_property = StoredObject_DevicePackageInProject (usedForSignature: false, strongRef: true, key: "mSelectedPackage")
 
   //····················································································································
 
@@ -942,7 +942,7 @@ final class ComponentInProject : BoardObject,
   //   To one property: mNameFont
   //····················································································································
 
-  final let mNameFont_property = StoredObject_FontInProject (usedForSignature: false, strongRef: false)
+  final let mNameFont_property = StoredObject_FontInProject (usedForSignature: false, strongRef: false, key: "mNameFont")
 
   //····················································································································
 
@@ -970,7 +970,7 @@ final class ComponentInProject : BoardObject,
   //   To one property: mValueFont
   //····················································································································
 
-  final let mValueFont_property = StoredObject_FontInProject (usedForSignature: false, strongRef: false)
+  final let mValueFont_property = StoredObject_FontInProject (usedForSignature: false, strongRef: false, key: "mValueFont")
 
   //····················································································································
 
@@ -1152,27 +1152,27 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mSlavePadsShouldBeRouted_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mSide_property = EBStoredProperty_ComponentSide (defaultValue: ComponentSide.front, undoManager: inUndoManager)
-    self.mDisplayLegend_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.mNameIsVisibleInBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.mXName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mYName_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager)
-    self.mNameFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: inUndoManager)
-    self.mNameRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mValueIsVisibleInBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.mXValue_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mYValue_property = EBStoredProperty_Int (defaultValue: -685800, undoManager: inUndoManager)
-    self.mValueFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: inUndoManager)
-    self.mValueRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mComponentValue_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mNamePrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mNameIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.mYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.mSlavePadsShouldBeRouted_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mSlavePadsShouldBeRouted")
+    self.mX_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mX")
+    self.mY_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mY")
+    self.mRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mRotation")
+    self.mSide_property = EBStoredProperty_ComponentSide (defaultValue: ComponentSide.front, undoManager: inUndoManager, key: "mSide")
+    self.mDisplayLegend_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mDisplayLegend")
+    self.mNameIsVisibleInBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mNameIsVisibleInBoard")
+    self.mXName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mXName")
+    self.mYName_property = EBStoredProperty_Int (defaultValue: 685800, undoManager: inUndoManager, key: "mYName")
+    self.mNameFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: inUndoManager, key: "mNameFontSize")
+    self.mNameRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mNameRotation")
+    self.mValueIsVisibleInBoard_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mValueIsVisibleInBoard")
+    self.mXValue_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mXValue")
+    self.mYValue_property = EBStoredProperty_Int (defaultValue: -685800, undoManager: inUndoManager, key: "mYValue")
+    self.mValueFontSize_property = EBStoredProperty_Double (defaultValue: 4, undoManager: inUndoManager, key: "mValueFontSize")
+    self.mValueRotation_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mValueRotation")
+    self.mComponentValue_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mComponentValue")
+    self.mNamePrefix_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mNamePrefix")
+    self.mNameIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mNameIndex")
+    self.mXUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mXUnit")
+    self.mYUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "mYUnit")
     super.init (inUndoManager)
     self.mDevice_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -1947,7 +1947,7 @@ final class ComponentInProject : BoardObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mSlavePadsShouldBeRouted
       self.mSlavePadsShouldBeRouted_property.storeIn (dictionary: &ioDictionary, forKey: "mSlavePadsShouldBeRouted")
@@ -2008,7 +2008,7 @@ final class ComponentInProject : BoardObject,
       relationshipName: "mSelectedPackage",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

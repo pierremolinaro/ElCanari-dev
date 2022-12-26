@@ -41,7 +41,7 @@ final class ForbiddenPadNumber : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.padNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.padNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "padNumber")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
 //    gInitSemaphore.signal ()
@@ -61,11 +61,11 @@ final class ForbiddenPadNumber : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: padNumber
       self.padNumber_property.storeIn (dictionary: &ioDictionary, forKey: "padNumber")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

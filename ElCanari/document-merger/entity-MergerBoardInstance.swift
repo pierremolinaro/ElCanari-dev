@@ -127,7 +127,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //   To one property: myModel
   //····················································································································
 
-  final let myModel_property = StoredObject_BoardModel (usedForSignature: false, strongRef: false)
+  final let myModel_property = StoredObject_BoardModel (usedForSignature: false, strongRef: false, key: "myModel")
 
   //····················································································································
 
@@ -206,7 +206,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //   To one property: myRoot
   //····················································································································
 
-  final let myRoot_property = StoredObject_MergerRoot (usedForSignature: false, strongRef: false)
+  final let myRoot_property = StoredObject_MergerRoot (usedForSignature: false, strongRef: false, key: "myRoot")
 
   //····················································································································
 
@@ -235,9 +235,9 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.instanceRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: inUndoManager)
+    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x")
+    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "y")
+    self.instanceRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: inUndoManager, key: "instanceRotation")
     super.init (inUndoManager)
     self.myModel_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -405,7 +405,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: x
       self.x_property.storeIn (dictionary: &ioDictionary, forKey: "x")
@@ -413,7 +413,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       self.y_property.storeIn (dictionary: &ioDictionary, forKey: "y")
     //--- Atomic property: instanceRotation
       self.instanceRotation_property.storeIn (dictionary: &ioDictionary, forKey: "instanceRotation")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

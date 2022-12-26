@@ -33,9 +33,9 @@ let kDragAndDropMergerModelType = NSPasteboard.PasteboardType (rawValue: "name.p
   //    Properties for insert array of boards dialog
   //····················································································································
 
-  let mInsertArrayOfBoardsXCount = EBGenericStoredProperty <Int> (defaultValue: 1, undoManager: nil)
-  let mInsertArrayOfBoardsYCount = EBGenericStoredProperty <Int> (defaultValue: 1, undoManager: nil)
-  let mInsertArrayOfBoardsOrientation = EBStoredProperty_QuadrantRotation (defaultValue: .rotation0, undoManager: nil)
+  let mInsertArrayOfBoardsXCount = EBGenericStoredProperty <Int> (defaultValue: 1, undoManager: nil, key: nil)
+  let mInsertArrayOfBoardsYCount = EBGenericStoredProperty <Int> (defaultValue: 1, undoManager: nil, key: nil)
+  let mInsertArrayOfBoardsOrientation = EBStoredProperty_QuadrantRotation (defaultValue: .rotation0, undoManager: nil, key: nil)
 
   //····················································································································
   //    Drag and drop destination

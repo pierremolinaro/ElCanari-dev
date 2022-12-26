@@ -75,7 +75,7 @@ final class LabelInSchematic : SchematicObject,
   //   To one property: mPoint
   //····················································································································
 
-  final let mPoint_property = StoredObject_PointInSchematic (usedForSignature: false, strongRef: false)
+  final let mPoint_property = StoredObject_PointInSchematic (usedForSignature: false, strongRef: false, key: "mPoint")
 
   //····················································································································
 
@@ -155,7 +155,7 @@ final class LabelInSchematic : SchematicObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mOrientation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: inUndoManager)
+    self.mOrientation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0, undoManager: inUndoManager, key: "mOrientation")
     super.init (inUndoManager)
     self.mPoint_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -309,11 +309,11 @@ final class LabelInSchematic : SchematicObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mOrientation
       self.mOrientation_property.storeIn (dictionary: &ioDictionary, forKey: "mOrientation")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

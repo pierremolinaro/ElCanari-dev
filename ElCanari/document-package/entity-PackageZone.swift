@@ -472,7 +472,7 @@ final class PackageZone : PackageObject,
   //   To many property: forbiddenPadNumbers
   //····················································································································
 
-  final let forbiddenPadNumbers_property = StoredArrayOf_ForbiddenPadNumber (usedForSignature: true)
+  final let forbiddenPadNumbers_property = StoredArrayOf_ForbiddenPadNumber (usedForSignature: true, key: "forbiddenPadNumbers")
 
   //····················································································································
 
@@ -539,22 +539,22 @@ final class PackageZone : PackageObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.width_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager)
-    self.height_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager)
-    self.xUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.yUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.widthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.heightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.zoneName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.displayZoneName_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.displayZoneNameWithPadNumbers_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.xName_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: inUndoManager)
-    self.yName_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: inUndoManager)
-    self.xNameUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.yNameUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.zoneNumbering_property = EBStoredProperty_PadNumbering (defaultValue: PadNumbering.noNumbering, undoManager: inUndoManager)
+    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x")
+    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "y")
+    self.width_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager, key: "width")
+    self.height_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager, key: "height")
+    self.xUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "xUnit")
+    self.yUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "yUnit")
+    self.widthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "widthUnit")
+    self.heightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "heightUnit")
+    self.zoneName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "zoneName")
+    self.displayZoneName_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "displayZoneName")
+    self.displayZoneNameWithPadNumbers_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "displayZoneNameWithPadNumbers")
+    self.xName_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: inUndoManager, key: "xName")
+    self.yName_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: inUndoManager, key: "yName")
+    self.xNameUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "xNameUnit")
+    self.yNameUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "yNameUnit")
+    self.zoneNumbering_property = EBStoredProperty_PadNumbering (defaultValue: PadNumbering.noNumbering, undoManager: inUndoManager, key: "zoneNumbering")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- To many property: forbiddenPadNumbers (no option)
@@ -808,7 +808,7 @@ final class PackageZone : PackageObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: x
       self.x_property.storeIn (dictionary: &ioDictionary, forKey: "x")
@@ -848,7 +848,7 @@ final class PackageZone : PackageObject,
       relationshipName: "forbiddenPadNumbers",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

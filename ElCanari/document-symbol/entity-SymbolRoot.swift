@@ -262,7 +262,7 @@ final class SymbolRoot : EBManagedObject,
   //   To many property: symbolObjects
   //····················································································································
 
-  final let symbolObjects_property = StoredArrayOf_SymbolObject (usedForSignature: true)
+  final let symbolObjects_property = StoredArrayOf_SymbolObject (usedForSignature: true, key: "symbolObjects")
 
   //····················································································································
 
@@ -326,16 +326,16 @@ final class SymbolRoot : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.selectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.comments_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.horizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.verticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager)
-    self.gridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: inUndoManager)
-    self.gridDisplay_property = EBStoredProperty_Int (defaultValue: 4, undoManager: inUndoManager)
-    self.zoom_property = EBStoredProperty_Int (defaultValue: 600, undoManager: inUndoManager)
-    self.xPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.selectedInspector_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "selectedInspector")
+    self.comments_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "comments")
+    self.horizontalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "horizontalFlip")
+    self.verticalFlip_property = EBStoredProperty_Bool (defaultValue: false, undoManager: inUndoManager, key: "verticalFlip")
+    self.gridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line, undoManager: inUndoManager, key: "gridStyle")
+    self.gridDisplay_property = EBStoredProperty_Int (defaultValue: 4, undoManager: inUndoManager, key: "gridDisplay")
+    self.zoom_property = EBStoredProperty_Int (defaultValue: 600, undoManager: inUndoManager, key: "zoom")
+    self.xPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "xPlacardUnit")
+    self.yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "yPlacardUnit")
+    self.selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "selectedPageIndex")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- To many property: symbolObjects (no option)
@@ -394,7 +394,7 @@ final class SymbolRoot : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: selectedInspector
       self.selectedInspector_property.storeIn (dictionary: &ioDictionary, forKey: "selectedInspector")
@@ -422,7 +422,7 @@ final class SymbolRoot : EBManagedObject,
     )
     //--- Atomic property: selectedPageIndex
       self.selectedPageIndex_property.storeIn (dictionary: &ioDictionary, forKey: "selectedPageIndex")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

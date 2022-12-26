@@ -93,9 +93,9 @@ final class BoardModelVia : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.padDiameter_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.y_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "y")
+    self.padDiameter_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "padDiameter")
+    self.x_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "x")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
 //    gInitSemaphore.signal ()
@@ -114,7 +114,7 @@ final class BoardModelVia : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: y
       self.y_property.storeIn (dictionary: &ioDictionary, forKey: "y")
@@ -122,7 +122,7 @@ final class BoardModelVia : EBManagedObject,
       self.padDiameter_property.storeIn (dictionary: &ioDictionary, forKey: "padDiameter")
     //--- Atomic property: x
       self.x_property.storeIn (dictionary: &ioDictionary, forKey: "x")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

@@ -324,7 +324,7 @@ class EBAutoLayoutManagedDocument : NSDocument {
   //    Version
   //····················································································································
 
-  private final var mVersion = EBStoredProperty_Int (defaultValue: 0, undoManager: nil)
+  private final var mVersion = EBStoredProperty_Int (defaultValue: 0, undoManager: nil, key: nil)
 
   //····················································································································
 

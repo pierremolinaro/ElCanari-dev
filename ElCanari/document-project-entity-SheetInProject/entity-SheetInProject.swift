@@ -56,7 +56,7 @@ final class SheetInProject : EBManagedObject,
   //   To many property: mObjects
   //····················································································································
 
-  final let mObjects_property = StoredArrayOf_SchematicObject (usedForSignature: false)
+  final let mObjects_property = StoredArrayOf_SchematicObject (usedForSignature: false, key: "mObjects")
 
   //····················································································································
 
@@ -71,7 +71,7 @@ final class SheetInProject : EBManagedObject,
   //   To many property: mPoints
   //····················································································································
 
-  final let mPoints_property = StoredArrayOf_PointInSchematic (usedForSignature: false)
+  final let mPoints_property = StoredArrayOf_PointInSchematic (usedForSignature: false, key: "mPoints")
 
   //····················································································································
 
@@ -105,7 +105,7 @@ final class SheetInProject : EBManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-  final let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false, strongRef: false)
+  final let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false, strongRef: false, key: "mRoot")
 
   //····················································································································
 
@@ -219,7 +219,7 @@ final class SheetInProject : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mSheetTitle_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
+    self.mSheetTitle_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mSheetTitle")
     super.init (inUndoManager)
     self.mRoot_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -368,7 +368,7 @@ final class SheetInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
   //--- To many property: mObjects
     self.store (
@@ -384,7 +384,7 @@ final class SheetInProject : EBManagedObject,
     )
     //--- Atomic property: mSheetTitle
       self.mSheetTitle_property.storeIn (dictionary: &ioDictionary, forKey: "mSheetTitle")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

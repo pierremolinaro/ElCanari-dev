@@ -467,7 +467,7 @@ final class PackageSlavePad : PackageObject,
   //   To one property: master
   //····················································································································
 
-  final let master_property = StoredObject_PackagePad (usedForSignature: false, strongRef: false)
+  final let master_property = StoredObject_PackagePad (usedForSignature: false, strongRef: false, key: "master")
 
   //····················································································································
 
@@ -598,21 +598,21 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.xCenter_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.yCenter_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.width_property = EBStoredProperty_Int (defaultValue: 114300, undoManager: inUndoManager)
-    self.height_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: inUndoManager)
-    self.holeWidth_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager)
-    self.holeHeight_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager)
-    self.padShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo, undoManager: inUndoManager)
-    self.padStyle_property = EBStoredProperty_SlavePadStyle (defaultValue: SlavePadStyle.traversing, undoManager: inUndoManager)
-    self.xCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.yCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.widthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.heightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.holeWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.holeHeightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
-    self.annularRingUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager)
+    self.xCenter_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "xCenter")
+    self.yCenter_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "yCenter")
+    self.width_property = EBStoredProperty_Int (defaultValue: 114300, undoManager: inUndoManager, key: "width")
+    self.height_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: inUndoManager, key: "height")
+    self.holeWidth_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager, key: "holeWidth")
+    self.holeHeight_property = EBStoredProperty_Int (defaultValue: 57150, undoManager: inUndoManager, key: "holeHeight")
+    self.padShape_property = EBStoredProperty_PadShape (defaultValue: PadShape.octo, undoManager: inUndoManager, key: "padShape")
+    self.padStyle_property = EBStoredProperty_SlavePadStyle (defaultValue: SlavePadStyle.traversing, undoManager: inUndoManager, key: "padStyle")
+    self.xCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "xCenterUnit")
+    self.yCenterUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "yCenterUnit")
+    self.widthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "widthUnit")
+    self.heightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "heightUnit")
+    self.holeWidthUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "holeWidthUnit")
+    self.holeHeightUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "holeHeightUnit")
+    self.annularRingUnit_property = EBStoredProperty_Int (defaultValue: 2286, undoManager: inUndoManager, key: "annularRingUnit")
     super.init (inUndoManager)
     self.master_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -921,7 +921,7 @@ final class PackageSlavePad : PackageObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: xCenter
       self.xCenter_property.storeIn (dictionary: &ioDictionary, forKey: "xCenter")
@@ -953,7 +953,7 @@ final class PackageSlavePad : PackageObject,
       self.holeHeightUnit_property.storeIn (dictionary: &ioDictionary, forKey: "holeHeightUnit")
     //--- Atomic property: annularRingUnit
       self.annularRingUnit_property.storeIn (dictionary: &ioDictionary, forKey: "annularRingUnit")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

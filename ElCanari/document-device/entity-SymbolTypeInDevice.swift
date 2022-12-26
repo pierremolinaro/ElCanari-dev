@@ -77,7 +77,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //   To many property: mInstances
   //····················································································································
 
-  final let mInstances_property = StoredArrayOf_SymbolInstanceInDevice (usedForSignature: false)
+  final let mInstances_property = StoredArrayOf_SymbolInstanceInDevice (usedForSignature: false, key: "mInstances")
 
   //····················································································································
 
@@ -187,7 +187,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //   To many property: mPinTypes
   //····················································································································
 
-  final let mPinTypes_property = StoredArrayOf_SymbolPinTypeInDevice (usedForSignature: true)
+  final let mPinTypes_property = StoredArrayOf_SymbolPinTypeInDevice (usedForSignature: true, key: "mPinTypes")
 
   //····················································································································
 
@@ -271,11 +271,11 @@ final class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager)
-    self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager)
-    self.mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager)
+    self.mTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mTypeName")
+    self.mVersion_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "mVersion")
+    self.mFileData_property = EBStoredProperty_Data (defaultValue: Data (), undoManager: inUndoManager, key: "mFileData")
+    self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager, key: "mStrokeBezierPath")
+    self.mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager, key: "mFilledBezierPath")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- To many property: mInstances (has opposite relationship)
@@ -380,7 +380,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
   //--- To many property: mInstances
     self.store (
@@ -404,7 +404,7 @@ final class SymbolTypeInDevice : EBManagedObject,
       relationshipName: "mPinTypes",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

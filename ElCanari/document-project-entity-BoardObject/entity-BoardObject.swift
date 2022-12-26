@@ -217,7 +217,7 @@ class BoardObject : EBGraphicManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-  final let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false, strongRef: false)
+  final let mRoot_property = StoredObject_ProjectRoot (usedForSignature: false, strongRef: false, key: "mRoot")
 
   //····················································································································
 
@@ -1077,9 +1077,9 @@ class BoardObject : EBGraphicManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

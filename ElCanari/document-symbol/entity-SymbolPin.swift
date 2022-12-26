@@ -344,16 +344,16 @@ final class SymbolPin : SymbolObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.yPin_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.xName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.yName_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: inUndoManager)
-    self.xNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
-    self.yNumber_property = EBStoredProperty_Int (defaultValue: -228600, undoManager: inUndoManager)
-    self.name_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.nameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager)
-    self.numberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager)
-    self.pinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
-    self.xPin_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager)
+    self.yPin_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "yPin")
+    self.xName_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "xName")
+    self.yName_property = EBStoredProperty_Int (defaultValue: 228600, undoManager: inUndoManager, key: "yName")
+    self.xNumber_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "xNumber")
+    self.yNumber_property = EBStoredProperty_Int (defaultValue: -228600, undoManager: inUndoManager, key: "yNumber")
+    self.name_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "name")
+    self.nameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "nameHorizontalAlignment")
+    self.numberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center, undoManager: inUndoManager, key: "numberHorizontalAlignment")
+    self.pinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "pinNameIsDisplayedInSchematics")
+    self.xPin_property = EBStoredProperty_Int (defaultValue: 0, undoManager: inUndoManager, key: "xPin")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
   //--- Atomic property: filledBezierPath
@@ -583,7 +583,7 @@ final class SymbolPin : SymbolObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: yPin
       self.yPin_property.storeIn (dictionary: &ioDictionary, forKey: "yPin")
@@ -605,7 +605,7 @@ final class SymbolPin : SymbolObject,
       self.pinNameIsDisplayedInSchematics_property.storeIn (dictionary: &ioDictionary, forKey: "pinNameIsDisplayedInSchematics")
     //--- Atomic property: xPin
       self.xPin_property.storeIn (dictionary: &ioDictionary, forKey: "xPin")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

@@ -93,9 +93,9 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager)
-    self.mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager)
+    self.mSymbolTypeName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mSymbolTypeName")
+    self.mStrokeBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager, key: "mStrokeBezierPath")
+    self.mFilledBezierPath_property = EBStoredProperty_NSBezierPath (defaultValue: NSBezierPath (), undoManager: inUndoManager, key: "mFilledBezierPath")
     super.init (inUndoManager)
 //    gInitSemaphore.wait ()
 //    gInitSemaphore.signal ()
@@ -114,7 +114,7 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mSymbolTypeName
       self.mSymbolTypeName_property.storeIn (dictionary: &ioDictionary, forKey: "mSymbolTypeName")
@@ -122,7 +122,7 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
       self.mStrokeBezierPath_property.storeIn (dictionary: &ioDictionary, forKey: "mStrokeBezierPath")
     //--- Atomic property: mFilledBezierPath
       self.mFilledBezierPath_property.storeIn (dictionary: &ioDictionary, forKey: "mFilledBezierPath")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

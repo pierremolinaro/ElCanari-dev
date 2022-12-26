@@ -184,7 +184,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //   To one property: mRoot
   //····················································································································
 
-  final let mRoot_property = StoredObject_PackageRoot (usedForSignature: false, strongRef: false)
+  final let mRoot_property = StoredObject_PackageRoot (usedForSignature: false, strongRef: false, key: "mRoot")
 
   //····················································································································
 
@@ -213,12 +213,12 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mFirstX_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager)
-    self.mFirstY_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager)
-    self.mFirstColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.green, undoManager: inUndoManager)
-    self.mSecondDx_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager)
-    self.mSecondDy_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager)
-    self.mSecondColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.brown, undoManager: inUndoManager)
+    self.mFirstX_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager, key: "mFirstX")
+    self.mFirstY_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager, key: "mFirstY")
+    self.mFirstColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.green, undoManager: inUndoManager, key: "mFirstColor")
+    self.mSecondDx_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager, key: "mSecondDx")
+    self.mSecondDy_property = EBStoredProperty_Int (defaultValue: 457200, undoManager: inUndoManager, key: "mSecondDy")
+    self.mSecondColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.brown, undoManager: inUndoManager, key: "mSecondColor")
     super.init (inUndoManager)
     self.mRoot_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -329,7 +329,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
     //--- Atomic property: mFirstX
       self.mFirstX_property.storeIn (dictionary: &ioDictionary, forKey: "mFirstX")
@@ -343,7 +343,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
       self.mSecondDy_property.storeIn (dictionary: &ioDictionary, forKey: "mSecondDy")
     //--- Atomic property: mSecondColor
       self.mSecondColor_property.storeIn (dictionary: &ioDictionary, forKey: "mSecondColor")
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

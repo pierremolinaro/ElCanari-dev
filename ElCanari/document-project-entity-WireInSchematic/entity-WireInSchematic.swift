@@ -49,7 +49,7 @@ final class WireInSchematic : SchematicObject,
   //   To one property: mP1
   //····················································································································
 
-  final let mP1_property = StoredObject_PointInSchematic (usedForSignature: false, strongRef: false)
+  final let mP1_property = StoredObject_PointInSchematic (usedForSignature: false, strongRef: false, key: "mP1")
 
   //····················································································································
 
@@ -77,7 +77,7 @@ final class WireInSchematic : SchematicObject,
   //   To one property: mP2
   //····················································································································
 
-  final let mP2_property = StoredObject_PointInSchematic (usedForSignature: false, strongRef: false)
+  final let mP2_property = StoredObject_PointInSchematic (usedForSignature: false, strongRef: false, key: "mP2")
 
   //····················································································································
 
@@ -316,9 +316,9 @@ final class WireInSchematic : SchematicObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary

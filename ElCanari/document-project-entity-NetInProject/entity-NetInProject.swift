@@ -77,7 +77,7 @@ final class NetInProject : EBManagedObject,
   //   To many property: mPoints
   //····················································································································
 
-  final let mPoints_property = StoredArrayOf_PointInSchematic (usedForSignature: false)
+  final let mPoints_property = StoredArrayOf_PointInSchematic (usedForSignature: false, key: "mPoints")
 
   //····················································································································
 
@@ -130,7 +130,7 @@ final class NetInProject : EBManagedObject,
   //   To many property: mTracks
   //····················································································································
 
-  final let mTracks_property = StoredArrayOf_BoardTrack (usedForSignature: false)
+  final let mTracks_property = StoredArrayOf_BoardTrack (usedForSignature: false, key: "mTracks")
 
   //····················································································································
 
@@ -145,7 +145,7 @@ final class NetInProject : EBManagedObject,
   //   To one property: mNetClass
   //····················································································································
 
-  final let mNetClass_property = StoredObject_NetClassInProject (usedForSignature: false, strongRef: false)
+  final let mNetClass_property = StoredObject_NetClassInProject (usedForSignature: false, strongRef: false, key: "mNetClass")
 
   //····················································································································
 
@@ -293,8 +293,8 @@ final class NetInProject : EBManagedObject,
   //····················································································································
 
   required init (_ inUndoManager : UndoManager?) {
-    self.mNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager)
-    self.mWarnsExactlyOneLabel_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager)
+    self.mNetName_property = EBStoredProperty_String (defaultValue: "", undoManager: inUndoManager, key: "mNetName")
+    self.mWarnsExactlyOneLabel_property = EBStoredProperty_Bool (defaultValue: true, undoManager: inUndoManager, key: "mWarnsExactlyOneLabel")
     super.init (inUndoManager)
     self.mNetClass_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
@@ -466,7 +466,7 @@ final class NetInProject : EBManagedObject,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
+/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     super.saveIntoDictionary (&ioDictionary)
   //--- To many property: mPoints
     self.store (
@@ -484,7 +484,7 @@ final class NetInProject : EBManagedObject,
       relationshipName: "mTracks",
       intoDictionary: &ioDictionary
     )
-  }
+  } */
 
   //····················································································································
   //    setUpWithDictionary
