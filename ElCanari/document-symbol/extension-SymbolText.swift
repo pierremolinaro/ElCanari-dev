@@ -18,9 +18,9 @@ extension SymbolText {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_SymbolText (additionalDictionary inDictionary : NSDictionary,
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_SymbolText (additionalDictionary inDictionary : [String : Any],
+                                         optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
+                                         objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }
 

@@ -433,7 +433,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mInstances
@@ -451,7 +451,7 @@ final class SymbolPinTypeInDevice : EBManagedObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mPinX
     self.mPinX_property.readFrom (dictionary: inDictionary, forKey: "mPinX")

@@ -1197,7 +1197,7 @@ final class PackagePad : PackageObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: slaves
@@ -1212,8 +1212,8 @@ final class PackagePad : PackageObject,
   //--- To one property: zone
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "zone",
-        inDictionary: inDictionary,
+        relationshipName: "zone",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? PackageZone {
@@ -1226,7 +1226,7 @@ final class PackagePad : PackageObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: xCenter
     self.xCenter_property.readFrom (dictionary: inDictionary, forKey: "xCenter")
@@ -1615,7 +1615,7 @@ final class PackagePad : PackageObject,
   //  operationAfterPasting
   //····················································································································
 
-  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+  override func operationAfterPasting (additionalDictionary inDictionary : [String : Any],
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return self.operationAfterPasting_PackagePad (additionalDictionary: inDictionary,

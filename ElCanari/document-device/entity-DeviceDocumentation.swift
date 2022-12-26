@@ -142,7 +142,7 @@ final class DeviceDocumentation : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   }
@@ -151,7 +151,7 @@ final class DeviceDocumentation : EBManagedObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mFileName
     self.mFileName_property.readFrom (dictionary: inDictionary, forKey: "mFileName")

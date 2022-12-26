@@ -26,7 +26,7 @@ extension SymbolInstanceInDevice {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_SymbolInstanceInDevice (additionalDictionary inDictionary : NSDictionary,
+  func operationAfterPasting_SymbolInstanceInDevice (additionalDictionary inDictionary : [String : Any],
                                              optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""

@@ -490,7 +490,7 @@ final class NetInProject : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mPoints
@@ -514,8 +514,8 @@ final class NetInProject : EBManagedObject,
   //--- To one property: mNetClass
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mNetClass",
-        inDictionary: inDictionary,
+        relationshipName: "mNetClass",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? NetClassInProject {
@@ -528,7 +528,7 @@ final class NetInProject : EBManagedObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mNetName
     self.mNetName_property.readFrom (dictionary: inDictionary, forKey: "mNetName")

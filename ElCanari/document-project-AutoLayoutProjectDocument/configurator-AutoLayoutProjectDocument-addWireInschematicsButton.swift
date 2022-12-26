@@ -26,7 +26,7 @@ extension AutoLayoutProjectDocument {
         p2.mX = WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP
         p2.mY = WIRE_DEFAULT_SIZE_ON_DRAG_AND_DROP
         wire.mP2 = p2
-        return (wire, NSDictionary (), [p1, p2])
+        return (wire, [String : Any] (), [p1, p2])
       },
       scaleProvider: self.schematicObjectsController
     )

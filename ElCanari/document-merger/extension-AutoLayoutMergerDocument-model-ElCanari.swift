@@ -43,7 +43,7 @@ extension AutoLayoutMergerDocument {
         options: [],
         format: nil
       )
-      if let boardArchiveDict = optionalBoardArchiveDictionary as? NSDictionary {
+      if let boardArchiveDict = optionalBoardArchiveDictionary as? [String : Any] {
         boardModel = internal_parseBoardModel_ELCanariArchive (boardArchiveDict, named: inName)
       }
     }catch let error {
@@ -57,7 +57,7 @@ extension AutoLayoutMergerDocument {
 
   //····················································································································
 
-  fileprivate func internal_parseBoardModel_ELCanariArchive (_ inBoardArchiveDict : NSDictionary, named inName : String) -> BoardModel? {
+  fileprivate func internal_parseBoardModel_ELCanariArchive (_ inBoardArchiveDict : [String : Any], named inName : String) -> BoardModel? {
     let boardModel = BoardModel (self.undoManager)
   //--- Populate board model from dictionary (accumulate error messages in errorArray variable)
     var errorArray = [String] ()
@@ -554,8 +554,8 @@ extension AutoLayoutMergerDocument {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func double (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> Double {
-  let object : Any? = inDictionary.value (forKey: inKey)
+fileprivate func double (fromDict inDictionary : [String : Any], key inKey : String, _ errorArray : inout [String]) -> Double {
+  let object : Any? = inDictionary [inKey]
   var result = 0.0 // Default result
   if object == nil {
     errorArray.append ("No \"\(inKey)\" key.")
@@ -569,8 +569,10 @@ fileprivate func double (fromDict inDictionary : NSDictionary, key inKey : Strin
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func int (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> Int {
-  let object : Any? = inDictionary.value (forKey: inKey)
+fileprivate func int (fromDict inDictionary : [String : Any],
+                      key inKey : String,
+                      _ errorArray : inout [String]) -> Int {
+  let object : Any? = inDictionary [inKey]
   var result = 0 // Default result
   if object == nil {
     errorArray.append ("No \"\(inKey)\" key.")
@@ -584,8 +586,10 @@ fileprivate func int (fromDict inDictionary : NSDictionary, key inKey : String, 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func intOrZero (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> Int {
-  let object : Any? = inDictionary.value (forKey: inKey)
+fileprivate func intOrZero (fromDict inDictionary : [String : Any],
+                            key inKey : String,
+                            _ errorArray : inout [String]) -> Int {
+  let object : Any? = inDictionary [inKey]
   var result = 0 // Default result
   if let number = object as? NSNumber {
     result = number.intValue
@@ -597,8 +601,10 @@ fileprivate func intOrZero (fromDict inDictionary : NSDictionary, key inKey : St
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func string (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> String {
-  let object : Any? = inDictionary.value (forKey: inKey)
+fileprivate func string (fromDict inDictionary : [String : Any],
+                         key inKey : String,
+                         _ errorArray : inout [String]) -> String {
+  let object : Any? = inDictionary [inKey]
   var result = "" // Default result
   if object == nil {
     errorArray.append ("No \"\(inKey)\" key.")
@@ -612,12 +618,14 @@ fileprivate func string (fromDict inDictionary : NSDictionary, key inKey : Strin
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func dictArray (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> [NSDictionary] {
-  let object : Any? = inDictionary.value (forKey: inKey)
-  var result = [NSDictionary] () // Default result
+fileprivate func dictArray (fromDict inDictionary : [String : Any],
+                            key inKey : String,
+                            _ errorArray : inout [String]) -> [[String : Any]] {
+  let object : Any? = inDictionary [inKey]
+  var result = [[String : Any]] () // Default result
   if object == nil {
     errorArray.append ("No \"\(inKey)\" key.")
-  }else if let s = object as? [NSDictionary] {
+  }else if let s = object as? [[String : Any]] {
     result = s
   }else{
     errorArray.append ("The \"\(inKey)\" key value is not an array of dictionaries.")
@@ -627,8 +635,10 @@ fileprivate func dictArray (fromDict inDictionary : NSDictionary, key inKey : St
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func stringArray (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> [String] {
-  let object : Any? = inDictionary.value (forKey: inKey)
+fileprivate func stringArray (fromDict inDictionary : [String : Any],
+                              key inKey : String,
+                              _ errorArray : inout [String]) -> [String] {
+  let object : Any? = inDictionary [inKey]
   var result = [String] () // Default result
   if object == nil {
     errorArray.append ("No \"\(inKey)\" key.")
@@ -643,8 +653,10 @@ fileprivate func stringArray (fromDict inDictionary : NSDictionary, key inKey : 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func optionalStringArray (fromDict inDictionary : NSDictionary, key inKey : String, _ errorArray : inout [String]) -> [String] {
-  let object : Any? = inDictionary.value (forKey: inKey)
+fileprivate func optionalStringArray (fromDict inDictionary : [String : Any],
+                                      key inKey : String,
+                                      _ errorArray : inout [String]) -> [String] {
+  let object : Any? = inDictionary [inKey]
   var result = [String] () // Default result
   if let s = object as? [String] {
     result = s
@@ -656,7 +668,8 @@ fileprivate func optionalStringArray (fromDict inDictionary : NSDictionary, key 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func array3int (fromString inString : String, _ errorArray : inout [String]) -> [Int] {
+fileprivate func array3int (fromString inString : String,
+                            _ errorArray : inout [String]) -> [Int] {
   let strArray : [String] = inString.components(separatedBy: " ")
   var result = [Int] () // Default result
   if strArray.count != 3 {
@@ -681,7 +694,8 @@ fileprivate func array3int (fromString inString : String, _ errorArray : inout [
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func array4int (fromString inString : String, _ errorArray : inout [String]) -> [Int] {
+fileprivate func array4int (fromString inString : String,
+                             _ errorArray : inout [String]) -> [Int] {
   let strArray : [String] = inString.components(separatedBy: " ")
   var result = [Int] () // Default result
   if strArray.count != 4 {
@@ -706,7 +720,8 @@ fileprivate func array4int (fromString inString : String, _ errorArray : inout [
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func array5int (fromString inString : String, _ errorArray : inout [String]) -> [Int] {
+fileprivate func array5int (fromString inString : String,
+                            _ errorArray : inout [String]) -> [Int] {
   let strArray : [String] = inString.components(separatedBy: " ")
   var result = [Int] () // Default result
   if strArray.count != 5 {

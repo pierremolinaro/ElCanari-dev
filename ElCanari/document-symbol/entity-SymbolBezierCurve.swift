@@ -514,7 +514,7 @@ final class SymbolBezierCurve : SymbolObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   }
@@ -523,7 +523,7 @@ final class SymbolBezierCurve : SymbolObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: y1
     self.y1_property.readFrom (dictionary: inDictionary, forKey: "y1")
@@ -791,7 +791,7 @@ final class SymbolBezierCurve : SymbolObject,
   //  operationAfterPasting
   //····················································································································
 
-  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+  override func operationAfterPasting (additionalDictionary inDictionary : [String : Any],
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return self.operationAfterPasting_SymbolBezierCurve (additionalDictionary: inDictionary,

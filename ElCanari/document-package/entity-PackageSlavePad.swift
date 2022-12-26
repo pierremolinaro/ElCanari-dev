@@ -959,14 +959,14 @@ final class PackageSlavePad : PackageObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: master
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "master",
-        inDictionary: inDictionary,
+        relationshipName: "master",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? PackagePad {
@@ -979,7 +979,7 @@ final class PackageSlavePad : PackageObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: xCenter
     self.xCenter_property.readFrom (dictionary: inDictionary, forKey: "xCenter")
@@ -1333,7 +1333,7 @@ final class PackageSlavePad : PackageObject,
   //  operationAfterPasting
   //····················································································································
 
-  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+  override func operationAfterPasting (additionalDictionary inDictionary : [String : Any],
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return self.operationAfterPasting_PackageSlavePad (additionalDictionary: inDictionary,

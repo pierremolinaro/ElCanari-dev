@@ -67,14 +67,14 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   //  Setup
   //····················································································································
 
-  func setUpWithDictionary (_ inDictionary : NSDictionary,
+  func setUpWithDictionary (_ inDictionary : [String : Any],
                             managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     self.setUpAtomicPropertiesWithDictionary (inDictionary)
   }
 
   //····················································································································
 
-  func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
   }
 
   //····················································································································
@@ -103,7 +103,6 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
 
   func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
     ioDictionary [ENTITY_KEY] = self.className.pathExtension
-//    ioDictionary.setValue (self.className.pathExtension, forKey: ENTITY_KEY)
   }
 
   //····················································································································
@@ -131,17 +130,16 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   //   store (managedObjectArray:relationshipName:intoDictionary)
   //····················································································································
 
-  final func store (managedObjectArray : [EBManagedObject],
-                    relationshipName : String,
-                    intoDictionary : inout [String : Any]) {
+  final func store (managedObjectArray inManagedObjectArray : [EBManagedObject],
+                    relationshipName inRelationshipName : String,
+                    intoDictionary ioDictionary : inout [String : Any]) {
 
-    if managedObjectArray.count > 0 {
-      let indexArray = NSMutableArray ()
-      for managedObject in managedObjectArray {
-        indexArray.add (NSNumber (value:managedObject.savingIndex))
+    if inManagedObjectArray.count > 0 {
+      var indexArray = [Int] ()
+      for managedObject in inManagedObjectArray {
+        indexArray.append (managedObject.savingIndex)
       }
-      intoDictionary [relationshipName] = indexArray
- //     intoDictionary.setObject (indexArray, forKey:relationshipName as NSCopying)
+      ioDictionary [inRelationshipName] = indexArray
     }
   }
 
@@ -149,12 +147,11 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   //   store (managedObject:relationshipName:intoDictionary)
   //····················································································································
 
-  final func store (managedObject : EBManagedObject?,
-                    relationshipName : String,
-                    intoDictionary : inout [String : Any]) {
-    if let unwObject = managedObject {
-      intoDictionary [relationshipName] = unwObject.savingIndex
-//      intoDictionary.setObject (NSNumber (value: unwObject.savingIndex), forKey: relationshipName as NSCopying)
+  final func store (managedObject inPossibleManagedObject : EBManagedObject?,
+                    relationshipName inRelationshipName : String,
+                    intoDictionary ioDictionary : inout [String : Any]) {
+    if let unwObject = inPossibleManagedObject {
+      ioDictionary [inRelationshipName] = unwObject.savingIndex
     }
   }
 
@@ -162,13 +159,12 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   //   readEntityFromDictionary
   //····················································································································
 
-  final func readEntityFromDictionary (inRelationshipName : String,
-                                       inDictionary : NSDictionary,
-                                       managedObjectArray : [EBManagedObject]) -> EBManagedObject? {
-    let opValue : Int? = inDictionary.value (forKey: inRelationshipName) as? Int
+  final func readEntityFromDictionary (relationshipName inRelationshipName : String,
+                                       dictionary inDictionary : [String : Any],
+                                       managedObjectArray inManagedObjectArray : [EBManagedObject]) -> EBManagedObject? {
     var result : EBManagedObject? = nil
-    if let value = opValue {
-      result = managedObjectArray [value]
+    if let value = inDictionary [inRelationshipName] as? Int {
+      result = inManagedObjectArray [value]
     }
     return result
   }
@@ -178,9 +174,9 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   //····················································································································
 
   final func readEntityArrayFromDictionary (inRelationshipName : String,
-                                            inDictionary : NSDictionary,
+                                            inDictionary : [String : Any],
                                             managedObjectArray : [EBManagedObject]) -> [EBManagedObject] {
-    let opIndexArray : [Int]? = inDictionary.value (forKey: inRelationshipName) as? [Int]
+    let opIndexArray : [Int]? = inDictionary [inRelationshipName] as? [Int]
     var result = [EBManagedObject] ()
     if let indexArray = opIndexArray {
       for number in indexArray {

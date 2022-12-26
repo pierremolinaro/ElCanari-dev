@@ -397,14 +397,14 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mSymbolInstance
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mSymbolInstance",
-        inDictionary: inDictionary,
+        relationshipName: "mSymbolInstance",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? SymbolInstanceInDevice {
@@ -414,8 +414,8 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //--- To one property: mType
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mType",
-        inDictionary: inDictionary,
+        relationshipName: "mType",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? SymbolPinTypeInDevice {
@@ -425,8 +425,8 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //--- To one property: mPadProxy
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mPadProxy",
-        inDictionary: inDictionary,
+        relationshipName: "mPadProxy",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? PadProxyInDevice {
@@ -439,7 +439,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   }
 

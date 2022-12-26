@@ -44,7 +44,7 @@ final class AutoLayoutDragSourceButtonWithMenus : AutoLayoutBase_NSView {
   //····················································································································
 
   func register (draggedType : NSPasteboard.PasteboardType,
-                 draggedObjectFactory : Optional < () -> (EBGraphicManagedObject, NSDictionary, [EBManagedObject])? >,
+                 draggedObjectFactory : Optional < () -> (EBGraphicManagedObject, [String : Any], [EBManagedObject])? >,
                  scaleProvider : EBGraphicViewControllerProtocol) {
     self.mDragSourceButton.register (
       draggedType: draggedType,

@@ -344,7 +344,7 @@ final class CommentInSchematic : SchematicObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   }
@@ -353,7 +353,7 @@ final class CommentInSchematic : SchematicObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mColor
     self.mColor_property.readFrom (dictionary: inDictionary, forKey: "mColor")
@@ -596,7 +596,7 @@ final class CommentInSchematic : SchematicObject,
   //  operationAfterPasting
   //····················································································································
 
-  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+  override func operationAfterPasting (additionalDictionary inDictionary : [String : Any],
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return self.operationAfterPasting_CommentInSchematic (additionalDictionary: inDictionary,

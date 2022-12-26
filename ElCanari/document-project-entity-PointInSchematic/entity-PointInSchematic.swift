@@ -966,7 +966,7 @@ final class PointInSchematic : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mLabels
@@ -999,8 +999,8 @@ final class PointInSchematic : EBManagedObject,
   //--- To one property: mSymbol
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mSymbol",
-        inDictionary: inDictionary,
+        relationshipName: "mSymbol",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? ComponentSymbolInProject {
@@ -1010,8 +1010,8 @@ final class PointInSchematic : EBManagedObject,
   //--- To one property: mNet
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mNet",
-        inDictionary: inDictionary,
+        relationshipName: "mNet",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? NetInProject {
@@ -1021,8 +1021,8 @@ final class PointInSchematic : EBManagedObject,
   //--- To one property: mNC
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mNC",
-        inDictionary: inDictionary,
+        relationshipName: "mNC",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? NCInSchematic {
@@ -1032,8 +1032,8 @@ final class PointInSchematic : EBManagedObject,
   //--- To one property: mSheet
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mSheet",
-        inDictionary: inDictionary,
+        relationshipName: "mSheet",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? SheetInProject {
@@ -1046,7 +1046,7 @@ final class PointInSchematic : EBManagedObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mSymbolPinName
     self.mSymbolPinName_property.readFrom (dictionary: inDictionary, forKey: "mSymbolPinName")

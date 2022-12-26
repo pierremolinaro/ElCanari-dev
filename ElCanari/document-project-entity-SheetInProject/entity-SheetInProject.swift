@@ -390,7 +390,7 @@ final class SheetInProject : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mObjects
@@ -414,8 +414,8 @@ final class SheetInProject : EBManagedObject,
   //--- To one property: mRoot
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mRoot",
-        inDictionary: inDictionary,
+        relationshipName: "mRoot",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? ProjectRoot {
@@ -428,7 +428,7 @@ final class SheetInProject : EBManagedObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mSheetTitle
     self.mSheetTitle_property.readFrom (dictionary: inDictionary, forKey: "mSheetTitle")

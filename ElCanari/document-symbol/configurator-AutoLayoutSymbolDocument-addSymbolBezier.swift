@@ -18,7 +18,7 @@ extension AutoLayoutSymbolDocument {
 //--- START OF USER ZONE 2
     inOutlet.register (
       draggedType: symbolPasteboardType,
-      draggedObjectFactory: { return (SymbolBezierCurve (nil), NSDictionary (), []) },
+      draggedObjectFactory: { return (SymbolBezierCurve (nil), [String : Any] (), []) },
       scaleProvider: self.mSymbolObjectsController
     )
 //--- END OF USER ZONE 2

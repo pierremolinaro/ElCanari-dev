@@ -732,10 +732,10 @@ final class PreferencesArrayOf_CanariLibraryEntry : StoredArrayOf_CanariLibraryE
 
   //····················································································································
 
-  init (prefKey : String) {
-    self.mPrefKey = prefKey
+  init (prefKey inPrefKey : String) {
+    self.mPrefKey = inPrefKey
     super.init (usedForSignature: false)
-    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+    if let array = UserDefaults.standard.array (forKey: inPrefKey) as? [[String : Any]] {
       var objectArray = EBReferenceArray <CanariLibraryEntry> ()
       for dictionary in array {
         let object = newInstanceOfEntityNamed (self.undoManager, "CanariLibraryEntry") as! CanariLibraryEntry

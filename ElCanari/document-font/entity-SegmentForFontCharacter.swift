@@ -233,7 +233,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   }
@@ -242,7 +242,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: x1
     self.x1_property.readFrom (dictionary: inDictionary, forKey: "x1")
@@ -474,7 +474,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   //  operationAfterPasting
   //····················································································································
 
-  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+  override func operationAfterPasting (additionalDictionary inDictionary : [String : Any],
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return self.operationAfterPasting_SegmentForFontCharacter (additionalDictionary: inDictionary,

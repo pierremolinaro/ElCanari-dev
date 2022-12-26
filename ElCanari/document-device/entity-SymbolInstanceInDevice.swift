@@ -533,7 +533,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mPinInstances
@@ -548,8 +548,8 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //--- To one property: mDeviceRoot
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mDeviceRoot",
-        inDictionary: inDictionary,
+        relationshipName: "mDeviceRoot",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? DeviceRoot {
@@ -559,8 +559,8 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //--- To one property: mType
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mType",
-        inDictionary: inDictionary,
+        relationshipName: "mType",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? SymbolTypeInDevice {
@@ -573,7 +573,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mInstanceName
     self.mInstanceName_property.readFrom (dictionary: inDictionary, forKey: "mInstanceName")
@@ -856,7 +856,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //  operationAfterPasting
   //····················································································································
 
-  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+  override func operationAfterPasting (additionalDictionary inDictionary : [String : Any],
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return self.operationAfterPasting_SymbolInstanceInDevice (additionalDictionary: inDictionary,

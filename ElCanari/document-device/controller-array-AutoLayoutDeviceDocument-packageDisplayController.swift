@@ -602,8 +602,8 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
         object.saveIntoAdditionalDictionary (&additionalDict)
         objectAdditionalDictionaryArray.append (additionalDict)
       }
-    //--- Copy private representation(s)
-      let dataDictionary : NSDictionary = [
+    //--- Copy private representation
+      let dataDictionary : [String : Any] = [
         OBJECT_DICTIONARY_KEY : objectDictionaryArray,
         OBJECT_ADDITIONAL_DICTIONARY_KEY : objectAdditionalDictionaryArray,
         X_KEY : pasteOffset.x,
@@ -632,9 +632,9 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
     let pb = NSPasteboard.general
     if let pasteboardType = inPasteboardType,
            pb.availableType (from: [pasteboardType]) != nil,
-           let dataDictionary = pb.propertyList (forType: pasteboardType) as? NSDictionary,
-           let dictionaryArray = dataDictionary [OBJECT_DICTIONARY_KEY] as? [NSDictionary],
-           let additionalDictionaryArray = dataDictionary [OBJECT_ADDITIONAL_DICTIONARY_KEY] as? [NSDictionary],
+           let dataDictionary = pb.propertyList (forType: pasteboardType) as? [String : Any],
+           let dictionaryArray = dataDictionary [OBJECT_DICTIONARY_KEY] as? [[String : Any]],
+           let additionalDictionaryArray = dataDictionary [OBJECT_ADDITIONAL_DICTIONARY_KEY] as? [[String : Any]],
            let X = dataDictionary [X_KEY] as? Int,
            let Y = dataDictionary [Y_KEY] as? Int {
       var newObjects = [PackageInDevice] ()

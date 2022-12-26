@@ -419,14 +419,14 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: myModel
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "myModel",
-        inDictionary: inDictionary,
+        relationshipName: "myModel",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? BoardModel {
@@ -436,8 +436,8 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //--- To one property: myRoot
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "myRoot",
-        inDictionary: inDictionary,
+        relationshipName: "myRoot",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? MergerRoot {
@@ -450,7 +450,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: x
     self.x_property.readFrom (dictionary: inDictionary, forKey: "x")
@@ -697,7 +697,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //  operationAfterPasting
   //····················································································································
 
-  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+  override func operationAfterPasting (additionalDictionary inDictionary : [String : Any],
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return self.operationAfterPasting_MergerBoardInstance (additionalDictionary: inDictionary,

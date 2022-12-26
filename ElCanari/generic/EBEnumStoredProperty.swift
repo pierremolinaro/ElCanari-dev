@@ -76,9 +76,8 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   //····················································································································
 
-  func readFrom (dictionary : NSDictionary, forKey inKey : String) {
-    let possibleValue = dictionary.object (forKey:inKey)
-    if let value = possibleValue as? NSObject {
+  func readFrom (dictionary inDictionary : [String : Any], forKey inKey : String) {
+    if let value = inDictionary [inKey] as? NSObject {
       self.setProp (T.convertFromNSObject (object: value))
     }
   }

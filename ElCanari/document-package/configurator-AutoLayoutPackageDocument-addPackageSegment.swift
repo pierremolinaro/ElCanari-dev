@@ -18,7 +18,7 @@ extension AutoLayoutPackageDocument {
 //--- START OF USER ZONE 2
     inOutlet.register (
       draggedType: packagePasteboardType,
-      draggedObjectFactory: { return (PackageSegment (nil), NSDictionary (), []) },
+      draggedObjectFactory: { return (PackageSegment (nil), [String : Any] (), []) },
       scaleProvider: self.mPackageObjectsController
     )
 //--- END OF USER ZONE 2

@@ -30,7 +30,7 @@ extension BoardConnector {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_BoardConnector (additionalDictionary inDictionary : NSDictionary,
+  func operationAfterPasting_BoardConnector (additionalDictionary inDictionary : [String : Any],
                                              optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""

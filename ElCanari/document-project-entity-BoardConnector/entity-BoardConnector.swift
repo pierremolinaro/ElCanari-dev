@@ -1236,7 +1236,7 @@ final class BoardConnector : BoardObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mTracksP2
@@ -1260,8 +1260,8 @@ final class BoardConnector : BoardObject,
   //--- To one property: mComponent
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mComponent",
-        inDictionary: inDictionary,
+        relationshipName: "mComponent",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? ComponentInProject {
@@ -1274,7 +1274,7 @@ final class BoardConnector : BoardObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mComponentPadName
     self.mComponentPadName_property.readFrom (dictionary: inDictionary, forKey: "mComponentPadName")
@@ -1620,7 +1620,7 @@ final class BoardConnector : BoardObject,
   //  operationAfterPasting
   //····················································································································
 
-  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+  override func operationAfterPasting (additionalDictionary inDictionary : [String : Any],
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return self.operationAfterPasting_BoardConnector (additionalDictionary: inDictionary,

@@ -1462,14 +1462,14 @@ final class BoardTrack : BoardObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mConnectorP1
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mConnectorP1",
-        inDictionary: inDictionary,
+        relationshipName: "mConnectorP1",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? BoardConnector {
@@ -1479,8 +1479,8 @@ final class BoardTrack : BoardObject,
   //--- To one property: mConnectorP2
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mConnectorP2",
-        inDictionary: inDictionary,
+        relationshipName: "mConnectorP2",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? BoardConnector {
@@ -1490,8 +1490,8 @@ final class BoardTrack : BoardObject,
   //--- To one property: mNet
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mNet",
-        inDictionary: inDictionary,
+        relationshipName: "mNet",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? NetInProject {
@@ -1504,7 +1504,7 @@ final class BoardTrack : BoardObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mSide
     self.mSide_property.readFrom (dictionary: inDictionary, forKey: "mSide")
@@ -1844,7 +1844,7 @@ final class BoardTrack : BoardObject,
   //  operationAfterPasting
   //····················································································································
 
-  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+  override func operationAfterPasting (additionalDictionary inDictionary : [String : Any],
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return self.operationAfterPasting_BoardTrack (additionalDictionary: inDictionary,

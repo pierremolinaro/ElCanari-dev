@@ -27,7 +27,7 @@ extension MergerBoardInstance {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_MergerBoardInstance (additionalDictionary inDictionary : NSDictionary,
+  func operationAfterPasting_MergerBoardInstance (additionalDictionary inDictionary : [String : Any],
                                              optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""

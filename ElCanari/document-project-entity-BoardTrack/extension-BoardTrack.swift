@@ -29,9 +29,9 @@ extension BoardTrack {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_BoardTrack (additionalDictionary inDictionary : NSDictionary,
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_BoardTrack (additionalDictionary inDictionary : [String : Any],
+                                         optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
+                                         objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }
 

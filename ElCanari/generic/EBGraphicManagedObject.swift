@@ -182,7 +182,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+  func operationAfterPasting (additionalDictionary inDictionary : [String : Any],
                               optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                               objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""

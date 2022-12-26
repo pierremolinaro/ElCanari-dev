@@ -26,7 +26,7 @@ extension PackageGuide {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_PackageGuide (additionalDictionary inDictionary : NSDictionary,
+  func operationAfterPasting_PackageGuide (additionalDictionary inDictionary : [String : Any],
                                              optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""

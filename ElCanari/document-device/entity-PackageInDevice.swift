@@ -638,7 +638,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mMasterPads
@@ -653,8 +653,8 @@ final class PackageInDevice : EBGraphicManagedObject,
   //--- To one property: mRoot
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mRoot",
-        inDictionary: inDictionary,
+        relationshipName: "mRoot",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? DeviceRoot {
@@ -667,7 +667,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mFileData
     self.mFileData_property.readFrom (dictionary: inDictionary, forKey: "mFileData")
@@ -964,7 +964,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //  operationAfterPasting
   //····················································································································
 
-  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+  override func operationAfterPasting (additionalDictionary inDictionary : [String : Any],
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return self.operationAfterPasting_PackageInDevice (additionalDictionary: inDictionary,

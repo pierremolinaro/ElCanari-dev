@@ -820,14 +820,14 @@ final class BorderCurve : EBGraphicManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mRoot
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mRoot",
-        inDictionary: inDictionary,
+        relationshipName: "mRoot",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? ProjectRoot {
@@ -837,8 +837,8 @@ final class BorderCurve : EBGraphicManagedObject,
   //--- To one property: mNext
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mNext",
-        inDictionary: inDictionary,
+        relationshipName: "mNext",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? BorderCurve {
@@ -848,8 +848,8 @@ final class BorderCurve : EBGraphicManagedObject,
   //--- To one property: mPrevious
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mPrevious",
-        inDictionary: inDictionary,
+        relationshipName: "mPrevious",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? BorderCurve {
@@ -862,7 +862,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mX
     self.mX_property.readFrom (dictionary: inDictionary, forKey: "mX")
@@ -1154,7 +1154,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //  operationAfterPasting
   //····················································································································
 
-  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+  override func operationAfterPasting (additionalDictionary inDictionary : [String : Any],
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return self.operationAfterPasting_BorderCurve (additionalDictionary: inDictionary,

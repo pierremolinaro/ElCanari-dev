@@ -23,7 +23,7 @@ extension SymbolBezierCurve {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_SymbolBezierCurve (additionalDictionary inDictionary : NSDictionary,
+  func operationAfterPasting_SymbolBezierCurve (additionalDictionary inDictionary : [String : Any],
                                              optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""

@@ -59,7 +59,7 @@ extension BoardText {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_BoardText (additionalDictionary inDictionary : NSDictionary,
+  func operationAfterPasting_BoardText (additionalDictionary inDictionary : [String : Any],
                                         optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                         objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     if let fontName = inDictionary [FONT_NAME_IN_DICTIONARY] as? String,

@@ -518,14 +518,14 @@ final class SlavePadInDevice : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mMasterPad
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mMasterPad",
-        inDictionary: inDictionary,
+        relationshipName: "mMasterPad",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? MasterPadInDevice {
@@ -538,7 +538,7 @@ final class SlavePadInDevice : EBManagedObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mCenterX
     self.mCenterX_property.readFrom (dictionary: inDictionary, forKey: "mCenterX")

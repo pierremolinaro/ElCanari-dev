@@ -59,8 +59,8 @@ extension LabelInSchematic {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_LabelInSchematic (additionalDictionary inDictionary : NSDictionary,
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
+  func operationAfterPasting_LabelInSchematic (additionalDictionary inDictionary : [String : Any],
+                                               optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                                objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }

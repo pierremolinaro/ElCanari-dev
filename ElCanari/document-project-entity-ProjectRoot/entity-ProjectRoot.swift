@@ -6239,7 +6239,7 @@ final class ProjectRoot : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mSheets
@@ -6308,8 +6308,8 @@ final class ProjectRoot : EBManagedObject,
   //--- To one property: mArtwork
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mArtwork",
-        inDictionary: inDictionary,
+        relationshipName: "mArtwork",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? ArtworkRoot {
@@ -6319,8 +6319,8 @@ final class ProjectRoot : EBManagedObject,
   //--- To one property: mSelectedSheet
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mSelectedSheet",
-        inDictionary: inDictionary,
+        relationshipName: "mSelectedSheet",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? SheetInProject {
@@ -6333,7 +6333,7 @@ final class ProjectRoot : EBManagedObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mArtworkName
     self.mArtworkName_property.readFrom (dictionary: inDictionary, forKey: "mArtworkName")

@@ -119,7 +119,7 @@ extension AutoLayoutMergerDocument {
   //····················································································································
 
   fileprivate func generateBoardArchive (atPath inFilePath : String) throws {
-    let archiveDict = NSMutableDictionary ()
+    var archiveDict = [String : Any] ()
   //---
     archiveDict ["ARTWORK"] = self.rootObject.mArtworkName
     archiveDict ["BOARD-HEIGHT"] = self.rootObject.boardHeight ?? 0

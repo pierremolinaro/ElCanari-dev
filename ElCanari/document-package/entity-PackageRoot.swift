@@ -2132,7 +2132,7 @@ final class PackageRoot : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mModelImageObjects
@@ -2156,8 +2156,8 @@ final class PackageRoot : EBManagedObject,
   //--- To one property: mModelImageDoublePoint
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mModelImageDoublePoint",
-        inDictionary: inDictionary,
+        relationshipName: "mModelImageDoublePoint",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? PackageModelImageDoublePoint {
@@ -2170,7 +2170,7 @@ final class PackageRoot : EBManagedObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey: "selectedPageIndex")

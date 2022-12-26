@@ -32,7 +32,7 @@ extension PackageZone {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_PackageZone (additionalDictionary inDictionary : NSDictionary,
+  func operationAfterPasting_PackageZone (additionalDictionary inDictionary : [String : Any],
                                              optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""

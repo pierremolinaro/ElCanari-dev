@@ -876,7 +876,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mPoints
@@ -891,8 +891,8 @@ final class ComponentSymbolInProject : SchematicObject,
   //--- To one property: mComponent
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mComponent",
-        inDictionary: inDictionary,
+        relationshipName: "mComponent",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? ComponentInProject {
@@ -905,7 +905,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mCenterX
     self.mCenterX_property.readFrom (dictionary: inDictionary, forKey: "mCenterX")
@@ -1228,7 +1228,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //  operationAfterPasting
   //····················································································································
 
-  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+  override func operationAfterPasting (additionalDictionary inDictionary : [String : Any],
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return self.operationAfterPasting_ComponentSymbolInProject (additionalDictionary: inDictionary,

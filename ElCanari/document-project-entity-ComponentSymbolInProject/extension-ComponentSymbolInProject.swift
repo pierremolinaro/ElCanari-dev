@@ -62,7 +62,7 @@ extension ComponentSymbolInProject {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_ComponentSymbolInProject (additionalDictionary inDictionary : NSDictionary,
+  func operationAfterPasting_ComponentSymbolInProject (additionalDictionary inDictionary : [String : Any],
                                              optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""

@@ -61,9 +61,9 @@ extension BorderCurve {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_BorderCurve (additionalDictionary inDictionary : NSDictionary,
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_BorderCurve (additionalDictionary inDictionary : [String : Any],
+                                          optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
+                                          objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }
 

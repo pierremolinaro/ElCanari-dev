@@ -1847,7 +1847,7 @@ final class MergerRoot : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: boardModels
@@ -1871,8 +1871,8 @@ final class MergerRoot : EBManagedObject,
   //--- To one property: mArtwork
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mArtwork",
-        inDictionary: inDictionary,
+        relationshipName: "mArtwork",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? ArtworkRoot {
@@ -1885,7 +1885,7 @@ final class MergerRoot : EBManagedObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey: "selectedPageIndex")

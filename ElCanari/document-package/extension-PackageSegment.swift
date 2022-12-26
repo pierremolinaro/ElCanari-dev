@@ -21,7 +21,7 @@ extension PackageSegment {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_PackageSegment (additionalDictionary inDictionary : NSDictionary,
+  func operationAfterPasting_PackageSegment (additionalDictionary inDictionary : [String : Any],
                                              optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""

@@ -23,7 +23,7 @@ extension PackageBezier {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_PackageBezier (additionalDictionary inDictionary : NSDictionary,
+  func operationAfterPasting_PackageBezier (additionalDictionary inDictionary : [String : Any],
                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""

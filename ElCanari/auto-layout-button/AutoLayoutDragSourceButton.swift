@@ -71,14 +71,14 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
   //····················································································································
 
   private var mDragType : NSPasteboard.PasteboardType? = nil
-  private var mDraggedObjectFactory : Optional < () -> (EBGraphicManagedObject, NSDictionary, [EBManagedObject])? > = nil
+  private var mDraggedObjectFactory : Optional < () -> (EBGraphicManagedObject, [String : Any], [EBManagedObject])? > = nil
   private var mDraggedObjectImage : Optional < () -> EBShape? > = nil
   private weak var mScaleProvider : EBGraphicViewControllerProtocol? = nil // Should de WEAK
 
   //····················································································································
 
   func register (draggedType : NSPasteboard.PasteboardType,
-                 draggedObjectFactory : Optional < () -> (EBGraphicManagedObject, NSDictionary, [EBManagedObject])? >,
+                 draggedObjectFactory : Optional < () -> (EBGraphicManagedObject, [String : Any], [EBManagedObject])? >,
                  scaleProvider : EBGraphicViewControllerProtocol) {
     self.mDragType = draggedType
     self.mDraggedObjectFactory = draggedObjectFactory
@@ -171,7 +171,7 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
         //--- Associated data
           var dict = [String : Any] ()
           temporaryObject.saveIntoDictionary (&dict)
-          let dataDictionary : NSDictionary = [
+          let dataDictionary : [String : Any] = [
             OBJECT_DICTIONARY_KEY : [dict],
             OBJECT_ADDITIONAL_DICTIONARY_KEY : [additionalDict],
             X_KEY : 0,
@@ -208,9 +208,8 @@ final class AutoLayoutDragSourceButton : AutoLayoutBase_NSButton, NSDraggingSour
           r.origin.x += mouseDownLocation.x
           r.origin.y += mouseDownLocation.y
         //--- Associated data
-          let dict = NSMutableDictionary ()
-          let dataDictionary : NSDictionary = [
-            OBJECT_DICTIONARY_KEY : [dict],
+          let dataDictionary : [String : Any] = [
+            OBJECT_DICTIONARY_KEY : [[String : Any]] (),
             OBJECT_ADDITIONAL_DICTIONARY_KEY : [], // [additionalDict],
             X_KEY : 0,
             Y_KEY : 0

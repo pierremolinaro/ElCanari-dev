@@ -189,14 +189,14 @@ final class NCInSchematic : SchematicObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mPoint
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mPoint",
-        inDictionary: inDictionary,
+        relationshipName: "mPoint",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? PointInSchematic {
@@ -209,7 +209,7 @@ final class NCInSchematic : SchematicObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mOrientation
     self.mOrientation_property.readFrom (dictionary: inDictionary, forKey: "mOrientation")
@@ -427,7 +427,7 @@ final class NCInSchematic : SchematicObject,
   //  operationAfterPasting
   //····················································································································
 
-  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+  override func operationAfterPasting (additionalDictionary inDictionary : [String : Any],
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return self.operationAfterPasting_NCInSchematic (additionalDictionary: inDictionary,

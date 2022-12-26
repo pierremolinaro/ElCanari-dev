@@ -29,7 +29,7 @@ extension PackageOval {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_PackageOval (additionalDictionary inDictionary : NSDictionary,
+  func operationAfterPasting_PackageOval (additionalDictionary inDictionary : [String : Any],
                                              optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""

@@ -207,14 +207,14 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mPin
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mPin",
-        inDictionary: inDictionary,
+        relationshipName: "mPin",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? DevicePinInProject {
@@ -227,7 +227,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mPadName
     self.mPadName_property.readFrom (dictionary: inDictionary, forKey: "mPadName")

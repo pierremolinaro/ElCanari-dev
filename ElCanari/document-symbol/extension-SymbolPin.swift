@@ -26,9 +26,9 @@ extension SymbolPin {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_SymbolPin (additionalDictionary inDictionary : NSDictionary,
-                                             optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
-                                             objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
+  func operationAfterPasting_SymbolPin (additionalDictionary inDictionary : [String : Any],
+                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
+                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""
   }
 

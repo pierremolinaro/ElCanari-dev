@@ -23,7 +23,7 @@ extension PackageModelImageDoublePoint {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_PackageModelImageDoublePoint (additionalDictionary inDictionary : NSDictionary,
+  func operationAfterPasting_PackageModelImageDoublePoint (additionalDictionary inDictionary : [String : Any],
                                              optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""

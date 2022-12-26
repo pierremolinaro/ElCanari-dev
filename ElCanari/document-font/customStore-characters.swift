@@ -125,7 +125,7 @@ let FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY = "-characters-"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func customRead_FontCharacter_characters (fromDictionary inDictionary : NSDictionary,
+@MainActor func customRead_FontCharacter_characters (fromDictionary inDictionary : [String : Any],
                                                      with inUndoManager : UndoManager?) -> [FontCharacter] {
   var result = [FontCharacter] ()
   if let s = inDictionary [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String {
@@ -136,7 +136,7 @@ let FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY = "-characters-"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func extractProjectFontDictionary (from inDictionary : NSDictionary) -> FontDictionaryForProject {
+func extractProjectFontDictionary (from inDictionary : [String : Any]) -> FontDictionaryForProject {
 //  let start = Date ()
   var result = FontDictionaryForProject ()
   if let s = inDictionary [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String {

@@ -18,7 +18,7 @@ extension AutoLayoutProjectDocument {
 //--- START OF USER ZONE 2
     inOutlet.register (
       draggedType: kDragAndDropRestrictRectangle,
-      draggedObjectFactory: { return (BoardRestrictRectangle (nil), NSDictionary (), []) },
+      draggedObjectFactory: { return (BoardRestrictRectangle (nil), [String : Any] (), []) },
       scaleProvider: self.boardObjectsController
     )
     inOutlet.set (image: NSImage (named: "restrict-rect-in-board"))

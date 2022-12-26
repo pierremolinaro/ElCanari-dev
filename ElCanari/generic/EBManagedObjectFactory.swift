@@ -100,8 +100,8 @@ fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor func makeManagedObjectFromDictionary (_ inUndoManager : UndoManager?,
-                                                 _ inDictionary : NSDictionary) -> EBManagedObject {
-  let entityName = inDictionary.value (forKey: ENTITY_KEY) as! String
+                                                 _ inDictionary : [String : Any]) -> EBManagedObject {
+  let entityName = inDictionary [ENTITY_KEY] as! String
   let object = newInstanceOfEntityNamed (inUndoManager, entityName)
   object.setUpAtomicPropertiesWithDictionary (inDictionary)
   return object

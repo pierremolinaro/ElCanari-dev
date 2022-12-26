@@ -66,7 +66,7 @@ extension ComponentInProject {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_ComponentInProject (additionalDictionary inDictionary : NSDictionary,
+  func operationAfterPasting_ComponentInProject (additionalDictionary inDictionary : [String : Any],
                                                  optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                                  objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""

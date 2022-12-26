@@ -2014,7 +2014,7 @@ final class ComponentInProject : BoardObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mConnectors
@@ -2038,8 +2038,8 @@ final class ComponentInProject : BoardObject,
   //--- To one property: mDevice
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mDevice",
-        inDictionary: inDictionary,
+        relationshipName: "mDevice",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? DeviceInProject {
@@ -2049,8 +2049,8 @@ final class ComponentInProject : BoardObject,
   //--- To one property: mSelectedPackage
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mSelectedPackage",
-        inDictionary: inDictionary,
+        relationshipName: "mSelectedPackage",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? DevicePackageInProject {
@@ -2060,8 +2060,8 @@ final class ComponentInProject : BoardObject,
   //--- To one property: mNameFont
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mNameFont",
-        inDictionary: inDictionary,
+        relationshipName: "mNameFont",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? FontInProject {
@@ -2071,8 +2071,8 @@ final class ComponentInProject : BoardObject,
   //--- To one property: mValueFont
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mValueFont",
-        inDictionary: inDictionary,
+        relationshipName: "mValueFont",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? FontInProject {
@@ -2085,7 +2085,7 @@ final class ComponentInProject : BoardObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mSlavePadsShouldBeRouted
     self.mSlavePadsShouldBeRouted_property.readFrom (dictionary: inDictionary, forKey: "mSlavePadsShouldBeRouted")
@@ -2542,7 +2542,7 @@ final class ComponentInProject : BoardObject,
   //  operationAfterPasting
   //····················································································································
 
-  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+  override func operationAfterPasting (additionalDictionary inDictionary : [String : Any],
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return self.operationAfterPasting_ComponentInProject (additionalDictionary: inDictionary,

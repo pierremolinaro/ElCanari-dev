@@ -21,7 +21,7 @@ extension SymbolSegment {
   //  operationAfterPasting
   //····················································································································
 
-  func operationAfterPasting_SymbolSegment (additionalDictionary inDictionary : NSDictionary,
+  func operationAfterPasting_SymbolSegment (additionalDictionary inDictionary : [String : Any],
                                              optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                              objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return ""

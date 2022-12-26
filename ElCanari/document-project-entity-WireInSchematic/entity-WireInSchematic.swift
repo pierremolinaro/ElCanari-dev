@@ -324,14 +324,14 @@ final class WireInSchematic : SchematicObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mP1
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mP1",
-        inDictionary: inDictionary,
+        relationshipName: "mP1",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? PointInSchematic {
@@ -341,8 +341,8 @@ final class WireInSchematic : SchematicObject,
   //--- To one property: mP2
     do{
       let possibleEntity = readEntityFromDictionary (
-        inRelationshipName: "mP2",
-        inDictionary: inDictionary,
+        relationshipName: "mP2",
+        dictionary: inDictionary,
         managedObjectArray: inManagedObjectArray
       )
       if let entity = possibleEntity as? PointInSchematic {
@@ -355,7 +355,7 @@ final class WireInSchematic : SchematicObject,
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   }
 
@@ -569,7 +569,7 @@ final class WireInSchematic : SchematicObject,
   //  operationAfterPasting
   //····················································································································
 
-  override func operationAfterPasting (additionalDictionary inDictionary : NSDictionary,
+  override func operationAfterPasting (additionalDictionary inDictionary : [String : Any],
                                        optionalDocument inOptionalDocument : EBAutoLayoutManagedDocument?,
                                        objectArray inObjectArray : [EBGraphicManagedObject]) -> String {
     return self.operationAfterPasting_WireInSchematic (additionalDictionary: inDictionary,
