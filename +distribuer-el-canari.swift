@@ -28,22 +28,16 @@ let BUILD_KIND = ProductKind.release
 // Version ElCanari
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_CANARI = "1.7.0"
+let VERSION_CANARI = "1.7.1"
 let MAC_OS_MINIMUM_VERSION = "10.15"
 let NOTES : [String] = [
 ]
 let BUGFIXES : [String] = [
-  "Correction format texte des documents Package",
-  "Correction format texte des documents Font",
-  "Correction divers (petits) bugs dans le document Device"
 ]
 let CHANGES : [String] = [
-  "Dans un document projet, les devices inutilisés sont automatiquement supprimés",
-  "Dans un document Device, les symboles inutilisés sont automatiquement supprimés",
-  "L'application FreeRouting est déplacée dans la librarie"
+  "Utilisation de Sparkle 2.3.1"
 ]
 let NEWS : [String] = [
-  "Duplication des inspecteurs dans la page « Board » d'un projet"
 ]
 
 //--------------------------------------------------------------------------------------------------
