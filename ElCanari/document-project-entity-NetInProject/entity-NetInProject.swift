@@ -635,7 +635,7 @@ final class NetInProject : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mPoints
     for managedObject in self.mPoints.values {
@@ -649,7 +649,7 @@ final class NetInProject : EBManagedObject,
     if let object = self.mNetClass {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
 

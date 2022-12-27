@@ -294,13 +294,13 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To one property: mPin
     if let object = self.mPin {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
 

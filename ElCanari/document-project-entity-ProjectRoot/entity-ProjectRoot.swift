@@ -7232,7 +7232,7 @@ final class ProjectRoot : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mSheets
     for managedObject in self.mSheets.values {
@@ -7270,7 +7270,7 @@ final class ProjectRoot : EBManagedObject,
     if let object = self.mSelectedSheet {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
 

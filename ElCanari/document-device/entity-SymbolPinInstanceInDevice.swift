@@ -507,7 +507,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To one property: mSymbolInstance
     if let object = self.mSymbolInstance {
@@ -521,7 +521,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
     if let object = self.mPadProxy {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
 

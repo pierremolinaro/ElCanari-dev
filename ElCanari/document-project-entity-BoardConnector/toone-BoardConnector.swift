@@ -939,6 +939,14 @@ final class StoredObject_BoardConnector : ReadWriteObject_BoardConnector, EBSign
   }
 
   //····················································································································
+
+  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
+    if self.mKey != nil, let object = self.mWeakInternalValue {
+      ioArray.append (object)
+    }
+  }
+
+  //····················································································································
   //   Signature ?
   //····················································································································
 

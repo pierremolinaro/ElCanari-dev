@@ -339,6 +339,14 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
   }
 
   //····················································································································
+
+  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
+    if self.mKey != nil, let object = self.mWeakInternalValue {
+      ioArray.append (object)
+    }
+  }
+
+  //····················································································································
   //   Signature ?
   //····················································································································
 

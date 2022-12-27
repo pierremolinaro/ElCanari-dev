@@ -84,9 +84,8 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   //····················································································································
 
-//  func storeIn (dictionary ioDictionary : inout [String : Any], forKey inKey : String) {
-//    ioDictionary [inKey] = self.mValue.convertToNSObject ()
-//  }
+  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
+  }
 
   //····················································································································
 

@@ -408,6 +408,14 @@ final class StoredObject_PackageModelImageDoublePoint : ReadWriteObject_PackageM
   }
 
   //····················································································································
+
+  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
+    if self.mKey != nil, let object = self.mWeakInternalValue {
+      ioArray.append (object)
+    }
+  }
+
+  //····················································································································
   //   Signature ?
   //····················································································································
 

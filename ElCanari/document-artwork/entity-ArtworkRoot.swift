@@ -858,13 +858,13 @@ final class ArtworkRoot : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: fileGenerationParameterArray
     for managedObject in self.fileGenerationParameterArray.values {
       ioObjectArray.append (managedObject)
     }
-  }
+  } */
 
   //····················································································································
   //   computeSignature

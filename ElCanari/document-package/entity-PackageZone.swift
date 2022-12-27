@@ -1061,13 +1061,13 @@ final class PackageZone : PackageObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: forbiddenPadNumbers
     for managedObject in self.forbiddenPadNumbers.values {
       ioObjectArray.append (managedObject)
     }
-  }
+  } */
 
   //····················································································································
   //   computeSignature

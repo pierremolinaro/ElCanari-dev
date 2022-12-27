@@ -2589,7 +2589,7 @@ final class PackageRoot : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mModelImageObjects
     for managedObject in self.mModelImageObjects.values {
@@ -2615,7 +2615,7 @@ final class PackageRoot : EBManagedObject,
     if let object = self.mModelImageDoublePoint {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   computeSignature

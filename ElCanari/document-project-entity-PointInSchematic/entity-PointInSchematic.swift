@@ -1199,7 +1199,7 @@ final class PointInSchematic : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mLabels
     for managedObject in self.mLabels.values {
@@ -1229,7 +1229,7 @@ final class PointInSchematic : EBManagedObject,
     if let object = self.mSheet {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
 

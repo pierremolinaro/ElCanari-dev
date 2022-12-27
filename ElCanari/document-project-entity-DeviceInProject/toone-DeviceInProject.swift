@@ -619,6 +619,14 @@ final class StoredObject_DeviceInProject : ReadWriteObject_DeviceInProject, EBSi
   }
 
   //····················································································································
+
+  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
+    if self.mKey != nil, let object = self.mWeakInternalValue {
+      ioArray.append (object)
+    }
+  }
+
+  //····················································································································
   //   Signature ?
   //····················································································································
 

@@ -1054,6 +1054,14 @@ final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObs
   }
 
   //····················································································································
+
+  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
+    if self.mKey != nil, let object = self.mWeakInternalValue {
+      ioArray.append (object)
+    }
+  }
+
+  //····················································································································
   //   Signature ?
   //····················································································································
 

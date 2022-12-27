@@ -795,7 +795,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mMasterPads
     for managedObject in self.mMasterPads.values {
@@ -805,7 +805,7 @@ final class PackageInDevice : EBGraphicManagedObject,
     if let object = self.mRoot {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   computeSignature

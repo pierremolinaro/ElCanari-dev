@@ -372,13 +372,13 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To one property: mSymbolType
     if let object = self.mSymbolType {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
 

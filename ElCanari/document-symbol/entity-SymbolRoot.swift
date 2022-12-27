@@ -587,7 +587,7 @@ final class SymbolRoot : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: symbolObjects
     for managedObject in self.symbolObjects.values {
@@ -597,7 +597,7 @@ final class SymbolRoot : EBManagedObject,
     for managedObject in self.symbolPins.values {
       ioObjectArray.append (managedObject)
     }
-  }
+  } */
 
   //····················································································································
   //   computeSignature

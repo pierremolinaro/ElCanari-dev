@@ -1073,7 +1073,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mPoints
     for managedObject in self.mPoints.values {
@@ -1083,7 +1083,7 @@ final class ComponentSymbolInProject : SchematicObject,
     if let object = self.mComponent {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
 

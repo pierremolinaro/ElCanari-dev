@@ -696,7 +696,7 @@ final class FontInProject : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mTexts
     for managedObject in self.mTexts.values {
@@ -710,7 +710,7 @@ final class FontInProject : EBManagedObject,
     for managedObject in self.mComponentValues.values {
       ioObjectArray.append (managedObject)
     }
-  }
+  } */
 
   //····················································································································
 

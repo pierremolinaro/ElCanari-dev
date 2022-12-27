@@ -2371,7 +2371,7 @@ final class ComponentInProject : BoardObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mConnectors
     for managedObject in self.mConnectors.values {
@@ -2397,7 +2397,7 @@ final class ComponentInProject : BoardObject,
     if let object = self.mValueFont {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
 

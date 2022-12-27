@@ -661,13 +661,13 @@ final class SlavePadInDevice : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To one property: mMasterPad
     if let object = self.mMasterPad {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   computeSignature

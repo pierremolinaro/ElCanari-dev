@@ -1461,7 +1461,7 @@ final class BoardConnector : BoardObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mTracksP2
     for managedObject in self.mTracksP2.values {
@@ -1475,7 +1475,7 @@ final class BoardConnector : BoardObject,
     if let object = self.mComponent {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
 

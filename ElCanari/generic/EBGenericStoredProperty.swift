@@ -9,6 +9,7 @@ import AppKit
 @MainActor protocol DocumentStorableProperty : AnyObject {
   var key : String? { get }
   func store (inDictionary ioDictionary : inout [String : Any])
+  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject])
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -72,9 +73,8 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
 
   //····················································································································
 
-//  func storeIn (dictionary ioDictionary : inout [String : Any], forKey inKey : String) {
-//    ioDictionary [inKey] = self.mValue.convertToNSObject ()
-//  }
+  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
+  }
 
   //····················································································································
 

@@ -542,7 +542,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To one property: myModel
     if let object = self.myModel {
@@ -552,7 +552,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
     if let object = self.myRoot {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
 

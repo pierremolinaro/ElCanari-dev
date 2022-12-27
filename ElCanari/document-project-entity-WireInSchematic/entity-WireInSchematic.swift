@@ -414,7 +414,7 @@ final class WireInSchematic : SchematicObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To one property: mP1
     if let object = self.mP1 {
@@ -424,7 +424,7 @@ final class WireInSchematic : SchematicObject,
     if let object = self.mP2 {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
 

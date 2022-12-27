@@ -686,7 +686,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mPinInstances
     for managedObject in self.mPinInstances.values {
@@ -700,7 +700,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     if let object = self.mType {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   computeSignature

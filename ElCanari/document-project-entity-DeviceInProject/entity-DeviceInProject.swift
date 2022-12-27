@@ -809,7 +809,7 @@ final class DeviceInProject : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mPackages
     for managedObject in self.mPackages.values {
@@ -827,7 +827,7 @@ final class DeviceInProject : EBManagedObject,
     for managedObject in self.mPadAssignments.values {
       ioObjectArray.append (managedObject)
     }
-  }
+  } */
 
   //····················································································································
 

@@ -995,7 +995,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To one property: mRoot
     if let object = self.mRoot {
@@ -1009,7 +1009,7 @@ final class BorderCurve : EBGraphicManagedObject,
     if let object = self.mPrevious {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
 

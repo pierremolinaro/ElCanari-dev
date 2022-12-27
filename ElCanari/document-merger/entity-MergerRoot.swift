@@ -2144,7 +2144,7 @@ final class MergerRoot : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: boardModels
     for managedObject in self.boardModels.values {
@@ -2158,7 +2158,7 @@ final class MergerRoot : EBManagedObject,
     if let object = self.mArtwork {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
 

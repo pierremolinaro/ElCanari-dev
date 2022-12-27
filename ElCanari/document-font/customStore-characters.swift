@@ -10,7 +10,51 @@ import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY = "-characters-"
+let KEY_FOR_FontCharacter_characters = "-characters-"
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class Custom_FontCharacter_StoredArrayOf_FontCharacter : StoredArrayOf_FontCharacter {
+
+  //····················································································································
+
+  override func store (inDictionary ioDictionary : inout [String : Any]) {
+    if let key = self.key, self.mInternalArrayValue.count > 0 {
+      let s = self.customStore_FontCharacter_characters ()
+      ioDictionary [key] = s
+    }
+  }
+
+  //····················································································································
+
+  final private func customStore_FontCharacter_characters () -> String {
+    var s = ""
+    for char in self.mInternalArrayValue.values {
+      s += "|"
+      s += "\(char.codePoint):"
+      s += "\(char.advance):"
+      s += char.mWarnsWhenAdvanceIsZero ? "1:" : "0:"
+      s += char.mWarnsWhenNoSegment ? "1" : "0"
+      var x = Int.min
+      var y = Int.min
+      for segment in char.segments_property.propval.values {
+        if (segment.x1 == x) && (segment.y1 == y) {
+          s += ">\(segment.x2) \(segment.y2)"
+        }else if (segment.x1 == segment.x2) && (segment.y1 == segment.y2) {
+          s += ",\(segment.x1) \(segment.y1)"
+        }else{
+          s += ",\(segment.x1) \(segment.y1)>\(segment.x2) \(segment.y2)"
+        }
+        x = segment.x2
+        y = segment.y2
+      }
+    }
+    return s
+  }
+
+  //····················································································································
+
+}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -36,42 +80,7 @@ let FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY = "-characters-"
       y = segment.y2
     }
   }
-  // Swift.print ("STR: '\(s)'")
-//  ioDictionary? [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] = s
-//  inDictionary?.setValue (s, forKey: FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY)
   return s
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor func customStore_FontCharacter_characters (_ inCharacters : [FontCharacter],
-                                                      intoDictionary ioDictionary : inout [String : Any]) {
-  let s = customStore_FontCharacter_characters (inCharacters)
-//  var s = ""
-//  for char in inCharacters {
-//    s += "|"
-//    s += "\(char.codePoint):"
-//    s += "\(char.advance):"
-//    s += char.mWarnsWhenAdvanceIsZero ? "1:" : "0:"
-//    s += char.mWarnsWhenNoSegment ? "1" : "0"
-//    var x = Int.min
-//    var y = Int.min
-//    for segment in char.segments_property.propval.values {
-//      if (segment.x1 == x) && (segment.y1 == y) {
-//        s += ">\(segment.x2) \(segment.y2)"
-//      }else if (segment.x1 == segment.x2) && (segment.y1 == segment.y2) {
-//        s += ",\(segment.x1) \(segment.y1)"
-//      }else{
-//        s += ",\(segment.x1) \(segment.y1)>\(segment.x2) \(segment.y2)"
-//      }
-//      x = segment.x2
-//      y = segment.y2
-//    }
-//  }
-  // Swift.print ("STR: '\(s)'")
-  ioDictionary [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] = s
-//  inDictionary?.setValue (s, forKey: FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY)
-//  return s
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -128,7 +137,7 @@ let FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY = "-characters-"
 @MainActor func customRead_FontCharacter_characters (fromDictionary inDictionary : [String : Any],
                                                      with inUndoManager : UndoManager?) -> [FontCharacter] {
   var result = [FontCharacter] ()
-  if let s = inDictionary [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String {
+  if let s = inDictionary [KEY_FOR_FontCharacter_characters] as? String {
     result = customRead_FontCharacter_characters (fromString: s, with: inUndoManager)
   }
   return result
@@ -139,7 +148,7 @@ let FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY = "-characters-"
 func extractProjectFontDictionary (from inDictionary : [String : Any]) -> FontDictionaryForProject {
 //  let start = Date ()
   var result = FontDictionaryForProject ()
-  if let s = inDictionary [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String {
+  if let s = inDictionary [KEY_FOR_FontCharacter_characters] as? String {
     // Swift.print (s)
     let scanner = Scanner (string: s)
     var ok = true

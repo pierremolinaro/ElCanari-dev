@@ -1158,13 +1158,13 @@ final class PackageSlavePad : PackageObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To one property: master
     if let object = self.master {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   computeSignature

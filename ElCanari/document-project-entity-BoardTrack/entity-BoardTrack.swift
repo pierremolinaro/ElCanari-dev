@@ -1685,7 +1685,7 @@ final class BoardTrack : BoardObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To one property: mConnectorP1
     if let object = self.mConnectorP1 {
@@ -1699,7 +1699,7 @@ final class BoardTrack : BoardObject,
     if let object = self.mNet {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
 

@@ -894,8 +894,8 @@ class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice, EBSi
 
   //····················································································································
   
-  private let mKey : String?
-  var key : String? { return self.mKey }
+  private final let mKey : String?
+  final var key : String? { return self.mKey }
   
   //····················································································································
 
@@ -908,11 +908,22 @@ class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice, EBSi
       ioDictionary [key] = array
     }
   }
+
+  //····················································································································
+
+  final func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
+    if self.mKey != nil, self.mInternalArrayValue.count > 0 {
+      for object in self.mInternalArrayValue.values {
+        ioArray.append (object)
+      }
+    }
+  }
+
   //····················································································································
   //   Signature ?
   //····················································································································
 
-  private final let mUsedForSignature : Bool
+  final private let mUsedForSignature : Bool
 
   //····················································································································
   //   Undo manager

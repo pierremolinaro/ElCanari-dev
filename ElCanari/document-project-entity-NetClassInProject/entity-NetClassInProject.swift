@@ -1234,13 +1234,13 @@ final class NetClassInProject : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mNets
     for managedObject in self.mNets.values {
       ioObjectArray.append (managedObject)
     }
-  }
+  } */
 
   //····················································································································
 

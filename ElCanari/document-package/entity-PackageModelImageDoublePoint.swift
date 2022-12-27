@@ -476,13 +476,13 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To one property: mRoot
     if let object = self.mRoot {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
 

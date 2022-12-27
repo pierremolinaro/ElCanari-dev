@@ -1434,7 +1434,7 @@ final class PackagePad : PackageObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: slaves
     for managedObject in self.slaves.values {
@@ -1444,7 +1444,7 @@ final class PackagePad : PackageObject,
     if let object = self.zone {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
   //   computeSignature

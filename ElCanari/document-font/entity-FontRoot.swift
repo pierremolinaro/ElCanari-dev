@@ -193,7 +193,7 @@ final class FontRoot : EBManagedObject,
   //   To many property: characters
   //····················································································································
 
-  final let characters_property = StoredArrayOf_FontCharacter (usedForSignature: true, key: "characters")
+  final let characters_property = Custom_FontCharacter_StoredArrayOf_FontCharacter (usedForSignature: true, key: KEY_FOR_FontCharacter_characters)
 
   //····················································································································
 
@@ -620,13 +620,13 @@ final class FontRoot : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: characters (custom store)
     /* for managedObject in self.characters_property.propval.values {
       ioObjectArray.append (managedObject)
     } */
-  }
+  } */
 
   //····················································································································
   //   computeSignature

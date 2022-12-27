@@ -133,7 +133,13 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+  final func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+    let mirror = Mirror (reflecting: self)
+    for property in mirror.children {
+      if let storedProperty = property.value as? DocumentStorableProperty {
+        storedProperty.enterRelationshipObjects (intoArray: &ioObjectArray)
+      }
+    }
   }
 
   //····················································································································

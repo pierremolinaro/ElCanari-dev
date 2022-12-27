@@ -1369,7 +1369,7 @@ final class DeviceRoot : EBManagedObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To many property: mDocs
     for managedObject in self.mDocs.values {
@@ -1391,7 +1391,7 @@ final class DeviceRoot : EBManagedObject,
     for managedObject in self.mPadProxies.values {
       ioObjectArray.append (managedObject)
     }
-  }
+  } */
 
   //····················································································································
   //   computeSignature

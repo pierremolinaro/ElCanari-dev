@@ -406,13 +406,13 @@ final class LabelInSchematic : SchematicObject,
   //   accessibleObjectsForSaveOperation
   //····················································································································
 
-  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
+/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
   //--- To one property: mPoint
     if let object = self.mPoint {
       ioObjectArray.append (object)
     }
-  }
+  } */
 
   //····················································································································
 
