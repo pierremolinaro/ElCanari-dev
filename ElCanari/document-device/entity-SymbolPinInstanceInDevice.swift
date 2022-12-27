@@ -397,7 +397,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mSymbolInstance
@@ -433,16 +433,15 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
         self.mPadProxy_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

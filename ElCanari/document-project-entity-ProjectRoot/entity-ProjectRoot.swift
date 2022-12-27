@@ -6239,7 +6239,7 @@ final class ProjectRoot : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mSheets
@@ -6327,13 +6327,13 @@ final class ProjectRoot : EBManagedObject,
         self.mSelectedSheet_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mArtworkName
     self.mArtworkName_property.readFrom (dictionary: inDictionary, forKey: "mArtworkName")
@@ -6521,8 +6521,7 @@ final class ProjectRoot : EBManagedObject,
     self.mRastnetDisplayedNetName_property.readFrom (dictionary: inDictionary, forKey: "mRastnetDisplayedNetName")
   //--- Atomic property: mRastnetDisplayedComponentName
     self.mRastnetDisplayedComponentName_property.readFrom (dictionary: inDictionary, forKey: "mRastnetDisplayedComponentName")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

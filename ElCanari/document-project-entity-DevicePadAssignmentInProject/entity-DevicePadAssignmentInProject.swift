@@ -207,7 +207,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mPin
@@ -221,18 +221,17 @@ final class DevicePadAssignmentInProject : EBManagedObject,
         self.mPin_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mPadName
     self.mPadName_property.readFrom (dictionary: inDictionary, forKey: "mPadName")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

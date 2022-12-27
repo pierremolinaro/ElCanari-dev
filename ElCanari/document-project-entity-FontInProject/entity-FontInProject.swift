@@ -545,7 +545,7 @@ final class FontInProject : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mTexts
@@ -575,13 +575,13 @@ final class FontInProject : EBManagedObject,
       ) as! [ComponentInProject]
       self.mComponentValues_property.setProp (EBReferenceArray (array))
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mNominalSize
     self.mNominalSize_property.readFrom (dictionary: inDictionary, forKey: "mNominalSize")
@@ -591,8 +591,7 @@ final class FontInProject : EBManagedObject,
     self.mFontVersion_property.readFrom (dictionary: inDictionary, forKey: "mFontVersion")
   //--- Atomic property: mDescriptiveString
     self.mDescriptiveString_property.readFrom (dictionary: inDictionary, forKey: "mDescriptiveString")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

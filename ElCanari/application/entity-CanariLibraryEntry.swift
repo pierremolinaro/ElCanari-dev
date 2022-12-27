@@ -200,16 +200,16 @@ final class CanariLibraryEntry : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mPath
     self.mPath_property.readFrom (dictionary: inDictionary, forKey: "mPath")
@@ -219,8 +219,7 @@ final class CanariLibraryEntry : EBManagedObject,
     self.mLibraryRepositoryURL_property.readFrom (dictionary: inDictionary, forKey: "mLibraryRepositoryURL")
   //--- Atomic property: mUserAndPasswordTag
     self.mUserAndPasswordTag_property.readFrom (dictionary: inDictionary, forKey: "mUserAndPasswordTag")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

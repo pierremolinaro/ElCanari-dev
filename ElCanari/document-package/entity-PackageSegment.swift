@@ -525,16 +525,16 @@ final class PackageSegment : PackageObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: y1
     self.y1_property.readFrom (dictionary: inDictionary, forKey: "y1")
@@ -554,8 +554,7 @@ final class PackageSegment : PackageObject,
     self.lengthUnit_property.readFrom (dictionary: inDictionary, forKey: "lengthUnit")
   //--- Atomic property: x1
     self.x1_property.readFrom (dictionary: inDictionary, forKey: "x1")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

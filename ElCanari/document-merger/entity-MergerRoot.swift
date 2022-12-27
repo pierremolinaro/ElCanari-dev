@@ -1847,7 +1847,7 @@ final class MergerRoot : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: boardModels
@@ -1879,13 +1879,13 @@ final class MergerRoot : EBManagedObject,
         self.mArtwork_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey: "selectedPageIndex")
@@ -1929,8 +1929,7 @@ final class MergerRoot : EBManagedObject,
     self.mArtworkName_property.readFrom (dictionary: inDictionary, forKey: "mArtworkName")
   //--- Atomic property: mArtworkVersion
     self.mArtworkVersion_property.readFrom (dictionary: inDictionary, forKey: "mArtworkVersion")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

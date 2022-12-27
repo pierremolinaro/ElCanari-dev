@@ -14,8 +14,70 @@ let KEY_FOR_FontCharacter_characters = "-characters-"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class Custom_FontCharacter_StoredArrayOf_FontCharacter : StoredArrayOf_FontCharacter {
+final class Custom_FontCharacter_StoredArrayOf_FontCharacter : StoredArrayOf_FontCharacter {
 
+  //····················································································································
+  //   Read
+  //····················································································································
+
+  override func initialize (fromDictionary inDictionary : [String : Any],
+                            managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    if let key = self.key, let string = inDictionary [key] as? String {
+      let objectArray = self.customRead_FontCharacter_characters (fromString: string)
+      self.setProp (objectArray)
+    }
+  }
+
+  //····················································································································
+
+  private func customRead_FontCharacter_characters (fromString inString : String) -> EBReferenceArray <FontCharacter> {
+    var result = EBReferenceArray <FontCharacter> ()
+    let scanner = Scanner (string: inString)
+    var ok = true
+    while ok && scanner.myTestString ("|") {
+      let newCharacter = FontCharacter (self.undoManager)
+      result.append (newCharacter)
+      newCharacter.codePoint = scanner.myScanInt (&ok)
+      scanner.myCheckString (":", &ok)
+      newCharacter.advance = scanner.myScanInt (&ok)
+      scanner.myCheckString (":", &ok)
+      newCharacter.mWarnsWhenAdvanceIsZero = scanner.myScanInt (&ok) != 0
+      scanner.myCheckString (":", &ok)
+      newCharacter.mWarnsWhenNoSegment = scanner.myScanInt (&ok) != 0
+    //--- Segments
+      var segments = EBReferenceArray <SegmentForFontCharacter> ()
+      while ok && scanner.myTestString (",") {
+        var x = scanner.myScanInt (&ok)
+        var y = scanner.myScanInt (&ok)
+        var singlePoint = true
+        while scanner.myTestString (">") {
+          singlePoint = false
+          let newSegment = SegmentForFontCharacter (self.undoManager)
+          segments.append (newSegment)
+          newSegment.x1 = x
+          newSegment.y1 = y
+          x = scanner.myScanInt (&ok)
+          y = scanner.myScanInt (&ok)
+          newSegment.x2 = x
+          newSegment.y2 = y
+        }
+        if singlePoint {
+          let newSegment = SegmentForFontCharacter (self.undoManager)
+          segments.append (newSegment)
+          newSegment.x1 = x
+          newSegment.y1 = y
+          newSegment.x2 = x
+          newSegment.y2 = y
+        }
+        // Swift.print ("Segment \(newSegment.x1) \(newSegment.y1) \(newSegment.x2) \(newSegment.y2) > \(ok)")
+      }
+      newCharacter.segments_property.setProp (segments)
+    }
+    return result
+  }
+
+  //····················································································································
+  //   Store
   //····················································································································
 
   override func store (inDictionary ioDictionary : inout [String : Any]) {
@@ -134,14 +196,14 @@ class Custom_FontCharacter_StoredArrayOf_FontCharacter : StoredArrayOf_FontChara
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func customRead_FontCharacter_characters (fromDictionary inDictionary : [String : Any],
-                                                     with inUndoManager : UndoManager?) -> [FontCharacter] {
-  var result = [FontCharacter] ()
-  if let s = inDictionary [KEY_FOR_FontCharacter_characters] as? String {
-    result = customRead_FontCharacter_characters (fromString: s, with: inUndoManager)
-  }
-  return result
-}
+//@MainActor func customRead_FontCharacter_characters (fromDictionary inDictionary : [String : Any],
+//                                                     with inUndoManager : UndoManager?) -> [FontCharacter] {
+//  var result = [FontCharacter] ()
+//  if let s = inDictionary [KEY_FOR_FontCharacter_characters] as? String {
+//    result = customRead_FontCharacter_characters (fromString: s, with: inUndoManager)
+//  }
+//  return result
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

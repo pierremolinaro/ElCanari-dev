@@ -4083,7 +4083,7 @@ final class BoardModel : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: frontLegendLines
@@ -4311,13 +4311,13 @@ final class BoardModel : EBManagedObject,
       ) as! [MergerBoardInstance]
       self.myInstances_property.setProp (EBReferenceArray (array))
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: name
     self.name_property.readFrom (dictionary: inDictionary, forKey: "name")
@@ -4339,8 +4339,7 @@ final class BoardModel : EBManagedObject,
     self.modelLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey: "modelLimitWidthUnit")
   //--- Atomic property: artworkName
     self.artworkName_property.readFrom (dictionary: inDictionary, forKey: "artworkName")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

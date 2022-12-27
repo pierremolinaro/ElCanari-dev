@@ -575,16 +575,16 @@ final class BoardRestrictRectangle : BoardObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mY
     self.mY_property.readFrom (dictionary: inDictionary, forKey: "mY")
@@ -606,8 +606,7 @@ final class BoardRestrictRectangle : BoardObject,
     self.mIsInInner4Layer_property.readFrom (dictionary: inDictionary, forKey: "mIsInInner4Layer")
   //--- Atomic property: mX
     self.mX_property.readFrom (dictionary: inDictionary, forKey: "mX")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

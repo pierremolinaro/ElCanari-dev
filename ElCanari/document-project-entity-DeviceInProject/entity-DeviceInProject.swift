@@ -638,7 +638,7 @@ final class DeviceInProject : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mPackages
@@ -677,13 +677,13 @@ final class DeviceInProject : EBManagedObject,
       ) as! [DevicePadAssignmentInProject]
       self.mPadAssignments_property.setProp (EBReferenceArray (array))
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mDeviceName
     self.mDeviceName_property.readFrom (dictionary: inDictionary, forKey: "mDeviceName")
@@ -693,8 +693,7 @@ final class DeviceInProject : EBManagedObject,
     self.mDeviceVersion_property.readFrom (dictionary: inDictionary, forKey: "mDeviceVersion")
   //--- Atomic property: mDeviceFileData
     self.mDeviceFileData_property.readFrom (dictionary: inDictionary, forKey: "mDeviceFileData")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

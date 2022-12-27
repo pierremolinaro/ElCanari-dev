@@ -460,16 +460,16 @@ final class BoardLine : BoardObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mWidthUnit
     self.mWidthUnit_property.readFrom (dictionary: inDictionary, forKey: "mWidthUnit")
@@ -493,8 +493,7 @@ final class BoardLine : BoardObject,
     self.mLayer_property.readFrom (dictionary: inDictionary, forKey: "mLayer")
   //--- Atomic property: mWidth
     self.mWidth_property.readFrom (dictionary: inDictionary, forKey: "mWidth")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

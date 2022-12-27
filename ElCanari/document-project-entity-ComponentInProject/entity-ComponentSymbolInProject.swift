@@ -876,7 +876,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mPoints
@@ -899,13 +899,13 @@ final class ComponentSymbolInProject : SchematicObject,
         self.mComponent_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mCenterX
     self.mCenterX_property.readFrom (dictionary: inDictionary, forKey: "mCenterX")
@@ -929,8 +929,7 @@ final class ComponentSymbolInProject : SchematicObject,
     self.mDisplayComponentValueOffsetX_property.readFrom (dictionary: inDictionary, forKey: "mDisplayComponentValueOffsetX")
   //--- Atomic property: mDisplayComponentValueOffsetY
     self.mDisplayComponentValueOffsetY_property.readFrom (dictionary: inDictionary, forKey: "mDisplayComponentValueOffsetY")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

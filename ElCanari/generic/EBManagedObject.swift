@@ -67,15 +67,21 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   //  Setup
   //····················································································································
 
-  func setUpWithDictionary (_ inDictionary : [String : Any],
-                            managedObjectArray inManagedObjectArray : [EBManagedObject]) {
-    self.setUpAtomicPropertiesWithDictionary (inDictionary)
+  final func setUpWithDictionary (_ inDictionary : [String : Any],
+                                  managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+ //   self.setUpAtomicPropertiesWithDictionary (inDictionary)
+    let mirror = Mirror (reflecting: self)
+    for property in mirror.children {
+      if let storedProperty = property.value as? DocumentStorableProperty {
+        storedProperty.initialize (fromDictionary: inDictionary, managedObjectArray: inManagedObjectArray)
+      }
+    }
   }
 
   //····················································································································
 
-  func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
-  }
+//  func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+//  }
 
   //····················································································································
 
@@ -101,33 +107,33 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   //   readEntityFromDictionary
   //····················································································································
 
-  final func readEntityFromDictionary (relationshipName inRelationshipName : String,
-                                       dictionary inDictionary : [String : Any],
-                                       managedObjectArray inManagedObjectArray : [EBManagedObject]) -> EBManagedObject? {
-    var result : EBManagedObject? = nil
-    if let value = inDictionary [inRelationshipName] as? Int {
-      result = inManagedObjectArray [value]
-    }
-    return result
-  }
+//  final func readEntityFromDictionary (relationshipName inRelationshipName : String,
+//                                       dictionary inDictionary : [String : Any],
+//                                       managedObjectArray inManagedObjectArray : [EBManagedObject]) -> EBManagedObject? {
+//    var result : EBManagedObject? = nil
+//    if let value = inDictionary [inRelationshipName] as? Int {
+//      result = inManagedObjectArray [value]
+//    }
+//    return result
+//  }
 
   //····················································································································
   //   readEntityArrayFromDictionary
   //····················································································································
 
-  final func readEntityArrayFromDictionary (inRelationshipName : String,
-                                            inDictionary : [String : Any],
-                                            managedObjectArray : [EBManagedObject]) -> [EBManagedObject] {
-    let opIndexArray : [Int]? = inDictionary [inRelationshipName] as? [Int]
-    var result = [EBManagedObject] ()
-    if let indexArray = opIndexArray {
-      for number in indexArray {
-        let managedObject = managedObjectArray [number]
-        result.append (managedObject)
-      }
-    }
-    return result
-  }
+//  final func readEntityArrayFromDictionary (inRelationshipName : String,
+//                                            inDictionary : [String : Any],
+//                                            managedObjectArray : [EBManagedObject]) -> [EBManagedObject] {
+//    let opIndexArray : [Int]? = inDictionary [inRelationshipName] as? [Int]
+//    var result = [EBManagedObject] ()
+//    if let indexArray = opIndexArray {
+//      for number in indexArray {
+//        let managedObject = managedObjectArray [number]
+//        result.append (managedObject)
+//      }
+//    }
+//    return result
+//  }
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

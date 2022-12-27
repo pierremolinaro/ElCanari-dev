@@ -675,7 +675,7 @@ final class ArtworkRoot : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: fileGenerationParameterArray
@@ -687,13 +687,13 @@ final class ArtworkRoot : EBManagedObject,
       ) as! [ArtworkFileGenerationParameters]
       self.fileGenerationParameterArray_property.setProp (EBReferenceArray (array))
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: layerConfiguration
     self.layerConfiguration_property.readFrom (dictionary: inDictionary, forKey: "layerConfiguration")
@@ -721,8 +721,7 @@ final class ArtworkRoot : EBManagedObject,
     self.title_property.readFrom (dictionary: inDictionary, forKey: "title")
   //--- Atomic property: drillDataFileExtension
     self.drillDataFileExtension_property.readFrom (dictionary: inDictionary, forKey: "drillDataFileExtension")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

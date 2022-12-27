@@ -519,16 +519,16 @@ final class DevicePinInProject : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mPinName
     self.mPinName_property.readFrom (dictionary: inDictionary, forKey: "mPinName")
@@ -554,8 +554,7 @@ final class DevicePinInProject : EBManagedObject,
     self.mYNumber_property.readFrom (dictionary: inDictionary, forKey: "mYNumber")
   //--- Atomic property: mNumberHorizontalAlignment
     self.mNumberHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey: "mNumberHorizontalAlignment")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

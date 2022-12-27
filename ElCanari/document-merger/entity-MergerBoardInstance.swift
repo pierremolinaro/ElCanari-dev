@@ -419,7 +419,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: myModel
@@ -444,13 +444,13 @@ final class MergerBoardInstance : EBGraphicManagedObject,
         self.myRoot_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: x
     self.x_property.readFrom (dictionary: inDictionary, forKey: "x")
@@ -458,8 +458,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
     self.y_property.readFrom (dictionary: inDictionary, forKey: "y")
   //--- Atomic property: instanceRotation
     self.instanceRotation_property.readFrom (dictionary: inDictionary, forKey: "instanceRotation")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

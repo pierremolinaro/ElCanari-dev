@@ -518,7 +518,7 @@ final class SlavePadInDevice : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mMasterPad
@@ -532,13 +532,13 @@ final class SlavePadInDevice : EBManagedObject,
         self.mMasterPad_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mCenterX
     self.mCenterX_property.readFrom (dictionary: inDictionary, forKey: "mCenterX")
@@ -556,8 +556,7 @@ final class SlavePadInDevice : EBManagedObject,
     self.mShape_property.readFrom (dictionary: inDictionary, forKey: "mShape")
   //--- Atomic property: mStyle
     self.mStyle_property.readFrom (dictionary: inDictionary, forKey: "mStyle")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

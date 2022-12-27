@@ -233,16 +233,16 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: x1
     self.x1_property.readFrom (dictionary: inDictionary, forKey: "x1")
@@ -252,8 +252,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
     self.x2_property.readFrom (dictionary: inDictionary, forKey: "x2")
   //--- Atomic property: y2
     self.y2_property.readFrom (dictionary: inDictionary, forKey: "y2")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

@@ -1043,7 +1043,7 @@ final class NetClassInProject : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mNets
@@ -1055,13 +1055,13 @@ final class NetClassInProject : EBManagedObject,
       ) as! [NetInProject]
       self.mNets_property.setProp (EBReferenceArray (array))
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mNetClassName
     self.mNetClassName_property.readFrom (dictionary: inDictionary, forKey: "mNetClassName")
@@ -1091,8 +1091,7 @@ final class NetClassInProject : EBManagedObject,
     self.mAllowTracksOnInner3Layer_property.readFrom (dictionary: inDictionary, forKey: "mAllowTracksOnInner3Layer")
   //--- Atomic property: mAllowTracksOnInner4Layer
     self.mAllowTracksOnInner4Layer_property.readFrom (dictionary: inDictionary, forKey: "mAllowTracksOnInner4Layer")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

@@ -1236,7 +1236,7 @@ final class BoardConnector : BoardObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mTracksP2
@@ -1268,13 +1268,13 @@ final class BoardConnector : BoardObject,
         self.mComponent_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mComponentPadName
     self.mComponentPadName_property.readFrom (dictionary: inDictionary, forKey: "mComponentPadName")
@@ -1300,8 +1300,7 @@ final class BoardConnector : BoardObject,
     self.mCustomPadDiameterUnit_property.readFrom (dictionary: inDictionary, forKey: "mCustomPadDiameterUnit")
   //--- Atomic property: mUsesCustomPadDiameter
     self.mUsesCustomPadDiameter_property.readFrom (dictionary: inDictionary, forKey: "mUsesCustomPadDiameter")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

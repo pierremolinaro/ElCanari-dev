@@ -544,6 +544,19 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
   
   //····················································································································
 
+  func initialize (fromDictionary inDictionary : [String : Any],
+                   managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    if let key = self.mKey, let objectSavingIndexArray = inDictionary [key] as? [Int] {
+      var objectArray = EBReferenceArray <CanariLibraryEntry> ()
+      for idx in objectSavingIndexArray {
+        objectArray.append (inManagedObjectArray [idx] as! CanariLibraryEntry)
+      }
+      self.setProp (objectArray)
+    }
+  }
+
+  //····················································································································
+
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, self.mInternalArrayValue.count > 0 {
       var array = [Int] ()
@@ -767,7 +780,7 @@ final class PreferencesArrayOf_CanariLibraryEntry : StoredArrayOf_CanariLibraryE
       var objectArray = EBReferenceArray <CanariLibraryEntry> ()
       for dictionary in array {
         let object = newInstanceOfEntityNamed (self.undoManager, "CanariLibraryEntry") as! CanariLibraryEntry
-        object.setUpAtomicPropertiesWithDictionary (dictionary)
+        object.setUpWithDictionary (dictionary, managedObjectArray: []) // setUpAtomicPropertiesWithDictionary (dictionary)
         objectArray.append (object)
       }
       self.setProp (objectArray)

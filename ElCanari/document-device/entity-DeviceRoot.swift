@@ -1090,7 +1090,7 @@ final class DeviceRoot : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mDocs
@@ -1138,13 +1138,13 @@ final class DeviceRoot : EBManagedObject,
       ) as! [PadProxyInDevice]
       self.mPadProxies_property.setProp (EBReferenceArray (array))
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.readFrom (dictionary: inDictionary, forKey: "mSelectedPageIndex")
@@ -1176,8 +1176,7 @@ final class DeviceRoot : EBManagedObject,
     self.mShowPackageBackPads_property.readFrom (dictionary: inDictionary, forKey: "mShowPackageBackPads")
   //--- Atomic property: mSymbolDisplayZoom
     self.mSymbolDisplayZoom_property.readFrom (dictionary: inDictionary, forKey: "mSymbolDisplayZoom")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

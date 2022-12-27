@@ -142,23 +142,22 @@ final class DeviceDocumentation : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mFileName
     self.mFileName_property.readFrom (dictionary: inDictionary, forKey: "mFileName")
   //--- Atomic property: mFileData
     self.mFileData_property.readFrom (dictionary: inDictionary, forKey: "mFileData")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

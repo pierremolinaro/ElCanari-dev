@@ -344,16 +344,16 @@ final class CommentInSchematic : SchematicObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mColor
     self.mColor_property.readFrom (dictionary: inDictionary, forKey: "mColor")
@@ -369,8 +369,7 @@ final class CommentInSchematic : SchematicObject,
     self.mY_property.readFrom (dictionary: inDictionary, forKey: "mY")
   //--- Atomic property: mComment
     self.mComment_property.readFrom (dictionary: inDictionary, forKey: "mComment")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

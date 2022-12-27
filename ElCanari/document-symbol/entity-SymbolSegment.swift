@@ -330,16 +330,16 @@ final class SymbolSegment : SymbolObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: y1
     self.y1_property.readFrom (dictionary: inDictionary, forKey: "y1")
@@ -349,8 +349,7 @@ final class SymbolSegment : SymbolObject,
     self.y2_property.readFrom (dictionary: inDictionary, forKey: "y2")
   //--- Atomic property: x1
     self.x1_property.readFrom (dictionary: inDictionary, forKey: "x1")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

@@ -410,7 +410,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mInstances
@@ -431,13 +431,13 @@ final class SymbolTypeInDevice : EBManagedObject,
       ) as! [SymbolPinTypeInDevice]
       self.mPinTypes_property.setProp (EBReferenceArray (array))
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mTypeName
     self.mTypeName_property.readFrom (dictionary: inDictionary, forKey: "mTypeName")
@@ -449,8 +449,7 @@ final class SymbolTypeInDevice : EBManagedObject,
     self.mStrokeBezierPath_property.readFrom (dictionary: inDictionary, forKey: "mStrokeBezierPath")
   //--- Atomic property: mFilledBezierPath
     self.mFilledBezierPath_property.readFrom (dictionary: inDictionary, forKey: "mFilledBezierPath")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

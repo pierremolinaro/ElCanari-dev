@@ -163,7 +163,7 @@ final class DevicePackageInProject : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mMasterPads
@@ -175,20 +175,19 @@ final class DevicePackageInProject : EBManagedObject,
       ) as! [DeviceMasterPadInProject]
       self.mMasterPads_property.setProp (EBReferenceArray (array))
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mPackageName
     self.mPackageName_property.readFrom (dictionary: inDictionary, forKey: "mPackageName")
   //--- Atomic property: mStrokeBezierPath
     self.mStrokeBezierPath_property.readFrom (dictionary: inDictionary, forKey: "mStrokeBezierPath")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

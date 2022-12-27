@@ -514,16 +514,16 @@ final class SymbolBezierCurve : SymbolObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: y1
     self.y1_property.readFrom (dictionary: inDictionary, forKey: "y1")
@@ -541,8 +541,7 @@ final class SymbolBezierCurve : SymbolObject,
     self.cpy2_property.readFrom (dictionary: inDictionary, forKey: "cpy2")
   //--- Atomic property: x1
     self.x1_property.readFrom (dictionary: inDictionary, forKey: "x1")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

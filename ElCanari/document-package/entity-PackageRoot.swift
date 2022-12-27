@@ -2132,7 +2132,7 @@ final class PackageRoot : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mModelImageObjects
@@ -2164,13 +2164,13 @@ final class PackageRoot : EBManagedObject,
         self.mModelImageDoublePoint_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey: "selectedPageIndex")
@@ -2254,8 +2254,7 @@ final class PackageRoot : EBManagedObject,
     self.yPlacardUnit_property.readFrom (dictionary: inDictionary, forKey: "yPlacardUnit")
   //--- Atomic property: mModelImageData
     self.mModelImageData_property.readFrom (dictionary: inDictionary, forKey: "mModelImageData")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

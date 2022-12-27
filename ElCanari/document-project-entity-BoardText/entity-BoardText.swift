@@ -686,7 +686,7 @@ final class BoardText : BoardObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mFont
@@ -700,13 +700,13 @@ final class BoardText : BoardObject,
         self.mFont_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mX
     self.mX_property.readFrom (dictionary: inDictionary, forKey: "mX")
@@ -728,8 +728,7 @@ final class BoardText : BoardObject,
     self.mWeight_property.readFrom (dictionary: inDictionary, forKey: "mWeight")
   //--- Atomic property: mOblique
     self.mOblique_property.readFrom (dictionary: inDictionary, forKey: "mOblique")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

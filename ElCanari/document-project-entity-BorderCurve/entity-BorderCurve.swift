@@ -820,7 +820,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mRoot
@@ -856,13 +856,13 @@ final class BorderCurve : EBGraphicManagedObject,
         self.mPrevious_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mX
     self.mX_property.readFrom (dictionary: inDictionary, forKey: "mX")
@@ -878,8 +878,7 @@ final class BorderCurve : EBGraphicManagedObject,
     self.mCPY2_property.readFrom (dictionary: inDictionary, forKey: "mCPY2")
   //--- Atomic property: mShape
     self.mShape_property.readFrom (dictionary: inDictionary, forKey: "mShape")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

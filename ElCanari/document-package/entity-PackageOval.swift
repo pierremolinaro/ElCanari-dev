@@ -442,16 +442,16 @@ final class PackageOval : PackageObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: y
     self.y_property.readFrom (dictionary: inDictionary, forKey: "y")
@@ -469,8 +469,7 @@ final class PackageOval : PackageObject,
     self.heightUnit_property.readFrom (dictionary: inDictionary, forKey: "heightUnit")
   //--- Atomic property: x
     self.x_property.readFrom (dictionary: inDictionary, forKey: "x")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

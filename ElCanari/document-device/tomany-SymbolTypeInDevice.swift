@@ -811,6 +811,19 @@ class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevice, EB
   
   //····················································································································
 
+  func initialize (fromDictionary inDictionary : [String : Any],
+                   managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    if let key = self.mKey, let objectSavingIndexArray = inDictionary [key] as? [Int] {
+      var objectArray = EBReferenceArray <SymbolTypeInDevice> ()
+      for idx in objectSavingIndexArray {
+        objectArray.append (inManagedObjectArray [idx] as! SymbolTypeInDevice)
+      }
+      self.setProp (objectArray)
+    }
+  }
+
+  //····················································································································
+
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, self.mInternalArrayValue.count > 0 {
       var array = [Int] ()

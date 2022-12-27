@@ -494,6 +494,16 @@ final class StoredObject_SymbolPinTypeInDevice : ReadWriteObject_SymbolPinTypeIn
   
   //····················································································································
 
+  func initialize (fromDictionary inDictionary : [String : Any],
+                   managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    if let key = self.mKey, let objectSavingIndex = inDictionary [key] as? Int {
+      let object = inManagedObjectArray [objectSavingIndex] as! SymbolPinTypeInDevice
+      self.setProp (object)
+    }
+  }
+
+  //····················································································································
+
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, let idx = self.mWeakInternalValue?.savingIndex {
       ioDictionary [key] = idx

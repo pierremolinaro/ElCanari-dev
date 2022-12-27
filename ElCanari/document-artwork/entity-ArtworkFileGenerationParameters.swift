@@ -1146,7 +1146,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mArtwork
@@ -1160,13 +1160,13 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
         self.mArtwork_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: drawBoardLimits
     self.drawBoardLimits_property.readFrom (dictionary: inDictionary, forKey: "drawBoardLimits")
@@ -1224,8 +1224,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     self.measurementUnitForPadHoleInPDF_property.readFrom (dictionary: inDictionary, forKey: "measurementUnitForPadHoleInPDF")
   //--- Atomic property: padHoleDiameterInPDF
     self.padHoleDiameterInPDF_property.readFrom (dictionary: inDictionary, forKey: "padHoleDiameterInPDF")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

@@ -533,7 +533,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mPinInstances
@@ -567,13 +567,13 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
         self.mType_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mInstanceName
     self.mInstanceName_property.readFrom (dictionary: inDictionary, forKey: "mInstanceName")
@@ -581,8 +581,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mX_property.readFrom (dictionary: inDictionary, forKey: "mX")
   //--- Atomic property: mY
     self.mY_property.readFrom (dictionary: inDictionary, forKey: "mY")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

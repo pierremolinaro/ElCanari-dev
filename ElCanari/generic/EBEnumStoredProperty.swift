@@ -76,6 +76,15 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   //····················································································································
 
+  func initialize (fromDictionary inDictionary : [String : Any],
+                   managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    if let key = self.mKey, let value = inDictionary [key] as? NSObject {
+      self.setProp (T.convertFromNSObject (object: value))
+    }
+  }
+
+  //····················································································································
+
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey {
       ioDictionary [key] = self.mValue.convertToNSObject ()
@@ -89,11 +98,11 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   //····················································································································
 
-  func readFrom (dictionary inDictionary : [String : Any], forKey inKey : String) {
-    if let value = inDictionary [inKey] as? NSObject {
-      self.setProp (T.convertFromNSObject (object: value))
-    }
-  }
+//  func readFrom (dictionary inDictionary : [String : Any], forKey inKey : String) {
+//    if let value = inDictionary [inKey] as? NSObject {
+//      self.setProp (T.convertFromNSObject (object: value))
+//    }
+//  }
 
   //····················································································································
   //    SIGNATURE

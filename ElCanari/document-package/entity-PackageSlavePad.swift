@@ -959,7 +959,7 @@ final class PackageSlavePad : PackageObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: master
@@ -973,13 +973,13 @@ final class PackageSlavePad : PackageObject,
         self.master_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: xCenter
     self.xCenter_property.readFrom (dictionary: inDictionary, forKey: "xCenter")
@@ -1011,8 +1011,7 @@ final class PackageSlavePad : PackageObject,
     self.holeHeightUnit_property.readFrom (dictionary: inDictionary, forKey: "holeHeightUnit")
   //--- Atomic property: annularRingUnit
     self.annularRingUnit_property.readFrom (dictionary: inDictionary, forKey: "annularRingUnit")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

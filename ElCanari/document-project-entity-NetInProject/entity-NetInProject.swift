@@ -490,7 +490,7 @@ final class NetInProject : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mPoints
@@ -522,20 +522,19 @@ final class NetInProject : EBManagedObject,
         self.mNetClass_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mNetName
     self.mNetName_property.readFrom (dictionary: inDictionary, forKey: "mNetName")
   //--- Atomic property: mWarnsExactlyOneLabel
     self.mWarnsExactlyOneLabel_property.readFrom (dictionary: inDictionary, forKey: "mWarnsExactlyOneLabel")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

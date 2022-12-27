@@ -428,7 +428,7 @@ final class SymbolRoot : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: symbolObjects
@@ -440,13 +440,13 @@ final class SymbolRoot : EBManagedObject,
       ) as! [SymbolObject]
       self.symbolObjects_property.setProp (EBReferenceArray (array))
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: selectedInspector
     self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey: "selectedInspector")
@@ -468,8 +468,7 @@ final class SymbolRoot : EBManagedObject,
     self.yPlacardUnit_property.readFrom (dictionary: inDictionary, forKey: "yPlacardUnit")
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey: "selectedPageIndex")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

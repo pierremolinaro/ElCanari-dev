@@ -638,7 +638,7 @@ final class PackageInDevice : EBGraphicManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mMasterPads
@@ -661,13 +661,13 @@ final class PackageInDevice : EBGraphicManagedObject,
         self.mRoot_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mFileData
     self.mFileData_property.readFrom (dictionary: inDictionary, forKey: "mFileData")
@@ -681,8 +681,7 @@ final class PackageInDevice : EBGraphicManagedObject,
     self.mX_property.readFrom (dictionary: inDictionary, forKey: "mX")
   //--- Atomic property: mY
     self.mY_property.readFrom (dictionary: inDictionary, forKey: "mY")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

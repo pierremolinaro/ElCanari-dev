@@ -377,7 +377,7 @@ final class FontCharacter : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: segments
@@ -389,13 +389,13 @@ final class FontCharacter : EBManagedObject,
       ) as! [SegmentForFontCharacter]
       self.segments_property.setProp (EBReferenceArray (array))
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: codePoint
     self.codePoint_property.readFrom (dictionary: inDictionary, forKey: "codePoint")
@@ -405,8 +405,7 @@ final class FontCharacter : EBManagedObject,
     self.mWarnsWhenNoSegment_property.readFrom (dictionary: inDictionary, forKey: "mWarnsWhenNoSegment")
   //--- Atomic property: mWarnsWhenAdvanceIsZero
     self.mWarnsWhenAdvanceIsZero_property.readFrom (dictionary: inDictionary, forKey: "mWarnsWhenAdvanceIsZero")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

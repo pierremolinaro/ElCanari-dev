@@ -264,7 +264,7 @@ final class PadProxyInDevice : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mPinInstance
@@ -278,13 +278,13 @@ final class PadProxyInDevice : EBManagedObject,
         self.mPinInstance_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mPinInstanceName
     self.mPinInstanceName_property.readFrom (dictionary: inDictionary, forKey: "mPinInstanceName")
@@ -292,8 +292,7 @@ final class PadProxyInDevice : EBManagedObject,
     self.mPadName_property.readFrom (dictionary: inDictionary, forKey: "mPadName")
   //--- Atomic property: mIsNC
     self.mIsNC_property.readFrom (dictionary: inDictionary, forKey: "mIsNC")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

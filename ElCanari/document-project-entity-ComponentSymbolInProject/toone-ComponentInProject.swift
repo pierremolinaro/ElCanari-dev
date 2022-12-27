@@ -1231,6 +1231,16 @@ final class StoredObject_ComponentInProject : ReadWriteObject_ComponentInProject
   
   //····················································································································
 
+  func initialize (fromDictionary inDictionary : [String : Any],
+                   managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+    if let key = self.mKey, let objectSavingIndex = inDictionary [key] as? Int {
+      let object = inManagedObjectArray [objectSavingIndex] as! ComponentInProject
+      self.setProp (object)
+    }
+  }
+
+  //····················································································································
+
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, let idx = self.mWeakInternalValue?.savingIndex {
       ioDictionary [key] = idx

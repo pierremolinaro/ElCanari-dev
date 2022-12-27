@@ -349,7 +349,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mRoot
@@ -363,13 +363,13 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
         self.mRoot_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mFirstX
     self.mFirstX_property.readFrom (dictionary: inDictionary, forKey: "mFirstX")
@@ -383,8 +383,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
     self.mSecondDy_property.readFrom (dictionary: inDictionary, forKey: "mSecondDy")
   //--- Atomic property: mSecondColor
     self.mSecondColor_property.readFrom (dictionary: inDictionary, forKey: "mSecondColor")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

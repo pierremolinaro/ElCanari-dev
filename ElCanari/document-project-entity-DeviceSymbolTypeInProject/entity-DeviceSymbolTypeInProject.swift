@@ -128,16 +128,16 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mSymbolTypeName
     self.mSymbolTypeName_property.readFrom (dictionary: inDictionary, forKey: "mSymbolTypeName")
@@ -145,8 +145,7 @@ final class DeviceSymbolTypeInProject : EBManagedObject,
     self.mStrokeBezierPath_property.readFrom (dictionary: inDictionary, forKey: "mStrokeBezierPath")
   //--- Atomic property: mFilledBezierPath
     self.mFilledBezierPath_property.readFrom (dictionary: inDictionary, forKey: "mFilledBezierPath")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

@@ -966,7 +966,7 @@ final class PointInSchematic : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: mLabels
@@ -1040,13 +1040,13 @@ final class PointInSchematic : EBManagedObject,
         self.mSheet_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mSymbolPinName
     self.mSymbolPinName_property.readFrom (dictionary: inDictionary, forKey: "mSymbolPinName")
@@ -1054,8 +1054,7 @@ final class PointInSchematic : EBManagedObject,
     self.mX_property.readFrom (dictionary: inDictionary, forKey: "mX")
   //--- Atomic property: mY
     self.mY_property.readFrom (dictionary: inDictionary, forKey: "mY")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

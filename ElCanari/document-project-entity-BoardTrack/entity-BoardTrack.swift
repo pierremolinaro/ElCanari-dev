@@ -1462,7 +1462,7 @@ final class BoardTrack : BoardObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mConnectorP1
@@ -1498,13 +1498,13 @@ final class BoardTrack : BoardObject,
         self.mNet_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mSide
     self.mSide_property.readFrom (dictionary: inDictionary, forKey: "mSide")
@@ -1532,8 +1532,7 @@ final class BoardTrack : BoardObject,
     self.mManualLockP2_property.readFrom (dictionary: inDictionary, forKey: "mManualLockP2")
   //--- Atomic property: mDirectionLockOnKnobDragging
     self.mDirectionLockOnKnobDragging_property.readFrom (dictionary: inDictionary, forKey: "mDirectionLockOnKnobDragging")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

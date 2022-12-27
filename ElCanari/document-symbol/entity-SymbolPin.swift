@@ -611,16 +611,16 @@ final class SymbolPin : SymbolObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: yPin
     self.yPin_property.readFrom (dictionary: inDictionary, forKey: "yPin")
@@ -642,8 +642,7 @@ final class SymbolPin : SymbolObject,
     self.pinNameIsDisplayedInSchematics_property.readFrom (dictionary: inDictionary, forKey: "pinNameIsDisplayedInSchematics")
   //--- Atomic property: xPin
     self.xPin_property.readFrom (dictionary: inDictionary, forKey: "xPin")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

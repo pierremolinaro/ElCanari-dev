@@ -511,18 +511,18 @@ final class FontRoot : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: characters (Custom store)
     self.characters_property.setProp (EBReferenceArray (customRead_FontCharacter_characters (fromDictionary: inDictionary, with: self.undoManager)))
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: comments
     self.comments_property.readFrom (dictionary: inDictionary, forKey: "comments")
@@ -534,8 +534,7 @@ final class FontRoot : EBManagedObject,
     self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey: "selectedInspector")
   //--- Atomic property: currentCharacterCodePoint
     self.currentCharacterCodePoint_property.readFrom (dictionary: inDictionary, forKey: "currentCharacterCodePoint")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

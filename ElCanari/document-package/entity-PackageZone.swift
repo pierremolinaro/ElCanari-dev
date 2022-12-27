@@ -854,7 +854,7 @@ final class PackageZone : PackageObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To many property: forbiddenPadNumbers
@@ -866,13 +866,13 @@ final class PackageZone : PackageObject,
       ) as! [ForbiddenPadNumber]
       self.forbiddenPadNumbers_property.setProp (EBReferenceArray (array))
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: x
     self.x_property.readFrom (dictionary: inDictionary, forKey: "x")
@@ -906,8 +906,7 @@ final class PackageZone : PackageObject,
     self.yNameUnit_property.readFrom (dictionary: inDictionary, forKey: "yNameUnit")
   //--- Atomic property: zoneNumbering
     self.zoneNumbering_property.readFrom (dictionary: inDictionary, forKey: "zoneNumbering")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

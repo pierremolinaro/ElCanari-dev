@@ -342,16 +342,16 @@ final class DeviceSlavePadInProject : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mCenterX
     self.mCenterX_property.readFrom (dictionary: inDictionary, forKey: "mCenterX")
@@ -369,8 +369,7 @@ final class DeviceSlavePadInProject : EBManagedObject,
     self.mShape_property.readFrom (dictionary: inDictionary, forKey: "mShape")
   //--- Atomic property: mStyle
     self.mStyle_property.readFrom (dictionary: inDictionary, forKey: "mStyle")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo

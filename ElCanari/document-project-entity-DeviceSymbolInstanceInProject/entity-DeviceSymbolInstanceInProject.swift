@@ -285,7 +285,7 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUpWithDictionary (_ inDictionary : [String : Any],
+/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
                                      managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
   //--- To one property: mSymbolType
@@ -299,18 +299,17 @@ final class DeviceSymbolInstanceInProject : EBManagedObject,
         self.mSymbolType_property.setProp (entity)
       }
     }
-  }
+  } */
 
   //····················································································································
   //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
+/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: mSymbolInstanceName
     self.mSymbolInstanceName_property.readFrom (dictionary: inDictionary, forKey: "mSymbolInstanceName")
-  }
-
+  } */
 
   //····················································································································
   //   appendPropertyNamesTo
