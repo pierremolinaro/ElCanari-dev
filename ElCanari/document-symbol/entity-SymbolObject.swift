@@ -66,62 +66,6 @@ class SymbolObject : EBGraphicManagedObject,
   //····················································································································
 
 
-
-  //····················································································································
-  //    saveIntoDictionary
-  //····················································································································
-
-/*  override func saveIntoDictionary (_ ioDictionary : inout [String  : Any]) {
-    super.saveIntoDictionary (&ioDictionary)
-  } */
-
-  //····················································································································
-  //    setUpWithDictionary
-  //····················································································································
-
-/*  override func setUpWithDictionary (_ inDictionary : [String : Any],
-                                     managedObjectArray inManagedObjectArray : [EBManagedObject]) {
-    super.setUpWithDictionary (inDictionary, managedObjectArray: inManagedObjectArray)
-  } */
-
-  //····················································································································
-  //    setUpAtomicPropertiesWithDictionary
-  //····················································································································
-
-/*  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
-    super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  } */
-
-  //····················································································································
-  //   appendPropertyNamesTo
-  //····················································································································
-
-/*  override func appendPropertyNamesTo (_ ioString : inout String) {
-    super.appendPropertyNamesTo (&ioString)
-  //--- Atomic properties
-  //--- To one relationships
-  //--- To many relationships
-  } */
-
-  //····················································································································
-  //   appendPropertyValuesTo
-  //····················································································································
-
-/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
-    super.appendPropertyValuesTo (&ioData)
-  //--- Atomic properties
-  //--- To one relationships
-  //--- To many relationships
-  } */
-
-  //····················································································································
-  //   accessibleObjectsForSaveOperation
-  //····················································································································
-
-/*  override func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
-    super.accessibleObjectsForSaveOperation (objects: &ioObjectArray)
-  } */
-
   //····················································································································
 
 }
