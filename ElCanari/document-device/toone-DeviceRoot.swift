@@ -747,7 +747,7 @@ class ReadWriteObject_DeviceRoot : ReadOnlyObject_DeviceRoot {
 //    StoredObject_DeviceRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_DeviceRoot : ReadWriteObject_DeviceRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_DeviceRoot : ReadWriteObject_DeviceRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 

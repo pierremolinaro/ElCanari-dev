@@ -1108,7 +1108,7 @@ class ReadWriteArrayOf_BoardText : ReadOnlyArrayOf_BoardText {
 //    Stored Array: BoardText
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_BoardText : ReadWriteArrayOf_BoardText, EBSignatureObserverProtocol, DocumentStorableProperty {
+class StoredArrayOf_BoardText : ReadWriteArrayOf_BoardText, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
 
   //····················································································································
 

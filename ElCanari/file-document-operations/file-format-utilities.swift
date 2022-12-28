@@ -77,7 +77,6 @@ func badFormatErrorForFileAtPath (_ inFilePath : String, code : Int) -> Error {
     ioData.append (ascii: .colon)
     ioData.append (base62Encoded: rangeCount)
   }
-//  ioData.append (ascii: .lineFeed)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

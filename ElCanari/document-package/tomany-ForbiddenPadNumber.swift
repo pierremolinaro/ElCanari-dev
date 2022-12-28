@@ -132,7 +132,7 @@ class ReadWriteArrayOf_ForbiddenPadNumber : ReadOnlyArrayOf_ForbiddenPadNumber {
 //    Stored Array: ForbiddenPadNumber
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EBSignatureObserverProtocol, DocumentStorableProperty {
+class StoredArrayOf_ForbiddenPadNumber : ReadWriteArrayOf_ForbiddenPadNumber, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
 
   //····················································································································
 

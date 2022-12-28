@@ -67,7 +67,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
                                   managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorableProperty {
+      if let storedProperty = property.value as? DocumentStorablePropertyProtocol {
         storedProperty.initialize (fromDictionary: inDictionary, managedObjectArray: inManagedObjectArray)
       }
     }
@@ -80,7 +80,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
                                                 _ inData : Data) {
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorableProperty,
+      if let storedProperty = property.value as? DocumentStorablePropertyProtocol,
          let key = storedProperty.key,
          let range = inRangeDictionary [key] {
         storedProperty.initialize (fromRange: range, ofData: inData, inRawObjectArray)
@@ -95,7 +95,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   final func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorableProperty {
+      if let storedProperty = property.value as? DocumentStorablePropertyProtocol {
         storedProperty.enterRelationshipObjects (intoArray: &ioObjectArray)
       }
     }
@@ -110,7 +110,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
     // Swift.print ("Object of class \(self.className.pathExtension)")
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorableProperty {
+      if let storedProperty = property.value as? DocumentStorablePropertyProtocol {
         storedProperty.store (inDictionary: &ioDictionary)
         // Swift.print ("  \(key)")
       }
@@ -124,7 +124,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   final func appendPropertyNamesTo (string ioString : inout String) {
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorableProperty, let key = storedProperty.key {
+      if let storedProperty = property.value as? DocumentStorablePropertyProtocol, let key = storedProperty.key {
         ioString += key + "\n"
       }
     }
@@ -137,7 +137,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   final func appendPropertyValuesTo (data ioData : inout Data) {
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorableProperty, storedProperty.key != nil {
+      if let storedProperty = property.value as? DocumentStorablePropertyProtocol, storedProperty.key != nil {
         storedProperty.appendValueTo (data: &ioData)
         ioData.append (ascii: .lineFeed)
       }

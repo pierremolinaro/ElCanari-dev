@@ -767,7 +767,7 @@ class ReadWriteObject_BoardConnector : ReadOnlyObject_BoardConnector {
 //    StoredObject_BoardConnector
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_BoardConnector : ReadWriteObject_BoardConnector, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_BoardConnector : ReadWriteObject_BoardConnector, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 

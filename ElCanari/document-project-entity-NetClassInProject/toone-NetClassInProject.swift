@@ -697,7 +697,7 @@ class ReadWriteObject_NetClassInProject : ReadOnlyObject_NetClassInProject {
 //    StoredObject_NetClassInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_NetClassInProject : ReadWriteObject_NetClassInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_NetClassInProject : ReadWriteObject_NetClassInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 

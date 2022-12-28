@@ -238,7 +238,7 @@ class ReadWriteObject_SheetInProject : ReadOnlyObject_SheetInProject {
 //    StoredObject_SheetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 

@@ -283,7 +283,7 @@ class ReadWriteObject_SymbolInstanceInDevice : ReadOnlyObject_SymbolInstanceInDe
 //    StoredObject_SymbolInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstanceInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstanceInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 

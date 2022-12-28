@@ -1440,7 +1440,7 @@ class ReadWriteArrayOf_ComponentSymbolInProject : ReadOnlyArrayOf_ComponentSymbo
 //    Stored Array: ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolInProject, EBSignatureObserverProtocol, DocumentStorableProperty {
+class StoredArrayOf_ComponentSymbolInProject : ReadWriteArrayOf_ComponentSymbolInProject, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
 
   //····················································································································
 

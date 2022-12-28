@@ -329,7 +329,7 @@ class ReadWriteObject_SymbolPinTypeInDevice : ReadOnlyObject_SymbolPinTypeInDevi
 //    StoredObject_SymbolPinTypeInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_SymbolPinTypeInDevice : ReadWriteObject_SymbolPinTypeInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_SymbolPinTypeInDevice : ReadWriteObject_SymbolPinTypeInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 

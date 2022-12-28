@@ -666,7 +666,7 @@ class ReadWriteArrayOf_SymbolInstanceInDevice : ReadOnlyArrayOf_SymbolInstanceIn
 //    Stored Array: SymbolInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDevice, EBSignatureObserverProtocol, DocumentStorableProperty {
+class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDevice, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
 
   //····················································································································
 

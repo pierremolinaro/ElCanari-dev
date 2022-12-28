@@ -490,7 +490,7 @@ class ReadWriteObject_ArtworkRoot : ReadOnlyObject_ArtworkRoot {
 //    StoredObject_ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_ArtworkRoot : ReadWriteObject_ArtworkRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_ArtworkRoot : ReadWriteObject_ArtworkRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 

@@ -121,7 +121,7 @@ class ReadWriteObject_NCInSchematic : ReadOnlyObject_NCInSchematic {
 //    StoredObject_NCInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_NCInSchematic : ReadWriteObject_NCInSchematic, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_NCInSchematic : ReadWriteObject_NCInSchematic, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 

@@ -882,7 +882,7 @@ class ReadWriteArrayOf_MasterPadInDevice : ReadOnlyArrayOf_MasterPadInDevice {
 //    Stored Array: MasterPadInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice, EBSignatureObserverProtocol, DocumentStorableProperty {
+class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
 
   //····················································································································
 

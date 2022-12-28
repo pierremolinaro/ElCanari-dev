@@ -264,7 +264,7 @@ class ReadWriteArrayOf_DevicePadAssignmentInProject : ReadOnlyArrayOf_DevicePadA
 //    Stored Array: DevicePadAssignmentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAssignmentInProject, EBSignatureObserverProtocol, DocumentStorableProperty {
+class StoredArrayOf_DevicePadAssignmentInProject : ReadWriteArrayOf_DevicePadAssignmentInProject, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
 
   //····················································································································
 

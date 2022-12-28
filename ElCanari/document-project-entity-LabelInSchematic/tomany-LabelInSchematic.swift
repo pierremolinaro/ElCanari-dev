@@ -553,7 +553,7 @@ class ReadWriteArrayOf_LabelInSchematic : ReadOnlyArrayOf_LabelInSchematic {
 //    Stored Array: LabelInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSignatureObserverProtocol, DocumentStorableProperty {
+class StoredArrayOf_LabelInSchematic : ReadWriteArrayOf_LabelInSchematic, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
 
   //····················································································································
 

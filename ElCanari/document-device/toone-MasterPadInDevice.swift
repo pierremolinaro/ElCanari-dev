@@ -352,7 +352,7 @@ class ReadWriteObject_MasterPadInDevice : ReadOnlyObject_MasterPadInDevice {
 //    StoredObject_MasterPadInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_MasterPadInDevice : ReadWriteObject_MasterPadInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_MasterPadInDevice : ReadWriteObject_MasterPadInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 

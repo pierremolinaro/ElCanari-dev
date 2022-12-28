@@ -261,7 +261,7 @@ class ReadWriteArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
 //    Stored Array: SymbolObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject, EBSignatureObserverProtocol, DocumentStorableProperty {
+class StoredArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
 
   //····················································································································
 

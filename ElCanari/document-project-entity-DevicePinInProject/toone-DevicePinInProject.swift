@@ -374,7 +374,7 @@ class ReadWriteObject_DevicePinInProject : ReadOnlyObject_DevicePinInProject {
 //    StoredObject_DevicePinInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_DevicePinInProject : ReadWriteObject_DevicePinInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_DevicePinInProject : ReadWriteObject_DevicePinInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 

@@ -8,7 +8,7 @@ import AppKit
 //   EBStoredEnumProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumProperty <T>, DocumentStorableProperty {
+final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumProperty <T>, DocumentStorablePropertyProtocol {
 
   //····················································································································
 

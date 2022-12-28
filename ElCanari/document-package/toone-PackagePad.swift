@@ -743,7 +743,7 @@ class ReadWriteObject_PackagePad : ReadOnlyObject_PackagePad {
 //    StoredObject_PackagePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_PackagePad : ReadWriteObject_PackagePad, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_PackagePad : ReadWriteObject_PackagePad, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 

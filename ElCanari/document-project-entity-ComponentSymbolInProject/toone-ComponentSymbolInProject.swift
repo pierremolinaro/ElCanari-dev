@@ -490,7 +490,7 @@ class ReadWriteObject_ComponentSymbolInProject : ReadOnlyObject_ComponentSymbolI
 //    StoredObject_ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_ComponentSymbolInProject : ReadWriteObject_ComponentSymbolInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_ComponentSymbolInProject : ReadWriteObject_ComponentSymbolInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 

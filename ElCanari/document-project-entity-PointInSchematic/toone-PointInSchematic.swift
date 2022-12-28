@@ -469,7 +469,7 @@ class ReadWriteObject_PointInSchematic : ReadOnlyObject_PointInSchematic {
 //    StoredObject_PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_PointInSchematic : ReadWriteObject_PointInSchematic, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_PointInSchematic : ReadWriteObject_PointInSchematic, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 

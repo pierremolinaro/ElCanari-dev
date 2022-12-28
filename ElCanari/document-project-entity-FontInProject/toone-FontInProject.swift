@@ -377,7 +377,7 @@ class ReadWriteObject_FontInProject : ReadOnlyObject_FontInProject {
 //    StoredObject_FontInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 

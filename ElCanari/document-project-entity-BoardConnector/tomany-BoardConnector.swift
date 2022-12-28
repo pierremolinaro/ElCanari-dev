@@ -2104,7 +2104,7 @@ class ReadWriteArrayOf_BoardConnector : ReadOnlyArrayOf_BoardConnector {
 //    Stored Array: BoardConnector
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatureObserverProtocol, DocumentStorableProperty {
+class StoredArrayOf_BoardConnector : ReadWriteArrayOf_BoardConnector, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
 
   //····················································································································
 

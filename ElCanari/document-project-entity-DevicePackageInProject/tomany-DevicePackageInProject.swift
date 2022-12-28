@@ -336,7 +336,7 @@ final class ProxyArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackage
 //    Stored Array: DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInProject, EBSignatureObserverProtocol, DocumentStorableProperty {
+class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInProject, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
 
   //····················································································································
 

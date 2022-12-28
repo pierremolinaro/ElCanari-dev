@@ -1061,7 +1061,7 @@ class ReadWriteArrayOf_PackageInDevice : ReadOnlyArrayOf_PackageInDevice {
 //    Stored Array: PackageInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EBSignatureObserverProtocol, DocumentStorableProperty {
+class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
 
   //····················································································································
 

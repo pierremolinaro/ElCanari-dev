@@ -462,7 +462,7 @@ class ReadWriteArrayOf_SheetInProject : ReadOnlyArrayOf_SheetInProject {
 //    Stored Array: SheetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatureObserverProtocol, DocumentStorableProperty {
+class StoredArrayOf_SheetInProject : ReadWriteArrayOf_SheetInProject, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
 
   //····················································································································
 

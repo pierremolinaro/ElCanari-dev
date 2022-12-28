@@ -2437,7 +2437,7 @@ class ReadWriteArrayOf_BoardTrack : ReadOnlyArrayOf_BoardTrack {
 //    Stored Array: BoardTrack
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_BoardTrack : ReadWriteArrayOf_BoardTrack, EBSignatureObserverProtocol, DocumentStorableProperty {
+class StoredArrayOf_BoardTrack : ReadWriteArrayOf_BoardTrack, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
 
   //····················································································································
 

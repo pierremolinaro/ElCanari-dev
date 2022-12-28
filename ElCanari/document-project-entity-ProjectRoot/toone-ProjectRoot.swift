@@ -3601,7 +3601,7 @@ class ReadWriteObject_ProjectRoot : ReadOnlyObject_ProjectRoot {
 //    StoredObject_ProjectRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_ProjectRoot : ReadWriteObject_ProjectRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_ProjectRoot : ReadWriteObject_ProjectRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 

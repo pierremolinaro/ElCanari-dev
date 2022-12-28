@@ -1391,7 +1391,7 @@ class ReadWriteObject_PackageRoot : ReadOnlyObject_PackageRoot {
 //    StoredObject_PackageRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_PackageRoot : ReadWriteObject_PackageRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_PackageRoot : ReadWriteObject_PackageRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 

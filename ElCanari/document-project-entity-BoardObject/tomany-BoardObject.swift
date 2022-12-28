@@ -1977,7 +1977,7 @@ class ReadWriteArrayOf_BoardObject : ReadOnlyArrayOf_BoardObject {
 //    Stored Array: BoardObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObserverProtocol, DocumentStorableProperty {
+class StoredArrayOf_BoardObject : ReadWriteArrayOf_BoardObject, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
 
   //····················································································································
 

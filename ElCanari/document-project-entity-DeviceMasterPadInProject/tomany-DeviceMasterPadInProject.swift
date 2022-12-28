@@ -750,7 +750,7 @@ class ReadWriteArrayOf_DeviceMasterPadInProject : ReadOnlyArrayOf_DeviceMasterPa
 //    Stored Array: DeviceMasterPadInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_DeviceMasterPadInProject : ReadWriteArrayOf_DeviceMasterPadInProject, EBSignatureObserverProtocol, DocumentStorableProperty {
+class StoredArrayOf_DeviceMasterPadInProject : ReadWriteArrayOf_DeviceMasterPadInProject, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
 
   //····················································································································
 

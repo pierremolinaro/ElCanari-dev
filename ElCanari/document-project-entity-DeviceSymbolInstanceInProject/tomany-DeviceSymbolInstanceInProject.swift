@@ -396,7 +396,7 @@ class ReadWriteArrayOf_DeviceSymbolInstanceInProject : ReadOnlyArrayOf_DeviceSym
 //    Stored Array: DeviceSymbolInstanceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbolInstanceInProject, EBSignatureObserverProtocol, DocumentStorableProperty {
+class StoredArrayOf_DeviceSymbolInstanceInProject : ReadWriteArrayOf_DeviceSymbolInstanceInProject, EBSignatureObserverProtocol, DocumentStorablePropertyProtocol {
 
   //····················································································································
 

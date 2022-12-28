@@ -5,28 +5,10 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@MainActor protocol DocumentStorableProperty : AnyObject {
-
-  var key : String? { get }
-
-  func initialize (fromDictionary inDictionary : [String : Any],
-                   managedObjectArray inManagedObjectArray : [EBManagedObject])
-
-  func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inManagedObjectArray : [RawObject])
-
-  func store (inDictionary ioDictionary : inout [String : Any])
-
-  func appendValueTo (data ioData : inout Data)
-
-  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject])
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EBGenericStoredProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservableMutableProperty <T>, DocumentStorableProperty {
+final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservableMutableProperty <T>, DocumentStorablePropertyProtocol {
 
   //····················································································································
 

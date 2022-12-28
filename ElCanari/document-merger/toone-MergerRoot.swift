@@ -882,7 +882,7 @@ class ReadWriteObject_MergerRoot : ReadOnlyObject_MergerRoot {
 //    StoredObject_MergerRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 

@@ -1066,7 +1066,7 @@ class ReadWriteObject_ComponentInProject : ReadOnlyObject_ComponentInProject {
 //    StoredObject_ComponentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_ComponentInProject : ReadWriteObject_ComponentInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_ComponentInProject : ReadWriteObject_ComponentInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 

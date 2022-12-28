@@ -145,7 +145,7 @@ class ReadWriteObject_DevicePackageInProject : ReadOnlyObject_DevicePackageInPro
 //    StoredObject_DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 

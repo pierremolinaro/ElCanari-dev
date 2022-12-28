@@ -2101,7 +2101,7 @@ class ReadWriteObject_BoardModel : ReadOnlyObject_BoardModel {
 //    StoredObject_BoardModel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_BoardModel : ReadWriteObject_BoardModel, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_BoardModel : ReadWriteObject_BoardModel, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 

@@ -167,7 +167,7 @@ class ReadWriteObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice {
 //    StoredObject_PadProxyInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorableProperty {
+final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
