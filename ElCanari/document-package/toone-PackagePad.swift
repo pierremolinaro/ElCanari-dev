@@ -726,24 +726,10 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_PackagePad
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_PackagePad : ReadOnlyObject_PackagePad {
-
-  //····················································································································
-
-  func setProp (_ inValue : PackagePad?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_PackagePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_PackagePad : ReadWriteObject_PackagePad, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_PackagePad : ReadOnlyObject_PackagePad, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -885,11 +871,12 @@ final class StoredObject_PackagePad : ReadWriteObject_PackagePad, EBSignatureObs
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : PackagePad? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : PackagePad? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : PackagePad?) {
+  func setProp (_ inValue : PackagePad?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

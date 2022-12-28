@@ -473,24 +473,10 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_ArtworkRoot
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_ArtworkRoot : ReadOnlyObject_ArtworkRoot {
-
-  //····················································································································
-
-  func setProp (_ inValue : ArtworkRoot?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_ArtworkRoot : ReadWriteObject_ArtworkRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_ArtworkRoot : ReadOnlyObject_ArtworkRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -632,11 +618,12 @@ final class StoredObject_ArtworkRoot : ReadWriteObject_ArtworkRoot, EBSignatureO
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : ArtworkRoot? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : ArtworkRoot? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : ArtworkRoot?) {
+  func setProp (_ inValue : ArtworkRoot?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

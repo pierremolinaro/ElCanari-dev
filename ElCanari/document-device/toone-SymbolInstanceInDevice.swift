@@ -266,24 +266,10 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_SymbolInstanceInDevice
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_SymbolInstanceInDevice : ReadOnlyObject_SymbolInstanceInDevice {
-
-  //····················································································································
-
-  func setProp (_ inValue : SymbolInstanceInDevice?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_SymbolInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstanceInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_SymbolInstanceInDevice : ReadOnlyObject_SymbolInstanceInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -425,11 +411,12 @@ final class StoredObject_SymbolInstanceInDevice : ReadWriteObject_SymbolInstance
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : SymbolInstanceInDevice? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : SymbolInstanceInDevice? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : SymbolInstanceInDevice?) {
+  func setProp (_ inValue : SymbolInstanceInDevice?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

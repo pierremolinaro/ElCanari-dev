@@ -565,24 +565,10 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_PackageZone
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_PackageZone : ReadOnlyObject_PackageZone {
-
-  //····················································································································
-
-  func setProp (_ inValue : PackageZone?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_PackageZone
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_PackageZone : ReadWriteObject_PackageZone, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_PackageZone : ReadOnlyObject_PackageZone, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -707,11 +693,12 @@ final class StoredObject_PackageZone : ReadWriteObject_PackageZone, EBSignatureO
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : PackageZone? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : PackageZone? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : PackageZone?) {
+  func setProp (_ inValue : PackageZone?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

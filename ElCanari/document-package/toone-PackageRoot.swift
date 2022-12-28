@@ -1374,24 +1374,10 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_PackageRoot
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_PackageRoot : ReadOnlyObject_PackageRoot {
-
-  //····················································································································
-
-  func setProp (_ inValue : PackageRoot?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_PackageRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_PackageRoot : ReadWriteObject_PackageRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_PackageRoot : ReadOnlyObject_PackageRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -1533,11 +1519,12 @@ final class StoredObject_PackageRoot : ReadWriteObject_PackageRoot, EBSignatureO
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : PackageRoot? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : PackageRoot? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : PackageRoot?) {
+  func setProp (_ inValue : PackageRoot?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

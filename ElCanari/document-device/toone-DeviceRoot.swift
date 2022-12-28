@@ -730,24 +730,10 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_DeviceRoot
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_DeviceRoot : ReadOnlyObject_DeviceRoot {
-
-  //····················································································································
-
-  func setProp (_ inValue : DeviceRoot?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_DeviceRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_DeviceRoot : ReadWriteObject_DeviceRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_DeviceRoot : ReadOnlyObject_DeviceRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -889,11 +875,12 @@ final class StoredObject_DeviceRoot : ReadWriteObject_DeviceRoot, EBSignatureObs
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : DeviceRoot? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : DeviceRoot? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : DeviceRoot?) {
+  func setProp (_ inValue : DeviceRoot?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

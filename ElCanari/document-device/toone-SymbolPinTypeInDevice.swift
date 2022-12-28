@@ -312,24 +312,10 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_SymbolPinTypeInDevice
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_SymbolPinTypeInDevice : ReadOnlyObject_SymbolPinTypeInDevice {
-
-  //····················································································································
-
-  func setProp (_ inValue : SymbolPinTypeInDevice?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_SymbolPinTypeInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_SymbolPinTypeInDevice : ReadWriteObject_SymbolPinTypeInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_SymbolPinTypeInDevice : ReadOnlyObject_SymbolPinTypeInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -471,11 +457,12 @@ final class StoredObject_SymbolPinTypeInDevice : ReadWriteObject_SymbolPinTypeIn
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : SymbolPinTypeInDevice? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : SymbolPinTypeInDevice? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : SymbolPinTypeInDevice?) {
+  func setProp (_ inValue : SymbolPinTypeInDevice?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

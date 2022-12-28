@@ -128,24 +128,10 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_DevicePackageInProject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_DevicePackageInProject : ReadOnlyObject_DevicePackageInProject {
-
-  //····················································································································
-
-  func setProp (_ inValue : DevicePackageInProject?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_DevicePackageInProject : ReadOnlyObject_DevicePackageInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -270,11 +256,12 @@ final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageI
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : DevicePackageInProject? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : DevicePackageInProject? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : DevicePackageInProject?) {
+  func setProp (_ inValue : DevicePackageInProject?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

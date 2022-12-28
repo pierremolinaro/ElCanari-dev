@@ -360,24 +360,10 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_FontInProject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_FontInProject : ReadOnlyObject_FontInProject {
-
-  //····················································································································
-
-  func setProp (_ inValue : FontInProject?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_FontInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_FontInProject : ReadOnlyObject_FontInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -519,11 +505,12 @@ final class StoredObject_FontInProject : ReadWriteObject_FontInProject, EBSignat
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : FontInProject? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : FontInProject? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : FontInProject?) {
+  func setProp (_ inValue : FontInProject?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

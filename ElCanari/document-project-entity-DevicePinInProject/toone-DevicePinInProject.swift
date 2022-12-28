@@ -357,24 +357,10 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_DevicePinInProject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_DevicePinInProject : ReadOnlyObject_DevicePinInProject {
-
-  //····················································································································
-
-  func setProp (_ inValue : DevicePinInProject?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_DevicePinInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_DevicePinInProject : ReadWriteObject_DevicePinInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_DevicePinInProject : ReadOnlyObject_DevicePinInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -499,11 +485,12 @@ final class StoredObject_DevicePinInProject : ReadWriteObject_DevicePinInProject
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : DevicePinInProject? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : DevicePinInProject? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : DevicePinInProject?) {
+  func setProp (_ inValue : DevicePinInProject?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

@@ -334,24 +334,10 @@ class ReadOnlyObject_BorderCurve : ReadOnlyAbstractObjectProperty <BorderCurve> 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_BorderCurve
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_BorderCurve : ReadOnlyObject_BorderCurve {
-
-  //····················································································································
-
-  func setProp (_ inValue : BorderCurve?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_BorderCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_BorderCurve : ReadWriteObject_BorderCurve, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_BorderCurve : ReadOnlyObject_BorderCurve, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -493,11 +479,12 @@ final class StoredObject_BorderCurve : ReadWriteObject_BorderCurve, EBSignatureO
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : BorderCurve? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : BorderCurve? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : BorderCurve?) {
+  func setProp (_ inValue : BorderCurve?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

@@ -335,24 +335,10 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_MasterPadInDevice
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_MasterPadInDevice : ReadOnlyObject_MasterPadInDevice {
-
-  //····················································································································
-
-  func setProp (_ inValue : MasterPadInDevice?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_MasterPadInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_MasterPadInDevice : ReadWriteObject_MasterPadInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_MasterPadInDevice : ReadOnlyObject_MasterPadInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -494,11 +480,12 @@ final class StoredObject_MasterPadInDevice : ReadWriteObject_MasterPadInDevice, 
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : MasterPadInDevice? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : MasterPadInDevice? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : MasterPadInDevice?) {
+  func setProp (_ inValue : MasterPadInDevice?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

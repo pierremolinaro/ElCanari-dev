@@ -104,24 +104,10 @@ class ReadOnlyObject_NCInSchematic : ReadOnlyAbstractObjectProperty <NCInSchemat
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_NCInSchematic
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_NCInSchematic : ReadOnlyObject_NCInSchematic {
-
-  //····················································································································
-
-  func setProp (_ inValue : NCInSchematic?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_NCInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_NCInSchematic : ReadWriteObject_NCInSchematic, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_NCInSchematic : ReadOnlyObject_NCInSchematic, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -263,11 +249,12 @@ final class StoredObject_NCInSchematic : ReadWriteObject_NCInSchematic, EBSignat
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : NCInSchematic? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : NCInSchematic? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : NCInSchematic?) {
+  func setProp (_ inValue : NCInSchematic?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

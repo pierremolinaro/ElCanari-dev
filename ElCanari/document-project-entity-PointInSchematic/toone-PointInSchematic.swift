@@ -452,24 +452,10 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_PointInSchematic
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_PointInSchematic : ReadOnlyObject_PointInSchematic {
-
-  //····················································································································
-
-  func setProp (_ inValue : PointInSchematic?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_PointInSchematic
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_PointInSchematic : ReadWriteObject_PointInSchematic, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_PointInSchematic : ReadOnlyObject_PointInSchematic, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -611,11 +597,12 @@ final class StoredObject_PointInSchematic : ReadWriteObject_PointInSchematic, EB
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : PointInSchematic? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : PointInSchematic? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : PointInSchematic?) {
+  func setProp (_ inValue : PointInSchematic?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

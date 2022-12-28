@@ -150,24 +150,10 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_PadProxyInDevice
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice {
-
-  //····················································································································
-
-  func setProp (_ inValue : PadProxyInDevice?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_PadProxyInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -309,11 +295,12 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : PadProxyInDevice? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : PadProxyInDevice? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : PadProxyInDevice?) {
+  func setProp (_ inValue : PadProxyInDevice?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

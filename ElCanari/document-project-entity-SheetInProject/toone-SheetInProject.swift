@@ -221,24 +221,10 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_SheetInProject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_SheetInProject : ReadOnlyObject_SheetInProject {
-
-  //····················································································································
-
-  func setProp (_ inValue : SheetInProject?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_SheetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_SheetInProject : ReadOnlyObject_SheetInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -380,11 +366,12 @@ final class StoredObject_SheetInProject : ReadWriteObject_SheetInProject, EBSign
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : SheetInProject? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : SheetInProject? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : SheetInProject?) {
+  func setProp (_ inValue : SheetInProject?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

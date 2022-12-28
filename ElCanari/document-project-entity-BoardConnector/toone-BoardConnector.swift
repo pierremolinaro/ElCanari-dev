@@ -750,24 +750,10 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_BoardConnector
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_BoardConnector : ReadOnlyObject_BoardConnector {
-
-  //····················································································································
-
-  func setProp (_ inValue : BoardConnector?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_BoardConnector
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_BoardConnector : ReadWriteObject_BoardConnector, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_BoardConnector : ReadOnlyObject_BoardConnector, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -909,11 +895,12 @@ final class StoredObject_BoardConnector : ReadWriteObject_BoardConnector, EBSign
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : BoardConnector? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : BoardConnector? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : BoardConnector?) {
+  func setProp (_ inValue : BoardConnector?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

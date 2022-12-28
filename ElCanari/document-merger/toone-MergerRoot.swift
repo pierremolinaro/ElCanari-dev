@@ -865,24 +865,10 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_MergerRoot
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_MergerRoot : ReadOnlyObject_MergerRoot {
-
-  //····················································································································
-
-  func setProp (_ inValue : MergerRoot?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_MergerRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_MergerRoot : ReadOnlyObject_MergerRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -1024,11 +1010,12 @@ final class StoredObject_MergerRoot : ReadWriteObject_MergerRoot, EBSignatureObs
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : MergerRoot? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : MergerRoot? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : MergerRoot?) {
+  func setProp (_ inValue : MergerRoot?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

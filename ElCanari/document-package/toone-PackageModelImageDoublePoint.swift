@@ -219,24 +219,10 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_PackageModelImageDoublePoint
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_PackageModelImageDoublePoint : ReadOnlyObject_PackageModelImageDoublePoint {
-
-  //····················································································································
-
-  func setProp (_ inValue : PackageModelImageDoublePoint?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_PackageModelImageDoublePoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_PackageModelImageDoublePoint : ReadWriteObject_PackageModelImageDoublePoint, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_PackageModelImageDoublePoint : ReadOnlyObject_PackageModelImageDoublePoint, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -378,11 +364,12 @@ final class StoredObject_PackageModelImageDoublePoint : ReadWriteObject_PackageM
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : PackageModelImageDoublePoint? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : PackageModelImageDoublePoint? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : PackageModelImageDoublePoint?) {
+  func setProp (_ inValue : PackageModelImageDoublePoint?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

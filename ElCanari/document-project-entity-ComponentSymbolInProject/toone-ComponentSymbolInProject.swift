@@ -473,24 +473,10 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_ComponentSymbolInProject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_ComponentSymbolInProject : ReadOnlyObject_ComponentSymbolInProject {
-
-  //····················································································································
-
-  func setProp (_ inValue : ComponentSymbolInProject?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_ComponentSymbolInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_ComponentSymbolInProject : ReadWriteObject_ComponentSymbolInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_ComponentSymbolInProject : ReadOnlyObject_ComponentSymbolInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -632,11 +618,12 @@ final class StoredObject_ComponentSymbolInProject : ReadWriteObject_ComponentSym
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : ComponentSymbolInProject? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : ComponentSymbolInProject? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : ComponentSymbolInProject?) {
+  func setProp (_ inValue : ComponentSymbolInProject?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

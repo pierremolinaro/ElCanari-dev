@@ -290,24 +290,10 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_NetInProject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_NetInProject : ReadOnlyObject_NetInProject {
-
-  //····················································································································
-
-  func setProp (_ inValue : NetInProject?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_NetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_NetInProject : ReadWriteObject_NetInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_NetInProject : ReadOnlyObject_NetInProject, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -449,11 +435,12 @@ final class StoredObject_NetInProject : ReadWriteObject_NetInProject, EBSignatur
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : NetInProject? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : NetInProject? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : NetInProject?) {
+  func setProp (_ inValue : NetInProject?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

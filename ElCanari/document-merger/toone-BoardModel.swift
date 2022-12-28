@@ -2084,24 +2084,10 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_BoardModel
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_BoardModel : ReadOnlyObject_BoardModel {
-
-  //····················································································································
-
-  func setProp (_ inValue : BoardModel?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_BoardModel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_BoardModel : ReadWriteObject_BoardModel, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_BoardModel : ReadOnlyObject_BoardModel, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -2243,11 +2229,12 @@ final class StoredObject_BoardModel : ReadWriteObject_BoardModel, EBSignatureObs
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : BoardModel? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : BoardModel? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : BoardModel?) {
+  func setProp (_ inValue : BoardModel?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue

@@ -3584,24 +3584,10 @@ class ReadOnlyObject_ProjectRoot : ReadOnlyAbstractObjectProperty <ProjectRoot> 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadWriteObject_ProjectRoot
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class ReadWriteObject_ProjectRoot : ReadOnlyObject_ProjectRoot {
-
-  //····················································································································
-
-  func setProp (_ inValue : ProjectRoot?) { } // Abstract method
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_ProjectRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredObject_ProjectRoot : ReadWriteObject_ProjectRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
+final class StoredObject_ProjectRoot : ReadOnlyObject_ProjectRoot, EBSignatureObserverProtocol, EBObservableObjectProtocol, DocumentStorablePropertyProtocol {
 
  //····················································································································
 
@@ -3743,11 +3729,12 @@ final class StoredObject_ProjectRoot : ReadWriteObject_ProjectRoot, EBSignatureO
   //····················································································································
 
   private let mIsStrongReference : Bool
-  private var mStrongInternalValue : ProjectRoot? = nil
+  private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
+  // private var mStrongInternalValue : ProjectRoot? = nil
 
   //····················································································································
 
-  override func setProp (_ inValue : ProjectRoot?) {
+  func setProp (_ inValue : ProjectRoot?) {
     self.mWeakInternalValue = inValue
     if self.mIsStrongReference {
       self.mStrongInternalValue = inValue
