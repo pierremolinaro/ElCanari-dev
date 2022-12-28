@@ -735,51 +735,6 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Stand alone Array: CanariLibraryEntry
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* final class StandAloneArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry {
-
-  //····················································································································
-
-  override var selection : EBSelection < [CanariLibraryEntry] > { return .single (self.mInternalArrayValue.values) }
-
-  //····················································································································
-
-  override func setProp (_ inValue : EBReferenceArray <CanariLibraryEntry>) { self.mInternalArrayValue = inValue }
-
-  //····················································································································
-
-  override var propval : EBReferenceArray <CanariLibraryEntry> { return self.mInternalArrayValue }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    self.observedObjectDidChange ()
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  func remove (_ object : CanariLibraryEntry) {
-    if let idx = self.mInternalArrayValue.firstIndex (of: object) {
-      self.mInternalArrayValue.remove (at: idx)
-    }
-  }
-
-  //····················································································································
-
-  func add (_ object : CanariLibraryEntry) {
-    if !self.internalSetValue.contains (object) {
-      self.mInternalArrayValue.append (object)
-    }
-  }
-
-  //····················································································································
-
-} */
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Preferences array: CanariLibraryEntry
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -1045,12 +1045,6 @@ class ReadWriteArrayOf_BoardRestrictRectangle : ReadOnlyArrayOf_BoardRestrictRec
 // StoredArrayOf_BoardRestrictRectangle is useless.
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Stand alone Array: BoardRestrictRectangle
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-// StandAloneArrayOf_BoardRestrictRectangle is useless.
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Preferences array: BoardRestrictRectangle
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
