@@ -237,20 +237,20 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mPadName\n"
   //--- To one relationships
     ioString += "mPin\n"
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mPadName.appendPropertyValueTo (&ioData)
@@ -261,25 +261,25 @@ final class DevicePadAssignmentInProject : EBManagedObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mPadName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mPadName = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -287,7 +287,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
       let object = inRawObjectArray [idx].object as! DevicePinInProject
       self.mPin = object
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

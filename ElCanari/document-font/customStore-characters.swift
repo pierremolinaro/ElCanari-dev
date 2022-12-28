@@ -30,6 +30,15 @@ final class Custom_FontCharacter_StoredArrayOf_FontCharacter : StoredArrayOf_Fon
 
   //····················································································································
 
+  override func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
+    if let s = String (data: inData [inRange.location ..< inRange.location + inRange.length], encoding: .utf8) {
+      let objectArray = self.customRead_FontCharacter_characters (fromString: s)
+      self.setProp (objectArray)
+    }
+  }
+
+  //····················································································································
+
   private func customRead_FontCharacter_characters (fromString inString : String) -> EBReferenceArray <FontCharacter> {
     var result = EBReferenceArray <FontCharacter> ()
     let scanner = Scanner (string: inString)
@@ -80,11 +89,24 @@ final class Custom_FontCharacter_StoredArrayOf_FontCharacter : StoredArrayOf_Fon
   //   Store
   //····················································································································
 
+  override func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
+  }
+
+  //····················································································································
+
   override func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.key, self.mInternalArrayValue.count > 0 {
       let s = self.customStore_FontCharacter_characters ()
       ioDictionary [key] = s
     }
+  }
+
+  //····················································································································
+
+  override func appendValueTo (data ioData : inout Data) {
+    let s = self.customStore_FontCharacter_characters ()
+    let data = s.data (using: .utf8)!
+    ioData += data
   }
 
   //····················································································································
@@ -147,55 +169,6 @@ final class Custom_FontCharacter_StoredArrayOf_FontCharacter : StoredArrayOf_Fon
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func customRead_FontCharacter_characters (fromString inString : String,
-                                                     with inUndoManager : UndoManager?) -> [FontCharacter] {
-  var result = [FontCharacter] ()
-  let scanner = Scanner (string: inString)
-  var ok = true
-  while ok && scanner.myTestString ("|") {
-    let newCharacter = FontCharacter (inUndoManager)
-    result.append (newCharacter)
-    newCharacter.codePoint = scanner.myScanInt (&ok)
-    scanner.myCheckString (":", &ok)
-    newCharacter.advance = scanner.myScanInt (&ok)
-    scanner.myCheckString (":", &ok)
-    newCharacter.mWarnsWhenAdvanceIsZero = scanner.myScanInt (&ok) != 0
-    scanner.myCheckString (":", &ok)
-    newCharacter.mWarnsWhenNoSegment = scanner.myScanInt (&ok) != 0
-  //--- Segments
-    var segments = EBReferenceArray <SegmentForFontCharacter> ()
-    while ok && scanner.myTestString (",") {
-      var x = scanner.myScanInt (&ok)
-      var y = scanner.myScanInt (&ok)
-      var singlePoint = true
-      while scanner.myTestString (">") {
-        singlePoint = false
-        let newSegment = SegmentForFontCharacter (inUndoManager)
-        segments.append (newSegment)
-        newSegment.x1 = x
-        newSegment.y1 = y
-        x = scanner.myScanInt (&ok)
-        y = scanner.myScanInt (&ok)
-        newSegment.x2 = x
-        newSegment.y2 = y
-      }
-      if singlePoint {
-        let newSegment = SegmentForFontCharacter (inUndoManager)
-        segments.append (newSegment)
-        newSegment.x1 = x
-        newSegment.y1 = y
-        newSegment.x2 = x
-        newSegment.y2 = y
-      }
-      // Swift.print ("Segment \(newSegment.x1) \(newSegment.y1) \(newSegment.x2) \(newSegment.y2) > \(ok)")
-    }
-    newCharacter.segments_property.setProp (segments)
-  }
-  return result
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 extension Scanner {
 
   //··················································································································
@@ -223,83 +196,5 @@ extension Scanner {
   //··················································································································
 
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//struct FontSegmentForProject { // : Hashable {
-//
-//  //··················································································································
-//
-//  let x1 : Int
-//  let y1 : Int
-//  let x2 : Int
-//  let y2 : Int
-//
-//  //··················································································································
-//
-//}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//struct FontCharacterForProject { // : Hashable {
-//
-//  //··················································································································
-//
-//  let advance : Int
-//  let segments : [FontSegmentForProject]
-//
-//  //··················································································································
-//
-//}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//typealias FontDictionaryForProject = [Int : FontCharacterForProject]
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//func extractProjectFontDictionary (from inDictionary : [String : Any]) -> FontDictionaryForProject {
-////  let start = Date ()
-//  var result = FontDictionaryForProject ()
-//  if let s = inDictionary [KEY_FOR_FontCharacter_characters] as? String {
-//    // Swift.print (s)
-//    let scanner = Scanner (string: s)
-//    var ok = true
-//    while ok && scanner.myTestString ("|") {
-//      let codePoint = scanner.myScanInt (&ok)
-//      scanner.myCheckString (":", &ok)
-//      let advance = scanner.myScanInt (&ok)
-//      scanner.myCheckString (":", &ok)
-//      _ = scanner.myScanInt (&ok) != 0 // mWarnsWhenAdvanceIsZero
-//      scanner.myCheckString (":", &ok)
-//      _ = scanner.myScanInt (&ok) != 0 // mWarnsWhenNoSegment
-//    //--- Segments
-//      var segments = [FontSegmentForProject] ()
-//      while ok && scanner.myTestString (",") {
-//        var x = scanner.myScanInt (&ok)
-//        var y = scanner.myScanInt (&ok)
-//        var singlePoint = true
-//        while scanner.myTestString (">") {
-//          singlePoint = false
-//          let newX = scanner.myScanInt (&ok)
-//          let newY = scanner.myScanInt (&ok)
-//          let newSegment = FontSegmentForProject (x1: x, y1: y, x2: newX, y2: newY)
-//          segments.append (newSegment)
-//          x = newX
-//          y = newY
-//        }
-//        if singlePoint {
-//          let newSegment = FontSegmentForProject (x1: x, y1: y, x2: y, y2: y)
-//          segments.append (newSegment)        }
-//      }
-//      let character = FontCharacterForProject (advance: advance, segments: segments)
-//      result [codePoint] = character
-//    }
-// //   NSLog ("ok \(ok)")
-//  }
-////  let duration = Date ().timeIntervalSince (start)
-////  NSLog ("duration \(duration)")
-//  return result
-//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

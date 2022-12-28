@@ -474,7 +474,7 @@ final class SymbolRoot : EBManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "selectedInspector\n"
@@ -490,13 +490,13 @@ final class SymbolRoot : EBManagedObject,
   //--- To one relationships
   //--- To many relationships
     ioString += "symbolObjects\n"
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.selectedInspector.appendPropertyValueTo (&ioData)
@@ -522,13 +522,13 @@ final class SymbolRoot : EBManagedObject,
   //--- To one relationships
   //--- To many relationships
     enterToManyRelationshipObjectIndexes (from: self.symbolObjects.values, into: &ioData)
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["selectedInspector"], let value = Int.unarchiveFromDataRange (inData, range) {
@@ -561,13 +561,13 @@ final class SymbolRoot : EBManagedObject,
     if let range = inDictionary ["selectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.selectedPageIndex = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToManyRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -580,7 +580,7 @@ final class SymbolRoot : EBManagedObject,
       }
       self.symbolObjects = relationshipArray
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

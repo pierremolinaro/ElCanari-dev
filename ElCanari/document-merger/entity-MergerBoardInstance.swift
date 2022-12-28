@@ -464,7 +464,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "x\n"
@@ -474,13 +474,13 @@ final class MergerBoardInstance : EBGraphicManagedObject,
     ioString += "myModel\n"
     ioString += "myRoot\n"
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.x.appendPropertyValueTo (&ioData)
@@ -499,13 +499,13 @@ final class MergerBoardInstance : EBGraphicManagedObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["x"], let value = Int.unarchiveFromDataRange (inData, range) {
@@ -517,13 +517,13 @@ final class MergerBoardInstance : EBGraphicManagedObject,
     if let range = inDictionary ["instanceRotation"], let value = QuadrantRotation.unarchiveFromDataRange (inData, range) {
       self.instanceRotation = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -535,7 +535,7 @@ final class MergerBoardInstance : EBGraphicManagedObject,
       let object = inRawObjectArray [idx].object as! MergerRoot
       self.myRoot = object
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

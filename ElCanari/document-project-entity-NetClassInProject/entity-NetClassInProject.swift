@@ -1097,7 +1097,7 @@ final class NetClassInProject : EBManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mNetClassName\n"
@@ -1117,13 +1117,13 @@ final class NetClassInProject : EBManagedObject,
   //--- To one relationships
   //--- To many relationships
     ioString += "mNets\n"
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mNetClassName.appendPropertyValueTo (&ioData)
@@ -1157,13 +1157,13 @@ final class NetClassInProject : EBManagedObject,
   //--- To one relationships
   //--- To many relationships
     enterToManyRelationshipObjectIndexes (from: self.mNets.values, into: &ioData)
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mNetClassName"], let value = String.unarchiveFromDataRange (inData, range) {
@@ -1208,13 +1208,13 @@ final class NetClassInProject : EBManagedObject,
     if let range = inDictionary ["mAllowTracksOnInner4Layer"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mAllowTracksOnInner4Layer = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToManyRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -1227,7 +1227,7 @@ final class NetClassInProject : EBManagedObject,
       }
       self.mNets = relationshipArray
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

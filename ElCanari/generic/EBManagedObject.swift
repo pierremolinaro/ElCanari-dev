@@ -18,10 +18,6 @@ import AppKit
 //  Moins volumineux avec EBSwiftBaseObject, mais plus long à l'ouverture
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-// let gInitSemaphore = DispatchSemaphore (value: 1) // Sémaphore d'exclusion mutuelle utilisé lors de l'init
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
 
   //····················································································································
@@ -69,7 +65,6 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
 
   final func setUpWithDictionary (_ inDictionary : [String : Any],
                                   managedObjectArray inManagedObjectArray : [EBManagedObject]) {
- //   self.setUpAtomicPropertiesWithDictionary (inDictionary)
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
       if let storedProperty = property.value as? DocumentStorableProperty {
@@ -80,60 +75,18 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
 
   //····················································································································
 
-//  func setUpAtomicPropertiesWithDictionary (_ inDictionary : [String : Any]) {
-//  }
-
-  //····················································································································
-
-  func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
-                                          _ inData : Data) {
+  final func setUpPropertiesWithTextDictionary (_ inRangeDictionary : [String : NSRange],
+                                                _ inRawObjectArray : [RawObject],
+                                                _ inData : Data) {
+    let mirror = Mirror (reflecting: self)
+    for property in mirror.children {
+      if let storedProperty = property.value as? DocumentStorableProperty,
+         let key = storedProperty.key,
+         let range = inRangeDictionary [key] {
+        storedProperty.initialize (fromRange: range, ofData: inData, inRawObjectArray)
+      }
+    }
   }
-
-  //····················································································································
-
-  func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                  _ inRawObjectArray : [RawObject],
-                                                  _ inData : Data) {
-  }
-
-  //····················································································································
-
-  func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
-                                                   _ inRawObjectArray : [RawObject],
-                                                   _ inData : Data) {
-  }
-
-  //····················································································································
-  //   readEntityFromDictionary
-  //····················································································································
-
-//  final func readEntityFromDictionary (relationshipName inRelationshipName : String,
-//                                       dictionary inDictionary : [String : Any],
-//                                       managedObjectArray inManagedObjectArray : [EBManagedObject]) -> EBManagedObject? {
-//    var result : EBManagedObject? = nil
-//    if let value = inDictionary [inRelationshipName] as? Int {
-//      result = inManagedObjectArray [value]
-//    }
-//    return result
-//  }
-
-  //····················································································································
-  //   readEntityArrayFromDictionary
-  //····················································································································
-
-//  final func readEntityArrayFromDictionary (inRelationshipName : String,
-//                                            inDictionary : [String : Any],
-//                                            managedObjectArray : [EBManagedObject]) -> [EBManagedObject] {
-//    let opIndexArray : [Int]? = inDictionary [inRelationshipName] as? [Int]
-//    var result = [EBManagedObject] ()
-//    if let indexArray = opIndexArray {
-//      for number in indexArray {
-//        let managedObject = managedObjectArray [number]
-//        result.append (managedObject)
-//      }
-//    }
-//    return result
-//  }
 
   //····················································································································
   //   accessibleObjectsForSaveOperation
@@ -165,47 +118,31 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   }
 
   //····················································································································
-  //   appendPropertyNamesTo
+  //   appendPropertyNamesTo(string:)
   //····················································································································
 
-  func appendPropertyNamesTo (_ ioString : inout String) {
+  final func appendPropertyNamesTo (string ioString : inout String) {
+    let mirror = Mirror (reflecting: self)
+    for property in mirror.children {
+      if let storedProperty = property.value as? DocumentStorableProperty, let key = storedProperty.key {
+        ioString += key + "\n"
+      }
+    }
   }
 
   //····················································································································
-  //   appendPropertyValuesTo
+  //   appendPropertyValuesTo(string:)
   //····················································································································
 
-  func appendPropertyValuesTo (_ ioString : inout Data) {
+  final func appendPropertyValuesTo (data ioData : inout Data) {
+    let mirror = Mirror (reflecting: self)
+    for property in mirror.children {
+      if let storedProperty = property.value as? DocumentStorableProperty, storedProperty.key != nil {
+        storedProperty.appendValueTo (data: &ioData)
+        ioData.append (ascii: .lineFeed)
+      }
+    }
   }
-
-  //····················································································································
-  //   store (managedObjectArray:relationshipName:intoDictionary)
-  //····················································································································
-
-//  final func store (managedObjectArray inManagedObjectArray : [EBManagedObject],
-//                    relationshipName inRelationshipName : String,
-//                    intoDictionary ioDictionary : inout [String : Any]) {
-//
-//    if inManagedObjectArray.count > 0 {
-//      var indexArray = [Int] ()
-//      for managedObject in inManagedObjectArray {
-//        indexArray.append (managedObject.savingIndex)
-//      }
-//      ioDictionary [inRelationshipName] = indexArray
-//    }
-//  }
-
-  //····················································································································
-  //   store (managedObject:relationshipName:intoDictionary)
-  //····················································································································
-
-//  final func store (managedObject inPossibleManagedObject : EBManagedObject?,
-//                    relationshipName inRelationshipName : String,
-//                    intoDictionary ioDictionary : inout [String : Any]) {
-//    if let unwObject = inPossibleManagedObject {
-//      ioDictionary [inRelationshipName] = unwObject.savingIndex
-//    }
-//  }
 
   //····················································································································
   //   setSignatureObserver

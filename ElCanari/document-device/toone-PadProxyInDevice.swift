@@ -150,78 +150,6 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   TransientObject PadProxyInDevice
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* final class TransientObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice {
-
-  //····················································································································
-  //   Data provider
-  //····················································································································
-
-  private weak var mDataProvider : ReadOnlyObject_PadProxyInDevice? = nil // SHOULD BE WEAK
-  private var mTransientKind : PropertyKind = .empty
-
-  //····················································································································
-
-  func setDataProvider (_ inProvider : ReadOnlyObject_PadProxyInDevice?) {
-    if self.mDataProvider !== inProvider {
-      self.mDataProvider?.detachClient (self)
-      self.mDataProvider = inProvider
-      self.mDataProvider?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    let newObject : PadProxyInDevice?
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.selection {
-      case .empty :
-        newObject = nil
-        self.mTransientKind = .empty
-      case .single (let v) :
-        newObject = v
-        self.mTransientKind = .single
-       case .multiple :
-        newObject = nil
-        self.mTransientKind = .empty
-      }
-    }else{
-      newObject = nil
-      self.mTransientKind = .empty
-    }
-    self.mWeakInternalValue = newObject
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < PadProxyInDevice? > {
-    switch self.mTransientKind {
-    case .empty :
-      return .empty
-    case .single :
-      if let v = self.mWeakInternalValue {
-        return .single (v)
-      }else{
-        return .empty
-      }
-    case .multiple :
-      return .multiple
-    }
-  }
-
-  //····················································································································
-
-  override var propval : PadProxyInDevice? { return self.mWeakInternalValue }
-
-  //····················································································································
-
-} */
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_PadProxyInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -235,81 +163,6 @@ class ReadWriteObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice {
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Proxy: ProxyObject_PadProxyInDevice
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* final class ProxyObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice {
-
-  //····················································································································
-
-  private weak var mModel : ReadWriteObject_PadProxyInDevice? = nil // SHOULD BE WEAK
-
-  //····················································································································
-
-  func setModel (_ inModel : ReadWriteObject_PadProxyInDevice?) {
-    if self.mModel !== inModel {
-      self.mModel?.detachClient (self)
-      self.mModel = inModel
-      self.mModel?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    let newModel : PadProxyInDevice?
-    if let model = self.mModel {
-      switch model.selection {
-      case .empty :
-        newModel = nil
-      case .single (let v) :
-        newModel = v
-       case .multiple :
-        newModel = nil
-      }
-    }else{
-      newModel = nil
-    }
-    self.mWeakInternalValue = newModel
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  override func setProp (_ inValue : PadProxyInDevice?) {
-    self.mModel?.setProp (inValue)
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < PadProxyInDevice? > {
-    if let model = self.mModel {
-      return model.selection
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
-  override var propval : PadProxyInDevice? {
-    if let model = self.mModel {
-      switch model.selection {
-      case .empty, .multiple :
-        return nil
-      case .single (let v) :
-        return v
-      }
-    }else{
-      return nil
-    }
-  }
-
-  //····················································································································
-
-} */
- 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_PadProxyInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -342,6 +195,15 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
 
   //····················································································································
 
+  func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
+    if let idx = inData.base62EncodedInt (range: inRange) {
+      let object = inRawObjectArray [idx].object as! PadProxyInDevice
+      self.setProp (object)
+    }
+  }
+
+  //····················································································································
+
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, let idx = self.mWeakInternalValue?.savingIndex {
       ioDictionary [key] = idx
@@ -353,6 +215,14 @@ final class StoredObject_PadProxyInDevice : ReadWriteObject_PadProxyInDevice, EB
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
     if self.mKey != nil, let object = self.mWeakInternalValue {
       ioArray.append (object)
+    }
+  }
+
+  //····················································································································
+
+  func appendValueTo (data ioData : inout Data) {
+    if let object = self.propval {
+      ioData.append (base62Encoded: object.savingIndex)
     }
   }
 

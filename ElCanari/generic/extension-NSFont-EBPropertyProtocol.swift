@@ -70,6 +70,17 @@ extension NSFont : EBStoredPropertyProtocol {
 
   //····················································································································
 
+  static func unarchiveFromDataRange (_ inData: Data, _ inRange: NSRange) -> Self? {
+    let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
+    if let s = String (data: dataSlice, encoding: .utf8) {
+      return Self.unarchiveFromString (string: s) as? Self
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

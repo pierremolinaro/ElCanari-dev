@@ -128,78 +128,6 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   TransientObject DevicePackageInProject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* final class TransientObject_DevicePackageInProject : ReadOnlyObject_DevicePackageInProject {
-
-  //····················································································································
-  //   Data provider
-  //····················································································································
-
-  private weak var mDataProvider : ReadOnlyObject_DevicePackageInProject? = nil // SHOULD BE WEAK
-  private var mTransientKind : PropertyKind = .empty
-
-  //····················································································································
-
-  func setDataProvider (_ inProvider : ReadOnlyObject_DevicePackageInProject?) {
-    if self.mDataProvider !== inProvider {
-      self.mDataProvider?.detachClient (self)
-      self.mDataProvider = inProvider
-      self.mDataProvider?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    let newObject : DevicePackageInProject?
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.selection {
-      case .empty :
-        newObject = nil
-        self.mTransientKind = .empty
-      case .single (let v) :
-        newObject = v
-        self.mTransientKind = .single
-       case .multiple :
-        newObject = nil
-        self.mTransientKind = .empty
-      }
-    }else{
-      newObject = nil
-      self.mTransientKind = .empty
-    }
-    self.mWeakInternalValue = newObject
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < DevicePackageInProject? > {
-    switch self.mTransientKind {
-    case .empty :
-      return .empty
-    case .single :
-      if let v = self.mWeakInternalValue {
-        return .single (v)
-      }else{
-        return .empty
-      }
-    case .multiple :
-      return .multiple
-    }
-  }
-
-  //····················································································································
-
-  override var propval : DevicePackageInProject? { return self.mWeakInternalValue }
-
-  //····················································································································
-
-} */
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -213,81 +141,6 @@ class ReadWriteObject_DevicePackageInProject : ReadOnlyObject_DevicePackageInPro
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Proxy: ProxyObject_DevicePackageInProject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* final class ProxyObject_DevicePackageInProject : ReadWriteObject_DevicePackageInProject {
-
-  //····················································································································
-
-  private weak var mModel : ReadWriteObject_DevicePackageInProject? = nil // SHOULD BE WEAK
-
-  //····················································································································
-
-  func setModel (_ inModel : ReadWriteObject_DevicePackageInProject?) {
-    if self.mModel !== inModel {
-      self.mModel?.detachClient (self)
-      self.mModel = inModel
-      self.mModel?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    let newModel : DevicePackageInProject?
-    if let model = self.mModel {
-      switch model.selection {
-      case .empty :
-        newModel = nil
-      case .single (let v) :
-        newModel = v
-       case .multiple :
-        newModel = nil
-      }
-    }else{
-      newModel = nil
-    }
-    self.mWeakInternalValue = newModel
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  override func setProp (_ inValue : DevicePackageInProject?) {
-    self.mModel?.setProp (inValue)
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < DevicePackageInProject? > {
-    if let model = self.mModel {
-      return model.selection
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
-  override var propval : DevicePackageInProject? {
-    if let model = self.mModel {
-      switch model.selection {
-      case .empty, .multiple :
-        return nil
-      case .single (let v) :
-        return v
-      }
-    }else{
-      return nil
-    }
-  }
-
-  //····················································································································
-
-} */
- 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -320,6 +173,15 @@ final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageI
 
   //····················································································································
 
+  func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
+    if let idx = inData.base62EncodedInt (range: inRange) {
+      let object = inRawObjectArray [idx].object as! DevicePackageInProject
+      self.setProp (object)
+    }
+  }
+
+  //····················································································································
+
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, let idx = self.mWeakInternalValue?.savingIndex {
       ioDictionary [key] = idx
@@ -331,6 +193,14 @@ final class StoredObject_DevicePackageInProject : ReadWriteObject_DevicePackageI
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
     if self.mKey != nil, let object = self.mWeakInternalValue {
       ioArray.append (object)
+    }
+  }
+
+  //····················································································································
+
+  func appendValueTo (data ioData : inout Data) {
+    if let object = self.propval {
+      ioData.append (base62Encoded: object.savingIndex)
     }
   }
 

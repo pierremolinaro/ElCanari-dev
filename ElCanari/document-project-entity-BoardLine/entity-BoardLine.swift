@@ -499,7 +499,7 @@ final class BoardLine : BoardObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mWidthUnit\n"
@@ -515,13 +515,13 @@ final class BoardLine : BoardObject,
     ioString += "mWidth\n"
   //--- To one relationships
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mWidthUnit.appendPropertyValueTo (&ioData)
@@ -548,13 +548,13 @@ final class BoardLine : BoardObject,
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mWidthUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
@@ -590,7 +590,7 @@ final class BoardLine : BoardObject,
     if let range = inDictionary ["mWidth"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mWidth = value
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

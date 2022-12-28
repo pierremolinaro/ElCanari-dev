@@ -219,20 +219,20 @@ final class NCInSchematic : SchematicObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mOrientation\n"
   //--- To one relationships
     ioString += "mPoint\n"
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mOrientation.appendPropertyValueTo (&ioData)
@@ -243,25 +243,25 @@ final class NCInSchematic : SchematicObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mOrientation"], let value = QuadrantRotation.unarchiveFromDataRange (inData, range) {
       self.mOrientation = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -269,7 +269,7 @@ final class NCInSchematic : SchematicObject,
       let object = inRawObjectArray [idx].object as! PointInSchematic
       self.mPoint = object
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

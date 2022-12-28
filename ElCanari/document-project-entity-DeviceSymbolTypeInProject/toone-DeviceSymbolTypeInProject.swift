@@ -104,78 +104,6 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   TransientObject DeviceSymbolTypeInProject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* final class TransientObject_DeviceSymbolTypeInProject : ReadOnlyObject_DeviceSymbolTypeInProject {
-
-  //····················································································································
-  //   Data provider
-  //····················································································································
-
-  private weak var mDataProvider : ReadOnlyObject_DeviceSymbolTypeInProject? = nil // SHOULD BE WEAK
-  private var mTransientKind : PropertyKind = .empty
-
-  //····················································································································
-
-  func setDataProvider (_ inProvider : ReadOnlyObject_DeviceSymbolTypeInProject?) {
-    if self.mDataProvider !== inProvider {
-      self.mDataProvider?.detachClient (self)
-      self.mDataProvider = inProvider
-      self.mDataProvider?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    let newObject : DeviceSymbolTypeInProject?
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.selection {
-      case .empty :
-        newObject = nil
-        self.mTransientKind = .empty
-      case .single (let v) :
-        newObject = v
-        self.mTransientKind = .single
-       case .multiple :
-        newObject = nil
-        self.mTransientKind = .empty
-      }
-    }else{
-      newObject = nil
-      self.mTransientKind = .empty
-    }
-    self.mWeakInternalValue = newObject
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < DeviceSymbolTypeInProject? > {
-    switch self.mTransientKind {
-    case .empty :
-      return .empty
-    case .single :
-      if let v = self.mWeakInternalValue {
-        return .single (v)
-      }else{
-        return .empty
-      }
-    case .multiple :
-      return .multiple
-    }
-  }
-
-  //····················································································································
-
-  override var propval : DeviceSymbolTypeInProject? { return self.mWeakInternalValue }
-
-  //····················································································································
-
-} */
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_DeviceSymbolTypeInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -189,81 +117,6 @@ class ReadWriteObject_DeviceSymbolTypeInProject : ReadOnlyObject_DeviceSymbolTyp
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Proxy: ProxyObject_DeviceSymbolTypeInProject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* final class ProxyObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbolTypeInProject {
-
-  //····················································································································
-
-  private weak var mModel : ReadWriteObject_DeviceSymbolTypeInProject? = nil // SHOULD BE WEAK
-
-  //····················································································································
-
-  func setModel (_ inModel : ReadWriteObject_DeviceSymbolTypeInProject?) {
-    if self.mModel !== inModel {
-      self.mModel?.detachClient (self)
-      self.mModel = inModel
-      self.mModel?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    let newModel : DeviceSymbolTypeInProject?
-    if let model = self.mModel {
-      switch model.selection {
-      case .empty :
-        newModel = nil
-      case .single (let v) :
-        newModel = v
-       case .multiple :
-        newModel = nil
-      }
-    }else{
-      newModel = nil
-    }
-    self.mWeakInternalValue = newModel
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  override func setProp (_ inValue : DeviceSymbolTypeInProject?) {
-    self.mModel?.setProp (inValue)
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < DeviceSymbolTypeInProject? > {
-    if let model = self.mModel {
-      return model.selection
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
-  override var propval : DeviceSymbolTypeInProject? {
-    if let model = self.mModel {
-      switch model.selection {
-      case .empty, .multiple :
-        return nil
-      case .single (let v) :
-        return v
-      }
-    }else{
-      return nil
-    }
-  }
-
-  //····················································································································
-
-} */
- 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_DeviceSymbolTypeInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -296,6 +149,15 @@ final class StoredObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbo
 
   //····················································································································
 
+  func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
+    if let idx = inData.base62EncodedInt (range: inRange) {
+      let object = inRawObjectArray [idx].object as! DeviceSymbolTypeInProject
+      self.setProp (object)
+    }
+  }
+
+  //····················································································································
+
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, let idx = self.mWeakInternalValue?.savingIndex {
       ioDictionary [key] = idx
@@ -307,6 +169,14 @@ final class StoredObject_DeviceSymbolTypeInProject : ReadWriteObject_DeviceSymbo
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
     if self.mKey != nil, let object = self.mWeakInternalValue {
       ioArray.append (object)
+    }
+  }
+
+  //····················································································································
+
+  func appendValueTo (data ioData : inout Data) {
+    if let object = self.propval {
+      ioData.append (base62Encoded: object.savingIndex)
     }
   }
 

@@ -884,7 +884,7 @@ final class BorderCurve : EBGraphicManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mX\n"
@@ -899,13 +899,13 @@ final class BorderCurve : EBGraphicManagedObject,
     ioString += "mNext\n"
     ioString += "mPrevious\n"
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mX.appendPropertyValueTo (&ioData)
@@ -936,13 +936,13 @@ final class BorderCurve : EBGraphicManagedObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mX"], let value = Int.unarchiveFromDataRange (inData, range) {
@@ -966,13 +966,13 @@ final class BorderCurve : EBGraphicManagedObject,
     if let range = inDictionary ["mShape"], let value = BorderCurveShape.unarchiveFromDataRange (inData, range) {
       self.mShape = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -988,7 +988,7 @@ final class BorderCurve : EBGraphicManagedObject,
       let object = inRawObjectArray [idx].object as! BorderCurve
       self.mPrevious = object
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

@@ -1306,7 +1306,7 @@ final class BoardConnector : BoardObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mComponentPadName\n"
@@ -1326,13 +1326,13 @@ final class BoardConnector : BoardObject,
   //--- To many relationships
     ioString += "mTracksP2\n"
     ioString += "mTracksP1\n"
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mComponentPadName.appendPropertyValueTo (&ioData)
@@ -1367,13 +1367,13 @@ final class BoardConnector : BoardObject,
   //--- To many relationships
     enterToManyRelationshipObjectIndexes (from: self.mTracksP2.values, into: &ioData)
     enterToManyRelationshipObjectIndexes (from: self.mTracksP1.values, into: &ioData)
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mComponentPadName"], let value = String.unarchiveFromDataRange (inData, range) {
@@ -1412,13 +1412,13 @@ final class BoardConnector : BoardObject,
     if let range = inDictionary ["mUsesCustomPadDiameter"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mUsesCustomPadDiameter = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -1426,13 +1426,13 @@ final class BoardConnector : BoardObject,
       let object = inRawObjectArray [idx].object as! ComponentInProject
       self.mComponent = object
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToManyRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -1454,7 +1454,7 @@ final class BoardConnector : BoardObject,
       }
       self.mTracksP1 = relationshipArray
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

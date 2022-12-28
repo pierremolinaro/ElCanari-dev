@@ -935,7 +935,7 @@ final class ComponentSymbolInProject : SchematicObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mCenterX\n"
@@ -953,13 +953,13 @@ final class ComponentSymbolInProject : SchematicObject,
     ioString += "mComponent\n"
   //--- To many relationships
     ioString += "mPoints\n"
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mCenterX.appendPropertyValueTo (&ioData)
@@ -991,13 +991,13 @@ final class ComponentSymbolInProject : SchematicObject,
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
     enterToManyRelationshipObjectIndexes (from: self.mPoints.values, into: &ioData)
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mCenterX"], let value = Int.unarchiveFromDataRange (inData, range) {
@@ -1033,13 +1033,13 @@ final class ComponentSymbolInProject : SchematicObject,
     if let range = inDictionary ["mDisplayComponentValueOffsetY"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mDisplayComponentValueOffsetY = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -1047,13 +1047,13 @@ final class ComponentSymbolInProject : SchematicObject,
       let object = inRawObjectArray [idx].object as! ComponentInProject
       self.mComponent = object
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToManyRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -1066,7 +1066,7 @@ final class ComponentSymbolInProject : SchematicObject,
       }
       self.mPoints = relationshipArray
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

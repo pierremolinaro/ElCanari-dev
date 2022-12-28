@@ -7,12 +7,17 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor protocol DocumentStorableProperty : AnyObject {
+
   var key : String? { get }
 
   func initialize (fromDictionary inDictionary : [String : Any],
                    managedObjectArray inManagedObjectArray : [EBManagedObject])
 
+  func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inManagedObjectArray : [RawObject])
+
   func store (inDictionary ioDictionary : inout [String : Any])
+
+  func appendValueTo (data ioData : inout Data)
 
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject])
 }
@@ -78,16 +83,14 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
 
   //····················································································································
 
-  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
+  func appendValueTo (data ioData : inout Data) {
+    return self.propval.appendPropertyValueTo (&ioData)
   }
 
   //····················································································································
 
-//  func readFrom (dictionary inDictionary : [String : Any], forKey inKey : String) {
-//    if let value = inDictionary [inKey] as? NSObject {
-//      self.setProp (T.convertFromNSObject (object: value))
-//    }
-//  }
+  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
+  }
 
   //····················································································································
 
@@ -95,6 +98,14 @@ final class EBGenericStoredProperty <T : EBStoredPropertyProtocol> : EBObservabl
                    managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     if let key = self.mKey, let value = inDictionary [key] as? NSObject {
       self.setProp (T.convertFromNSObject (object: value))
+    }
+  }
+
+  //····················································································································
+
+  func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inManagedObjectArray : [RawObject]) {
+    if let value = T.unarchiveFromDataRange (inData, inRange) {
+      self.setProp (value)
     }
   }
 

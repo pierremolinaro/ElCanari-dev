@@ -540,7 +540,7 @@ final class FontRoot : EBManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "comments\n"
@@ -551,13 +551,13 @@ final class FontRoot : EBManagedObject,
   //--- To one relationships
   //--- To many relationships
     ioString += "characters\n"
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.comments.appendPropertyValueTo (&ioData)
@@ -574,13 +574,13 @@ final class FontRoot : EBManagedObject,
   //--- To many relationships
     ioData.append (customStore_FontCharacter_characters (self.characters_property.propval.values).data (using: .utf8)!)
     ioData.append (ascii: .lineFeed)
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["comments"], let value = String.unarchiveFromDataRange (inData, range) {
@@ -598,13 +598,13 @@ final class FontRoot : EBManagedObject,
     if let range = inDictionary ["currentCharacterCodePoint"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.currentCharacterCodePoint = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToManyRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -613,7 +613,7 @@ final class FontRoot : EBManagedObject,
       let array = customRead_FontCharacter_characters (fromString: s, with: self.undoManager)
       self.characters = EBReferenceArray (array)
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

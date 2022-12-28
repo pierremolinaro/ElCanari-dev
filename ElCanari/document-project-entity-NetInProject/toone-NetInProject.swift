@@ -290,78 +290,6 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   TransientObject NetInProject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* final class TransientObject_NetInProject : ReadOnlyObject_NetInProject {
-
-  //····················································································································
-  //   Data provider
-  //····················································································································
-
-  private weak var mDataProvider : ReadOnlyObject_NetInProject? = nil // SHOULD BE WEAK
-  private var mTransientKind : PropertyKind = .empty
-
-  //····················································································································
-
-  func setDataProvider (_ inProvider : ReadOnlyObject_NetInProject?) {
-    if self.mDataProvider !== inProvider {
-      self.mDataProvider?.detachClient (self)
-      self.mDataProvider = inProvider
-      self.mDataProvider?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    let newObject : NetInProject?
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.selection {
-      case .empty :
-        newObject = nil
-        self.mTransientKind = .empty
-      case .single (let v) :
-        newObject = v
-        self.mTransientKind = .single
-       case .multiple :
-        newObject = nil
-        self.mTransientKind = .empty
-      }
-    }else{
-      newObject = nil
-      self.mTransientKind = .empty
-    }
-    self.mWeakInternalValue = newObject
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < NetInProject? > {
-    switch self.mTransientKind {
-    case .empty :
-      return .empty
-    case .single :
-      if let v = self.mWeakInternalValue {
-        return .single (v)
-      }else{
-        return .empty
-      }
-    case .multiple :
-      return .multiple
-    }
-  }
-
-  //····················································································································
-
-  override var propval : NetInProject? { return self.mWeakInternalValue }
-
-  //····················································································································
-
-} */
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_NetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -375,81 +303,6 @@ class ReadWriteObject_NetInProject : ReadOnlyObject_NetInProject {
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Proxy: ProxyObject_NetInProject
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* final class ProxyObject_NetInProject : ReadWriteObject_NetInProject {
-
-  //····················································································································
-
-  private weak var mModel : ReadWriteObject_NetInProject? = nil // SHOULD BE WEAK
-
-  //····················································································································
-
-  func setModel (_ inModel : ReadWriteObject_NetInProject?) {
-    if self.mModel !== inModel {
-      self.mModel?.detachClient (self)
-      self.mModel = inModel
-      self.mModel?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    let newModel : NetInProject?
-    if let model = self.mModel {
-      switch model.selection {
-      case .empty :
-        newModel = nil
-      case .single (let v) :
-        newModel = v
-       case .multiple :
-        newModel = nil
-      }
-    }else{
-      newModel = nil
-    }
-    self.mWeakInternalValue = newModel
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  override func setProp (_ inValue : NetInProject?) {
-    self.mModel?.setProp (inValue)
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < NetInProject? > {
-    if let model = self.mModel {
-      return model.selection
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
-  override var propval : NetInProject? {
-    if let model = self.mModel {
-      switch model.selection {
-      case .empty, .multiple :
-        return nil
-      case .single (let v) :
-        return v
-      }
-    }else{
-      return nil
-    }
-  }
-
-  //····················································································································
-
-} */
- 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_NetInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -482,6 +335,15 @@ final class StoredObject_NetInProject : ReadWriteObject_NetInProject, EBSignatur
 
   //····················································································································
 
+  func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
+    if let idx = inData.base62EncodedInt (range: inRange) {
+      let object = inRawObjectArray [idx].object as! NetInProject
+      self.setProp (object)
+    }
+  }
+
+  //····················································································································
+
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, let idx = self.mWeakInternalValue?.savingIndex {
       ioDictionary [key] = idx
@@ -493,6 +355,14 @@ final class StoredObject_NetInProject : ReadWriteObject_NetInProject, EBSignatur
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
     if self.mKey != nil, let object = self.mWeakInternalValue {
       ioArray.append (object)
+    }
+  }
+
+  //····················································································································
+
+  func appendValueTo (data ioData : inout Data) {
+    if let object = self.propval {
+      ioData.append (base62Encoded: object.savingIndex)
     }
   }
 

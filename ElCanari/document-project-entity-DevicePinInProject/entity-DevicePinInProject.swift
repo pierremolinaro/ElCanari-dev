@@ -560,7 +560,7 @@ final class DevicePinInProject : EBManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mPinName\n"
@@ -577,13 +577,13 @@ final class DevicePinInProject : EBManagedObject,
     ioString += "mNumberHorizontalAlignment\n"
   //--- To one relationships
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mPinName.appendPropertyValueTo (&ioData)
@@ -612,13 +612,13 @@ final class DevicePinInProject : EBManagedObject,
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mPinName"], let value = String.unarchiveFromDataRange (inData, range) {
@@ -657,7 +657,7 @@ final class DevicePinInProject : EBManagedObject,
     if let range = inDictionary ["mNumberHorizontalAlignment"], let value = HorizontalAlignment.unarchiveFromDataRange (inData, range) {
       self.mNumberHorizontalAlignment = value
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

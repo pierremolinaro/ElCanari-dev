@@ -118,6 +118,20 @@ struct BezierPathArray : Hashable, Comparable, EBStoredPropertyProtocol {
 
   //····················································································································
 
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> BezierPathArray? {
+    if let array = try? NSKeyedUnarchiver.unarchivedObject (ofClass: NSArray.self, from: inData [inRange.location ..< inRange.location + inRange.length]) as? [NSBezierPath] {
+      var result = BezierPathArray ()
+      for bp in array {
+        result.append (EBBezierPath (bp))
+      }
+      return result
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

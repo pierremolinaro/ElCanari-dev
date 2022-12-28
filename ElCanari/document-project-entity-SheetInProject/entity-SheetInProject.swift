@@ -438,7 +438,7 @@ final class SheetInProject : EBManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mSheetTitle\n"
@@ -447,13 +447,13 @@ final class SheetInProject : EBManagedObject,
   //--- To many relationships
     ioString += "mObjects\n"
     ioString += "mPoints\n"
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mSheetTitle.appendPropertyValueTo (&ioData)
@@ -466,25 +466,25 @@ final class SheetInProject : EBManagedObject,
   //--- To many relationships
     enterToManyRelationshipObjectIndexes (from: self.mObjects.values, into: &ioData)
     enterToManyRelationshipObjectIndexes (from: self.mPoints.values, into: &ioData)
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mSheetTitle"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mSheetTitle = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -492,13 +492,13 @@ final class SheetInProject : EBManagedObject,
       let object = inRawObjectArray [idx].object as! ProjectRoot
       self.mRoot = object
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToManyRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -520,7 +520,7 @@ final class SheetInProject : EBManagedObject,
       }
       self.mPoints = relationshipArray
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

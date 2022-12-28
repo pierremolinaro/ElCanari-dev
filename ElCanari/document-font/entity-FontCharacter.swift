@@ -411,7 +411,7 @@ final class FontCharacter : EBManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "codePoint\n"
@@ -421,13 +421,13 @@ final class FontCharacter : EBManagedObject,
   //--- To one relationships
   //--- To many relationships
     ioString += "segments\n"
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.codePoint.appendPropertyValueTo (&ioData)
@@ -441,13 +441,13 @@ final class FontCharacter : EBManagedObject,
   //--- To one relationships
   //--- To many relationships
     enterToManyRelationshipObjectIndexes (from: self.segments.values, into: &ioData)
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["codePoint"], let value = Int.unarchiveFromDataRange (inData, range) {
@@ -462,13 +462,13 @@ final class FontCharacter : EBManagedObject,
     if let range = inDictionary ["mWarnsWhenAdvanceIsZero"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mWarnsWhenAdvanceIsZero = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToManyRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -481,7 +481,7 @@ final class FontCharacter : EBManagedObject,
       }
       self.segments = relationshipArray
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

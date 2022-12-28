@@ -131,31 +131,6 @@ extension String {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension NSBezierPath {
-
-  //····················································································································
-
-  func appendPropertyValueTo (_ ioData : inout Data) {
-    ioData.append (self.archiveToString ().data (using: .utf8)!)
-  }
-
-  //····················································································································
-
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> NSBezierPath? {
-    var result : NSBezierPath? = nil
-    let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
-    if let s = String (data: dataSlice, encoding: .utf8) {
-      result = NSBezierPath.unarchiveFromString (string: s) as? NSBezierPath
-    }
-    return result
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 extension Date {
 
   //····················································································································
@@ -170,31 +145,6 @@ extension Date {
     var result : Date? = nil
     if let timeIntervalSince1970 = Double.unarchiveFromDataRange (inData, inRange) {
       result = Date (timeIntervalSince1970: timeIntervalSince1970)
-    }
-    return result
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension NSColor {
-
-  //····················································································································
-
-  func appendPropertyValueTo (_ ioData : inout Data) {
-    ioData.append (self.archiveToString ().data (using: .utf8)!)
-  }
-
-  //····················································································································
-
-  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> NSColor? {
-    let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
-    var result : NSColor? = nil
-    if let s = String (data: dataSlice, encoding: .utf8) {
-      result = NSColor.unarchiveFromString (string: s) as? NSColor
     }
     return result
   }

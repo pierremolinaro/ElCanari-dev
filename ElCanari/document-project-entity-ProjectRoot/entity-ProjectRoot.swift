@@ -6527,7 +6527,7 @@ final class ProjectRoot : EBManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mArtworkName\n"
@@ -6634,13 +6634,13 @@ final class ProjectRoot : EBManagedObject,
     ioString += "mBorderCurves\n"
     ioString += "mBoardObjects\n"
     ioString += "mComponents\n"
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mArtworkName.appendPropertyValueTo (&ioData)
@@ -6846,13 +6846,13 @@ final class ProjectRoot : EBManagedObject,
     enterToManyRelationshipObjectIndexes (from: self.mBorderCurves.values, into: &ioData)
     enterToManyRelationshipObjectIndexes (from: self.mBoardObjects.values, into: &ioData)
     enterToManyRelationshipObjectIndexes (from: self.mComponents.values, into: &ioData)
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mArtworkName"], let value = String.unarchiveFromDataRange (inData, range) {
@@ -7134,13 +7134,13 @@ final class ProjectRoot : EBManagedObject,
     if let range = inDictionary ["mRastnetDisplayedComponentName"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mRastnetDisplayedComponentName = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -7152,13 +7152,13 @@ final class ProjectRoot : EBManagedObject,
       let object = inRawObjectArray [idx].object as! SheetInProject
       self.mSelectedSheet = object
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToManyRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -7225,7 +7225,7 @@ final class ProjectRoot : EBManagedObject,
       }
       self.mComponents = relationshipArray
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

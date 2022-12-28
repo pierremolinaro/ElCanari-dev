@@ -565,78 +565,6 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   TransientObject PackageZone
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* final class TransientObject_PackageZone : ReadOnlyObject_PackageZone {
-
-  //····················································································································
-  //   Data provider
-  //····················································································································
-
-  private weak var mDataProvider : ReadOnlyObject_PackageZone? = nil // SHOULD BE WEAK
-  private var mTransientKind : PropertyKind = .empty
-
-  //····················································································································
-
-  func setDataProvider (_ inProvider : ReadOnlyObject_PackageZone?) {
-    if self.mDataProvider !== inProvider {
-      self.mDataProvider?.detachClient (self)
-      self.mDataProvider = inProvider
-      self.mDataProvider?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    let newObject : PackageZone?
-    if let dataProvider = self.mDataProvider {
-      switch dataProvider.selection {
-      case .empty :
-        newObject = nil
-        self.mTransientKind = .empty
-      case .single (let v) :
-        newObject = v
-        self.mTransientKind = .single
-       case .multiple :
-        newObject = nil
-        self.mTransientKind = .empty
-      }
-    }else{
-      newObject = nil
-      self.mTransientKind = .empty
-    }
-    self.mWeakInternalValue = newObject
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < PackageZone? > {
-    switch self.mTransientKind {
-    case .empty :
-      return .empty
-    case .single :
-      if let v = self.mWeakInternalValue {
-        return .single (v)
-      }else{
-        return .empty
-      }
-    case .multiple :
-      return .multiple
-    }
-  }
-
-  //····················································································································
-
-  override var propval : PackageZone? { return self.mWeakInternalValue }
-
-  //····················································································································
-
-} */
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadWriteObject_PackageZone
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -650,81 +578,6 @@ class ReadWriteObject_PackageZone : ReadOnlyObject_PackageZone {
 
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Proxy: ProxyObject_PackageZone
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-/* final class ProxyObject_PackageZone : ReadWriteObject_PackageZone {
-
-  //····················································································································
-
-  private weak var mModel : ReadWriteObject_PackageZone? = nil // SHOULD BE WEAK
-
-  //····················································································································
-
-  func setModel (_ inModel : ReadWriteObject_PackageZone?) {
-    if self.mModel !== inModel {
-      self.mModel?.detachClient (self)
-      self.mModel = inModel
-      self.mModel?.attachClient (self)
-    }
-  }
-
-  //····················································································································
-
-  override func notifyModelDidChange () {
-    let newModel : PackageZone?
-    if let model = self.mModel {
-      switch model.selection {
-      case .empty :
-        newModel = nil
-      case .single (let v) :
-        newModel = v
-       case .multiple :
-        newModel = nil
-      }
-    }else{
-      newModel = nil
-    }
-    self.mWeakInternalValue = newModel
-    super.notifyModelDidChange ()
-  }
-
-  //····················································································································
-
-  override func setProp (_ inValue : PackageZone?) {
-    self.mModel?.setProp (inValue)
-  }
-
-  //····················································································································
-
-  override var selection : EBSelection < PackageZone? > {
-    if let model = self.mModel {
-      return model.selection
-    }else{
-      return .empty
-    }
-  }
-
-  //····················································································································
-
-  override var propval : PackageZone? {
-    if let model = self.mModel {
-      switch model.selection {
-      case .empty, .multiple :
-        return nil
-      case .single (let v) :
-        return v
-      }
-    }else{
-      return nil
-    }
-  }
-
-  //····················································································································
-
-} */
- 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    StoredObject_PackageZone
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -757,6 +610,15 @@ final class StoredObject_PackageZone : ReadWriteObject_PackageZone, EBSignatureO
 
   //····················································································································
 
+  func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
+    if let idx = inData.base62EncodedInt (range: inRange) {
+      let object = inRawObjectArray [idx].object as! PackageZone
+      self.setProp (object)
+    }
+  }
+
+  //····················································································································
+
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, let idx = self.mWeakInternalValue?.savingIndex {
       ioDictionary [key] = idx
@@ -768,6 +630,14 @@ final class StoredObject_PackageZone : ReadWriteObject_PackageZone, EBSignatureO
   func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
     if self.mKey != nil, let object = self.mWeakInternalValue {
       ioArray.append (object)
+    }
+  }
+
+  //····················································································································
+
+  func appendValueTo (data ioData : inout Data) {
+    if let object = self.propval {
+      ioData.append (base62Encoded: object.savingIndex)
     }
   }
 

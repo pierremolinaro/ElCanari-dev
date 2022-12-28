@@ -61,15 +61,24 @@ extension NSColor : EBStoredPropertyProtocol {
        let green = scanner.scanDouble (),
        let blue = scanner.scanDouble (),
        let alpha = scanner.scanDouble () {
-//    var red = 0.0
-//    _ = scanner.scanDouble (&red)
-//    var green = 0.0
-//    _ = scanner.scanDouble (&green)
-//    var blue = 0.0
-//    _ = scanner.scanDouble (&blue)
-//    var alpha = 0.0
-//    _ = scanner.scanDouble (&alpha)
       return NSColor (calibratedRed: CGFloat (red), green: CGFloat (green), blue: CGFloat (blue), alpha: CGFloat (alpha))
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
+  func appendPropertyValueTo (_ ioData : inout Data) {
+    ioData.append (self.archiveToString ().data (using: .utf8)!)
+  }
+
+  //····················································································································
+
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Self? {
+    let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
+    if let s = String (data: dataSlice, encoding: .utf8) {
+      return Self.unarchiveFromString (string: s) as? Self
     }else{
       return nil
     }

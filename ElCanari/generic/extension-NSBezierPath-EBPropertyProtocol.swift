@@ -158,6 +158,23 @@ extension NSBezierPath : EBStoredPropertyProtocol {
 
   //····················································································································
 
+  func appendPropertyValueTo (_ ioData : inout Data) {
+    ioData.append (self.archiveToString ().data (using: .utf8)!)
+  }
+
+  //····················································································································
+
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Self? {
+    let dataSlice = inData [inRange.location ..< inRange.location + inRange.length]
+    if let s = String (data: dataSlice, encoding: .utf8) {
+      return NSBezierPath.unarchiveFromString (string: s) as? Self
+    }else{
+      return nil
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

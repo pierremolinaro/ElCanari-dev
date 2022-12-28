@@ -298,7 +298,7 @@ final class PadProxyInDevice : EBManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mPinInstanceName\n"
@@ -307,13 +307,13 @@ final class PadProxyInDevice : EBManagedObject,
   //--- To one relationships
     ioString += "mPinInstance\n"
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mPinInstanceName.appendPropertyValueTo (&ioData)
@@ -328,13 +328,13 @@ final class PadProxyInDevice : EBManagedObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mPinInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
@@ -346,13 +346,13 @@ final class PadProxyInDevice : EBManagedObject,
     if let range = inDictionary ["mIsNC"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mIsNC = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -360,7 +360,7 @@ final class PadProxyInDevice : EBManagedObject,
       let object = inRawObjectArray [idx].object as! SymbolPinInstanceInDevice
       self.mPinInstance = object
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

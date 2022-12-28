@@ -2135,7 +2135,7 @@ final class ComponentInProject : BoardObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mSlavePadsShouldBeRouted\n"
@@ -2167,13 +2167,13 @@ final class ComponentInProject : BoardObject,
   //--- To many relationships
     ioString += "mConnectors\n"
     ioString += "mSymbols\n"
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mSlavePadsShouldBeRouted.appendPropertyValueTo (&ioData)
@@ -2238,13 +2238,13 @@ final class ComponentInProject : BoardObject,
   //--- To many relationships
     enterToManyRelationshipObjectIndexes (from: self.mConnectors.values, into: &ioData)
     enterToManyRelationshipObjectIndexes (from: self.mSymbols.values, into: &ioData)
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mSlavePadsShouldBeRouted"], let value = Bool.unarchiveFromDataRange (inData, range) {
@@ -2310,13 +2310,13 @@ final class ComponentInProject : BoardObject,
     if let range = inDictionary ["mYUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mYUnit = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -2336,13 +2336,13 @@ final class ComponentInProject : BoardObject,
       let object = inRawObjectArray [idx].object as! FontInProject
       self.mValueFont = object
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToManyRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -2364,7 +2364,7 @@ final class ComponentInProject : BoardObject,
       }
       self.mSymbols = relationshipArray
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

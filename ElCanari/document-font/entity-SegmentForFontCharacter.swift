@@ -258,7 +258,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "x1\n"
@@ -267,13 +267,13 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
     ioString += "y2\n"
   //--- To one relationships
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.x1.appendPropertyValueTo (&ioData)
@@ -286,13 +286,13 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
     ioData.append (ascii: .lineFeed)
   //--- To one relationships
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["x1"], let value = Int.unarchiveFromDataRange (inData, range) {
@@ -307,7 +307,7 @@ final class SegmentForFontCharacter : EBGraphicManagedObject,
     if let range = inDictionary ["y2"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.y2 = value
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

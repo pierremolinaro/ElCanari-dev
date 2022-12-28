@@ -85,6 +85,14 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   //····················································································································
 
+  func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inManagedObjectArray : [RawObject]) {
+    if let value = T.unarchiveFromDataRange (inData, inRange) {
+      self.setProp (value)
+    }
+  }
+
+  //····················································································································
+
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey {
       ioDictionary [key] = self.mValue.convertToNSObject ()
@@ -98,11 +106,9 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   //····················································································································
 
-//  func readFrom (dictionary inDictionary : [String : Any], forKey inKey : String) {
-//    if let value = inDictionary [inKey] as? NSObject {
-//      self.setProp (T.convertFromNSObject (object: value))
-//    }
-//  }
+  func appendValueTo (data ioData : inout Data) {
+    self.mValue.appendPropertyValueTo (&ioData)
+  }
 
   //····················································································································
   //    SIGNATURE

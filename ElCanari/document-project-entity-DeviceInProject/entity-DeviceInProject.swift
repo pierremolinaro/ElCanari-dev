@@ -699,7 +699,7 @@ final class DeviceInProject : EBManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mDeviceName\n"
@@ -712,13 +712,13 @@ final class DeviceInProject : EBManagedObject,
     ioString += "mSymbols\n"
     ioString += "mComponents\n"
     ioString += "mPadAssignments\n"
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mDeviceName.appendPropertyValueTo (&ioData)
@@ -735,13 +735,13 @@ final class DeviceInProject : EBManagedObject,
     enterToManyRelationshipObjectIndexes (from: self.mSymbols.values, into: &ioData)
     enterToManyRelationshipObjectIndexes (from: self.mComponents.values, into: &ioData)
     enterToManyRelationshipObjectIndexes (from: self.mPadAssignments.values, into: &ioData)
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mDeviceName"], let value = String.unarchiveFromDataRange (inData, range) {
@@ -756,13 +756,13 @@ final class DeviceInProject : EBManagedObject,
     if let range = inDictionary ["mDeviceFileData"], let value = Data.unarchiveFromDataRange (inData, range) {
       self.mDeviceFileData = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToManyRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -802,7 +802,7 @@ final class DeviceInProject : EBManagedObject,
       }
       self.mPadAssignments = relationshipArray
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

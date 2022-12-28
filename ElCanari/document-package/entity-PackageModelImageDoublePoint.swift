@@ -389,7 +389,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mFirstX\n"
@@ -401,13 +401,13 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
   //--- To one relationships
     ioString += "mRoot\n"
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mFirstX.appendPropertyValueTo (&ioData)
@@ -428,13 +428,13 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mFirstX"], let value = Int.unarchiveFromDataRange (inData, range) {
@@ -455,13 +455,13 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
     if let range = inDictionary ["mSecondColor"], let value = NSColor.unarchiveFromDataRange (inData, range) {
       self.mSecondColor = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -469,7 +469,7 @@ final class PackageModelImageDoublePoint : EBGraphicManagedObject,
       let object = inRawObjectArray [idx].object as! PackageRoot
       self.mRoot = object
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

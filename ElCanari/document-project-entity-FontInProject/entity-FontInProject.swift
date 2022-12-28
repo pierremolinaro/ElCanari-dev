@@ -597,7 +597,7 @@ final class FontInProject : EBManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mNominalSize\n"
@@ -609,13 +609,13 @@ final class FontInProject : EBManagedObject,
     ioString += "mTexts\n"
     ioString += "mComponentNames\n"
     ioString += "mComponentValues\n"
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mNominalSize.appendPropertyValueTo (&ioData)
@@ -631,13 +631,13 @@ final class FontInProject : EBManagedObject,
     enterToManyRelationshipObjectIndexes (from: self.mTexts.values, into: &ioData)
     enterToManyRelationshipObjectIndexes (from: self.mComponentNames.values, into: &ioData)
     enterToManyRelationshipObjectIndexes (from: self.mComponentValues.values, into: &ioData)
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mNominalSize"], let value = Int.unarchiveFromDataRange (inData, range) {
@@ -652,13 +652,13 @@ final class FontInProject : EBManagedObject,
     if let range = inDictionary ["mDescriptiveString"], let value = String.unarchiveFromDataRange (inData, range) {
       self.mDescriptiveString = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToManyRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -689,7 +689,7 @@ final class FontInProject : EBManagedObject,
       }
       self.mComponentValues = relationshipArray
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

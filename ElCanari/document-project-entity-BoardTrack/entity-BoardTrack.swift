@@ -1538,7 +1538,7 @@ final class BoardTrack : BoardObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mSide\n"
@@ -1559,13 +1559,13 @@ final class BoardTrack : BoardObject,
     ioString += "mConnectorP2\n"
     ioString += "mNet\n"
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mSide.appendPropertyValueTo (&ioData)
@@ -1608,13 +1608,13 @@ final class BoardTrack : BoardObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mSide"], let value = TrackSide.unarchiveFromDataRange (inData, range) {
@@ -1656,13 +1656,13 @@ final class BoardTrack : BoardObject,
     if let range = inDictionary ["mDirectionLockOnKnobDragging"], let value = TrackLockDirection.unarchiveFromDataRange (inData, range) {
       self.mDirectionLockOnKnobDragging = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -1678,7 +1678,7 @@ final class BoardTrack : BoardObject,
       let object = inRawObjectArray [idx].object as! NetInProject
       self.mNet = object
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

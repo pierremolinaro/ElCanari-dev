@@ -1230,7 +1230,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "drawBoardLimits\n"
@@ -1264,13 +1264,13 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
   //--- To one relationships
     ioString += "mArtwork\n"
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.drawBoardLimits.appendPropertyValueTo (&ioData)
@@ -1335,13 +1335,13 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["drawBoardLimits"], let value = Bool.unarchiveFromDataRange (inData, range) {
@@ -1428,13 +1428,13 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
     if let range = inDictionary ["padHoleDiameterInPDF"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.padHoleDiameterInPDF = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -1442,7 +1442,7 @@ final class ArtworkFileGenerationParameters : EBManagedObject,
       let object = inRawObjectArray [idx].object as! ArtworkRoot
       self.mArtwork = object
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

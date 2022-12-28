@@ -1017,7 +1017,7 @@ final class PackageSlavePad : PackageObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "xCenter\n"
@@ -1038,13 +1038,13 @@ final class PackageSlavePad : PackageObject,
   //--- To one relationships
     ioString += "master\n"
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.xCenter.appendPropertyValueTo (&ioData)
@@ -1083,13 +1083,13 @@ final class PackageSlavePad : PackageObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["xCenter"], let value = Int.unarchiveFromDataRange (inData, range) {
@@ -1137,13 +1137,13 @@ final class PackageSlavePad : PackageObject,
     if let range = inDictionary ["annularRingUnit"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.annularRingUnit = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -1151,7 +1151,7 @@ final class PackageSlavePad : PackageObject,
       let object = inRawObjectArray [idx].object as! PackagePad
       self.master = object
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

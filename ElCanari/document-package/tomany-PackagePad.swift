@@ -2146,6 +2146,19 @@ class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserve
 
   //····················································································································
 
+  func initialize (fromRange inRange : NSRange, ofData inData : Data, _ inRawObjectArray : [RawObject]) {
+    if inRange.length > 0 {
+      var objectArray = EBReferenceArray <PackagePad> ()
+      let indexArray = inData.base62EncodedIntArray (fromRange: inRange)
+      for idx in indexArray {
+        objectArray.append (inRawObjectArray [idx].object as! PackagePad)
+      }
+      self.setProp (objectArray)
+    }
+  }
+
+  //····················································································································
+
   func store (inDictionary ioDictionary : inout [String : Any]) {
     if let key = self.mKey, self.mInternalArrayValue.count > 0 {
       var array = [Int] ()
@@ -2158,12 +2171,18 @@ class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserve
 
   //····················································································································
 
-  final func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
+  func enterRelationshipObjects (intoArray ioArray : inout [EBManagedObject]) {
     if self.mKey != nil, self.mInternalArrayValue.count > 0 {
       for object in self.mInternalArrayValue.values {
         ioArray.append (object)
       }
     }
+  }
+
+  //····················································································································
+
+  func appendValueTo (data ioData : inout Data) {
+    enterToManyRelationshipObjectIndexes (from: self.propval.values, into: &ioData)
   }
 
   //····················································································································

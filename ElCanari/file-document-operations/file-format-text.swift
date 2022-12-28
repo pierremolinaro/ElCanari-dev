@@ -50,11 +50,8 @@ struct RawObject {
 //    Swift.print ("Read objects")
 //    var idx = 0
     var rawObjectArray = [RawObject] ()
-    let data = ioDataScanner.data
+    let scannerData = ioDataScanner.data
     while !ioDataScanner.eof (), ioDataScanner.testAccept (byte: ASCII.at.rawValue) {
-  //    let index = idx
-//      Swift.print (" - \(idx)")
-//      idx += 1
       let classIndex = ioDataScanner.parseBase62EncodedInt ()
       let propertyNameArray = classDefinition [classIndex].1
       let className = classDefinition [classIndex].0
@@ -62,34 +59,19 @@ struct RawObject {
       for propertyName in propertyNameArray {
         let propertyRange = ioDataScanner.getLineRangeAndAdvance ()
         propertyValueDictionary [propertyName] = propertyRange
-//        var s = ""
-//        for i in propertyRange.location ..< (propertyRange.location + propertyRange.length) {
-//          s += " \(String (data [i], radix:16, uppercase: true))"
-//        }
-//        Swift.print ("    \(propertyName) -> \(propertyRange) :\(s)")
       }
       let managedObject = newInstanceOfEntityNamed (inUndoManager, className)
-      managedObject.setUpPropertiesWithTextDictionary (propertyValueDictionary, data)
-      let rawObject = RawObject (/* index: index, */ object: managedObject, propertyDictionary: propertyValueDictionary)
+      let rawObject = RawObject (object: managedObject, propertyDictionary: propertyValueDictionary)
       rawObjectArray.append (rawObject)
     }
-//    Swift.print ("Done")
     appendDocumentFileOperationInfo ("parsed \(rawObjectArray.count) objects done")
-  //--- Setup toOne
-    let scannerData = ioDataScanner.data
+  //--- Setup atomic properties, relationships
     for rawObject in rawObjectArray {
       let valueDictionary = rawObject.propertyDictionary
       let managedObject = rawObject.object
-      managedObject.setUpToOneRelationshipsWithTextDictionary (valueDictionary, rawObjectArray, scannerData)
+      managedObject.setUpPropertiesWithTextDictionary (valueDictionary, rawObjectArray, scannerData)
     }
-    appendDocumentFileOperationInfo ("setup toOne done")
-  //--- Setup toMany
-    for rawObject in rawObjectArray {
-      let valueDictionary = rawObject.propertyDictionary
-      let managedObject = rawObject.object
-      managedObject.setUpToManyRelationshipsWithTextDictionary (valueDictionary, rawObjectArray, scannerData)
-    }
-    appendDocumentFileOperationInfo ("setup toMany done")
+    appendDocumentFileOperationInfo ("setup done")
   //--- Scanner error ?
     if !ioDataScanner.ok () {
       let dictionary = [
@@ -157,7 +139,7 @@ struct RawObject {
     if classDictionary [key] == nil {
       classDictionary [key] = classDictionary.count
       classDescriptionString += "$" + key + "\n"
-      object.appendPropertyNamesTo (&classDescriptionString)
+      object.appendPropertyNamesTo (string: &classDescriptionString)
     }
   }
   fileStringData += classDescriptionString.data (using: .utf8)!
@@ -169,7 +151,7 @@ struct RawObject {
     fileStringData.append (ascii: .at)
     fileStringData.append (base62Encoded: classIndex)
     fileStringData.append (ascii: .lineFeed)
-    object.appendPropertyValuesTo (&fileStringData)
+    object.appendPropertyValuesTo (data: &fileStringData)
   }
 //---
 //   Swift.print ("Text Saving \(Int (Date ().timeIntervalSince (start) * 1000.0)) ms")

@@ -587,7 +587,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mInstanceName\n"
@@ -598,13 +598,13 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     ioString += "mType\n"
   //--- To many relationships
     ioString += "mPinInstances\n"
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mInstanceName.appendPropertyValueTo (&ioData)
@@ -624,13 +624,13 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
     enterToManyRelationshipObjectIndexes (from: self.mPinInstances.values, into: &ioData)
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mInstanceName"], let value = String.unarchiveFromDataRange (inData, range) {
@@ -642,13 +642,13 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
     if let range = inDictionary ["mY"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mY = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -660,13 +660,13 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
       let object = inRawObjectArray [idx].object as! SymbolTypeInDevice
       self.mType = object
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToManyRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -679,7 +679,7 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
       }
       self.mPinInstances = relationshipArray
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

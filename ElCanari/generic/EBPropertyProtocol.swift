@@ -16,6 +16,8 @@ protocol EBStoredPropertyProtocol : Equatable {
 
   static func convertFromNSObject (object : NSObject) -> Self
 
+  static func unarchiveFromDataRange (_ inData : Data, _ inRange : NSRange) -> Self?
+
   func appendPropertyValueTo (_ ioData : inout Data)
 
 }

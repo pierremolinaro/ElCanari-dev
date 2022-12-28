@@ -540,7 +540,7 @@ final class NetInProject : EBManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mNetName\n"
@@ -550,13 +550,13 @@ final class NetInProject : EBManagedObject,
   //--- To many relationships
     ioString += "mPoints\n"
     ioString += "mTracks\n"
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mNetName.appendPropertyValueTo (&ioData)
@@ -571,13 +571,13 @@ final class NetInProject : EBManagedObject,
   //--- To many relationships
     enterToManyRelationshipObjectIndexes (from: self.mPoints.values, into: &ioData)
     enterToManyRelationshipObjectIndexes (from: self.mTracks.values, into: &ioData)
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mNetName"], let value = String.unarchiveFromDataRange (inData, range) {
@@ -586,13 +586,13 @@ final class NetInProject : EBManagedObject,
     if let range = inDictionary ["mWarnsExactlyOneLabel"], let value = Bool.unarchiveFromDataRange (inData, range) {
       self.mWarnsExactlyOneLabel = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -600,13 +600,13 @@ final class NetInProject : EBManagedObject,
       let object = inRawObjectArray [idx].object as! NetClassInProject
       self.mNetClass = object
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToManyRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -628,7 +628,7 @@ final class NetInProject : EBManagedObject,
       }
       self.mTracks = relationshipArray
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

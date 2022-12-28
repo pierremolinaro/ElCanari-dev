@@ -447,7 +447,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
   //--- To one relationships
@@ -455,13 +455,13 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
     ioString += "mType\n"
     ioString += "mPadProxy\n"
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
   //--- To one relationships
@@ -478,13 +478,13 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -500,7 +500,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
       let object = inRawObjectArray [idx].object as! PadProxyInDevice
       self.mPadProxy = object
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

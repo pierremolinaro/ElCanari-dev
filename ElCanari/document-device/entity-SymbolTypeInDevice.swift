@@ -455,7 +455,7 @@ final class SymbolTypeInDevice : EBManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mTypeName\n"
@@ -467,13 +467,13 @@ final class SymbolTypeInDevice : EBManagedObject,
   //--- To many relationships
     ioString += "mInstances\n"
     ioString += "mPinTypes\n"
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mTypeName.appendPropertyValueTo (&ioData)
@@ -490,13 +490,13 @@ final class SymbolTypeInDevice : EBManagedObject,
   //--- To many relationships
     enterToManyRelationshipObjectIndexes (from: self.mInstances.values, into: &ioData)
     enterToManyRelationshipObjectIndexes (from: self.mPinTypes.values, into: &ioData)
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mTypeName"], let value = String.unarchiveFromDataRange (inData, range) {
@@ -514,13 +514,13 @@ final class SymbolTypeInDevice : EBManagedObject,
     if let range = inDictionary ["mFilledBezierPath"], let value = NSBezierPath.unarchiveFromDataRange (inData, range) {
       self.mFilledBezierPath = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToManyRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -542,7 +542,7 @@ final class SymbolTypeInDevice : EBManagedObject,
       }
       self.mPinTypes = relationshipArray
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

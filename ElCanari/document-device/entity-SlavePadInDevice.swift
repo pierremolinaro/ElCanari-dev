@@ -562,7 +562,7 @@ final class SlavePadInDevice : EBManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mCenterX\n"
@@ -576,13 +576,13 @@ final class SlavePadInDevice : EBManagedObject,
   //--- To one relationships
     ioString += "mMasterPad\n"
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mCenterX.appendPropertyValueTo (&ioData)
@@ -607,13 +607,13 @@ final class SlavePadInDevice : EBManagedObject,
     }
     ioData.append (ascii: .lineFeed)
   //--- To many relationships
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mCenterX"], let value = Int.unarchiveFromDataRange (inData, range) {
@@ -640,13 +640,13 @@ final class SlavePadInDevice : EBManagedObject,
     if let range = inDictionary ["mStyle"], let value = SlavePadStyle.unarchiveFromDataRange (inData, range) {
       self.mStyle = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToOneRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToOneRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                            _ inRawObjectArray : [RawObject],
                                                            _ inData : Data) {
     super.setUpToOneRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -654,7 +654,7 @@ final class SlavePadInDevice : EBManagedObject,
       let object = inRawObjectArray [idx].object as! MasterPadInDevice
       self.mMasterPad = object
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation

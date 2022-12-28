@@ -1182,7 +1182,7 @@ final class DeviceRoot : EBManagedObject,
   //   appendPropertyNamesTo
   //····················································································································
 
-  override func appendPropertyNamesTo (_ ioString : inout String) {
+/*  override func appendPropertyNamesTo (_ ioString : inout String) {
     super.appendPropertyNamesTo (&ioString)
   //--- Atomic properties
     ioString += "mSelectedPageIndex\n"
@@ -1207,13 +1207,13 @@ final class DeviceRoot : EBManagedObject,
     ioString += "mPackages\n"
     ioString += "mSymbolTypes\n"
     ioString += "mPadProxies\n"
-  }
+  } */
 
   //····················································································································
   //   appendPropertyValuesTo
   //····················································································································
 
-  override func appendPropertyValuesTo (_ ioData : inout Data) {
+/*  override func appendPropertyValuesTo (_ ioData : inout Data) {
     super.appendPropertyValuesTo (&ioData)
   //--- Atomic properties
     self.mSelectedPageIndex.appendPropertyValueTo (&ioData)
@@ -1253,13 +1253,13 @@ final class DeviceRoot : EBManagedObject,
     enterToManyRelationshipObjectIndexes (from: self.mPackages.values, into: &ioData)
     enterToManyRelationshipObjectIndexes (from: self.mSymbolTypes.values, into: &ioData)
     enterToManyRelationshipObjectIndexes (from: self.mPadProxies.values, into: &ioData)
-  }
+  } */
 
   //····················································································································
   //    setUpPropertiesWithTextDictionary
   //····················································································································
 
-  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpPropertiesWithTextDictionary (_ inDictionary : [String : NSRange],
                                                    _ inData : Data) {
     super.setUpPropertiesWithTextDictionary (inDictionary, inData)
     if let range = inDictionary ["mSelectedPageIndex"], let value = Int.unarchiveFromDataRange (inData, range) {
@@ -1307,13 +1307,13 @@ final class DeviceRoot : EBManagedObject,
     if let range = inDictionary ["mSymbolDisplayZoom"], let value = Int.unarchiveFromDataRange (inData, range) {
       self.mSymbolDisplayZoom = value
     }
-  }
+  } */
 
   //····················································································································
   //    setUpToManyRelationshipsWithTextDictionary
   //····················································································································
 
-  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
+/*  override func setUpToManyRelationshipsWithTextDictionary (_ inDictionary : [String : NSRange],
                                                             _ inRawObjectArray : [RawObject],
                                                             _ inData : Data) {
     super.setUpToManyRelationshipsWithTextDictionary (inDictionary, inRawObjectArray, inData)
@@ -1362,7 +1362,7 @@ final class DeviceRoot : EBManagedObject,
       }
       self.mPadProxies = relationshipArray
     }
-  }
+  } */
 
   //····················································································································
   //   accessibleObjectsForSaveOperation
