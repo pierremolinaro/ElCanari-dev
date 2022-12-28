@@ -63,11 +63,11 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   //  Setup
   //····················································································································
 
-  final func setUpWithDictionary (_ inDictionary : [String : Any],
-                                  managedObjectArray inManagedObjectArray : [EBManagedObject]) {
+  final func setUpProperties (withDictionary inDictionary : [String : Any],
+                              managedObjectArray inManagedObjectArray : [EBManagedObject]) {
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorablePropertyProtocol {
+      if let storedProperty = property.value as? DocumentStorablePropertyProtocol, storedProperty.key != nil {
         storedProperty.initialize (fromDictionary: inDictionary, managedObjectArray: inManagedObjectArray)
       }
     }
@@ -95,7 +95,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
   final func accessibleObjectsForSaveOperation (objects ioObjectArray : inout [EBManagedObject]) {
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorablePropertyProtocol {
+      if let storedProperty = property.value as? DocumentStorablePropertyProtocol, storedProperty.key != nil {
         storedProperty.enterRelationshipObjects (intoArray: &ioObjectArray)
       }
     }
@@ -110,7 +110,7 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
     // Swift.print ("Object of class \(self.className.pathExtension)")
     let mirror = Mirror (reflecting: self)
     for property in mirror.children {
-      if let storedProperty = property.value as? DocumentStorablePropertyProtocol {
+      if let storedProperty = property.value as? DocumentStorablePropertyProtocol, storedProperty.key != nil {
         storedProperty.store (inDictionary: &ioDictionary)
         // Swift.print ("  \(key)")
       }
@@ -152,10 +152,10 @@ class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+  final func setSignatureObserver (observer inObserver : EBSignatureObserverProtocol?) {
     self.mSignatureObserver?.clearSignatureCache ()
-    self.mSignatureObserver = observer
-    observer?.clearSignatureCache ()
+    self.mSignatureObserver = inObserver
+    inObserver?.clearSignatureCache ()
   }
 
   //····················································································································

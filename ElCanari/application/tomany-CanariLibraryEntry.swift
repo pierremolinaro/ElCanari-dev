@@ -754,7 +754,7 @@ final class PreferencesArrayOf_CanariLibraryEntry : StoredArrayOf_CanariLibraryE
       var objectArray = EBReferenceArray <CanariLibraryEntry> ()
       for dictionary in array {
         let object = newInstanceOfEntityNamed (self.undoManager, "CanariLibraryEntry") as! CanariLibraryEntry
-        object.setUpWithDictionary (dictionary, managedObjectArray: []) // setUpAtomicPropertiesWithDictionary (dictionary)
+        object.setUpProperties (withDictionary: dictionary, managedObjectArray: [])
         objectArray.append (object)
       }
       self.setProp (objectArray)

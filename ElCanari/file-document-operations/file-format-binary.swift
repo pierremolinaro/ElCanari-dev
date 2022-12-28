@@ -93,7 +93,7 @@ private func raiseInvalidDataFormatError (dataFormat : UInt8) throws {
     var idx = 0
     for d in dictionaryArray {
       let object = objectArray [idx]
-      object.setUpWithDictionary (d, managedObjectArray: objectArray)
+      object.setUpProperties (withDictionary: d, managedObjectArray: objectArray)
       idx += 1
     }
     resultRootObject = objectArray [0] // Set root object

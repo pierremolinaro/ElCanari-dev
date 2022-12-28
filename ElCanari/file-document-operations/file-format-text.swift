@@ -48,7 +48,6 @@ struct RawObject {
     appendDocumentFileOperationInfo ("read \(classDefinition.count) classes done")
   //--- Read objects
 //    Swift.print ("Read objects")
-//    var idx = 0
     var rawObjectArray = [RawObject] ()
     let scannerData = ioDataScanner.data
     while !ioDataScanner.eof (), ioDataScanner.testAccept (byte: ASCII.at.rawValue) {
@@ -126,7 +125,6 @@ struct RawObject {
   fileStringData.append (base62Encoded: Int (inDocumentData.documentMetadataStatus))
   fileStringData.append (ascii: .lineFeed)
 //--- Append metadata dictionary
-  // .sortedKeys is only available in 10.13
   let textMetaData = try JSONSerialization.data (withJSONObject: inDocumentData.documentMetadataDictionary, options: .sortedKeys)
   fileStringData += textMetaData
   fileStringData.append (ascii: .lineFeed)
