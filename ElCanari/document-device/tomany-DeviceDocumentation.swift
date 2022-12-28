@@ -37,30 +37,30 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func addEBObserverOf_mFileName (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mFileName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mFileName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mFileName_property.addEBObserver (inObserver)
+        managedObject.mFileName_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mFileName (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mFileName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mFileName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mFileName_property.removeEBObserver (inObserver)
+        managedObject.mFileName_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -72,7 +72,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mFileName.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mFileName_property.addEBObserver (observer)
+            managedObject.mFileName_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mFileName.triggerPacking ()
           }
@@ -88,7 +88,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mFileName_property.removeEBObserver (observer)
+          managedObject.mFileName_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mFileName.triggerPacking ()
@@ -104,30 +104,30 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func addEBObserverOf_mFileData (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mFileData_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mFileData.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mFileData_property.addEBObserver (inObserver)
+        managedObject.mFileData_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mFileData (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mFileData_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mFileData.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mFileData_property.removeEBObserver (inObserver)
+        managedObject.mFileData_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -139,7 +139,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mFileData.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mFileData_property.addEBObserver (observer)
+            managedObject.mFileData_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mFileData.triggerPacking ()
           }
@@ -155,7 +155,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mFileData_property.removeEBObserver (observer)
+          managedObject.mFileData_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mFileData.triggerPacking ()
@@ -171,30 +171,30 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
 
   //····················································································································
 
-  final func addEBObserverOf_fileSize (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_fileSize_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_fileSize.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.fileSize_property.addEBObserver (inObserver)
+        managedObject.fileSize_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_fileSize (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_fileSize_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_fileSize.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.fileSize_property.removeEBObserver (inObserver)
+        managedObject.fileSize_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -205,7 +205,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_fileSize.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.fileSize_property.addEBObserver (observer)
+          managedObject.fileSize_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_fileSize.triggerPacking ()
         }
@@ -219,7 +219,7 @@ class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <Devic
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_fileSize.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.fileSize_property.removeEBObserver (observer)
+          managedObject.fileSize_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_fileSize.triggerPacking ()
         }

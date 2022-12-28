@@ -16,45 +16,45 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.layerConfiguration_property.removeEBObserver (self.layerConfiguration_property) // Stored property
-      oldValue.selectedTab_property.removeEBObserver (self.selectedTab_property) // Stored property
-      oldValue.comments_property.removeEBObserver (self.comments_property) // Stored property
-      oldValue.minPPTPTTTWdisplayUnit_property.removeEBObserver (self.minPPTPTTTWdisplayUnit_property) // Stored property
-      oldValue.minPPTPTTTW_property.removeEBObserver (self.minPPTPTTTW_property) // Stored property
-      oldValue.minValueForOARdisplayUnit_property.removeEBObserver (self.minValueForOARdisplayUnit_property) // Stored property
-      oldValue.minValueForOARinEBUnit_property.removeEBObserver (self.minValueForOARinEBUnit_property) // Stored property
-      oldValue.minValueForPHDdisplayUnit_property.removeEBObserver (self.minValueForPHDdisplayUnit_property) // Stored property
-      oldValue.minValueForPHDinEBUnit_property.removeEBObserver (self.minValueForPHDinEBUnit_property) // Stored property
-      oldValue.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (self.minValueForBoardLimitWidthDisplayUnit_property) // Stored property
-      oldValue.minValueForBoardLimitWidth_property.removeEBObserver (self.minValueForBoardLimitWidth_property) // Stored property
-      oldValue.title_property.removeEBObserver (self.title_property) // Stored property
-      oldValue.drillDataFileExtension_property.removeEBObserver (self.drillDataFileExtension_property) // Stored property
-      oldValue.hasInnerElements_property.removeEBObserver (self.hasInnerElements_property) // Transient property
-      oldValue.hasSixLayers_property.removeEBObserver (self.hasSixLayers_property) // Transient property
-      oldValue.hasDataWarning_property.removeEBObserver (self.hasDataWarning_property) // Transient property
-      oldValue.emptyDrillFileExtension_property.removeEBObserver (self.emptyDrillFileExtension_property) // Transient property
-      oldValue.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
+      oldValue.layerConfiguration_property.stopsBeingObserved (by: self.layerConfiguration_property) // Stored property
+      oldValue.selectedTab_property.stopsBeingObserved (by: self.selectedTab_property) // Stored property
+      oldValue.comments_property.stopsBeingObserved (by: self.comments_property) // Stored property
+      oldValue.minPPTPTTTWdisplayUnit_property.stopsBeingObserved (by: self.minPPTPTTTWdisplayUnit_property) // Stored property
+      oldValue.minPPTPTTTW_property.stopsBeingObserved (by: self.minPPTPTTTW_property) // Stored property
+      oldValue.minValueForOARdisplayUnit_property.stopsBeingObserved (by: self.minValueForOARdisplayUnit_property) // Stored property
+      oldValue.minValueForOARinEBUnit_property.stopsBeingObserved (by: self.minValueForOARinEBUnit_property) // Stored property
+      oldValue.minValueForPHDdisplayUnit_property.stopsBeingObserved (by: self.minValueForPHDdisplayUnit_property) // Stored property
+      oldValue.minValueForPHDinEBUnit_property.stopsBeingObserved (by: self.minValueForPHDinEBUnit_property) // Stored property
+      oldValue.minValueForBoardLimitWidthDisplayUnit_property.stopsBeingObserved (by: self.minValueForBoardLimitWidthDisplayUnit_property) // Stored property
+      oldValue.minValueForBoardLimitWidth_property.stopsBeingObserved (by: self.minValueForBoardLimitWidth_property) // Stored property
+      oldValue.title_property.stopsBeingObserved (by: self.title_property) // Stored property
+      oldValue.drillDataFileExtension_property.stopsBeingObserved (by: self.drillDataFileExtension_property) // Stored property
+      oldValue.hasInnerElements_property.stopsBeingObserved (by: self.hasInnerElements_property) // Transient property
+      oldValue.hasSixLayers_property.stopsBeingObserved (by: self.hasSixLayers_property) // Transient property
+      oldValue.hasDataWarning_property.stopsBeingObserved (by: self.hasDataWarning_property) // Transient property
+      oldValue.emptyDrillFileExtension_property.stopsBeingObserved (by: self.emptyDrillFileExtension_property) // Transient property
+      oldValue.signatureForERCChecking_property.stopsBeingObserved (by: self.signatureForERCChecking_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.layerConfiguration_property.addEBObserver (self.layerConfiguration_property) // Stored property
-      newValue.selectedTab_property.addEBObserver (self.selectedTab_property) // Stored property
-      newValue.comments_property.addEBObserver (self.comments_property) // Stored property
-      newValue.minPPTPTTTWdisplayUnit_property.addEBObserver (self.minPPTPTTTWdisplayUnit_property) // Stored property
-      newValue.minPPTPTTTW_property.addEBObserver (self.minPPTPTTTW_property) // Stored property
-      newValue.minValueForOARdisplayUnit_property.addEBObserver (self.minValueForOARdisplayUnit_property) // Stored property
-      newValue.minValueForOARinEBUnit_property.addEBObserver (self.minValueForOARinEBUnit_property) // Stored property
-      newValue.minValueForPHDdisplayUnit_property.addEBObserver (self.minValueForPHDdisplayUnit_property) // Stored property
-      newValue.minValueForPHDinEBUnit_property.addEBObserver (self.minValueForPHDinEBUnit_property) // Stored property
-      newValue.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (self.minValueForBoardLimitWidthDisplayUnit_property) // Stored property
-      newValue.minValueForBoardLimitWidth_property.addEBObserver (self.minValueForBoardLimitWidth_property) // Stored property
-      newValue.title_property.addEBObserver (self.title_property) // Stored property
-      newValue.drillDataFileExtension_property.addEBObserver (self.drillDataFileExtension_property) // Stored property
-      newValue.hasInnerElements_property.addEBObserver (self.hasInnerElements_property) // Transient property
-      newValue.hasSixLayers_property.addEBObserver (self.hasSixLayers_property) // Transient property
-      newValue.hasDataWarning_property.addEBObserver (self.hasDataWarning_property) // Transient property
-      newValue.emptyDrillFileExtension_property.addEBObserver (self.emptyDrillFileExtension_property) // Transient property
-      newValue.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property) // Transient property
+      newValue.layerConfiguration_property.startsToBeObserved (by: self.layerConfiguration_property) // Stored property
+      newValue.selectedTab_property.startsToBeObserved (by: self.selectedTab_property) // Stored property
+      newValue.comments_property.startsToBeObserved (by: self.comments_property) // Stored property
+      newValue.minPPTPTTTWdisplayUnit_property.startsToBeObserved (by: self.minPPTPTTTWdisplayUnit_property) // Stored property
+      newValue.minPPTPTTTW_property.startsToBeObserved (by: self.minPPTPTTTW_property) // Stored property
+      newValue.minValueForOARdisplayUnit_property.startsToBeObserved (by: self.minValueForOARdisplayUnit_property) // Stored property
+      newValue.minValueForOARinEBUnit_property.startsToBeObserved (by: self.minValueForOARinEBUnit_property) // Stored property
+      newValue.minValueForPHDdisplayUnit_property.startsToBeObserved (by: self.minValueForPHDdisplayUnit_property) // Stored property
+      newValue.minValueForPHDinEBUnit_property.startsToBeObserved (by: self.minValueForPHDinEBUnit_property) // Stored property
+      newValue.minValueForBoardLimitWidthDisplayUnit_property.startsToBeObserved (by: self.minValueForBoardLimitWidthDisplayUnit_property) // Stored property
+      newValue.minValueForBoardLimitWidth_property.startsToBeObserved (by: self.minValueForBoardLimitWidth_property) // Stored property
+      newValue.title_property.startsToBeObserved (by: self.title_property) // Stored property
+      newValue.drillDataFileExtension_property.startsToBeObserved (by: self.drillDataFileExtension_property) // Stored property
+      newValue.hasInnerElements_property.startsToBeObserved (by: self.hasInnerElements_property) // Transient property
+      newValue.hasSixLayers_property.startsToBeObserved (by: self.hasSixLayers_property) // Transient property
+      newValue.hasDataWarning_property.startsToBeObserved (by: self.hasDataWarning_property) // Transient property
+      newValue.emptyDrillFileExtension_property.startsToBeObserved (by: self.emptyDrillFileExtension_property) // Transient property
+      newValue.signatureForERCChecking_property.startsToBeObserved (by: self.signatureForERCChecking_property) // Transient property
     }
   }
 
@@ -174,19 +174,19 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_fileGenerationParameterArray (_ inObserver : EBObserverProtocol) {
+  final func toMany_fileGenerationParameterArray_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_fileGenerationParameterArray.insert (inObserver)
     if let object = self.propval {
-      object.fileGenerationParameterArray_property.addEBObserver (inObserver)
+      object.fileGenerationParameterArray_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_fileGenerationParameterArray (_ inObserver : EBObserverProtocol) {
+  final func toMany_fileGenerationParameterArray_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_fileGenerationParameterArray.remove (inObserver)
     if let object = self.propval {
-      object.fileGenerationParameterArray_property.removeEBObserver (inObserver)
+      object.fileGenerationParameterArray_property.stopsBeingObserved (by: inObserver)
     }
   }
 

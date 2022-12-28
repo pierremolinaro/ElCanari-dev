@@ -128,59 +128,59 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
   //--- mWidthUnit
     self.mWidthUnit_property.mReadModelFunction = nil 
     self.mWidthUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mWidthUnit (self.mWidthUnit_property)
+    self.selectedArray_property.toMany_mWidthUnit_StopsBeingObserved (by: self.mWidthUnit_property)
   //--- mX1
     self.mX1_property.mReadModelFunction = nil 
     self.mX1_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mX1 (self.mX1_property)
+    self.selectedArray_property.toMany_mX1_StopsBeingObserved (by: self.mX1_property)
   //--- mX1Unit
     self.mX1Unit_property.mReadModelFunction = nil 
     self.mX1Unit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mX1Unit (self.mX1Unit_property)
+    self.selectedArray_property.toMany_mX1Unit_StopsBeingObserved (by: self.mX1Unit_property)
   //--- mY1
     self.mY1_property.mReadModelFunction = nil 
     self.mY1_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mY1 (self.mY1_property)
+    self.selectedArray_property.toMany_mY1_StopsBeingObserved (by: self.mY1_property)
   //--- mY1Unit
     self.mY1Unit_property.mReadModelFunction = nil 
     self.mY1Unit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mY1Unit (self.mY1Unit_property)
+    self.selectedArray_property.toMany_mY1Unit_StopsBeingObserved (by: self.mY1Unit_property)
   //--- mX2
     self.mX2_property.mReadModelFunction = nil 
     self.mX2_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mX2 (self.mX2_property)
+    self.selectedArray_property.toMany_mX2_StopsBeingObserved (by: self.mX2_property)
   //--- mX2Unit
     self.mX2Unit_property.mReadModelFunction = nil 
     self.mX2Unit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mX2Unit (self.mX2Unit_property)
+    self.selectedArray_property.toMany_mX2Unit_StopsBeingObserved (by: self.mX2Unit_property)
   //--- mY2
     self.mY2_property.mReadModelFunction = nil 
     self.mY2_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mY2 (self.mY2_property)
+    self.selectedArray_property.toMany_mY2_StopsBeingObserved (by: self.mY2_property)
   //--- mY2Unit
     self.mY2Unit_property.mReadModelFunction = nil 
     self.mY2Unit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mY2Unit (self.mY2Unit_property)
+    self.selectedArray_property.toMany_mY2Unit_StopsBeingObserved (by: self.mY2Unit_property)
   //--- mLayer
     self.mLayer_property.mReadModelFunction = nil 
     self.mLayer_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mLayer (self.mLayer_property)
+    self.selectedArray_property.toMany_mLayer_StopsBeingObserved (by: self.mLayer_property)
   //--- mWidth
     self.mWidth_property.mReadModelFunction = nil 
     self.mWidth_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mWidth (self.mWidth_property)
+    self.selectedArray_property.toMany_mWidth_StopsBeingObserved (by: self.mWidth_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StopsBeingObserved (by: self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StopsBeingObserved (by: self.selectionDisplay_property)
   } */
 
   //····················································································································
 
   private final func bind_property_mWidthUnit () {
-    self.selectedArray_property.addEBObserverOf_mWidthUnit (self.mWidthUnit_property)
+    self.selectedArray_property.toMany_mWidthUnit_StartsToBeObserved (by: self.mWidthUnit_property)
     self.mWidthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -231,7 +231,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
   //····················································································································
 
   private final func bind_property_mX1 () {
-    self.selectedArray_property.addEBObserverOf_mX1 (self.mX1_property)
+    self.selectedArray_property.toMany_mX1_StartsToBeObserved (by: self.mX1_property)
     self.mX1_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -282,7 +282,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
   //····················································································································
 
   private final func bind_property_mX1Unit () {
-    self.selectedArray_property.addEBObserverOf_mX1Unit (self.mX1Unit_property)
+    self.selectedArray_property.toMany_mX1Unit_StartsToBeObserved (by: self.mX1Unit_property)
     self.mX1Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -333,7 +333,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
   //····················································································································
 
   private final func bind_property_mY1 () {
-    self.selectedArray_property.addEBObserverOf_mY1 (self.mY1_property)
+    self.selectedArray_property.toMany_mY1_StartsToBeObserved (by: self.mY1_property)
     self.mY1_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -384,7 +384,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
   //····················································································································
 
   private final func bind_property_mY1Unit () {
-    self.selectedArray_property.addEBObserverOf_mY1Unit (self.mY1Unit_property)
+    self.selectedArray_property.toMany_mY1Unit_StartsToBeObserved (by: self.mY1Unit_property)
     self.mY1Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -435,7 +435,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
   //····················································································································
 
   private final func bind_property_mX2 () {
-    self.selectedArray_property.addEBObserverOf_mX2 (self.mX2_property)
+    self.selectedArray_property.toMany_mX2_StartsToBeObserved (by: self.mX2_property)
     self.mX2_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -486,7 +486,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
   //····················································································································
 
   private final func bind_property_mX2Unit () {
-    self.selectedArray_property.addEBObserverOf_mX2Unit (self.mX2Unit_property)
+    self.selectedArray_property.toMany_mX2Unit_StartsToBeObserved (by: self.mX2Unit_property)
     self.mX2Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -537,7 +537,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
   //····················································································································
 
   private final func bind_property_mY2 () {
-    self.selectedArray_property.addEBObserverOf_mY2 (self.mY2_property)
+    self.selectedArray_property.toMany_mY2_StartsToBeObserved (by: self.mY2_property)
     self.mY2_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -588,7 +588,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
   //····················································································································
 
   private final func bind_property_mY2Unit () {
-    self.selectedArray_property.addEBObserverOf_mY2Unit (self.mY2Unit_property)
+    self.selectedArray_property.toMany_mY2Unit_StartsToBeObserved (by: self.mY2Unit_property)
     self.mY2Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -639,7 +639,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
   //····················································································································
 
   private final func bind_property_mLayer () {
-    self.selectedArray_property.addEBObserverOf_mLayer (self.mLayer_property)
+    self.selectedArray_property.toMany_mLayer_StartsToBeObserved (by: self.mLayer_property)
     self.mLayer_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -690,7 +690,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
   //····················································································································
 
   private final func bind_property_mWidth () {
-    self.selectedArray_property.addEBObserverOf_mWidth (self.mWidth_property)
+    self.selectedArray_property.toMany_mWidth_StartsToBeObserved (by: self.mWidth_property)
     self.mWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -741,7 +741,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StartsToBeObserved (by: self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -780,7 +780,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardLineSelectionCont
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StartsToBeObserved (by: self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {

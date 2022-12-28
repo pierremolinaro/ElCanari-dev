@@ -100,36 +100,36 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
   /* final func unbind_selection () {
   //--- documentSize
     self.documentSize_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_documentSize (self.documentSize_property)
+    self.mModel?.toMany_documentSize_StopsBeingObserved (by: self.documentSize_property)
   //--- instanceCount
     self.instanceCount_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_instanceCount (self.instanceCount_property)
+    self.mModel?.toMany_instanceCount_StopsBeingObserved (by: self.instanceCount_property)
   //--- mFileData
     self.mFileData_property.mReadModelFunction = nil 
     self.mFileData_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_mFileData (self.mFileData_property)
+    self.mModel?.toMany_mFileData_StopsBeingObserved (by: self.mFileData_property)
   //--- mFilledBezierPath
     self.mFilledBezierPath_property.mReadModelFunction = nil 
     self.mFilledBezierPath_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_mFilledBezierPath (self.mFilledBezierPath_property)
+    self.mModel?.toMany_mFilledBezierPath_StopsBeingObserved (by: self.mFilledBezierPath_property)
   //--- mStrokeBezierPath
     self.mStrokeBezierPath_property.mReadModelFunction = nil 
     self.mStrokeBezierPath_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_mStrokeBezierPath (self.mStrokeBezierPath_property)
+    self.mModel?.toMany_mStrokeBezierPath_StopsBeingObserved (by: self.mStrokeBezierPath_property)
   //--- mTypeName
     self.mTypeName_property.mReadModelFunction = nil 
     self.mTypeName_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_mTypeName (self.mTypeName_property)
+    self.mModel?.toMany_mTypeName_StopsBeingObserved (by: self.mTypeName_property)
   //--- mVersion
     self.mVersion_property.mReadModelFunction = nil 
     self.mVersion_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_mVersion (self.mVersion_property)
+    self.mModel?.toMany_mVersion_StopsBeingObserved (by: self.mVersion_property)
   //--- pinNameShape
     self.pinNameShape_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_pinNameShape (self.pinNameShape_property)
+    self.mModel?.toMany_pinNameShape_StopsBeingObserved (by: self.pinNameShape_property)
   //--- versionString
     self.versionString_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_versionString (self.versionString_property)
+    self.mModel?.toMany_versionString_StopsBeingObserved (by: self.versionString_property)
   //---
     self.mModel = nil
   } */
@@ -137,7 +137,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
   //···················································································································*
 
   private final func bind_property_documentSize (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
-    model.addEBObserverOf_documentSize (self.documentSize_property)
+    model.toMany_documentSize_StartsToBeObserved (by: self.documentSize_property)
     self.documentSize_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -177,7 +177,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
   //···················································································································*
 
   private final func bind_property_instanceCount (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
-    model.addEBObserverOf_instanceCount (self.instanceCount_property)
+    model.toMany_instanceCount_StartsToBeObserved (by: self.instanceCount_property)
     self.instanceCount_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -217,7 +217,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
   //···················································································································*
 
   private final func bind_property_mFileData (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
-    model.addEBObserverOf_mFileData (self.mFileData_property)
+    model.toMany_mFileData_StartsToBeObserved (by: self.mFileData_property)
     self.mFileData_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -269,7 +269,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
   //···················································································································*
 
   private final func bind_property_mFilledBezierPath (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
-    model.addEBObserverOf_mFilledBezierPath (self.mFilledBezierPath_property)
+    model.toMany_mFilledBezierPath_StartsToBeObserved (by: self.mFilledBezierPath_property)
     self.mFilledBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -321,7 +321,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
   //···················································································································*
 
   private final func bind_property_mStrokeBezierPath (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
-    model.addEBObserverOf_mStrokeBezierPath (self.mStrokeBezierPath_property)
+    model.toMany_mStrokeBezierPath_StartsToBeObserved (by: self.mStrokeBezierPath_property)
     self.mStrokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -373,7 +373,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
   //···················································································································*
 
   private final func bind_property_mTypeName (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
-    model.addEBObserverOf_mTypeName (self.mTypeName_property)
+    model.toMany_mTypeName_StartsToBeObserved (by: self.mTypeName_property)
     self.mTypeName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -425,7 +425,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
   //···················································································································*
 
   private final func bind_property_mVersion (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
-    model.addEBObserverOf_mVersion (self.mVersion_property)
+    model.toMany_mVersion_StartsToBeObserved (by: self.mVersion_property)
     self.mVersion_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -477,7 +477,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
   //···················································································································*
 
   private final func bind_property_pinNameShape (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
-    model.addEBObserverOf_pinNameShape (self.pinNameShape_property)
+    model.toMany_pinNameShape_StartsToBeObserved (by: self.pinNameShape_property)
     self.pinNameShape_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -517,7 +517,7 @@ final class SelectionController_AutoLayoutDeviceDocument_symbolTypeSelection : E
   //···················································································································*
 
   private final func bind_property_versionString (model : ReadOnlyArrayOf_SymbolTypeInDevice) {
-    model.addEBObserverOf_versionString (self.versionString_property)
+    model.toMany_versionString_StartsToBeObserved (by: self.versionString_property)
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {

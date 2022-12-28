@@ -14,14 +14,14 @@ class EBObservedObject : EBSwiftBaseObject {
 
   //····················································································································
 
-  final func addEBObserver (_ inObserver : EBObserverProtocol) {
+  final func startsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObservers.insert (inObserver)
     inObserver.observedObjectDidChange ()
   }
 
   //····················································································································
 
-  final func removeEBObserver (_ inObserver : EBObserverProtocol) {
+  final func stopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObservers.remove (inObserver)
     inObserver.observedObjectDidChange ()
   }

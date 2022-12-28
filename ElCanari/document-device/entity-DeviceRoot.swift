@@ -771,7 +771,7 @@ final class DeviceRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mImageData_property.addEBObserver (self.imageIsValid_property)
+    self.mImageData_property.startsToBeObserved (by: self.imageIsValid_property)
   //--- Atomic property: unconnectedPins
     self.unconnectedPins_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -788,7 +788,7 @@ final class DeviceRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbolInstances_property.addEBObserverOf_unconnectedPins (self.unconnectedPins_property)
+    self.mSymbolInstances_property.toMany_unconnectedPins_StartsToBeObserved (by: self.unconnectedPins_property)
   //--- Atomic property: inconsistentPackagePadNameSetsMessage
     self.inconsistentPackagePadNameSetsMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -808,8 +808,8 @@ final class DeviceRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mPackages_property.addEBObserverOf_padNameSet (self.inconsistentPackagePadNameSetsMessage_property)
-    self.mPackages_property.addEBObserverOf_mName (self.inconsistentPackagePadNameSetsMessage_property)
+    self.mPackages_property.toMany_padNameSet_StartsToBeObserved (by: self.inconsistentPackagePadNameSetsMessage_property)
+    self.mPackages_property.toMany_mName_StartsToBeObserved (by: self.inconsistentPackagePadNameSetsMessage_property)
   //--- Atomic property: inconsistentSymbolNameSetMessage
     self.inconsistentSymbolNameSetMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -829,8 +829,8 @@ final class DeviceRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbolInstances_property.addEBObserverOf_symbolQualifiedName (self.inconsistentSymbolNameSetMessage_property)
-    self.mSymbolInstances_property.addEBObserverOf_pinSymbolQualifiedNames (self.inconsistentSymbolNameSetMessage_property)
+    self.mSymbolInstances_property.toMany_symbolQualifiedName_StartsToBeObserved (by: self.inconsistentSymbolNameSetMessage_property)
+    self.mSymbolInstances_property.toMany_pinSymbolQualifiedNames_StartsToBeObserved (by: self.inconsistentSymbolNameSetMessage_property)
   //--- Atomic property: packagePadNameSetsAreConsistent
     self.packagePadNameSetsAreConsistent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -847,7 +847,7 @@ final class DeviceRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mPackages_property.addEBObserverOf_padNameSet (self.packagePadNameSetsAreConsistent_property)
+    self.mPackages_property.toMany_padNameSet_StartsToBeObserved (by: self.packagePadNameSetsAreConsistent_property)
   //--- Atomic property: symbolNameAreConsistent
     self.symbolNameAreConsistent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -864,7 +864,7 @@ final class DeviceRoot : EBManagedObject,
         return .empty
       }
     }
-    self.inconsistentSymbolNameSetMessage_property.addEBObserver (self.symbolNameAreConsistent_property)
+    self.inconsistentSymbolNameSetMessage_property.startsToBeObserved (by: self.symbolNameAreConsistent_property)
   //--- Atomic property: symbolTypeNames
     self.symbolTypeNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -881,7 +881,7 @@ final class DeviceRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbolTypes_property.addEBObserverOf_mTypeName (self.symbolTypeNames_property)
+    self.mSymbolTypes_property.toMany_mTypeName_StartsToBeObserved (by: self.symbolTypeNames_property)
   //--- Atomic property: unconnectedPads
     self.unconnectedPads_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -901,8 +901,8 @@ final class DeviceRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mPadProxies_property.addEBObserverOf_mPadName (self.unconnectedPads_property)
-    self.mPadProxies_property.addEBObserverOf_isConnected (self.unconnectedPads_property)
+    self.mPadProxies_property.toMany_mPadName_StartsToBeObserved (by: self.unconnectedPads_property)
+    self.mPadProxies_property.toMany_isConnected_StartsToBeObserved (by: self.unconnectedPads_property)
   //--- Atomic property: assignedPadProxies
     self.assignedPadProxies_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -928,10 +928,10 @@ final class DeviceRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mPadProxies_property.addEBObserverOf_mPadName (self.assignedPadProxies_property)
-    self.mPadProxies_property.addEBObserverOf_symbolName (self.assignedPadProxies_property)
-    self.mPadProxies_property.addEBObserverOf_mPinInstanceName (self.assignedPadProxies_property)
-    self.mPadProxies_property.addEBObserverOf_isConnected (self.assignedPadProxies_property)
+    self.mPadProxies_property.toMany_mPadName_StartsToBeObserved (by: self.assignedPadProxies_property)
+    self.mPadProxies_property.toMany_symbolName_StartsToBeObserved (by: self.assignedPadProxies_property)
+    self.mPadProxies_property.toMany_mPinInstanceName_StartsToBeObserved (by: self.assignedPadProxies_property)
+    self.mPadProxies_property.toMany_isConnected_StartsToBeObserved (by: self.assignedPadProxies_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -978,17 +978,17 @@ final class DeviceRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mTitle_property.addEBObserver (self.issues_property)
-    self.mPrefix_property.addEBObserver (self.issues_property)
-    self.inconsistentPackagePadNameSetsMessage_property.addEBObserver (self.issues_property)
-    self.inconsistentSymbolNameSetMessage_property.addEBObserver (self.issues_property)
-    self.unconnectedPins_property.addEBObserver (self.issues_property)
-    self.unconnectedPads_property.addEBObserver (self.issues_property)
-    self.mPackages_property.addEBObserverOf_mVersion (self.issues_property)
-    self.mPackages_property.addEBObserverOf_mName (self.issues_property)
-    self.mSymbolTypes_property.addEBObserverOf_mVersion (self.issues_property)
-    self.mSymbolTypes_property.addEBObserverOf_mTypeName (self.issues_property)
-    self.mSymbolTypes_property.addEBObserverOf_instanceCount (self.issues_property)
+    self.mTitle_property.startsToBeObserved (by: self.issues_property)
+    self.mPrefix_property.startsToBeObserved (by: self.issues_property)
+    self.inconsistentPackagePadNameSetsMessage_property.startsToBeObserved (by: self.issues_property)
+    self.inconsistentSymbolNameSetMessage_property.startsToBeObserved (by: self.issues_property)
+    self.unconnectedPins_property.startsToBeObserved (by: self.issues_property)
+    self.unconnectedPads_property.startsToBeObserved (by: self.issues_property)
+    self.mPackages_property.toMany_mVersion_StartsToBeObserved (by: self.issues_property)
+    self.mPackages_property.toMany_mName_StartsToBeObserved (by: self.issues_property)
+    self.mSymbolTypes_property.toMany_mVersion_StartsToBeObserved (by: self.issues_property)
+    self.mSymbolTypes_property.toMany_mTypeName_StartsToBeObserved (by: self.issues_property)
+    self.mSymbolTypes_property.toMany_instanceCount_StartsToBeObserved (by: self.issues_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mSymbolInstances_property.setOppositeRelationShipFunctions (

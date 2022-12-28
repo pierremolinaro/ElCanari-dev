@@ -71,25 +71,25 @@ final class SelectionController_AutoLayoutProjectDocument_wireInSchematicSelecti
     self.selectedArray_property.setDataProvider (nil)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StopsBeingObserved (by: self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StopsBeingObserved (by: self.selectionDisplay_property)
   //--- netName
     self.netName_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_netName (self.netName_property)
+    self.selectedArray_property.toMany_netName_StopsBeingObserved (by: self.netName_property)
   //--- netClassName
     self.netClassName_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_netClassName (self.netClassName_property)
+    self.selectedArray_property.toMany_netClassName_StopsBeingObserved (by: self.netClassName_property)
   //--- hasNet
     self.hasNet_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_hasNet (self.hasNet_property)
+    self.selectedArray_property.toMany_hasNet_StopsBeingObserved (by: self.hasNet_property)
   } */
 
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StartsToBeObserved (by: self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -128,7 +128,7 @@ final class SelectionController_AutoLayoutProjectDocument_wireInSchematicSelecti
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StartsToBeObserved (by: self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -167,7 +167,7 @@ final class SelectionController_AutoLayoutProjectDocument_wireInSchematicSelecti
   //····················································································································
 
   private final func bind_property_netName () {
-    self.selectedArray_property.addEBObserverOf_netName (self.netName_property)
+    self.selectedArray_property.toMany_netName_StartsToBeObserved (by: self.netName_property)
     self.netName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -206,7 +206,7 @@ final class SelectionController_AutoLayoutProjectDocument_wireInSchematicSelecti
   //····················································································································
 
   private final func bind_property_netClassName () {
-    self.selectedArray_property.addEBObserverOf_netClassName (self.netClassName_property)
+    self.selectedArray_property.toMany_netClassName_StartsToBeObserved (by: self.netClassName_property)
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -245,7 +245,7 @@ final class SelectionController_AutoLayoutProjectDocument_wireInSchematicSelecti
   //····················································································································
 
   private final func bind_property_hasNet () {
-    self.selectedArray_property.addEBObserverOf_hasNet (self.hasNet_property)
+    self.selectedArray_property.toMany_hasNet_StartsToBeObserved (by: self.hasNet_property)
     self.hasNet_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {

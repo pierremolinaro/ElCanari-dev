@@ -128,58 +128,58 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
   //--- mY
     self.mY_property.mReadModelFunction = nil 
     self.mY_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mY (self.mY_property)
+    self.selectedArray_property.toMany_mY_StopsBeingObserved (by: self.mY_property)
   //--- mWidth
     self.mWidth_property.mReadModelFunction = nil 
     self.mWidth_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mWidth (self.mWidth_property)
+    self.selectedArray_property.toMany_mWidth_StopsBeingObserved (by: self.mWidth_property)
   //--- mHeight
     self.mHeight_property.mReadModelFunction = nil 
     self.mHeight_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mHeight (self.mHeight_property)
+    self.selectedArray_property.toMany_mHeight_StopsBeingObserved (by: self.mHeight_property)
   //--- mIsInFrontLayer
     self.mIsInFrontLayer_property.mReadModelFunction = nil 
     self.mIsInFrontLayer_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mIsInFrontLayer (self.mIsInFrontLayer_property)
+    self.selectedArray_property.toMany_mIsInFrontLayer_StopsBeingObserved (by: self.mIsInFrontLayer_property)
   //--- mIsInBackLayer
     self.mIsInBackLayer_property.mReadModelFunction = nil 
     self.mIsInBackLayer_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mIsInBackLayer (self.mIsInBackLayer_property)
+    self.selectedArray_property.toMany_mIsInBackLayer_StopsBeingObserved (by: self.mIsInBackLayer_property)
   //--- mIsInInner1Layer
     self.mIsInInner1Layer_property.mReadModelFunction = nil 
     self.mIsInInner1Layer_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mIsInInner1Layer (self.mIsInInner1Layer_property)
+    self.selectedArray_property.toMany_mIsInInner1Layer_StopsBeingObserved (by: self.mIsInInner1Layer_property)
   //--- mIsInInner2Layer
     self.mIsInInner2Layer_property.mReadModelFunction = nil 
     self.mIsInInner2Layer_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mIsInInner2Layer (self.mIsInInner2Layer_property)
+    self.selectedArray_property.toMany_mIsInInner2Layer_StopsBeingObserved (by: self.mIsInInner2Layer_property)
   //--- mIsInInner3Layer
     self.mIsInInner3Layer_property.mReadModelFunction = nil 
     self.mIsInInner3Layer_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mIsInInner3Layer (self.mIsInInner3Layer_property)
+    self.selectedArray_property.toMany_mIsInInner3Layer_StopsBeingObserved (by: self.mIsInInner3Layer_property)
   //--- mIsInInner4Layer
     self.mIsInInner4Layer_property.mReadModelFunction = nil 
     self.mIsInInner4Layer_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mIsInInner4Layer (self.mIsInInner4Layer_property)
+    self.selectedArray_property.toMany_mIsInInner4Layer_StopsBeingObserved (by: self.mIsInInner4Layer_property)
   //--- mX
     self.mX_property.mReadModelFunction = nil 
     self.mX_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mX (self.mX_property)
+    self.selectedArray_property.toMany_mX_StopsBeingObserved (by: self.mX_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StopsBeingObserved (by: self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StopsBeingObserved (by: self.selectionDisplay_property)
   //--- signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
+    self.selectedArray_property.toMany_signatureForERCChecking_StopsBeingObserved (by: self.signatureForERCChecking_property)
   } */
 
   //····················································································································
 
   private final func bind_property_mY () {
-    self.selectedArray_property.addEBObserverOf_mY (self.mY_property)
+    self.selectedArray_property.toMany_mY_StartsToBeObserved (by: self.mY_property)
     self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -230,7 +230,7 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
   //····················································································································
 
   private final func bind_property_mWidth () {
-    self.selectedArray_property.addEBObserverOf_mWidth (self.mWidth_property)
+    self.selectedArray_property.toMany_mWidth_StartsToBeObserved (by: self.mWidth_property)
     self.mWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -281,7 +281,7 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
   //····················································································································
 
   private final func bind_property_mHeight () {
-    self.selectedArray_property.addEBObserverOf_mHeight (self.mHeight_property)
+    self.selectedArray_property.toMany_mHeight_StartsToBeObserved (by: self.mHeight_property)
     self.mHeight_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -332,7 +332,7 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
   //····················································································································
 
   private final func bind_property_mIsInFrontLayer () {
-    self.selectedArray_property.addEBObserverOf_mIsInFrontLayer (self.mIsInFrontLayer_property)
+    self.selectedArray_property.toMany_mIsInFrontLayer_StartsToBeObserved (by: self.mIsInFrontLayer_property)
     self.mIsInFrontLayer_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -383,7 +383,7 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
   //····················································································································
 
   private final func bind_property_mIsInBackLayer () {
-    self.selectedArray_property.addEBObserverOf_mIsInBackLayer (self.mIsInBackLayer_property)
+    self.selectedArray_property.toMany_mIsInBackLayer_StartsToBeObserved (by: self.mIsInBackLayer_property)
     self.mIsInBackLayer_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -434,7 +434,7 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
   //····················································································································
 
   private final func bind_property_mIsInInner1Layer () {
-    self.selectedArray_property.addEBObserverOf_mIsInInner1Layer (self.mIsInInner1Layer_property)
+    self.selectedArray_property.toMany_mIsInInner1Layer_StartsToBeObserved (by: self.mIsInInner1Layer_property)
     self.mIsInInner1Layer_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -485,7 +485,7 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
   //····················································································································
 
   private final func bind_property_mIsInInner2Layer () {
-    self.selectedArray_property.addEBObserverOf_mIsInInner2Layer (self.mIsInInner2Layer_property)
+    self.selectedArray_property.toMany_mIsInInner2Layer_StartsToBeObserved (by: self.mIsInInner2Layer_property)
     self.mIsInInner2Layer_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -536,7 +536,7 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
   //····················································································································
 
   private final func bind_property_mIsInInner3Layer () {
-    self.selectedArray_property.addEBObserverOf_mIsInInner3Layer (self.mIsInInner3Layer_property)
+    self.selectedArray_property.toMany_mIsInInner3Layer_StartsToBeObserved (by: self.mIsInInner3Layer_property)
     self.mIsInInner3Layer_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -587,7 +587,7 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
   //····················································································································
 
   private final func bind_property_mIsInInner4Layer () {
-    self.selectedArray_property.addEBObserverOf_mIsInInner4Layer (self.mIsInInner4Layer_property)
+    self.selectedArray_property.toMany_mIsInInner4Layer_StartsToBeObserved (by: self.mIsInInner4Layer_property)
     self.mIsInInner4Layer_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -638,7 +638,7 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
   //····················································································································
 
   private final func bind_property_mX () {
-    self.selectedArray_property.addEBObserverOf_mX (self.mX_property)
+    self.selectedArray_property.toMany_mX_StartsToBeObserved (by: self.mX_property)
     self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -689,7 +689,7 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StartsToBeObserved (by: self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -728,7 +728,7 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StartsToBeObserved (by: self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -767,7 +767,7 @@ final class SelectionController_AutoLayoutProjectDocument_restrictRectangleSelec
   //····················································································································
 
   private final func bind_property_signatureForERCChecking () {
-    self.selectedArray_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
+    self.selectedArray_property.toMany_signatureForERCChecking_StartsToBeObserved (by: self.signatureForERCChecking_property)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {

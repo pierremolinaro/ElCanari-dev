@@ -59,14 +59,14 @@ final class Controller_AutoLayoutDeviceDocument_packageController : EBObjcBaseOb
       inModel,
       sortCallback: { [weak self] (left, right) in self?.isOrderedBefore (left, right) ?? true },
       addSortObserversCallback: { (observer) in
-        inModel.addEBObserverOf_documentSize (observer)
-        inModel.addEBObserverOf_mName (observer)
-        inModel.addEBObserverOf_versionString (observer)
+        inModel.toMany_documentSize_StartsToBeObserved (by: observer)
+        inModel.toMany_mName_StartsToBeObserved (by: observer)
+        inModel.toMany_versionString_StartsToBeObserved (by: observer)
       },
       removeSortObserversCallback: {(observer) in
-        inModel.removeEBObserverOf_documentSize (observer)
-        inModel.removeEBObserverOf_mName (observer)
-        inModel.removeEBObserverOf_versionString (observer)
+        inModel.toMany_documentSize_StopsBeingObserved (by: observer)
+        inModel.toMany_mName_StopsBeingObserved (by: observer)
+        inModel.toMany_versionString_StopsBeingObserved (by: observer)
       }
     )
   }
@@ -143,13 +143,13 @@ final class Controller_AutoLayoutDeviceDocument_packageController : EBObjcBaseOb
 
   override init () {
     super.init ()
-    self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.startsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'versionString' column
-    self.sortedArray_property.addEBObserverOf_versionString (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_versionString_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mName' column
-    self.sortedArray_property.addEBObserverOf_mName (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_mName_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'documentSize' column
-    self.sortedArray_property.addEBObserverOf_documentSize (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_documentSize_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {

@@ -41,30 +41,30 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   //····················································································································
 
-  final func addEBObserverOf_mPath (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mPath_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mPath.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPath_property.addEBObserver (inObserver)
+        managedObject.mPath_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mPath (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mPath_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mPath.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPath_property.removeEBObserver (inObserver)
+        managedObject.mPath_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -76,7 +76,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mPath.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mPath_property.addEBObserver (observer)
+            managedObject.mPath_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mPath.triggerPacking ()
           }
@@ -92,7 +92,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mPath_property.removeEBObserver (observer)
+          managedObject.mPath_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mPath.triggerPacking ()
@@ -108,30 +108,30 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   //····················································································································
 
-  final func addEBObserverOf_mUses (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mUses_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mUses.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mUses_property.addEBObserver (inObserver)
+        managedObject.mUses_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mUses (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mUses_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mUses.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mUses_property.removeEBObserver (inObserver)
+        managedObject.mUses_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -143,7 +143,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mUses.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mUses_property.addEBObserver (observer)
+            managedObject.mUses_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mUses.triggerPacking ()
           }
@@ -159,7 +159,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mUses_property.removeEBObserver (observer)
+          managedObject.mUses_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mUses.triggerPacking ()
@@ -175,30 +175,30 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   //····················································································································
 
-  final func addEBObserverOf_mLibraryRepositoryURL (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mLibraryRepositoryURL_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mLibraryRepositoryURL.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mLibraryRepositoryURL_property.addEBObserver (inObserver)
+        managedObject.mLibraryRepositoryURL_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mLibraryRepositoryURL (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mLibraryRepositoryURL_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mLibraryRepositoryURL.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mLibraryRepositoryURL_property.removeEBObserver (inObserver)
+        managedObject.mLibraryRepositoryURL_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -210,7 +210,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mLibraryRepositoryURL.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mLibraryRepositoryURL_property.addEBObserver (observer)
+            managedObject.mLibraryRepositoryURL_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mLibraryRepositoryURL.triggerPacking ()
           }
@@ -226,7 +226,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mLibraryRepositoryURL_property.removeEBObserver (observer)
+          managedObject.mLibraryRepositoryURL_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mLibraryRepositoryURL.triggerPacking ()
@@ -242,30 +242,30 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   //····················································································································
 
-  final func addEBObserverOf_mUserAndPasswordTag (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mUserAndPasswordTag_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mUserAndPasswordTag.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mUserAndPasswordTag_property.addEBObserver (inObserver)
+        managedObject.mUserAndPasswordTag_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mUserAndPasswordTag (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mUserAndPasswordTag_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mUserAndPasswordTag.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mUserAndPasswordTag_property.removeEBObserver (inObserver)
+        managedObject.mUserAndPasswordTag_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -277,7 +277,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mUserAndPasswordTag.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mUserAndPasswordTag_property.addEBObserver (observer)
+            managedObject.mUserAndPasswordTag_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mUserAndPasswordTag.triggerPacking ()
           }
@@ -293,7 +293,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mUserAndPasswordTag_property.removeEBObserver (observer)
+          managedObject.mUserAndPasswordTag_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mUserAndPasswordTag.triggerPacking ()
@@ -309,30 +309,30 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   //····················································································································
 
-  final func addEBObserverOf_mStatusImage (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mStatusImage_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mStatusImage.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mStatusImage_property.addEBObserver (inObserver)
+        managedObject.mStatusImage_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mStatusImage (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mStatusImage_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mStatusImage.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mStatusImage_property.removeEBObserver (inObserver)
+        managedObject.mStatusImage_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -343,7 +343,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_mStatusImage.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.mStatusImage_property.addEBObserver (observer)
+          managedObject.mStatusImage_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_mStatusImage.triggerPacking ()
         }
@@ -357,7 +357,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_mStatusImage.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.mStatusImage_property.removeEBObserver (observer)
+          managedObject.mStatusImage_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_mStatusImage.triggerPacking ()
         }
@@ -759,10 +759,10 @@ final class PreferencesArrayOf_CanariLibraryEntry : StoredArrayOf_CanariLibraryE
       }
       self.setProp (objectArray)
     }
-    self.addEBObserverOf_mPath (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mUses (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mLibraryRepositoryURL (self.mObserverForWritingPreferences)
-    self.addEBObserverOf_mUserAndPasswordTag (self.mObserverForWritingPreferences)
+    toMany_mPath_StartsToBeObserved (by: self.mObserverForWritingPreferences)
+    toMany_mUses_StartsToBeObserved (by: self.mObserverForWritingPreferences)
+    toMany_mLibraryRepositoryURL_StartsToBeObserved (by: self.mObserverForWritingPreferences)
+    toMany_mUserAndPasswordTag_StartsToBeObserved (by: self.mObserverForWritingPreferences)
     self.mObserverForWritingPreferences.mEventCallBack = { [weak self] in self?.writeInPreferences () }
  }
 

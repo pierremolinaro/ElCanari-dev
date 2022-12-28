@@ -135,61 +135,61 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
   //--- mX
     self.mX_property.mReadModelFunction = nil 
     self.mX_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mX (self.mX_property)
+    self.selectedArray_property.toMany_mX_StopsBeingObserved (by: self.mX_property)
   //--- mY
     self.mY_property.mReadModelFunction = nil 
     self.mY_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mY (self.mY_property)
+    self.selectedArray_property.toMany_mY_StopsBeingObserved (by: self.mY_property)
   //--- mFontSize
     self.mFontSize_property.mReadModelFunction = nil 
     self.mFontSize_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mFontSize (self.mFontSize_property)
+    self.selectedArray_property.toMany_mFontSize_StopsBeingObserved (by: self.mFontSize_property)
   //--- mLayer
     self.mLayer_property.mReadModelFunction = nil 
     self.mLayer_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mLayer (self.mLayer_property)
+    self.selectedArray_property.toMany_mLayer_StopsBeingObserved (by: self.mLayer_property)
   //--- mText
     self.mText_property.mReadModelFunction = nil 
     self.mText_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mText (self.mText_property)
+    self.selectedArray_property.toMany_mText_StopsBeingObserved (by: self.mText_property)
   //--- mHorizontalAlignment
     self.mHorizontalAlignment_property.mReadModelFunction = nil 
     self.mHorizontalAlignment_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mHorizontalAlignment (self.mHorizontalAlignment_property)
+    self.selectedArray_property.toMany_mHorizontalAlignment_StopsBeingObserved (by: self.mHorizontalAlignment_property)
   //--- mVerticalAlignment
     self.mVerticalAlignment_property.mReadModelFunction = nil 
     self.mVerticalAlignment_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mVerticalAlignment (self.mVerticalAlignment_property)
+    self.selectedArray_property.toMany_mVerticalAlignment_StopsBeingObserved (by: self.mVerticalAlignment_property)
   //--- mRotation
     self.mRotation_property.mReadModelFunction = nil 
     self.mRotation_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mRotation (self.mRotation_property)
+    self.selectedArray_property.toMany_mRotation_StopsBeingObserved (by: self.mRotation_property)
   //--- mWeight
     self.mWeight_property.mReadModelFunction = nil 
     self.mWeight_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mWeight (self.mWeight_property)
+    self.selectedArray_property.toMany_mWeight_StopsBeingObserved (by: self.mWeight_property)
   //--- mOblique
     self.mOblique_property.mReadModelFunction = nil 
     self.mOblique_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mOblique (self.mOblique_property)
+    self.selectedArray_property.toMany_mOblique_StopsBeingObserved (by: self.mOblique_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StopsBeingObserved (by: self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StopsBeingObserved (by: self.selectionDisplay_property)
   //--- fontName
     self.fontName_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_fontName (self.fontName_property)
+    self.selectedArray_property.toMany_fontName_StopsBeingObserved (by: self.fontName_property)
   //--- signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
+    self.selectedArray_property.toMany_signatureForERCChecking_StopsBeingObserved (by: self.signatureForERCChecking_property)
   } */
 
   //····················································································································
 
   private final func bind_property_mX () {
-    self.selectedArray_property.addEBObserverOf_mX (self.mX_property)
+    self.selectedArray_property.toMany_mX_StartsToBeObserved (by: self.mX_property)
     self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -240,7 +240,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
   //····················································································································
 
   private final func bind_property_mY () {
-    self.selectedArray_property.addEBObserverOf_mY (self.mY_property)
+    self.selectedArray_property.toMany_mY_StartsToBeObserved (by: self.mY_property)
     self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -291,7 +291,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
   //····················································································································
 
   private final func bind_property_mFontSize () {
-    self.selectedArray_property.addEBObserverOf_mFontSize (self.mFontSize_property)
+    self.selectedArray_property.toMany_mFontSize_StartsToBeObserved (by: self.mFontSize_property)
     self.mFontSize_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -342,7 +342,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
   //····················································································································
 
   private final func bind_property_mLayer () {
-    self.selectedArray_property.addEBObserverOf_mLayer (self.mLayer_property)
+    self.selectedArray_property.toMany_mLayer_StartsToBeObserved (by: self.mLayer_property)
     self.mLayer_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -393,7 +393,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
   //····················································································································
 
   private final func bind_property_mText () {
-    self.selectedArray_property.addEBObserverOf_mText (self.mText_property)
+    self.selectedArray_property.toMany_mText_StartsToBeObserved (by: self.mText_property)
     self.mText_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -444,7 +444,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
   //····················································································································
 
   private final func bind_property_mHorizontalAlignment () {
-    self.selectedArray_property.addEBObserverOf_mHorizontalAlignment (self.mHorizontalAlignment_property)
+    self.selectedArray_property.toMany_mHorizontalAlignment_StartsToBeObserved (by: self.mHorizontalAlignment_property)
     self.mHorizontalAlignment_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -495,7 +495,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
   //····················································································································
 
   private final func bind_property_mVerticalAlignment () {
-    self.selectedArray_property.addEBObserverOf_mVerticalAlignment (self.mVerticalAlignment_property)
+    self.selectedArray_property.toMany_mVerticalAlignment_StartsToBeObserved (by: self.mVerticalAlignment_property)
     self.mVerticalAlignment_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -546,7 +546,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
   //····················································································································
 
   private final func bind_property_mRotation () {
-    self.selectedArray_property.addEBObserverOf_mRotation (self.mRotation_property)
+    self.selectedArray_property.toMany_mRotation_StartsToBeObserved (by: self.mRotation_property)
     self.mRotation_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -597,7 +597,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
   //····················································································································
 
   private final func bind_property_mWeight () {
-    self.selectedArray_property.addEBObserverOf_mWeight (self.mWeight_property)
+    self.selectedArray_property.toMany_mWeight_StartsToBeObserved (by: self.mWeight_property)
     self.mWeight_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -648,7 +648,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
   //····················································································································
 
   private final func bind_property_mOblique () {
-    self.selectedArray_property.addEBObserverOf_mOblique (self.mOblique_property)
+    self.selectedArray_property.toMany_mOblique_StartsToBeObserved (by: self.mOblique_property)
     self.mOblique_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -699,7 +699,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StartsToBeObserved (by: self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -738,7 +738,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StartsToBeObserved (by: self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -777,7 +777,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
   //····················································································································
 
   private final func bind_property_fontName () {
-    self.selectedArray_property.addEBObserverOf_fontName (self.fontName_property)
+    self.selectedArray_property.toMany_fontName_StartsToBeObserved (by: self.fontName_property)
     self.fontName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -816,7 +816,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTextSelectionCont
   //····················································································································
 
   private final func bind_property_signatureForERCChecking () {
-    self.selectedArray_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
+    self.selectedArray_property.toMany_signatureForERCChecking_StartsToBeObserved (by: self.signatureForERCChecking_property)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {

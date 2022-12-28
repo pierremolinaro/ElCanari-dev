@@ -33,7 +33,7 @@ final class MultipleBindingController_hidden : EBOutletEvent {
     var modelArray = [EBObservableObjectProtocol] ()
     inExpression.addModelsTo (&modelArray)
     for observedModel in modelArray {
-      observedModel.addEBObserver (self)
+      observedModel.startsToBeObserved (by: self)
     }
   }
 
@@ -75,7 +75,7 @@ final class MultipleBindingController_enabled : EBOutletEvent {
     var modelArray = [EBObservableObjectProtocol] ()
     inExpression.addModelsTo (&modelArray)
     for observedModel in modelArray {
-      observedModel.addEBObserver (self)
+      observedModel.startsToBeObserved (by: self)
     }
     self.mEventCallBack = { [weak self] in self?.updateOutlet (inExpression.compute ()) }
   }

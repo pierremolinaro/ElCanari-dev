@@ -59,12 +59,12 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjc
       inModel,
       sortCallback: { [weak self] (left, right) in self?.isOrderedBefore (left, right) ?? true },
       addSortObserversCallback: { (observer) in
-        inModel.addEBObserverOf_fileSize (observer)
-        inModel.addEBObserverOf_mFileName (observer)
+        inModel.toMany_fileSize_StartsToBeObserved (by: observer)
+        inModel.toMany_mFileName_StartsToBeObserved (by: observer)
       },
       removeSortObserversCallback: {(observer) in
-        inModel.removeEBObserverOf_fileSize (observer)
-        inModel.removeEBObserverOf_mFileName (observer)
+        inModel.toMany_fileSize_StopsBeingObserved (by: observer)
+        inModel.toMany_mFileName_StopsBeingObserved (by: observer)
       }
     )
   }
@@ -141,11 +141,11 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjc
 
   override init () {
     super.init ()
-    self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.startsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mFileName' column
-    self.sortedArray_property.addEBObserverOf_mFileName (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_mFileName_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'fileSize' column
-    self.sortedArray_property.addEBObserverOf_fileSize (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_fileSize_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {

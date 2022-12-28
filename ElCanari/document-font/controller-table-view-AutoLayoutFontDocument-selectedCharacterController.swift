@@ -125,7 +125,7 @@ final class Controller_AutoLayoutFontDocument_selectedCharacterController : EBOb
 
   override init () {
     super.init ()
-    self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.startsToBeObserved (by: self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {

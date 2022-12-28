@@ -90,31 +90,31 @@ final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSw
   //--- advance
     self.advance_property.mReadModelFunction = nil 
     self.advance_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_advance (self.advance_property)
+    self.mModel?.toMany_advance_StopsBeingObserved (by: self.advance_property)
   //--- codePoint
     self.codePoint_property.mReadModelFunction = nil 
     self.codePoint_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_codePoint (self.codePoint_property)
+    self.mModel?.toMany_codePoint_StopsBeingObserved (by: self.codePoint_property)
   //--- gerberCode
     self.gerberCode_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_gerberCode (self.gerberCode_property)
+    self.mModel?.toMany_gerberCode_StopsBeingObserved (by: self.gerberCode_property)
   //--- gerberCodeInstructionCountMessage
     self.gerberCodeInstructionCountMessage_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_gerberCodeInstructionCountMessage (self.gerberCodeInstructionCountMessage_property)
+    self.mModel?.toMany_gerberCodeInstructionCountMessage_StopsBeingObserved (by: self.gerberCodeInstructionCountMessage_property)
   //--- issues
     self.issues_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_issues (self.issues_property)
+    self.mModel?.toMany_issues_StopsBeingObserved (by: self.issues_property)
   //--- mWarnsWhenAdvanceIsZero
     self.mWarnsWhenAdvanceIsZero_property.mReadModelFunction = nil 
     self.mWarnsWhenAdvanceIsZero_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_mWarnsWhenAdvanceIsZero (self.mWarnsWhenAdvanceIsZero_property)
+    self.mModel?.toMany_mWarnsWhenAdvanceIsZero_StopsBeingObserved (by: self.mWarnsWhenAdvanceIsZero_property)
   //--- mWarnsWhenNoSegment
     self.mWarnsWhenNoSegment_property.mReadModelFunction = nil 
     self.mWarnsWhenNoSegment_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_mWarnsWhenNoSegment (self.mWarnsWhenNoSegment_property)
+    self.mModel?.toMany_mWarnsWhenNoSegment_StopsBeingObserved (by: self.mWarnsWhenNoSegment_property)
   //--- segmentArrayForDrawing
     self.segmentArrayForDrawing_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_segmentArrayForDrawing (self.segmentArrayForDrawing_property)
+    self.mModel?.toMany_segmentArrayForDrawing_StopsBeingObserved (by: self.segmentArrayForDrawing_property)
   //---
     self.mModel = nil
   } */
@@ -122,7 +122,7 @@ final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSw
   //···················································································································*
 
   private final func bind_property_advance (model : ReadOnlyArrayOf_FontCharacter) {
-    model.addEBObserverOf_advance (self.advance_property)
+    model.toMany_advance_StartsToBeObserved (by: self.advance_property)
     self.advance_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -174,7 +174,7 @@ final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSw
   //···················································································································*
 
   private final func bind_property_codePoint (model : ReadOnlyArrayOf_FontCharacter) {
-    model.addEBObserverOf_codePoint (self.codePoint_property)
+    model.toMany_codePoint_StartsToBeObserved (by: self.codePoint_property)
     self.codePoint_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -226,7 +226,7 @@ final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSw
   //···················································································································*
 
   private final func bind_property_gerberCode (model : ReadOnlyArrayOf_FontCharacter) {
-    model.addEBObserverOf_gerberCode (self.gerberCode_property)
+    model.toMany_gerberCode_StartsToBeObserved (by: self.gerberCode_property)
     self.gerberCode_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -266,7 +266,7 @@ final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSw
   //···················································································································*
 
   private final func bind_property_gerberCodeInstructionCountMessage (model : ReadOnlyArrayOf_FontCharacter) {
-    model.addEBObserverOf_gerberCodeInstructionCountMessage (self.gerberCodeInstructionCountMessage_property)
+    model.toMany_gerberCodeInstructionCountMessage_StartsToBeObserved (by: self.gerberCodeInstructionCountMessage_property)
     self.gerberCodeInstructionCountMessage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -306,7 +306,7 @@ final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSw
   //···················································································································*
 
   private final func bind_property_issues (model : ReadOnlyArrayOf_FontCharacter) {
-    model.addEBObserverOf_issues (self.issues_property)
+    model.toMany_issues_StartsToBeObserved (by: self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -346,7 +346,7 @@ final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSw
   //···················································································································*
 
   private final func bind_property_mWarnsWhenAdvanceIsZero (model : ReadOnlyArrayOf_FontCharacter) {
-    model.addEBObserverOf_mWarnsWhenAdvanceIsZero (self.mWarnsWhenAdvanceIsZero_property)
+    model.toMany_mWarnsWhenAdvanceIsZero_StartsToBeObserved (by: self.mWarnsWhenAdvanceIsZero_property)
     self.mWarnsWhenAdvanceIsZero_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -398,7 +398,7 @@ final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSw
   //···················································································································*
 
   private final func bind_property_mWarnsWhenNoSegment (model : ReadOnlyArrayOf_FontCharacter) {
-    model.addEBObserverOf_mWarnsWhenNoSegment (self.mWarnsWhenNoSegment_property)
+    model.toMany_mWarnsWhenNoSegment_StartsToBeObserved (by: self.mWarnsWhenNoSegment_property)
     self.mWarnsWhenNoSegment_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -450,7 +450,7 @@ final class SelectionController_AutoLayoutFontDocument_characterSelection : EBSw
   //···················································································································*
 
   private final func bind_property_segmentArrayForDrawing (model : ReadOnlyArrayOf_FontCharacter) {
-    model.addEBObserverOf_segmentArrayForDrawing (self.segmentArrayForDrawing_property)
+    model.toMany_segmentArrayForDrawing_StartsToBeObserved (by: self.segmentArrayForDrawing_property)
     self.segmentArrayForDrawing_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {

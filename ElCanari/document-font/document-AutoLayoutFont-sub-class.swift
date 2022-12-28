@@ -129,7 +129,7 @@ let PMFontComment = "PMFontComment"
     currentCharacterCodePointObserver.mEventCallBack = { [weak self] in
       self?.updateCurrentCharacterSelection ()
     }
-    self.rootObject.currentCharacterCodePointString_property.addEBObserver (currentCharacterCodePointObserver)
+    self.rootObject.currentCharacterCodePointString_property.startsToBeObserved (by: currentCharacterCodePointObserver)
     self.mCurrentCharacterCodePointObserver = currentCharacterCodePointObserver
   }
 

@@ -275,129 +275,129 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //--- mSide
     self.mSide_property.mReadModelFunction = nil 
     self.mSide_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mSide (self.mSide_property)
+    self.selectedArray_property.toMany_mSide_StopsBeingObserved (by: self.mSide_property)
   //--- mDefaultTrackWidthUnit
     self.mDefaultTrackWidthUnit_property.mReadModelFunction = nil 
     self.mDefaultTrackWidthUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mDefaultTrackWidthUnit (self.mDefaultTrackWidthUnit_property)
+    self.selectedArray_property.toMany_mDefaultTrackWidthUnit_StopsBeingObserved (by: self.mDefaultTrackWidthUnit_property)
   //--- mCustomTrackWidth
     self.mCustomTrackWidth_property.mReadModelFunction = nil 
     self.mCustomTrackWidth_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mCustomTrackWidth (self.mCustomTrackWidth_property)
+    self.selectedArray_property.toMany_mCustomTrackWidth_StopsBeingObserved (by: self.mCustomTrackWidth_property)
   //--- mCustomTrackWidthUnit
     self.mCustomTrackWidthUnit_property.mReadModelFunction = nil 
     self.mCustomTrackWidthUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mCustomTrackWidthUnit (self.mCustomTrackWidthUnit_property)
+    self.selectedArray_property.toMany_mCustomTrackWidthUnit_StopsBeingObserved (by: self.mCustomTrackWidthUnit_property)
   //--- mUsesCustomTrackWidth
     self.mUsesCustomTrackWidth_property.mReadModelFunction = nil 
     self.mUsesCustomTrackWidth_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mUsesCustomTrackWidth (self.mUsesCustomTrackWidth_property)
+    self.selectedArray_property.toMany_mUsesCustomTrackWidth_StopsBeingObserved (by: self.mUsesCustomTrackWidth_property)
   //--- mIsPreservedByAutoRouter
     self.mIsPreservedByAutoRouter_property.mReadModelFunction = nil 
     self.mIsPreservedByAutoRouter_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mIsPreservedByAutoRouter (self.mIsPreservedByAutoRouter_property)
+    self.selectedArray_property.toMany_mIsPreservedByAutoRouter_StopsBeingObserved (by: self.mIsPreservedByAutoRouter_property)
   //--- mP1XUnit
     self.mP1XUnit_property.mReadModelFunction = nil 
     self.mP1XUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mP1XUnit (self.mP1XUnit_property)
+    self.selectedArray_property.toMany_mP1XUnit_StopsBeingObserved (by: self.mP1XUnit_property)
   //--- mP1YUnit
     self.mP1YUnit_property.mReadModelFunction = nil 
     self.mP1YUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mP1YUnit (self.mP1YUnit_property)
+    self.selectedArray_property.toMany_mP1YUnit_StopsBeingObserved (by: self.mP1YUnit_property)
   //--- mP2XUnit
     self.mP2XUnit_property.mReadModelFunction = nil 
     self.mP2XUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mP2XUnit (self.mP2XUnit_property)
+    self.selectedArray_property.toMany_mP2XUnit_StopsBeingObserved (by: self.mP2XUnit_property)
   //--- mP2YUnit
     self.mP2YUnit_property.mReadModelFunction = nil 
     self.mP2YUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mP2YUnit (self.mP2YUnit_property)
+    self.selectedArray_property.toMany_mP2YUnit_StopsBeingObserved (by: self.mP2YUnit_property)
   //--- mManualLockP1
     self.mManualLockP1_property.mReadModelFunction = nil 
     self.mManualLockP1_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mManualLockP1 (self.mManualLockP1_property)
+    self.selectedArray_property.toMany_mManualLockP1_StopsBeingObserved (by: self.mManualLockP1_property)
   //--- mManualLockP2
     self.mManualLockP2_property.mReadModelFunction = nil 
     self.mManualLockP2_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mManualLockP2 (self.mManualLockP2_property)
+    self.selectedArray_property.toMany_mManualLockP2_StopsBeingObserved (by: self.mManualLockP2_property)
   //--- mDirectionLockOnKnobDragging
     self.mDirectionLockOnKnobDragging_property.mReadModelFunction = nil 
     self.mDirectionLockOnKnobDragging_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mDirectionLockOnKnobDragging (self.mDirectionLockOnKnobDragging_property)
+    self.selectedArray_property.toMany_mDirectionLockOnKnobDragging_StopsBeingObserved (by: self.mDirectionLockOnKnobDragging_property)
   //--- actualTrackWidth
     self.actualTrackWidth_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_actualTrackWidth (self.actualTrackWidth_property)
+    self.selectedArray_property.toMany_actualTrackWidth_StopsBeingObserved (by: self.actualTrackWidth_property)
   //--- netName
     self.netName_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_netName (self.netName_property)
+    self.selectedArray_property.toMany_netName_StopsBeingObserved (by: self.netName_property)
   //--- netClassName
     self.netClassName_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_netClassName (self.netClassName_property)
+    self.selectedArray_property.toMany_netClassName_StopsBeingObserved (by: self.netClassName_property)
   //--- netClassTrackWidth
     self.netClassTrackWidth_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_netClassTrackWidth (self.netClassTrackWidth_property)
+    self.selectedArray_property.toMany_netClassTrackWidth_StopsBeingObserved (by: self.netClassTrackWidth_property)
   //--- netClassViaHoleDiameter
     self.netClassViaHoleDiameter_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_netClassViaHoleDiameter (self.netClassViaHoleDiameter_property)
+    self.selectedArray_property.toMany_netClassViaHoleDiameter_StopsBeingObserved (by: self.netClassViaHoleDiameter_property)
   //--- netClassViaPadDiameter
     self.netClassViaPadDiameter_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_netClassViaPadDiameter (self.netClassViaPadDiameter_property)
+    self.selectedArray_property.toMany_netClassViaPadDiameter_StopsBeingObserved (by: self.netClassViaPadDiameter_property)
   //--- trackLengthInCanariUnit
     self.trackLengthInCanariUnit_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_trackLengthInCanariUnit (self.trackLengthInCanariUnit_property)
+    self.selectedArray_property.toMany_trackLengthInCanariUnit_StopsBeingObserved (by: self.trackLengthInCanariUnit_property)
   //--- trackSide
     self.trackSide_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_trackSide (self.trackSide_property)
+    self.selectedArray_property.toMany_trackSide_StopsBeingObserved (by: self.trackSide_property)
   //--- signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
+    self.selectedArray_property.toMany_signatureForERCChecking_StopsBeingObserved (by: self.signatureForERCChecking_property)
   //--- p1ConnectedToSomePad
     self.p1ConnectedToSomePad_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_p1ConnectedToSomePad (self.p1ConnectedToSomePad_property)
+    self.selectedArray_property.toMany_p1ConnectedToSomePad_StopsBeingObserved (by: self.p1ConnectedToSomePad_property)
   //--- p2ConnectedToSomePad
     self.p2ConnectedToSomePad_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_p2ConnectedToSomePad (self.p2ConnectedToSomePad_property)
+    self.selectedArray_property.toMany_p2ConnectedToSomePad_StopsBeingObserved (by: self.p2ConnectedToSomePad_property)
   //--- trackDirectionInDegrees
     self.trackDirectionInDegrees_property.mReadModelFunction = nil 
     self.trackDirectionInDegrees_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_trackDirectionInDegrees (self.trackDirectionInDegrees_property)
+    self.selectedArray_property.toMany_trackDirectionInDegrees_StopsBeingObserved (by: self.trackDirectionInDegrees_property)
   //--- computedP1X
     self.computedP1X_property.mReadModelFunction = nil 
     self.computedP1X_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_computedP1X (self.computedP1X_property)
+    self.selectedArray_property.toMany_computedP1X_StopsBeingObserved (by: self.computedP1X_property)
   //--- computedP1Y
     self.computedP1Y_property.mReadModelFunction = nil 
     self.computedP1Y_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_computedP1Y (self.computedP1Y_property)
+    self.selectedArray_property.toMany_computedP1Y_StopsBeingObserved (by: self.computedP1Y_property)
   //--- computedP2X
     self.computedP2X_property.mReadModelFunction = nil 
     self.computedP2X_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_computedP2X (self.computedP2X_property)
+    self.selectedArray_property.toMany_computedP2X_StopsBeingObserved (by: self.computedP2X_property)
   //--- computedP2Y
     self.computedP2Y_property.mReadModelFunction = nil 
     self.computedP2Y_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_computedP2Y (self.computedP2Y_property)
+    self.selectedArray_property.toMany_computedP2Y_StopsBeingObserved (by: self.computedP2Y_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StopsBeingObserved (by: self.objectDisplay_property)
   //--- p1CanMove
     self.p1CanMove_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_p1CanMove (self.p1CanMove_property)
+    self.selectedArray_property.toMany_p1CanMove_StopsBeingObserved (by: self.p1CanMove_property)
   //--- p2CanMove
     self.p2CanMove_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_p2CanMove (self.p2CanMove_property)
+    self.selectedArray_property.toMany_p2CanMove_StopsBeingObserved (by: self.p2CanMove_property)
   //--- trackCanRotate
     self.trackCanRotate_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_trackCanRotate (self.trackCanRotate_property)
+    self.selectedArray_property.toMany_trackCanRotate_StopsBeingObserved (by: self.trackCanRotate_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StopsBeingObserved (by: self.selectionDisplay_property)
   } */
 
   //····················································································································
 
   private final func bind_property_mSide () {
-    self.selectedArray_property.addEBObserverOf_mSide (self.mSide_property)
+    self.selectedArray_property.toMany_mSide_StartsToBeObserved (by: self.mSide_property)
     self.mSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -448,7 +448,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_mDefaultTrackWidthUnit () {
-    self.selectedArray_property.addEBObserverOf_mDefaultTrackWidthUnit (self.mDefaultTrackWidthUnit_property)
+    self.selectedArray_property.toMany_mDefaultTrackWidthUnit_StartsToBeObserved (by: self.mDefaultTrackWidthUnit_property)
     self.mDefaultTrackWidthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -499,7 +499,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_mCustomTrackWidth () {
-    self.selectedArray_property.addEBObserverOf_mCustomTrackWidth (self.mCustomTrackWidth_property)
+    self.selectedArray_property.toMany_mCustomTrackWidth_StartsToBeObserved (by: self.mCustomTrackWidth_property)
     self.mCustomTrackWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -550,7 +550,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_mCustomTrackWidthUnit () {
-    self.selectedArray_property.addEBObserverOf_mCustomTrackWidthUnit (self.mCustomTrackWidthUnit_property)
+    self.selectedArray_property.toMany_mCustomTrackWidthUnit_StartsToBeObserved (by: self.mCustomTrackWidthUnit_property)
     self.mCustomTrackWidthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -601,7 +601,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_mUsesCustomTrackWidth () {
-    self.selectedArray_property.addEBObserverOf_mUsesCustomTrackWidth (self.mUsesCustomTrackWidth_property)
+    self.selectedArray_property.toMany_mUsesCustomTrackWidth_StartsToBeObserved (by: self.mUsesCustomTrackWidth_property)
     self.mUsesCustomTrackWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -652,7 +652,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_mIsPreservedByAutoRouter () {
-    self.selectedArray_property.addEBObserverOf_mIsPreservedByAutoRouter (self.mIsPreservedByAutoRouter_property)
+    self.selectedArray_property.toMany_mIsPreservedByAutoRouter_StartsToBeObserved (by: self.mIsPreservedByAutoRouter_property)
     self.mIsPreservedByAutoRouter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -703,7 +703,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_mP1XUnit () {
-    self.selectedArray_property.addEBObserverOf_mP1XUnit (self.mP1XUnit_property)
+    self.selectedArray_property.toMany_mP1XUnit_StartsToBeObserved (by: self.mP1XUnit_property)
     self.mP1XUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -754,7 +754,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_mP1YUnit () {
-    self.selectedArray_property.addEBObserverOf_mP1YUnit (self.mP1YUnit_property)
+    self.selectedArray_property.toMany_mP1YUnit_StartsToBeObserved (by: self.mP1YUnit_property)
     self.mP1YUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -805,7 +805,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_mP2XUnit () {
-    self.selectedArray_property.addEBObserverOf_mP2XUnit (self.mP2XUnit_property)
+    self.selectedArray_property.toMany_mP2XUnit_StartsToBeObserved (by: self.mP2XUnit_property)
     self.mP2XUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -856,7 +856,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_mP2YUnit () {
-    self.selectedArray_property.addEBObserverOf_mP2YUnit (self.mP2YUnit_property)
+    self.selectedArray_property.toMany_mP2YUnit_StartsToBeObserved (by: self.mP2YUnit_property)
     self.mP2YUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -907,7 +907,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_mManualLockP1 () {
-    self.selectedArray_property.addEBObserverOf_mManualLockP1 (self.mManualLockP1_property)
+    self.selectedArray_property.toMany_mManualLockP1_StartsToBeObserved (by: self.mManualLockP1_property)
     self.mManualLockP1_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -958,7 +958,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_mManualLockP2 () {
-    self.selectedArray_property.addEBObserverOf_mManualLockP2 (self.mManualLockP2_property)
+    self.selectedArray_property.toMany_mManualLockP2_StartsToBeObserved (by: self.mManualLockP2_property)
     self.mManualLockP2_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1009,7 +1009,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_mDirectionLockOnKnobDragging () {
-    self.selectedArray_property.addEBObserverOf_mDirectionLockOnKnobDragging (self.mDirectionLockOnKnobDragging_property)
+    self.selectedArray_property.toMany_mDirectionLockOnKnobDragging_StartsToBeObserved (by: self.mDirectionLockOnKnobDragging_property)
     self.mDirectionLockOnKnobDragging_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1060,7 +1060,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_actualTrackWidth () {
-    self.selectedArray_property.addEBObserverOf_actualTrackWidth (self.actualTrackWidth_property)
+    self.selectedArray_property.toMany_actualTrackWidth_StartsToBeObserved (by: self.actualTrackWidth_property)
     self.actualTrackWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1099,7 +1099,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_netName () {
-    self.selectedArray_property.addEBObserverOf_netName (self.netName_property)
+    self.selectedArray_property.toMany_netName_StartsToBeObserved (by: self.netName_property)
     self.netName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1138,7 +1138,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_netClassName () {
-    self.selectedArray_property.addEBObserverOf_netClassName (self.netClassName_property)
+    self.selectedArray_property.toMany_netClassName_StartsToBeObserved (by: self.netClassName_property)
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1177,7 +1177,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_netClassTrackWidth () {
-    self.selectedArray_property.addEBObserverOf_netClassTrackWidth (self.netClassTrackWidth_property)
+    self.selectedArray_property.toMany_netClassTrackWidth_StartsToBeObserved (by: self.netClassTrackWidth_property)
     self.netClassTrackWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1216,7 +1216,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_netClassViaHoleDiameter () {
-    self.selectedArray_property.addEBObserverOf_netClassViaHoleDiameter (self.netClassViaHoleDiameter_property)
+    self.selectedArray_property.toMany_netClassViaHoleDiameter_StartsToBeObserved (by: self.netClassViaHoleDiameter_property)
     self.netClassViaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1255,7 +1255,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_netClassViaPadDiameter () {
-    self.selectedArray_property.addEBObserverOf_netClassViaPadDiameter (self.netClassViaPadDiameter_property)
+    self.selectedArray_property.toMany_netClassViaPadDiameter_StartsToBeObserved (by: self.netClassViaPadDiameter_property)
     self.netClassViaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1294,7 +1294,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_trackLengthInCanariUnit () {
-    self.selectedArray_property.addEBObserverOf_trackLengthInCanariUnit (self.trackLengthInCanariUnit_property)
+    self.selectedArray_property.toMany_trackLengthInCanariUnit_StartsToBeObserved (by: self.trackLengthInCanariUnit_property)
     self.trackLengthInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1333,7 +1333,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_trackSide () {
-    self.selectedArray_property.addEBObserverOf_trackSide (self.trackSide_property)
+    self.selectedArray_property.toMany_trackSide_StartsToBeObserved (by: self.trackSide_property)
     self.trackSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1372,7 +1372,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_signatureForERCChecking () {
-    self.selectedArray_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
+    self.selectedArray_property.toMany_signatureForERCChecking_StartsToBeObserved (by: self.signatureForERCChecking_property)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1411,7 +1411,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_p1ConnectedToSomePad () {
-    self.selectedArray_property.addEBObserverOf_p1ConnectedToSomePad (self.p1ConnectedToSomePad_property)
+    self.selectedArray_property.toMany_p1ConnectedToSomePad_StartsToBeObserved (by: self.p1ConnectedToSomePad_property)
     self.p1ConnectedToSomePad_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1450,7 +1450,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_p2ConnectedToSomePad () {
-    self.selectedArray_property.addEBObserverOf_p2ConnectedToSomePad (self.p2ConnectedToSomePad_property)
+    self.selectedArray_property.toMany_p2ConnectedToSomePad_StartsToBeObserved (by: self.p2ConnectedToSomePad_property)
     self.p2ConnectedToSomePad_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1489,7 +1489,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_trackDirectionInDegrees () {
-    self.selectedArray_property.addEBObserverOf_trackDirectionInDegrees (self.trackDirectionInDegrees_property)
+    self.selectedArray_property.toMany_trackDirectionInDegrees_StartsToBeObserved (by: self.trackDirectionInDegrees_property)
     self.trackDirectionInDegrees_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1540,7 +1540,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_computedP1X () {
-    self.selectedArray_property.addEBObserverOf_computedP1X (self.computedP1X_property)
+    self.selectedArray_property.toMany_computedP1X_StartsToBeObserved (by: self.computedP1X_property)
     self.computedP1X_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1591,7 +1591,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_computedP1Y () {
-    self.selectedArray_property.addEBObserverOf_computedP1Y (self.computedP1Y_property)
+    self.selectedArray_property.toMany_computedP1Y_StartsToBeObserved (by: self.computedP1Y_property)
     self.computedP1Y_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1642,7 +1642,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_computedP2X () {
-    self.selectedArray_property.addEBObserverOf_computedP2X (self.computedP2X_property)
+    self.selectedArray_property.toMany_computedP2X_StartsToBeObserved (by: self.computedP2X_property)
     self.computedP2X_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1693,7 +1693,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_computedP2Y () {
-    self.selectedArray_property.addEBObserverOf_computedP2Y (self.computedP2Y_property)
+    self.selectedArray_property.toMany_computedP2Y_StartsToBeObserved (by: self.computedP2Y_property)
     self.computedP2Y_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1744,7 +1744,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StartsToBeObserved (by: self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1783,7 +1783,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_p1CanMove () {
-    self.selectedArray_property.addEBObserverOf_p1CanMove (self.p1CanMove_property)
+    self.selectedArray_property.toMany_p1CanMove_StartsToBeObserved (by: self.p1CanMove_property)
     self.p1CanMove_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1822,7 +1822,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_p2CanMove () {
-    self.selectedArray_property.addEBObserverOf_p2CanMove (self.p2CanMove_property)
+    self.selectedArray_property.toMany_p2CanMove_StartsToBeObserved (by: self.p2CanMove_property)
     self.p2CanMove_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1861,7 +1861,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_trackCanRotate () {
-    self.selectedArray_property.addEBObserverOf_trackCanRotate (self.trackCanRotate_property)
+    self.selectedArray_property.toMany_trackCanRotate_StartsToBeObserved (by: self.trackCanRotate_property)
     self.trackCanRotate_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1900,7 +1900,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardTrackSelectionCon
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StartsToBeObserved (by: self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {

@@ -240,108 +240,108 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //--- mComponentPadName
     self.mComponentPadName_property.mReadModelFunction = nil 
     self.mComponentPadName_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mComponentPadName (self.mComponentPadName_property)
+    self.selectedArray_property.toMany_mComponentPadName_StopsBeingObserved (by: self.mComponentPadName_property)
   //--- mPadIndex
     self.mPadIndex_property.mReadModelFunction = nil 
     self.mPadIndex_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mPadIndex (self.mPadIndex_property)
+    self.selectedArray_property.toMany_mPadIndex_StopsBeingObserved (by: self.mPadIndex_property)
   //--- mX
     self.mX_property.mReadModelFunction = nil 
     self.mX_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mX (self.mX_property)
+    self.selectedArray_property.toMany_mX_StopsBeingObserved (by: self.mX_property)
   //--- mY
     self.mY_property.mReadModelFunction = nil 
     self.mY_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mY (self.mY_property)
+    self.selectedArray_property.toMany_mY_StopsBeingObserved (by: self.mY_property)
   //--- mDefaultHoleDiameterUnit
     self.mDefaultHoleDiameterUnit_property.mReadModelFunction = nil 
     self.mDefaultHoleDiameterUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mDefaultHoleDiameterUnit (self.mDefaultHoleDiameterUnit_property)
+    self.selectedArray_property.toMany_mDefaultHoleDiameterUnit_StopsBeingObserved (by: self.mDefaultHoleDiameterUnit_property)
   //--- mCustomHoleDiameter
     self.mCustomHoleDiameter_property.mReadModelFunction = nil 
     self.mCustomHoleDiameter_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mCustomHoleDiameter (self.mCustomHoleDiameter_property)
+    self.selectedArray_property.toMany_mCustomHoleDiameter_StopsBeingObserved (by: self.mCustomHoleDiameter_property)
   //--- mCustomHoleDiameterUnit
     self.mCustomHoleDiameterUnit_property.mReadModelFunction = nil 
     self.mCustomHoleDiameterUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mCustomHoleDiameterUnit (self.mCustomHoleDiameterUnit_property)
+    self.selectedArray_property.toMany_mCustomHoleDiameterUnit_StopsBeingObserved (by: self.mCustomHoleDiameterUnit_property)
   //--- mUsesCustomHoleDiameter
     self.mUsesCustomHoleDiameter_property.mReadModelFunction = nil 
     self.mUsesCustomHoleDiameter_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mUsesCustomHoleDiameter (self.mUsesCustomHoleDiameter_property)
+    self.selectedArray_property.toMany_mUsesCustomHoleDiameter_StopsBeingObserved (by: self.mUsesCustomHoleDiameter_property)
   //--- mDefaultPadDiameterUnit
     self.mDefaultPadDiameterUnit_property.mReadModelFunction = nil 
     self.mDefaultPadDiameterUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mDefaultPadDiameterUnit (self.mDefaultPadDiameterUnit_property)
+    self.selectedArray_property.toMany_mDefaultPadDiameterUnit_StopsBeingObserved (by: self.mDefaultPadDiameterUnit_property)
   //--- mCustomPadDiameter
     self.mCustomPadDiameter_property.mReadModelFunction = nil 
     self.mCustomPadDiameter_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mCustomPadDiameter (self.mCustomPadDiameter_property)
+    self.selectedArray_property.toMany_mCustomPadDiameter_StopsBeingObserved (by: self.mCustomPadDiameter_property)
   //--- mCustomPadDiameterUnit
     self.mCustomPadDiameterUnit_property.mReadModelFunction = nil 
     self.mCustomPadDiameterUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mCustomPadDiameterUnit (self.mCustomPadDiameterUnit_property)
+    self.selectedArray_property.toMany_mCustomPadDiameterUnit_StopsBeingObserved (by: self.mCustomPadDiameterUnit_property)
   //--- mUsesCustomPadDiameter
     self.mUsesCustomPadDiameter_property.mReadModelFunction = nil 
     self.mUsesCustomPadDiameter_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mUsesCustomPadDiameter (self.mUsesCustomPadDiameter_property)
+    self.selectedArray_property.toMany_mUsesCustomPadDiameter_StopsBeingObserved (by: self.mUsesCustomPadDiameter_property)
   //--- isConnectedToSomePad
     self.isConnectedToSomePad_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_isConnectedToSomePad (self.isConnectedToSomePad_property)
+    self.selectedArray_property.toMany_isConnectedToSomePad_StopsBeingObserved (by: self.isConnectedToSomePad_property)
   //--- location
     self.location_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_location (self.location_property)
+    self.selectedArray_property.toMany_location_StopsBeingObserved (by: self.location_property)
   //--- netNameFromComponentPad
     self.netNameFromComponentPad_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_netNameFromComponentPad (self.netNameFromComponentPad_property)
+    self.selectedArray_property.toMany_netNameFromComponentPad_StopsBeingObserved (by: self.netNameFromComponentPad_property)
   //--- netNameAndPadLocation
     self.netNameAndPadLocation_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_netNameAndPadLocation (self.netNameAndPadLocation_property)
+    self.selectedArray_property.toMany_netNameAndPadLocation_StopsBeingObserved (by: self.netNameAndPadLocation_property)
   //--- side
     self.side_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_side (self.side_property)
+    self.selectedArray_property.toMany_side_StopsBeingObserved (by: self.side_property)
   //--- isVia
     self.isVia_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_isVia (self.isVia_property)
+    self.selectedArray_property.toMany_isVia_StopsBeingObserved (by: self.isVia_property)
   //--- issues
     self.issues_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_issues (self.issues_property)
+    self.selectedArray_property.toMany_issues_StopsBeingObserved (by: self.issues_property)
   //--- viaDefaultHoleDiameter
     self.viaDefaultHoleDiameter_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_viaDefaultHoleDiameter (self.viaDefaultHoleDiameter_property)
+    self.selectedArray_property.toMany_viaDefaultHoleDiameter_StopsBeingObserved (by: self.viaDefaultHoleDiameter_property)
   //--- viaDefaultPadDiameter
     self.viaDefaultPadDiameter_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_viaDefaultPadDiameter (self.viaDefaultPadDiameter_property)
+    self.selectedArray_property.toMany_viaDefaultPadDiameter_StopsBeingObserved (by: self.viaDefaultPadDiameter_property)
   //--- netNameFromTracks
     self.netNameFromTracks_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_netNameFromTracks (self.netNameFromTracks_property)
+    self.selectedArray_property.toMany_netNameFromTracks_StopsBeingObserved (by: self.netNameFromTracks_property)
   //--- netClassName
     self.netClassName_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_netClassName (self.netClassName_property)
+    self.selectedArray_property.toMany_netClassName_StopsBeingObserved (by: self.netClassName_property)
   //--- connectedToComponent
     self.connectedToComponent_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_connectedToComponent (self.connectedToComponent_property)
+    self.selectedArray_property.toMany_connectedToComponent_StopsBeingObserved (by: self.connectedToComponent_property)
   //--- actualHoleDiameter
     self.actualHoleDiameter_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_actualHoleDiameter (self.actualHoleDiameter_property)
+    self.selectedArray_property.toMany_actualHoleDiameter_StopsBeingObserved (by: self.actualHoleDiameter_property)
   //--- actualPadDiameter
     self.actualPadDiameter_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_actualPadDiameter (self.actualPadDiameter_property)
+    self.selectedArray_property.toMany_actualPadDiameter_StopsBeingObserved (by: self.actualPadDiameter_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StopsBeingObserved (by: self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StopsBeingObserved (by: self.selectionDisplay_property)
   //--- signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
+    self.selectedArray_property.toMany_signatureForERCChecking_StopsBeingObserved (by: self.signatureForERCChecking_property)
   } */
 
   //····················································································································
 
   private final func bind_property_mComponentPadName () {
-    self.selectedArray_property.addEBObserverOf_mComponentPadName (self.mComponentPadName_property)
+    self.selectedArray_property.toMany_mComponentPadName_StartsToBeObserved (by: self.mComponentPadName_property)
     self.mComponentPadName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -392,7 +392,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_mPadIndex () {
-    self.selectedArray_property.addEBObserverOf_mPadIndex (self.mPadIndex_property)
+    self.selectedArray_property.toMany_mPadIndex_StartsToBeObserved (by: self.mPadIndex_property)
     self.mPadIndex_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -443,7 +443,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_mX () {
-    self.selectedArray_property.addEBObserverOf_mX (self.mX_property)
+    self.selectedArray_property.toMany_mX_StartsToBeObserved (by: self.mX_property)
     self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -494,7 +494,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_mY () {
-    self.selectedArray_property.addEBObserverOf_mY (self.mY_property)
+    self.selectedArray_property.toMany_mY_StartsToBeObserved (by: self.mY_property)
     self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -545,7 +545,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_mDefaultHoleDiameterUnit () {
-    self.selectedArray_property.addEBObserverOf_mDefaultHoleDiameterUnit (self.mDefaultHoleDiameterUnit_property)
+    self.selectedArray_property.toMany_mDefaultHoleDiameterUnit_StartsToBeObserved (by: self.mDefaultHoleDiameterUnit_property)
     self.mDefaultHoleDiameterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -596,7 +596,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_mCustomHoleDiameter () {
-    self.selectedArray_property.addEBObserverOf_mCustomHoleDiameter (self.mCustomHoleDiameter_property)
+    self.selectedArray_property.toMany_mCustomHoleDiameter_StartsToBeObserved (by: self.mCustomHoleDiameter_property)
     self.mCustomHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -647,7 +647,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_mCustomHoleDiameterUnit () {
-    self.selectedArray_property.addEBObserverOf_mCustomHoleDiameterUnit (self.mCustomHoleDiameterUnit_property)
+    self.selectedArray_property.toMany_mCustomHoleDiameterUnit_StartsToBeObserved (by: self.mCustomHoleDiameterUnit_property)
     self.mCustomHoleDiameterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -698,7 +698,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_mUsesCustomHoleDiameter () {
-    self.selectedArray_property.addEBObserverOf_mUsesCustomHoleDiameter (self.mUsesCustomHoleDiameter_property)
+    self.selectedArray_property.toMany_mUsesCustomHoleDiameter_StartsToBeObserved (by: self.mUsesCustomHoleDiameter_property)
     self.mUsesCustomHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -749,7 +749,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_mDefaultPadDiameterUnit () {
-    self.selectedArray_property.addEBObserverOf_mDefaultPadDiameterUnit (self.mDefaultPadDiameterUnit_property)
+    self.selectedArray_property.toMany_mDefaultPadDiameterUnit_StartsToBeObserved (by: self.mDefaultPadDiameterUnit_property)
     self.mDefaultPadDiameterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -800,7 +800,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_mCustomPadDiameter () {
-    self.selectedArray_property.addEBObserverOf_mCustomPadDiameter (self.mCustomPadDiameter_property)
+    self.selectedArray_property.toMany_mCustomPadDiameter_StartsToBeObserved (by: self.mCustomPadDiameter_property)
     self.mCustomPadDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -851,7 +851,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_mCustomPadDiameterUnit () {
-    self.selectedArray_property.addEBObserverOf_mCustomPadDiameterUnit (self.mCustomPadDiameterUnit_property)
+    self.selectedArray_property.toMany_mCustomPadDiameterUnit_StartsToBeObserved (by: self.mCustomPadDiameterUnit_property)
     self.mCustomPadDiameterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -902,7 +902,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_mUsesCustomPadDiameter () {
-    self.selectedArray_property.addEBObserverOf_mUsesCustomPadDiameter (self.mUsesCustomPadDiameter_property)
+    self.selectedArray_property.toMany_mUsesCustomPadDiameter_StartsToBeObserved (by: self.mUsesCustomPadDiameter_property)
     self.mUsesCustomPadDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -953,7 +953,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_isConnectedToSomePad () {
-    self.selectedArray_property.addEBObserverOf_isConnectedToSomePad (self.isConnectedToSomePad_property)
+    self.selectedArray_property.toMany_isConnectedToSomePad_StartsToBeObserved (by: self.isConnectedToSomePad_property)
     self.isConnectedToSomePad_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -992,7 +992,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_location () {
-    self.selectedArray_property.addEBObserverOf_location (self.location_property)
+    self.selectedArray_property.toMany_location_StartsToBeObserved (by: self.location_property)
     self.location_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1031,7 +1031,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_netNameFromComponentPad () {
-    self.selectedArray_property.addEBObserverOf_netNameFromComponentPad (self.netNameFromComponentPad_property)
+    self.selectedArray_property.toMany_netNameFromComponentPad_StartsToBeObserved (by: self.netNameFromComponentPad_property)
     self.netNameFromComponentPad_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1070,7 +1070,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_netNameAndPadLocation () {
-    self.selectedArray_property.addEBObserverOf_netNameAndPadLocation (self.netNameAndPadLocation_property)
+    self.selectedArray_property.toMany_netNameAndPadLocation_StartsToBeObserved (by: self.netNameAndPadLocation_property)
     self.netNameAndPadLocation_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1109,7 +1109,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_side () {
-    self.selectedArray_property.addEBObserverOf_side (self.side_property)
+    self.selectedArray_property.toMany_side_StartsToBeObserved (by: self.side_property)
     self.side_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1148,7 +1148,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_isVia () {
-    self.selectedArray_property.addEBObserverOf_isVia (self.isVia_property)
+    self.selectedArray_property.toMany_isVia_StartsToBeObserved (by: self.isVia_property)
     self.isVia_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1187,7 +1187,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_issues () {
-    self.selectedArray_property.addEBObserverOf_issues (self.issues_property)
+    self.selectedArray_property.toMany_issues_StartsToBeObserved (by: self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1226,7 +1226,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_viaDefaultHoleDiameter () {
-    self.selectedArray_property.addEBObserverOf_viaDefaultHoleDiameter (self.viaDefaultHoleDiameter_property)
+    self.selectedArray_property.toMany_viaDefaultHoleDiameter_StartsToBeObserved (by: self.viaDefaultHoleDiameter_property)
     self.viaDefaultHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1265,7 +1265,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_viaDefaultPadDiameter () {
-    self.selectedArray_property.addEBObserverOf_viaDefaultPadDiameter (self.viaDefaultPadDiameter_property)
+    self.selectedArray_property.toMany_viaDefaultPadDiameter_StartsToBeObserved (by: self.viaDefaultPadDiameter_property)
     self.viaDefaultPadDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1304,7 +1304,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_netNameFromTracks () {
-    self.selectedArray_property.addEBObserverOf_netNameFromTracks (self.netNameFromTracks_property)
+    self.selectedArray_property.toMany_netNameFromTracks_StartsToBeObserved (by: self.netNameFromTracks_property)
     self.netNameFromTracks_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1343,7 +1343,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_netClassName () {
-    self.selectedArray_property.addEBObserverOf_netClassName (self.netClassName_property)
+    self.selectedArray_property.toMany_netClassName_StartsToBeObserved (by: self.netClassName_property)
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1382,7 +1382,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_connectedToComponent () {
-    self.selectedArray_property.addEBObserverOf_connectedToComponent (self.connectedToComponent_property)
+    self.selectedArray_property.toMany_connectedToComponent_StartsToBeObserved (by: self.connectedToComponent_property)
     self.connectedToComponent_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1421,7 +1421,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_actualHoleDiameter () {
-    self.selectedArray_property.addEBObserverOf_actualHoleDiameter (self.actualHoleDiameter_property)
+    self.selectedArray_property.toMany_actualHoleDiameter_StartsToBeObserved (by: self.actualHoleDiameter_property)
     self.actualHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1460,7 +1460,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_actualPadDiameter () {
-    self.selectedArray_property.addEBObserverOf_actualPadDiameter (self.actualPadDiameter_property)
+    self.selectedArray_property.toMany_actualPadDiameter_StartsToBeObserved (by: self.actualPadDiameter_property)
     self.actualPadDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1499,7 +1499,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StartsToBeObserved (by: self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1538,7 +1538,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StartsToBeObserved (by: self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1577,7 +1577,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardConnectorSelectio
   //····················································································································
 
   private final func bind_property_signatureForERCChecking () {
-    self.selectedArray_property.addEBObserverOf_signatureForERCChecking (self.signatureForERCChecking_property)
+    self.selectedArray_property.toMany_signatureForERCChecking_StartsToBeObserved (by: self.signatureForERCChecking_property)
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {

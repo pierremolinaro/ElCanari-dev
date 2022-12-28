@@ -363,12 +363,12 @@ final class SymbolPinTypeInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mXName_property.addEBObserver (self.nameShape_property)
-    self.mYName_property.addEBObserver (self.nameShape_property)
-    self.mName_property.addEBObserver (self.nameShape_property)
-    self.mNameHorizontalAlignment_property.addEBObserver (self.nameShape_property)
-    self.mPinNameIsDisplayedInSchematics_property.addEBObserver (self.nameShape_property)
-    preferences_pinNameFont_property.addEBObserver (self.nameShape_property)
+    self.mXName_property.startsToBeObserved (by: self.nameShape_property)
+    self.mYName_property.startsToBeObserved (by: self.nameShape_property)
+    self.mName_property.startsToBeObserved (by: self.nameShape_property)
+    self.mNameHorizontalAlignment_property.startsToBeObserved (by: self.nameShape_property)
+    self.mPinNameIsDisplayedInSchematics_property.startsToBeObserved (by: self.nameShape_property)
+    preferences_pinNameFont_property.startsToBeObserved (by: self.nameShape_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mInstances_property.setOppositeRelationShipFunctions (

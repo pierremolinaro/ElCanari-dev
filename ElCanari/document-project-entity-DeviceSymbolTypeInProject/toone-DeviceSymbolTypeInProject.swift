@@ -16,15 +16,15 @@ class ReadOnlyObject_DeviceSymbolTypeInProject : ReadOnlyAbstractObjectProperty 
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mSymbolTypeName_property.removeEBObserver (self.mSymbolTypeName_property) // Stored property
-      oldValue.mStrokeBezierPath_property.removeEBObserver (self.mStrokeBezierPath_property) // Stored property
-      oldValue.mFilledBezierPath_property.removeEBObserver (self.mFilledBezierPath_property) // Stored property
+      oldValue.mSymbolTypeName_property.stopsBeingObserved (by: self.mSymbolTypeName_property) // Stored property
+      oldValue.mStrokeBezierPath_property.stopsBeingObserved (by: self.mStrokeBezierPath_property) // Stored property
+      oldValue.mFilledBezierPath_property.stopsBeingObserved (by: self.mFilledBezierPath_property) // Stored property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mSymbolTypeName_property.addEBObserver (self.mSymbolTypeName_property) // Stored property
-      newValue.mStrokeBezierPath_property.addEBObserver (self.mStrokeBezierPath_property) // Stored property
-      newValue.mFilledBezierPath_property.addEBObserver (self.mFilledBezierPath_property) // Stored property
+      newValue.mSymbolTypeName_property.startsToBeObserved (by: self.mSymbolTypeName_property) // Stored property
+      newValue.mStrokeBezierPath_property.startsToBeObserved (by: self.mStrokeBezierPath_property) // Stored property
+      newValue.mFilledBezierPath_property.startsToBeObserved (by: self.mFilledBezierPath_property) // Stored property
     }
   }
 

@@ -375,8 +375,8 @@ final class SymbolPin : SymbolObject,
         return .empty
       }
     }
-    self.xPin_property.addEBObserver (self.filledBezierPath_property)
-    self.yPin_property.addEBObserver (self.filledBezierPath_property)
+    self.xPin_property.startsToBeObserved (by: self.filledBezierPath_property)
+    self.yPin_property.startsToBeObserved (by: self.filledBezierPath_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -426,18 +426,18 @@ final class SymbolPin : SymbolObject,
         return .empty
       }
     }
-    self.xPin_property.addEBObserver (self.objectDisplay_property)
-    self.yPin_property.addEBObserver (self.objectDisplay_property)
-    self.xName_property.addEBObserver (self.objectDisplay_property)
-    self.yName_property.addEBObserver (self.objectDisplay_property)
-    self.xNumber_property.addEBObserver (self.objectDisplay_property)
-    self.yNumber_property.addEBObserver (self.objectDisplay_property)
-    self.name_property.addEBObserver (self.objectDisplay_property)
-    self.pinNameIsDisplayedInSchematics_property.addEBObserver (self.objectDisplay_property)
-    self.nameHorizontalAlignment_property.addEBObserver (self.objectDisplay_property)
-    self.numberHorizontalAlignment_property.addEBObserver (self.objectDisplay_property)
-    preferences_symbolColor_property.addEBObserver (self.objectDisplay_property)
-    preferences_pinNameFont_property.addEBObserver (self.objectDisplay_property)
+    self.xPin_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.yPin_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.xName_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.yName_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.xNumber_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.yNumber_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.name_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.pinNameIsDisplayedInSchematics_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.nameHorizontalAlignment_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.numberHorizontalAlignment_property.startsToBeObserved (by: self.objectDisplay_property)
+    preferences_symbolColor_property.startsToBeObserved (by: self.objectDisplay_property)
+    preferences_pinNameFont_property.startsToBeObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -475,14 +475,14 @@ final class SymbolPin : SymbolObject,
         return .empty
       }
     }
-    self.xPin_property.addEBObserver (self.selectionDisplay_property)
-    self.yPin_property.addEBObserver (self.selectionDisplay_property)
-    self.xName_property.addEBObserver (self.selectionDisplay_property)
-    self.yName_property.addEBObserver (self.selectionDisplay_property)
-    self.xNumber_property.addEBObserver (self.selectionDisplay_property)
-    self.yNumber_property.addEBObserver (self.selectionDisplay_property)
-    self.nameHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
-    self.numberHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
+    self.xPin_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.yPin_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.xName_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.yName_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.xNumber_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.yNumber_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.nameHorizontalAlignment_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.numberHorizontalAlignment_property.startsToBeObserved (by: self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -517,13 +517,13 @@ final class SymbolPin : SymbolObject,
         return .empty
       }
     }
-    self.xPin_property.addEBObserver (self.issues_property)
-    self.yPin_property.addEBObserver (self.issues_property)
-    self.xName_property.addEBObserver (self.issues_property)
-    self.yName_property.addEBObserver (self.issues_property)
-    self.xNumber_property.addEBObserver (self.issues_property)
-    self.yNumber_property.addEBObserver (self.issues_property)
-    self.name_property.addEBObserver (self.issues_property)
+    self.xPin_property.startsToBeObserved (by: self.issues_property)
+    self.yPin_property.startsToBeObserved (by: self.issues_property)
+    self.xName_property.startsToBeObserved (by: self.issues_property)
+    self.yName_property.startsToBeObserved (by: self.issues_property)
+    self.xNumber_property.startsToBeObserved (by: self.issues_property)
+    self.yNumber_property.startsToBeObserved (by: self.issues_property)
+    self.name_property.startsToBeObserved (by: self.issues_property)
   //--- Atomic property: nameRect
     self.nameRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -552,11 +552,11 @@ final class SymbolPin : SymbolObject,
         return .empty
       }
     }
-    self.xName_property.addEBObserver (self.nameRect_property)
-    self.yName_property.addEBObserver (self.nameRect_property)
-    self.name_property.addEBObserver (self.nameRect_property)
-    self.nameHorizontalAlignment_property.addEBObserver (self.nameRect_property)
-    preferences_pinNameFont_property.addEBObserver (self.nameRect_property)
+    self.xName_property.startsToBeObserved (by: self.nameRect_property)
+    self.yName_property.startsToBeObserved (by: self.nameRect_property)
+    self.name_property.startsToBeObserved (by: self.nameRect_property)
+    self.nameHorizontalAlignment_property.startsToBeObserved (by: self.nameRect_property)
+    preferences_pinNameFont_property.startsToBeObserved (by: self.nameRect_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature

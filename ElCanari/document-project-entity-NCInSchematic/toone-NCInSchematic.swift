@@ -16,15 +16,15 @@ class ReadOnlyObject_NCInSchematic : ReadOnlyAbstractObjectProperty <NCInSchemat
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mOrientation_property.removeEBObserver (self.mOrientation_property) // Stored property
-      oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
-      oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
+      oldValue.mOrientation_property.stopsBeingObserved (by: self.mOrientation_property) // Stored property
+      oldValue.objectDisplay_property.stopsBeingObserved (by: self.objectDisplay_property) // Transient property
+      oldValue.selectionDisplay_property.stopsBeingObserved (by: self.selectionDisplay_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mOrientation_property.addEBObserver (self.mOrientation_property) // Stored property
-      newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-      newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
+      newValue.mOrientation_property.startsToBeObserved (by: self.mOrientation_property) // Stored property
+      newValue.objectDisplay_property.startsToBeObserved (by: self.objectDisplay_property) // Transient property
+      newValue.selectionDisplay_property.startsToBeObserved (by: self.selectionDisplay_property) // Transient property
     }
   }
 

@@ -24,7 +24,7 @@ class EBObservablePropertyController : EBOutletEvent {
     super.init ()
     self.mEventCallBack = inCallBack
     for object in inObservedObjects {
-      object.addEBObserver (self)
+      object.startsToBeObserved (by: self)
     }
   }
 
@@ -32,7 +32,7 @@ class EBObservablePropertyController : EBOutletEvent {
 
   override final func unregister () {
     for weakObject in self.mPrivateObservedObjects {
-      weakObject.mWeakObservedObject?.removeEBObserver (self)
+      weakObject.weakObservedObject?.stopsBeingObserved (by: self)
     }
     self.mPrivateObservedObjects.removeAll ()
     self.mEventCallBack = nil
@@ -48,7 +48,8 @@ fileprivate struct WeakObservedObject {
 
   //····················································································································
 
-  weak var mWeakObservedObject : EBObservableObjectProtocol?
+  private weak var mWeakObservedObject : EBObservableObjectProtocol?
+  var weakObservedObject : EBObservableObjectProtocol? { return self.mWeakObservedObject }
 
   //····················································································································
 

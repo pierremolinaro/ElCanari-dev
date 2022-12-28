@@ -58,19 +58,19 @@ final class SelectionController_AutoLayoutProjectDocument_ncInSchematicSelection
   //--- mOrientation
     self.mOrientation_property.mReadModelFunction = nil 
     self.mOrientation_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mOrientation (self.mOrientation_property)
+    self.selectedArray_property.toMany_mOrientation_StopsBeingObserved (by: self.mOrientation_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StopsBeingObserved (by: self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StopsBeingObserved (by: self.selectionDisplay_property)
   } */
 
   //····················································································································
 
   private final func bind_property_mOrientation () {
-    self.selectedArray_property.addEBObserverOf_mOrientation (self.mOrientation_property)
+    self.selectedArray_property.toMany_mOrientation_StartsToBeObserved (by: self.mOrientation_property)
     self.mOrientation_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -121,7 +121,7 @@ final class SelectionController_AutoLayoutProjectDocument_ncInSchematicSelection
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StartsToBeObserved (by: self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -160,7 +160,7 @@ final class SelectionController_AutoLayoutProjectDocument_ncInSchematicSelection
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StartsToBeObserved (by: self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {

@@ -142,64 +142,64 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //--- yPin
     self.yPin_property.mReadModelFunction = nil 
     self.yPin_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_yPin (self.yPin_property)
+    self.selectedArray_property.toMany_yPin_StopsBeingObserved (by: self.yPin_property)
   //--- xName
     self.xName_property.mReadModelFunction = nil 
     self.xName_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_xName (self.xName_property)
+    self.selectedArray_property.toMany_xName_StopsBeingObserved (by: self.xName_property)
   //--- yName
     self.yName_property.mReadModelFunction = nil 
     self.yName_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_yName (self.yName_property)
+    self.selectedArray_property.toMany_yName_StopsBeingObserved (by: self.yName_property)
   //--- xNumber
     self.xNumber_property.mReadModelFunction = nil 
     self.xNumber_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_xNumber (self.xNumber_property)
+    self.selectedArray_property.toMany_xNumber_StopsBeingObserved (by: self.xNumber_property)
   //--- yNumber
     self.yNumber_property.mReadModelFunction = nil 
     self.yNumber_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_yNumber (self.yNumber_property)
+    self.selectedArray_property.toMany_yNumber_StopsBeingObserved (by: self.yNumber_property)
   //--- name
     self.name_property.mReadModelFunction = nil 
     self.name_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_name (self.name_property)
+    self.selectedArray_property.toMany_name_StopsBeingObserved (by: self.name_property)
   //--- nameHorizontalAlignment
     self.nameHorizontalAlignment_property.mReadModelFunction = nil 
     self.nameHorizontalAlignment_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_nameHorizontalAlignment (self.nameHorizontalAlignment_property)
+    self.selectedArray_property.toMany_nameHorizontalAlignment_StopsBeingObserved (by: self.nameHorizontalAlignment_property)
   //--- numberHorizontalAlignment
     self.numberHorizontalAlignment_property.mReadModelFunction = nil 
     self.numberHorizontalAlignment_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_numberHorizontalAlignment (self.numberHorizontalAlignment_property)
+    self.selectedArray_property.toMany_numberHorizontalAlignment_StopsBeingObserved (by: self.numberHorizontalAlignment_property)
   //--- pinNameIsDisplayedInSchematics
     self.pinNameIsDisplayedInSchematics_property.mReadModelFunction = nil 
     self.pinNameIsDisplayedInSchematics_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_pinNameIsDisplayedInSchematics (self.pinNameIsDisplayedInSchematics_property)
+    self.selectedArray_property.toMany_pinNameIsDisplayedInSchematics_StopsBeingObserved (by: self.pinNameIsDisplayedInSchematics_property)
   //--- xPin
     self.xPin_property.mReadModelFunction = nil 
     self.xPin_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_xPin (self.xPin_property)
+    self.selectedArray_property.toMany_xPin_StopsBeingObserved (by: self.xPin_property)
   //--- filledBezierPath
     self.filledBezierPath_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_filledBezierPath (self.filledBezierPath_property)
+    self.selectedArray_property.toMany_filledBezierPath_StopsBeingObserved (by: self.filledBezierPath_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StopsBeingObserved (by: self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StopsBeingObserved (by: self.selectionDisplay_property)
   //--- issues
     self.issues_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_issues (self.issues_property)
+    self.selectedArray_property.toMany_issues_StopsBeingObserved (by: self.issues_property)
   //--- nameRect
     self.nameRect_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_nameRect (self.nameRect_property)
+    self.selectedArray_property.toMany_nameRect_StopsBeingObserved (by: self.nameRect_property)
   } */
 
   //····················································································································
 
   private final func bind_property_yPin () {
-    self.selectedArray_property.addEBObserverOf_yPin (self.yPin_property)
+    self.selectedArray_property.toMany_yPin_StartsToBeObserved (by: self.yPin_property)
     self.yPin_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -250,7 +250,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //····················································································································
 
   private final func bind_property_xName () {
-    self.selectedArray_property.addEBObserverOf_xName (self.xName_property)
+    self.selectedArray_property.toMany_xName_StartsToBeObserved (by: self.xName_property)
     self.xName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -301,7 +301,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //····················································································································
 
   private final func bind_property_yName () {
-    self.selectedArray_property.addEBObserverOf_yName (self.yName_property)
+    self.selectedArray_property.toMany_yName_StartsToBeObserved (by: self.yName_property)
     self.yName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -352,7 +352,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //····················································································································
 
   private final func bind_property_xNumber () {
-    self.selectedArray_property.addEBObserverOf_xNumber (self.xNumber_property)
+    self.selectedArray_property.toMany_xNumber_StartsToBeObserved (by: self.xNumber_property)
     self.xNumber_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -403,7 +403,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //····················································································································
 
   private final func bind_property_yNumber () {
-    self.selectedArray_property.addEBObserverOf_yNumber (self.yNumber_property)
+    self.selectedArray_property.toMany_yNumber_StartsToBeObserved (by: self.yNumber_property)
     self.yNumber_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -454,7 +454,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //····················································································································
 
   private final func bind_property_name () {
-    self.selectedArray_property.addEBObserverOf_name (self.name_property)
+    self.selectedArray_property.toMany_name_StartsToBeObserved (by: self.name_property)
     self.name_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -505,7 +505,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //····················································································································
 
   private final func bind_property_nameHorizontalAlignment () {
-    self.selectedArray_property.addEBObserverOf_nameHorizontalAlignment (self.nameHorizontalAlignment_property)
+    self.selectedArray_property.toMany_nameHorizontalAlignment_StartsToBeObserved (by: self.nameHorizontalAlignment_property)
     self.nameHorizontalAlignment_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -556,7 +556,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //····················································································································
 
   private final func bind_property_numberHorizontalAlignment () {
-    self.selectedArray_property.addEBObserverOf_numberHorizontalAlignment (self.numberHorizontalAlignment_property)
+    self.selectedArray_property.toMany_numberHorizontalAlignment_StartsToBeObserved (by: self.numberHorizontalAlignment_property)
     self.numberHorizontalAlignment_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -607,7 +607,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //····················································································································
 
   private final func bind_property_pinNameIsDisplayedInSchematics () {
-    self.selectedArray_property.addEBObserverOf_pinNameIsDisplayedInSchematics (self.pinNameIsDisplayedInSchematics_property)
+    self.selectedArray_property.toMany_pinNameIsDisplayedInSchematics_StartsToBeObserved (by: self.pinNameIsDisplayedInSchematics_property)
     self.pinNameIsDisplayedInSchematics_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -658,7 +658,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //····················································································································
 
   private final func bind_property_xPin () {
-    self.selectedArray_property.addEBObserverOf_xPin (self.xPin_property)
+    self.selectedArray_property.toMany_xPin_StartsToBeObserved (by: self.xPin_property)
     self.xPin_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -709,7 +709,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //····················································································································
 
   private final func bind_property_filledBezierPath () {
-    self.selectedArray_property.addEBObserverOf_filledBezierPath (self.filledBezierPath_property)
+    self.selectedArray_property.toMany_filledBezierPath_StartsToBeObserved (by: self.filledBezierPath_property)
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -748,7 +748,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StartsToBeObserved (by: self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -787,7 +787,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StartsToBeObserved (by: self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -826,7 +826,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //····················································································································
 
   private final func bind_property_issues () {
-    self.selectedArray_property.addEBObserverOf_issues (self.issues_property)
+    self.selectedArray_property.toMany_issues_StartsToBeObserved (by: self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -865,7 +865,7 @@ final class SelectionController_AutoLayoutSymbolDocument_mSymbolPinSelectionCont
   //····················································································································
 
   private final func bind_property_nameRect () {
-    self.selectedArray_property.addEBObserverOf_nameRect (self.nameRect_property)
+    self.selectedArray_property.toMany_nameRect_StartsToBeObserved (by: self.nameRect_property)
     self.nameRect_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {

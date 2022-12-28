@@ -7,8 +7,8 @@ import AppKit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @MainActor protocol EBObservableObjectProtocol : AnyObject {
-  func addEBObserver (_ inObserver : EBObserverProtocol)
-  func removeEBObserver (_ inObserver : EBObserverProtocol)
+  func startsToBeObserved (by inObserver : EBObserverProtocol)
+  func stopsBeingObserved (by inObserver : EBObserverProtocol)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

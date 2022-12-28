@@ -339,7 +339,7 @@ final class SlavePadInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mMasterPad_property.addEBObserver (self.mMasterPad_none)
+    self.mMasterPad_property.startsToBeObserved (by: self.mMasterPad_none)
 //    gInitSemaphore.wait ()
   //--- To one property: mMasterPad (has opposite to many relationship: mSlavePads)
     self.mMasterPad_property.undoManager = inUndoManager
@@ -384,14 +384,14 @@ final class SlavePadInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mCenterX_property.addEBObserver (self.frontSideFilledBezierPath_property)
-    self.mCenterY_property.addEBObserver (self.frontSideFilledBezierPath_property)
-    self.mWidth_property.addEBObserver (self.frontSideFilledBezierPath_property)
-    self.mHeight_property.addEBObserver (self.frontSideFilledBezierPath_property)
-    self.mHoleWidth_property.addEBObserver (self.frontSideFilledBezierPath_property)
-    self.mHoleHeight_property.addEBObserver (self.frontSideFilledBezierPath_property)
-    self.mShape_property.addEBObserver (self.frontSideFilledBezierPath_property)
-    self.mStyle_property.addEBObserver (self.frontSideFilledBezierPath_property)
+    self.mCenterX_property.startsToBeObserved (by: self.frontSideFilledBezierPath_property)
+    self.mCenterY_property.startsToBeObserved (by: self.frontSideFilledBezierPath_property)
+    self.mWidth_property.startsToBeObserved (by: self.frontSideFilledBezierPath_property)
+    self.mHeight_property.startsToBeObserved (by: self.frontSideFilledBezierPath_property)
+    self.mHoleWidth_property.startsToBeObserved (by: self.frontSideFilledBezierPath_property)
+    self.mHoleHeight_property.startsToBeObserved (by: self.frontSideFilledBezierPath_property)
+    self.mShape_property.startsToBeObserved (by: self.frontSideFilledBezierPath_property)
+    self.mStyle_property.startsToBeObserved (by: self.frontSideFilledBezierPath_property)
   //--- Atomic property: backSideFilledBezierPath
     self.backSideFilledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -429,14 +429,14 @@ final class SlavePadInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mCenterX_property.addEBObserver (self.backSideFilledBezierPath_property)
-    self.mCenterY_property.addEBObserver (self.backSideFilledBezierPath_property)
-    self.mWidth_property.addEBObserver (self.backSideFilledBezierPath_property)
-    self.mHeight_property.addEBObserver (self.backSideFilledBezierPath_property)
-    self.mHoleWidth_property.addEBObserver (self.backSideFilledBezierPath_property)
-    self.mHoleHeight_property.addEBObserver (self.backSideFilledBezierPath_property)
-    self.mShape_property.addEBObserver (self.backSideFilledBezierPath_property)
-    self.mStyle_property.addEBObserver (self.backSideFilledBezierPath_property)
+    self.mCenterX_property.startsToBeObserved (by: self.backSideFilledBezierPath_property)
+    self.mCenterY_property.startsToBeObserved (by: self.backSideFilledBezierPath_property)
+    self.mWidth_property.startsToBeObserved (by: self.backSideFilledBezierPath_property)
+    self.mHeight_property.startsToBeObserved (by: self.backSideFilledBezierPath_property)
+    self.mHoleWidth_property.startsToBeObserved (by: self.backSideFilledBezierPath_property)
+    self.mHoleHeight_property.startsToBeObserved (by: self.backSideFilledBezierPath_property)
+    self.mShape_property.startsToBeObserved (by: self.backSideFilledBezierPath_property)
+    self.mStyle_property.startsToBeObserved (by: self.backSideFilledBezierPath_property)
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -465,11 +465,11 @@ final class SlavePadInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mCenterX_property.addEBObserver (self.padNumberDisplay_property)
-    self.mCenterY_property.addEBObserver (self.padNumberDisplay_property)
-    preferences_padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
-    preferences_padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
-    self.mMasterPad_property.mName_property.addEBObserver (self.padNumberDisplay_property)
+    self.mCenterX_property.startsToBeObserved (by: self.padNumberDisplay_property)
+    self.mCenterY_property.startsToBeObserved (by: self.padNumberDisplay_property)
+    preferences_padNumberFont_property.startsToBeObserved (by: self.padNumberDisplay_property)
+    preferences_padNumberColor_property.startsToBeObserved (by: self.padNumberDisplay_property)
+    self.mMasterPad_property.mName_property.startsToBeObserved (by: self.padNumberDisplay_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature

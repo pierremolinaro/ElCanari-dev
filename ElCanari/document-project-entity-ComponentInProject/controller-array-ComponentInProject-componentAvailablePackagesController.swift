@@ -289,7 +289,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
   //····················································································································
 
   private func inspectorViewManagerStartsObservingSelection () {
-    self.selectedArray_property.addEBObserver (self.mInspectorObserver)
+    self.selectedArray_property.startsToBeObserved (by: self.mInspectorObserver)
     self.mInspectorObserver.mEventCallBack = { [weak self] in self?.updateInspectorViews () }
   }
 
@@ -297,7 +297,7 @@ final class Controller_ComponentInProject_componentAvailablePackagesController :
 
   private func inspectorViewManagerStopsObservingSelection () {
     self.mInspectorObserver.mEventCallBack = nil
-    self.selectedArray_property.removeEBObserver (self.mInspectorObserver)
+    self.selectedArray_property.stopsBeingObserved (by: self.mInspectorObserver)
   }
 
   //····················································································································

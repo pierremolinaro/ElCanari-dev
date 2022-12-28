@@ -16,21 +16,21 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mSheetTitle_property.removeEBObserver (self.mSheetTitle_property) // Stored property
-      oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
-      oldValue.connectedPoints_property.removeEBObserver (self.connectedPoints_property) // Transient property
-      oldValue.connexionWarnings_property.removeEBObserver (self.connexionWarnings_property) // Transient property
-      oldValue.connexionErrors_property.removeEBObserver (self.connexionErrors_property) // Transient property
-      oldValue.sheetDescriptor_property.removeEBObserver (self.sheetDescriptor_property) // Transient property
+      oldValue.mSheetTitle_property.stopsBeingObserved (by: self.mSheetTitle_property) // Stored property
+      oldValue.issues_property.stopsBeingObserved (by: self.issues_property) // Transient property
+      oldValue.connectedPoints_property.stopsBeingObserved (by: self.connectedPoints_property) // Transient property
+      oldValue.connexionWarnings_property.stopsBeingObserved (by: self.connexionWarnings_property) // Transient property
+      oldValue.connexionErrors_property.stopsBeingObserved (by: self.connexionErrors_property) // Transient property
+      oldValue.sheetDescriptor_property.stopsBeingObserved (by: self.sheetDescriptor_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mSheetTitle_property.addEBObserver (self.mSheetTitle_property) // Stored property
-      newValue.issues_property.addEBObserver (self.issues_property) // Transient property
-      newValue.connectedPoints_property.addEBObserver (self.connectedPoints_property) // Transient property
-      newValue.connexionWarnings_property.addEBObserver (self.connexionWarnings_property) // Transient property
-      newValue.connexionErrors_property.addEBObserver (self.connexionErrors_property) // Transient property
-      newValue.sheetDescriptor_property.addEBObserver (self.sheetDescriptor_property) // Transient property
+      newValue.mSheetTitle_property.startsToBeObserved (by: self.mSheetTitle_property) // Stored property
+      newValue.issues_property.startsToBeObserved (by: self.issues_property) // Transient property
+      newValue.connectedPoints_property.startsToBeObserved (by: self.connectedPoints_property) // Transient property
+      newValue.connexionWarnings_property.startsToBeObserved (by: self.connexionWarnings_property) // Transient property
+      newValue.connexionErrors_property.startsToBeObserved (by: self.connexionErrors_property) // Transient property
+      newValue.sheetDescriptor_property.startsToBeObserved (by: self.sheetDescriptor_property) // Transient property
     }
   }
 
@@ -78,19 +78,19 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserverOf_mObjects (_ inObserver : EBObserverProtocol) {
+  final func toMany_mObjects_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mObjects.insert (inObserver)
     if let object = self.propval {
-      object.mObjects_property.addEBObserver (inObserver)
+      object.mObjects_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mObjects (_ inObserver : EBObserverProtocol) {
+  final func toMany_mObjects_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mObjects.remove (inObserver)
     if let object = self.propval {
-      object.mObjects_property.removeEBObserver (inObserver)
+      object.mObjects_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -102,19 +102,19 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
 
   //····················································································································
 
-  final func addEBObserverOf_mPoints (_ inObserver : EBObserverProtocol) {
+  final func toMany_mPoints_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPoints.insert (inObserver)
     if let object = self.propval {
-      object.mPoints_property.addEBObserver (inObserver)
+      object.mPoints_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mPoints (_ inObserver : EBObserverProtocol) {
+  final func toMany_mPoints_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPoints.remove (inObserver)
     if let object = self.propval {
-      object.mPoints_property.removeEBObserver (inObserver)
+      object.mPoints_property.stopsBeingObserved (by: inObserver)
     }
   }
 

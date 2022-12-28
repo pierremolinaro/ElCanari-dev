@@ -47,30 +47,30 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserverOf_mFirstX (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mFirstX_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mFirstX.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mFirstX_property.addEBObserver (inObserver)
+        managedObject.mFirstX_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mFirstX (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mFirstX_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mFirstX.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mFirstX_property.removeEBObserver (inObserver)
+        managedObject.mFirstX_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -82,7 +82,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mFirstX.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mFirstX_property.addEBObserver (observer)
+            managedObject.mFirstX_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mFirstX.triggerPacking ()
           }
@@ -98,7 +98,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mFirstX_property.removeEBObserver (observer)
+          managedObject.mFirstX_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mFirstX.triggerPacking ()
@@ -114,30 +114,30 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserverOf_mFirstY (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mFirstY_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mFirstY.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mFirstY_property.addEBObserver (inObserver)
+        managedObject.mFirstY_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mFirstY (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mFirstY_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mFirstY.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mFirstY_property.removeEBObserver (inObserver)
+        managedObject.mFirstY_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -149,7 +149,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mFirstY.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mFirstY_property.addEBObserver (observer)
+            managedObject.mFirstY_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mFirstY.triggerPacking ()
           }
@@ -165,7 +165,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mFirstY_property.removeEBObserver (observer)
+          managedObject.mFirstY_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mFirstY.triggerPacking ()
@@ -181,30 +181,30 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserverOf_mFirstColor (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mFirstColor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mFirstColor.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mFirstColor_property.addEBObserver (inObserver)
+        managedObject.mFirstColor_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mFirstColor (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mFirstColor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mFirstColor.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mFirstColor_property.removeEBObserver (inObserver)
+        managedObject.mFirstColor_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -216,7 +216,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mFirstColor.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mFirstColor_property.addEBObserver (observer)
+            managedObject.mFirstColor_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mFirstColor.triggerPacking ()
           }
@@ -232,7 +232,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mFirstColor_property.removeEBObserver (observer)
+          managedObject.mFirstColor_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mFirstColor.triggerPacking ()
@@ -248,30 +248,30 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserverOf_mSecondDx (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mSecondDx_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mSecondDx.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSecondDx_property.addEBObserver (inObserver)
+        managedObject.mSecondDx_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mSecondDx (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mSecondDx_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mSecondDx.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSecondDx_property.removeEBObserver (inObserver)
+        managedObject.mSecondDx_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -283,7 +283,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mSecondDx.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mSecondDx_property.addEBObserver (observer)
+            managedObject.mSecondDx_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mSecondDx.triggerPacking ()
           }
@@ -299,7 +299,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mSecondDx_property.removeEBObserver (observer)
+          managedObject.mSecondDx_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mSecondDx.triggerPacking ()
@@ -315,30 +315,30 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserverOf_mSecondDy (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mSecondDy_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mSecondDy.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSecondDy_property.addEBObserver (inObserver)
+        managedObject.mSecondDy_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mSecondDy (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mSecondDy_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mSecondDy.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSecondDy_property.removeEBObserver (inObserver)
+        managedObject.mSecondDy_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -350,7 +350,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mSecondDy.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mSecondDy_property.addEBObserver (observer)
+            managedObject.mSecondDy_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mSecondDy.triggerPacking ()
           }
@@ -366,7 +366,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mSecondDy_property.removeEBObserver (observer)
+          managedObject.mSecondDy_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mSecondDy.triggerPacking ()
@@ -382,30 +382,30 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserverOf_mSecondColor (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mSecondColor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mSecondColor.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSecondColor_property.addEBObserver (inObserver)
+        managedObject.mSecondColor_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mSecondColor (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mSecondColor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mSecondColor.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSecondColor_property.removeEBObserver (inObserver)
+        managedObject.mSecondColor_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -417,7 +417,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mSecondColor.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mSecondColor_property.addEBObserver (observer)
+            managedObject.mSecondColor_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mSecondColor.triggerPacking ()
           }
@@ -433,7 +433,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mSecondColor_property.removeEBObserver (observer)
+          managedObject.mSecondColor_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mSecondColor.triggerPacking ()
@@ -449,30 +449,30 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.objectDisplay_property.addEBObserver (inObserver)
+        managedObject.objectDisplay_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.objectDisplay_property.removeEBObserver (inObserver)
+        managedObject.objectDisplay_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -483,7 +483,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.objectDisplay_property.addEBObserver (observer)
+          managedObject.objectDisplay_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
         }
@@ -497,7 +497,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.objectDisplay_property.removeEBObserver (observer)
+          managedObject.objectDisplay_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
         }
@@ -513,30 +513,30 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectionDisplay_property.addEBObserver (inObserver)
+        managedObject.selectionDisplay_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectionDisplay_property.removeEBObserver (inObserver)
+        managedObject.selectionDisplay_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -547,7 +547,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.selectionDisplay_property.addEBObserver (observer)
+          managedObject.selectionDisplay_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
         }
@@ -561,7 +561,7 @@ class ReadOnlyArrayOf_PackageModelImageDoublePoint : ReadOnlyAbstractArrayProper
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.selectionDisplay_property.removeEBObserver (observer)
+          managedObject.selectionDisplay_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
         }

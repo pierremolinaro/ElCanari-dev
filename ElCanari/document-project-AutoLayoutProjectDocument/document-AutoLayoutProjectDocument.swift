@@ -6959,7 +6959,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.netsDescription_property.addEBObserver (self.netCount_property)
+    self.rootObject.netsDescription_property.startsToBeObserved (by: self.netCount_property)
 
   //--- Atomic property: rastnetDisplayOneNet
     self.rastnetDisplayOneNet_property.mReadModelFunction = { [weak self] in
@@ -6977,7 +6977,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetDisplayOneNet_property)
+    self.rootObject.mRastnetDisplay_property.startsToBeObserved (by: self.rastnetDisplayOneNet_property)
 
   //--- Atomic property: rastnetDisplayComponentNet
     self.rastnetDisplayComponentNet_property.mReadModelFunction = { [weak self] in
@@ -6995,7 +6995,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetDisplayComponentNet_property)
+    self.rootObject.mRastnetDisplay_property.startsToBeObserved (by: self.rastnetDisplayComponentNet_property)
 
 
   //--- Atomic property: incorrectDocumentFileDetailedErrorMessage
@@ -7014,7 +7014,7 @@ import AppKit
         return .empty
       }
     }
-    self.documentFileName_property.addEBObserver (self.incorrectDocumentFileDetailedErrorMessage_property)
+    self.documentFileName_property.startsToBeObserved (by: self.incorrectDocumentFileDetailedErrorMessage_property)
 
   //--- Atomic property: documentFileShouldBeRenamedErrorMessage
     self.documentFileShouldBeRenamedErrorMessage_property.mReadModelFunction = { [weak self] in
@@ -7032,7 +7032,7 @@ import AppKit
         return .empty
       }
     }
-    self.documentFileName_property.addEBObserver (self.documentFileShouldBeRenamedErrorMessage_property)
+    self.documentFileName_property.startsToBeObserved (by: self.documentFileShouldBeRenamedErrorMessage_property)
 
   //--- Atomic property: pinPadAssignments
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
@@ -7050,7 +7050,7 @@ import AppKit
         return .empty
       }
     }
-    self.projectDeviceController.selectedArray_property.addEBObserverOf_pinPadAssignments (self.pinPadAssignments_property)
+    self.projectDeviceController.selectedArray_property.toMany_pinPadAssignments_StartsToBeObserved (by: self.pinPadAssignments_property)
 
   //--- Atomic property: selectedDeviceSymbolNames
     self.selectedDeviceSymbolNames_property.mReadModelFunction = { [weak self] in
@@ -7068,7 +7068,7 @@ import AppKit
         return .empty
       }
     }
-    self.projectDeviceController.selectedArray_property.addEBObserverOf_symbolAndTypesNames (self.selectedDeviceSymbolNames_property)
+    self.projectDeviceController.selectedArray_property.toMany_symbolAndTypesNames_StartsToBeObserved (by: self.selectedDeviceSymbolNames_property)
 
   //--- Atomic property: selectedDevicePackageNames
     self.selectedDevicePackageNames_property.mReadModelFunction = { [weak self] in
@@ -7086,7 +7086,7 @@ import AppKit
         return .empty
       }
     }
-    self.projectDeviceController.selectedArray_property.addEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
+    self.projectDeviceController.selectedArray_property.toMany_packageNames_StartsToBeObserved (by: self.selectedDevicePackageNames_property)
 
   //--- Atomic property: selectedDeviceNames
     self.selectedDeviceNames_property.mReadModelFunction = { [weak self] in
@@ -7104,7 +7104,7 @@ import AppKit
         return .empty
       }
     }
-    self.projectDeviceController.selectedArray_property.addEBObserverOf_symbolAndTypesNames (self.selectedDeviceNames_property)
+    self.projectDeviceController.selectedArray_property.toMany_symbolAndTypesNames_StartsToBeObserved (by: self.selectedDeviceNames_property)
 
   //--- Atomic property: canRemoveNetClasses
     self.canRemoveNetClasses_property.mReadModelFunction = { [weak self] in
@@ -7125,8 +7125,8 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.mNetClasses_property.count_property.addEBObserver (self.canRemoveNetClasses_property)
-    self.netClassController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveNetClasses_property)
+    self.rootObject.mNetClasses_property.count_property.startsToBeObserved (by: self.canRemoveNetClasses_property)
+    self.netClassController.selectedArray_property.toMany_canRemove_StartsToBeObserved (by: self.canRemoveNetClasses_property)
 
   //--- Atomic property: netCountString
     self.netCountString_property.mReadModelFunction = { [weak self] in
@@ -7144,7 +7144,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.netsDescription_property.addEBObserver (self.netCountString_property)
+    self.rootObject.netsDescription_property.startsToBeObserved (by: self.netCountString_property)
 
   //--- Atomic property: schematicSheetOrientationIsCustom
     self.schematicSheetOrientationIsCustom_property.mReadModelFunction = { [weak self] in
@@ -7162,7 +7162,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.mSchematicSheetOrientation_property.addEBObserver (self.schematicSheetOrientationIsCustom_property)
+    self.rootObject.mSchematicSheetOrientation_property.startsToBeObserved (by: self.schematicSheetOrientationIsCustom_property)
 
   //--- Atomic property: rastnetShape
     self.rastnetShape_property.mReadModelFunction = { [weak self] in
@@ -7192,11 +7192,11 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.mRastnetDisplay_property.addEBObserver (self.rastnetShape_property)
-    self.rootObject.mRastnetDisplayedNetName_property.addEBObserver (self.rastnetShape_property)
-    self.rootObject.mRastnetDisplayedComponentName_property.addEBObserver (self.rastnetShape_property)
-    self.rootObject.mBoardObjects_property.addEBObserverOf_netNameAndPadLocation (self.rastnetShape_property)
-    self.boardObjectsController.selectedArray_property.addEBObserverOf_componentName (self.rastnetShape_property)
+    self.rootObject.mRastnetDisplay_property.startsToBeObserved (by: self.rastnetShape_property)
+    self.rootObject.mRastnetDisplayedNetName_property.startsToBeObserved (by: self.rastnetShape_property)
+    self.rootObject.mRastnetDisplayedComponentName_property.startsToBeObserved (by: self.rastnetShape_property)
+    self.rootObject.mBoardObjects_property.toMany_netNameAndPadLocation_StartsToBeObserved (by: self.rastnetShape_property)
+    self.boardObjectsController.selectedArray_property.toMany_componentName_StartsToBeObserved (by: self.rastnetShape_property)
 
   //--- Atomic property: documentIsUnnamed
     self.documentIsUnnamed_property.mReadModelFunction = { [weak self] in
@@ -7214,7 +7214,7 @@ import AppKit
         return .empty
       }
     }
-    self.documentFileName_property.addEBObserver (self.documentIsUnnamed_property)
+    self.documentFileName_property.startsToBeObserved (by: self.documentIsUnnamed_property)
 
   //--- Atomic property: emptyDrillFileExtension
     self.emptyDrillFileExtension_property.mReadModelFunction = { [weak self] in
@@ -7232,7 +7232,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.drillDataFileExtension_property.addEBObserver (self.emptyDrillFileExtension_property)
+    self.rootObject.drillDataFileExtension_property.startsToBeObserved (by: self.emptyDrillFileExtension_property)
 
   //--- Atomic property: componentCount
     self.componentCount_property.mReadModelFunction = { [weak self] in
@@ -7250,7 +7250,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.mComponents_property.count_property.addEBObserver (self.componentCount_property)
+    self.rootObject.mComponents_property.count_property.startsToBeObserved (by: self.componentCount_property)
 
   //--- Atomic property: canChangePackage
     self.canChangePackage_property.mReadModelFunction = { [weak self] in
@@ -7268,7 +7268,7 @@ import AppKit
         return .empty
       }
     }
-    self.componentController.selectedArray_property.addEBObserverOf_availablePackages (self.canChangePackage_property)
+    self.componentController.selectedArray_property.toMany_availablePackages_StartsToBeObserved (by: self.canChangePackage_property)
 
   //--- Atomic property: canRemoveSelectedFonts
     self.canRemoveSelectedFonts_property.mReadModelFunction = { [weak self] in
@@ -7286,7 +7286,7 @@ import AppKit
         return .empty
       }
     }
-    self.projectFontController.selectedArray_property.addEBObserverOf_canRemoveFont (self.canRemoveSelectedFonts_property)
+    self.projectFontController.selectedArray_property.toMany_canRemoveFont_StartsToBeObserved (by: self.canRemoveSelectedFonts_property)
 
   //--- Atomic property: canRemoveSelectedDevices
     self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
@@ -7304,7 +7304,7 @@ import AppKit
         return .empty
       }
     }
-    self.projectDeviceController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
+    self.projectDeviceController.selectedArray_property.toMany_canRemove_StartsToBeObserved (by: self.canRemoveSelectedDevices_property)
 
   //--- Atomic property: unplacedSymbolsCount
     self.unplacedSymbolsCount_property.mReadModelFunction = { [weak self] in
@@ -7322,7 +7322,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.unplacedSymbols_property.addEBObserver (self.unplacedSymbolsCount_property)
+    self.rootObject.unplacedSymbols_property.startsToBeObserved (by: self.unplacedSymbolsCount_property)
 
   //--- Atomic property: unplacedSymbolsCountString
     self.unplacedSymbolsCountString_property.mReadModelFunction = { [weak self] in
@@ -7340,7 +7340,7 @@ import AppKit
         return .empty
       }
     }
-    self.unplacedSymbolsCount_property.addEBObserver (self.unplacedSymbolsCountString_property)
+    self.unplacedSymbolsCount_property.startsToBeObserved (by: self.unplacedSymbolsCountString_property)
 
   //--- Atomic property: boardOutlineOverDisplay
     self.boardOutlineOverDisplay_property.mReadModelFunction = { [weak self] in
@@ -7361,8 +7361,8 @@ import AppKit
         return .empty
       }
     }
-    self.rastnetShape_property.addEBObserver (self.boardOutlineOverDisplay_property)
-    self.rootObject.boardIssues_property.addEBObserver (self.boardOutlineOverDisplay_property)
+    self.rastnetShape_property.startsToBeObserved (by: self.boardOutlineOverDisplay_property)
+    self.rootObject.boardIssues_property.startsToBeObserved (by: self.boardOutlineOverDisplay_property)
 
   //--- Atomic property: unplacedPackageCount
     self.unplacedPackageCount_property.mReadModelFunction = { [weak self] in
@@ -7380,7 +7380,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.unplacedPackages_property.addEBObserver (self.unplacedPackageCount_property)
+    self.rootObject.unplacedPackages_property.startsToBeObserved (by: self.unplacedPackageCount_property)
 
   //--- Atomic property: unplacedPackagesCountString
     self.unplacedPackagesCountString_property.mReadModelFunction = { [weak self] in
@@ -7398,7 +7398,7 @@ import AppKit
         return .empty
       }
     }
-    self.unplacedPackageCount_property.addEBObserver (self.unplacedPackagesCountString_property)
+    self.unplacedPackageCount_property.startsToBeObserved (by: self.unplacedPackagesCountString_property)
 
   //--- Atomic property: unplacedPackagesMessageString
     self.unplacedPackagesMessageString_property.mReadModelFunction = { [weak self] in
@@ -7416,7 +7416,7 @@ import AppKit
         return .empty
       }
     }
-    self.unplacedPackageCount_property.addEBObserver (self.unplacedPackagesMessageString_property)
+    self.unplacedPackageCount_property.startsToBeObserved (by: self.unplacedPackagesMessageString_property)
 
   //--- Atomic property: emptyDrillFileExtensionImage
     self.emptyDrillFileExtensionImage_property.mReadModelFunction = { [weak self] in
@@ -7434,7 +7434,7 @@ import AppKit
         return .empty
       }
     }
-    self.emptyDrillFileExtension_property.addEBObserver (self.emptyDrillFileExtensionImage_property)
+    self.emptyDrillFileExtension_property.startsToBeObserved (by: self.emptyDrillFileExtensionImage_property)
 
   //--- Atomic property: generatedFileCountString
     self.generatedFileCountString_property.mReadModelFunction = { [weak self] in
@@ -7452,7 +7452,7 @@ import AppKit
         return .empty
       }
     }
-    self.mDataController.sortedArray_property.count_property.addEBObserver (self.generatedFileCountString_property)
+    self.mDataController.sortedArray_property.count_property.startsToBeObserved (by: self.generatedFileCountString_property)
 
   }
 

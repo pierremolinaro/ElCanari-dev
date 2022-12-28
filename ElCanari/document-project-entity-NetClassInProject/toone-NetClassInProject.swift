@@ -16,63 +16,63 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mNetClassName_property.removeEBObserver (self.mNetClassName_property) // Stored property
-      oldValue.mNetClassColor_property.removeEBObserver (self.mNetClassColor_property) // Stored property
-      oldValue.mTrackWidth_property.removeEBObserver (self.mTrackWidth_property) // Stored property
-      oldValue.mTrackWidthUnit_property.removeEBObserver (self.mTrackWidthUnit_property) // Stored property
-      oldValue.mViaHoleDiameter_property.removeEBObserver (self.mViaHoleDiameter_property) // Stored property
-      oldValue.mViaHoleDiameterUnit_property.removeEBObserver (self.mViaHoleDiameterUnit_property) // Stored property
-      oldValue.mViaPadDiameter_property.removeEBObserver (self.mViaPadDiameter_property) // Stored property
-      oldValue.mViaPadDiameterUnit_property.removeEBObserver (self.mViaPadDiameterUnit_property) // Stored property
-      oldValue.mAllowTracksOnFrontSide_property.removeEBObserver (self.mAllowTracksOnFrontSide_property) // Stored property
-      oldValue.mAllowTracksOnBackSide_property.removeEBObserver (self.mAllowTracksOnBackSide_property) // Stored property
-      oldValue.mAllowTracksOnInner1Layer_property.removeEBObserver (self.mAllowTracksOnInner1Layer_property) // Stored property
-      oldValue.mAllowTracksOnInner2Layer_property.removeEBObserver (self.mAllowTracksOnInner2Layer_property) // Stored property
-      oldValue.mAllowTracksOnInner3Layer_property.removeEBObserver (self.mAllowTracksOnInner3Layer_property) // Stored property
-      oldValue.mAllowTracksOnInner4Layer_property.removeEBObserver (self.mAllowTracksOnInner4Layer_property) // Stored property
-      oldValue.trackWidthString_property.removeEBObserver (self.trackWidthString_property) // Transient property
-      oldValue.viaHoleDiameter_property.removeEBObserver (self.viaHoleDiameter_property) // Transient property
-      oldValue.viaPadDiameter_property.removeEBObserver (self.viaPadDiameter_property) // Transient property
-      oldValue.allowTracksOnFrontSideString_property.removeEBObserver (self.allowTracksOnFrontSideString_property) // Transient property
-      oldValue.allowTracksOnBackSideString_property.removeEBObserver (self.allowTracksOnBackSideString_property) // Transient property
-      oldValue.allowTracksOnInner1LayerString_property.removeEBObserver (self.allowTracksOnInner1LayerString_property) // Transient property
-      oldValue.allowTracksOnInner2LayerString_property.removeEBObserver (self.allowTracksOnInner2LayerString_property) // Transient property
-      oldValue.allowTracksOnInner3LayerString_property.removeEBObserver (self.allowTracksOnInner3LayerString_property) // Transient property
-      oldValue.allowTracksOnInner4LayerString_property.removeEBObserver (self.allowTracksOnInner4LayerString_property) // Transient property
-      oldValue.canRemove_property.removeEBObserver (self.canRemove_property) // Transient property
-      oldValue.netUsage_property.removeEBObserver (self.netUsage_property) // Transient property
-      oldValue.netsDescription_property.removeEBObserver (self.netsDescription_property) // Transient property
-      oldValue.netWarningCount_property.removeEBObserver (self.netWarningCount_property) // Transient property
+      oldValue.mNetClassName_property.stopsBeingObserved (by: self.mNetClassName_property) // Stored property
+      oldValue.mNetClassColor_property.stopsBeingObserved (by: self.mNetClassColor_property) // Stored property
+      oldValue.mTrackWidth_property.stopsBeingObserved (by: self.mTrackWidth_property) // Stored property
+      oldValue.mTrackWidthUnit_property.stopsBeingObserved (by: self.mTrackWidthUnit_property) // Stored property
+      oldValue.mViaHoleDiameter_property.stopsBeingObserved (by: self.mViaHoleDiameter_property) // Stored property
+      oldValue.mViaHoleDiameterUnit_property.stopsBeingObserved (by: self.mViaHoleDiameterUnit_property) // Stored property
+      oldValue.mViaPadDiameter_property.stopsBeingObserved (by: self.mViaPadDiameter_property) // Stored property
+      oldValue.mViaPadDiameterUnit_property.stopsBeingObserved (by: self.mViaPadDiameterUnit_property) // Stored property
+      oldValue.mAllowTracksOnFrontSide_property.stopsBeingObserved (by: self.mAllowTracksOnFrontSide_property) // Stored property
+      oldValue.mAllowTracksOnBackSide_property.stopsBeingObserved (by: self.mAllowTracksOnBackSide_property) // Stored property
+      oldValue.mAllowTracksOnInner1Layer_property.stopsBeingObserved (by: self.mAllowTracksOnInner1Layer_property) // Stored property
+      oldValue.mAllowTracksOnInner2Layer_property.stopsBeingObserved (by: self.mAllowTracksOnInner2Layer_property) // Stored property
+      oldValue.mAllowTracksOnInner3Layer_property.stopsBeingObserved (by: self.mAllowTracksOnInner3Layer_property) // Stored property
+      oldValue.mAllowTracksOnInner4Layer_property.stopsBeingObserved (by: self.mAllowTracksOnInner4Layer_property) // Stored property
+      oldValue.trackWidthString_property.stopsBeingObserved (by: self.trackWidthString_property) // Transient property
+      oldValue.viaHoleDiameter_property.stopsBeingObserved (by: self.viaHoleDiameter_property) // Transient property
+      oldValue.viaPadDiameter_property.stopsBeingObserved (by: self.viaPadDiameter_property) // Transient property
+      oldValue.allowTracksOnFrontSideString_property.stopsBeingObserved (by: self.allowTracksOnFrontSideString_property) // Transient property
+      oldValue.allowTracksOnBackSideString_property.stopsBeingObserved (by: self.allowTracksOnBackSideString_property) // Transient property
+      oldValue.allowTracksOnInner1LayerString_property.stopsBeingObserved (by: self.allowTracksOnInner1LayerString_property) // Transient property
+      oldValue.allowTracksOnInner2LayerString_property.stopsBeingObserved (by: self.allowTracksOnInner2LayerString_property) // Transient property
+      oldValue.allowTracksOnInner3LayerString_property.stopsBeingObserved (by: self.allowTracksOnInner3LayerString_property) // Transient property
+      oldValue.allowTracksOnInner4LayerString_property.stopsBeingObserved (by: self.allowTracksOnInner4LayerString_property) // Transient property
+      oldValue.canRemove_property.stopsBeingObserved (by: self.canRemove_property) // Transient property
+      oldValue.netUsage_property.stopsBeingObserved (by: self.netUsage_property) // Transient property
+      oldValue.netsDescription_property.stopsBeingObserved (by: self.netsDescription_property) // Transient property
+      oldValue.netWarningCount_property.stopsBeingObserved (by: self.netWarningCount_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mNetClassName_property.addEBObserver (self.mNetClassName_property) // Stored property
-      newValue.mNetClassColor_property.addEBObserver (self.mNetClassColor_property) // Stored property
-      newValue.mTrackWidth_property.addEBObserver (self.mTrackWidth_property) // Stored property
-      newValue.mTrackWidthUnit_property.addEBObserver (self.mTrackWidthUnit_property) // Stored property
-      newValue.mViaHoleDiameter_property.addEBObserver (self.mViaHoleDiameter_property) // Stored property
-      newValue.mViaHoleDiameterUnit_property.addEBObserver (self.mViaHoleDiameterUnit_property) // Stored property
-      newValue.mViaPadDiameter_property.addEBObserver (self.mViaPadDiameter_property) // Stored property
-      newValue.mViaPadDiameterUnit_property.addEBObserver (self.mViaPadDiameterUnit_property) // Stored property
-      newValue.mAllowTracksOnFrontSide_property.addEBObserver (self.mAllowTracksOnFrontSide_property) // Stored property
-      newValue.mAllowTracksOnBackSide_property.addEBObserver (self.mAllowTracksOnBackSide_property) // Stored property
-      newValue.mAllowTracksOnInner1Layer_property.addEBObserver (self.mAllowTracksOnInner1Layer_property) // Stored property
-      newValue.mAllowTracksOnInner2Layer_property.addEBObserver (self.mAllowTracksOnInner2Layer_property) // Stored property
-      newValue.mAllowTracksOnInner3Layer_property.addEBObserver (self.mAllowTracksOnInner3Layer_property) // Stored property
-      newValue.mAllowTracksOnInner4Layer_property.addEBObserver (self.mAllowTracksOnInner4Layer_property) // Stored property
-      newValue.trackWidthString_property.addEBObserver (self.trackWidthString_property) // Transient property
-      newValue.viaHoleDiameter_property.addEBObserver (self.viaHoleDiameter_property) // Transient property
-      newValue.viaPadDiameter_property.addEBObserver (self.viaPadDiameter_property) // Transient property
-      newValue.allowTracksOnFrontSideString_property.addEBObserver (self.allowTracksOnFrontSideString_property) // Transient property
-      newValue.allowTracksOnBackSideString_property.addEBObserver (self.allowTracksOnBackSideString_property) // Transient property
-      newValue.allowTracksOnInner1LayerString_property.addEBObserver (self.allowTracksOnInner1LayerString_property) // Transient property
-      newValue.allowTracksOnInner2LayerString_property.addEBObserver (self.allowTracksOnInner2LayerString_property) // Transient property
-      newValue.allowTracksOnInner3LayerString_property.addEBObserver (self.allowTracksOnInner3LayerString_property) // Transient property
-      newValue.allowTracksOnInner4LayerString_property.addEBObserver (self.allowTracksOnInner4LayerString_property) // Transient property
-      newValue.canRemove_property.addEBObserver (self.canRemove_property) // Transient property
-      newValue.netUsage_property.addEBObserver (self.netUsage_property) // Transient property
-      newValue.netsDescription_property.addEBObserver (self.netsDescription_property) // Transient property
-      newValue.netWarningCount_property.addEBObserver (self.netWarningCount_property) // Transient property
+      newValue.mNetClassName_property.startsToBeObserved (by: self.mNetClassName_property) // Stored property
+      newValue.mNetClassColor_property.startsToBeObserved (by: self.mNetClassColor_property) // Stored property
+      newValue.mTrackWidth_property.startsToBeObserved (by: self.mTrackWidth_property) // Stored property
+      newValue.mTrackWidthUnit_property.startsToBeObserved (by: self.mTrackWidthUnit_property) // Stored property
+      newValue.mViaHoleDiameter_property.startsToBeObserved (by: self.mViaHoleDiameter_property) // Stored property
+      newValue.mViaHoleDiameterUnit_property.startsToBeObserved (by: self.mViaHoleDiameterUnit_property) // Stored property
+      newValue.mViaPadDiameter_property.startsToBeObserved (by: self.mViaPadDiameter_property) // Stored property
+      newValue.mViaPadDiameterUnit_property.startsToBeObserved (by: self.mViaPadDiameterUnit_property) // Stored property
+      newValue.mAllowTracksOnFrontSide_property.startsToBeObserved (by: self.mAllowTracksOnFrontSide_property) // Stored property
+      newValue.mAllowTracksOnBackSide_property.startsToBeObserved (by: self.mAllowTracksOnBackSide_property) // Stored property
+      newValue.mAllowTracksOnInner1Layer_property.startsToBeObserved (by: self.mAllowTracksOnInner1Layer_property) // Stored property
+      newValue.mAllowTracksOnInner2Layer_property.startsToBeObserved (by: self.mAllowTracksOnInner2Layer_property) // Stored property
+      newValue.mAllowTracksOnInner3Layer_property.startsToBeObserved (by: self.mAllowTracksOnInner3Layer_property) // Stored property
+      newValue.mAllowTracksOnInner4Layer_property.startsToBeObserved (by: self.mAllowTracksOnInner4Layer_property) // Stored property
+      newValue.trackWidthString_property.startsToBeObserved (by: self.trackWidthString_property) // Transient property
+      newValue.viaHoleDiameter_property.startsToBeObserved (by: self.viaHoleDiameter_property) // Transient property
+      newValue.viaPadDiameter_property.startsToBeObserved (by: self.viaPadDiameter_property) // Transient property
+      newValue.allowTracksOnFrontSideString_property.startsToBeObserved (by: self.allowTracksOnFrontSideString_property) // Transient property
+      newValue.allowTracksOnBackSideString_property.startsToBeObserved (by: self.allowTracksOnBackSideString_property) // Transient property
+      newValue.allowTracksOnInner1LayerString_property.startsToBeObserved (by: self.allowTracksOnInner1LayerString_property) // Transient property
+      newValue.allowTracksOnInner2LayerString_property.startsToBeObserved (by: self.allowTracksOnInner2LayerString_property) // Transient property
+      newValue.allowTracksOnInner3LayerString_property.startsToBeObserved (by: self.allowTracksOnInner3LayerString_property) // Transient property
+      newValue.allowTracksOnInner4LayerString_property.startsToBeObserved (by: self.allowTracksOnInner4LayerString_property) // Transient property
+      newValue.canRemove_property.startsToBeObserved (by: self.canRemove_property) // Transient property
+      newValue.netUsage_property.startsToBeObserved (by: self.netUsage_property) // Transient property
+      newValue.netsDescription_property.startsToBeObserved (by: self.netsDescription_property) // Transient property
+      newValue.netWarningCount_property.startsToBeObserved (by: self.netWarningCount_property) // Transient property
     }
   }
 
@@ -246,19 +246,19 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mNets (_ inObserver : EBObserverProtocol) {
+  final func toMany_mNets_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mNets.insert (inObserver)
     if let object = self.propval {
-      object.mNets_property.addEBObserver (inObserver)
+      object.mNets_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mNets (_ inObserver : EBObserverProtocol) {
+  final func toMany_mNets_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mNets.remove (inObserver)
     if let object = self.propval {
-      object.mNets_property.removeEBObserver (inObserver)
+      object.mNets_property.stopsBeingObserved (by: inObserver)
     }
   }
 

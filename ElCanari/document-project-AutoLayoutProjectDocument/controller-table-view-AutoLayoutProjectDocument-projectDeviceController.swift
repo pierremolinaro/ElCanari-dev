@@ -59,16 +59,16 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
       inModel,
       sortCallback: { [weak self] (left, right) in self?.isOrderedBefore (left, right) ?? true },
       addSortObserversCallback: { (observer) in
-        inModel.addEBObserverOf_deviceComponentCountString (observer)
-        inModel.addEBObserverOf_mDeviceName (observer)
-        inModel.addEBObserverOf_sizeString (observer)
-        inModel.addEBObserverOf_versionString (observer)
+        inModel.toMany_deviceComponentCountString_StartsToBeObserved (by: observer)
+        inModel.toMany_mDeviceName_StartsToBeObserved (by: observer)
+        inModel.toMany_sizeString_StartsToBeObserved (by: observer)
+        inModel.toMany_versionString_StartsToBeObserved (by: observer)
       },
       removeSortObserversCallback: {(observer) in
-        inModel.removeEBObserverOf_deviceComponentCountString (observer)
-        inModel.removeEBObserverOf_mDeviceName (observer)
-        inModel.removeEBObserverOf_sizeString (observer)
-        inModel.removeEBObserverOf_versionString (observer)
+        inModel.toMany_deviceComponentCountString_StopsBeingObserved (by: observer)
+        inModel.toMany_mDeviceName_StopsBeingObserved (by: observer)
+        inModel.toMany_sizeString_StopsBeingObserved (by: observer)
+        inModel.toMany_versionString_StopsBeingObserved (by: observer)
       }
     )
   }
@@ -145,15 +145,15 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
 
   override init () {
     super.init ()
-    self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.startsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mDeviceName' column
-    self.sortedArray_property.addEBObserverOf_mDeviceName (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_mDeviceName_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'versionString' column
-    self.sortedArray_property.addEBObserverOf_versionString (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_versionString_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'sizeString' column
-    self.sortedArray_property.addEBObserverOf_sizeString (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_sizeString_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'deviceComponentCountString' column
-    self.sortedArray_property.addEBObserverOf_deviceComponentCountString (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_deviceComponentCountString_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {

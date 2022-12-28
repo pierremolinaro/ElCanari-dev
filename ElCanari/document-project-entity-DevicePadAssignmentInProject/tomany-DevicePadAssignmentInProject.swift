@@ -37,30 +37,30 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserverOf_mPadName (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mPadName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mPadName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPadName_property.addEBObserver (inObserver)
+        managedObject.mPadName_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mPadName (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mPadName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mPadName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mPadName_property.removeEBObserver (inObserver)
+        managedObject.mPadName_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -72,7 +72,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mPadName.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mPadName_property.addEBObserver (observer)
+            managedObject.mPadName_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mPadName.triggerPacking ()
           }
@@ -88,7 +88,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mPadName_property.removeEBObserver (observer)
+          managedObject.mPadName_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mPadName.triggerPacking ()
@@ -104,30 +104,30 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserverOf_pinPadAssignment (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_pinPadAssignment_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_pinPadAssignment.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.pinPadAssignment_property.addEBObserver (inObserver)
+        managedObject.pinPadAssignment_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_pinPadAssignment (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_pinPadAssignment_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_pinPadAssignment.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.pinPadAssignment_property.removeEBObserver (inObserver)
+        managedObject.pinPadAssignment_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -138,7 +138,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_pinPadAssignment.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.pinPadAssignment_property.addEBObserver (observer)
+          managedObject.pinPadAssignment_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_pinPadAssignment.triggerPacking ()
         }
@@ -152,7 +152,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_pinPadAssignment.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.pinPadAssignment_property.removeEBObserver (observer)
+          managedObject.pinPadAssignment_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_pinPadAssignment.triggerPacking ()
         }
@@ -168,30 +168,30 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
 
   //····················································································································
 
-  final func addEBObserverOf_descriptor (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_descriptor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_descriptor.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.descriptor_property.addEBObserver (inObserver)
+        managedObject.descriptor_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_descriptor (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_descriptor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_descriptor.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.descriptor_property.removeEBObserver (inObserver)
+        managedObject.descriptor_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -202,7 +202,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_descriptor.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.descriptor_property.addEBObserver (observer)
+          managedObject.descriptor_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_descriptor.triggerPacking ()
         }
@@ -216,7 +216,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_descriptor.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.descriptor_property.removeEBObserver (observer)
+          managedObject.descriptor_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_descriptor.triggerPacking ()
         }

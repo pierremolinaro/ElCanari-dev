@@ -125,13 +125,13 @@ final class Controller_Preferences_userLibraryArrayController : EBObjcBaseObject
 
   override init () {
     super.init ()
-    self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.startsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mPath' column
-    self.sortedArray_property.addEBObserverOf_mPath (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_mPath_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mStatusImage' column
-    self.sortedArray_property.addEBObserverOf_mStatusImage (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_mStatusImage_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mUses' column
-    self.sortedArray_property.addEBObserverOf_mUses (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_mUses_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {

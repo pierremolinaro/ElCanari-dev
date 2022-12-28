@@ -126,7 +126,7 @@ final class DevicePadAssignmentInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPin_property.addEBObserver (self.mPin_none)
+    self.mPin_property.startsToBeObserved (by: self.mPin_none)
 //    gInitSemaphore.wait ()
   //--- To one property: mPin
     self.mPin_property.undoManager = inUndoManager
@@ -152,9 +152,9 @@ final class DevicePadAssignmentInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPadName_property.addEBObserver (self.pinPadAssignment_property)
-    self.mPin_property.mSymbolInstanceName_property.addEBObserver (self.pinPadAssignment_property)
-    self.mPin_property.mPinName_property.addEBObserver (self.pinPadAssignment_property)
+    self.mPadName_property.startsToBeObserved (by: self.pinPadAssignment_property)
+    self.mPin_property.mSymbolInstanceName_property.startsToBeObserved (by: self.pinPadAssignment_property)
+    self.mPin_property.mPinName_property.startsToBeObserved (by: self.pinPadAssignment_property)
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -174,8 +174,8 @@ final class DevicePadAssignmentInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPadName_property.addEBObserver (self.descriptor_property)
-    self.mPin_property.descriptor_property.addEBObserver (self.descriptor_property)
+    self.mPadName_property.startsToBeObserved (by: self.descriptor_property)
+    self.mPin_property.descriptor_property.startsToBeObserved (by: self.descriptor_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature

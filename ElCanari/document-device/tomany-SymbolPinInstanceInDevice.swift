@@ -41,30 +41,30 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_pinName (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_pinName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_pinName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.pinName_property.addEBObserver (inObserver)
+        managedObject.pinName_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_pinName (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_pinName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_pinName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.pinName_property.removeEBObserver (inObserver)
+        managedObject.pinName_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -75,7 +75,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_pinName.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.pinName_property.addEBObserver (observer)
+          managedObject.pinName_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_pinName.triggerPacking ()
         }
@@ -89,7 +89,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_pinName.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.pinName_property.removeEBObserver (observer)
+          managedObject.pinName_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_pinName.triggerPacking ()
         }
@@ -105,30 +105,30 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_symbolName (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_symbolName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_symbolName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.symbolName_property.addEBObserver (inObserver)
+        managedObject.symbolName_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_symbolName (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_symbolName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_symbolName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.symbolName_property.removeEBObserver (inObserver)
+        managedObject.symbolName_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -139,7 +139,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_symbolName.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.symbolName_property.addEBObserver (observer)
+          managedObject.symbolName_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_symbolName.triggerPacking ()
         }
@@ -153,7 +153,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_symbolName.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.symbolName_property.removeEBObserver (observer)
+          managedObject.symbolName_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_symbolName.triggerPacking ()
         }
@@ -169,30 +169,30 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_pinQualifiedName (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_pinQualifiedName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_pinQualifiedName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.pinQualifiedName_property.addEBObserver (inObserver)
+        managedObject.pinQualifiedName_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_pinQualifiedName (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_pinQualifiedName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_pinQualifiedName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.pinQualifiedName_property.removeEBObserver (inObserver)
+        managedObject.pinQualifiedName_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -203,7 +203,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_pinQualifiedName.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.pinQualifiedName_property.addEBObserver (observer)
+          managedObject.pinQualifiedName_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_pinQualifiedName.triggerPacking ()
         }
@@ -217,7 +217,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_pinQualifiedName.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.pinQualifiedName_property.removeEBObserver (observer)
+          managedObject.pinQualifiedName_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_pinQualifiedName.triggerPacking ()
         }
@@ -233,30 +233,30 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_isConnected (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_isConnected_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_isConnected.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.isConnected_property.addEBObserver (inObserver)
+        managedObject.isConnected_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_isConnected (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_isConnected_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_isConnected.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.isConnected_property.removeEBObserver (inObserver)
+        managedObject.isConnected_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -267,7 +267,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_isConnected.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.isConnected_property.addEBObserver (observer)
+          managedObject.isConnected_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_isConnected.triggerPacking ()
         }
@@ -281,7 +281,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_isConnected.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.isConnected_property.removeEBObserver (observer)
+          managedObject.isConnected_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_isConnected.triggerPacking ()
         }
@@ -297,30 +297,30 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
 
   //····················································································································
 
-  final func addEBObserverOf_numberShape (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_numberShape_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_numberShape.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.numberShape_property.addEBObserver (inObserver)
+        managedObject.numberShape_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_numberShape (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_numberShape_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_numberShape.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.numberShape_property.removeEBObserver (inObserver)
+        managedObject.numberShape_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -331,7 +331,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_numberShape.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.numberShape_property.addEBObserver (observer)
+          managedObject.numberShape_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_numberShape.triggerPacking ()
         }
@@ -345,7 +345,7 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_numberShape.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.numberShape_property.removeEBObserver (observer)
+          managedObject.numberShape_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_numberShape.triggerPacking ()
         }

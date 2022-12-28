@@ -227,7 +227,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbolInstance_property.addEBObserver (self.mSymbolInstance_none)
+    self.mSymbolInstance_property.startsToBeObserved (by: self.mSymbolInstance_none)
     self.mType_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mType_property.propval == nil)
@@ -235,7 +235,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mType_property.addEBObserver (self.mType_none)
+    self.mType_property.startsToBeObserved (by: self.mType_none)
     self.mPadProxy_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mPadProxy_property.propval == nil)
@@ -243,7 +243,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mPadProxy_property.addEBObserver (self.mPadProxy_none)
+    self.mPadProxy_property.startsToBeObserved (by: self.mPadProxy_none)
 //    gInitSemaphore.wait ()
   //--- To one property: mSymbolInstance (has opposite to many relationship: mPinInstances)
     self.mSymbolInstance_property.undoManager = inUndoManager
@@ -279,7 +279,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mType_property.mName_property.addEBObserver (self.pinName_property)
+    self.mType_property.mName_property.startsToBeObserved (by: self.pinName_property)
   //--- Atomic property: symbolName
     self.symbolName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -296,7 +296,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbolInstance_property.mInstanceName_property.addEBObserver (self.symbolName_property)
+    self.mSymbolInstance_property.mInstanceName_property.startsToBeObserved (by: self.symbolName_property)
   //--- Atomic property: pinQualifiedName
     self.pinQualifiedName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -316,8 +316,8 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.symbolName_property.addEBObserver (self.pinQualifiedName_property)
-    self.pinName_property.addEBObserver (self.pinQualifiedName_property)
+    self.symbolName_property.startsToBeObserved (by: self.pinQualifiedName_property)
+    self.pinName_property.startsToBeObserved (by: self.pinQualifiedName_property)
   //--- Atomic property: isConnected
     self.isConnected_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -334,7 +334,7 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mPadProxy_property.addEBObserver (self.isConnected_property)
+    self.mPadProxy_property.startsToBeObserved (by: self.isConnected_property)
   //--- Atomic property: numberShape
     self.numberShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -363,11 +363,11 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mType_property.mXNumber_property.addEBObserver (self.numberShape_property)
-    self.mType_property.mYNumber_property.addEBObserver (self.numberShape_property)
-    self.mType_property.mNumberHorizontalAlignment_property.addEBObserver (self.numberShape_property)
-    self.mPadProxy_property.mPadName_property.addEBObserver (self.numberShape_property)
-    preferences_pinNameFont_property.addEBObserver (self.numberShape_property)
+    self.mType_property.mXNumber_property.startsToBeObserved (by: self.numberShape_property)
+    self.mType_property.mYNumber_property.startsToBeObserved (by: self.numberShape_property)
+    self.mType_property.mNumberHorizontalAlignment_property.startsToBeObserved (by: self.numberShape_property)
+    self.mPadProxy_property.mPadName_property.startsToBeObserved (by: self.numberShape_property)
+    preferences_pinNameFont_property.startsToBeObserved (by: self.numberShape_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature

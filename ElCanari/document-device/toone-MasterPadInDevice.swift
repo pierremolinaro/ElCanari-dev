@@ -16,33 +16,33 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mCenterX_property.removeEBObserver (self.mCenterX_property) // Stored property
-      oldValue.mCenterY_property.removeEBObserver (self.mCenterY_property) // Stored property
-      oldValue.mWidth_property.removeEBObserver (self.mWidth_property) // Stored property
-      oldValue.mHeight_property.removeEBObserver (self.mHeight_property) // Stored property
-      oldValue.mHoleWidth_property.removeEBObserver (self.mHoleWidth_property) // Stored property
-      oldValue.mHoleHeight_property.removeEBObserver (self.mHoleHeight_property) // Stored property
-      oldValue.mShape_property.removeEBObserver (self.mShape_property) // Stored property
-      oldValue.mStyle_property.removeEBObserver (self.mStyle_property) // Stored property
-      oldValue.mName_property.removeEBObserver (self.mName_property) // Stored property
-      oldValue.padNumberDisplay_property.removeEBObserver (self.padNumberDisplay_property) // Transient property
-      oldValue.frontSideFilledBezierPathArray_property.removeEBObserver (self.frontSideFilledBezierPathArray_property) // Transient property
-      oldValue.backSideFilledBezierPathArray_property.removeEBObserver (self.backSideFilledBezierPathArray_property) // Transient property
+      oldValue.mCenterX_property.stopsBeingObserved (by: self.mCenterX_property) // Stored property
+      oldValue.mCenterY_property.stopsBeingObserved (by: self.mCenterY_property) // Stored property
+      oldValue.mWidth_property.stopsBeingObserved (by: self.mWidth_property) // Stored property
+      oldValue.mHeight_property.stopsBeingObserved (by: self.mHeight_property) // Stored property
+      oldValue.mHoleWidth_property.stopsBeingObserved (by: self.mHoleWidth_property) // Stored property
+      oldValue.mHoleHeight_property.stopsBeingObserved (by: self.mHoleHeight_property) // Stored property
+      oldValue.mShape_property.stopsBeingObserved (by: self.mShape_property) // Stored property
+      oldValue.mStyle_property.stopsBeingObserved (by: self.mStyle_property) // Stored property
+      oldValue.mName_property.stopsBeingObserved (by: self.mName_property) // Stored property
+      oldValue.padNumberDisplay_property.stopsBeingObserved (by: self.padNumberDisplay_property) // Transient property
+      oldValue.frontSideFilledBezierPathArray_property.stopsBeingObserved (by: self.frontSideFilledBezierPathArray_property) // Transient property
+      oldValue.backSideFilledBezierPathArray_property.stopsBeingObserved (by: self.backSideFilledBezierPathArray_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mCenterX_property.addEBObserver (self.mCenterX_property) // Stored property
-      newValue.mCenterY_property.addEBObserver (self.mCenterY_property) // Stored property
-      newValue.mWidth_property.addEBObserver (self.mWidth_property) // Stored property
-      newValue.mHeight_property.addEBObserver (self.mHeight_property) // Stored property
-      newValue.mHoleWidth_property.addEBObserver (self.mHoleWidth_property) // Stored property
-      newValue.mHoleHeight_property.addEBObserver (self.mHoleHeight_property) // Stored property
-      newValue.mShape_property.addEBObserver (self.mShape_property) // Stored property
-      newValue.mStyle_property.addEBObserver (self.mStyle_property) // Stored property
-      newValue.mName_property.addEBObserver (self.mName_property) // Stored property
-      newValue.padNumberDisplay_property.addEBObserver (self.padNumberDisplay_property) // Transient property
-      newValue.frontSideFilledBezierPathArray_property.addEBObserver (self.frontSideFilledBezierPathArray_property) // Transient property
-      newValue.backSideFilledBezierPathArray_property.addEBObserver (self.backSideFilledBezierPathArray_property) // Transient property
+      newValue.mCenterX_property.startsToBeObserved (by: self.mCenterX_property) // Stored property
+      newValue.mCenterY_property.startsToBeObserved (by: self.mCenterY_property) // Stored property
+      newValue.mWidth_property.startsToBeObserved (by: self.mWidth_property) // Stored property
+      newValue.mHeight_property.startsToBeObserved (by: self.mHeight_property) // Stored property
+      newValue.mHoleWidth_property.startsToBeObserved (by: self.mHoleWidth_property) // Stored property
+      newValue.mHoleHeight_property.startsToBeObserved (by: self.mHoleHeight_property) // Stored property
+      newValue.mShape_property.startsToBeObserved (by: self.mShape_property) // Stored property
+      newValue.mStyle_property.startsToBeObserved (by: self.mStyle_property) // Stored property
+      newValue.mName_property.startsToBeObserved (by: self.mName_property) // Stored property
+      newValue.padNumberDisplay_property.startsToBeObserved (by: self.padNumberDisplay_property) // Transient property
+      newValue.frontSideFilledBezierPathArray_property.startsToBeObserved (by: self.frontSideFilledBezierPathArray_property) // Transient property
+      newValue.backSideFilledBezierPathArray_property.startsToBeObserved (by: self.backSideFilledBezierPathArray_property) // Transient property
     }
   }
 
@@ -126,19 +126,19 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
 
   //····················································································································
 
-  final func addEBObserverOf_mSlavePads (_ inObserver : EBObserverProtocol) {
+  final func toMany_mSlavePads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mSlavePads.insert (inObserver)
     if let object = self.propval {
-      object.mSlavePads_property.addEBObserver (inObserver)
+      object.mSlavePads_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mSlavePads (_ inObserver : EBObserverProtocol) {
+  final func toMany_mSlavePads_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mSlavePads.remove (inObserver)
     if let object = self.propval {
-      object.mSlavePads_property.removeEBObserver (inObserver)
+      object.mSlavePads_property.stopsBeingObserved (by: inObserver)
     }
   }
 

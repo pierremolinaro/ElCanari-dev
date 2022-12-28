@@ -4063,11 +4063,11 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.overlapingArrangment_property.addEBObserver (self.issues_property)
-    self.rootObject.boardRect_property.addEBObserver (self.issues_property)
-    self.rootObject.boardLimitWidth_property.addEBObserver (self.issues_property)
-    self.rootObject.boardInstances_property.addEBObserverOf_instanceRect (self.issues_property)
-    self.rootObject.boardInstances_property.addEBObserverOf_boardLimitWidth (self.issues_property)
+    self.rootObject.overlapingArrangment_property.startsToBeObserved (by: self.issues_property)
+    self.rootObject.boardRect_property.startsToBeObserved (by: self.issues_property)
+    self.rootObject.boardLimitWidth_property.startsToBeObserved (by: self.issues_property)
+    self.rootObject.boardInstances_property.toMany_instanceRect_StartsToBeObserved (by: self.issues_property)
+    self.rootObject.boardInstances_property.toMany_boardLimitWidth_StartsToBeObserved (by: self.issues_property)
 
   //--- Atomic property: boardLimitWidthStatusImage
     self.boardLimitWidthStatusImage_property.mReadModelFunction = { [weak self] in
@@ -4085,7 +4085,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.boardLimitWidthOk_property.addEBObserver (self.boardLimitWidthStatusImage_property)
+    self.rootObject.boardLimitWidthOk_property.startsToBeObserved (by: self.boardLimitWidthStatusImage_property)
 
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
@@ -4106,8 +4106,8 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.addEBObserver (self.statusMessage_property)
-    self.rootObject.boardLimitWidthErrorMessage_property.addEBObserver (self.statusMessage_property)
+    self.issues_property.startsToBeObserved (by: self.statusMessage_property)
+    self.rootObject.boardLimitWidthErrorMessage_property.startsToBeObserved (by: self.statusMessage_property)
 
   //--- Atomic property: boardDispositionStatusTitle
     self.boardDispositionStatusTitle_property.mReadModelFunction = { [weak self] in
@@ -4125,7 +4125,7 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.addEBObserver (self.boardDispositionStatusTitle_property)
+    self.issues_property.startsToBeObserved (by: self.boardDispositionStatusTitle_property)
 
 
   //--- Atomic property: incorrectDocumentFileDetailedErrorMessage
@@ -4144,7 +4144,7 @@ import AppKit
         return .empty
       }
     }
-    self.documentFileName_property.addEBObserver (self.incorrectDocumentFileDetailedErrorMessage_property)
+    self.documentFileName_property.startsToBeObserved (by: self.incorrectDocumentFileDetailedErrorMessage_property)
 
   //--- Atomic property: documentFileShouldBeRenamedErrorMessage
     self.documentFileShouldBeRenamedErrorMessage_property.mReadModelFunction = { [weak self] in
@@ -4162,7 +4162,7 @@ import AppKit
         return .empty
       }
     }
-    self.documentFileName_property.addEBObserver (self.documentFileShouldBeRenamedErrorMessage_property)
+    self.documentFileName_property.startsToBeObserved (by: self.documentFileShouldBeRenamedErrorMessage_property)
 
   //--- Atomic property: emptyDrillFileExtension
     self.emptyDrillFileExtension_property.mReadModelFunction = { [weak self] in
@@ -4180,7 +4180,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.drillDataFileExtension_property.addEBObserver (self.emptyDrillFileExtension_property)
+    self.rootObject.drillDataFileExtension_property.startsToBeObserved (by: self.emptyDrillFileExtension_property)
 
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
@@ -4201,8 +4201,8 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.addEBObserver (self.statusImage_property)
-    self.rootObject.boardLimitWidthOk_property.addEBObserver (self.statusImage_property)
+    self.issues_property.startsToBeObserved (by: self.statusImage_property)
+    self.rootObject.boardLimitWidthOk_property.startsToBeObserved (by: self.statusImage_property)
 
   //--- Atomic property: documentIsUnnamed
     self.documentIsUnnamed_property.mReadModelFunction = { [weak self] in
@@ -4220,7 +4220,7 @@ import AppKit
         return .empty
       }
     }
-    self.documentFileName_property.addEBObserver (self.documentIsUnnamed_property)
+    self.documentFileName_property.startsToBeObserved (by: self.documentIsUnnamed_property)
 
   //--- Atomic property: emptyDrillFileExtensionImage
     self.emptyDrillFileExtensionImage_property.mReadModelFunction = { [weak self] in
@@ -4238,7 +4238,7 @@ import AppKit
         return .empty
       }
     }
-    self.emptyDrillFileExtension_property.addEBObserver (self.emptyDrillFileExtensionImage_property)
+    self.emptyDrillFileExtension_property.startsToBeObserved (by: self.emptyDrillFileExtensionImage_property)
 
   //--- Atomic property: generatedFileCountString
     self.generatedFileCountString_property.mReadModelFunction = { [weak self] in
@@ -4256,7 +4256,7 @@ import AppKit
         return .empty
       }
     }
-    self.mDataController.sortedArray_property.count_property.addEBObserver (self.generatedFileCountString_property)
+    self.mDataController.sortedArray_property.count_property.startsToBeObserved (by: self.generatedFileCountString_property)
 
   }
 

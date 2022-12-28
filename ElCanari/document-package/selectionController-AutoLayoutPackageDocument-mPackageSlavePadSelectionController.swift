@@ -205,96 +205,96 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //--- xCenter
     self.xCenter_property.mReadModelFunction = nil 
     self.xCenter_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_xCenter (self.xCenter_property)
+    self.selectedArray_property.toMany_xCenter_StopsBeingObserved (by: self.xCenter_property)
   //--- yCenter
     self.yCenter_property.mReadModelFunction = nil 
     self.yCenter_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_yCenter (self.yCenter_property)
+    self.selectedArray_property.toMany_yCenter_StopsBeingObserved (by: self.yCenter_property)
   //--- width
     self.width_property.mReadModelFunction = nil 
     self.width_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_width (self.width_property)
+    self.selectedArray_property.toMany_width_StopsBeingObserved (by: self.width_property)
   //--- height
     self.height_property.mReadModelFunction = nil 
     self.height_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_height (self.height_property)
+    self.selectedArray_property.toMany_height_StopsBeingObserved (by: self.height_property)
   //--- holeWidth
     self.holeWidth_property.mReadModelFunction = nil 
     self.holeWidth_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_holeWidth (self.holeWidth_property)
+    self.selectedArray_property.toMany_holeWidth_StopsBeingObserved (by: self.holeWidth_property)
   //--- holeHeight
     self.holeHeight_property.mReadModelFunction = nil 
     self.holeHeight_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_holeHeight (self.holeHeight_property)
+    self.selectedArray_property.toMany_holeHeight_StopsBeingObserved (by: self.holeHeight_property)
   //--- padShape
     self.padShape_property.mReadModelFunction = nil 
     self.padShape_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_padShape (self.padShape_property)
+    self.selectedArray_property.toMany_padShape_StopsBeingObserved (by: self.padShape_property)
   //--- padStyle
     self.padStyle_property.mReadModelFunction = nil 
     self.padStyle_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_padStyle (self.padStyle_property)
+    self.selectedArray_property.toMany_padStyle_StopsBeingObserved (by: self.padStyle_property)
   //--- xCenterUnit
     self.xCenterUnit_property.mReadModelFunction = nil 
     self.xCenterUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_xCenterUnit (self.xCenterUnit_property)
+    self.selectedArray_property.toMany_xCenterUnit_StopsBeingObserved (by: self.xCenterUnit_property)
   //--- yCenterUnit
     self.yCenterUnit_property.mReadModelFunction = nil 
     self.yCenterUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_yCenterUnit (self.yCenterUnit_property)
+    self.selectedArray_property.toMany_yCenterUnit_StopsBeingObserved (by: self.yCenterUnit_property)
   //--- widthUnit
     self.widthUnit_property.mReadModelFunction = nil 
     self.widthUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_widthUnit (self.widthUnit_property)
+    self.selectedArray_property.toMany_widthUnit_StopsBeingObserved (by: self.widthUnit_property)
   //--- heightUnit
     self.heightUnit_property.mReadModelFunction = nil 
     self.heightUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_heightUnit (self.heightUnit_property)
+    self.selectedArray_property.toMany_heightUnit_StopsBeingObserved (by: self.heightUnit_property)
   //--- holeWidthUnit
     self.holeWidthUnit_property.mReadModelFunction = nil 
     self.holeWidthUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_holeWidthUnit (self.holeWidthUnit_property)
+    self.selectedArray_property.toMany_holeWidthUnit_StopsBeingObserved (by: self.holeWidthUnit_property)
   //--- holeHeightUnit
     self.holeHeightUnit_property.mReadModelFunction = nil 
     self.holeHeightUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_holeHeightUnit (self.holeHeightUnit_property)
+    self.selectedArray_property.toMany_holeHeightUnit_StopsBeingObserved (by: self.holeHeightUnit_property)
   //--- annularRingUnit
     self.annularRingUnit_property.mReadModelFunction = nil 
     self.annularRingUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_annularRingUnit (self.annularRingUnit_property)
+    self.selectedArray_property.toMany_annularRingUnit_StopsBeingObserved (by: self.annularRingUnit_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StopsBeingObserved (by: self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StopsBeingObserved (by: self.selectionDisplay_property)
   //--- issues
     self.issues_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_issues (self.issues_property)
+    self.selectedArray_property.toMany_issues_StopsBeingObserved (by: self.issues_property)
   //--- padIsTraversing
     self.padIsTraversing_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_padIsTraversing (self.padIsTraversing_property)
+    self.selectedArray_property.toMany_padIsTraversing_StopsBeingObserved (by: self.padIsTraversing_property)
   //--- annularRing
     self.annularRing_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_annularRing (self.annularRing_property)
+    self.selectedArray_property.toMany_annularRing_StopsBeingObserved (by: self.annularRing_property)
   //--- padNameWithZoneName
     self.padNameWithZoneName_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_padNameWithZoneName (self.padNameWithZoneName_property)
+    self.selectedArray_property.toMany_padNameWithZoneName_StopsBeingObserved (by: self.padNameWithZoneName_property)
   //--- masterPadNameWithZoneName
     self.masterPadNameWithZoneName_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_masterPadNameWithZoneName (self.masterPadNameWithZoneName_property)
+    self.selectedArray_property.toMany_masterPadNameWithZoneName_StopsBeingObserved (by: self.masterPadNameWithZoneName_property)
   //--- padNameForDisplay
     self.padNameForDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_padNameForDisplay (self.padNameForDisplay_property)
+    self.selectedArray_property.toMany_padNameForDisplay_StopsBeingObserved (by: self.padNameForDisplay_property)
   //--- padNumberDisplay
     self.padNumberDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
+    self.selectedArray_property.toMany_padNumberDisplay_StopsBeingObserved (by: self.padNumberDisplay_property)
   } */
 
   //····················································································································
 
   private final func bind_property_xCenter () {
-    self.selectedArray_property.addEBObserverOf_xCenter (self.xCenter_property)
+    self.selectedArray_property.toMany_xCenter_StartsToBeObserved (by: self.xCenter_property)
     self.xCenter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -345,7 +345,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_yCenter () {
-    self.selectedArray_property.addEBObserverOf_yCenter (self.yCenter_property)
+    self.selectedArray_property.toMany_yCenter_StartsToBeObserved (by: self.yCenter_property)
     self.yCenter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -396,7 +396,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_width () {
-    self.selectedArray_property.addEBObserverOf_width (self.width_property)
+    self.selectedArray_property.toMany_width_StartsToBeObserved (by: self.width_property)
     self.width_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -447,7 +447,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_height () {
-    self.selectedArray_property.addEBObserverOf_height (self.height_property)
+    self.selectedArray_property.toMany_height_StartsToBeObserved (by: self.height_property)
     self.height_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -498,7 +498,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_holeWidth () {
-    self.selectedArray_property.addEBObserverOf_holeWidth (self.holeWidth_property)
+    self.selectedArray_property.toMany_holeWidth_StartsToBeObserved (by: self.holeWidth_property)
     self.holeWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -549,7 +549,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_holeHeight () {
-    self.selectedArray_property.addEBObserverOf_holeHeight (self.holeHeight_property)
+    self.selectedArray_property.toMany_holeHeight_StartsToBeObserved (by: self.holeHeight_property)
     self.holeHeight_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -600,7 +600,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_padShape () {
-    self.selectedArray_property.addEBObserverOf_padShape (self.padShape_property)
+    self.selectedArray_property.toMany_padShape_StartsToBeObserved (by: self.padShape_property)
     self.padShape_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -651,7 +651,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_padStyle () {
-    self.selectedArray_property.addEBObserverOf_padStyle (self.padStyle_property)
+    self.selectedArray_property.toMany_padStyle_StartsToBeObserved (by: self.padStyle_property)
     self.padStyle_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -702,7 +702,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_xCenterUnit () {
-    self.selectedArray_property.addEBObserverOf_xCenterUnit (self.xCenterUnit_property)
+    self.selectedArray_property.toMany_xCenterUnit_StartsToBeObserved (by: self.xCenterUnit_property)
     self.xCenterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -753,7 +753,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_yCenterUnit () {
-    self.selectedArray_property.addEBObserverOf_yCenterUnit (self.yCenterUnit_property)
+    self.selectedArray_property.toMany_yCenterUnit_StartsToBeObserved (by: self.yCenterUnit_property)
     self.yCenterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -804,7 +804,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_widthUnit () {
-    self.selectedArray_property.addEBObserverOf_widthUnit (self.widthUnit_property)
+    self.selectedArray_property.toMany_widthUnit_StartsToBeObserved (by: self.widthUnit_property)
     self.widthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -855,7 +855,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_heightUnit () {
-    self.selectedArray_property.addEBObserverOf_heightUnit (self.heightUnit_property)
+    self.selectedArray_property.toMany_heightUnit_StartsToBeObserved (by: self.heightUnit_property)
     self.heightUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -906,7 +906,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_holeWidthUnit () {
-    self.selectedArray_property.addEBObserverOf_holeWidthUnit (self.holeWidthUnit_property)
+    self.selectedArray_property.toMany_holeWidthUnit_StartsToBeObserved (by: self.holeWidthUnit_property)
     self.holeWidthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -957,7 +957,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_holeHeightUnit () {
-    self.selectedArray_property.addEBObserverOf_holeHeightUnit (self.holeHeightUnit_property)
+    self.selectedArray_property.toMany_holeHeightUnit_StartsToBeObserved (by: self.holeHeightUnit_property)
     self.holeHeightUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1008,7 +1008,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_annularRingUnit () {
-    self.selectedArray_property.addEBObserverOf_annularRingUnit (self.annularRingUnit_property)
+    self.selectedArray_property.toMany_annularRingUnit_StartsToBeObserved (by: self.annularRingUnit_property)
     self.annularRingUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1059,7 +1059,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StartsToBeObserved (by: self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1098,7 +1098,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StartsToBeObserved (by: self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1137,7 +1137,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_issues () {
-    self.selectedArray_property.addEBObserverOf_issues (self.issues_property)
+    self.selectedArray_property.toMany_issues_StartsToBeObserved (by: self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1176,7 +1176,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_padIsTraversing () {
-    self.selectedArray_property.addEBObserverOf_padIsTraversing (self.padIsTraversing_property)
+    self.selectedArray_property.toMany_padIsTraversing_StartsToBeObserved (by: self.padIsTraversing_property)
     self.padIsTraversing_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1215,7 +1215,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_annularRing () {
-    self.selectedArray_property.addEBObserverOf_annularRing (self.annularRing_property)
+    self.selectedArray_property.toMany_annularRing_StartsToBeObserved (by: self.annularRing_property)
     self.annularRing_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1254,7 +1254,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_padNameWithZoneName () {
-    self.selectedArray_property.addEBObserverOf_padNameWithZoneName (self.padNameWithZoneName_property)
+    self.selectedArray_property.toMany_padNameWithZoneName_StartsToBeObserved (by: self.padNameWithZoneName_property)
     self.padNameWithZoneName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1293,7 +1293,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_masterPadNameWithZoneName () {
-    self.selectedArray_property.addEBObserverOf_masterPadNameWithZoneName (self.masterPadNameWithZoneName_property)
+    self.selectedArray_property.toMany_masterPadNameWithZoneName_StartsToBeObserved (by: self.masterPadNameWithZoneName_property)
     self.masterPadNameWithZoneName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1332,7 +1332,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_padNameForDisplay () {
-    self.selectedArray_property.addEBObserverOf_padNameForDisplay (self.padNameForDisplay_property)
+    self.selectedArray_property.toMany_padNameForDisplay_StartsToBeObserved (by: self.padNameForDisplay_property)
     self.padNameForDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1371,7 +1371,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageSlavePadSelect
   //····················································································································
 
   private final func bind_property_padNumberDisplay () {
-    self.selectedArray_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
+    self.selectedArray_property.toMany_padNumberDisplay_StartsToBeObserved (by: self.padNumberDisplay_property)
     self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {

@@ -93,31 +93,31 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection
   /* final func unbind_selection () {
   //--- boardLimitWidth
     self.boardLimitWidth_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_boardLimitWidth (self.boardLimitWidth_property)
+    self.mModel?.toMany_boardLimitWidth_StopsBeingObserved (by: self.boardLimitWidth_property)
   //--- instanceRect
     self.instanceRect_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_instanceRect (self.instanceRect_property)
+    self.mModel?.toMany_instanceRect_StopsBeingObserved (by: self.instanceRect_property)
   //--- instanceRotation
     self.instanceRotation_property.mReadModelFunction = nil 
     self.instanceRotation_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_instanceRotation (self.instanceRotation_property)
+    self.mModel?.toMany_instanceRotation_StopsBeingObserved (by: self.instanceRotation_property)
   //--- modelName
     self.modelName_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_modelName (self.modelName_property)
+    self.mModel?.toMany_modelName_StopsBeingObserved (by: self.modelName_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.mModel?.toMany_objectDisplay_StopsBeingObserved (by: self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.mModel?.toMany_selectionDisplay_StopsBeingObserved (by: self.selectionDisplay_property)
   //--- x
     self.x_property.mReadModelFunction = nil 
     self.x_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_x (self.x_property)
+    self.mModel?.toMany_x_StopsBeingObserved (by: self.x_property)
   //--- y
     self.y_property.mReadModelFunction = nil 
     self.y_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_y (self.y_property)
+    self.mModel?.toMany_y_StopsBeingObserved (by: self.y_property)
   //---
     self.mModel = nil
   } */
@@ -125,7 +125,7 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection
   //···················································································································*
 
   private final func bind_property_boardLimitWidth (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.addEBObserverOf_boardLimitWidth (self.boardLimitWidth_property)
+    model.toMany_boardLimitWidth_StartsToBeObserved (by: self.boardLimitWidth_property)
     self.boardLimitWidth_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -165,7 +165,7 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection
   //···················································································································*
 
   private final func bind_property_instanceRect (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.addEBObserverOf_instanceRect (self.instanceRect_property)
+    model.toMany_instanceRect_StartsToBeObserved (by: self.instanceRect_property)
     self.instanceRect_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -205,7 +205,7 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection
   //···················································································································*
 
   private final func bind_property_instanceRotation (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.addEBObserverOf_instanceRotation (self.instanceRotation_property)
+    model.toMany_instanceRotation_StartsToBeObserved (by: self.instanceRotation_property)
     self.instanceRotation_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -257,7 +257,7 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection
   //···················································································································*
 
   private final func bind_property_modelName (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.addEBObserverOf_modelName (self.modelName_property)
+    model.toMany_modelName_StartsToBeObserved (by: self.modelName_property)
     self.modelName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -297,7 +297,7 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection
   //···················································································································*
 
   private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    model.toMany_objectDisplay_StartsToBeObserved (by: self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -337,7 +337,7 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection
   //···················································································································*
 
   private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    model.toMany_selectionDisplay_StartsToBeObserved (by: self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -377,7 +377,7 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection
   //···················································································································*
 
   private final func bind_property_x (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.addEBObserverOf_x (self.x_property)
+    model.toMany_x_StartsToBeObserved (by: self.x_property)
     self.x_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -429,7 +429,7 @@ final class SelectionController_AutoLayoutMergerDocument_mBoardInstanceSelection
   //···················································································································*
 
   private final func bind_property_y (model : ReadOnlyArrayOf_MergerBoardInstance) {
-    model.addEBObserverOf_y (self.y_property)
+    model.toMany_y_StartsToBeObserved (by: self.y_property)
     self.y_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {

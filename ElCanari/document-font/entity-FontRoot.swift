@@ -353,7 +353,7 @@ final class FontRoot : EBManagedObject,
         return .empty
       }
     }
-    self.currentCharacterCodePoint_property.addEBObserver (self.currentCharacterCodePointString_property)
+    self.currentCharacterCodePoint_property.startsToBeObserved (by: self.currentCharacterCodePointString_property)
   //--- Atomic property: sampleStringBezierPath
     self.sampleStringBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -382,11 +382,11 @@ final class FontRoot : EBManagedObject,
         return .empty
       }
     }
-    self.nominalSize_property.addEBObserver (self.sampleStringBezierPath_property)
-    self.characters_property.addEBObserverOf_segmentArrayForDrawing (self.sampleStringBezierPath_property)
-    self.characters_property.addEBObserverOf_advance (self.sampleStringBezierPath_property)
-    preferences_sampleString_property.addEBObserver (self.sampleStringBezierPath_property)
-    preferences_sampleStringSize_property.addEBObserver (self.sampleStringBezierPath_property)
+    self.nominalSize_property.startsToBeObserved (by: self.sampleStringBezierPath_property)
+    self.characters_property.toMany_segmentArrayForDrawing_StartsToBeObserved (by: self.sampleStringBezierPath_property)
+    self.characters_property.toMany_advance_StartsToBeObserved (by: self.sampleStringBezierPath_property)
+    preferences_sampleString_property.startsToBeObserved (by: self.sampleStringBezierPath_property)
+    preferences_sampleStringSize_property.startsToBeObserved (by: self.sampleStringBezierPath_property)
   //--- Atomic property: sampleStringBezierPathWidth
     self.sampleStringBezierPathWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -403,7 +403,7 @@ final class FontRoot : EBManagedObject,
         return .empty
       }
     }
-    self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathWidth_property)
+    self.sampleStringBezierPath_property.startsToBeObserved (by: self.sampleStringBezierPathWidth_property)
   //--- Atomic property: sampleStringBezierPathAscent
     self.sampleStringBezierPathAscent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -420,7 +420,7 @@ final class FontRoot : EBManagedObject,
         return .empty
       }
     }
-    self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathAscent_property)
+    self.sampleStringBezierPath_property.startsToBeObserved (by: self.sampleStringBezierPathAscent_property)
   //--- Atomic property: sampleStringBezierPathDescent
     self.sampleStringBezierPathDescent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -437,7 +437,7 @@ final class FontRoot : EBManagedObject,
         return .empty
       }
     }
-    self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathDescent_property)
+    self.sampleStringBezierPath_property.startsToBeObserved (by: self.sampleStringBezierPathDescent_property)
   //--- Atomic property: definedCharacters
     self.definedCharacters_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -454,7 +454,7 @@ final class FontRoot : EBManagedObject,
         return .empty
       }
     }
-    self.characters_property.addEBObserverOf_codePoint (self.definedCharacters_property)
+    self.characters_property.toMany_codePoint_StartsToBeObserved (by: self.definedCharacters_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -471,7 +471,7 @@ final class FontRoot : EBManagedObject,
         return .empty
       }
     }
-    self.characters_property.addEBObserverOf_issues (self.issues_property)
+    self.characters_property.toMany_issues_StartsToBeObserved (by: self.issues_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature

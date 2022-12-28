@@ -450,14 +450,14 @@ final class PackageArc : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.addEBObserver (self.strokeBezierPath_property)
-    self.yCenter_property.addEBObserver (self.strokeBezierPath_property)
-    self.radius_property.addEBObserver (self.strokeBezierPath_property)
-    self.startAngle_property.addEBObserver (self.strokeBezierPath_property)
-    self.arcAngle_property.addEBObserver (self.strokeBezierPath_property)
-    self.pathIsClosed_property.addEBObserver (self.strokeBezierPath_property)
-    self.startTangent_property.addEBObserver (self.strokeBezierPath_property)
-    self.endTangent_property.addEBObserver (self.strokeBezierPath_property)
+    self.xCenter_property.startsToBeObserved (by: self.strokeBezierPath_property)
+    self.yCenter_property.startsToBeObserved (by: self.strokeBezierPath_property)
+    self.radius_property.startsToBeObserved (by: self.strokeBezierPath_property)
+    self.startAngle_property.startsToBeObserved (by: self.strokeBezierPath_property)
+    self.arcAngle_property.startsToBeObserved (by: self.strokeBezierPath_property)
+    self.pathIsClosed_property.startsToBeObserved (by: self.strokeBezierPath_property)
+    self.startTangent_property.startsToBeObserved (by: self.strokeBezierPath_property)
+    self.endTangent_property.startsToBeObserved (by: self.strokeBezierPath_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -480,9 +480,9 @@ final class PackageArc : PackageObject,
         return .empty
       }
     }
-    self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property)
-    preferences_packageColor_property.addEBObserver (self.objectDisplay_property)
-    preferences_packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+    self.strokeBezierPath_property.startsToBeObserved (by: self.objectDisplay_property)
+    preferences_packageColor_property.startsToBeObserved (by: self.objectDisplay_property)
+    preferences_packageDrawingWidthMultipliedByTen_property.startsToBeObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -523,15 +523,15 @@ final class PackageArc : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.addEBObserver (self.selectionDisplay_property)
-    self.yCenter_property.addEBObserver (self.selectionDisplay_property)
-    self.radius_property.addEBObserver (self.selectionDisplay_property)
-    self.startAngle_property.addEBObserver (self.selectionDisplay_property)
-    self.arcAngle_property.addEBObserver (self.selectionDisplay_property)
-    self.startTangent_property.addEBObserver (self.selectionDisplay_property)
-    self.endTangent_property.addEBObserver (self.selectionDisplay_property)
-    self.pathIsClosed_property.addEBObserver (self.selectionDisplay_property)
-    self.knobSize_property.addEBObserver (self.selectionDisplay_property)
+    self.xCenter_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.yCenter_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.radius_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.startAngle_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.arcAngle_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.startTangent_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.endTangent_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.pathIsClosed_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.knobSize_property.startsToBeObserved (by: self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -563,12 +563,12 @@ final class PackageArc : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.addEBObserver (self.issues_property)
-    self.yCenter_property.addEBObserver (self.issues_property)
-    self.radius_property.addEBObserver (self.issues_property)
-    self.startAngle_property.addEBObserver (self.issues_property)
-    self.arcAngle_property.addEBObserver (self.issues_property)
-    self.pathIsClosed_property.addEBObserver (self.issues_property)
+    self.xCenter_property.startsToBeObserved (by: self.issues_property)
+    self.yCenter_property.startsToBeObserved (by: self.issues_property)
+    self.radius_property.startsToBeObserved (by: self.issues_property)
+    self.startAngle_property.startsToBeObserved (by: self.issues_property)
+    self.arcAngle_property.startsToBeObserved (by: self.issues_property)
+    self.pathIsClosed_property.startsToBeObserved (by: self.issues_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature

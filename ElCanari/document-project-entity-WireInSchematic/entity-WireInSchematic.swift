@@ -165,7 +165,7 @@ final class WireInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mP1_property.addEBObserver (self.mP1_none)
+    self.mP1_property.startsToBeObserved (by: self.mP1_none)
     self.mP2_none.mReadModelFunction = { [weak self] in
       if let uwSelf = self {
         return .single (uwSelf.mP2_property.propval == nil)
@@ -173,7 +173,7 @@ final class WireInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mP2_property.addEBObserver (self.mP2_none)
+    self.mP2_property.startsToBeObserved (by: self.mP2_none)
 //    gInitSemaphore.wait ()
   //--- To one property: mP1 (has opposite to many relationship: mWiresP1s)
     self.mP1_property.undoManager = inUndoManager
@@ -215,11 +215,11 @@ final class WireInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mP1_property.wireColor_property.addEBObserver (self.objectDisplay_property)
-    preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.addEBObserver (self.objectDisplay_property)
-    preferences_schematicBackColor_property.addEBObserver (self.objectDisplay_property)
-    self.mP1_property.location_property.addEBObserver (self.objectDisplay_property)
-    self.mP2_property.location_property.addEBObserver (self.objectDisplay_property)
+    self.mP1_property.wireColor_property.startsToBeObserved (by: self.objectDisplay_property)
+    preferences_symbolDrawingWidthMultipliedByTenForSchematic_property.startsToBeObserved (by: self.objectDisplay_property)
+    preferences_schematicBackColor_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.mP1_property.location_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.mP2_property.location_property.startsToBeObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -245,10 +245,10 @@ final class WireInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mP1_property.location_property.addEBObserver (self.selectionDisplay_property)
-    self.mP1_property.canMove_property.addEBObserver (self.selectionDisplay_property)
-    self.mP2_property.location_property.addEBObserver (self.selectionDisplay_property)
-    self.mP2_property.canMove_property.addEBObserver (self.selectionDisplay_property)
+    self.mP1_property.location_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.mP1_property.canMove_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.mP2_property.location_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.mP2_property.canMove_property.startsToBeObserved (by: self.selectionDisplay_property)
   //--- Atomic property: netName
     self.netName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -265,7 +265,7 @@ final class WireInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mP1_property.netName_property.addEBObserver (self.netName_property)
+    self.mP1_property.netName_property.startsToBeObserved (by: self.netName_property)
   //--- Atomic property: netClassName
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -282,7 +282,7 @@ final class WireInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mP1_property.netClassName_property.addEBObserver (self.netClassName_property)
+    self.mP1_property.netClassName_property.startsToBeObserved (by: self.netClassName_property)
   //--- Atomic property: hasNet
     self.hasNet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -299,7 +299,7 @@ final class WireInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mP1_property.hasNet_property.addEBObserver (self.hasNet_property)
+    self.mP1_property.hasNet_property.startsToBeObserved (by: self.hasNet_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature

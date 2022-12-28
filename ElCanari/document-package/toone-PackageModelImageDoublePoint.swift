@@ -16,25 +16,25 @@ class ReadOnlyObject_PackageModelImageDoublePoint : ReadOnlyAbstractObjectProper
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mFirstX_property.removeEBObserver (self.mFirstX_property) // Stored property
-      oldValue.mFirstY_property.removeEBObserver (self.mFirstY_property) // Stored property
-      oldValue.mFirstColor_property.removeEBObserver (self.mFirstColor_property) // Stored property
-      oldValue.mSecondDx_property.removeEBObserver (self.mSecondDx_property) // Stored property
-      oldValue.mSecondDy_property.removeEBObserver (self.mSecondDy_property) // Stored property
-      oldValue.mSecondColor_property.removeEBObserver (self.mSecondColor_property) // Stored property
-      oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
-      oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
+      oldValue.mFirstX_property.stopsBeingObserved (by: self.mFirstX_property) // Stored property
+      oldValue.mFirstY_property.stopsBeingObserved (by: self.mFirstY_property) // Stored property
+      oldValue.mFirstColor_property.stopsBeingObserved (by: self.mFirstColor_property) // Stored property
+      oldValue.mSecondDx_property.stopsBeingObserved (by: self.mSecondDx_property) // Stored property
+      oldValue.mSecondDy_property.stopsBeingObserved (by: self.mSecondDy_property) // Stored property
+      oldValue.mSecondColor_property.stopsBeingObserved (by: self.mSecondColor_property) // Stored property
+      oldValue.objectDisplay_property.stopsBeingObserved (by: self.objectDisplay_property) // Transient property
+      oldValue.selectionDisplay_property.stopsBeingObserved (by: self.selectionDisplay_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mFirstX_property.addEBObserver (self.mFirstX_property) // Stored property
-      newValue.mFirstY_property.addEBObserver (self.mFirstY_property) // Stored property
-      newValue.mFirstColor_property.addEBObserver (self.mFirstColor_property) // Stored property
-      newValue.mSecondDx_property.addEBObserver (self.mSecondDx_property) // Stored property
-      newValue.mSecondDy_property.addEBObserver (self.mSecondDy_property) // Stored property
-      newValue.mSecondColor_property.addEBObserver (self.mSecondColor_property) // Stored property
-      newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-      newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
+      newValue.mFirstX_property.startsToBeObserved (by: self.mFirstX_property) // Stored property
+      newValue.mFirstY_property.startsToBeObserved (by: self.mFirstY_property) // Stored property
+      newValue.mFirstColor_property.startsToBeObserved (by: self.mFirstColor_property) // Stored property
+      newValue.mSecondDx_property.startsToBeObserved (by: self.mSecondDx_property) // Stored property
+      newValue.mSecondDy_property.startsToBeObserved (by: self.mSecondDy_property) // Stored property
+      newValue.mSecondColor_property.startsToBeObserved (by: self.mSecondColor_property) // Stored property
+      newValue.objectDisplay_property.startsToBeObserved (by: self.objectDisplay_property) // Transient property
+      newValue.selectionDisplay_property.startsToBeObserved (by: self.selectionDisplay_property) // Transient property
     }
   }
 

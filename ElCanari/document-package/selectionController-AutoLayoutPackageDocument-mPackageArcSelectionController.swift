@@ -156,73 +156,73 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //--- yCenter
     self.yCenter_property.mReadModelFunction = nil 
     self.yCenter_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_yCenter (self.yCenter_property)
+    self.selectedArray_property.toMany_yCenter_StopsBeingObserved (by: self.yCenter_property)
   //--- radius
     self.radius_property.mReadModelFunction = nil 
     self.radius_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_radius (self.radius_property)
+    self.selectedArray_property.toMany_radius_StopsBeingObserved (by: self.radius_property)
   //--- startAngle
     self.startAngle_property.mReadModelFunction = nil 
     self.startAngle_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_startAngle (self.startAngle_property)
+    self.selectedArray_property.toMany_startAngle_StopsBeingObserved (by: self.startAngle_property)
   //--- arcAngle
     self.arcAngle_property.mReadModelFunction = nil 
     self.arcAngle_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_arcAngle (self.arcAngle_property)
+    self.selectedArray_property.toMany_arcAngle_StopsBeingObserved (by: self.arcAngle_property)
   //--- startTangent
     self.startTangent_property.mReadModelFunction = nil 
     self.startTangent_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_startTangent (self.startTangent_property)
+    self.selectedArray_property.toMany_startTangent_StopsBeingObserved (by: self.startTangent_property)
   //--- endTangent
     self.endTangent_property.mReadModelFunction = nil 
     self.endTangent_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_endTangent (self.endTangent_property)
+    self.selectedArray_property.toMany_endTangent_StopsBeingObserved (by: self.endTangent_property)
   //--- pathIsClosed
     self.pathIsClosed_property.mReadModelFunction = nil 
     self.pathIsClosed_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_pathIsClosed (self.pathIsClosed_property)
+    self.selectedArray_property.toMany_pathIsClosed_StopsBeingObserved (by: self.pathIsClosed_property)
   //--- xCenterUnit
     self.xCenterUnit_property.mReadModelFunction = nil 
     self.xCenterUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_xCenterUnit (self.xCenterUnit_property)
+    self.selectedArray_property.toMany_xCenterUnit_StopsBeingObserved (by: self.xCenterUnit_property)
   //--- yCenterUnit
     self.yCenterUnit_property.mReadModelFunction = nil 
     self.yCenterUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_yCenterUnit (self.yCenterUnit_property)
+    self.selectedArray_property.toMany_yCenterUnit_StopsBeingObserved (by: self.yCenterUnit_property)
   //--- radiusUnit
     self.radiusUnit_property.mReadModelFunction = nil 
     self.radiusUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_radiusUnit (self.radiusUnit_property)
+    self.selectedArray_property.toMany_radiusUnit_StopsBeingObserved (by: self.radiusUnit_property)
   //--- startTangentUnit
     self.startTangentUnit_property.mReadModelFunction = nil 
     self.startTangentUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_startTangentUnit (self.startTangentUnit_property)
+    self.selectedArray_property.toMany_startTangentUnit_StopsBeingObserved (by: self.startTangentUnit_property)
   //--- endTangentUnit
     self.endTangentUnit_property.mReadModelFunction = nil 
     self.endTangentUnit_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_endTangentUnit (self.endTangentUnit_property)
+    self.selectedArray_property.toMany_endTangentUnit_StopsBeingObserved (by: self.endTangentUnit_property)
   //--- xCenter
     self.xCenter_property.mReadModelFunction = nil 
     self.xCenter_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_xCenter (self.xCenter_property)
+    self.selectedArray_property.toMany_xCenter_StopsBeingObserved (by: self.xCenter_property)
   //--- strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
+    self.selectedArray_property.toMany_strokeBezierPath_StopsBeingObserved (by: self.strokeBezierPath_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StopsBeingObserved (by: self.objectDisplay_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StopsBeingObserved (by: self.selectionDisplay_property)
   //--- issues
     self.issues_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_issues (self.issues_property)
+    self.selectedArray_property.toMany_issues_StopsBeingObserved (by: self.issues_property)
   } */
 
   //····················································································································
 
   private final func bind_property_yCenter () {
-    self.selectedArray_property.addEBObserverOf_yCenter (self.yCenter_property)
+    self.selectedArray_property.toMany_yCenter_StartsToBeObserved (by: self.yCenter_property)
     self.yCenter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -273,7 +273,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //····················································································································
 
   private final func bind_property_radius () {
-    self.selectedArray_property.addEBObserverOf_radius (self.radius_property)
+    self.selectedArray_property.toMany_radius_StartsToBeObserved (by: self.radius_property)
     self.radius_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -324,7 +324,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //····················································································································
 
   private final func bind_property_startAngle () {
-    self.selectedArray_property.addEBObserverOf_startAngle (self.startAngle_property)
+    self.selectedArray_property.toMany_startAngle_StartsToBeObserved (by: self.startAngle_property)
     self.startAngle_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -375,7 +375,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //····················································································································
 
   private final func bind_property_arcAngle () {
-    self.selectedArray_property.addEBObserverOf_arcAngle (self.arcAngle_property)
+    self.selectedArray_property.toMany_arcAngle_StartsToBeObserved (by: self.arcAngle_property)
     self.arcAngle_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -426,7 +426,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //····················································································································
 
   private final func bind_property_startTangent () {
-    self.selectedArray_property.addEBObserverOf_startTangent (self.startTangent_property)
+    self.selectedArray_property.toMany_startTangent_StartsToBeObserved (by: self.startTangent_property)
     self.startTangent_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -477,7 +477,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //····················································································································
 
   private final func bind_property_endTangent () {
-    self.selectedArray_property.addEBObserverOf_endTangent (self.endTangent_property)
+    self.selectedArray_property.toMany_endTangent_StartsToBeObserved (by: self.endTangent_property)
     self.endTangent_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -528,7 +528,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //····················································································································
 
   private final func bind_property_pathIsClosed () {
-    self.selectedArray_property.addEBObserverOf_pathIsClosed (self.pathIsClosed_property)
+    self.selectedArray_property.toMany_pathIsClosed_StartsToBeObserved (by: self.pathIsClosed_property)
     self.pathIsClosed_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -579,7 +579,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //····················································································································
 
   private final func bind_property_xCenterUnit () {
-    self.selectedArray_property.addEBObserverOf_xCenterUnit (self.xCenterUnit_property)
+    self.selectedArray_property.toMany_xCenterUnit_StartsToBeObserved (by: self.xCenterUnit_property)
     self.xCenterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -630,7 +630,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //····················································································································
 
   private final func bind_property_yCenterUnit () {
-    self.selectedArray_property.addEBObserverOf_yCenterUnit (self.yCenterUnit_property)
+    self.selectedArray_property.toMany_yCenterUnit_StartsToBeObserved (by: self.yCenterUnit_property)
     self.yCenterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -681,7 +681,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //····················································································································
 
   private final func bind_property_radiusUnit () {
-    self.selectedArray_property.addEBObserverOf_radiusUnit (self.radiusUnit_property)
+    self.selectedArray_property.toMany_radiusUnit_StartsToBeObserved (by: self.radiusUnit_property)
     self.radiusUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -732,7 +732,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //····················································································································
 
   private final func bind_property_startTangentUnit () {
-    self.selectedArray_property.addEBObserverOf_startTangentUnit (self.startTangentUnit_property)
+    self.selectedArray_property.toMany_startTangentUnit_StartsToBeObserved (by: self.startTangentUnit_property)
     self.startTangentUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -783,7 +783,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //····················································································································
 
   private final func bind_property_endTangentUnit () {
-    self.selectedArray_property.addEBObserverOf_endTangentUnit (self.endTangentUnit_property)
+    self.selectedArray_property.toMany_endTangentUnit_StartsToBeObserved (by: self.endTangentUnit_property)
     self.endTangentUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -834,7 +834,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //····················································································································
 
   private final func bind_property_xCenter () {
-    self.selectedArray_property.addEBObserverOf_xCenter (self.xCenter_property)
+    self.selectedArray_property.toMany_xCenter_StartsToBeObserved (by: self.xCenter_property)
     self.xCenter_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -885,7 +885,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //····················································································································
 
   private final func bind_property_strokeBezierPath () {
-    self.selectedArray_property.addEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
+    self.selectedArray_property.toMany_strokeBezierPath_StartsToBeObserved (by: self.strokeBezierPath_property)
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -924,7 +924,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StartsToBeObserved (by: self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -963,7 +963,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StartsToBeObserved (by: self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -1002,7 +1002,7 @@ final class SelectionController_AutoLayoutPackageDocument_mPackageArcSelectionCo
   //····················································································································
 
   private final func bind_property_issues () {
-    self.selectedArray_property.addEBObserverOf_issues (self.issues_property)
+    self.selectedArray_property.toMany_issues_StartsToBeObserved (by: self.issues_property)
     self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {

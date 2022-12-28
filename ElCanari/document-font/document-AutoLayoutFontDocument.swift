@@ -681,7 +681,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.statusImage_property)
+    self.rootObject.issues_property.startsToBeObserved (by: self.statusImage_property)
 
   //--- Atomic property: statusTitle
     self.statusTitle_property.mReadModelFunction = { [weak self] in
@@ -699,7 +699,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.statusTitle_property)
+    self.rootObject.issues_property.startsToBeObserved (by: self.statusTitle_property)
 
   //--- Atomic property: statusMessage
     self.statusMessage_property.mReadModelFunction = { [weak self] in
@@ -717,7 +717,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.statusMessage_property)
+    self.rootObject.issues_property.startsToBeObserved (by: self.statusMessage_property)
 
   //--- Atomic property: metadataStatus
     self.metadataStatus_property.mReadModelFunction = { [weak self] in
@@ -735,7 +735,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.metadataStatus_property)
+    self.rootObject.issues_property.startsToBeObserved (by: self.metadataStatus_property)
 
   //--- Atomic property: canDeleteCurrentCharacter
     self.canDeleteCurrentCharacter_property.mReadModelFunction = { [weak self] in
@@ -753,7 +753,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.definedCharacters_property.addEBObserver (self.canDeleteCurrentCharacter_property)
+    self.rootObject.definedCharacters_property.startsToBeObserved (by: self.canDeleteCurrentCharacter_property)
 
   }
 

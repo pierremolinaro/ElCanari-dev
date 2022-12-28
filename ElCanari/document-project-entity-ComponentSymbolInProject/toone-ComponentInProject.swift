@@ -16,93 +16,93 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mSlavePadsShouldBeRouted_property.removeEBObserver (self.mSlavePadsShouldBeRouted_property) // Stored property
-      oldValue.mX_property.removeEBObserver (self.mX_property) // Stored property
-      oldValue.mY_property.removeEBObserver (self.mY_property) // Stored property
-      oldValue.mRotation_property.removeEBObserver (self.mRotation_property) // Stored property
-      oldValue.mSide_property.removeEBObserver (self.mSide_property) // Stored property
-      oldValue.mDisplayLegend_property.removeEBObserver (self.mDisplayLegend_property) // Stored property
-      oldValue.mNameIsVisibleInBoard_property.removeEBObserver (self.mNameIsVisibleInBoard_property) // Stored property
-      oldValue.mXName_property.removeEBObserver (self.mXName_property) // Stored property
-      oldValue.mYName_property.removeEBObserver (self.mYName_property) // Stored property
-      oldValue.mNameFontSize_property.removeEBObserver (self.mNameFontSize_property) // Stored property
-      oldValue.mNameRotation_property.removeEBObserver (self.mNameRotation_property) // Stored property
-      oldValue.mValueIsVisibleInBoard_property.removeEBObserver (self.mValueIsVisibleInBoard_property) // Stored property
-      oldValue.mXValue_property.removeEBObserver (self.mXValue_property) // Stored property
-      oldValue.mYValue_property.removeEBObserver (self.mYValue_property) // Stored property
-      oldValue.mValueFontSize_property.removeEBObserver (self.mValueFontSize_property) // Stored property
-      oldValue.mValueRotation_property.removeEBObserver (self.mValueRotation_property) // Stored property
-      oldValue.mComponentValue_property.removeEBObserver (self.mComponentValue_property) // Stored property
-      oldValue.mNamePrefix_property.removeEBObserver (self.mNamePrefix_property) // Stored property
-      oldValue.mNameIndex_property.removeEBObserver (self.mNameIndex_property) // Stored property
-      oldValue.mXUnit_property.removeEBObserver (self.mXUnit_property) // Stored property
-      oldValue.mYUnit_property.removeEBObserver (self.mYUnit_property) // Stored property
-      oldValue.deviceName_property.removeEBObserver (self.deviceName_property) // Transient property
-      oldValue.signatureForERCChecking_property.removeEBObserver (self.signatureForERCChecking_property) // Transient property
-      oldValue.packagePadDictionary_property.removeEBObserver (self.packagePadDictionary_property) // Transient property
-      oldValue.selectedPackageName_property.removeEBObserver (self.selectedPackageName_property) // Transient property
-      oldValue.availablePackages_property.removeEBObserver (self.availablePackages_property) // Transient property
-      oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
-      oldValue.componentIsPlacedInBoard_property.removeEBObserver (self.componentIsPlacedInBoard_property) // Transient property
-      oldValue.componentIsPlacedInBoardString_property.removeEBObserver (self.componentIsPlacedInBoardString_property) // Transient property
-      oldValue.strokeBezierPath_property.removeEBObserver (self.strokeBezierPath_property) // Transient property
-      oldValue.pinPadAssignments_property.removeEBObserver (self.pinPadAssignments_property) // Transient property
-      oldValue.hasSlavePads_property.removeEBObserver (self.hasSlavePads_property) // Transient property
-      oldValue.placementInSchematic_property.removeEBObserver (self.placementInSchematic_property) // Transient property
-      oldValue.deviceSymbolDictionary_property.removeEBObserver (self.deviceSymbolDictionary_property) // Transient property
-      oldValue.componentNameFontName_property.removeEBObserver (self.componentNameFontName_property) // Transient property
-      oldValue.componentValueFontName_property.removeEBObserver (self.componentValueFontName_property) // Transient property
-      oldValue.componentPadDictionary_property.removeEBObserver (self.componentPadDictionary_property) // Transient property
-      oldValue.padNetDictionary_property.removeEBObserver (self.padNetDictionary_property) // Transient property
-      oldValue.componentName_property.removeEBObserver (self.componentName_property) // Transient property
-      oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
-      oldValue.unplacedSymbols_property.removeEBObserver (self.unplacedSymbols_property) // Transient property
-      oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
+      oldValue.mSlavePadsShouldBeRouted_property.stopsBeingObserved (by: self.mSlavePadsShouldBeRouted_property) // Stored property
+      oldValue.mX_property.stopsBeingObserved (by: self.mX_property) // Stored property
+      oldValue.mY_property.stopsBeingObserved (by: self.mY_property) // Stored property
+      oldValue.mRotation_property.stopsBeingObserved (by: self.mRotation_property) // Stored property
+      oldValue.mSide_property.stopsBeingObserved (by: self.mSide_property) // Stored property
+      oldValue.mDisplayLegend_property.stopsBeingObserved (by: self.mDisplayLegend_property) // Stored property
+      oldValue.mNameIsVisibleInBoard_property.stopsBeingObserved (by: self.mNameIsVisibleInBoard_property) // Stored property
+      oldValue.mXName_property.stopsBeingObserved (by: self.mXName_property) // Stored property
+      oldValue.mYName_property.stopsBeingObserved (by: self.mYName_property) // Stored property
+      oldValue.mNameFontSize_property.stopsBeingObserved (by: self.mNameFontSize_property) // Stored property
+      oldValue.mNameRotation_property.stopsBeingObserved (by: self.mNameRotation_property) // Stored property
+      oldValue.mValueIsVisibleInBoard_property.stopsBeingObserved (by: self.mValueIsVisibleInBoard_property) // Stored property
+      oldValue.mXValue_property.stopsBeingObserved (by: self.mXValue_property) // Stored property
+      oldValue.mYValue_property.stopsBeingObserved (by: self.mYValue_property) // Stored property
+      oldValue.mValueFontSize_property.stopsBeingObserved (by: self.mValueFontSize_property) // Stored property
+      oldValue.mValueRotation_property.stopsBeingObserved (by: self.mValueRotation_property) // Stored property
+      oldValue.mComponentValue_property.stopsBeingObserved (by: self.mComponentValue_property) // Stored property
+      oldValue.mNamePrefix_property.stopsBeingObserved (by: self.mNamePrefix_property) // Stored property
+      oldValue.mNameIndex_property.stopsBeingObserved (by: self.mNameIndex_property) // Stored property
+      oldValue.mXUnit_property.stopsBeingObserved (by: self.mXUnit_property) // Stored property
+      oldValue.mYUnit_property.stopsBeingObserved (by: self.mYUnit_property) // Stored property
+      oldValue.deviceName_property.stopsBeingObserved (by: self.deviceName_property) // Transient property
+      oldValue.signatureForERCChecking_property.stopsBeingObserved (by: self.signatureForERCChecking_property) // Transient property
+      oldValue.packagePadDictionary_property.stopsBeingObserved (by: self.packagePadDictionary_property) // Transient property
+      oldValue.selectedPackageName_property.stopsBeingObserved (by: self.selectedPackageName_property) // Transient property
+      oldValue.availablePackages_property.stopsBeingObserved (by: self.availablePackages_property) // Transient property
+      oldValue.issues_property.stopsBeingObserved (by: self.issues_property) // Transient property
+      oldValue.componentIsPlacedInBoard_property.stopsBeingObserved (by: self.componentIsPlacedInBoard_property) // Transient property
+      oldValue.componentIsPlacedInBoardString_property.stopsBeingObserved (by: self.componentIsPlacedInBoardString_property) // Transient property
+      oldValue.strokeBezierPath_property.stopsBeingObserved (by: self.strokeBezierPath_property) // Transient property
+      oldValue.pinPadAssignments_property.stopsBeingObserved (by: self.pinPadAssignments_property) // Transient property
+      oldValue.hasSlavePads_property.stopsBeingObserved (by: self.hasSlavePads_property) // Transient property
+      oldValue.placementInSchematic_property.stopsBeingObserved (by: self.placementInSchematic_property) // Transient property
+      oldValue.deviceSymbolDictionary_property.stopsBeingObserved (by: self.deviceSymbolDictionary_property) // Transient property
+      oldValue.componentNameFontName_property.stopsBeingObserved (by: self.componentNameFontName_property) // Transient property
+      oldValue.componentValueFontName_property.stopsBeingObserved (by: self.componentValueFontName_property) // Transient property
+      oldValue.componentPadDictionary_property.stopsBeingObserved (by: self.componentPadDictionary_property) // Transient property
+      oldValue.padNetDictionary_property.stopsBeingObserved (by: self.padNetDictionary_property) // Transient property
+      oldValue.componentName_property.stopsBeingObserved (by: self.componentName_property) // Transient property
+      oldValue.selectionDisplay_property.stopsBeingObserved (by: self.selectionDisplay_property) // Transient property
+      oldValue.unplacedSymbols_property.stopsBeingObserved (by: self.unplacedSymbols_property) // Transient property
+      oldValue.objectDisplay_property.stopsBeingObserved (by: self.objectDisplay_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mSlavePadsShouldBeRouted_property.addEBObserver (self.mSlavePadsShouldBeRouted_property) // Stored property
-      newValue.mX_property.addEBObserver (self.mX_property) // Stored property
-      newValue.mY_property.addEBObserver (self.mY_property) // Stored property
-      newValue.mRotation_property.addEBObserver (self.mRotation_property) // Stored property
-      newValue.mSide_property.addEBObserver (self.mSide_property) // Stored property
-      newValue.mDisplayLegend_property.addEBObserver (self.mDisplayLegend_property) // Stored property
-      newValue.mNameIsVisibleInBoard_property.addEBObserver (self.mNameIsVisibleInBoard_property) // Stored property
-      newValue.mXName_property.addEBObserver (self.mXName_property) // Stored property
-      newValue.mYName_property.addEBObserver (self.mYName_property) // Stored property
-      newValue.mNameFontSize_property.addEBObserver (self.mNameFontSize_property) // Stored property
-      newValue.mNameRotation_property.addEBObserver (self.mNameRotation_property) // Stored property
-      newValue.mValueIsVisibleInBoard_property.addEBObserver (self.mValueIsVisibleInBoard_property) // Stored property
-      newValue.mXValue_property.addEBObserver (self.mXValue_property) // Stored property
-      newValue.mYValue_property.addEBObserver (self.mYValue_property) // Stored property
-      newValue.mValueFontSize_property.addEBObserver (self.mValueFontSize_property) // Stored property
-      newValue.mValueRotation_property.addEBObserver (self.mValueRotation_property) // Stored property
-      newValue.mComponentValue_property.addEBObserver (self.mComponentValue_property) // Stored property
-      newValue.mNamePrefix_property.addEBObserver (self.mNamePrefix_property) // Stored property
-      newValue.mNameIndex_property.addEBObserver (self.mNameIndex_property) // Stored property
-      newValue.mXUnit_property.addEBObserver (self.mXUnit_property) // Stored property
-      newValue.mYUnit_property.addEBObserver (self.mYUnit_property) // Stored property
-      newValue.deviceName_property.addEBObserver (self.deviceName_property) // Transient property
-      newValue.signatureForERCChecking_property.addEBObserver (self.signatureForERCChecking_property) // Transient property
-      newValue.packagePadDictionary_property.addEBObserver (self.packagePadDictionary_property) // Transient property
-      newValue.selectedPackageName_property.addEBObserver (self.selectedPackageName_property) // Transient property
-      newValue.availablePackages_property.addEBObserver (self.availablePackages_property) // Transient property
-      newValue.issues_property.addEBObserver (self.issues_property) // Transient property
-      newValue.componentIsPlacedInBoard_property.addEBObserver (self.componentIsPlacedInBoard_property) // Transient property
-      newValue.componentIsPlacedInBoardString_property.addEBObserver (self.componentIsPlacedInBoardString_property) // Transient property
-      newValue.strokeBezierPath_property.addEBObserver (self.strokeBezierPath_property) // Transient property
-      newValue.pinPadAssignments_property.addEBObserver (self.pinPadAssignments_property) // Transient property
-      newValue.hasSlavePads_property.addEBObserver (self.hasSlavePads_property) // Transient property
-      newValue.placementInSchematic_property.addEBObserver (self.placementInSchematic_property) // Transient property
-      newValue.deviceSymbolDictionary_property.addEBObserver (self.deviceSymbolDictionary_property) // Transient property
-      newValue.componentNameFontName_property.addEBObserver (self.componentNameFontName_property) // Transient property
-      newValue.componentValueFontName_property.addEBObserver (self.componentValueFontName_property) // Transient property
-      newValue.componentPadDictionary_property.addEBObserver (self.componentPadDictionary_property) // Transient property
-      newValue.padNetDictionary_property.addEBObserver (self.padNetDictionary_property) // Transient property
-      newValue.componentName_property.addEBObserver (self.componentName_property) // Transient property
-      newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-      newValue.unplacedSymbols_property.addEBObserver (self.unplacedSymbols_property) // Transient property
-      newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
+      newValue.mSlavePadsShouldBeRouted_property.startsToBeObserved (by: self.mSlavePadsShouldBeRouted_property) // Stored property
+      newValue.mX_property.startsToBeObserved (by: self.mX_property) // Stored property
+      newValue.mY_property.startsToBeObserved (by: self.mY_property) // Stored property
+      newValue.mRotation_property.startsToBeObserved (by: self.mRotation_property) // Stored property
+      newValue.mSide_property.startsToBeObserved (by: self.mSide_property) // Stored property
+      newValue.mDisplayLegend_property.startsToBeObserved (by: self.mDisplayLegend_property) // Stored property
+      newValue.mNameIsVisibleInBoard_property.startsToBeObserved (by: self.mNameIsVisibleInBoard_property) // Stored property
+      newValue.mXName_property.startsToBeObserved (by: self.mXName_property) // Stored property
+      newValue.mYName_property.startsToBeObserved (by: self.mYName_property) // Stored property
+      newValue.mNameFontSize_property.startsToBeObserved (by: self.mNameFontSize_property) // Stored property
+      newValue.mNameRotation_property.startsToBeObserved (by: self.mNameRotation_property) // Stored property
+      newValue.mValueIsVisibleInBoard_property.startsToBeObserved (by: self.mValueIsVisibleInBoard_property) // Stored property
+      newValue.mXValue_property.startsToBeObserved (by: self.mXValue_property) // Stored property
+      newValue.mYValue_property.startsToBeObserved (by: self.mYValue_property) // Stored property
+      newValue.mValueFontSize_property.startsToBeObserved (by: self.mValueFontSize_property) // Stored property
+      newValue.mValueRotation_property.startsToBeObserved (by: self.mValueRotation_property) // Stored property
+      newValue.mComponentValue_property.startsToBeObserved (by: self.mComponentValue_property) // Stored property
+      newValue.mNamePrefix_property.startsToBeObserved (by: self.mNamePrefix_property) // Stored property
+      newValue.mNameIndex_property.startsToBeObserved (by: self.mNameIndex_property) // Stored property
+      newValue.mXUnit_property.startsToBeObserved (by: self.mXUnit_property) // Stored property
+      newValue.mYUnit_property.startsToBeObserved (by: self.mYUnit_property) // Stored property
+      newValue.deviceName_property.startsToBeObserved (by: self.deviceName_property) // Transient property
+      newValue.signatureForERCChecking_property.startsToBeObserved (by: self.signatureForERCChecking_property) // Transient property
+      newValue.packagePadDictionary_property.startsToBeObserved (by: self.packagePadDictionary_property) // Transient property
+      newValue.selectedPackageName_property.startsToBeObserved (by: self.selectedPackageName_property) // Transient property
+      newValue.availablePackages_property.startsToBeObserved (by: self.availablePackages_property) // Transient property
+      newValue.issues_property.startsToBeObserved (by: self.issues_property) // Transient property
+      newValue.componentIsPlacedInBoard_property.startsToBeObserved (by: self.componentIsPlacedInBoard_property) // Transient property
+      newValue.componentIsPlacedInBoardString_property.startsToBeObserved (by: self.componentIsPlacedInBoardString_property) // Transient property
+      newValue.strokeBezierPath_property.startsToBeObserved (by: self.strokeBezierPath_property) // Transient property
+      newValue.pinPadAssignments_property.startsToBeObserved (by: self.pinPadAssignments_property) // Transient property
+      newValue.hasSlavePads_property.startsToBeObserved (by: self.hasSlavePads_property) // Transient property
+      newValue.placementInSchematic_property.startsToBeObserved (by: self.placementInSchematic_property) // Transient property
+      newValue.deviceSymbolDictionary_property.startsToBeObserved (by: self.deviceSymbolDictionary_property) // Transient property
+      newValue.componentNameFontName_property.startsToBeObserved (by: self.componentNameFontName_property) // Transient property
+      newValue.componentValueFontName_property.startsToBeObserved (by: self.componentValueFontName_property) // Transient property
+      newValue.componentPadDictionary_property.startsToBeObserved (by: self.componentPadDictionary_property) // Transient property
+      newValue.padNetDictionary_property.startsToBeObserved (by: self.padNetDictionary_property) // Transient property
+      newValue.componentName_property.startsToBeObserved (by: self.componentName_property) // Transient property
+      newValue.selectionDisplay_property.startsToBeObserved (by: self.selectionDisplay_property) // Transient property
+      newValue.unplacedSymbols_property.startsToBeObserved (by: self.unplacedSymbols_property) // Transient property
+      newValue.objectDisplay_property.startsToBeObserved (by: self.objectDisplay_property) // Transient property
     }
   }
 
@@ -366,19 +366,19 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_mConnectors (_ inObserver : EBObserverProtocol) {
+  final func toMany_mConnectors_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mConnectors.insert (inObserver)
     if let object = self.propval {
-      object.mConnectors_property.addEBObserver (inObserver)
+      object.mConnectors_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mConnectors (_ inObserver : EBObserverProtocol) {
+  final func toMany_mConnectors_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mConnectors.remove (inObserver)
     if let object = self.propval {
-      object.mConnectors_property.removeEBObserver (inObserver)
+      object.mConnectors_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -390,19 +390,19 @@ class ReadOnlyObject_ComponentInProject : ReadOnlyAbstractObjectProperty <Compon
 
   //····················································································································
 
-  final func addEBObserverOf_mSymbols (_ inObserver : EBObserverProtocol) {
+  final func toMany_mSymbols_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mSymbols.insert (inObserver)
     if let object = self.propval {
-      object.mSymbols_property.addEBObserver (inObserver)
+      object.mSymbols_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mSymbols (_ inObserver : EBObserverProtocol) {
+  final func toMany_mSymbols_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mSymbols.remove (inObserver)
     if let object = self.propval {
-      object.mSymbols_property.removeEBObserver (inObserver)
+      object.mSymbols_property.stopsBeingObserved (by: inObserver)
     }
   }
 

@@ -16,67 +16,67 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.xCenter_property.removeEBObserver (self.xCenter_property) // Stored property
-      oldValue.yCenter_property.removeEBObserver (self.yCenter_property) // Stored property
-      oldValue.width_property.removeEBObserver (self.width_property) // Stored property
-      oldValue.height_property.removeEBObserver (self.height_property) // Stored property
-      oldValue.holeWidth_property.removeEBObserver (self.holeWidth_property) // Stored property
-      oldValue.holeHeight_property.removeEBObserver (self.holeHeight_property) // Stored property
-      oldValue.padShape_property.removeEBObserver (self.padShape_property) // Stored property
-      oldValue.padStyle_property.removeEBObserver (self.padStyle_property) // Stored property
-      oldValue.padNumber_property.removeEBObserver (self.padNumber_property) // Stored property
-      oldValue.xCenterUnit_property.removeEBObserver (self.xCenterUnit_property) // Stored property
-      oldValue.yCenterUnit_property.removeEBObserver (self.yCenterUnit_property) // Stored property
-      oldValue.widthUnit_property.removeEBObserver (self.widthUnit_property) // Stored property
-      oldValue.heightUnit_property.removeEBObserver (self.heightUnit_property) // Stored property
-      oldValue.holeWidthUnit_property.removeEBObserver (self.holeWidthUnit_property) // Stored property
-      oldValue.holeHeightUnit_property.removeEBObserver (self.holeHeightUnit_property) // Stored property
-      oldValue.annularRingUnit_property.removeEBObserver (self.annularRingUnit_property) // Stored property
-      oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
-      oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
-      oldValue.padNameForDisplay_property.removeEBObserver (self.padNameForDisplay_property) // Transient property
-      oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
-      oldValue.padIsTraversing_property.removeEBObserver (self.padIsTraversing_property) // Transient property
-      oldValue.annularRing_property.removeEBObserver (self.annularRing_property) // Transient property
-      oldValue.padNameWithZoneName_property.removeEBObserver (self.padNameWithZoneName_property) // Transient property
-      oldValue.zoneName_property.removeEBObserver (self.zoneName_property) // Transient property
-      oldValue.noZone_property.removeEBObserver (self.noZone_property) // Transient property
-      oldValue.zoneAllowsManualRenumbering_property.removeEBObserver (self.zoneAllowsManualRenumbering_property) // Transient property
-      oldValue.slavePadCount_property.removeEBObserver (self.slavePadCount_property) // Transient property
-      oldValue.masterPadObjectIndex_property.removeEBObserver (self.masterPadObjectIndex_property) // Transient property
-      oldValue.padNumberDisplay_property.removeEBObserver (self.padNumberDisplay_property) // Transient property
+      oldValue.xCenter_property.stopsBeingObserved (by: self.xCenter_property) // Stored property
+      oldValue.yCenter_property.stopsBeingObserved (by: self.yCenter_property) // Stored property
+      oldValue.width_property.stopsBeingObserved (by: self.width_property) // Stored property
+      oldValue.height_property.stopsBeingObserved (by: self.height_property) // Stored property
+      oldValue.holeWidth_property.stopsBeingObserved (by: self.holeWidth_property) // Stored property
+      oldValue.holeHeight_property.stopsBeingObserved (by: self.holeHeight_property) // Stored property
+      oldValue.padShape_property.stopsBeingObserved (by: self.padShape_property) // Stored property
+      oldValue.padStyle_property.stopsBeingObserved (by: self.padStyle_property) // Stored property
+      oldValue.padNumber_property.stopsBeingObserved (by: self.padNumber_property) // Stored property
+      oldValue.xCenterUnit_property.stopsBeingObserved (by: self.xCenterUnit_property) // Stored property
+      oldValue.yCenterUnit_property.stopsBeingObserved (by: self.yCenterUnit_property) // Stored property
+      oldValue.widthUnit_property.stopsBeingObserved (by: self.widthUnit_property) // Stored property
+      oldValue.heightUnit_property.stopsBeingObserved (by: self.heightUnit_property) // Stored property
+      oldValue.holeWidthUnit_property.stopsBeingObserved (by: self.holeWidthUnit_property) // Stored property
+      oldValue.holeHeightUnit_property.stopsBeingObserved (by: self.holeHeightUnit_property) // Stored property
+      oldValue.annularRingUnit_property.stopsBeingObserved (by: self.annularRingUnit_property) // Stored property
+      oldValue.objectDisplay_property.stopsBeingObserved (by: self.objectDisplay_property) // Transient property
+      oldValue.selectionDisplay_property.stopsBeingObserved (by: self.selectionDisplay_property) // Transient property
+      oldValue.padNameForDisplay_property.stopsBeingObserved (by: self.padNameForDisplay_property) // Transient property
+      oldValue.issues_property.stopsBeingObserved (by: self.issues_property) // Transient property
+      oldValue.padIsTraversing_property.stopsBeingObserved (by: self.padIsTraversing_property) // Transient property
+      oldValue.annularRing_property.stopsBeingObserved (by: self.annularRing_property) // Transient property
+      oldValue.padNameWithZoneName_property.stopsBeingObserved (by: self.padNameWithZoneName_property) // Transient property
+      oldValue.zoneName_property.stopsBeingObserved (by: self.zoneName_property) // Transient property
+      oldValue.noZone_property.stopsBeingObserved (by: self.noZone_property) // Transient property
+      oldValue.zoneAllowsManualRenumbering_property.stopsBeingObserved (by: self.zoneAllowsManualRenumbering_property) // Transient property
+      oldValue.slavePadCount_property.stopsBeingObserved (by: self.slavePadCount_property) // Transient property
+      oldValue.masterPadObjectIndex_property.stopsBeingObserved (by: self.masterPadObjectIndex_property) // Transient property
+      oldValue.padNumberDisplay_property.stopsBeingObserved (by: self.padNumberDisplay_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.xCenter_property.addEBObserver (self.xCenter_property) // Stored property
-      newValue.yCenter_property.addEBObserver (self.yCenter_property) // Stored property
-      newValue.width_property.addEBObserver (self.width_property) // Stored property
-      newValue.height_property.addEBObserver (self.height_property) // Stored property
-      newValue.holeWidth_property.addEBObserver (self.holeWidth_property) // Stored property
-      newValue.holeHeight_property.addEBObserver (self.holeHeight_property) // Stored property
-      newValue.padShape_property.addEBObserver (self.padShape_property) // Stored property
-      newValue.padStyle_property.addEBObserver (self.padStyle_property) // Stored property
-      newValue.padNumber_property.addEBObserver (self.padNumber_property) // Stored property
-      newValue.xCenterUnit_property.addEBObserver (self.xCenterUnit_property) // Stored property
-      newValue.yCenterUnit_property.addEBObserver (self.yCenterUnit_property) // Stored property
-      newValue.widthUnit_property.addEBObserver (self.widthUnit_property) // Stored property
-      newValue.heightUnit_property.addEBObserver (self.heightUnit_property) // Stored property
-      newValue.holeWidthUnit_property.addEBObserver (self.holeWidthUnit_property) // Stored property
-      newValue.holeHeightUnit_property.addEBObserver (self.holeHeightUnit_property) // Stored property
-      newValue.annularRingUnit_property.addEBObserver (self.annularRingUnit_property) // Stored property
-      newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-      newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-      newValue.padNameForDisplay_property.addEBObserver (self.padNameForDisplay_property) // Transient property
-      newValue.issues_property.addEBObserver (self.issues_property) // Transient property
-      newValue.padIsTraversing_property.addEBObserver (self.padIsTraversing_property) // Transient property
-      newValue.annularRing_property.addEBObserver (self.annularRing_property) // Transient property
-      newValue.padNameWithZoneName_property.addEBObserver (self.padNameWithZoneName_property) // Transient property
-      newValue.zoneName_property.addEBObserver (self.zoneName_property) // Transient property
-      newValue.noZone_property.addEBObserver (self.noZone_property) // Transient property
-      newValue.zoneAllowsManualRenumbering_property.addEBObserver (self.zoneAllowsManualRenumbering_property) // Transient property
-      newValue.slavePadCount_property.addEBObserver (self.slavePadCount_property) // Transient property
-      newValue.masterPadObjectIndex_property.addEBObserver (self.masterPadObjectIndex_property) // Transient property
-      newValue.padNumberDisplay_property.addEBObserver (self.padNumberDisplay_property) // Transient property
+      newValue.xCenter_property.startsToBeObserved (by: self.xCenter_property) // Stored property
+      newValue.yCenter_property.startsToBeObserved (by: self.yCenter_property) // Stored property
+      newValue.width_property.startsToBeObserved (by: self.width_property) // Stored property
+      newValue.height_property.startsToBeObserved (by: self.height_property) // Stored property
+      newValue.holeWidth_property.startsToBeObserved (by: self.holeWidth_property) // Stored property
+      newValue.holeHeight_property.startsToBeObserved (by: self.holeHeight_property) // Stored property
+      newValue.padShape_property.startsToBeObserved (by: self.padShape_property) // Stored property
+      newValue.padStyle_property.startsToBeObserved (by: self.padStyle_property) // Stored property
+      newValue.padNumber_property.startsToBeObserved (by: self.padNumber_property) // Stored property
+      newValue.xCenterUnit_property.startsToBeObserved (by: self.xCenterUnit_property) // Stored property
+      newValue.yCenterUnit_property.startsToBeObserved (by: self.yCenterUnit_property) // Stored property
+      newValue.widthUnit_property.startsToBeObserved (by: self.widthUnit_property) // Stored property
+      newValue.heightUnit_property.startsToBeObserved (by: self.heightUnit_property) // Stored property
+      newValue.holeWidthUnit_property.startsToBeObserved (by: self.holeWidthUnit_property) // Stored property
+      newValue.holeHeightUnit_property.startsToBeObserved (by: self.holeHeightUnit_property) // Stored property
+      newValue.annularRingUnit_property.startsToBeObserved (by: self.annularRingUnit_property) // Stored property
+      newValue.objectDisplay_property.startsToBeObserved (by: self.objectDisplay_property) // Transient property
+      newValue.selectionDisplay_property.startsToBeObserved (by: self.selectionDisplay_property) // Transient property
+      newValue.padNameForDisplay_property.startsToBeObserved (by: self.padNameForDisplay_property) // Transient property
+      newValue.issues_property.startsToBeObserved (by: self.issues_property) // Transient property
+      newValue.padIsTraversing_property.startsToBeObserved (by: self.padIsTraversing_property) // Transient property
+      newValue.annularRing_property.startsToBeObserved (by: self.annularRing_property) // Transient property
+      newValue.padNameWithZoneName_property.startsToBeObserved (by: self.padNameWithZoneName_property) // Transient property
+      newValue.zoneName_property.startsToBeObserved (by: self.zoneName_property) // Transient property
+      newValue.noZone_property.startsToBeObserved (by: self.noZone_property) // Transient property
+      newValue.zoneAllowsManualRenumbering_property.startsToBeObserved (by: self.zoneAllowsManualRenumbering_property) // Transient property
+      newValue.slavePadCount_property.startsToBeObserved (by: self.slavePadCount_property) // Transient property
+      newValue.masterPadObjectIndex_property.startsToBeObserved (by: self.masterPadObjectIndex_property) // Transient property
+      newValue.padNumberDisplay_property.startsToBeObserved (by: self.padNumberDisplay_property) // Transient property
     }
   }
 
@@ -262,19 +262,19 @@ class ReadOnlyObject_PackagePad : ReadOnlyAbstractObjectProperty <PackagePad> {
 
   //····················································································································
 
-  final func addEBObserverOf_slaves (_ inObserver : EBObserverProtocol) {
+  final func toMany_slaves_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_slaves.insert (inObserver)
     if let object = self.propval {
-      object.slaves_property.addEBObserver (inObserver)
+      object.slaves_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_slaves (_ inObserver : EBObserverProtocol) {
+  final func toMany_slaves_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_slaves.remove (inObserver)
     if let object = self.propval {
-      object.slaves_property.removeEBObserver (inObserver)
+      object.slaves_property.stopsBeingObserved (by: inObserver)
     }
   }
 

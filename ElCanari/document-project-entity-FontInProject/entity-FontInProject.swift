@@ -372,7 +372,7 @@ final class FontInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mFontVersion_property.addEBObserver (self.versionString_property)
+    self.mFontVersion_property.startsToBeObserved (by: self.versionString_property)
   //--- Atomic property: sizeString
     self.sizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -389,7 +389,7 @@ final class FontInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mDescriptiveString_property.addEBObserver (self.sizeString_property)
+    self.mDescriptiveString_property.startsToBeObserved (by: self.sizeString_property)
   //--- Atomic property: descriptor
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -409,8 +409,8 @@ final class FontInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNominalSize_property.addEBObserver (self.descriptor_property)
-    self.mDescriptiveString_property.addEBObserver (self.descriptor_property)
+    self.mNominalSize_property.startsToBeObserved (by: self.descriptor_property)
+    self.mDescriptiveString_property.startsToBeObserved (by: self.descriptor_property)
   //--- Atomic property: textCount
     self.textCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -427,7 +427,7 @@ final class FontInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mTexts_property.addEBObserver (self.textCount_property)
+    self.mTexts_property.startsToBeObserved (by: self.textCount_property)
   //--- Atomic property: canRemoveFont
     self.canRemoveFont_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -447,8 +447,8 @@ final class FontInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mComponentNames_property.addEBObserver (self.canRemoveFont_property)
-    self.mComponentValues_property.addEBObserver (self.canRemoveFont_property)
+    self.mComponentNames_property.startsToBeObserved (by: self.canRemoveFont_property)
+    self.mComponentValues_property.startsToBeObserved (by: self.canRemoveFont_property)
   //--- Atomic property: componentNamesCount
     self.componentNamesCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -465,7 +465,7 @@ final class FontInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mComponentNames_property.addEBObserver (self.componentNamesCount_property)
+    self.mComponentNames_property.startsToBeObserved (by: self.componentNamesCount_property)
   //--- Atomic property: componentValuesCount
     self.componentValuesCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -482,7 +482,7 @@ final class FontInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mComponentValues_property.addEBObserver (self.componentValuesCount_property)
+    self.mComponentValues_property.startsToBeObserved (by: self.componentValuesCount_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mTexts_property.setOppositeRelationShipFunctions (

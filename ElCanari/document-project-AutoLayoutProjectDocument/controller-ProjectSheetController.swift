@@ -32,10 +32,10 @@ final class ProjectSheetController : EBOutletEvent {
     self.mSheetPopUpButtonArray.append (inPopUpButton)
   //--- Add sheet titles observer
     self.mEventCallBack = { [weak self] in self?.updatePopUpButtonAndSteppers () }
-    inDocument.rootObject.mSheets_property.addEBObserverOf_connexionWarnings (self)
-    inDocument.rootObject.mSheets_property.addEBObserverOf_connexionErrors (self)
-    inDocument.rootObject.mSheets_property.addEBObserverOf_mSheetTitle (self)
-    inDocument.rootObject.mSelectedSheet_property.addEBObserver (self)
+    inDocument.rootObject.mSheets_property.toMany_connexionWarnings_StartsToBeObserved (by: self)
+    inDocument.rootObject.mSheets_property.toMany_connexionErrors_StartsToBeObserved (by: self)
+    inDocument.rootObject.mSheets_property.toMany_mSheetTitle_StartsToBeObserved (by: self)
+    inDocument.rootObject.mSelectedSheet_property.startsToBeObserved (by: self)
   }
 
  //····················································································································

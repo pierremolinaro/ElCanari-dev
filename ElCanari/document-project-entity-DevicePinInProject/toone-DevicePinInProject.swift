@@ -16,37 +16,37 @@ class ReadOnlyObject_DevicePinInProject : ReadOnlyAbstractObjectProperty <Device
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mPinName_property.removeEBObserver (self.mPinName_property) // Stored property
-      oldValue.mSymbolInstanceName_property.removeEBObserver (self.mSymbolInstanceName_property) // Stored property
-      oldValue.mSymbolTypeName_property.removeEBObserver (self.mSymbolTypeName_property) // Stored property
-      oldValue.mPinX_property.removeEBObserver (self.mPinX_property) // Stored property
-      oldValue.mPinY_property.removeEBObserver (self.mPinY_property) // Stored property
-      oldValue.mXName_property.removeEBObserver (self.mXName_property) // Stored property
-      oldValue.mYName_property.removeEBObserver (self.mYName_property) // Stored property
-      oldValue.mNameHorizontalAlignment_property.removeEBObserver (self.mNameHorizontalAlignment_property) // Stored property
-      oldValue.mPinNameIsDisplayedInSchematic_property.removeEBObserver (self.mPinNameIsDisplayedInSchematic_property) // Stored property
-      oldValue.mXNumber_property.removeEBObserver (self.mXNumber_property) // Stored property
-      oldValue.mYNumber_property.removeEBObserver (self.mYNumber_property) // Stored property
-      oldValue.mNumberHorizontalAlignment_property.removeEBObserver (self.mNumberHorizontalAlignment_property) // Stored property
-      oldValue.pinQualifiedName_property.removeEBObserver (self.pinQualifiedName_property) // Transient property
-      oldValue.descriptor_property.removeEBObserver (self.descriptor_property) // Transient property
+      oldValue.mPinName_property.stopsBeingObserved (by: self.mPinName_property) // Stored property
+      oldValue.mSymbolInstanceName_property.stopsBeingObserved (by: self.mSymbolInstanceName_property) // Stored property
+      oldValue.mSymbolTypeName_property.stopsBeingObserved (by: self.mSymbolTypeName_property) // Stored property
+      oldValue.mPinX_property.stopsBeingObserved (by: self.mPinX_property) // Stored property
+      oldValue.mPinY_property.stopsBeingObserved (by: self.mPinY_property) // Stored property
+      oldValue.mXName_property.stopsBeingObserved (by: self.mXName_property) // Stored property
+      oldValue.mYName_property.stopsBeingObserved (by: self.mYName_property) // Stored property
+      oldValue.mNameHorizontalAlignment_property.stopsBeingObserved (by: self.mNameHorizontalAlignment_property) // Stored property
+      oldValue.mPinNameIsDisplayedInSchematic_property.stopsBeingObserved (by: self.mPinNameIsDisplayedInSchematic_property) // Stored property
+      oldValue.mXNumber_property.stopsBeingObserved (by: self.mXNumber_property) // Stored property
+      oldValue.mYNumber_property.stopsBeingObserved (by: self.mYNumber_property) // Stored property
+      oldValue.mNumberHorizontalAlignment_property.stopsBeingObserved (by: self.mNumberHorizontalAlignment_property) // Stored property
+      oldValue.pinQualifiedName_property.stopsBeingObserved (by: self.pinQualifiedName_property) // Transient property
+      oldValue.descriptor_property.stopsBeingObserved (by: self.descriptor_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mPinName_property.addEBObserver (self.mPinName_property) // Stored property
-      newValue.mSymbolInstanceName_property.addEBObserver (self.mSymbolInstanceName_property) // Stored property
-      newValue.mSymbolTypeName_property.addEBObserver (self.mSymbolTypeName_property) // Stored property
-      newValue.mPinX_property.addEBObserver (self.mPinX_property) // Stored property
-      newValue.mPinY_property.addEBObserver (self.mPinY_property) // Stored property
-      newValue.mXName_property.addEBObserver (self.mXName_property) // Stored property
-      newValue.mYName_property.addEBObserver (self.mYName_property) // Stored property
-      newValue.mNameHorizontalAlignment_property.addEBObserver (self.mNameHorizontalAlignment_property) // Stored property
-      newValue.mPinNameIsDisplayedInSchematic_property.addEBObserver (self.mPinNameIsDisplayedInSchematic_property) // Stored property
-      newValue.mXNumber_property.addEBObserver (self.mXNumber_property) // Stored property
-      newValue.mYNumber_property.addEBObserver (self.mYNumber_property) // Stored property
-      newValue.mNumberHorizontalAlignment_property.addEBObserver (self.mNumberHorizontalAlignment_property) // Stored property
-      newValue.pinQualifiedName_property.addEBObserver (self.pinQualifiedName_property) // Transient property
-      newValue.descriptor_property.addEBObserver (self.descriptor_property) // Transient property
+      newValue.mPinName_property.startsToBeObserved (by: self.mPinName_property) // Stored property
+      newValue.mSymbolInstanceName_property.startsToBeObserved (by: self.mSymbolInstanceName_property) // Stored property
+      newValue.mSymbolTypeName_property.startsToBeObserved (by: self.mSymbolTypeName_property) // Stored property
+      newValue.mPinX_property.startsToBeObserved (by: self.mPinX_property) // Stored property
+      newValue.mPinY_property.startsToBeObserved (by: self.mPinY_property) // Stored property
+      newValue.mXName_property.startsToBeObserved (by: self.mXName_property) // Stored property
+      newValue.mYName_property.startsToBeObserved (by: self.mYName_property) // Stored property
+      newValue.mNameHorizontalAlignment_property.startsToBeObserved (by: self.mNameHorizontalAlignment_property) // Stored property
+      newValue.mPinNameIsDisplayedInSchematic_property.startsToBeObserved (by: self.mPinNameIsDisplayedInSchematic_property) // Stored property
+      newValue.mXNumber_property.startsToBeObserved (by: self.mXNumber_property) // Stored property
+      newValue.mYNumber_property.startsToBeObserved (by: self.mYNumber_property) // Stored property
+      newValue.mNumberHorizontalAlignment_property.startsToBeObserved (by: self.mNumberHorizontalAlignment_property) // Stored property
+      newValue.pinQualifiedName_property.startsToBeObserved (by: self.pinQualifiedName_property) // Transient property
+      newValue.descriptor_property.startsToBeObserved (by: self.descriptor_property) // Transient property
     }
   }
 

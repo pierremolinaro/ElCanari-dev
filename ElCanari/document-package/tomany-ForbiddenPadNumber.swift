@@ -33,30 +33,30 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
 
   //····················································································································
 
-  final func addEBObserverOf_padNumber (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_padNumber_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_padNumber.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.padNumber_property.addEBObserver (inObserver)
+        managedObject.padNumber_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_padNumber (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_padNumber_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_padNumber.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.padNumber_property.removeEBObserver (inObserver)
+        managedObject.padNumber_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -68,7 +68,7 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_padNumber.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.padNumber_property.addEBObserver (observer)
+            managedObject.padNumber_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_padNumber.triggerPacking ()
           }
@@ -84,7 +84,7 @@ class ReadOnlyArrayOf_ForbiddenPadNumber : ReadOnlyAbstractArrayProperty <Forbid
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.padNumber_property.removeEBObserver (observer)
+          managedObject.padNumber_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_padNumber.triggerPacking ()

@@ -79,28 +79,28 @@ final class SelectionController_AutoLayoutProjectDocument_schematicLabelSelectio
   //--- mOrientation
     self.mOrientation_property.mReadModelFunction = nil 
     self.mOrientation_property.mWriteModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_mOrientation (self.mOrientation_property)
+    self.selectedArray_property.toMany_mOrientation_StopsBeingObserved (by: self.mOrientation_property)
   //--- location
     self.location_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_location (self.location_property)
+    self.selectedArray_property.toMany_location_StopsBeingObserved (by: self.location_property)
   //--- netName
     self.netName_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_netName (self.netName_property)
+    self.selectedArray_property.toMany_netName_StopsBeingObserved (by: self.netName_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StopsBeingObserved (by: self.selectionDisplay_property)
   //--- netClassName
     self.netClassName_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_netClassName (self.netClassName_property)
+    self.selectedArray_property.toMany_netClassName_StopsBeingObserved (by: self.netClassName_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
-    self.selectedArray_property.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StopsBeingObserved (by: self.objectDisplay_property)
   } */
 
   //····················································································································
 
   private final func bind_property_mOrientation () {
-    self.selectedArray_property.addEBObserverOf_mOrientation (self.mOrientation_property)
+    self.selectedArray_property.toMany_mOrientation_StartsToBeObserved (by: self.mOrientation_property)
     self.mOrientation_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -151,7 +151,7 @@ final class SelectionController_AutoLayoutProjectDocument_schematicLabelSelectio
   //····················································································································
 
   private final func bind_property_location () {
-    self.selectedArray_property.addEBObserverOf_location (self.location_property)
+    self.selectedArray_property.toMany_location_StartsToBeObserved (by: self.location_property)
     self.location_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -190,7 +190,7 @@ final class SelectionController_AutoLayoutProjectDocument_schematicLabelSelectio
   //····················································································································
 
   private final func bind_property_netName () {
-    self.selectedArray_property.addEBObserverOf_netName (self.netName_property)
+    self.selectedArray_property.toMany_netName_StartsToBeObserved (by: self.netName_property)
     self.netName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -229,7 +229,7 @@ final class SelectionController_AutoLayoutProjectDocument_schematicLabelSelectio
   //····················································································································
 
   private final func bind_property_selectionDisplay () {
-    self.selectedArray_property.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.selectedArray_property.toMany_selectionDisplay_StartsToBeObserved (by: self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -268,7 +268,7 @@ final class SelectionController_AutoLayoutProjectDocument_schematicLabelSelectio
   //····················································································································
 
   private final func bind_property_netClassName () {
-    self.selectedArray_property.addEBObserverOf_netClassName (self.netClassName_property)
+    self.selectedArray_property.toMany_netClassName_StartsToBeObserved (by: self.netClassName_property)
     self.netClassName_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {
@@ -307,7 +307,7 @@ final class SelectionController_AutoLayoutProjectDocument_schematicLabelSelectio
   //····················································································································
 
   private final func bind_property_objectDisplay () {
-    self.selectedArray_property.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.selectedArray_property.toMany_objectDisplay_StartsToBeObserved (by: self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.selectedArray_property {
         switch model.selection {

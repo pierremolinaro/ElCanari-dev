@@ -759,7 +759,7 @@ final class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.zone_property.addEBObserver (self.zone_none)
+    self.zone_property.startsToBeObserved (by: self.zone_none)
 //    gInitSemaphore.wait ()
   //--- To many property: slaves (has opposite relationship)
     self.slaves_property.undoManager = inUndoManager
@@ -818,18 +818,18 @@ final class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.addEBObserver (self.objectDisplay_property)
-    self.yCenter_property.addEBObserver (self.objectDisplay_property)
-    self.width_property.addEBObserver (self.objectDisplay_property)
-    self.height_property.addEBObserver (self.objectDisplay_property)
-    self.holeWidth_property.addEBObserver (self.objectDisplay_property)
-    self.holeHeight_property.addEBObserver (self.objectDisplay_property)
-    self.padShape_property.addEBObserver (self.objectDisplay_property)
-    self.padStyle_property.addEBObserver (self.objectDisplay_property)
-    preferences_frontSidePadColor_property.addEBObserver (self.objectDisplay_property)
-    preferences_displayPackageFrontSidePads_property.addEBObserver (self.objectDisplay_property)
-    preferences_backSidePadColor_property.addEBObserver (self.objectDisplay_property)
-    preferences_displayPackageBackSidePads_property.addEBObserver (self.objectDisplay_property)
+    self.xCenter_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.yCenter_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.width_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.height_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.holeWidth_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.holeHeight_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.padShape_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.padStyle_property.startsToBeObserved (by: self.objectDisplay_property)
+    preferences_frontSidePadColor_property.startsToBeObserved (by: self.objectDisplay_property)
+    preferences_displayPackageFrontSidePads_property.startsToBeObserved (by: self.objectDisplay_property)
+    preferences_backSidePadColor_property.startsToBeObserved (by: self.objectDisplay_property)
+    preferences_displayPackageBackSidePads_property.startsToBeObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -858,11 +858,11 @@ final class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.addEBObserver (self.selectionDisplay_property)
-    self.yCenter_property.addEBObserver (self.selectionDisplay_property)
-    self.width_property.addEBObserver (self.selectionDisplay_property)
-    self.height_property.addEBObserver (self.selectionDisplay_property)
-    self.padShape_property.addEBObserver (self.selectionDisplay_property)
+    self.xCenter_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.yCenter_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.width_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.height_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.padShape_property.startsToBeObserved (by: self.selectionDisplay_property)
   //--- Atomic property: padNameForDisplay
     self.padNameForDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -885,9 +885,9 @@ final class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.padNumber_property.addEBObserver (self.padNameForDisplay_property)
-    self.zone_property.zoneName_property.addEBObserver (self.padNameForDisplay_property)
-    self.zone_property.displayZoneNameWithPadNumbers_property.addEBObserver (self.padNameForDisplay_property)
+    self.padNumber_property.startsToBeObserved (by: self.padNameForDisplay_property)
+    self.zone_property.zoneName_property.startsToBeObserved (by: self.padNameForDisplay_property)
+    self.zone_property.displayZoneNameWithPadNumbers_property.startsToBeObserved (by: self.padNameForDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -919,12 +919,12 @@ final class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.addEBObserver (self.issues_property)
-    self.yCenter_property.addEBObserver (self.issues_property)
-    self.width_property.addEBObserver (self.issues_property)
-    self.height_property.addEBObserver (self.issues_property)
-    self.holeWidth_property.addEBObserver (self.issues_property)
-    self.holeHeight_property.addEBObserver (self.issues_property)
+    self.xCenter_property.startsToBeObserved (by: self.issues_property)
+    self.yCenter_property.startsToBeObserved (by: self.issues_property)
+    self.width_property.startsToBeObserved (by: self.issues_property)
+    self.height_property.startsToBeObserved (by: self.issues_property)
+    self.holeWidth_property.startsToBeObserved (by: self.issues_property)
+    self.holeHeight_property.startsToBeObserved (by: self.issues_property)
   //--- Atomic property: padIsTraversing
     self.padIsTraversing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -941,7 +941,7 @@ final class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.padStyle_property.addEBObserver (self.padIsTraversing_property)
+    self.padStyle_property.startsToBeObserved (by: self.padIsTraversing_property)
   //--- Atomic property: annularRing
     self.annularRing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -967,10 +967,10 @@ final class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.width_property.addEBObserver (self.annularRing_property)
-    self.height_property.addEBObserver (self.annularRing_property)
-    self.holeWidth_property.addEBObserver (self.annularRing_property)
-    self.holeHeight_property.addEBObserver (self.annularRing_property)
+    self.width_property.startsToBeObserved (by: self.annularRing_property)
+    self.height_property.startsToBeObserved (by: self.annularRing_property)
+    self.holeWidth_property.startsToBeObserved (by: self.annularRing_property)
+    self.holeHeight_property.startsToBeObserved (by: self.annularRing_property)
   //--- Atomic property: padNameWithZoneName
     self.padNameWithZoneName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -990,8 +990,8 @@ final class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.padNumber_property.addEBObserver (self.padNameWithZoneName_property)
-    self.zone_property.zoneName_property.addEBObserver (self.padNameWithZoneName_property)
+    self.padNumber_property.startsToBeObserved (by: self.padNameWithZoneName_property)
+    self.zone_property.zoneName_property.startsToBeObserved (by: self.padNameWithZoneName_property)
   //--- Atomic property: zoneName
     self.zoneName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1008,7 +1008,7 @@ final class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.zone_property.zoneName_property.addEBObserver (self.zoneName_property)
+    self.zone_property.zoneName_property.startsToBeObserved (by: self.zoneName_property)
   //--- Atomic property: noZone
     self.noZone_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1025,7 +1025,7 @@ final class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.zone_property.addEBObserver (self.noZone_property)
+    self.zone_property.startsToBeObserved (by: self.noZone_property)
   //--- Atomic property: zoneAllowsManualRenumbering
     self.zoneAllowsManualRenumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1042,7 +1042,7 @@ final class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.zone_property.zoneNumbering_property.addEBObserver (self.zoneAllowsManualRenumbering_property)
+    self.zone_property.zoneNumbering_property.startsToBeObserved (by: self.zoneAllowsManualRenumbering_property)
   //--- Atomic property: slavePadCount
     self.slavePadCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1059,7 +1059,7 @@ final class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.slaves_property.addEBObserver (self.slavePadCount_property)
+    self.slaves_property.startsToBeObserved (by: self.slavePadCount_property)
   //--- Atomic property: masterPadObjectIndex
     self.masterPadObjectIndex_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1104,11 +1104,11 @@ final class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.addEBObserver (self.padNumberDisplay_property)
-    self.yCenter_property.addEBObserver (self.padNumberDisplay_property)
-    preferences_padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
-    preferences_padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
-    self.padNameForDisplay_property.addEBObserver (self.padNumberDisplay_property)
+    self.xCenter_property.startsToBeObserved (by: self.padNumberDisplay_property)
+    self.yCenter_property.startsToBeObserved (by: self.padNumberDisplay_property)
+    preferences_padNumberFont_property.startsToBeObserved (by: self.padNumberDisplay_property)
+    preferences_padNumberColor_property.startsToBeObserved (by: self.padNumberDisplay_property)
+    self.padNameForDisplay_property.startsToBeObserved (by: self.padNumberDisplay_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.slaves_property.setOppositeRelationShipFunctions (

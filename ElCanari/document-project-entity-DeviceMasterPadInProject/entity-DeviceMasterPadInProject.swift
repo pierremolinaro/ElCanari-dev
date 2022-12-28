@@ -344,16 +344,16 @@ final class DeviceMasterPadInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mName_property.addEBObserver (self.descriptor_property)
-    self.mCenterX_property.addEBObserver (self.descriptor_property)
-    self.mCenterY_property.addEBObserver (self.descriptor_property)
-    self.mWidth_property.addEBObserver (self.descriptor_property)
-    self.mHeight_property.addEBObserver (self.descriptor_property)
-    self.mHoleWidth_property.addEBObserver (self.descriptor_property)
-    self.mHoleHeight_property.addEBObserver (self.descriptor_property)
-    self.mShape_property.addEBObserver (self.descriptor_property)
-    self.mStyle_property.addEBObserver (self.descriptor_property)
-    self.mSlavePads_property.addEBObserverOf_descriptor (self.descriptor_property)
+    self.mName_property.startsToBeObserved (by: self.descriptor_property)
+    self.mCenterX_property.startsToBeObserved (by: self.descriptor_property)
+    self.mCenterY_property.startsToBeObserved (by: self.descriptor_property)
+    self.mWidth_property.startsToBeObserved (by: self.descriptor_property)
+    self.mHeight_property.startsToBeObserved (by: self.descriptor_property)
+    self.mHoleWidth_property.startsToBeObserved (by: self.descriptor_property)
+    self.mHoleHeight_property.startsToBeObserved (by: self.descriptor_property)
+    self.mShape_property.startsToBeObserved (by: self.descriptor_property)
+    self.mStyle_property.startsToBeObserved (by: self.descriptor_property)
+    self.mSlavePads_property.toMany_descriptor_StartsToBeObserved (by: self.descriptor_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature

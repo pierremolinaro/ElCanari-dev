@@ -16,31 +16,31 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mNominalSize_property.removeEBObserver (self.mNominalSize_property) // Stored property
-      oldValue.mFontName_property.removeEBObserver (self.mFontName_property) // Stored property
-      oldValue.mFontVersion_property.removeEBObserver (self.mFontVersion_property) // Stored property
-      oldValue.mDescriptiveString_property.removeEBObserver (self.mDescriptiveString_property) // Stored property
-      oldValue.versionString_property.removeEBObserver (self.versionString_property) // Transient property
-      oldValue.sizeString_property.removeEBObserver (self.sizeString_property) // Transient property
-      oldValue.descriptor_property.removeEBObserver (self.descriptor_property) // Transient property
-      oldValue.textCount_property.removeEBObserver (self.textCount_property) // Transient property
-      oldValue.canRemoveFont_property.removeEBObserver (self.canRemoveFont_property) // Transient property
-      oldValue.componentNamesCount_property.removeEBObserver (self.componentNamesCount_property) // Transient property
-      oldValue.componentValuesCount_property.removeEBObserver (self.componentValuesCount_property) // Transient property
+      oldValue.mNominalSize_property.stopsBeingObserved (by: self.mNominalSize_property) // Stored property
+      oldValue.mFontName_property.stopsBeingObserved (by: self.mFontName_property) // Stored property
+      oldValue.mFontVersion_property.stopsBeingObserved (by: self.mFontVersion_property) // Stored property
+      oldValue.mDescriptiveString_property.stopsBeingObserved (by: self.mDescriptiveString_property) // Stored property
+      oldValue.versionString_property.stopsBeingObserved (by: self.versionString_property) // Transient property
+      oldValue.sizeString_property.stopsBeingObserved (by: self.sizeString_property) // Transient property
+      oldValue.descriptor_property.stopsBeingObserved (by: self.descriptor_property) // Transient property
+      oldValue.textCount_property.stopsBeingObserved (by: self.textCount_property) // Transient property
+      oldValue.canRemoveFont_property.stopsBeingObserved (by: self.canRemoveFont_property) // Transient property
+      oldValue.componentNamesCount_property.stopsBeingObserved (by: self.componentNamesCount_property) // Transient property
+      oldValue.componentValuesCount_property.stopsBeingObserved (by: self.componentValuesCount_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mNominalSize_property.addEBObserver (self.mNominalSize_property) // Stored property
-      newValue.mFontName_property.addEBObserver (self.mFontName_property) // Stored property
-      newValue.mFontVersion_property.addEBObserver (self.mFontVersion_property) // Stored property
-      newValue.mDescriptiveString_property.addEBObserver (self.mDescriptiveString_property) // Stored property
-      newValue.versionString_property.addEBObserver (self.versionString_property) // Transient property
-      newValue.sizeString_property.addEBObserver (self.sizeString_property) // Transient property
-      newValue.descriptor_property.addEBObserver (self.descriptor_property) // Transient property
-      newValue.textCount_property.addEBObserver (self.textCount_property) // Transient property
-      newValue.canRemoveFont_property.addEBObserver (self.canRemoveFont_property) // Transient property
-      newValue.componentNamesCount_property.addEBObserver (self.componentNamesCount_property) // Transient property
-      newValue.componentValuesCount_property.addEBObserver (self.componentValuesCount_property) // Transient property
+      newValue.mNominalSize_property.startsToBeObserved (by: self.mNominalSize_property) // Stored property
+      newValue.mFontName_property.startsToBeObserved (by: self.mFontName_property) // Stored property
+      newValue.mFontVersion_property.startsToBeObserved (by: self.mFontVersion_property) // Stored property
+      newValue.mDescriptiveString_property.startsToBeObserved (by: self.mDescriptiveString_property) // Stored property
+      newValue.versionString_property.startsToBeObserved (by: self.versionString_property) // Transient property
+      newValue.sizeString_property.startsToBeObserved (by: self.sizeString_property) // Transient property
+      newValue.descriptor_property.startsToBeObserved (by: self.descriptor_property) // Transient property
+      newValue.textCount_property.startsToBeObserved (by: self.textCount_property) // Transient property
+      newValue.canRemoveFont_property.startsToBeObserved (by: self.canRemoveFont_property) // Transient property
+      newValue.componentNamesCount_property.startsToBeObserved (by: self.componentNamesCount_property) // Transient property
+      newValue.componentValuesCount_property.startsToBeObserved (by: self.componentValuesCount_property) // Transient property
     }
   }
 
@@ -118,19 +118,19 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mTexts (_ inObserver : EBObserverProtocol) {
+  final func toMany_mTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mTexts.insert (inObserver)
     if let object = self.propval {
-      object.mTexts_property.addEBObserver (inObserver)
+      object.mTexts_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mTexts (_ inObserver : EBObserverProtocol) {
+  final func toMany_mTexts_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mTexts.remove (inObserver)
     if let object = self.propval {
-      object.mTexts_property.removeEBObserver (inObserver)
+      object.mTexts_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -142,19 +142,19 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mComponentNames (_ inObserver : EBObserverProtocol) {
+  final func toMany_mComponentNames_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mComponentNames.insert (inObserver)
     if let object = self.propval {
-      object.mComponentNames_property.addEBObserver (inObserver)
+      object.mComponentNames_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mComponentNames (_ inObserver : EBObserverProtocol) {
+  final func toMany_mComponentNames_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mComponentNames.remove (inObserver)
     if let object = self.propval {
-      object.mComponentNames_property.removeEBObserver (inObserver)
+      object.mComponentNames_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -166,19 +166,19 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
 
   //····················································································································
 
-  final func addEBObserverOf_mComponentValues (_ inObserver : EBObserverProtocol) {
+  final func toMany_mComponentValues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mComponentValues.insert (inObserver)
     if let object = self.propval {
-      object.mComponentValues_property.addEBObserver (inObserver)
+      object.mComponentValues_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mComponentValues (_ inObserver : EBObserverProtocol) {
+  final func toMany_mComponentValues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mComponentValues.remove (inObserver)
     if let object = self.propval {
-      object.mComponentValues_property.removeEBObserver (inObserver)
+      object.mComponentValues_property.stopsBeingObserved (by: inObserver)
     }
   }
 

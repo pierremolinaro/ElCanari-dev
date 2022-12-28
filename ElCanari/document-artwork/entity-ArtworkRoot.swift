@@ -525,7 +525,7 @@ final class ArtworkRoot : EBManagedObject,
         return .empty
       }
     }
-    self.layerConfiguration_property.addEBObserver (self.hasInnerElements_property)
+    self.layerConfiguration_property.startsToBeObserved (by: self.hasInnerElements_property)
   //--- Atomic property: hasSixLayers
     self.hasSixLayers_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -542,7 +542,7 @@ final class ArtworkRoot : EBManagedObject,
         return .empty
       }
     }
-    self.layerConfiguration_property.addEBObserver (self.hasSixLayers_property)
+    self.layerConfiguration_property.startsToBeObserved (by: self.hasSixLayers_property)
   //--- Atomic property: hasDataWarning
     self.hasDataWarning_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -559,7 +559,7 @@ final class ArtworkRoot : EBManagedObject,
         return .empty
       }
     }
-    self.fileGenerationParameterArray_property.addEBObserverOf_hasNoData (self.hasDataWarning_property)
+    self.fileGenerationParameterArray_property.toMany_hasNoData_StartsToBeObserved (by: self.hasDataWarning_property)
   //--- Atomic property: emptyDrillFileExtension
     self.emptyDrillFileExtension_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -576,7 +576,7 @@ final class ArtworkRoot : EBManagedObject,
         return .empty
       }
     }
-    self.drillDataFileExtension_property.addEBObserver (self.emptyDrillFileExtension_property)
+    self.drillDataFileExtension_property.startsToBeObserved (by: self.emptyDrillFileExtension_property)
   //--- Atomic property: signatureForERCChecking
     self.signatureForERCChecking_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -602,10 +602,10 @@ final class ArtworkRoot : EBManagedObject,
         return .empty
       }
     }
-    self.minPPTPTTTW_property.addEBObserver (self.signatureForERCChecking_property)
-    self.minValueForOARinEBUnit_property.addEBObserver (self.signatureForERCChecking_property)
-    self.minValueForBoardLimitWidth_property.addEBObserver (self.signatureForERCChecking_property)
-    self.minValueForPHDinEBUnit_property.addEBObserver (self.signatureForERCChecking_property)
+    self.minPPTPTTTW_property.startsToBeObserved (by: self.signatureForERCChecking_property)
+    self.minValueForOARinEBUnit_property.startsToBeObserved (by: self.signatureForERCChecking_property)
+    self.minValueForBoardLimitWidth_property.startsToBeObserved (by: self.signatureForERCChecking_property)
+    self.minValueForPHDinEBUnit_property.startsToBeObserved (by: self.signatureForERCChecking_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.fileGenerationParameterArray_property.setOppositeRelationShipFunctions (

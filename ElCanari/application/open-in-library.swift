@@ -211,7 +211,7 @@ import AppKit
 //    }else{
 //      let observer = EBOutletEvent ()
 //      self.mSegmentedControlIndexObserver = observer
-//      self.mSegmentedControlIndex.addEBObserver (observer)
+//      self.mSegmentedControlIndex.startsToBeObserved (by: observer)
 //      observer.mEventCallBack = { [weak self] in
 //        if let uwSelf = self {
 //          uwSelf.mTableView.isHidden = uwSelf.mSegmentedControlIndex.propval == 1

@@ -429,7 +429,7 @@ final class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mDeviceVersion_property.addEBObserver (self.versionString_property)
+    self.mDeviceVersion_property.startsToBeObserved (by: self.versionString_property)
   //--- Atomic property: sizeString
     self.sizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -446,7 +446,7 @@ final class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mDeviceFileData_property.addEBObserver (self.sizeString_property)
+    self.mDeviceFileData_property.startsToBeObserved (by: self.sizeString_property)
   //--- Atomic property: canExport
     self.canExport_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -463,7 +463,7 @@ final class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mDeviceFileData_property.addEBObserver (self.canExport_property)
+    self.mDeviceFileData_property.startsToBeObserved (by: self.canExport_property)
   //--- Atomic property: packageNames
     self.packageNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -480,7 +480,7 @@ final class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPackages_property.addEBObserverOf_mPackageName (self.packageNames_property)
+    self.mPackages_property.toMany_mPackageName_StartsToBeObserved (by: self.packageNames_property)
   //--- Atomic property: deviceComponentCountString
     self.deviceComponentCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -497,7 +497,7 @@ final class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mComponents_property.addEBObserver (self.deviceComponentCountString_property)
+    self.mComponents_property.startsToBeObserved (by: self.deviceComponentCountString_property)
   //--- Atomic property: canRemove
     self.canRemove_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -514,7 +514,7 @@ final class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mComponents_property.addEBObserver (self.canRemove_property)
+    self.mComponents_property.startsToBeObserved (by: self.canRemove_property)
   //--- Atomic property: symbolAndTypesNames
     self.symbolAndTypesNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -531,7 +531,7 @@ final class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mSymbols_property.addEBObserverOf_symbolAndTypeName (self.symbolAndTypesNames_property)
+    self.mSymbols_property.toMany_symbolAndTypeName_StartsToBeObserved (by: self.symbolAndTypesNames_property)
   //--- Atomic property: pinPadAssignments
     self.pinPadAssignments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -548,7 +548,7 @@ final class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPadAssignments_property.addEBObserverOf_pinPadAssignment (self.pinPadAssignments_property)
+    self.mPadAssignments_property.toMany_pinPadAssignment_StartsToBeObserved (by: self.pinPadAssignments_property)
   //--- Atomic property: deviceSymbolDictionary
     self.deviceSymbolDictionary_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -574,10 +574,10 @@ final class DeviceInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPadAssignments_property.addEBObserverOf_descriptor (self.deviceSymbolDictionary_property)
-    self.mSymbols_property.addEBObserverOf_symbolAndTypeName (self.deviceSymbolDictionary_property)
-    self.mSymbols_property.addEBObserverOf_filledBezierPath (self.deviceSymbolDictionary_property)
-    self.mSymbols_property.addEBObserverOf_strokeBezierPath (self.deviceSymbolDictionary_property)
+    self.mPadAssignments_property.toMany_descriptor_StartsToBeObserved (by: self.deviceSymbolDictionary_property)
+    self.mSymbols_property.toMany_symbolAndTypeName_StartsToBeObserved (by: self.deviceSymbolDictionary_property)
+    self.mSymbols_property.toMany_filledBezierPath_StartsToBeObserved (by: self.deviceSymbolDictionary_property)
+    self.mSymbols_property.toMany_strokeBezierPath_StartsToBeObserved (by: self.deviceSymbolDictionary_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mComponents_property.setOppositeRelationShipFunctions (

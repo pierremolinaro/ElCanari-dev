@@ -1636,7 +1636,7 @@ final class PackageRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mModelImageDoublePoint_property.addEBObserver (self.mModelImageDoublePoint_none)
+    self.mModelImageDoublePoint_property.startsToBeObserved (by: self.mModelImageDoublePoint_none)
 //    gInitSemaphore.wait ()
   //--- To many property: mModelImageObjects (has opposite relationship)
     self.mModelImageObjects_property.undoManager = inUndoManager
@@ -1672,7 +1672,7 @@ final class PackageRoot : EBManagedObject,
     self.mModelImageFirstPointX_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mModelImageDoublePoint?.mFirstX = inValue
     }
-    self.mModelImageDoublePoint_property.mFirstX_property.addEBObserver (self.mModelImageFirstPointX_property)
+    self.mModelImageDoublePoint_property.mFirstX_property.startsToBeObserved (by: self.mModelImageFirstPointX_property)
   //--- Atomic proxy property: mModelImageFirstPointY
     self.mModelImageFirstPointY_property.mReadModelFunction = { [weak self] in
       if let object = self?.mModelImageDoublePoint_property {
@@ -1695,7 +1695,7 @@ final class PackageRoot : EBManagedObject,
     self.mModelImageFirstPointY_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mModelImageDoublePoint?.mFirstY = inValue
     }
-    self.mModelImageDoublePoint_property.mFirstY_property.addEBObserver (self.mModelImageFirstPointY_property)
+    self.mModelImageDoublePoint_property.mFirstY_property.startsToBeObserved (by: self.mModelImageFirstPointY_property)
   //--- Atomic proxy property: mModelImageSecondPointDx
     self.mModelImageSecondPointDx_property.mReadModelFunction = { [weak self] in
       if let object = self?.mModelImageDoublePoint_property {
@@ -1718,7 +1718,7 @@ final class PackageRoot : EBManagedObject,
     self.mModelImageSecondPointDx_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mModelImageDoublePoint?.mSecondDx = inValue
     }
-    self.mModelImageDoublePoint_property.mSecondDx_property.addEBObserver (self.mModelImageSecondPointDx_property)
+    self.mModelImageDoublePoint_property.mSecondDx_property.startsToBeObserved (by: self.mModelImageSecondPointDx_property)
   //--- Atomic proxy property: mModelImageSecondPointDy
     self.mModelImageSecondPointDy_property.mReadModelFunction = { [weak self] in
       if let object = self?.mModelImageDoublePoint_property {
@@ -1741,7 +1741,7 @@ final class PackageRoot : EBManagedObject,
     self.mModelImageSecondPointDy_property.mWriteModelFunction = { [weak self] (_ inValue : Int) in
       self?.mModelImageDoublePoint?.mSecondDy = inValue
     }
-    self.mModelImageDoublePoint_property.mSecondDy_property.addEBObserver (self.mModelImageSecondPointDy_property)
+    self.mModelImageDoublePoint_property.mSecondDy_property.startsToBeObserved (by: self.mModelImageSecondPointDy_property)
   //--- Atomic property: freePadNumbering
     self.freePadNumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1758,7 +1758,7 @@ final class PackageRoot : EBManagedObject,
         return .empty
       }
     }
-    self.padNumbering_property.addEBObserver (self.freePadNumbering_property)
+    self.padNumbering_property.startsToBeObserved (by: self.freePadNumbering_property)
   //--- Atomic property: counterClockNumbering
     self.counterClockNumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1775,7 +1775,7 @@ final class PackageRoot : EBManagedObject,
         return .empty
       }
     }
-    self.padNumbering_property.addEBObserver (self.counterClockNumbering_property)
+    self.padNumbering_property.startsToBeObserved (by: self.counterClockNumbering_property)
   //--- Atomic property: gridStepMultipliedByDisplayFactor
     self.gridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1795,8 +1795,8 @@ final class PackageRoot : EBManagedObject,
         return .empty
       }
     }
-    self.gridStep_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property)
-    self.gridDisplayFactor_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property)
+    self.gridStep_property.startsToBeObserved (by: self.gridStepMultipliedByDisplayFactor_property)
+    self.gridDisplayFactor_property.startsToBeObserved (by: self.gridStepMultipliedByDisplayFactor_property)
   //--- Atomic property: secondPointX
     self.secondPointX_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1816,8 +1816,8 @@ final class PackageRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mModelImageFirstPointX_property.addEBObserver (self.secondPointX_property)
-    self.mModelImageSecondPointDx_property.addEBObserver (self.secondPointX_property)
+    self.mModelImageFirstPointX_property.startsToBeObserved (by: self.secondPointX_property)
+    self.mModelImageSecondPointDx_property.startsToBeObserved (by: self.secondPointX_property)
   //--- Atomic property: secondPointY
     self.secondPointY_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1837,8 +1837,8 @@ final class PackageRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mModelImageFirstPointY_property.addEBObserver (self.secondPointY_property)
-    self.mModelImageSecondPointDy_property.addEBObserver (self.secondPointY_property)
+    self.mModelImageFirstPointY_property.startsToBeObserved (by: self.secondPointY_property)
+    self.mModelImageSecondPointDy_property.startsToBeObserved (by: self.secondPointY_property)
   //--- Atomic property: lockImageView
     self.lockImageView_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1855,7 +1855,7 @@ final class PackageRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mPointsAreLocked_property.addEBObserver (self.lockImageView_property)
+    self.mPointsAreLocked_property.startsToBeObserved (by: self.lockImageView_property)
   //--- To one property: mModelImageDoublePoint
     self.mModelImageDoublePoint_property.undoManager = inUndoManager
   //--- Atomic property: padNumberDisplay
@@ -1880,9 +1880,9 @@ final class PackageRoot : EBManagedObject,
         return .empty
       }
     }
-    preferences_showPadNumber_property.addEBObserver (self.padNumberDisplay_property)
-    self.packagePads_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
-    self.packageSlavePads_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
+    preferences_showPadNumber_property.startsToBeObserved (by: self.padNumberDisplay_property)
+    self.packagePads_property.toMany_padNumberDisplay_StartsToBeObserved (by: self.padNumberDisplay_property)
+    self.packageSlavePads_property.toMany_padNumberDisplay_StartsToBeObserved (by: self.padNumberDisplay_property)
   //--- Atomic property: backgroundImagePageBackgroundDisplay
     self.backgroundImagePageBackgroundDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1902,8 +1902,8 @@ final class PackageRoot : EBManagedObject,
         return .empty
       }
     }
-    self.packageObjects_property.addEBObserverOf_objectDisplay (self.backgroundImagePageBackgroundDisplay_property)
-    self.mModelImageData_property.addEBObserver (self.backgroundImagePageBackgroundDisplay_property)
+    self.packageObjects_property.toMany_objectDisplay_StartsToBeObserved (by: self.backgroundImagePageBackgroundDisplay_property)
+    self.mModelImageData_property.startsToBeObserved (by: self.backgroundImagePageBackgroundDisplay_property)
   //--- Atomic property: modelImageSizeString
     self.modelImageSizeString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1920,7 +1920,7 @@ final class PackageRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mModelImageData_property.addEBObserver (self.modelImageSizeString_property)
+    self.mModelImageData_property.startsToBeObserved (by: self.modelImageSizeString_property)
   //--- Atomic property: hasModelImage
     self.hasModelImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1937,7 +1937,7 @@ final class PackageRoot : EBManagedObject,
         return .empty
       }
     }
-    self.mModelImageData_property.addEBObserver (self.hasModelImage_property)
+    self.mModelImageData_property.startsToBeObserved (by: self.hasModelImage_property)
   //--- Atomic property: masterPadObjectIndexArray
     self.masterPadObjectIndexArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1954,7 +1954,7 @@ final class PackageRoot : EBManagedObject,
         return .empty
       }
     }
-    self.packagePads_property.addEBObserverOf_masterPadObjectIndex (self.masterPadObjectIndexArray_property)
+    self.packagePads_property.toMany_masterPadObjectIndex_StartsToBeObserved (by: self.masterPadObjectIndexArray_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1986,12 +1986,12 @@ final class PackageRoot : EBManagedObject,
         return .empty
       }
     }
-    self.packageObjects_property.addEBObserverOf_issues (self.issues_property)
-    self.packageZones_property.addEBObserverOf_rect (self.issues_property)
-    self.packageZones_property.addEBObserverOf_zoneName (self.issues_property)
-    self.packageZones_property.addEBObserverOf_xName (self.issues_property)
-    self.packageZones_property.addEBObserverOf_yName (self.issues_property)
-    preferences_padZoneFont_property.addEBObserver (self.issues_property)
+    self.packageObjects_property.toMany_issues_StartsToBeObserved (by: self.issues_property)
+    self.packageZones_property.toMany_rect_StartsToBeObserved (by: self.issues_property)
+    self.packageZones_property.toMany_zoneName_StartsToBeObserved (by: self.issues_property)
+    self.packageZones_property.toMany_xName_StartsToBeObserved (by: self.issues_property)
+    self.packageZones_property.toMany_yName_StartsToBeObserved (by: self.issues_property)
+    preferences_padZoneFont_property.startsToBeObserved (by: self.issues_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mModelImageObjects_property.setOppositeRelationShipFunctions (

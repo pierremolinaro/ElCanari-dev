@@ -39,12 +39,12 @@ final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : ReadO
     set {
     //--- Add observers to newly selected set
       for object in newValue.subtracting (self.mPrivateSelectedSet).values {
-        object.selectionDisplay_property.addEBObserver (self.mObjectSelectionObserver)
+        object.selectionDisplay_property.startsToBeObserved (by: self.mObjectSelectionObserver)
       }
     //--- Remove observers to deselected set
       let deselectedSet = self.mPrivateSelectedSet.subtracting (newValue)
       for object in deselectedSet.values {
-        object.selectionDisplay_property.removeEBObserver (self.mObjectSelectionObserver)
+        object.selectionDisplay_property.stopsBeingObserved (by: self.mObjectSelectionObserver)
       }
       if deselectedSet.count > 0 {
         self.mObjectSelectionObserver.observedObjectDidChange () // Required, as removing observer does not post event
@@ -95,7 +95,7 @@ final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : ReadO
         return .empty
       }
     }
-    self.selectedArray_property.addEBObserver (self.canBringToFront_property)
+    self.selectedArray_property.startsToBeObserved (by: self.canBringToFront_property)
   //---
     self.canBringToFront_property.mReadModelFunction = { [weak self] in
       if let me = self {
@@ -104,7 +104,7 @@ final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : ReadO
         return .empty
       }
     }
-    self.selectedArray_property.addEBObserver (self.canBringToFront_property)
+    self.selectedArray_property.startsToBeObserved (by: self.canBringToFront_property)
   //---
     self.canSendBackward_property.mReadModelFunction = { [weak self] in
       if let me = self {
@@ -113,7 +113,7 @@ final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : ReadO
         return .empty
       }
     }
-    self.selectedArray_property.addEBObserver (self.canSendBackward_property)
+    self.selectedArray_property.startsToBeObserved (by: self.canSendBackward_property)
   //---
     self.canSendToBack_property.mReadModelFunction = { [weak self] in
       if let me = self {
@@ -122,7 +122,7 @@ final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : ReadO
         return .empty
       }
     }
-    self.selectedArray_property.addEBObserver (self.canSendToBack_property)
+    self.selectedArray_property.startsToBeObserved (by: self.canSendToBack_property)
   //---
     self.canFlipHorizontally_property.mReadModelFunction = { [weak self] in
       if let me = self {
@@ -131,7 +131,7 @@ final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : ReadO
         return .empty
       }
     }
-    self.selectedArray_property.addEBObserver (self.canFlipHorizontally_property)
+    self.selectedArray_property.startsToBeObserved (by: self.canFlipHorizontally_property)
   //---
     self.canFlipVertically_property.mReadModelFunction = { [weak self] in
       if let me = self {
@@ -140,7 +140,7 @@ final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : ReadO
         return .empty
       }
     }
-    self.selectedArray_property.addEBObserver (self.canFlipVertically_property)
+    self.selectedArray_property.startsToBeObserved (by: self.canFlipVertically_property)
   //---
     self.canRotate90_property.mReadModelFunction = { [weak self] in
       if let me = self {
@@ -149,7 +149,7 @@ final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : ReadO
         return .empty
       }
     }
-    self.selectedArray_property.addEBObserver (self.canRotate90_property)
+    self.selectedArray_property.startsToBeObserved (by: self.canRotate90_property)
   }
 
   //····················································································································
@@ -260,7 +260,7 @@ final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : ReadO
   //····················································································································
 
   private func startObservingSelectionShape () {
-    self.mModel?.addEBObserverOf_selectionDisplay (self.mObjectSelectionObserver)
+    self.mModel?.toMany_selectionDisplay_StartsToBeObserved (by: self.mObjectSelectionObserver)
     self.mObjectSelectionObserver.mEventCallBack = { [weak self] in self?.computeSelectionShape () }
   }
 
@@ -285,7 +285,7 @@ final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : ReadO
   //····················································································································
 
   private func stopObservingSelectionShape () {
-    self.mModel?.removeEBObserverOf_selectionDisplay (self.mObjectSelectionObserver)
+    self.mModel?.toMany_selectionDisplay_StopsBeingObserved (by: self.mObjectSelectionObserver)
     self.mObjectSelectionObserver.mEventCallBack = nil
   }
 
@@ -299,14 +299,14 @@ final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : ReadO
   //····················································································································
 
   private func startObservingObjectShape () {
-    self.mModel?.addEBObserverOf_objectDisplay (self.mObjectDisplayObserver)
+    self.mModel?.toMany_objectDisplay_StartsToBeObserved (by: self.mObjectDisplayObserver)
     self.mObjectDisplayObserver.mEventCallBack = { [weak self] in self?.updateObjectDisplay () }
   }
 
   //····················································································································
 
   private func stopObservingObjectShape () {
-    self.mModel?.removeEBObserverOf_objectDisplay (self.mObjectDisplayObserver)
+    self.mModel?.toMany_objectDisplay_StopsBeingObserved (by: self.mObjectDisplayObserver)
     self.mObjectDisplayObserver.mEventCallBack = nil
   }
 
@@ -1060,7 +1060,7 @@ final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : ReadO
   //····················································································································
 
   private func inspectorViewManagerStartsObservingSelection () {
-    self.selectedArray_property.addEBObserver (self.mInspectorObserver)
+    self.selectedArray_property.startsToBeObserved (by: self.mInspectorObserver)
     self.mInspectorObserver.mEventCallBack = { [weak self] in self?.updateInspectorViews () }
   }
 
@@ -1068,7 +1068,7 @@ final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : ReadO
 
   private func inspectorViewManagerStopsObservingSelection () {
     self.mInspectorObserver.mEventCallBack = nil
-    self.selectedArray_property.removeEBObserver (self.mInspectorObserver)
+    self.selectedArray_property.stopsBeingObserved (by: self.mInspectorObserver)
   }
 
   //····················································································································

@@ -16,19 +16,19 @@ class ReadOnlyObject_PadProxyInDevice : ReadOnlyAbstractObjectProperty <PadProxy
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mPinInstanceName_property.removeEBObserver (self.mPinInstanceName_property) // Stored property
-      oldValue.mPadName_property.removeEBObserver (self.mPadName_property) // Stored property
-      oldValue.mIsNC_property.removeEBObserver (self.mIsNC_property) // Stored property
-      oldValue.isConnected_property.removeEBObserver (self.isConnected_property) // Transient property
-      oldValue.symbolName_property.removeEBObserver (self.symbolName_property) // Transient property
+      oldValue.mPinInstanceName_property.stopsBeingObserved (by: self.mPinInstanceName_property) // Stored property
+      oldValue.mPadName_property.stopsBeingObserved (by: self.mPadName_property) // Stored property
+      oldValue.mIsNC_property.stopsBeingObserved (by: self.mIsNC_property) // Stored property
+      oldValue.isConnected_property.stopsBeingObserved (by: self.isConnected_property) // Transient property
+      oldValue.symbolName_property.stopsBeingObserved (by: self.symbolName_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mPinInstanceName_property.addEBObserver (self.mPinInstanceName_property) // Stored property
-      newValue.mPadName_property.addEBObserver (self.mPadName_property) // Stored property
-      newValue.mIsNC_property.addEBObserver (self.mIsNC_property) // Stored property
-      newValue.isConnected_property.addEBObserver (self.isConnected_property) // Transient property
-      newValue.symbolName_property.addEBObserver (self.symbolName_property) // Transient property
+      newValue.mPinInstanceName_property.startsToBeObserved (by: self.mPinInstanceName_property) // Stored property
+      newValue.mPadName_property.startsToBeObserved (by: self.mPadName_property) // Stored property
+      newValue.mIsNC_property.startsToBeObserved (by: self.mIsNC_property) // Stored property
+      newValue.isConnected_property.startsToBeObserved (by: self.isConnected_property) // Transient property
+      newValue.symbolName_property.startsToBeObserved (by: self.symbolName_property) // Transient property
     }
   }
 

@@ -16,115 +16,115 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.selectedPageIndex_property.removeEBObserver (self.selectedPageIndex_property) // Stored property
-      oldValue.selectedInspector_property.removeEBObserver (self.selectedInspector_property) // Stored property
-      oldValue.comments_property.removeEBObserver (self.comments_property) // Stored property
-      oldValue.program_property.removeEBObserver (self.program_property) // Stored property
-      oldValue.horizontalFlip_property.removeEBObserver (self.horizontalFlip_property) // Stored property
-      oldValue.verticalFlip_property.removeEBObserver (self.verticalFlip_property) // Stored property
-      oldValue.gridStyle_property.removeEBObserver (self.gridStyle_property) // Stored property
-      oldValue.gridStep_property.removeEBObserver (self.gridStep_property) // Stored property
-      oldValue.gridStepUnit_property.removeEBObserver (self.gridStepUnit_property) // Stored property
-      oldValue.gridDisplayFactor_property.removeEBObserver (self.gridDisplayFactor_property) // Stored property
-      oldValue.zoom_property.removeEBObserver (self.zoom_property) // Stored property
-      oldValue.mModelImageOpacity_property.removeEBObserver (self.mModelImageOpacity_property) // Stored property
-      oldValue.mModelImagePageHorizontalFlip_property.removeEBObserver (self.mModelImagePageHorizontalFlip_property) // Stored property
-      oldValue.mModelImagePageVerticalFlip_property.removeEBObserver (self.mModelImagePageVerticalFlip_property) // Stored property
-      oldValue.mModelImagePageGridStyle_property.removeEBObserver (self.mModelImagePageGridStyle_property) // Stored property
-      oldValue.mModelImagePageGridStep_property.removeEBObserver (self.mModelImagePageGridStep_property) // Stored property
-      oldValue.mModelImagePageGridStepUnit_property.removeEBObserver (self.mModelImagePageGridStepUnit_property) // Stored property
-      oldValue.mModelImagePageGridDisplayFactor_property.removeEBObserver (self.mModelImagePageGridDisplayFactor_property) // Stored property
-      oldValue.mModelImagePageZoom_property.removeEBObserver (self.mModelImagePageZoom_property) // Stored property
-      oldValue.mModelImagePageXPlacardUnit_property.removeEBObserver (self.mModelImagePageXPlacardUnit_property) // Stored property
-      oldValue.mModelImagePageYPlacardUnit_property.removeEBObserver (self.mModelImagePageYPlacardUnit_property) // Stored property
-      oldValue.mModelImageSecondPointXUnit_property.removeEBObserver (self.mModelImageSecondPointXUnit_property) // Stored property
-      oldValue.mModelImageSecondPointYUnit_property.removeEBObserver (self.mModelImageSecondPointYUnit_property) // Stored property
-      oldValue.mModelImageFirstPointXOnLock_property.removeEBObserver (self.mModelImageFirstPointXOnLock_property) // Stored property
-      oldValue.mModelImageFirstPointYOnLock_property.removeEBObserver (self.mModelImageFirstPointYOnLock_property) // Stored property
-      oldValue.mModelImagePointsDxOnLock_property.removeEBObserver (self.mModelImagePointsDxOnLock_property) // Stored property
-      oldValue.mModelImagePointsDyOnLock_property.removeEBObserver (self.mModelImagePointsDyOnLock_property) // Stored property
-      oldValue.mModelImageScale_property.removeEBObserver (self.mModelImageScale_property) // Stored property
-      oldValue.mModelImageRotationInRadians_property.removeEBObserver (self.mModelImageRotationInRadians_property) // Stored property
-      oldValue.mDimensionUnitFirstModelPointX_property.removeEBObserver (self.mDimensionUnitFirstModelPointX_property) // Stored property
-      oldValue.mDimensionUnitFirstModelPointY_property.removeEBObserver (self.mDimensionUnitFirstModelPointY_property) // Stored property
-      oldValue.mDimensionUnitSecondModelPointDx_property.removeEBObserver (self.mDimensionUnitSecondModelPointDx_property) // Stored property
-      oldValue.mDimensionUnitSecondModelPointDy_property.removeEBObserver (self.mDimensionUnitSecondModelPointDy_property) // Stored property
-      oldValue.mModelPointsCircleRadius_property.removeEBObserver (self.mModelPointsCircleRadius_property) // Stored property
-      oldValue.mPointsAreLocked_property.removeEBObserver (self.mPointsAreLocked_property) // Stored property
-      oldValue.knobSizeMultpliedByTen_property.removeEBObserver (self.knobSizeMultpliedByTen_property) // Stored property
-      oldValue.padNumbering_property.removeEBObserver (self.padNumbering_property) // Stored property
-      oldValue.counterClockNumberingStartAngle_property.removeEBObserver (self.counterClockNumberingStartAngle_property) // Stored property
-      oldValue.xPlacardUnit_property.removeEBObserver (self.xPlacardUnit_property) // Stored property
-      oldValue.yPlacardUnit_property.removeEBObserver (self.yPlacardUnit_property) // Stored property
-      oldValue.mModelImageData_property.removeEBObserver (self.mModelImageData_property) // Stored property
-      oldValue.freePadNumbering_property.removeEBObserver (self.freePadNumbering_property) // Transient property
-      oldValue.counterClockNumbering_property.removeEBObserver (self.counterClockNumbering_property) // Transient property
-      oldValue.gridStepMultipliedByDisplayFactor_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property) // Transient property
-      oldValue.secondPointX_property.removeEBObserver (self.secondPointX_property) // Transient property
-      oldValue.secondPointY_property.removeEBObserver (self.secondPointY_property) // Transient property
-      oldValue.lockImageView_property.removeEBObserver (self.lockImageView_property) // Transient property
-      oldValue.padNumberDisplay_property.removeEBObserver (self.padNumberDisplay_property) // Transient property
-      oldValue.backgroundImagePageBackgroundDisplay_property.removeEBObserver (self.backgroundImagePageBackgroundDisplay_property) // Transient property
-      oldValue.modelImageSizeString_property.removeEBObserver (self.modelImageSizeString_property) // Transient property
-      oldValue.hasModelImage_property.removeEBObserver (self.hasModelImage_property) // Transient property
-      oldValue.masterPadObjectIndexArray_property.removeEBObserver (self.masterPadObjectIndexArray_property) // Transient property
-      oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
+      oldValue.selectedPageIndex_property.stopsBeingObserved (by: self.selectedPageIndex_property) // Stored property
+      oldValue.selectedInspector_property.stopsBeingObserved (by: self.selectedInspector_property) // Stored property
+      oldValue.comments_property.stopsBeingObserved (by: self.comments_property) // Stored property
+      oldValue.program_property.stopsBeingObserved (by: self.program_property) // Stored property
+      oldValue.horizontalFlip_property.stopsBeingObserved (by: self.horizontalFlip_property) // Stored property
+      oldValue.verticalFlip_property.stopsBeingObserved (by: self.verticalFlip_property) // Stored property
+      oldValue.gridStyle_property.stopsBeingObserved (by: self.gridStyle_property) // Stored property
+      oldValue.gridStep_property.stopsBeingObserved (by: self.gridStep_property) // Stored property
+      oldValue.gridStepUnit_property.stopsBeingObserved (by: self.gridStepUnit_property) // Stored property
+      oldValue.gridDisplayFactor_property.stopsBeingObserved (by: self.gridDisplayFactor_property) // Stored property
+      oldValue.zoom_property.stopsBeingObserved (by: self.zoom_property) // Stored property
+      oldValue.mModelImageOpacity_property.stopsBeingObserved (by: self.mModelImageOpacity_property) // Stored property
+      oldValue.mModelImagePageHorizontalFlip_property.stopsBeingObserved (by: self.mModelImagePageHorizontalFlip_property) // Stored property
+      oldValue.mModelImagePageVerticalFlip_property.stopsBeingObserved (by: self.mModelImagePageVerticalFlip_property) // Stored property
+      oldValue.mModelImagePageGridStyle_property.stopsBeingObserved (by: self.mModelImagePageGridStyle_property) // Stored property
+      oldValue.mModelImagePageGridStep_property.stopsBeingObserved (by: self.mModelImagePageGridStep_property) // Stored property
+      oldValue.mModelImagePageGridStepUnit_property.stopsBeingObserved (by: self.mModelImagePageGridStepUnit_property) // Stored property
+      oldValue.mModelImagePageGridDisplayFactor_property.stopsBeingObserved (by: self.mModelImagePageGridDisplayFactor_property) // Stored property
+      oldValue.mModelImagePageZoom_property.stopsBeingObserved (by: self.mModelImagePageZoom_property) // Stored property
+      oldValue.mModelImagePageXPlacardUnit_property.stopsBeingObserved (by: self.mModelImagePageXPlacardUnit_property) // Stored property
+      oldValue.mModelImagePageYPlacardUnit_property.stopsBeingObserved (by: self.mModelImagePageYPlacardUnit_property) // Stored property
+      oldValue.mModelImageSecondPointXUnit_property.stopsBeingObserved (by: self.mModelImageSecondPointXUnit_property) // Stored property
+      oldValue.mModelImageSecondPointYUnit_property.stopsBeingObserved (by: self.mModelImageSecondPointYUnit_property) // Stored property
+      oldValue.mModelImageFirstPointXOnLock_property.stopsBeingObserved (by: self.mModelImageFirstPointXOnLock_property) // Stored property
+      oldValue.mModelImageFirstPointYOnLock_property.stopsBeingObserved (by: self.mModelImageFirstPointYOnLock_property) // Stored property
+      oldValue.mModelImagePointsDxOnLock_property.stopsBeingObserved (by: self.mModelImagePointsDxOnLock_property) // Stored property
+      oldValue.mModelImagePointsDyOnLock_property.stopsBeingObserved (by: self.mModelImagePointsDyOnLock_property) // Stored property
+      oldValue.mModelImageScale_property.stopsBeingObserved (by: self.mModelImageScale_property) // Stored property
+      oldValue.mModelImageRotationInRadians_property.stopsBeingObserved (by: self.mModelImageRotationInRadians_property) // Stored property
+      oldValue.mDimensionUnitFirstModelPointX_property.stopsBeingObserved (by: self.mDimensionUnitFirstModelPointX_property) // Stored property
+      oldValue.mDimensionUnitFirstModelPointY_property.stopsBeingObserved (by: self.mDimensionUnitFirstModelPointY_property) // Stored property
+      oldValue.mDimensionUnitSecondModelPointDx_property.stopsBeingObserved (by: self.mDimensionUnitSecondModelPointDx_property) // Stored property
+      oldValue.mDimensionUnitSecondModelPointDy_property.stopsBeingObserved (by: self.mDimensionUnitSecondModelPointDy_property) // Stored property
+      oldValue.mModelPointsCircleRadius_property.stopsBeingObserved (by: self.mModelPointsCircleRadius_property) // Stored property
+      oldValue.mPointsAreLocked_property.stopsBeingObserved (by: self.mPointsAreLocked_property) // Stored property
+      oldValue.knobSizeMultpliedByTen_property.stopsBeingObserved (by: self.knobSizeMultpliedByTen_property) // Stored property
+      oldValue.padNumbering_property.stopsBeingObserved (by: self.padNumbering_property) // Stored property
+      oldValue.counterClockNumberingStartAngle_property.stopsBeingObserved (by: self.counterClockNumberingStartAngle_property) // Stored property
+      oldValue.xPlacardUnit_property.stopsBeingObserved (by: self.xPlacardUnit_property) // Stored property
+      oldValue.yPlacardUnit_property.stopsBeingObserved (by: self.yPlacardUnit_property) // Stored property
+      oldValue.mModelImageData_property.stopsBeingObserved (by: self.mModelImageData_property) // Stored property
+      oldValue.freePadNumbering_property.stopsBeingObserved (by: self.freePadNumbering_property) // Transient property
+      oldValue.counterClockNumbering_property.stopsBeingObserved (by: self.counterClockNumbering_property) // Transient property
+      oldValue.gridStepMultipliedByDisplayFactor_property.stopsBeingObserved (by: self.gridStepMultipliedByDisplayFactor_property) // Transient property
+      oldValue.secondPointX_property.stopsBeingObserved (by: self.secondPointX_property) // Transient property
+      oldValue.secondPointY_property.stopsBeingObserved (by: self.secondPointY_property) // Transient property
+      oldValue.lockImageView_property.stopsBeingObserved (by: self.lockImageView_property) // Transient property
+      oldValue.padNumberDisplay_property.stopsBeingObserved (by: self.padNumberDisplay_property) // Transient property
+      oldValue.backgroundImagePageBackgroundDisplay_property.stopsBeingObserved (by: self.backgroundImagePageBackgroundDisplay_property) // Transient property
+      oldValue.modelImageSizeString_property.stopsBeingObserved (by: self.modelImageSizeString_property) // Transient property
+      oldValue.hasModelImage_property.stopsBeingObserved (by: self.hasModelImage_property) // Transient property
+      oldValue.masterPadObjectIndexArray_property.stopsBeingObserved (by: self.masterPadObjectIndexArray_property) // Transient property
+      oldValue.issues_property.stopsBeingObserved (by: self.issues_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.selectedPageIndex_property.addEBObserver (self.selectedPageIndex_property) // Stored property
-      newValue.selectedInspector_property.addEBObserver (self.selectedInspector_property) // Stored property
-      newValue.comments_property.addEBObserver (self.comments_property) // Stored property
-      newValue.program_property.addEBObserver (self.program_property) // Stored property
-      newValue.horizontalFlip_property.addEBObserver (self.horizontalFlip_property) // Stored property
-      newValue.verticalFlip_property.addEBObserver (self.verticalFlip_property) // Stored property
-      newValue.gridStyle_property.addEBObserver (self.gridStyle_property) // Stored property
-      newValue.gridStep_property.addEBObserver (self.gridStep_property) // Stored property
-      newValue.gridStepUnit_property.addEBObserver (self.gridStepUnit_property) // Stored property
-      newValue.gridDisplayFactor_property.addEBObserver (self.gridDisplayFactor_property) // Stored property
-      newValue.zoom_property.addEBObserver (self.zoom_property) // Stored property
-      newValue.mModelImageOpacity_property.addEBObserver (self.mModelImageOpacity_property) // Stored property
-      newValue.mModelImagePageHorizontalFlip_property.addEBObserver (self.mModelImagePageHorizontalFlip_property) // Stored property
-      newValue.mModelImagePageVerticalFlip_property.addEBObserver (self.mModelImagePageVerticalFlip_property) // Stored property
-      newValue.mModelImagePageGridStyle_property.addEBObserver (self.mModelImagePageGridStyle_property) // Stored property
-      newValue.mModelImagePageGridStep_property.addEBObserver (self.mModelImagePageGridStep_property) // Stored property
-      newValue.mModelImagePageGridStepUnit_property.addEBObserver (self.mModelImagePageGridStepUnit_property) // Stored property
-      newValue.mModelImagePageGridDisplayFactor_property.addEBObserver (self.mModelImagePageGridDisplayFactor_property) // Stored property
-      newValue.mModelImagePageZoom_property.addEBObserver (self.mModelImagePageZoom_property) // Stored property
-      newValue.mModelImagePageXPlacardUnit_property.addEBObserver (self.mModelImagePageXPlacardUnit_property) // Stored property
-      newValue.mModelImagePageYPlacardUnit_property.addEBObserver (self.mModelImagePageYPlacardUnit_property) // Stored property
-      newValue.mModelImageSecondPointXUnit_property.addEBObserver (self.mModelImageSecondPointXUnit_property) // Stored property
-      newValue.mModelImageSecondPointYUnit_property.addEBObserver (self.mModelImageSecondPointYUnit_property) // Stored property
-      newValue.mModelImageFirstPointXOnLock_property.addEBObserver (self.mModelImageFirstPointXOnLock_property) // Stored property
-      newValue.mModelImageFirstPointYOnLock_property.addEBObserver (self.mModelImageFirstPointYOnLock_property) // Stored property
-      newValue.mModelImagePointsDxOnLock_property.addEBObserver (self.mModelImagePointsDxOnLock_property) // Stored property
-      newValue.mModelImagePointsDyOnLock_property.addEBObserver (self.mModelImagePointsDyOnLock_property) // Stored property
-      newValue.mModelImageScale_property.addEBObserver (self.mModelImageScale_property) // Stored property
-      newValue.mModelImageRotationInRadians_property.addEBObserver (self.mModelImageRotationInRadians_property) // Stored property
-      newValue.mDimensionUnitFirstModelPointX_property.addEBObserver (self.mDimensionUnitFirstModelPointX_property) // Stored property
-      newValue.mDimensionUnitFirstModelPointY_property.addEBObserver (self.mDimensionUnitFirstModelPointY_property) // Stored property
-      newValue.mDimensionUnitSecondModelPointDx_property.addEBObserver (self.mDimensionUnitSecondModelPointDx_property) // Stored property
-      newValue.mDimensionUnitSecondModelPointDy_property.addEBObserver (self.mDimensionUnitSecondModelPointDy_property) // Stored property
-      newValue.mModelPointsCircleRadius_property.addEBObserver (self.mModelPointsCircleRadius_property) // Stored property
-      newValue.mPointsAreLocked_property.addEBObserver (self.mPointsAreLocked_property) // Stored property
-      newValue.knobSizeMultpliedByTen_property.addEBObserver (self.knobSizeMultpliedByTen_property) // Stored property
-      newValue.padNumbering_property.addEBObserver (self.padNumbering_property) // Stored property
-      newValue.counterClockNumberingStartAngle_property.addEBObserver (self.counterClockNumberingStartAngle_property) // Stored property
-      newValue.xPlacardUnit_property.addEBObserver (self.xPlacardUnit_property) // Stored property
-      newValue.yPlacardUnit_property.addEBObserver (self.yPlacardUnit_property) // Stored property
-      newValue.mModelImageData_property.addEBObserver (self.mModelImageData_property) // Stored property
-      newValue.freePadNumbering_property.addEBObserver (self.freePadNumbering_property) // Transient property
-      newValue.counterClockNumbering_property.addEBObserver (self.counterClockNumbering_property) // Transient property
-      newValue.gridStepMultipliedByDisplayFactor_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property) // Transient property
-      newValue.secondPointX_property.addEBObserver (self.secondPointX_property) // Transient property
-      newValue.secondPointY_property.addEBObserver (self.secondPointY_property) // Transient property
-      newValue.lockImageView_property.addEBObserver (self.lockImageView_property) // Transient property
-      newValue.padNumberDisplay_property.addEBObserver (self.padNumberDisplay_property) // Transient property
-      newValue.backgroundImagePageBackgroundDisplay_property.addEBObserver (self.backgroundImagePageBackgroundDisplay_property) // Transient property
-      newValue.modelImageSizeString_property.addEBObserver (self.modelImageSizeString_property) // Transient property
-      newValue.hasModelImage_property.addEBObserver (self.hasModelImage_property) // Transient property
-      newValue.masterPadObjectIndexArray_property.addEBObserver (self.masterPadObjectIndexArray_property) // Transient property
-      newValue.issues_property.addEBObserver (self.issues_property) // Transient property
+      newValue.selectedPageIndex_property.startsToBeObserved (by: self.selectedPageIndex_property) // Stored property
+      newValue.selectedInspector_property.startsToBeObserved (by: self.selectedInspector_property) // Stored property
+      newValue.comments_property.startsToBeObserved (by: self.comments_property) // Stored property
+      newValue.program_property.startsToBeObserved (by: self.program_property) // Stored property
+      newValue.horizontalFlip_property.startsToBeObserved (by: self.horizontalFlip_property) // Stored property
+      newValue.verticalFlip_property.startsToBeObserved (by: self.verticalFlip_property) // Stored property
+      newValue.gridStyle_property.startsToBeObserved (by: self.gridStyle_property) // Stored property
+      newValue.gridStep_property.startsToBeObserved (by: self.gridStep_property) // Stored property
+      newValue.gridStepUnit_property.startsToBeObserved (by: self.gridStepUnit_property) // Stored property
+      newValue.gridDisplayFactor_property.startsToBeObserved (by: self.gridDisplayFactor_property) // Stored property
+      newValue.zoom_property.startsToBeObserved (by: self.zoom_property) // Stored property
+      newValue.mModelImageOpacity_property.startsToBeObserved (by: self.mModelImageOpacity_property) // Stored property
+      newValue.mModelImagePageHorizontalFlip_property.startsToBeObserved (by: self.mModelImagePageHorizontalFlip_property) // Stored property
+      newValue.mModelImagePageVerticalFlip_property.startsToBeObserved (by: self.mModelImagePageVerticalFlip_property) // Stored property
+      newValue.mModelImagePageGridStyle_property.startsToBeObserved (by: self.mModelImagePageGridStyle_property) // Stored property
+      newValue.mModelImagePageGridStep_property.startsToBeObserved (by: self.mModelImagePageGridStep_property) // Stored property
+      newValue.mModelImagePageGridStepUnit_property.startsToBeObserved (by: self.mModelImagePageGridStepUnit_property) // Stored property
+      newValue.mModelImagePageGridDisplayFactor_property.startsToBeObserved (by: self.mModelImagePageGridDisplayFactor_property) // Stored property
+      newValue.mModelImagePageZoom_property.startsToBeObserved (by: self.mModelImagePageZoom_property) // Stored property
+      newValue.mModelImagePageXPlacardUnit_property.startsToBeObserved (by: self.mModelImagePageXPlacardUnit_property) // Stored property
+      newValue.mModelImagePageYPlacardUnit_property.startsToBeObserved (by: self.mModelImagePageYPlacardUnit_property) // Stored property
+      newValue.mModelImageSecondPointXUnit_property.startsToBeObserved (by: self.mModelImageSecondPointXUnit_property) // Stored property
+      newValue.mModelImageSecondPointYUnit_property.startsToBeObserved (by: self.mModelImageSecondPointYUnit_property) // Stored property
+      newValue.mModelImageFirstPointXOnLock_property.startsToBeObserved (by: self.mModelImageFirstPointXOnLock_property) // Stored property
+      newValue.mModelImageFirstPointYOnLock_property.startsToBeObserved (by: self.mModelImageFirstPointYOnLock_property) // Stored property
+      newValue.mModelImagePointsDxOnLock_property.startsToBeObserved (by: self.mModelImagePointsDxOnLock_property) // Stored property
+      newValue.mModelImagePointsDyOnLock_property.startsToBeObserved (by: self.mModelImagePointsDyOnLock_property) // Stored property
+      newValue.mModelImageScale_property.startsToBeObserved (by: self.mModelImageScale_property) // Stored property
+      newValue.mModelImageRotationInRadians_property.startsToBeObserved (by: self.mModelImageRotationInRadians_property) // Stored property
+      newValue.mDimensionUnitFirstModelPointX_property.startsToBeObserved (by: self.mDimensionUnitFirstModelPointX_property) // Stored property
+      newValue.mDimensionUnitFirstModelPointY_property.startsToBeObserved (by: self.mDimensionUnitFirstModelPointY_property) // Stored property
+      newValue.mDimensionUnitSecondModelPointDx_property.startsToBeObserved (by: self.mDimensionUnitSecondModelPointDx_property) // Stored property
+      newValue.mDimensionUnitSecondModelPointDy_property.startsToBeObserved (by: self.mDimensionUnitSecondModelPointDy_property) // Stored property
+      newValue.mModelPointsCircleRadius_property.startsToBeObserved (by: self.mModelPointsCircleRadius_property) // Stored property
+      newValue.mPointsAreLocked_property.startsToBeObserved (by: self.mPointsAreLocked_property) // Stored property
+      newValue.knobSizeMultpliedByTen_property.startsToBeObserved (by: self.knobSizeMultpliedByTen_property) // Stored property
+      newValue.padNumbering_property.startsToBeObserved (by: self.padNumbering_property) // Stored property
+      newValue.counterClockNumberingStartAngle_property.startsToBeObserved (by: self.counterClockNumberingStartAngle_property) // Stored property
+      newValue.xPlacardUnit_property.startsToBeObserved (by: self.xPlacardUnit_property) // Stored property
+      newValue.yPlacardUnit_property.startsToBeObserved (by: self.yPlacardUnit_property) // Stored property
+      newValue.mModelImageData_property.startsToBeObserved (by: self.mModelImageData_property) // Stored property
+      newValue.freePadNumbering_property.startsToBeObserved (by: self.freePadNumbering_property) // Transient property
+      newValue.counterClockNumbering_property.startsToBeObserved (by: self.counterClockNumbering_property) // Transient property
+      newValue.gridStepMultipliedByDisplayFactor_property.startsToBeObserved (by: self.gridStepMultipliedByDisplayFactor_property) // Transient property
+      newValue.secondPointX_property.startsToBeObserved (by: self.secondPointX_property) // Transient property
+      newValue.secondPointY_property.startsToBeObserved (by: self.secondPointY_property) // Transient property
+      newValue.lockImageView_property.startsToBeObserved (by: self.lockImageView_property) // Transient property
+      newValue.padNumberDisplay_property.startsToBeObserved (by: self.padNumberDisplay_property) // Transient property
+      newValue.backgroundImagePageBackgroundDisplay_property.startsToBeObserved (by: self.backgroundImagePageBackgroundDisplay_property) // Transient property
+      newValue.modelImageSizeString_property.startsToBeObserved (by: self.modelImageSizeString_property) // Transient property
+      newValue.hasModelImage_property.startsToBeObserved (by: self.hasModelImage_property) // Transient property
+      newValue.masterPadObjectIndexArray_property.startsToBeObserved (by: self.masterPadObjectIndexArray_property) // Transient property
+      newValue.issues_property.startsToBeObserved (by: self.issues_property) // Transient property
     }
   }
 
@@ -454,19 +454,19 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_mModelImageObjects (_ inObserver : EBObserverProtocol) {
+  final func toMany_mModelImageObjects_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mModelImageObjects.insert (inObserver)
     if let object = self.propval {
-      object.mModelImageObjects_property.addEBObserver (inObserver)
+      object.mModelImageObjects_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mModelImageObjects (_ inObserver : EBObserverProtocol) {
+  final func toMany_mModelImageObjects_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mModelImageObjects.remove (inObserver)
     if let object = self.propval {
-      object.mModelImageObjects_property.removeEBObserver (inObserver)
+      object.mModelImageObjects_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -478,19 +478,19 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_packageObjects (_ inObserver : EBObserverProtocol) {
+  final func toMany_packageObjects_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_packageObjects.insert (inObserver)
     if let object = self.propval {
-      object.packageObjects_property.addEBObserver (inObserver)
+      object.packageObjects_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_packageObjects (_ inObserver : EBObserverProtocol) {
+  final func toMany_packageObjects_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_packageObjects.remove (inObserver)
     if let object = self.propval {
-      object.packageObjects_property.removeEBObserver (inObserver)
+      object.packageObjects_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -502,19 +502,19 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_packagePads (_ inObserver : EBObserverProtocol) {
+  final func toMany_packagePads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_packagePads.insert (inObserver)
     if let object = self.propval {
-      object.packagePads_property.addEBObserver (inObserver)
+      object.packagePads_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_packagePads (_ inObserver : EBObserverProtocol) {
+  final func toMany_packagePads_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_packagePads.remove (inObserver)
     if let object = self.propval {
-      object.packagePads_property.removeEBObserver (inObserver)
+      object.packagePads_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -526,19 +526,19 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_packageSlavePads (_ inObserver : EBObserverProtocol) {
+  final func toMany_packageSlavePads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_packageSlavePads.insert (inObserver)
     if let object = self.propval {
-      object.packageSlavePads_property.addEBObserver (inObserver)
+      object.packageSlavePads_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_packageSlavePads (_ inObserver : EBObserverProtocol) {
+  final func toMany_packageSlavePads_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_packageSlavePads.remove (inObserver)
     if let object = self.propval {
-      object.packageSlavePads_property.removeEBObserver (inObserver)
+      object.packageSlavePads_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -550,19 +550,19 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserverOf_packageZones (_ inObserver : EBObserverProtocol) {
+  final func toMany_packageZones_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_packageZones.insert (inObserver)
     if let object = self.propval {
-      object.packageZones_property.addEBObserver (inObserver)
+      object.packageZones_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_packageZones (_ inObserver : EBObserverProtocol) {
+  final func toMany_packageZones_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_packageZones.remove (inObserver)
     if let object = self.propval {
-      object.packageZones_property.removeEBObserver (inObserver)
+      object.packageZones_property.stopsBeingObserved (by: inObserver)
     }
   }
 

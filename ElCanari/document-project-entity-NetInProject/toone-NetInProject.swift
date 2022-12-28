@@ -16,27 +16,27 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mNetName_property.removeEBObserver (self.mNetName_property) // Stored property
-      oldValue.mWarnsExactlyOneLabel_property.removeEBObserver (self.mWarnsExactlyOneLabel_property) // Stored property
-      oldValue.netClassName_property.removeEBObserver (self.netClassName_property) // Transient property
-      oldValue.netClassTrackWidth_property.removeEBObserver (self.netClassTrackWidth_property) // Transient property
-      oldValue.netClassViaHoleDiameter_property.removeEBObserver (self.netClassViaHoleDiameter_property) // Transient property
-      oldValue.netClassViaPadDiameter_property.removeEBObserver (self.netClassViaPadDiameter_property) // Transient property
-      oldValue.wireColor_property.removeEBObserver (self.wireColor_property) // Transient property
-      oldValue.netSchematicPointsInfo_property.removeEBObserver (self.netSchematicPointsInfo_property) // Transient property
-      oldValue.trackCount_property.removeEBObserver (self.trackCount_property) // Transient property
+      oldValue.mNetName_property.stopsBeingObserved (by: self.mNetName_property) // Stored property
+      oldValue.mWarnsExactlyOneLabel_property.stopsBeingObserved (by: self.mWarnsExactlyOneLabel_property) // Stored property
+      oldValue.netClassName_property.stopsBeingObserved (by: self.netClassName_property) // Transient property
+      oldValue.netClassTrackWidth_property.stopsBeingObserved (by: self.netClassTrackWidth_property) // Transient property
+      oldValue.netClassViaHoleDiameter_property.stopsBeingObserved (by: self.netClassViaHoleDiameter_property) // Transient property
+      oldValue.netClassViaPadDiameter_property.stopsBeingObserved (by: self.netClassViaPadDiameter_property) // Transient property
+      oldValue.wireColor_property.stopsBeingObserved (by: self.wireColor_property) // Transient property
+      oldValue.netSchematicPointsInfo_property.stopsBeingObserved (by: self.netSchematicPointsInfo_property) // Transient property
+      oldValue.trackCount_property.stopsBeingObserved (by: self.trackCount_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mNetName_property.addEBObserver (self.mNetName_property) // Stored property
-      newValue.mWarnsExactlyOneLabel_property.addEBObserver (self.mWarnsExactlyOneLabel_property) // Stored property
-      newValue.netClassName_property.addEBObserver (self.netClassName_property) // Transient property
-      newValue.netClassTrackWidth_property.addEBObserver (self.netClassTrackWidth_property) // Transient property
-      newValue.netClassViaHoleDiameter_property.addEBObserver (self.netClassViaHoleDiameter_property) // Transient property
-      newValue.netClassViaPadDiameter_property.addEBObserver (self.netClassViaPadDiameter_property) // Transient property
-      newValue.wireColor_property.addEBObserver (self.wireColor_property) // Transient property
-      newValue.netSchematicPointsInfo_property.addEBObserver (self.netSchematicPointsInfo_property) // Transient property
-      newValue.trackCount_property.addEBObserver (self.trackCount_property) // Transient property
+      newValue.mNetName_property.startsToBeObserved (by: self.mNetName_property) // Stored property
+      newValue.mWarnsExactlyOneLabel_property.startsToBeObserved (by: self.mWarnsExactlyOneLabel_property) // Stored property
+      newValue.netClassName_property.startsToBeObserved (by: self.netClassName_property) // Transient property
+      newValue.netClassTrackWidth_property.startsToBeObserved (by: self.netClassTrackWidth_property) // Transient property
+      newValue.netClassViaHoleDiameter_property.startsToBeObserved (by: self.netClassViaHoleDiameter_property) // Transient property
+      newValue.netClassViaPadDiameter_property.startsToBeObserved (by: self.netClassViaPadDiameter_property) // Transient property
+      newValue.wireColor_property.startsToBeObserved (by: self.wireColor_property) // Transient property
+      newValue.netSchematicPointsInfo_property.startsToBeObserved (by: self.netSchematicPointsInfo_property) // Transient property
+      newValue.trackCount_property.startsToBeObserved (by: self.trackCount_property) // Transient property
     }
   }
 
@@ -102,19 +102,19 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 
   //····················································································································
 
-  final func addEBObserverOf_mPoints (_ inObserver : EBObserverProtocol) {
+  final func toMany_mPoints_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPoints.insert (inObserver)
     if let object = self.propval {
-      object.mPoints_property.addEBObserver (inObserver)
+      object.mPoints_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mPoints (_ inObserver : EBObserverProtocol) {
+  final func toMany_mPoints_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPoints.remove (inObserver)
     if let object = self.propval {
-      object.mPoints_property.removeEBObserver (inObserver)
+      object.mPoints_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -126,19 +126,19 @@ class ReadOnlyObject_NetInProject : ReadOnlyAbstractObjectProperty <NetInProject
 
   //····················································································································
 
-  final func addEBObserverOf_mTracks (_ inObserver : EBObserverProtocol) {
+  final func toMany_mTracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mTracks.insert (inObserver)
     if let object = self.propval {
-      object.mTracks_property.addEBObserver (inObserver)
+      object.mTracks_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mTracks (_ inObserver : EBObserverProtocol) {
+  final func toMany_mTracks_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mTracks.remove (inObserver)
     if let object = self.propval {
-      object.mTracks_property.removeEBObserver (inObserver)
+      object.mTracks_property.stopsBeingObserved (by: inObserver)
     }
   }
 

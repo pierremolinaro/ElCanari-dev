@@ -16,135 +16,135 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.name_property.removeEBObserver (self.name_property) // Stored property
-      oldValue.modelWidth_property.removeEBObserver (self.modelWidth_property) // Stored property
-      oldValue.modelWidthUnit_property.removeEBObserver (self.modelWidthUnit_property) // Stored property
-      oldValue.modelHeight_property.removeEBObserver (self.modelHeight_property) // Stored property
-      oldValue.modelHeightUnit_property.removeEBObserver (self.modelHeightUnit_property) // Stored property
-      oldValue.zoom_property.removeEBObserver (self.zoom_property) // Stored property
-      oldValue.layerConfiguration_property.removeEBObserver (self.layerConfiguration_property) // Stored property
-      oldValue.modelLimitWidth_property.removeEBObserver (self.modelLimitWidth_property) // Stored property
-      oldValue.modelLimitWidthUnit_property.removeEBObserver (self.modelLimitWidthUnit_property) // Stored property
-      oldValue.artworkName_property.removeEBObserver (self.artworkName_property) // Stored property
-      oldValue.layerConfigurationString_property.removeEBObserver (self.layerConfigurationString_property) // Transient property
-      oldValue.frontLegendLinesSegments_property.removeEBObserver (self.frontLegendLinesSegments_property) // Transient property
-      oldValue.backLegendLinesSegments_property.removeEBObserver (self.backLegendLinesSegments_property) // Transient property
-      oldValue.backLegendLinesBezierPaths_property.removeEBObserver (self.backLegendLinesBezierPaths_property) // Transient property
-      oldValue.frontLegendTextsSegments_property.removeEBObserver (self.frontLegendTextsSegments_property) // Transient property
-      oldValue.frontLegendTextsBezierPaths_property.removeEBObserver (self.frontLegendTextsBezierPaths_property) // Transient property
-      oldValue.frontLayoutTextsSegments_property.removeEBObserver (self.frontLayoutTextsSegments_property) // Transient property
-      oldValue.frontLayoutTextsBezierPaths_property.removeEBObserver (self.frontLayoutTextsBezierPaths_property) // Transient property
-      oldValue.backLegendTextsSegments_property.removeEBObserver (self.backLegendTextsSegments_property) // Transient property
-      oldValue.backLegendTextsBezierPaths_property.removeEBObserver (self.backLegendTextsBezierPaths_property) // Transient property
-      oldValue.backLayoutTextsSegments_property.removeEBObserver (self.backLayoutTextsSegments_property) // Transient property
-      oldValue.backLayoutTextsBezierPaths_property.removeEBObserver (self.backLayoutTextsBezierPaths_property) // Transient property
-      oldValue.internalBoardsLimitsSegments_property.removeEBObserver (self.internalBoardsLimitsSegments_property) // Transient property
-      oldValue.internalBoardsLimitsBezierPaths_property.removeEBObserver (self.internalBoardsLimitsBezierPaths_property) // Transient property
-      oldValue.drillSegments_property.removeEBObserver (self.drillSegments_property) // Transient property
-      oldValue.holesBezierPaths_property.removeEBObserver (self.holesBezierPaths_property) // Transient property
-      oldValue.viaShapes_property.removeEBObserver (self.viaShapes_property) // Transient property
-      oldValue.viasBezierPaths_property.removeEBObserver (self.viasBezierPaths_property) // Transient property
-      oldValue.frontPadArray_property.removeEBObserver (self.frontPadArray_property) // Transient property
-      oldValue.frontPadsBezierPaths_property.removeEBObserver (self.frontPadsBezierPaths_property) // Transient property
-      oldValue.backPadArray_property.removeEBObserver (self.backPadArray_property) // Transient property
-      oldValue.backPadsBezierPaths_property.removeEBObserver (self.backPadsBezierPaths_property) // Transient property
-      oldValue.traversingPadArray_property.removeEBObserver (self.traversingPadArray_property) // Transient property
-      oldValue.traversingPadsBezierPaths_property.removeEBObserver (self.traversingPadsBezierPaths_property) // Transient property
-      oldValue.boardLimitsBezierPaths_property.removeEBObserver (self.boardLimitsBezierPaths_property) // Transient property
-      oldValue.backComponentNameSegments_property.removeEBObserver (self.backComponentNameSegments_property) // Transient property
-      oldValue.backComponentNamesBezierPaths_property.removeEBObserver (self.backComponentNamesBezierPaths_property) // Transient property
-      oldValue.frontComponentNameSegments_property.removeEBObserver (self.frontComponentNameSegments_property) // Transient property
-      oldValue.frontComponentNamesBezierPaths_property.removeEBObserver (self.frontComponentNamesBezierPaths_property) // Transient property
-      oldValue.frontComponentValueSegments_property.removeEBObserver (self.frontComponentValueSegments_property) // Transient property
-      oldValue.frontComponentValuesBezierPaths_property.removeEBObserver (self.frontComponentValuesBezierPaths_property) // Transient property
-      oldValue.backComponentValueSegments_property.removeEBObserver (self.backComponentValueSegments_property) // Transient property
-      oldValue.backComponentValuesBezierPaths_property.removeEBObserver (self.backComponentValuesBezierPaths_property) // Transient property
-      oldValue.backTrackSegments_property.removeEBObserver (self.backTrackSegments_property) // Transient property
-      oldValue.backTracksBezierPaths_property.removeEBObserver (self.backTracksBezierPaths_property) // Transient property
-      oldValue.frontTrackSegments_property.removeEBObserver (self.frontTrackSegments_property) // Transient property
-      oldValue.frontTracksBezierPaths_property.removeEBObserver (self.frontTracksBezierPaths_property) // Transient property
-      oldValue.inner1TracksSegments_property.removeEBObserver (self.inner1TracksSegments_property) // Transient property
-      oldValue.inner1TracksBezierPaths_property.removeEBObserver (self.inner1TracksBezierPaths_property) // Transient property
-      oldValue.inner2TracksSegments_property.removeEBObserver (self.inner2TracksSegments_property) // Transient property
-      oldValue.inner2TracksBezierPaths_property.removeEBObserver (self.inner2TracksBezierPaths_property) // Transient property
-      oldValue.inner3TracksSegments_property.removeEBObserver (self.inner3TracksSegments_property) // Transient property
-      oldValue.inner3TracksBezierPaths_property.removeEBObserver (self.inner3TracksBezierPaths_property) // Transient property
-      oldValue.inner4TracksSegments_property.removeEBObserver (self.inner4TracksSegments_property) // Transient property
-      oldValue.inner4TracksBezierPaths_property.removeEBObserver (self.inner4TracksBezierPaths_property) // Transient property
-      oldValue.frontPackagesSegments_property.removeEBObserver (self.frontPackagesSegments_property) // Transient property
-      oldValue.frontPackagesBezierPaths_property.removeEBObserver (self.frontPackagesBezierPaths_property) // Transient property
-      oldValue.backPackagesSegments_property.removeEBObserver (self.backPackagesSegments_property) // Transient property
-      oldValue.backPackagesBezierPaths_property.removeEBObserver (self.backPackagesBezierPaths_property) // Transient property
-      oldValue.instanceCount_property.removeEBObserver (self.instanceCount_property) // Transient property
-      oldValue.frontLegendLinesBezierPaths_property.removeEBObserver (self.frontLegendLinesBezierPaths_property) // Transient property
-      oldValue.imageForModel_property.removeEBObserver (self.imageForModel_property) // Transient property
-      oldValue.imageForInstances_property.removeEBObserver (self.imageForInstances_property) // Transient property
+      oldValue.name_property.stopsBeingObserved (by: self.name_property) // Stored property
+      oldValue.modelWidth_property.stopsBeingObserved (by: self.modelWidth_property) // Stored property
+      oldValue.modelWidthUnit_property.stopsBeingObserved (by: self.modelWidthUnit_property) // Stored property
+      oldValue.modelHeight_property.stopsBeingObserved (by: self.modelHeight_property) // Stored property
+      oldValue.modelHeightUnit_property.stopsBeingObserved (by: self.modelHeightUnit_property) // Stored property
+      oldValue.zoom_property.stopsBeingObserved (by: self.zoom_property) // Stored property
+      oldValue.layerConfiguration_property.stopsBeingObserved (by: self.layerConfiguration_property) // Stored property
+      oldValue.modelLimitWidth_property.stopsBeingObserved (by: self.modelLimitWidth_property) // Stored property
+      oldValue.modelLimitWidthUnit_property.stopsBeingObserved (by: self.modelLimitWidthUnit_property) // Stored property
+      oldValue.artworkName_property.stopsBeingObserved (by: self.artworkName_property) // Stored property
+      oldValue.layerConfigurationString_property.stopsBeingObserved (by: self.layerConfigurationString_property) // Transient property
+      oldValue.frontLegendLinesSegments_property.stopsBeingObserved (by: self.frontLegendLinesSegments_property) // Transient property
+      oldValue.backLegendLinesSegments_property.stopsBeingObserved (by: self.backLegendLinesSegments_property) // Transient property
+      oldValue.backLegendLinesBezierPaths_property.stopsBeingObserved (by: self.backLegendLinesBezierPaths_property) // Transient property
+      oldValue.frontLegendTextsSegments_property.stopsBeingObserved (by: self.frontLegendTextsSegments_property) // Transient property
+      oldValue.frontLegendTextsBezierPaths_property.stopsBeingObserved (by: self.frontLegendTextsBezierPaths_property) // Transient property
+      oldValue.frontLayoutTextsSegments_property.stopsBeingObserved (by: self.frontLayoutTextsSegments_property) // Transient property
+      oldValue.frontLayoutTextsBezierPaths_property.stopsBeingObserved (by: self.frontLayoutTextsBezierPaths_property) // Transient property
+      oldValue.backLegendTextsSegments_property.stopsBeingObserved (by: self.backLegendTextsSegments_property) // Transient property
+      oldValue.backLegendTextsBezierPaths_property.stopsBeingObserved (by: self.backLegendTextsBezierPaths_property) // Transient property
+      oldValue.backLayoutTextsSegments_property.stopsBeingObserved (by: self.backLayoutTextsSegments_property) // Transient property
+      oldValue.backLayoutTextsBezierPaths_property.stopsBeingObserved (by: self.backLayoutTextsBezierPaths_property) // Transient property
+      oldValue.internalBoardsLimitsSegments_property.stopsBeingObserved (by: self.internalBoardsLimitsSegments_property) // Transient property
+      oldValue.internalBoardsLimitsBezierPaths_property.stopsBeingObserved (by: self.internalBoardsLimitsBezierPaths_property) // Transient property
+      oldValue.drillSegments_property.stopsBeingObserved (by: self.drillSegments_property) // Transient property
+      oldValue.holesBezierPaths_property.stopsBeingObserved (by: self.holesBezierPaths_property) // Transient property
+      oldValue.viaShapes_property.stopsBeingObserved (by: self.viaShapes_property) // Transient property
+      oldValue.viasBezierPaths_property.stopsBeingObserved (by: self.viasBezierPaths_property) // Transient property
+      oldValue.frontPadArray_property.stopsBeingObserved (by: self.frontPadArray_property) // Transient property
+      oldValue.frontPadsBezierPaths_property.stopsBeingObserved (by: self.frontPadsBezierPaths_property) // Transient property
+      oldValue.backPadArray_property.stopsBeingObserved (by: self.backPadArray_property) // Transient property
+      oldValue.backPadsBezierPaths_property.stopsBeingObserved (by: self.backPadsBezierPaths_property) // Transient property
+      oldValue.traversingPadArray_property.stopsBeingObserved (by: self.traversingPadArray_property) // Transient property
+      oldValue.traversingPadsBezierPaths_property.stopsBeingObserved (by: self.traversingPadsBezierPaths_property) // Transient property
+      oldValue.boardLimitsBezierPaths_property.stopsBeingObserved (by: self.boardLimitsBezierPaths_property) // Transient property
+      oldValue.backComponentNameSegments_property.stopsBeingObserved (by: self.backComponentNameSegments_property) // Transient property
+      oldValue.backComponentNamesBezierPaths_property.stopsBeingObserved (by: self.backComponentNamesBezierPaths_property) // Transient property
+      oldValue.frontComponentNameSegments_property.stopsBeingObserved (by: self.frontComponentNameSegments_property) // Transient property
+      oldValue.frontComponentNamesBezierPaths_property.stopsBeingObserved (by: self.frontComponentNamesBezierPaths_property) // Transient property
+      oldValue.frontComponentValueSegments_property.stopsBeingObserved (by: self.frontComponentValueSegments_property) // Transient property
+      oldValue.frontComponentValuesBezierPaths_property.stopsBeingObserved (by: self.frontComponentValuesBezierPaths_property) // Transient property
+      oldValue.backComponentValueSegments_property.stopsBeingObserved (by: self.backComponentValueSegments_property) // Transient property
+      oldValue.backComponentValuesBezierPaths_property.stopsBeingObserved (by: self.backComponentValuesBezierPaths_property) // Transient property
+      oldValue.backTrackSegments_property.stopsBeingObserved (by: self.backTrackSegments_property) // Transient property
+      oldValue.backTracksBezierPaths_property.stopsBeingObserved (by: self.backTracksBezierPaths_property) // Transient property
+      oldValue.frontTrackSegments_property.stopsBeingObserved (by: self.frontTrackSegments_property) // Transient property
+      oldValue.frontTracksBezierPaths_property.stopsBeingObserved (by: self.frontTracksBezierPaths_property) // Transient property
+      oldValue.inner1TracksSegments_property.stopsBeingObserved (by: self.inner1TracksSegments_property) // Transient property
+      oldValue.inner1TracksBezierPaths_property.stopsBeingObserved (by: self.inner1TracksBezierPaths_property) // Transient property
+      oldValue.inner2TracksSegments_property.stopsBeingObserved (by: self.inner2TracksSegments_property) // Transient property
+      oldValue.inner2TracksBezierPaths_property.stopsBeingObserved (by: self.inner2TracksBezierPaths_property) // Transient property
+      oldValue.inner3TracksSegments_property.stopsBeingObserved (by: self.inner3TracksSegments_property) // Transient property
+      oldValue.inner3TracksBezierPaths_property.stopsBeingObserved (by: self.inner3TracksBezierPaths_property) // Transient property
+      oldValue.inner4TracksSegments_property.stopsBeingObserved (by: self.inner4TracksSegments_property) // Transient property
+      oldValue.inner4TracksBezierPaths_property.stopsBeingObserved (by: self.inner4TracksBezierPaths_property) // Transient property
+      oldValue.frontPackagesSegments_property.stopsBeingObserved (by: self.frontPackagesSegments_property) // Transient property
+      oldValue.frontPackagesBezierPaths_property.stopsBeingObserved (by: self.frontPackagesBezierPaths_property) // Transient property
+      oldValue.backPackagesSegments_property.stopsBeingObserved (by: self.backPackagesSegments_property) // Transient property
+      oldValue.backPackagesBezierPaths_property.stopsBeingObserved (by: self.backPackagesBezierPaths_property) // Transient property
+      oldValue.instanceCount_property.stopsBeingObserved (by: self.instanceCount_property) // Transient property
+      oldValue.frontLegendLinesBezierPaths_property.stopsBeingObserved (by: self.frontLegendLinesBezierPaths_property) // Transient property
+      oldValue.imageForModel_property.stopsBeingObserved (by: self.imageForModel_property) // Transient property
+      oldValue.imageForInstances_property.stopsBeingObserved (by: self.imageForInstances_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.name_property.addEBObserver (self.name_property) // Stored property
-      newValue.modelWidth_property.addEBObserver (self.modelWidth_property) // Stored property
-      newValue.modelWidthUnit_property.addEBObserver (self.modelWidthUnit_property) // Stored property
-      newValue.modelHeight_property.addEBObserver (self.modelHeight_property) // Stored property
-      newValue.modelHeightUnit_property.addEBObserver (self.modelHeightUnit_property) // Stored property
-      newValue.zoom_property.addEBObserver (self.zoom_property) // Stored property
-      newValue.layerConfiguration_property.addEBObserver (self.layerConfiguration_property) // Stored property
-      newValue.modelLimitWidth_property.addEBObserver (self.modelLimitWidth_property) // Stored property
-      newValue.modelLimitWidthUnit_property.addEBObserver (self.modelLimitWidthUnit_property) // Stored property
-      newValue.artworkName_property.addEBObserver (self.artworkName_property) // Stored property
-      newValue.layerConfigurationString_property.addEBObserver (self.layerConfigurationString_property) // Transient property
-      newValue.frontLegendLinesSegments_property.addEBObserver (self.frontLegendLinesSegments_property) // Transient property
-      newValue.backLegendLinesSegments_property.addEBObserver (self.backLegendLinesSegments_property) // Transient property
-      newValue.backLegendLinesBezierPaths_property.addEBObserver (self.backLegendLinesBezierPaths_property) // Transient property
-      newValue.frontLegendTextsSegments_property.addEBObserver (self.frontLegendTextsSegments_property) // Transient property
-      newValue.frontLegendTextsBezierPaths_property.addEBObserver (self.frontLegendTextsBezierPaths_property) // Transient property
-      newValue.frontLayoutTextsSegments_property.addEBObserver (self.frontLayoutTextsSegments_property) // Transient property
-      newValue.frontLayoutTextsBezierPaths_property.addEBObserver (self.frontLayoutTextsBezierPaths_property) // Transient property
-      newValue.backLegendTextsSegments_property.addEBObserver (self.backLegendTextsSegments_property) // Transient property
-      newValue.backLegendTextsBezierPaths_property.addEBObserver (self.backLegendTextsBezierPaths_property) // Transient property
-      newValue.backLayoutTextsSegments_property.addEBObserver (self.backLayoutTextsSegments_property) // Transient property
-      newValue.backLayoutTextsBezierPaths_property.addEBObserver (self.backLayoutTextsBezierPaths_property) // Transient property
-      newValue.internalBoardsLimitsSegments_property.addEBObserver (self.internalBoardsLimitsSegments_property) // Transient property
-      newValue.internalBoardsLimitsBezierPaths_property.addEBObserver (self.internalBoardsLimitsBezierPaths_property) // Transient property
-      newValue.drillSegments_property.addEBObserver (self.drillSegments_property) // Transient property
-      newValue.holesBezierPaths_property.addEBObserver (self.holesBezierPaths_property) // Transient property
-      newValue.viaShapes_property.addEBObserver (self.viaShapes_property) // Transient property
-      newValue.viasBezierPaths_property.addEBObserver (self.viasBezierPaths_property) // Transient property
-      newValue.frontPadArray_property.addEBObserver (self.frontPadArray_property) // Transient property
-      newValue.frontPadsBezierPaths_property.addEBObserver (self.frontPadsBezierPaths_property) // Transient property
-      newValue.backPadArray_property.addEBObserver (self.backPadArray_property) // Transient property
-      newValue.backPadsBezierPaths_property.addEBObserver (self.backPadsBezierPaths_property) // Transient property
-      newValue.traversingPadArray_property.addEBObserver (self.traversingPadArray_property) // Transient property
-      newValue.traversingPadsBezierPaths_property.addEBObserver (self.traversingPadsBezierPaths_property) // Transient property
-      newValue.boardLimitsBezierPaths_property.addEBObserver (self.boardLimitsBezierPaths_property) // Transient property
-      newValue.backComponentNameSegments_property.addEBObserver (self.backComponentNameSegments_property) // Transient property
-      newValue.backComponentNamesBezierPaths_property.addEBObserver (self.backComponentNamesBezierPaths_property) // Transient property
-      newValue.frontComponentNameSegments_property.addEBObserver (self.frontComponentNameSegments_property) // Transient property
-      newValue.frontComponentNamesBezierPaths_property.addEBObserver (self.frontComponentNamesBezierPaths_property) // Transient property
-      newValue.frontComponentValueSegments_property.addEBObserver (self.frontComponentValueSegments_property) // Transient property
-      newValue.frontComponentValuesBezierPaths_property.addEBObserver (self.frontComponentValuesBezierPaths_property) // Transient property
-      newValue.backComponentValueSegments_property.addEBObserver (self.backComponentValueSegments_property) // Transient property
-      newValue.backComponentValuesBezierPaths_property.addEBObserver (self.backComponentValuesBezierPaths_property) // Transient property
-      newValue.backTrackSegments_property.addEBObserver (self.backTrackSegments_property) // Transient property
-      newValue.backTracksBezierPaths_property.addEBObserver (self.backTracksBezierPaths_property) // Transient property
-      newValue.frontTrackSegments_property.addEBObserver (self.frontTrackSegments_property) // Transient property
-      newValue.frontTracksBezierPaths_property.addEBObserver (self.frontTracksBezierPaths_property) // Transient property
-      newValue.inner1TracksSegments_property.addEBObserver (self.inner1TracksSegments_property) // Transient property
-      newValue.inner1TracksBezierPaths_property.addEBObserver (self.inner1TracksBezierPaths_property) // Transient property
-      newValue.inner2TracksSegments_property.addEBObserver (self.inner2TracksSegments_property) // Transient property
-      newValue.inner2TracksBezierPaths_property.addEBObserver (self.inner2TracksBezierPaths_property) // Transient property
-      newValue.inner3TracksSegments_property.addEBObserver (self.inner3TracksSegments_property) // Transient property
-      newValue.inner3TracksBezierPaths_property.addEBObserver (self.inner3TracksBezierPaths_property) // Transient property
-      newValue.inner4TracksSegments_property.addEBObserver (self.inner4TracksSegments_property) // Transient property
-      newValue.inner4TracksBezierPaths_property.addEBObserver (self.inner4TracksBezierPaths_property) // Transient property
-      newValue.frontPackagesSegments_property.addEBObserver (self.frontPackagesSegments_property) // Transient property
-      newValue.frontPackagesBezierPaths_property.addEBObserver (self.frontPackagesBezierPaths_property) // Transient property
-      newValue.backPackagesSegments_property.addEBObserver (self.backPackagesSegments_property) // Transient property
-      newValue.backPackagesBezierPaths_property.addEBObserver (self.backPackagesBezierPaths_property) // Transient property
-      newValue.instanceCount_property.addEBObserver (self.instanceCount_property) // Transient property
-      newValue.frontLegendLinesBezierPaths_property.addEBObserver (self.frontLegendLinesBezierPaths_property) // Transient property
-      newValue.imageForModel_property.addEBObserver (self.imageForModel_property) // Transient property
-      newValue.imageForInstances_property.addEBObserver (self.imageForInstances_property) // Transient property
+      newValue.name_property.startsToBeObserved (by: self.name_property) // Stored property
+      newValue.modelWidth_property.startsToBeObserved (by: self.modelWidth_property) // Stored property
+      newValue.modelWidthUnit_property.startsToBeObserved (by: self.modelWidthUnit_property) // Stored property
+      newValue.modelHeight_property.startsToBeObserved (by: self.modelHeight_property) // Stored property
+      newValue.modelHeightUnit_property.startsToBeObserved (by: self.modelHeightUnit_property) // Stored property
+      newValue.zoom_property.startsToBeObserved (by: self.zoom_property) // Stored property
+      newValue.layerConfiguration_property.startsToBeObserved (by: self.layerConfiguration_property) // Stored property
+      newValue.modelLimitWidth_property.startsToBeObserved (by: self.modelLimitWidth_property) // Stored property
+      newValue.modelLimitWidthUnit_property.startsToBeObserved (by: self.modelLimitWidthUnit_property) // Stored property
+      newValue.artworkName_property.startsToBeObserved (by: self.artworkName_property) // Stored property
+      newValue.layerConfigurationString_property.startsToBeObserved (by: self.layerConfigurationString_property) // Transient property
+      newValue.frontLegendLinesSegments_property.startsToBeObserved (by: self.frontLegendLinesSegments_property) // Transient property
+      newValue.backLegendLinesSegments_property.startsToBeObserved (by: self.backLegendLinesSegments_property) // Transient property
+      newValue.backLegendLinesBezierPaths_property.startsToBeObserved (by: self.backLegendLinesBezierPaths_property) // Transient property
+      newValue.frontLegendTextsSegments_property.startsToBeObserved (by: self.frontLegendTextsSegments_property) // Transient property
+      newValue.frontLegendTextsBezierPaths_property.startsToBeObserved (by: self.frontLegendTextsBezierPaths_property) // Transient property
+      newValue.frontLayoutTextsSegments_property.startsToBeObserved (by: self.frontLayoutTextsSegments_property) // Transient property
+      newValue.frontLayoutTextsBezierPaths_property.startsToBeObserved (by: self.frontLayoutTextsBezierPaths_property) // Transient property
+      newValue.backLegendTextsSegments_property.startsToBeObserved (by: self.backLegendTextsSegments_property) // Transient property
+      newValue.backLegendTextsBezierPaths_property.startsToBeObserved (by: self.backLegendTextsBezierPaths_property) // Transient property
+      newValue.backLayoutTextsSegments_property.startsToBeObserved (by: self.backLayoutTextsSegments_property) // Transient property
+      newValue.backLayoutTextsBezierPaths_property.startsToBeObserved (by: self.backLayoutTextsBezierPaths_property) // Transient property
+      newValue.internalBoardsLimitsSegments_property.startsToBeObserved (by: self.internalBoardsLimitsSegments_property) // Transient property
+      newValue.internalBoardsLimitsBezierPaths_property.startsToBeObserved (by: self.internalBoardsLimitsBezierPaths_property) // Transient property
+      newValue.drillSegments_property.startsToBeObserved (by: self.drillSegments_property) // Transient property
+      newValue.holesBezierPaths_property.startsToBeObserved (by: self.holesBezierPaths_property) // Transient property
+      newValue.viaShapes_property.startsToBeObserved (by: self.viaShapes_property) // Transient property
+      newValue.viasBezierPaths_property.startsToBeObserved (by: self.viasBezierPaths_property) // Transient property
+      newValue.frontPadArray_property.startsToBeObserved (by: self.frontPadArray_property) // Transient property
+      newValue.frontPadsBezierPaths_property.startsToBeObserved (by: self.frontPadsBezierPaths_property) // Transient property
+      newValue.backPadArray_property.startsToBeObserved (by: self.backPadArray_property) // Transient property
+      newValue.backPadsBezierPaths_property.startsToBeObserved (by: self.backPadsBezierPaths_property) // Transient property
+      newValue.traversingPadArray_property.startsToBeObserved (by: self.traversingPadArray_property) // Transient property
+      newValue.traversingPadsBezierPaths_property.startsToBeObserved (by: self.traversingPadsBezierPaths_property) // Transient property
+      newValue.boardLimitsBezierPaths_property.startsToBeObserved (by: self.boardLimitsBezierPaths_property) // Transient property
+      newValue.backComponentNameSegments_property.startsToBeObserved (by: self.backComponentNameSegments_property) // Transient property
+      newValue.backComponentNamesBezierPaths_property.startsToBeObserved (by: self.backComponentNamesBezierPaths_property) // Transient property
+      newValue.frontComponentNameSegments_property.startsToBeObserved (by: self.frontComponentNameSegments_property) // Transient property
+      newValue.frontComponentNamesBezierPaths_property.startsToBeObserved (by: self.frontComponentNamesBezierPaths_property) // Transient property
+      newValue.frontComponentValueSegments_property.startsToBeObserved (by: self.frontComponentValueSegments_property) // Transient property
+      newValue.frontComponentValuesBezierPaths_property.startsToBeObserved (by: self.frontComponentValuesBezierPaths_property) // Transient property
+      newValue.backComponentValueSegments_property.startsToBeObserved (by: self.backComponentValueSegments_property) // Transient property
+      newValue.backComponentValuesBezierPaths_property.startsToBeObserved (by: self.backComponentValuesBezierPaths_property) // Transient property
+      newValue.backTrackSegments_property.startsToBeObserved (by: self.backTrackSegments_property) // Transient property
+      newValue.backTracksBezierPaths_property.startsToBeObserved (by: self.backTracksBezierPaths_property) // Transient property
+      newValue.frontTrackSegments_property.startsToBeObserved (by: self.frontTrackSegments_property) // Transient property
+      newValue.frontTracksBezierPaths_property.startsToBeObserved (by: self.frontTracksBezierPaths_property) // Transient property
+      newValue.inner1TracksSegments_property.startsToBeObserved (by: self.inner1TracksSegments_property) // Transient property
+      newValue.inner1TracksBezierPaths_property.startsToBeObserved (by: self.inner1TracksBezierPaths_property) // Transient property
+      newValue.inner2TracksSegments_property.startsToBeObserved (by: self.inner2TracksSegments_property) // Transient property
+      newValue.inner2TracksBezierPaths_property.startsToBeObserved (by: self.inner2TracksBezierPaths_property) // Transient property
+      newValue.inner3TracksSegments_property.startsToBeObserved (by: self.inner3TracksSegments_property) // Transient property
+      newValue.inner3TracksBezierPaths_property.startsToBeObserved (by: self.inner3TracksBezierPaths_property) // Transient property
+      newValue.inner4TracksSegments_property.startsToBeObserved (by: self.inner4TracksSegments_property) // Transient property
+      newValue.inner4TracksBezierPaths_property.startsToBeObserved (by: self.inner4TracksBezierPaths_property) // Transient property
+      newValue.frontPackagesSegments_property.startsToBeObserved (by: self.frontPackagesSegments_property) // Transient property
+      newValue.frontPackagesBezierPaths_property.startsToBeObserved (by: self.frontPackagesBezierPaths_property) // Transient property
+      newValue.backPackagesSegments_property.startsToBeObserved (by: self.backPackagesSegments_property) // Transient property
+      newValue.backPackagesBezierPaths_property.startsToBeObserved (by: self.backPackagesBezierPaths_property) // Transient property
+      newValue.instanceCount_property.startsToBeObserved (by: self.instanceCount_property) // Transient property
+      newValue.frontLegendLinesBezierPaths_property.startsToBeObserved (by: self.frontLegendLinesBezierPaths_property) // Transient property
+      newValue.imageForModel_property.startsToBeObserved (by: self.imageForModel_property) // Transient property
+      newValue.imageForInstances_property.startsToBeObserved (by: self.imageForInstances_property) // Transient property
     }
   }
 
@@ -534,19 +534,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLegendLines (_ inObserver : EBObserverProtocol) {
+  final func toMany_frontLegendLines_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_frontLegendLines.insert (inObserver)
     if let object = self.propval {
-      object.frontLegendLines_property.addEBObserver (inObserver)
+      object.frontLegendLines_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_frontLegendLines (_ inObserver : EBObserverProtocol) {
+  final func toMany_frontLegendLines_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_frontLegendLines.remove (inObserver)
     if let object = self.propval {
-      object.frontLegendLines_property.removeEBObserver (inObserver)
+      object.frontLegendLines_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -558,19 +558,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLegendLines (_ inObserver : EBObserverProtocol) {
+  final func toMany_backLegendLines_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_backLegendLines.insert (inObserver)
     if let object = self.propval {
-      object.backLegendLines_property.addEBObserver (inObserver)
+      object.backLegendLines_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_backLegendLines (_ inObserver : EBObserverProtocol) {
+  final func toMany_backLegendLines_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_backLegendLines.remove (inObserver)
     if let object = self.propval {
-      object.backLegendLines_property.removeEBObserver (inObserver)
+      object.backLegendLines_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -582,19 +582,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLegendTexts (_ inObserver : EBObserverProtocol) {
+  final func toMany_frontLegendTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_frontLegendTexts.insert (inObserver)
     if let object = self.propval {
-      object.frontLegendTexts_property.addEBObserver (inObserver)
+      object.frontLegendTexts_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_frontLegendTexts (_ inObserver : EBObserverProtocol) {
+  final func toMany_frontLegendTexts_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_frontLegendTexts.remove (inObserver)
     if let object = self.propval {
-      object.frontLegendTexts_property.removeEBObserver (inObserver)
+      object.frontLegendTexts_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -606,19 +606,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontLayoutTexts (_ inObserver : EBObserverProtocol) {
+  final func toMany_frontLayoutTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_frontLayoutTexts.insert (inObserver)
     if let object = self.propval {
-      object.frontLayoutTexts_property.addEBObserver (inObserver)
+      object.frontLayoutTexts_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_frontLayoutTexts (_ inObserver : EBObserverProtocol) {
+  final func toMany_frontLayoutTexts_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_frontLayoutTexts.remove (inObserver)
     if let object = self.propval {
-      object.frontLayoutTexts_property.removeEBObserver (inObserver)
+      object.frontLayoutTexts_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -630,19 +630,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLegendTexts (_ inObserver : EBObserverProtocol) {
+  final func toMany_backLegendTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_backLegendTexts.insert (inObserver)
     if let object = self.propval {
-      object.backLegendTexts_property.addEBObserver (inObserver)
+      object.backLegendTexts_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_backLegendTexts (_ inObserver : EBObserverProtocol) {
+  final func toMany_backLegendTexts_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_backLegendTexts.remove (inObserver)
     if let object = self.propval {
-      object.backLegendTexts_property.removeEBObserver (inObserver)
+      object.backLegendTexts_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -654,19 +654,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backLayoutTexts (_ inObserver : EBObserverProtocol) {
+  final func toMany_backLayoutTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_backLayoutTexts.insert (inObserver)
     if let object = self.propval {
-      object.backLayoutTexts_property.addEBObserver (inObserver)
+      object.backLayoutTexts_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_backLayoutTexts (_ inObserver : EBObserverProtocol) {
+  final func toMany_backLayoutTexts_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_backLayoutTexts.remove (inObserver)
     if let object = self.propval {
-      object.backLayoutTexts_property.removeEBObserver (inObserver)
+      object.backLayoutTexts_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -678,19 +678,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_internalBoardsLimits (_ inObserver : EBObserverProtocol) {
+  final func toMany_internalBoardsLimits_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_internalBoardsLimits.insert (inObserver)
     if let object = self.propval {
-      object.internalBoardsLimits_property.addEBObserver (inObserver)
+      object.internalBoardsLimits_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_internalBoardsLimits (_ inObserver : EBObserverProtocol) {
+  final func toMany_internalBoardsLimits_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_internalBoardsLimits.remove (inObserver)
     if let object = self.propval {
-      object.internalBoardsLimits_property.removeEBObserver (inObserver)
+      object.internalBoardsLimits_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -702,19 +702,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_drills (_ inObserver : EBObserverProtocol) {
+  final func toMany_drills_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_drills.insert (inObserver)
     if let object = self.propval {
-      object.drills_property.addEBObserver (inObserver)
+      object.drills_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drills (_ inObserver : EBObserverProtocol) {
+  final func toMany_drills_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_drills.remove (inObserver)
     if let object = self.propval {
-      object.drills_property.removeEBObserver (inObserver)
+      object.drills_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -726,19 +726,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_vias (_ inObserver : EBObserverProtocol) {
+  final func toMany_vias_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_vias.insert (inObserver)
     if let object = self.propval {
-      object.vias_property.addEBObserver (inObserver)
+      object.vias_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_vias (_ inObserver : EBObserverProtocol) {
+  final func toMany_vias_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_vias.remove (inObserver)
     if let object = self.propval {
-      object.vias_property.removeEBObserver (inObserver)
+      object.vias_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -750,19 +750,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontPads (_ inObserver : EBObserverProtocol) {
+  final func toMany_frontPads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_frontPads.insert (inObserver)
     if let object = self.propval {
-      object.frontPads_property.addEBObserver (inObserver)
+      object.frontPads_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_frontPads (_ inObserver : EBObserverProtocol) {
+  final func toMany_frontPads_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_frontPads.remove (inObserver)
     if let object = self.propval {
-      object.frontPads_property.removeEBObserver (inObserver)
+      object.frontPads_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -774,19 +774,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backPads (_ inObserver : EBObserverProtocol) {
+  final func toMany_backPads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_backPads.insert (inObserver)
     if let object = self.propval {
-      object.backPads_property.addEBObserver (inObserver)
+      object.backPads_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_backPads (_ inObserver : EBObserverProtocol) {
+  final func toMany_backPads_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_backPads.remove (inObserver)
     if let object = self.propval {
-      object.backPads_property.removeEBObserver (inObserver)
+      object.backPads_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -798,19 +798,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_traversingPads (_ inObserver : EBObserverProtocol) {
+  final func toMany_traversingPads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_traversingPads.insert (inObserver)
     if let object = self.propval {
-      object.traversingPads_property.addEBObserver (inObserver)
+      object.traversingPads_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_traversingPads (_ inObserver : EBObserverProtocol) {
+  final func toMany_traversingPads_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_traversingPads.remove (inObserver)
     if let object = self.propval {
-      object.traversingPads_property.removeEBObserver (inObserver)
+      object.traversingPads_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -822,19 +822,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backComponentNames (_ inObserver : EBObserverProtocol) {
+  final func toMany_backComponentNames_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_backComponentNames.insert (inObserver)
     if let object = self.propval {
-      object.backComponentNames_property.addEBObserver (inObserver)
+      object.backComponentNames_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_backComponentNames (_ inObserver : EBObserverProtocol) {
+  final func toMany_backComponentNames_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_backComponentNames.remove (inObserver)
     if let object = self.propval {
-      object.backComponentNames_property.removeEBObserver (inObserver)
+      object.backComponentNames_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -846,19 +846,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontComponentNames (_ inObserver : EBObserverProtocol) {
+  final func toMany_frontComponentNames_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_frontComponentNames.insert (inObserver)
     if let object = self.propval {
-      object.frontComponentNames_property.addEBObserver (inObserver)
+      object.frontComponentNames_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_frontComponentNames (_ inObserver : EBObserverProtocol) {
+  final func toMany_frontComponentNames_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_frontComponentNames.remove (inObserver)
     if let object = self.propval {
-      object.frontComponentNames_property.removeEBObserver (inObserver)
+      object.frontComponentNames_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -870,19 +870,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontComponentValues (_ inObserver : EBObserverProtocol) {
+  final func toMany_frontComponentValues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_frontComponentValues.insert (inObserver)
     if let object = self.propval {
-      object.frontComponentValues_property.addEBObserver (inObserver)
+      object.frontComponentValues_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_frontComponentValues (_ inObserver : EBObserverProtocol) {
+  final func toMany_frontComponentValues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_frontComponentValues.remove (inObserver)
     if let object = self.propval {
-      object.frontComponentValues_property.removeEBObserver (inObserver)
+      object.frontComponentValues_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -894,19 +894,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backComponentValues (_ inObserver : EBObserverProtocol) {
+  final func toMany_backComponentValues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_backComponentValues.insert (inObserver)
     if let object = self.propval {
-      object.backComponentValues_property.addEBObserver (inObserver)
+      object.backComponentValues_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_backComponentValues (_ inObserver : EBObserverProtocol) {
+  final func toMany_backComponentValues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_backComponentValues.remove (inObserver)
     if let object = self.propval {
-      object.backComponentValues_property.removeEBObserver (inObserver)
+      object.backComponentValues_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -918,19 +918,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backTracks (_ inObserver : EBObserverProtocol) {
+  final func toMany_backTracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_backTracks.insert (inObserver)
     if let object = self.propval {
-      object.backTracks_property.addEBObserver (inObserver)
+      object.backTracks_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_backTracks (_ inObserver : EBObserverProtocol) {
+  final func toMany_backTracks_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_backTracks.remove (inObserver)
     if let object = self.propval {
-      object.backTracks_property.removeEBObserver (inObserver)
+      object.backTracks_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -942,19 +942,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontTracks (_ inObserver : EBObserverProtocol) {
+  final func toMany_frontTracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_frontTracks.insert (inObserver)
     if let object = self.propval {
-      object.frontTracks_property.addEBObserver (inObserver)
+      object.frontTracks_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_frontTracks (_ inObserver : EBObserverProtocol) {
+  final func toMany_frontTracks_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_frontTracks.remove (inObserver)
     if let object = self.propval {
-      object.frontTracks_property.removeEBObserver (inObserver)
+      object.frontTracks_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -966,19 +966,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_inner1Tracks (_ inObserver : EBObserverProtocol) {
+  final func toMany_inner1Tracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_inner1Tracks.insert (inObserver)
     if let object = self.propval {
-      object.inner1Tracks_property.addEBObserver (inObserver)
+      object.inner1Tracks_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_inner1Tracks (_ inObserver : EBObserverProtocol) {
+  final func toMany_inner1Tracks_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_inner1Tracks.remove (inObserver)
     if let object = self.propval {
-      object.inner1Tracks_property.removeEBObserver (inObserver)
+      object.inner1Tracks_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -990,19 +990,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_inner2Tracks (_ inObserver : EBObserverProtocol) {
+  final func toMany_inner2Tracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_inner2Tracks.insert (inObserver)
     if let object = self.propval {
-      object.inner2Tracks_property.addEBObserver (inObserver)
+      object.inner2Tracks_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_inner2Tracks (_ inObserver : EBObserverProtocol) {
+  final func toMany_inner2Tracks_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_inner2Tracks.remove (inObserver)
     if let object = self.propval {
-      object.inner2Tracks_property.removeEBObserver (inObserver)
+      object.inner2Tracks_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -1014,19 +1014,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_inner3Tracks (_ inObserver : EBObserverProtocol) {
+  final func toMany_inner3Tracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_inner3Tracks.insert (inObserver)
     if let object = self.propval {
-      object.inner3Tracks_property.addEBObserver (inObserver)
+      object.inner3Tracks_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_inner3Tracks (_ inObserver : EBObserverProtocol) {
+  final func toMany_inner3Tracks_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_inner3Tracks.remove (inObserver)
     if let object = self.propval {
-      object.inner3Tracks_property.removeEBObserver (inObserver)
+      object.inner3Tracks_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -1038,19 +1038,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_inner4Tracks (_ inObserver : EBObserverProtocol) {
+  final func toMany_inner4Tracks_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_inner4Tracks.insert (inObserver)
     if let object = self.propval {
-      object.inner4Tracks_property.addEBObserver (inObserver)
+      object.inner4Tracks_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_inner4Tracks (_ inObserver : EBObserverProtocol) {
+  final func toMany_inner4Tracks_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_inner4Tracks.remove (inObserver)
     if let object = self.propval {
-      object.inner4Tracks_property.removeEBObserver (inObserver)
+      object.inner4Tracks_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -1062,19 +1062,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_frontPackages (_ inObserver : EBObserverProtocol) {
+  final func toMany_frontPackages_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_frontPackages.insert (inObserver)
     if let object = self.propval {
-      object.frontPackages_property.addEBObserver (inObserver)
+      object.frontPackages_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_frontPackages (_ inObserver : EBObserverProtocol) {
+  final func toMany_frontPackages_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_frontPackages.remove (inObserver)
     if let object = self.propval {
-      object.frontPackages_property.removeEBObserver (inObserver)
+      object.frontPackages_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -1086,19 +1086,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_backPackages (_ inObserver : EBObserverProtocol) {
+  final func toMany_backPackages_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_backPackages.insert (inObserver)
     if let object = self.propval {
-      object.backPackages_property.addEBObserver (inObserver)
+      object.backPackages_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_backPackages (_ inObserver : EBObserverProtocol) {
+  final func toMany_backPackages_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_backPackages.remove (inObserver)
     if let object = self.propval {
-      object.backPackages_property.removeEBObserver (inObserver)
+      object.backPackages_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -1110,19 +1110,19 @@ class ReadOnlyObject_BoardModel : ReadOnlyAbstractObjectProperty <BoardModel> {
 
   //····················································································································
 
-  final func addEBObserverOf_myInstances (_ inObserver : EBObserverProtocol) {
+  final func toMany_myInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_myInstances.insert (inObserver)
     if let object = self.propval {
-      object.myInstances_property.addEBObserver (inObserver)
+      object.myInstances_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_myInstances (_ inObserver : EBObserverProtocol) {
+  final func toMany_myInstances_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_myInstances.remove (inObserver)
     if let object = self.propval {
-      object.myInstances_property.removeEBObserver (inObserver)
+      object.myInstances_property.stopsBeingObserved (by: inObserver)
     }
   }
 

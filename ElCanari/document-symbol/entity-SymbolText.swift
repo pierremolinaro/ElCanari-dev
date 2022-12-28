@@ -177,12 +177,12 @@ final class SymbolText : SymbolObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.objectDisplay_property)
-    self.y_property.addEBObserver (self.objectDisplay_property)
-    self.text_property.addEBObserver (self.objectDisplay_property)
-    self.horizontalAlignment_property.addEBObserver (self.objectDisplay_property)
-    preferences_symbolColor_property.addEBObserver (self.objectDisplay_property)
-    preferences_pinNameFont_property.addEBObserver (self.objectDisplay_property)
+    self.x_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.y_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.text_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.horizontalAlignment_property.startsToBeObserved (by: self.objectDisplay_property)
+    preferences_symbolColor_property.startsToBeObserved (by: self.objectDisplay_property)
+    preferences_pinNameFont_property.startsToBeObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -211,11 +211,11 @@ final class SymbolText : SymbolObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.selectionDisplay_property)
-    self.y_property.addEBObserver (self.selectionDisplay_property)
-    self.text_property.addEBObserver (self.selectionDisplay_property)
-    self.horizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
-    preferences_pinNameFont_property.addEBObserver (self.selectionDisplay_property)
+    self.x_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.y_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.text_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.horizontalAlignment_property.startsToBeObserved (by: self.selectionDisplay_property)
+    preferences_pinNameFont_property.startsToBeObserved (by: self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -238,9 +238,9 @@ final class SymbolText : SymbolObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.issues_property)
-    self.y_property.addEBObserver (self.issues_property)
-    self.text_property.addEBObserver (self.issues_property)
+    self.x_property.startsToBeObserved (by: self.issues_property)
+    self.y_property.startsToBeObserved (by: self.issues_property)
+    self.text_property.startsToBeObserved (by: self.issues_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature

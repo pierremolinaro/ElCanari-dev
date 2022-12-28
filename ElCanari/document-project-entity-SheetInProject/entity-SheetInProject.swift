@@ -228,7 +228,7 @@ final class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.addEBObserver (self.mRoot_none)
+    self.mRoot_property.startsToBeObserved (by: self.mRoot_none)
 //    gInitSemaphore.wait ()
   //--- To many property: mObjects (has opposite relationship)
     self.mObjects_property.undoManager = inUndoManager
@@ -264,7 +264,7 @@ final class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPoints_property.addEBObserverOf_status (self.issues_property)
+    self.mPoints_property.toMany_status_StartsToBeObserved (by: self.issues_property)
   //--- Atomic property: connectedPoints
     self.connectedPoints_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -284,8 +284,8 @@ final class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    preferences_connectionColorForSchematic_property.addEBObserver (self.connectedPoints_property)
-    self.mPoints_property.addEBObserverOf_connectedPoints (self.connectedPoints_property)
+    preferences_connectionColorForSchematic_property.startsToBeObserved (by: self.connectedPoints_property)
+    self.mPoints_property.toMany_connectedPoints_StartsToBeObserved (by: self.connectedPoints_property)
   //--- Atomic property: connexionWarnings
     self.connexionWarnings_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -302,7 +302,7 @@ final class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.issues_property.addEBObserver (self.connexionWarnings_property)
+    self.issues_property.startsToBeObserved (by: self.connexionWarnings_property)
   //--- Atomic property: connexionErrors
     self.connexionErrors_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -319,7 +319,7 @@ final class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.issues_property.addEBObserver (self.connexionErrors_property)
+    self.issues_property.startsToBeObserved (by: self.connexionErrors_property)
   //--- Atomic property: sheetDescriptor
     self.sheetDescriptor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -342,8 +342,8 @@ final class SheetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.sheetGeometry_property.addEBObserver (self.sheetDescriptor_property)
-    self.mRoot_property.sheetIndexes_property.addEBObserver (self.sheetDescriptor_property)
+    self.mRoot_property.sheetGeometry_property.startsToBeObserved (by: self.sheetDescriptor_property)
+    self.mRoot_property.sheetIndexes_property.startsToBeObserved (by: self.sheetDescriptor_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mObjects_property.setOppositeRelationShipFunctions (

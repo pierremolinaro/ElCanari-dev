@@ -59,20 +59,20 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : EBObjcB
       inModel,
       sortCallback: { [weak self] (left, right) in self?.isOrderedBefore (left, right) ?? true },
       addSortObserversCallback: { (observer) in
-        inModel.addEBObserverOf_componentNamesCount (observer)
-        inModel.addEBObserverOf_componentValuesCount (observer)
-        inModel.addEBObserverOf_mFontName (observer)
-        inModel.addEBObserverOf_sizeString (observer)
-        inModel.addEBObserverOf_textCount (observer)
-        inModel.addEBObserverOf_versionString (observer)
+        inModel.toMany_componentNamesCount_StartsToBeObserved (by: observer)
+        inModel.toMany_componentValuesCount_StartsToBeObserved (by: observer)
+        inModel.toMany_mFontName_StartsToBeObserved (by: observer)
+        inModel.toMany_sizeString_StartsToBeObserved (by: observer)
+        inModel.toMany_textCount_StartsToBeObserved (by: observer)
+        inModel.toMany_versionString_StartsToBeObserved (by: observer)
       },
       removeSortObserversCallback: {(observer) in
-        inModel.removeEBObserverOf_componentNamesCount (observer)
-        inModel.removeEBObserverOf_componentValuesCount (observer)
-        inModel.removeEBObserverOf_mFontName (observer)
-        inModel.removeEBObserverOf_sizeString (observer)
-        inModel.removeEBObserverOf_textCount (observer)
-        inModel.removeEBObserverOf_versionString (observer)
+        inModel.toMany_componentNamesCount_StopsBeingObserved (by: observer)
+        inModel.toMany_componentValuesCount_StopsBeingObserved (by: observer)
+        inModel.toMany_mFontName_StopsBeingObserved (by: observer)
+        inModel.toMany_sizeString_StopsBeingObserved (by: observer)
+        inModel.toMany_textCount_StopsBeingObserved (by: observer)
+        inModel.toMany_versionString_StopsBeingObserved (by: observer)
       }
     )
   }
@@ -149,19 +149,19 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : EBObjcB
 
   override init () {
     super.init ()
-    self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.startsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mFontName' column
-    self.sortedArray_property.addEBObserverOf_mFontName (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_mFontName_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'versionString' column
-    self.sortedArray_property.addEBObserverOf_versionString (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_versionString_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'sizeString' column
-    self.sortedArray_property.addEBObserverOf_sizeString (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_sizeString_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'textCount' column
-    self.sortedArray_property.addEBObserverOf_textCount (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_textCount_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'componentNamesCount' column
-    self.sortedArray_property.addEBObserverOf_componentNamesCount (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_componentNamesCount_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'componentValuesCount' column
-    self.sortedArray_property.addEBObserverOf_componentValuesCount (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_componentValuesCount_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {

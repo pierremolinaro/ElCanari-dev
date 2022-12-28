@@ -59,20 +59,20 @@ final class Controller_AutoLayoutProjectDocument_componentController : EBObjcBas
       inModel,
       sortCallback: { [weak self] (left, right) in self?.isOrderedBefore (left, right) ?? true },
       addSortObserversCallback: { (observer) in
-        inModel.addEBObserverOf_componentIsPlacedInBoardString (observer)
-        inModel.addEBObserverOf_componentName (observer)
-        inModel.addEBObserverOf_deviceName (observer)
-        inModel.addEBObserverOf_mComponentValue (observer)
-        inModel.addEBObserverOf_placementInSchematic (observer)
-        inModel.addEBObserverOf_selectedPackageName (observer)
+        inModel.toMany_componentIsPlacedInBoardString_StartsToBeObserved (by: observer)
+        inModel.toMany_componentName_StartsToBeObserved (by: observer)
+        inModel.toMany_deviceName_StartsToBeObserved (by: observer)
+        inModel.toMany_mComponentValue_StartsToBeObserved (by: observer)
+        inModel.toMany_placementInSchematic_StartsToBeObserved (by: observer)
+        inModel.toMany_selectedPackageName_StartsToBeObserved (by: observer)
       },
       removeSortObserversCallback: {(observer) in
-        inModel.removeEBObserverOf_componentIsPlacedInBoardString (observer)
-        inModel.removeEBObserverOf_componentName (observer)
-        inModel.removeEBObserverOf_deviceName (observer)
-        inModel.removeEBObserverOf_mComponentValue (observer)
-        inModel.removeEBObserverOf_placementInSchematic (observer)
-        inModel.removeEBObserverOf_selectedPackageName (observer)
+        inModel.toMany_componentIsPlacedInBoardString_StopsBeingObserved (by: observer)
+        inModel.toMany_componentName_StopsBeingObserved (by: observer)
+        inModel.toMany_deviceName_StopsBeingObserved (by: observer)
+        inModel.toMany_mComponentValue_StopsBeingObserved (by: observer)
+        inModel.toMany_placementInSchematic_StopsBeingObserved (by: observer)
+        inModel.toMany_selectedPackageName_StopsBeingObserved (by: observer)
       }
     )
   }
@@ -149,19 +149,19 @@ final class Controller_AutoLayoutProjectDocument_componentController : EBObjcBas
 
   override init () {
     super.init ()
-    self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.startsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'componentName' column
-    self.sortedArray_property.addEBObserverOf_componentName (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_componentName_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'deviceName' column
-    self.sortedArray_property.addEBObserverOf_deviceName (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_deviceName_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'selectedPackageName' column
-    self.sortedArray_property.addEBObserverOf_selectedPackageName (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_selectedPackageName_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'mComponentValue' column
-    self.sortedArray_property.addEBObserverOf_mComponentValue (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_mComponentValue_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'placementInSchematic' column
-    self.sortedArray_property.addEBObserverOf_placementInSchematic (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_placementInSchematic_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'componentIsPlacedInBoardString' column
-    self.sortedArray_property.addEBObserverOf_componentIsPlacedInBoardString (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_componentIsPlacedInBoardString_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {

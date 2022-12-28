@@ -146,58 +146,58 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   /* final func unbind_selection () {
   //--- descriptor
     self.descriptor_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_descriptor (self.descriptor_property)
+    self.mModel?.toMany_descriptor_StopsBeingObserved (by: self.descriptor_property)
   //--- isLine
     self.isLine_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_isLine (self.isLine_property)
+    self.mModel?.toMany_isLine_StopsBeingObserved (by: self.isLine_property)
   //--- mCPX1
     self.mCPX1_property.mReadModelFunction = nil 
     self.mCPX1_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_mCPX1 (self.mCPX1_property)
+    self.mModel?.toMany_mCPX1_StopsBeingObserved (by: self.mCPX1_property)
   //--- mCPX2
     self.mCPX2_property.mReadModelFunction = nil 
     self.mCPX2_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_mCPX2 (self.mCPX2_property)
+    self.mModel?.toMany_mCPX2_StopsBeingObserved (by: self.mCPX2_property)
   //--- mCPY1
     self.mCPY1_property.mReadModelFunction = nil 
     self.mCPY1_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_mCPY1 (self.mCPY1_property)
+    self.mModel?.toMany_mCPY1_StopsBeingObserved (by: self.mCPY1_property)
   //--- mCPY2
     self.mCPY2_property.mReadModelFunction = nil 
     self.mCPY2_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_mCPY2 (self.mCPY2_property)
+    self.mModel?.toMany_mCPY2_StopsBeingObserved (by: self.mCPY2_property)
   //--- mNextX
     self.mNextX_property.mReadModelFunction = nil 
     self.mNextX_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_mNextX (self.mNextX_property)
+    self.mModel?.toMany_mNextX_StopsBeingObserved (by: self.mNextX_property)
   //--- mNextY
     self.mNextY_property.mReadModelFunction = nil 
     self.mNextY_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_mNextY (self.mNextY_property)
+    self.mModel?.toMany_mNextY_StopsBeingObserved (by: self.mNextY_property)
   //--- mShape
     self.mShape_property.mReadModelFunction = nil 
     self.mShape_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_mShape (self.mShape_property)
+    self.mModel?.toMany_mShape_StopsBeingObserved (by: self.mShape_property)
   //--- mX
     self.mX_property.mReadModelFunction = nil 
     self.mX_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_mX (self.mX_property)
+    self.mModel?.toMany_mX_StopsBeingObserved (by: self.mX_property)
   //--- mY
     self.mY_property.mReadModelFunction = nil 
     self.mY_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_mY (self.mY_property)
+    self.mModel?.toMany_mY_StopsBeingObserved (by: self.mY_property)
   //--- objectDisplay
     self.objectDisplay_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+    self.mModel?.toMany_objectDisplay_StopsBeingObserved (by: self.objectDisplay_property)
   //--- p2Xvalue
     self.p2Xvalue_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_p2Xvalue (self.p2Xvalue_property)
+    self.mModel?.toMany_p2Xvalue_StopsBeingObserved (by: self.p2Xvalue_property)
   //--- p2Yvalue
     self.p2Yvalue_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_p2Yvalue (self.p2Yvalue_property)
+    self.mModel?.toMany_p2Yvalue_StopsBeingObserved (by: self.p2Yvalue_property)
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    self.mModel?.toMany_selectionDisplay_StopsBeingObserved (by: self.selectionDisplay_property)
   //---
     self.mModel = nil
   } */
@@ -205,7 +205,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //···················································································································*
 
   private final func bind_property_descriptor (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_descriptor (self.descriptor_property)
+    model.toMany_descriptor_StartsToBeObserved (by: self.descriptor_property)
     self.descriptor_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -245,7 +245,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //···················································································································*
 
   private final func bind_property_isLine (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_isLine (self.isLine_property)
+    model.toMany_isLine_StartsToBeObserved (by: self.isLine_property)
     self.isLine_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -285,7 +285,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //···················································································································*
 
   private final func bind_property_mCPX1 (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_mCPX1 (self.mCPX1_property)
+    model.toMany_mCPX1_StartsToBeObserved (by: self.mCPX1_property)
     self.mCPX1_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -337,7 +337,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //···················································································································*
 
   private final func bind_property_mCPX2 (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_mCPX2 (self.mCPX2_property)
+    model.toMany_mCPX2_StartsToBeObserved (by: self.mCPX2_property)
     self.mCPX2_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -389,7 +389,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //···················································································································*
 
   private final func bind_property_mCPY1 (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_mCPY1 (self.mCPY1_property)
+    model.toMany_mCPY1_StartsToBeObserved (by: self.mCPY1_property)
     self.mCPY1_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -441,7 +441,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //···················································································································*
 
   private final func bind_property_mCPY2 (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_mCPY2 (self.mCPY2_property)
+    model.toMany_mCPY2_StartsToBeObserved (by: self.mCPY2_property)
     self.mCPY2_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -493,7 +493,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //···················································································································*
 
   private final func bind_property_mNextX (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_mNextX (self.mNextX_property)
+    model.toMany_mNextX_StartsToBeObserved (by: self.mNextX_property)
     self.mNextX_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -545,7 +545,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //···················································································································*
 
   private final func bind_property_mNextY (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_mNextY (self.mNextY_property)
+    model.toMany_mNextY_StartsToBeObserved (by: self.mNextY_property)
     self.mNextY_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -597,7 +597,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //···················································································································*
 
   private final func bind_property_mShape (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_mShape (self.mShape_property)
+    model.toMany_mShape_StartsToBeObserved (by: self.mShape_property)
     self.mShape_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -649,7 +649,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //···················································································································*
 
   private final func bind_property_mX (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_mX (self.mX_property)
+    model.toMany_mX_StartsToBeObserved (by: self.mX_property)
     self.mX_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -701,7 +701,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //···················································································································*
 
   private final func bind_property_mY (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_mY (self.mY_property)
+    model.toMany_mY_StartsToBeObserved (by: self.mY_property)
     self.mY_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -753,7 +753,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //···················································································································*
 
   private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
+    model.toMany_objectDisplay_StartsToBeObserved (by: self.objectDisplay_property)
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -793,7 +793,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //···················································································································*
 
   private final func bind_property_p2Xvalue (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_p2Xvalue (self.p2Xvalue_property)
+    model.toMany_p2Xvalue_StartsToBeObserved (by: self.p2Xvalue_property)
     self.p2Xvalue_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -833,7 +833,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //···················································································································*
 
   private final func bind_property_p2Yvalue (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_p2Yvalue (self.p2Yvalue_property)
+    model.toMany_p2Yvalue_StartsToBeObserved (by: self.p2Yvalue_property)
     self.p2Yvalue_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -873,7 +873,7 @@ final class SelectionController_AutoLayoutProjectDocument_boardCurveSelectionCon
   //···················································································································*
 
   private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_BorderCurve) {
-    model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+    model.toMany_selectionDisplay_StartsToBeObserved (by: self.selectionDisplay_property)
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {

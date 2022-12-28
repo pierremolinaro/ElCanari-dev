@@ -23,7 +23,7 @@ final class CanariLibraryEntryDelegate : EBSwiftBaseObject, EBObserverProtocol {
   init (object inObject : CanariLibraryEntry) {
     self.mObject = inObject
     super.init ()
-    inObject.mPath_property.addEBObserver (self)
+    inObject.mPath_property.startsToBeObserved (by: self)
   }
 
   //····················································································································

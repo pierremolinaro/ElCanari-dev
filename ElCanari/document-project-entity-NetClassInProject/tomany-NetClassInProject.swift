@@ -85,30 +85,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mNetClassName (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mNetClassName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mNetClassName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mNetClassName_property.addEBObserver (inObserver)
+        managedObject.mNetClassName_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mNetClassName (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mNetClassName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mNetClassName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mNetClassName_property.removeEBObserver (inObserver)
+        managedObject.mNetClassName_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -120,7 +120,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mNetClassName.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mNetClassName_property.addEBObserver (observer)
+            managedObject.mNetClassName_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mNetClassName.triggerPacking ()
           }
@@ -136,7 +136,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mNetClassName_property.removeEBObserver (observer)
+          managedObject.mNetClassName_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mNetClassName.triggerPacking ()
@@ -152,30 +152,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mNetClassColor (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mNetClassColor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mNetClassColor.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mNetClassColor_property.addEBObserver (inObserver)
+        managedObject.mNetClassColor_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mNetClassColor (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mNetClassColor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mNetClassColor.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mNetClassColor_property.removeEBObserver (inObserver)
+        managedObject.mNetClassColor_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -187,7 +187,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mNetClassColor.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mNetClassColor_property.addEBObserver (observer)
+            managedObject.mNetClassColor_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mNetClassColor.triggerPacking ()
           }
@@ -203,7 +203,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mNetClassColor_property.removeEBObserver (observer)
+          managedObject.mNetClassColor_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mNetClassColor.triggerPacking ()
@@ -219,30 +219,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mTrackWidth (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mTrackWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mTrackWidth.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mTrackWidth_property.addEBObserver (inObserver)
+        managedObject.mTrackWidth_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mTrackWidth (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mTrackWidth_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mTrackWidth.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mTrackWidth_property.removeEBObserver (inObserver)
+        managedObject.mTrackWidth_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -254,7 +254,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mTrackWidth.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mTrackWidth_property.addEBObserver (observer)
+            managedObject.mTrackWidth_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mTrackWidth.triggerPacking ()
           }
@@ -270,7 +270,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mTrackWidth_property.removeEBObserver (observer)
+          managedObject.mTrackWidth_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mTrackWidth.triggerPacking ()
@@ -286,30 +286,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mTrackWidthUnit (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mTrackWidthUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mTrackWidthUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mTrackWidthUnit_property.addEBObserver (inObserver)
+        managedObject.mTrackWidthUnit_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mTrackWidthUnit (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mTrackWidthUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mTrackWidthUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mTrackWidthUnit_property.removeEBObserver (inObserver)
+        managedObject.mTrackWidthUnit_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -321,7 +321,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mTrackWidthUnit.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mTrackWidthUnit_property.addEBObserver (observer)
+            managedObject.mTrackWidthUnit_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mTrackWidthUnit.triggerPacking ()
           }
@@ -337,7 +337,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mTrackWidthUnit_property.removeEBObserver (observer)
+          managedObject.mTrackWidthUnit_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mTrackWidthUnit.triggerPacking ()
@@ -353,30 +353,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mViaHoleDiameter (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mViaHoleDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mViaHoleDiameter.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mViaHoleDiameter_property.addEBObserver (inObserver)
+        managedObject.mViaHoleDiameter_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mViaHoleDiameter (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mViaHoleDiameter_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mViaHoleDiameter.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mViaHoleDiameter_property.removeEBObserver (inObserver)
+        managedObject.mViaHoleDiameter_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -388,7 +388,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mViaHoleDiameter.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mViaHoleDiameter_property.addEBObserver (observer)
+            managedObject.mViaHoleDiameter_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mViaHoleDiameter.triggerPacking ()
           }
@@ -404,7 +404,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mViaHoleDiameter_property.removeEBObserver (observer)
+          managedObject.mViaHoleDiameter_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mViaHoleDiameter.triggerPacking ()
@@ -420,30 +420,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mViaHoleDiameterUnit (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mViaHoleDiameterUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mViaHoleDiameterUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mViaHoleDiameterUnit_property.addEBObserver (inObserver)
+        managedObject.mViaHoleDiameterUnit_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mViaHoleDiameterUnit (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mViaHoleDiameterUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mViaHoleDiameterUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mViaHoleDiameterUnit_property.removeEBObserver (inObserver)
+        managedObject.mViaHoleDiameterUnit_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -455,7 +455,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mViaHoleDiameterUnit.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mViaHoleDiameterUnit_property.addEBObserver (observer)
+            managedObject.mViaHoleDiameterUnit_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mViaHoleDiameterUnit.triggerPacking ()
           }
@@ -471,7 +471,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mViaHoleDiameterUnit_property.removeEBObserver (observer)
+          managedObject.mViaHoleDiameterUnit_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mViaHoleDiameterUnit.triggerPacking ()
@@ -487,30 +487,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mViaPadDiameter (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mViaPadDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mViaPadDiameter.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mViaPadDiameter_property.addEBObserver (inObserver)
+        managedObject.mViaPadDiameter_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mViaPadDiameter (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mViaPadDiameter_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mViaPadDiameter.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mViaPadDiameter_property.removeEBObserver (inObserver)
+        managedObject.mViaPadDiameter_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -522,7 +522,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mViaPadDiameter.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mViaPadDiameter_property.addEBObserver (observer)
+            managedObject.mViaPadDiameter_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mViaPadDiameter.triggerPacking ()
           }
@@ -538,7 +538,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mViaPadDiameter_property.removeEBObserver (observer)
+          managedObject.mViaPadDiameter_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mViaPadDiameter.triggerPacking ()
@@ -554,30 +554,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mViaPadDiameterUnit (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mViaPadDiameterUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mViaPadDiameterUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mViaPadDiameterUnit_property.addEBObserver (inObserver)
+        managedObject.mViaPadDiameterUnit_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mViaPadDiameterUnit (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mViaPadDiameterUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mViaPadDiameterUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mViaPadDiameterUnit_property.removeEBObserver (inObserver)
+        managedObject.mViaPadDiameterUnit_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -589,7 +589,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mViaPadDiameterUnit.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mViaPadDiameterUnit_property.addEBObserver (observer)
+            managedObject.mViaPadDiameterUnit_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mViaPadDiameterUnit.triggerPacking ()
           }
@@ -605,7 +605,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mViaPadDiameterUnit_property.removeEBObserver (observer)
+          managedObject.mViaPadDiameterUnit_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mViaPadDiameterUnit.triggerPacking ()
@@ -621,30 +621,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mAllowTracksOnFrontSide (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mAllowTracksOnFrontSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mAllowTracksOnFrontSide.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mAllowTracksOnFrontSide_property.addEBObserver (inObserver)
+        managedObject.mAllowTracksOnFrontSide_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mAllowTracksOnFrontSide (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mAllowTracksOnFrontSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mAllowTracksOnFrontSide.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mAllowTracksOnFrontSide_property.removeEBObserver (inObserver)
+        managedObject.mAllowTracksOnFrontSide_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -656,7 +656,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mAllowTracksOnFrontSide.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mAllowTracksOnFrontSide_property.addEBObserver (observer)
+            managedObject.mAllowTracksOnFrontSide_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mAllowTracksOnFrontSide.triggerPacking ()
           }
@@ -672,7 +672,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mAllowTracksOnFrontSide_property.removeEBObserver (observer)
+          managedObject.mAllowTracksOnFrontSide_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mAllowTracksOnFrontSide.triggerPacking ()
@@ -688,30 +688,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mAllowTracksOnBackSide (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mAllowTracksOnBackSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mAllowTracksOnBackSide.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mAllowTracksOnBackSide_property.addEBObserver (inObserver)
+        managedObject.mAllowTracksOnBackSide_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mAllowTracksOnBackSide (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mAllowTracksOnBackSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mAllowTracksOnBackSide.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mAllowTracksOnBackSide_property.removeEBObserver (inObserver)
+        managedObject.mAllowTracksOnBackSide_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -723,7 +723,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mAllowTracksOnBackSide.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mAllowTracksOnBackSide_property.addEBObserver (observer)
+            managedObject.mAllowTracksOnBackSide_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mAllowTracksOnBackSide.triggerPacking ()
           }
@@ -739,7 +739,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mAllowTracksOnBackSide_property.removeEBObserver (observer)
+          managedObject.mAllowTracksOnBackSide_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mAllowTracksOnBackSide.triggerPacking ()
@@ -755,30 +755,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mAllowTracksOnInner1Layer (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mAllowTracksOnInner1Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mAllowTracksOnInner1Layer.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mAllowTracksOnInner1Layer_property.addEBObserver (inObserver)
+        managedObject.mAllowTracksOnInner1Layer_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mAllowTracksOnInner1Layer (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mAllowTracksOnInner1Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mAllowTracksOnInner1Layer.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mAllowTracksOnInner1Layer_property.removeEBObserver (inObserver)
+        managedObject.mAllowTracksOnInner1Layer_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -790,7 +790,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mAllowTracksOnInner1Layer.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mAllowTracksOnInner1Layer_property.addEBObserver (observer)
+            managedObject.mAllowTracksOnInner1Layer_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mAllowTracksOnInner1Layer.triggerPacking ()
           }
@@ -806,7 +806,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mAllowTracksOnInner1Layer_property.removeEBObserver (observer)
+          managedObject.mAllowTracksOnInner1Layer_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mAllowTracksOnInner1Layer.triggerPacking ()
@@ -822,30 +822,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mAllowTracksOnInner2Layer (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mAllowTracksOnInner2Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mAllowTracksOnInner2Layer.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mAllowTracksOnInner2Layer_property.addEBObserver (inObserver)
+        managedObject.mAllowTracksOnInner2Layer_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mAllowTracksOnInner2Layer (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mAllowTracksOnInner2Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mAllowTracksOnInner2Layer.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mAllowTracksOnInner2Layer_property.removeEBObserver (inObserver)
+        managedObject.mAllowTracksOnInner2Layer_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -857,7 +857,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mAllowTracksOnInner2Layer.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mAllowTracksOnInner2Layer_property.addEBObserver (observer)
+            managedObject.mAllowTracksOnInner2Layer_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mAllowTracksOnInner2Layer.triggerPacking ()
           }
@@ -873,7 +873,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mAllowTracksOnInner2Layer_property.removeEBObserver (observer)
+          managedObject.mAllowTracksOnInner2Layer_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mAllowTracksOnInner2Layer.triggerPacking ()
@@ -889,30 +889,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mAllowTracksOnInner3Layer (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mAllowTracksOnInner3Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mAllowTracksOnInner3Layer.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mAllowTracksOnInner3Layer_property.addEBObserver (inObserver)
+        managedObject.mAllowTracksOnInner3Layer_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mAllowTracksOnInner3Layer (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mAllowTracksOnInner3Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mAllowTracksOnInner3Layer.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mAllowTracksOnInner3Layer_property.removeEBObserver (inObserver)
+        managedObject.mAllowTracksOnInner3Layer_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -924,7 +924,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mAllowTracksOnInner3Layer.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mAllowTracksOnInner3Layer_property.addEBObserver (observer)
+            managedObject.mAllowTracksOnInner3Layer_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mAllowTracksOnInner3Layer.triggerPacking ()
           }
@@ -940,7 +940,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mAllowTracksOnInner3Layer_property.removeEBObserver (observer)
+          managedObject.mAllowTracksOnInner3Layer_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mAllowTracksOnInner3Layer.triggerPacking ()
@@ -956,30 +956,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_mAllowTracksOnInner4Layer (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_mAllowTracksOnInner4Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mAllowTracksOnInner4Layer.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mAllowTracksOnInner4Layer_property.addEBObserver (inObserver)
+        managedObject.mAllowTracksOnInner4Layer_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mAllowTracksOnInner4Layer (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_mAllowTracksOnInner4Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mAllowTracksOnInner4Layer.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mAllowTracksOnInner4Layer_property.removeEBObserver (inObserver)
+        managedObject.mAllowTracksOnInner4Layer_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -991,7 +991,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_mAllowTracksOnInner4Layer.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.mAllowTracksOnInner4Layer_property.addEBObserver (observer)
+            managedObject.mAllowTracksOnInner4Layer_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_mAllowTracksOnInner4Layer.triggerPacking ()
           }
@@ -1007,7 +1007,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.mAllowTracksOnInner4Layer_property.removeEBObserver (observer)
+          managedObject.mAllowTracksOnInner4Layer_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_mAllowTracksOnInner4Layer.triggerPacking ()
@@ -1023,30 +1023,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_trackWidthString (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_trackWidthString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_trackWidthString.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.trackWidthString_property.addEBObserver (inObserver)
+        managedObject.trackWidthString_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_trackWidthString (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_trackWidthString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_trackWidthString.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.trackWidthString_property.removeEBObserver (inObserver)
+        managedObject.trackWidthString_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1057,7 +1057,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_trackWidthString.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.trackWidthString_property.addEBObserver (observer)
+          managedObject.trackWidthString_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_trackWidthString.triggerPacking ()
         }
@@ -1071,7 +1071,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_trackWidthString.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.trackWidthString_property.removeEBObserver (observer)
+          managedObject.trackWidthString_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_trackWidthString.triggerPacking ()
         }
@@ -1087,30 +1087,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_viaHoleDiameter (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_viaHoleDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_viaHoleDiameter.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.viaHoleDiameter_property.addEBObserver (inObserver)
+        managedObject.viaHoleDiameter_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_viaHoleDiameter (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_viaHoleDiameter_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_viaHoleDiameter.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.viaHoleDiameter_property.removeEBObserver (inObserver)
+        managedObject.viaHoleDiameter_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1121,7 +1121,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_viaHoleDiameter.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.viaHoleDiameter_property.addEBObserver (observer)
+          managedObject.viaHoleDiameter_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_viaHoleDiameter.triggerPacking ()
         }
@@ -1135,7 +1135,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_viaHoleDiameter.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.viaHoleDiameter_property.removeEBObserver (observer)
+          managedObject.viaHoleDiameter_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_viaHoleDiameter.triggerPacking ()
         }
@@ -1151,30 +1151,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_viaPadDiameter (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_viaPadDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_viaPadDiameter.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.viaPadDiameter_property.addEBObserver (inObserver)
+        managedObject.viaPadDiameter_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_viaPadDiameter (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_viaPadDiameter_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_viaPadDiameter.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.viaPadDiameter_property.removeEBObserver (inObserver)
+        managedObject.viaPadDiameter_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1185,7 +1185,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_viaPadDiameter.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.viaPadDiameter_property.addEBObserver (observer)
+          managedObject.viaPadDiameter_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_viaPadDiameter.triggerPacking ()
         }
@@ -1199,7 +1199,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_viaPadDiameter.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.viaPadDiameter_property.removeEBObserver (observer)
+          managedObject.viaPadDiameter_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_viaPadDiameter.triggerPacking ()
         }
@@ -1215,30 +1215,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_allowTracksOnFrontSideString (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_allowTracksOnFrontSideString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_allowTracksOnFrontSideString.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.allowTracksOnFrontSideString_property.addEBObserver (inObserver)
+        managedObject.allowTracksOnFrontSideString_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_allowTracksOnFrontSideString (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_allowTracksOnFrontSideString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_allowTracksOnFrontSideString.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.allowTracksOnFrontSideString_property.removeEBObserver (inObserver)
+        managedObject.allowTracksOnFrontSideString_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1249,7 +1249,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_allowTracksOnFrontSideString.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.allowTracksOnFrontSideString_property.addEBObserver (observer)
+          managedObject.allowTracksOnFrontSideString_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_allowTracksOnFrontSideString.triggerPacking ()
         }
@@ -1263,7 +1263,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_allowTracksOnFrontSideString.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.allowTracksOnFrontSideString_property.removeEBObserver (observer)
+          managedObject.allowTracksOnFrontSideString_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_allowTracksOnFrontSideString.triggerPacking ()
         }
@@ -1279,30 +1279,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_allowTracksOnBackSideString (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_allowTracksOnBackSideString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_allowTracksOnBackSideString.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.allowTracksOnBackSideString_property.addEBObserver (inObserver)
+        managedObject.allowTracksOnBackSideString_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_allowTracksOnBackSideString (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_allowTracksOnBackSideString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_allowTracksOnBackSideString.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.allowTracksOnBackSideString_property.removeEBObserver (inObserver)
+        managedObject.allowTracksOnBackSideString_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1313,7 +1313,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_allowTracksOnBackSideString.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.allowTracksOnBackSideString_property.addEBObserver (observer)
+          managedObject.allowTracksOnBackSideString_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_allowTracksOnBackSideString.triggerPacking ()
         }
@@ -1327,7 +1327,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_allowTracksOnBackSideString.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.allowTracksOnBackSideString_property.removeEBObserver (observer)
+          managedObject.allowTracksOnBackSideString_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_allowTracksOnBackSideString.triggerPacking ()
         }
@@ -1343,30 +1343,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_allowTracksOnInner1LayerString (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_allowTracksOnInner1LayerString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_allowTracksOnInner1LayerString.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.allowTracksOnInner1LayerString_property.addEBObserver (inObserver)
+        managedObject.allowTracksOnInner1LayerString_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_allowTracksOnInner1LayerString (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_allowTracksOnInner1LayerString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_allowTracksOnInner1LayerString.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.allowTracksOnInner1LayerString_property.removeEBObserver (inObserver)
+        managedObject.allowTracksOnInner1LayerString_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1377,7 +1377,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_allowTracksOnInner1LayerString.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.allowTracksOnInner1LayerString_property.addEBObserver (observer)
+          managedObject.allowTracksOnInner1LayerString_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_allowTracksOnInner1LayerString.triggerPacking ()
         }
@@ -1391,7 +1391,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_allowTracksOnInner1LayerString.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.allowTracksOnInner1LayerString_property.removeEBObserver (observer)
+          managedObject.allowTracksOnInner1LayerString_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_allowTracksOnInner1LayerString.triggerPacking ()
         }
@@ -1407,30 +1407,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_allowTracksOnInner2LayerString (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_allowTracksOnInner2LayerString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_allowTracksOnInner2LayerString.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.allowTracksOnInner2LayerString_property.addEBObserver (inObserver)
+        managedObject.allowTracksOnInner2LayerString_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_allowTracksOnInner2LayerString (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_allowTracksOnInner2LayerString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_allowTracksOnInner2LayerString.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.allowTracksOnInner2LayerString_property.removeEBObserver (inObserver)
+        managedObject.allowTracksOnInner2LayerString_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1441,7 +1441,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_allowTracksOnInner2LayerString.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.allowTracksOnInner2LayerString_property.addEBObserver (observer)
+          managedObject.allowTracksOnInner2LayerString_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_allowTracksOnInner2LayerString.triggerPacking ()
         }
@@ -1455,7 +1455,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_allowTracksOnInner2LayerString.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.allowTracksOnInner2LayerString_property.removeEBObserver (observer)
+          managedObject.allowTracksOnInner2LayerString_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_allowTracksOnInner2LayerString.triggerPacking ()
         }
@@ -1471,30 +1471,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_allowTracksOnInner3LayerString (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_allowTracksOnInner3LayerString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_allowTracksOnInner3LayerString.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.allowTracksOnInner3LayerString_property.addEBObserver (inObserver)
+        managedObject.allowTracksOnInner3LayerString_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_allowTracksOnInner3LayerString (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_allowTracksOnInner3LayerString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_allowTracksOnInner3LayerString.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.allowTracksOnInner3LayerString_property.removeEBObserver (inObserver)
+        managedObject.allowTracksOnInner3LayerString_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1505,7 +1505,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_allowTracksOnInner3LayerString.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.allowTracksOnInner3LayerString_property.addEBObserver (observer)
+          managedObject.allowTracksOnInner3LayerString_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_allowTracksOnInner3LayerString.triggerPacking ()
         }
@@ -1519,7 +1519,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_allowTracksOnInner3LayerString.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.allowTracksOnInner3LayerString_property.removeEBObserver (observer)
+          managedObject.allowTracksOnInner3LayerString_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_allowTracksOnInner3LayerString.triggerPacking ()
         }
@@ -1535,30 +1535,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_allowTracksOnInner4LayerString (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_allowTracksOnInner4LayerString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_allowTracksOnInner4LayerString.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.allowTracksOnInner4LayerString_property.addEBObserver (inObserver)
+        managedObject.allowTracksOnInner4LayerString_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_allowTracksOnInner4LayerString (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_allowTracksOnInner4LayerString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_allowTracksOnInner4LayerString.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.allowTracksOnInner4LayerString_property.removeEBObserver (inObserver)
+        managedObject.allowTracksOnInner4LayerString_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1569,7 +1569,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_allowTracksOnInner4LayerString.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.allowTracksOnInner4LayerString_property.addEBObserver (observer)
+          managedObject.allowTracksOnInner4LayerString_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_allowTracksOnInner4LayerString.triggerPacking ()
         }
@@ -1583,7 +1583,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_allowTracksOnInner4LayerString.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.allowTracksOnInner4LayerString_property.removeEBObserver (observer)
+          managedObject.allowTracksOnInner4LayerString_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_allowTracksOnInner4LayerString.triggerPacking ()
         }
@@ -1599,30 +1599,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_canRemove (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_canRemove_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_canRemove.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.canRemove_property.addEBObserver (inObserver)
+        managedObject.canRemove_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_canRemove (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_canRemove_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_canRemove.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.canRemove_property.removeEBObserver (inObserver)
+        managedObject.canRemove_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1633,7 +1633,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_canRemove.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.canRemove_property.addEBObserver (observer)
+          managedObject.canRemove_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_canRemove.triggerPacking ()
         }
@@ -1647,7 +1647,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_canRemove.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.canRemove_property.removeEBObserver (observer)
+          managedObject.canRemove_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_canRemove.triggerPacking ()
         }
@@ -1663,30 +1663,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_netUsage (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_netUsage_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_netUsage.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.netUsage_property.addEBObserver (inObserver)
+        managedObject.netUsage_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_netUsage (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_netUsage_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_netUsage.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.netUsage_property.removeEBObserver (inObserver)
+        managedObject.netUsage_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1697,7 +1697,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_netUsage.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.netUsage_property.addEBObserver (observer)
+          managedObject.netUsage_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_netUsage.triggerPacking ()
         }
@@ -1711,7 +1711,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_netUsage.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.netUsage_property.removeEBObserver (observer)
+          managedObject.netUsage_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_netUsage.triggerPacking ()
         }
@@ -1727,30 +1727,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_netsDescription (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_netsDescription_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_netsDescription.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.netsDescription_property.addEBObserver (inObserver)
+        managedObject.netsDescription_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_netsDescription (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_netsDescription_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_netsDescription.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.netsDescription_property.removeEBObserver (inObserver)
+        managedObject.netsDescription_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1761,7 +1761,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_netsDescription.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.netsDescription_property.addEBObserver (observer)
+          managedObject.netsDescription_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_netsDescription.triggerPacking ()
         }
@@ -1775,7 +1775,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_netsDescription.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.netsDescription_property.removeEBObserver (observer)
+          managedObject.netsDescription_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_netsDescription.triggerPacking ()
         }
@@ -1791,30 +1791,30 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
 
   //····················································································································
 
-  final func addEBObserverOf_netWarningCount (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_netWarningCount_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_netWarningCount.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.netWarningCount_property.addEBObserver (inObserver)
+        managedObject.netWarningCount_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_netWarningCount (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_netWarningCount_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_netWarningCount.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.netWarningCount_property.removeEBObserver (inObserver)
+        managedObject.netWarningCount_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1825,7 +1825,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_netWarningCount.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.netWarningCount_property.addEBObserver (observer)
+          managedObject.netWarningCount_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_netWarningCount.triggerPacking ()
         }
@@ -1839,7 +1839,7 @@ class ReadOnlyArrayOf_NetClassInProject : ReadOnlyAbstractArrayProperty <NetClas
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_netWarningCount.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.netWarningCount_property.removeEBObserver (observer)
+          managedObject.netWarningCount_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_netWarningCount.triggerPacking ()
         }

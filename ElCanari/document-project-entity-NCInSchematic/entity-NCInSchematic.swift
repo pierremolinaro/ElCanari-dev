@@ -92,7 +92,7 @@ final class NCInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.addEBObserver (self.mPoint_none)
+    self.mPoint_property.startsToBeObserved (by: self.mPoint_none)
 //    gInitSemaphore.wait ()
   //--- To one property: mPoint (has opposite to one relationship: mNC)
     self.mPoint_property.undoManager = inUndoManager
@@ -125,10 +125,10 @@ final class NCInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.location_property.addEBObserver (self.objectDisplay_property)
-    self.mOrientation_property.addEBObserver (self.objectDisplay_property)
-    self.mPoint_property.symbolRotation_property.addEBObserver (self.objectDisplay_property)
-    preferences_pinNameFont_property.addEBObserver (self.objectDisplay_property)
+    self.mPoint_property.location_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.mOrientation_property.startsToBeObserved (by: self.objectDisplay_property)
+    self.mPoint_property.symbolRotation_property.startsToBeObserved (by: self.objectDisplay_property)
+    preferences_pinNameFont_property.startsToBeObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -154,10 +154,10 @@ final class NCInSchematic : SchematicObject,
         return .empty
       }
     }
-    self.mPoint_property.location_property.addEBObserver (self.selectionDisplay_property)
-    self.mOrientation_property.addEBObserver (self.selectionDisplay_property)
-    self.mPoint_property.symbolRotation_property.addEBObserver (self.selectionDisplay_property)
-    preferences_pinNameFont_property.addEBObserver (self.selectionDisplay_property)
+    self.mPoint_property.location_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.mOrientation_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.mPoint_property.symbolRotation_property.startsToBeObserved (by: self.selectionDisplay_property)
+    preferences_pinNameFont_property.startsToBeObserved (by: self.selectionDisplay_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature

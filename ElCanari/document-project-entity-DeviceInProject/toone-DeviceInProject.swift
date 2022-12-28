@@ -16,35 +16,35 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mDeviceName_property.removeEBObserver (self.mDeviceName_property) // Stored property
-      oldValue.mPrefix_property.removeEBObserver (self.mPrefix_property) // Stored property
-      oldValue.mDeviceVersion_property.removeEBObserver (self.mDeviceVersion_property) // Stored property
-      oldValue.mDeviceFileData_property.removeEBObserver (self.mDeviceFileData_property) // Stored property
-      oldValue.versionString_property.removeEBObserver (self.versionString_property) // Transient property
-      oldValue.sizeString_property.removeEBObserver (self.sizeString_property) // Transient property
-      oldValue.canExport_property.removeEBObserver (self.canExport_property) // Transient property
-      oldValue.packageNames_property.removeEBObserver (self.packageNames_property) // Transient property
-      oldValue.deviceComponentCountString_property.removeEBObserver (self.deviceComponentCountString_property) // Transient property
-      oldValue.canRemove_property.removeEBObserver (self.canRemove_property) // Transient property
-      oldValue.symbolAndTypesNames_property.removeEBObserver (self.symbolAndTypesNames_property) // Transient property
-      oldValue.pinPadAssignments_property.removeEBObserver (self.pinPadAssignments_property) // Transient property
-      oldValue.deviceSymbolDictionary_property.removeEBObserver (self.deviceSymbolDictionary_property) // Transient property
+      oldValue.mDeviceName_property.stopsBeingObserved (by: self.mDeviceName_property) // Stored property
+      oldValue.mPrefix_property.stopsBeingObserved (by: self.mPrefix_property) // Stored property
+      oldValue.mDeviceVersion_property.stopsBeingObserved (by: self.mDeviceVersion_property) // Stored property
+      oldValue.mDeviceFileData_property.stopsBeingObserved (by: self.mDeviceFileData_property) // Stored property
+      oldValue.versionString_property.stopsBeingObserved (by: self.versionString_property) // Transient property
+      oldValue.sizeString_property.stopsBeingObserved (by: self.sizeString_property) // Transient property
+      oldValue.canExport_property.stopsBeingObserved (by: self.canExport_property) // Transient property
+      oldValue.packageNames_property.stopsBeingObserved (by: self.packageNames_property) // Transient property
+      oldValue.deviceComponentCountString_property.stopsBeingObserved (by: self.deviceComponentCountString_property) // Transient property
+      oldValue.canRemove_property.stopsBeingObserved (by: self.canRemove_property) // Transient property
+      oldValue.symbolAndTypesNames_property.stopsBeingObserved (by: self.symbolAndTypesNames_property) // Transient property
+      oldValue.pinPadAssignments_property.stopsBeingObserved (by: self.pinPadAssignments_property) // Transient property
+      oldValue.deviceSymbolDictionary_property.stopsBeingObserved (by: self.deviceSymbolDictionary_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mDeviceName_property.addEBObserver (self.mDeviceName_property) // Stored property
-      newValue.mPrefix_property.addEBObserver (self.mPrefix_property) // Stored property
-      newValue.mDeviceVersion_property.addEBObserver (self.mDeviceVersion_property) // Stored property
-      newValue.mDeviceFileData_property.addEBObserver (self.mDeviceFileData_property) // Stored property
-      newValue.versionString_property.addEBObserver (self.versionString_property) // Transient property
-      newValue.sizeString_property.addEBObserver (self.sizeString_property) // Transient property
-      newValue.canExport_property.addEBObserver (self.canExport_property) // Transient property
-      newValue.packageNames_property.addEBObserver (self.packageNames_property) // Transient property
-      newValue.deviceComponentCountString_property.addEBObserver (self.deviceComponentCountString_property) // Transient property
-      newValue.canRemove_property.addEBObserver (self.canRemove_property) // Transient property
-      newValue.symbolAndTypesNames_property.addEBObserver (self.symbolAndTypesNames_property) // Transient property
-      newValue.pinPadAssignments_property.addEBObserver (self.pinPadAssignments_property) // Transient property
-      newValue.deviceSymbolDictionary_property.addEBObserver (self.deviceSymbolDictionary_property) // Transient property
+      newValue.mDeviceName_property.startsToBeObserved (by: self.mDeviceName_property) // Stored property
+      newValue.mPrefix_property.startsToBeObserved (by: self.mPrefix_property) // Stored property
+      newValue.mDeviceVersion_property.startsToBeObserved (by: self.mDeviceVersion_property) // Stored property
+      newValue.mDeviceFileData_property.startsToBeObserved (by: self.mDeviceFileData_property) // Stored property
+      newValue.versionString_property.startsToBeObserved (by: self.versionString_property) // Transient property
+      newValue.sizeString_property.startsToBeObserved (by: self.sizeString_property) // Transient property
+      newValue.canExport_property.startsToBeObserved (by: self.canExport_property) // Transient property
+      newValue.packageNames_property.startsToBeObserved (by: self.packageNames_property) // Transient property
+      newValue.deviceComponentCountString_property.startsToBeObserved (by: self.deviceComponentCountString_property) // Transient property
+      newValue.canRemove_property.startsToBeObserved (by: self.canRemove_property) // Transient property
+      newValue.symbolAndTypesNames_property.startsToBeObserved (by: self.symbolAndTypesNames_property) // Transient property
+      newValue.pinPadAssignments_property.startsToBeObserved (by: self.pinPadAssignments_property) // Transient property
+      newValue.deviceSymbolDictionary_property.startsToBeObserved (by: self.deviceSymbolDictionary_property) // Transient property
     }
   }
 
@@ -134,19 +134,19 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_mPackages (_ inObserver : EBObserverProtocol) {
+  final func toMany_mPackages_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPackages.insert (inObserver)
     if let object = self.propval {
-      object.mPackages_property.addEBObserver (inObserver)
+      object.mPackages_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mPackages (_ inObserver : EBObserverProtocol) {
+  final func toMany_mPackages_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPackages.remove (inObserver)
     if let object = self.propval {
-      object.mPackages_property.removeEBObserver (inObserver)
+      object.mPackages_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -158,19 +158,19 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_mSymbols (_ inObserver : EBObserverProtocol) {
+  final func toMany_mSymbols_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mSymbols.insert (inObserver)
     if let object = self.propval {
-      object.mSymbols_property.addEBObserver (inObserver)
+      object.mSymbols_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mSymbols (_ inObserver : EBObserverProtocol) {
+  final func toMany_mSymbols_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mSymbols.remove (inObserver)
     if let object = self.propval {
-      object.mSymbols_property.removeEBObserver (inObserver)
+      object.mSymbols_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -182,19 +182,19 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_mComponents (_ inObserver : EBObserverProtocol) {
+  final func toMany_mComponents_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mComponents.insert (inObserver)
     if let object = self.propval {
-      object.mComponents_property.addEBObserver (inObserver)
+      object.mComponents_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mComponents (_ inObserver : EBObserverProtocol) {
+  final func toMany_mComponents_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mComponents.remove (inObserver)
     if let object = self.propval {
-      object.mComponents_property.removeEBObserver (inObserver)
+      object.mComponents_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -206,19 +206,19 @@ class ReadOnlyObject_DeviceInProject : ReadOnlyAbstractObjectProperty <DeviceInP
 
   //····················································································································
 
-  final func addEBObserverOf_mPadAssignments (_ inObserver : EBObserverProtocol) {
+  final func toMany_mPadAssignments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPadAssignments.insert (inObserver)
     if let object = self.propval {
-      object.mPadAssignments_property.addEBObserver (inObserver)
+      object.mPadAssignments_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mPadAssignments (_ inObserver : EBObserverProtocol) {
+  final func toMany_mPadAssignments_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPadAssignments.remove (inObserver)
     if let object = self.propval {
-      object.mPadAssignments_property.removeEBObserver (inObserver)
+      object.mPadAssignments_property.stopsBeingObserved (by: inObserver)
     }
   }
 

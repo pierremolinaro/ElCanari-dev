@@ -16,53 +16,53 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.x_property.removeEBObserver (self.x_property) // Stored property
-      oldValue.y_property.removeEBObserver (self.y_property) // Stored property
-      oldValue.width_property.removeEBObserver (self.width_property) // Stored property
-      oldValue.height_property.removeEBObserver (self.height_property) // Stored property
-      oldValue.xUnit_property.removeEBObserver (self.xUnit_property) // Stored property
-      oldValue.yUnit_property.removeEBObserver (self.yUnit_property) // Stored property
-      oldValue.widthUnit_property.removeEBObserver (self.widthUnit_property) // Stored property
-      oldValue.heightUnit_property.removeEBObserver (self.heightUnit_property) // Stored property
-      oldValue.zoneName_property.removeEBObserver (self.zoneName_property) // Stored property
-      oldValue.displayZoneName_property.removeEBObserver (self.displayZoneName_property) // Stored property
-      oldValue.displayZoneNameWithPadNumbers_property.removeEBObserver (self.displayZoneNameWithPadNumbers_property) // Stored property
-      oldValue.xName_property.removeEBObserver (self.xName_property) // Stored property
-      oldValue.yName_property.removeEBObserver (self.yName_property) // Stored property
-      oldValue.xNameUnit_property.removeEBObserver (self.xNameUnit_property) // Stored property
-      oldValue.yNameUnit_property.removeEBObserver (self.yNameUnit_property) // Stored property
-      oldValue.zoneNumbering_property.removeEBObserver (self.zoneNumbering_property) // Stored property
-      oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
-      oldValue.issues_property.removeEBObserver (self.issues_property) // Transient property
-      oldValue.rect_property.removeEBObserver (self.rect_property) // Transient property
-      oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
-      oldValue.forbiddenPadArray_property.removeEBObserver (self.forbiddenPadArray_property) // Transient property
-      oldValue.emptyForbiddenPadArray_property.removeEBObserver (self.emptyForbiddenPadArray_property) // Transient property
+      oldValue.x_property.stopsBeingObserved (by: self.x_property) // Stored property
+      oldValue.y_property.stopsBeingObserved (by: self.y_property) // Stored property
+      oldValue.width_property.stopsBeingObserved (by: self.width_property) // Stored property
+      oldValue.height_property.stopsBeingObserved (by: self.height_property) // Stored property
+      oldValue.xUnit_property.stopsBeingObserved (by: self.xUnit_property) // Stored property
+      oldValue.yUnit_property.stopsBeingObserved (by: self.yUnit_property) // Stored property
+      oldValue.widthUnit_property.stopsBeingObserved (by: self.widthUnit_property) // Stored property
+      oldValue.heightUnit_property.stopsBeingObserved (by: self.heightUnit_property) // Stored property
+      oldValue.zoneName_property.stopsBeingObserved (by: self.zoneName_property) // Stored property
+      oldValue.displayZoneName_property.stopsBeingObserved (by: self.displayZoneName_property) // Stored property
+      oldValue.displayZoneNameWithPadNumbers_property.stopsBeingObserved (by: self.displayZoneNameWithPadNumbers_property) // Stored property
+      oldValue.xName_property.stopsBeingObserved (by: self.xName_property) // Stored property
+      oldValue.yName_property.stopsBeingObserved (by: self.yName_property) // Stored property
+      oldValue.xNameUnit_property.stopsBeingObserved (by: self.xNameUnit_property) // Stored property
+      oldValue.yNameUnit_property.stopsBeingObserved (by: self.yNameUnit_property) // Stored property
+      oldValue.zoneNumbering_property.stopsBeingObserved (by: self.zoneNumbering_property) // Stored property
+      oldValue.objectDisplay_property.stopsBeingObserved (by: self.objectDisplay_property) // Transient property
+      oldValue.issues_property.stopsBeingObserved (by: self.issues_property) // Transient property
+      oldValue.rect_property.stopsBeingObserved (by: self.rect_property) // Transient property
+      oldValue.selectionDisplay_property.stopsBeingObserved (by: self.selectionDisplay_property) // Transient property
+      oldValue.forbiddenPadArray_property.stopsBeingObserved (by: self.forbiddenPadArray_property) // Transient property
+      oldValue.emptyForbiddenPadArray_property.stopsBeingObserved (by: self.emptyForbiddenPadArray_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.x_property.addEBObserver (self.x_property) // Stored property
-      newValue.y_property.addEBObserver (self.y_property) // Stored property
-      newValue.width_property.addEBObserver (self.width_property) // Stored property
-      newValue.height_property.addEBObserver (self.height_property) // Stored property
-      newValue.xUnit_property.addEBObserver (self.xUnit_property) // Stored property
-      newValue.yUnit_property.addEBObserver (self.yUnit_property) // Stored property
-      newValue.widthUnit_property.addEBObserver (self.widthUnit_property) // Stored property
-      newValue.heightUnit_property.addEBObserver (self.heightUnit_property) // Stored property
-      newValue.zoneName_property.addEBObserver (self.zoneName_property) // Stored property
-      newValue.displayZoneName_property.addEBObserver (self.displayZoneName_property) // Stored property
-      newValue.displayZoneNameWithPadNumbers_property.addEBObserver (self.displayZoneNameWithPadNumbers_property) // Stored property
-      newValue.xName_property.addEBObserver (self.xName_property) // Stored property
-      newValue.yName_property.addEBObserver (self.yName_property) // Stored property
-      newValue.xNameUnit_property.addEBObserver (self.xNameUnit_property) // Stored property
-      newValue.yNameUnit_property.addEBObserver (self.yNameUnit_property) // Stored property
-      newValue.zoneNumbering_property.addEBObserver (self.zoneNumbering_property) // Stored property
-      newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-      newValue.issues_property.addEBObserver (self.issues_property) // Transient property
-      newValue.rect_property.addEBObserver (self.rect_property) // Transient property
-      newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-      newValue.forbiddenPadArray_property.addEBObserver (self.forbiddenPadArray_property) // Transient property
-      newValue.emptyForbiddenPadArray_property.addEBObserver (self.emptyForbiddenPadArray_property) // Transient property
+      newValue.x_property.startsToBeObserved (by: self.x_property) // Stored property
+      newValue.y_property.startsToBeObserved (by: self.y_property) // Stored property
+      newValue.width_property.startsToBeObserved (by: self.width_property) // Stored property
+      newValue.height_property.startsToBeObserved (by: self.height_property) // Stored property
+      newValue.xUnit_property.startsToBeObserved (by: self.xUnit_property) // Stored property
+      newValue.yUnit_property.startsToBeObserved (by: self.yUnit_property) // Stored property
+      newValue.widthUnit_property.startsToBeObserved (by: self.widthUnit_property) // Stored property
+      newValue.heightUnit_property.startsToBeObserved (by: self.heightUnit_property) // Stored property
+      newValue.zoneName_property.startsToBeObserved (by: self.zoneName_property) // Stored property
+      newValue.displayZoneName_property.startsToBeObserved (by: self.displayZoneName_property) // Stored property
+      newValue.displayZoneNameWithPadNumbers_property.startsToBeObserved (by: self.displayZoneNameWithPadNumbers_property) // Stored property
+      newValue.xName_property.startsToBeObserved (by: self.xName_property) // Stored property
+      newValue.yName_property.startsToBeObserved (by: self.yName_property) // Stored property
+      newValue.xNameUnit_property.startsToBeObserved (by: self.xNameUnit_property) // Stored property
+      newValue.yNameUnit_property.startsToBeObserved (by: self.yNameUnit_property) // Stored property
+      newValue.zoneNumbering_property.startsToBeObserved (by: self.zoneNumbering_property) // Stored property
+      newValue.objectDisplay_property.startsToBeObserved (by: self.objectDisplay_property) // Transient property
+      newValue.issues_property.startsToBeObserved (by: self.issues_property) // Transient property
+      newValue.rect_property.startsToBeObserved (by: self.rect_property) // Transient property
+      newValue.selectionDisplay_property.startsToBeObserved (by: self.selectionDisplay_property) // Transient property
+      newValue.forbiddenPadArray_property.startsToBeObserved (by: self.forbiddenPadArray_property) // Transient property
+      newValue.emptyForbiddenPadArray_property.startsToBeObserved (by: self.emptyForbiddenPadArray_property) // Transient property
     }
   }
 
@@ -206,19 +206,19 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
 
   //····················································································································
 
-  final func addEBObserverOf_forbiddenPadNumbers (_ inObserver : EBObserverProtocol) {
+  final func toMany_forbiddenPadNumbers_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_forbiddenPadNumbers.insert (inObserver)
     if let object = self.propval {
-      object.forbiddenPadNumbers_property.addEBObserver (inObserver)
+      object.forbiddenPadNumbers_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_forbiddenPadNumbers (_ inObserver : EBObserverProtocol) {
+  final func toMany_forbiddenPadNumbers_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_forbiddenPadNumbers.remove (inObserver)
     if let object = self.propval {
-      object.forbiddenPadNumbers_property.removeEBObserver (inObserver)
+      object.forbiddenPadNumbers_property.stopsBeingObserved (by: inObserver)
     }
   }
 

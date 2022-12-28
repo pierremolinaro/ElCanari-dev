@@ -1499,7 +1499,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.unconnectedPins_property.addEBObserver (self.hasUnconnectedPin_property)
+    self.rootObject.unconnectedPins_property.startsToBeObserved (by: self.hasUnconnectedPin_property)
 
   //--- Atomic property: assignmentInhibitionMessage
     self.assignmentInhibitionMessage_property.mReadModelFunction = { [weak self] in
@@ -1520,8 +1520,8 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.inconsistentPackagePadNameSetsMessage_property.addEBObserver (self.assignmentInhibitionMessage_property)
-    self.rootObject.inconsistentSymbolNameSetMessage_property.addEBObserver (self.assignmentInhibitionMessage_property)
+    self.rootObject.inconsistentPackagePadNameSetsMessage_property.startsToBeObserved (by: self.assignmentInhibitionMessage_property)
+    self.rootObject.inconsistentSymbolNameSetMessage_property.startsToBeObserved (by: self.assignmentInhibitionMessage_property)
 
   //--- Atomic property: hasUnconnectedPad
     self.hasUnconnectedPad_property.mReadModelFunction = { [weak self] in
@@ -1539,7 +1539,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.unconnectedPads_property.addEBObserver (self.hasUnconnectedPad_property)
+    self.rootObject.unconnectedPads_property.startsToBeObserved (by: self.hasUnconnectedPad_property)
 
   //--- Atomic property: hasAssignedPadProxies
     self.hasAssignedPadProxies_property.mReadModelFunction = { [weak self] in
@@ -1557,7 +1557,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.assignedPadProxies_property.addEBObserver (self.hasAssignedPadProxies_property)
+    self.rootObject.assignedPadProxies_property.startsToBeObserved (by: self.hasAssignedPadProxies_property)
 
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
@@ -1578,8 +1578,8 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.issues_property)
-    self.documentFileName_property.addEBObserver (self.issues_property)
+    self.rootObject.issues_property.startsToBeObserved (by: self.issues_property)
+    self.documentFileName_property.startsToBeObserved (by: self.issues_property)
 
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
@@ -1597,7 +1597,7 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.addEBObserver (self.mStatusImage_property)
+    self.issues_property.startsToBeObserved (by: self.mStatusImage_property)
 
   //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
@@ -1615,7 +1615,7 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.addEBObserver (self.mStatusMessage_property)
+    self.issues_property.startsToBeObserved (by: self.mStatusMessage_property)
 
   //--- Atomic property: mMetadataStatus
     self.mMetadataStatus_property.mReadModelFunction = { [weak self] in
@@ -1633,7 +1633,7 @@ import AppKit
         return .empty
       }
     }
-    self.issues_property.addEBObserver (self.mMetadataStatus_property)
+    self.issues_property.startsToBeObserved (by: self.mMetadataStatus_property)
 
   }
 

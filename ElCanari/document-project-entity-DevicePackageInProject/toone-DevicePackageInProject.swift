@@ -16,15 +16,15 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mPackageName_property.removeEBObserver (self.mPackageName_property) // Stored property
-      oldValue.mStrokeBezierPath_property.removeEBObserver (self.mStrokeBezierPath_property) // Stored property
-      oldValue.packagePadDictionary_property.removeEBObserver (self.packagePadDictionary_property) // Transient property
+      oldValue.mPackageName_property.stopsBeingObserved (by: self.mPackageName_property) // Stored property
+      oldValue.mStrokeBezierPath_property.stopsBeingObserved (by: self.mStrokeBezierPath_property) // Stored property
+      oldValue.packagePadDictionary_property.stopsBeingObserved (by: self.packagePadDictionary_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mPackageName_property.addEBObserver (self.mPackageName_property) // Stored property
-      newValue.mStrokeBezierPath_property.addEBObserver (self.mStrokeBezierPath_property) // Stored property
-      newValue.packagePadDictionary_property.addEBObserver (self.packagePadDictionary_property) // Transient property
+      newValue.mPackageName_property.startsToBeObserved (by: self.mPackageName_property) // Stored property
+      newValue.mStrokeBezierPath_property.startsToBeObserved (by: self.mStrokeBezierPath_property) // Stored property
+      newValue.packagePadDictionary_property.startsToBeObserved (by: self.packagePadDictionary_property) // Transient property
     }
   }
 
@@ -54,19 +54,19 @@ class ReadOnlyObject_DevicePackageInProject : ReadOnlyAbstractObjectProperty <De
 
   //····················································································································
 
-  final func addEBObserverOf_mMasterPads (_ inObserver : EBObserverProtocol) {
+  final func toMany_mMasterPads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mMasterPads.insert (inObserver)
     if let object = self.propval {
-      object.mMasterPads_property.addEBObserver (inObserver)
+      object.mMasterPads_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mMasterPads (_ inObserver : EBObserverProtocol) {
+  final func toMany_mMasterPads_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mMasterPads.remove (inObserver)
     if let object = self.propval {
-      object.mMasterPads_property.removeEBObserver (inObserver)
+      object.mMasterPads_property.stopsBeingObserved (by: inObserver)
     }
   }
 

@@ -16,45 +16,45 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mCenterX_property.removeEBObserver (self.mCenterX_property) // Stored property
-      oldValue.mCenterY_property.removeEBObserver (self.mCenterY_property) // Stored property
-      oldValue.mRotation_property.removeEBObserver (self.mRotation_property) // Stored property
-      oldValue.mMirror_property.removeEBObserver (self.mMirror_property) // Stored property
-      oldValue.mSymbolInstanceName_property.removeEBObserver (self.mSymbolInstanceName_property) // Stored property
-      oldValue.mSymbolTypeName_property.removeEBObserver (self.mSymbolTypeName_property) // Stored property
-      oldValue.mDisplayComponentNameOffsetX_property.removeEBObserver (self.mDisplayComponentNameOffsetX_property) // Stored property
-      oldValue.mDisplayComponentNameOffsetY_property.removeEBObserver (self.mDisplayComponentNameOffsetY_property) // Stored property
-      oldValue.mDisplayComponentValue_property.removeEBObserver (self.mDisplayComponentValue_property) // Stored property
-      oldValue.mDisplayComponentValueOffsetX_property.removeEBObserver (self.mDisplayComponentValueOffsetX_property) // Stored property
-      oldValue.mDisplayComponentValueOffsetY_property.removeEBObserver (self.mDisplayComponentValueOffsetY_property) // Stored property
-      oldValue.componentName_property.removeEBObserver (self.componentName_property) // Transient property
-      oldValue.deviceName_property.removeEBObserver (self.deviceName_property) // Transient property
-      oldValue.symbolInfo_property.removeEBObserver (self.symbolInfo_property) // Transient property
-      oldValue.pinPadAssignments_property.removeEBObserver (self.pinPadAssignments_property) // Transient property
-      oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
-      oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
-      oldValue.symbolInSchematic_property.removeEBObserver (self.symbolInSchematic_property) // Transient property
+      oldValue.mCenterX_property.stopsBeingObserved (by: self.mCenterX_property) // Stored property
+      oldValue.mCenterY_property.stopsBeingObserved (by: self.mCenterY_property) // Stored property
+      oldValue.mRotation_property.stopsBeingObserved (by: self.mRotation_property) // Stored property
+      oldValue.mMirror_property.stopsBeingObserved (by: self.mMirror_property) // Stored property
+      oldValue.mSymbolInstanceName_property.stopsBeingObserved (by: self.mSymbolInstanceName_property) // Stored property
+      oldValue.mSymbolTypeName_property.stopsBeingObserved (by: self.mSymbolTypeName_property) // Stored property
+      oldValue.mDisplayComponentNameOffsetX_property.stopsBeingObserved (by: self.mDisplayComponentNameOffsetX_property) // Stored property
+      oldValue.mDisplayComponentNameOffsetY_property.stopsBeingObserved (by: self.mDisplayComponentNameOffsetY_property) // Stored property
+      oldValue.mDisplayComponentValue_property.stopsBeingObserved (by: self.mDisplayComponentValue_property) // Stored property
+      oldValue.mDisplayComponentValueOffsetX_property.stopsBeingObserved (by: self.mDisplayComponentValueOffsetX_property) // Stored property
+      oldValue.mDisplayComponentValueOffsetY_property.stopsBeingObserved (by: self.mDisplayComponentValueOffsetY_property) // Stored property
+      oldValue.componentName_property.stopsBeingObserved (by: self.componentName_property) // Transient property
+      oldValue.deviceName_property.stopsBeingObserved (by: self.deviceName_property) // Transient property
+      oldValue.symbolInfo_property.stopsBeingObserved (by: self.symbolInfo_property) // Transient property
+      oldValue.pinPadAssignments_property.stopsBeingObserved (by: self.pinPadAssignments_property) // Transient property
+      oldValue.objectDisplay_property.stopsBeingObserved (by: self.objectDisplay_property) // Transient property
+      oldValue.selectionDisplay_property.stopsBeingObserved (by: self.selectionDisplay_property) // Transient property
+      oldValue.symbolInSchematic_property.stopsBeingObserved (by: self.symbolInSchematic_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mCenterX_property.addEBObserver (self.mCenterX_property) // Stored property
-      newValue.mCenterY_property.addEBObserver (self.mCenterY_property) // Stored property
-      newValue.mRotation_property.addEBObserver (self.mRotation_property) // Stored property
-      newValue.mMirror_property.addEBObserver (self.mMirror_property) // Stored property
-      newValue.mSymbolInstanceName_property.addEBObserver (self.mSymbolInstanceName_property) // Stored property
-      newValue.mSymbolTypeName_property.addEBObserver (self.mSymbolTypeName_property) // Stored property
-      newValue.mDisplayComponentNameOffsetX_property.addEBObserver (self.mDisplayComponentNameOffsetX_property) // Stored property
-      newValue.mDisplayComponentNameOffsetY_property.addEBObserver (self.mDisplayComponentNameOffsetY_property) // Stored property
-      newValue.mDisplayComponentValue_property.addEBObserver (self.mDisplayComponentValue_property) // Stored property
-      newValue.mDisplayComponentValueOffsetX_property.addEBObserver (self.mDisplayComponentValueOffsetX_property) // Stored property
-      newValue.mDisplayComponentValueOffsetY_property.addEBObserver (self.mDisplayComponentValueOffsetY_property) // Stored property
-      newValue.componentName_property.addEBObserver (self.componentName_property) // Transient property
-      newValue.deviceName_property.addEBObserver (self.deviceName_property) // Transient property
-      newValue.symbolInfo_property.addEBObserver (self.symbolInfo_property) // Transient property
-      newValue.pinPadAssignments_property.addEBObserver (self.pinPadAssignments_property) // Transient property
-      newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
-      newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-      newValue.symbolInSchematic_property.addEBObserver (self.symbolInSchematic_property) // Transient property
+      newValue.mCenterX_property.startsToBeObserved (by: self.mCenterX_property) // Stored property
+      newValue.mCenterY_property.startsToBeObserved (by: self.mCenterY_property) // Stored property
+      newValue.mRotation_property.startsToBeObserved (by: self.mRotation_property) // Stored property
+      newValue.mMirror_property.startsToBeObserved (by: self.mMirror_property) // Stored property
+      newValue.mSymbolInstanceName_property.startsToBeObserved (by: self.mSymbolInstanceName_property) // Stored property
+      newValue.mSymbolTypeName_property.startsToBeObserved (by: self.mSymbolTypeName_property) // Stored property
+      newValue.mDisplayComponentNameOffsetX_property.startsToBeObserved (by: self.mDisplayComponentNameOffsetX_property) // Stored property
+      newValue.mDisplayComponentNameOffsetY_property.startsToBeObserved (by: self.mDisplayComponentNameOffsetY_property) // Stored property
+      newValue.mDisplayComponentValue_property.startsToBeObserved (by: self.mDisplayComponentValue_property) // Stored property
+      newValue.mDisplayComponentValueOffsetX_property.startsToBeObserved (by: self.mDisplayComponentValueOffsetX_property) // Stored property
+      newValue.mDisplayComponentValueOffsetY_property.startsToBeObserved (by: self.mDisplayComponentValueOffsetY_property) // Stored property
+      newValue.componentName_property.startsToBeObserved (by: self.componentName_property) // Transient property
+      newValue.deviceName_property.startsToBeObserved (by: self.deviceName_property) // Transient property
+      newValue.symbolInfo_property.startsToBeObserved (by: self.symbolInfo_property) // Transient property
+      newValue.pinPadAssignments_property.startsToBeObserved (by: self.pinPadAssignments_property) // Transient property
+      newValue.objectDisplay_property.startsToBeObserved (by: self.objectDisplay_property) // Transient property
+      newValue.selectionDisplay_property.startsToBeObserved (by: self.selectionDisplay_property) // Transient property
+      newValue.symbolInSchematic_property.startsToBeObserved (by: self.symbolInSchematic_property) // Transient property
     }
   }
 
@@ -174,19 +174,19 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
 
   //····················································································································
 
-  final func addEBObserverOf_mPoints (_ inObserver : EBObserverProtocol) {
+  final func toMany_mPoints_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPoints.insert (inObserver)
     if let object = self.propval {
-      object.mPoints_property.addEBObserver (inObserver)
+      object.mPoints_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mPoints (_ inObserver : EBObserverProtocol) {
+  final func toMany_mPoints_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPoints.remove (inObserver)
     if let object = self.propval {
-      object.mPoints_property.removeEBObserver (inObserver)
+      object.mPoints_property.stopsBeingObserved (by: inObserver)
     }
   }
 

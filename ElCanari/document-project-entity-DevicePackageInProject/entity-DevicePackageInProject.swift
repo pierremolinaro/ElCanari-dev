@@ -128,7 +128,7 @@ final class DevicePackageInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mMasterPads_property.addEBObserverOf_descriptor (self.packagePadDictionary_property)
+    self.mMasterPads_property.toMany_descriptor_StartsToBeObserved (by: self.packagePadDictionary_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature

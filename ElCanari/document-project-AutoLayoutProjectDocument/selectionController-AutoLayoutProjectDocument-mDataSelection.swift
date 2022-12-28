@@ -251,124 +251,124 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //--- drawBoardLimits
     self.drawBoardLimits_property.mReadModelFunction = nil 
     self.drawBoardLimits_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawBoardLimits (self.drawBoardLimits_property)
+    self.mModel?.toMany_drawBoardLimits_StopsBeingObserved (by: self.drawBoardLimits_property)
   //--- drawComponentNamesBottomSide
     self.drawComponentNamesBottomSide_property.mReadModelFunction = nil 
     self.drawComponentNamesBottomSide_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawComponentNamesBottomSide (self.drawComponentNamesBottomSide_property)
+    self.mModel?.toMany_drawComponentNamesBottomSide_StopsBeingObserved (by: self.drawComponentNamesBottomSide_property)
   //--- drawComponentNamesTopSide
     self.drawComponentNamesTopSide_property.mReadModelFunction = nil 
     self.drawComponentNamesTopSide_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawComponentNamesTopSide (self.drawComponentNamesTopSide_property)
+    self.mModel?.toMany_drawComponentNamesTopSide_StopsBeingObserved (by: self.drawComponentNamesTopSide_property)
   //--- drawComponentValuesBottomSide
     self.drawComponentValuesBottomSide_property.mReadModelFunction = nil 
     self.drawComponentValuesBottomSide_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawComponentValuesBottomSide (self.drawComponentValuesBottomSide_property)
+    self.mModel?.toMany_drawComponentValuesBottomSide_StopsBeingObserved (by: self.drawComponentValuesBottomSide_property)
   //--- drawComponentValuesTopSide
     self.drawComponentValuesTopSide_property.mReadModelFunction = nil 
     self.drawComponentValuesTopSide_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawComponentValuesTopSide (self.drawComponentValuesTopSide_property)
+    self.mModel?.toMany_drawComponentValuesTopSide_StopsBeingObserved (by: self.drawComponentValuesTopSide_property)
   //--- drawInternalBoardLimits
     self.drawInternalBoardLimits_property.mReadModelFunction = nil 
     self.drawInternalBoardLimits_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawInternalBoardLimits (self.drawInternalBoardLimits_property)
+    self.mModel?.toMany_drawInternalBoardLimits_StopsBeingObserved (by: self.drawInternalBoardLimits_property)
   //--- drawPackageLegendBottomSide
     self.drawPackageLegendBottomSide_property.mReadModelFunction = nil 
     self.drawPackageLegendBottomSide_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawPackageLegendBottomSide (self.drawPackageLegendBottomSide_property)
+    self.mModel?.toMany_drawPackageLegendBottomSide_StopsBeingObserved (by: self.drawPackageLegendBottomSide_property)
   //--- drawPackageLegendTopSide
     self.drawPackageLegendTopSide_property.mReadModelFunction = nil 
     self.drawPackageLegendTopSide_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawPackageLegendTopSide (self.drawPackageLegendTopSide_property)
+    self.mModel?.toMany_drawPackageLegendTopSide_StopsBeingObserved (by: self.drawPackageLegendTopSide_property)
   //--- drawPadHolesInPDF
     self.drawPadHolesInPDF_property.mReadModelFunction = nil 
     self.drawPadHolesInPDF_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawPadHolesInPDF (self.drawPadHolesInPDF_property)
+    self.mModel?.toMany_drawPadHolesInPDF_StopsBeingObserved (by: self.drawPadHolesInPDF_property)
   //--- drawPadsBottomSide
     self.drawPadsBottomSide_property.mReadModelFunction = nil 
     self.drawPadsBottomSide_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawPadsBottomSide (self.drawPadsBottomSide_property)
+    self.mModel?.toMany_drawPadsBottomSide_StopsBeingObserved (by: self.drawPadsBottomSide_property)
   //--- drawPadsTopSide
     self.drawPadsTopSide_property.mReadModelFunction = nil 
     self.drawPadsTopSide_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawPadsTopSide (self.drawPadsTopSide_property)
+    self.mModel?.toMany_drawPadsTopSide_StopsBeingObserved (by: self.drawPadsTopSide_property)
   //--- drawTextsLayoutBottomSide
     self.drawTextsLayoutBottomSide_property.mReadModelFunction = nil 
     self.drawTextsLayoutBottomSide_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawTextsLayoutBottomSide (self.drawTextsLayoutBottomSide_property)
+    self.mModel?.toMany_drawTextsLayoutBottomSide_StopsBeingObserved (by: self.drawTextsLayoutBottomSide_property)
   //--- drawTextsLayoutTopSide
     self.drawTextsLayoutTopSide_property.mReadModelFunction = nil 
     self.drawTextsLayoutTopSide_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawTextsLayoutTopSide (self.drawTextsLayoutTopSide_property)
+    self.mModel?.toMany_drawTextsLayoutTopSide_StopsBeingObserved (by: self.drawTextsLayoutTopSide_property)
   //--- drawTextsLegendBottomSide
     self.drawTextsLegendBottomSide_property.mReadModelFunction = nil 
     self.drawTextsLegendBottomSide_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawTextsLegendBottomSide (self.drawTextsLegendBottomSide_property)
+    self.mModel?.toMany_drawTextsLegendBottomSide_StopsBeingObserved (by: self.drawTextsLegendBottomSide_property)
   //--- drawTextsLegendTopSide
     self.drawTextsLegendTopSide_property.mReadModelFunction = nil 
     self.drawTextsLegendTopSide_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawTextsLegendTopSide (self.drawTextsLegendTopSide_property)
+    self.mModel?.toMany_drawTextsLegendTopSide_StopsBeingObserved (by: self.drawTextsLegendTopSide_property)
   //--- drawTracksBottomSide
     self.drawTracksBottomSide_property.mReadModelFunction = nil 
     self.drawTracksBottomSide_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawTracksBottomSide (self.drawTracksBottomSide_property)
+    self.mModel?.toMany_drawTracksBottomSide_StopsBeingObserved (by: self.drawTracksBottomSide_property)
   //--- drawTracksInner1Layer
     self.drawTracksInner1Layer_property.mReadModelFunction = nil 
     self.drawTracksInner1Layer_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawTracksInner1Layer (self.drawTracksInner1Layer_property)
+    self.mModel?.toMany_drawTracksInner1Layer_StopsBeingObserved (by: self.drawTracksInner1Layer_property)
   //--- drawTracksInner2Layer
     self.drawTracksInner2Layer_property.mReadModelFunction = nil 
     self.drawTracksInner2Layer_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawTracksInner2Layer (self.drawTracksInner2Layer_property)
+    self.mModel?.toMany_drawTracksInner2Layer_StopsBeingObserved (by: self.drawTracksInner2Layer_property)
   //--- drawTracksInner3Layer
     self.drawTracksInner3Layer_property.mReadModelFunction = nil 
     self.drawTracksInner3Layer_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawTracksInner3Layer (self.drawTracksInner3Layer_property)
+    self.mModel?.toMany_drawTracksInner3Layer_StopsBeingObserved (by: self.drawTracksInner3Layer_property)
   //--- drawTracksInner4Layer
     self.drawTracksInner4Layer_property.mReadModelFunction = nil 
     self.drawTracksInner4Layer_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawTracksInner4Layer (self.drawTracksInner4Layer_property)
+    self.mModel?.toMany_drawTracksInner4Layer_StopsBeingObserved (by: self.drawTracksInner4Layer_property)
   //--- drawTracksTopSide
     self.drawTracksTopSide_property.mReadModelFunction = nil 
     self.drawTracksTopSide_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawTracksTopSide (self.drawTracksTopSide_property)
+    self.mModel?.toMany_drawTracksTopSide_StopsBeingObserved (by: self.drawTracksTopSide_property)
   //--- drawTraversingPads
     self.drawTraversingPads_property.mReadModelFunction = nil 
     self.drawTraversingPads_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawTraversingPads (self.drawTraversingPads_property)
+    self.mModel?.toMany_drawTraversingPads_StopsBeingObserved (by: self.drawTraversingPads_property)
   //--- drawVias
     self.drawVias_property.mReadModelFunction = nil 
     self.drawVias_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawVias (self.drawVias_property)
+    self.mModel?.toMany_drawVias_StopsBeingObserved (by: self.drawVias_property)
   //--- emptyFileExtensionImage
     self.emptyFileExtensionImage_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_emptyFileExtensionImage (self.emptyFileExtensionImage_property)
+    self.mModel?.toMany_emptyFileExtensionImage_StopsBeingObserved (by: self.emptyFileExtensionImage_property)
   //--- fileExtension
     self.fileExtension_property.mReadModelFunction = nil 
     self.fileExtension_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_fileExtension (self.fileExtension_property)
+    self.mModel?.toMany_fileExtension_StopsBeingObserved (by: self.fileExtension_property)
   //--- hasNoData
     self.hasNoData_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_hasNoData (self.hasNoData_property)
+    self.mModel?.toMany_hasNoData_StopsBeingObserved (by: self.hasNoData_property)
   //--- horizontalMirror
     self.horizontalMirror_property.mReadModelFunction = nil 
     self.horizontalMirror_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_horizontalMirror (self.horizontalMirror_property)
+    self.mModel?.toMany_horizontalMirror_StopsBeingObserved (by: self.horizontalMirror_property)
   //--- measurementUnitForPadHoleInPDF
     self.measurementUnitForPadHoleInPDF_property.mReadModelFunction = nil 
     self.measurementUnitForPadHoleInPDF_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_measurementUnitForPadHoleInPDF (self.measurementUnitForPadHoleInPDF_property)
+    self.mModel?.toMany_measurementUnitForPadHoleInPDF_StopsBeingObserved (by: self.measurementUnitForPadHoleInPDF_property)
   //--- name
     self.name_property.mReadModelFunction = nil 
     self.name_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_name (self.name_property)
+    self.mModel?.toMany_name_StopsBeingObserved (by: self.name_property)
   //--- padHoleDiameterInPDF
     self.padHoleDiameterInPDF_property.mReadModelFunction = nil 
     self.padHoleDiameterInPDF_property.mWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_padHoleDiameterInPDF (self.padHoleDiameterInPDF_property)
+    self.mModel?.toMany_padHoleDiameterInPDF_StopsBeingObserved (by: self.padHoleDiameterInPDF_property)
   //--- parameterStatusImage
     self.parameterStatusImage_property.mReadModelFunction = nil 
-    self.mModel?.removeEBObserverOf_parameterStatusImage (self.parameterStatusImage_property)
+    self.mModel?.toMany_parameterStatusImage_StopsBeingObserved (by: self.parameterStatusImage_property)
   //---
     self.mModel = nil
   } */
@@ -376,7 +376,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawBoardLimits (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawBoardLimits (self.drawBoardLimits_property)
+    model.toMany_drawBoardLimits_StartsToBeObserved (by: self.drawBoardLimits_property)
     self.drawBoardLimits_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -428,7 +428,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawComponentNamesBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawComponentNamesBottomSide (self.drawComponentNamesBottomSide_property)
+    model.toMany_drawComponentNamesBottomSide_StartsToBeObserved (by: self.drawComponentNamesBottomSide_property)
     self.drawComponentNamesBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -480,7 +480,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawComponentNamesTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawComponentNamesTopSide (self.drawComponentNamesTopSide_property)
+    model.toMany_drawComponentNamesTopSide_StartsToBeObserved (by: self.drawComponentNamesTopSide_property)
     self.drawComponentNamesTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -532,7 +532,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawComponentValuesBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawComponentValuesBottomSide (self.drawComponentValuesBottomSide_property)
+    model.toMany_drawComponentValuesBottomSide_StartsToBeObserved (by: self.drawComponentValuesBottomSide_property)
     self.drawComponentValuesBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -584,7 +584,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawComponentValuesTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawComponentValuesTopSide (self.drawComponentValuesTopSide_property)
+    model.toMany_drawComponentValuesTopSide_StartsToBeObserved (by: self.drawComponentValuesTopSide_property)
     self.drawComponentValuesTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -636,7 +636,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawInternalBoardLimits (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawInternalBoardLimits (self.drawInternalBoardLimits_property)
+    model.toMany_drawInternalBoardLimits_StartsToBeObserved (by: self.drawInternalBoardLimits_property)
     self.drawInternalBoardLimits_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -688,7 +688,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawPackageLegendBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawPackageLegendBottomSide (self.drawPackageLegendBottomSide_property)
+    model.toMany_drawPackageLegendBottomSide_StartsToBeObserved (by: self.drawPackageLegendBottomSide_property)
     self.drawPackageLegendBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -740,7 +740,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawPackageLegendTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawPackageLegendTopSide (self.drawPackageLegendTopSide_property)
+    model.toMany_drawPackageLegendTopSide_StartsToBeObserved (by: self.drawPackageLegendTopSide_property)
     self.drawPackageLegendTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -792,7 +792,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawPadHolesInPDF (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawPadHolesInPDF (self.drawPadHolesInPDF_property)
+    model.toMany_drawPadHolesInPDF_StartsToBeObserved (by: self.drawPadHolesInPDF_property)
     self.drawPadHolesInPDF_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -844,7 +844,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawPadsBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawPadsBottomSide (self.drawPadsBottomSide_property)
+    model.toMany_drawPadsBottomSide_StartsToBeObserved (by: self.drawPadsBottomSide_property)
     self.drawPadsBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -896,7 +896,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawPadsTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawPadsTopSide (self.drawPadsTopSide_property)
+    model.toMany_drawPadsTopSide_StartsToBeObserved (by: self.drawPadsTopSide_property)
     self.drawPadsTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -948,7 +948,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawTextsLayoutBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTextsLayoutBottomSide (self.drawTextsLayoutBottomSide_property)
+    model.toMany_drawTextsLayoutBottomSide_StartsToBeObserved (by: self.drawTextsLayoutBottomSide_property)
     self.drawTextsLayoutBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1000,7 +1000,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawTextsLayoutTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTextsLayoutTopSide (self.drawTextsLayoutTopSide_property)
+    model.toMany_drawTextsLayoutTopSide_StartsToBeObserved (by: self.drawTextsLayoutTopSide_property)
     self.drawTextsLayoutTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1052,7 +1052,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawTextsLegendBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTextsLegendBottomSide (self.drawTextsLegendBottomSide_property)
+    model.toMany_drawTextsLegendBottomSide_StartsToBeObserved (by: self.drawTextsLegendBottomSide_property)
     self.drawTextsLegendBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1104,7 +1104,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawTextsLegendTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTextsLegendTopSide (self.drawTextsLegendTopSide_property)
+    model.toMany_drawTextsLegendTopSide_StartsToBeObserved (by: self.drawTextsLegendTopSide_property)
     self.drawTextsLegendTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1156,7 +1156,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawTracksBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTracksBottomSide (self.drawTracksBottomSide_property)
+    model.toMany_drawTracksBottomSide_StartsToBeObserved (by: self.drawTracksBottomSide_property)
     self.drawTracksBottomSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1208,7 +1208,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawTracksInner1Layer (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTracksInner1Layer (self.drawTracksInner1Layer_property)
+    model.toMany_drawTracksInner1Layer_StartsToBeObserved (by: self.drawTracksInner1Layer_property)
     self.drawTracksInner1Layer_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1260,7 +1260,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawTracksInner2Layer (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTracksInner2Layer (self.drawTracksInner2Layer_property)
+    model.toMany_drawTracksInner2Layer_StartsToBeObserved (by: self.drawTracksInner2Layer_property)
     self.drawTracksInner2Layer_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1312,7 +1312,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawTracksInner3Layer (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTracksInner3Layer (self.drawTracksInner3Layer_property)
+    model.toMany_drawTracksInner3Layer_StartsToBeObserved (by: self.drawTracksInner3Layer_property)
     self.drawTracksInner3Layer_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1364,7 +1364,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawTracksInner4Layer (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTracksInner4Layer (self.drawTracksInner4Layer_property)
+    model.toMany_drawTracksInner4Layer_StartsToBeObserved (by: self.drawTracksInner4Layer_property)
     self.drawTracksInner4Layer_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1416,7 +1416,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawTracksTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTracksTopSide (self.drawTracksTopSide_property)
+    model.toMany_drawTracksTopSide_StartsToBeObserved (by: self.drawTracksTopSide_property)
     self.drawTracksTopSide_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1468,7 +1468,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawTraversingPads (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawTraversingPads (self.drawTraversingPads_property)
+    model.toMany_drawTraversingPads_StartsToBeObserved (by: self.drawTraversingPads_property)
     self.drawTraversingPads_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1520,7 +1520,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_drawVias (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_drawVias (self.drawVias_property)
+    model.toMany_drawVias_StartsToBeObserved (by: self.drawVias_property)
     self.drawVias_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1572,7 +1572,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_emptyFileExtensionImage (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_emptyFileExtensionImage (self.emptyFileExtensionImage_property)
+    model.toMany_emptyFileExtensionImage_StartsToBeObserved (by: self.emptyFileExtensionImage_property)
     self.emptyFileExtensionImage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1612,7 +1612,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_fileExtension (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_fileExtension (self.fileExtension_property)
+    model.toMany_fileExtension_StartsToBeObserved (by: self.fileExtension_property)
     self.fileExtension_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1664,7 +1664,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_hasNoData (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_hasNoData (self.hasNoData_property)
+    model.toMany_hasNoData_StartsToBeObserved (by: self.hasNoData_property)
     self.hasNoData_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1704,7 +1704,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_horizontalMirror (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_horizontalMirror (self.horizontalMirror_property)
+    model.toMany_horizontalMirror_StartsToBeObserved (by: self.horizontalMirror_property)
     self.horizontalMirror_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1756,7 +1756,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_measurementUnitForPadHoleInPDF (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_measurementUnitForPadHoleInPDF (self.measurementUnitForPadHoleInPDF_property)
+    model.toMany_measurementUnitForPadHoleInPDF_StartsToBeObserved (by: self.measurementUnitForPadHoleInPDF_property)
     self.measurementUnitForPadHoleInPDF_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1808,7 +1808,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_name (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_name (self.name_property)
+    model.toMany_name_StartsToBeObserved (by: self.name_property)
     self.name_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1860,7 +1860,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_padHoleDiameterInPDF (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_padHoleDiameterInPDF (self.padHoleDiameterInPDF_property)
+    model.toMany_padHoleDiameterInPDF_StartsToBeObserved (by: self.padHoleDiameterInPDF_property)
     self.padHoleDiameterInPDF_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {
@@ -1912,7 +1912,7 @@ final class SelectionController_AutoLayoutProjectDocument_mDataSelection : EBSwi
   //···················································································································*
 
   private final func bind_property_parameterStatusImage (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
-    model.addEBObserverOf_parameterStatusImage (self.parameterStatusImage_property)
+    model.toMany_parameterStatusImage_StartsToBeObserved (by: self.parameterStatusImage_property)
     self.parameterStatusImage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.selection {

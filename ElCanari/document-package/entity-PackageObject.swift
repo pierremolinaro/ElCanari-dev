@@ -113,7 +113,7 @@ class PackageObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.addEBObserver (self.mRoot_none)
+    self.mRoot_property.startsToBeObserved (by: self.mRoot_none)
 //    gInitSemaphore.wait ()
   //--- To one property: mRoot (has opposite to many relationship: packageObjects)
     self.mRoot_property.undoManager = inUndoManager
@@ -137,7 +137,7 @@ class PackageObject : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mRoot_property.knobSizeMultpliedByTen_property.addEBObserver (self.knobSize_property)
+    self.mRoot_property.knobSizeMultpliedByTen_property.startsToBeObserved (by: self.knobSize_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature

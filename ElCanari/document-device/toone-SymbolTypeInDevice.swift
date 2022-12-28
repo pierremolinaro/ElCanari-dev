@@ -16,27 +16,27 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mTypeName_property.removeEBObserver (self.mTypeName_property) // Stored property
-      oldValue.mVersion_property.removeEBObserver (self.mVersion_property) // Stored property
-      oldValue.mFileData_property.removeEBObserver (self.mFileData_property) // Stored property
-      oldValue.mStrokeBezierPath_property.removeEBObserver (self.mStrokeBezierPath_property) // Stored property
-      oldValue.mFilledBezierPath_property.removeEBObserver (self.mFilledBezierPath_property) // Stored property
-      oldValue.versionString_property.removeEBObserver (self.versionString_property) // Transient property
-      oldValue.instanceCount_property.removeEBObserver (self.instanceCount_property) // Transient property
-      oldValue.documentSize_property.removeEBObserver (self.documentSize_property) // Transient property
-      oldValue.pinNameShape_property.removeEBObserver (self.pinNameShape_property) // Transient property
+      oldValue.mTypeName_property.stopsBeingObserved (by: self.mTypeName_property) // Stored property
+      oldValue.mVersion_property.stopsBeingObserved (by: self.mVersion_property) // Stored property
+      oldValue.mFileData_property.stopsBeingObserved (by: self.mFileData_property) // Stored property
+      oldValue.mStrokeBezierPath_property.stopsBeingObserved (by: self.mStrokeBezierPath_property) // Stored property
+      oldValue.mFilledBezierPath_property.stopsBeingObserved (by: self.mFilledBezierPath_property) // Stored property
+      oldValue.versionString_property.stopsBeingObserved (by: self.versionString_property) // Transient property
+      oldValue.instanceCount_property.stopsBeingObserved (by: self.instanceCount_property) // Transient property
+      oldValue.documentSize_property.stopsBeingObserved (by: self.documentSize_property) // Transient property
+      oldValue.pinNameShape_property.stopsBeingObserved (by: self.pinNameShape_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mTypeName_property.addEBObserver (self.mTypeName_property) // Stored property
-      newValue.mVersion_property.addEBObserver (self.mVersion_property) // Stored property
-      newValue.mFileData_property.addEBObserver (self.mFileData_property) // Stored property
-      newValue.mStrokeBezierPath_property.addEBObserver (self.mStrokeBezierPath_property) // Stored property
-      newValue.mFilledBezierPath_property.addEBObserver (self.mFilledBezierPath_property) // Stored property
-      newValue.versionString_property.addEBObserver (self.versionString_property) // Transient property
-      newValue.instanceCount_property.addEBObserver (self.instanceCount_property) // Transient property
-      newValue.documentSize_property.addEBObserver (self.documentSize_property) // Transient property
-      newValue.pinNameShape_property.addEBObserver (self.pinNameShape_property) // Transient property
+      newValue.mTypeName_property.startsToBeObserved (by: self.mTypeName_property) // Stored property
+      newValue.mVersion_property.startsToBeObserved (by: self.mVersion_property) // Stored property
+      newValue.mFileData_property.startsToBeObserved (by: self.mFileData_property) // Stored property
+      newValue.mStrokeBezierPath_property.startsToBeObserved (by: self.mStrokeBezierPath_property) // Stored property
+      newValue.mFilledBezierPath_property.startsToBeObserved (by: self.mFilledBezierPath_property) // Stored property
+      newValue.versionString_property.startsToBeObserved (by: self.versionString_property) // Transient property
+      newValue.instanceCount_property.startsToBeObserved (by: self.instanceCount_property) // Transient property
+      newValue.documentSize_property.startsToBeObserved (by: self.documentSize_property) // Transient property
+      newValue.pinNameShape_property.startsToBeObserved (by: self.pinNameShape_property) // Transient property
     }
   }
 
@@ -102,19 +102,19 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
 
   //····················································································································
 
-  final func addEBObserverOf_mInstances (_ inObserver : EBObserverProtocol) {
+  final func toMany_mInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mInstances.insert (inObserver)
     if let object = self.propval {
-      object.mInstances_property.addEBObserver (inObserver)
+      object.mInstances_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mInstances (_ inObserver : EBObserverProtocol) {
+  final func toMany_mInstances_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mInstances.remove (inObserver)
     if let object = self.propval {
-      object.mInstances_property.removeEBObserver (inObserver)
+      object.mInstances_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -126,19 +126,19 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
 
   //····················································································································
 
-  final func addEBObserverOf_mPinTypes (_ inObserver : EBObserverProtocol) {
+  final func toMany_mPinTypes_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPinTypes.insert (inObserver)
     if let object = self.propval {
-      object.mPinTypes_property.addEBObserver (inObserver)
+      object.mPinTypes_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mPinTypes (_ inObserver : EBObserverProtocol) {
+  final func toMany_mPinTypes_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPinTypes.remove (inObserver)
     if let object = self.propval {
-      object.mPinTypes_property.removeEBObserver (inObserver)
+      object.mPinTypes_property.stopsBeingObserved (by: inObserver)
     }
   }
 

@@ -303,7 +303,7 @@ final class NetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNetClass_property.addEBObserver (self.mNetClass_none)
+    self.mNetClass_property.startsToBeObserved (by: self.mNetClass_none)
 //    gInitSemaphore.wait ()
   //--- To many property: mPoints (has opposite relationship)
     self.mPoints_property.undoManager = inUndoManager
@@ -339,7 +339,7 @@ final class NetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNetClass_property.mNetClassName_property.addEBObserver (self.netClassName_property)
+    self.mNetClass_property.mNetClassName_property.startsToBeObserved (by: self.netClassName_property)
   //--- Atomic property: netClassTrackWidth
     self.netClassTrackWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -356,7 +356,7 @@ final class NetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNetClass_property.mTrackWidth_property.addEBObserver (self.netClassTrackWidth_property)
+    self.mNetClass_property.mTrackWidth_property.startsToBeObserved (by: self.netClassTrackWidth_property)
   //--- Atomic property: netClassViaHoleDiameter
     self.netClassViaHoleDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -373,7 +373,7 @@ final class NetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNetClass_property.mViaHoleDiameter_property.addEBObserver (self.netClassViaHoleDiameter_property)
+    self.mNetClass_property.mViaHoleDiameter_property.startsToBeObserved (by: self.netClassViaHoleDiameter_property)
   //--- Atomic property: netClassViaPadDiameter
     self.netClassViaPadDiameter_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -390,7 +390,7 @@ final class NetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNetClass_property.mViaPadDiameter_property.addEBObserver (self.netClassViaPadDiameter_property)
+    self.mNetClass_property.mViaPadDiameter_property.startsToBeObserved (by: self.netClassViaPadDiameter_property)
   //--- Atomic property: wireColor
     self.wireColor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -407,7 +407,7 @@ final class NetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mNetClass_property.mNetClassColor_property.addEBObserver (self.wireColor_property)
+    self.mNetClass_property.mNetClassColor_property.startsToBeObserved (by: self.wireColor_property)
   //--- Atomic property: netSchematicPointsInfo
     self.netSchematicPointsInfo_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -424,7 +424,7 @@ final class NetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mPoints_property.addEBObserverOf_netInfoForPoint (self.netSchematicPointsInfo_property)
+    self.mPoints_property.toMany_netInfoForPoint_StartsToBeObserved (by: self.netSchematicPointsInfo_property)
   //--- Atomic property: trackCount
     self.trackCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -441,7 +441,7 @@ final class NetInProject : EBManagedObject,
         return .empty
       }
     }
-    self.mTracks_property.addEBObserver (self.trackCount_property)
+    self.mTracks_property.startsToBeObserved (by: self.trackCount_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mPoints_property.setOppositeRelationShipFunctions (

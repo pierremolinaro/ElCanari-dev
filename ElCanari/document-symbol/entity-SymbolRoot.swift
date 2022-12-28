@@ -368,11 +368,11 @@ final class SymbolRoot : EBManagedObject,
         return .empty
       }
     }
-    self.symbolObjects_property.addEBObserverOf_issues (self.issues_property)
-    self.symbolPins_property.addEBObserverOf_name (self.issues_property)
-    self.symbolPins_property.addEBObserverOf_nameRect (self.issues_property)
-    self.symbolPins_property.addEBObserverOf_xPin (self.issues_property)
-    self.symbolPins_property.addEBObserverOf_yPin (self.issues_property)
+    self.symbolObjects_property.toMany_issues_StartsToBeObserved (by: self.issues_property)
+    self.symbolPins_property.toMany_name_StartsToBeObserved (by: self.issues_property)
+    self.symbolPins_property.toMany_nameRect_StartsToBeObserved (by: self.issues_property)
+    self.symbolPins_property.toMany_xPin_StartsToBeObserved (by: self.issues_property)
+    self.symbolPins_property.toMany_yPin_StartsToBeObserved (by: self.issues_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.symbolPins_property.setDataProvider (self.symbolObjects_property)

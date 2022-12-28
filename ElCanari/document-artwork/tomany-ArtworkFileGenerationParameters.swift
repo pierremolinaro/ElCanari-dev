@@ -93,30 +93,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawBoardLimits (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawBoardLimits_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawBoardLimits.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawBoardLimits_property.addEBObserver (inObserver)
+        managedObject.drawBoardLimits_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawBoardLimits (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawBoardLimits_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawBoardLimits.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawBoardLimits_property.removeEBObserver (inObserver)
+        managedObject.drawBoardLimits_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -128,7 +128,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawBoardLimits.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawBoardLimits_property.addEBObserver (observer)
+            managedObject.drawBoardLimits_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawBoardLimits.triggerPacking ()
           }
@@ -144,7 +144,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawBoardLimits_property.removeEBObserver (observer)
+          managedObject.drawBoardLimits_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawBoardLimits.triggerPacking ()
@@ -160,30 +160,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawInternalBoardLimits (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawInternalBoardLimits_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawInternalBoardLimits.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawInternalBoardLimits_property.addEBObserver (inObserver)
+        managedObject.drawInternalBoardLimits_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawInternalBoardLimits (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawInternalBoardLimits_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawInternalBoardLimits.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawInternalBoardLimits_property.removeEBObserver (inObserver)
+        managedObject.drawInternalBoardLimits_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -195,7 +195,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawInternalBoardLimits.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawInternalBoardLimits_property.addEBObserver (observer)
+            managedObject.drawInternalBoardLimits_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawInternalBoardLimits.triggerPacking ()
           }
@@ -211,7 +211,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawInternalBoardLimits_property.removeEBObserver (observer)
+          managedObject.drawInternalBoardLimits_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawInternalBoardLimits.triggerPacking ()
@@ -227,30 +227,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawComponentNamesTopSide (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawComponentNamesTopSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawComponentNamesTopSide.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawComponentNamesTopSide_property.addEBObserver (inObserver)
+        managedObject.drawComponentNamesTopSide_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawComponentNamesTopSide (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawComponentNamesTopSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawComponentNamesTopSide.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawComponentNamesTopSide_property.removeEBObserver (inObserver)
+        managedObject.drawComponentNamesTopSide_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -262,7 +262,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawComponentNamesTopSide.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawComponentNamesTopSide_property.addEBObserver (observer)
+            managedObject.drawComponentNamesTopSide_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawComponentNamesTopSide.triggerPacking ()
           }
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawComponentNamesTopSide_property.removeEBObserver (observer)
+          managedObject.drawComponentNamesTopSide_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawComponentNamesTopSide.triggerPacking ()
@@ -294,30 +294,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawComponentNamesBottomSide (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawComponentNamesBottomSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawComponentNamesBottomSide.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawComponentNamesBottomSide_property.addEBObserver (inObserver)
+        managedObject.drawComponentNamesBottomSide_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawComponentNamesBottomSide (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawComponentNamesBottomSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawComponentNamesBottomSide.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawComponentNamesBottomSide_property.removeEBObserver (inObserver)
+        managedObject.drawComponentNamesBottomSide_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -329,7 +329,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawComponentNamesBottomSide.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawComponentNamesBottomSide_property.addEBObserver (observer)
+            managedObject.drawComponentNamesBottomSide_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawComponentNamesBottomSide.triggerPacking ()
           }
@@ -345,7 +345,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawComponentNamesBottomSide_property.removeEBObserver (observer)
+          managedObject.drawComponentNamesBottomSide_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawComponentNamesBottomSide.triggerPacking ()
@@ -361,30 +361,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawComponentValuesTopSide (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawComponentValuesTopSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawComponentValuesTopSide.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawComponentValuesTopSide_property.addEBObserver (inObserver)
+        managedObject.drawComponentValuesTopSide_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawComponentValuesTopSide (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawComponentValuesTopSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawComponentValuesTopSide.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawComponentValuesTopSide_property.removeEBObserver (inObserver)
+        managedObject.drawComponentValuesTopSide_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -396,7 +396,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawComponentValuesTopSide.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawComponentValuesTopSide_property.addEBObserver (observer)
+            managedObject.drawComponentValuesTopSide_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawComponentValuesTopSide.triggerPacking ()
           }
@@ -412,7 +412,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawComponentValuesTopSide_property.removeEBObserver (observer)
+          managedObject.drawComponentValuesTopSide_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawComponentValuesTopSide.triggerPacking ()
@@ -428,30 +428,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawComponentValuesBottomSide (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawComponentValuesBottomSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawComponentValuesBottomSide.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawComponentValuesBottomSide_property.addEBObserver (inObserver)
+        managedObject.drawComponentValuesBottomSide_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawComponentValuesBottomSide (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawComponentValuesBottomSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawComponentValuesBottomSide.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawComponentValuesBottomSide_property.removeEBObserver (inObserver)
+        managedObject.drawComponentValuesBottomSide_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -463,7 +463,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawComponentValuesBottomSide.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawComponentValuesBottomSide_property.addEBObserver (observer)
+            managedObject.drawComponentValuesBottomSide_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawComponentValuesBottomSide.triggerPacking ()
           }
@@ -479,7 +479,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawComponentValuesBottomSide_property.removeEBObserver (observer)
+          managedObject.drawComponentValuesBottomSide_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawComponentValuesBottomSide.triggerPacking ()
@@ -495,30 +495,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPackageLegendTopSide (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawPackageLegendTopSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawPackageLegendTopSide.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawPackageLegendTopSide_property.addEBObserver (inObserver)
+        managedObject.drawPackageLegendTopSide_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawPackageLegendTopSide (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawPackageLegendTopSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawPackageLegendTopSide.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawPackageLegendTopSide_property.removeEBObserver (inObserver)
+        managedObject.drawPackageLegendTopSide_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -530,7 +530,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawPackageLegendTopSide.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawPackageLegendTopSide_property.addEBObserver (observer)
+            managedObject.drawPackageLegendTopSide_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawPackageLegendTopSide.triggerPacking ()
           }
@@ -546,7 +546,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawPackageLegendTopSide_property.removeEBObserver (observer)
+          managedObject.drawPackageLegendTopSide_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawPackageLegendTopSide.triggerPacking ()
@@ -562,30 +562,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPackageLegendBottomSide (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawPackageLegendBottomSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawPackageLegendBottomSide.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawPackageLegendBottomSide_property.addEBObserver (inObserver)
+        managedObject.drawPackageLegendBottomSide_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawPackageLegendBottomSide (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawPackageLegendBottomSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawPackageLegendBottomSide.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawPackageLegendBottomSide_property.removeEBObserver (inObserver)
+        managedObject.drawPackageLegendBottomSide_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -597,7 +597,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawPackageLegendBottomSide.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawPackageLegendBottomSide_property.addEBObserver (observer)
+            managedObject.drawPackageLegendBottomSide_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawPackageLegendBottomSide.triggerPacking ()
           }
@@ -613,7 +613,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawPackageLegendBottomSide_property.removeEBObserver (observer)
+          managedObject.drawPackageLegendBottomSide_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawPackageLegendBottomSide.triggerPacking ()
@@ -629,30 +629,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPadHolesInPDF (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawPadHolesInPDF_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawPadHolesInPDF.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawPadHolesInPDF_property.addEBObserver (inObserver)
+        managedObject.drawPadHolesInPDF_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawPadHolesInPDF (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawPadHolesInPDF_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawPadHolesInPDF.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawPadHolesInPDF_property.removeEBObserver (inObserver)
+        managedObject.drawPadHolesInPDF_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -664,7 +664,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawPadHolesInPDF.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawPadHolesInPDF_property.addEBObserver (observer)
+            managedObject.drawPadHolesInPDF_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawPadHolesInPDF.triggerPacking ()
           }
@@ -680,7 +680,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawPadHolesInPDF_property.removeEBObserver (observer)
+          managedObject.drawPadHolesInPDF_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawPadHolesInPDF.triggerPacking ()
@@ -696,30 +696,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPadsTopSide (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawPadsTopSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawPadsTopSide.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawPadsTopSide_property.addEBObserver (inObserver)
+        managedObject.drawPadsTopSide_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawPadsTopSide (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawPadsTopSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawPadsTopSide.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawPadsTopSide_property.removeEBObserver (inObserver)
+        managedObject.drawPadsTopSide_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -731,7 +731,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawPadsTopSide.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawPadsTopSide_property.addEBObserver (observer)
+            managedObject.drawPadsTopSide_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawPadsTopSide.triggerPacking ()
           }
@@ -747,7 +747,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawPadsTopSide_property.removeEBObserver (observer)
+          managedObject.drawPadsTopSide_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawPadsTopSide.triggerPacking ()
@@ -763,30 +763,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawPadsBottomSide (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawPadsBottomSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawPadsBottomSide.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawPadsBottomSide_property.addEBObserver (inObserver)
+        managedObject.drawPadsBottomSide_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawPadsBottomSide (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawPadsBottomSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawPadsBottomSide.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawPadsBottomSide_property.removeEBObserver (inObserver)
+        managedObject.drawPadsBottomSide_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -798,7 +798,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawPadsBottomSide.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawPadsBottomSide_property.addEBObserver (observer)
+            managedObject.drawPadsBottomSide_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawPadsBottomSide.triggerPacking ()
           }
@@ -814,7 +814,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawPadsBottomSide_property.removeEBObserver (observer)
+          managedObject.drawPadsBottomSide_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawPadsBottomSide.triggerPacking ()
@@ -830,30 +830,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTextsLayoutTopSide (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawTextsLayoutTopSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawTextsLayoutTopSide.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTextsLayoutTopSide_property.addEBObserver (inObserver)
+        managedObject.drawTextsLayoutTopSide_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTextsLayoutTopSide (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawTextsLayoutTopSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawTextsLayoutTopSide.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTextsLayoutTopSide_property.removeEBObserver (inObserver)
+        managedObject.drawTextsLayoutTopSide_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -865,7 +865,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTextsLayoutTopSide.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawTextsLayoutTopSide_property.addEBObserver (observer)
+            managedObject.drawTextsLayoutTopSide_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawTextsLayoutTopSide.triggerPacking ()
           }
@@ -881,7 +881,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawTextsLayoutTopSide_property.removeEBObserver (observer)
+          managedObject.drawTextsLayoutTopSide_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawTextsLayoutTopSide.triggerPacking ()
@@ -897,30 +897,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTextsLayoutBottomSide (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawTextsLayoutBottomSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawTextsLayoutBottomSide.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTextsLayoutBottomSide_property.addEBObserver (inObserver)
+        managedObject.drawTextsLayoutBottomSide_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTextsLayoutBottomSide (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawTextsLayoutBottomSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawTextsLayoutBottomSide.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTextsLayoutBottomSide_property.removeEBObserver (inObserver)
+        managedObject.drawTextsLayoutBottomSide_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -932,7 +932,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTextsLayoutBottomSide.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawTextsLayoutBottomSide_property.addEBObserver (observer)
+            managedObject.drawTextsLayoutBottomSide_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawTextsLayoutBottomSide.triggerPacking ()
           }
@@ -948,7 +948,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawTextsLayoutBottomSide_property.removeEBObserver (observer)
+          managedObject.drawTextsLayoutBottomSide_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawTextsLayoutBottomSide.triggerPacking ()
@@ -964,30 +964,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTextsLegendTopSide (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawTextsLegendTopSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawTextsLegendTopSide.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTextsLegendTopSide_property.addEBObserver (inObserver)
+        managedObject.drawTextsLegendTopSide_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTextsLegendTopSide (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawTextsLegendTopSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawTextsLegendTopSide.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTextsLegendTopSide_property.removeEBObserver (inObserver)
+        managedObject.drawTextsLegendTopSide_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -999,7 +999,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTextsLegendTopSide.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawTextsLegendTopSide_property.addEBObserver (observer)
+            managedObject.drawTextsLegendTopSide_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawTextsLegendTopSide.triggerPacking ()
           }
@@ -1015,7 +1015,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawTextsLegendTopSide_property.removeEBObserver (observer)
+          managedObject.drawTextsLegendTopSide_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawTextsLegendTopSide.triggerPacking ()
@@ -1031,30 +1031,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTextsLegendBottomSide (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawTextsLegendBottomSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawTextsLegendBottomSide.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTextsLegendBottomSide_property.addEBObserver (inObserver)
+        managedObject.drawTextsLegendBottomSide_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTextsLegendBottomSide (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawTextsLegendBottomSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawTextsLegendBottomSide.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTextsLegendBottomSide_property.removeEBObserver (inObserver)
+        managedObject.drawTextsLegendBottomSide_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1066,7 +1066,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTextsLegendBottomSide.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawTextsLegendBottomSide_property.addEBObserver (observer)
+            managedObject.drawTextsLegendBottomSide_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawTextsLegendBottomSide.triggerPacking ()
           }
@@ -1082,7 +1082,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawTextsLegendBottomSide_property.removeEBObserver (observer)
+          managedObject.drawTextsLegendBottomSide_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawTextsLegendBottomSide.triggerPacking ()
@@ -1098,30 +1098,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTracksTopSide (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawTracksTopSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawTracksTopSide.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTracksTopSide_property.addEBObserver (inObserver)
+        managedObject.drawTracksTopSide_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTracksTopSide (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawTracksTopSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawTracksTopSide.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTracksTopSide_property.removeEBObserver (inObserver)
+        managedObject.drawTracksTopSide_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1133,7 +1133,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTracksTopSide.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawTracksTopSide_property.addEBObserver (observer)
+            managedObject.drawTracksTopSide_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawTracksTopSide.triggerPacking ()
           }
@@ -1149,7 +1149,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawTracksTopSide_property.removeEBObserver (observer)
+          managedObject.drawTracksTopSide_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawTracksTopSide.triggerPacking ()
@@ -1165,30 +1165,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTracksInner1Layer (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawTracksInner1Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawTracksInner1Layer.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTracksInner1Layer_property.addEBObserver (inObserver)
+        managedObject.drawTracksInner1Layer_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTracksInner1Layer (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawTracksInner1Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawTracksInner1Layer.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTracksInner1Layer_property.removeEBObserver (inObserver)
+        managedObject.drawTracksInner1Layer_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1200,7 +1200,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTracksInner1Layer.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawTracksInner1Layer_property.addEBObserver (observer)
+            managedObject.drawTracksInner1Layer_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawTracksInner1Layer.triggerPacking ()
           }
@@ -1216,7 +1216,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawTracksInner1Layer_property.removeEBObserver (observer)
+          managedObject.drawTracksInner1Layer_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawTracksInner1Layer.triggerPacking ()
@@ -1232,30 +1232,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTracksInner2Layer (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawTracksInner2Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawTracksInner2Layer.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTracksInner2Layer_property.addEBObserver (inObserver)
+        managedObject.drawTracksInner2Layer_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTracksInner2Layer (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawTracksInner2Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawTracksInner2Layer.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTracksInner2Layer_property.removeEBObserver (inObserver)
+        managedObject.drawTracksInner2Layer_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1267,7 +1267,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTracksInner2Layer.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawTracksInner2Layer_property.addEBObserver (observer)
+            managedObject.drawTracksInner2Layer_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawTracksInner2Layer.triggerPacking ()
           }
@@ -1283,7 +1283,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawTracksInner2Layer_property.removeEBObserver (observer)
+          managedObject.drawTracksInner2Layer_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawTracksInner2Layer.triggerPacking ()
@@ -1299,30 +1299,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTracksInner3Layer (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawTracksInner3Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawTracksInner3Layer.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTracksInner3Layer_property.addEBObserver (inObserver)
+        managedObject.drawTracksInner3Layer_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTracksInner3Layer (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawTracksInner3Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawTracksInner3Layer.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTracksInner3Layer_property.removeEBObserver (inObserver)
+        managedObject.drawTracksInner3Layer_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1334,7 +1334,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTracksInner3Layer.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawTracksInner3Layer_property.addEBObserver (observer)
+            managedObject.drawTracksInner3Layer_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawTracksInner3Layer.triggerPacking ()
           }
@@ -1350,7 +1350,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawTracksInner3Layer_property.removeEBObserver (observer)
+          managedObject.drawTracksInner3Layer_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawTracksInner3Layer.triggerPacking ()
@@ -1366,30 +1366,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTracksInner4Layer (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawTracksInner4Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawTracksInner4Layer.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTracksInner4Layer_property.addEBObserver (inObserver)
+        managedObject.drawTracksInner4Layer_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTracksInner4Layer (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawTracksInner4Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawTracksInner4Layer.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTracksInner4Layer_property.removeEBObserver (inObserver)
+        managedObject.drawTracksInner4Layer_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1401,7 +1401,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTracksInner4Layer.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawTracksInner4Layer_property.addEBObserver (observer)
+            managedObject.drawTracksInner4Layer_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawTracksInner4Layer.triggerPacking ()
           }
@@ -1417,7 +1417,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawTracksInner4Layer_property.removeEBObserver (observer)
+          managedObject.drawTracksInner4Layer_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawTracksInner4Layer.triggerPacking ()
@@ -1433,30 +1433,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTracksBottomSide (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawTracksBottomSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawTracksBottomSide.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTracksBottomSide_property.addEBObserver (inObserver)
+        managedObject.drawTracksBottomSide_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTracksBottomSide (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawTracksBottomSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawTracksBottomSide.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTracksBottomSide_property.removeEBObserver (inObserver)
+        managedObject.drawTracksBottomSide_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1468,7 +1468,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTracksBottomSide.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawTracksBottomSide_property.addEBObserver (observer)
+            managedObject.drawTracksBottomSide_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawTracksBottomSide.triggerPacking ()
           }
@@ -1484,7 +1484,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawTracksBottomSide_property.removeEBObserver (observer)
+          managedObject.drawTracksBottomSide_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawTracksBottomSide.triggerPacking ()
@@ -1500,30 +1500,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawTraversingPads (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawTraversingPads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawTraversingPads.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTraversingPads_property.addEBObserver (inObserver)
+        managedObject.drawTraversingPads_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawTraversingPads (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawTraversingPads_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawTraversingPads.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawTraversingPads_property.removeEBObserver (inObserver)
+        managedObject.drawTraversingPads_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1535,7 +1535,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawTraversingPads.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawTraversingPads_property.addEBObserver (observer)
+            managedObject.drawTraversingPads_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawTraversingPads.triggerPacking ()
           }
@@ -1551,7 +1551,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawTraversingPads_property.removeEBObserver (observer)
+          managedObject.drawTraversingPads_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawTraversingPads.triggerPacking ()
@@ -1567,30 +1567,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_drawVias (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_drawVias_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_drawVias.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawVias_property.addEBObserver (inObserver)
+        managedObject.drawVias_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_drawVias (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_drawVias_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_drawVias.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.drawVias_property.removeEBObserver (inObserver)
+        managedObject.drawVias_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1602,7 +1602,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_drawVias.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.drawVias_property.addEBObserver (observer)
+            managedObject.drawVias_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_drawVias.triggerPacking ()
           }
@@ -1618,7 +1618,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.drawVias_property.removeEBObserver (observer)
+          managedObject.drawVias_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_drawVias.triggerPacking ()
@@ -1634,30 +1634,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_fileExtension (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_fileExtension_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_fileExtension.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.fileExtension_property.addEBObserver (inObserver)
+        managedObject.fileExtension_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_fileExtension (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_fileExtension_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_fileExtension.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.fileExtension_property.removeEBObserver (inObserver)
+        managedObject.fileExtension_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1669,7 +1669,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_fileExtension.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.fileExtension_property.addEBObserver (observer)
+            managedObject.fileExtension_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_fileExtension.triggerPacking ()
           }
@@ -1685,7 +1685,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.fileExtension_property.removeEBObserver (observer)
+          managedObject.fileExtension_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_fileExtension.triggerPacking ()
@@ -1701,30 +1701,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_horizontalMirror (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_horizontalMirror_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_horizontalMirror.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.horizontalMirror_property.addEBObserver (inObserver)
+        managedObject.horizontalMirror_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_horizontalMirror (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_horizontalMirror_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_horizontalMirror.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.horizontalMirror_property.removeEBObserver (inObserver)
+        managedObject.horizontalMirror_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1736,7 +1736,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_horizontalMirror.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.horizontalMirror_property.addEBObserver (observer)
+            managedObject.horizontalMirror_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_horizontalMirror.triggerPacking ()
           }
@@ -1752,7 +1752,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.horizontalMirror_property.removeEBObserver (observer)
+          managedObject.horizontalMirror_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_horizontalMirror.triggerPacking ()
@@ -1768,30 +1768,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_name (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_name_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_name.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.name_property.addEBObserver (inObserver)
+        managedObject.name_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_name (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_name_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_name.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.name_property.removeEBObserver (inObserver)
+        managedObject.name_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1803,7 +1803,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_name.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.name_property.addEBObserver (observer)
+            managedObject.name_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_name.triggerPacking ()
           }
@@ -1819,7 +1819,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.name_property.removeEBObserver (observer)
+          managedObject.name_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_name.triggerPacking ()
@@ -1835,30 +1835,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_measurementUnitForPadHoleInPDF (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_measurementUnitForPadHoleInPDF_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_measurementUnitForPadHoleInPDF.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.measurementUnitForPadHoleInPDF_property.addEBObserver (inObserver)
+        managedObject.measurementUnitForPadHoleInPDF_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_measurementUnitForPadHoleInPDF (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_measurementUnitForPadHoleInPDF_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_measurementUnitForPadHoleInPDF.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.measurementUnitForPadHoleInPDF_property.removeEBObserver (inObserver)
+        managedObject.measurementUnitForPadHoleInPDF_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1870,7 +1870,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_measurementUnitForPadHoleInPDF.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.measurementUnitForPadHoleInPDF_property.addEBObserver (observer)
+            managedObject.measurementUnitForPadHoleInPDF_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_measurementUnitForPadHoleInPDF.triggerPacking ()
           }
@@ -1886,7 +1886,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.measurementUnitForPadHoleInPDF_property.removeEBObserver (observer)
+          managedObject.measurementUnitForPadHoleInPDF_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_measurementUnitForPadHoleInPDF.triggerPacking ()
@@ -1902,30 +1902,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_padHoleDiameterInPDF (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_padHoleDiameterInPDF_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_padHoleDiameterInPDF.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.padHoleDiameterInPDF_property.addEBObserver (inObserver)
+        managedObject.padHoleDiameterInPDF_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_padHoleDiameterInPDF (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_padHoleDiameterInPDF_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_padHoleDiameterInPDF.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.padHoleDiameterInPDF_property.removeEBObserver (inObserver)
+        managedObject.padHoleDiameterInPDF_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1937,7 +1937,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_padHoleDiameterInPDF.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.padHoleDiameterInPDF_property.addEBObserver (observer)
+            managedObject.padHoleDiameterInPDF_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_padHoleDiameterInPDF.triggerPacking ()
           }
@@ -1953,7 +1953,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.padHoleDiameterInPDF_property.removeEBObserver (observer)
+          managedObject.padHoleDiameterInPDF_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_padHoleDiameterInPDF.triggerPacking ()
@@ -1969,30 +1969,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_hasNoData (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_hasNoData_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_hasNoData.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.hasNoData_property.addEBObserver (inObserver)
+        managedObject.hasNoData_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_hasNoData (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_hasNoData_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_hasNoData.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.hasNoData_property.removeEBObserver (inObserver)
+        managedObject.hasNoData_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -2003,7 +2003,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_hasNoData.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.hasNoData_property.addEBObserver (observer)
+          managedObject.hasNoData_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_hasNoData.triggerPacking ()
         }
@@ -2017,7 +2017,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_hasNoData.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.hasNoData_property.removeEBObserver (observer)
+          managedObject.hasNoData_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_hasNoData.triggerPacking ()
         }
@@ -2033,30 +2033,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_parameterStatusImage (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_parameterStatusImage_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_parameterStatusImage.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.parameterStatusImage_property.addEBObserver (inObserver)
+        managedObject.parameterStatusImage_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_parameterStatusImage (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_parameterStatusImage_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_parameterStatusImage.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.parameterStatusImage_property.removeEBObserver (inObserver)
+        managedObject.parameterStatusImage_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -2067,7 +2067,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_parameterStatusImage.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.parameterStatusImage_property.addEBObserver (observer)
+          managedObject.parameterStatusImage_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_parameterStatusImage.triggerPacking ()
         }
@@ -2081,7 +2081,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_parameterStatusImage.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.parameterStatusImage_property.removeEBObserver (observer)
+          managedObject.parameterStatusImage_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_parameterStatusImage.triggerPacking ()
         }
@@ -2097,30 +2097,30 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   //····················································································································
 
-  final func addEBObserverOf_emptyFileExtensionImage (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_emptyFileExtensionImage_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_emptyFileExtensionImage.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.emptyFileExtensionImage_property.addEBObserver (inObserver)
+        managedObject.emptyFileExtensionImage_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_emptyFileExtensionImage (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_emptyFileExtensionImage_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_emptyFileExtensionImage.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.emptyFileExtensionImage_property.removeEBObserver (inObserver)
+        managedObject.emptyFileExtensionImage_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -2131,7 +2131,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_emptyFileExtensionImage.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.emptyFileExtensionImage_property.addEBObserver (observer)
+          managedObject.emptyFileExtensionImage_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_emptyFileExtensionImage.triggerPacking ()
         }
@@ -2145,7 +2145,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_emptyFileExtensionImage.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.emptyFileExtensionImage_property.removeEBObserver (observer)
+          managedObject.emptyFileExtensionImage_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_emptyFileExtensionImage.triggerPacking ()
         }

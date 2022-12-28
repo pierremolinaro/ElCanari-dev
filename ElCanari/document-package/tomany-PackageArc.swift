@@ -65,30 +65,30 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_yCenter (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_yCenter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_yCenter.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.yCenter_property.addEBObserver (inObserver)
+        managedObject.yCenter_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_yCenter (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_yCenter_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_yCenter.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.yCenter_property.removeEBObserver (inObserver)
+        managedObject.yCenter_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -100,7 +100,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_yCenter.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.yCenter_property.addEBObserver (observer)
+            managedObject.yCenter_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_yCenter.triggerPacking ()
           }
@@ -116,7 +116,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.yCenter_property.removeEBObserver (observer)
+          managedObject.yCenter_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_yCenter.triggerPacking ()
@@ -132,30 +132,30 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_radius (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_radius_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_radius.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.radius_property.addEBObserver (inObserver)
+        managedObject.radius_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_radius (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_radius_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_radius.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.radius_property.removeEBObserver (inObserver)
+        managedObject.radius_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -167,7 +167,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_radius.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.radius_property.addEBObserver (observer)
+            managedObject.radius_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_radius.triggerPacking ()
           }
@@ -183,7 +183,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.radius_property.removeEBObserver (observer)
+          managedObject.radius_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_radius.triggerPacking ()
@@ -199,30 +199,30 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_startAngle (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_startAngle_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_startAngle.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.startAngle_property.addEBObserver (inObserver)
+        managedObject.startAngle_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_startAngle (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_startAngle_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_startAngle.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.startAngle_property.removeEBObserver (inObserver)
+        managedObject.startAngle_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -234,7 +234,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_startAngle.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.startAngle_property.addEBObserver (observer)
+            managedObject.startAngle_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_startAngle.triggerPacking ()
           }
@@ -250,7 +250,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.startAngle_property.removeEBObserver (observer)
+          managedObject.startAngle_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_startAngle.triggerPacking ()
@@ -266,30 +266,30 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_arcAngle (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_arcAngle_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_arcAngle.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.arcAngle_property.addEBObserver (inObserver)
+        managedObject.arcAngle_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_arcAngle (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_arcAngle_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_arcAngle.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.arcAngle_property.removeEBObserver (inObserver)
+        managedObject.arcAngle_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -301,7 +301,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_arcAngle.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.arcAngle_property.addEBObserver (observer)
+            managedObject.arcAngle_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_arcAngle.triggerPacking ()
           }
@@ -317,7 +317,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.arcAngle_property.removeEBObserver (observer)
+          managedObject.arcAngle_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_arcAngle.triggerPacking ()
@@ -333,30 +333,30 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_startTangent (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_startTangent_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_startTangent.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.startTangent_property.addEBObserver (inObserver)
+        managedObject.startTangent_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_startTangent (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_startTangent_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_startTangent.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.startTangent_property.removeEBObserver (inObserver)
+        managedObject.startTangent_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -368,7 +368,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_startTangent.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.startTangent_property.addEBObserver (observer)
+            managedObject.startTangent_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_startTangent.triggerPacking ()
           }
@@ -384,7 +384,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.startTangent_property.removeEBObserver (observer)
+          managedObject.startTangent_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_startTangent.triggerPacking ()
@@ -400,30 +400,30 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_endTangent (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_endTangent_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_endTangent.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.endTangent_property.addEBObserver (inObserver)
+        managedObject.endTangent_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_endTangent (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_endTangent_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_endTangent.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.endTangent_property.removeEBObserver (inObserver)
+        managedObject.endTangent_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -435,7 +435,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_endTangent.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.endTangent_property.addEBObserver (observer)
+            managedObject.endTangent_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_endTangent.triggerPacking ()
           }
@@ -451,7 +451,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.endTangent_property.removeEBObserver (observer)
+          managedObject.endTangent_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_endTangent.triggerPacking ()
@@ -467,30 +467,30 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_pathIsClosed (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_pathIsClosed_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_pathIsClosed.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.pathIsClosed_property.addEBObserver (inObserver)
+        managedObject.pathIsClosed_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_pathIsClosed (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_pathIsClosed_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_pathIsClosed.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.pathIsClosed_property.removeEBObserver (inObserver)
+        managedObject.pathIsClosed_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -502,7 +502,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_pathIsClosed.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.pathIsClosed_property.addEBObserver (observer)
+            managedObject.pathIsClosed_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_pathIsClosed.triggerPacking ()
           }
@@ -518,7 +518,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.pathIsClosed_property.removeEBObserver (observer)
+          managedObject.pathIsClosed_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_pathIsClosed.triggerPacking ()
@@ -534,30 +534,30 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_xCenterUnit (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_xCenterUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_xCenterUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.xCenterUnit_property.addEBObserver (inObserver)
+        managedObject.xCenterUnit_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_xCenterUnit (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_xCenterUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_xCenterUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.xCenterUnit_property.removeEBObserver (inObserver)
+        managedObject.xCenterUnit_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -569,7 +569,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_xCenterUnit.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.xCenterUnit_property.addEBObserver (observer)
+            managedObject.xCenterUnit_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_xCenterUnit.triggerPacking ()
           }
@@ -585,7 +585,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.xCenterUnit_property.removeEBObserver (observer)
+          managedObject.xCenterUnit_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_xCenterUnit.triggerPacking ()
@@ -601,30 +601,30 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_yCenterUnit (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_yCenterUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_yCenterUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.yCenterUnit_property.addEBObserver (inObserver)
+        managedObject.yCenterUnit_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_yCenterUnit (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_yCenterUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_yCenterUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.yCenterUnit_property.removeEBObserver (inObserver)
+        managedObject.yCenterUnit_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -636,7 +636,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_yCenterUnit.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.yCenterUnit_property.addEBObserver (observer)
+            managedObject.yCenterUnit_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_yCenterUnit.triggerPacking ()
           }
@@ -652,7 +652,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.yCenterUnit_property.removeEBObserver (observer)
+          managedObject.yCenterUnit_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_yCenterUnit.triggerPacking ()
@@ -668,30 +668,30 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_radiusUnit (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_radiusUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_radiusUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.radiusUnit_property.addEBObserver (inObserver)
+        managedObject.radiusUnit_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_radiusUnit (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_radiusUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_radiusUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.radiusUnit_property.removeEBObserver (inObserver)
+        managedObject.radiusUnit_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -703,7 +703,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_radiusUnit.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.radiusUnit_property.addEBObserver (observer)
+            managedObject.radiusUnit_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_radiusUnit.triggerPacking ()
           }
@@ -719,7 +719,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.radiusUnit_property.removeEBObserver (observer)
+          managedObject.radiusUnit_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_radiusUnit.triggerPacking ()
@@ -735,30 +735,30 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_startTangentUnit (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_startTangentUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_startTangentUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.startTangentUnit_property.addEBObserver (inObserver)
+        managedObject.startTangentUnit_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_startTangentUnit (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_startTangentUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_startTangentUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.startTangentUnit_property.removeEBObserver (inObserver)
+        managedObject.startTangentUnit_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -770,7 +770,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_startTangentUnit.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.startTangentUnit_property.addEBObserver (observer)
+            managedObject.startTangentUnit_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_startTangentUnit.triggerPacking ()
           }
@@ -786,7 +786,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.startTangentUnit_property.removeEBObserver (observer)
+          managedObject.startTangentUnit_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_startTangentUnit.triggerPacking ()
@@ -802,30 +802,30 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_endTangentUnit (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_endTangentUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_endTangentUnit.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.endTangentUnit_property.addEBObserver (inObserver)
+        managedObject.endTangentUnit_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_endTangentUnit (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_endTangentUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_endTangentUnit.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.endTangentUnit_property.removeEBObserver (inObserver)
+        managedObject.endTangentUnit_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -837,7 +837,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_endTangentUnit.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.endTangentUnit_property.addEBObserver (observer)
+            managedObject.endTangentUnit_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_endTangentUnit.triggerPacking ()
           }
@@ -853,7 +853,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.endTangentUnit_property.removeEBObserver (observer)
+          managedObject.endTangentUnit_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_endTangentUnit.triggerPacking ()
@@ -869,30 +869,30 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_xCenter (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_xCenter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_xCenter.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.xCenter_property.addEBObserver (inObserver)
+        managedObject.xCenter_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_xCenter (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_xCenter_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_xCenter.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.xCenter_property.removeEBObserver (inObserver)
+        managedObject.xCenter_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -904,7 +904,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_xCenter.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.xCenter_property.addEBObserver (observer)
+            managedObject.xCenter_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_xCenter.triggerPacking ()
           }
@@ -920,7 +920,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.xCenter_property.removeEBObserver (observer)
+          managedObject.xCenter_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_xCenter.triggerPacking ()
@@ -936,30 +936,30 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_strokeBezierPath_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_strokeBezierPath.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.strokeBezierPath_property.addEBObserver (inObserver)
+        managedObject.strokeBezierPath_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_strokeBezierPath (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_strokeBezierPath_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_strokeBezierPath.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.strokeBezierPath_property.removeEBObserver (inObserver)
+        managedObject.strokeBezierPath_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -970,7 +970,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_strokeBezierPath.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.strokeBezierPath_property.addEBObserver (observer)
+          managedObject.strokeBezierPath_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_strokeBezierPath.triggerPacking ()
         }
@@ -984,7 +984,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_strokeBezierPath.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.strokeBezierPath_property.removeEBObserver (observer)
+          managedObject.strokeBezierPath_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_strokeBezierPath.triggerPacking ()
         }
@@ -1000,30 +1000,30 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.objectDisplay_property.addEBObserver (inObserver)
+        managedObject.objectDisplay_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.objectDisplay_property.removeEBObserver (inObserver)
+        managedObject.objectDisplay_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1034,7 +1034,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.objectDisplay_property.addEBObserver (observer)
+          managedObject.objectDisplay_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
         }
@@ -1048,7 +1048,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.objectDisplay_property.removeEBObserver (observer)
+          managedObject.objectDisplay_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
         }
@@ -1064,30 +1064,30 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectionDisplay_property.addEBObserver (inObserver)
+        managedObject.selectionDisplay_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectionDisplay_property.removeEBObserver (inObserver)
+        managedObject.selectionDisplay_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1098,7 +1098,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.selectionDisplay_property.addEBObserver (observer)
+          managedObject.selectionDisplay_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
         }
@@ -1112,7 +1112,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.selectionDisplay_property.removeEBObserver (observer)
+          managedObject.selectionDisplay_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
         }
@@ -1128,30 +1128,30 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_issues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_issues.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.issues_property.addEBObserver (inObserver)
+        managedObject.issues_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_issues (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_issues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_issues.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.issues_property.removeEBObserver (inObserver)
+        managedObject.issues_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1162,7 +1162,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_issues.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.issues_property.addEBObserver (observer)
+          managedObject.issues_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_issues.triggerPacking ()
         }
@@ -1176,7 +1176,7 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_issues.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.issues_property.removeEBObserver (observer)
+          managedObject.issues_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_issues.triggerPacking ()
         }

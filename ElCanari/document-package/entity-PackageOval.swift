@@ -303,10 +303,10 @@ final class PackageOval : PackageObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.strokeBezierPath_property)
-    self.y_property.addEBObserver (self.strokeBezierPath_property)
-    self.width_property.addEBObserver (self.strokeBezierPath_property)
-    self.height_property.addEBObserver (self.strokeBezierPath_property)
+    self.x_property.startsToBeObserved (by: self.strokeBezierPath_property)
+    self.y_property.startsToBeObserved (by: self.strokeBezierPath_property)
+    self.width_property.startsToBeObserved (by: self.strokeBezierPath_property)
+    self.height_property.startsToBeObserved (by: self.strokeBezierPath_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -329,9 +329,9 @@ final class PackageOval : PackageObject,
         return .empty
       }
     }
-    self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property)
-    preferences_packageColor_property.addEBObserver (self.objectDisplay_property)
-    preferences_packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+    self.strokeBezierPath_property.startsToBeObserved (by: self.objectDisplay_property)
+    preferences_packageColor_property.startsToBeObserved (by: self.objectDisplay_property)
+    preferences_packageDrawingWidthMultipliedByTen_property.startsToBeObserved (by: self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -360,11 +360,11 @@ final class PackageOval : PackageObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.selectionDisplay_property)
-    self.y_property.addEBObserver (self.selectionDisplay_property)
-    self.width_property.addEBObserver (self.selectionDisplay_property)
-    self.height_property.addEBObserver (self.selectionDisplay_property)
-    self.knobSize_property.addEBObserver (self.selectionDisplay_property)
+    self.x_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.y_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.width_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.height_property.startsToBeObserved (by: self.selectionDisplay_property)
+    self.knobSize_property.startsToBeObserved (by: self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -390,10 +390,10 @@ final class PackageOval : PackageObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.issues_property)
-    self.y_property.addEBObserver (self.issues_property)
-    self.width_property.addEBObserver (self.issues_property)
-    self.height_property.addEBObserver (self.issues_property)
+    self.x_property.startsToBeObserved (by: self.issues_property)
+    self.y_property.startsToBeObserved (by: self.issues_property)
+    self.width_property.startsToBeObserved (by: self.issues_property)
+    self.height_property.startsToBeObserved (by: self.issues_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature

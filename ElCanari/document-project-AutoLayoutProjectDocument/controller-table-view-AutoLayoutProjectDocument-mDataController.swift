@@ -59,10 +59,10 @@ final class Controller_AutoLayoutProjectDocument_mDataController : EBObjcBaseObj
       inModel,
       sortCallback: { [weak self] (left, right) in self?.isOrderedBefore (left, right) ?? true },
       addSortObserversCallback: { (observer) in
-        inModel.addEBObserverOf_name (observer)
+        inModel.toMany_name_StartsToBeObserved (by: observer)
       },
       removeSortObserversCallback: {(observer) in
-        inModel.removeEBObserverOf_name (observer)
+        inModel.toMany_name_StopsBeingObserved (by: observer)
       }
     )
   }
@@ -139,11 +139,11 @@ final class Controller_AutoLayoutProjectDocument_mDataController : EBObjcBaseObj
 
   override init () {
     super.init ()
-    self.sortedArray_property.addEBObserver (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.startsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'name' column
-    self.sortedArray_property.addEBObserverOf_name (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_name_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //--- Observe 'parameterStatusImage' column
-    self.sortedArray_property.addEBObserverOf_parameterStatusImage (self.mSortedArrayValuesObserver)
+    self.sortedArray_property.toMany_parameterStatusImage_StartsToBeObserved (by: self.mSortedArrayValuesObserver)
   //---
     self.mSortedArrayValuesObserver.mEventCallBack = { [weak self] in
        for tableView in self?.mTableViewArray ?? [] {

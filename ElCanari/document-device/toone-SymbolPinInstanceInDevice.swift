@@ -16,19 +16,19 @@ class ReadOnlyObject_SymbolPinInstanceInDevice : ReadOnlyAbstractObjectProperty 
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.pinName_property.removeEBObserver (self.pinName_property) // Transient property
-      oldValue.symbolName_property.removeEBObserver (self.symbolName_property) // Transient property
-      oldValue.pinQualifiedName_property.removeEBObserver (self.pinQualifiedName_property) // Transient property
-      oldValue.isConnected_property.removeEBObserver (self.isConnected_property) // Transient property
-      oldValue.numberShape_property.removeEBObserver (self.numberShape_property) // Transient property
+      oldValue.pinName_property.stopsBeingObserved (by: self.pinName_property) // Transient property
+      oldValue.symbolName_property.stopsBeingObserved (by: self.symbolName_property) // Transient property
+      oldValue.pinQualifiedName_property.stopsBeingObserved (by: self.pinQualifiedName_property) // Transient property
+      oldValue.isConnected_property.stopsBeingObserved (by: self.isConnected_property) // Transient property
+      oldValue.numberShape_property.stopsBeingObserved (by: self.numberShape_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.pinName_property.addEBObserver (self.pinName_property) // Transient property
-      newValue.symbolName_property.addEBObserver (self.symbolName_property) // Transient property
-      newValue.pinQualifiedName_property.addEBObserver (self.pinQualifiedName_property) // Transient property
-      newValue.isConnected_property.addEBObserver (self.isConnected_property) // Transient property
-      newValue.numberShape_property.addEBObserver (self.numberShape_property) // Transient property
+      newValue.pinName_property.startsToBeObserved (by: self.pinName_property) // Transient property
+      newValue.symbolName_property.startsToBeObserved (by: self.symbolName_property) // Transient property
+      newValue.pinQualifiedName_property.startsToBeObserved (by: self.pinQualifiedName_property) // Transient property
+      newValue.isConnected_property.startsToBeObserved (by: self.isConnected_property) // Transient property
+      newValue.numberShape_property.startsToBeObserved (by: self.numberShape_property) // Transient property
     }
   }
 

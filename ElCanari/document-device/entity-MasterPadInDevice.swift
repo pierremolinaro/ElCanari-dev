@@ -381,11 +381,11 @@ final class MasterPadInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mCenterX_property.addEBObserver (self.padNumberDisplay_property)
-    self.mCenterY_property.addEBObserver (self.padNumberDisplay_property)
-    preferences_padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
-    self.mName_property.addEBObserver (self.padNumberDisplay_property)
-    preferences_padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
+    self.mCenterX_property.startsToBeObserved (by: self.padNumberDisplay_property)
+    self.mCenterY_property.startsToBeObserved (by: self.padNumberDisplay_property)
+    preferences_padNumberColor_property.startsToBeObserved (by: self.padNumberDisplay_property)
+    self.mName_property.startsToBeObserved (by: self.padNumberDisplay_property)
+    preferences_padNumberFont_property.startsToBeObserved (by: self.padNumberDisplay_property)
   //--- Atomic property: frontSideFilledBezierPathArray
     self.frontSideFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -426,15 +426,15 @@ final class MasterPadInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mCenterX_property.addEBObserver (self.frontSideFilledBezierPathArray_property)
-    self.mCenterY_property.addEBObserver (self.frontSideFilledBezierPathArray_property)
-    self.mWidth_property.addEBObserver (self.frontSideFilledBezierPathArray_property)
-    self.mHeight_property.addEBObserver (self.frontSideFilledBezierPathArray_property)
-    self.mHoleWidth_property.addEBObserver (self.frontSideFilledBezierPathArray_property)
-    self.mHoleHeight_property.addEBObserver (self.frontSideFilledBezierPathArray_property)
-    self.mShape_property.addEBObserver (self.frontSideFilledBezierPathArray_property)
-    self.mStyle_property.addEBObserver (self.frontSideFilledBezierPathArray_property)
-    self.mSlavePads_property.addEBObserverOf_frontSideFilledBezierPath (self.frontSideFilledBezierPathArray_property)
+    self.mCenterX_property.startsToBeObserved (by: self.frontSideFilledBezierPathArray_property)
+    self.mCenterY_property.startsToBeObserved (by: self.frontSideFilledBezierPathArray_property)
+    self.mWidth_property.startsToBeObserved (by: self.frontSideFilledBezierPathArray_property)
+    self.mHeight_property.startsToBeObserved (by: self.frontSideFilledBezierPathArray_property)
+    self.mHoleWidth_property.startsToBeObserved (by: self.frontSideFilledBezierPathArray_property)
+    self.mHoleHeight_property.startsToBeObserved (by: self.frontSideFilledBezierPathArray_property)
+    self.mShape_property.startsToBeObserved (by: self.frontSideFilledBezierPathArray_property)
+    self.mStyle_property.startsToBeObserved (by: self.frontSideFilledBezierPathArray_property)
+    self.mSlavePads_property.toMany_frontSideFilledBezierPath_StartsToBeObserved (by: self.frontSideFilledBezierPathArray_property)
   //--- Atomic property: backSideFilledBezierPathArray
     self.backSideFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -475,15 +475,15 @@ final class MasterPadInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mCenterX_property.addEBObserver (self.backSideFilledBezierPathArray_property)
-    self.mCenterY_property.addEBObserver (self.backSideFilledBezierPathArray_property)
-    self.mWidth_property.addEBObserver (self.backSideFilledBezierPathArray_property)
-    self.mHeight_property.addEBObserver (self.backSideFilledBezierPathArray_property)
-    self.mHoleWidth_property.addEBObserver (self.backSideFilledBezierPathArray_property)
-    self.mHoleHeight_property.addEBObserver (self.backSideFilledBezierPathArray_property)
-    self.mShape_property.addEBObserver (self.backSideFilledBezierPathArray_property)
-    self.mStyle_property.addEBObserver (self.backSideFilledBezierPathArray_property)
-    self.mSlavePads_property.addEBObserverOf_backSideFilledBezierPath (self.backSideFilledBezierPathArray_property)
+    self.mCenterX_property.startsToBeObserved (by: self.backSideFilledBezierPathArray_property)
+    self.mCenterY_property.startsToBeObserved (by: self.backSideFilledBezierPathArray_property)
+    self.mWidth_property.startsToBeObserved (by: self.backSideFilledBezierPathArray_property)
+    self.mHeight_property.startsToBeObserved (by: self.backSideFilledBezierPathArray_property)
+    self.mHoleWidth_property.startsToBeObserved (by: self.backSideFilledBezierPathArray_property)
+    self.mHoleHeight_property.startsToBeObserved (by: self.backSideFilledBezierPathArray_property)
+    self.mShape_property.startsToBeObserved (by: self.backSideFilledBezierPathArray_property)
+    self.mStyle_property.startsToBeObserved (by: self.backSideFilledBezierPathArray_property)
+    self.mSlavePads_property.toMany_backSideFilledBezierPath_StartsToBeObserved (by: self.backSideFilledBezierPathArray_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
     self.mSlavePads_property.setOppositeRelationShipFunctions (

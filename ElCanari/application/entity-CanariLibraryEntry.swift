@@ -165,7 +165,7 @@ final class CanariLibraryEntry : EBManagedObject,
         return .empty
       }
     }
-    self.mPath_property.addEBObserver (self.mStatusImage_property)
+    self.mPath_property.startsToBeObserved (by: self.mStatusImage_property)
 //    gInitSemaphore.signal ()
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature

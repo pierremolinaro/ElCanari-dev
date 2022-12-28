@@ -16,39 +16,39 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mSymbolPinName_property.removeEBObserver (self.mSymbolPinName_property) // Stored property
-      oldValue.mX_property.removeEBObserver (self.mX_property) // Stored property
-      oldValue.mY_property.removeEBObserver (self.mY_property) // Stored property
-      oldValue.location_property.removeEBObserver (self.location_property) // Transient property
-      oldValue.netName_property.removeEBObserver (self.netName_property) // Transient property
-      oldValue.netClassName_property.removeEBObserver (self.netClassName_property) // Transient property
-      oldValue.hasNet_property.removeEBObserver (self.hasNet_property) // Transient property
-      oldValue.canMove_property.removeEBObserver (self.canMove_property) // Transient property
-      oldValue.wireColor_property.removeEBObserver (self.wireColor_property) // Transient property
-      oldValue.symbolRotation_property.removeEBObserver (self.symbolRotation_property) // Transient property
-      oldValue.symbolNameNetName_property.removeEBObserver (self.symbolNameNetName_property) // Transient property
-      oldValue.isConnected_property.removeEBObserver (self.isConnected_property) // Transient property
-      oldValue.status_property.removeEBObserver (self.status_property) // Transient property
-      oldValue.connectedPoints_property.removeEBObserver (self.connectedPoints_property) // Transient property
-      oldValue.netInfoForPoint_property.removeEBObserver (self.netInfoForPoint_property) // Transient property
+      oldValue.mSymbolPinName_property.stopsBeingObserved (by: self.mSymbolPinName_property) // Stored property
+      oldValue.mX_property.stopsBeingObserved (by: self.mX_property) // Stored property
+      oldValue.mY_property.stopsBeingObserved (by: self.mY_property) // Stored property
+      oldValue.location_property.stopsBeingObserved (by: self.location_property) // Transient property
+      oldValue.netName_property.stopsBeingObserved (by: self.netName_property) // Transient property
+      oldValue.netClassName_property.stopsBeingObserved (by: self.netClassName_property) // Transient property
+      oldValue.hasNet_property.stopsBeingObserved (by: self.hasNet_property) // Transient property
+      oldValue.canMove_property.stopsBeingObserved (by: self.canMove_property) // Transient property
+      oldValue.wireColor_property.stopsBeingObserved (by: self.wireColor_property) // Transient property
+      oldValue.symbolRotation_property.stopsBeingObserved (by: self.symbolRotation_property) // Transient property
+      oldValue.symbolNameNetName_property.stopsBeingObserved (by: self.symbolNameNetName_property) // Transient property
+      oldValue.isConnected_property.stopsBeingObserved (by: self.isConnected_property) // Transient property
+      oldValue.status_property.stopsBeingObserved (by: self.status_property) // Transient property
+      oldValue.connectedPoints_property.stopsBeingObserved (by: self.connectedPoints_property) // Transient property
+      oldValue.netInfoForPoint_property.stopsBeingObserved (by: self.netInfoForPoint_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mSymbolPinName_property.addEBObserver (self.mSymbolPinName_property) // Stored property
-      newValue.mX_property.addEBObserver (self.mX_property) // Stored property
-      newValue.mY_property.addEBObserver (self.mY_property) // Stored property
-      newValue.location_property.addEBObserver (self.location_property) // Transient property
-      newValue.netName_property.addEBObserver (self.netName_property) // Transient property
-      newValue.netClassName_property.addEBObserver (self.netClassName_property) // Transient property
-      newValue.hasNet_property.addEBObserver (self.hasNet_property) // Transient property
-      newValue.canMove_property.addEBObserver (self.canMove_property) // Transient property
-      newValue.wireColor_property.addEBObserver (self.wireColor_property) // Transient property
-      newValue.symbolRotation_property.addEBObserver (self.symbolRotation_property) // Transient property
-      newValue.symbolNameNetName_property.addEBObserver (self.symbolNameNetName_property) // Transient property
-      newValue.isConnected_property.addEBObserver (self.isConnected_property) // Transient property
-      newValue.status_property.addEBObserver (self.status_property) // Transient property
-      newValue.connectedPoints_property.addEBObserver (self.connectedPoints_property) // Transient property
-      newValue.netInfoForPoint_property.addEBObserver (self.netInfoForPoint_property) // Transient property
+      newValue.mSymbolPinName_property.startsToBeObserved (by: self.mSymbolPinName_property) // Stored property
+      newValue.mX_property.startsToBeObserved (by: self.mX_property) // Stored property
+      newValue.mY_property.startsToBeObserved (by: self.mY_property) // Stored property
+      newValue.location_property.startsToBeObserved (by: self.location_property) // Transient property
+      newValue.netName_property.startsToBeObserved (by: self.netName_property) // Transient property
+      newValue.netClassName_property.startsToBeObserved (by: self.netClassName_property) // Transient property
+      newValue.hasNet_property.startsToBeObserved (by: self.hasNet_property) // Transient property
+      newValue.canMove_property.startsToBeObserved (by: self.canMove_property) // Transient property
+      newValue.wireColor_property.startsToBeObserved (by: self.wireColor_property) // Transient property
+      newValue.symbolRotation_property.startsToBeObserved (by: self.symbolRotation_property) // Transient property
+      newValue.symbolNameNetName_property.startsToBeObserved (by: self.symbolNameNetName_property) // Transient property
+      newValue.isConnected_property.startsToBeObserved (by: self.isConnected_property) // Transient property
+      newValue.status_property.startsToBeObserved (by: self.status_property) // Transient property
+      newValue.connectedPoints_property.startsToBeObserved (by: self.connectedPoints_property) // Transient property
+      newValue.netInfoForPoint_property.startsToBeObserved (by: self.netInfoForPoint_property) // Transient property
     }
   }
 
@@ -150,19 +150,19 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_mLabels (_ inObserver : EBObserverProtocol) {
+  final func toMany_mLabels_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mLabels.insert (inObserver)
     if let object = self.propval {
-      object.mLabels_property.addEBObserver (inObserver)
+      object.mLabels_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mLabels (_ inObserver : EBObserverProtocol) {
+  final func toMany_mLabels_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mLabels.remove (inObserver)
     if let object = self.propval {
-      object.mLabels_property.removeEBObserver (inObserver)
+      object.mLabels_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -174,19 +174,19 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_mWiresP2s (_ inObserver : EBObserverProtocol) {
+  final func toMany_mWiresP2s_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mWiresP2s.insert (inObserver)
     if let object = self.propval {
-      object.mWiresP2s_property.addEBObserver (inObserver)
+      object.mWiresP2s_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mWiresP2s (_ inObserver : EBObserverProtocol) {
+  final func toMany_mWiresP2s_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mWiresP2s.remove (inObserver)
     if let object = self.propval {
-      object.mWiresP2s_property.removeEBObserver (inObserver)
+      object.mWiresP2s_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -198,19 +198,19 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
 
   //····················································································································
 
-  final func addEBObserverOf_mWiresP1s (_ inObserver : EBObserverProtocol) {
+  final func toMany_mWiresP1s_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mWiresP1s.insert (inObserver)
     if let object = self.propval {
-      object.mWiresP1s_property.addEBObserver (inObserver)
+      object.mWiresP1s_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mWiresP1s (_ inObserver : EBObserverProtocol) {
+  final func toMany_mWiresP1s_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mWiresP1s.remove (inObserver)
     if let object = self.propval {
-      object.mWiresP1s_property.removeEBObserver (inObserver)
+      object.mWiresP1s_property.stopsBeingObserved (by: inObserver)
     }
   }
 

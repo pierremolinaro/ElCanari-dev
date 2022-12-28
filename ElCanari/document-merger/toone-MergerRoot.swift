@@ -16,77 +16,77 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.selectedPageIndex_property.removeEBObserver (self.selectedPageIndex_property) // Stored property
-      oldValue.zoom_property.removeEBObserver (self.zoom_property) // Stored property
-      oldValue.showDisplaySettingView_property.removeEBObserver (self.showDisplaySettingView_property) // Stored property
-      oldValue.modelInsertionRotation_property.removeEBObserver (self.modelInsertionRotation_property) // Stored property
-      oldValue.automaticBoardSize_property.removeEBObserver (self.automaticBoardSize_property) // Stored property
-      oldValue.boardManualWidth_property.removeEBObserver (self.boardManualWidth_property) // Stored property
-      oldValue.boardManualHeight_property.removeEBObserver (self.boardManualHeight_property) // Stored property
-      oldValue.boardWidthUnit_property.removeEBObserver (self.boardWidthUnit_property) // Stored property
-      oldValue.boardHeightUnit_property.removeEBObserver (self.boardHeightUnit_property) // Stored property
-      oldValue.overlapingArrangment_property.removeEBObserver (self.overlapingArrangment_property) // Stored property
-      oldValue.selectedBoardXUnit_property.removeEBObserver (self.selectedBoardXUnit_property) // Stored property
-      oldValue.selectedBoardYUnit_property.removeEBObserver (self.selectedBoardYUnit_property) // Stored property
-      oldValue.boardLimitWidth_property.removeEBObserver (self.boardLimitWidth_property) // Stored property
-      oldValue.boardLimitWidthUnit_property.removeEBObserver (self.boardLimitWidthUnit_property) // Stored property
-      oldValue.arrowMagnitude_property.removeEBObserver (self.arrowMagnitude_property) // Stored property
-      oldValue.arrowMagnitudeUnit_property.removeEBObserver (self.arrowMagnitudeUnit_property) // Stored property
-      oldValue.shiftArrowMagnitude_property.removeEBObserver (self.shiftArrowMagnitude_property) // Stored property
-      oldValue.shiftArrowMagnitudeUnit_property.removeEBObserver (self.shiftArrowMagnitudeUnit_property) // Stored property
-      oldValue.mPDFBoardBackgroundColor_property.removeEBObserver (self.mPDFBoardBackgroundColor_property) // Stored property
-      oldValue.mArtworkName_property.removeEBObserver (self.mArtworkName_property) // Stored property
-      oldValue.mArtworkVersion_property.removeEBObserver (self.mArtworkVersion_property) // Stored property
-      oldValue.modelNames_property.removeEBObserver (self.modelNames_property) // Transient property
-      oldValue.boardRect_property.removeEBObserver (self.boardRect_property) // Transient property
-      oldValue.boardLimitWidthErrorMessage_property.removeEBObserver (self.boardLimitWidthErrorMessage_property) // Transient property
-      oldValue.boardLimitWidthOk_property.removeEBObserver (self.boardLimitWidthOk_property) // Transient property
-      oldValue.boardWidth_property.removeEBObserver (self.boardWidth_property) // Transient property
-      oldValue.boardHeight_property.removeEBObserver (self.boardHeight_property) // Transient property
-      oldValue.comments_property.removeEBObserver (self.comments_property) // Transient property
-      oldValue.layoutLayerWarningMessage_property.removeEBObserver (self.layoutLayerWarningMessage_property) // Transient property
-      oldValue.layerConfigurationString_property.removeEBObserver (self.layerConfigurationString_property) // Transient property
-      oldValue.emptyDrillFileExtension_property.removeEBObserver (self.emptyDrillFileExtension_property) // Transient property
-      oldValue.hasInnerElements_property.removeEBObserver (self.hasInnerElements_property) // Transient property
-      oldValue.hasSixLayers_property.removeEBObserver (self.hasSixLayers_property) // Transient property
-      oldValue.boardOutlineRectDisplay_property.removeEBObserver (self.boardOutlineRectDisplay_property) // Transient property
+      oldValue.selectedPageIndex_property.stopsBeingObserved (by: self.selectedPageIndex_property) // Stored property
+      oldValue.zoom_property.stopsBeingObserved (by: self.zoom_property) // Stored property
+      oldValue.showDisplaySettingView_property.stopsBeingObserved (by: self.showDisplaySettingView_property) // Stored property
+      oldValue.modelInsertionRotation_property.stopsBeingObserved (by: self.modelInsertionRotation_property) // Stored property
+      oldValue.automaticBoardSize_property.stopsBeingObserved (by: self.automaticBoardSize_property) // Stored property
+      oldValue.boardManualWidth_property.stopsBeingObserved (by: self.boardManualWidth_property) // Stored property
+      oldValue.boardManualHeight_property.stopsBeingObserved (by: self.boardManualHeight_property) // Stored property
+      oldValue.boardWidthUnit_property.stopsBeingObserved (by: self.boardWidthUnit_property) // Stored property
+      oldValue.boardHeightUnit_property.stopsBeingObserved (by: self.boardHeightUnit_property) // Stored property
+      oldValue.overlapingArrangment_property.stopsBeingObserved (by: self.overlapingArrangment_property) // Stored property
+      oldValue.selectedBoardXUnit_property.stopsBeingObserved (by: self.selectedBoardXUnit_property) // Stored property
+      oldValue.selectedBoardYUnit_property.stopsBeingObserved (by: self.selectedBoardYUnit_property) // Stored property
+      oldValue.boardLimitWidth_property.stopsBeingObserved (by: self.boardLimitWidth_property) // Stored property
+      oldValue.boardLimitWidthUnit_property.stopsBeingObserved (by: self.boardLimitWidthUnit_property) // Stored property
+      oldValue.arrowMagnitude_property.stopsBeingObserved (by: self.arrowMagnitude_property) // Stored property
+      oldValue.arrowMagnitudeUnit_property.stopsBeingObserved (by: self.arrowMagnitudeUnit_property) // Stored property
+      oldValue.shiftArrowMagnitude_property.stopsBeingObserved (by: self.shiftArrowMagnitude_property) // Stored property
+      oldValue.shiftArrowMagnitudeUnit_property.stopsBeingObserved (by: self.shiftArrowMagnitudeUnit_property) // Stored property
+      oldValue.mPDFBoardBackgroundColor_property.stopsBeingObserved (by: self.mPDFBoardBackgroundColor_property) // Stored property
+      oldValue.mArtworkName_property.stopsBeingObserved (by: self.mArtworkName_property) // Stored property
+      oldValue.mArtworkVersion_property.stopsBeingObserved (by: self.mArtworkVersion_property) // Stored property
+      oldValue.modelNames_property.stopsBeingObserved (by: self.modelNames_property) // Transient property
+      oldValue.boardRect_property.stopsBeingObserved (by: self.boardRect_property) // Transient property
+      oldValue.boardLimitWidthErrorMessage_property.stopsBeingObserved (by: self.boardLimitWidthErrorMessage_property) // Transient property
+      oldValue.boardLimitWidthOk_property.stopsBeingObserved (by: self.boardLimitWidthOk_property) // Transient property
+      oldValue.boardWidth_property.stopsBeingObserved (by: self.boardWidth_property) // Transient property
+      oldValue.boardHeight_property.stopsBeingObserved (by: self.boardHeight_property) // Transient property
+      oldValue.comments_property.stopsBeingObserved (by: self.comments_property) // Transient property
+      oldValue.layoutLayerWarningMessage_property.stopsBeingObserved (by: self.layoutLayerWarningMessage_property) // Transient property
+      oldValue.layerConfigurationString_property.stopsBeingObserved (by: self.layerConfigurationString_property) // Transient property
+      oldValue.emptyDrillFileExtension_property.stopsBeingObserved (by: self.emptyDrillFileExtension_property) // Transient property
+      oldValue.hasInnerElements_property.stopsBeingObserved (by: self.hasInnerElements_property) // Transient property
+      oldValue.hasSixLayers_property.stopsBeingObserved (by: self.hasSixLayers_property) // Transient property
+      oldValue.boardOutlineRectDisplay_property.stopsBeingObserved (by: self.boardOutlineRectDisplay_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.selectedPageIndex_property.addEBObserver (self.selectedPageIndex_property) // Stored property
-      newValue.zoom_property.addEBObserver (self.zoom_property) // Stored property
-      newValue.showDisplaySettingView_property.addEBObserver (self.showDisplaySettingView_property) // Stored property
-      newValue.modelInsertionRotation_property.addEBObserver (self.modelInsertionRotation_property) // Stored property
-      newValue.automaticBoardSize_property.addEBObserver (self.automaticBoardSize_property) // Stored property
-      newValue.boardManualWidth_property.addEBObserver (self.boardManualWidth_property) // Stored property
-      newValue.boardManualHeight_property.addEBObserver (self.boardManualHeight_property) // Stored property
-      newValue.boardWidthUnit_property.addEBObserver (self.boardWidthUnit_property) // Stored property
-      newValue.boardHeightUnit_property.addEBObserver (self.boardHeightUnit_property) // Stored property
-      newValue.overlapingArrangment_property.addEBObserver (self.overlapingArrangment_property) // Stored property
-      newValue.selectedBoardXUnit_property.addEBObserver (self.selectedBoardXUnit_property) // Stored property
-      newValue.selectedBoardYUnit_property.addEBObserver (self.selectedBoardYUnit_property) // Stored property
-      newValue.boardLimitWidth_property.addEBObserver (self.boardLimitWidth_property) // Stored property
-      newValue.boardLimitWidthUnit_property.addEBObserver (self.boardLimitWidthUnit_property) // Stored property
-      newValue.arrowMagnitude_property.addEBObserver (self.arrowMagnitude_property) // Stored property
-      newValue.arrowMagnitudeUnit_property.addEBObserver (self.arrowMagnitudeUnit_property) // Stored property
-      newValue.shiftArrowMagnitude_property.addEBObserver (self.shiftArrowMagnitude_property) // Stored property
-      newValue.shiftArrowMagnitudeUnit_property.addEBObserver (self.shiftArrowMagnitudeUnit_property) // Stored property
-      newValue.mPDFBoardBackgroundColor_property.addEBObserver (self.mPDFBoardBackgroundColor_property) // Stored property
-      newValue.mArtworkName_property.addEBObserver (self.mArtworkName_property) // Stored property
-      newValue.mArtworkVersion_property.addEBObserver (self.mArtworkVersion_property) // Stored property
-      newValue.modelNames_property.addEBObserver (self.modelNames_property) // Transient property
-      newValue.boardRect_property.addEBObserver (self.boardRect_property) // Transient property
-      newValue.boardLimitWidthErrorMessage_property.addEBObserver (self.boardLimitWidthErrorMessage_property) // Transient property
-      newValue.boardLimitWidthOk_property.addEBObserver (self.boardLimitWidthOk_property) // Transient property
-      newValue.boardWidth_property.addEBObserver (self.boardWidth_property) // Transient property
-      newValue.boardHeight_property.addEBObserver (self.boardHeight_property) // Transient property
-      newValue.comments_property.addEBObserver (self.comments_property) // Transient property
-      newValue.layoutLayerWarningMessage_property.addEBObserver (self.layoutLayerWarningMessage_property) // Transient property
-      newValue.layerConfigurationString_property.addEBObserver (self.layerConfigurationString_property) // Transient property
-      newValue.emptyDrillFileExtension_property.addEBObserver (self.emptyDrillFileExtension_property) // Transient property
-      newValue.hasInnerElements_property.addEBObserver (self.hasInnerElements_property) // Transient property
-      newValue.hasSixLayers_property.addEBObserver (self.hasSixLayers_property) // Transient property
-      newValue.boardOutlineRectDisplay_property.addEBObserver (self.boardOutlineRectDisplay_property) // Transient property
+      newValue.selectedPageIndex_property.startsToBeObserved (by: self.selectedPageIndex_property) // Stored property
+      newValue.zoom_property.startsToBeObserved (by: self.zoom_property) // Stored property
+      newValue.showDisplaySettingView_property.startsToBeObserved (by: self.showDisplaySettingView_property) // Stored property
+      newValue.modelInsertionRotation_property.startsToBeObserved (by: self.modelInsertionRotation_property) // Stored property
+      newValue.automaticBoardSize_property.startsToBeObserved (by: self.automaticBoardSize_property) // Stored property
+      newValue.boardManualWidth_property.startsToBeObserved (by: self.boardManualWidth_property) // Stored property
+      newValue.boardManualHeight_property.startsToBeObserved (by: self.boardManualHeight_property) // Stored property
+      newValue.boardWidthUnit_property.startsToBeObserved (by: self.boardWidthUnit_property) // Stored property
+      newValue.boardHeightUnit_property.startsToBeObserved (by: self.boardHeightUnit_property) // Stored property
+      newValue.overlapingArrangment_property.startsToBeObserved (by: self.overlapingArrangment_property) // Stored property
+      newValue.selectedBoardXUnit_property.startsToBeObserved (by: self.selectedBoardXUnit_property) // Stored property
+      newValue.selectedBoardYUnit_property.startsToBeObserved (by: self.selectedBoardYUnit_property) // Stored property
+      newValue.boardLimitWidth_property.startsToBeObserved (by: self.boardLimitWidth_property) // Stored property
+      newValue.boardLimitWidthUnit_property.startsToBeObserved (by: self.boardLimitWidthUnit_property) // Stored property
+      newValue.arrowMagnitude_property.startsToBeObserved (by: self.arrowMagnitude_property) // Stored property
+      newValue.arrowMagnitudeUnit_property.startsToBeObserved (by: self.arrowMagnitudeUnit_property) // Stored property
+      newValue.shiftArrowMagnitude_property.startsToBeObserved (by: self.shiftArrowMagnitude_property) // Stored property
+      newValue.shiftArrowMagnitudeUnit_property.startsToBeObserved (by: self.shiftArrowMagnitudeUnit_property) // Stored property
+      newValue.mPDFBoardBackgroundColor_property.startsToBeObserved (by: self.mPDFBoardBackgroundColor_property) // Stored property
+      newValue.mArtworkName_property.startsToBeObserved (by: self.mArtworkName_property) // Stored property
+      newValue.mArtworkVersion_property.startsToBeObserved (by: self.mArtworkVersion_property) // Stored property
+      newValue.modelNames_property.startsToBeObserved (by: self.modelNames_property) // Transient property
+      newValue.boardRect_property.startsToBeObserved (by: self.boardRect_property) // Transient property
+      newValue.boardLimitWidthErrorMessage_property.startsToBeObserved (by: self.boardLimitWidthErrorMessage_property) // Transient property
+      newValue.boardLimitWidthOk_property.startsToBeObserved (by: self.boardLimitWidthOk_property) // Transient property
+      newValue.boardWidth_property.startsToBeObserved (by: self.boardWidth_property) // Transient property
+      newValue.boardHeight_property.startsToBeObserved (by: self.boardHeight_property) // Transient property
+      newValue.comments_property.startsToBeObserved (by: self.comments_property) // Transient property
+      newValue.layoutLayerWarningMessage_property.startsToBeObserved (by: self.layoutLayerWarningMessage_property) // Transient property
+      newValue.layerConfigurationString_property.startsToBeObserved (by: self.layerConfigurationString_property) // Transient property
+      newValue.emptyDrillFileExtension_property.startsToBeObserved (by: self.emptyDrillFileExtension_property) // Transient property
+      newValue.hasInnerElements_property.startsToBeObserved (by: self.hasInnerElements_property) // Transient property
+      newValue.hasSixLayers_property.startsToBeObserved (by: self.hasSixLayers_property) // Transient property
+      newValue.boardOutlineRectDisplay_property.startsToBeObserved (by: self.boardOutlineRectDisplay_property) // Transient property
     }
   }
 
@@ -302,19 +302,19 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_boardModels (_ inObserver : EBObserverProtocol) {
+  final func toMany_boardModels_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_boardModels.insert (inObserver)
     if let object = self.propval {
-      object.boardModels_property.addEBObserver (inObserver)
+      object.boardModels_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_boardModels (_ inObserver : EBObserverProtocol) {
+  final func toMany_boardModels_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_boardModels.remove (inObserver)
     if let object = self.propval {
-      object.boardModels_property.removeEBObserver (inObserver)
+      object.boardModels_property.stopsBeingObserved (by: inObserver)
     }
   }
 
@@ -326,19 +326,19 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
 
   //····················································································································
 
-  final func addEBObserverOf_boardInstances (_ inObserver : EBObserverProtocol) {
+  final func toMany_boardInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_boardInstances.insert (inObserver)
     if let object = self.propval {
-      object.boardInstances_property.addEBObserver (inObserver)
+      object.boardInstances_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_boardInstances (_ inObserver : EBObserverProtocol) {
+  final func toMany_boardInstances_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_boardInstances.remove (inObserver)
     if let object = self.propval {
-      object.boardInstances_property.removeEBObserver (inObserver)
+      object.boardInstances_property.stopsBeingObserved (by: inObserver)
     }
   }
 

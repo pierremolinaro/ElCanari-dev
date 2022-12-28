@@ -61,30 +61,30 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_yPin (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_yPin_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_yPin.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.yPin_property.addEBObserver (inObserver)
+        managedObject.yPin_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_yPin (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_yPin_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_yPin.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.yPin_property.removeEBObserver (inObserver)
+        managedObject.yPin_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -96,7 +96,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_yPin.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.yPin_property.addEBObserver (observer)
+            managedObject.yPin_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_yPin.triggerPacking ()
           }
@@ -112,7 +112,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.yPin_property.removeEBObserver (observer)
+          managedObject.yPin_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_yPin.triggerPacking ()
@@ -128,30 +128,30 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_xName (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_xName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_xName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.xName_property.addEBObserver (inObserver)
+        managedObject.xName_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_xName (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_xName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_xName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.xName_property.removeEBObserver (inObserver)
+        managedObject.xName_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -163,7 +163,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_xName.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.xName_property.addEBObserver (observer)
+            managedObject.xName_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_xName.triggerPacking ()
           }
@@ -179,7 +179,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.xName_property.removeEBObserver (observer)
+          managedObject.xName_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_xName.triggerPacking ()
@@ -195,30 +195,30 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_yName (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_yName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_yName.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.yName_property.addEBObserver (inObserver)
+        managedObject.yName_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_yName (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_yName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_yName.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.yName_property.removeEBObserver (inObserver)
+        managedObject.yName_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -230,7 +230,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_yName.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.yName_property.addEBObserver (observer)
+            managedObject.yName_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_yName.triggerPacking ()
           }
@@ -246,7 +246,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.yName_property.removeEBObserver (observer)
+          managedObject.yName_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_yName.triggerPacking ()
@@ -262,30 +262,30 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_xNumber (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_xNumber_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_xNumber.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.xNumber_property.addEBObserver (inObserver)
+        managedObject.xNumber_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_xNumber (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_xNumber_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_xNumber.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.xNumber_property.removeEBObserver (inObserver)
+        managedObject.xNumber_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -297,7 +297,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_xNumber.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.xNumber_property.addEBObserver (observer)
+            managedObject.xNumber_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_xNumber.triggerPacking ()
           }
@@ -313,7 +313,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.xNumber_property.removeEBObserver (observer)
+          managedObject.xNumber_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_xNumber.triggerPacking ()
@@ -329,30 +329,30 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_yNumber (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_yNumber_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_yNumber.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.yNumber_property.addEBObserver (inObserver)
+        managedObject.yNumber_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_yNumber (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_yNumber_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_yNumber.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.yNumber_property.removeEBObserver (inObserver)
+        managedObject.yNumber_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -364,7 +364,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_yNumber.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.yNumber_property.addEBObserver (observer)
+            managedObject.yNumber_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_yNumber.triggerPacking ()
           }
@@ -380,7 +380,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.yNumber_property.removeEBObserver (observer)
+          managedObject.yNumber_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_yNumber.triggerPacking ()
@@ -396,30 +396,30 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_name (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_name_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_name.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.name_property.addEBObserver (inObserver)
+        managedObject.name_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_name (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_name_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_name.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.name_property.removeEBObserver (inObserver)
+        managedObject.name_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -431,7 +431,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_name.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.name_property.addEBObserver (observer)
+            managedObject.name_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_name.triggerPacking ()
           }
@@ -447,7 +447,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.name_property.removeEBObserver (observer)
+          managedObject.name_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_name.triggerPacking ()
@@ -463,30 +463,30 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_nameHorizontalAlignment (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_nameHorizontalAlignment_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_nameHorizontalAlignment.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.nameHorizontalAlignment_property.addEBObserver (inObserver)
+        managedObject.nameHorizontalAlignment_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_nameHorizontalAlignment (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_nameHorizontalAlignment_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_nameHorizontalAlignment.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.nameHorizontalAlignment_property.removeEBObserver (inObserver)
+        managedObject.nameHorizontalAlignment_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -498,7 +498,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_nameHorizontalAlignment.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.nameHorizontalAlignment_property.addEBObserver (observer)
+            managedObject.nameHorizontalAlignment_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_nameHorizontalAlignment.triggerPacking ()
           }
@@ -514,7 +514,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.nameHorizontalAlignment_property.removeEBObserver (observer)
+          managedObject.nameHorizontalAlignment_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_nameHorizontalAlignment.triggerPacking ()
@@ -530,30 +530,30 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_numberHorizontalAlignment (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_numberHorizontalAlignment_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_numberHorizontalAlignment.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.numberHorizontalAlignment_property.addEBObserver (inObserver)
+        managedObject.numberHorizontalAlignment_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_numberHorizontalAlignment (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_numberHorizontalAlignment_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_numberHorizontalAlignment.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.numberHorizontalAlignment_property.removeEBObserver (inObserver)
+        managedObject.numberHorizontalAlignment_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -565,7 +565,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_numberHorizontalAlignment.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.numberHorizontalAlignment_property.addEBObserver (observer)
+            managedObject.numberHorizontalAlignment_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_numberHorizontalAlignment.triggerPacking ()
           }
@@ -581,7 +581,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.numberHorizontalAlignment_property.removeEBObserver (observer)
+          managedObject.numberHorizontalAlignment_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_numberHorizontalAlignment.triggerPacking ()
@@ -597,30 +597,30 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_pinNameIsDisplayedInSchematics (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_pinNameIsDisplayedInSchematics_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_pinNameIsDisplayedInSchematics.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.pinNameIsDisplayedInSchematics_property.addEBObserver (inObserver)
+        managedObject.pinNameIsDisplayedInSchematics_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_pinNameIsDisplayedInSchematics (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_pinNameIsDisplayedInSchematics_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_pinNameIsDisplayedInSchematics.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.pinNameIsDisplayedInSchematics_property.removeEBObserver (inObserver)
+        managedObject.pinNameIsDisplayedInSchematics_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -632,7 +632,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_pinNameIsDisplayedInSchematics.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.pinNameIsDisplayedInSchematics_property.addEBObserver (observer)
+            managedObject.pinNameIsDisplayedInSchematics_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_pinNameIsDisplayedInSchematics.triggerPacking ()
           }
@@ -648,7 +648,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.pinNameIsDisplayedInSchematics_property.removeEBObserver (observer)
+          managedObject.pinNameIsDisplayedInSchematics_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_pinNameIsDisplayedInSchematics.triggerPacking ()
@@ -664,30 +664,30 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_xPin (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_xPin_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_xPin.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.xPin_property.addEBObserver (inObserver)
+        managedObject.xPin_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_xPin (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_xPin_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_xPin.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.xPin_property.removeEBObserver (inObserver)
+        managedObject.xPin_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -699,7 +699,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
       for managedObject in inSet.values {
         for (_, entry) in self.mObserversOf_xPin.dictionary {
           if let observer = entry.possibleObserver {
-            managedObject.xPin_property.addEBObserver (observer)
+            managedObject.xPin_property.startsToBeObserved (by: observer)
           }else{
             self.mObserversOf_xPin.triggerPacking ()
           }
@@ -715,7 +715,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
-          managedObject.xPin_property.removeEBObserver (observer)
+          managedObject.xPin_property.stopsBeingObserved (by: observer)
         }
       }else{
         self.mObserversOf_xPin.triggerPacking ()
@@ -731,30 +731,30 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_filledBezierPath (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_filledBezierPath_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_filledBezierPath.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.filledBezierPath_property.addEBObserver (inObserver)
+        managedObject.filledBezierPath_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_filledBezierPath (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_filledBezierPath_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_filledBezierPath.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.filledBezierPath_property.removeEBObserver (inObserver)
+        managedObject.filledBezierPath_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -765,7 +765,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_filledBezierPath.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.filledBezierPath_property.addEBObserver (observer)
+          managedObject.filledBezierPath_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_filledBezierPath.triggerPacking ()
         }
@@ -779,7 +779,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_filledBezierPath.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.filledBezierPath_property.removeEBObserver (observer)
+          managedObject.filledBezierPath_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_filledBezierPath.triggerPacking ()
         }
@@ -795,30 +795,30 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_objectDisplay (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.objectDisplay_property.addEBObserver (inObserver)
+        managedObject.objectDisplay_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_objectDisplay (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.objectDisplay_property.removeEBObserver (inObserver)
+        managedObject.objectDisplay_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -829,7 +829,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.objectDisplay_property.addEBObserver (observer)
+          managedObject.objectDisplay_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
         }
@@ -843,7 +843,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.objectDisplay_property.removeEBObserver (observer)
+          managedObject.objectDisplay_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_objectDisplay.triggerPacking ()
         }
@@ -859,30 +859,30 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_selectionDisplay (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectionDisplay_property.addEBObserver (inObserver)
+        managedObject.selectionDisplay_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectionDisplay_property.removeEBObserver (inObserver)
+        managedObject.selectionDisplay_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -893,7 +893,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.selectionDisplay_property.addEBObserver (observer)
+          managedObject.selectionDisplay_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
         }
@@ -907,7 +907,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.selectionDisplay_property.removeEBObserver (observer)
+          managedObject.selectionDisplay_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_selectionDisplay.triggerPacking ()
         }
@@ -923,30 +923,30 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_issues (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_issues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_issues.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.issues_property.addEBObserver (inObserver)
+        managedObject.issues_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_issues (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_issues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_issues.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.issues_property.removeEBObserver (inObserver)
+        managedObject.issues_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -957,7 +957,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_issues.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.issues_property.addEBObserver (observer)
+          managedObject.issues_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_issues.triggerPacking ()
         }
@@ -971,7 +971,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_issues.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.issues_property.removeEBObserver (observer)
+          managedObject.issues_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_issues.triggerPacking ()
         }
@@ -987,30 +987,30 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  final func addEBObserverOf_nameRect (_ inObserver : EBObserverProtocol) {
-    self.addEBObserver (inObserver)
+  final func toMany_nameRect_StartsToBeObserved (by inObserver : EBObserverProtocol) {
+    self.startsToBeObserved (by: inObserver)
     self.mObserversOf_nameRect.insert (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.nameRect_property.addEBObserver (inObserver)
+        managedObject.nameRect_property.startsToBeObserved (by: inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_nameRect (_ inObserver : EBObserverProtocol) {
-    self.removeEBObserver (inObserver)
+  final func toMany_nameRect_StopsBeingObserved (by inObserver : EBObserverProtocol) {
+    self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_nameRect.remove (inObserver)
     switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.nameRect_property.removeEBObserver (inObserver)
+        managedObject.nameRect_property.stopsBeingObserved (by: inObserver)
       }
     }
   }
@@ -1021,7 +1021,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_nameRect.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.nameRect_property.addEBObserver (observer)
+          managedObject.nameRect_property.startsToBeObserved (by: observer)
         }else{
           self.mObserversOf_nameRect.triggerPacking ()
         }
@@ -1035,7 +1035,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
     for managedObject in inSet.values {
       for (_, entry) in self.mObserversOf_nameRect.dictionary {
         if let observer = entry.possibleObserver {
-          managedObject.nameRect_property.removeEBObserver (observer)
+          managedObject.nameRect_property.stopsBeingObserved (by: observer)
         }else{
           self.mObserversOf_nameRect.triggerPacking ()
         }

@@ -939,11 +939,11 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.statusMessage_property)
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.statusMessage_property)
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_hasNoData (self.statusMessage_property)
-    self.rootObject.emptyDrillFileExtension_property.addEBObserver (self.statusMessage_property)
-    self.documentFileName_property.addEBObserver (self.statusMessage_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_fileExtension_StartsToBeObserved (by: self.statusMessage_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_name_StartsToBeObserved (by: self.statusMessage_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_hasNoData_StartsToBeObserved (by: self.statusMessage_property)
+    self.rootObject.emptyDrillFileExtension_property.startsToBeObserved (by: self.statusMessage_property)
+    self.documentFileName_property.startsToBeObserved (by: self.statusMessage_property)
 
   //--- Atomic property: emptyDrillFileExtensionImage
     self.emptyDrillFileExtensionImage_property.mReadModelFunction = { [weak self] in
@@ -961,7 +961,7 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.emptyDrillFileExtension_property.addEBObserver (self.emptyDrillFileExtensionImage_property)
+    self.rootObject.emptyDrillFileExtension_property.startsToBeObserved (by: self.emptyDrillFileExtensionImage_property)
 
   //--- Atomic property: generatedFileCountString
     self.generatedFileCountString_property.mReadModelFunction = { [weak self] in
@@ -979,7 +979,7 @@ import AppKit
         return .empty
       }
     }
-    self.mDataController.sortedArray_property.count_property.addEBObserver (self.generatedFileCountString_property)
+    self.mDataController.sortedArray_property.count_property.startsToBeObserved (by: self.generatedFileCountString_property)
 
   //--- Atomic property: segmentedControlDataIssueImage
     self.segmentedControlDataIssueImage_property.mReadModelFunction = { [weak self] in
@@ -1006,10 +1006,10 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.segmentedControlDataIssueImage_property)
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.segmentedControlDataIssueImage_property)
-    self.rootObject.hasDataWarning_property.addEBObserver (self.segmentedControlDataIssueImage_property)
-    self.rootObject.emptyDrillFileExtension_property.addEBObserver (self.segmentedControlDataIssueImage_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_fileExtension_StartsToBeObserved (by: self.segmentedControlDataIssueImage_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_name_StartsToBeObserved (by: self.segmentedControlDataIssueImage_property)
+    self.rootObject.hasDataWarning_property.startsToBeObserved (by: self.segmentedControlDataIssueImage_property)
+    self.rootObject.emptyDrillFileExtension_property.startsToBeObserved (by: self.segmentedControlDataIssueImage_property)
 
   //--- Atomic property: statusImage
     self.statusImage_property.mReadModelFunction = { [weak self] in
@@ -1039,11 +1039,11 @@ import AppKit
         return .empty
       }
     }
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.statusImage_property)
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.statusImage_property)
-    self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_hasNoData (self.statusImage_property)
-    self.rootObject.emptyDrillFileExtension_property.addEBObserver (self.statusImage_property)
-    self.documentFileName_property.addEBObserver (self.statusImage_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_fileExtension_StartsToBeObserved (by: self.statusImage_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_name_StartsToBeObserved (by: self.statusImage_property)
+    self.rootObject.fileGenerationParameterArray_property.toMany_hasNoData_StartsToBeObserved (by: self.statusImage_property)
+    self.rootObject.emptyDrillFileExtension_property.startsToBeObserved (by: self.statusImage_property)
+    self.documentFileName_property.startsToBeObserved (by: self.statusImage_property)
 
   }
 

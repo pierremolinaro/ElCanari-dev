@@ -16,27 +16,27 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
     super.notifyModelDidChangeFrom (oldValue: inOldValue)
   //--- Remove observers from removed objects
     if let oldValue = inOldValue {
-      oldValue.mInstanceName_property.removeEBObserver (self.mInstanceName_property) // Stored property
-      oldValue.mX_property.removeEBObserver (self.mX_property) // Stored property
-      oldValue.mY_property.removeEBObserver (self.mY_property) // Stored property
-      oldValue.symbolQualifiedName_property.removeEBObserver (self.symbolQualifiedName_property) // Transient property
-      oldValue.symbolTypeName_property.removeEBObserver (self.symbolTypeName_property) // Transient property
-      oldValue.pinSymbolQualifiedNames_property.removeEBObserver (self.pinSymbolQualifiedNames_property) // Transient property
-      oldValue.selectionDisplay_property.removeEBObserver (self.selectionDisplay_property) // Transient property
-      oldValue.unconnectedPins_property.removeEBObserver (self.unconnectedPins_property) // Transient property
-      oldValue.objectDisplay_property.removeEBObserver (self.objectDisplay_property) // Transient property
+      oldValue.mInstanceName_property.stopsBeingObserved (by: self.mInstanceName_property) // Stored property
+      oldValue.mX_property.stopsBeingObserved (by: self.mX_property) // Stored property
+      oldValue.mY_property.stopsBeingObserved (by: self.mY_property) // Stored property
+      oldValue.symbolQualifiedName_property.stopsBeingObserved (by: self.symbolQualifiedName_property) // Transient property
+      oldValue.symbolTypeName_property.stopsBeingObserved (by: self.symbolTypeName_property) // Transient property
+      oldValue.pinSymbolQualifiedNames_property.stopsBeingObserved (by: self.pinSymbolQualifiedNames_property) // Transient property
+      oldValue.selectionDisplay_property.stopsBeingObserved (by: self.selectionDisplay_property) // Transient property
+      oldValue.unconnectedPins_property.stopsBeingObserved (by: self.unconnectedPins_property) // Transient property
+      oldValue.objectDisplay_property.stopsBeingObserved (by: self.objectDisplay_property) // Transient property
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
-      newValue.mInstanceName_property.addEBObserver (self.mInstanceName_property) // Stored property
-      newValue.mX_property.addEBObserver (self.mX_property) // Stored property
-      newValue.mY_property.addEBObserver (self.mY_property) // Stored property
-      newValue.symbolQualifiedName_property.addEBObserver (self.symbolQualifiedName_property) // Transient property
-      newValue.symbolTypeName_property.addEBObserver (self.symbolTypeName_property) // Transient property
-      newValue.pinSymbolQualifiedNames_property.addEBObserver (self.pinSymbolQualifiedNames_property) // Transient property
-      newValue.selectionDisplay_property.addEBObserver (self.selectionDisplay_property) // Transient property
-      newValue.unconnectedPins_property.addEBObserver (self.unconnectedPins_property) // Transient property
-      newValue.objectDisplay_property.addEBObserver (self.objectDisplay_property) // Transient property
+      newValue.mInstanceName_property.startsToBeObserved (by: self.mInstanceName_property) // Stored property
+      newValue.mX_property.startsToBeObserved (by: self.mX_property) // Stored property
+      newValue.mY_property.startsToBeObserved (by: self.mY_property) // Stored property
+      newValue.symbolQualifiedName_property.startsToBeObserved (by: self.symbolQualifiedName_property) // Transient property
+      newValue.symbolTypeName_property.startsToBeObserved (by: self.symbolTypeName_property) // Transient property
+      newValue.pinSymbolQualifiedNames_property.startsToBeObserved (by: self.pinSymbolQualifiedNames_property) // Transient property
+      newValue.selectionDisplay_property.startsToBeObserved (by: self.selectionDisplay_property) // Transient property
+      newValue.unconnectedPins_property.startsToBeObserved (by: self.unconnectedPins_property) // Transient property
+      newValue.objectDisplay_property.startsToBeObserved (by: self.objectDisplay_property) // Transient property
     }
   }
 
@@ -102,19 +102,19 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
 
   //····················································································································
 
-  final func addEBObserverOf_mPinInstances (_ inObserver : EBObserverProtocol) {
+  final func toMany_mPinInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPinInstances.insert (inObserver)
     if let object = self.propval {
-      object.mPinInstances_property.addEBObserver (inObserver)
+      object.mPinInstances_property.startsToBeObserved (by: inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mPinInstances (_ inObserver : EBObserverProtocol) {
+  final func toMany_mPinInstances_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPinInstances.remove (inObserver)
     if let object = self.propval {
-      object.mPinInstances_property.removeEBObserver (inObserver)
+      object.mPinInstances_property.stopsBeingObserved (by: inObserver)
     }
   }
 

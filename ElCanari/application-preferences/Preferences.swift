@@ -433,9 +433,9 @@ import AppKit
           return .empty
         }
     }
-    preferences_usesUserLibrary_property.addEBObserver (preferences_mValueRevealInFinder_packages_property)
-    preferences_additionnalLibraryArray_property.addEBObserverOf_mUses (preferences_mValueRevealInFinder_packages_property)
-    preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_packages_property)
+    preferences_usesUserLibrary_property.startsToBeObserved (by: preferences_mValueRevealInFinder_packages_property)
+    preferences_additionnalLibraryArray_property.toMany_mUses_StartsToBeObserved (by: preferences_mValueRevealInFinder_packages_property)
+    preferences_additionnalLibraryArray_property.toMany_mPath_StartsToBeObserved (by: preferences_mValueRevealInFinder_packages_property)
   //--- Atomic property: mValueRevealInFinder_devices
     preferences_mValueRevealInFinder_devices_property.mReadModelFunction = {
         let s0 = preferences_usesUserLibrary_property.selection
@@ -454,9 +454,9 @@ import AppKit
           return .empty
         }
     }
-    preferences_usesUserLibrary_property.addEBObserver (preferences_mValueRevealInFinder_devices_property)
-    preferences_additionnalLibraryArray_property.addEBObserverOf_mUses (preferences_mValueRevealInFinder_devices_property)
-    preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_devices_property)
+    preferences_usesUserLibrary_property.startsToBeObserved (by: preferences_mValueRevealInFinder_devices_property)
+    preferences_additionnalLibraryArray_property.toMany_mUses_StartsToBeObserved (by: preferences_mValueRevealInFinder_devices_property)
+    preferences_additionnalLibraryArray_property.toMany_mPath_StartsToBeObserved (by: preferences_mValueRevealInFinder_devices_property)
   //--- Atomic property: mValueRevealInFinder_fonts
     preferences_mValueRevealInFinder_fonts_property.mReadModelFunction = {
         let s0 = preferences_usesUserLibrary_property.selection
@@ -475,9 +475,9 @@ import AppKit
           return .empty
         }
     }
-    preferences_usesUserLibrary_property.addEBObserver (preferences_mValueRevealInFinder_fonts_property)
-    preferences_additionnalLibraryArray_property.addEBObserverOf_mUses (preferences_mValueRevealInFinder_fonts_property)
-    preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_fonts_property)
+    preferences_usesUserLibrary_property.startsToBeObserved (by: preferences_mValueRevealInFinder_fonts_property)
+    preferences_additionnalLibraryArray_property.toMany_mUses_StartsToBeObserved (by: preferences_mValueRevealInFinder_fonts_property)
+    preferences_additionnalLibraryArray_property.toMany_mPath_StartsToBeObserved (by: preferences_mValueRevealInFinder_fonts_property)
   //--- Atomic property: mValueRevealInFinder_artworks
     preferences_mValueRevealInFinder_artworks_property.mReadModelFunction = {
         let s0 = preferences_usesUserLibrary_property.selection
@@ -496,9 +496,9 @@ import AppKit
           return .empty
         }
     }
-    preferences_usesUserLibrary_property.addEBObserver (preferences_mValueRevealInFinder_artworks_property)
-    preferences_additionnalLibraryArray_property.addEBObserverOf_mUses (preferences_mValueRevealInFinder_artworks_property)
-    preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_artworks_property)
+    preferences_usesUserLibrary_property.startsToBeObserved (by: preferences_mValueRevealInFinder_artworks_property)
+    preferences_additionnalLibraryArray_property.toMany_mUses_StartsToBeObserved (by: preferences_mValueRevealInFinder_artworks_property)
+    preferences_additionnalLibraryArray_property.toMany_mPath_StartsToBeObserved (by: preferences_mValueRevealInFinder_artworks_property)
   //--- Atomic property: mValueRevealInFinder_symbols
     preferences_mValueRevealInFinder_symbols_property.mReadModelFunction = {
         let s0 = preferences_usesUserLibrary_property.selection
@@ -517,9 +517,9 @@ import AppKit
           return .empty
         }
     }
-    preferences_usesUserLibrary_property.addEBObserver (preferences_mValueRevealInFinder_symbols_property)
-    preferences_additionnalLibraryArray_property.addEBObserverOf_mUses (preferences_mValueRevealInFinder_symbols_property)
-    preferences_additionnalLibraryArray_property.addEBObserverOf_mPath (preferences_mValueRevealInFinder_symbols_property)
+    preferences_usesUserLibrary_property.startsToBeObserved (by: preferences_mValueRevealInFinder_symbols_property)
+    preferences_additionnalLibraryArray_property.toMany_mUses_StartsToBeObserved (by: preferences_mValueRevealInFinder_symbols_property)
+    preferences_additionnalLibraryArray_property.toMany_mPath_StartsToBeObserved (by: preferences_mValueRevealInFinder_symbols_property)
   //--- Notify application will terminate
     /* NotificationCenter.default.addObserver (self,
       selector:#selector(Preferences.applicationWillTerminateAction(_:)),
