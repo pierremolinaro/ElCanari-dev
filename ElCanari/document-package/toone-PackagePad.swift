@@ -872,7 +872,6 @@ final class StoredObject_PackagePad : ReadOnlyObject_PackagePad, EBSignatureObse
 
   private let mIsStrongReference : Bool
   private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
-  // private var mStrongInternalValue : PackagePad? = nil
 
   //····················································································································
 

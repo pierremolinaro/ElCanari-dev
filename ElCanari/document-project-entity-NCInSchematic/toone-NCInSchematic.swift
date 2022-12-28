@@ -250,7 +250,6 @@ final class StoredObject_NCInSchematic : ReadOnlyObject_NCInSchematic, EBSignatu
 
   private let mIsStrongReference : Bool
   private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
-  // private var mStrongInternalValue : NCInSchematic? = nil
 
   //····················································································································
 

@@ -876,7 +876,6 @@ final class StoredObject_DeviceRoot : ReadOnlyObject_DeviceRoot, EBSignatureObse
 
   private let mIsStrongReference : Bool
   private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
-  // private var mStrongInternalValue : DeviceRoot? = nil
 
   //····················································································································
 

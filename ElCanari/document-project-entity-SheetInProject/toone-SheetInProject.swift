@@ -367,7 +367,6 @@ final class StoredObject_SheetInProject : ReadOnlyObject_SheetInProject, EBSigna
 
   private let mIsStrongReference : Bool
   private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
-  // private var mStrongInternalValue : SheetInProject? = nil
 
   //····················································································································
 

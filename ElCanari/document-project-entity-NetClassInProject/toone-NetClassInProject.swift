@@ -826,7 +826,6 @@ final class StoredObject_NetClassInProject : ReadOnlyObject_NetClassInProject, E
 
   private let mIsStrongReference : Bool
   private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
-  // private var mStrongInternalValue : NetClassInProject? = nil
 
   //····················································································································
 

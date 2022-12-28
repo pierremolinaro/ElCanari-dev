@@ -412,7 +412,6 @@ final class StoredObject_SymbolInstanceInDevice : ReadOnlyObject_SymbolInstanceI
 
   private let mIsStrongReference : Bool
   private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
-  // private var mStrongInternalValue : SymbolInstanceInDevice? = nil
 
   //····················································································································
 

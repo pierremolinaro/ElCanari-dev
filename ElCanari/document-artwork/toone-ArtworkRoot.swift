@@ -619,7 +619,6 @@ final class StoredObject_ArtworkRoot : ReadOnlyObject_ArtworkRoot, EBSignatureOb
 
   private let mIsStrongReference : Bool
   private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
-  // private var mStrongInternalValue : ArtworkRoot? = nil
 
   //····················································································································
 

@@ -1520,7 +1520,6 @@ final class StoredObject_PackageRoot : ReadOnlyObject_PackageRoot, EBSignatureOb
 
   private let mIsStrongReference : Bool
   private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
-  // private var mStrongInternalValue : PackageRoot? = nil
 
   //····················································································································
 

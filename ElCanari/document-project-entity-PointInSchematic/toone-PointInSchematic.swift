@@ -598,7 +598,6 @@ final class StoredObject_PointInSchematic : ReadOnlyObject_PointInSchematic, EBS
 
   private let mIsStrongReference : Bool
   private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
-  // private var mStrongInternalValue : PointInSchematic? = nil
 
   //····················································································································
 

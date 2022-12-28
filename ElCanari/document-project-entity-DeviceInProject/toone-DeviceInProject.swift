@@ -576,7 +576,6 @@ final class StoredObject_DeviceInProject : ReadOnlyObject_DeviceInProject, EBSig
 
   private let mIsStrongReference : Bool
   private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
-  // private var mStrongInternalValue : DeviceInProject? = nil
 
   //····················································································································
 

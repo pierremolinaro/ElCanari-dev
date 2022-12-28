@@ -619,7 +619,6 @@ final class StoredObject_ComponentSymbolInProject : ReadOnlyObject_ComponentSymb
 
   private let mIsStrongReference : Bool
   private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
-  // private var mStrongInternalValue : ComponentSymbolInProject? = nil
 
   //····················································································································
 

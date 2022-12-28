@@ -694,7 +694,6 @@ final class StoredObject_PackageZone : ReadOnlyObject_PackageZone, EBSignatureOb
 
   private let mIsStrongReference : Bool
   private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
-  // private var mStrongInternalValue : PackageZone? = nil
 
   //····················································································································
 

@@ -233,7 +233,6 @@ final class StoredObject_DeviceSymbolTypeInProject : ReadOnlyObject_DeviceSymbol
 
   private let mIsStrongReference : Bool
   private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
-  // private var mStrongInternalValue : DeviceSymbolTypeInProject? = nil
 
   //····················································································································
 

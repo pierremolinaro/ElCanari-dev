@@ -3730,7 +3730,6 @@ final class StoredObject_ProjectRoot : ReadOnlyObject_ProjectRoot, EBSignatureOb
 
   private let mIsStrongReference : Bool
   private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
-  // private var mStrongInternalValue : ProjectRoot? = nil
 
   //····················································································································
 

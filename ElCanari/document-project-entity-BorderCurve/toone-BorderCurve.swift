@@ -480,7 +480,6 @@ final class StoredObject_BorderCurve : ReadOnlyObject_BorderCurve, EBSignatureOb
 
   private let mIsStrongReference : Bool
   private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
-  // private var mStrongInternalValue : BorderCurve? = nil
 
   //····················································································································
 

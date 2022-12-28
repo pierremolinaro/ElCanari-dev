@@ -296,7 +296,6 @@ final class StoredObject_PadProxyInDevice : ReadOnlyObject_PadProxyInDevice, EBS
 
   private let mIsStrongReference : Bool
   private var mStrongInternalValue : EBManagedObject? = nil // Only used for retaining
-  // private var mStrongInternalValue : PadProxyInDevice? = nil
 
   //····················································································································
 
