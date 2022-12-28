@@ -98,7 +98,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolTypeController : EBObjcBas
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_SymbolTypeInDevice ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_SymbolTypeInDevice (usedForSignature: false, key: nil)
 
   //····················································································································
 

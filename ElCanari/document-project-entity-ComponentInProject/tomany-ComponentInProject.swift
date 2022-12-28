@@ -3406,7 +3406,7 @@ class StoredArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject, EB
 //    Stand alone Array: ComponentInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StandAloneArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject {
+/* final class StandAloneArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInProject {
 
   //····················································································································
 
@@ -3445,7 +3445,7 @@ final class StandAloneArrayOf_ComponentInProject : ReadWriteArrayOf_ComponentInP
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Preferences array: ComponentInProject

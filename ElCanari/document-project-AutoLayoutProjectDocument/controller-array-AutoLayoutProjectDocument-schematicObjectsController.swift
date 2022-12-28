@@ -70,7 +70,7 @@ final class Controller_AutoLayoutProjectDocument_schematicObjectsController : Re
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_SchematicObject ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_SchematicObject (usedForSignature: false, key: nil)
 
   //····················································································································
 

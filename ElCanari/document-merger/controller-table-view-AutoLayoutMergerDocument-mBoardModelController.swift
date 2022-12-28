@@ -78,7 +78,7 @@ final class Controller_AutoLayoutMergerDocument_mBoardModelController : EBObjcBa
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_BoardModel ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_BoardModel (usedForSignature: false, key: nil)
 
   //····················································································································
 

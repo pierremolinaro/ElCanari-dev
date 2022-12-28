@@ -70,7 +70,7 @@ final class Controller_AutoLayoutPackageDocument_mPackageObjectsController : Rea
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_PackageObject ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_PackageObject (usedForSignature: false, key: nil)
 
   //····················································································································
 

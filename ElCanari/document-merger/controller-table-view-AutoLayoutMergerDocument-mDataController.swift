@@ -92,7 +92,7 @@ final class Controller_AutoLayoutMergerDocument_mDataController : EBObjcBaseObje
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_ArtworkFileGenerationParameters ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_ArtworkFileGenerationParameters (usedForSignature: false, key: nil)
 
   //····················································································································
 

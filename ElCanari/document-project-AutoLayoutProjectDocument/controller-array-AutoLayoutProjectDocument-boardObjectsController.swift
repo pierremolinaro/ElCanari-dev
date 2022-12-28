@@ -70,7 +70,7 @@ final class Controller_AutoLayoutProjectDocument_boardObjectsController : ReadOn
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_BoardObject ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_BoardObject (usedForSignature: false, key: nil)
 
   //····················································································································
 

@@ -2612,7 +2612,7 @@ class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFi
 //    Stand alone Array: ArtworkFileGenerationParameters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StandAloneArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFileGenerationParameters {
+/* final class StandAloneArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFileGenerationParameters {
 
   //····················································································································
 
@@ -2651,7 +2651,7 @@ final class StandAloneArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Preferences array: ArtworkFileGenerationParameters

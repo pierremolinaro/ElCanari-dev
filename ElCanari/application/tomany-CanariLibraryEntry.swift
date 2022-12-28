@@ -738,7 +738,7 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EB
 //    Stand alone Array: CanariLibraryEntry
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StandAloneArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry {
+/* final class StandAloneArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry {
 
   //····················································································································
 
@@ -777,7 +777,7 @@ final class StandAloneArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibrar
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Preferences array: CanariLibraryEntry

@@ -472,7 +472,7 @@ class StoredArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject, EBSignatureObs
 //    Stand alone Array: SymbolObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StandAloneArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject {
+/* final class StandAloneArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject {
 
   //····················································································································
 
@@ -511,7 +511,7 @@ final class StandAloneArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject {
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Preferences array: SymbolObject

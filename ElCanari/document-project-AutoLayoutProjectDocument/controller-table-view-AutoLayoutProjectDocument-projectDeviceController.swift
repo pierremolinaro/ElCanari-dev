@@ -98,7 +98,7 @@ final class Controller_AutoLayoutProjectDocument_projectDeviceController : EBObj
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_DeviceInProject ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_DeviceInProject (usedForSignature: false, key: nil)
 
   //····················································································································
 

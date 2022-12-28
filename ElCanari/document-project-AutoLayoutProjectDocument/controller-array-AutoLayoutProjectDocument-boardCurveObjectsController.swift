@@ -70,7 +70,7 @@ final class Controller_AutoLayoutProjectDocument_boardCurveObjectsController : R
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_BorderCurve ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_BorderCurve (usedForSignature: false, key: nil)
 
   //····················································································································
 

@@ -547,7 +547,7 @@ class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInPro
 //    Stand alone Array: DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StandAloneArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInProject {
+/* final class StandAloneArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInProject {
 
   //····················································································································
 
@@ -586,7 +586,7 @@ final class StandAloneArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePa
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Preferences array: DevicePackageInProject

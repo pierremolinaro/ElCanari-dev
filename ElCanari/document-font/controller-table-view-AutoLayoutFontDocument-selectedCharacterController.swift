@@ -78,7 +78,7 @@ final class Controller_AutoLayoutFontDocument_selectedCharacterController : EBOb
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_FontCharacter ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_FontCharacter (usedForSignature: false, key: nil)
 
   //····················································································································
 

@@ -70,7 +70,7 @@ final class Controller_AutoLayoutSymbolDocument_mSymbolObjectsController : ReadO
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_SymbolObject ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_SymbolObject (usedForSignature: false, key: nil)
 
   //····················································································································
 

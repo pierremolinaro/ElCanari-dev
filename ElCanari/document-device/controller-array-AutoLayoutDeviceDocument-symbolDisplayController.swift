@@ -70,7 +70,7 @@ final class Controller_AutoLayoutDeviceDocument_symbolDisplayController : ReadOn
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_SymbolInstanceInDevice ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_SymbolInstanceInDevice (usedForSignature: false, key: nil)
 
   //····················································································································
 

@@ -96,7 +96,7 @@ final class Controller_AutoLayoutDeviceDocument_packageController : EBObjcBaseOb
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_PackageInDevice ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_PackageInDevice (usedForSignature: false, key: nil)
 
   //····················································································································
 

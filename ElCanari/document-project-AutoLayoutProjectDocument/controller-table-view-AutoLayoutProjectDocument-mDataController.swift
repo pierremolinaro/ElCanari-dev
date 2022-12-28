@@ -92,7 +92,7 @@ final class Controller_AutoLayoutProjectDocument_mDataController : EBObjcBaseObj
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_ArtworkFileGenerationParameters ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_ArtworkFileGenerationParameters (usedForSignature: false, key: nil)
 
   //····················································································································
 

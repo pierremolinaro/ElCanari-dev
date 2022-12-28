@@ -78,7 +78,7 @@ final class Controller_Preferences_userLibraryArrayController : EBObjcBaseObject
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_CanariLibraryEntry ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_CanariLibraryEntry (usedForSignature: false, key: nil)
 
   //····················································································································
 

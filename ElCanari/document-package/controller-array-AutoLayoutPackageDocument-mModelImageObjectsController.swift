@@ -70,7 +70,7 @@ final class Controller_AutoLayoutPackageDocument_mModelImageObjectsController : 
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_PackageModelImageDoublePoint ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_PackageModelImageDoublePoint (usedForSignature: false, key: nil)
 
   //····················································································································
 

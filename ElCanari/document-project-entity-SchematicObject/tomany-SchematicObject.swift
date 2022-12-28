@@ -756,7 +756,7 @@ class StoredArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject, EBSignat
 //    Stand alone Array: SchematicObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StandAloneArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject {
+/* final class StandAloneArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject {
 
   //····················································································································
 
@@ -795,7 +795,7 @@ final class StandAloneArrayOf_SchematicObject : ReadWriteArrayOf_SchematicObject
 
   //····················································································································
 
-}
+} */
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Preferences array: SchematicObject

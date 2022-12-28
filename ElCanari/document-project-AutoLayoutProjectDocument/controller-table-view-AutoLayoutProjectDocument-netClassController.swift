@@ -110,7 +110,7 @@ final class Controller_AutoLayoutProjectDocument_netClassController : EBObjcBase
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_NetClassInProject ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_NetClassInProject (usedForSignature: false, key: nil)
 
   //····················································································································
 

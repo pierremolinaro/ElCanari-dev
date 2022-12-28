@@ -102,7 +102,7 @@ final class Controller_AutoLayoutProjectDocument_projectFontController : EBObjcB
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_FontInProject ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_FontInProject (usedForSignature: false, key: nil)
 
   //····················································································································
 

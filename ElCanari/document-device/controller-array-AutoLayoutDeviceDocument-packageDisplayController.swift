@@ -70,7 +70,7 @@ final class Controller_AutoLayoutDeviceDocument_packageDisplayController : ReadO
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_PackageInDevice ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_PackageInDevice (usedForSignature: false, key: nil)
 
   //····················································································································
 

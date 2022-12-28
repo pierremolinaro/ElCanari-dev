@@ -94,7 +94,7 @@ final class Controller_AutoLayoutDeviceDocument_documentationController : EBObjc
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_DeviceDocumentation ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_DeviceDocumentation (usedForSignature: false, key: nil)
 
   //····················································································································
 

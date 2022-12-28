@@ -102,7 +102,7 @@ final class Controller_AutoLayoutProjectDocument_componentController : EBObjcBas
   //   Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_ComponentInProject ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_ComponentInProject (usedForSignature: false, key: nil)
 
   //····················································································································
 

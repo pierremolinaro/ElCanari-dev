@@ -70,7 +70,7 @@ final class Controller_AutoLayoutMergerDocument_mBoardInstanceController : ReadO
   // Selected Array
   //····················································································································
 
-  private let mInternalSelectedArrayProperty = StandAloneArrayOf_MergerBoardInstance ()
+  private let mInternalSelectedArrayProperty = StoredArrayOf_MergerBoardInstance (usedForSignature: false, key: nil)
 
   //····················································································································
 
