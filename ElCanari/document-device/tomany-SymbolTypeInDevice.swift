@@ -16,50 +16,50 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
                                  addedSet inAddedSet : EBReferenceSet <SymbolTypeInDevice>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    if !inRemovedSet.isEmpty {
-      self.removeEBObserversOf_mTypeName_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mVersion_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mFileData_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_versionString_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_instanceCount_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_documentSize_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_pinNameShape_fromElementsOfSet (inRemovedSet) // Transient property
+    for managedObject in inRemovedSet.values {
+      managedObject.mTypeName_property.stopsBeingObserved (by: self.mObserversOf_mTypeName) // Stored property
+      managedObject.mVersion_property.stopsBeingObserved (by: self.mObserversOf_mVersion) // Stored property
+      managedObject.mFileData_property.stopsBeingObserved (by: self.mObserversOf_mFileData) // Stored property
+      managedObject.mStrokeBezierPath_property.stopsBeingObserved (by: self.mObserversOf_mStrokeBezierPath) // Stored property
+      managedObject.mFilledBezierPath_property.stopsBeingObserved (by: self.mObserversOf_mFilledBezierPath) // Stored property
+      managedObject.versionString_property.stopsBeingObserved (by: self.mObserversOf_versionString) // Transient property
+      managedObject.instanceCount_property.stopsBeingObserved (by: self.mObserversOf_instanceCount) // Transient property
+      managedObject.documentSize_property.stopsBeingObserved (by: self.mObserversOf_documentSize) // Transient property
+      managedObject.pinNameShape_property.stopsBeingObserved (by: self.mObserversOf_pinNameShape) // Transient property
     }
   //--- Add observers to added objects
-    if !inAddedSet.isEmpty {
-      self.addEBObserversOf_mTypeName_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mVersion_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mFileData_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mStrokeBezierPath_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mFilledBezierPath_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_versionString_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_instanceCount_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_documentSize_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_pinNameShape_toElementsOfSet (inAddedSet) // Transient property
-   }
+    for managedObject in inAddedSet.values {
+      managedObject.mTypeName_property.startsToBeObserved (by: self.mObserversOf_mTypeName) // Stored property
+      managedObject.mVersion_property.startsToBeObserved (by: self.mObserversOf_mVersion) // Stored property
+      managedObject.mFileData_property.startsToBeObserved (by: self.mObserversOf_mFileData) // Stored property
+      managedObject.mStrokeBezierPath_property.startsToBeObserved (by: self.mObserversOf_mStrokeBezierPath) // Stored property
+      managedObject.mFilledBezierPath_property.startsToBeObserved (by: self.mObserversOf_mFilledBezierPath) // Stored property
+      managedObject.versionString_property.startsToBeObserved (by: self.mObserversOf_versionString) // Transient property
+      managedObject.instanceCount_property.startsToBeObserved (by: self.mObserversOf_instanceCount) // Transient property
+      managedObject.documentSize_property.startsToBeObserved (by: self.mObserversOf_documentSize) // Transient property
+      managedObject.pinNameShape_property.startsToBeObserved (by: self.mObserversOf_pinNameShape) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mTypeName' stored property
   //····················································································································
 
-  private final var mObserversOf_mTypeName = EBWeakEventSet ()
+  private final var mObserversOf_mTypeName = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mTypeName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mTypeName.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mTypeName_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -67,22 +67,25 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func toMany_mTypeName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mTypeName.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mTypeName_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mTypeName_toElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
-    if !self.mObserversOf_mTypeName.isEmpty {
+ // final private func addEBObserversOf_mTypeName_toElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
+    /* for managedObject in inSet.values {
+      managedObject.mTypeName_property.startsToBeObserved (by: self.mObserversOf_mTypeName)
+    }*/
+    /* if !self.mObserversOf_mTypeName.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mTypeName.dictionary {
+        for entry in self.mObserversOf_mTypeName.values () {
           if let observer = entry.possibleObserver {
             managedObject.mTypeName_property.startsToBeObserved (by: observer)
           }else{
@@ -90,13 +93,16 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mTypeName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
-    for (_, entry) in self.mObserversOf_mTypeName.dictionary {
+/*  final private func removeEBObserversOf_mTypeName_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
+    for managedObject in inSet.values {
+      managedObject.mTypeName_property.stopsBeingObserved (by: self.mObserversOf_mTypeName)
+    }
+    for entry in self.mObserversOf_mTypeName.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -106,27 +112,27 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
         self.mObserversOf_mTypeName.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mVersion' stored property
   //····················································································································
 
-  private final var mObserversOf_mVersion = EBWeakEventSet ()
+  private final var mObserversOf_mVersion = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mVersion_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mVersion.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mVersion_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -134,22 +140,25 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func toMany_mVersion_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mVersion.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mVersion_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mVersion_toElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
-    if !self.mObserversOf_mVersion.isEmpty {
+ // final private func addEBObserversOf_mVersion_toElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
+    /* for managedObject in inSet.values {
+      managedObject.mVersion_property.startsToBeObserved (by: self.mObserversOf_mVersion)
+    }*/
+    /* if !self.mObserversOf_mVersion.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mVersion.dictionary {
+        for entry in self.mObserversOf_mVersion.values () {
           if let observer = entry.possibleObserver {
             managedObject.mVersion_property.startsToBeObserved (by: observer)
           }else{
@@ -157,13 +166,16 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mVersion_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
-    for (_, entry) in self.mObserversOf_mVersion.dictionary {
+/*  final private func removeEBObserversOf_mVersion_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
+    for managedObject in inSet.values {
+      managedObject.mVersion_property.stopsBeingObserved (by: self.mObserversOf_mVersion)
+    }
+    for entry in self.mObserversOf_mVersion.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -173,27 +185,27 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
         self.mObserversOf_mVersion.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mFileData' stored property
   //····················································································································
 
-  private final var mObserversOf_mFileData = EBWeakEventSet ()
+  private final var mObserversOf_mFileData = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mFileData_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mFileData.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mFileData_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -201,22 +213,25 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func toMany_mFileData_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mFileData.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mFileData_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mFileData_toElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
-    if !self.mObserversOf_mFileData.isEmpty {
+ // final private func addEBObserversOf_mFileData_toElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
+    /* for managedObject in inSet.values {
+      managedObject.mFileData_property.startsToBeObserved (by: self.mObserversOf_mFileData)
+    }*/
+    /* if !self.mObserversOf_mFileData.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mFileData.dictionary {
+        for entry in self.mObserversOf_mFileData.values () {
           if let observer = entry.possibleObserver {
             managedObject.mFileData_property.startsToBeObserved (by: observer)
           }else{
@@ -224,13 +239,16 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mFileData_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
-    for (_, entry) in self.mObserversOf_mFileData.dictionary {
+/*  final private func removeEBObserversOf_mFileData_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
+    for managedObject in inSet.values {
+      managedObject.mFileData_property.stopsBeingObserved (by: self.mObserversOf_mFileData)
+    }
+    for entry in self.mObserversOf_mFileData.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -240,27 +258,27 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
         self.mObserversOf_mFileData.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
 
-  private final var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_mStrokeBezierPath = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mStrokeBezierPath_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mStrokeBezierPath.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mStrokeBezierPath_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -268,22 +286,25 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func toMany_mStrokeBezierPath_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mStrokeBezierPath.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mStrokeBezierPath_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mStrokeBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
-    if !self.mObserversOf_mStrokeBezierPath.isEmpty {
+ // final private func addEBObserversOf_mStrokeBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
+    /* for managedObject in inSet.values {
+      managedObject.mStrokeBezierPath_property.startsToBeObserved (by: self.mObserversOf_mStrokeBezierPath)
+    }*/
+    /* if !self.mObserversOf_mStrokeBezierPath.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mStrokeBezierPath.dictionary {
+        for entry in self.mObserversOf_mStrokeBezierPath.values () {
           if let observer = entry.possibleObserver {
             managedObject.mStrokeBezierPath_property.startsToBeObserved (by: observer)
           }else{
@@ -291,13 +312,16 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
-    for (_, entry) in self.mObserversOf_mStrokeBezierPath.dictionary {
+/*  final private func removeEBObserversOf_mStrokeBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
+    for managedObject in inSet.values {
+      managedObject.mStrokeBezierPath_property.stopsBeingObserved (by: self.mObserversOf_mStrokeBezierPath)
+    }
+    for entry in self.mObserversOf_mStrokeBezierPath.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -307,27 +331,27 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
         self.mObserversOf_mStrokeBezierPath.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mFilledBezierPath' stored property
   //····················································································································
 
-  private final var mObserversOf_mFilledBezierPath = EBWeakEventSet ()
+  private final var mObserversOf_mFilledBezierPath = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mFilledBezierPath_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mFilledBezierPath.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mFilledBezierPath_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -335,22 +359,25 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func toMany_mFilledBezierPath_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mFilledBezierPath.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mFilledBezierPath_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mFilledBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
-    if !self.mObserversOf_mFilledBezierPath.isEmpty {
+ // final private func addEBObserversOf_mFilledBezierPath_toElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
+    /* for managedObject in inSet.values {
+      managedObject.mFilledBezierPath_property.startsToBeObserved (by: self.mObserversOf_mFilledBezierPath)
+    }*/
+    /* if !self.mObserversOf_mFilledBezierPath.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mFilledBezierPath.dictionary {
+        for entry in self.mObserversOf_mFilledBezierPath.values () {
           if let observer = entry.possibleObserver {
             managedObject.mFilledBezierPath_property.startsToBeObserved (by: observer)
           }else{
@@ -358,13 +385,16 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
-    for (_, entry) in self.mObserversOf_mFilledBezierPath.dictionary {
+/*  final private func removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
+    for managedObject in inSet.values {
+      managedObject.mFilledBezierPath_property.stopsBeingObserved (by: self.mObserversOf_mFilledBezierPath)
+    }
+    for entry in self.mObserversOf_mFilledBezierPath.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -374,27 +404,27 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
         self.mObserversOf_mFilledBezierPath.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'versionString' transient property
   //····················································································································
 
-  private final var mObserversOf_versionString = EBWeakEventSet ()
+  private final var mObserversOf_versionString = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_versionString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_versionString.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.versionString_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -402,21 +432,21 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func toMany_versionString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_versionString.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.versionString_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
+  /* final private func addEBObserversOf_versionString_toElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_versionString.dictionary {
+      for entry in self.mObserversOf_versionString.values () {
         if let observer = entry.possibleObserver {
           managedObject.versionString_property.startsToBeObserved (by: observer)
         }else{
@@ -424,13 +454,13 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
+  /* final private func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_versionString.dictionary {
+      for entry in self.mObserversOf_versionString.values () {
         if let observer = entry.possibleObserver {
           managedObject.versionString_property.stopsBeingObserved (by: observer)
         }else{
@@ -438,27 +468,27 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'instanceCount' transient property
   //····················································································································
 
-  private final var mObserversOf_instanceCount = EBWeakEventSet ()
+  private final var mObserversOf_instanceCount = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_instanceCount_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_instanceCount.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.instanceCount_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -466,21 +496,21 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func toMany_instanceCount_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_instanceCount.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.instanceCount_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_instanceCount_toElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
+  /* final private func addEBObserversOf_instanceCount_toElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_instanceCount.dictionary {
+      for entry in self.mObserversOf_instanceCount.values () {
         if let observer = entry.possibleObserver {
           managedObject.instanceCount_property.startsToBeObserved (by: observer)
         }else{
@@ -488,13 +518,13 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_instanceCount_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
+  /* final private func removeEBObserversOf_instanceCount_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_instanceCount.dictionary {
+      for entry in self.mObserversOf_instanceCount.values () {
         if let observer = entry.possibleObserver {
           managedObject.instanceCount_property.stopsBeingObserved (by: observer)
         }else{
@@ -502,27 +532,27 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'documentSize' transient property
   //····················································································································
 
-  private final var mObserversOf_documentSize = EBWeakEventSet ()
+  private final var mObserversOf_documentSize = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_documentSize_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_documentSize.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.documentSize_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -530,21 +560,21 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func toMany_documentSize_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_documentSize.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.documentSize_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_documentSize_toElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
+  /* final private func addEBObserversOf_documentSize_toElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_documentSize.dictionary {
+      for entry in self.mObserversOf_documentSize.values () {
         if let observer = entry.possibleObserver {
           managedObject.documentSize_property.startsToBeObserved (by: observer)
         }else{
@@ -552,13 +582,13 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_documentSize_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
+  /* final private func removeEBObserversOf_documentSize_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_documentSize.dictionary {
+      for entry in self.mObserversOf_documentSize.values () {
         if let observer = entry.possibleObserver {
           managedObject.documentSize_property.stopsBeingObserved (by: observer)
         }else{
@@ -566,27 +596,27 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'pinNameShape' transient property
   //····················································································································
 
-  private final var mObserversOf_pinNameShape = EBWeakEventSet ()
+  private final var mObserversOf_pinNameShape = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_pinNameShape_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_pinNameShape.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.pinNameShape_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -594,21 +624,21 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   final func toMany_pinNameShape_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_pinNameShape.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.pinNameShape_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_pinNameShape_toElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
+  /* final private func addEBObserversOf_pinNameShape_toElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_pinNameShape.dictionary {
+      for entry in self.mObserversOf_pinNameShape.values () {
         if let observer = entry.possibleObserver {
           managedObject.pinNameShape_property.startsToBeObserved (by: observer)
         }else{
@@ -616,13 +646,13 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_pinNameShape_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
+  /* final private func removeEBObserversOf_pinNameShape_fromElementsOfSet (_ inSet : EBReferenceSet <SymbolTypeInDevice>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_pinNameShape.dictionary {
+      for entry in self.mObserversOf_pinNameShape.values () {
         if let observer = entry.possibleObserver {
           managedObject.pinNameShape_property.stopsBeingObserved (by: observer)
         }else{
@@ -630,7 +660,7 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 

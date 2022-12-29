@@ -16,58 +16,58 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
                                  addedSet inAddedSet : EBReferenceSet <BoardLine>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    if !inRemovedSet.isEmpty {
-      self.removeEBObserversOf_mWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mX1_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mX1Unit_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mY1_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mY1Unit_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mX2_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mX2Unit_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mY2_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mY2Unit_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mLayer_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mWidth_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    for managedObject in inRemovedSet.values {
+      managedObject.mWidthUnit_property.stopsBeingObserved (by: self.mObserversOf_mWidthUnit) // Stored property
+      managedObject.mX1_property.stopsBeingObserved (by: self.mObserversOf_mX1) // Stored property
+      managedObject.mX1Unit_property.stopsBeingObserved (by: self.mObserversOf_mX1Unit) // Stored property
+      managedObject.mY1_property.stopsBeingObserved (by: self.mObserversOf_mY1) // Stored property
+      managedObject.mY1Unit_property.stopsBeingObserved (by: self.mObserversOf_mY1Unit) // Stored property
+      managedObject.mX2_property.stopsBeingObserved (by: self.mObserversOf_mX2) // Stored property
+      managedObject.mX2Unit_property.stopsBeingObserved (by: self.mObserversOf_mX2Unit) // Stored property
+      managedObject.mY2_property.stopsBeingObserved (by: self.mObserversOf_mY2) // Stored property
+      managedObject.mY2Unit_property.stopsBeingObserved (by: self.mObserversOf_mY2Unit) // Stored property
+      managedObject.mLayer_property.stopsBeingObserved (by: self.mObserversOf_mLayer) // Stored property
+      managedObject.mWidth_property.stopsBeingObserved (by: self.mObserversOf_mWidth) // Stored property
+      managedObject.objectDisplay_property.stopsBeingObserved (by: self.mObserversOf_objectDisplay) // Transient property
+      managedObject.selectionDisplay_property.stopsBeingObserved (by: self.mObserversOf_selectionDisplay) // Transient property
     }
   //--- Add observers to added objects
-    if !inAddedSet.isEmpty {
-      self.addEBObserversOf_mWidthUnit_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mX1_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mX1Unit_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mY1_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mY1Unit_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mX2_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mX2Unit_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mY2_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mY2Unit_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mLayer_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mWidth_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
-   }
+    for managedObject in inAddedSet.values {
+      managedObject.mWidthUnit_property.startsToBeObserved (by: self.mObserversOf_mWidthUnit) // Stored property
+      managedObject.mX1_property.startsToBeObserved (by: self.mObserversOf_mX1) // Stored property
+      managedObject.mX1Unit_property.startsToBeObserved (by: self.mObserversOf_mX1Unit) // Stored property
+      managedObject.mY1_property.startsToBeObserved (by: self.mObserversOf_mY1) // Stored property
+      managedObject.mY1Unit_property.startsToBeObserved (by: self.mObserversOf_mY1Unit) // Stored property
+      managedObject.mX2_property.startsToBeObserved (by: self.mObserversOf_mX2) // Stored property
+      managedObject.mX2Unit_property.startsToBeObserved (by: self.mObserversOf_mX2Unit) // Stored property
+      managedObject.mY2_property.startsToBeObserved (by: self.mObserversOf_mY2) // Stored property
+      managedObject.mY2Unit_property.startsToBeObserved (by: self.mObserversOf_mY2Unit) // Stored property
+      managedObject.mLayer_property.startsToBeObserved (by: self.mObserversOf_mLayer) // Stored property
+      managedObject.mWidth_property.startsToBeObserved (by: self.mObserversOf_mWidth) // Stored property
+      managedObject.objectDisplay_property.startsToBeObserved (by: self.mObserversOf_objectDisplay) // Transient property
+      managedObject.selectionDisplay_property.startsToBeObserved (by: self.mObserversOf_selectionDisplay) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mWidthUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_mWidthUnit = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mWidthUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mWidthUnit.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mWidthUnit_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -75,22 +75,25 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   final func toMany_mWidthUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mWidthUnit.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mWidthUnit_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mWidthUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    if !self.mObserversOf_mWidthUnit.isEmpty {
+ // final private func addEBObserversOf_mWidthUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    /* for managedObject in inSet.values {
+      managedObject.mWidthUnit_property.startsToBeObserved (by: self.mObserversOf_mWidthUnit)
+    }*/
+    /* if !self.mObserversOf_mWidthUnit.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mWidthUnit.dictionary {
+        for entry in self.mObserversOf_mWidthUnit.values () {
           if let observer = entry.possibleObserver {
             managedObject.mWidthUnit_property.startsToBeObserved (by: observer)
           }else{
@@ -98,13 +101,16 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mWidthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    for (_, entry) in self.mObserversOf_mWidthUnit.dictionary {
+/*  final private func removeEBObserversOf_mWidthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    for managedObject in inSet.values {
+      managedObject.mWidthUnit_property.stopsBeingObserved (by: self.mObserversOf_mWidthUnit)
+    }
+    for entry in self.mObserversOf_mWidthUnit.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -114,27 +120,27 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
         self.mObserversOf_mWidthUnit.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mX1' stored property
   //····················································································································
 
-  private final var mObserversOf_mX1 = EBWeakEventSet ()
+  private final var mObserversOf_mX1 = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mX1_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mX1.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mX1_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -142,22 +148,25 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   final func toMany_mX1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mX1.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mX1_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mX1_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    if !self.mObserversOf_mX1.isEmpty {
+ // final private func addEBObserversOf_mX1_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    /* for managedObject in inSet.values {
+      managedObject.mX1_property.startsToBeObserved (by: self.mObserversOf_mX1)
+    }*/
+    /* if !self.mObserversOf_mX1.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mX1.dictionary {
+        for entry in self.mObserversOf_mX1.values () {
           if let observer = entry.possibleObserver {
             managedObject.mX1_property.startsToBeObserved (by: observer)
           }else{
@@ -165,13 +174,16 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mX1_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    for (_, entry) in self.mObserversOf_mX1.dictionary {
+/*  final private func removeEBObserversOf_mX1_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    for managedObject in inSet.values {
+      managedObject.mX1_property.stopsBeingObserved (by: self.mObserversOf_mX1)
+    }
+    for entry in self.mObserversOf_mX1.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -181,27 +193,27 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
         self.mObserversOf_mX1.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mX1Unit' stored property
   //····················································································································
 
-  private final var mObserversOf_mX1Unit = EBWeakEventSet ()
+  private final var mObserversOf_mX1Unit = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mX1Unit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mX1Unit.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mX1Unit_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -209,22 +221,25 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   final func toMany_mX1Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mX1Unit.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mX1Unit_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mX1Unit_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    if !self.mObserversOf_mX1Unit.isEmpty {
+ // final private func addEBObserversOf_mX1Unit_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    /* for managedObject in inSet.values {
+      managedObject.mX1Unit_property.startsToBeObserved (by: self.mObserversOf_mX1Unit)
+    }*/
+    /* if !self.mObserversOf_mX1Unit.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mX1Unit.dictionary {
+        for entry in self.mObserversOf_mX1Unit.values () {
           if let observer = entry.possibleObserver {
             managedObject.mX1Unit_property.startsToBeObserved (by: observer)
           }else{
@@ -232,13 +247,16 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mX1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    for (_, entry) in self.mObserversOf_mX1Unit.dictionary {
+/*  final private func removeEBObserversOf_mX1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    for managedObject in inSet.values {
+      managedObject.mX1Unit_property.stopsBeingObserved (by: self.mObserversOf_mX1Unit)
+    }
+    for entry in self.mObserversOf_mX1Unit.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -248,27 +266,27 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
         self.mObserversOf_mX1Unit.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mY1' stored property
   //····················································································································
 
-  private final var mObserversOf_mY1 = EBWeakEventSet ()
+  private final var mObserversOf_mY1 = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mY1_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mY1.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mY1_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -276,22 +294,25 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   final func toMany_mY1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mY1.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mY1_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mY1_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    if !self.mObserversOf_mY1.isEmpty {
+ // final private func addEBObserversOf_mY1_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    /* for managedObject in inSet.values {
+      managedObject.mY1_property.startsToBeObserved (by: self.mObserversOf_mY1)
+    }*/
+    /* if !self.mObserversOf_mY1.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mY1.dictionary {
+        for entry in self.mObserversOf_mY1.values () {
           if let observer = entry.possibleObserver {
             managedObject.mY1_property.startsToBeObserved (by: observer)
           }else{
@@ -299,13 +320,16 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mY1_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    for (_, entry) in self.mObserversOf_mY1.dictionary {
+/*  final private func removeEBObserversOf_mY1_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    for managedObject in inSet.values {
+      managedObject.mY1_property.stopsBeingObserved (by: self.mObserversOf_mY1)
+    }
+    for entry in self.mObserversOf_mY1.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -315,27 +339,27 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
         self.mObserversOf_mY1.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mY1Unit' stored property
   //····················································································································
 
-  private final var mObserversOf_mY1Unit = EBWeakEventSet ()
+  private final var mObserversOf_mY1Unit = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mY1Unit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mY1Unit.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mY1Unit_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -343,22 +367,25 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   final func toMany_mY1Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mY1Unit.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mY1Unit_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mY1Unit_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    if !self.mObserversOf_mY1Unit.isEmpty {
+ // final private func addEBObserversOf_mY1Unit_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    /* for managedObject in inSet.values {
+      managedObject.mY1Unit_property.startsToBeObserved (by: self.mObserversOf_mY1Unit)
+    }*/
+    /* if !self.mObserversOf_mY1Unit.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mY1Unit.dictionary {
+        for entry in self.mObserversOf_mY1Unit.values () {
           if let observer = entry.possibleObserver {
             managedObject.mY1Unit_property.startsToBeObserved (by: observer)
           }else{
@@ -366,13 +393,16 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mY1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    for (_, entry) in self.mObserversOf_mY1Unit.dictionary {
+/*  final private func removeEBObserversOf_mY1Unit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    for managedObject in inSet.values {
+      managedObject.mY1Unit_property.stopsBeingObserved (by: self.mObserversOf_mY1Unit)
+    }
+    for entry in self.mObserversOf_mY1Unit.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -382,27 +412,27 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
         self.mObserversOf_mY1Unit.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mX2' stored property
   //····················································································································
 
-  private final var mObserversOf_mX2 = EBWeakEventSet ()
+  private final var mObserversOf_mX2 = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mX2_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mX2.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mX2_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -410,22 +440,25 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   final func toMany_mX2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mX2.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mX2_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mX2_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    if !self.mObserversOf_mX2.isEmpty {
+ // final private func addEBObserversOf_mX2_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    /* for managedObject in inSet.values {
+      managedObject.mX2_property.startsToBeObserved (by: self.mObserversOf_mX2)
+    }*/
+    /* if !self.mObserversOf_mX2.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mX2.dictionary {
+        for entry in self.mObserversOf_mX2.values () {
           if let observer = entry.possibleObserver {
             managedObject.mX2_property.startsToBeObserved (by: observer)
           }else{
@@ -433,13 +466,16 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mX2_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    for (_, entry) in self.mObserversOf_mX2.dictionary {
+/*  final private func removeEBObserversOf_mX2_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    for managedObject in inSet.values {
+      managedObject.mX2_property.stopsBeingObserved (by: self.mObserversOf_mX2)
+    }
+    for entry in self.mObserversOf_mX2.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -449,27 +485,27 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
         self.mObserversOf_mX2.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mX2Unit' stored property
   //····················································································································
 
-  private final var mObserversOf_mX2Unit = EBWeakEventSet ()
+  private final var mObserversOf_mX2Unit = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mX2Unit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mX2Unit.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mX2Unit_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -477,22 +513,25 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   final func toMany_mX2Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mX2Unit.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mX2Unit_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mX2Unit_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    if !self.mObserversOf_mX2Unit.isEmpty {
+ // final private func addEBObserversOf_mX2Unit_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    /* for managedObject in inSet.values {
+      managedObject.mX2Unit_property.startsToBeObserved (by: self.mObserversOf_mX2Unit)
+    }*/
+    /* if !self.mObserversOf_mX2Unit.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mX2Unit.dictionary {
+        for entry in self.mObserversOf_mX2Unit.values () {
           if let observer = entry.possibleObserver {
             managedObject.mX2Unit_property.startsToBeObserved (by: observer)
           }else{
@@ -500,13 +539,16 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mX2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    for (_, entry) in self.mObserversOf_mX2Unit.dictionary {
+/*  final private func removeEBObserversOf_mX2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    for managedObject in inSet.values {
+      managedObject.mX2Unit_property.stopsBeingObserved (by: self.mObserversOf_mX2Unit)
+    }
+    for entry in self.mObserversOf_mX2Unit.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -516,27 +558,27 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
         self.mObserversOf_mX2Unit.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mY2' stored property
   //····················································································································
 
-  private final var mObserversOf_mY2 = EBWeakEventSet ()
+  private final var mObserversOf_mY2 = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mY2_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mY2.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mY2_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -544,22 +586,25 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   final func toMany_mY2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mY2.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mY2_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mY2_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    if !self.mObserversOf_mY2.isEmpty {
+ // final private func addEBObserversOf_mY2_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    /* for managedObject in inSet.values {
+      managedObject.mY2_property.startsToBeObserved (by: self.mObserversOf_mY2)
+    }*/
+    /* if !self.mObserversOf_mY2.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mY2.dictionary {
+        for entry in self.mObserversOf_mY2.values () {
           if let observer = entry.possibleObserver {
             managedObject.mY2_property.startsToBeObserved (by: observer)
           }else{
@@ -567,13 +612,16 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mY2_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    for (_, entry) in self.mObserversOf_mY2.dictionary {
+/*  final private func removeEBObserversOf_mY2_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    for managedObject in inSet.values {
+      managedObject.mY2_property.stopsBeingObserved (by: self.mObserversOf_mY2)
+    }
+    for entry in self.mObserversOf_mY2.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -583,27 +631,27 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
         self.mObserversOf_mY2.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mY2Unit' stored property
   //····················································································································
 
-  private final var mObserversOf_mY2Unit = EBWeakEventSet ()
+  private final var mObserversOf_mY2Unit = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mY2Unit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mY2Unit.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mY2Unit_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -611,22 +659,25 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   final func toMany_mY2Unit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mY2Unit.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mY2Unit_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mY2Unit_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    if !self.mObserversOf_mY2Unit.isEmpty {
+ // final private func addEBObserversOf_mY2Unit_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    /* for managedObject in inSet.values {
+      managedObject.mY2Unit_property.startsToBeObserved (by: self.mObserversOf_mY2Unit)
+    }*/
+    /* if !self.mObserversOf_mY2Unit.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mY2Unit.dictionary {
+        for entry in self.mObserversOf_mY2Unit.values () {
           if let observer = entry.possibleObserver {
             managedObject.mY2Unit_property.startsToBeObserved (by: observer)
           }else{
@@ -634,13 +685,16 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mY2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    for (_, entry) in self.mObserversOf_mY2Unit.dictionary {
+/*  final private func removeEBObserversOf_mY2Unit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    for managedObject in inSet.values {
+      managedObject.mY2Unit_property.stopsBeingObserved (by: self.mObserversOf_mY2Unit)
+    }
+    for entry in self.mObserversOf_mY2Unit.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -650,27 +704,27 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
         self.mObserversOf_mY2Unit.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mLayer' stored property
   //····················································································································
 
-  private final var mObserversOf_mLayer = EBWeakEventSet ()
+  private final var mObserversOf_mLayer = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mLayer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mLayer.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mLayer_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -678,22 +732,25 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   final func toMany_mLayer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mLayer.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mLayer_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mLayer_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    if !self.mObserversOf_mLayer.isEmpty {
+ // final private func addEBObserversOf_mLayer_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    /* for managedObject in inSet.values {
+      managedObject.mLayer_property.startsToBeObserved (by: self.mObserversOf_mLayer)
+    }*/
+    /* if !self.mObserversOf_mLayer.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mLayer.dictionary {
+        for entry in self.mObserversOf_mLayer.values () {
           if let observer = entry.possibleObserver {
             managedObject.mLayer_property.startsToBeObserved (by: observer)
           }else{
@@ -701,13 +758,16 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mLayer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    for (_, entry) in self.mObserversOf_mLayer.dictionary {
+/*  final private func removeEBObserversOf_mLayer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    for managedObject in inSet.values {
+      managedObject.mLayer_property.stopsBeingObserved (by: self.mObserversOf_mLayer)
+    }
+    for entry in self.mObserversOf_mLayer.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -717,27 +777,27 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
         self.mObserversOf_mLayer.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mWidth' stored property
   //····················································································································
 
-  private final var mObserversOf_mWidth = EBWeakEventSet ()
+  private final var mObserversOf_mWidth = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mWidth.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mWidth_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -745,22 +805,25 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   final func toMany_mWidth_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mWidth.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mWidth_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mWidth_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    if !self.mObserversOf_mWidth.isEmpty {
+ // final private func addEBObserversOf_mWidth_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    /* for managedObject in inSet.values {
+      managedObject.mWidth_property.startsToBeObserved (by: self.mObserversOf_mWidth)
+    }*/
+    /* if !self.mObserversOf_mWidth.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mWidth.dictionary {
+        for entry in self.mObserversOf_mWidth.values () {
           if let observer = entry.possibleObserver {
             managedObject.mWidth_property.startsToBeObserved (by: observer)
           }else{
@@ -768,13 +831,16 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
-    for (_, entry) in self.mObserversOf_mWidth.dictionary {
+/*  final private func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+    for managedObject in inSet.values {
+      managedObject.mWidth_property.stopsBeingObserved (by: self.mObserversOf_mWidth)
+    }
+    for entry in self.mObserversOf_mWidth.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -784,27 +850,27 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
         self.mObserversOf_mWidth.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.objectDisplay_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -812,21 +878,21 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.objectDisplay_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+  /* final private func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
+      for entry in self.mObserversOf_objectDisplay.values () {
         if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.startsToBeObserved (by: observer)
         }else{
@@ -834,13 +900,13 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+  /* final private func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
+      for entry in self.mObserversOf_objectDisplay.values () {
         if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.stopsBeingObserved (by: observer)
         }else{
@@ -848,27 +914,27 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.selectionDisplay_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -876,21 +942,21 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.selectionDisplay_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+  /* final private func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
+      for entry in self.mObserversOf_selectionDisplay.values () {
         if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.startsToBeObserved (by: observer)
         }else{
@@ -898,13 +964,13 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
+  /* final private func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardLine>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
+      for entry in self.mObserversOf_selectionDisplay.values () {
         if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.stopsBeingObserved (by: observer)
         }else{
@@ -912,7 +978,7 @@ class ReadOnlyArrayOf_BoardLine : ReadOnlyAbstractArrayProperty <BoardLine> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 

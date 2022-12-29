@@ -16,38 +16,38 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
                                  addedSet inAddedSet : EBReferenceSet <DevicePadAssignmentInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    if !inRemovedSet.isEmpty {
-      self.removeEBObserversOf_mPadName_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_pinPadAssignment_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_descriptor_fromElementsOfSet (inRemovedSet) // Transient property
+    for managedObject in inRemovedSet.values {
+      managedObject.mPadName_property.stopsBeingObserved (by: self.mObserversOf_mPadName) // Stored property
+      managedObject.pinPadAssignment_property.stopsBeingObserved (by: self.mObserversOf_pinPadAssignment) // Transient property
+      managedObject.descriptor_property.stopsBeingObserved (by: self.mObserversOf_descriptor) // Transient property
     }
   //--- Add observers to added objects
-    if !inAddedSet.isEmpty {
-      self.addEBObserversOf_mPadName_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_pinPadAssignment_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_descriptor_toElementsOfSet (inAddedSet) // Transient property
-   }
+    for managedObject in inAddedSet.values {
+      managedObject.mPadName_property.startsToBeObserved (by: self.mObserversOf_mPadName) // Stored property
+      managedObject.pinPadAssignment_property.startsToBeObserved (by: self.mObserversOf_pinPadAssignment) // Transient property
+      managedObject.descriptor_property.startsToBeObserved (by: self.mObserversOf_descriptor) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mPadName' stored property
   //····················································································································
 
-  private final var mObserversOf_mPadName = EBWeakEventSet ()
+  private final var mObserversOf_mPadName = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mPadName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mPadName.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mPadName_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -55,22 +55,25 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
   final func toMany_mPadName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mPadName.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mPadName_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mPadName_toElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
-    if !self.mObserversOf_mPadName.isEmpty {
+ // final private func addEBObserversOf_mPadName_toElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
+    /* for managedObject in inSet.values {
+      managedObject.mPadName_property.startsToBeObserved (by: self.mObserversOf_mPadName)
+    }*/
+    /* if !self.mObserversOf_mPadName.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mPadName.dictionary {
+        for entry in self.mObserversOf_mPadName.values () {
           if let observer = entry.possibleObserver {
             managedObject.mPadName_property.startsToBeObserved (by: observer)
           }else{
@@ -78,13 +81,16 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mPadName_fromElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
-    for (_, entry) in self.mObserversOf_mPadName.dictionary {
+/*  final private func removeEBObserversOf_mPadName_fromElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
+    for managedObject in inSet.values {
+      managedObject.mPadName_property.stopsBeingObserved (by: self.mObserversOf_mPadName)
+    }
+    for entry in self.mObserversOf_mPadName.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -94,27 +100,27 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
         self.mObserversOf_mPadName.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'pinPadAssignment' transient property
   //····················································································································
 
-  private final var mObserversOf_pinPadAssignment = EBWeakEventSet ()
+  private final var mObserversOf_pinPadAssignment = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_pinPadAssignment_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_pinPadAssignment.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.pinPadAssignment_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -122,21 +128,21 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
   final func toMany_pinPadAssignment_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_pinPadAssignment.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.pinPadAssignment_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_pinPadAssignment_toElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
+  /* final private func addEBObserversOf_pinPadAssignment_toElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_pinPadAssignment.dictionary {
+      for entry in self.mObserversOf_pinPadAssignment.values () {
         if let observer = entry.possibleObserver {
           managedObject.pinPadAssignment_property.startsToBeObserved (by: observer)
         }else{
@@ -144,13 +150,13 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_pinPadAssignment_fromElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
+  /* final private func removeEBObserversOf_pinPadAssignment_fromElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_pinPadAssignment.dictionary {
+      for entry in self.mObserversOf_pinPadAssignment.values () {
         if let observer = entry.possibleObserver {
           managedObject.pinPadAssignment_property.stopsBeingObserved (by: observer)
         }else{
@@ -158,27 +164,27 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'descriptor' transient property
   //····················································································································
 
-  private final var mObserversOf_descriptor = EBWeakEventSet ()
+  private final var mObserversOf_descriptor = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_descriptor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_descriptor.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.descriptor_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -186,21 +192,21 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
   final func toMany_descriptor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_descriptor.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.descriptor_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
+  /* final private func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_descriptor.dictionary {
+      for entry in self.mObserversOf_descriptor.values () {
         if let observer = entry.possibleObserver {
           managedObject.descriptor_property.startsToBeObserved (by: observer)
         }else{
@@ -208,13 +214,13 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
+  /* final private func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : EBReferenceSet <DevicePadAssignmentInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_descriptor.dictionary {
+      for entry in self.mObserversOf_descriptor.values () {
         if let observer = entry.possibleObserver {
           managedObject.descriptor_property.stopsBeingObserved (by: observer)
         }else{
@@ -222,7 +228,7 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 

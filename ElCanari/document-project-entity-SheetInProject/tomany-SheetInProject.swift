@@ -16,44 +16,44 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
                                  addedSet inAddedSet : EBReferenceSet <SheetInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    if !inRemovedSet.isEmpty {
-      self.removeEBObserversOf_mSheetTitle_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_issues_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_connectedPoints_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_connexionWarnings_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_connexionErrors_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_sheetDescriptor_fromElementsOfSet (inRemovedSet) // Transient property
+    for managedObject in inRemovedSet.values {
+      managedObject.mSheetTitle_property.stopsBeingObserved (by: self.mObserversOf_mSheetTitle) // Stored property
+      managedObject.issues_property.stopsBeingObserved (by: self.mObserversOf_issues) // Transient property
+      managedObject.connectedPoints_property.stopsBeingObserved (by: self.mObserversOf_connectedPoints) // Transient property
+      managedObject.connexionWarnings_property.stopsBeingObserved (by: self.mObserversOf_connexionWarnings) // Transient property
+      managedObject.connexionErrors_property.stopsBeingObserved (by: self.mObserversOf_connexionErrors) // Transient property
+      managedObject.sheetDescriptor_property.stopsBeingObserved (by: self.mObserversOf_sheetDescriptor) // Transient property
     }
   //--- Add observers to added objects
-    if !inAddedSet.isEmpty {
-      self.addEBObserversOf_mSheetTitle_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_issues_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_connectedPoints_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_connexionWarnings_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_connexionErrors_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_sheetDescriptor_toElementsOfSet (inAddedSet) // Transient property
-   }
+    for managedObject in inAddedSet.values {
+      managedObject.mSheetTitle_property.startsToBeObserved (by: self.mObserversOf_mSheetTitle) // Stored property
+      managedObject.issues_property.startsToBeObserved (by: self.mObserversOf_issues) // Transient property
+      managedObject.connectedPoints_property.startsToBeObserved (by: self.mObserversOf_connectedPoints) // Transient property
+      managedObject.connexionWarnings_property.startsToBeObserved (by: self.mObserversOf_connexionWarnings) // Transient property
+      managedObject.connexionErrors_property.startsToBeObserved (by: self.mObserversOf_connexionErrors) // Transient property
+      managedObject.sheetDescriptor_property.startsToBeObserved (by: self.mObserversOf_sheetDescriptor) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mSheetTitle' stored property
   //····················································································································
 
-  private final var mObserversOf_mSheetTitle = EBWeakEventSet ()
+  private final var mObserversOf_mSheetTitle = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mSheetTitle_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mSheetTitle.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mSheetTitle_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -61,22 +61,25 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func toMany_mSheetTitle_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mSheetTitle.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mSheetTitle_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mSheetTitle_toElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
-    if !self.mObserversOf_mSheetTitle.isEmpty {
+ // final private func addEBObserversOf_mSheetTitle_toElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
+    /* for managedObject in inSet.values {
+      managedObject.mSheetTitle_property.startsToBeObserved (by: self.mObserversOf_mSheetTitle)
+    }*/
+    /* if !self.mObserversOf_mSheetTitle.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mSheetTitle.dictionary {
+        for entry in self.mObserversOf_mSheetTitle.values () {
           if let observer = entry.possibleObserver {
             managedObject.mSheetTitle_property.startsToBeObserved (by: observer)
           }else{
@@ -84,13 +87,16 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mSheetTitle_fromElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
-    for (_, entry) in self.mObserversOf_mSheetTitle.dictionary {
+/*  final private func removeEBObserversOf_mSheetTitle_fromElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
+    for managedObject in inSet.values {
+      managedObject.mSheetTitle_property.stopsBeingObserved (by: self.mObserversOf_mSheetTitle)
+    }
+    for entry in self.mObserversOf_mSheetTitle.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -100,27 +106,27 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
         self.mObserversOf_mSheetTitle.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var mObserversOf_issues = EBWeakEventSet ()
+  private final var mObserversOf_issues = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_issues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_issues.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.issues_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -128,21 +134,21 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func toMany_issues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_issues.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.issues_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
+  /* final private func addEBObserversOf_issues_toElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_issues.dictionary {
+      for entry in self.mObserversOf_issues.values () {
         if let observer = entry.possibleObserver {
           managedObject.issues_property.startsToBeObserved (by: observer)
         }else{
@@ -150,13 +156,13 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
+  /* final private func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_issues.dictionary {
+      for entry in self.mObserversOf_issues.values () {
         if let observer = entry.possibleObserver {
           managedObject.issues_property.stopsBeingObserved (by: observer)
         }else{
@@ -164,27 +170,27 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'connectedPoints' transient property
   //····················································································································
 
-  private final var mObserversOf_connectedPoints = EBWeakEventSet ()
+  private final var mObserversOf_connectedPoints = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_connectedPoints_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_connectedPoints.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.connectedPoints_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -192,21 +198,21 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func toMany_connectedPoints_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_connectedPoints.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.connectedPoints_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_connectedPoints_toElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
+  /* final private func addEBObserversOf_connectedPoints_toElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_connectedPoints.dictionary {
+      for entry in self.mObserversOf_connectedPoints.values () {
         if let observer = entry.possibleObserver {
           managedObject.connectedPoints_property.startsToBeObserved (by: observer)
         }else{
@@ -214,13 +220,13 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_connectedPoints_fromElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
+  /* final private func removeEBObserversOf_connectedPoints_fromElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_connectedPoints.dictionary {
+      for entry in self.mObserversOf_connectedPoints.values () {
         if let observer = entry.possibleObserver {
           managedObject.connectedPoints_property.stopsBeingObserved (by: observer)
         }else{
@@ -228,27 +234,27 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'connexionWarnings' transient property
   //····················································································································
 
-  private final var mObserversOf_connexionWarnings = EBWeakEventSet ()
+  private final var mObserversOf_connexionWarnings = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_connexionWarnings_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_connexionWarnings.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.connexionWarnings_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -256,21 +262,21 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func toMany_connexionWarnings_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_connexionWarnings.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.connexionWarnings_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_connexionWarnings_toElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
+  /* final private func addEBObserversOf_connexionWarnings_toElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_connexionWarnings.dictionary {
+      for entry in self.mObserversOf_connexionWarnings.values () {
         if let observer = entry.possibleObserver {
           managedObject.connexionWarnings_property.startsToBeObserved (by: observer)
         }else{
@@ -278,13 +284,13 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_connexionWarnings_fromElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
+  /* final private func removeEBObserversOf_connexionWarnings_fromElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_connexionWarnings.dictionary {
+      for entry in self.mObserversOf_connexionWarnings.values () {
         if let observer = entry.possibleObserver {
           managedObject.connexionWarnings_property.stopsBeingObserved (by: observer)
         }else{
@@ -292,27 +298,27 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'connexionErrors' transient property
   //····················································································································
 
-  private final var mObserversOf_connexionErrors = EBWeakEventSet ()
+  private final var mObserversOf_connexionErrors = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_connexionErrors_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_connexionErrors.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.connexionErrors_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -320,21 +326,21 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func toMany_connexionErrors_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_connexionErrors.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.connexionErrors_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_connexionErrors_toElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
+  /* final private func addEBObserversOf_connexionErrors_toElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_connexionErrors.dictionary {
+      for entry in self.mObserversOf_connexionErrors.values () {
         if let observer = entry.possibleObserver {
           managedObject.connexionErrors_property.startsToBeObserved (by: observer)
         }else{
@@ -342,13 +348,13 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_connexionErrors_fromElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
+  /* final private func removeEBObserversOf_connexionErrors_fromElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_connexionErrors.dictionary {
+      for entry in self.mObserversOf_connexionErrors.values () {
         if let observer = entry.possibleObserver {
           managedObject.connexionErrors_property.stopsBeingObserved (by: observer)
         }else{
@@ -356,27 +362,27 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'sheetDescriptor' transient property
   //····················································································································
 
-  private final var mObserversOf_sheetDescriptor = EBWeakEventSet ()
+  private final var mObserversOf_sheetDescriptor = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_sheetDescriptor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_sheetDescriptor.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.sheetDescriptor_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -384,21 +390,21 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   final func toMany_sheetDescriptor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_sheetDescriptor.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.sheetDescriptor_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_sheetDescriptor_toElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
+  /* final private func addEBObserversOf_sheetDescriptor_toElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_sheetDescriptor.dictionary {
+      for entry in self.mObserversOf_sheetDescriptor.values () {
         if let observer = entry.possibleObserver {
           managedObject.sheetDescriptor_property.startsToBeObserved (by: observer)
         }else{
@@ -406,13 +412,13 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_sheetDescriptor_fromElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
+  /* final private func removeEBObserversOf_sheetDescriptor_fromElementsOfSet (_ inSet : EBReferenceSet <SheetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_sheetDescriptor.dictionary {
+      for entry in self.mObserversOf_sheetDescriptor.values () {
         if let observer = entry.possibleObserver {
           managedObject.sheetDescriptor_property.stopsBeingObserved (by: observer)
         }else{
@@ -420,7 +426,7 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 

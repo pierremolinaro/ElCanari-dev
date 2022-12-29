@@ -16,38 +16,38 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
                                  addedSet inAddedSet : EBReferenceSet <BoardModelVia>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    if !inRemovedSet.isEmpty {
-      self.removeEBObserversOf_y_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_padDiameter_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_x_fromElementsOfSet (inRemovedSet) // Stored property
+    for managedObject in inRemovedSet.values {
+      managedObject.y_property.stopsBeingObserved (by: self.mObserversOf_y) // Stored property
+      managedObject.padDiameter_property.stopsBeingObserved (by: self.mObserversOf_padDiameter) // Stored property
+      managedObject.x_property.stopsBeingObserved (by: self.mObserversOf_x) // Stored property
     }
   //--- Add observers to added objects
-    if !inAddedSet.isEmpty {
-      self.addEBObserversOf_y_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_padDiameter_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_x_toElementsOfSet (inAddedSet) // Stored property
-   }
+    for managedObject in inAddedSet.values {
+      managedObject.y_property.startsToBeObserved (by: self.mObserversOf_y) // Stored property
+      managedObject.padDiameter_property.startsToBeObserved (by: self.mObserversOf_padDiameter) // Stored property
+      managedObject.x_property.startsToBeObserved (by: self.mObserversOf_x) // Stored property
+    }
   }
 
   //····················································································································
   //   Observers of 'y' stored property
   //····················································································································
 
-  private final var mObserversOf_y = EBWeakEventSet ()
+  private final var mObserversOf_y = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_y_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_y.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.y_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -55,22 +55,25 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   final func toMany_y_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_y.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.y_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_y_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
-    if !self.mObserversOf_y.isEmpty {
+ // final private func addEBObserversOf_y_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
+    /* for managedObject in inSet.values {
+      managedObject.y_property.startsToBeObserved (by: self.mObserversOf_y)
+    }*/
+    /* if !self.mObserversOf_y.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_y.dictionary {
+        for entry in self.mObserversOf_y.values () {
           if let observer = entry.possibleObserver {
             managedObject.y_property.startsToBeObserved (by: observer)
           }else{
@@ -78,13 +81,16 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
-    for (_, entry) in self.mObserversOf_y.dictionary {
+/*  final private func removeEBObserversOf_y_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
+    for managedObject in inSet.values {
+      managedObject.y_property.stopsBeingObserved (by: self.mObserversOf_y)
+    }
+    for entry in self.mObserversOf_y.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -94,27 +100,27 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
         self.mObserversOf_y.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'padDiameter' stored property
   //····················································································································
 
-  private final var mObserversOf_padDiameter = EBWeakEventSet ()
+  private final var mObserversOf_padDiameter = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_padDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_padDiameter.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.padDiameter_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -122,22 +128,25 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   final func toMany_padDiameter_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_padDiameter.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.padDiameter_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_padDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
-    if !self.mObserversOf_padDiameter.isEmpty {
+ // final private func addEBObserversOf_padDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
+    /* for managedObject in inSet.values {
+      managedObject.padDiameter_property.startsToBeObserved (by: self.mObserversOf_padDiameter)
+    }*/
+    /* if !self.mObserversOf_padDiameter.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_padDiameter.dictionary {
+        for entry in self.mObserversOf_padDiameter.values () {
           if let observer = entry.possibleObserver {
             managedObject.padDiameter_property.startsToBeObserved (by: observer)
           }else{
@@ -145,13 +154,16 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_padDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
-    for (_, entry) in self.mObserversOf_padDiameter.dictionary {
+/*  final private func removeEBObserversOf_padDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
+    for managedObject in inSet.values {
+      managedObject.padDiameter_property.stopsBeingObserved (by: self.mObserversOf_padDiameter)
+    }
+    for entry in self.mObserversOf_padDiameter.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -161,27 +173,27 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
         self.mObserversOf_padDiameter.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
 
-  private final var mObserversOf_x = EBWeakEventSet ()
+  private final var mObserversOf_x = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_x_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_x.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.x_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -189,22 +201,25 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   final func toMany_x_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_x.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.x_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_x_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
-    if !self.mObserversOf_x.isEmpty {
+ // final private func addEBObserversOf_x_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
+    /* for managedObject in inSet.values {
+      managedObject.x_property.startsToBeObserved (by: self.mObserversOf_x)
+    }*/
+    /* if !self.mObserversOf_x.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_x.dictionary {
+        for entry in self.mObserversOf_x.values () {
           if let observer = entry.possibleObserver {
             managedObject.x_property.startsToBeObserved (by: observer)
           }else{
@@ -212,13 +227,16 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
-    for (_, entry) in self.mObserversOf_x.dictionary {
+/*  final private func removeEBObserversOf_x_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelVia>) {
+    for managedObject in inSet.values {
+      managedObject.x_property.stopsBeingObserved (by: self.mObserversOf_x)
+    }
+    for entry in self.mObserversOf_x.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -228,7 +246,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
         self.mObserversOf_x.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
 

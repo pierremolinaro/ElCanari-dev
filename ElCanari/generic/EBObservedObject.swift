@@ -29,7 +29,7 @@ class EBObservedObject : EBSwiftBaseObject {
   //····················································································································
 
   func observedObjectDidChange () {
-    for (_, entry) in self.mObservers.dictionary {
+    for entry in self.mObservers.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
       }else{

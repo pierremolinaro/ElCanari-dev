@@ -16,100 +16,100 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
                                  addedSet inAddedSet : EBReferenceSet <BoardTrack>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    if !inRemovedSet.isEmpty {
-      self.removeEBObserversOf_mSide_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mDefaultTrackWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mCustomTrackWidth_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mCustomTrackWidthUnit_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mUsesCustomTrackWidth_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mIsPreservedByAutoRouter_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mP1XUnit_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mP1YUnit_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mP2XUnit_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mP2YUnit_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mManualLockP1_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mManualLockP2_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mDirectionLockOnKnobDragging_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_actualTrackWidth_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_netName_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_netClassName_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_netClassTrackWidth_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_netClassViaHoleDiameter_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_netClassViaPadDiameter_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_trackLengthInCanariUnit_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_trackSide_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_p1ConnectedToSomePad_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_p2ConnectedToSomePad_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_p1CanMove_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_p2CanMove_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_trackCanRotate_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_trackDirectionInDegrees_fromElementsOfSet (inRemovedSet) // Computed property
-      self.removeEBObserversOf_computedP1X_fromElementsOfSet (inRemovedSet) // Computed property
-      self.removeEBObserversOf_computedP1Y_fromElementsOfSet (inRemovedSet) // Computed property
-      self.removeEBObserversOf_computedP2X_fromElementsOfSet (inRemovedSet) // Computed property
-      self.removeEBObserversOf_computedP2Y_fromElementsOfSet (inRemovedSet) // Computed property
+    for managedObject in inRemovedSet.values {
+      managedObject.mSide_property.stopsBeingObserved (by: self.mObserversOf_mSide) // Stored property
+      managedObject.mDefaultTrackWidthUnit_property.stopsBeingObserved (by: self.mObserversOf_mDefaultTrackWidthUnit) // Stored property
+      managedObject.mCustomTrackWidth_property.stopsBeingObserved (by: self.mObserversOf_mCustomTrackWidth) // Stored property
+      managedObject.mCustomTrackWidthUnit_property.stopsBeingObserved (by: self.mObserversOf_mCustomTrackWidthUnit) // Stored property
+      managedObject.mUsesCustomTrackWidth_property.stopsBeingObserved (by: self.mObserversOf_mUsesCustomTrackWidth) // Stored property
+      managedObject.mIsPreservedByAutoRouter_property.stopsBeingObserved (by: self.mObserversOf_mIsPreservedByAutoRouter) // Stored property
+      managedObject.mP1XUnit_property.stopsBeingObserved (by: self.mObserversOf_mP1XUnit) // Stored property
+      managedObject.mP1YUnit_property.stopsBeingObserved (by: self.mObserversOf_mP1YUnit) // Stored property
+      managedObject.mP2XUnit_property.stopsBeingObserved (by: self.mObserversOf_mP2XUnit) // Stored property
+      managedObject.mP2YUnit_property.stopsBeingObserved (by: self.mObserversOf_mP2YUnit) // Stored property
+      managedObject.mManualLockP1_property.stopsBeingObserved (by: self.mObserversOf_mManualLockP1) // Stored property
+      managedObject.mManualLockP2_property.stopsBeingObserved (by: self.mObserversOf_mManualLockP2) // Stored property
+      managedObject.mDirectionLockOnKnobDragging_property.stopsBeingObserved (by: self.mObserversOf_mDirectionLockOnKnobDragging) // Stored property
+      managedObject.actualTrackWidth_property.stopsBeingObserved (by: self.mObserversOf_actualTrackWidth) // Transient property
+      managedObject.netName_property.stopsBeingObserved (by: self.mObserversOf_netName) // Transient property
+      managedObject.netClassName_property.stopsBeingObserved (by: self.mObserversOf_netClassName) // Transient property
+      managedObject.netClassTrackWidth_property.stopsBeingObserved (by: self.mObserversOf_netClassTrackWidth) // Transient property
+      managedObject.netClassViaHoleDiameter_property.stopsBeingObserved (by: self.mObserversOf_netClassViaHoleDiameter) // Transient property
+      managedObject.netClassViaPadDiameter_property.stopsBeingObserved (by: self.mObserversOf_netClassViaPadDiameter) // Transient property
+      managedObject.trackLengthInCanariUnit_property.stopsBeingObserved (by: self.mObserversOf_trackLengthInCanariUnit) // Transient property
+      managedObject.trackSide_property.stopsBeingObserved (by: self.mObserversOf_trackSide) // Transient property
+      managedObject.signatureForERCChecking_property.stopsBeingObserved (by: self.mObserversOf_signatureForERCChecking) // Transient property
+      managedObject.p1ConnectedToSomePad_property.stopsBeingObserved (by: self.mObserversOf_p1ConnectedToSomePad) // Transient property
+      managedObject.p2ConnectedToSomePad_property.stopsBeingObserved (by: self.mObserversOf_p2ConnectedToSomePad) // Transient property
+      managedObject.objectDisplay_property.stopsBeingObserved (by: self.mObserversOf_objectDisplay) // Transient property
+      managedObject.p1CanMove_property.stopsBeingObserved (by: self.mObserversOf_p1CanMove) // Transient property
+      managedObject.p2CanMove_property.stopsBeingObserved (by: self.mObserversOf_p2CanMove) // Transient property
+      managedObject.trackCanRotate_property.stopsBeingObserved (by: self.mObserversOf_trackCanRotate) // Transient property
+      managedObject.selectionDisplay_property.stopsBeingObserved (by: self.mObserversOf_selectionDisplay) // Transient property
+      managedObject.trackDirectionInDegrees_property.stopsBeingObserved (by: self.mObserversOf_trackDirectionInDegrees) // Computed property
+      managedObject.computedP1X_property.stopsBeingObserved (by: self.mObserversOf_computedP1X) // Computed property
+      managedObject.computedP1Y_property.stopsBeingObserved (by: self.mObserversOf_computedP1Y) // Computed property
+      managedObject.computedP2X_property.stopsBeingObserved (by: self.mObserversOf_computedP2X) // Computed property
+      managedObject.computedP2Y_property.stopsBeingObserved (by: self.mObserversOf_computedP2Y) // Computed property
     }
   //--- Add observers to added objects
-    if !inAddedSet.isEmpty {
-      self.addEBObserversOf_mSide_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mDefaultTrackWidthUnit_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mCustomTrackWidth_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mCustomTrackWidthUnit_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mUsesCustomTrackWidth_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mIsPreservedByAutoRouter_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mP1XUnit_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mP1YUnit_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mP2XUnit_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mP2YUnit_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mManualLockP1_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mManualLockP2_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mDirectionLockOnKnobDragging_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_actualTrackWidth_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_netName_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_netClassName_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_netClassTrackWidth_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_netClassViaHoleDiameter_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_netClassViaPadDiameter_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_trackLengthInCanariUnit_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_trackSide_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_p1ConnectedToSomePad_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_p2ConnectedToSomePad_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_p1CanMove_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_p2CanMove_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_trackCanRotate_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_trackDirectionInDegrees_toElementsOfSet (inAddedSet) // Computed property
-      self.addEBObserversOf_computedP1X_toElementsOfSet (inAddedSet) // Computed property
-      self.addEBObserversOf_computedP1Y_toElementsOfSet (inAddedSet) // Computed property
-      self.addEBObserversOf_computedP2X_toElementsOfSet (inAddedSet) // Computed property
-      self.addEBObserversOf_computedP2Y_toElementsOfSet (inAddedSet) // Computed property
-   }
+    for managedObject in inAddedSet.values {
+      managedObject.mSide_property.startsToBeObserved (by: self.mObserversOf_mSide) // Stored property
+      managedObject.mDefaultTrackWidthUnit_property.startsToBeObserved (by: self.mObserversOf_mDefaultTrackWidthUnit) // Stored property
+      managedObject.mCustomTrackWidth_property.startsToBeObserved (by: self.mObserversOf_mCustomTrackWidth) // Stored property
+      managedObject.mCustomTrackWidthUnit_property.startsToBeObserved (by: self.mObserversOf_mCustomTrackWidthUnit) // Stored property
+      managedObject.mUsesCustomTrackWidth_property.startsToBeObserved (by: self.mObserversOf_mUsesCustomTrackWidth) // Stored property
+      managedObject.mIsPreservedByAutoRouter_property.startsToBeObserved (by: self.mObserversOf_mIsPreservedByAutoRouter) // Stored property
+      managedObject.mP1XUnit_property.startsToBeObserved (by: self.mObserversOf_mP1XUnit) // Stored property
+      managedObject.mP1YUnit_property.startsToBeObserved (by: self.mObserversOf_mP1YUnit) // Stored property
+      managedObject.mP2XUnit_property.startsToBeObserved (by: self.mObserversOf_mP2XUnit) // Stored property
+      managedObject.mP2YUnit_property.startsToBeObserved (by: self.mObserversOf_mP2YUnit) // Stored property
+      managedObject.mManualLockP1_property.startsToBeObserved (by: self.mObserversOf_mManualLockP1) // Stored property
+      managedObject.mManualLockP2_property.startsToBeObserved (by: self.mObserversOf_mManualLockP2) // Stored property
+      managedObject.mDirectionLockOnKnobDragging_property.startsToBeObserved (by: self.mObserversOf_mDirectionLockOnKnobDragging) // Stored property
+      managedObject.actualTrackWidth_property.startsToBeObserved (by: self.mObserversOf_actualTrackWidth) // Transient property
+      managedObject.netName_property.startsToBeObserved (by: self.mObserversOf_netName) // Transient property
+      managedObject.netClassName_property.startsToBeObserved (by: self.mObserversOf_netClassName) // Transient property
+      managedObject.netClassTrackWidth_property.startsToBeObserved (by: self.mObserversOf_netClassTrackWidth) // Transient property
+      managedObject.netClassViaHoleDiameter_property.startsToBeObserved (by: self.mObserversOf_netClassViaHoleDiameter) // Transient property
+      managedObject.netClassViaPadDiameter_property.startsToBeObserved (by: self.mObserversOf_netClassViaPadDiameter) // Transient property
+      managedObject.trackLengthInCanariUnit_property.startsToBeObserved (by: self.mObserversOf_trackLengthInCanariUnit) // Transient property
+      managedObject.trackSide_property.startsToBeObserved (by: self.mObserversOf_trackSide) // Transient property
+      managedObject.signatureForERCChecking_property.startsToBeObserved (by: self.mObserversOf_signatureForERCChecking) // Transient property
+      managedObject.p1ConnectedToSomePad_property.startsToBeObserved (by: self.mObserversOf_p1ConnectedToSomePad) // Transient property
+      managedObject.p2ConnectedToSomePad_property.startsToBeObserved (by: self.mObserversOf_p2ConnectedToSomePad) // Transient property
+      managedObject.objectDisplay_property.startsToBeObserved (by: self.mObserversOf_objectDisplay) // Transient property
+      managedObject.p1CanMove_property.startsToBeObserved (by: self.mObserversOf_p1CanMove) // Transient property
+      managedObject.p2CanMove_property.startsToBeObserved (by: self.mObserversOf_p2CanMove) // Transient property
+      managedObject.trackCanRotate_property.startsToBeObserved (by: self.mObserversOf_trackCanRotate) // Transient property
+      managedObject.selectionDisplay_property.startsToBeObserved (by: self.mObserversOf_selectionDisplay) // Transient property
+      managedObject.trackDirectionInDegrees_property.startsToBeObserved (by: self.mObserversOf_trackDirectionInDegrees) // Computed property
+      managedObject.computedP1X_property.startsToBeObserved (by: self.mObserversOf_computedP1X) // Computed property
+      managedObject.computedP1Y_property.startsToBeObserved (by: self.mObserversOf_computedP1Y) // Computed property
+      managedObject.computedP2X_property.startsToBeObserved (by: self.mObserversOf_computedP2X) // Computed property
+      managedObject.computedP2Y_property.startsToBeObserved (by: self.mObserversOf_computedP2Y) // Computed property
+    }
   }
 
   //····················································································································
   //   Observers of 'mSide' stored property
   //····················································································································
 
-  private final var mObserversOf_mSide = EBWeakEventSet ()
+  private final var mObserversOf_mSide = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mSide.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mSide_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -117,22 +117,25 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_mSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mSide.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mSide_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mSide_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    if !self.mObserversOf_mSide.isEmpty {
+ // final private func addEBObserversOf_mSide_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    /* for managedObject in inSet.values {
+      managedObject.mSide_property.startsToBeObserved (by: self.mObserversOf_mSide)
+    }*/
+    /* if !self.mObserversOf_mSide.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mSide.dictionary {
+        for entry in self.mObserversOf_mSide.values () {
           if let observer = entry.possibleObserver {
             managedObject.mSide_property.startsToBeObserved (by: observer)
           }else{
@@ -140,13 +143,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mSide_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    for (_, entry) in self.mObserversOf_mSide.dictionary {
+/*  final private func removeEBObserversOf_mSide_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    for managedObject in inSet.values {
+      managedObject.mSide_property.stopsBeingObserved (by: self.mObserversOf_mSide)
+    }
+    for entry in self.mObserversOf_mSide.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -156,27 +162,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         self.mObserversOf_mSide.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mDefaultTrackWidthUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mDefaultTrackWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_mDefaultTrackWidthUnit = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mDefaultTrackWidthUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mDefaultTrackWidthUnit.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mDefaultTrackWidthUnit_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -184,22 +190,25 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_mDefaultTrackWidthUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mDefaultTrackWidthUnit.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mDefaultTrackWidthUnit_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mDefaultTrackWidthUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    if !self.mObserversOf_mDefaultTrackWidthUnit.isEmpty {
+ // final private func addEBObserversOf_mDefaultTrackWidthUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    /* for managedObject in inSet.values {
+      managedObject.mDefaultTrackWidthUnit_property.startsToBeObserved (by: self.mObserversOf_mDefaultTrackWidthUnit)
+    }*/
+    /* if !self.mObserversOf_mDefaultTrackWidthUnit.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mDefaultTrackWidthUnit.dictionary {
+        for entry in self.mObserversOf_mDefaultTrackWidthUnit.values () {
           if let observer = entry.possibleObserver {
             managedObject.mDefaultTrackWidthUnit_property.startsToBeObserved (by: observer)
           }else{
@@ -207,13 +216,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mDefaultTrackWidthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    for (_, entry) in self.mObserversOf_mDefaultTrackWidthUnit.dictionary {
+/*  final private func removeEBObserversOf_mDefaultTrackWidthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    for managedObject in inSet.values {
+      managedObject.mDefaultTrackWidthUnit_property.stopsBeingObserved (by: self.mObserversOf_mDefaultTrackWidthUnit)
+    }
+    for entry in self.mObserversOf_mDefaultTrackWidthUnit.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -223,27 +235,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         self.mObserversOf_mDefaultTrackWidthUnit.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mCustomTrackWidth' stored property
   //····················································································································
 
-  private final var mObserversOf_mCustomTrackWidth = EBWeakEventSet ()
+  private final var mObserversOf_mCustomTrackWidth = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mCustomTrackWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mCustomTrackWidth.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mCustomTrackWidth_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -251,22 +263,25 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_mCustomTrackWidth_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mCustomTrackWidth.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mCustomTrackWidth_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mCustomTrackWidth_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    if !self.mObserversOf_mCustomTrackWidth.isEmpty {
+ // final private func addEBObserversOf_mCustomTrackWidth_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    /* for managedObject in inSet.values {
+      managedObject.mCustomTrackWidth_property.startsToBeObserved (by: self.mObserversOf_mCustomTrackWidth)
+    }*/
+    /* if !self.mObserversOf_mCustomTrackWidth.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mCustomTrackWidth.dictionary {
+        for entry in self.mObserversOf_mCustomTrackWidth.values () {
           if let observer = entry.possibleObserver {
             managedObject.mCustomTrackWidth_property.startsToBeObserved (by: observer)
           }else{
@@ -274,13 +289,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mCustomTrackWidth_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    for (_, entry) in self.mObserversOf_mCustomTrackWidth.dictionary {
+/*  final private func removeEBObserversOf_mCustomTrackWidth_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    for managedObject in inSet.values {
+      managedObject.mCustomTrackWidth_property.stopsBeingObserved (by: self.mObserversOf_mCustomTrackWidth)
+    }
+    for entry in self.mObserversOf_mCustomTrackWidth.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -290,27 +308,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         self.mObserversOf_mCustomTrackWidth.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mCustomTrackWidthUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mCustomTrackWidthUnit = EBWeakEventSet ()
+  private final var mObserversOf_mCustomTrackWidthUnit = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mCustomTrackWidthUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mCustomTrackWidthUnit.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mCustomTrackWidthUnit_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -318,22 +336,25 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_mCustomTrackWidthUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mCustomTrackWidthUnit.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mCustomTrackWidthUnit_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mCustomTrackWidthUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    if !self.mObserversOf_mCustomTrackWidthUnit.isEmpty {
+ // final private func addEBObserversOf_mCustomTrackWidthUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    /* for managedObject in inSet.values {
+      managedObject.mCustomTrackWidthUnit_property.startsToBeObserved (by: self.mObserversOf_mCustomTrackWidthUnit)
+    }*/
+    /* if !self.mObserversOf_mCustomTrackWidthUnit.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mCustomTrackWidthUnit.dictionary {
+        for entry in self.mObserversOf_mCustomTrackWidthUnit.values () {
           if let observer = entry.possibleObserver {
             managedObject.mCustomTrackWidthUnit_property.startsToBeObserved (by: observer)
           }else{
@@ -341,13 +362,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mCustomTrackWidthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    for (_, entry) in self.mObserversOf_mCustomTrackWidthUnit.dictionary {
+/*  final private func removeEBObserversOf_mCustomTrackWidthUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    for managedObject in inSet.values {
+      managedObject.mCustomTrackWidthUnit_property.stopsBeingObserved (by: self.mObserversOf_mCustomTrackWidthUnit)
+    }
+    for entry in self.mObserversOf_mCustomTrackWidthUnit.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -357,27 +381,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         self.mObserversOf_mCustomTrackWidthUnit.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mUsesCustomTrackWidth' stored property
   //····················································································································
 
-  private final var mObserversOf_mUsesCustomTrackWidth = EBWeakEventSet ()
+  private final var mObserversOf_mUsesCustomTrackWidth = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mUsesCustomTrackWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mUsesCustomTrackWidth.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mUsesCustomTrackWidth_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -385,22 +409,25 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_mUsesCustomTrackWidth_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mUsesCustomTrackWidth.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mUsesCustomTrackWidth_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mUsesCustomTrackWidth_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    if !self.mObserversOf_mUsesCustomTrackWidth.isEmpty {
+ // final private func addEBObserversOf_mUsesCustomTrackWidth_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    /* for managedObject in inSet.values {
+      managedObject.mUsesCustomTrackWidth_property.startsToBeObserved (by: self.mObserversOf_mUsesCustomTrackWidth)
+    }*/
+    /* if !self.mObserversOf_mUsesCustomTrackWidth.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mUsesCustomTrackWidth.dictionary {
+        for entry in self.mObserversOf_mUsesCustomTrackWidth.values () {
           if let observer = entry.possibleObserver {
             managedObject.mUsesCustomTrackWidth_property.startsToBeObserved (by: observer)
           }else{
@@ -408,13 +435,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mUsesCustomTrackWidth_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    for (_, entry) in self.mObserversOf_mUsesCustomTrackWidth.dictionary {
+/*  final private func removeEBObserversOf_mUsesCustomTrackWidth_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    for managedObject in inSet.values {
+      managedObject.mUsesCustomTrackWidth_property.stopsBeingObserved (by: self.mObserversOf_mUsesCustomTrackWidth)
+    }
+    for entry in self.mObserversOf_mUsesCustomTrackWidth.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -424,27 +454,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         self.mObserversOf_mUsesCustomTrackWidth.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mIsPreservedByAutoRouter' stored property
   //····················································································································
 
-  private final var mObserversOf_mIsPreservedByAutoRouter = EBWeakEventSet ()
+  private final var mObserversOf_mIsPreservedByAutoRouter = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mIsPreservedByAutoRouter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mIsPreservedByAutoRouter.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mIsPreservedByAutoRouter_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -452,22 +482,25 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_mIsPreservedByAutoRouter_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mIsPreservedByAutoRouter.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mIsPreservedByAutoRouter_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mIsPreservedByAutoRouter_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    if !self.mObserversOf_mIsPreservedByAutoRouter.isEmpty {
+ // final private func addEBObserversOf_mIsPreservedByAutoRouter_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    /* for managedObject in inSet.values {
+      managedObject.mIsPreservedByAutoRouter_property.startsToBeObserved (by: self.mObserversOf_mIsPreservedByAutoRouter)
+    }*/
+    /* if !self.mObserversOf_mIsPreservedByAutoRouter.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mIsPreservedByAutoRouter.dictionary {
+        for entry in self.mObserversOf_mIsPreservedByAutoRouter.values () {
           if let observer = entry.possibleObserver {
             managedObject.mIsPreservedByAutoRouter_property.startsToBeObserved (by: observer)
           }else{
@@ -475,13 +508,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mIsPreservedByAutoRouter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    for (_, entry) in self.mObserversOf_mIsPreservedByAutoRouter.dictionary {
+/*  final private func removeEBObserversOf_mIsPreservedByAutoRouter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    for managedObject in inSet.values {
+      managedObject.mIsPreservedByAutoRouter_property.stopsBeingObserved (by: self.mObserversOf_mIsPreservedByAutoRouter)
+    }
+    for entry in self.mObserversOf_mIsPreservedByAutoRouter.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -491,27 +527,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         self.mObserversOf_mIsPreservedByAutoRouter.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mP1XUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mP1XUnit = EBWeakEventSet ()
+  private final var mObserversOf_mP1XUnit = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mP1XUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mP1XUnit.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mP1XUnit_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -519,22 +555,25 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_mP1XUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mP1XUnit.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mP1XUnit_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mP1XUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    if !self.mObserversOf_mP1XUnit.isEmpty {
+ // final private func addEBObserversOf_mP1XUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    /* for managedObject in inSet.values {
+      managedObject.mP1XUnit_property.startsToBeObserved (by: self.mObserversOf_mP1XUnit)
+    }*/
+    /* if !self.mObserversOf_mP1XUnit.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mP1XUnit.dictionary {
+        for entry in self.mObserversOf_mP1XUnit.values () {
           if let observer = entry.possibleObserver {
             managedObject.mP1XUnit_property.startsToBeObserved (by: observer)
           }else{
@@ -542,13 +581,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mP1XUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    for (_, entry) in self.mObserversOf_mP1XUnit.dictionary {
+/*  final private func removeEBObserversOf_mP1XUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    for managedObject in inSet.values {
+      managedObject.mP1XUnit_property.stopsBeingObserved (by: self.mObserversOf_mP1XUnit)
+    }
+    for entry in self.mObserversOf_mP1XUnit.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -558,27 +600,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         self.mObserversOf_mP1XUnit.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mP1YUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mP1YUnit = EBWeakEventSet ()
+  private final var mObserversOf_mP1YUnit = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mP1YUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mP1YUnit.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mP1YUnit_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -586,22 +628,25 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_mP1YUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mP1YUnit.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mP1YUnit_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mP1YUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    if !self.mObserversOf_mP1YUnit.isEmpty {
+ // final private func addEBObserversOf_mP1YUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    /* for managedObject in inSet.values {
+      managedObject.mP1YUnit_property.startsToBeObserved (by: self.mObserversOf_mP1YUnit)
+    }*/
+    /* if !self.mObserversOf_mP1YUnit.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mP1YUnit.dictionary {
+        for entry in self.mObserversOf_mP1YUnit.values () {
           if let observer = entry.possibleObserver {
             managedObject.mP1YUnit_property.startsToBeObserved (by: observer)
           }else{
@@ -609,13 +654,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mP1YUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    for (_, entry) in self.mObserversOf_mP1YUnit.dictionary {
+/*  final private func removeEBObserversOf_mP1YUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    for managedObject in inSet.values {
+      managedObject.mP1YUnit_property.stopsBeingObserved (by: self.mObserversOf_mP1YUnit)
+    }
+    for entry in self.mObserversOf_mP1YUnit.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -625,27 +673,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         self.mObserversOf_mP1YUnit.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mP2XUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mP2XUnit = EBWeakEventSet ()
+  private final var mObserversOf_mP2XUnit = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mP2XUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mP2XUnit.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mP2XUnit_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -653,22 +701,25 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_mP2XUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mP2XUnit.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mP2XUnit_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mP2XUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    if !self.mObserversOf_mP2XUnit.isEmpty {
+ // final private func addEBObserversOf_mP2XUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    /* for managedObject in inSet.values {
+      managedObject.mP2XUnit_property.startsToBeObserved (by: self.mObserversOf_mP2XUnit)
+    }*/
+    /* if !self.mObserversOf_mP2XUnit.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mP2XUnit.dictionary {
+        for entry in self.mObserversOf_mP2XUnit.values () {
           if let observer = entry.possibleObserver {
             managedObject.mP2XUnit_property.startsToBeObserved (by: observer)
           }else{
@@ -676,13 +727,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mP2XUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    for (_, entry) in self.mObserversOf_mP2XUnit.dictionary {
+/*  final private func removeEBObserversOf_mP2XUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    for managedObject in inSet.values {
+      managedObject.mP2XUnit_property.stopsBeingObserved (by: self.mObserversOf_mP2XUnit)
+    }
+    for entry in self.mObserversOf_mP2XUnit.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -692,27 +746,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         self.mObserversOf_mP2XUnit.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mP2YUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_mP2YUnit = EBWeakEventSet ()
+  private final var mObserversOf_mP2YUnit = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mP2YUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mP2YUnit.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mP2YUnit_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -720,22 +774,25 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_mP2YUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mP2YUnit.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mP2YUnit_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mP2YUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    if !self.mObserversOf_mP2YUnit.isEmpty {
+ // final private func addEBObserversOf_mP2YUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    /* for managedObject in inSet.values {
+      managedObject.mP2YUnit_property.startsToBeObserved (by: self.mObserversOf_mP2YUnit)
+    }*/
+    /* if !self.mObserversOf_mP2YUnit.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mP2YUnit.dictionary {
+        for entry in self.mObserversOf_mP2YUnit.values () {
           if let observer = entry.possibleObserver {
             managedObject.mP2YUnit_property.startsToBeObserved (by: observer)
           }else{
@@ -743,13 +800,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mP2YUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    for (_, entry) in self.mObserversOf_mP2YUnit.dictionary {
+/*  final private func removeEBObserversOf_mP2YUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    for managedObject in inSet.values {
+      managedObject.mP2YUnit_property.stopsBeingObserved (by: self.mObserversOf_mP2YUnit)
+    }
+    for entry in self.mObserversOf_mP2YUnit.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -759,27 +819,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         self.mObserversOf_mP2YUnit.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mManualLockP1' stored property
   //····················································································································
 
-  private final var mObserversOf_mManualLockP1 = EBWeakEventSet ()
+  private final var mObserversOf_mManualLockP1 = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mManualLockP1_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mManualLockP1.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mManualLockP1_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -787,22 +847,25 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_mManualLockP1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mManualLockP1.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mManualLockP1_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mManualLockP1_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    if !self.mObserversOf_mManualLockP1.isEmpty {
+ // final private func addEBObserversOf_mManualLockP1_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    /* for managedObject in inSet.values {
+      managedObject.mManualLockP1_property.startsToBeObserved (by: self.mObserversOf_mManualLockP1)
+    }*/
+    /* if !self.mObserversOf_mManualLockP1.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mManualLockP1.dictionary {
+        for entry in self.mObserversOf_mManualLockP1.values () {
           if let observer = entry.possibleObserver {
             managedObject.mManualLockP1_property.startsToBeObserved (by: observer)
           }else{
@@ -810,13 +873,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mManualLockP1_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    for (_, entry) in self.mObserversOf_mManualLockP1.dictionary {
+/*  final private func removeEBObserversOf_mManualLockP1_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    for managedObject in inSet.values {
+      managedObject.mManualLockP1_property.stopsBeingObserved (by: self.mObserversOf_mManualLockP1)
+    }
+    for entry in self.mObserversOf_mManualLockP1.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -826,27 +892,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         self.mObserversOf_mManualLockP1.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mManualLockP2' stored property
   //····················································································································
 
-  private final var mObserversOf_mManualLockP2 = EBWeakEventSet ()
+  private final var mObserversOf_mManualLockP2 = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mManualLockP2_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mManualLockP2.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mManualLockP2_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -854,22 +920,25 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_mManualLockP2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mManualLockP2.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mManualLockP2_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mManualLockP2_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    if !self.mObserversOf_mManualLockP2.isEmpty {
+ // final private func addEBObserversOf_mManualLockP2_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    /* for managedObject in inSet.values {
+      managedObject.mManualLockP2_property.startsToBeObserved (by: self.mObserversOf_mManualLockP2)
+    }*/
+    /* if !self.mObserversOf_mManualLockP2.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mManualLockP2.dictionary {
+        for entry in self.mObserversOf_mManualLockP2.values () {
           if let observer = entry.possibleObserver {
             managedObject.mManualLockP2_property.startsToBeObserved (by: observer)
           }else{
@@ -877,13 +946,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mManualLockP2_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    for (_, entry) in self.mObserversOf_mManualLockP2.dictionary {
+/*  final private func removeEBObserversOf_mManualLockP2_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    for managedObject in inSet.values {
+      managedObject.mManualLockP2_property.stopsBeingObserved (by: self.mObserversOf_mManualLockP2)
+    }
+    for entry in self.mObserversOf_mManualLockP2.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -893,27 +965,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         self.mObserversOf_mManualLockP2.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mDirectionLockOnKnobDragging' stored property
   //····················································································································
 
-  private final var mObserversOf_mDirectionLockOnKnobDragging = EBWeakEventSet ()
+  private final var mObserversOf_mDirectionLockOnKnobDragging = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mDirectionLockOnKnobDragging_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mDirectionLockOnKnobDragging.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mDirectionLockOnKnobDragging_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -921,22 +993,25 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_mDirectionLockOnKnobDragging_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mDirectionLockOnKnobDragging.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mDirectionLockOnKnobDragging_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mDirectionLockOnKnobDragging_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    if !self.mObserversOf_mDirectionLockOnKnobDragging.isEmpty {
+ // final private func addEBObserversOf_mDirectionLockOnKnobDragging_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    /* for managedObject in inSet.values {
+      managedObject.mDirectionLockOnKnobDragging_property.startsToBeObserved (by: self.mObserversOf_mDirectionLockOnKnobDragging)
+    }*/
+    /* if !self.mObserversOf_mDirectionLockOnKnobDragging.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mDirectionLockOnKnobDragging.dictionary {
+        for entry in self.mObserversOf_mDirectionLockOnKnobDragging.values () {
           if let observer = entry.possibleObserver {
             managedObject.mDirectionLockOnKnobDragging_property.startsToBeObserved (by: observer)
           }else{
@@ -944,13 +1019,16 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mDirectionLockOnKnobDragging_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
-    for (_, entry) in self.mObserversOf_mDirectionLockOnKnobDragging.dictionary {
+/*  final private func removeEBObserversOf_mDirectionLockOnKnobDragging_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+    for managedObject in inSet.values {
+      managedObject.mDirectionLockOnKnobDragging_property.stopsBeingObserved (by: self.mObserversOf_mDirectionLockOnKnobDragging)
+    }
+    for entry in self.mObserversOf_mDirectionLockOnKnobDragging.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -960,27 +1038,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         self.mObserversOf_mDirectionLockOnKnobDragging.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'actualTrackWidth' transient property
   //····················································································································
 
-  private final var mObserversOf_actualTrackWidth = EBWeakEventSet ()
+  private final var mObserversOf_actualTrackWidth = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_actualTrackWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_actualTrackWidth.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.actualTrackWidth_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -988,21 +1066,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_actualTrackWidth_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_actualTrackWidth.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.actualTrackWidth_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_actualTrackWidth_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_actualTrackWidth_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_actualTrackWidth.dictionary {
+      for entry in self.mObserversOf_actualTrackWidth.values () {
         if let observer = entry.possibleObserver {
           managedObject.actualTrackWidth_property.startsToBeObserved (by: observer)
         }else{
@@ -1010,13 +1088,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_actualTrackWidth_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_actualTrackWidth_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_actualTrackWidth.dictionary {
+      for entry in self.mObserversOf_actualTrackWidth.values () {
         if let observer = entry.possibleObserver {
           managedObject.actualTrackWidth_property.stopsBeingObserved (by: observer)
         }else{
@@ -1024,27 +1102,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'netName' transient property
   //····················································································································
 
-  private final var mObserversOf_netName = EBWeakEventSet ()
+  private final var mObserversOf_netName = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_netName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_netName.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.netName_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -1052,21 +1130,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_netName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_netName.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.netName_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_netName_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_netName_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_netName.dictionary {
+      for entry in self.mObserversOf_netName.values () {
         if let observer = entry.possibleObserver {
           managedObject.netName_property.startsToBeObserved (by: observer)
         }else{
@@ -1074,13 +1152,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_netName_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_netName_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_netName.dictionary {
+      for entry in self.mObserversOf_netName.values () {
         if let observer = entry.possibleObserver {
           managedObject.netName_property.stopsBeingObserved (by: observer)
         }else{
@@ -1088,27 +1166,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  private final var mObserversOf_netClassName = EBWeakEventSet ()
+  private final var mObserversOf_netClassName = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_netClassName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_netClassName.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.netClassName_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -1116,21 +1194,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_netClassName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_netClassName.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.netClassName_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_netClassName_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_netClassName_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_netClassName.dictionary {
+      for entry in self.mObserversOf_netClassName.values () {
         if let observer = entry.possibleObserver {
           managedObject.netClassName_property.startsToBeObserved (by: observer)
         }else{
@@ -1138,13 +1216,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_netClassName_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_netClassName_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_netClassName.dictionary {
+      for entry in self.mObserversOf_netClassName.values () {
         if let observer = entry.possibleObserver {
           managedObject.netClassName_property.stopsBeingObserved (by: observer)
         }else{
@@ -1152,27 +1230,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'netClassTrackWidth' transient property
   //····················································································································
 
-  private final var mObserversOf_netClassTrackWidth = EBWeakEventSet ()
+  private final var mObserversOf_netClassTrackWidth = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_netClassTrackWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_netClassTrackWidth.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.netClassTrackWidth_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -1180,21 +1258,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_netClassTrackWidth_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_netClassTrackWidth.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.netClassTrackWidth_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_netClassTrackWidth_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_netClassTrackWidth_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_netClassTrackWidth.dictionary {
+      for entry in self.mObserversOf_netClassTrackWidth.values () {
         if let observer = entry.possibleObserver {
           managedObject.netClassTrackWidth_property.startsToBeObserved (by: observer)
         }else{
@@ -1202,13 +1280,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_netClassTrackWidth_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_netClassTrackWidth_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_netClassTrackWidth.dictionary {
+      for entry in self.mObserversOf_netClassTrackWidth.values () {
         if let observer = entry.possibleObserver {
           managedObject.netClassTrackWidth_property.stopsBeingObserved (by: observer)
         }else{
@@ -1216,27 +1294,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'netClassViaHoleDiameter' transient property
   //····················································································································
 
-  private final var mObserversOf_netClassViaHoleDiameter = EBWeakEventSet ()
+  private final var mObserversOf_netClassViaHoleDiameter = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_netClassViaHoleDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_netClassViaHoleDiameter.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.netClassViaHoleDiameter_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -1244,21 +1322,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_netClassViaHoleDiameter_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_netClassViaHoleDiameter.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.netClassViaHoleDiameter_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_netClassViaHoleDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_netClassViaHoleDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_netClassViaHoleDiameter.dictionary {
+      for entry in self.mObserversOf_netClassViaHoleDiameter.values () {
         if let observer = entry.possibleObserver {
           managedObject.netClassViaHoleDiameter_property.startsToBeObserved (by: observer)
         }else{
@@ -1266,13 +1344,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_netClassViaHoleDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_netClassViaHoleDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_netClassViaHoleDiameter.dictionary {
+      for entry in self.mObserversOf_netClassViaHoleDiameter.values () {
         if let observer = entry.possibleObserver {
           managedObject.netClassViaHoleDiameter_property.stopsBeingObserved (by: observer)
         }else{
@@ -1280,27 +1358,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'netClassViaPadDiameter' transient property
   //····················································································································
 
-  private final var mObserversOf_netClassViaPadDiameter = EBWeakEventSet ()
+  private final var mObserversOf_netClassViaPadDiameter = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_netClassViaPadDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_netClassViaPadDiameter.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.netClassViaPadDiameter_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -1308,21 +1386,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_netClassViaPadDiameter_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_netClassViaPadDiameter.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.netClassViaPadDiameter_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_netClassViaPadDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_netClassViaPadDiameter_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_netClassViaPadDiameter.dictionary {
+      for entry in self.mObserversOf_netClassViaPadDiameter.values () {
         if let observer = entry.possibleObserver {
           managedObject.netClassViaPadDiameter_property.startsToBeObserved (by: observer)
         }else{
@@ -1330,13 +1408,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_netClassViaPadDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_netClassViaPadDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_netClassViaPadDiameter.dictionary {
+      for entry in self.mObserversOf_netClassViaPadDiameter.values () {
         if let observer = entry.possibleObserver {
           managedObject.netClassViaPadDiameter_property.stopsBeingObserved (by: observer)
         }else{
@@ -1344,27 +1422,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'trackLengthInCanariUnit' transient property
   //····················································································································
 
-  private final var mObserversOf_trackLengthInCanariUnit = EBWeakEventSet ()
+  private final var mObserversOf_trackLengthInCanariUnit = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_trackLengthInCanariUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_trackLengthInCanariUnit.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.trackLengthInCanariUnit_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -1372,21 +1450,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_trackLengthInCanariUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_trackLengthInCanariUnit.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.trackLengthInCanariUnit_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_trackLengthInCanariUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_trackLengthInCanariUnit_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_trackLengthInCanariUnit.dictionary {
+      for entry in self.mObserversOf_trackLengthInCanariUnit.values () {
         if let observer = entry.possibleObserver {
           managedObject.trackLengthInCanariUnit_property.startsToBeObserved (by: observer)
         }else{
@@ -1394,13 +1472,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_trackLengthInCanariUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_trackLengthInCanariUnit_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_trackLengthInCanariUnit.dictionary {
+      for entry in self.mObserversOf_trackLengthInCanariUnit.values () {
         if let observer = entry.possibleObserver {
           managedObject.trackLengthInCanariUnit_property.stopsBeingObserved (by: observer)
         }else{
@@ -1408,27 +1486,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'trackSide' transient property
   //····················································································································
 
-  private final var mObserversOf_trackSide = EBWeakEventSet ()
+  private final var mObserversOf_trackSide = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_trackSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_trackSide.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.trackSide_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -1436,21 +1514,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_trackSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_trackSide.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.trackSide_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_trackSide_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_trackSide_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_trackSide.dictionary {
+      for entry in self.mObserversOf_trackSide.values () {
         if let observer = entry.possibleObserver {
           managedObject.trackSide_property.startsToBeObserved (by: observer)
         }else{
@@ -1458,13 +1536,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_trackSide_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_trackSide_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_trackSide.dictionary {
+      for entry in self.mObserversOf_trackSide.values () {
         if let observer = entry.possibleObserver {
           managedObject.trackSide_property.stopsBeingObserved (by: observer)
         }else{
@@ -1472,27 +1550,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+  private final var mObserversOf_signatureForERCChecking = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_signatureForERCChecking_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_signatureForERCChecking.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.signatureForERCChecking_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -1500,21 +1578,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_signatureForERCChecking_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_signatureForERCChecking.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.signatureForERCChecking_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_signatureForERCChecking.dictionary {
+      for entry in self.mObserversOf_signatureForERCChecking.values () {
         if let observer = entry.possibleObserver {
           managedObject.signatureForERCChecking_property.startsToBeObserved (by: observer)
         }else{
@@ -1522,13 +1600,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_signatureForERCChecking.dictionary {
+      for entry in self.mObserversOf_signatureForERCChecking.values () {
         if let observer = entry.possibleObserver {
           managedObject.signatureForERCChecking_property.stopsBeingObserved (by: observer)
         }else{
@@ -1536,27 +1614,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'p1ConnectedToSomePad' transient property
   //····················································································································
 
-  private final var mObserversOf_p1ConnectedToSomePad = EBWeakEventSet ()
+  private final var mObserversOf_p1ConnectedToSomePad = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_p1ConnectedToSomePad_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_p1ConnectedToSomePad.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.p1ConnectedToSomePad_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -1564,21 +1642,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_p1ConnectedToSomePad_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_p1ConnectedToSomePad.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.p1ConnectedToSomePad_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_p1ConnectedToSomePad_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_p1ConnectedToSomePad_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_p1ConnectedToSomePad.dictionary {
+      for entry in self.mObserversOf_p1ConnectedToSomePad.values () {
         if let observer = entry.possibleObserver {
           managedObject.p1ConnectedToSomePad_property.startsToBeObserved (by: observer)
         }else{
@@ -1586,13 +1664,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_p1ConnectedToSomePad_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_p1ConnectedToSomePad_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_p1ConnectedToSomePad.dictionary {
+      for entry in self.mObserversOf_p1ConnectedToSomePad.values () {
         if let observer = entry.possibleObserver {
           managedObject.p1ConnectedToSomePad_property.stopsBeingObserved (by: observer)
         }else{
@@ -1600,27 +1678,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'p2ConnectedToSomePad' transient property
   //····················································································································
 
-  private final var mObserversOf_p2ConnectedToSomePad = EBWeakEventSet ()
+  private final var mObserversOf_p2ConnectedToSomePad = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_p2ConnectedToSomePad_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_p2ConnectedToSomePad.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.p2ConnectedToSomePad_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -1628,21 +1706,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_p2ConnectedToSomePad_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_p2ConnectedToSomePad.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.p2ConnectedToSomePad_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_p2ConnectedToSomePad_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_p2ConnectedToSomePad_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_p2ConnectedToSomePad.dictionary {
+      for entry in self.mObserversOf_p2ConnectedToSomePad.values () {
         if let observer = entry.possibleObserver {
           managedObject.p2ConnectedToSomePad_property.startsToBeObserved (by: observer)
         }else{
@@ -1650,13 +1728,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_p2ConnectedToSomePad_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_p2ConnectedToSomePad_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_p2ConnectedToSomePad.dictionary {
+      for entry in self.mObserversOf_p2ConnectedToSomePad.values () {
         if let observer = entry.possibleObserver {
           managedObject.p2ConnectedToSomePad_property.stopsBeingObserved (by: observer)
         }else{
@@ -1664,27 +1742,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.objectDisplay_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -1692,21 +1770,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.objectDisplay_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
+      for entry in self.mObserversOf_objectDisplay.values () {
         if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.startsToBeObserved (by: observer)
         }else{
@@ -1714,13 +1792,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
+      for entry in self.mObserversOf_objectDisplay.values () {
         if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.stopsBeingObserved (by: observer)
         }else{
@@ -1728,27 +1806,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'p1CanMove' transient property
   //····················································································································
 
-  private final var mObserversOf_p1CanMove = EBWeakEventSet ()
+  private final var mObserversOf_p1CanMove = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_p1CanMove_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_p1CanMove.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.p1CanMove_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -1756,21 +1834,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_p1CanMove_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_p1CanMove.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.p1CanMove_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_p1CanMove_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_p1CanMove_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_p1CanMove.dictionary {
+      for entry in self.mObserversOf_p1CanMove.values () {
         if let observer = entry.possibleObserver {
           managedObject.p1CanMove_property.startsToBeObserved (by: observer)
         }else{
@@ -1778,13 +1856,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_p1CanMove_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_p1CanMove_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_p1CanMove.dictionary {
+      for entry in self.mObserversOf_p1CanMove.values () {
         if let observer = entry.possibleObserver {
           managedObject.p1CanMove_property.stopsBeingObserved (by: observer)
         }else{
@@ -1792,27 +1870,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'p2CanMove' transient property
   //····················································································································
 
-  private final var mObserversOf_p2CanMove = EBWeakEventSet ()
+  private final var mObserversOf_p2CanMove = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_p2CanMove_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_p2CanMove.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.p2CanMove_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -1820,21 +1898,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_p2CanMove_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_p2CanMove.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.p2CanMove_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_p2CanMove_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_p2CanMove_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_p2CanMove.dictionary {
+      for entry in self.mObserversOf_p2CanMove.values () {
         if let observer = entry.possibleObserver {
           managedObject.p2CanMove_property.startsToBeObserved (by: observer)
         }else{
@@ -1842,13 +1920,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_p2CanMove_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_p2CanMove_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_p2CanMove.dictionary {
+      for entry in self.mObserversOf_p2CanMove.values () {
         if let observer = entry.possibleObserver {
           managedObject.p2CanMove_property.stopsBeingObserved (by: observer)
         }else{
@@ -1856,27 +1934,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'trackCanRotate' transient property
   //····················································································································
 
-  private final var mObserversOf_trackCanRotate = EBWeakEventSet ()
+  private final var mObserversOf_trackCanRotate = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_trackCanRotate_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_trackCanRotate.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.trackCanRotate_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -1884,21 +1962,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_trackCanRotate_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_trackCanRotate.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.trackCanRotate_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_trackCanRotate_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_trackCanRotate_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_trackCanRotate.dictionary {
+      for entry in self.mObserversOf_trackCanRotate.values () {
         if let observer = entry.possibleObserver {
           managedObject.trackCanRotate_property.startsToBeObserved (by: observer)
         }else{
@@ -1906,13 +1984,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_trackCanRotate_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_trackCanRotate_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_trackCanRotate.dictionary {
+      for entry in self.mObserversOf_trackCanRotate.values () {
         if let observer = entry.possibleObserver {
           managedObject.trackCanRotate_property.stopsBeingObserved (by: observer)
         }else{
@@ -1920,27 +1998,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.selectionDisplay_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -1948,21 +2026,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.selectionDisplay_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
+      for entry in self.mObserversOf_selectionDisplay.values () {
         if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.startsToBeObserved (by: observer)
         }else{
@@ -1970,13 +2048,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
+      for entry in self.mObserversOf_selectionDisplay.values () {
         if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.stopsBeingObserved (by: observer)
         }else{
@@ -1984,27 +2062,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'trackDirectionInDegrees' computed property
   //····················································································································
 
-  private final var mObserversOf_trackDirectionInDegrees = EBWeakEventSet ()
+  private final var mObserversOf_trackDirectionInDegrees = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_trackDirectionInDegrees_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_trackDirectionInDegrees.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.trackDirectionInDegrees_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -2012,21 +2090,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_trackDirectionInDegrees_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_trackDirectionInDegrees.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.trackDirectionInDegrees_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_trackDirectionInDegrees_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_trackDirectionInDegrees_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_trackDirectionInDegrees.dictionary {
+      for entry in self.mObserversOf_trackDirectionInDegrees.values () {
         if let observer = entry.possibleObserver {
           managedObject.trackDirectionInDegrees_property.startsToBeObserved (by: observer)
         }else{
@@ -2034,13 +2112,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_trackDirectionInDegrees_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_trackDirectionInDegrees_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_trackDirectionInDegrees.dictionary {
+      for entry in self.mObserversOf_trackDirectionInDegrees.values () {
         if let observer = entry.possibleObserver {
           managedObject.trackDirectionInDegrees_property.stopsBeingObserved (by: observer)
         }else{
@@ -2048,27 +2126,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'computedP1X' computed property
   //····················································································································
 
-  private final var mObserversOf_computedP1X = EBWeakEventSet ()
+  private final var mObserversOf_computedP1X = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_computedP1X_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_computedP1X.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.computedP1X_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -2076,21 +2154,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_computedP1X_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_computedP1X.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.computedP1X_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_computedP1X_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_computedP1X_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_computedP1X.dictionary {
+      for entry in self.mObserversOf_computedP1X.values () {
         if let observer = entry.possibleObserver {
           managedObject.computedP1X_property.startsToBeObserved (by: observer)
         }else{
@@ -2098,13 +2176,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_computedP1X_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_computedP1X_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_computedP1X.dictionary {
+      for entry in self.mObserversOf_computedP1X.values () {
         if let observer = entry.possibleObserver {
           managedObject.computedP1X_property.stopsBeingObserved (by: observer)
         }else{
@@ -2112,27 +2190,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'computedP1Y' computed property
   //····················································································································
 
-  private final var mObserversOf_computedP1Y = EBWeakEventSet ()
+  private final var mObserversOf_computedP1Y = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_computedP1Y_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_computedP1Y.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.computedP1Y_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -2140,21 +2218,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_computedP1Y_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_computedP1Y.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.computedP1Y_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_computedP1Y_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_computedP1Y_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_computedP1Y.dictionary {
+      for entry in self.mObserversOf_computedP1Y.values () {
         if let observer = entry.possibleObserver {
           managedObject.computedP1Y_property.startsToBeObserved (by: observer)
         }else{
@@ -2162,13 +2240,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_computedP1Y_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_computedP1Y_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_computedP1Y.dictionary {
+      for entry in self.mObserversOf_computedP1Y.values () {
         if let observer = entry.possibleObserver {
           managedObject.computedP1Y_property.stopsBeingObserved (by: observer)
         }else{
@@ -2176,27 +2254,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'computedP2X' computed property
   //····················································································································
 
-  private final var mObserversOf_computedP2X = EBWeakEventSet ()
+  private final var mObserversOf_computedP2X = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_computedP2X_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_computedP2X.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.computedP2X_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -2204,21 +2282,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_computedP2X_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_computedP2X.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.computedP2X_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_computedP2X_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_computedP2X_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_computedP2X.dictionary {
+      for entry in self.mObserversOf_computedP2X.values () {
         if let observer = entry.possibleObserver {
           managedObject.computedP2X_property.startsToBeObserved (by: observer)
         }else{
@@ -2226,13 +2304,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_computedP2X_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_computedP2X_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_computedP2X.dictionary {
+      for entry in self.mObserversOf_computedP2X.values () {
         if let observer = entry.possibleObserver {
           managedObject.computedP2X_property.stopsBeingObserved (by: observer)
         }else{
@@ -2240,27 +2318,27 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'computedP2Y' computed property
   //····················································································································
 
-  private final var mObserversOf_computedP2Y = EBWeakEventSet ()
+  private final var mObserversOf_computedP2Y = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_computedP2Y_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_computedP2Y.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.computedP2Y_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -2268,21 +2346,21 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
   final func toMany_computedP2Y_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_computedP2Y.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.computedP2Y_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_computedP2Y_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func addEBObserversOf_computedP2Y_toElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_computedP2Y.dictionary {
+      for entry in self.mObserversOf_computedP2Y.values () {
         if let observer = entry.possibleObserver {
           managedObject.computedP2Y_property.startsToBeObserved (by: observer)
         }else{
@@ -2290,13 +2368,13 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_computedP2Y_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
+  /* final private func removeEBObserversOf_computedP2Y_fromElementsOfSet (_ inSet : EBReferenceSet <BoardTrack>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_computedP2Y.dictionary {
+      for entry in self.mObserversOf_computedP2Y.values () {
         if let observer = entry.possibleObserver {
           managedObject.computedP2Y_property.stopsBeingObserved (by: observer)
         }else{
@@ -2304,7 +2382,7 @@ class ReadOnlyArrayOf_BoardTrack : ReadOnlyAbstractArrayProperty <BoardTrack> {
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 

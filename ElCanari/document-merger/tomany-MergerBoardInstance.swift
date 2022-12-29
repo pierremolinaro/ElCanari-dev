@@ -16,48 +16,48 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
                                  addedSet inAddedSet : EBReferenceSet <MergerBoardInstance>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    if !inRemovedSet.isEmpty {
-      self.removeEBObserversOf_x_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_y_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_instanceRotation_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_instanceRect_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_modelName_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_boardLimitWidth_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    for managedObject in inRemovedSet.values {
+      managedObject.x_property.stopsBeingObserved (by: self.mObserversOf_x) // Stored property
+      managedObject.y_property.stopsBeingObserved (by: self.mObserversOf_y) // Stored property
+      managedObject.instanceRotation_property.stopsBeingObserved (by: self.mObserversOf_instanceRotation) // Stored property
+      managedObject.instanceRect_property.stopsBeingObserved (by: self.mObserversOf_instanceRect) // Transient property
+      managedObject.modelName_property.stopsBeingObserved (by: self.mObserversOf_modelName) // Transient property
+      managedObject.boardLimitWidth_property.stopsBeingObserved (by: self.mObserversOf_boardLimitWidth) // Transient property
+      managedObject.selectionDisplay_property.stopsBeingObserved (by: self.mObserversOf_selectionDisplay) // Transient property
+      managedObject.objectDisplay_property.stopsBeingObserved (by: self.mObserversOf_objectDisplay) // Transient property
     }
   //--- Add observers to added objects
-    if !inAddedSet.isEmpty {
-      self.addEBObserversOf_x_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_y_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_instanceRotation_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_instanceRect_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_modelName_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_boardLimitWidth_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
-   }
+    for managedObject in inAddedSet.values {
+      managedObject.x_property.startsToBeObserved (by: self.mObserversOf_x) // Stored property
+      managedObject.y_property.startsToBeObserved (by: self.mObserversOf_y) // Stored property
+      managedObject.instanceRotation_property.startsToBeObserved (by: self.mObserversOf_instanceRotation) // Stored property
+      managedObject.instanceRect_property.startsToBeObserved (by: self.mObserversOf_instanceRect) // Transient property
+      managedObject.modelName_property.startsToBeObserved (by: self.mObserversOf_modelName) // Transient property
+      managedObject.boardLimitWidth_property.startsToBeObserved (by: self.mObserversOf_boardLimitWidth) // Transient property
+      managedObject.selectionDisplay_property.startsToBeObserved (by: self.mObserversOf_selectionDisplay) // Transient property
+      managedObject.objectDisplay_property.startsToBeObserved (by: self.mObserversOf_objectDisplay) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
 
-  private final var mObserversOf_x = EBWeakEventSet ()
+  private final var mObserversOf_x = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_x_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_x.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.x_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -65,22 +65,25 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   final func toMany_x_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_x.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.x_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_x_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
-    if !self.mObserversOf_x.isEmpty {
+ // final private func addEBObserversOf_x_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
+    /* for managedObject in inSet.values {
+      managedObject.x_property.startsToBeObserved (by: self.mObserversOf_x)
+    }*/
+    /* if !self.mObserversOf_x.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_x.dictionary {
+        for entry in self.mObserversOf_x.values () {
           if let observer = entry.possibleObserver {
             managedObject.x_property.startsToBeObserved (by: observer)
           }else{
@@ -88,13 +91,16 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
-    for (_, entry) in self.mObserversOf_x.dictionary {
+/*  final private func removeEBObserversOf_x_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
+    for managedObject in inSet.values {
+      managedObject.x_property.stopsBeingObserved (by: self.mObserversOf_x)
+    }
+    for entry in self.mObserversOf_x.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -104,27 +110,27 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
         self.mObserversOf_x.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'y' stored property
   //····················································································································
 
-  private final var mObserversOf_y = EBWeakEventSet ()
+  private final var mObserversOf_y = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_y_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_y.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.y_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -132,22 +138,25 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   final func toMany_y_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_y.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.y_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_y_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
-    if !self.mObserversOf_y.isEmpty {
+ // final private func addEBObserversOf_y_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
+    /* for managedObject in inSet.values {
+      managedObject.y_property.startsToBeObserved (by: self.mObserversOf_y)
+    }*/
+    /* if !self.mObserversOf_y.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_y.dictionary {
+        for entry in self.mObserversOf_y.values () {
           if let observer = entry.possibleObserver {
             managedObject.y_property.startsToBeObserved (by: observer)
           }else{
@@ -155,13 +164,16 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
-    for (_, entry) in self.mObserversOf_y.dictionary {
+/*  final private func removeEBObserversOf_y_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
+    for managedObject in inSet.values {
+      managedObject.y_property.stopsBeingObserved (by: self.mObserversOf_y)
+    }
+    for entry in self.mObserversOf_y.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -171,27 +183,27 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
         self.mObserversOf_y.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'instanceRotation' stored property
   //····················································································································
 
-  private final var mObserversOf_instanceRotation = EBWeakEventSet ()
+  private final var mObserversOf_instanceRotation = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_instanceRotation_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_instanceRotation.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.instanceRotation_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -199,22 +211,25 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   final func toMany_instanceRotation_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_instanceRotation.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.instanceRotation_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_instanceRotation_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
-    if !self.mObserversOf_instanceRotation.isEmpty {
+ // final private func addEBObserversOf_instanceRotation_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
+    /* for managedObject in inSet.values {
+      managedObject.instanceRotation_property.startsToBeObserved (by: self.mObserversOf_instanceRotation)
+    }*/
+    /* if !self.mObserversOf_instanceRotation.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_instanceRotation.dictionary {
+        for entry in self.mObserversOf_instanceRotation.values () {
           if let observer = entry.possibleObserver {
             managedObject.instanceRotation_property.startsToBeObserved (by: observer)
           }else{
@@ -222,13 +237,16 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_instanceRotation_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
-    for (_, entry) in self.mObserversOf_instanceRotation.dictionary {
+/*  final private func removeEBObserversOf_instanceRotation_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
+    for managedObject in inSet.values {
+      managedObject.instanceRotation_property.stopsBeingObserved (by: self.mObserversOf_instanceRotation)
+    }
+    for entry in self.mObserversOf_instanceRotation.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -238,27 +256,27 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
         self.mObserversOf_instanceRotation.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'instanceRect' transient property
   //····················································································································
 
-  private final var mObserversOf_instanceRect = EBWeakEventSet ()
+  private final var mObserversOf_instanceRect = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_instanceRect_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_instanceRect.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.instanceRect_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -266,21 +284,21 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   final func toMany_instanceRect_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_instanceRect.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.instanceRect_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_instanceRect_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
+  /* final private func addEBObserversOf_instanceRect_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_instanceRect.dictionary {
+      for entry in self.mObserversOf_instanceRect.values () {
         if let observer = entry.possibleObserver {
           managedObject.instanceRect_property.startsToBeObserved (by: observer)
         }else{
@@ -288,13 +306,13 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_instanceRect_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
+  /* final private func removeEBObserversOf_instanceRect_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_instanceRect.dictionary {
+      for entry in self.mObserversOf_instanceRect.values () {
         if let observer = entry.possibleObserver {
           managedObject.instanceRect_property.stopsBeingObserved (by: observer)
         }else{
@@ -302,27 +320,27 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'modelName' transient property
   //····················································································································
 
-  private final var mObserversOf_modelName = EBWeakEventSet ()
+  private final var mObserversOf_modelName = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_modelName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_modelName.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.modelName_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -330,21 +348,21 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   final func toMany_modelName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_modelName.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.modelName_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_modelName_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
+  /* final private func addEBObserversOf_modelName_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_modelName.dictionary {
+      for entry in self.mObserversOf_modelName.values () {
         if let observer = entry.possibleObserver {
           managedObject.modelName_property.startsToBeObserved (by: observer)
         }else{
@@ -352,13 +370,13 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_modelName_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
+  /* final private func removeEBObserversOf_modelName_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_modelName.dictionary {
+      for entry in self.mObserversOf_modelName.values () {
         if let observer = entry.possibleObserver {
           managedObject.modelName_property.stopsBeingObserved (by: observer)
         }else{
@@ -366,27 +384,27 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'boardLimitWidth' transient property
   //····················································································································
 
-  private final var mObserversOf_boardLimitWidth = EBWeakEventSet ()
+  private final var mObserversOf_boardLimitWidth = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_boardLimitWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_boardLimitWidth.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.boardLimitWidth_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -394,21 +412,21 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   final func toMany_boardLimitWidth_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_boardLimitWidth.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.boardLimitWidth_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_boardLimitWidth_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
+  /* final private func addEBObserversOf_boardLimitWidth_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_boardLimitWidth.dictionary {
+      for entry in self.mObserversOf_boardLimitWidth.values () {
         if let observer = entry.possibleObserver {
           managedObject.boardLimitWidth_property.startsToBeObserved (by: observer)
         }else{
@@ -416,13 +434,13 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_boardLimitWidth_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
+  /* final private func removeEBObserversOf_boardLimitWidth_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_boardLimitWidth.dictionary {
+      for entry in self.mObserversOf_boardLimitWidth.values () {
         if let observer = entry.possibleObserver {
           managedObject.boardLimitWidth_property.stopsBeingObserved (by: observer)
         }else{
@@ -430,27 +448,27 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.selectionDisplay_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -458,21 +476,21 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.selectionDisplay_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
+  /* final private func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
+      for entry in self.mObserversOf_selectionDisplay.values () {
         if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.startsToBeObserved (by: observer)
         }else{
@@ -480,13 +498,13 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
+  /* final private func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
+      for entry in self.mObserversOf_selectionDisplay.values () {
         if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.stopsBeingObserved (by: observer)
         }else{
@@ -494,27 +512,27 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.objectDisplay_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -522,21 +540,21 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.objectDisplay_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
+  /* final private func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
+      for entry in self.mObserversOf_objectDisplay.values () {
         if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.startsToBeObserved (by: observer)
         }else{
@@ -544,13 +562,13 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
+  /* final private func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <MergerBoardInstance>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
+      for entry in self.mObserversOf_objectDisplay.values () {
         if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.stopsBeingObserved (by: observer)
         }else{
@@ -558,7 +576,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 

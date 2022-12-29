@@ -16,58 +16,58 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
                                  addedSet inAddedSet : EBReferenceSet <BoardRestrictRectangle>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    if !inRemovedSet.isEmpty {
-      self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mWidth_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mHeight_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mIsInFrontLayer_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mIsInBackLayer_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mIsInInner1Layer_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mIsInInner2Layer_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mIsInInner3Layer_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mIsInInner4Layer_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (inRemovedSet) // Transient property
+    for managedObject in inRemovedSet.values {
+      managedObject.mY_property.stopsBeingObserved (by: self.mObserversOf_mY) // Stored property
+      managedObject.mWidth_property.stopsBeingObserved (by: self.mObserversOf_mWidth) // Stored property
+      managedObject.mHeight_property.stopsBeingObserved (by: self.mObserversOf_mHeight) // Stored property
+      managedObject.mIsInFrontLayer_property.stopsBeingObserved (by: self.mObserversOf_mIsInFrontLayer) // Stored property
+      managedObject.mIsInBackLayer_property.stopsBeingObserved (by: self.mObserversOf_mIsInBackLayer) // Stored property
+      managedObject.mIsInInner1Layer_property.stopsBeingObserved (by: self.mObserversOf_mIsInInner1Layer) // Stored property
+      managedObject.mIsInInner2Layer_property.stopsBeingObserved (by: self.mObserversOf_mIsInInner2Layer) // Stored property
+      managedObject.mIsInInner3Layer_property.stopsBeingObserved (by: self.mObserversOf_mIsInInner3Layer) // Stored property
+      managedObject.mIsInInner4Layer_property.stopsBeingObserved (by: self.mObserversOf_mIsInInner4Layer) // Stored property
+      managedObject.mX_property.stopsBeingObserved (by: self.mObserversOf_mX) // Stored property
+      managedObject.objectDisplay_property.stopsBeingObserved (by: self.mObserversOf_objectDisplay) // Transient property
+      managedObject.selectionDisplay_property.stopsBeingObserved (by: self.mObserversOf_selectionDisplay) // Transient property
+      managedObject.signatureForERCChecking_property.stopsBeingObserved (by: self.mObserversOf_signatureForERCChecking) // Transient property
     }
   //--- Add observers to added objects
-    if !inAddedSet.isEmpty {
-      self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mWidth_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mHeight_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mIsInFrontLayer_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mIsInBackLayer_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mIsInInner1Layer_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mIsInInner2Layer_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mIsInInner3Layer_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mIsInInner4Layer_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_signatureForERCChecking_toElementsOfSet (inAddedSet) // Transient property
-   }
+    for managedObject in inAddedSet.values {
+      managedObject.mY_property.startsToBeObserved (by: self.mObserversOf_mY) // Stored property
+      managedObject.mWidth_property.startsToBeObserved (by: self.mObserversOf_mWidth) // Stored property
+      managedObject.mHeight_property.startsToBeObserved (by: self.mObserversOf_mHeight) // Stored property
+      managedObject.mIsInFrontLayer_property.startsToBeObserved (by: self.mObserversOf_mIsInFrontLayer) // Stored property
+      managedObject.mIsInBackLayer_property.startsToBeObserved (by: self.mObserversOf_mIsInBackLayer) // Stored property
+      managedObject.mIsInInner1Layer_property.startsToBeObserved (by: self.mObserversOf_mIsInInner1Layer) // Stored property
+      managedObject.mIsInInner2Layer_property.startsToBeObserved (by: self.mObserversOf_mIsInInner2Layer) // Stored property
+      managedObject.mIsInInner3Layer_property.startsToBeObserved (by: self.mObserversOf_mIsInInner3Layer) // Stored property
+      managedObject.mIsInInner4Layer_property.startsToBeObserved (by: self.mObserversOf_mIsInInner4Layer) // Stored property
+      managedObject.mX_property.startsToBeObserved (by: self.mObserversOf_mX) // Stored property
+      managedObject.objectDisplay_property.startsToBeObserved (by: self.mObserversOf_objectDisplay) // Transient property
+      managedObject.selectionDisplay_property.startsToBeObserved (by: self.mObserversOf_selectionDisplay) // Transient property
+      managedObject.signatureForERCChecking_property.startsToBeObserved (by: self.mObserversOf_signatureForERCChecking) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private final var mObserversOf_mY = EBWeakEventSet ()
+  private final var mObserversOf_mY = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mY_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mY.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mY_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -75,22 +75,25 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func toMany_mY_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mY.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mY_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    if !self.mObserversOf_mY.isEmpty {
+ // final private func addEBObserversOf_mY_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    /* for managedObject in inSet.values {
+      managedObject.mY_property.startsToBeObserved (by: self.mObserversOf_mY)
+    }*/
+    /* if !self.mObserversOf_mY.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mY.dictionary {
+        for entry in self.mObserversOf_mY.values () {
           if let observer = entry.possibleObserver {
             managedObject.mY_property.startsToBeObserved (by: observer)
           }else{
@@ -98,13 +101,16 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for (_, entry) in self.mObserversOf_mY.dictionary {
+/*  final private func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    for managedObject in inSet.values {
+      managedObject.mY_property.stopsBeingObserved (by: self.mObserversOf_mY)
+    }
+    for entry in self.mObserversOf_mY.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -114,27 +120,27 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
         self.mObserversOf_mY.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mWidth' stored property
   //····················································································································
 
-  private final var mObserversOf_mWidth = EBWeakEventSet ()
+  private final var mObserversOf_mWidth = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mWidth.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mWidth_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -142,22 +148,25 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func toMany_mWidth_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mWidth.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mWidth_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mWidth_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    if !self.mObserversOf_mWidth.isEmpty {
+ // final private func addEBObserversOf_mWidth_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    /* for managedObject in inSet.values {
+      managedObject.mWidth_property.startsToBeObserved (by: self.mObserversOf_mWidth)
+    }*/
+    /* if !self.mObserversOf_mWidth.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mWidth.dictionary {
+        for entry in self.mObserversOf_mWidth.values () {
           if let observer = entry.possibleObserver {
             managedObject.mWidth_property.startsToBeObserved (by: observer)
           }else{
@@ -165,13 +174,16 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for (_, entry) in self.mObserversOf_mWidth.dictionary {
+/*  final private func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    for managedObject in inSet.values {
+      managedObject.mWidth_property.stopsBeingObserved (by: self.mObserversOf_mWidth)
+    }
+    for entry in self.mObserversOf_mWidth.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -181,27 +193,27 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
         self.mObserversOf_mWidth.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mHeight' stored property
   //····················································································································
 
-  private final var mObserversOf_mHeight = EBWeakEventSet ()
+  private final var mObserversOf_mHeight = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mHeight_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mHeight.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mHeight_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -209,22 +221,25 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func toMany_mHeight_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mHeight.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mHeight_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mHeight_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    if !self.mObserversOf_mHeight.isEmpty {
+ // final private func addEBObserversOf_mHeight_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    /* for managedObject in inSet.values {
+      managedObject.mHeight_property.startsToBeObserved (by: self.mObserversOf_mHeight)
+    }*/
+    /* if !self.mObserversOf_mHeight.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mHeight.dictionary {
+        for entry in self.mObserversOf_mHeight.values () {
           if let observer = entry.possibleObserver {
             managedObject.mHeight_property.startsToBeObserved (by: observer)
           }else{
@@ -232,13 +247,16 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mHeight_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for (_, entry) in self.mObserversOf_mHeight.dictionary {
+/*  final private func removeEBObserversOf_mHeight_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    for managedObject in inSet.values {
+      managedObject.mHeight_property.stopsBeingObserved (by: self.mObserversOf_mHeight)
+    }
+    for entry in self.mObserversOf_mHeight.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -248,27 +266,27 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
         self.mObserversOf_mHeight.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mIsInFrontLayer' stored property
   //····················································································································
 
-  private final var mObserversOf_mIsInFrontLayer = EBWeakEventSet ()
+  private final var mObserversOf_mIsInFrontLayer = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mIsInFrontLayer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mIsInFrontLayer.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mIsInFrontLayer_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -276,22 +294,25 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func toMany_mIsInFrontLayer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mIsInFrontLayer.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mIsInFrontLayer_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mIsInFrontLayer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    if !self.mObserversOf_mIsInFrontLayer.isEmpty {
+ // final private func addEBObserversOf_mIsInFrontLayer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    /* for managedObject in inSet.values {
+      managedObject.mIsInFrontLayer_property.startsToBeObserved (by: self.mObserversOf_mIsInFrontLayer)
+    }*/
+    /* if !self.mObserversOf_mIsInFrontLayer.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mIsInFrontLayer.dictionary {
+        for entry in self.mObserversOf_mIsInFrontLayer.values () {
           if let observer = entry.possibleObserver {
             managedObject.mIsInFrontLayer_property.startsToBeObserved (by: observer)
           }else{
@@ -299,13 +320,16 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mIsInFrontLayer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for (_, entry) in self.mObserversOf_mIsInFrontLayer.dictionary {
+/*  final private func removeEBObserversOf_mIsInFrontLayer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    for managedObject in inSet.values {
+      managedObject.mIsInFrontLayer_property.stopsBeingObserved (by: self.mObserversOf_mIsInFrontLayer)
+    }
+    for entry in self.mObserversOf_mIsInFrontLayer.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -315,27 +339,27 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
         self.mObserversOf_mIsInFrontLayer.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mIsInBackLayer' stored property
   //····················································································································
 
-  private final var mObserversOf_mIsInBackLayer = EBWeakEventSet ()
+  private final var mObserversOf_mIsInBackLayer = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mIsInBackLayer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mIsInBackLayer.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mIsInBackLayer_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -343,22 +367,25 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func toMany_mIsInBackLayer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mIsInBackLayer.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mIsInBackLayer_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mIsInBackLayer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    if !self.mObserversOf_mIsInBackLayer.isEmpty {
+ // final private func addEBObserversOf_mIsInBackLayer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    /* for managedObject in inSet.values {
+      managedObject.mIsInBackLayer_property.startsToBeObserved (by: self.mObserversOf_mIsInBackLayer)
+    }*/
+    /* if !self.mObserversOf_mIsInBackLayer.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mIsInBackLayer.dictionary {
+        for entry in self.mObserversOf_mIsInBackLayer.values () {
           if let observer = entry.possibleObserver {
             managedObject.mIsInBackLayer_property.startsToBeObserved (by: observer)
           }else{
@@ -366,13 +393,16 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mIsInBackLayer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for (_, entry) in self.mObserversOf_mIsInBackLayer.dictionary {
+/*  final private func removeEBObserversOf_mIsInBackLayer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    for managedObject in inSet.values {
+      managedObject.mIsInBackLayer_property.stopsBeingObserved (by: self.mObserversOf_mIsInBackLayer)
+    }
+    for entry in self.mObserversOf_mIsInBackLayer.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -382,27 +412,27 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
         self.mObserversOf_mIsInBackLayer.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mIsInInner1Layer' stored property
   //····················································································································
 
-  private final var mObserversOf_mIsInInner1Layer = EBWeakEventSet ()
+  private final var mObserversOf_mIsInInner1Layer = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mIsInInner1Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mIsInInner1Layer.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mIsInInner1Layer_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -410,22 +440,25 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func toMany_mIsInInner1Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mIsInInner1Layer.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mIsInInner1Layer_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mIsInInner1Layer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    if !self.mObserversOf_mIsInInner1Layer.isEmpty {
+ // final private func addEBObserversOf_mIsInInner1Layer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    /* for managedObject in inSet.values {
+      managedObject.mIsInInner1Layer_property.startsToBeObserved (by: self.mObserversOf_mIsInInner1Layer)
+    }*/
+    /* if !self.mObserversOf_mIsInInner1Layer.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mIsInInner1Layer.dictionary {
+        for entry in self.mObserversOf_mIsInInner1Layer.values () {
           if let observer = entry.possibleObserver {
             managedObject.mIsInInner1Layer_property.startsToBeObserved (by: observer)
           }else{
@@ -433,13 +466,16 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mIsInInner1Layer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for (_, entry) in self.mObserversOf_mIsInInner1Layer.dictionary {
+/*  final private func removeEBObserversOf_mIsInInner1Layer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    for managedObject in inSet.values {
+      managedObject.mIsInInner1Layer_property.stopsBeingObserved (by: self.mObserversOf_mIsInInner1Layer)
+    }
+    for entry in self.mObserversOf_mIsInInner1Layer.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -449,27 +485,27 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
         self.mObserversOf_mIsInInner1Layer.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mIsInInner2Layer' stored property
   //····················································································································
 
-  private final var mObserversOf_mIsInInner2Layer = EBWeakEventSet ()
+  private final var mObserversOf_mIsInInner2Layer = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mIsInInner2Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mIsInInner2Layer.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mIsInInner2Layer_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -477,22 +513,25 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func toMany_mIsInInner2Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mIsInInner2Layer.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mIsInInner2Layer_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mIsInInner2Layer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    if !self.mObserversOf_mIsInInner2Layer.isEmpty {
+ // final private func addEBObserversOf_mIsInInner2Layer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    /* for managedObject in inSet.values {
+      managedObject.mIsInInner2Layer_property.startsToBeObserved (by: self.mObserversOf_mIsInInner2Layer)
+    }*/
+    /* if !self.mObserversOf_mIsInInner2Layer.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mIsInInner2Layer.dictionary {
+        for entry in self.mObserversOf_mIsInInner2Layer.values () {
           if let observer = entry.possibleObserver {
             managedObject.mIsInInner2Layer_property.startsToBeObserved (by: observer)
           }else{
@@ -500,13 +539,16 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mIsInInner2Layer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for (_, entry) in self.mObserversOf_mIsInInner2Layer.dictionary {
+/*  final private func removeEBObserversOf_mIsInInner2Layer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    for managedObject in inSet.values {
+      managedObject.mIsInInner2Layer_property.stopsBeingObserved (by: self.mObserversOf_mIsInInner2Layer)
+    }
+    for entry in self.mObserversOf_mIsInInner2Layer.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -516,27 +558,27 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
         self.mObserversOf_mIsInInner2Layer.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mIsInInner3Layer' stored property
   //····················································································································
 
-  private final var mObserversOf_mIsInInner3Layer = EBWeakEventSet ()
+  private final var mObserversOf_mIsInInner3Layer = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mIsInInner3Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mIsInInner3Layer.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mIsInInner3Layer_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -544,22 +586,25 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func toMany_mIsInInner3Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mIsInInner3Layer.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mIsInInner3Layer_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mIsInInner3Layer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    if !self.mObserversOf_mIsInInner3Layer.isEmpty {
+ // final private func addEBObserversOf_mIsInInner3Layer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    /* for managedObject in inSet.values {
+      managedObject.mIsInInner3Layer_property.startsToBeObserved (by: self.mObserversOf_mIsInInner3Layer)
+    }*/
+    /* if !self.mObserversOf_mIsInInner3Layer.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mIsInInner3Layer.dictionary {
+        for entry in self.mObserversOf_mIsInInner3Layer.values () {
           if let observer = entry.possibleObserver {
             managedObject.mIsInInner3Layer_property.startsToBeObserved (by: observer)
           }else{
@@ -567,13 +612,16 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mIsInInner3Layer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for (_, entry) in self.mObserversOf_mIsInInner3Layer.dictionary {
+/*  final private func removeEBObserversOf_mIsInInner3Layer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    for managedObject in inSet.values {
+      managedObject.mIsInInner3Layer_property.stopsBeingObserved (by: self.mObserversOf_mIsInInner3Layer)
+    }
+    for entry in self.mObserversOf_mIsInInner3Layer.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -583,27 +631,27 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
         self.mObserversOf_mIsInInner3Layer.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mIsInInner4Layer' stored property
   //····················································································································
 
-  private final var mObserversOf_mIsInInner4Layer = EBWeakEventSet ()
+  private final var mObserversOf_mIsInInner4Layer = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mIsInInner4Layer_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mIsInInner4Layer.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mIsInInner4Layer_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -611,22 +659,25 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func toMany_mIsInInner4Layer_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mIsInInner4Layer.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mIsInInner4Layer_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mIsInInner4Layer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    if !self.mObserversOf_mIsInInner4Layer.isEmpty {
+ // final private func addEBObserversOf_mIsInInner4Layer_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    /* for managedObject in inSet.values {
+      managedObject.mIsInInner4Layer_property.startsToBeObserved (by: self.mObserversOf_mIsInInner4Layer)
+    }*/
+    /* if !self.mObserversOf_mIsInInner4Layer.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mIsInInner4Layer.dictionary {
+        for entry in self.mObserversOf_mIsInInner4Layer.values () {
           if let observer = entry.possibleObserver {
             managedObject.mIsInInner4Layer_property.startsToBeObserved (by: observer)
           }else{
@@ -634,13 +685,16 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mIsInInner4Layer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for (_, entry) in self.mObserversOf_mIsInInner4Layer.dictionary {
+/*  final private func removeEBObserversOf_mIsInInner4Layer_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    for managedObject in inSet.values {
+      managedObject.mIsInInner4Layer_property.stopsBeingObserved (by: self.mObserversOf_mIsInInner4Layer)
+    }
+    for entry in self.mObserversOf_mIsInInner4Layer.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -650,27 +704,27 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
         self.mObserversOf_mIsInInner4Layer.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private final var mObserversOf_mX = EBWeakEventSet ()
+  private final var mObserversOf_mX = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mX_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mX.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mX_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -678,22 +732,25 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func toMany_mX_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mX.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mX_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    if !self.mObserversOf_mX.isEmpty {
+ // final private func addEBObserversOf_mX_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    /* for managedObject in inSet.values {
+      managedObject.mX_property.startsToBeObserved (by: self.mObserversOf_mX)
+    }*/
+    /* if !self.mObserversOf_mX.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mX.dictionary {
+        for entry in self.mObserversOf_mX.values () {
           if let observer = entry.possibleObserver {
             managedObject.mX_property.startsToBeObserved (by: observer)
           }else{
@@ -701,13 +758,16 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
-    for (_, entry) in self.mObserversOf_mX.dictionary {
+/*  final private func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+    for managedObject in inSet.values {
+      managedObject.mX_property.stopsBeingObserved (by: self.mObserversOf_mX)
+    }
+    for entry in self.mObserversOf_mX.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -717,27 +777,27 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
         self.mObserversOf_mX.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.objectDisplay_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -745,21 +805,21 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.objectDisplay_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+  /* final private func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
+      for entry in self.mObserversOf_objectDisplay.values () {
         if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.startsToBeObserved (by: observer)
         }else{
@@ -767,13 +827,13 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+  /* final private func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
+      for entry in self.mObserversOf_objectDisplay.values () {
         if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.stopsBeingObserved (by: observer)
         }else{
@@ -781,27 +841,27 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.selectionDisplay_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -809,21 +869,21 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.selectionDisplay_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+  /* final private func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
+      for entry in self.mObserversOf_selectionDisplay.values () {
         if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.startsToBeObserved (by: observer)
         }else{
@@ -831,13 +891,13 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+  /* final private func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
+      for entry in self.mObserversOf_selectionDisplay.values () {
         if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.stopsBeingObserved (by: observer)
         }else{
@@ -845,27 +905,27 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private final var mObserversOf_signatureForERCChecking = EBWeakEventSet ()
+  private final var mObserversOf_signatureForERCChecking = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_signatureForERCChecking_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_signatureForERCChecking.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.signatureForERCChecking_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -873,21 +933,21 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
   final func toMany_signatureForERCChecking_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_signatureForERCChecking.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.signatureForERCChecking_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+  /* final private func addEBObserversOf_signatureForERCChecking_toElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_signatureForERCChecking.dictionary {
+      for entry in self.mObserversOf_signatureForERCChecking.values () {
         if let observer = entry.possibleObserver {
           managedObject.signatureForERCChecking_property.startsToBeObserved (by: observer)
         }else{
@@ -895,13 +955,13 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
+  /* final private func removeEBObserversOf_signatureForERCChecking_fromElementsOfSet (_ inSet : EBReferenceSet <BoardRestrictRectangle>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_signatureForERCChecking.dictionary {
+      for entry in self.mObserversOf_signatureForERCChecking.values () {
         if let observer = entry.possibleObserver {
           managedObject.signatureForERCChecking_property.stopsBeingObserved (by: observer)
         }else{
@@ -909,7 +969,7 @@ class ReadOnlyArrayOf_BoardRestrictRectangle : ReadOnlyAbstractArrayProperty <Bo
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 

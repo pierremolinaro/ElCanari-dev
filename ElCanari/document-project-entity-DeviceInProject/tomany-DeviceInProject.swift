@@ -16,58 +16,58 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
                                  addedSet inAddedSet : EBReferenceSet <DeviceInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    if !inRemovedSet.isEmpty {
-      self.removeEBObserversOf_mDeviceName_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mPrefix_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mDeviceVersion_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mDeviceFileData_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_versionString_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_sizeString_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_canExport_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_packageNames_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_deviceComponentCountString_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_canRemove_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_symbolAndTypesNames_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_pinPadAssignments_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (inRemovedSet) // Transient property
+    for managedObject in inRemovedSet.values {
+      managedObject.mDeviceName_property.stopsBeingObserved (by: self.mObserversOf_mDeviceName) // Stored property
+      managedObject.mPrefix_property.stopsBeingObserved (by: self.mObserversOf_mPrefix) // Stored property
+      managedObject.mDeviceVersion_property.stopsBeingObserved (by: self.mObserversOf_mDeviceVersion) // Stored property
+      managedObject.mDeviceFileData_property.stopsBeingObserved (by: self.mObserversOf_mDeviceFileData) // Stored property
+      managedObject.versionString_property.stopsBeingObserved (by: self.mObserversOf_versionString) // Transient property
+      managedObject.sizeString_property.stopsBeingObserved (by: self.mObserversOf_sizeString) // Transient property
+      managedObject.canExport_property.stopsBeingObserved (by: self.mObserversOf_canExport) // Transient property
+      managedObject.packageNames_property.stopsBeingObserved (by: self.mObserversOf_packageNames) // Transient property
+      managedObject.deviceComponentCountString_property.stopsBeingObserved (by: self.mObserversOf_deviceComponentCountString) // Transient property
+      managedObject.canRemove_property.stopsBeingObserved (by: self.mObserversOf_canRemove) // Transient property
+      managedObject.symbolAndTypesNames_property.stopsBeingObserved (by: self.mObserversOf_symbolAndTypesNames) // Transient property
+      managedObject.pinPadAssignments_property.stopsBeingObserved (by: self.mObserversOf_pinPadAssignments) // Transient property
+      managedObject.deviceSymbolDictionary_property.stopsBeingObserved (by: self.mObserversOf_deviceSymbolDictionary) // Transient property
     }
   //--- Add observers to added objects
-    if !inAddedSet.isEmpty {
-      self.addEBObserversOf_mDeviceName_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mPrefix_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mDeviceVersion_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mDeviceFileData_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_versionString_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_sizeString_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_canExport_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_packageNames_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_deviceComponentCountString_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_canRemove_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_symbolAndTypesNames_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_pinPadAssignments_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (inAddedSet) // Transient property
-   }
+    for managedObject in inAddedSet.values {
+      managedObject.mDeviceName_property.startsToBeObserved (by: self.mObserversOf_mDeviceName) // Stored property
+      managedObject.mPrefix_property.startsToBeObserved (by: self.mObserversOf_mPrefix) // Stored property
+      managedObject.mDeviceVersion_property.startsToBeObserved (by: self.mObserversOf_mDeviceVersion) // Stored property
+      managedObject.mDeviceFileData_property.startsToBeObserved (by: self.mObserversOf_mDeviceFileData) // Stored property
+      managedObject.versionString_property.startsToBeObserved (by: self.mObserversOf_versionString) // Transient property
+      managedObject.sizeString_property.startsToBeObserved (by: self.mObserversOf_sizeString) // Transient property
+      managedObject.canExport_property.startsToBeObserved (by: self.mObserversOf_canExport) // Transient property
+      managedObject.packageNames_property.startsToBeObserved (by: self.mObserversOf_packageNames) // Transient property
+      managedObject.deviceComponentCountString_property.startsToBeObserved (by: self.mObserversOf_deviceComponentCountString) // Transient property
+      managedObject.canRemove_property.startsToBeObserved (by: self.mObserversOf_canRemove) // Transient property
+      managedObject.symbolAndTypesNames_property.startsToBeObserved (by: self.mObserversOf_symbolAndTypesNames) // Transient property
+      managedObject.pinPadAssignments_property.startsToBeObserved (by: self.mObserversOf_pinPadAssignments) // Transient property
+      managedObject.deviceSymbolDictionary_property.startsToBeObserved (by: self.mObserversOf_deviceSymbolDictionary) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mDeviceName' stored property
   //····················································································································
 
-  private final var mObserversOf_mDeviceName = EBWeakEventSet ()
+  private final var mObserversOf_mDeviceName = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mDeviceName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mDeviceName.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mDeviceName_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -75,22 +75,25 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func toMany_mDeviceName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mDeviceName.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mDeviceName_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mDeviceName_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
-    if !self.mObserversOf_mDeviceName.isEmpty {
+ // final private func addEBObserversOf_mDeviceName_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+    /* for managedObject in inSet.values {
+      managedObject.mDeviceName_property.startsToBeObserved (by: self.mObserversOf_mDeviceName)
+    }*/
+    /* if !self.mObserversOf_mDeviceName.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mDeviceName.dictionary {
+        for entry in self.mObserversOf_mDeviceName.values () {
           if let observer = entry.possibleObserver {
             managedObject.mDeviceName_property.startsToBeObserved (by: observer)
           }else{
@@ -98,13 +101,16 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mDeviceName_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
-    for (_, entry) in self.mObserversOf_mDeviceName.dictionary {
+/*  final private func removeEBObserversOf_mDeviceName_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+    for managedObject in inSet.values {
+      managedObject.mDeviceName_property.stopsBeingObserved (by: self.mObserversOf_mDeviceName)
+    }
+    for entry in self.mObserversOf_mDeviceName.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -114,27 +120,27 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         self.mObserversOf_mDeviceName.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mPrefix' stored property
   //····················································································································
 
-  private final var mObserversOf_mPrefix = EBWeakEventSet ()
+  private final var mObserversOf_mPrefix = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mPrefix_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mPrefix.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mPrefix_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -142,22 +148,25 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func toMany_mPrefix_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mPrefix.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mPrefix_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mPrefix_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
-    if !self.mObserversOf_mPrefix.isEmpty {
+ // final private func addEBObserversOf_mPrefix_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+    /* for managedObject in inSet.values {
+      managedObject.mPrefix_property.startsToBeObserved (by: self.mObserversOf_mPrefix)
+    }*/
+    /* if !self.mObserversOf_mPrefix.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mPrefix.dictionary {
+        for entry in self.mObserversOf_mPrefix.values () {
           if let observer = entry.possibleObserver {
             managedObject.mPrefix_property.startsToBeObserved (by: observer)
           }else{
@@ -165,13 +174,16 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mPrefix_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
-    for (_, entry) in self.mObserversOf_mPrefix.dictionary {
+/*  final private func removeEBObserversOf_mPrefix_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+    for managedObject in inSet.values {
+      managedObject.mPrefix_property.stopsBeingObserved (by: self.mObserversOf_mPrefix)
+    }
+    for entry in self.mObserversOf_mPrefix.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -181,27 +193,27 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         self.mObserversOf_mPrefix.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mDeviceVersion' stored property
   //····················································································································
 
-  private final var mObserversOf_mDeviceVersion = EBWeakEventSet ()
+  private final var mObserversOf_mDeviceVersion = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mDeviceVersion_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mDeviceVersion.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mDeviceVersion_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -209,22 +221,25 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func toMany_mDeviceVersion_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mDeviceVersion.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mDeviceVersion_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mDeviceVersion_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
-    if !self.mObserversOf_mDeviceVersion.isEmpty {
+ // final private func addEBObserversOf_mDeviceVersion_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+    /* for managedObject in inSet.values {
+      managedObject.mDeviceVersion_property.startsToBeObserved (by: self.mObserversOf_mDeviceVersion)
+    }*/
+    /* if !self.mObserversOf_mDeviceVersion.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mDeviceVersion.dictionary {
+        for entry in self.mObserversOf_mDeviceVersion.values () {
           if let observer = entry.possibleObserver {
             managedObject.mDeviceVersion_property.startsToBeObserved (by: observer)
           }else{
@@ -232,13 +247,16 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mDeviceVersion_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
-    for (_, entry) in self.mObserversOf_mDeviceVersion.dictionary {
+/*  final private func removeEBObserversOf_mDeviceVersion_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+    for managedObject in inSet.values {
+      managedObject.mDeviceVersion_property.stopsBeingObserved (by: self.mObserversOf_mDeviceVersion)
+    }
+    for entry in self.mObserversOf_mDeviceVersion.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -248,27 +266,27 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         self.mObserversOf_mDeviceVersion.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mDeviceFileData' stored property
   //····················································································································
 
-  private final var mObserversOf_mDeviceFileData = EBWeakEventSet ()
+  private final var mObserversOf_mDeviceFileData = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mDeviceFileData_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mDeviceFileData.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mDeviceFileData_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -276,22 +294,25 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func toMany_mDeviceFileData_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mDeviceFileData.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mDeviceFileData_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mDeviceFileData_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
-    if !self.mObserversOf_mDeviceFileData.isEmpty {
+ // final private func addEBObserversOf_mDeviceFileData_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+    /* for managedObject in inSet.values {
+      managedObject.mDeviceFileData_property.startsToBeObserved (by: self.mObserversOf_mDeviceFileData)
+    }*/
+    /* if !self.mObserversOf_mDeviceFileData.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mDeviceFileData.dictionary {
+        for entry in self.mObserversOf_mDeviceFileData.values () {
           if let observer = entry.possibleObserver {
             managedObject.mDeviceFileData_property.startsToBeObserved (by: observer)
           }else{
@@ -299,13 +320,16 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mDeviceFileData_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
-    for (_, entry) in self.mObserversOf_mDeviceFileData.dictionary {
+/*  final private func removeEBObserversOf_mDeviceFileData_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+    for managedObject in inSet.values {
+      managedObject.mDeviceFileData_property.stopsBeingObserved (by: self.mObserversOf_mDeviceFileData)
+    }
+    for entry in self.mObserversOf_mDeviceFileData.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -315,27 +339,27 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         self.mObserversOf_mDeviceFileData.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'versionString' transient property
   //····················································································································
 
-  private final var mObserversOf_versionString = EBWeakEventSet ()
+  private final var mObserversOf_versionString = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_versionString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_versionString.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.versionString_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -343,21 +367,21 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func toMany_versionString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_versionString.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.versionString_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+  /* final private func addEBObserversOf_versionString_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_versionString.dictionary {
+      for entry in self.mObserversOf_versionString.values () {
         if let observer = entry.possibleObserver {
           managedObject.versionString_property.startsToBeObserved (by: observer)
         }else{
@@ -365,13 +389,13 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+  /* final private func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_versionString.dictionary {
+      for entry in self.mObserversOf_versionString.values () {
         if let observer = entry.possibleObserver {
           managedObject.versionString_property.stopsBeingObserved (by: observer)
         }else{
@@ -379,27 +403,27 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'sizeString' transient property
   //····················································································································
 
-  private final var mObserversOf_sizeString = EBWeakEventSet ()
+  private final var mObserversOf_sizeString = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_sizeString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_sizeString.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.sizeString_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -407,21 +431,21 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func toMany_sizeString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_sizeString.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.sizeString_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_sizeString_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+  /* final private func addEBObserversOf_sizeString_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_sizeString.dictionary {
+      for entry in self.mObserversOf_sizeString.values () {
         if let observer = entry.possibleObserver {
           managedObject.sizeString_property.startsToBeObserved (by: observer)
         }else{
@@ -429,13 +453,13 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_sizeString_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+  /* final private func removeEBObserversOf_sizeString_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_sizeString.dictionary {
+      for entry in self.mObserversOf_sizeString.values () {
         if let observer = entry.possibleObserver {
           managedObject.sizeString_property.stopsBeingObserved (by: observer)
         }else{
@@ -443,27 +467,27 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'canExport' transient property
   //····················································································································
 
-  private final var mObserversOf_canExport = EBWeakEventSet ()
+  private final var mObserversOf_canExport = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_canExport_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_canExport.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.canExport_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -471,21 +495,21 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func toMany_canExport_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_canExport.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.canExport_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_canExport_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+  /* final private func addEBObserversOf_canExport_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_canExport.dictionary {
+      for entry in self.mObserversOf_canExport.values () {
         if let observer = entry.possibleObserver {
           managedObject.canExport_property.startsToBeObserved (by: observer)
         }else{
@@ -493,13 +517,13 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_canExport_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+  /* final private func removeEBObserversOf_canExport_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_canExport.dictionary {
+      for entry in self.mObserversOf_canExport.values () {
         if let observer = entry.possibleObserver {
           managedObject.canExport_property.stopsBeingObserved (by: observer)
         }else{
@@ -507,27 +531,27 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'packageNames' transient property
   //····················································································································
 
-  private final var mObserversOf_packageNames = EBWeakEventSet ()
+  private final var mObserversOf_packageNames = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_packageNames_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_packageNames.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.packageNames_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -535,21 +559,21 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func toMany_packageNames_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_packageNames.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.packageNames_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_packageNames_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+  /* final private func addEBObserversOf_packageNames_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_packageNames.dictionary {
+      for entry in self.mObserversOf_packageNames.values () {
         if let observer = entry.possibleObserver {
           managedObject.packageNames_property.startsToBeObserved (by: observer)
         }else{
@@ -557,13 +581,13 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_packageNames_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+  /* final private func removeEBObserversOf_packageNames_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_packageNames.dictionary {
+      for entry in self.mObserversOf_packageNames.values () {
         if let observer = entry.possibleObserver {
           managedObject.packageNames_property.stopsBeingObserved (by: observer)
         }else{
@@ -571,27 +595,27 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'deviceComponentCountString' transient property
   //····················································································································
 
-  private final var mObserversOf_deviceComponentCountString = EBWeakEventSet ()
+  private final var mObserversOf_deviceComponentCountString = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_deviceComponentCountString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_deviceComponentCountString.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.deviceComponentCountString_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -599,21 +623,21 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func toMany_deviceComponentCountString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_deviceComponentCountString.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.deviceComponentCountString_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_deviceComponentCountString_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+  /* final private func addEBObserversOf_deviceComponentCountString_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_deviceComponentCountString.dictionary {
+      for entry in self.mObserversOf_deviceComponentCountString.values () {
         if let observer = entry.possibleObserver {
           managedObject.deviceComponentCountString_property.startsToBeObserved (by: observer)
         }else{
@@ -621,13 +645,13 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_deviceComponentCountString_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+  /* final private func removeEBObserversOf_deviceComponentCountString_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_deviceComponentCountString.dictionary {
+      for entry in self.mObserversOf_deviceComponentCountString.values () {
         if let observer = entry.possibleObserver {
           managedObject.deviceComponentCountString_property.stopsBeingObserved (by: observer)
         }else{
@@ -635,27 +659,27 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'canRemove' transient property
   //····················································································································
 
-  private final var mObserversOf_canRemove = EBWeakEventSet ()
+  private final var mObserversOf_canRemove = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_canRemove_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_canRemove.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.canRemove_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -663,21 +687,21 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func toMany_canRemove_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_canRemove.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.canRemove_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_canRemove_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+  /* final private func addEBObserversOf_canRemove_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_canRemove.dictionary {
+      for entry in self.mObserversOf_canRemove.values () {
         if let observer = entry.possibleObserver {
           managedObject.canRemove_property.startsToBeObserved (by: observer)
         }else{
@@ -685,13 +709,13 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_canRemove_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+  /* final private func removeEBObserversOf_canRemove_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_canRemove.dictionary {
+      for entry in self.mObserversOf_canRemove.values () {
         if let observer = entry.possibleObserver {
           managedObject.canRemove_property.stopsBeingObserved (by: observer)
         }else{
@@ -699,27 +723,27 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'symbolAndTypesNames' transient property
   //····················································································································
 
-  private final var mObserversOf_symbolAndTypesNames = EBWeakEventSet ()
+  private final var mObserversOf_symbolAndTypesNames = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_symbolAndTypesNames_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_symbolAndTypesNames.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.symbolAndTypesNames_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -727,21 +751,21 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func toMany_symbolAndTypesNames_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_symbolAndTypesNames.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.symbolAndTypesNames_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_symbolAndTypesNames_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+  /* final private func addEBObserversOf_symbolAndTypesNames_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_symbolAndTypesNames.dictionary {
+      for entry in self.mObserversOf_symbolAndTypesNames.values () {
         if let observer = entry.possibleObserver {
           managedObject.symbolAndTypesNames_property.startsToBeObserved (by: observer)
         }else{
@@ -749,13 +773,13 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_symbolAndTypesNames_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+  /* final private func removeEBObserversOf_symbolAndTypesNames_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_symbolAndTypesNames.dictionary {
+      for entry in self.mObserversOf_symbolAndTypesNames.values () {
         if let observer = entry.possibleObserver {
           managedObject.symbolAndTypesNames_property.stopsBeingObserved (by: observer)
         }else{
@@ -763,27 +787,27 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'pinPadAssignments' transient property
   //····················································································································
 
-  private final var mObserversOf_pinPadAssignments = EBWeakEventSet ()
+  private final var mObserversOf_pinPadAssignments = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_pinPadAssignments_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_pinPadAssignments.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.pinPadAssignments_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -791,21 +815,21 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func toMany_pinPadAssignments_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_pinPadAssignments.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.pinPadAssignments_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_pinPadAssignments_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+  /* final private func addEBObserversOf_pinPadAssignments_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_pinPadAssignments.dictionary {
+      for entry in self.mObserversOf_pinPadAssignments.values () {
         if let observer = entry.possibleObserver {
           managedObject.pinPadAssignments_property.startsToBeObserved (by: observer)
         }else{
@@ -813,13 +837,13 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_pinPadAssignments_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+  /* final private func removeEBObserversOf_pinPadAssignments_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_pinPadAssignments.dictionary {
+      for entry in self.mObserversOf_pinPadAssignments.values () {
         if let observer = entry.possibleObserver {
           managedObject.pinPadAssignments_property.stopsBeingObserved (by: observer)
         }else{
@@ -827,27 +851,27 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'deviceSymbolDictionary' transient property
   //····················································································································
 
-  private final var mObserversOf_deviceSymbolDictionary = EBWeakEventSet ()
+  private final var mObserversOf_deviceSymbolDictionary = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_deviceSymbolDictionary_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_deviceSymbolDictionary.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.deviceSymbolDictionary_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -855,21 +879,21 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   final func toMany_deviceSymbolDictionary_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_deviceSymbolDictionary.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.deviceSymbolDictionary_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+  /* final private func addEBObserversOf_deviceSymbolDictionary_toElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_deviceSymbolDictionary.dictionary {
+      for entry in self.mObserversOf_deviceSymbolDictionary.values () {
         if let observer = entry.possibleObserver {
           managedObject.deviceSymbolDictionary_property.startsToBeObserved (by: observer)
         }else{
@@ -877,13 +901,13 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
+  /* final private func removeEBObserversOf_deviceSymbolDictionary_fromElementsOfSet (_ inSet : EBReferenceSet <DeviceInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_deviceSymbolDictionary.dictionary {
+      for entry in self.mObserversOf_deviceSymbolDictionary.values () {
         if let observer = entry.possibleObserver {
           managedObject.deviceSymbolDictionary_property.stopsBeingObserved (by: observer)
         }else{
@@ -891,7 +915,7 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 

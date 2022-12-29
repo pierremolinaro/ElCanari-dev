@@ -16,58 +16,58 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
                                  addedSet inAddedSet : EBReferenceSet <BorderCurve>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    if !inRemovedSet.isEmpty {
-      self.removeEBObserversOf_mX_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mY_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mCPX1_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mCPY1_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mCPX2_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mCPY2_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mShape_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_p2Xvalue_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_p2Yvalue_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_descriptor_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_isLine_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (inRemovedSet) // Transient property
+    for managedObject in inRemovedSet.values {
+      managedObject.mX_property.stopsBeingObserved (by: self.mObserversOf_mX) // Stored property
+      managedObject.mY_property.stopsBeingObserved (by: self.mObserversOf_mY) // Stored property
+      managedObject.mCPX1_property.stopsBeingObserved (by: self.mObserversOf_mCPX1) // Stored property
+      managedObject.mCPY1_property.stopsBeingObserved (by: self.mObserversOf_mCPY1) // Stored property
+      managedObject.mCPX2_property.stopsBeingObserved (by: self.mObserversOf_mCPX2) // Stored property
+      managedObject.mCPY2_property.stopsBeingObserved (by: self.mObserversOf_mCPY2) // Stored property
+      managedObject.mShape_property.stopsBeingObserved (by: self.mObserversOf_mShape) // Stored property
+      managedObject.p2Xvalue_property.stopsBeingObserved (by: self.mObserversOf_p2Xvalue) // Transient property
+      managedObject.p2Yvalue_property.stopsBeingObserved (by: self.mObserversOf_p2Yvalue) // Transient property
+      managedObject.descriptor_property.stopsBeingObserved (by: self.mObserversOf_descriptor) // Transient property
+      managedObject.objectDisplay_property.stopsBeingObserved (by: self.mObserversOf_objectDisplay) // Transient property
+      managedObject.isLine_property.stopsBeingObserved (by: self.mObserversOf_isLine) // Transient property
+      managedObject.selectionDisplay_property.stopsBeingObserved (by: self.mObserversOf_selectionDisplay) // Transient property
     }
   //--- Add observers to added objects
-    if !inAddedSet.isEmpty {
-      self.addEBObserversOf_mX_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mY_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mCPX1_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mCPY1_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mCPX2_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mCPY2_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mShape_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_p2Xvalue_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_p2Yvalue_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_descriptor_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_objectDisplay_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_isLine_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_selectionDisplay_toElementsOfSet (inAddedSet) // Transient property
-   }
+    for managedObject in inAddedSet.values {
+      managedObject.mX_property.startsToBeObserved (by: self.mObserversOf_mX) // Stored property
+      managedObject.mY_property.startsToBeObserved (by: self.mObserversOf_mY) // Stored property
+      managedObject.mCPX1_property.startsToBeObserved (by: self.mObserversOf_mCPX1) // Stored property
+      managedObject.mCPY1_property.startsToBeObserved (by: self.mObserversOf_mCPY1) // Stored property
+      managedObject.mCPX2_property.startsToBeObserved (by: self.mObserversOf_mCPX2) // Stored property
+      managedObject.mCPY2_property.startsToBeObserved (by: self.mObserversOf_mCPY2) // Stored property
+      managedObject.mShape_property.startsToBeObserved (by: self.mObserversOf_mShape) // Stored property
+      managedObject.p2Xvalue_property.startsToBeObserved (by: self.mObserversOf_p2Xvalue) // Transient property
+      managedObject.p2Yvalue_property.startsToBeObserved (by: self.mObserversOf_p2Yvalue) // Transient property
+      managedObject.descriptor_property.startsToBeObserved (by: self.mObserversOf_descriptor) // Transient property
+      managedObject.objectDisplay_property.startsToBeObserved (by: self.mObserversOf_objectDisplay) // Transient property
+      managedObject.isLine_property.startsToBeObserved (by: self.mObserversOf_isLine) // Transient property
+      managedObject.selectionDisplay_property.startsToBeObserved (by: self.mObserversOf_selectionDisplay) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mX' stored property
   //····················································································································
 
-  private final var mObserversOf_mX = EBWeakEventSet ()
+  private final var mObserversOf_mX = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mX_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mX.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mX_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -75,22 +75,25 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func toMany_mX_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mX.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mX_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
-    if !self.mObserversOf_mX.isEmpty {
+ // final private func addEBObserversOf_mX_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+    /* for managedObject in inSet.values {
+      managedObject.mX_property.startsToBeObserved (by: self.mObserversOf_mX)
+    }*/
+    /* if !self.mObserversOf_mX.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mX.dictionary {
+        for entry in self.mObserversOf_mX.values () {
           if let observer = entry.possibleObserver {
             managedObject.mX_property.startsToBeObserved (by: observer)
           }else{
@@ -98,13 +101,16 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
-    for (_, entry) in self.mObserversOf_mX.dictionary {
+/*  final private func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+    for managedObject in inSet.values {
+      managedObject.mX_property.stopsBeingObserved (by: self.mObserversOf_mX)
+    }
+    for entry in self.mObserversOf_mX.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -114,27 +120,27 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         self.mObserversOf_mX.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mY' stored property
   //····················································································································
 
-  private final var mObserversOf_mY = EBWeakEventSet ()
+  private final var mObserversOf_mY = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mY_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mY.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mY_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -142,22 +148,25 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func toMany_mY_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mY.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mY_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
-    if !self.mObserversOf_mY.isEmpty {
+ // final private func addEBObserversOf_mY_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+    /* for managedObject in inSet.values {
+      managedObject.mY_property.startsToBeObserved (by: self.mObserversOf_mY)
+    }*/
+    /* if !self.mObserversOf_mY.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mY.dictionary {
+        for entry in self.mObserversOf_mY.values () {
           if let observer = entry.possibleObserver {
             managedObject.mY_property.startsToBeObserved (by: observer)
           }else{
@@ -165,13 +174,16 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
-    for (_, entry) in self.mObserversOf_mY.dictionary {
+/*  final private func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+    for managedObject in inSet.values {
+      managedObject.mY_property.stopsBeingObserved (by: self.mObserversOf_mY)
+    }
+    for entry in self.mObserversOf_mY.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -181,27 +193,27 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         self.mObserversOf_mY.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mCPX1' stored property
   //····················································································································
 
-  private final var mObserversOf_mCPX1 = EBWeakEventSet ()
+  private final var mObserversOf_mCPX1 = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mCPX1_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mCPX1.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mCPX1_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -209,22 +221,25 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func toMany_mCPX1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mCPX1.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mCPX1_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mCPX1_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
-    if !self.mObserversOf_mCPX1.isEmpty {
+ // final private func addEBObserversOf_mCPX1_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+    /* for managedObject in inSet.values {
+      managedObject.mCPX1_property.startsToBeObserved (by: self.mObserversOf_mCPX1)
+    }*/
+    /* if !self.mObserversOf_mCPX1.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mCPX1.dictionary {
+        for entry in self.mObserversOf_mCPX1.values () {
           if let observer = entry.possibleObserver {
             managedObject.mCPX1_property.startsToBeObserved (by: observer)
           }else{
@@ -232,13 +247,16 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mCPX1_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
-    for (_, entry) in self.mObserversOf_mCPX1.dictionary {
+/*  final private func removeEBObserversOf_mCPX1_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+    for managedObject in inSet.values {
+      managedObject.mCPX1_property.stopsBeingObserved (by: self.mObserversOf_mCPX1)
+    }
+    for entry in self.mObserversOf_mCPX1.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -248,27 +266,27 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         self.mObserversOf_mCPX1.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mCPY1' stored property
   //····················································································································
 
-  private final var mObserversOf_mCPY1 = EBWeakEventSet ()
+  private final var mObserversOf_mCPY1 = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mCPY1_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mCPY1.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mCPY1_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -276,22 +294,25 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func toMany_mCPY1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mCPY1.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mCPY1_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mCPY1_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
-    if !self.mObserversOf_mCPY1.isEmpty {
+ // final private func addEBObserversOf_mCPY1_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+    /* for managedObject in inSet.values {
+      managedObject.mCPY1_property.startsToBeObserved (by: self.mObserversOf_mCPY1)
+    }*/
+    /* if !self.mObserversOf_mCPY1.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mCPY1.dictionary {
+        for entry in self.mObserversOf_mCPY1.values () {
           if let observer = entry.possibleObserver {
             managedObject.mCPY1_property.startsToBeObserved (by: observer)
           }else{
@@ -299,13 +320,16 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mCPY1_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
-    for (_, entry) in self.mObserversOf_mCPY1.dictionary {
+/*  final private func removeEBObserversOf_mCPY1_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+    for managedObject in inSet.values {
+      managedObject.mCPY1_property.stopsBeingObserved (by: self.mObserversOf_mCPY1)
+    }
+    for entry in self.mObserversOf_mCPY1.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -315,27 +339,27 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         self.mObserversOf_mCPY1.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mCPX2' stored property
   //····················································································································
 
-  private final var mObserversOf_mCPX2 = EBWeakEventSet ()
+  private final var mObserversOf_mCPX2 = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mCPX2_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mCPX2.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mCPX2_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -343,22 +367,25 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func toMany_mCPX2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mCPX2.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mCPX2_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mCPX2_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
-    if !self.mObserversOf_mCPX2.isEmpty {
+ // final private func addEBObserversOf_mCPX2_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+    /* for managedObject in inSet.values {
+      managedObject.mCPX2_property.startsToBeObserved (by: self.mObserversOf_mCPX2)
+    }*/
+    /* if !self.mObserversOf_mCPX2.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mCPX2.dictionary {
+        for entry in self.mObserversOf_mCPX2.values () {
           if let observer = entry.possibleObserver {
             managedObject.mCPX2_property.startsToBeObserved (by: observer)
           }else{
@@ -366,13 +393,16 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mCPX2_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
-    for (_, entry) in self.mObserversOf_mCPX2.dictionary {
+/*  final private func removeEBObserversOf_mCPX2_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+    for managedObject in inSet.values {
+      managedObject.mCPX2_property.stopsBeingObserved (by: self.mObserversOf_mCPX2)
+    }
+    for entry in self.mObserversOf_mCPX2.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -382,27 +412,27 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         self.mObserversOf_mCPX2.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mCPY2' stored property
   //····················································································································
 
-  private final var mObserversOf_mCPY2 = EBWeakEventSet ()
+  private final var mObserversOf_mCPY2 = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mCPY2_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mCPY2.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mCPY2_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -410,22 +440,25 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func toMany_mCPY2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mCPY2.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mCPY2_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mCPY2_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
-    if !self.mObserversOf_mCPY2.isEmpty {
+ // final private func addEBObserversOf_mCPY2_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+    /* for managedObject in inSet.values {
+      managedObject.mCPY2_property.startsToBeObserved (by: self.mObserversOf_mCPY2)
+    }*/
+    /* if !self.mObserversOf_mCPY2.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mCPY2.dictionary {
+        for entry in self.mObserversOf_mCPY2.values () {
           if let observer = entry.possibleObserver {
             managedObject.mCPY2_property.startsToBeObserved (by: observer)
           }else{
@@ -433,13 +466,16 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mCPY2_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
-    for (_, entry) in self.mObserversOf_mCPY2.dictionary {
+/*  final private func removeEBObserversOf_mCPY2_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+    for managedObject in inSet.values {
+      managedObject.mCPY2_property.stopsBeingObserved (by: self.mObserversOf_mCPY2)
+    }
+    for entry in self.mObserversOf_mCPY2.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -449,27 +485,27 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         self.mObserversOf_mCPY2.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mShape' stored property
   //····················································································································
 
-  private final var mObserversOf_mShape = EBWeakEventSet ()
+  private final var mObserversOf_mShape = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mShape_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mShape.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mShape_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -477,22 +513,25 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func toMany_mShape_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mShape.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mShape_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mShape_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
-    if !self.mObserversOf_mShape.isEmpty {
+ // final private func addEBObserversOf_mShape_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+    /* for managedObject in inSet.values {
+      managedObject.mShape_property.startsToBeObserved (by: self.mObserversOf_mShape)
+    }*/
+    /* if !self.mObserversOf_mShape.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mShape.dictionary {
+        for entry in self.mObserversOf_mShape.values () {
           if let observer = entry.possibleObserver {
             managedObject.mShape_property.startsToBeObserved (by: observer)
           }else{
@@ -500,13 +539,16 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mShape_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
-    for (_, entry) in self.mObserversOf_mShape.dictionary {
+/*  final private func removeEBObserversOf_mShape_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+    for managedObject in inSet.values {
+      managedObject.mShape_property.stopsBeingObserved (by: self.mObserversOf_mShape)
+    }
+    for entry in self.mObserversOf_mShape.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -516,27 +558,27 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         self.mObserversOf_mShape.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mNextX' proxy property
   //····················································································································
 
-  private final var mObserversOf_mNextX = EBWeakEventSet ()
+  private final var mObserversOf_mNextX = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mNextX_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mNextX.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mNextX_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -544,21 +586,21 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func toMany_mNextX_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mNextX.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mNextX_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mNextX_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+  /* final private func addEBObserversOf_mNextX_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_mNextX.dictionary {
+      for entry in self.mObserversOf_mNextX.values () {
         if let observer = entry.possibleObserver {
           managedObject.mNextX_property.startsToBeObserved (by: observer)
         }else{
@@ -566,12 +608,12 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_mNextX_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
-    for (_, entry) in self.mObserversOf_mNextX.dictionary {
+  /* final private func removeEBObserversOf_mNextX_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+    for entry in self.mObserversOf_mNextX.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -581,27 +623,27 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         self.mObserversOf_mNextX.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mNextY' proxy property
   //····················································································································
 
-  private final var mObserversOf_mNextY = EBWeakEventSet ()
+  private final var mObserversOf_mNextY = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mNextY_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mNextY.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mNextY_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -609,21 +651,21 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func toMany_mNextY_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mNextY.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mNextY_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mNextY_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+  /* final private func addEBObserversOf_mNextY_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_mNextY.dictionary {
+      for entry in self.mObserversOf_mNextY.values () {
         if let observer = entry.possibleObserver {
           managedObject.mNextY_property.startsToBeObserved (by: observer)
         }else{
@@ -631,12 +673,12 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_mNextY_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
-    for (_, entry) in self.mObserversOf_mNextY.dictionary {
+  /* final private func removeEBObserversOf_mNextY_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+    for entry in self.mObserversOf_mNextY.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -646,27 +688,27 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         self.mObserversOf_mNextY.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'p2Xvalue' transient property
   //····················································································································
 
-  private final var mObserversOf_p2Xvalue = EBWeakEventSet ()
+  private final var mObserversOf_p2Xvalue = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_p2Xvalue_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_p2Xvalue.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.p2Xvalue_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -674,21 +716,21 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func toMany_p2Xvalue_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_p2Xvalue.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.p2Xvalue_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_p2Xvalue_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+  /* final private func addEBObserversOf_p2Xvalue_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_p2Xvalue.dictionary {
+      for entry in self.mObserversOf_p2Xvalue.values () {
         if let observer = entry.possibleObserver {
           managedObject.p2Xvalue_property.startsToBeObserved (by: observer)
         }else{
@@ -696,13 +738,13 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_p2Xvalue_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+  /* final private func removeEBObserversOf_p2Xvalue_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_p2Xvalue.dictionary {
+      for entry in self.mObserversOf_p2Xvalue.values () {
         if let observer = entry.possibleObserver {
           managedObject.p2Xvalue_property.stopsBeingObserved (by: observer)
         }else{
@@ -710,27 +752,27 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'p2Yvalue' transient property
   //····················································································································
 
-  private final var mObserversOf_p2Yvalue = EBWeakEventSet ()
+  private final var mObserversOf_p2Yvalue = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_p2Yvalue_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_p2Yvalue.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.p2Yvalue_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -738,21 +780,21 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func toMany_p2Yvalue_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_p2Yvalue.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.p2Yvalue_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_p2Yvalue_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+  /* final private func addEBObserversOf_p2Yvalue_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_p2Yvalue.dictionary {
+      for entry in self.mObserversOf_p2Yvalue.values () {
         if let observer = entry.possibleObserver {
           managedObject.p2Yvalue_property.startsToBeObserved (by: observer)
         }else{
@@ -760,13 +802,13 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_p2Yvalue_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+  /* final private func removeEBObserversOf_p2Yvalue_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_p2Yvalue.dictionary {
+      for entry in self.mObserversOf_p2Yvalue.values () {
         if let observer = entry.possibleObserver {
           managedObject.p2Yvalue_property.stopsBeingObserved (by: observer)
         }else{
@@ -774,27 +816,27 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'descriptor' transient property
   //····················································································································
 
-  private final var mObserversOf_descriptor = EBWeakEventSet ()
+  private final var mObserversOf_descriptor = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_descriptor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_descriptor.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.descriptor_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -802,21 +844,21 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func toMany_descriptor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_descriptor.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.descriptor_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+  /* final private func addEBObserversOf_descriptor_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_descriptor.dictionary {
+      for entry in self.mObserversOf_descriptor.values () {
         if let observer = entry.possibleObserver {
           managedObject.descriptor_property.startsToBeObserved (by: observer)
         }else{
@@ -824,13 +866,13 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+  /* final private func removeEBObserversOf_descriptor_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_descriptor.dictionary {
+      for entry in self.mObserversOf_descriptor.values () {
         if let observer = entry.possibleObserver {
           managedObject.descriptor_property.stopsBeingObserved (by: observer)
         }else{
@@ -838,27 +880,27 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_objectDisplay = EBWeakEventSet ()
+  private final var mObserversOf_objectDisplay = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_objectDisplay.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.objectDisplay_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -866,21 +908,21 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_objectDisplay.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.objectDisplay_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+  /* final private func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
+      for entry in self.mObserversOf_objectDisplay.values () {
         if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.startsToBeObserved (by: observer)
         }else{
@@ -888,13 +930,13 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+  /* final private func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_objectDisplay.dictionary {
+      for entry in self.mObserversOf_objectDisplay.values () {
         if let observer = entry.possibleObserver {
           managedObject.objectDisplay_property.stopsBeingObserved (by: observer)
         }else{
@@ -902,27 +944,27 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'isLine' transient property
   //····················································································································
 
-  private final var mObserversOf_isLine = EBWeakEventSet ()
+  private final var mObserversOf_isLine = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_isLine_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_isLine.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.isLine_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -930,21 +972,21 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func toMany_isLine_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_isLine.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.isLine_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_isLine_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+  /* final private func addEBObserversOf_isLine_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_isLine.dictionary {
+      for entry in self.mObserversOf_isLine.values () {
         if let observer = entry.possibleObserver {
           managedObject.isLine_property.startsToBeObserved (by: observer)
         }else{
@@ -952,13 +994,13 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_isLine_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+  /* final private func removeEBObserversOf_isLine_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_isLine.dictionary {
+      for entry in self.mObserversOf_isLine.values () {
         if let observer = entry.possibleObserver {
           managedObject.isLine_property.stopsBeingObserved (by: observer)
         }else{
@@ -966,27 +1008,27 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_selectionDisplay = EBWeakEventSet ()
+  private final var mObserversOf_selectionDisplay = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_selectionDisplay.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.selectionDisplay_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -994,21 +1036,21 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_selectionDisplay.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.selectionDisplay_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+  /* final private func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
+      for entry in self.mObserversOf_selectionDisplay.values () {
         if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.startsToBeObserved (by: observer)
         }else{
@@ -1016,13 +1058,13 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
+  /* final private func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : EBReferenceSet <BorderCurve>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_selectionDisplay.dictionary {
+      for entry in self.mObserversOf_selectionDisplay.values () {
         if let observer = entry.possibleObserver {
           managedObject.selectionDisplay_property.stopsBeingObserved (by: observer)
         }else{
@@ -1030,7 +1072,7 @@ class ReadOnlyArrayOf_BorderCurve : ReadOnlyAbstractArrayProperty <BorderCurve> 
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 

@@ -16,50 +16,50 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
                                  addedSet inAddedSet : EBReferenceSet <NetInProject>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    if !inRemovedSet.isEmpty {
-      self.removeEBObserversOf_mNetName_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_mWarnsExactlyOneLabel_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_netClassName_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_netClassTrackWidth_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_netClassViaHoleDiameter_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_netClassViaPadDiameter_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_wireColor_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_netSchematicPointsInfo_fromElementsOfSet (inRemovedSet) // Transient property
-      self.removeEBObserversOf_trackCount_fromElementsOfSet (inRemovedSet) // Transient property
+    for managedObject in inRemovedSet.values {
+      managedObject.mNetName_property.stopsBeingObserved (by: self.mObserversOf_mNetName) // Stored property
+      managedObject.mWarnsExactlyOneLabel_property.stopsBeingObserved (by: self.mObserversOf_mWarnsExactlyOneLabel) // Stored property
+      managedObject.netClassName_property.stopsBeingObserved (by: self.mObserversOf_netClassName) // Transient property
+      managedObject.netClassTrackWidth_property.stopsBeingObserved (by: self.mObserversOf_netClassTrackWidth) // Transient property
+      managedObject.netClassViaHoleDiameter_property.stopsBeingObserved (by: self.mObserversOf_netClassViaHoleDiameter) // Transient property
+      managedObject.netClassViaPadDiameter_property.stopsBeingObserved (by: self.mObserversOf_netClassViaPadDiameter) // Transient property
+      managedObject.wireColor_property.stopsBeingObserved (by: self.mObserversOf_wireColor) // Transient property
+      managedObject.netSchematicPointsInfo_property.stopsBeingObserved (by: self.mObserversOf_netSchematicPointsInfo) // Transient property
+      managedObject.trackCount_property.stopsBeingObserved (by: self.mObserversOf_trackCount) // Transient property
     }
   //--- Add observers to added objects
-    if !inAddedSet.isEmpty {
-      self.addEBObserversOf_mNetName_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_mWarnsExactlyOneLabel_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_netClassName_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_netClassTrackWidth_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_netClassViaHoleDiameter_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_netClassViaPadDiameter_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_wireColor_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_netSchematicPointsInfo_toElementsOfSet (inAddedSet) // Transient property
-      self.addEBObserversOf_trackCount_toElementsOfSet (inAddedSet) // Transient property
-   }
+    for managedObject in inAddedSet.values {
+      managedObject.mNetName_property.startsToBeObserved (by: self.mObserversOf_mNetName) // Stored property
+      managedObject.mWarnsExactlyOneLabel_property.startsToBeObserved (by: self.mObserversOf_mWarnsExactlyOneLabel) // Stored property
+      managedObject.netClassName_property.startsToBeObserved (by: self.mObserversOf_netClassName) // Transient property
+      managedObject.netClassTrackWidth_property.startsToBeObserved (by: self.mObserversOf_netClassTrackWidth) // Transient property
+      managedObject.netClassViaHoleDiameter_property.startsToBeObserved (by: self.mObserversOf_netClassViaHoleDiameter) // Transient property
+      managedObject.netClassViaPadDiameter_property.startsToBeObserved (by: self.mObserversOf_netClassViaPadDiameter) // Transient property
+      managedObject.wireColor_property.startsToBeObserved (by: self.mObserversOf_wireColor) // Transient property
+      managedObject.netSchematicPointsInfo_property.startsToBeObserved (by: self.mObserversOf_netSchematicPointsInfo) // Transient property
+      managedObject.trackCount_property.startsToBeObserved (by: self.mObserversOf_trackCount) // Transient property
+    }
   }
 
   //····················································································································
   //   Observers of 'mNetName' stored property
   //····················································································································
 
-  private final var mObserversOf_mNetName = EBWeakEventSet ()
+  private final var mObserversOf_mNetName = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mNetName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mNetName.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mNetName_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -67,22 +67,25 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func toMany_mNetName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mNetName.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mNetName_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mNetName_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
-    if !self.mObserversOf_mNetName.isEmpty {
+ // final private func addEBObserversOf_mNetName_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
+    /* for managedObject in inSet.values {
+      managedObject.mNetName_property.startsToBeObserved (by: self.mObserversOf_mNetName)
+    }*/
+    /* if !self.mObserversOf_mNetName.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mNetName.dictionary {
+        for entry in self.mObserversOf_mNetName.values () {
           if let observer = entry.possibleObserver {
             managedObject.mNetName_property.startsToBeObserved (by: observer)
           }else{
@@ -90,13 +93,16 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mNetName_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
-    for (_, entry) in self.mObserversOf_mNetName.dictionary {
+/*  final private func removeEBObserversOf_mNetName_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
+    for managedObject in inSet.values {
+      managedObject.mNetName_property.stopsBeingObserved (by: self.mObserversOf_mNetName)
+    }
+    for entry in self.mObserversOf_mNetName.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -106,27 +112,27 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
         self.mObserversOf_mNetName.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'mWarnsExactlyOneLabel' stored property
   //····················································································································
 
-  private final var mObserversOf_mWarnsExactlyOneLabel = EBWeakEventSet ()
+  private final var mObserversOf_mWarnsExactlyOneLabel = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mWarnsExactlyOneLabel_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_mWarnsExactlyOneLabel.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mWarnsExactlyOneLabel_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -134,22 +140,25 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func toMany_mWarnsExactlyOneLabel_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_mWarnsExactlyOneLabel.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.mWarnsExactlyOneLabel_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mWarnsExactlyOneLabel_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
-    if !self.mObserversOf_mWarnsExactlyOneLabel.isEmpty {
+ // final private func addEBObserversOf_mWarnsExactlyOneLabel_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
+    /* for managedObject in inSet.values {
+      managedObject.mWarnsExactlyOneLabel_property.startsToBeObserved (by: self.mObserversOf_mWarnsExactlyOneLabel)
+    }*/
+    /* if !self.mObserversOf_mWarnsExactlyOneLabel.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_mWarnsExactlyOneLabel.dictionary {
+        for entry in self.mObserversOf_mWarnsExactlyOneLabel.values () {
           if let observer = entry.possibleObserver {
             managedObject.mWarnsExactlyOneLabel_property.startsToBeObserved (by: observer)
           }else{
@@ -157,13 +166,16 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_mWarnsExactlyOneLabel_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
-    for (_, entry) in self.mObserversOf_mWarnsExactlyOneLabel.dictionary {
+/*  final private func removeEBObserversOf_mWarnsExactlyOneLabel_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
+    for managedObject in inSet.values {
+      managedObject.mWarnsExactlyOneLabel_property.stopsBeingObserved (by: self.mObserversOf_mWarnsExactlyOneLabel)
+    }
+    for entry in self.mObserversOf_mWarnsExactlyOneLabel.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -173,27 +185,27 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
         self.mObserversOf_mWarnsExactlyOneLabel.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'netClassName' transient property
   //····················································································································
 
-  private final var mObserversOf_netClassName = EBWeakEventSet ()
+  private final var mObserversOf_netClassName = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_netClassName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_netClassName.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.netClassName_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -201,21 +213,21 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func toMany_netClassName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_netClassName.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.netClassName_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_netClassName_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
+  /* final private func addEBObserversOf_netClassName_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_netClassName.dictionary {
+      for entry in self.mObserversOf_netClassName.values () {
         if let observer = entry.possibleObserver {
           managedObject.netClassName_property.startsToBeObserved (by: observer)
         }else{
@@ -223,13 +235,13 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_netClassName_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
+  /* final private func removeEBObserversOf_netClassName_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_netClassName.dictionary {
+      for entry in self.mObserversOf_netClassName.values () {
         if let observer = entry.possibleObserver {
           managedObject.netClassName_property.stopsBeingObserved (by: observer)
         }else{
@@ -237,27 +249,27 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'netClassTrackWidth' transient property
   //····················································································································
 
-  private final var mObserversOf_netClassTrackWidth = EBWeakEventSet ()
+  private final var mObserversOf_netClassTrackWidth = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_netClassTrackWidth_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_netClassTrackWidth.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.netClassTrackWidth_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -265,21 +277,21 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func toMany_netClassTrackWidth_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_netClassTrackWidth.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.netClassTrackWidth_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_netClassTrackWidth_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
+  /* final private func addEBObserversOf_netClassTrackWidth_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_netClassTrackWidth.dictionary {
+      for entry in self.mObserversOf_netClassTrackWidth.values () {
         if let observer = entry.possibleObserver {
           managedObject.netClassTrackWidth_property.startsToBeObserved (by: observer)
         }else{
@@ -287,13 +299,13 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_netClassTrackWidth_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
+  /* final private func removeEBObserversOf_netClassTrackWidth_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_netClassTrackWidth.dictionary {
+      for entry in self.mObserversOf_netClassTrackWidth.values () {
         if let observer = entry.possibleObserver {
           managedObject.netClassTrackWidth_property.stopsBeingObserved (by: observer)
         }else{
@@ -301,27 +313,27 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'netClassViaHoleDiameter' transient property
   //····················································································································
 
-  private final var mObserversOf_netClassViaHoleDiameter = EBWeakEventSet ()
+  private final var mObserversOf_netClassViaHoleDiameter = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_netClassViaHoleDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_netClassViaHoleDiameter.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.netClassViaHoleDiameter_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -329,21 +341,21 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func toMany_netClassViaHoleDiameter_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_netClassViaHoleDiameter.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.netClassViaHoleDiameter_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_netClassViaHoleDiameter_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
+  /* final private func addEBObserversOf_netClassViaHoleDiameter_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_netClassViaHoleDiameter.dictionary {
+      for entry in self.mObserversOf_netClassViaHoleDiameter.values () {
         if let observer = entry.possibleObserver {
           managedObject.netClassViaHoleDiameter_property.startsToBeObserved (by: observer)
         }else{
@@ -351,13 +363,13 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_netClassViaHoleDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
+  /* final private func removeEBObserversOf_netClassViaHoleDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_netClassViaHoleDiameter.dictionary {
+      for entry in self.mObserversOf_netClassViaHoleDiameter.values () {
         if let observer = entry.possibleObserver {
           managedObject.netClassViaHoleDiameter_property.stopsBeingObserved (by: observer)
         }else{
@@ -365,27 +377,27 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'netClassViaPadDiameter' transient property
   //····················································································································
 
-  private final var mObserversOf_netClassViaPadDiameter = EBWeakEventSet ()
+  private final var mObserversOf_netClassViaPadDiameter = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_netClassViaPadDiameter_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_netClassViaPadDiameter.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.netClassViaPadDiameter_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -393,21 +405,21 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func toMany_netClassViaPadDiameter_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_netClassViaPadDiameter.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.netClassViaPadDiameter_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_netClassViaPadDiameter_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
+  /* final private func addEBObserversOf_netClassViaPadDiameter_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_netClassViaPadDiameter.dictionary {
+      for entry in self.mObserversOf_netClassViaPadDiameter.values () {
         if let observer = entry.possibleObserver {
           managedObject.netClassViaPadDiameter_property.startsToBeObserved (by: observer)
         }else{
@@ -415,13 +427,13 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_netClassViaPadDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
+  /* final private func removeEBObserversOf_netClassViaPadDiameter_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_netClassViaPadDiameter.dictionary {
+      for entry in self.mObserversOf_netClassViaPadDiameter.values () {
         if let observer = entry.possibleObserver {
           managedObject.netClassViaPadDiameter_property.stopsBeingObserved (by: observer)
         }else{
@@ -429,27 +441,27 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'wireColor' transient property
   //····················································································································
 
-  private final var mObserversOf_wireColor = EBWeakEventSet ()
+  private final var mObserversOf_wireColor = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_wireColor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_wireColor.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.wireColor_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -457,21 +469,21 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func toMany_wireColor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_wireColor.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.wireColor_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_wireColor_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
+  /* final private func addEBObserversOf_wireColor_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_wireColor.dictionary {
+      for entry in self.mObserversOf_wireColor.values () {
         if let observer = entry.possibleObserver {
           managedObject.wireColor_property.startsToBeObserved (by: observer)
         }else{
@@ -479,13 +491,13 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_wireColor_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
+  /* final private func removeEBObserversOf_wireColor_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_wireColor.dictionary {
+      for entry in self.mObserversOf_wireColor.values () {
         if let observer = entry.possibleObserver {
           managedObject.wireColor_property.stopsBeingObserved (by: observer)
         }else{
@@ -493,27 +505,27 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'netSchematicPointsInfo' transient property
   //····················································································································
 
-  private final var mObserversOf_netSchematicPointsInfo = EBWeakEventSet ()
+  private final var mObserversOf_netSchematicPointsInfo = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_netSchematicPointsInfo_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_netSchematicPointsInfo.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.netSchematicPointsInfo_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -521,21 +533,21 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func toMany_netSchematicPointsInfo_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_netSchematicPointsInfo.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.netSchematicPointsInfo_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_netSchematicPointsInfo_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
+  /* final private func addEBObserversOf_netSchematicPointsInfo_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_netSchematicPointsInfo.dictionary {
+      for entry in self.mObserversOf_netSchematicPointsInfo.values () {
         if let observer = entry.possibleObserver {
           managedObject.netSchematicPointsInfo_property.startsToBeObserved (by: observer)
         }else{
@@ -543,13 +555,13 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_netSchematicPointsInfo_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
+  /* final private func removeEBObserversOf_netSchematicPointsInfo_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_netSchematicPointsInfo.dictionary {
+      for entry in self.mObserversOf_netSchematicPointsInfo.values () {
         if let observer = entry.possibleObserver {
           managedObject.netSchematicPointsInfo_property.stopsBeingObserved (by: observer)
         }else{
@@ -557,27 +569,27 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
         }
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'trackCount' transient property
   //····················································································································
 
-  private final var mObserversOf_trackCount = EBWeakEventSet ()
+  private final var mObserversOf_trackCount = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_trackCount_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_trackCount.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.trackCount_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -585,21 +597,21 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
   final func toMany_trackCount_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_trackCount.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.trackCount_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_trackCount_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
+  /* final private func addEBObserversOf_trackCount_toElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_trackCount.dictionary {
+      for entry in self.mObserversOf_trackCount.values () {
         if let observer = entry.possibleObserver {
           managedObject.trackCount_property.startsToBeObserved (by: observer)
         }else{
@@ -607,13 +619,13 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 
-  final func removeEBObserversOf_trackCount_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
+  /* final private func removeEBObserversOf_trackCount_fromElementsOfSet (_ inSet : EBReferenceSet <NetInProject>) {
     for managedObject in inSet.values {
-      for (_, entry) in self.mObserversOf_trackCount.dictionary {
+      for entry in self.mObserversOf_trackCount.values () {
         if let observer = entry.possibleObserver {
           managedObject.trackCount_property.stopsBeingObserved (by: observer)
         }else{
@@ -621,7 +633,7 @@ class ReadOnlyArrayOf_NetInProject : ReadOnlyAbstractArrayProperty <NetInProject
         }
       }
     }
-  }
+  } */
 
   //····················································································································
 

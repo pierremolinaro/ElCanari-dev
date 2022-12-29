@@ -16,44 +16,44 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
                                  addedSet inAddedSet : EBReferenceSet <BoardModelPad>) {
     super.updateObservers (removedSet: inRemovedSet, addedSet: inAddedSet)
   //--- Remove observers from removed objects
-    if !inRemovedSet.isEmpty {
-      self.removeEBObserversOf_y_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_width_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_height_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_shape_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_rotation_fromElementsOfSet (inRemovedSet) // Stored property
-      self.removeEBObserversOf_x_fromElementsOfSet (inRemovedSet) // Stored property
+    for managedObject in inRemovedSet.values {
+      managedObject.y_property.stopsBeingObserved (by: self.mObserversOf_y) // Stored property
+      managedObject.width_property.stopsBeingObserved (by: self.mObserversOf_width) // Stored property
+      managedObject.height_property.stopsBeingObserved (by: self.mObserversOf_height) // Stored property
+      managedObject.shape_property.stopsBeingObserved (by: self.mObserversOf_shape) // Stored property
+      managedObject.rotation_property.stopsBeingObserved (by: self.mObserversOf_rotation) // Stored property
+      managedObject.x_property.stopsBeingObserved (by: self.mObserversOf_x) // Stored property
     }
   //--- Add observers to added objects
-    if !inAddedSet.isEmpty {
-      self.addEBObserversOf_y_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_width_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_height_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_shape_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_rotation_toElementsOfSet (inAddedSet) // Stored property
-      self.addEBObserversOf_x_toElementsOfSet (inAddedSet) // Stored property
-   }
+    for managedObject in inAddedSet.values {
+      managedObject.y_property.startsToBeObserved (by: self.mObserversOf_y) // Stored property
+      managedObject.width_property.startsToBeObserved (by: self.mObserversOf_width) // Stored property
+      managedObject.height_property.startsToBeObserved (by: self.mObserversOf_height) // Stored property
+      managedObject.shape_property.startsToBeObserved (by: self.mObserversOf_shape) // Stored property
+      managedObject.rotation_property.startsToBeObserved (by: self.mObserversOf_rotation) // Stored property
+      managedObject.x_property.startsToBeObserved (by: self.mObserversOf_x) // Stored property
+    }
   }
 
   //····················································································································
   //   Observers of 'y' stored property
   //····················································································································
 
-  private final var mObserversOf_y = EBWeakEventSet ()
+  private final var mObserversOf_y = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_y_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_y.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.y_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -61,22 +61,25 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func toMany_y_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_y.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.y_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_y_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
-    if !self.mObserversOf_y.isEmpty {
+ // final private func addEBObserversOf_y_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
+    /* for managedObject in inSet.values {
+      managedObject.y_property.startsToBeObserved (by: self.mObserversOf_y)
+    }*/
+    /* if !self.mObserversOf_y.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_y.dictionary {
+        for entry in self.mObserversOf_y.values () {
           if let observer = entry.possibleObserver {
             managedObject.y_property.startsToBeObserved (by: observer)
           }else{
@@ -84,13 +87,16 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
-    for (_, entry) in self.mObserversOf_y.dictionary {
+/*  final private func removeEBObserversOf_y_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
+    for managedObject in inSet.values {
+      managedObject.y_property.stopsBeingObserved (by: self.mObserversOf_y)
+    }
+    for entry in self.mObserversOf_y.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -100,27 +106,27 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
         self.mObserversOf_y.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'width' stored property
   //····················································································································
 
-  private final var mObserversOf_width = EBWeakEventSet ()
+  private final var mObserversOf_width = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_width_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_width.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.width_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -128,22 +134,25 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func toMany_width_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_width.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.width_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_width_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
-    if !self.mObserversOf_width.isEmpty {
+ // final private func addEBObserversOf_width_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
+    /* for managedObject in inSet.values {
+      managedObject.width_property.startsToBeObserved (by: self.mObserversOf_width)
+    }*/
+    /* if !self.mObserversOf_width.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_width.dictionary {
+        for entry in self.mObserversOf_width.values () {
           if let observer = entry.possibleObserver {
             managedObject.width_property.startsToBeObserved (by: observer)
           }else{
@@ -151,13 +160,16 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
-    for (_, entry) in self.mObserversOf_width.dictionary {
+/*  final private func removeEBObserversOf_width_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
+    for managedObject in inSet.values {
+      managedObject.width_property.stopsBeingObserved (by: self.mObserversOf_width)
+    }
+    for entry in self.mObserversOf_width.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -167,27 +179,27 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
         self.mObserversOf_width.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'height' stored property
   //····················································································································
 
-  private final var mObserversOf_height = EBWeakEventSet ()
+  private final var mObserversOf_height = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_height_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_height.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.height_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -195,22 +207,25 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func toMany_height_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_height.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.height_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_height_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
-    if !self.mObserversOf_height.isEmpty {
+ // final private func addEBObserversOf_height_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
+    /* for managedObject in inSet.values {
+      managedObject.height_property.startsToBeObserved (by: self.mObserversOf_height)
+    }*/
+    /* if !self.mObserversOf_height.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_height.dictionary {
+        for entry in self.mObserversOf_height.values () {
           if let observer = entry.possibleObserver {
             managedObject.height_property.startsToBeObserved (by: observer)
           }else{
@@ -218,13 +233,16 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
-    for (_, entry) in self.mObserversOf_height.dictionary {
+/*  final private func removeEBObserversOf_height_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
+    for managedObject in inSet.values {
+      managedObject.height_property.stopsBeingObserved (by: self.mObserversOf_height)
+    }
+    for entry in self.mObserversOf_height.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -234,27 +252,27 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
         self.mObserversOf_height.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'shape' stored property
   //····················································································································
 
-  private final var mObserversOf_shape = EBWeakEventSet ()
+  private final var mObserversOf_shape = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_shape_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_shape.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.shape_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -262,22 +280,25 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func toMany_shape_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_shape.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.shape_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_shape_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
-    if !self.mObserversOf_shape.isEmpty {
+ // final private func addEBObserversOf_shape_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
+    /* for managedObject in inSet.values {
+      managedObject.shape_property.startsToBeObserved (by: self.mObserversOf_shape)
+    }*/
+    /* if !self.mObserversOf_shape.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_shape.dictionary {
+        for entry in self.mObserversOf_shape.values () {
           if let observer = entry.possibleObserver {
             managedObject.shape_property.startsToBeObserved (by: observer)
           }else{
@@ -285,13 +306,16 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_shape_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
-    for (_, entry) in self.mObserversOf_shape.dictionary {
+/*  final private func removeEBObserversOf_shape_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
+    for managedObject in inSet.values {
+      managedObject.shape_property.stopsBeingObserved (by: self.mObserversOf_shape)
+    }
+    for entry in self.mObserversOf_shape.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -301,27 +325,27 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
         self.mObserversOf_shape.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'rotation' stored property
   //····················································································································
 
-  private final var mObserversOf_rotation = EBWeakEventSet ()
+  private final var mObserversOf_rotation = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_rotation_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_rotation.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.rotation_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -329,22 +353,25 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func toMany_rotation_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_rotation.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.rotation_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_rotation_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
-    if !self.mObserversOf_rotation.isEmpty {
+ // final private func addEBObserversOf_rotation_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
+    /* for managedObject in inSet.values {
+      managedObject.rotation_property.startsToBeObserved (by: self.mObserversOf_rotation)
+    }*/
+    /* if !self.mObserversOf_rotation.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_rotation.dictionary {
+        for entry in self.mObserversOf_rotation.values () {
           if let observer = entry.possibleObserver {
             managedObject.rotation_property.startsToBeObserved (by: observer)
           }else{
@@ -352,13 +379,16 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_rotation_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
-    for (_, entry) in self.mObserversOf_rotation.dictionary {
+/*  final private func removeEBObserversOf_rotation_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
+    for managedObject in inSet.values {
+      managedObject.rotation_property.stopsBeingObserved (by: self.mObserversOf_rotation)
+    }
+    for entry in self.mObserversOf_rotation.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -368,27 +398,27 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
         self.mObserversOf_rotation.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
 
-  private final var mObserversOf_x = EBWeakEventSet ()
+  private final var mObserversOf_x = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_x_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.startsToBeObserved (by: inObserver)
     self.mObserversOf_x.insert (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.x_property.startsToBeObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
@@ -396,22 +426,25 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
   final func toMany_x_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.stopsBeingObserved (by: inObserver)
     self.mObserversOf_x.remove (inObserver)
-    switch self.selection {
+    /* switch self.selection {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
         managedObject.x_property.stopsBeingObserved (by: inObserver)
       }
-    }
+    } */
   }
 
   //····················································································································
 
-  final func addEBObserversOf_x_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
-    if !self.mObserversOf_x.isEmpty {
+ // final private func addEBObserversOf_x_toElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
+    /* for managedObject in inSet.values {
+      managedObject.x_property.startsToBeObserved (by: self.mObserversOf_x)
+    }*/
+    /* if !self.mObserversOf_x.isEmpty {
       for managedObject in inSet.values {
-        for (_, entry) in self.mObserversOf_x.dictionary {
+        for entry in self.mObserversOf_x.values () {
           if let observer = entry.possibleObserver {
             managedObject.x_property.startsToBeObserved (by: observer)
           }else{
@@ -419,13 +452,16 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
           }
         }
       }
-    }
-  }
+    } */
+ // }
 
   //····················································································································
 
-  final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
-    for (_, entry) in self.mObserversOf_x.dictionary {
+/*  final private func removeEBObserversOf_x_fromElementsOfSet (_ inSet : EBReferenceSet <BoardModelPad>) {
+    for managedObject in inSet.values {
+      managedObject.x_property.stopsBeingObserved (by: self.mObserversOf_x)
+    }
+    for entry in self.mObserversOf_x.values () {
       if let observer = entry.possibleObserver {
         observer.observedObjectDidChange ()
         for managedObject in inSet.values {
@@ -435,7 +471,7 @@ class ReadOnlyArrayOf_BoardModelPad : ReadOnlyAbstractArrayProperty <BoardModelP
         self.mObserversOf_x.triggerPacking ()
       }
     }
-  }
+  } */
 
   //····················································································································
 

@@ -11,7 +11,13 @@ import AppKit
   //····················································································································
 
   private var mDictionary = [Int : EBWeakObserverSetElement] ()
-  var dictionary : [Int : EBWeakObserverSetElement] { return self.mDictionary }
+
+  //····················································································································
+
+  mutating func values () -> Dictionary <Int, EBWeakObserverSetElement>.Values {
+    self.pack ()
+    return self.mDictionary.values
+  }
 
   //····················································································································
 
@@ -39,7 +45,6 @@ import AppKit
   //····················································································································
 
   mutating func insert (_ inObserver : EBObserverProtocol) {
-    self.pack ()
     let address = inObserver.objectIndex
     self.mDictionary [address] = EBWeakObserverSetElement (observer: inObserver)
   }
@@ -47,7 +52,6 @@ import AppKit
   //····················································································································
 
   mutating func remove (_ inObserver : EBObserverProtocol) {
-    self.pack ()
     let address = inObserver.objectIndex
     self.mDictionary [address] = nil
   }
@@ -55,6 +59,48 @@ import AppKit
   //····················································································································
 
   var isEmpty : Bool { return self.mDictionary.isEmpty }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@MainActor final class EBWeakObserverSetRelay : EBSwiftBaseObject, EBObserverProtocol {
+
+  //····················································································································
+
+  private var mDictionary = [Int : EBWeakObserverSetElement] ()
+
+  //····················································································································
+
+  func insert (_ inObserver : EBObserverProtocol) {
+    let address = inObserver.objectIndex
+    self.mDictionary [address] = EBWeakObserverSetElement (observer: inObserver)
+  }
+
+  //····················································································································
+
+  func remove (_ inObserver : EBObserverProtocol) {
+    let address = inObserver.objectIndex
+    self.mDictionary [address] = nil
+  }
+
+  //····················································································································
+
+  var isEmpty : Bool { return self.mDictionary.isEmpty }
+
+  //····················································································································
+
+  func observedObjectDidChange () { // EBObserverProtocol
+    for (key, entry) in self.mDictionary {
+      if let observer = entry.possibleObserver {
+        observer.observedObjectDidChange ()
+      }else{
+        self.mDictionary [key] = nil
+      }
+    }
+  }
 
   //····················································································································
 
