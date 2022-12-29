@@ -65,7 +65,7 @@ struct RawObject {
     }
     appendDocumentFileOperationInfo ("parsed \(rawObjectArray.count) objects done")
   //--- Setup atomic properties, relationships
-    for rawObject in rawObjectArray {
+    for rawObject in rawObjectArray.reversed () {
       let valueDictionary = rawObject.propertyDictionary
       let managedObject = rawObject.object
       managedObject.setUpPropertiesWithTextDictionary (valueDictionary, rawObjectArray, scannerData)
