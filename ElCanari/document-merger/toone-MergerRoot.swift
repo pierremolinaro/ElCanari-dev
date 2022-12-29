@@ -50,6 +50,8 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       oldValue.hasInnerElements_property.stopsBeingObserved (by: self.hasInnerElements_property) // Transient property
       oldValue.hasSixLayers_property.stopsBeingObserved (by: self.hasSixLayers_property) // Transient property
       oldValue.boardOutlineRectDisplay_property.stopsBeingObserved (by: self.boardOutlineRectDisplay_property) // Transient property
+      oldValue.boardModels_property.stopsBeingObserved (by: self.mObserversOf_boardModels) // to Many
+      oldValue.boardInstances_property.stopsBeingObserved (by: self.mObserversOf_boardInstances) // to Many
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -87,6 +89,8 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
       newValue.hasInnerElements_property.startsToBeObserved (by: self.hasInnerElements_property) // Transient property
       newValue.hasSixLayers_property.startsToBeObserved (by: self.hasSixLayers_property) // Transient property
       newValue.boardOutlineRectDisplay_property.startsToBeObserved (by: self.boardOutlineRectDisplay_property) // Transient property
+      newValue.boardModels_property.startsToBeObserved(by: self.mObserversOf_boardModels) // to Many
+      newValue.boardInstances_property.startsToBeObserved(by: self.mObserversOf_boardInstances) // to Many
     }
   }
 
@@ -298,48 +302,48 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observable toMany property: boardModels
   //····················································································································
 
-  private final var mObserversOf_boardModels = EBWeakEventSet ()
+  private final var mObserversOf_boardModels = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_boardModels_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_boardModels.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.boardModels_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_boardModels_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_boardModels.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.boardModels_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observable toMany property: boardInstances
   //····················································································································
 
-  private final var mObserversOf_boardInstances = EBWeakEventSet ()
+  private final var mObserversOf_boardInstances = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_boardInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_boardInstances.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.boardInstances_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_boardInstances_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_boardInstances.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.boardInstances_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································

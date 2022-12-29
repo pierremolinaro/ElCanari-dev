@@ -22,6 +22,8 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
       oldValue.connexionWarnings_property.stopsBeingObserved (by: self.connexionWarnings_property) // Transient property
       oldValue.connexionErrors_property.stopsBeingObserved (by: self.connexionErrors_property) // Transient property
       oldValue.sheetDescriptor_property.stopsBeingObserved (by: self.sheetDescriptor_property) // Transient property
+      oldValue.mObjects_property.stopsBeingObserved (by: self.mObserversOf_mObjects) // to Many
+      oldValue.mPoints_property.stopsBeingObserved (by: self.mObserversOf_mPoints) // to Many
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -31,6 +33,8 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
       newValue.connexionWarnings_property.startsToBeObserved (by: self.connexionWarnings_property) // Transient property
       newValue.connexionErrors_property.startsToBeObserved (by: self.connexionErrors_property) // Transient property
       newValue.sheetDescriptor_property.startsToBeObserved (by: self.sheetDescriptor_property) // Transient property
+      newValue.mObjects_property.startsToBeObserved(by: self.mObserversOf_mObjects) // to Many
+      newValue.mPoints_property.startsToBeObserved(by: self.mObserversOf_mPoints) // to Many
     }
   }
 
@@ -74,48 +78,48 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observable toMany property: mObjects
   //····················································································································
 
-  private final var mObserversOf_mObjects = EBWeakEventSet ()
+  private final var mObserversOf_mObjects = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mObjects_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mObjects.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mObjects_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_mObjects_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mObjects.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mObjects_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observable toMany property: mPoints
   //····················································································································
 
-  private final var mObserversOf_mPoints = EBWeakEventSet ()
+  private final var mObserversOf_mPoints = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mPoints_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPoints.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mPoints_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_mPoints_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPoints.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mPoints_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································

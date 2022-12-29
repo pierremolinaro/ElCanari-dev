@@ -31,6 +31,9 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       oldValue.status_property.stopsBeingObserved (by: self.status_property) // Transient property
       oldValue.connectedPoints_property.stopsBeingObserved (by: self.connectedPoints_property) // Transient property
       oldValue.netInfoForPoint_property.stopsBeingObserved (by: self.netInfoForPoint_property) // Transient property
+      oldValue.mLabels_property.stopsBeingObserved (by: self.mObserversOf_mLabels) // to Many
+      oldValue.mWiresP2s_property.stopsBeingObserved (by: self.mObserversOf_mWiresP2s) // to Many
+      oldValue.mWiresP1s_property.stopsBeingObserved (by: self.mObserversOf_mWiresP1s) // to Many
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -49,6 +52,9 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
       newValue.status_property.startsToBeObserved (by: self.status_property) // Transient property
       newValue.connectedPoints_property.startsToBeObserved (by: self.connectedPoints_property) // Transient property
       newValue.netInfoForPoint_property.startsToBeObserved (by: self.netInfoForPoint_property) // Transient property
+      newValue.mLabels_property.startsToBeObserved(by: self.mObserversOf_mLabels) // to Many
+      newValue.mWiresP2s_property.startsToBeObserved(by: self.mObserversOf_mWiresP2s) // to Many
+      newValue.mWiresP1s_property.startsToBeObserved(by: self.mObserversOf_mWiresP1s) // to Many
     }
   }
 
@@ -146,72 +152,72 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observable toMany property: mLabels
   //····················································································································
 
-  private final var mObserversOf_mLabels = EBWeakEventSet ()
+  private final var mObserversOf_mLabels = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mLabels_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mLabels.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mLabels_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_mLabels_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mLabels.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mLabels_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observable toMany property: mWiresP2s
   //····················································································································
 
-  private final var mObserversOf_mWiresP2s = EBWeakEventSet ()
+  private final var mObserversOf_mWiresP2s = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mWiresP2s_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mWiresP2s.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mWiresP2s_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_mWiresP2s_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mWiresP2s.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mWiresP2s_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observable toMany property: mWiresP1s
   //····················································································································
 
-  private final var mObserversOf_mWiresP1s = EBWeakEventSet ()
+  private final var mObserversOf_mWiresP1s = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mWiresP1s_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mWiresP1s.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mWiresP1s_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_mWiresP1s_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mWiresP1s.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mWiresP1s_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································

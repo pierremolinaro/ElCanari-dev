@@ -27,6 +27,9 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
       oldValue.canRemoveFont_property.stopsBeingObserved (by: self.canRemoveFont_property) // Transient property
       oldValue.componentNamesCount_property.stopsBeingObserved (by: self.componentNamesCount_property) // Transient property
       oldValue.componentValuesCount_property.stopsBeingObserved (by: self.componentValuesCount_property) // Transient property
+      oldValue.mTexts_property.stopsBeingObserved (by: self.mObserversOf_mTexts) // to Many
+      oldValue.mComponentNames_property.stopsBeingObserved (by: self.mObserversOf_mComponentNames) // to Many
+      oldValue.mComponentValues_property.stopsBeingObserved (by: self.mObserversOf_mComponentValues) // to Many
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -41,6 +44,9 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
       newValue.canRemoveFont_property.startsToBeObserved (by: self.canRemoveFont_property) // Transient property
       newValue.componentNamesCount_property.startsToBeObserved (by: self.componentNamesCount_property) // Transient property
       newValue.componentValuesCount_property.startsToBeObserved (by: self.componentValuesCount_property) // Transient property
+      newValue.mTexts_property.startsToBeObserved(by: self.mObserversOf_mTexts) // to Many
+      newValue.mComponentNames_property.startsToBeObserved(by: self.mObserversOf_mComponentNames) // to Many
+      newValue.mComponentValues_property.startsToBeObserved(by: self.mObserversOf_mComponentValues) // to Many
     }
   }
 
@@ -114,72 +120,72 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //   Observable toMany property: mTexts
   //····················································································································
 
-  private final var mObserversOf_mTexts = EBWeakEventSet ()
+  private final var mObserversOf_mTexts = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mTexts.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mTexts_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_mTexts_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mTexts.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mTexts_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observable toMany property: mComponentNames
   //····················································································································
 
-  private final var mObserversOf_mComponentNames = EBWeakEventSet ()
+  private final var mObserversOf_mComponentNames = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mComponentNames_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mComponentNames.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mComponentNames_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_mComponentNames_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mComponentNames.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mComponentNames_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observable toMany property: mComponentValues
   //····················································································································
 
-  private final var mObserversOf_mComponentValues = EBWeakEventSet ()
+  private final var mObserversOf_mComponentValues = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mComponentValues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mComponentValues.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mComponentValues_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_mComponentValues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mComponentValues.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mComponentValues_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································

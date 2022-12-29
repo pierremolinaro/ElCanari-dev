@@ -34,6 +34,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       oldValue.hasDataWarning_property.stopsBeingObserved (by: self.hasDataWarning_property) // Transient property
       oldValue.emptyDrillFileExtension_property.stopsBeingObserved (by: self.emptyDrillFileExtension_property) // Transient property
       oldValue.signatureForERCChecking_property.stopsBeingObserved (by: self.signatureForERCChecking_property) // Transient property
+      oldValue.fileGenerationParameterArray_property.stopsBeingObserved (by: self.mObserversOf_fileGenerationParameterArray) // to Many
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -55,6 +56,7 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
       newValue.hasDataWarning_property.startsToBeObserved (by: self.hasDataWarning_property) // Transient property
       newValue.emptyDrillFileExtension_property.startsToBeObserved (by: self.emptyDrillFileExtension_property) // Transient property
       newValue.signatureForERCChecking_property.startsToBeObserved (by: self.signatureForERCChecking_property) // Transient property
+      newValue.fileGenerationParameterArray_property.startsToBeObserved(by: self.mObserversOf_fileGenerationParameterArray) // to Many
     }
   }
 
@@ -170,24 +172,24 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observable toMany property: fileGenerationParameterArray
   //····················································································································
 
-  private final var mObserversOf_fileGenerationParameterArray = EBWeakEventSet ()
+  private final var mObserversOf_fileGenerationParameterArray = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_fileGenerationParameterArray_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_fileGenerationParameterArray.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.fileGenerationParameterArray_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_fileGenerationParameterArray_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_fileGenerationParameterArray.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.fileGenerationParameterArray_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································

@@ -34,6 +34,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
       oldValue.objectDisplay_property.stopsBeingObserved (by: self.objectDisplay_property) // Transient property
       oldValue.selectionDisplay_property.stopsBeingObserved (by: self.selectionDisplay_property) // Transient property
       oldValue.symbolInSchematic_property.stopsBeingObserved (by: self.symbolInSchematic_property) // Transient property
+      oldValue.mPoints_property.stopsBeingObserved (by: self.mObserversOf_mPoints) // to Many
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -55,6 +56,7 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
       newValue.objectDisplay_property.startsToBeObserved (by: self.objectDisplay_property) // Transient property
       newValue.selectionDisplay_property.startsToBeObserved (by: self.selectionDisplay_property) // Transient property
       newValue.symbolInSchematic_property.startsToBeObserved (by: self.symbolInSchematic_property) // Transient property
+      newValue.mPoints_property.startsToBeObserved(by: self.mObserversOf_mPoints) // to Many
     }
   }
 
@@ -170,24 +172,24 @@ class ReadOnlyObject_ComponentSymbolInProject : ReadOnlyAbstractObjectProperty <
   //   Observable toMany property: mPoints
   //····················································································································
 
-  private final var mObserversOf_mPoints = EBWeakEventSet ()
+  private final var mObserversOf_mPoints = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mPoints_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPoints.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mPoints_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_mPoints_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPoints.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mPoints_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································

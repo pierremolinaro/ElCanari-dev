@@ -27,6 +27,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
       oldValue.mYNumber_property.stopsBeingObserved (by: self.mYNumber_property) // Stored property
       oldValue.mNumberHorizontalAlignment_property.stopsBeingObserved (by: self.mNumberHorizontalAlignment_property) // Stored property
       oldValue.nameShape_property.stopsBeingObserved (by: self.nameShape_property) // Transient property
+      oldValue.mInstances_property.stopsBeingObserved (by: self.mObserversOf_mInstances) // to Many
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -41,6 +42,7 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
       newValue.mYNumber_property.startsToBeObserved (by: self.mYNumber_property) // Stored property
       newValue.mNumberHorizontalAlignment_property.startsToBeObserved (by: self.mNumberHorizontalAlignment_property) // Stored property
       newValue.nameShape_property.startsToBeObserved (by: self.nameShape_property) // Transient property
+      newValue.mInstances_property.startsToBeObserved(by: self.mObserversOf_mInstances) // to Many
     }
   }
 
@@ -114,24 +116,24 @@ class ReadOnlyObject_SymbolPinTypeInDevice : ReadOnlyAbstractObjectProperty <Sym
   //   Observable toMany property: mInstances
   //····················································································································
 
-  private final var mObserversOf_mInstances = EBWeakEventSet ()
+  private final var mObserversOf_mInstances = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mInstances.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mInstances_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_mInstances_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mInstances.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mInstances_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································

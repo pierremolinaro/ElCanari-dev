@@ -43,6 +43,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       oldValue.netUsage_property.stopsBeingObserved (by: self.netUsage_property) // Transient property
       oldValue.netsDescription_property.stopsBeingObserved (by: self.netsDescription_property) // Transient property
       oldValue.netWarningCount_property.stopsBeingObserved (by: self.netWarningCount_property) // Transient property
+      oldValue.mNets_property.stopsBeingObserved (by: self.mObserversOf_mNets) // to Many
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -73,6 +74,7 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
       newValue.netUsage_property.startsToBeObserved (by: self.netUsage_property) // Transient property
       newValue.netsDescription_property.startsToBeObserved (by: self.netsDescription_property) // Transient property
       newValue.netWarningCount_property.startsToBeObserved (by: self.netWarningCount_property) // Transient property
+      newValue.mNets_property.startsToBeObserved(by: self.mObserversOf_mNets) // to Many
     }
   }
 
@@ -242,24 +244,24 @@ class ReadOnlyObject_NetClassInProject : ReadOnlyAbstractObjectProperty <NetClas
   //   Observable toMany property: mNets
   //····················································································································
 
-  private final var mObserversOf_mNets = EBWeakEventSet ()
+  private final var mObserversOf_mNets = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mNets_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mNets.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mNets_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_mNets_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mNets.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mNets_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································

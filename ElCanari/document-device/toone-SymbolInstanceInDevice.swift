@@ -25,6 +25,7 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
       oldValue.selectionDisplay_property.stopsBeingObserved (by: self.selectionDisplay_property) // Transient property
       oldValue.unconnectedPins_property.stopsBeingObserved (by: self.unconnectedPins_property) // Transient property
       oldValue.objectDisplay_property.stopsBeingObserved (by: self.objectDisplay_property) // Transient property
+      oldValue.mPinInstances_property.stopsBeingObserved (by: self.mObserversOf_mPinInstances) // to Many
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -37,6 +38,7 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
       newValue.selectionDisplay_property.startsToBeObserved (by: self.selectionDisplay_property) // Transient property
       newValue.unconnectedPins_property.startsToBeObserved (by: self.unconnectedPins_property) // Transient property
       newValue.objectDisplay_property.startsToBeObserved (by: self.objectDisplay_property) // Transient property
+      newValue.mPinInstances_property.startsToBeObserved(by: self.mObserversOf_mPinInstances) // to Many
     }
   }
 
@@ -98,24 +100,24 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
   //   Observable toMany property: mPinInstances
   //····················································································································
 
-  private final var mObserversOf_mPinInstances = EBWeakEventSet ()
+  private final var mObserversOf_mPinInstances = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mPinInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPinInstances.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mPinInstances_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_mPinInstances_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mPinInstances.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mPinInstances_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································

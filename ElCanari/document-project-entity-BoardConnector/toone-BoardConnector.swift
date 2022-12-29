@@ -45,6 +45,8 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
       oldValue.objectDisplay_property.stopsBeingObserved (by: self.objectDisplay_property) // Transient property
       oldValue.selectionDisplay_property.stopsBeingObserved (by: self.selectionDisplay_property) // Transient property
       oldValue.signatureForERCChecking_property.stopsBeingObserved (by: self.signatureForERCChecking_property) // Transient property
+      oldValue.mTracksP2_property.stopsBeingObserved (by: self.mObserversOf_mTracksP2) // to Many
+      oldValue.mTracksP1_property.stopsBeingObserved (by: self.mObserversOf_mTracksP1) // to Many
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -77,6 +79,8 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
       newValue.objectDisplay_property.startsToBeObserved (by: self.objectDisplay_property) // Transient property
       newValue.selectionDisplay_property.startsToBeObserved (by: self.selectionDisplay_property) // Transient property
       newValue.signatureForERCChecking_property.startsToBeObserved (by: self.signatureForERCChecking_property) // Transient property
+      newValue.mTracksP2_property.startsToBeObserved(by: self.mObserversOf_mTracksP2) // to Many
+      newValue.mTracksP1_property.startsToBeObserved(by: self.mObserversOf_mTracksP1) // to Many
     }
   }
 
@@ -258,48 +262,48 @@ class ReadOnlyObject_BoardConnector : ReadOnlyAbstractObjectProperty <BoardConne
   //   Observable toMany property: mTracksP2
   //····················································································································
 
-  private final var mObserversOf_mTracksP2 = EBWeakEventSet ()
+  private final var mObserversOf_mTracksP2 = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mTracksP2_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mTracksP2.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mTracksP2_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_mTracksP2_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mTracksP2.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mTracksP2_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observable toMany property: mTracksP1
   //····················································································································
 
-  private final var mObserversOf_mTracksP1 = EBWeakEventSet ()
+  private final var mObserversOf_mTracksP1 = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mTracksP1_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mTracksP1.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mTracksP1_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_mTracksP1_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mTracksP1.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mTracksP1_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································

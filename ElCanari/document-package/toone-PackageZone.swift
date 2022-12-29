@@ -38,6 +38,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
       oldValue.selectionDisplay_property.stopsBeingObserved (by: self.selectionDisplay_property) // Transient property
       oldValue.forbiddenPadArray_property.stopsBeingObserved (by: self.forbiddenPadArray_property) // Transient property
       oldValue.emptyForbiddenPadArray_property.stopsBeingObserved (by: self.emptyForbiddenPadArray_property) // Transient property
+      oldValue.forbiddenPadNumbers_property.stopsBeingObserved (by: self.mObserversOf_forbiddenPadNumbers) // to Many
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -63,6 +64,7 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
       newValue.selectionDisplay_property.startsToBeObserved (by: self.selectionDisplay_property) // Transient property
       newValue.forbiddenPadArray_property.startsToBeObserved (by: self.forbiddenPadArray_property) // Transient property
       newValue.emptyForbiddenPadArray_property.startsToBeObserved (by: self.emptyForbiddenPadArray_property) // Transient property
+      newValue.forbiddenPadNumbers_property.startsToBeObserved(by: self.mObserversOf_forbiddenPadNumbers) // to Many
     }
   }
 
@@ -202,24 +204,24 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observable toMany property: forbiddenPadNumbers
   //····················································································································
 
-  private final var mObserversOf_forbiddenPadNumbers = EBWeakEventSet ()
+  private final var mObserversOf_forbiddenPadNumbers = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_forbiddenPadNumbers_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_forbiddenPadNumbers.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.forbiddenPadNumbers_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_forbiddenPadNumbers_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_forbiddenPadNumbers.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.forbiddenPadNumbers_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································

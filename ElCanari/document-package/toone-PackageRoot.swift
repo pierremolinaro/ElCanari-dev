@@ -69,6 +69,11 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
       oldValue.hasModelImage_property.stopsBeingObserved (by: self.hasModelImage_property) // Transient property
       oldValue.masterPadObjectIndexArray_property.stopsBeingObserved (by: self.masterPadObjectIndexArray_property) // Transient property
       oldValue.issues_property.stopsBeingObserved (by: self.issues_property) // Transient property
+      oldValue.mModelImageObjects_property.stopsBeingObserved (by: self.mObserversOf_mModelImageObjects) // to Many
+      oldValue.packageObjects_property.stopsBeingObserved (by: self.mObserversOf_packageObjects) // to Many
+      oldValue.packagePads_property.stopsBeingObserved (by: self.mObserversOf_packagePads) // to Many
+      oldValue.packageSlavePads_property.stopsBeingObserved (by: self.mObserversOf_packageSlavePads) // to Many
+      oldValue.packageZones_property.stopsBeingObserved (by: self.mObserversOf_packageZones) // to Many
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -125,6 +130,11 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
       newValue.hasModelImage_property.startsToBeObserved (by: self.hasModelImage_property) // Transient property
       newValue.masterPadObjectIndexArray_property.startsToBeObserved (by: self.masterPadObjectIndexArray_property) // Transient property
       newValue.issues_property.startsToBeObserved (by: self.issues_property) // Transient property
+      newValue.mModelImageObjects_property.startsToBeObserved(by: self.mObserversOf_mModelImageObjects) // to Many
+      newValue.packageObjects_property.startsToBeObserved(by: self.mObserversOf_packageObjects) // to Many
+      newValue.packagePads_property.startsToBeObserved(by: self.mObserversOf_packagePads) // to Many
+      newValue.packageSlavePads_property.startsToBeObserved(by: self.mObserversOf_packageSlavePads) // to Many
+      newValue.packageZones_property.startsToBeObserved(by: self.mObserversOf_packageZones) // to Many
     }
   }
 
@@ -450,120 +460,120 @@ class ReadOnlyObject_PackageRoot : ReadOnlyAbstractObjectProperty <PackageRoot> 
   //   Observable toMany property: mModelImageObjects
   //····················································································································
 
-  private final var mObserversOf_mModelImageObjects = EBWeakEventSet ()
+  private final var mObserversOf_mModelImageObjects = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mModelImageObjects_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mModelImageObjects.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mModelImageObjects_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_mModelImageObjects_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mModelImageObjects.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mModelImageObjects_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observable toMany property: packageObjects
   //····················································································································
 
-  private final var mObserversOf_packageObjects = EBWeakEventSet ()
+  private final var mObserversOf_packageObjects = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_packageObjects_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_packageObjects.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.packageObjects_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_packageObjects_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_packageObjects.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.packageObjects_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observable toMany property: packagePads
   //····················································································································
 
-  private final var mObserversOf_packagePads = EBWeakEventSet ()
+  private final var mObserversOf_packagePads = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_packagePads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_packagePads.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.packagePads_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_packagePads_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_packagePads.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.packagePads_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observable toMany property: packageSlavePads
   //····················································································································
 
-  private final var mObserversOf_packageSlavePads = EBWeakEventSet ()
+  private final var mObserversOf_packageSlavePads = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_packageSlavePads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_packageSlavePads.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.packageSlavePads_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_packageSlavePads_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_packageSlavePads.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.packageSlavePads_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
   //   Observable toMany property: packageZones
   //····················································································································
 
-  private final var mObserversOf_packageZones = EBWeakEventSet ()
+  private final var mObserversOf_packageZones = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_packageZones_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_packageZones.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.packageZones_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_packageZones_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_packageZones.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.packageZones_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································

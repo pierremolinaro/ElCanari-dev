@@ -28,6 +28,7 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
       oldValue.padNumberDisplay_property.stopsBeingObserved (by: self.padNumberDisplay_property) // Transient property
       oldValue.frontSideFilledBezierPathArray_property.stopsBeingObserved (by: self.frontSideFilledBezierPathArray_property) // Transient property
       oldValue.backSideFilledBezierPathArray_property.stopsBeingObserved (by: self.backSideFilledBezierPathArray_property) // Transient property
+      oldValue.mSlavePads_property.stopsBeingObserved (by: self.mObserversOf_mSlavePads) // to Many
     }
   //--- Add observers to added objects
     if let newValue = self.mWeakInternalValue {
@@ -43,6 +44,7 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
       newValue.padNumberDisplay_property.startsToBeObserved (by: self.padNumberDisplay_property) // Transient property
       newValue.frontSideFilledBezierPathArray_property.startsToBeObserved (by: self.frontSideFilledBezierPathArray_property) // Transient property
       newValue.backSideFilledBezierPathArray_property.startsToBeObserved (by: self.backSideFilledBezierPathArray_property) // Transient property
+      newValue.mSlavePads_property.startsToBeObserved(by: self.mObserversOf_mSlavePads) // to Many
     }
   }
 
@@ -122,24 +124,24 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
   //   Observable toMany property: mSlavePads
   //····················································································································
 
-  private final var mObserversOf_mSlavePads = EBWeakEventSet ()
+  private final var mObserversOf_mSlavePads = EBWeakObserverSetRelay ()
 
   //····················································································································
 
   final func toMany_mSlavePads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mSlavePads.insert (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mSlavePads_property.startsToBeObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
 
   final func toMany_mSlavePads_StopsBeingObserved (by inObserver : EBObserverProtocol) {
     self.mObserversOf_mSlavePads.remove (inObserver)
-    if let object = self.propval {
+    /* if let object = self.propval {
       object.mSlavePads_property.stopsBeingObserved (by: inObserver)
-    }
+    } */
   }
 
   //····················································································································
