@@ -18,11 +18,11 @@ import AppKit
 //  Moins volumineux avec EBSwiftBaseObject, mais plus long à l'ouverture
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBManagedObject : EBObjcBaseObject, EBSignatureObserverProtocol {
+class EBManagedObject : EBSwiftBaseObject, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  // final var className : String { return String (describing: type (of: self)) } // Required when inherits from EBSwiftBaseObject
+  final var className : String { return String (describing: type (of: self)) } // Required when inherits from EBSwiftBaseObject
 
   //····················································································································
 
