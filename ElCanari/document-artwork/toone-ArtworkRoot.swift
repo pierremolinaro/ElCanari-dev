@@ -176,26 +176,26 @@ class ReadOnlyObject_ArtworkRoot : ReadOnlyAbstractObjectProperty <ArtworkRoot> 
   //   Observable toMany property: fileGenerationParameterArray
   //····················································································································
 
-  private final var mObserversOf_fileGenerationParameterArray : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_fileGenerationParameterArray : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_fileGenerationParameterArray_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_fileGenerationParameterArray {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.fileGenerationParameterArray_property.startsToBeObserved (by: relay)
       self.mObserversOf_fileGenerationParameterArray = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_fileGenerationParameterArray_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_fileGenerationParameterArray?.remove (observer: inObserver)
+    self.mObserversOf_fileGenerationParameterArray?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

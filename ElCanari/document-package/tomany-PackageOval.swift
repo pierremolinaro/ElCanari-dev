@@ -99,348 +99,348 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   //   Observers of 'y' stored property
   //····················································································································
 
-  private final var mObserversOf_y : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_y : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_y_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_y {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.y_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_y = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_y_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_y?.remove (observer: inObserver)
+    self.mObserversOf_y?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'width' stored property
   //····················································································································
 
-  private final var mObserversOf_width : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_width : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_width_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_width {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.width_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_width = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_width_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_width?.remove (observer: inObserver)
+    self.mObserversOf_width?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'height' stored property
   //····················································································································
 
-  private final var mObserversOf_height : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_height : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_height_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_height {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.height_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_height = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_height_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_height?.remove (observer: inObserver)
+    self.mObserversOf_height?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'xUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_xUnit : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_xUnit : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_xUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_xUnit {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.xUnit_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_xUnit = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_xUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_xUnit?.remove (observer: inObserver)
+    self.mObserversOf_xUnit?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'yUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_yUnit : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_yUnit : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_yUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_yUnit {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.yUnit_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_yUnit = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_yUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_yUnit?.remove (observer: inObserver)
+    self.mObserversOf_yUnit?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'widthUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_widthUnit : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_widthUnit : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_widthUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_widthUnit {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.widthUnit_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_widthUnit = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_widthUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_widthUnit?.remove (observer: inObserver)
+    self.mObserversOf_widthUnit?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'heightUnit' stored property
   //····················································································································
 
-  private final var mObserversOf_heightUnit : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_heightUnit : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_heightUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_heightUnit {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.heightUnit_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_heightUnit = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_heightUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_heightUnit?.remove (observer: inObserver)
+    self.mObserversOf_heightUnit?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
 
-  private final var mObserversOf_x : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_x : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_x_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_x {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.x_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_x = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_x_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_x?.remove (observer: inObserver)
+    self.mObserversOf_x?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'strokeBezierPath' transient property
   //····················································································································
 
-  private final var mObserversOf_strokeBezierPath : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_strokeBezierPath : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_strokeBezierPath_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_strokeBezierPath {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.strokeBezierPath_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_strokeBezierPath = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_strokeBezierPath_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_strokeBezierPath?.remove (observer: inObserver)
+    self.mObserversOf_strokeBezierPath?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_objectDisplay : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_objectDisplay : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_objectDisplay {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.objectDisplay_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_objectDisplay = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_objectDisplay?.remove (observer: inObserver)
+    self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_selectionDisplay : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_selectionDisplay : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_selectionDisplay = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_selectionDisplay?.remove (observer: inObserver)
+    self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var mObserversOf_issues : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_issues : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_issues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_issues {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.issues_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_issues = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_issues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_issues?.remove (observer: inObserver)
+    self.mObserversOf_issues?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

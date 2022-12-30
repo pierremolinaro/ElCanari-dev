@@ -2269,8 +2269,6 @@
 		CF8A8A88275A44A700825DF9 /* SegmentForFontCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A8A82275A44A700825DF9 /* SegmentForFontCharacter.swift */; };
 		CF8BE73A23510FEC00F95B3A /* EBObservedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE73623510FEB00F95B3A /* EBObservedObject.swift */; };
 		CF8BE73B23510FEC00F95B3A /* EBObservedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE73623510FEB00F95B3A /* EBObservedObject.swift */; };
-		CF8BE73C23510FEC00F95B3A /* EBWeakObserverSetRelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE73723510FEB00F95B3A /* EBWeakObserverSetRelay.swift */; };
-		CF8BE73D23510FEC00F95B3A /* EBWeakObserverSetRelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE73723510FEB00F95B3A /* EBWeakObserverSetRelay.swift */; };
 		CF8BE73E23510FEC00F95B3A /* EBModelNotifierEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE73823510FEC00F95B3A /* EBModelNotifierEvent.swift */; };
 		CF8BE73F23510FEC00F95B3A /* EBModelNotifierEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE73823510FEC00F95B3A /* EBModelNotifierEvent.swift */; };
 		CF8BE747235112CC00F95B3A /* ReadOnlyAbstractGenericRelationshipProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE742235112CB00F95B3A /* ReadOnlyAbstractGenericRelationshipProperty.swift */; };
@@ -2818,7 +2816,6 @@
 		CF9C644B25CABE5C00A00D5C /* ElCanariCursors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAFA54224F26F2C002D48BE /* ElCanariCursors.swift */; };
 		CF9C644C25CABE5C00A00D5C /* transient-ComponentInProject-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7B3B233A25EC0060A97A /* transient-ComponentInProject-objectDisplay.swift */; };
 		CF9C644D25CABE5C00A00D5C /* tomany-PackageZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA42FE2229AEB68000AA8C8 /* tomany-PackageZone.swift */; };
-		CF9C644F25CABE5C00A00D5C /* EBWeakObserverSetRelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BE73723510FEB00F95B3A /* EBWeakObserverSetRelay.swift */; };
 		CF9C645025CABE5C00A00D5C /* enum-SchematicSheetOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB1DB082282D31F005F9811 /* enum-SchematicSheetOrientation.swift */; };
 		CF9C645425CABE5C00A00D5C /* phase7-performLibraryOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD3AD221FC91A000DE503C /* phase7-performLibraryOperations.swift */; };
 		CF9C645625CABE5C00A00D5C /* transient-BoardTrack-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB7B02233A24BD0060A97A /* transient-BoardTrack-selectionDisplay.swift */; };
@@ -5513,7 +5510,6 @@
 		CF8A8A81275A44A700825DF9 /* customStore-characters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "customStore-characters.swift"; sourceTree = "<group>"; };
 		CF8A8A82275A44A700825DF9 /* SegmentForFontCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentForFontCharacter.swift; sourceTree = "<group>"; };
 		CF8BE73623510FEB00F95B3A /* EBObservedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBObservedObject.swift; sourceTree = "<group>"; };
-		CF8BE73723510FEB00F95B3A /* EBWeakObserverSetRelay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBWeakObserverSetRelay.swift; sourceTree = "<group>"; };
 		CF8BE73823510FEC00F95B3A /* EBModelNotifierEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBModelNotifierEvent.swift; sourceTree = "<group>"; };
 		CF8BE742235112CB00F95B3A /* ReadOnlyAbstractGenericRelationshipProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadOnlyAbstractGenericRelationshipProperty.swift; sourceTree = "<group>"; };
 		CF8BE743235112CB00F95B3A /* func-checkOutletConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "func-checkOutletConnection.swift"; sourceTree = "<group>"; };
@@ -6906,7 +6902,6 @@
 				CF07781123521CB800F56EAB /* EBSelection.swift */,
 				CFEDE5B51B4677C500036ACF /* EBUndoManager.swift */,
 				CF0777D12352152F00F56EAB /* EBValidationResult.swift */,
-				CF8BE73723510FEB00F95B3A /* EBWeakObserverSetRelay.swift */,
 				CFAE4B212927893D00458900 /* EBWeakReferenceArray-Set.swift */,
 				CF0777F623521A4E00F56EAB /* EnumPropertyProtocol.swift */,
 				CF0777A92352100E00F56EAB /* extension-Bool-EBPropertyProtocol.swift */,
@@ -9945,7 +9940,6 @@
 				CFB82C10276B89E400BAD56E /* AutoLayoutTableViewDelegate.swift in Sources */,
 				CFEB7B60233A25EC0060A97A /* transient-ComponentInProject-objectDisplay.swift in Sources */,
 				CFB1F9272940EDDB00C1E120 /* action-AutoLayoutProjectDocument-prependNewInsertComponentInBoardInspectorAction.swift in Sources */,
-				CF8BE73C23510FEC00F95B3A /* EBWeakObserverSetRelay.swift in Sources */,
 				CFB1DB272282D31F005F9811 /* enum-SchematicSheetOrientation.swift in Sources */,
 				CF39CCE1268CC0B4004971F9 /* action-AutoLayoutDeviceDocument-updateSelectedSymbols.swift in Sources */,
 				CF711D9A275E1B2A00280069 /* tomany-NetClassInProject.swift in Sources */,
@@ -11491,7 +11485,6 @@
 				CF22F220275A73EE009C6FAC /* transient-BoardModel-frontComponentValueSegments.swift in Sources */,
 				CF355921279D9F3B000BFC9B /* transient-AutoLayoutProjectDocument-generatedFileCountString.swift in Sources */,
 				CFEB7B61233A25EC0060A97A /* transient-ComponentInProject-objectDisplay.swift in Sources */,
-				CF8BE73D23510FEC00F95B3A /* EBWeakObserverSetRelay.swift in Sources */,
 				CF39CCE2268CC0B4004971F9 /* action-AutoLayoutDeviceDocument-updateSelectedSymbols.swift in Sources */,
 				CFF79DEA2846174000C7BEE3 /* transient-BoardObject-displayFrontRestrictRectangles.swift in Sources */,
 				CFB1F8F52940EDDB00C1E120 /* action-AutoLayoutProjectDocument-addComponentFromFileLibraryAction.swift in Sources */,
@@ -13013,7 +13006,6 @@
 				CF9C644C25CABE5C00A00D5C /* transient-ComponentInProject-objectDisplay.swift in Sources */,
 				CF9C644D25CABE5C00A00D5C /* tomany-PackageZone.swift in Sources */,
 				CFB4C0D32794674800C509A9 /* AutoLayoutVersionField.swift in Sources */,
-				CF9C644F25CABE5C00A00D5C /* EBWeakObserverSetRelay.swift in Sources */,
 				CFDE7B38276633A800762C03 /* transient-AutoLayoutProjectDocument-componentCount.swift in Sources */,
 				CF22F1D9275A73ED009C6FAC /* transient-BoardModel-backLegendTextsBezierPaths.swift in Sources */,
 				CF711D9C275E1B2A00280069 /* tomany-NetClassInProject.swift in Sources */,

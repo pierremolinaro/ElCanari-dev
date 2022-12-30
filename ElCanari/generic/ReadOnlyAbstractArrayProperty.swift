@@ -42,7 +42,7 @@ import AppKit
 //    ReadOnlyAbstractArrayProperty
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyAbstractArrayProperty <T : ObjectIndexProtocol> : ReadOnlyAbstractGenericRelationshipProperty, EBObserverProtocol {
+class ReadOnlyAbstractArrayProperty <T : ObjectIndexProtocol> : ReadOnlyAbstractGenericRelationshipProperty {
 
   //····················································································································
   // Abstract methods

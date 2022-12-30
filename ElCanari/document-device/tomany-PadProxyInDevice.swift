@@ -57,145 +57,145 @@ class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxy
   //   Observers of 'mPinInstanceName' stored property
   //····················································································································
 
-  private final var mObserversOf_mPinInstanceName : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mPinInstanceName : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mPinInstanceName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mPinInstanceName {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mPinInstanceName_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_mPinInstanceName = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mPinInstanceName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mPinInstanceName?.remove (observer: inObserver)
+    self.mObserversOf_mPinInstanceName?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'mPadName' stored property
   //····················································································································
 
-  private final var mObserversOf_mPadName : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mPadName : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mPadName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mPadName {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mPadName_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_mPadName = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mPadName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mPadName?.remove (observer: inObserver)
+    self.mObserversOf_mPadName?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'mIsNC' stored property
   //····················································································································
 
-  private final var mObserversOf_mIsNC : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mIsNC : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mIsNC_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mIsNC {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mIsNC_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_mIsNC = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mIsNC_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mIsNC?.remove (observer: inObserver)
+    self.mObserversOf_mIsNC?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'isConnected' transient property
   //····················································································································
 
-  private final var mObserversOf_isConnected : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_isConnected : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_isConnected_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_isConnected {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.isConnected_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_isConnected = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_isConnected_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_isConnected?.remove (observer: inObserver)
+    self.mObserversOf_isConnected?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'symbolName' transient property
   //····················································································································
 
-  private final var mObserversOf_symbolName : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_symbolName : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_symbolName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_symbolName {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.symbolName_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_symbolName = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_symbolName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_symbolName?.remove (observer: inObserver)
+    self.mObserversOf_symbolName?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

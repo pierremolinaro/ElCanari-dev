@@ -201,841 +201,841 @@ class ReadOnlyArrayOf_BoardObject : ReadOnlyAbstractArrayProperty <BoardObject> 
   //   Observers of 'isPlacedInBoard' transient property
   //····················································································································
 
-  private final var mObserversOf_isPlacedInBoard : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_isPlacedInBoard : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_isPlacedInBoard_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_isPlacedInBoard {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.isPlacedInBoard_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_isPlacedInBoard = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_isPlacedInBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_isPlacedInBoard?.remove (observer: inObserver)
+    self.mObserversOf_isPlacedInBoard?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var mObserversOf_issues : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_issues : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_issues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_issues {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.issues_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_issues = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_issues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_issues?.remove (observer: inObserver)
+    self.mObserversOf_issues?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'isVia' transient property
   //····················································································································
 
-  private final var mObserversOf_isVia : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_isVia : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_isVia_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_isVia {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.isVia_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_isVia = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_isVia_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_isVia?.remove (observer: inObserver)
+    self.mObserversOf_isVia?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'trackLengthInCanariUnit' transient property
   //····················································································································
 
-  private final var mObserversOf_trackLengthInCanariUnit : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_trackLengthInCanariUnit : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_trackLengthInCanariUnit_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_trackLengthInCanariUnit {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.trackLengthInCanariUnit_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_trackLengthInCanariUnit = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_trackLengthInCanariUnit_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_trackLengthInCanariUnit?.remove (observer: inObserver)
+    self.mObserversOf_trackLengthInCanariUnit?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'signatureForERCChecking' transient property
   //····················································································································
 
-  private final var mObserversOf_signatureForERCChecking : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_signatureForERCChecking : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_signatureForERCChecking_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_signatureForERCChecking {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.signatureForERCChecking_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_signatureForERCChecking = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_signatureForERCChecking_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_signatureForERCChecking?.remove (observer: inObserver)
+    self.mObserversOf_signatureForERCChecking?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'netNameAndPadLocation' transient property
   //····················································································································
 
-  private final var mObserversOf_netNameAndPadLocation : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_netNameAndPadLocation : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_netNameAndPadLocation_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_netNameAndPadLocation {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.netNameAndPadLocation_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_netNameAndPadLocation = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_netNameAndPadLocation_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_netNameAndPadLocation?.remove (observer: inObserver)
+    self.mObserversOf_netNameAndPadLocation?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'componentName' transient property
   //····················································································································
 
-  private final var mObserversOf_componentName : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_componentName : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_componentName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_componentName {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.componentName_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_componentName = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_componentName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_componentName?.remove (observer: inObserver)
+    self.mObserversOf_componentName?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'displayFrontLegendForBoard' transient property
   //····················································································································
 
-  private final var mObserversOf_displayFrontLegendForBoard : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_displayFrontLegendForBoard : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_displayFrontLegendForBoard_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_displayFrontLegendForBoard {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.displayFrontLegendForBoard_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_displayFrontLegendForBoard = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_displayFrontLegendForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_displayFrontLegendForBoard?.remove (observer: inObserver)
+    self.mObserversOf_displayFrontLegendForBoard?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'displayBackLegendForBoard' transient property
   //····················································································································
 
-  private final var mObserversOf_displayBackLegendForBoard : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_displayBackLegendForBoard : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_displayBackLegendForBoard_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_displayBackLegendForBoard {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.displayBackLegendForBoard_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_displayBackLegendForBoard = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_displayBackLegendForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_displayBackLegendForBoard?.remove (observer: inObserver)
+    self.mObserversOf_displayBackLegendForBoard?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'displayFrontLayoutForBoard' transient property
   //····················································································································
 
-  private final var mObserversOf_displayFrontLayoutForBoard : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_displayFrontLayoutForBoard : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_displayFrontLayoutForBoard_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_displayFrontLayoutForBoard {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.displayFrontLayoutForBoard_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_displayFrontLayoutForBoard = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_displayFrontLayoutForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_displayFrontLayoutForBoard?.remove (observer: inObserver)
+    self.mObserversOf_displayFrontLayoutForBoard?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'displayBackLayoutForBoard' transient property
   //····················································································································
 
-  private final var mObserversOf_displayBackLayoutForBoard : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_displayBackLayoutForBoard : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_displayBackLayoutForBoard_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_displayBackLayoutForBoard {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.displayBackLayoutForBoard_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_displayBackLayoutForBoard = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_displayBackLayoutForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_displayBackLayoutForBoard?.remove (observer: inObserver)
+    self.mObserversOf_displayBackLayoutForBoard?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'displayInner1LayoutForBoard' transient property
   //····················································································································
 
-  private final var mObserversOf_displayInner1LayoutForBoard : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_displayInner1LayoutForBoard : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_displayInner1LayoutForBoard_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_displayInner1LayoutForBoard {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.displayInner1LayoutForBoard_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_displayInner1LayoutForBoard = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_displayInner1LayoutForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_displayInner1LayoutForBoard?.remove (observer: inObserver)
+    self.mObserversOf_displayInner1LayoutForBoard?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'displayInner2LayoutForBoard' transient property
   //····················································································································
 
-  private final var mObserversOf_displayInner2LayoutForBoard : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_displayInner2LayoutForBoard : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_displayInner2LayoutForBoard_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_displayInner2LayoutForBoard {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.displayInner2LayoutForBoard_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_displayInner2LayoutForBoard = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_displayInner2LayoutForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_displayInner2LayoutForBoard?.remove (observer: inObserver)
+    self.mObserversOf_displayInner2LayoutForBoard?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'displayInner3LayoutForBoard' transient property
   //····················································································································
 
-  private final var mObserversOf_displayInner3LayoutForBoard : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_displayInner3LayoutForBoard : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_displayInner3LayoutForBoard_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_displayInner3LayoutForBoard {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.displayInner3LayoutForBoard_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_displayInner3LayoutForBoard = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_displayInner3LayoutForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_displayInner3LayoutForBoard?.remove (observer: inObserver)
+    self.mObserversOf_displayInner3LayoutForBoard?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'displayInner4LayoutForBoard' transient property
   //····················································································································
 
-  private final var mObserversOf_displayInner4LayoutForBoard : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_displayInner4LayoutForBoard : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_displayInner4LayoutForBoard_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_displayInner4LayoutForBoard {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.displayInner4LayoutForBoard_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_displayInner4LayoutForBoard = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_displayInner4LayoutForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_displayInner4LayoutForBoard?.remove (observer: inObserver)
+    self.mObserversOf_displayInner4LayoutForBoard?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'displayFrontPadsForBoard' transient property
   //····················································································································
 
-  private final var mObserversOf_displayFrontPadsForBoard : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_displayFrontPadsForBoard : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_displayFrontPadsForBoard_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_displayFrontPadsForBoard {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.displayFrontPadsForBoard_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_displayFrontPadsForBoard = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_displayFrontPadsForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_displayFrontPadsForBoard?.remove (observer: inObserver)
+    self.mObserversOf_displayFrontPadsForBoard?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'displayBackPadsForBoard' transient property
   //····················································································································
 
-  private final var mObserversOf_displayBackPadsForBoard : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_displayBackPadsForBoard : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_displayBackPadsForBoard_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_displayBackPadsForBoard {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.displayBackPadsForBoard_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_displayBackPadsForBoard = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_displayBackPadsForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_displayBackPadsForBoard?.remove (observer: inObserver)
+    self.mObserversOf_displayBackPadsForBoard?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'displayPadNumbersForBoard' transient property
   //····················································································································
 
-  private final var mObserversOf_displayPadNumbersForBoard : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_displayPadNumbersForBoard : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_displayPadNumbersForBoard_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_displayPadNumbersForBoard {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.displayPadNumbersForBoard_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_displayPadNumbersForBoard = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_displayPadNumbersForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_displayPadNumbersForBoard?.remove (observer: inObserver)
+    self.mObserversOf_displayPadNumbersForBoard?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'displayFrontRestrictRectangles' transient property
   //····················································································································
 
-  private final var mObserversOf_displayFrontRestrictRectangles : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_displayFrontRestrictRectangles : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_displayFrontRestrictRectangles_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_displayFrontRestrictRectangles {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.displayFrontRestrictRectangles_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_displayFrontRestrictRectangles = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_displayFrontRestrictRectangles_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_displayFrontRestrictRectangles?.remove (observer: inObserver)
+    self.mObserversOf_displayFrontRestrictRectangles?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'displayBackRestrictRectangles' transient property
   //····················································································································
 
-  private final var mObserversOf_displayBackRestrictRectangles : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_displayBackRestrictRectangles : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_displayBackRestrictRectangles_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_displayBackRestrictRectangles {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.displayBackRestrictRectangles_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_displayBackRestrictRectangles = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_displayBackRestrictRectangles_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_displayBackRestrictRectangles?.remove (observer: inObserver)
+    self.mObserversOf_displayBackRestrictRectangles?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'displayInner1RestrictRectangles' transient property
   //····················································································································
 
-  private final var mObserversOf_displayInner1RestrictRectangles : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_displayInner1RestrictRectangles : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_displayInner1RestrictRectangles_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_displayInner1RestrictRectangles {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.displayInner1RestrictRectangles_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_displayInner1RestrictRectangles = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_displayInner1RestrictRectangles_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_displayInner1RestrictRectangles?.remove (observer: inObserver)
+    self.mObserversOf_displayInner1RestrictRectangles?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'displayInner2RestrictRectangles' transient property
   //····················································································································
 
-  private final var mObserversOf_displayInner2RestrictRectangles : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_displayInner2RestrictRectangles : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_displayInner2RestrictRectangles_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_displayInner2RestrictRectangles {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.displayInner2RestrictRectangles_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_displayInner2RestrictRectangles = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_displayInner2RestrictRectangles_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_displayInner2RestrictRectangles?.remove (observer: inObserver)
+    self.mObserversOf_displayInner2RestrictRectangles?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'displayInner3RestrictRectangles' transient property
   //····················································································································
 
-  private final var mObserversOf_displayInner3RestrictRectangles : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_displayInner3RestrictRectangles : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_displayInner3RestrictRectangles_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_displayInner3RestrictRectangles {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.displayInner3RestrictRectangles_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_displayInner3RestrictRectangles = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_displayInner3RestrictRectangles_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_displayInner3RestrictRectangles?.remove (observer: inObserver)
+    self.mObserversOf_displayInner3RestrictRectangles?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'displayInner4RestrictRectangles' transient property
   //····················································································································
 
-  private final var mObserversOf_displayInner4RestrictRectangles : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_displayInner4RestrictRectangles : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_displayInner4RestrictRectangles_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_displayInner4RestrictRectangles {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.displayInner4RestrictRectangles_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_displayInner4RestrictRectangles = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_displayInner4RestrictRectangles_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_displayInner4RestrictRectangles?.remove (observer: inObserver)
+    self.mObserversOf_displayInner4RestrictRectangles?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'packageDrawingWidthMultpliedByTenForBoard' transient property
   //····················································································································
 
-  private final var mObserversOf_packageDrawingWidthMultpliedByTenForBoard : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_packageDrawingWidthMultpliedByTenForBoard : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_packageDrawingWidthMultpliedByTenForBoard_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_packageDrawingWidthMultpliedByTenForBoard {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.packageDrawingWidthMultpliedByTenForBoard_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_packageDrawingWidthMultpliedByTenForBoard = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_packageDrawingWidthMultpliedByTenForBoard_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_packageDrawingWidthMultpliedByTenForBoard?.remove (observer: inObserver)
+    self.mObserversOf_packageDrawingWidthMultpliedByTenForBoard?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_selectionDisplay : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_selectionDisplay : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_selectionDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_selectionDisplay {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.selectionDisplay_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_selectionDisplay = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_selectionDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_selectionDisplay?.remove (observer: inObserver)
+    self.mObserversOf_selectionDisplay?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private final var mObserversOf_objectDisplay : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_objectDisplay : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_objectDisplay_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_objectDisplay {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.objectDisplay_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_objectDisplay = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_objectDisplay_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_objectDisplay?.remove (observer: inObserver)
+    self.mObserversOf_objectDisplay?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'errorOrWarningIssueSize' transient property
   //····················································································································
 
-  private final var mObserversOf_errorOrWarningIssueSize : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_errorOrWarningIssueSize : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_errorOrWarningIssueSize_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_errorOrWarningIssueSize {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.errorOrWarningIssueSize_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_errorOrWarningIssueSize = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_errorOrWarningIssueSize_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_errorOrWarningIssueSize?.remove (observer: inObserver)
+    self.mObserversOf_errorOrWarningIssueSize?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'trackSide' transient property
   //····················································································································
 
-  private final var mObserversOf_trackSide : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_trackSide : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_trackSide_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_trackSide {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.trackSide_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_trackSide = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_trackSide_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_trackSide?.remove (observer: inObserver)
+    self.mObserversOf_trackSide?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

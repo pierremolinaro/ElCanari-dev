@@ -8,7 +8,7 @@ import AppKit
 //   EBGenericComputedEnumProperty <T : EnumPropertyProtocol>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBGenericComputedEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumProperty <T>, EBObserverProtocol {
+final class EBGenericComputedEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumProperty <T> {
 
   //····················································································································
 

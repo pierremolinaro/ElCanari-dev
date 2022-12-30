@@ -128,26 +128,26 @@ class ReadOnlyObject_MasterPadInDevice : ReadOnlyAbstractObjectProperty <MasterP
   //   Observable toMany property: mSlavePads
   //····················································································································
 
-  private final var mObserversOf_mSlavePads : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mSlavePads : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mSlavePads_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mSlavePads {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.mSlavePads_property.startsToBeObserved (by: relay)
       self.mObserversOf_mSlavePads = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mSlavePads_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mSlavePads?.remove (observer: inObserver)
+    self.mObserversOf_mSlavePads?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

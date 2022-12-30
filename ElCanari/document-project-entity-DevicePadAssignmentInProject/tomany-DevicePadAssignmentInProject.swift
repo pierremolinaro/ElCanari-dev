@@ -45,87 +45,87 @@ class ReadOnlyArrayOf_DevicePadAssignmentInProject : ReadOnlyAbstractArrayProper
   //   Observers of 'mPadName' stored property
   //····················································································································
 
-  private final var mObserversOf_mPadName : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mPadName : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mPadName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mPadName {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mPadName_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_mPadName = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mPadName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mPadName?.remove (observer: inObserver)
+    self.mObserversOf_mPadName?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'pinPadAssignment' transient property
   //····················································································································
 
-  private final var mObserversOf_pinPadAssignment : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_pinPadAssignment : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_pinPadAssignment_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_pinPadAssignment {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.pinPadAssignment_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_pinPadAssignment = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_pinPadAssignment_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_pinPadAssignment?.remove (observer: inObserver)
+    self.mObserversOf_pinPadAssignment?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'descriptor' transient property
   //····················································································································
 
-  private final var mObserversOf_descriptor : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_descriptor : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_descriptor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_descriptor {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.descriptor_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_descriptor = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_descriptor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_descriptor?.remove (observer: inObserver)
+    self.mObserversOf_descriptor?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

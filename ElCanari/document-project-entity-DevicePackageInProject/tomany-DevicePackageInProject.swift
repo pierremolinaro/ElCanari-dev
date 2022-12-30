@@ -45,87 +45,87 @@ class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <De
   //   Observers of 'mPackageName' stored property
   //····················································································································
 
-  private final var mObserversOf_mPackageName : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mPackageName : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mPackageName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mPackageName {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mPackageName_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_mPackageName = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mPackageName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mPackageName?.remove (observer: inObserver)
+    self.mObserversOf_mPackageName?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'mStrokeBezierPath' stored property
   //····················································································································
 
-  private final var mObserversOf_mStrokeBezierPath : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mStrokeBezierPath : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mStrokeBezierPath_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mStrokeBezierPath {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mStrokeBezierPath_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_mStrokeBezierPath = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mStrokeBezierPath_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mStrokeBezierPath?.remove (observer: inObserver)
+    self.mObserversOf_mStrokeBezierPath?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'packagePadDictionary' transient property
   //····················································································································
 
-  private final var mObserversOf_packagePadDictionary : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_packagePadDictionary : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_packagePadDictionary_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_packagePadDictionary {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.packagePadDictionary_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_packagePadDictionary = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_packagePadDictionary_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_packagePadDictionary?.remove (observer: inObserver)
+    self.mObserversOf_packagePadDictionary?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

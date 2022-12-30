@@ -8,7 +8,7 @@ import AppKit
 //   EBGenericTransientProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBGenericTransientProperty <T : Equatable> : EBObservableProperty <T>, EBObserverProtocol {
+class EBGenericTransientProperty <T : Equatable> : EBObservableProperty <T> {
 
   //····················································································································
 

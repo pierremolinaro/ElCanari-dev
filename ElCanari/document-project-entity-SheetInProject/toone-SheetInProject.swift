@@ -86,52 +86,52 @@ class ReadOnlyObject_SheetInProject : ReadOnlyAbstractObjectProperty <SheetInPro
   //   Observable toMany property: mObjects
   //····················································································································
 
-  private final var mObserversOf_mObjects : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mObjects : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mObjects_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mObjects {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.mObjects_property.startsToBeObserved (by: relay)
       self.mObserversOf_mObjects = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mObjects_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mObjects?.remove (observer: inObserver)
+    self.mObserversOf_mObjects?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: mPoints
   //····················································································································
 
-  private final var mObserversOf_mPoints : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mPoints : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mPoints_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mPoints {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.mPoints_property.startsToBeObserved (by: relay)
       self.mObserversOf_mPoints = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mPoints_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mPoints?.remove (observer: inObserver)
+    self.mObserversOf_mPoints?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

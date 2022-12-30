@@ -310,52 +310,52 @@ class ReadOnlyObject_MergerRoot : ReadOnlyAbstractObjectProperty <MergerRoot> {
   //   Observable toMany property: boardModels
   //····················································································································
 
-  private final var mObserversOf_boardModels : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_boardModels : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_boardModels_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_boardModels {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.boardModels_property.startsToBeObserved (by: relay)
       self.mObserversOf_boardModels = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_boardModels_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_boardModels?.remove (observer: inObserver)
+    self.mObserversOf_boardModels?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: boardInstances
   //····················································································································
 
-  private final var mObserversOf_boardInstances : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_boardInstances : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_boardInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_boardInstances {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.boardInstances_property.startsToBeObserved (by: relay)
       self.mObserversOf_boardInstances = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_boardInstances_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_boardInstances?.remove (observer: inObserver)
+    self.mObserversOf_boardInstances?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

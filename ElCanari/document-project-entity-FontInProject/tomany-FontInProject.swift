@@ -93,319 +93,319 @@ class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProje
   //   Observers of 'mNominalSize' stored property
   //····················································································································
 
-  private final var mObserversOf_mNominalSize : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mNominalSize : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mNominalSize_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mNominalSize {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mNominalSize_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_mNominalSize = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mNominalSize_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mNominalSize?.remove (observer: inObserver)
+    self.mObserversOf_mNominalSize?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'mFontName' stored property
   //····················································································································
 
-  private final var mObserversOf_mFontName : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mFontName : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mFontName_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mFontName {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mFontName_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_mFontName = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mFontName_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mFontName?.remove (observer: inObserver)
+    self.mObserversOf_mFontName?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'mFontVersion' stored property
   //····················································································································
 
-  private final var mObserversOf_mFontVersion : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mFontVersion : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mFontVersion_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mFontVersion {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mFontVersion_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_mFontVersion = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mFontVersion_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mFontVersion?.remove (observer: inObserver)
+    self.mObserversOf_mFontVersion?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'mDescriptiveString' stored property
   //····················································································································
 
-  private final var mObserversOf_mDescriptiveString : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mDescriptiveString : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mDescriptiveString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mDescriptiveString {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mDescriptiveString_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_mDescriptiveString = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mDescriptiveString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mDescriptiveString?.remove (observer: inObserver)
+    self.mObserversOf_mDescriptiveString?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'versionString' transient property
   //····················································································································
 
-  private final var mObserversOf_versionString : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_versionString : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_versionString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_versionString {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.versionString_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_versionString = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_versionString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_versionString?.remove (observer: inObserver)
+    self.mObserversOf_versionString?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'sizeString' transient property
   //····················································································································
 
-  private final var mObserversOf_sizeString : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_sizeString : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_sizeString_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_sizeString {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.sizeString_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_sizeString = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_sizeString_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_sizeString?.remove (observer: inObserver)
+    self.mObserversOf_sizeString?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'descriptor' transient property
   //····················································································································
 
-  private final var mObserversOf_descriptor : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_descriptor : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_descriptor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_descriptor {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.descriptor_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_descriptor = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_descriptor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_descriptor?.remove (observer: inObserver)
+    self.mObserversOf_descriptor?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'textCount' transient property
   //····················································································································
 
-  private final var mObserversOf_textCount : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_textCount : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_textCount_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_textCount {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.textCount_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_textCount = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_textCount_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_textCount?.remove (observer: inObserver)
+    self.mObserversOf_textCount?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'canRemoveFont' transient property
   //····················································································································
 
-  private final var mObserversOf_canRemoveFont : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_canRemoveFont : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_canRemoveFont_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_canRemoveFont {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.canRemoveFont_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_canRemoveFont = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_canRemoveFont_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_canRemoveFont?.remove (observer: inObserver)
+    self.mObserversOf_canRemoveFont?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'componentNamesCount' transient property
   //····················································································································
 
-  private final var mObserversOf_componentNamesCount : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_componentNamesCount : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_componentNamesCount_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_componentNamesCount {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.componentNamesCount_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_componentNamesCount = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_componentNamesCount_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_componentNamesCount?.remove (observer: inObserver)
+    self.mObserversOf_componentNamesCount?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'componentValuesCount' transient property
   //····················································································································
 
-  private final var mObserversOf_componentValuesCount : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_componentValuesCount : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_componentValuesCount_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_componentValuesCount {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.componentValuesCount_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_componentValuesCount = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_componentValuesCount_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_componentValuesCount?.remove (observer: inObserver)
+    self.mObserversOf_componentValuesCount?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

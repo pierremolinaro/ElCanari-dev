@@ -110,52 +110,52 @@ class ReadOnlyObject_SymbolTypeInDevice : ReadOnlyAbstractObjectProperty <Symbol
   //   Observable toMany property: mInstances
   //····················································································································
 
-  private final var mObserversOf_mInstances : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mInstances : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mInstances {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.mInstances_property.startsToBeObserved (by: relay)
       self.mObserversOf_mInstances = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mInstances_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mInstances?.remove (observer: inObserver)
+    self.mObserversOf_mInstances?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: mPinTypes
   //····················································································································
 
-  private final var mObserversOf_mPinTypes : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mPinTypes : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mPinTypes_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mPinTypes {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.mPinTypes_property.startsToBeObserved (by: relay)
       self.mObserversOf_mPinTypes = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mPinTypes_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mPinTypes?.remove (observer: inObserver)
+    self.mObserversOf_mPinTypes?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

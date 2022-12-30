@@ -256,130 +256,130 @@ class ReadOnlyObject_DeviceRoot : ReadOnlyAbstractObjectProperty <DeviceRoot> {
   //   Observable toMany property: mDocs
   //····················································································································
 
-  private final var mObserversOf_mDocs : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mDocs : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mDocs_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mDocs {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.mDocs_property.startsToBeObserved (by: relay)
       self.mObserversOf_mDocs = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mDocs_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mDocs?.remove (observer: inObserver)
+    self.mObserversOf_mDocs?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: mSymbolInstances
   //····················································································································
 
-  private final var mObserversOf_mSymbolInstances : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mSymbolInstances : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mSymbolInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mSymbolInstances {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.mSymbolInstances_property.startsToBeObserved (by: relay)
       self.mObserversOf_mSymbolInstances = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mSymbolInstances_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mSymbolInstances?.remove (observer: inObserver)
+    self.mObserversOf_mSymbolInstances?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: mPackages
   //····················································································································
 
-  private final var mObserversOf_mPackages : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mPackages : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mPackages_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mPackages {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.mPackages_property.startsToBeObserved (by: relay)
       self.mObserversOf_mPackages = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mPackages_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mPackages?.remove (observer: inObserver)
+    self.mObserversOf_mPackages?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: mSymbolTypes
   //····················································································································
 
-  private final var mObserversOf_mSymbolTypes : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mSymbolTypes : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mSymbolTypes_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mSymbolTypes {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.mSymbolTypes_property.startsToBeObserved (by: relay)
       self.mObserversOf_mSymbolTypes = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mSymbolTypes_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mSymbolTypes?.remove (observer: inObserver)
+    self.mObserversOf_mSymbolTypes?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: mPadProxies
   //····················································································································
 
-  private final var mObserversOf_mPadProxies : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mPadProxies : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mPadProxies_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mPadProxies {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.mPadProxies_property.startsToBeObserved (by: relay)
       self.mObserversOf_mPadProxies = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mPadProxies_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mPadProxies?.remove (observer: inObserver)
+    self.mObserversOf_mPadProxies?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

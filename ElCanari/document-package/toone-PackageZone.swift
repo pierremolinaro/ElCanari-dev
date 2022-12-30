@@ -208,26 +208,26 @@ class ReadOnlyObject_PackageZone : ReadOnlyAbstractObjectProperty <PackageZone> 
   //   Observable toMany property: forbiddenPadNumbers
   //····················································································································
 
-  private final var mObserversOf_forbiddenPadNumbers : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_forbiddenPadNumbers : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_forbiddenPadNumbers_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_forbiddenPadNumbers {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.forbiddenPadNumbers_property.startsToBeObserved (by: relay)
       self.mObserversOf_forbiddenPadNumbers = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_forbiddenPadNumbers_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_forbiddenPadNumbers?.remove (observer: inObserver)
+    self.mObserversOf_forbiddenPadNumbers?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

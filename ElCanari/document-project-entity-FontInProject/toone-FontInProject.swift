@@ -132,78 +132,78 @@ class ReadOnlyObject_FontInProject : ReadOnlyAbstractObjectProperty <FontInProje
   //   Observable toMany property: mTexts
   //····················································································································
 
-  private final var mObserversOf_mTexts : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mTexts : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mTexts_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mTexts {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.mTexts_property.startsToBeObserved (by: relay)
       self.mObserversOf_mTexts = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mTexts_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mTexts?.remove (observer: inObserver)
+    self.mObserversOf_mTexts?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: mComponentNames
   //····················································································································
 
-  private final var mObserversOf_mComponentNames : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mComponentNames : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mComponentNames_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mComponentNames {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.mComponentNames_property.startsToBeObserved (by: relay)
       self.mObserversOf_mComponentNames = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mComponentNames_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mComponentNames?.remove (observer: inObserver)
+    self.mObserversOf_mComponentNames?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: mComponentValues
   //····················································································································
 
-  private final var mObserversOf_mComponentValues : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mComponentValues : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mComponentValues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mComponentValues {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.mComponentValues_property.startsToBeObserved (by: relay)
       self.mObserversOf_mComponentValues = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mComponentValues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mComponentValues?.remove (observer: inObserver)
+    self.mObserversOf_mComponentValues?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

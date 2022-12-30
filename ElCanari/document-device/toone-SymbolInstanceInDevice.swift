@@ -104,26 +104,26 @@ class ReadOnlyObject_SymbolInstanceInDevice : ReadOnlyAbstractObjectProperty <Sy
   //   Observable toMany property: mPinInstances
   //····················································································································
 
-  private final var mObserversOf_mPinInstances : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mPinInstances : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mPinInstances_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mPinInstances {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.mPinInstances_property.startsToBeObserved (by: relay)
       self.mObserversOf_mPinInstances = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mPinInstances_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mPinInstances?.remove (observer: inObserver)
+    self.mObserversOf_mPinInstances?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

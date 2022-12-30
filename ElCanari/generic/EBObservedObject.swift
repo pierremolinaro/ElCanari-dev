@@ -6,11 +6,11 @@ import AppKit
 //   EBObservedObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBObservedObject : EBSwiftBaseObject {
+class EBObservedObject : EBSwiftBaseObject, EBObserverProtocol {
 
   //····················································································································
 
-  private var mDictionary = [Int : EBWeakObserverSetElement] ()
+  private final var mDictionary = [Int : EBWeakObserverSetElement] ()
 
   //····················································································································
 
@@ -45,61 +45,27 @@ class EBObservedObject : EBSwiftBaseObject {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   EBWeakObserverSetElement
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-//@MainActor struct EBWeakEventSet {
-//
-//  //····················································································································
-//
-//  private var mDictionary = [Int : EBWeakObserverSetElement] ()
-//
-//  //····················································································································
-//
-//  mutating func values () -> Dictionary <Int, EBWeakObserverSetElement>.Values {
-//    self.pack ()
-//    return self.mDictionary.values
-//  }
-//
-//  //····················································································································
-//
-//  private var mPackingTriggered = false
-//
-//  //····················································································································
-//
-//  mutating func triggerPacking () {
-//    self.mPackingTriggered = true
-//  }
-//
-//  //····················································································································
-//
-//  private mutating func pack () {
-//    if self.mPackingTriggered {
-//      self.mPackingTriggered = false
-//      for (key, entry) in self.mDictionary {
-//        if entry.possibleObserver == nil {
-//          self.mDictionary [key] = nil
-//        }
-//      }
-//    }
-//  }
-//
-//  //····················································································································
-//
-//  mutating func insert (observer inObserver : EBObserverProtocol) {
-//    let address = inObserver.objectIndex
-//    self.mDictionary [address] = EBWeakObserverSetElement (observer: inObserver)
-//    inObserver.observedObjectDidChange ()
-//  }
-//
-//  //····················································································································
-//
-//  mutating func remove (observer inObserver : EBObserverProtocol) {
-//    let address = inObserver.objectIndex
-//    self.mDictionary [address] = nil
-//    inObserver.observedObjectDidChange ()
-//  }
-//
-//  //····················································································································
-//
-//}
+struct EBWeakObserverSetElement {
+
+  //····················································································································
+
+  private weak var mObserver : EBObserverProtocol? = nil // SOULD BE WEAK
+
+  //····················································································································
+
+  var possibleObserver : EBObserverProtocol? { return self.mObserver }
+
+  //····················································································································
+
+  init (observer inObserver : EBObserverProtocol) {
+    self.mObserver = inObserver
+  }
+
+  //····················································································································
+
+}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

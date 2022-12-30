@@ -8,7 +8,7 @@ import AppKit
 //   EBGenericComputedProperty <T>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class EBGenericComputedProperty <T> : EBObservableMutableProperty <T>, EBObserverProtocol {
+final class EBGenericComputedProperty <T> : EBObservableMutableProperty <T> {
 
   //····················································································································
 

@@ -164,78 +164,78 @@ class ReadOnlyObject_PointInSchematic : ReadOnlyAbstractObjectProperty <PointInS
   //   Observable toMany property: mLabels
   //····················································································································
 
-  private final var mObserversOf_mLabels : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mLabels : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mLabels_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mLabels {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.mLabels_property.startsToBeObserved (by: relay)
       self.mObserversOf_mLabels = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mLabels_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mLabels?.remove (observer: inObserver)
+    self.mObserversOf_mLabels?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: mWiresP2s
   //····················································································································
 
-  private final var mObserversOf_mWiresP2s : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mWiresP2s : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mWiresP2s_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mWiresP2s {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.mWiresP2s_property.startsToBeObserved (by: relay)
       self.mObserversOf_mWiresP2s = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mWiresP2s_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mWiresP2s?.remove (observer: inObserver)
+    self.mObserversOf_mWiresP2s?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observable toMany property: mWiresP1s
   //····················································································································
 
-  private final var mObserversOf_mWiresP1s : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mWiresP1s : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mWiresP1s_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mWiresP1s {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.mWeakInternalValue?.mWiresP1s_property.startsToBeObserved (by: relay)
       self.mObserversOf_mWiresP1s = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mWiresP1s_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mWiresP1s?.remove (observer: inObserver)
+    self.mObserversOf_mWiresP1s?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································

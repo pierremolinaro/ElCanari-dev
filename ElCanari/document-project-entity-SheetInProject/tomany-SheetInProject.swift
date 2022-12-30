@@ -63,174 +63,174 @@ class ReadOnlyArrayOf_SheetInProject : ReadOnlyAbstractArrayProperty <SheetInPro
   //   Observers of 'mSheetTitle' stored property
   //····················································································································
 
-  private final var mObserversOf_mSheetTitle : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_mSheetTitle : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_mSheetTitle_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_mSheetTitle {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.mSheetTitle_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_mSheetTitle = relay
     }
-    relay.insert (observer: inObserver)
+    relay.startsToBeObserved (by: inObserver)
   }
 
   //····················································································································
 
   final func toMany_mSheetTitle_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_mSheetTitle?.remove (observer: inObserver)
+    self.mObserversOf_mSheetTitle?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
-  private final var mObserversOf_issues : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_issues : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_issues_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_issues {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.issues_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_issues = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_issues_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_issues?.remove (observer: inObserver)
+    self.mObserversOf_issues?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'connectedPoints' transient property
   //····················································································································
 
-  private final var mObserversOf_connectedPoints : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_connectedPoints : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_connectedPoints_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_connectedPoints {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.connectedPoints_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_connectedPoints = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_connectedPoints_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_connectedPoints?.remove (observer: inObserver)
+    self.mObserversOf_connectedPoints?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'connexionWarnings' transient property
   //····················································································································
 
-  private final var mObserversOf_connexionWarnings : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_connexionWarnings : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_connexionWarnings_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_connexionWarnings {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.connexionWarnings_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_connexionWarnings = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_connexionWarnings_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_connexionWarnings?.remove (observer: inObserver)
+    self.mObserversOf_connexionWarnings?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'connexionErrors' transient property
   //····················································································································
 
-  private final var mObserversOf_connexionErrors : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_connexionErrors : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_connexionErrors_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_connexionErrors {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.connexionErrors_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_connexionErrors = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_connexionErrors_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_connexionErrors?.remove (observer: inObserver)
+    self.mObserversOf_connexionErrors?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
   //   Observers of 'sheetDescriptor' transient property
   //····················································································································
 
-  private final var mObserversOf_sheetDescriptor : EBWeakObserverSetRelay? = nil
+  private final var mObserversOf_sheetDescriptor : EBObservedObject? = nil
 
   //····················································································································
 
   final func toMany_sheetDescriptor_StartsToBeObserved (by inObserver : EBObserverProtocol) {
-    let relay : EBWeakObserverSetRelay
+    let relay : EBObservedObject
     if let r = self.mObserversOf_sheetDescriptor {
       relay = r
     }else{
-      relay = EBWeakObserverSetRelay ()
+      relay = EBObservedObject ()
       self.startsToBeObserved (by: relay)
       for managedObject in self.propval.values {
         managedObject.sheetDescriptor_property.startsToBeObserved (by: relay)
       }
       self.mObserversOf_sheetDescriptor = relay
     }
-    relay.insert (observer:  inObserver)
+    relay.startsToBeObserved (by:  inObserver)
   }
 
   //····················································································································
 
   final func toMany_sheetDescriptor_StopsBeingObserved (by inObserver : EBObserverProtocol) {
-    self.mObserversOf_sheetDescriptor?.remove (observer: inObserver)
+    self.mObserversOf_sheetDescriptor?.stopsBeingObserved (by: inObserver)
   }
 
   //····················································································································
