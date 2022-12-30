@@ -16,6 +16,8 @@ import AppKit
     private var mTransientEventExplorerWindow : NSWindow? = nil
   #endif
 
+  //····················································································································
+
   #if BUILD_OBJECT_EXPLORER
     fileprivate var mTransientEventExplorerTextView : AutoLayoutTextObserverView? = nil
   #endif
