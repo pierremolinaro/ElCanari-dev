@@ -6873,6 +6873,7 @@
 				CF61725E1B3C4BA900F3CA82 /* Application.swift */,
 				CF0777A62352100D00F56EAB /* BezierPathArray.swift */,
 				CF7542D221B476F800F4CAA1 /* buildPDFimage.swift */,
+				CFF85808295C8E5600444543 /* DocumentStorablePropertyProtocol.swift */,
 				CF9C602425CAB19700A00D5C /* EBAutoLayoutManagedDocument.swift */,
 				CFEDE5B11B4677C500036ACF /* EBDataScanner.swift */,
 				CF0777F023521A4D00F56EAB /* EBEnumProtocol.swift */,
@@ -6929,7 +6930,6 @@
 				CF8BE742235112CB00F95B3A /* ReadOnlyAbstractGenericRelationshipProperty.swift */,
 				CF8BE751235114CA00F95B3A /* ReadOnlyAbstractObjectProperty.swift */,
 				CF6172621B3C4BA900F3CA82 /* standard-properties.swift */,
-				CFF85808295C8E5600444543 /* DocumentStorablePropertyProtocol.swift */,
 			);
 			name = Generic;
 			path = ElCanari/generic;

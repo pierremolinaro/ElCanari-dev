@@ -48,7 +48,7 @@ class ReadOnlyAbstractArrayProperty <T : ObjectIndexProtocol> : ReadOnlyAbstract
   // Abstract methods
   //····················································································································
 
-  var selection : EBSelection < [T] > { get { return .empty } }  // Abstract method
+  var selection : EBSelection < [T] > { return .empty }  // Abstract method
 
   //····················································································································
 

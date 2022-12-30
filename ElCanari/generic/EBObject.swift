@@ -11,10 +11,6 @@ import AppKit
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//@MainActor fileprivate var gEasyBindingsObjectIndex : Int = 0
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    EBObjcBaseObject class
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -22,15 +18,11 @@ import AppKit
 
   //····················································································································
 
-//  final let objectIndex : Int
-  final var objectIndex : Int { return Int (bitPattern: ObjectIdentifier(self)) }
-//  final var objectIndex : Int { return ObjectIdentifier(self).hashValue }
+  final var objectIndex : Int { return Int (bitPattern: ObjectIdentifier (self)) }
 
   //····················································································································
 
   override init () {
-//    self.objectIndex = gEasyBindingsObjectIndex
-//    gEasyBindingsObjectIndex += 1
     super.init ()
     noteObjectAllocation (self)
   }
@@ -53,16 +45,11 @@ import AppKit
 
   //····················································································································
 
- // final var objectIndex : Int { return Int (Builtin.ptrtoint_Word (Builtin.bridgeToRawPointer (self))) }
-
   final var objectIndex : Int { return Int (bitPattern: ObjectIdentifier(self)) }
-//  final var objectIndex : Int { return ObjectIdentifier(self).hashValue }
 
   //····················································································································
 
   init () {
-//    self.objectIndex = gEasyBindingsObjectIndex
-//    gEasyBindingsObjectIndex += 1
     noteObjectAllocation (self)
   }
 

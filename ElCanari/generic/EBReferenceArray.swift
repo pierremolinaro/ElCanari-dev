@@ -73,12 +73,8 @@ struct EBReferenceArray <T : AnyObject> {
   //····················································································································
 
   func contains (_ inObject : T) -> Bool {
-    let address = ObjectIdentifier (inObject)
-    var idx = 0
-    while idx < self.mArray.count {
-      let p = ObjectIdentifier (self.mArray [idx])
-      idx += 1
-      if address == p {
+    for object in self.mArray {
+      if inObject === object {
         return true
       }
     }
@@ -96,11 +92,9 @@ struct EBReferenceArray <T : AnyObject> {
   //····················································································································
 
   func firstIndex (of inObject : T) -> Int? {
-    let address = ObjectIdentifier (inObject)
     var idx = 0
     while idx < self.mArray.count {
-      let p = ObjectIdentifier (self.mArray [idx])
-      if address == p {
+      if inObject === self.mArray [idx] {
         return idx
       }
       idx += 1

@@ -5,11 +5,6 @@
 import AppKit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-let WINDOW_HEIGHT_METADATADICTIONARY_KEY = "WindowHeight"
-let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    A P P L I C A T I O N    C L A S S
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -59,7 +54,7 @@ let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
   //····················································································································
 
   #if BUILD_OBJECT_EXPLORER
-    @objc private func clearTransientEventLogWindow (_ sender : Any?) {
+    @objc private func clearTransientEventLogWindow (_ inUnusedSender : Any?) {
       self.mTransientEventExplorerTextView?.string = ""
     }
   #endif
@@ -67,9 +62,9 @@ let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
   //····················································································································
 
   #if BUILD_OBJECT_EXPLORER
-    func appendToTransientEventLog (_ message : String) {
+    @MainActor func appendToTransientEventLog (_ inMessage : String) {
       if logEvents () {
-        self.mTransientEventExplorerTextView?.appendMessageString (message, color: .blue)
+        self.mTransientEventExplorerTextView?.appendMessageString (inMessage, color: .blue)
       }
     }
   #endif
@@ -77,19 +72,15 @@ let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
   //····················································································································
 
   #if BUILD_OBJECT_EXPLORER
-    func logEvents () -> Bool {
-  //    if Thread.isMainThread {
-        return self.mTransientEventExplorerWindow?.isVisible ?? false
-//      }else{
-//        return false
-//      }
+    @MainActor func logEvents () -> Bool {
+      return self.mTransientEventExplorerWindow?.isVisible ?? false
     }
   #endif
 
   //····················································································································
 
-  override func sendEvent (_ event: NSEvent) {
-    super.sendEvent (event)
+  override func sendEvent (_ inEvent : NSEvent) {
+    super.sendEvent (inEvent)
     flushModelEvents ()
     flushOutletEvents ()
   }
@@ -115,19 +106,19 @@ let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func appendMessageString (_ message : String) {
+@MainActor func appendMessageString (_ inMessage : String) {
   #if BUILD_OBJECT_EXPLORER
     let theApp = NSApplication.shared as! EBApplication
-    theApp.mTransientEventExplorerTextView?.appendMessageString (message)
+    theApp.mTransientEventExplorerTextView?.appendMessageString (inMessage)
   #endif
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@MainActor func appendMessageString (_ message : String, color : NSColor) {
+@MainActor func appendMessageString (_ inMessage : String, color inColor : NSColor) {
   #if BUILD_OBJECT_EXPLORER
     let theApp = NSApplication.shared as! EBApplication
-    theApp.mTransientEventExplorerTextView?.appendMessageString (message, color:color)
+    theApp.mTransientEventExplorerTextView?.appendMessageString (inMessage, color: inColor)
   #endif
 }
 
