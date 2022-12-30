@@ -314,12 +314,13 @@ final class SymbolPin : SymbolObject,
   //····················································································································
 
   final var filledBezierPath : NSBezierPath? {
-    switch self.filledBezierPath_property.selection {
+    return self.filledBezierPath_property.optionalValue
+    /* switch self.filledBezierPath_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -331,12 +332,13 @@ final class SymbolPin : SymbolObject,
   //····················································································································
 
   final var nameRect : NSRect? {
-    switch self.nameRect_property.selection {
+    return self.nameRect_property.optionalValue
+    /* switch self.nameRect_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

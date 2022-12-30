@@ -139,12 +139,13 @@ final class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   final var isConnected : Bool? {
-    switch self.isConnected_property.selection {
+    return self.isConnected_property.optionalValue
+    /* switch self.isConnected_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -156,12 +157,13 @@ final class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   final var symbolName : String? {
-    switch self.symbolName_property.selection {
+    return self.symbolName_property.optionalValue
+    /* switch self.symbolName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

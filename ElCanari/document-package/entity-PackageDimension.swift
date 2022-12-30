@@ -411,12 +411,13 @@ final class PackageDimension : PackageObject,
   //····················································································································
 
   final var distanceInCanariUnit : Int? {
-    switch self.distanceInCanariUnit_property.selection {
+    return self.distanceInCanariUnit_property.optionalValue
+    /* switch self.distanceInCanariUnit_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

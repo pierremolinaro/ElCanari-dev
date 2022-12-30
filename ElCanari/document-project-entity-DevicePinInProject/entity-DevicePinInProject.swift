@@ -345,12 +345,13 @@ final class DevicePinInProject : EBManagedObject,
   //····················································································································
 
   final var pinQualifiedName : PinQualifiedNameStruct? {
-    switch self.pinQualifiedName_property.selection {
+    return self.pinQualifiedName_property.optionalValue
+    /* switch self.pinQualifiedName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -362,12 +363,13 @@ final class DevicePinInProject : EBManagedObject,
   //····················································································································
 
   final var descriptor : PinInProjectDescriptor? {
-    switch self.descriptor_property.selection {
+    return self.descriptor_property.optionalValue
+    /* switch self.descriptor_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

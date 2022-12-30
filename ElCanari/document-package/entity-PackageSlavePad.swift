@@ -500,12 +500,13 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   final var padIsTraversing : Bool? {
-    switch self.padIsTraversing_property.selection {
+    return self.padIsTraversing_property.optionalValue
+    /* switch self.padIsTraversing_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -517,12 +518,13 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   final var annularRing : Int? {
-    switch self.annularRing_property.selection {
+    return self.annularRing_property.optionalValue
+    /* switch self.annularRing_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -534,12 +536,13 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   final var padNameWithZoneName : String? {
-    switch self.padNameWithZoneName_property.selection {
+    return self.padNameWithZoneName_property.optionalValue
+    /* switch self.padNameWithZoneName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -551,12 +554,13 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   final var masterPadNameWithZoneName : String? {
-    switch self.masterPadNameWithZoneName_property.selection {
+    return self.masterPadNameWithZoneName_property.optionalValue
+    /* switch self.masterPadNameWithZoneName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -568,12 +572,13 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   final var padNameForDisplay : String? {
-    switch self.padNameForDisplay_property.selection {
+    return self.padNameForDisplay_property.optionalValue
+    /* switch self.padNameForDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -585,12 +590,13 @@ final class PackageSlavePad : PackageObject,
   //····················································································································
 
   final var padNumberDisplay : EBShape? {
-    switch self.padNumberDisplay_property.selection {
+    return self.padNumberDisplay_property.optionalValue
+    /* switch self.padNumberDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

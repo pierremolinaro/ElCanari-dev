@@ -492,12 +492,13 @@ final class PackageZone : PackageObject,
   //····················································································································
 
   final var rect : CanariRect? {
-    switch self.rect_property.selection {
+    return self.rect_property.optionalValue
+    /* switch self.rect_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -509,12 +510,13 @@ final class PackageZone : PackageObject,
   //····················································································································
 
   final var forbiddenPadArray : StringArray? {
-    switch self.forbiddenPadArray_property.selection {
+    return self.forbiddenPadArray_property.optionalValue
+    /* switch self.forbiddenPadArray_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -526,12 +528,13 @@ final class PackageZone : PackageObject,
   //····················································································································
 
   final var emptyForbiddenPadArray : Bool? {
-    switch self.emptyForbiddenPadArray_property.selection {
+    return self.emptyForbiddenPadArray_property.optionalValue
+    /* switch self.emptyForbiddenPadArray_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

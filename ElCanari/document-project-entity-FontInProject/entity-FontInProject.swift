@@ -217,12 +217,13 @@ final class FontInProject : EBManagedObject,
   //····················································································································
 
   final var versionString : String? {
-    switch self.versionString_property.selection {
+    return self.versionString_property.optionalValue
+    /* switch self.versionString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -234,12 +235,13 @@ final class FontInProject : EBManagedObject,
   //····················································································································
 
   final var sizeString : String? {
-    switch self.sizeString_property.selection {
+    return self.sizeString_property.optionalValue
+    /* switch self.sizeString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -251,12 +253,13 @@ final class FontInProject : EBManagedObject,
   //····················································································································
 
   final var descriptor : BoardFontDescriptor? {
-    switch self.descriptor_property.selection {
+    return self.descriptor_property.optionalValue
+    /* switch self.descriptor_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -268,12 +271,13 @@ final class FontInProject : EBManagedObject,
   //····················································································································
 
   final var textCount : Int? {
-    switch self.textCount_property.selection {
+    return self.textCount_property.optionalValue
+    /* switch self.textCount_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -285,12 +289,13 @@ final class FontInProject : EBManagedObject,
   //····················································································································
 
   final var canRemoveFont : Bool? {
-    switch self.canRemoveFont_property.selection {
+    return self.canRemoveFont_property.optionalValue
+    /* switch self.canRemoveFont_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -302,12 +307,13 @@ final class FontInProject : EBManagedObject,
   //····················································································································
 
   final var componentNamesCount : Int? {
-    switch self.componentNamesCount_property.selection {
+    return self.componentNamesCount_property.optionalValue
+    /* switch self.componentNamesCount_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -319,12 +325,13 @@ final class FontInProject : EBManagedObject,
   //····················································································································
 
   final var componentValuesCount : Int? {
-    switch self.componentValuesCount_property.selection {
+    return self.componentValuesCount_property.optionalValue
+    /* switch self.componentValuesCount_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

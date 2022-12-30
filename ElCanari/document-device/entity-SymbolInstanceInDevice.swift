@@ -210,12 +210,13 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var symbolQualifiedName : String? {
-    switch self.symbolQualifiedName_property.selection {
+    return self.symbolQualifiedName_property.optionalValue
+    /* switch self.symbolQualifiedName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -227,12 +228,13 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var symbolTypeName : String? {
-    switch self.symbolTypeName_property.selection {
+    return self.symbolTypeName_property.optionalValue
+    /* switch self.symbolTypeName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -244,12 +246,13 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var pinSymbolQualifiedNames : StringArray? {
-    switch self.pinSymbolQualifiedNames_property.selection {
+    return self.pinSymbolQualifiedNames_property.optionalValue
+    /* switch self.pinSymbolQualifiedNames_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -261,12 +264,13 @@ final class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var unconnectedPins : UnconnectedSymbolPinsInDevice? {
-    switch self.unconnectedPins_property.selection {
+    return self.unconnectedPins_property.optionalValue
+    /* switch self.unconnectedPins_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

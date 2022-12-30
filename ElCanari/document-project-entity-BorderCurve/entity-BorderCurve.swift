@@ -258,12 +258,13 @@ final class BorderCurve : EBGraphicManagedObject,
 
   var mNextX : Int? {
     get {
-      switch self.mNextX_property.selection {
+      return self.mNextX_property.optionalValue
+      /* switch self.mNextX_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -282,12 +283,13 @@ final class BorderCurve : EBGraphicManagedObject,
 
   var mNextY : Int? {
     get {
-      switch self.mNextY_property.selection {
+      return self.mNextY_property.optionalValue
+      /* switch self.mNextY_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -389,12 +391,13 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   final var p2Xvalue : Double? {
-    switch self.p2Xvalue_property.selection {
+    return self.p2Xvalue_property.optionalValue
+    /* switch self.p2Xvalue_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -406,12 +409,13 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   final var p2Yvalue : Double? {
-    switch self.p2Yvalue_property.selection {
+    return self.p2Yvalue_property.optionalValue
+    /* switch self.p2Yvalue_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -423,12 +427,13 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   final var descriptor : BorderCurveDescriptor? {
-    switch self.descriptor_property.selection {
+    return self.descriptor_property.optionalValue
+    /* switch self.descriptor_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -440,12 +445,13 @@ final class BorderCurve : EBGraphicManagedObject,
   //····················································································································
 
   final var isLine : Bool? {
-    switch self.isLine_property.selection {
+    return self.isLine_property.optionalValue
+    /* switch self.isLine_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

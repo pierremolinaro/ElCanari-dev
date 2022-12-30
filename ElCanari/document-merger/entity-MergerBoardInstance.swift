@@ -160,12 +160,13 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   final var instanceRect : CanariRect? {
-    switch self.instanceRect_property.selection {
+    return self.instanceRect_property.optionalValue
+    /* switch self.instanceRect_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -177,12 +178,13 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   final var modelName : String? {
-    switch self.modelName_property.selection {
+    return self.modelName_property.optionalValue
+    /* switch self.modelName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -194,12 +196,13 @@ final class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   final var boardLimitWidth : Int? {
-    switch self.boardLimitWidth_property.selection {
+    return self.boardLimitWidth_property.optionalValue
+    /* switch self.boardLimitWidth_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

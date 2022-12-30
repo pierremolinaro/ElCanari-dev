@@ -480,12 +480,13 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   final var isConnectedToSomePad : Bool? {
-    switch self.isConnectedToSomePad_property.selection {
+    return self.isConnectedToSomePad_property.optionalValue
+    /* switch self.isConnectedToSomePad_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -525,12 +526,13 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   final var location : CanariPoint? {
-    switch self.location_property.selection {
+    return self.location_property.optionalValue
+    /* switch self.location_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -542,12 +544,13 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   final var netNameFromComponentPad : String? {
-    switch self.netNameFromComponentPad_property.selection {
+    return self.netNameFromComponentPad_property.optionalValue
+    /* switch self.netNameFromComponentPad_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -559,12 +562,13 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   final var side : ConnectorSide? {
-    switch self.side_property.selection {
+    return self.side_property.optionalValue
+    /* switch self.side_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -576,12 +580,13 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   final var viaDefaultHoleDiameter : Int? {
-    switch self.viaDefaultHoleDiameter_property.selection {
+    return self.viaDefaultHoleDiameter_property.optionalValue
+    /* switch self.viaDefaultHoleDiameter_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -593,12 +598,13 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   final var viaDefaultPadDiameter : Int? {
-    switch self.viaDefaultPadDiameter_property.selection {
+    return self.viaDefaultPadDiameter_property.optionalValue
+    /* switch self.viaDefaultPadDiameter_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -610,12 +616,13 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   final var netNameFromTracks : String? {
-    switch self.netNameFromTracks_property.selection {
+    return self.netNameFromTracks_property.optionalValue
+    /* switch self.netNameFromTracks_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -627,12 +634,13 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   final var netClassName : String? {
-    switch self.netClassName_property.selection {
+    return self.netClassName_property.optionalValue
+    /* switch self.netClassName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -644,12 +652,13 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   final var connectedToComponent : Bool? {
-    switch self.connectedToComponent_property.selection {
+    return self.connectedToComponent_property.optionalValue
+    /* switch self.connectedToComponent_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -661,12 +670,13 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   final var actualHoleDiameter : Int? {
-    switch self.actualHoleDiameter_property.selection {
+    return self.actualHoleDiameter_property.optionalValue
+    /* switch self.actualHoleDiameter_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -678,12 +688,13 @@ final class BoardConnector : BoardObject,
   //····················································································································
 
   final var actualPadDiameter : Int? {
-    switch self.actualPadDiameter_property.selection {
+    return self.actualPadDiameter_property.optionalValue
+    /* switch self.actualPadDiameter_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

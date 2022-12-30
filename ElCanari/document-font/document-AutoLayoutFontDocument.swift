@@ -29,12 +29,13 @@ import AppKit
   //····················································································································
 
   final var documentFileName : String? {
-    switch self.documentFileName_property.selection {
+    return self.documentFileName_property.optionalValue
+    /* switch self.documentFileName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -46,12 +47,13 @@ import AppKit
   //····················································································································
 
   final var statusImage : NSImage? {
-    switch self.statusImage_property.selection {
+    return self.statusImage_property.optionalValue
+    /* switch self.statusImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -63,12 +65,13 @@ import AppKit
   //····················································································································
 
   final var statusTitle : String? {
-    switch self.statusTitle_property.selection {
+    return self.statusTitle_property.optionalValue
+    /* switch self.statusTitle_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -80,12 +83,13 @@ import AppKit
   //····················································································································
 
   final var statusMessage : String? {
-    switch self.statusMessage_property.selection {
+    return self.statusMessage_property.optionalValue
+    /* switch self.statusMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -97,12 +101,13 @@ import AppKit
   //····················································································································
 
   final var metadataStatus : MetadataStatus? {
-    switch self.metadataStatus_property.selection {
+    return self.metadataStatus_property.optionalValue
+    /* switch self.metadataStatus_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -114,12 +119,13 @@ import AppKit
   //····················································································································
 
   final var canDeleteCurrentCharacter : Bool? {
-    switch self.canDeleteCurrentCharacter_property.selection {
+    return self.canDeleteCurrentCharacter_property.optionalValue
+    /* switch self.canDeleteCurrentCharacter_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

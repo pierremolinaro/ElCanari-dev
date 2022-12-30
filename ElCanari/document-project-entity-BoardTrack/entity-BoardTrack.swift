@@ -553,12 +553,13 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final var actualTrackWidth : Int? {
-    switch self.actualTrackWidth_property.selection {
+    return self.actualTrackWidth_property.optionalValue
+    /* switch self.actualTrackWidth_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -570,12 +571,13 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final var netName : String? {
-    switch self.netName_property.selection {
+    return self.netName_property.optionalValue
+    /* switch self.netName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -587,12 +589,13 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final var netClassName : String? {
-    switch self.netClassName_property.selection {
+    return self.netClassName_property.optionalValue
+    /* switch self.netClassName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -604,12 +607,13 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final var netClassTrackWidth : Int? {
-    switch self.netClassTrackWidth_property.selection {
+    return self.netClassTrackWidth_property.optionalValue
+    /* switch self.netClassTrackWidth_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -621,12 +625,13 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final var netClassViaHoleDiameter : Int? {
-    switch self.netClassViaHoleDiameter_property.selection {
+    return self.netClassViaHoleDiameter_property.optionalValue
+    /* switch self.netClassViaHoleDiameter_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -638,12 +643,13 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final var netClassViaPadDiameter : Int? {
-    switch self.netClassViaPadDiameter_property.selection {
+    return self.netClassViaPadDiameter_property.optionalValue
+    /* switch self.netClassViaPadDiameter_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -655,12 +661,13 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final var p1ConnectedToSomePad : Bool? {
-    switch self.p1ConnectedToSomePad_property.selection {
+    return self.p1ConnectedToSomePad_property.optionalValue
+    /* switch self.p1ConnectedToSomePad_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -672,12 +679,13 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final var p2ConnectedToSomePad : Bool? {
-    switch self.p2ConnectedToSomePad_property.selection {
+    return self.p2ConnectedToSomePad_property.optionalValue
+    /* switch self.p2ConnectedToSomePad_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -689,12 +697,13 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final var trackDirectionInDegrees : Int? {
-    switch self.trackDirectionInDegrees_property.selection {
+    return self.trackDirectionInDegrees_property.optionalValue
+    /* switch self.trackDirectionInDegrees_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -706,12 +715,13 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final var computedP1X : Int? {
-    switch self.computedP1X_property.selection {
+    return self.computedP1X_property.optionalValue
+    /* switch self.computedP1X_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -723,12 +733,13 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final var computedP1Y : Int? {
-    switch self.computedP1Y_property.selection {
+    return self.computedP1Y_property.optionalValue
+    /* switch self.computedP1Y_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -740,12 +751,13 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final var computedP2X : Int? {
-    switch self.computedP2X_property.selection {
+    return self.computedP2X_property.optionalValue
+    /* switch self.computedP2X_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -757,12 +769,13 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final var computedP2Y : Int? {
-    switch self.computedP2Y_property.selection {
+    return self.computedP2Y_property.optionalValue
+    /* switch self.computedP2Y_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -774,12 +787,13 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final var p1CanMove : Bool? {
-    switch self.p1CanMove_property.selection {
+    return self.p1CanMove_property.optionalValue
+    /* switch self.p1CanMove_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -791,12 +805,13 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final var p2CanMove : Bool? {
-    switch self.p2CanMove_property.selection {
+    return self.p2CanMove_property.optionalValue
+    /* switch self.p2CanMove_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -808,12 +823,13 @@ final class BoardTrack : BoardObject,
   //····················································································································
 
   final var trackCanRotate : Bool? {
-    switch self.trackCanRotate_property.selection {
+    return self.trackCanRotate_property.optionalValue
+    /* switch self.trackCanRotate_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

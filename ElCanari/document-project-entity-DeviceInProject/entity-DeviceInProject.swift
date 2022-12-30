@@ -246,12 +246,13 @@ final class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var versionString : String? {
-    switch self.versionString_property.selection {
+    return self.versionString_property.optionalValue
+    /* switch self.versionString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -263,12 +264,13 @@ final class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var sizeString : String? {
-    switch self.sizeString_property.selection {
+    return self.sizeString_property.optionalValue
+    /* switch self.sizeString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -280,12 +282,13 @@ final class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var canExport : Bool? {
-    switch self.canExport_property.selection {
+    return self.canExport_property.optionalValue
+    /* switch self.canExport_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -297,12 +300,13 @@ final class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var packageNames : StringArray? {
-    switch self.packageNames_property.selection {
+    return self.packageNames_property.optionalValue
+    /* switch self.packageNames_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -314,12 +318,13 @@ final class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var deviceComponentCountString : String? {
-    switch self.deviceComponentCountString_property.selection {
+    return self.deviceComponentCountString_property.optionalValue
+    /* switch self.deviceComponentCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -331,12 +336,13 @@ final class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var canRemove : Bool? {
-    switch self.canRemove_property.selection {
+    return self.canRemove_property.optionalValue
+    /* switch self.canRemove_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -348,12 +354,13 @@ final class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var symbolAndTypesNames : SymbolInProjectIdentifierArray? {
-    switch self.symbolAndTypesNames_property.selection {
+    return self.symbolAndTypesNames_property.optionalValue
+    /* switch self.symbolAndTypesNames_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -365,12 +372,13 @@ final class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var pinPadAssignments : ThreeStringArray? {
-    switch self.pinPadAssignments_property.selection {
+    return self.pinPadAssignments_property.optionalValue
+    /* switch self.pinPadAssignments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -382,12 +390,13 @@ final class DeviceInProject : EBManagedObject,
   //····················································································································
 
   final var deviceSymbolDictionary : DeviceSymbolDictionary? {
-    switch self.deviceSymbolDictionary_property.selection {
+    return self.deviceSymbolDictionary_property.optionalValue
+    /* switch self.deviceSymbolDictionary_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

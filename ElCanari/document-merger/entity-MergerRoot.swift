@@ -750,12 +750,13 @@ final class MergerRoot : EBManagedObject,
 
   var minPPTPTTTWdisplayUnit : Int? {
     get {
-      switch self.minPPTPTTTWdisplayUnit_property.selection {
+      return self.minPPTPTTTWdisplayUnit_property.optionalValue
+      /* switch self.minPPTPTTTWdisplayUnit_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -774,12 +775,13 @@ final class MergerRoot : EBManagedObject,
 
   var minPPTPTTTW : Int? {
     get {
-      switch self.minPPTPTTTW_property.selection {
+      return self.minPPTPTTTW_property.optionalValue
+      /* switch self.minPPTPTTTW_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -798,12 +800,13 @@ final class MergerRoot : EBManagedObject,
 
   var minValueForOARdisplayUnit : Int? {
     get {
-      switch self.minValueForOARdisplayUnit_property.selection {
+      return self.minValueForOARdisplayUnit_property.optionalValue
+      /* switch self.minValueForOARdisplayUnit_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -822,12 +825,13 @@ final class MergerRoot : EBManagedObject,
 
   var minValueForOARinEBUnit : Int? {
     get {
-      switch self.minValueForOARinEBUnit_property.selection {
+      return self.minValueForOARinEBUnit_property.optionalValue
+      /* switch self.minValueForOARinEBUnit_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -846,12 +850,13 @@ final class MergerRoot : EBManagedObject,
 
   var minValueForPHDdisplayUnit : Int? {
     get {
-      switch self.minValueForPHDdisplayUnit_property.selection {
+      return self.minValueForPHDdisplayUnit_property.optionalValue
+      /* switch self.minValueForPHDdisplayUnit_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -870,12 +875,13 @@ final class MergerRoot : EBManagedObject,
 
   var minValueForPHDinEBUnit : Int? {
     get {
-      switch self.minValueForPHDinEBUnit_property.selection {
+      return self.minValueForPHDinEBUnit_property.optionalValue
+      /* switch self.minValueForPHDinEBUnit_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -894,12 +900,13 @@ final class MergerRoot : EBManagedObject,
 
   var minValueForBoardLimitWidth : Int? {
     get {
-      switch self.minValueForBoardLimitWidth_property.selection {
+      return self.minValueForBoardLimitWidth_property.optionalValue
+      /* switch self.minValueForBoardLimitWidth_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -918,12 +925,13 @@ final class MergerRoot : EBManagedObject,
 
   var minValueForBoardLimitWidthDisplayUnit : Int? {
     get {
-      switch self.minValueForBoardLimitWidthDisplayUnit_property.selection {
+      return self.minValueForBoardLimitWidthDisplayUnit_property.optionalValue
+      /* switch self.minValueForBoardLimitWidthDisplayUnit_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -942,12 +950,13 @@ final class MergerRoot : EBManagedObject,
 
   var drillDataFileExtension : String? {
     get {
-      switch self.drillDataFileExtension_property.selection {
+      return self.drillDataFileExtension_property.optionalValue
+      /* switch self.drillDataFileExtension_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -989,12 +998,13 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final var modelNames : StringTagArray? {
-    switch self.modelNames_property.selection {
+    return self.modelNames_property.optionalValue
+    /* switch self.modelNames_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1006,12 +1016,13 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final var boardRect : CanariRect? {
-    switch self.boardRect_property.selection {
+    return self.boardRect_property.optionalValue
+    /* switch self.boardRect_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1023,12 +1034,13 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final var boardLimitWidthErrorMessage : String? {
-    switch self.boardLimitWidthErrorMessage_property.selection {
+    return self.boardLimitWidthErrorMessage_property.optionalValue
+    /* switch self.boardLimitWidthErrorMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1040,12 +1052,13 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final var boardLimitWidthOk : Bool? {
-    switch self.boardLimitWidthOk_property.selection {
+    return self.boardLimitWidthOk_property.optionalValue
+    /* switch self.boardLimitWidthOk_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1057,12 +1070,13 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final var boardWidth : Int? {
-    switch self.boardWidth_property.selection {
+    return self.boardWidth_property.optionalValue
+    /* switch self.boardWidth_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1074,12 +1088,13 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final var boardHeight : Int? {
-    switch self.boardHeight_property.selection {
+    return self.boardHeight_property.optionalValue
+    /* switch self.boardHeight_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1119,12 +1134,13 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final var comments : String? {
-    switch self.comments_property.selection {
+    return self.comments_property.optionalValue
+    /* switch self.comments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1136,12 +1152,13 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final var layoutLayerWarningMessage : String? {
-    switch self.layoutLayerWarningMessage_property.selection {
+    return self.layoutLayerWarningMessage_property.optionalValue
+    /* switch self.layoutLayerWarningMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1153,12 +1170,13 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final var layerConfigurationString : String? {
-    switch self.layerConfigurationString_property.selection {
+    return self.layerConfigurationString_property.optionalValue
+    /* switch self.layerConfigurationString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1170,12 +1188,13 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final var emptyDrillFileExtension : Bool? {
-    switch self.emptyDrillFileExtension_property.selection {
+    return self.emptyDrillFileExtension_property.optionalValue
+    /* switch self.emptyDrillFileExtension_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1187,12 +1206,13 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final var hasInnerElements : Bool? {
-    switch self.hasInnerElements_property.selection {
+    return self.hasInnerElements_property.optionalValue
+    /* switch self.hasInnerElements_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1204,12 +1224,13 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final var hasSixLayers : Bool? {
-    switch self.hasSixLayers_property.selection {
+    return self.hasSixLayers_property.optionalValue
+    /* switch self.hasSixLayers_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1221,12 +1242,13 @@ final class MergerRoot : EBManagedObject,
   //····················································································································
 
   final var boardOutlineRectDisplay : EBShape? {
-    switch self.boardOutlineRectDisplay_property.selection {
+    return self.boardOutlineRectDisplay_property.optionalValue
+    /* switch self.boardOutlineRectDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

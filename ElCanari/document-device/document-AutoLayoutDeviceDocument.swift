@@ -59,12 +59,13 @@ import AppKit
   //····················································································································
 
   final var documentFileName : String? {
-    switch self.documentFileName_property.selection {
+    return self.documentFileName_property.optionalValue
+    /* switch self.documentFileName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -76,12 +77,13 @@ import AppKit
   //····················································································································
 
   final var hasUnconnectedPin : Bool? {
-    switch self.hasUnconnectedPin_property.selection {
+    return self.hasUnconnectedPin_property.optionalValue
+    /* switch self.hasUnconnectedPin_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -93,12 +95,13 @@ import AppKit
   //····················································································································
 
   final var assignmentInhibitionMessage : String? {
-    switch self.assignmentInhibitionMessage_property.selection {
+    return self.assignmentInhibitionMessage_property.optionalValue
+    /* switch self.assignmentInhibitionMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -110,12 +113,13 @@ import AppKit
   //····················································································································
 
   final var hasUnconnectedPad : Bool? {
-    switch self.hasUnconnectedPad_property.selection {
+    return self.hasUnconnectedPad_property.optionalValue
+    /* switch self.hasUnconnectedPad_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -127,12 +131,13 @@ import AppKit
   //····················································································································
 
   final var hasAssignedPadProxies : Bool? {
-    switch self.hasAssignedPadProxies_property.selection {
+    return self.hasAssignedPadProxies_property.optionalValue
+    /* switch self.hasAssignedPadProxies_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -144,12 +149,13 @@ import AppKit
   //····················································································································
 
   final var issues : CanariIssueArray? {
-    switch self.issues_property.selection {
+    return self.issues_property.optionalValue
+    /* switch self.issues_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -161,12 +167,13 @@ import AppKit
   //····················································································································
 
   final var mStatusImage : NSImage? {
-    switch self.mStatusImage_property.selection {
+    return self.mStatusImage_property.optionalValue
+    /* switch self.mStatusImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -178,12 +185,13 @@ import AppKit
   //····················································································································
 
   final var mStatusMessage : String? {
-    switch self.mStatusMessage_property.selection {
+    return self.mStatusMessage_property.optionalValue
+    /* switch self.mStatusMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -195,12 +203,13 @@ import AppKit
   //····················································································································
 
   final var mMetadataStatus : MetadataStatus? {
-    switch self.mMetadataStatus_property.selection {
+    return self.mMetadataStatus_property.optionalValue
+    /* switch self.mMetadataStatus_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

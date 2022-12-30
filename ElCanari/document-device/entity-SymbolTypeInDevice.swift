@@ -207,12 +207,13 @@ final class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   final var versionString : String? {
-    switch self.versionString_property.selection {
+    return self.versionString_property.optionalValue
+    /* switch self.versionString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -224,12 +225,13 @@ final class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   final var instanceCount : Int? {
-    switch self.instanceCount_property.selection {
+    return self.instanceCount_property.optionalValue
+    /* switch self.instanceCount_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -241,12 +243,13 @@ final class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   final var documentSize : Int? {
-    switch self.documentSize_property.selection {
+    return self.documentSize_property.optionalValue
+    /* switch self.documentSize_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -258,12 +261,13 @@ final class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   final var pinNameShape : EBShape? {
-    switch self.pinNameShape_property.selection {
+    return self.pinNameShape_property.optionalValue
+    /* switch self.pinNameShape_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

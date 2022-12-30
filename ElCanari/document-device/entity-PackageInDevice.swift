@@ -267,12 +267,13 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var versionString : String? {
-    switch self.versionString_property.selection {
+    return self.versionString_property.optionalValue
+    /* switch self.versionString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -284,12 +285,13 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var documentSize : Int? {
-    switch self.documentSize_property.selection {
+    return self.documentSize_property.optionalValue
+    /* switch self.documentSize_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -301,12 +303,13 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var frontSidePadFilledBezierPathArray : BezierPathArray? {
-    switch self.frontSidePadFilledBezierPathArray_property.selection {
+    return self.frontSidePadFilledBezierPathArray_property.optionalValue
+    /* switch self.frontSidePadFilledBezierPathArray_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -318,12 +321,13 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var backSidePadFilledBezierPathArray : BezierPathArray? {
-    switch self.backSidePadFilledBezierPathArray_property.selection {
+    return self.backSidePadFilledBezierPathArray_property.optionalValue
+    /* switch self.backSidePadFilledBezierPathArray_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -335,12 +339,13 @@ final class PackageInDevice : EBGraphicManagedObject,
   //····················································································································
 
   final var padNameSet : StringSet? {
-    switch self.padNameSet_property.selection {
+    return self.padNameSet_property.optionalValue
+    /* switch self.padNameSet_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

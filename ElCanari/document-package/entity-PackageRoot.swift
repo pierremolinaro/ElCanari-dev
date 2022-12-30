@@ -1264,12 +1264,13 @@ final class PackageRoot : EBManagedObject,
 
   var mModelImageFirstPointX : Int? {
     get {
-      switch self.mModelImageFirstPointX_property.selection {
+      return self.mModelImageFirstPointX_property.optionalValue
+      /* switch self.mModelImageFirstPointX_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -1288,12 +1289,13 @@ final class PackageRoot : EBManagedObject,
 
   var mModelImageFirstPointY : Int? {
     get {
-      switch self.mModelImageFirstPointY_property.selection {
+      return self.mModelImageFirstPointY_property.optionalValue
+      /* switch self.mModelImageFirstPointY_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -1312,12 +1314,13 @@ final class PackageRoot : EBManagedObject,
 
   var mModelImageSecondPointDx : Int? {
     get {
-      switch self.mModelImageSecondPointDx_property.selection {
+      return self.mModelImageSecondPointDx_property.optionalValue
+      /* switch self.mModelImageSecondPointDx_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -1336,12 +1339,13 @@ final class PackageRoot : EBManagedObject,
 
   var mModelImageSecondPointDy : Int? {
     get {
-      switch self.mModelImageSecondPointDy_property.selection {
+      return self.mModelImageSecondPointDy_property.optionalValue
+      /* switch self.mModelImageSecondPointDy_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -1359,12 +1363,13 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final var freePadNumbering : Bool? {
-    switch self.freePadNumbering_property.selection {
+    return self.freePadNumbering_property.optionalValue
+    /* switch self.freePadNumbering_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1376,12 +1381,13 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final var counterClockNumbering : Bool? {
-    switch self.counterClockNumbering_property.selection {
+    return self.counterClockNumbering_property.optionalValue
+    /* switch self.counterClockNumbering_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1393,12 +1399,13 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final var gridStepMultipliedByDisplayFactor : Int? {
-    switch self.gridStepMultipliedByDisplayFactor_property.selection {
+    return self.gridStepMultipliedByDisplayFactor_property.optionalValue
+    /* switch self.gridStepMultipliedByDisplayFactor_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1410,12 +1417,13 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final var secondPointX : Int? {
-    switch self.secondPointX_property.selection {
+    return self.secondPointX_property.optionalValue
+    /* switch self.secondPointX_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1427,12 +1435,13 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final var secondPointY : Int? {
-    switch self.secondPointY_property.selection {
+    return self.secondPointY_property.optionalValue
+    /* switch self.secondPointY_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1444,12 +1453,13 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final var lockImageView : NSImage? {
-    switch self.lockImageView_property.selection {
+    return self.lockImageView_property.optionalValue
+    /* switch self.lockImageView_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1489,12 +1499,13 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final var padNumberDisplay : EBShape? {
-    switch self.padNumberDisplay_property.selection {
+    return self.padNumberDisplay_property.optionalValue
+    /* switch self.padNumberDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1506,12 +1517,13 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final var backgroundImagePageBackgroundDisplay : EBShape? {
-    switch self.backgroundImagePageBackgroundDisplay_property.selection {
+    return self.backgroundImagePageBackgroundDisplay_property.optionalValue
+    /* switch self.backgroundImagePageBackgroundDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1523,12 +1535,13 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final var modelImageSizeString : String? {
-    switch self.modelImageSizeString_property.selection {
+    return self.modelImageSizeString_property.optionalValue
+    /* switch self.modelImageSizeString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1540,12 +1553,13 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final var hasModelImage : Bool? {
-    switch self.hasModelImage_property.selection {
+    return self.hasModelImage_property.optionalValue
+    /* switch self.hasModelImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1557,12 +1571,13 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final var masterPadObjectIndexArray : IntArray? {
-    switch self.masterPadObjectIndexArray_property.selection {
+    return self.masterPadObjectIndexArray_property.optionalValue
+    /* switch self.masterPadObjectIndexArray_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1574,12 +1589,13 @@ final class PackageRoot : EBManagedObject,
   //····················································································································
 
   final var issues : CanariIssueArray? {
-    switch self.issues_property.selection {
+    return self.issues_property.optionalValue
+    /* switch self.issues_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

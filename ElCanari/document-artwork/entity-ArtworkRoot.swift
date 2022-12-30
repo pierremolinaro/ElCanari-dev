@@ -407,12 +407,13 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   final var hasInnerElements : Bool? {
-    switch self.hasInnerElements_property.selection {
+    return self.hasInnerElements_property.optionalValue
+    /* switch self.hasInnerElements_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -424,12 +425,13 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   final var hasSixLayers : Bool? {
-    switch self.hasSixLayers_property.selection {
+    return self.hasSixLayers_property.optionalValue
+    /* switch self.hasSixLayers_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -441,12 +443,13 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   final var hasDataWarning : Bool? {
-    switch self.hasDataWarning_property.selection {
+    return self.hasDataWarning_property.optionalValue
+    /* switch self.hasDataWarning_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -458,12 +461,13 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   final var emptyDrillFileExtension : Bool? {
-    switch self.emptyDrillFileExtension_property.selection {
+    return self.emptyDrillFileExtension_property.optionalValue
+    /* switch self.emptyDrillFileExtension_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -475,12 +479,13 @@ final class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   final var signatureForERCChecking : UInt32? {
-    switch self.signatureForERCChecking_property.selection {
+    return self.signatureForERCChecking_property.optionalValue
+    /* switch self.signatureForERCChecking_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

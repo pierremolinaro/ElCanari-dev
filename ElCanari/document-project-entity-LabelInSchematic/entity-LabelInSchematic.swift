@@ -108,12 +108,13 @@ final class LabelInSchematic : SchematicObject,
   //····················································································································
 
   final var location : CanariPoint? {
-    switch self.location_property.selection {
+    return self.location_property.optionalValue
+    /* switch self.location_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -125,12 +126,13 @@ final class LabelInSchematic : SchematicObject,
   //····················································································································
 
   final var netName : String? {
-    switch self.netName_property.selection {
+    return self.netName_property.optionalValue
+    /* switch self.netName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -142,12 +144,13 @@ final class LabelInSchematic : SchematicObject,
   //····················································································································
 
   final var netClassName : String? {
-    switch self.netClassName_property.selection {
+    return self.netClassName_property.optionalValue
+    /* switch self.netClassName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

@@ -166,12 +166,13 @@ final class FontCharacter : EBManagedObject,
   //····················································································································
 
   final var segmentArrayForDrawing : CharacterSegmentList? {
-    switch self.segmentArrayForDrawing_property.selection {
+    return self.segmentArrayForDrawing_property.optionalValue
+    /* switch self.segmentArrayForDrawing_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -183,12 +184,13 @@ final class FontCharacter : EBManagedObject,
   //····················································································································
 
   final var gerberCode : CharacterGerberCode? {
-    switch self.gerberCode_property.selection {
+    return self.gerberCode_property.optionalValue
+    /* switch self.gerberCode_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -200,12 +202,13 @@ final class FontCharacter : EBManagedObject,
   //····················································································································
 
   final var gerberCodeInstructionCountMessage : String? {
-    switch self.gerberCodeInstructionCountMessage_property.selection {
+    return self.gerberCodeInstructionCountMessage_property.optionalValue
+    /* switch self.gerberCodeInstructionCountMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -217,12 +220,13 @@ final class FontCharacter : EBManagedObject,
   //····················································································································
 
   final var issues : CanariIssueArray? {
-    switch self.issues_property.selection {
+    return self.issues_property.optionalValue
+    /* switch self.issues_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

@@ -58,8 +58,6 @@ final class AutoLayoutSegmentedControlWithPages : AutoLayoutBase_NSSegmentedCont
                       pageView inPageView : AutoLayoutBase_NSStackView) -> Self {
     let n = self.segmentCount
     self.segmentCount += 1
- //   self.setLabel ("", forSegment: n)
- //   self.setAlignment (.center, forSegment: n)
     self.setImage (NSImage (named: inImageName), forSegment: n)
     self.setImageScaling (.scaleProportionallyUpOrDown, forSegment: n)
 

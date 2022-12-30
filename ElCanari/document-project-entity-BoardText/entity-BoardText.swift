@@ -335,12 +335,13 @@ final class BoardText : BoardObject,
   //····················································································································
 
   final var fontName : String? {
-    switch self.fontName_property.selection {
+    return self.fontName_property.optionalValue
+    /* switch self.fontName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

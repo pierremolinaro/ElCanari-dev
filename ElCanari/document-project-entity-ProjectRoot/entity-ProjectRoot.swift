@@ -3012,12 +3012,13 @@ final class ProjectRoot : EBManagedObject,
 
   var minPPTPTTTWdisplayUnit : Int? {
     get {
-      switch self.minPPTPTTTWdisplayUnit_property.selection {
+      return self.minPPTPTTTWdisplayUnit_property.optionalValue
+      /* switch self.minPPTPTTTWdisplayUnit_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -3036,12 +3037,13 @@ final class ProjectRoot : EBManagedObject,
 
   var minPPTPTTTW : Int? {
     get {
-      switch self.minPPTPTTTW_property.selection {
+      return self.minPPTPTTTW_property.optionalValue
+      /* switch self.minPPTPTTTW_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -3060,12 +3062,13 @@ final class ProjectRoot : EBManagedObject,
 
   var minValueForOARdisplayUnit : Int? {
     get {
-      switch self.minValueForOARdisplayUnit_property.selection {
+      return self.minValueForOARdisplayUnit_property.optionalValue
+      /* switch self.minValueForOARdisplayUnit_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -3084,12 +3087,13 @@ final class ProjectRoot : EBManagedObject,
 
   var minValueForOARinEBUnit : Int? {
     get {
-      switch self.minValueForOARinEBUnit_property.selection {
+      return self.minValueForOARinEBUnit_property.optionalValue
+      /* switch self.minValueForOARinEBUnit_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -3108,12 +3112,13 @@ final class ProjectRoot : EBManagedObject,
 
   var minValueForPHDdisplayUnit : Int? {
     get {
-      switch self.minValueForPHDdisplayUnit_property.selection {
+      return self.minValueForPHDdisplayUnit_property.optionalValue
+      /* switch self.minValueForPHDdisplayUnit_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -3132,12 +3137,13 @@ final class ProjectRoot : EBManagedObject,
 
   var minValueForPHDinEBUnit : Int? {
     get {
-      switch self.minValueForPHDinEBUnit_property.selection {
+      return self.minValueForPHDinEBUnit_property.optionalValue
+      /* switch self.minValueForPHDinEBUnit_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -3156,12 +3162,13 @@ final class ProjectRoot : EBManagedObject,
 
   var minValueForBoardLimitWidth : Int? {
     get {
-      switch self.minValueForBoardLimitWidth_property.selection {
+      return self.minValueForBoardLimitWidth_property.optionalValue
+      /* switch self.minValueForBoardLimitWidth_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -3180,12 +3187,13 @@ final class ProjectRoot : EBManagedObject,
 
   var minValueForBoardLimitWidthDisplayUnit : Int? {
     get {
-      switch self.minValueForBoardLimitWidthDisplayUnit_property.selection {
+      return self.minValueForBoardLimitWidthDisplayUnit_property.optionalValue
+      /* switch self.minValueForBoardLimitWidthDisplayUnit_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -3204,12 +3212,13 @@ final class ProjectRoot : EBManagedObject,
 
   var artworkComments : String? {
     get {
-      switch self.artworkComments_property.selection {
+      return self.artworkComments_property.optionalValue
+      /* switch self.artworkComments_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -3228,12 +3237,13 @@ final class ProjectRoot : EBManagedObject,
 
   var artworkLayerConfiguration : LayerConfiguration? {
     get {
-      switch self.artworkLayerConfiguration_property.selection {
+      return self.artworkLayerConfiguration_property.optionalValue
+      /* switch self.artworkLayerConfiguration_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -3252,12 +3262,13 @@ final class ProjectRoot : EBManagedObject,
 
   var artworkTitle : String? {
     get {
-      switch self.artworkTitle_property.selection {
+      return self.artworkTitle_property.optionalValue
+      /* switch self.artworkTitle_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -3276,12 +3287,13 @@ final class ProjectRoot : EBManagedObject,
 
   var selectedSheetTitle : String? {
     get {
-      switch self.selectedSheetTitle_property.selection {
+      return self.selectedSheetTitle_property.optionalValue
+      /* switch self.selectedSheetTitle_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -3324,12 +3336,13 @@ final class ProjectRoot : EBManagedObject,
 
   var drillDataFileExtension : String? {
     get {
-      switch self.drillDataFileExtension_property.selection {
+      return self.drillDataFileExtension_property.optionalValue
+      /* switch self.drillDataFileExtension_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -3399,12 +3412,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var hasInnerElements : Bool? {
-    switch self.hasInnerElements_property.selection {
+    return self.hasInnerElements_property.optionalValue
+    /* switch self.hasInnerElements_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3416,12 +3430,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var layerConfigurationString : String? {
-    switch self.layerConfigurationString_property.selection {
+    return self.layerConfigurationString_property.optionalValue
+    /* switch self.layerConfigurationString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3433,12 +3448,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardGridStepMultipliedByDisplayFactor : Int? {
-    switch self.boardGridStepMultipliedByDisplayFactor_property.selection {
+    return self.boardGridStepMultipliedByDisplayFactor_property.optionalValue
+    /* switch self.boardGridStepMultipliedByDisplayFactor_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3450,12 +3466,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardLimitsGridStepMultipliedByDisplayFactor : Int? {
-    switch self.boardLimitsGridStepMultipliedByDisplayFactor_property.selection {
+    return self.boardLimitsGridStepMultipliedByDisplayFactor_property.optionalValue
+    /* switch self.boardLimitsGridStepMultipliedByDisplayFactor_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3467,12 +3484,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardShapeIsRectangular : Bool? {
-    switch self.boardShapeIsRectangular_property.selection {
+    return self.boardShapeIsRectangular_property.optionalValue
+    /* switch self.boardShapeIsRectangular_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3512,12 +3530,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var selectedSheetIssues : CanariIssueArray? {
-    switch self.selectedSheetIssues_property.selection {
+    return self.selectedSheetIssues_property.optionalValue
+    /* switch self.selectedSheetIssues_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3529,12 +3548,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var schematicOverDisplay : EBShape? {
-    switch self.schematicOverDisplay_property.selection {
+    return self.schematicOverDisplay_property.optionalValue
+    /* switch self.schematicOverDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3546,12 +3566,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var connexionWarningString : String? {
-    switch self.connexionWarningString_property.selection {
+    return self.connexionWarningString_property.optionalValue
+    /* switch self.connexionWarningString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3563,12 +3584,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var connexionErrorString : String? {
-    switch self.connexionErrorString_property.selection {
+    return self.connexionErrorString_property.optionalValue
+    /* switch self.connexionErrorString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3580,12 +3602,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var sheetIndexes : IntArray? {
-    switch self.sheetIndexes_property.selection {
+    return self.sheetIndexes_property.optionalValue
+    /* switch self.sheetIndexes_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3597,12 +3620,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var netsDescription : NetInfoArray? {
-    switch self.netsDescription_property.selection {
+    return self.netsDescription_property.optionalValue
+    /* switch self.netsDescription_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3614,12 +3638,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardIssues : CanariIssueArray? {
-    switch self.boardIssues_property.selection {
+    return self.boardIssues_property.optionalValue
+    /* switch self.boardIssues_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3631,12 +3656,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var hasSixLayers : Bool? {
-    switch self.hasSixLayers_property.selection {
+    return self.hasSixLayers_property.optionalValue
+    /* switch self.hasSixLayers_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3648,12 +3674,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var signatureForERCChecking : UInt32? {
-    switch self.signatureForERCChecking_property.selection {
+    return self.signatureForERCChecking_property.optionalValue
+    /* switch self.signatureForERCChecking_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3665,12 +3692,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var ercStatusImage : NSImage? {
-    switch self.ercStatusImage_property.selection {
+    return self.ercStatusImage_property.optionalValue
+    /* switch self.ercStatusImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3682,12 +3710,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var ercStatusMessage : String? {
-    switch self.ercStatusMessage_property.selection {
+    return self.ercStatusMessage_property.optionalValue
+    /* switch self.ercStatusMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3699,12 +3728,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var viaCountString : String? {
-    switch self.viaCountString_property.selection {
+    return self.viaCountString_property.optionalValue
+    /* switch self.viaCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3716,12 +3746,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var topSideTrackCountString : String? {
-    switch self.topSideTrackCountString_property.selection {
+    return self.topSideTrackCountString_property.optionalValue
+    /* switch self.topSideTrackCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3733,12 +3764,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var backSideTrackCountString : String? {
-    switch self.backSideTrackCountString_property.selection {
+    return self.backSideTrackCountString_property.optionalValue
+    /* switch self.backSideTrackCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3750,12 +3782,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var inner1LayerTrackCountString : String? {
-    switch self.inner1LayerTrackCountString_property.selection {
+    return self.inner1LayerTrackCountString_property.optionalValue
+    /* switch self.inner1LayerTrackCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3767,12 +3800,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var inner2LayerTrackCountString : String? {
-    switch self.inner2LayerTrackCountString_property.selection {
+    return self.inner2LayerTrackCountString_property.optionalValue
+    /* switch self.inner2LayerTrackCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3784,12 +3818,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var inner3LayerTrackCountString : String? {
-    switch self.inner3LayerTrackCountString_property.selection {
+    return self.inner3LayerTrackCountString_property.optionalValue
+    /* switch self.inner3LayerTrackCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3801,12 +3836,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var inner4LayerTrackCountString : String? {
-    switch self.inner4LayerTrackCountString_property.selection {
+    return self.inner4LayerTrackCountString_property.optionalValue
+    /* switch self.inner4LayerTrackCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3818,12 +3854,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var trackCountString : String? {
-    switch self.trackCountString_property.selection {
+    return self.trackCountString_property.optionalValue
+    /* switch self.trackCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3835,12 +3872,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var trackLengthString : String? {
-    switch self.trackLengthString_property.selection {
+    return self.trackLengthString_property.optionalValue
+    /* switch self.trackLengthString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3852,12 +3890,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var interiorBoundBox : CanariRect? {
-    switch self.interiorBoundBox_property.selection {
+    return self.interiorBoundBox_property.optionalValue
+    /* switch self.interiorBoundBox_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3869,12 +3908,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardBoundBox : CanariRect? {
-    switch self.boardBoundBox_property.selection {
+    return self.boardBoundBox_property.optionalValue
+    /* switch self.boardBoundBox_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3886,12 +3926,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardInteriorTop : String? {
-    switch self.boardInteriorTop_property.selection {
+    return self.boardInteriorTop_property.optionalValue
+    /* switch self.boardInteriorTop_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3903,12 +3944,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardInteriorBottom : String? {
-    switch self.boardInteriorBottom_property.selection {
+    return self.boardInteriorBottom_property.optionalValue
+    /* switch self.boardInteriorBottom_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3920,12 +3962,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardInteriorLeft : String? {
-    switch self.boardInteriorLeft_property.selection {
+    return self.boardInteriorLeft_property.optionalValue
+    /* switch self.boardInteriorLeft_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3937,12 +3980,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardInteriorRight : String? {
-    switch self.boardInteriorRight_property.selection {
+    return self.boardInteriorRight_property.optionalValue
+    /* switch self.boardInteriorRight_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3954,12 +3998,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardLimitBorderTop : String? {
-    switch self.boardLimitBorderTop_property.selection {
+    return self.boardLimitBorderTop_property.optionalValue
+    /* switch self.boardLimitBorderTop_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3971,12 +4016,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardLimitBorderBottom : String? {
-    switch self.boardLimitBorderBottom_property.selection {
+    return self.boardLimitBorderBottom_property.optionalValue
+    /* switch self.boardLimitBorderBottom_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -3988,12 +4034,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardLimitBorderLeft : String? {
-    switch self.boardLimitBorderLeft_property.selection {
+    return self.boardLimitBorderLeft_property.optionalValue
+    /* switch self.boardLimitBorderLeft_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -4005,12 +4052,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardLimitBorderRight : String? {
-    switch self.boardLimitBorderRight_property.selection {
+    return self.boardLimitBorderRight_property.optionalValue
+    /* switch self.boardLimitBorderRight_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -4022,12 +4070,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var borderElementCountString : String? {
-    switch self.borderElementCountString_property.selection {
+    return self.borderElementCountString_property.optionalValue
+    /* switch self.borderElementCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -4039,12 +4088,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var borderOutlineBackground : EBShape? {
-    switch self.borderOutlineBackground_property.selection {
+    return self.borderOutlineBackground_property.optionalValue
+    /* switch self.borderOutlineBackground_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -4056,12 +4106,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var borderViewBackground : EBShape? {
-    switch self.borderViewBackground_property.selection {
+    return self.borderViewBackground_property.optionalValue
+    /* switch self.borderViewBackground_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -4073,12 +4124,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var fontNameArray : StringArray? {
-    switch self.fontNameArray_property.selection {
+    return self.fontNameArray_property.optionalValue
+    /* switch self.fontNameArray_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -4090,12 +4142,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var deviceNames : StringArray? {
-    switch self.deviceNames_property.selection {
+    return self.deviceNames_property.optionalValue
+    /* switch self.deviceNames_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -4107,12 +4160,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var allClassNames : StringArray? {
-    switch self.allClassNames_property.selection {
+    return self.allClassNames_property.optionalValue
+    /* switch self.allClassNames_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -4124,12 +4178,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var sheetGeometry : SchematicSheetGeometry? {
-    switch self.sheetGeometry_property.selection {
+    return self.sheetGeometry_property.optionalValue
+    /* switch self.sheetGeometry_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -4141,12 +4196,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var schematicBackgroundDisplay : EBShape? {
-    switch self.schematicBackgroundDisplay_property.selection {
+    return self.schematicBackgroundDisplay_property.optionalValue
+    /* switch self.schematicBackgroundDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -4158,12 +4214,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var netWarningCount : Int? {
-    switch self.netWarningCount_property.selection {
+    return self.netWarningCount_property.optionalValue
+    /* switch self.netWarningCount_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -4175,12 +4232,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var netNamesArray : StringArray? {
-    switch self.netNamesArray_property.selection {
+    return self.netNamesArray_property.optionalValue
+    /* switch self.netNamesArray_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -4192,12 +4250,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var unplacedSymbols : StringTagArray? {
-    switch self.unplacedSymbols_property.selection {
+    return self.unplacedSymbols_property.optionalValue
+    /* switch self.unplacedSymbols_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -4209,12 +4268,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var unplacedPackages : StringTagArray? {
-    switch self.unplacedPackages_property.selection {
+    return self.unplacedPackages_property.optionalValue
+    /* switch self.unplacedPackages_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -4226,12 +4286,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var componentsPlacedInBoard : StringTagArray? {
-    switch self.componentsPlacedInBoard_property.selection {
+    return self.componentsPlacedInBoard_property.optionalValue
+    /* switch self.componentsPlacedInBoard_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -4243,12 +4304,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardStatusImage : NSImage? {
-    switch self.boardStatusImage_property.selection {
+    return self.boardStatusImage_property.optionalValue
+    /* switch self.boardStatusImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -4260,12 +4322,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var boardStatusMessage : String? {
-    switch self.boardStatusMessage_property.selection {
+    return self.boardStatusMessage_property.optionalValue
+    /* switch self.boardStatusMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -4277,12 +4340,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var placedComponentNameArray : StringArray? {
-    switch self.placedComponentNameArray_property.selection {
+    return self.placedComponentNameArray_property.optionalValue
+    /* switch self.placedComponentNameArray_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -4294,12 +4358,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var schematicHasErrorOrWarning : Bool? {
-    switch self.schematicHasErrorOrWarning_property.selection {
+    return self.schematicHasErrorOrWarning_property.optionalValue
+    /* switch self.schematicHasErrorOrWarning_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -4311,12 +4376,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var schematicStatusMessage : String? {
-    switch self.schematicStatusMessage_property.selection {
+    return self.schematicStatusMessage_property.optionalValue
+    /* switch self.schematicStatusMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -4328,12 +4394,13 @@ final class ProjectRoot : EBManagedObject,
   //····················································································································
 
   final var schematicStatusImage : NSImage? {
-    switch self.schematicStatusImage_property.selection {
+    return self.schematicStatusImage_property.optionalValue
+    /* switch self.schematicStatusImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

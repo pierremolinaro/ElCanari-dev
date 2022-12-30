@@ -178,12 +178,13 @@ final class NetInProject : EBManagedObject,
   //····················································································································
 
   final var netClassName : String? {
-    switch self.netClassName_property.selection {
+    return self.netClassName_property.optionalValue
+    /* switch self.netClassName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -195,12 +196,13 @@ final class NetInProject : EBManagedObject,
   //····················································································································
 
   final var netClassTrackWidth : Int? {
-    switch self.netClassTrackWidth_property.selection {
+    return self.netClassTrackWidth_property.optionalValue
+    /* switch self.netClassTrackWidth_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -212,12 +214,13 @@ final class NetInProject : EBManagedObject,
   //····················································································································
 
   final var netClassViaHoleDiameter : Int? {
-    switch self.netClassViaHoleDiameter_property.selection {
+    return self.netClassViaHoleDiameter_property.optionalValue
+    /* switch self.netClassViaHoleDiameter_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -229,12 +232,13 @@ final class NetInProject : EBManagedObject,
   //····················································································································
 
   final var netClassViaPadDiameter : Int? {
-    switch self.netClassViaPadDiameter_property.selection {
+    return self.netClassViaPadDiameter_property.optionalValue
+    /* switch self.netClassViaPadDiameter_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -246,12 +250,13 @@ final class NetInProject : EBManagedObject,
   //····················································································································
 
   final var wireColor : NSColor? {
-    switch self.wireColor_property.selection {
+    return self.wireColor_property.optionalValue
+    /* switch self.wireColor_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -263,12 +268,13 @@ final class NetInProject : EBManagedObject,
   //····················································································································
 
   final var netSchematicPointsInfo : NetInfoPointArray? {
-    switch self.netSchematicPointsInfo_property.selection {
+    return self.netSchematicPointsInfo_property.optionalValue
+    /* switch self.netSchematicPointsInfo_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -280,12 +286,13 @@ final class NetInProject : EBManagedObject,
   //····················································································································
 
   final var trackCount : Int? {
-    switch self.trackCount_property.selection {
+    return self.trackCount_property.optionalValue
+    /* switch self.trackCount_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

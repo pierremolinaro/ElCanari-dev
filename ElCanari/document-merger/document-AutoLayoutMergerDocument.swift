@@ -53,12 +53,13 @@ import AppKit
   //····················································································································
 
   final var issues : CanariIssueArray? {
-    switch self.issues_property.selection {
+    return self.issues_property.optionalValue
+    /* switch self.issues_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -70,12 +71,13 @@ import AppKit
   //····················································································································
 
   final var boardLimitWidthStatusImage : NSImage? {
-    switch self.boardLimitWidthStatusImage_property.selection {
+    return self.boardLimitWidthStatusImage_property.optionalValue
+    /* switch self.boardLimitWidthStatusImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -87,12 +89,13 @@ import AppKit
   //····················································································································
 
   final var statusMessage : String? {
-    switch self.statusMessage_property.selection {
+    return self.statusMessage_property.optionalValue
+    /* switch self.statusMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -104,12 +107,13 @@ import AppKit
   //····················································································································
 
   final var boardDispositionStatusTitle : String? {
-    switch self.boardDispositionStatusTitle_property.selection {
+    return self.boardDispositionStatusTitle_property.optionalValue
+    /* switch self.boardDispositionStatusTitle_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -121,12 +125,13 @@ import AppKit
   //····················································································································
 
   final var documentFileName : String? {
-    switch self.documentFileName_property.selection {
+    return self.documentFileName_property.optionalValue
+    /* switch self.documentFileName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -138,12 +143,13 @@ import AppKit
   //····················································································································
 
   final var incorrectDocumentFileDetailedErrorMessage : String? {
-    switch self.incorrectDocumentFileDetailedErrorMessage_property.selection {
+    return self.incorrectDocumentFileDetailedErrorMessage_property.optionalValue
+    /* switch self.incorrectDocumentFileDetailedErrorMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -155,12 +161,13 @@ import AppKit
   //····················································································································
 
   final var documentFileShouldBeRenamedErrorMessage : String? {
-    switch self.documentFileShouldBeRenamedErrorMessage_property.selection {
+    return self.documentFileShouldBeRenamedErrorMessage_property.optionalValue
+    /* switch self.documentFileShouldBeRenamedErrorMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -172,12 +179,13 @@ import AppKit
   //····················································································································
 
   final var emptyDrillFileExtension : Bool? {
-    switch self.emptyDrillFileExtension_property.selection {
+    return self.emptyDrillFileExtension_property.optionalValue
+    /* switch self.emptyDrillFileExtension_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -189,12 +197,13 @@ import AppKit
   //····················································································································
 
   final var statusImage : NSImage? {
-    switch self.statusImage_property.selection {
+    return self.statusImage_property.optionalValue
+    /* switch self.statusImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -206,12 +215,13 @@ import AppKit
   //····················································································································
 
   final var documentIsUnnamed : Bool? {
-    switch self.documentIsUnnamed_property.selection {
+    return self.documentIsUnnamed_property.optionalValue
+    /* switch self.documentIsUnnamed_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -223,12 +233,13 @@ import AppKit
   //····················································································································
 
   final var emptyDrillFileExtensionImage : NSImage? {
-    switch self.emptyDrillFileExtensionImage_property.selection {
+    return self.emptyDrillFileExtensionImage_property.optionalValue
+    /* switch self.emptyDrillFileExtensionImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -240,12 +251,13 @@ import AppKit
   //····················································································································
 
   final var generatedFileCountString : String? {
-    switch self.generatedFileCountString_property.selection {
+    return self.generatedFileCountString_property.optionalValue
+    /* switch self.generatedFileCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

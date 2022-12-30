@@ -143,12 +143,13 @@ import AppKit
   //····················································································································
 
   final var netCount : Int? {
-    switch self.netCount_property.selection {
+    return self.netCount_property.optionalValue
+    /* switch self.netCount_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -160,12 +161,13 @@ import AppKit
   //····················································································································
 
   final var rastnetDisplayOneNet : Bool? {
-    switch self.rastnetDisplayOneNet_property.selection {
+    return self.rastnetDisplayOneNet_property.optionalValue
+    /* switch self.rastnetDisplayOneNet_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -177,12 +179,13 @@ import AppKit
   //····················································································································
 
   final var rastnetDisplayComponentNet : Bool? {
-    switch self.rastnetDisplayComponentNet_property.selection {
+    return self.rastnetDisplayComponentNet_property.optionalValue
+    /* switch self.rastnetDisplayComponentNet_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -194,12 +197,13 @@ import AppKit
   //····················································································································
 
   final var documentFileName : String? {
-    switch self.documentFileName_property.selection {
+    return self.documentFileName_property.optionalValue
+    /* switch self.documentFileName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -211,12 +215,13 @@ import AppKit
   //····················································································································
 
   final var incorrectDocumentFileDetailedErrorMessage : String? {
-    switch self.incorrectDocumentFileDetailedErrorMessage_property.selection {
+    return self.incorrectDocumentFileDetailedErrorMessage_property.optionalValue
+    /* switch self.incorrectDocumentFileDetailedErrorMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -228,12 +233,13 @@ import AppKit
   //····················································································································
 
   final var documentFileShouldBeRenamedErrorMessage : String? {
-    switch self.documentFileShouldBeRenamedErrorMessage_property.selection {
+    return self.documentFileShouldBeRenamedErrorMessage_property.optionalValue
+    /* switch self.documentFileShouldBeRenamedErrorMessage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -245,12 +251,13 @@ import AppKit
   //····················································································································
 
   final var pinPadAssignments : ThreeStringArray? {
-    switch self.pinPadAssignments_property.selection {
+    return self.pinPadAssignments_property.optionalValue
+    /* switch self.pinPadAssignments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -262,12 +269,13 @@ import AppKit
   //····················································································································
 
   final var selectedDeviceSymbolNames : TwoStringArray? {
-    switch self.selectedDeviceSymbolNames_property.selection {
+    return self.selectedDeviceSymbolNames_property.optionalValue
+    /* switch self.selectedDeviceSymbolNames_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -279,12 +287,13 @@ import AppKit
   //····················································································································
 
   final var selectedDevicePackageNames : StringArray? {
-    switch self.selectedDevicePackageNames_property.selection {
+    return self.selectedDevicePackageNames_property.optionalValue
+    /* switch self.selectedDevicePackageNames_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -296,12 +305,13 @@ import AppKit
   //····················································································································
 
   final var selectedDeviceNames : StringArray? {
-    switch self.selectedDeviceNames_property.selection {
+    return self.selectedDeviceNames_property.optionalValue
+    /* switch self.selectedDeviceNames_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -313,12 +323,13 @@ import AppKit
   //····················································································································
 
   final var canRemoveNetClasses : Bool? {
-    switch self.canRemoveNetClasses_property.selection {
+    return self.canRemoveNetClasses_property.optionalValue
+    /* switch self.canRemoveNetClasses_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -330,12 +341,13 @@ import AppKit
   //····················································································································
 
   final var netCountString : String? {
-    switch self.netCountString_property.selection {
+    return self.netCountString_property.optionalValue
+    /* switch self.netCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -347,12 +359,13 @@ import AppKit
   //····················································································································
 
   final var schematicSheetOrientationIsCustom : Bool? {
-    switch self.schematicSheetOrientationIsCustom_property.selection {
+    return self.schematicSheetOrientationIsCustom_property.optionalValue
+    /* switch self.schematicSheetOrientationIsCustom_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -364,12 +377,13 @@ import AppKit
   //····················································································································
 
   final var rastnetShape : EBShape? {
-    switch self.rastnetShape_property.selection {
+    return self.rastnetShape_property.optionalValue
+    /* switch self.rastnetShape_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -381,12 +395,13 @@ import AppKit
   //····················································································································
 
   final var documentIsUnnamed : Bool? {
-    switch self.documentIsUnnamed_property.selection {
+    return self.documentIsUnnamed_property.optionalValue
+    /* switch self.documentIsUnnamed_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -398,12 +413,13 @@ import AppKit
   //····················································································································
 
   final var emptyDrillFileExtension : Bool? {
-    switch self.emptyDrillFileExtension_property.selection {
+    return self.emptyDrillFileExtension_property.optionalValue
+    /* switch self.emptyDrillFileExtension_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -415,12 +431,13 @@ import AppKit
   //····················································································································
 
   final var componentCount : String? {
-    switch self.componentCount_property.selection {
+    return self.componentCount_property.optionalValue
+    /* switch self.componentCount_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -432,12 +449,13 @@ import AppKit
   //····················································································································
 
   final var canChangePackage : Bool? {
-    switch self.canChangePackage_property.selection {
+    return self.canChangePackage_property.optionalValue
+    /* switch self.canChangePackage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -449,12 +467,13 @@ import AppKit
   //····················································································································
 
   final var canRemoveSelectedFonts : Bool? {
-    switch self.canRemoveSelectedFonts_property.selection {
+    return self.canRemoveSelectedFonts_property.optionalValue
+    /* switch self.canRemoveSelectedFonts_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -466,12 +485,13 @@ import AppKit
   //····················································································································
 
   final var canRemoveSelectedDevices : Bool? {
-    switch self.canRemoveSelectedDevices_property.selection {
+    return self.canRemoveSelectedDevices_property.optionalValue
+    /* switch self.canRemoveSelectedDevices_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -483,12 +503,13 @@ import AppKit
   //····················································································································
 
   final var unplacedSymbolsCount : Int? {
-    switch self.unplacedSymbolsCount_property.selection {
+    return self.unplacedSymbolsCount_property.optionalValue
+    /* switch self.unplacedSymbolsCount_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -500,12 +521,13 @@ import AppKit
   //····················································································································
 
   final var unplacedSymbolsCountString : String? {
-    switch self.unplacedSymbolsCountString_property.selection {
+    return self.unplacedSymbolsCountString_property.optionalValue
+    /* switch self.unplacedSymbolsCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -517,12 +539,13 @@ import AppKit
   //····················································································································
 
   final var boardOutlineOverDisplay : EBShape? {
-    switch self.boardOutlineOverDisplay_property.selection {
+    return self.boardOutlineOverDisplay_property.optionalValue
+    /* switch self.boardOutlineOverDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -534,12 +557,13 @@ import AppKit
   //····················································································································
 
   final var unplacedPackageCount : Int? {
-    switch self.unplacedPackageCount_property.selection {
+    return self.unplacedPackageCount_property.optionalValue
+    /* switch self.unplacedPackageCount_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -551,12 +575,13 @@ import AppKit
   //····················································································································
 
   final var unplacedPackagesCountString : String? {
-    switch self.unplacedPackagesCountString_property.selection {
+    return self.unplacedPackagesCountString_property.optionalValue
+    /* switch self.unplacedPackagesCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -568,12 +593,13 @@ import AppKit
   //····················································································································
 
   final var unplacedPackagesMessageString : String? {
-    switch self.unplacedPackagesMessageString_property.selection {
+    return self.unplacedPackagesMessageString_property.optionalValue
+    /* switch self.unplacedPackagesMessageString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -585,12 +611,13 @@ import AppKit
   //····················································································································
 
   final var emptyDrillFileExtensionImage : NSImage? {
-    switch self.emptyDrillFileExtensionImage_property.selection {
+    return self.emptyDrillFileExtensionImage_property.optionalValue
+    /* switch self.emptyDrillFileExtensionImage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -602,12 +629,13 @@ import AppKit
   //····················································································································
 
   final var generatedFileCountString : String? {
-    switch self.generatedFileCountString_property.selection {
+    return self.generatedFileCountString_property.optionalValue
+    /* switch self.generatedFileCountString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

@@ -78,12 +78,13 @@ final class DeviceDocumentation : EBManagedObject,
   //····················································································································
 
   final var fileSize : Int? {
-    switch self.fileSize_property.selection {
+    return self.fileSize_property.optionalValue
+    /* switch self.fileSize_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

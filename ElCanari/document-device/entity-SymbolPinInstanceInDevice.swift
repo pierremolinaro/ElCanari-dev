@@ -138,12 +138,13 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //····················································································································
 
   final var pinName : String? {
-    switch self.pinName_property.selection {
+    return self.pinName_property.optionalValue
+    /* switch self.pinName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -155,12 +156,13 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //····················································································································
 
   final var symbolName : String? {
-    switch self.symbolName_property.selection {
+    return self.symbolName_property.optionalValue
+    /* switch self.symbolName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -172,12 +174,13 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //····················································································································
 
   final var pinQualifiedName : PinQualifiedNameStruct? {
-    switch self.pinQualifiedName_property.selection {
+    return self.pinQualifiedName_property.optionalValue
+    /* switch self.pinQualifiedName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -189,12 +192,13 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //····················································································································
 
   final var isConnected : Bool? {
-    switch self.isConnected_property.selection {
+    return self.isConnected_property.optionalValue
+    /* switch self.isConnected_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -206,12 +210,13 @@ final class SymbolPinInstanceInDevice : EBManagedObject,
   //····················································································································
 
   final var numberShape : EBShape? {
-    switch self.numberShape_property.selection {
+    return self.numberShape_property.optionalValue
+    /* switch self.numberShape_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

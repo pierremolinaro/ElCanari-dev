@@ -489,12 +489,13 @@ final class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var trackWidthString : String? {
-    switch self.trackWidthString_property.selection {
+    return self.trackWidthString_property.optionalValue
+    /* switch self.trackWidthString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -506,12 +507,13 @@ final class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var viaHoleDiameter : String? {
-    switch self.viaHoleDiameter_property.selection {
+    return self.viaHoleDiameter_property.optionalValue
+    /* switch self.viaHoleDiameter_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -523,12 +525,13 @@ final class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var viaPadDiameter : String? {
-    switch self.viaPadDiameter_property.selection {
+    return self.viaPadDiameter_property.optionalValue
+    /* switch self.viaPadDiameter_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -540,12 +543,13 @@ final class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var allowTracksOnFrontSideString : String? {
-    switch self.allowTracksOnFrontSideString_property.selection {
+    return self.allowTracksOnFrontSideString_property.optionalValue
+    /* switch self.allowTracksOnFrontSideString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -557,12 +561,13 @@ final class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var allowTracksOnBackSideString : String? {
-    switch self.allowTracksOnBackSideString_property.selection {
+    return self.allowTracksOnBackSideString_property.optionalValue
+    /* switch self.allowTracksOnBackSideString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -574,12 +579,13 @@ final class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var allowTracksOnInner1LayerString : String? {
-    switch self.allowTracksOnInner1LayerString_property.selection {
+    return self.allowTracksOnInner1LayerString_property.optionalValue
+    /* switch self.allowTracksOnInner1LayerString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -591,12 +597,13 @@ final class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var allowTracksOnInner2LayerString : String? {
-    switch self.allowTracksOnInner2LayerString_property.selection {
+    return self.allowTracksOnInner2LayerString_property.optionalValue
+    /* switch self.allowTracksOnInner2LayerString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -608,12 +615,13 @@ final class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var allowTracksOnInner3LayerString : String? {
-    switch self.allowTracksOnInner3LayerString_property.selection {
+    return self.allowTracksOnInner3LayerString_property.optionalValue
+    /* switch self.allowTracksOnInner3LayerString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -625,12 +633,13 @@ final class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var allowTracksOnInner4LayerString : String? {
-    switch self.allowTracksOnInner4LayerString_property.selection {
+    return self.allowTracksOnInner4LayerString_property.optionalValue
+    /* switch self.allowTracksOnInner4LayerString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -642,12 +651,13 @@ final class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var canRemove : Bool? {
-    switch self.canRemove_property.selection {
+    return self.canRemove_property.optionalValue
+    /* switch self.canRemove_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -659,12 +669,13 @@ final class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var netUsage : String? {
-    switch self.netUsage_property.selection {
+    return self.netUsage_property.optionalValue
+    /* switch self.netUsage_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -676,12 +687,13 @@ final class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var netsDescription : NetInfoArray? {
-    switch self.netsDescription_property.selection {
+    return self.netsDescription_property.optionalValue
+    /* switch self.netsDescription_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -693,12 +705,13 @@ final class NetClassInProject : EBManagedObject,
   //····················································································································
 
   final var netWarningCount : Int? {
-    switch self.netWarningCount_property.selection {
+    return self.netWarningCount_property.optionalValue
+    /* switch self.netWarningCount_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

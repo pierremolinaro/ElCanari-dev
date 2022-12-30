@@ -1025,12 +1025,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var layerConfigurationString : String? {
-    switch self.layerConfigurationString_property.selection {
+    return self.layerConfigurationString_property.optionalValue
+    /* switch self.layerConfigurationString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1042,12 +1043,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var frontLegendLinesSegments : MergerSegmentArray? {
-    switch self.frontLegendLinesSegments_property.selection {
+    return self.frontLegendLinesSegments_property.optionalValue
+    /* switch self.frontLegendLinesSegments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1059,12 +1061,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var backLegendLinesSegments : MergerSegmentArray? {
-    switch self.backLegendLinesSegments_property.selection {
+    return self.backLegendLinesSegments_property.optionalValue
+    /* switch self.backLegendLinesSegments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1076,12 +1079,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var backLegendLinesBezierPaths : BezierPathArray? {
-    switch self.backLegendLinesBezierPaths_property.selection {
+    return self.backLegendLinesBezierPaths_property.optionalValue
+    /* switch self.backLegendLinesBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1093,12 +1097,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var frontLegendTextsSegments : MergerSegmentArray? {
-    switch self.frontLegendTextsSegments_property.selection {
+    return self.frontLegendTextsSegments_property.optionalValue
+    /* switch self.frontLegendTextsSegments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1110,12 +1115,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var frontLegendTextsBezierPaths : BezierPathArray? {
-    switch self.frontLegendTextsBezierPaths_property.selection {
+    return self.frontLegendTextsBezierPaths_property.optionalValue
+    /* switch self.frontLegendTextsBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1127,12 +1133,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var frontLayoutTextsSegments : MergerSegmentArray? {
-    switch self.frontLayoutTextsSegments_property.selection {
+    return self.frontLayoutTextsSegments_property.optionalValue
+    /* switch self.frontLayoutTextsSegments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1144,12 +1151,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var frontLayoutTextsBezierPaths : BezierPathArray? {
-    switch self.frontLayoutTextsBezierPaths_property.selection {
+    return self.frontLayoutTextsBezierPaths_property.optionalValue
+    /* switch self.frontLayoutTextsBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1161,12 +1169,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var backLegendTextsSegments : MergerSegmentArray? {
-    switch self.backLegendTextsSegments_property.selection {
+    return self.backLegendTextsSegments_property.optionalValue
+    /* switch self.backLegendTextsSegments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1178,12 +1187,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var backLegendTextsBezierPaths : BezierPathArray? {
-    switch self.backLegendTextsBezierPaths_property.selection {
+    return self.backLegendTextsBezierPaths_property.optionalValue
+    /* switch self.backLegendTextsBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1195,12 +1205,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var backLayoutTextsSegments : MergerSegmentArray? {
-    switch self.backLayoutTextsSegments_property.selection {
+    return self.backLayoutTextsSegments_property.optionalValue
+    /* switch self.backLayoutTextsSegments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1212,12 +1223,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var backLayoutTextsBezierPaths : BezierPathArray? {
-    switch self.backLayoutTextsBezierPaths_property.selection {
+    return self.backLayoutTextsBezierPaths_property.optionalValue
+    /* switch self.backLayoutTextsBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1229,12 +1241,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var internalBoardsLimitsSegments : MergerSegmentArray? {
-    switch self.internalBoardsLimitsSegments_property.selection {
+    return self.internalBoardsLimitsSegments_property.optionalValue
+    /* switch self.internalBoardsLimitsSegments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1246,12 +1259,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var internalBoardsLimitsBezierPaths : BezierPathArray? {
-    switch self.internalBoardsLimitsBezierPaths_property.selection {
+    return self.internalBoardsLimitsBezierPaths_property.optionalValue
+    /* switch self.internalBoardsLimitsBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1263,12 +1277,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var drillSegments : MergerSegmentArray? {
-    switch self.drillSegments_property.selection {
+    return self.drillSegments_property.optionalValue
+    /* switch self.drillSegments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1280,12 +1295,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var holesBezierPaths : BezierPathArray? {
-    switch self.holesBezierPaths_property.selection {
+    return self.holesBezierPaths_property.optionalValue
+    /* switch self.holesBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1297,12 +1313,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var viaShapes : MergerViaShapeArray? {
-    switch self.viaShapes_property.selection {
+    return self.viaShapes_property.optionalValue
+    /* switch self.viaShapes_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1314,12 +1331,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var viasBezierPaths : BezierPathArray? {
-    switch self.viasBezierPaths_property.selection {
+    return self.viasBezierPaths_property.optionalValue
+    /* switch self.viasBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1331,12 +1349,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var frontPadArray : MergerPadArray? {
-    switch self.frontPadArray_property.selection {
+    return self.frontPadArray_property.optionalValue
+    /* switch self.frontPadArray_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1348,12 +1367,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var frontPadsBezierPaths : BezierPathArray? {
-    switch self.frontPadsBezierPaths_property.selection {
+    return self.frontPadsBezierPaths_property.optionalValue
+    /* switch self.frontPadsBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1365,12 +1385,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var backPadArray : MergerPadArray? {
-    switch self.backPadArray_property.selection {
+    return self.backPadArray_property.optionalValue
+    /* switch self.backPadArray_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1382,12 +1403,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var backPadsBezierPaths : BezierPathArray? {
-    switch self.backPadsBezierPaths_property.selection {
+    return self.backPadsBezierPaths_property.optionalValue
+    /* switch self.backPadsBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1399,12 +1421,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var traversingPadArray : MergerPadArray? {
-    switch self.traversingPadArray_property.selection {
+    return self.traversingPadArray_property.optionalValue
+    /* switch self.traversingPadArray_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1416,12 +1439,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var traversingPadsBezierPaths : BezierPathArray? {
-    switch self.traversingPadsBezierPaths_property.selection {
+    return self.traversingPadsBezierPaths_property.optionalValue
+    /* switch self.traversingPadsBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1433,12 +1457,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var boardLimitsBezierPaths : BezierPathArray? {
-    switch self.boardLimitsBezierPaths_property.selection {
+    return self.boardLimitsBezierPaths_property.optionalValue
+    /* switch self.boardLimitsBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1450,12 +1475,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var backComponentNameSegments : MergerSegmentArray? {
-    switch self.backComponentNameSegments_property.selection {
+    return self.backComponentNameSegments_property.optionalValue
+    /* switch self.backComponentNameSegments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1467,12 +1493,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var backComponentNamesBezierPaths : BezierPathArray? {
-    switch self.backComponentNamesBezierPaths_property.selection {
+    return self.backComponentNamesBezierPaths_property.optionalValue
+    /* switch self.backComponentNamesBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1484,12 +1511,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var frontComponentNameSegments : MergerSegmentArray? {
-    switch self.frontComponentNameSegments_property.selection {
+    return self.frontComponentNameSegments_property.optionalValue
+    /* switch self.frontComponentNameSegments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1501,12 +1529,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var frontComponentNamesBezierPaths : BezierPathArray? {
-    switch self.frontComponentNamesBezierPaths_property.selection {
+    return self.frontComponentNamesBezierPaths_property.optionalValue
+    /* switch self.frontComponentNamesBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1518,12 +1547,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var frontComponentValueSegments : MergerSegmentArray? {
-    switch self.frontComponentValueSegments_property.selection {
+    return self.frontComponentValueSegments_property.optionalValue
+    /* switch self.frontComponentValueSegments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1535,12 +1565,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var frontComponentValuesBezierPaths : BezierPathArray? {
-    switch self.frontComponentValuesBezierPaths_property.selection {
+    return self.frontComponentValuesBezierPaths_property.optionalValue
+    /* switch self.frontComponentValuesBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1552,12 +1583,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var backComponentValueSegments : MergerSegmentArray? {
-    switch self.backComponentValueSegments_property.selection {
+    return self.backComponentValueSegments_property.optionalValue
+    /* switch self.backComponentValueSegments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1569,12 +1601,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var backComponentValuesBezierPaths : BezierPathArray? {
-    switch self.backComponentValuesBezierPaths_property.selection {
+    return self.backComponentValuesBezierPaths_property.optionalValue
+    /* switch self.backComponentValuesBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1586,12 +1619,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var backTrackSegments : MergerSegmentArray? {
-    switch self.backTrackSegments_property.selection {
+    return self.backTrackSegments_property.optionalValue
+    /* switch self.backTrackSegments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1603,12 +1637,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var backTracksBezierPaths : BezierPathArray? {
-    switch self.backTracksBezierPaths_property.selection {
+    return self.backTracksBezierPaths_property.optionalValue
+    /* switch self.backTracksBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1620,12 +1655,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var frontTrackSegments : MergerSegmentArray? {
-    switch self.frontTrackSegments_property.selection {
+    return self.frontTrackSegments_property.optionalValue
+    /* switch self.frontTrackSegments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1637,12 +1673,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var frontTracksBezierPaths : BezierPathArray? {
-    switch self.frontTracksBezierPaths_property.selection {
+    return self.frontTracksBezierPaths_property.optionalValue
+    /* switch self.frontTracksBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1654,12 +1691,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var inner1TracksSegments : MergerSegmentArray? {
-    switch self.inner1TracksSegments_property.selection {
+    return self.inner1TracksSegments_property.optionalValue
+    /* switch self.inner1TracksSegments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1671,12 +1709,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var inner1TracksBezierPaths : BezierPathArray? {
-    switch self.inner1TracksBezierPaths_property.selection {
+    return self.inner1TracksBezierPaths_property.optionalValue
+    /* switch self.inner1TracksBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1688,12 +1727,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var inner2TracksSegments : MergerSegmentArray? {
-    switch self.inner2TracksSegments_property.selection {
+    return self.inner2TracksSegments_property.optionalValue
+    /* switch self.inner2TracksSegments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1705,12 +1745,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var inner2TracksBezierPaths : BezierPathArray? {
-    switch self.inner2TracksBezierPaths_property.selection {
+    return self.inner2TracksBezierPaths_property.optionalValue
+    /* switch self.inner2TracksBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1722,12 +1763,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var inner3TracksSegments : MergerSegmentArray? {
-    switch self.inner3TracksSegments_property.selection {
+    return self.inner3TracksSegments_property.optionalValue
+    /* switch self.inner3TracksSegments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1739,12 +1781,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var inner3TracksBezierPaths : BezierPathArray? {
-    switch self.inner3TracksBezierPaths_property.selection {
+    return self.inner3TracksBezierPaths_property.optionalValue
+    /* switch self.inner3TracksBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1756,12 +1799,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var inner4TracksSegments : MergerSegmentArray? {
-    switch self.inner4TracksSegments_property.selection {
+    return self.inner4TracksSegments_property.optionalValue
+    /* switch self.inner4TracksSegments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1773,12 +1817,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var inner4TracksBezierPaths : BezierPathArray? {
-    switch self.inner4TracksBezierPaths_property.selection {
+    return self.inner4TracksBezierPaths_property.optionalValue
+    /* switch self.inner4TracksBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1790,12 +1835,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var frontPackagesSegments : MergerSegmentArray? {
-    switch self.frontPackagesSegments_property.selection {
+    return self.frontPackagesSegments_property.optionalValue
+    /* switch self.frontPackagesSegments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1807,12 +1853,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var frontPackagesBezierPaths : BezierPathArray? {
-    switch self.frontPackagesBezierPaths_property.selection {
+    return self.frontPackagesBezierPaths_property.optionalValue
+    /* switch self.frontPackagesBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1824,12 +1871,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var backPackagesSegments : MergerSegmentArray? {
-    switch self.backPackagesSegments_property.selection {
+    return self.backPackagesSegments_property.optionalValue
+    /* switch self.backPackagesSegments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1841,12 +1889,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var backPackagesBezierPaths : BezierPathArray? {
-    switch self.backPackagesBezierPaths_property.selection {
+    return self.backPackagesBezierPaths_property.optionalValue
+    /* switch self.backPackagesBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1858,12 +1907,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var instanceCount : Int? {
-    switch self.instanceCount_property.selection {
+    return self.instanceCount_property.optionalValue
+    /* switch self.instanceCount_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1875,12 +1925,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var frontLegendLinesBezierPaths : BezierPathArray? {
-    switch self.frontLegendLinesBezierPaths_property.selection {
+    return self.frontLegendLinesBezierPaths_property.optionalValue
+    /* switch self.frontLegendLinesBezierPaths_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1892,12 +1943,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var imageForModel : EBShape? {
-    switch self.imageForModel_property.selection {
+    return self.imageForModel_property.optionalValue
+    /* switch self.imageForModel_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1909,12 +1961,13 @@ final class BoardModel : EBManagedObject,
   //····················································································································
 
   final var imageForInstances : EBShape? {
-    switch self.imageForInstances_property.selection {
+    return self.imageForInstances_property.optionalValue
+    /* switch self.imageForInstances_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

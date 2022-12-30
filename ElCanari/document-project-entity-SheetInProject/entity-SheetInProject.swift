@@ -138,12 +138,13 @@ final class SheetInProject : EBManagedObject,
   //····················································································································
 
   final var issues : CanariIssueArray? {
-    switch self.issues_property.selection {
+    return self.issues_property.optionalValue
+    /* switch self.issues_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -155,12 +156,13 @@ final class SheetInProject : EBManagedObject,
   //····················································································································
 
   final var connectedPoints : EBShape? {
-    switch self.connectedPoints_property.selection {
+    return self.connectedPoints_property.optionalValue
+    /* switch self.connectedPoints_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -172,12 +174,13 @@ final class SheetInProject : EBManagedObject,
   //····················································································································
 
   final var connexionWarnings : Int? {
-    switch self.connexionWarnings_property.selection {
+    return self.connexionWarnings_property.optionalValue
+    /* switch self.connexionWarnings_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -189,12 +192,13 @@ final class SheetInProject : EBManagedObject,
   //····················································································································
 
   final var connexionErrors : Int? {
-    switch self.connexionErrors_property.selection {
+    return self.connexionErrors_property.optionalValue
+    /* switch self.connexionErrors_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -206,12 +210,13 @@ final class SheetInProject : EBManagedObject,
   //····················································································································
 
   final var sheetDescriptor : SchematicSheetDescriptor? {
-    switch self.sheetDescriptor_property.selection {
+    return self.sheetDescriptor_property.optionalValue
+    /* switch self.sheetDescriptor_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

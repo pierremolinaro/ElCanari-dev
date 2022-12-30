@@ -800,12 +800,13 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final var deviceName : String? {
-    switch self.deviceName_property.selection {
+    return self.deviceName_property.optionalValue
+    /* switch self.deviceName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -845,12 +846,13 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final var packagePadDictionary : PackageMasterPadDictionary? {
-    switch self.packagePadDictionary_property.selection {
+    return self.packagePadDictionary_property.optionalValue
+    /* switch self.packagePadDictionary_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -862,12 +864,13 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final var selectedPackageName : String? {
-    switch self.selectedPackageName_property.selection {
+    return self.selectedPackageName_property.optionalValue
+    /* switch self.selectedPackageName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -879,12 +882,13 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final var availablePackages : StringArray? {
-    switch self.availablePackages_property.selection {
+    return self.availablePackages_property.optionalValue
+    /* switch self.availablePackages_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -896,12 +900,13 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final var componentIsPlacedInBoard : Bool? {
-    switch self.componentIsPlacedInBoard_property.selection {
+    return self.componentIsPlacedInBoard_property.optionalValue
+    /* switch self.componentIsPlacedInBoard_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -913,12 +918,13 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final var componentIsPlacedInBoardString : String? {
-    switch self.componentIsPlacedInBoardString_property.selection {
+    return self.componentIsPlacedInBoardString_property.optionalValue
+    /* switch self.componentIsPlacedInBoardString_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -930,12 +936,13 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final var strokeBezierPath : EBBezierPath? {
-    switch self.strokeBezierPath_property.selection {
+    return self.strokeBezierPath_property.optionalValue
+    /* switch self.strokeBezierPath_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1003,12 +1010,13 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final var pinPadAssignments : ThreeStringArray? {
-    switch self.pinPadAssignments_property.selection {
+    return self.pinPadAssignments_property.optionalValue
+    /* switch self.pinPadAssignments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1020,12 +1028,13 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final var hasSlavePads : Bool? {
-    switch self.hasSlavePads_property.selection {
+    return self.hasSlavePads_property.optionalValue
+    /* switch self.hasSlavePads_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1037,12 +1046,13 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final var placementInSchematic : String? {
-    switch self.placementInSchematic_property.selection {
+    return self.placementInSchematic_property.optionalValue
+    /* switch self.placementInSchematic_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1054,12 +1064,13 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final var deviceSymbolDictionary : DeviceSymbolDictionary? {
-    switch self.deviceSymbolDictionary_property.selection {
+    return self.deviceSymbolDictionary_property.optionalValue
+    /* switch self.deviceSymbolDictionary_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1071,12 +1082,13 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final var componentNameFontName : String? {
-    switch self.componentNameFontName_property.selection {
+    return self.componentNameFontName_property.optionalValue
+    /* switch self.componentNameFontName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1088,12 +1100,13 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final var componentValueFontName : String? {
-    switch self.componentValueFontName_property.selection {
+    return self.componentValueFontName_property.optionalValue
+    /* switch self.componentValueFontName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1105,12 +1118,13 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final var componentPadDictionary : ComponentPadDescriptorDictionary? {
-    switch self.componentPadDictionary_property.selection {
+    return self.componentPadDictionary_property.optionalValue
+    /* switch self.componentPadDictionary_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1122,12 +1136,13 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final var padNetDictionary : PadNetDictionary? {
-    switch self.padNetDictionary_property.selection {
+    return self.padNetDictionary_property.optionalValue
+    /* switch self.padNetDictionary_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -1139,12 +1154,13 @@ final class ComponentInProject : BoardObject,
   //····················································································································
 
   final var unplacedSymbols : StringTagArray? {
-    switch self.unplacedSymbols_property.selection {
+    return self.unplacedSymbols_property.optionalValue
+    /* switch self.unplacedSymbols_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

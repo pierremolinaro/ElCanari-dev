@@ -3094,12 +3094,13 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 //····················································································································
 
 @MainActor var preferences_mValueRevealInFinder_packages : StringArray? {
-  switch preferences_mValueRevealInFinder_packages_property.selection {
+  return preferences_mValueRevealInFinder_packages_property.optionalValue
+  /* switch preferences_mValueRevealInFinder_packages_property.selection {
   case .empty, .multiple :
     return nil
   case .single (let v) :
     return v
-  }
+  } */
 }
 
 //····················································································································
@@ -3111,12 +3112,13 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 //····················································································································
 
 @MainActor var preferences_mValueRevealInFinder_devices : StringArray? {
-  switch preferences_mValueRevealInFinder_devices_property.selection {
+  return preferences_mValueRevealInFinder_devices_property.optionalValue
+  /* switch preferences_mValueRevealInFinder_devices_property.selection {
   case .empty, .multiple :
     return nil
   case .single (let v) :
     return v
-  }
+  } */
 }
 
 //····················································································································
@@ -3128,12 +3130,13 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 //····················································································································
 
 @MainActor var preferences_mValueRevealInFinder_fonts : StringArray? {
-  switch preferences_mValueRevealInFinder_fonts_property.selection {
+  return preferences_mValueRevealInFinder_fonts_property.optionalValue
+  /* switch preferences_mValueRevealInFinder_fonts_property.selection {
   case .empty, .multiple :
     return nil
   case .single (let v) :
     return v
-  }
+  } */
 }
 
 //····················································································································
@@ -3145,12 +3148,13 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 //····················································································································
 
 @MainActor var preferences_mValueRevealInFinder_artworks : StringArray? {
-  switch preferences_mValueRevealInFinder_artworks_property.selection {
+  return preferences_mValueRevealInFinder_artworks_property.optionalValue
+  /* switch preferences_mValueRevealInFinder_artworks_property.selection {
   case .empty, .multiple :
     return nil
   case .single (let v) :
     return v
-  }
+  } */
 }
 
 //····················································································································
@@ -3162,12 +3166,13 @@ fileprivate let Preferences_additionnalLibraryArray = "Preferences:additionnalLi
 //····················································································································
 
 @MainActor var preferences_mValueRevealInFinder_symbols : StringArray? {
-  switch preferences_mValueRevealInFinder_symbols_property.selection {
+  return preferences_mValueRevealInFinder_symbols_property.optionalValue
+  /* switch preferences_mValueRevealInFinder_symbols_property.selection {
   case .empty, .multiple :
     return nil
   case .single (let v) :
     return v
-  }
+  } */
 }
 
 

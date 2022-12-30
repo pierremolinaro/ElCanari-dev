@@ -377,12 +377,13 @@ final class ComponentSymbolInProject : SchematicObject,
 
   var componentValueProxy : String? {
     get {
-      switch self.componentValueProxy_property.selection {
+      return self.componentValueProxy_property.optionalValue
+      /* switch self.componentValueProxy_property.selection {
       case .empty, .multiple :
         return nil
       case .single (let v) :
         return v
-      }
+      } */
     }
     set {
       if let unwrappedNewValue = newValue {
@@ -428,12 +429,13 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final var componentName : String? {
-    switch self.componentName_property.selection {
+    return self.componentName_property.optionalValue
+    /* switch self.componentName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -445,12 +447,13 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final var deviceName : String? {
-    switch self.deviceName_property.selection {
+    return self.deviceName_property.optionalValue
+    /* switch self.deviceName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -462,12 +465,13 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final var symbolInfo : ComponentSymbolInfo? {
-    switch self.symbolInfo_property.selection {
+    return self.symbolInfo_property.optionalValue
+    /* switch self.symbolInfo_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -479,12 +483,13 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final var pinPadAssignments : ThreeStringArray? {
-    switch self.pinPadAssignments_property.selection {
+    return self.pinPadAssignments_property.optionalValue
+    /* switch self.pinPadAssignments_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -496,12 +501,13 @@ final class ComponentSymbolInProject : SchematicObject,
   //····················································································································
 
   final var symbolInSchematic : Bool? {
-    switch self.symbolInSchematic_property.selection {
+    return self.symbolInSchematic_property.optionalValue
+    /* switch self.symbolInSchematic_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

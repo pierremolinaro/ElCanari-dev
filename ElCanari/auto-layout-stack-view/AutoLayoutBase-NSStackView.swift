@@ -159,11 +159,11 @@ class AutoLayoutBase_NSStackView : NSStackView {
 
   //····················································································································
 
-  override func observeValue (forKeyPath keyPath: String?,
-                              of object: Any?,
-                              change: [NSKeyValueChangeKey : Any]?,
-                              context: UnsafeMutableRawPointer?) {
-    if keyPath == "hidden" {
+  override final func observeValue (forKeyPath inKeyPath : String?,
+                                    of inObject :  Any?,
+                                    change inChange : [NSKeyValueChangeKey : Any]?,
+                                    context inContext : UnsafeMutableRawPointer?) {
+    if inKeyPath == "hidden" {
       var allAreHidden = true
       for view in self.subviews {
         if !view.isHidden && !(view is AutoLayoutFlexibleSpace) {
@@ -174,7 +174,7 @@ class AutoLayoutBase_NSStackView : NSStackView {
         self.isHidden = allAreHidden
       }
     }
-    super.observeValue (forKeyPath: keyPath, of: object, change: change, context: context)
+    super.observeValue (forKeyPath: inKeyPath, of: inObject, change: inChange, context: inContext)
   }
 
   //····················································································································

@@ -569,12 +569,13 @@ final class PackagePad : PackageObject,
   //····················································································································
 
   final var padNameForDisplay : String? {
-    switch self.padNameForDisplay_property.selection {
+    return self.padNameForDisplay_property.optionalValue
+    /* switch self.padNameForDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -586,12 +587,13 @@ final class PackagePad : PackageObject,
   //····················································································································
 
   final var padIsTraversing : Bool? {
-    switch self.padIsTraversing_property.selection {
+    return self.padIsTraversing_property.optionalValue
+    /* switch self.padIsTraversing_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -603,12 +605,13 @@ final class PackagePad : PackageObject,
   //····················································································································
 
   final var annularRing : Int? {
-    switch self.annularRing_property.selection {
+    return self.annularRing_property.optionalValue
+    /* switch self.annularRing_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -620,12 +623,13 @@ final class PackagePad : PackageObject,
   //····················································································································
 
   final var padNameWithZoneName : String? {
-    switch self.padNameWithZoneName_property.selection {
+    return self.padNameWithZoneName_property.optionalValue
+    /* switch self.padNameWithZoneName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -637,12 +641,13 @@ final class PackagePad : PackageObject,
   //····················································································································
 
   final var zoneName : String? {
-    switch self.zoneName_property.selection {
+    return self.zoneName_property.optionalValue
+    /* switch self.zoneName_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -654,12 +659,13 @@ final class PackagePad : PackageObject,
   //····················································································································
 
   final var noZone : Bool? {
-    switch self.noZone_property.selection {
+    return self.noZone_property.optionalValue
+    /* switch self.noZone_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -671,12 +677,13 @@ final class PackagePad : PackageObject,
   //····················································································································
 
   final var zoneAllowsManualRenumbering : Bool? {
-    switch self.zoneAllowsManualRenumbering_property.selection {
+    return self.zoneAllowsManualRenumbering_property.optionalValue
+    /* switch self.zoneAllowsManualRenumbering_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -688,12 +695,13 @@ final class PackagePad : PackageObject,
   //····················································································································
 
   final var slavePadCount : Int? {
-    switch self.slavePadCount_property.selection {
+    return self.slavePadCount_property.optionalValue
+    /* switch self.slavePadCount_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -705,12 +713,13 @@ final class PackagePad : PackageObject,
   //····················································································································
 
   final var masterPadObjectIndex : Int? {
-    switch self.masterPadObjectIndex_property.selection {
+    return self.masterPadObjectIndex_property.optionalValue
+    /* switch self.masterPadObjectIndex_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -722,12 +731,13 @@ final class PackagePad : PackageObject,
   //····················································································································
 
   final var padNumberDisplay : EBShape? {
-    switch self.padNumberDisplay_property.selection {
+    return self.padNumberDisplay_property.optionalValue
+    /* switch self.padNumberDisplay_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

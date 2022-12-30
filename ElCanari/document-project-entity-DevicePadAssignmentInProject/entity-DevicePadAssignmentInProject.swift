@@ -87,12 +87,13 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //····················································································································
 
   final var pinPadAssignment : ThreeStrings? {
-    switch self.pinPadAssignment_property.selection {
+    return self.pinPadAssignment_property.optionalValue
+    /* switch self.pinPadAssignment_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -104,12 +105,13 @@ final class DevicePadAssignmentInProject : EBManagedObject,
   //····················································································································
 
   final var descriptor : PinPadAssignmentInProject? {
-    switch self.descriptor_property.selection {
+    return self.descriptor_property.optionalValue
+    /* switch self.descriptor_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

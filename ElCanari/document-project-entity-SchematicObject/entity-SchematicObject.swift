@@ -89,12 +89,13 @@ class SchematicObject : EBGraphicManagedObject,
   //····················································································································
 
   final var issues : CanariIssueArray? {
-    switch self.issues_property.selection {
+    return self.issues_property.optionalValue
+    /* switch self.issues_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -106,12 +107,13 @@ class SchematicObject : EBGraphicManagedObject,
   //····················································································································
 
   final var connectedPoints : CanariPointArray? {
-    switch self.connectedPoints_property.selection {
+    return self.connectedPoints_property.optionalValue
+    /* switch self.connectedPoints_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -123,12 +125,13 @@ class SchematicObject : EBGraphicManagedObject,
   //····················································································································
 
   final var sheetDescriptor : SchematicSheetDescriptor? {
-    switch self.sheetDescriptor_property.selection {
+    return self.sheetDescriptor_property.optionalValue
+    /* switch self.sheetDescriptor_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -140,12 +143,13 @@ class SchematicObject : EBGraphicManagedObject,
   //····················································································································
 
   final var isPlacedInSchematic : Bool? {
-    switch self.isPlacedInSchematic_property.selection {
+    return self.isPlacedInSchematic_property.optionalValue
+    /* switch self.isPlacedInSchematic_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································

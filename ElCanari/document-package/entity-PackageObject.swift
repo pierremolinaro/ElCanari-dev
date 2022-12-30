@@ -47,12 +47,13 @@ class PackageObject : EBGraphicManagedObject,
   //····················································································································
 
   final var issues : CanariIssueArray? {
-    switch self.issues_property.selection {
+    return self.issues_property.optionalValue
+    /* switch self.issues_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
@@ -92,12 +93,13 @@ class PackageObject : EBGraphicManagedObject,
   //····················································································································
 
   final var knobSize : Double? {
-    switch self.knobSize_property.selection {
+    return self.knobSize_property.optionalValue
+    /* switch self.knobSize_property.selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
       return v
-    }
+    } */
   }
 
   //····················································································································
